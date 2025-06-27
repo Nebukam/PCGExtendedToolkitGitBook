@@ -1,0 +1,6 @@
+---
+icon: sliders
+---
+
+# Search Algorithms
+
