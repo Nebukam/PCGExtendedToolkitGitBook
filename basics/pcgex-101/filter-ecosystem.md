@@ -10,7 +10,7 @@ A lot of PCGEx nodes have filter pins. These pins accept any number & combinatio
 
 > The majority of them are [Point filters](../../node-library/filters/filters-points/), meaning they'll work with any points (_remember, everything is just points_), but there are also sub-categories that can work against more specific things (_i.e, cluster connectivity_)
 
-<figure><img src="../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (47).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="success" %}
 Filters can be combined using AND/OR groups to create complex conditions, and sometime can greatly simplify graphs by removing the need for computing attributes for the sole purpose of filtering point. The [Distance](../../node-library/filters/filters-points/spatial/distance.md) filter is a good example of that.
@@ -24,7 +24,7 @@ PCGEx leverages that pattern to create conditional node behaviors — in other w
 >
 > This is especially handy when you want to do chirurgical editing.
 
-<figure><img src="../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (49).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 

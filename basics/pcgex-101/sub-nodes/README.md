@@ -12,7 +12,7 @@ The closest parallel that can be drawn is, sub-nodes are like attribute sets **c
 Sub-nodes exist in a variety of types, and PCGEx relies a lot on that modular approach to solve complex problems and offer great flexibility.
 {% endhint %}
 
-<figure><img src="../../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (45).png" alt=""><figcaption></figcaption></figure>
 
 ### A modular approach
 
@@ -26,7 +26,7 @@ The major advantage of sub-nodes is all-over flexibility, inversion of control, 
 * They can be rerouted
 * They can be passed around using subgraph pins
 
-<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (31).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 In order to pass sub-nodes through a subgraph pin, `Attribute Set` type is preferred, but `Any` and `Point or Params` should work fine.
@@ -53,13 +53,13 @@ Different systems & features use different types of sub-nodes. You can identify 
 
 Sub-nodes are identified using a custom extra icon that's the same on both outputs & inputs.
 
-<figure><img src="../../../.gitbook/assets/image (12).png" alt=""><figcaption><p>Sub Nodes output &#x26; input pins have an extra icon that you can't miss!</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (42).png" alt=""><figcaption><p>Sub Nodes output &#x26; input pins have an extra icon that you can't miss!</p></figcaption></figure>
 
 {% hint style="success" %}
 It's also worth nothing that whenever this pattern is used, **these input pins always support multiple sub-nodes**.
 {% endhint %}
 
-<figure><img src="../../../.gitbook/assets/image (3) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (33).png" alt=""><figcaption></figcaption></figure>
 
 ### Technical Notes
 

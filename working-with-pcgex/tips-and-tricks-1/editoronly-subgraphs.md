@@ -11,7 +11,7 @@ This is actually a very important and overlooked piece of information regarding 
 
 ## A package breaking setting
 
-<figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
 
 If you ever came across this option in the PCG graph editor and thought "oh, handy!", <mark style="background-color:red;">**go uncheck it right now**</mark>.
 

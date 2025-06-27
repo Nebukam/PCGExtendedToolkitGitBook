@@ -13,7 +13,7 @@ Most of the time, **there is a significant speed gain to be had by merging point
 This is even more important if your data is about to generate multiple exclusive ISMC configurations.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (44).png" alt=""><figcaption></figcaption></figure>
 
 ### Buy why?
 

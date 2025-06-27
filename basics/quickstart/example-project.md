@@ -14,7 +14,7 @@ The content is divided into two main parts:
 
 
 
-<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (38).png" alt=""><figcaption></figcaption></figure>
 
 ## Getting the example project
 
@@ -22,7 +22,7 @@ The content is divided into two main parts:
 {% step %}
 #### Download the project files
 
-<a href="https://github.com/Nebukam/PCGExExampleProject/archive/refs/heads/main.zip" class="button primary">Download the ZIP</a>  or to to the <a href="https://github.com/Nebukam/PCGExExampleProject" class="button primary">GitHub repo</a>
+<a href="https://github.com/Nebukam/PCGExExampleProject/archive/refs/heads/main.zip" class="button primary">Download the ZIP</a>  or to to the  <a href="https://github.com/Nebukam/PCGExExampleProject" class="button primary">GitHub repo</a>
 {% endstep %}
 
 {% step %}

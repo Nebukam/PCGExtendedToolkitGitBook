@@ -25,14 +25,14 @@ Add PCGEx to your library — select whichever license matches your usecase.
 {% step %}
 #### Go to the Epic Games Launcher
 
-Navigate to the Library tab, and scroll all the way down. If PCGEx isn't showing there already, make sure to refresh using the <img src="../../.gitbook/assets/image (5) (1) (1).png" alt="" data-size="line"> refresh icon.
+Navigate to the Library tab, and scroll all the way down. If PCGEx isn't showing there already, make sure to refresh using the <img src="../../.gitbook/assets/image (35).png" alt="" data-size="line"> refresh icon.
 {% endstep %}
 
 {% step %}
 #### Install to your preferred engine version
 
 You should now see PCGEx and be able to install the plugin for the editor version of your choice!\
-![](<../../.gitbook/assets/image (6) (1) (1).png>)
+![](<../../.gitbook/assets/image (36).png>)
 {% endstep %}
 {% endstepper %}
 
@@ -112,4 +112,4 @@ Once the plugin is installed and compiled, nodes are available in any PCG Graph 
 All PCGEx nodes are prefixed with `PCGEx |` – which is a bit annoying at first, but quickly comes in handy to ensure nodes are clearly identifiable.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
