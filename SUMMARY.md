@@ -298,6 +298,7 @@
     * [Partition Rule](node-library/misc/partition-by-values/partition-rule.md)
   * [Sort Points](node-library/misc/sort-points/README.md)
     * [Sorting Rule](node-library/misc/sort-points/sorting-rule.md)
+  * [Copy Collections](node-library/misc/sort-points-1.md)
   * [Destroy Actor](node-library/misc/destroy-actor.md)
   * [Bounds to Points](node-library/misc/bounds-to-points.md)
   * [Bounds Axis To Points](node-library/misc/bounds-axis-to-points.md)
