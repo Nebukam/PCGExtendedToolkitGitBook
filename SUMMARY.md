@@ -326,6 +326,7 @@
   * [Nearest Bounds](node-library/sampling/nearest-bounds.md)
   * [Nearest Spline](node-library/sampling/nearest-spline.md)
   * [Nearest Path](node-library/sampling/nearest-spline-1.md)
+  * [Inside Path](node-library/sampling/nearest-spline-2.md)
   * [Nearest Surface](node-library/sampling/nearest-surface.md)
   * [Overlap Stats](node-library/sampling/overlap-stats.md)
   * [Line Trace](node-library/sampling/line-trace.md)
