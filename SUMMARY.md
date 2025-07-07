@@ -135,6 +135,7 @@
     * [β Skeleton](node-library/clusters/refine-cluster/v-skeleton.md)
     * [Edge Length](node-library/clusters/refine-cluster/edge-length.md)
     * [Edge Score](node-library/clusters/refine-cluster/edge-score.md)
+    * [Remove Leaves](node-library/clusters/refine-cluster/remove-leaves.md)
   * [Flood Fill](node-library/clusters/flood-fill/README.md)
     * [FC : Count](node-library/clusters/flood-fill/fc-count.md)
     * [FC : Depth](node-library/clusters/flood-fill/fc-depth.md)
