@@ -231,6 +231,8 @@
   * [Shrink](node-library/paths/shrink.md)
   * [Spline to Path](node-library/paths/spline-to-path.md)
   * [Split](node-library/paths/split.md)
+  * [Stitch](node-library/paths/stitch.md)
+  * [Insert](node-library/paths/insert.md)
   * [Subdivide](node-library/paths/subdivide.md)
   * [Path Properties](node-library/paths/path-properties.md)
   * [Write Tangents](node-library/paths/write-tangents/README.md)
