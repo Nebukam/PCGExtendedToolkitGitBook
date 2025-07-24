@@ -8,6 +8,8 @@ icon: grid-round-2-plus
 
 A handful of nodes have making use of "target" inputs, and will process each input against each targets. **Data matchings lets you cherry pick which target data is a "match" for each input using subnodes.**
 
+<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption><p>Copy Cluster to Point with Match by Index (Tiling)</p></figcaption></figure>
+
 ### How matching works
 
 The goal of data matching is to let you choose which input can be paired with which target(s). There is no default limit to the number of targets that can be matched with a given input — by default (if matching is disabled), **all inputs will be working with every available target.**
