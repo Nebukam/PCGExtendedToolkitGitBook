@@ -288,6 +288,7 @@
     * [1:1](node-library/misc/data-matching/1-1.md)
     * [Attributes](node-library/misc/data-matching/attributes.md)
     * [Tags × Attributes](node-library/misc/data-matching/tags-attributes.md)
+    * [Index](node-library/misc/data-matching/index.md)
   * [Layout](node-library/misc/layout/README.md)
     * [Bin Packing](node-library/misc/layout/bin-packing.md)
   * [Shapes](node-library/misc/shapes/README.md)
