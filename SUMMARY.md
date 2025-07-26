@@ -173,9 +173,6 @@
     * [Flag Nodes](node-library/clusters/metadata/flag-nodes/README.md)
       * [Node Flag](node-library/clusters/metadata/flag-nodes/node-flag.md)
     * [Edge Order](node-library/clusters/metadata/edge-order.md)
-  * [Topology](node-library/clusters/topology/README.md)
-    * [Cluster Surface](node-library/clusters/topology/cluster-surface.md)
-    * [Toggle Topology](node-library/clusters/topology/toggle-topology.md)
   * [Pick Closest Cluster](node-library/clusters/pick-closest-cluster.md)
   * [Connect Clusters](node-library/clusters/connect-clusters.md)
   * [Find point on Bounds](node-library/clusters/find-point-on-bounds.md)
@@ -356,6 +353,10 @@
   * [Move Pivot](node-library/transform/move-pivot.md)
   * [Normalize](node-library/transform/normalize.md)
   * [Copy to Path](node-library/transform/copy-to-path.md)
+* [Topology](node-library/topology/README.md)
+  * [Cluster Surface](node-library/topology/cluster-surface/README.md)
+    * [Toggle Topology](node-library/topology/cluster-surface/toggle-topology.md)
+  * [Path Surface](node-library/topology/path-surface.md)
 
 ## Infos
 
