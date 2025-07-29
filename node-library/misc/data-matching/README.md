@@ -8,7 +8,7 @@ icon: grid-round-2-plus
 
 A handful of nodes have making use of "target" inputs, and will process each input against each targets. **Data matchings lets you cherry pick which target data is a "match" for each input using subnodes.**
 
-<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption><p>Copy Cluster to Point with Match by Index (Tiling)</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (4).png" alt=""><figcaption><p>Copy Cluster to Point with Match by Index (Tiling)</p></figcaption></figure>
 
 ### How matching works
 
