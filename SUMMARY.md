@@ -60,6 +60,8 @@
       * [Path Inclusion](node-library/filters/filters-points/spatial/path-inclusion.md)
       * [Path Alpha](node-library/filters/filters-points/spatial/path-alpha.md)
       * [Compare Nearest (Numeric)](node-library/filters/filters-points/spatial/compare-nearest-numeric.md)
+      * [Inclusion](node-library/filters/filters-points/spatial/inclusion.md)
+      * [Time](node-library/filters/filters-points/spatial/time.md)
     * [Simple Comparisons](node-library/filters/filters-points/simple-comparisons/README.md)
       * [String](node-library/filters/filters-points/simple-comparisons/string.md)
       * [Numeric](node-library/filters/filters-points/simple-comparisons/numeric.md)
