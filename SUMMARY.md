@@ -359,6 +359,7 @@
   * [Cluster Surface](node-library/topology/cluster-surface/README.md)
     * [Toggle Topology](node-library/topology/cluster-surface/toggle-topology.md)
   * [Path Surface](node-library/topology/path-surface.md)
+  * [Spawn Dynamic Mesh](node-library/topology/spawn-dynamic-mesh.md)
 
 ## Infos
 
