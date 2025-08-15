@@ -322,6 +322,7 @@
     * [Write Attributes](node-library/quality-of-life/batch-actions/write-attributes.md)
   * [Uber Branch](node-library/quality-of-life/uber-branch.md)
   * [Branch on Data](node-library/quality-of-life/branch-on-data.md)
+  * [Spatial Triage](node-library/quality-of-life/spatial-triage.md)
 * [Assets Management](node-library/assets-management/README.md)
   * [Collections](node-library/assets-management/collections/README.md)
     * [Mesh Collection](node-library/assets-management/collections/mesh-collection.md)
