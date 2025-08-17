@@ -2,24 +2,25 @@
 
 * [Welcome](README.md)
 
-## Basics
+## General
 
-* [Quickstart](basics/quickstart/README.md)
-  * [Installation](basics/quickstart/installation.md)
-  * [PCG Basics](basics/quickstart/pcg-basics.md)
-  * [Example Project](basics/quickstart/example-project.md)
-* [PCGEx 101](basics/pcgex-101/README.md)
-  * [Clusters](basics/pcgex-101/clusters.md)
-  * [Paths](basics/pcgex-101/paths.md)
-  * [Sub Nodes](basics/pcgex-101/sub-nodes/README.md)
-    * [Technical Note : Sub Nodes](basics/pcgex-101/sub-nodes/technical-note-sub-nodes.md)
-  * [Instanced Behaviors](basics/pcgex-101/instanced-behaviors.md)
-  * [Filter Ecosystem](basics/pcgex-101/filter-ecosystem.md)
-  * [Workflow](basics/pcgex-101/paths-1.md)
+* [Quickstart](general/quickstart/README.md)
+  * [Installation](general/quickstart/installation.md)
+  * [PCG Basics](general/quickstart/pcg-basics.md)
+  * [Example Project](general/quickstart/example-project.md)
+* [PCGEx 101](general/pcgex-101/README.md)
+  * [Clusters](general/pcgex-101/clusters.md)
+  * [Paths](general/pcgex-101/paths.md)
+  * [Sub Nodes](general/pcgex-101/sub-nodes/README.md)
+    * [Technical Note : Sub Nodes](general/pcgex-101/sub-nodes/technical-note-sub-nodes.md)
+  * [Instanced Behaviors](general/pcgex-101/instanced-behaviors.md)
+  * [Filter Ecosystem](general/pcgex-101/filter-ecosystem.md)
+  * [Workflow](general/pcgex-101/paths-1.md)
 
 ***
 
 * [Editor Settings](editor-settings.md)
+* [Supporters](supporters.md)
 
 ## Working with PCGEx
 

@@ -7,7 +7,7 @@ icon: question
 So you want to build clusters — you're at the right place. There's a few different types of pages:
 
 * **Guides** — Text + images; high altitude, good for commute.
-* **Walkthrough** — Uses examples from the [example project ](../../../basics/quickstart/example-project.md)and break down the examples in depth.
+* **Walkthrough** — Uses examples from the [example project ](../../../general/quickstart/example-project.md)and break down the examples in depth.
 * **Videos** — Wide range of content.\
 
 

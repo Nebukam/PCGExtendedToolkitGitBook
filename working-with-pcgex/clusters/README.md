@@ -5,7 +5,7 @@ icon: vector-square
 # Clusters
 
 {% hint style="info" %}
-Make sure to read [Clusters 101](../../basics/pcgex-101/clusters.md) first.
+Make sure to read [Clusters 101](../../general/pcgex-101/clusters.md) first.
 {% endhint %}
 
 Building clusters is very straightforward — all you need are points that you want to connect.&#x20;
