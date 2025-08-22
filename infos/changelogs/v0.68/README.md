@@ -23,23 +23,23 @@ Also as a collateral of this exercise, FAB binaries have shrunk down from \~<mar
 
 In order to make the codebase more maintainable, a couple of filters have been deprecated in favor of alternatives that handle all use cases more efficiently.
 
-### [Filter : Inclusion](../../node-library/filters/filters-points/spatial/inclusion.md)
+### [Filter : Inclusion](../../../node-library/filters/filters-points/spatial/inclusion.md)
 
 {% hint style="success" %}
 Targets accepts any path-like data such as **Paths**, **Splines**, and soon **Polygon2D**.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (70).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (70).png" alt=""><figcaption></figcaption></figure>
 
-Replaces [Filter : Path Inclusion](../../node-library/filters/filters-points/spatial/path-inclusion.md), [Filter : Spline Inclusion](../../node-library/filters/filters-points/spatial/spline-inclusion.md) and [Filter : Polygon 2D Inclusion](../../node-library/filters/filters-points/spatial/polygon-2d-inclusion.md). It's almost a drop-in replacement : you can copy-paste most settings from the old nodes to the new one by doing the `right-click/left-click trick` on the **Settings** subsection of the detail panels.
+Replaces [Filter : Path Inclusion](../../../node-library/filters/filters-points/spatial/path-inclusion.md), [Filter : Spline Inclusion](../../../node-library/filters/filters-points/spatial/spline-inclusion.md) and [Filter : Polygon 2D Inclusion](../../../node-library/filters/filters-points/spatial/polygon-2d-inclusion.md). It's almost a drop-in replacement : you can copy-paste most settings from the old nodes to the new one by doing the `right-click/left-click trick` on the **Settings** subsection of the detail panels.
 
-### [Filter : Time](../../node-library/filters/filters-points/spatial/time.md)
+### [Filter : Time](../../../node-library/filters/filters-points/spatial/time.md)
 
-**Same as above**, but for [Filter : Path Alpha](../../node-library/filters/filters-points/spatial/path-alpha.md) and [Filter : Spline Alpha](../../node-library/filters/filters-points/spatial/spline-alpha.md)
+**Same as above**, but for [Filter : Path Alpha](../../../node-library/filters/filters-points/spatial/path-alpha.md) and [Filter : Spline Alpha](../../../node-library/filters/filters-points/spatial/spline-alpha.md)
 
-### [Spatial Triage](../../node-library/quality-of-life/spatial-triage.md)
+### [Spatial Triage](../../../node-library/quality-of-life/spatial-triage.md)
 
-<figure><img src="../../.gitbook/assets/image (73).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (73).png" alt=""><figcaption></figcaption></figure>
 
 A small quality of life helper that sort spatial data in three main categories against a unique (partition) bound object.
 
@@ -65,10 +65,10 @@ A small quality of life helper that sort spatial data in three main categories a
 
 Showcases how to find & filter cells, and create a path from a point inside a cell to a random location on the cell path.
 
-<figure><img src="../../.gitbook/assets/image (71).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (71).png" alt=""><figcaption></figcaption></figure>
 
 ### Runtime Partitoned Spline Meshes
 
 Showcases one way to deal with partitioned splines meshes : isolate the relevant section of a spline that's inside a partition and tighly cut it against partition bounds
 
-<figure><img src="../../.gitbook/assets/image (72).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (72).png" alt=""><figcaption></figcaption></figure>
