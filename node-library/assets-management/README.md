@@ -9,3 +9,8 @@ Key Takeaways\
 \- Support for asset randomization & material randomization through the use of collections\
 \- Bounds caching to delay actual loading of resources etc etc\
 \- Secret Create/Update collection from editor selection\
+
+
+{% content-ref url="../../working-with-pcgex/asset-staging/" %}
+[asset-staging](../../working-with-pcgex/asset-staging/)
+{% endcontent-ref %}

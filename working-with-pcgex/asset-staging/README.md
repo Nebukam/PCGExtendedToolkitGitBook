@@ -93,7 +93,7 @@ _This will make sure precomputed data is properly updated before saving._
 
 > _We'll be using a Mesh Collection for the example, Actor Collection have a slightly different model but same rules apply._
 
-<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption><p>List of entries within a collection</p></figcaption></figure>
 
 **Entries are a list of potential things that can be associated (**_**or matched**_**) with a point** when that collection is used with the [asset-staging](../../node-library/assets-management/asset-staging/ "mention") node.
 
