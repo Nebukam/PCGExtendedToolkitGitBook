@@ -218,6 +218,6 @@ Drop a stock `Static Mesh Spawner`, select the `Mesh Selector by Attribute` and 
 Now that you have a basic setup running with an asset staging node and a collection distributed to points, let's dig into the meat of that node' features.
 
 * [distribution.md](distribution.md "mention") controls how entries & sub-collections are assigned to individual points.
-* [fit-to-size.md](fit-to-size.md "mention")and [justification.md](justification.md "mention")covers how [fitting.md](../../node-library/shared-concepts/fitting.md "mention") settings are used in the context of staging
+* [fit-to-size.md](fit-to-size.md "mention") and [justification.md](justification.md "mention") covers how [fitting.md](../../node-library/shared-concepts/fitting.md "mention") settings are used in the context of staging
 * [variations.md](variations.md "mention") covers briefly how variations can be leveraged during staging.
 
