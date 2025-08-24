@@ -249,6 +249,7 @@
     * [Inherit Start](node-library/paths/sub-point-blending/inherit-start.md)
     * [Interpolate](node-library/paths/sub-point-blending/interpolate.md)
     * [None](node-library/paths/sub-point-blending/none.md)
+  * [Slide](node-library/paths/slide.md)
 * [Tensors](node-library/tensors/README.md)
   * [Tensors Transform](node-library/tensors/tensors-transform.md)
   * [Extrude Tensors](node-library/tensors/extrude-tensors.md)
