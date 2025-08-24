@@ -30,7 +30,7 @@ If you're into that, there's a dedicated technical note that covers some things 
 
 ### Silent discard of empty data
 
-All PCGEx nodes automatically discard & don't process empty data (_dataset with zero entries or points_). If there is no data after discard, the node will throw an error. _The only exception to that is the_ [_Discard by Point Count_](../../node-library/filters/discard-by-point-count.md) _node, because it's designed for graph culling._
+All PCGEx nodes automatically discard & don't process empty data (_dataset with zero entries or points_). If there is no data after discard, the node will throw an error. _The only exception to that is the_ [discard-by-point-count.md](../../node-library/filters/discard-by-point-count.md "mention") _node, because it's designed for graph culling._
 
 ### Data De-duping
 

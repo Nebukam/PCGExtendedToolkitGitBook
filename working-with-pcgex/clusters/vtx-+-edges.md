@@ -6,7 +6,7 @@ icon: question
 
 Having Vtx & Edges data as separate pins & collections is important and useful most of the time. However, there come situations where you need to mix everything up into a single pin.
 
-A _switch_, or _select_, various flow gates — or simply a subgraph that deals with clusters — **you don't have to duplicate all the logic & pins, every single time :** [**Find Clusters**](../../node-library/clusters/find-clusters-data.md) **is here for that.**
+A _switch_, or _select_, various flow gates — or simply a subgraph that deals with clusters — **you don't have to duplicate all the logic & pins, every single time :** [find-clusters-data.md](../../node-library/clusters/find-clusters-data.md "mention") **is here for that.**
 
 ## Use _Find Cluster_ All
 
@@ -30,5 +30,5 @@ Same thing apply to flow control nodes — just plug all that cluster data and f
 <figure><img src="../../.gitbook/assets/image (41).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-The same approach is used, with a different node to [loop over clusters](looping-over-clusters.md).
+The same approach is used, with a different node for [looping-over-clusters.md](looping-over-clusters.md "mention").
 {% endhint %}

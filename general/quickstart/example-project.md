@@ -29,7 +29,7 @@ The content is divided into two main parts:
 #### Install PCGEx
 
 Make sure you have PCGEx installed!\
-The project itself has the plugin enabled in the settings, **however it does not have the source embedded.** Head over to [Installation](installation.md) if you haven't already.
+The project itself has the plugin enabled in the settings, **however it does not have the source embedded.** Head over to [installation.md](installation.md "mention") if you haven't already.
 {% endstep %}
 
 {% step %}
@@ -47,4 +47,4 @@ The example project has a lot of "utilitary" subgraphs that handle boilerplate t
 Note that **the example project is only maintained for the latest version of the engine**. If you're interested in older version, they are preserved in their own branch on git and do not represent the breadth of what's available on latest.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption><p>A few of the feature showcase &#x26; examples available</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1).png" alt=""><figcaption><p>A few of the feature showcase &#x26; examples available</p></figcaption></figure>

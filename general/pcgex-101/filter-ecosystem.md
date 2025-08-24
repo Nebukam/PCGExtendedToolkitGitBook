@@ -4,11 +4,11 @@ icon: filter-list
 
 # Filter Ecosystem
 
-A lot of PCGEx nodes have filter pins. These pins accept any number & combinations of [Filters](../../node-library/filters/), the largest family of [sub-nodes](sub-nodes/) in the framework.&#x20;
+A lot of PCGEx nodes have filter pins. These pins accept any number & combinations of [filters](../../node-library/filters/ "mention"), the largest family of [sub-nodes](sub-nodes/ "mention") in the framework.&#x20;
 
 **A PCGEx filter represents something can either be true or false for a given point or dataset** — there's filters available for a bunch of things.&#x20;
 
-> The majority of them are [Point filters](../../node-library/filters/filters-points/), meaning they'll work with any points (_remember, everything is just points_), but there are also sub-categories that can work against more specific things (_i.e, cluster connectivity_)
+> The majority of them are [filters-points](../../node-library/filters/filters-points/ "mention"), meaning they'll work with any points (_remember, everything is just points_), but there are also sub-categories that can work against more specific things (_i.e, cluster connectivity_)
 
 <figure><img src="../../.gitbook/assets/image (47).png" alt=""><figcaption></figcaption></figure>
 

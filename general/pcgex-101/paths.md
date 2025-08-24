@@ -47,7 +47,7 @@ Being able to work making the above assumptions enables new way of interacting w
 
 ### **Dive into paths**
 
-Paths are also a great way to create clusters, as well as being created from them with tools like pathfinding. You can read more about it in the [Working with Paths](../../working-with-pcgex/paths/) section.
+Paths are also a great way to create clusters, as well as being created from them with tools like pathfinding. You can read more about it in the [paths](../../working-with-pcgex/paths/ "mention") section.
 
 {% content-ref url="../../working-with-pcgex/paths/" %}
 [paths](../../working-with-pcgex/paths/)

@@ -46,7 +46,7 @@ Hanging tasks bugs are very difficult to track, and what cause them is always an
 
 ## **Collections**
 
-<table><thead><tr><th width="210">Setting</th><th>Description</th></tr></thead><tbody><tr><td><strong>Disable Collision by Default</strong></td><td>Whether to force-disable collision on meshes when they're added to a <a href="node-library/assets-management/collections/mesh-collection.md">Mesh Collection</a> for the first time. <br><br><em>This is often desired, so checking that saves you from expanding the descriptor and changing the collision settings.</em></td></tr></tbody></table>
+<table><thead><tr><th width="210">Setting</th><th>Description</th></tr></thead><tbody><tr><td><strong>Disable Collision by Default</strong></td><td>Whether to force-disable collision on meshes when they're added to a <a data-mention href="node-library/assets-management/collections/mesh-collection.md">mesh-collection.md</a> for the first time. <br><br><em>This is often desired, so checking that saves you from expanding the descriptor and changing the collision settings.</em></td></tr></tbody></table>
 
 ## **Blending**
 

@@ -54,7 +54,7 @@ Their key data is stored in regular attributes for everyone to see — no catch!
 It's worth hammering that PCGEx is leveraging point data to store and represent that connectivity in a way that's spatially meaningful (_i.e., edges default position is exactly between the two vertices it connects_).
 
 Hence, both Vtx and Edges are "just points", exactly like the you get out of a landscape sampler.\
-There's obviously more technicalities when it comes to using them with PCGEx, which you can read about in more depth in the [Working with Clusters](../../working-with-pcgex/clusters/) section.
+There's obviously more technicalities when it comes to using them with PCGEx, which you can read about in more depth in the [clusters](../../working-with-pcgex/clusters/ "mention") section.
 
 ### Dive into clusters
 

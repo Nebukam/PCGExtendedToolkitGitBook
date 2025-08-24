@@ -5,7 +5,7 @@ icon: question
 
 # Hello Diagrams
 
-The simplest, most straightforward way to get some edges going is using a [diagram](../../../node-library/clusters/diagrams/) node:
+The simplest, most straightforward way to get some edges going is using a [diagrams](../../../node-library/clusters/diagrams/ "mention") node:
 
 <figure><img src="../../../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
 
