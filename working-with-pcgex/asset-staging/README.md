@@ -25,7 +25,7 @@ The first part is [collections](../../node-library/assets-management/collections
 
 Asset collections are **data assets** that contain a list of _entries_. Each entry represent a single mesh, actor _or another collection_; and it expose useful parameters.
 
-> There are two main types of collections at the moment: [mesh-collection.md](../../node-library/assets-management/collections/mesh-collection.md "mention") and [actor-collection.md](../../node-library/assets-management/collections/actor-collection.md "mention"). _Each is dedicated to a single type of asset, and cannot be mixed up_.
+> There are two main types of collections at the moment: [mesh-collection.md](../../node-library/assets-management/collections/mesh-collection.md "mention") and [actor-collection.md](../../node-library/assets-management/collections/actor-collection.md "mention"). _Each is dedicated to a single type of asset, but you can't mix the two types together — i.e, Mesh-type collection cannot have actor-type subcollections_.
 {% endstep %}
 
 {% step %}
