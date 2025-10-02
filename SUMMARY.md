@@ -378,7 +378,7 @@
 * [FAQ](infos/faq.md)
 * [About](infos/about.md)
 * [Changelogs](infos/changelogs/README.md)
-  * [v0.69](infos/changelogs/v0.69.md)
+  * [v0.70](infos/changelogs/v0.70.md)
   * [v0.68](infos/changelogs/v0.68/README.md)
     * [v0.68.12 Patch](infos/changelogs/v0.68/v0.68.12-patch.md)
   * [v0.67](infos/changelogs/v0.67.md)
