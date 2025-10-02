@@ -75,6 +75,7 @@
       * [Numeric](node-library/filters/filters-points/simple-comparisons/numeric.md)
       * [Boolean](node-library/filters/filters-points/simple-comparisons/boolean.md)
       * [Within Range](node-library/filters/filters-points/simple-comparisons/within-range.md)
+      * [Contains (Hash)](node-library/filters/filters-points/simple-comparisons/contains-hash.md)
     * [Self Comparisons](node-library/filters/filters-points/self-comparisons/README.md)
       * [Numeric](node-library/filters/filters-points/self-comparisons/numeric.md)
       * [Angle](node-library/filters/filters-points/self-comparisons/numeric-1.md)
