@@ -16,6 +16,10 @@ It also comes with a lot of quality of life nodes, with support for a wide range
 PCGEx is available for Unreal **5.7**, **5.6, 5.5**, **5.4**, and **5.3**
 {% endhint %}
 
+{% hint style="info" %}
+PCGEx is **production ready** as of v0.70.1 (_UE 5.6_)
+{% endhint %}
+
 ### Jump right in
 
 <table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Quickstart</strong></td><td>Requirements &#x26; Installation</td><td></td><td></td><td><a href="general/quickstart/">quickstart</a></td></tr><tr><td><strong>Basics</strong></td><td>Learn the basics of PCGEx</td><td></td><td></td><td><a href="general/pcgex-101/">pcgex-101</a></td></tr><tr><td><strong>Join the community!</strong></td><td>Come join the Discord</td><td></td><td></td><td><a href="https://discord.gg/U6FkuwTn">https://discord.gg/U6FkuwTn</a></td></tr></tbody></table>
