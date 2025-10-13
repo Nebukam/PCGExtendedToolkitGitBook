@@ -1,0 +1,6 @@
+---
+icon: circle
+---
+
+# Self Pruning
+

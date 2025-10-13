@@ -13,7 +13,7 @@ PCGEx introduces the concept of [assets-management](../../node-library/assets-ma
 Asset management is primarily designed for random distribution but can be used with more precise control as well.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Staging has two main components
 
@@ -57,7 +57,7 @@ There's two ways of creating a new collection; either a fresh new data asset, or
 
 Simply create a new asset of type **Data Asset** and select either `[PCGEx] Mesh Collection` or `[PCGEx] Actor Collection`, depending on the type of asset you want to work with.
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -71,7 +71,7 @@ Select a bunch of either static mesh or actors in the content browser, right cli
 
 This will create a fresh new asset collection with an entry for each item&#x20;
 
-<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="warning" %}
 Note that if an asset collection asset is part of the content browser selection, **that collection will be updated with the selected items** **instead of creating a new asset**.
