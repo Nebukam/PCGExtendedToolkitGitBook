@@ -212,6 +212,7 @@
     * [Goal Picker : Attribute](node-library/pathfinding/pathfinding-edges/goal-picker-attribute.md)
   * [Pathfinding : Plot Edges](node-library/pathfinding/pathfinding-plot-edges.md)
   * [Pathfinding : Grow Paths](node-library/pathfinding/pathfinding-grow-paths.md)
+  * [Pathfinding : Centrality](node-library/pathfinding/pathfinding-centrality.md)
   * [Contours](node-library/pathfinding/contours/README.md)
     * [Find Contours](node-library/pathfinding/contours/find-contours.md)
     * [Find All Cells](node-library/pathfinding/contours/find-all-cells.md)
