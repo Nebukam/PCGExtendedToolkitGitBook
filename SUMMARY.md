@@ -326,6 +326,7 @@
   * [Wait for PCG Data](node-library/misc/wait-for-pcg-data.md)
 * [Quality of Life](node-library/quality-of-life/README.md)
   * [Iterations](node-library/quality-of-life/iterations.md)
+  * [Recursion Tracker](node-library/quality-of-life/recursion-tracker.md)
   * [Constants](node-library/quality-of-life/constants.md)
   * [Enum](node-library/quality-of-life/enum.md)
   * [Meta Cleanup](node-library/quality-of-life/meta-cleanup.md)

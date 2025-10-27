@@ -13,7 +13,7 @@ PCGEx introduces the concept of [assets-management](../../node-library/assets-ma
 Asset management is primarily designed for random distribution but can be used with more precise control as well.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Staging has two main components
 
