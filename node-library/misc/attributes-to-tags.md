@@ -1,7 +1,7 @@
 ---
-description: 'In editor :: PCGEx | Attributes to Tags'
+description: 'In editor :: PCGEx | Hoist Attributes'
 icon: circle
 ---
 
-# Attributes to Tags
+# Hoist Attributes
 
