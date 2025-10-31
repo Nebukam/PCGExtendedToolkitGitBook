@@ -145,6 +145,7 @@
     * [Gabriel](node-library/clusters/refine-cluster/gabriel.md)
     * [Line Trace](node-library/clusters/refine-cluster/line-trace.md)
     * [MST (Prim)](node-library/clusters/refine-cluster/mst-prim.md)
+    * [DFS (Trajan)](node-library/clusters/refine-cluster/dfs-trajan.md)
     * [Overlap](node-library/clusters/refine-cluster/overlap.md)
     * [β Skeleton](node-library/clusters/refine-cluster/v-skeleton.md)
     * [Edge Length](node-library/clusters/refine-cluster/edge-length.md)
