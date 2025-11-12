@@ -24,7 +24,7 @@ What can be edited:\
 
 <table data-view="cards"><thead><tr><th></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><mark style="color:$success;"><strong>Amathlog</strong></mark></td><td><a href="https://avatars.githubusercontent.com/u/6068012?v=4">https://avatars.githubusercontent.com/u/6068012?v=4</a></td><td><a href="https://github.com/Amathlog">https://github.com/Amathlog</a></td></tr><tr><td><mark style="color:$success;"><strong>n8n</strong></mark></td><td><a href=".gitbook/assets/52133374.png">52133374.png</a></td><td><a href="https://n8n.io/">https://n8n.io/</a></td></tr><tr><td><mark style="color:$info;"><strong>Syscrusher</strong></mark></td><td><a href="https://avatars.githubusercontent.com/u/51487838?v=4">https://avatars.githubusercontent.com/u/51487838?v=4</a></td><td><a href="https://github.com/sna-scourtney">https://github.com/sna-scourtney</a></td></tr></tbody></table>
 
-<table data-view="cards"><thead><tr><th></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><mark style="color:$success;"><strong>3neo</strong></mark></td><td></td><td></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><mark style="color:$success;"><strong>3neo</strong></mark></td><td></td><td></td></tr><tr><td><mark style="color:$success;"><strong>Akhylys</strong></mark></td><td></td><td></td></tr></tbody></table>
 
 
 
