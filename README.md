@@ -17,7 +17,7 @@ PCGEx is available for Unreal **5.7**, **5.6, 5.5**, **5.4**, and **5.3**
 {% endhint %}
 
 {% hint style="info" %}
-PCGEx is **production ready** as of v0.70.1 (_UE 5.6_)
+PCGEx is **production ready** as of v0.71 (_UE 5.6_)
 {% endhint %}
 
 ### Jump right in
