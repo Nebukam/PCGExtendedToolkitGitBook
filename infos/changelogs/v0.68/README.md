@@ -23,7 +23,7 @@ Also as a collateral of this exercise, FAB binaries have shrunk down from \~<mar
 
 In order to make the codebase more maintainable, a couple of filters have been deprecated in favor of alternatives that handle all use cases more efficiently.
 
-### [Filter : Inclusion](../../../node-library/filters/filters-points/spatial/inclusion.md)
+### [Filter : Inclusion](../../../node-library/filters/filters-points/spatial/inclusion-path-splines.md)
 
 {% hint style="success" %}
 Targets accepts any path-like data such as **Paths**, **Splines**, and soon **Polygon2D**.
@@ -31,11 +31,11 @@ Targets accepts any path-like data such as **Paths**, **Splines**, and soon **Po
 
 <figure><img src="../../../.gitbook/assets/image (70).png" alt=""><figcaption></figcaption></figure>
 
-Replaces [Filter : Path Inclusion](../../../node-library/filters/filters-points/spatial/path-inclusion.md), [Filter : Spline Inclusion](../../../node-library/filters/filters-points/spatial/spline-inclusion.md) and [Filter : Polygon 2D Inclusion](../../../node-library/filters/filters-points/spatial/polygon-2d-inclusion.md). It's almost a drop-in replacement : you can copy-paste most settings from the old nodes to the new one by doing the `right-click/left-click trick` on the **Settings** subsection of the detail panels.
+Replaces [Filter : Path Inclusion](broken-reference), [Filter : Spline Inclusion](broken-reference) and [Filter : Polygon 2D Inclusion](broken-reference). It's almost a drop-in replacement : you can copy-paste most settings from the old nodes to the new one by doing the `right-click/left-click trick` on the **Settings** subsection of the detail panels.
 
 ### [Filter : Time](../../../node-library/filters/filters-points/spatial/time.md)
 
-**Same as above**, but for [Filter : Path Alpha](../../../node-library/filters/filters-points/spatial/path-alpha.md) and [Filter : Spline Alpha](../../../node-library/filters/filters-points/spatial/spline-alpha.md)
+**Same as above**, but for [Filter : Path Alpha](broken-reference) and [Filter : Spline Alpha](broken-reference)
 
 ### [Spatial Triage](../../../node-library/quality-of-life/spatial-triage.md)
 

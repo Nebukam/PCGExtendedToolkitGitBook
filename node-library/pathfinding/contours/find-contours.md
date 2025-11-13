@@ -1,7 +1,7 @@
 ---
-description: 'In editor :: PCGEx | Pathfinding : Find Contours'
+description: 'In editor :: PCGEx | Pathfinding : Find Cells'
 icon: circle
 ---
 
-# Find Contours
+# Find Cells
 

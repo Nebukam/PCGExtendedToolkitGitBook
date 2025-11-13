@@ -1,7 +1,7 @@
 ---
-description: 'In editor :: PCGEx | Filter : Bounds'
+description: 'In editor :: PCGEx | Filter : Inclusion (Bounds)'
 icon: circle-dashed
 ---
 
-# Bounds
+# Inclusion (Bounds)
 
