@@ -1,4 +1,5 @@
 ---
+description: 'In editor :: PCGEx | Asset Collection to Set'
 icon: circle
 ---
 

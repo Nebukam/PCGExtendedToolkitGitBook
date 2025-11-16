@@ -1,4 +1,5 @@
 ---
+description: 'In editor :: PCGEx | Asset Staging'
 icon: circle
 ---
 
