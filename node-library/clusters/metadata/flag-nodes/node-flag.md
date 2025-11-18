@@ -1,7 +1,7 @@
 ---
-description: 'In editor :: PCGEx | Cluster : Node Flag'
+description: 'In editor :: PCGEx | State : Cluster'
 icon: circle-dashed
 ---
 
-# Node Flag
+# State : Cluster
 
