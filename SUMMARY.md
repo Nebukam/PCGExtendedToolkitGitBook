@@ -93,6 +93,7 @@
     * [Entry Count](node-library/filters/filters-collections/entry-count.md)
     * [Tag Check](node-library/filters/filters-collections/tag-check.md)
     * [Tag Value](node-library/filters/filters-collections/tag-value.md)
+    * [Data Bounds](node-library/filters/filters-collections/data-bounds.md)
   * [Filters : Edges](node-library/filters/filters-edges/README.md)
     * [Endpoints Check](node-library/filters/filters-edges/endpoints-check.md)
     * [Endpoints Compare (Numeric)](node-library/filters/filters-edges/endpoints-compare-numeric.md)

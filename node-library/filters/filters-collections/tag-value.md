@@ -1,5 +1,5 @@
 ---
-description: 'In editor :: PCGEx | C-Filter : Tag Value'
+description: 'In editor :: PCGEx | Data Filter : Tag Value'
 icon: circle-dashed
 ---
 

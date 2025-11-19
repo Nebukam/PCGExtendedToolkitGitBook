@@ -1,5 +1,5 @@
 ---
-description: 'In editor :: PCGEx | C-Filter : Attribute Check'
+description: 'In editor :: PCGEx | Data Filter : Attribute Check'
 icon: circle-dashed
 ---
 
