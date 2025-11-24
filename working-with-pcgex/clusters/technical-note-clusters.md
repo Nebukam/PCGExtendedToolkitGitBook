@@ -13,8 +13,7 @@ TODO :\
 \- Each vtx group are processed in parallel\
 \- Each vtx processes its edges in parallel as well\
 \- Cached clusters stay in memory until flushed, good for execution time, bad for memory\
-\- Can be tweaked per node, or in the project settings.\
-
+\- Can be tweaked per node, or in the project settings.<br>
 
 <details>
 
