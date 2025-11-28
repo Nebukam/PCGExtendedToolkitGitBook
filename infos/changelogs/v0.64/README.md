@@ -62,11 +62,11 @@ Additionally, the Attribute Check filter now support additional constraints rela
 
 ### Spline & Path inclusions
 
-[Spline](broken-reference) & [Path](broken-reference) inclusions filter have been pimped to allow to test inside/outside based on a polygonal projection as opposed to pure spatial detection. This is now the default behavior for new & existing  inclusions filters.&#x20;
+[Spline](/broken/pages/qpkKMINU1ZxA9ty6azhc) & [Path](/broken/pages/KQeSvDKWEgg2DCAvXtVq) inclusions filter have been pimped to allow to test inside/outside based on a polygonal projection as opposed to pure spatial detection. This is now the default behavior for new & existing  inclusions filters.&#x20;
 
 > In the case of splines, an approximative polygon representation is generated from the spline, so it's important to fine-tune the `Fidelity` parameter if you work with very curvy splines with few control points and extreme tangents.
 
-Additionally, they now have the same min/max inclusion counter found on the [polygon 2D inclusion](broken-reference) filter — which remains faster for these tasks.
+Additionally, they now have the same min/max inclusion counter found on the [polygon 2D inclusion](/broken/pages/OvVXTVoE7kh5WHquOtPF) filter — which remains faster for these tasks.
 
 ## Tweaks
 

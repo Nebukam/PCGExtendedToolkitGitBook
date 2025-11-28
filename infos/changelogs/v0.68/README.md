@@ -31,11 +31,11 @@ Targets accepts any path-like data such as **Paths**, **Splines**, and soon **Po
 
 <figure><img src="../../../.gitbook/assets/image (70).png" alt=""><figcaption></figcaption></figure>
 
-Replaces [Filter : Path Inclusion](broken-reference), [Filter : Spline Inclusion](broken-reference) and [Filter : Polygon 2D Inclusion](broken-reference). It's almost a drop-in replacement : you can copy-paste most settings from the old nodes to the new one by doing the `right-click/left-click trick` on the **Settings** subsection of the detail panels.
+Replaces [Filter : Path Inclusion](/broken/pages/KQeSvDKWEgg2DCAvXtVq), [Filter : Spline Inclusion](/broken/pages/qpkKMINU1ZxA9ty6azhc) and [Filter : Polygon 2D Inclusion](/broken/pages/OvVXTVoE7kh5WHquOtPF). It's almost a drop-in replacement : you can copy-paste most settings from the old nodes to the new one by doing the `right-click/left-click trick` on the **Settings** subsection of the detail panels.
 
 ### [Filter : Time](../../../node-library/filters/filters-points/spatial/time.md)
 
-**Same as above**, but for [Filter : Path Alpha](broken-reference) and [Filter : Spline Alpha](broken-reference)
+**Same as above**, but for [Filter : Path Alpha](/broken/pages/8fl2b54JDzYIalBEqsqq) and [Filter : Spline Alpha](/broken/pages/SILDquofe33cASvpapCe)
 
 ### [Spatial Triage](../../../node-library/quality-of-life/spatial-triage.md)
 
