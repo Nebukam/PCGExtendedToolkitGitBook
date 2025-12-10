@@ -23,7 +23,7 @@ Procgen, or _Procedural Generation_, is more than just an unreal plugin. If you 
 
 There's a few Discord server that have all range of PCG users active. There might also be a bunch of tips and tricks available
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Unreal Source</strong></td><td><em>Check out the #pcg-framework channel</em></td><td><a href="https://discord.com/invite/unrealsource">https://discord.com/invite/unrealsource</a></td><td><a href="../../.gitbook/assets/announcement-splash-waves-1.png">announcement-splash-waves-1.png</a></td></tr><tr><td><strong>PCGEx</strong></td><td><em>PCGEx Discord Server</em></td><td><a href="https://discord.gg/U6FkuwTn">https://discord.gg/U6FkuwTn</a></td><td><a href="../../.gitbook/assets/Thumbnail_1080p.png">Thumbnail_1080p.png</a></td></tr></tbody></table>
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Unreal Source</strong></td><td><em>Check out the #pcg-framework channel</em></td><td><a href="https://discord.com/invite/unrealsource">https://discord.com/invite/unrealsource</a></td><td><a href="../../.gitbook/assets/announcement-splash-waves-1.png">announcement-splash-waves-1.png</a></td></tr><tr><td><strong>PCGEx</strong></td><td><em>PCGEx Discord Server</em></td><td><a href="https://discord.gg/Aze3puAg6T">https://discord.gg/Aze3puAg6T</a></td><td><a href="../../.gitbook/assets/Thumbnail_1080p.png">Thumbnail_1080p.png</a></td></tr></tbody></table>
 
 ### Unreal' PCG Basics
 
