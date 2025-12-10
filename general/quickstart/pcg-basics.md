@@ -42,7 +42,3 @@ _There are many good answer, and many wrong ones — some approaches will yield 
 {% endhint %}
 
 <table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th data-type="content-ref"></th><th data-hidden data-card-cover data-type="image">Cover image</th></tr></thead><tbody><tr><td>Procedural Minds</td><td>Creating UE5 PCG Tutorials, Procedural Tools, and Being a Hardworking Lazy Person in all things Unreal Engine and Games</td><td><a href="https://www.youtube.com/@procedural_minds">https://www.youtube.com/@procedural_minds</a></td><td><a href="../../.gitbook/assets/image (1).png">image (1).png</a></td></tr><tr><td><strong>Aziel Art</strong></td><td>Welcome to Aziel Arts | Art making Studio and teaching Academy!<br>The mission is to equip both beginner and seasoned Digital Artists with practical skills to reach their creative and professional goals.</td><td><a href="https://www.youtube.com/@azielarts">https://www.youtube.com/@azielarts</a></td><td><a href="../../.gitbook/assets/image (2).png">image (2).png</a></td></tr></tbody></table>
-
-<table data-view="cards"><thead><tr><th>Channel</th></tr></thead><tbody><tr><td>Procedural Minds</td></tr><tr><td>AzielArt</td></tr><tr><td>DK 3D</td></tr></tbody></table>
-
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
