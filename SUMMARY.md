@@ -307,6 +307,8 @@
   * [Shapes](node-library/misc/shapes/README.md)
     * [Create Shapes](node-library/misc/shapes/create-shapes.md)
     * [Shape : Circle](node-library/misc/shapes/shape-circle.md)
+    * [Shape : Polygon](node-library/misc/shapes/shape-polygon.md)
+    * [Shape : Sphere](node-library/misc/shapes/shape-sphere.md)
   * [Hoist Attributes](node-library/misc/attributes-to-tags.md)
   * [Collocation Count](node-library/misc/collocation-count.md)
   * [Copy to Points](node-library/misc/copy-to-points.md)
