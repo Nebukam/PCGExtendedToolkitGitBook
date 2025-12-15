@@ -5,11 +5,58 @@ icon: power-off
 
 # Installation
 
+### Precompiled Binaries&#x20;
+
+<a href="https://nebukam.gumroad.com/l/pcgex" class="button primary" data-icon="arrow-right-to-bracket">PCGEx on Gumroad</a>
+
+<figure><img src="../../.gitbook/assets/Splash_GIT.png" alt=""><figcaption></figcaption></figure>
+
+{% hint style="info" %}
+This is a temporary workaround until FAB is unstuck.
+{% endhint %}
+
+{% stepper %}
+{% step %}
+#### Go to the Gumroad PCGEx page
+
+Add PCGEx to your library and download the precompiled binaries matching your system.\
+You will need a gumroad account if you don't have one yet.
+{% endstep %}
+
+{% step %}
+#### Extract into your project Plugins folder
+
+Navigate to your project, find (or create) a `Plugins` folder at the root and copy the content of the archive there:
+
+```
+Project
+  ├─ Content
+  └─ Plugins
+      └─ PCGExtendedToolkit
+          ├─ Binaries
+          ├─ Config
+          └─ ...
+```
+{% endstep %}
+
+{% step %}
+#### Enable the plugin in the editor
+
+You should now see PCGEx in the editor's plugins!
+{% endstep %}
+{% endstepper %}
+
 ### FAB Plugin
+
+{% hint style="warning" %}
+FAB listing is bricked and cannot be updated as of October 2025.
+
+**FAB team has been unable to resolve the issue so far.**
+{% endhint %}
 
 The easiest way to install PCGEx is to get it from FAB. (it's free!)
 
-<a href="https://www.fab.com/listings/3f0bea1c-7406-4441-951b-8b2ca155f624" class="button primary">PCGEx on FAB</a>
+<a href="https://www.fab.com/listings/3f0bea1c-7406-4441-951b-8b2ca155f624" class="button secondary" data-icon="arrow-right-to-bracket">PCGEx on FAB</a>
 
 <figure><img src="../../.gitbook/assets/EpicMarketplace-Splash-1080 (2).png" alt=""><figcaption></figcaption></figure>
 
