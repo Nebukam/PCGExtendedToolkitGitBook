@@ -21,6 +21,18 @@
 
 * [Editor Settings](editor-settings.md)
 * [Supporters](supporters.md)
+* [Changelogs](changelogs/README.md)
+  * [v0.72](changelogs/v0.72.md)
+  * [v0.71](changelogs/v0.71.md)
+  * [v0.70](changelogs/v0.70.md)
+  * [v0.68](changelogs/v0.68/README.md)
+    * [v0.68.12 Patch](changelogs/v0.68/v0.68.12-patch.md)
+  * [v0.67](changelogs/v0.67.md)
+  * [v0.66](changelogs/v0.66.md)
+  * [v0.65](changelogs/v0.65.md)
+  * [v0.64](changelogs/v0.64/README.md)
+    * [5.x → 5.6 Important Changes](changelogs/v0.64/5.x-5.6-important-changes.md)
+  * [Changelog](changelogs/changelog.md)
 
 ## Working with PCGEx
 
@@ -390,15 +402,4 @@
 
 * [FAQ](infos/faq.md)
 * [About](infos/about.md)
-* [Changelogs](infos/changelogs/README.md)
-  * [v0.71](infos/changelogs/v0.71.md)
-  * [v0.70](infos/changelogs/v0.70.md)
-  * [v0.68](infos/changelogs/v0.68/README.md)
-    * [v0.68.12 Patch](infos/changelogs/v0.68/v0.68.12-patch.md)
-  * [v0.67](infos/changelogs/v0.67.md)
-  * [v0.66](infos/changelogs/v0.66-cooking.md)
-  * [v0.65](infos/changelogs/v0.65.md)
-  * [v0.64](infos/changelogs/v0.64/README.md)
-    * [5.x → 5.6 Important Changes](infos/changelogs/v0.64/5.x-5.6-important-changes.md)
-  * [Changelog](infos/changelogs/changelog.md)
 * [Assets](infos/assets.md)
