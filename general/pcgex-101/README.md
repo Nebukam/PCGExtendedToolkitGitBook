@@ -14,7 +14,7 @@ However, there is a few key things that are important to know, as some behaviors
 The most important thing to keep in mind is PCGEx Clusters and Paths are _just points_. **You can manipulate them just like any other points data, everything works seamlessly with the vanilla nodes**, and this is true the other way around as well: PCGEx nodes that work with points will accept any points, not just the ones coming out of PCGEx nodes.
 
 {% hint style="success" %}
-PCGEx may have fancy words like `Vtx`, `Edges`, `Paths`, but **these are just regular points**.
+PCGEx may have fancy labels like `Vtx`, `Edges`, `Paths`, but **these are just regular points**.
 {% endhint %}
 
 You can read more about what makes Clusters & Paths points special, **and why they're not**.
