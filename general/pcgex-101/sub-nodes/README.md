@@ -12,7 +12,7 @@ The closest parallel that can be drawn is, sub-nodes are like attribute sets **c
 Sub-nodes exist in a variety of types, and PCGEx relies a lot on that modular approach to solve complex problems and offer great flexibility.
 {% endhint %}
 
-<figure><img src="../../../.gitbook/assets/image (45).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (138).png" alt=""><figcaption></figcaption></figure>
 
 ### A modular approach
 
@@ -59,7 +59,7 @@ Sub-nodes are identified using a custom extra icon that's the same on both outpu
 It's also worth nothing that whenever this pattern is used, **these input pins always support multiple sub-nodes**.
 {% endhint %}
 
-<figure><img src="../../../.gitbook/assets/image (33).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (33).png" alt="It&#x27;s much better in 5.7 -- this is from 5.6"><figcaption><p>It's much better in 5.7 -- this is from 5.6</p></figcaption></figure>
 
 ### Technical Notes
 
