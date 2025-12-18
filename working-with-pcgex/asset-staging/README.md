@@ -81,6 +81,26 @@ _Updating a collection means adding the selected assets to the collection, not r
 
 </details>
 
+### Collection Editor
+
+{% tabs %}
+{% tab title="Assets Tab" %}
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+The Asset tab is selected by default and represent the content of the collection.&#x20;
+
+> Some settings can be set per-item, or instead use global parameter set at the collection level itself.
+{% endtab %}
+
+{% tab title="Collection Settings" %}
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+The Collection Settings contains global settings.&#x20;
+
+> Individual entries may be set-up to use values stored here instead, so it's easier to batch-override values.
+{% endtab %}
+{% endtabs %}
+
 ### Managing entries
 
 Once you have one or more collection running, you'll want to make sure to add one or more _entries_.
@@ -93,14 +113,15 @@ _This will make sure precomputed data is properly updated before saving._
 
 > _We'll be using a Mesh Collection for the example, Actor Collection have a slightly different model but same rules apply._
 
-<figure><img src="../../.gitbook/assets/image (5) (1) (1) (1).png" alt=""><figcaption><p>List of entries within a collection</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption><p>Entries can be either an asset, or another collection!</p></figcaption></figure>
 
 **Entries are a list of potential things that can be associated (**_**or matched**_**) with a point** when that collection is used with the [asset-staging](../../node-library/assets-management/asset-staging/ "mention") node.
 
-What matters the most is the `Static Mesh` property and the `Weight`.
+What matters the most is the `Static Mesh,` `Weight` and `Category`.             &#x20;
 
 * `Static Mesh` represent the mesh associated with this entry.
 * `Weight` is the weight of this entry relative to other entries _within the collection_.
+* `Category` is optional, but is a convenient way to "group" entries together inside a collection. _It can play a key role in narrowing distribution._
 
 {% hint style="info" %}
 There is no need to set the mesh in the available descriptors; that value will be overwritten with the main Static Mesh.
