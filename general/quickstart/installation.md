@@ -46,7 +46,7 @@ You should now see PCGEx in the editor's plugins!
 {% endstep %}
 {% endstepper %}
 
-### FAB Plugin
+### FAB Plugin <sup><mark style="color:$warning;">Currently Unavailable<mark style="color:$warning;"></sup>
 
 {% hint style="warning" %}
 FAB listing is bricked and cannot be updated as of October 2025.
