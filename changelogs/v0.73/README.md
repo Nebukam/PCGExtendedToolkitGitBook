@@ -23,10 +23,10 @@ This updates cleans up old redirectors in the config files; so make sure to fix 
 
 * Significantly improved compilation times. _(\~25-30% faster)_
 * Smaller, more granular dependencies when extending the codebase.
-* Granular control over the compiled feature set. _(See_ [_cherry picking_](v0.73.md#feature-set-cherry-picking)_)_
+* Granular control over the compiled feature set. _(See_ [_cherry picking_](./#feature-set-cherry-picking)_)_
 
 {% hint style="success" %}
-Skip to [#migration](v0.73.md#migration "mention") if you just want the critical infos
+Skip to [#migration](./#migration "mention") if you just want the critical infos
 {% endhint %}
 
 > Historically, PCGEx has always been a plugin with a single internal module : PCGExtendedToolkit and its editor companion.
@@ -85,7 +85,7 @@ There was no way to "redirect" the custom pin types, so if you were using them i
 {% hint style="warning" %}
 #### Actor Data Packer Parent class misredirect
 
-In my test cases, the parent blueprint class for custom [pack-actor-data](../node-library/quality-of-life/pack-actor-data/ "mention")was reset — I suspect it's just a failed redirect from an _old_ redirect. If that happens to you, worry not: no data is lost. You just need to make sure you implement the `Initialize` method, as opposed to the old `InitializeWithContext`.&#x20;
+In my test cases, the parent blueprint class for custom [pack-actor-data](../../node-library/quality-of-life/pack-actor-data/ "mention")was reset — I suspect it's just a failed redirect from an _old_ redirect. If that happens to you, worry not: no data is lost. You just need to make sure you implement the `Initialize` method, as opposed to the old `InitializeWithContext`.&#x20;
 
 The old method override should still be there with your init : copy paste it in the proper function.
 {% endhint %}
@@ -206,7 +206,7 @@ flowchart RL
 
 #### Bounds Check Revamp
 
-This release does come with a few tweaks and a lot of small bugfixes here and there. But most notably a complete refactor of OBB x OBB checks. This affects [bounds.md](../node-library/filters/filters-points/spatial/bounds.md "mention"), [path-bounds-intersection.md](../node-library/paths/path-bounds-intersection.md "mention"), [nearest-bounds.md](../node-library/sampling/nearest-bounds.md "mention"), and [self-pruning.md](../node-library/sampling/self-pruning.md "mention")
+This release does come with a few tweaks and a lot of small bugfixes here and there. But most notably a complete refactor of OBB x OBB checks. This affects [bounds.md](../../node-library/filters/filters-points/spatial/bounds.md "mention"), [path-bounds-intersection.md](../../node-library/paths/path-bounds-intersection.md "mention"), [nearest-bounds.md](../../node-library/sampling/nearest-bounds.md "mention"), and [self-pruning.md](../../node-library/sampling/self-pruning.md "mention")
 
 {% hint style="info" %}
 Check your bounds filter, they might need a change of bounds target as a result. Some things were working "the wrong way" before!
