@@ -343,6 +343,7 @@
     * [Noise : Marble](node-library/misc/noises/noise-marble.md)
     * [Noise : Open Simplex 2](node-library/misc/noises/noise-open-simplex-2.md)
     * [Noise : Simplex](node-library/misc/noises/noise-simplex.md)
+    * [Noise : Perlin](node-library/misc/noises/noise-perlin.md)
     * [Noise : Spots](node-library/misc/noises/noise-spots.md)
     * [Noise : Swiss](node-library/misc/noises/noise-swiss.md)
     * [Noise : Tiling](node-library/misc/noises/noise-tiling.md)
