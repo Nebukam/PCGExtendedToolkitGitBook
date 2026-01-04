@@ -17,7 +17,7 @@ This updates cleans up old redirectors in the config files; so make sure to fix 
 
 ## Module Breakdown Update
 
-**This is a huge one for people building from source;** _folks using the precompiled binaries can stop reading there : there's no new major user-facing feature :)_
+**This is a huge one for people building from source;** _folks using the precompiled binaries can stop reading there : there's no new major user-facing feature — those are all in the_ [_0.73.1 Patch_](v0.73.1-patch.md)_._
 
 #### What's in it for you?
 
