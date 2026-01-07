@@ -11,9 +11,17 @@ icon: tag
 This updates cleans up old redirectors in the config files; so make sure to fix your redirectors before updating or you will loose some config values.
 {% endhint %}
 
-{% hint style="info" %}
-**At the time of writing, these changes are in their respective `-module-breakdown` branches, and not on main yet.**
-{% endhint %}
+<details>
+
+<summary>Pre-breakdown commits</summary>
+
+If for any reason this update is breaking (_it shouldn't but we're never too careful_), the latest commits prior to the PR are:
+
+**5.6 :** [314aff1b61d4ee1c00236dd505008d361a7ae762](https://github.com/Nebukam/PCGExtendedToolkit/commit/554d804aef21cd4f5fdfa0a835a9846f6f5cad06)
+
+**5.7 :** [554d804aef21cd4f5fdfa0a835a9846f6f5cad06](https://github.com/Nebukam/PCGExtendedToolkit/commit/314aff1b61d4ee1c00236dd505008d361a7ae762)
+
+</details>
 
 ## Module Breakdown Update
 
