@@ -13,7 +13,7 @@ This updates cleans up old redirectors in the config files; so make sure to fix 
 
 <details>
 
-<summary>Pre-breakdown commits</summary>
+<summary>Cutoff commits</summary>
 
 If for any reason this update is breaking (_it shouldn't but we're never too careful_), the latest commits prior to the PR are:
 
