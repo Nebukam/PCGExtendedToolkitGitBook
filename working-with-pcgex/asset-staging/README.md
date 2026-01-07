@@ -93,7 +93,7 @@ The Asset tab is selected by default and represent the content of the collection
 {% endtab %}
 
 {% tab title="Collection Settings" %}
-<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 The Collection Settings contains global settings.&#x20;
 
