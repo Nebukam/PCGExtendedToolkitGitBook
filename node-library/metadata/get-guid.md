@@ -6,7 +6,8 @@ icon: circle
 # Get GUID
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
+### AI-generated page -- to be reviewed
+
 While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
 {% endhint %}
 
@@ -107,4 +108,3 @@ _Configuration for how the GUID should be generated._
 * For performance reasons, consider caching this node if it's used frequently in your graph
 * This node works best when you have a consistent point data set with known indices
 * The GUID generation is deterministic based on the input parameters, ensuring reproducible results
-

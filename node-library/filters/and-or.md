@@ -6,70 +6,66 @@ icon: circle-dashed
 # And / Or
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a logical combination of multiple filters that can be applied as a single unit.
+> Combines multiple filters using logical AND or OR operations to define a single filtering condition.
 
-### Overview
+#### Overview
 
-A Filter Group combines multiple individual filters into one logical unit, allowing you to create complex filtering conditions using "And" or "Or" logic. It connects to Filter pins on processing nodes and evaluates whether points pass or fail based on the group's logic.
+Filter Group is a subnode that allows you to combine multiple connected filter subnodes into one logical operation. It defines how the results of individual filters are combined—either requiring all filters to pass (AND) or only one to pass (OR). This enables complex filtering logic by chaining together simpler conditions.
+
+This subnode connects to Filter pins on processing nodes, where it acts as a single unit that evaluates multiple filter conditions simultaneously. You can use it to create more sophisticated selection criteria for points, edges, or clusters in your procedural workflows.
 
 {% hint style="info" %}
-Connects to Filter pins on processing nodes like **Filter Points**, **Filter Nodes**, or **Filter Edges**
+Connects to **Filter** pins on processing nodes.
 {% endhint %}
 
-### How It Works
+#### How It Works
 
-A Filter Group applies a logical operation (And/Or) across multiple connected filters. Each filter in the group is evaluated independently, then combined according to the selected mode:
+Filter Group defines a logical combination of multiple connected filters by evaluating them according to either an AND or OR rule.
 
-* **AND**: All connected filters must return true for the point to pass
-* **OR**: Only one connected filter needs to return true for the point to pass
+* When set to **AND**, all connected filters must return true for the point/edge/cluster to pass the group filter.
+* When set to **OR**, only one of the connected filters needs to return true for the group filter to pass.
 
-The group can also be inverted using the invert toggle, which flips the final result.
+The group also respects a priority system: it uses the highest priority value between its own setting and those defined by the connected filters. If inversion is enabled, the final result is flipped—passing points become failing, and vice versa.
 
-### Configuration
+Each connected filter is evaluated in sequence during processing, and their results are combined using the selected logical operation before being returned as a single pass/fail result.
+
+<details>
+
+<summary>Inputs</summary>
+
+This node expects one or more connected subnodes that define individual filtering conditions (e.g., distance, angle, attribute values).
+
+</details>
+
+<details>
+
+<summary>Outputs</summary>
+
+A combined filter result based on the logical operation (AND/OR) of all connected filters.
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
+**Priority**
 
-**Invert**
+_Controls the priority level used when combining with other filters._
 
-_When enabled, the output of the group is flipped. True becomes false and vice versa._
-
-Useful for creating "not" conditions or negating a filter group's logic.
+The group will use the highest value between this setting and any priorities defined by the connected filters. Higher values are processed first.
 
 **Mode**
 
-_Controls how the filters in this group are combined._
+_Specifies how to combine the results from connected filters._
 
-**Values**:
+**AND**: All connected filters must return true for the point to pass. **OR**: Only one connected filter needs to return true for the point to pass.
 
-* **And**: All connected filters must pass for the point to be included
-* **Or**: Only one connected filter needs to pass for the point to be included
+**bInvert**
 
-### Usage Example
+_When enabled, flips the final result of the group._
 
-Create a Filter Group that selects points based on multiple criteria:
-
-1. Connect two or more individual filters (e.g., "Point Distance" and "Point Attribute Range")
-2. Set the group mode to **And** to only include points that meet BOTH conditions
-3. Connect the group to a processing node's Filter pin
-4. The node will now process only points that satisfy all filters in the group
-
-### Notes
-
-* Filter Groups can be nested by connecting one group to another
-* Higher priority values from connected filters take precedence over the group's own priority
-* When using "Or" mode, the first passing filter determines the result, improving performance for complex conditions
-* Invert toggles work at the group level, affecting all contained filters uniformly
-
-### Inputs
-
-* **Filter** (Multiple): Connect individual filters to this input to include them in the group logic
-
-### Outputs
-
-* **Filter**: This output connects to processing nodes that accept filter inputs, applying the combined filter logic to the data stream
+If enabled, points that would normally pass the group filter will fail, and those that fail will pass. This is useful for creating exclusion logic or negating a combined condition.

@@ -6,114 +6,90 @@ icon: circle-dashed
 # Tensor Dot Product
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Creates a filter definition that compares dot value of a vector and tensors.
 
-### Overview
+#### Overview
 
-This filter evaluates whether the dot product between a vector operand and a tensor field meets specific comparison criteria. It's useful for creating conditions based on directional relationships within tensor data, such as determining if a point's orientation aligns with a tensor's principal direction.
+This subnode defines a filtering behavior that evaluates whether a point's vector operand meets specific criteria when compared against a tensor field's dot product result. It's useful for selecting points based on directional relationships with spatial data like terrain normals, wind directions, or magnetic fields.
 
-{% hint style="info" %}
-Connects to Filter pins on processing nodes like **Filter Points** or **Filter Edges**
-{% endhint %}
+It connects to the **Filter** pin of processing nodes that support point filtering. Multiple filter subnodes can be combined to create complex selection logic.
 
-### How It Works
+#### How It Works
 
-The filter calculates the dot product between:
+This filter evaluates a dot product between a vector operand (from a point attribute) and a sampled tensor value at the same point. The comparison is then made against a threshold or range defined by the filter settings.
 
-1. A vector operand (from an attribute or constant)
-2. A sampled tensor field value at each point
+1. **Vector Operand A** is read from the point's attributes.
+2. If enabled, **Transform OperandA** applies the point's local transform to the vector before processing.
+3. A **tensor sample** is taken at the point using the configured tensor sampling settings.
+4. The dot product between the transformed vector and the sampled tensor value is calculated.
+5. This resulting dot product is compared against the filter's comparison criteria (e.g., greater than, equal to).
+6. Points that meet the comparison condition pass through the filter; others are discarded.
 
-It then compares this dot product against a threshold using the specified comparison operator.
+<details>
 
-### Inputs & Outputs
+<summary>Inputs</summary>
 
-#### Inputs
+* Point data with a vector attribute specified in **Operand A**
+* Tensor field data for sampling
+* Point transforms (if **Transform OperandA** is enabled)
 
-* **Point Data**: The point data to be filtered
-* **Operand A**: Vector used in the dot product calculation
-* **Tensor Field**: Tensor field to sample values from
+</details>
 
-#### Outputs
+<details>
 
-* **Filtered Points**: Points that meet the filter criteria
-* **Unfiltered Points**: Points that do not meet the filter criteria
+<summary>Outputs</summary>
 
-### Configuration
+* Filtered points that satisfy the dot product comparison condition
+
+</details>
+
+#### Configuration
 
 ***
-
-#### General
 
 **Vector Operand A**
 
-_The vector used in the dot product calculation._
+_The vector attribute used in the dot product calculation._
 
-This can be read from a point attribute or set as a constant vector. The vector is compared against the tensor field's sampled value.
+Specifies which point attribute contains the vector to compare. This can be any vector-valued attribute, such as normal vectors or direction data.
 
-**Transform Operand A**
+**Transform OperandA**
 
-_When enabled, transforms the operand using the point's local transform before comparison._
+_When enabled, applies the point's local transform to the operand vector before comparison._
 
-Use this when you want to align the operand with the point's orientation in space.
+If enabled, the vector from **Operand A** is transformed using the point’s world transform (position, rotation, scale) before computing the dot product. This allows for directional comparisons in world space rather than object space.
 
 **Dot Comparison Settings**
 
-_Configuration for how the dot product result is compared to a threshold._
+_Controls how the computed dot product is compared to a threshold or range._
 
-See **Comparison** settings below for details on operators and thresholds.
-
-**Tensor Sampling Settings**
-
-_Configuration for how to sample the tensor field at each point._
-
-Controls how the tensor data is sampled, including radius, step size, and error tolerance. These settings determine how the tensor value is evaluated at each point.
-
-***
-
-#### Comparison
-
-**Comparison Operator**
-
-_The operator used to compare the dot product result to the threshold._
+This setting defines the comparison operation used to determine if a point passes the filter. Options include strict equality, greater than, less than, and more nuanced comparisons like "nearly equal".
 
 **Values**:
 
-* **==**: Dot product equals threshold
-* **!=**: Dot product does not equal threshold
-* **>=**: Dot product greater than or equal to threshold
-* **<=**: Dot product less than or equal to threshold
-* **>**: Dot product greater than threshold
-* **<**: Dot product less than threshold
-* **\~=**: Dot product nearly equals threshold (within tolerance)
-* \*\*!\~=: Dot product does not nearly equal threshold
+* **==**: Point passes if the dot product equals the target value
+* **!=**: Point passes if the dot product does not equal the target value
+* **>=**: Point passes if the dot product is greater than or equal to the target value
+* **<=**: Point passes if the dot product is less than or equal to the target value
+* **>**: Point passes if the dot product is strictly greater than the target value
+* **<**: Point passes if the dot product is strictly less than the target value
+* **\~=**: Point passes if the dot product is nearly equal to the target value (within tolerance)
 
-**Threshold**
+**Tensor Sampling Settings**
 
-_The value the dot product is compared against._
+_Configures how the tensor field is sampled at each point._
 
-This is a scalar value. For example, if set to 0.5, points will pass the filter if their dot product result is greater than or equal to 0.5.
+These settings control how the tensor data is read from the tensor field. For example, it can sample a single location or perform interpolation across nearby points. The sampling happens before any mutations are applied.
 
-### Usage Example
+#### Usage Example
 
-Create a filter that only passes points where the dot product between a point's normal vector and a tensor field's principal direction is greater than 0.7.
+Use this filter to select points where the surface normal aligns with a specific direction, such as only keeping points facing upward (dot product > 0 with up vector). Or use it to filter vegetation placement based on terrain slope or wind direction.
 
-1. Set **Operand A** to read from a "Normal" attribute
-2. Enable **Transform Operand A** if you want to align with local orientation
-3. Configure **Dot Comparison Settings**:
-   * Operator: >=
-   * Threshold: 0.7
-4. Set up **Tensor Sampling Settings** to sample your tensor field appropriately
+#### Notes
 
-Connect this filter to a **Filter Points** node to selectively process only points that meet the directional criteria.
-
-### Notes
-
-* The filter works with any tensor field data, including those from noise or procedural generation nodes
-* When using **Transform Operand A**, ensure the operand vector is defined in local space for correct results
-* Adjust the **Tensor Sampling Settings** based on your tensor resolution and desired accuracy
-* Combine multiple filters to create complex directional conditions
-* The dot product result ranges from -1 (opposite directions) to 1 (same direction), so thresholds should typically be between -1 and 1
+* The **Operand A** vector should ideally be normalized for consistent results.
+* Combining this filter with other filters allows for complex spatial selections.
+* Performance is affected by the complexity of tensor sampling and number of points being evaluated.

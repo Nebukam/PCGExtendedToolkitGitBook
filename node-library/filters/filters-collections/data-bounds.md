@@ -6,111 +6,121 @@ icon: circle-dashed
 # Data Bounds
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Tests whether a collection's bounds meet specific criteria based on various measurable aspects.
+> Test an aspect of the collection' bounds.
 
-### Overview
+#### Overview
 
-This filter factory evaluates the geometric bounds of a point collection and determines if they match certain conditions. It's commonly used in procedural generation workflows to selectively process or exclude collections based on their size, shape, or spatial extent.
+This filter subnode evaluates specific aspects of a point collection's bounding volume and determines whether the collection passes or fails based on a comparison with a target value. It is useful for filtering collections by their size, shape, or spatial extent in procedural content generation workflows.
+
+It connects to Filter pins on processing nodes that accept filters, allowing you to conditionally process or exclude collections based on their bounds.
 
 {% hint style="info" %}
-Connects to **Filter** pins on processing nodes like **Data Filter**, **Data Prune**, or **Data Split**.
+Connects to **Filter** pins on processing nodes.
 {% endhint %}
 
-### How It Works
+#### How It Works
 
-This filter examines the bounding box of a point collection and compares one of its measurable aspects against a target value. The comparison can be any standard mathematical relationship (equal, greater than, less than, etc.). You can test aspects like volume, size ratios, or individual axis extents.
+This filter evaluates a selected aspect of the collection's bounding volume (such as its volume, size, or ratio) and compares it against a target value using a comparison operator. The result determines whether the collection passes the filter.
 
-### Configuration
+The process involves:
+
+1. Calculating the specified aspect of the collection’s bounds (e.g., volume, size, or ratio).
+2. Comparing this calculated value to a fixed or dynamic operand B.
+3. Returning true if the comparison passes, false otherwise.
+4. Optionally inverting the result based on the invert flag.
+
+<details>
+
+<summary>Inputs</summary>
+
+* Point collection data (from a source or previous processing node)
+
+</details>
+
+<details>
+
+<summary>Outputs</summary>
+
+* Boolean result indicating whether the collection meets the filter criteria
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
-
 **Operand A**
 
-_What aspect of the bounds to test._
+_The aspect of the bounds to evaluate._
 
-Selects which part of the collection's bounds to measure and compare.
+This setting defines which part of the collection's bounding volume is measured. For example, you can test the total volume, size along a specific axis, or the ratio between dimensions.
 
 **Values**:
 
-* **Extents**: The full extent of the bounding box along each axis (X, Y, Z)
-* **Min**: The minimum point of the bounding box
-* **Max**: The maximum point of the bounding box
-* **Size**: The overall size of the bounding box (width, height, depth)
-* **Volume**: The total volume of the bounding box
-* **Ratio**: The ratio between two axes (e.g., X/Y)
-* **Ratio (Sorted)**: The ratio between the largest and smallest axis extents
+* **Extents**: The full extent of the bounding box in each dimension.
+* **Min**: The minimum coordinate values of the bounds.
+* **Max**: The maximum coordinate values of the bounds.
+* **Size**: The size of the bounds along each axis.
+* **Volume**: The total volume of the bounding box.
+* **Ratio**: The ratio between two axes (e.g., X/Y).
+* **Ratio (Sorted)**: The ratio between the largest and smallest axes.
 
 **Sub Operand**
 
-_What component of the selected aspect to use._
+_Sub-operand for certain aspects like Extents, Min, Max, or Size._
 
-Only visible when Operand A is set to Extents, Min, Max, or Size.
+When Operand A is set to Extents, Min, Max, or Size, this setting specifies which component of that aspect to use. For example, if you select "Size", you can choose whether to measure the X, Y, Z, or total length.
 
 **Values**:
 
-* **Length**: The overall length of the component
-* **Length Squared**: The squared length (faster computation)
-* **X**: The X component value
-* **Y**: The Y component value
-* **Z**: The Z component value
+* **Length**: Total length of the vector.
+* **Length Squared**: Squared length (for performance).
+* **X**: X component only.
+* **Y**: Y component only.
+* **Z**: Z component only.
 
 **Ratio**
 
-_Which axis ratio to test._
+_Ratio to compute for aspects like AspectRatio._
 
-Only visible when Operand A is set to Ratio or Ratio (Sorted).
+When Operand A is set to "Ratio" or "Ratio (Sorted)", this defines which two axes are used in the ratio calculation. For example, XY means X divided by Y.
 
 **Values**:
 
-* **XY**: X divided by Y
-* **XZ**: X divided by Z
-* **YZ**: Y divided by Z
-* **YX**: Y divided by X
-* **ZX**: Z divided by X
-* **ZY**: Z divided by Y
+* **XY**: X / Y
+* **XZ**: X / Z
+* **YZ**: Y / Z
+* **YX**: Y / X
+* **ZX**: Z / X
+* **ZY**: Z / Y
 
 **Operand B**
 
-_The target value to compare against._
+_Target value for comparison._
 
-This defines the threshold or reference value for comparison.
+This is the value against which the selected aspect of the bounds is compared. It can be a fixed number or a dynamic value from an input pin.
 
-Use either a constant value or an attribute from your point data. You can specify the comparison type (equal, greater than, etc.).
+**bInvert**
 
-**Invert the result of this filter**
+_When enabled, inverts the result of this filter._
 
-_When enabled, points that would pass the test will fail, and vice versa._
+If enabled, points that would normally pass the filter will fail, and vice versa.
 
-### Usage Example
+**Config**
 
-You want to only process collections that are large enough to contain meaningful detail but not too large to cause performance issues.
+_Filter configuration settings._
 
-1. Set **Operand A** to **Volume**
-2. Set **Operand B** to a constant value of `1000`
-3. Choose comparison type **EqualOrGreater** (volume >= 1000)
-4. Connect this filter to a **Data Filter** node
-5. This will pass only collections with a volume of at least 1000 cubic units
+This contains all the above settings grouped together for use in the filter subnode. It allows you to define how the bounds are evaluated and compared.
 
-### Notes
+#### Usage Example
 
-* The bounds are calculated based on the points' positions in world space.
-* For ratio comparisons, the filter uses the absolute values of axes.
-* When using **Ratio (Sorted)**, it always returns the largest axis divided by the smallest axis.
-* You can combine multiple filters to create complex conditions (e.g., volume > 100 AND aspect ratio < 5).
-* This filter is particularly useful for culling collections that are too small or too large for your scene's requirements.
+You want to only process point collections that have a volume greater than 1000 units. Set Operand A to Volume, Operand B to 1000, and leave the comparison operator as "Greater Than". This will filter out any collection with a volume less than or equal to 1000.
 
-### Inputs
+#### Notes
 
-* **Collection**: The point collection to evaluate
-* **Filter**: Connection point for applying the filter logic
-
-### Outputs
-
-* **Pass**: Output for collections that meet the filter criteria
-* **Fail**: Output for collections that do not meet the filter criteria
+* The filter evaluates bounds in world space.
+* For performance-sensitive workflows, avoid using "Length Squared" unless you're comparing against another squared value.
+* When using "Ratio (Sorted)", the largest axis is divided by the smallest axis for a normalized ratio.

@@ -6,60 +6,72 @@ icon: circle-dashed
 # Constant
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a simple filter that always returns the same boolean value.
+> Filter that returns a constant value.
 
-### Overview
+#### Overview
 
-This filter factory generates a constant boolean result for all points it evaluates. It's useful when you want to include or exclude all points based on a fixed condition, or as a placeholder in filter logic where you need a simple pass/fail behavior.
+The Constant filter subnode is used to enforce a fixed pass/fail behavior on points in your procedural graph. It's useful when you want to apply a static condition — either always passing or always failing — without needing to evaluate dynamic properties of the points themselves.
+
+This subnode connects to Filter pins on processing nodes and determines whether each point should be included or excluded based on its configured value. It’s a simple yet powerful tool for applying global filtering logic, such as enabling or disabling certain operations across all input points.
 
 {% hint style="info" %}
-Connects to Filter pins on processing nodes like **Filter Points** or **Process Points**
+Connects to **Filter** pins on processing nodes.
 {% endhint %}
 
-### How It Works
+#### How It Works
 
-This filter ignores all input data and always returns the same boolean value. It's designed to act as a fixed switch in your procedural logic - either all points pass through, or none do.
+This filter subnode operates by returning a fixed boolean result — either true (pass) or false (fail) — for every point it evaluates. The behavior is determined at configuration time and does not change based on point data.
 
-### Inputs
+When enabled, the filter will always return the same value regardless of input. If inversion is enabled, the configured value is flipped before being returned. For example:
 
-* **Point Data**: Accepts point data to be filtered
-* **Filter**: Connects to filter pins on processing nodes
+* If `Value` is set to **true** and `bInvert` is **false**, all points pass.
+* If `Value` is set to **true** and `bInvert` is **true**, all points fail.
+* If `Value` is set to **false** and `bInvert` is **false**, all points fail.
+* If `Value` is set to **false** and `bInvert` is **true**, all points pass.
 
-### Outputs
+This makes it ideal for controlling conditional logic in graphs where you want a consistent filtering outcome across all data, without relying on point attributes or dynamic calculations.
 
-* **Filtered Points**: Points that pass the filter condition
-* **Rejected Points**: Points that fail the filter condition
+<details>
 
-### Configuration
+<summary>Inputs</summary>
+
+Expects point data from a connected source, such as a point collection or point generator.
+
+</details>
+
+<details>
+
+<summary>Outputs</summary>
+
+Returns filtered point data based on the constant result of this filter.
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
-
 **Value**
 
-_Controls whether the filter passes or fails for all points._
+_Controls whether the filter passes or fails points by default._
 
-When enabled (set to `true`), all points will pass the filter. When disabled (set to `false`), all points will fail the filter.
+When enabled, points will pass the filter. When disabled, they will fail.
 
 **bInvert**
 
-_When enabled, inverts the boolean value of the filter._
+_When enabled, inverts the result of the filter._
 
-When enabled, if Value is set to `true`, the filter will actually fail all points. When enabled, if Value is set to `false`, the filter will actually pass all points.
+If `Value` is true and `bInvert` is enabled, points will fail. If `Value` is false and `bInvert` is enabled, points will pass.
 
-### Usage Example
+#### Usage Example
 
-Use this filter when you want to create a simple on/off switch for your point processing. For example:
+Use this subnode to create a global enable/disable switch for a processing node. For instance, if you're using a node that modifies point positions based on some criteria, you can connect this constant filter to it with `Value` set to **false** and `bInvert` set to **true** to effectively disable the operation for all points.
 
-* Connect it to a **Filter Points** node with Value = `true` and bInvert = `false` to pass all points
-* Connect it to a **Filter Points** node with Value = `false` and bInvert = `false` to fail all points
-* Connect it to a **Filter Points** node with Value = `true` and bInvert = `true` to fail all points
+Alternatively, you might use it as part of a conditional branch where you want to bypass filtering logic entirely and force all points through a specific path in your graph.
 
-### Notes
+#### Notes
 
-This filter is most commonly used in combination with other filters using the **Filter Group** node, where you might want to force certain points to always pass or fail regardless of their attributes.
+This subnode is most effective when used with other filters or in combination with more complex filtering logic. It does not evaluate point data, so it's best suited for applying consistent pass/fail behavior across an entire dataset.

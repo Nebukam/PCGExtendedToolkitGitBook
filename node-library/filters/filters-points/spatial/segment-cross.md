@@ -6,108 +6,113 @@ icon: circle-dashed
 # Segment Cross
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a filter definition that checks points against path-like data by testing if segments of the path cross or intersect with segments defined from the input points.
+> Creates a filter definition that checks points SegmentCross against path-like data (paths, splines, polygons).
 
-### Overview
+#### Overview
 
-This filter factory creates a condition that evaluates whether line segments formed from input points intersect with segments of path-like data (such as splines, polygons, or paths). It's useful for determining if points are near or crossing specific geometric features in your procedural content.
+This subnode determines whether points lie on or cross specific line segments defined by paths, splines, or polygons. It's useful for identifying points that are part of a segment, such as flagging the start or end point of a path segment.
 
-{% hint style="info" %}
-Connects to Filter pins on processing nodes like **Filter Points** or **Filter Points By Attribute**.
-{% endhint %}
+It connects to **Filter** pins on processing nodes that accept point filters.
 
-### How It Works
+#### How It Works
 
-The filter works by:
+This subnode evaluates each point in a collection to determine if it lies on a specific line segment defined by a path-like input. The line segment is determined by the point's position relative to adjacent points in the path, and can be configured to use either the "next" or "previous" point as the segment endpoint.
 
-1. Taking input points and creating line segments from them (either from current point to next, or current point to previous)
-2. Testing these segments against path-like data
-3. Returning whether the segments cross or intersect with any segment of the path
+The algorithm performs the following steps:
 
-This is particularly useful for:
+1. For each point, it identifies its associated segment using the specified direction (either to next or previous point).
+2. It projects the point onto that segment.
+3. It checks if the projected point is within a defined tolerance distance from the original point.
+4. If the point is within tolerance, it's considered to "cross" the segment and passes the filter test.
 
-* Identifying points that cross paths or boundaries
-* Creating constraints where points must not cross certain lines
-* Detecting intersections in network or grid layouts
+The result can be inverted using the invert toggle, allowing you to filter out points that cross segments instead of including them.
 
-### Inputs and Outputs
+<details>
 
-#### Inputs
+<summary>Inputs</summary>
 
-* **Points**: Input point data to be filtered
-* **Path**: Path-like data (splines, polygons, or paths) to test against
+* **Points**: The collection of points to be filtered.
+* **Path-like data**: Paths, splines, or polygons that define the segments to check against.
 
-#### Outputs
+</details>
 
-* **Filter**: Boolean output indicating whether each point passes the intersection test
+<details>
 
-### Configuration
+<summary>Outputs</summary>
+
+* Points that pass the filter test are included in the output.
+* Points that fail the filter test are excluded from the output.
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
+**SampleInputs**
 
-**Sample Inputs**
+_Sample inputs._
 
-_Controls which input points are used to create segments._
-
-Determines how the filter samples input points when creating segments for testing.
+Controls how the input path-like data is sampled. This affects which segments of a path or spline are considered for the cross check.
 
 **Values**:
 
-* **All**: All points are used to form segments
-* **Even**: Only even-indexed points are used
-* **Odd**: Only odd-indexed points are used
-* **First**: Only the first point is used
-* **Last**: Only the last point is used
+* **All**: All points in the input are used.
+* **First**: Only the first point is used.
+* **Last**: Only the last point is used.
+* **Evenly Spaced**: Points are sampled evenly along the path.
+* **Random**: Points are randomly selected from the path.
 
-**Intersection Settings**
+**IntersectionSettings**
 
-_Tolerance and angle constraints for intersection detection._
+_Tolerance value used to determine whether a point is considered on the spline or not._
 
-Controls how strictly intersections are detected, including distance tolerance and minimum/maximum angles.
-
-**Values**:
-
-* **Tolerance**: Distance at which two edges are considered intersecting (default: 0.001)
-* **Use Min Angle**: Enable minimum angle constraint for intersections
-* **Min Angle**: Minimum angle between segments to be considered an intersection (in degrees)
-* **Use Max Angle**: Enable maximum angle constraint for intersections
-* **Max Angle**: Maximum angle between segments to be considered an intersection (in degrees)
+Defines how close a point must be to a segment to be considered as crossing it. Lower tolerance values mean stricter matching.
 
 **Direction**
 
-_Segment direction definition._
+_Segment definition. Useful when flagging segments "backward" (e.g so the end point is flagged instead of the first point)._
 
-Controls whether the segment is defined from current point to next or from current point to previous.
+Specifies which direction the segment is defined in, either from the current point to the next or from the current point to the previous.
 
 **Values**:
 
-* **To Next**: Segment goes from current point to the next point in sequence (canonical)
-* **To Prev**: Segment goes from current point to the previous point in sequence (inverted)
+* **To Next**: Segment is defined as current point to next point.
+* **To Prev**: Segment is defined as current point to previous point.
 
-**Invert**
+**bInvert**
 
-_When enabled, reverses the filter result._
+_If enabled, invert the result of the test._
 
-When enabled, points that would normally pass the filter will fail, and vice versa.
+When enabled, points that would normally pass the filter test are excluded, and vice versa.
 
 **Fidelity**
 
-_Path resolution for polygon creation._
+_When projecting, defines the resolution of the polygon created from the spline. Lower values means higher fidelity, but slower execution._
 
-Controls the resolution of polygon approximation when testing against splines. Higher values mean more precise but slower execution.
+Controls how many segments are used to approximate a spline when projecting points onto it. Higher values (lower fidelity) mean more precise projection but slower performance.
 
-**Values**:
+**bIgnoreSelf**
 
-* **50**: Default resolution (recommended for most cases)
+_If enabled, a collection will never be tested against itself._
 
-**Ignore Self**
+When enabled, prevents a point collection from being compared against its own segments, avoiding self-intersection issues.
 
-_When enabled, prevents a collection from testing against itself._
+**Config**
 
-When enabled, if a path is both input and target, it will not test against itself to avoid false positives.
+_Filter Config._
+
+A container for all the filter settings that define how points are evaluated against segments.
+
+#### Usage Example
+
+Use this subnode to identify and flag the end points of path segments in a spline. For example, you could use it to mark where a road changes direction or where a river turns. Set the Direction to "To Prev" to flag the start point of each segment instead of the end.
+
+#### Notes
+
+* This filter works best with closed-loop paths or polygons.
+* Higher Fidelity values improve accuracy but may slow down processing.
+* Use the invert option to exclude points that cross segments rather than include them.

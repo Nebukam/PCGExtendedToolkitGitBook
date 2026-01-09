@@ -6,78 +6,88 @@ icon: circle-dashed
 # Boolean
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a filter that compares two boolean values using an equality operator.
+> "(bool) A == (bool) B"
 
-### Overview
+#### Overview
 
-This filter evaluates whether two boolean operands are equal or not equal to each other. It's useful for filtering points based on attribute comparisons or constant boolean values.
+This subnode filters points based on a boolean comparison between two operands. It evaluates whether two boolean values are equal or not equal, allowing you to isolate points that meet specific logical conditions. You can compare a point's attribute value against a constant or another attribute.
 
 {% hint style="info" %}
-Connects to **Filter** pins on processing nodes like **Filter Points** or **Filter Edges**
+Connects to **Filter** pins on processing nodes.
 {% endhint %}
 
-### How It Works
+#### How It Works
 
-The filter compares two boolean values using either an equality (==) or inequality (!=) operator. It returns true if the comparison passes, false otherwise.
+This subnode performs a boolean comparison between two operands, A and B. It reads the values of these operands from either point attributes or constant values, converts them to booleans if needed, and then checks if they are equal or not equal based on your selected operation.
 
-### Inputs
+The evaluation happens per point in the input data. For each point, it retrieves the value of Operand A (from an attribute or constant), and the value of Operand B (also from an attribute or constant). It then compares these two boolean values using the specified comparison operator (equal or not equal) and passes the point through if the condition is met.
 
-* **Input Data**: The point data to filter
-* **Operand A**: First boolean value to compare
-* **Operand B**: Second boolean value to compare
+<details>
 
-### Outputs
+<summary>Inputs</summary>
 
-* **Filter**: Boolean output that determines whether to pass or reject input data
+Expects point data with optional attributes for Operand A and Operand B if they are set to read from attributes.
 
-### Configuration
+</details>
+
+<details>
+
+<summary>Outputs</summary>
+
+Filters the input points, passing only those that satisfy the boolean comparison between Operand A and Operand B.
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
-
 **Operand A**
 
-_The first operand to compare._
+_Operand A for testing -- Will be translated to `double` under the hood._
 
-Reads a boolean value from an attribute on the input data.
+Defines which attribute or constant value is used as the first operand in the comparison. If set to an attribute, it reads the value from that attribute on each point.
 
 **Comparison**
 
-_How to compare the two operands._
+_Comparison_
 
-* **Equal**: Passes when both operands are the same (true == true or false == false)
-* **Not Equal**: Passes when the operands are different (true != false or false != true)
+Specifies the logical operation to perform between Operand A and Operand B.
+
+* **Equal**: Passes points where Operand A equals Operand B.
+* **Not Equal**: Passes points where Operand A does not equal Operand B.
 
 **Compare Against**
 
-_Whether Operand B is a constant value or read from an attribute._
+_Type of OperandB_
 
-* **Constant**: Use a fixed boolean value for Operand B
-* **Attribute**: Read Operand B from an attribute on the input data
+Determines whether Operand B is read from an attribute or set as a constant value.
+
+* **Constant**: Operand B is a fixed boolean value.
+* **Attribute**: Operand B is read from a point attribute.
 
 **Operand B (Attr)**
 
-_The second operand to compare, read from an attribute._
+_Operand B for testing -- Will be translated to `bool` under the hood._
 
-Only shown when "Compare Against" is set to "Attribute".
+The attribute used to read Operand B when "Compare Against" is set to "Attribute". This must be a boolean or convertible-to-boolean attribute.
 
 **Operand B**
 
-_The second operand to compare, as a constant value._
+_Operand B for testing_
 
-Only shown when "Compare Against" is set to "Constant"
+The constant boolean value used as Operand B when "Compare Against" is set to "Constant".
 
-### Usage Example
+#### Usage Example
 
-Create a filter that only passes points where a boolean attribute `IsEnabled` matches a constant value `true`. Connect this to a **Filter Points** node to selectively process only enabled points.
+You have a point cloud where each point has a boolean attribute called `IsSelected`. You want to filter points that are selected and match another boolean attribute `IsActive`. Set Operand A to `IsSelected`, Operand B to `IsActive`, and Comparison to "Equal". This will pass only the points where both attributes are true or both are false.
 
-### Notes
+#### Notes
 
-* When using attributes, both operands must be boolean type
-* The filter will fail if an attribute is missing and the fallback policy is set to "Throw Error"
-* Combine multiple boolean filters using logical operators in the parent node to create complex conditions
+* The comparison is performed on a per-point basis.
+* If an attribute doesn't exist, it's treated as false.
+* Boolean values from attributes are converted from their underlying numeric representation (e.g., 0 = false, non-zero = true).
+* This filter works best when Operand A and Operand B are boolean or numeric types that can be interpreted as booleans.

@@ -102,7 +102,6 @@
     * [Gameplay Tags](node-library/filters/filters-points/gameplay-tags.md)
     * [Picker](node-library/filters/filters-points/picker.md)
     * [Constant](node-library/filters/filters-points/constant.md)
-    * [Contains](node-library/filters/filters-points/contains.md)
     * [Noise](node-library/filters/filters-points/noise.md)
   * [Filters : Collections](node-library/filters/filters-collections/README.md)
     * [Attribute Check](node-library/filters/filters-collections/attribute-check.md)

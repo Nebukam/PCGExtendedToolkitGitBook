@@ -6,95 +6,116 @@ icon: circle-dashed
 # Angle
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Creates a filter definition that compares dot value of the direction of a point toward its previous and next points.
 
-### Overview
+#### Overview
 
-This filter evaluates the angle between consecutive points in a point cloud by computing the dot product of vectors formed from adjacent points. It's useful for filtering points based on directional changes or curvature in a path.
+This subnode filters points based on the angle formed between consecutive points in a sequence. It evaluates whether the turn or curvature at each point meets specific criteria, making it useful for creating smooth paths, detecting sharp bends, or enforcing directional constraints.
 
-{% hint style="info" %}
-Connects to Filter pins on processing nodes such as **Filter Points**, **Transform Points**, or **Generate Points**.
-{% endhint %}
+It's particularly helpful when working with point-based data such as curves, paths, or splines where you want to control how sharply the path changes direction.
 
-### How It Works
+This subnode connects to **Filter** pins on processing nodes that support point filtering.
 
-The filter calculates the angle between two consecutive vectors:
+#### How It Works
 
-* Vector 1: From previous point to current point
-* Vector 2: From current point to next point
+This filter calculates the angle formed by three consecutive points — the previous point, the current point, and the next point — and compares the resulting dot product against a threshold. The comparison is based on either:
 
-It then compares the dot product of these vectors against a threshold value. The result determines whether a point passes or fails the filter.
+* **Curvature**: Evaluates the turn from (Prev → Current) to (Current → Next)
+* **Spread**: Evaluates the turn from (Current → Prev) to (Current → Next)
 
-**Curvature Mode**: Compares (Prev → Current) and (Current → Next) vectors\
-**Spread Mode**: Compares (Current → Prev) and (Current → Next) vectors
+For each point, it computes two directional vectors:
 
-### Inputs
+1. From the previous point to the current point
+2. From the current point to the next point
 
-* **Points**: Input point cloud to filter
-* **Threshold Attribute** (optional): Attribute containing threshold values for each point
+It then calculates the dot product of these two vectors and compares it against a threshold using a comparison operator (e.g., greater than, less than). The result determines whether the point passes or fails the filter.
 
-### Outputs
+If a point is at the beginning or end of an open sequence, fallback behavior defines how to treat it:
 
-* **Filtered Points**: Points that pass the angle filter criteria
+* First points use the `FirstPointFallback` setting
+* Last points use the `LastPointFallback` setting
 
-### Configuration
+The final result can be inverted using the `bInvert` toggle, which also affects the fallback results.
+
+<details>
+
+<summary>Inputs</summary>
+
+This subnode operates on point data with a sequence of points that have defined previous and next neighbors. It requires at least three points to compute meaningful angles.
+
+</details>
+
+<details>
+
+<summary>Outputs</summary>
+
+This subnode defines a filter behavior that can be consumed by processing nodes. It does not produce or modify data directly but sets up the filtering logic for downstream operations.
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
-
 **Mode**
 
-_Controls how the angle is calculated._
+_Controls how the angle is calculated between consecutive points._
 
-* **Curvature**: Checks the dot product of (Prev to Current) → (Current to Next)
-* **Spread**: Checks the dot product of (Current to Prev) → (Current to Next)
+**Values**:
 
-**First Point Fallback**
+* **Curvature**: Compares the dot product of (Prev to Current) and (Current to Next)
+* **Spread**: Compares the dot product of (Current to Prev) and (Current to Next)
 
-_How to handle the first point in an open loop._
+**FirstPointFallback**
 
-When enabled, points that don't have a previous neighbor are evaluated using this fallback behavior.
+_Determines how first points are treated when evaluating the filter._
 
-**Last Point Fallback**
+**Values**:
 
-_How to handle the last point in an open loop._
+* **Pass**: First points are considered to pass the filter
+* **Fail**: First points are considered to fail the filter
 
-When enabled, points that don't have a next neighbor are evaluated using this fallback behavior.
+**LastPointFallback**
 
-**Dot Comparison Details**
+_Determines how last points are treated when evaluating the filter._
 
-_Configures how the dot product is compared against a threshold._
+**Values**:
 
-This includes:
+* **Pass**: Last points are considered to pass the filter
+* **Fail**: Last points are considered to fail the filter
 
-* The comparison operator (e.g., greater than, less than)
-* The threshold value to compare against
-* Whether to use a constant or attribute for the threshold
+**DotComparisonDetails**
 
-**Invert**
+_Configures how the dot product result is compared against a threshold._
 
-_When enabled, inverts the filter result._
+This setting includes:
 
-If a point would normally pass the filter, it fails, and vice versa. This also affects fallback results.
+* A comparison operator (e.g., greater than, less than)
+* A threshold value for the comparison
+* An optional tolerance for "nearly equal" comparisons
 
-### Usage Example
+**bInvert**
 
-Use this filter to remove sharp turns from a path. For example:
+_When enabled, inverts the filter result — points that would pass now fail and vice versa._
 
-1. Create a **Filter : Angle** node with **Mode** set to **Curvature**
-2. Set **Dot Comparison Details** to use **Greater Than** with a threshold of `0.7`
-3. Connect it to the **Filter Points** node
-4. This will keep only points where the angle between consecutive segments is relatively straight (not sharp)
+This also affects how fallback results are interpreted.
 
-### Notes
+#### Usage Example
 
-* The filter requires at least 3 points to function properly
-* For closed loops, the first and last points wrap around to connect with their neighbors
-* When using attributes for threshold values, ensure the attribute exists on all input points
-* Combine with other filters to create complex directional constraints
-* Useful for creating smooth paths or removing sharp turns from procedural geometry
+You're creating a procedural path and want to ensure it doesn't have sharp turns. You can use this filter with:
+
+* **Mode**: Curvature
+* **DotComparisonDetails**: Use a comparison like "Greater Than" with a threshold of `0.7`
+* **FirstPointFallback** and **LastPointFallback**: Set to Fail
+* **bInvert**: Disabled
+
+This setup will exclude points where the angle between consecutive segments is too sharp, resulting in smoother paths.
+
+#### Notes
+
+* This filter works best on closed loops or sequences with sufficient neighboring points.
+* For open-ended data (e.g., a path that isn't closed), first and last points are handled according to fallback settings.
+* The dot product comparison helps define angular thresholds in a normalized way, making it robust across different scales.

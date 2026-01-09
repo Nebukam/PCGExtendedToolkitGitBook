@@ -6,63 +6,73 @@ icon: circle-dashed
 # Random (Ratio)
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a filter that randomly passes or fails points based on a configured ratio.
+> Filters points based on a random ratio, determining whether each point passes or fails a condition.
 
-### Overview
+#### Overview
 
-This filter randomly determines whether each point should pass or fail a condition, using a configurable probability ratio. It's useful for creating randomized selection effects, such as randomly keeping or removing a percentage of points in a dataset.
+This subnode filters points using a random value to determine if they should pass or fail a condition. It's useful for introducing randomness into procedural generation workflows, such as randomly selecting a percentage of points for further processing or applying effects to a subset of data. The behavior is controlled by a ratio that defines how many points are selected, and whether the result is inverted.
 
 {% hint style="info" %}
-Connects to Filter pins on processing nodes like **Filter Points** or **Select Points**
+Connects to **Filter** pins on processing nodes.
 {% endhint %}
 
-### How It Works
+#### How It Works
 
-This filter generates a random value for each point and compares it against a configured ratio. If the random value is less than the ratio, the point passes; otherwise, it fails. The ratio can be set as a fixed value or derived from an attribute.
+This subnode generates a random value for each point and compares it against a defined ratio. If the random value is less than or equal to the ratio, the point passes the filter; otherwise, it fails. The process uses a seed-based random number generator to ensure reproducibility. When the **Invert Result** option is enabled, points that would normally pass are filtered out and vice versa.
 
-### Configuration
+<details>
+
+<summary>Inputs</summary>
+
+* Points to be filtered
+
+</details>
+
+<details>
+
+<summary>Outputs</summary>
+
+* Points that meet the random ratio condition
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
-
 **Random**
 
-_Controls how the random ratio is generated._
+_Controls how the random value is generated for each point._
 
-This setting defines the probability threshold used to determine if a point passes or fails. A ratio of 0.5 means there's a 50% chance for any given point to pass.
+This setting defines the seed and method used to generate a random number per point. The seed can be based on the point's data or a fixed value, ensuring consistent results across runs.
 
 **Values**:
 
-* **Relative**: The ratio value is normalized between 0 and 1, where 0 = 0% chance to pass, 1 = 100% chance to pass
-* **Discrete**: The ratio value is used directly as a fixed threshold
+* **Base Seed**: Defines the base seed value used for generating the random number. Can use input data or a fixed integer.
+* **Use Point Index as Seed**: When enabled, uses the point index to vary the seed per point, increasing randomness.
+* **Amount**: Controls how many points are selected based on the ratio.
 
-**Invert Result**
+**bInvertResult**
 
-_When enabled, points that would pass now fail, and vice versa._
+_When enabled, reverses the filter result._
 
-This inverts the filter's logic. For example, if you set the ratio to 0.3 (30% chance to pass), enabling this will make it so only 30% of points fail instead.
+If enabled, points that would normally pass the filter will be excluded and those that fail will be included. This allows for selecting the inverse of the random selection.
 
-### Usage Example
+**Config**
 
-Use this filter to randomly remove 25% of points from a point cloud. Set the **Amount (Relative)** to 0.25, and connect this filter to a **Filter Points** node. After processing, approximately 25% of your original points will be kept, with the rest discarded.
+_Configuration settings for the filter behavior._
 
-### Notes
+This section groups the core parameters of the filter, including the random generation method and inversion option.
 
-* The random seed is based on the point's index and the factory's base seed, ensuring consistent results for the same input
-* For large datasets, consider using **Collection Evaluation** to improve performance when applying the same filter to multiple collections
-* This filter works well in combination with other filters to create complex selection logic
+#### Usage Example
 
-### Inputs
+A game designer wants to randomly select 30% of points from a point cloud to apply a special effect. They use this subnode with a ratio of `0.3` to filter out 70% of the points, leaving only 30% for further processing. The seed is set to use the point index so that each point gets a unique random value.
 
-* **Filter**: Main input pin that receives the point data to be filtered
-* **Ratio Attribute**: Optional input that provides a custom ratio value for each point from an attribute
+#### Notes
 
-### Outputs
-
-* **Pass**: Output pin that sends points that passed the filter condition
-* **Fail**: Output pin that sends points that failed the filter condition
+* The random behavior is deterministic when using a fixed seed.
+* Using point indices as seeds ensures varied results across different points.
+* This filter can be combined with other filters to create more complex selection criteria.

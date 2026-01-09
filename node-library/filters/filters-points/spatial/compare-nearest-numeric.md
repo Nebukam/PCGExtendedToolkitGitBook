@@ -6,102 +6,123 @@ icon: circle-dashed
 # Compare Nearest (Numeric)
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a filter definition that compares two numeric attribute values by finding the nearest point in a target set and comparing their values.
+> Creates a filter definition that compares two numeric attribute values.
 
-### Overview
+#### Overview
 
-This factory generates a filter that evaluates whether a point's attribute value meets a comparison condition against the nearest point's attribute value from a specified target set. It's useful for creating spatially-aware filters that consider relationships between points in your data.
+This subnode defines a filtering behavior that evaluates whether a point's numeric attribute value meets a comparison condition against another value—either a constant or an attribute from nearby points. It is useful for creating rules that depend on spatial relationships and attribute comparisons, such as selecting points where a property is greater than the nearest neighbor’s value.
 
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes like **Filter Points**, **Filter Curves**, or other nodes that accept filter definitions.
-{% endhint %}
+This subnode connects to Filter pins on processing nodes like **Filter Points** or **Filter Edges**, where it defines which points pass or fail based on the comparison logic.
 
-### How It Works
+#### How It Works
 
-The filter works by:
+This filter evaluates each point against another numeric value using a comparison operator. It first identifies the nearest point (or points) based on the configured distance method, then reads a numeric attribute from the target point and compares it to a second operand—either a constant or an attribute from the same point. The comparison is performed using one of several operators, such as greater than, less than, or near-equal.
 
-1. For each point in the input data, it finds the nearest point in a target set
-2. It reads numeric values from both points using specified attribute selectors
-3. It compares these two values using a comparison operator (e.g., equal, greater than, etc.)
-4. If the comparison passes, the point is included in the output; otherwise, it's filtered out
+The filter can be configured to ignore self-comparisons (i.e., comparing a point to itself), which is helpful when comparing against nearest neighbors.
 
-The nearest point search uses configurable distance methods and can ignore self-references.
+<details>
 
-### Inputs
+<summary>Inputs</summary>
 
-* **Input Points**: The set of points to be filtered
-* **Target Points**: The set of points used to find the nearest neighbors for comparison
+* **Target Points**: The points that are evaluated for filtering.
+* **Operand A**: A numeric attribute read from the target points.
+* **Operand B**: Either a constant or an attribute from the target points, depending on the `CompareAgainst` setting.
 
-### Outputs
+</details>
 
-* **Filter**: A filter definition that can be connected to processing nodes
+<details>
 
-### Configuration
+<summary>Outputs</summary>
+
+* **Filtered Points**: Points that pass the comparison test are included in the output; those that fail are excluded.
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
+**DistanceDetails**
 
-**Distance Details**
+_Controls how distance is calculated between points._
 
-_Controls how distances are calculated between points._
+This defines the method used to compute spatial distances when identifying the nearest point. Common options include Euclidean, Manhattan, or custom distance functions.
 
-Use this to define what constitutes "nearest" when comparing points. You can choose different distance metrics like Euclidean, Manhattan, or others.
+**Values**:
 
-**Operand A**
+* **Euclidean**: Standard straight-line distance.
+* **Manhattan**: Sum of absolute differences in coordinates.
+* **Custom**: User-defined distance function.
 
-_Reads a numeric value from the input points._
+**OperandA**
 
-This is the first operand in your comparison. It reads a numeric attribute from each point being tested.
+_The numeric attribute to read from the target points._
+
+This is the first operand used in the comparison. It must be a numeric attribute, such as height or weight, and is read directly from each point being tested.
 
 **Comparison**
 
-_Selects the type of comparison to perform._
+_The operator used to compare Operand A and Operand B._
+
+This determines how the two values are compared.
 
 **Values**:
 
-* **==**: Strictly equal
-* **!=**: Strictly not equal
-* **>=**: Equal or greater than
-* **<=**: Equal or smaller than
-* **>**: Strictly greater than
-* **<**: Strictly smaller than
-* **\~=**: Nearly equal (within tolerance)
-* **!\~=**: Nearly not equal (outside tolerance)
+* **==**: Strictly equal.
+* **!=**: Strictly not equal.
+* **>=**: Equal or greater than.
+* **<=**: Equal or smaller than.
+* **>**: Strictly greater than.
+* **<**: Strictly smaller than.
+* **\~=**: Nearly equal (within tolerance).
+* **!\~=**: Nearly not equal (outside tolerance).
 
-**Compare Against**
+**CompareAgainst**
 
-_Specifies whether Operand B is a constant or attribute value._
+_Specifies whether Operand B is a constant or an attribute._
+
+This controls how the second operand for comparison is sourced.
 
 **Values**:
 
-* **Constant**: Use a fixed numeric value for Operand B
-* **Attribute**: Read Operand B from an attribute on the target points
+* **Constant**: Use a fixed numeric value defined in `OperandBConstant`.
+* **Attribute**: Read the second operand from an attribute on the target points.
 
-**Operand B (Attr)**
+**OperandBConstant**
 
-_Reads a numeric value from the target points._
+_The constant value used as Operand B when `CompareAgainst` is set to "Constant"._
 
-Only visible when "Compare Against" is set to "Attribute". This defines which attribute to read from the nearest target point.
-
-**Operand B**
-
-_Specifies a constant value for Operand B._
-
-Only visible when "Compare Against" is set to "Constant". This is the fixed numeric value used in comparisons.
+This is only active when `CompareAgainst` is set to Constant. It defines the fixed numeric value used in comparisons.
 
 **Tolerance**
 
-_Tolerance for nearly equal comparisons._
+_Near-equality tolerance for `~=`, `!~=` comparisons._
 
-Only visible when using **\~=** or **!\~=** comparisons. Defines how close values must be to be considered equal.
+When using near-equal comparisons, this sets how close two values must be to be considered equal. The default is a small epsilon value suitable for floating-point comparisons.
 
-**Ignore Self**
+**bIgnoreSelf**
 
 _When enabled, prevents a point from comparing against itself._
 
-If enabled, the filter will skip the comparison if the nearest target point is the same as the input point being tested. This is useful when you want to compare against other points in the set, not the point itself.
+This is useful when comparing a point's attribute to its nearest neighbor. If enabled, the point will skip self-comparison and instead compare to the next closest point.
+
+#### Usage Example
+
+You want to filter points where the height of each point is greater than or equal to the height of its nearest neighbor.
+
+1. Set **OperandA** to a numeric attribute like `Height`.
+2. Set **CompareAgainst** to `Attribute`.
+3. Set **OperandB** to the same `Height` attribute.
+4. Choose **Comparison** as `EqualOrGreater`.
+5. Enable **bIgnoreSelf** to avoid comparing a point with itself.
+
+This will keep only those points where their height is greater than or equal to that of their nearest neighbor.
+
+#### Notes
+
+* This filter works best when used in conjunction with spatial operations like "Find Nearest" or "Nearest Neighbors".
+* For performance, avoid using `bIgnoreSelf = false` unless necessary.
+* When using near-equality comparisons (`~=`, `!~=`), ensure that the tolerance is appropriate for your data scale.

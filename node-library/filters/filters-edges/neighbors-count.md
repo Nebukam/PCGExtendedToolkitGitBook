@@ -6,106 +6,116 @@ icon: circle-dashed
 # Neighbors Count
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Filters edges based on the number of neighbors (adjacent connections) at their endpoints.
+> Check if an edge's endpoints meet a specified neighbor count threshold.
 
-### Overview
+#### Overview
 
-This filter evaluates edges in a graph based on how many connections each endpoint has. It's useful for identifying specific edge types, such as bridges (edges connecting high-degree nodes), or filtering out isolated or sparsely connected edges.
+This subnode filters edges based on how many connections (neighbors) their start and end points have in the graph. It is useful for identifying edges that connect nodes with specific connectivity levels, such as bridges or bottlenecks in network structures.
 
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes like **Refine Edges** or **Filter Edges**.
-{% endhint %}
+It connects to **Filter** pins on processing nodes that handle edge data.
 
-### How It Works
+#### How It Works
 
-The filter checks the adjacency count (number of connections) at each endpoint of an edge. Depending on the mode selected, it can:
+This subnode evaluates whether an edge meets a defined threshold based on the number of neighbors (connections) its endpoints have. The behavior depends on the selected **Mode**:
 
-* Compare the sum of both endpoints' neighbor counts against a threshold
-* Require that at least one endpoint meets the threshold
-* Require that both endpoints individually meet the threshold
+* **Sum**: Adds up the neighbor counts of both endpoints and compares that total against the threshold.
+* **Any Endpoint**: Checks if at least one endpoint has enough neighbors to pass the comparison.
+* **Both Endpoints**: Requires both endpoints to individually meet the comparison against the threshold.
 
-It then applies a comparison operator to determine if the edge passes the filter.
+The **Comparison** type determines how the neighbor count is compared to the threshold (e.g., greater than, equal to, etc.). Optionally, you can invert the result using the **Invert** toggle.
 
-### Inputs
+<details>
 
-* **Edges**: The input graph edges to filter
-* **Threshold Attribute** (optional): Attribute containing threshold values for each edge
+<summary>Inputs</summary>
 
-### Outputs
+This subnode expects edge data with associated point data that contains neighbor information. It uses the adjacency relationships between points to determine how many neighbors each endpoint has.
 
-* **Passed**: Edges that meet the filter criteria
-* **Failed**: Edges that do not meet the filter criteria
+</details>
 
-### Configuration
+<details>
+
+<summary>Outputs</summary>
+
+This subnode does not produce new data but defines a filtering condition for edges. Edges that pass the filter will be included in downstream processing steps.
+
+</details>
+
+#### Configuration
 
 ***
-
-#### General
 
 **Threshold Input**
 
 _Whether to read the threshold from an attribute on the edge or a constant._
 
-When set to **Attribute**, you must specify which attribute to use. When set to **Constant**, you define the value directly.
+When set to **Attribute**, the subnode reads the threshold value from a specified point or edge attribute. When set to **Constant**, it uses the fixed value defined in the **Threshold** setting.
+
+**Threshold (Constant)**
+
+\_Display: "Threshold", _The number of connection endpoints must have to be considered a Bridge._
+
+Defines the minimum neighbor count required for an edge to pass the filter, when using a constant threshold.
 
 **Values**:
 
-* **Constant**: Use a fixed number as the threshold
-* **Attribute**: Read the threshold value from an attribute
-
-**Threshold (Attr)**
-
-_The attribute to fetch threshold from._
-
-Only visible when **Threshold Input** is set to **Attribute**.
-
-**Threshold**
-
-_The number of connections that must be present at endpoints to pass the filter._
-
-Only visible when **Threshold Input** is set to **Constant**. Must be at least 1.
+* **1**: Only edges where at least one endpoint has 1 neighbor will pass.
+* **2**: Only edges where both endpoints have at least 2 neighbors will pass (for "Both Endpoints" mode).
 
 **Mode**
 
 _How should we check if the threshold is reached._
 
-Controls how the neighbor counts are evaluated.
+Controls how the neighbor counts of the edge's endpoints are evaluated against the threshold.
 
 **Values**:
 
-* **Sum**: The total neighbor count of both endpoints is compared against the threshold
-* **Any Endpoint**: At least one endpoint must have a neighbor count that meets the threshold
-* **Both Endpoints**: Both endpoints must individually meet the threshold
+* **Sum**: The total neighbor count of both endpoints is compared against the threshold.
+* **Any Endpoint**: At least one endpoint must meet the comparison against the threshold.
+* **Both Endpoints**: Both endpoints must individually pass the comparison against the threshold.
 
 **Comparison**
 
-_Comparison check._
+_Comparison check_
 
-Determines how the evaluated value is compared to the threshold.
+Determines how the neighbor count is compared to the threshold value.
 
 **Values**:
 
-* **==**: Equal to
-* **!=**: Not equal to
-* **>=**: Greater than or equal to
-* **<=**: Less than or equal to
-* **>**: Greater than
-* **<**: Less than
-* **\~=**: Nearly equal to (with tolerance)
-* **!\~=**: Nearly not equal to (with tolerance)
+* **==**: Strictly equal
+* **!=**: Strictly not equal
+* **>=**: Equal or greater than
+* **<=**: Equal or smaller than
+* **>**: Strictly greater than
+* **<**: Strictly smaller than
+* **\~=**: Nearly equal (with tolerance)
+* **!\~=**: Nearly not equal (with tolerance)
 
 **Tolerance**
 
-_Rounding mode for approximate comparison modes._
+_Rounding mode for approx. comparison modes_
 
-Only visible when **Comparison** is set to **Nearly Equal** or **Nearly Not Equal**.
+Used only when using **Nearly Equal** or **Nearly Not Equal** comparisons. Defines the acceptable difference between values.
 
 **Invert**
 
-_When enabled, the filter result is inverted._
+_Whether to invert the filter result._
 
-If enabled, edges that would have passed now fail and vice versa.
+When enabled, edges that would normally pass the filter will be rejected, and vice versa.
+
+#### Usage Example
+
+Use this subnode to identify "bridge" edges in a graph — those connecting nodes with high connectivity. For example:
+
+* Set **Mode** to **Both Endpoints**
+* Set **Comparison** to **>=**
+* Set **Threshold** to 3
+* This will select edges where both endpoints have at least 3 neighbors, effectively filtering for strong connections.
+
+#### Notes
+
+* The neighbor count is determined by the graph's structure and adjacency data.
+* Using **Any Endpoint** mode can help identify edges connected to highly connected nodes.
+* Combining this filter with other edge filters allows for complex graph analysis.

@@ -6,82 +6,93 @@ icon: circle-dashed
 # Tag Check
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a filter that checks if points in a collection have specific tags matching a given condition.
+> Simple tag check on the input collection.
 
-### Overview
+#### Overview
 
-This filter evaluates whether input points contain certain tags based on a specified matching rule. It's used to selectively process or exclude points based on their tag content.
+This subnode filters points based on whether they contain a specific tag or set of tags. It allows you to selectively include or exclude points in your procedural workflow depending on their tag values. You can match tags exactly, check if they contain a substring, or verify if they start or end with a particular string.
+
+This filter is useful when working with tagged data—such as points that have been labeled for different purposes—and you want to process only those that meet certain tagging criteria. For example, you might tag points as "grass", "rock", or "water" and then use this subnode to only pass through points tagged as "grass".
 
 {% hint style="info" %}
-Connects to **Filter** pins on processing nodes like **Point Filter**, **Collection Filter**, or **Data Override**
+Connects to **Filter** pins on processing nodes.
 {% endhint %}
 
-### How It Works
+#### How It Works
 
-The filter examines each point's tags and determines if they match a specified tag name using a comparison method. Points that pass the test are included in downstream operations, while those that fail are excluded.
+This filter evaluates each point in the input collection against a specified tag. It checks if the point's tags match the defined criteria using a comparison method (like exact match, contains, starts with, or ends with). If the condition is met, the point passes through; otherwise, it is filtered out.
 
-### Inputs
+The logic works as follows:
 
-* **Points**: Input point collection to filter
-* **Filter**: Filter connection for downstream processing
+1. For each point, retrieve its associated tags.
+2. Compare the point's tags against the configured tag name using the selected matching mode.
+3. If `bStrict` is enabled, only the prefix of the tag (before any colon) is compared, ignoring the value part (e.g., for a tag like `"Material:Grass"`, only `"Material"` is checked).
+4. If `bInvert` is enabled, the result of the comparison is flipped—points that would normally pass now fail and vice versa.
 
-### Outputs
+<details>
 
-* **Pass**: Points that meet the filter criteria
-* **Fail**: Points that do not meet the filter criteria
+<summary>Inputs</summary>
 
-### Configuration
+Expects a collection of points with associated tags to be filtered.
+
+</details>
+
+<details>
+
+<summary>Outputs</summary>
+
+Points that meet the tag matching criteria are passed through; others are excluded.
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
-
 **Tag Name**
 
-_The tag to look for._
+_The constant tag name value to check against._
 
-Specify the exact tag name to search for. For example, if you set this to "Grass", only points with the tag "Grass" will pass the filter.
+Specify the tag you want to look for. For example, if you set this to `"Material"`, it will match any point tagged with `"Material"` or `"Material:Grass"` (depending on strict mode).
 
 **Match**
 
-_How to compare the tag name._
+_Determines how the tag is compared to the input._
 
 **Values**:
 
-* **Equals**: The tag must exactly match the specified name.
-* **Contains**: The tag name must contain the specified string.
-* **Starts with**: The tag name must begin with the specified string.
-* **Ends with**: The tag name must end with the specified string.
+* **Equals**: The tag must exactly match the specified value.
+* **Contains**: The tag must contain the specified value as a substring.
+* **Starts with**: The tag must begin with the specified value.
+* **Ends with**: The tag must end with the specified value.
 
-**Strict Mode**
+**bStrict**
 
-_When enabled, only check the tag prefix and ignore values for tags formatted as `Tag:Value`._
+_When enabled, only check tag prefix and ignore values for tags formatted as `Tag:Value`._
 
-In strict mode, if you're looking for a tag named "Grass", it will match both "Grass" and "Grass:Type1", but not "Grass2". This is useful when working with hierarchical tags.
+If set to true, this mode ignores the part after a colon in tags. For instance, if your tag is `"Material:Grass"` and you're checking for `"Material"`, it will match even though the full tag includes a value.
 
-**Invert Result**
+**bInvert**
 
-_When enabled, the filter result is reversed._
+_When enabled, invert the result of this filter._
 
-If this is enabled, points that would normally pass the filter will be excluded, and those that fail will be included. For example, if you're looking for points tagged "Grass" and invert is enabled, only non-Grass points will pass through.
+If set to true, points that would normally pass the filter are excluded, and those that fail are included instead.
 
-### Usage Example
+#### Usage Example
 
-You want to process only points that are tagged as "Tree". You set:
+Suppose you have a point collection tagged with `"TerrainType:Grass"` and `"TerrainType:Rock"`. You want to process only grass terrain points. Set:
 
-* Tag Name: "Tree"
-* Match: Equals
-* Invert Result: Disabled
+* **Tag Name** to `"TerrainType"`
+* **Match** to **Starts with**
+* **bStrict** to **true**
 
-This filter will include all points with the exact tag "Tree" and exclude everything else. You can then connect this to a **Point Filter** node to process only tree points.
+This will match all tags that start with `"TerrainType"` and ignore the value part, effectively filtering out only those tagged as `"TerrainType:Grass"`.
 
-### Notes
+#### Notes
 
-* Tags are case-sensitive, so "Tree" and "tree" are treated as different tags
-* Multiple tags on a point can be checked using multiple filter instances
-* Combine with other filters to create complex selection criteria
-* Useful for organizing data into categories like "Tree", "Rock", "Water", etc.
+* Tags are typically formatted as `Tag:Value` (e.g., `"Material:Wood"`), but this subnode can handle both simple and complex tag formats.
+* When using **Contains**, **Starts with**, or **Ends with**, be careful with partial matches that may unintentionally include unwanted data.
+* This filter works best when tags are consistently formatted to avoid ambiguity.

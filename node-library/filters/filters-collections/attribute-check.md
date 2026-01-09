@@ -6,91 +6,98 @@ icon: circle-dashed
 # Attribute Check
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Attribute existence check.
+> Checks if points have a specific attribute defined.
 
-### Overview
+#### Overview
 
-This filter tests whether a specified attribute exists on points in the input data. It's commonly used to validate that required data is present before processing points further in a PCG graph.
+This subnode filters points based on whether they contain a particular attribute. It helps ensure that only points with required data move forward in your procedural graph, preventing errors or unexpected behavior when working with optional or conditional attributes.
 
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes like **Point Filter**, **Point Switch**, or **Attribute Transfer**
-{% endhint %}
+It connects to the **Filter** pin of processing nodes that support filtering, allowing you to define which points should pass through based on attribute presence.
 
-### How It Works
+#### How It Works
 
-This filter checks if a point has an attribute with the specified name. If the attribute exists, the point passes the filter; otherwise, it fails.
+This subnode evaluates each point to determine if it contains a specified attribute. It performs two main checks:
 
-The filter can also check the attribute's data type and perform string matching on the attribute name itself when configured to do so.
+1. **Attribute Existence**: It first verifies whether an attribute with the given name exists on the point.
+2. **Domain Matching (Optional)**: If domain checking is enabled, it also ensures that the attribute's domain matches the configured setting (Data, Elements, or Match).
 
-### Configuration
+If the point passes all checks, it is considered to match the filter and will be included in the output of the connected processing node.
+
+<details>
+
+<summary>Inputs</summary>
+
+Expects a collection of points with optional attributes.
+
+</details>
+
+<details>
+
+<summary>Outputs</summary>
+
+Filters the input point collection based on attribute existence and domain matching criteria.
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
-
 **Attribute Name**
 
-_The name of the attribute to look for._
+_The name of the attribute to check for._
 
-When a point has an attribute with this exact name, it passes the filter. For example, if you set this to "Color", only points that have a "Color" attribute will pass.
+This is the exact string used to identify the attribute. For example, if you set this to "Color", the filter will only pass points that have an attribute named "Color".
 
 **Domain**
 
-_How to interpret the attribute domain when checking for existence._
+_Domain matching behavior._
 
-* **Any**: Ignore domain check - simply look for any attribute with the given name regardless of its domain.
-* **Data**: Check data domain - only consider attributes in the Data domain.
-* **Elements**: Check elements domain - only consider attributes in the Elements domain.
-* **Match**: Domains must match (must be set as part of the attribute name) - the attribute name must include the domain prefix like "Data::MyAttribute" or "Elements::MyAttribute".
+Controls how strictly the filter checks the attribute's domain:
+
+* **Any**: Ignores domain check and accepts any matching attribute.
+* **Data**: Only passes points where the attribute is defined in the Data domain.
+* **Elements**: Only passes points where the attribute is defined in the Elements domain.
+* **Match**: Requires that the attribute name includes a domain specifier (e.g., "Data::MyAttribute" or "Elements::MyAttribute") and matches exactly.
 
 **Match**
 
-_How to compare the attribute name._
+_Matching method for the attribute name._
 
-This setting controls how the filter interprets the attribute name. It's useful when you want to match attributes by partial names.
+Defines how to compare the attribute name:
 
-* **Equals**: The attribute name must exactly match the specified name.
+* **Equals**: The attribute name must match exactly.
 * **Contains**: The attribute name must contain the specified string.
 * **Starts with**: The attribute name must start with the specified string.
 * **Ends with**: The attribute name must end with the specified string.
 
-**Do Check Type**
+**bDoCheckType**
 
-_When enabled, also verify that the attribute is of the expected type._
+_When enabled, checks the attribute's data type._
 
-Enable this to ensure not only that an attribute exists but also that it's of a specific data type. This helps prevent errors in downstream processing steps that expect certain types of data.
+If enabled, this setting ensures that the attribute not only exists but also matches a specific data type. This adds an extra layer of validation to your filter.
 
 **Type**
 
-_The expected data type of the attribute._
+_Data type to match against._
 
-This setting is only active when "Do Check Type" is enabled. It specifies what kind of data the attribute should contain.
+Only used when **bDoCheckType** is enabled. Specifies the expected data type of the attribute (e.g., Integer, Float, Vector, etc.). Points with attributes of different types will fail this check.
 
-**Invert**
+**bInvert**
 
-_When enabled, reverse the result of this filter._
+_When enabled, inverts the result of this filter._
 
-If enabled, points that would normally pass now fail, and vice versa. This can be useful for excluding specific attributes rather than including them.
+If enabled, points that would normally pass the filter (i.e., those with the specified attribute) will instead be filtered out. Conversely, points without the attribute will be allowed through.
 
-### Usage Example
+#### Usage Example
 
-You're building a graph that processes vegetation points with different types of data. You want to ensure all points have a "Height" attribute before applying scaling operations.
+You're building a procedural forest where each tree point has an optional "TreeType" attribute. You want to process only points that have this attribute defined. Set the **Attribute Name** to "TreeType", leave **Domain** as "Any", and keep **bInvert** disabled. This ensures only trees with a defined type are included in downstream processing steps.
 
-1. Add the **Data Filter : Attribute Check** node
-2. Set **Attribute Name** to "Height"
-3. Leave **Domain** as "Any" (since you don't care which domain it's in)
-4. Set **Match** to "Equals"
-5. Enable **Do Check Type** and set **Type** to "Float"
-6. Connect this filter to a **Point Filter** node
-7. All points with a valid "Height" attribute will pass through, while those missing the attribute or with an incorrect type will be filtered out
+#### Notes
 
-### Notes
-
-* This filter is particularly useful for validating data integrity in complex PCG workflows
-* Combining multiple attribute checks allows you to create more sophisticated validation rules
-* When using "Match" modes, be careful about case sensitivity and special characters in attribute names
-* The "Invert" option can help you build exclusion logic without needing separate filter nodes
+* This filter is commonly used to validate data integrity before performing operations that depend on specific attributes.
+* When using **Match** mode, ensure your attribute names include the correct domain prefix (e.g., "Data::Height").
+* Combining this filter with other filters allows for complex conditional logic in your procedural workflows.

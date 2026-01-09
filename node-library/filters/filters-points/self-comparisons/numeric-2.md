@@ -6,177 +6,179 @@ icon: circle-dashed
 # Segment Length
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Creates a filter definition that compares the distance between the tested point and another inside the same dataset.
 
-### Overview
+#### Overview
 
-This filter evaluates whether the distance between a point and another point in the same dataset meets a specified condition. It's useful for filtering points based on their relationship to neighboring points, such as ensuring points are within a certain distance of each other or that segments between points meet specific length requirements.
+This subnode filters points based on the length of the segment formed between the tested point and another point in the same dataset. It's useful for identifying points that are either too close or too far from a reference point, which can be helpful in path generation, terrain modeling, or procedural mesh creation.
+
+It connects to **Filter** pins on processing nodes, where it defines a condition that points must meet to pass through. You can configure how the comparison is made, what distance threshold is used, and which point is used as the reference for measuring the segment length.
 
 {% hint style="info" %}
-Connects to Filter pins on processing nodes like **Filter Points** or **Cluster Points**
+Connects to Filter pins on processing nodes.
 {% endhint %}
 
-### How It Works
+#### How It Works
 
-The filter calculates the distance between:
+This filter evaluates a segment length by comparing the distance between two points in the same dataset. The tested point is compared against another point, which can be selected based on either a fixed index offset or a specific index value from an attribute.
 
-* The current point being tested
-* Another point in the dataset, determined by an index offset or specific index value
+It calculates the distance (or squared distance) between these two points and compares it to a threshold using a comparison operator. If the result matches the filter's condition, the point passes the filter.
 
-It then compares this distance against a threshold using a comparison operator. The result determines whether the point passes or fails the filter.
+The reference point is determined by:
 
-### Inputs and Outputs
+1. **Index Mode**: Either "Offset" (e.g., index + 1 = next point) or "Pick" (a specific index).
+2. **Index Value**: Either a constant value or an attribute value.
+3. **Index Safety**: How to handle out-of-bounds indices, such as clamping, tiling, or ignoring.
 
-#### Inputs
+If the reference point is invalid (e.g., trying to access the previous point of the first point in a path), it falls back to either "Pass" or "Fail".
 
-* **Filter**: Connection point for applying this filter to processing nodes
-* **Source Data**: The dataset containing points to be filtered
+<details>
 
-#### Outputs
+<summary>Inputs</summary>
 
-* **Pass**: Points that meet the filter criteria
-* **Fail**: Points that do not meet the filter criteria
+* Points from a single dataset
+* Optional attribute for threshold value (if set to read from attribute)
+* Optional attribute for index value (if set to read from attribute)
 
-### Configuration
+</details>
+
+<details>
+
+<summary>Outputs</summary>
+
+* Boolean result indicating whether the point passes the filter based on segment length
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
-
-**Threshold Input**
+**ThresholdInput**
 
 _Whether to read the threshold from an attribute on the point or a constant._
 
-When set to **Attribute**, you must specify which attribute to use for the threshold value. When set to **Constant**, you define a fixed numeric value.
+Controls if the comparison threshold is a fixed value or taken from a point attribute.
 
 **Values**:
 
-* **Constant**: Uses a fixed numeric value as the threshold
-* **Attribute**: Reads the threshold from an attribute on each point
+* **Constant**: Use a fixed numeric value.
+* **Attribute**: Read the threshold from a point attribute.
 
-**Threshold (Attr)**
+**ThresholdConstant**
 
-_The attribute to fetch threshold from_
+_Threshold_
 
-Only visible when "Threshold Input" is set to **Attribute**
+The fixed distance value used for comparison when ThresholdInput is set to Constant.
 
-**Threshold**
+**bCompareAgainstSquaredDistance**
 
-_The constant threshold value_
+\_ └─ Squared Distance\_
 
-Only visible when "Threshold Input" is set to **Constant**
-
-**└─ Squared Distance**
-
-_Whether to compare against the squared distance._
-
-When enabled, the filter uses the squared distance for performance reasons. This is useful when comparing against a squared threshold value.
+When enabled, compares against the squared distance instead of the actual distance. This can improve performance by avoiding square root calculations.
 
 **Comparison**
 
-_The comparison operator used to evaluate the distance against the threshold._
+_Comparison check_
+
+The comparison operator used to evaluate the segment length against the threshold.
 
 **Values**:
 
-* **StrictlyGreater**: Point passes if distance > threshold
-* **StrictlyLess**: Point passes if distance < threshold
-* **Equal**: Point passes if distance = threshold
-* **NotEqual**: Point passes if distance ≠ threshold
-* **NearlyEqual**: Point passes if distance ≈ threshold (within tolerance)
-* **NearlyNotEqual**: Point passes if distance ≉ threshold (outside tolerance)
+* **StrictlyGreater**: The segment length must be greater than the threshold.
+* **StrictlyLess**: The segment length must be less than the threshold.
+* **Equal**: The segment length must equal the threshold.
+* **NotEqual**: The segment length must not equal the threshold.
+* **NearlyEqual**: The segment length is approximately equal to the threshold (within tolerance).
+* **NearlyNotEqual**: The segment length is approximately not equal to the threshold (outside tolerance).
 
 **Tolerance**
 
-_The tolerance value used for approximate comparisons._
+_Rounding mode for approx. comparison modes_
 
-Only visible when Comparison is set to **NearlyEqual** or **NearlyNotEqual**
+Used only when Comparison is set to NearlyEqual or NearlyNotEqual. Defines how close the values must be to be considered equal.
 
-**Index Mode**
+**IndexMode**
 
-_How the index of the point to compare against is interpreted._
+_Index mode_
 
-**Values**:
-
-* **Pick**: The index represents a specific point in the dataset
-* **Offset**: The index represents an offset from the current point's position
-
-**Compare Against**
-
-_Whether to read the comparison index from an attribute or use a constant._
-
-When set to **Attribute**, you must specify which attribute to use for the index value. When set to **Constant**, you define a fixed numeric value.
+Determines how the index of the reference point is interpreted.
 
 **Values**:
 
-* **Constant**: Uses a fixed numeric value as the index
-* **Attribute**: Reads the index from an attribute on each point
+* **Pick**: The index value directly refers to a specific point.
+* **Offset**: The index value is an offset from the current point's index (e.g., 1 = next point, -1 = previous point).
 
-**Index (Attr)**
+**CompareAgainst**
 
-_The attribute to fetch comparison index from_
+_Type of OperandB_
 
-Only visible when "Compare Against" is set to **Attribute**
-
-**Index**
-
-_The constant index value_
-
-Only visible when "Compare Against" is set to **Constant**
-
-**Index Safety**
-
-_How to handle out-of-bounds indices._
+Controls whether the reference point index is a fixed value or taken from an attribute.
 
 **Values**:
 
-* **Ignore**: Out of bounds indices are ignored (0,1,2,-1,-1,-1,...)
-* **Tile**: Out of bounds indices are tiled (0,1,2,0,1,2...)
-* **Clamp**: Out of bounds indices are clamped (0,1,2,2,2,2...)
-* **Yoyo**: Out of bounds indices are mirrored and back (0,1,2,1,0,1...)
+* **Constant**: Use a fixed numeric index.
+* **Attribute**: Read the index from a point attribute.
 
-**└─ Tile on closed loops**
+**IndexConstant**
 
-_Whether to force tile safety on closed loop paths._
+_Index_
 
-When enabled, if the dataset forms a closed loop (like a circle), the filter will automatically use tile safety for index handling.
+The fixed index used to select the reference point when CompareAgainst is set to Constant.
 
-**Invalid Point Fallback**
+**IndexSafety**
 
-_What should this filter return when the point required for computing length is invalid?_
+_Index safety_
 
-This handles edge cases like the first or last point in an open path where there's no valid comparison point.
+How to handle cases where the calculated index for the reference point is out of bounds (e.g., negative or beyond the dataset size).
 
 **Values**:
 
-* **Pass**: Invalid points are considered to pass the filter
-* **Fail**: Invalid points are considered to fail the filter
+* **Ignore**: Skip the comparison if the index is invalid.
+* **Tile**: Wrap around to valid indices (e.g., index -1 becomes the last point).
+* **Clamp**: Clamp the index to the nearest valid value (e.g., index -1 becomes 0).
+* **Yoyo**: Mirror the index back and forth (e.g., index -1 becomes 1, index -2 becomes 2).
 
-**Invert**
+**bForceTileIfClosedLoop**
 
-_Whether the result of the filter should be inverted._
+\_ └─ Tile on closed loops\_
 
-When enabled, points that would normally pass now fail and vice versa. This also inverts the fallback behavior.
+When enabled, forces tiling behavior even if IndexSafety is set to a different mode for closed loop paths.
 
-### Usage Example
+**InvalidPointFallback**
 
-Create a filter to remove points that are too close to their previous neighbor in a path:
+_What should this filter return when the point required for computing length is invalid? (i.e, first or last point)_
 
-1. Set **Compare Against** to **Constant**
-2. Set **Index** to **-1** (to compare with the previous point)
-3. Set **Threshold Input** to **Constant**
-4. Set **Threshold** to **50**
-5. Set **Comparison** to **StrictlyLess**
-6. Set **Invalid Point Fallback** to **Pass** (so first points don't get filtered out)
+Controls what happens when the reference point cannot be computed (e.g., trying to get the previous point of the first point in a path).
 
-This will remove any point that is closer than 50 units to its previous neighbor in the dataset.
+**Values**:
 
-### Notes
+* **Pass**: The point passes the filter.
+* **Fail**: The point fails the filter.
 
-* The filter works on a single dataset, comparing each point against another point within that same dataset
-* For closed loops, consider using **Tile** index safety or enabling **Tile on closed loops** for better results
-* When using attribute-based thresholds or indices, ensure those attributes exist and are properly populated in your data
-* The **Squared Distance** option can improve performance when working with large datasets where exact distance calculations aren't required
+**bInvert**
+
+_Whether the result of the filter should be inverted or not. Note that this will also invert fallback results!_
+
+When enabled, reverses the outcome of the filter (i.e., points that would pass now fail and vice versa).
+
+#### Usage Example
+
+You're generating a path and want to ensure segments between consecutive points are at least 50 units long. You can use this subnode with:
+
+* ThresholdInput = Constant
+* ThresholdConstant = 50
+* IndexMode = Offset
+* IndexConstant = 1
+* Comparison = StrictlyGreater
+
+This will filter out any point where the distance to the next point in the path is less than 50 units.
+
+#### Notes
+
+* Using squared distance can improve performance for comparisons that don't require the actual distance.
+* The IndexSafety setting is crucial when working with paths or loops to avoid invalid index access.
+* This filter works best on ordered datasets like paths or sequences of points where point indices have meaningful relationships.

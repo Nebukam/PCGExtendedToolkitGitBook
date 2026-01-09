@@ -6,124 +6,178 @@ icon: circle-dashed
 # Mean Value
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Creates a filter definition that compares values against their mean.
 
-### Overview
+#### Overview
 
-This filter factory generates a condition that evaluates whether individual point values are above or below a calculated mean value from the input data. It's useful for filtering points based on statistical comparisons, such as removing points that are too far from the average.
+This subnode filters points based on how their attribute values compare to the calculated mean of all input values. It's useful for removing outliers or isolating points that are above or below average in a dataset, such as filtering terrain points that are higher or lower than the average elevation.
+
+It connects to Filter pins on processing nodes, where it defines the criteria for accepting or rejecting points based on their relationship to the computed mean value.
 
 {% hint style="info" %}
-Connects to **Filter** pins on processing nodes like **Point Filter**, **Point Transform**, or **Point Spawner**
+Connects to **Filter** pins on processing nodes.
 {% endhint %}
 
-### How It Works
+#### How It Works
 
-The filter calculates a mean value from all input point values using one of several methods, then compares each point's value against that mean. Points that meet the comparison criteria (above/below) will pass the filter.
+This subnode calculates a reference mean value from all input point attribute values and then compares each point's value against that mean. The comparison determines whether the point passes or fails the filter.
 
-The mean can be calculated as:
+The process works as follows:
 
-* Average (arithmetic mean)
-* Median (middle value when sorted)
-* Mode (most frequent value, with options for highest or lowest mode)
-* Central (middle value between min and max)
-* Fixed threshold (a set value)
+1. Collects all values from the specified target attribute across the input points.
+2. Calculates the mean using the selected method (Average, Median, Mode, etc.).
+3. Applies any configured thresholds to exclude points that are below or above the calculated mean.
+4. Optionally inverts the result so that points that would normally pass now fail and vice versa.
 
-### Inputs
+The filter evaluates each point individually, checking if its value meets the defined conditions relative to the computed mean.
 
-* **Points**: Input point data to filter
-* **Filter**: Output filter definition for use in downstream nodes
+<details>
 
-### Configuration
+<summary>Inputs</summary>
+
+Expects a set of points with an attribute specified in the **Target** setting.
+
+</details>
+
+<details>
+
+<summary>Outputs</summary>
+
+Points that pass the filter are allowed through; those that fail are excluded from further processing.
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
-
 **Target**
 
-_The attribute to use as the source of values for calculating the mean._
+_Target value to compile -- Will be translated to `double` under the hood._
 
-Select an attribute from your input data that contains numeric values. This will be used to compute the mean.
+Specifies which attribute's values will be used for calculating the mean and comparison. For example, you might use a "Height" or "Density" attribute.
+
+***
 
 **Measure**
 
-_How to interpret the comparison values._
+_Measure mode. If using relative, threshold values should be kept between 0-1, while absolute use the world-space length of the edge._
 
-* **Relative**: Values are interpreted as ratios (0-1) relative to the data range
-* **Absolute**: Values are interpreted as world-space units
+Controls how the filter interprets thresholds:
 
-**Mean Method**
+* **Relative**: Thresholds are treated as ratios (0 to 1), where 0 is minimum and 1 is maximum.
+* **Absolute**: Thresholds are in world-space units.
 
-_Which statistical method to use for calculating the reference value._
+**Values**:
 
-* **Average**: Arithmetic mean of all values
-* **Median**: Middle value when sorted
-* **Mode (Highest)**: Most frequent value, using the highest mode if multiple exist
-* **Mode (Lowest)**: Most frequent value, using the lowest mode if multiple exist
-* **Central**: Value halfway between min and max
-* **Fixed**: Use a fixed threshold value
+* **Relative**: Thresholds are normalized between 0 and 1.
+* **Absolute**: Thresholds use actual world-space values.
 
-**Mean Value**
+***
 
-_The fixed value to use when Mean Method is set to Fixed._
+**MeanMethod**
 
-This value is used directly as the comparison threshold.
+_Which mean value is used to check whether the tested value is above or below._
 
-**Mode Tolerance**
+Selects the method for calculating the reference mean:
 
-_Tolerance for determining what constitutes a mode._
+* **Average**: The arithmetic mean of all values.
+* **Median**: The middle value when all values are sorted.
+* **Mode (Highest)**: The most frequent value, preferring higher values.
+* **Mode (Lowest)**: The most frequent value, preferring lower values.
+* **Central**: The midpoint between the minimum and maximum input values.
+* **Fixed**: Uses a fixed threshold value defined in **MeanValue**.
 
-Used when Mean Method is set to Mode. Defines how close values must be to be considered part of the same mode.
+**Values**:
 
-**Do Exclude Below Mean**
+* **Average**: Computes average of all values.
+* **Median**: Finds middle value after sorting.
+* **Mode (Highest)**: Finds most common value, preferring higher ones.
+* **Mode (Lowest)**: Finds most common value, preferring lower ones.
+* **Central**: Uses midpoint between min and max.
+* **Fixed**: Uses a fixed value from **MeanValue**.
 
-_When enabled, points with values below the mean are excluded._
+***
 
-This creates an exclusion zone below the mean value.
+**MeanValue**
 
-**Exclude Below**
+_Minimum value threshold_
 
-_The minimum threshold for excluding points below the mean._
+Used only when **MeanMethod** is set to **Fixed**. Defines the exact mean value used for comparison.
 
-Points with values less than this will be filtered out.
+***
 
-**Do Exclude Above Mean**
+**ModeTolerance**
 
-_When enabled, points with values above the mean are excluded._
+_Used to estimate the mode value._
 
-This creates an exclusion zone above the mean value.
+Only active when **MeanMethod** is **Mode (Highest)** or **Mode (Lowest)**. Controls how closely values must match to be considered part of the "mode" — higher tolerance allows more variation.
 
-**Exclude Above**
+***
 
-_The maximum threshold for excluding points above the mean._
+**bDoExcludeBelowMean**
 
-Points with values greater than this will be filtered out.
+_Exclude if value is below a specific threshold._
 
-**Invert**
+When enabled, points with values below the calculated mean are excluded from passing the filter.
 
-_When enabled, the filter result is inverted._
+***
 
-If a point would normally pass, it fails, and vice versa.
+**ExcludeBelow**
 
-### Usage Example
+_Minimum value threshold._
 
-You have a set of points with a "Height" attribute. You want to keep only points that are above the average height, but exclude points that are too low or too high.
+The minimum value used to determine exclusion when **bDoExcludeBelowMean** is enabled. This can be a relative ratio (0–1) or an absolute value depending on the **Measure** setting.
 
-1. Connect your point data to the **Filter : Mean** node
-2. Set **Target** to "Height"
-3. Set **Mean Method** to "Average"
-4. Enable **Do Exclude Below Mean** and set **Exclude Below** to 0.1
-5. Connect this filter to a **Point Filter** node
-6. The result will keep only points with heights above the average, excluding those that are too low
+***
 
-### Notes
+**bDoExcludeAboveMean**
 
-* The filter works on single numeric attributes (float or double)
-* When using relative measure, values should be between 0 and 1
-* Mode methods work best when there are repeated values in your data
-* You can combine multiple filters to create complex conditions
-* The filter evaluates all points before making comparisons, so it's good for global statistical filtering
+_Exclude if value is above a specific threshold._
+
+When enabled, points with values above the calculated mean are excluded from passing the filter.
+
+***
+
+**ExcludeAbove**
+
+_Maximum threshold._
+
+The maximum value used to determine exclusion when **bDoExcludeAboveMean** is enabled. This can be a relative ratio (0–1) or an absolute value depending on the **Measure** setting.
+
+***
+
+**bInvert**
+
+_If enabled, invert the result of the test_
+
+When enabled, points that would normally pass the filter are excluded, and those that fail are allowed through.
+
+***
+
+**Config**
+
+_Filter Config._
+
+A grouped set of settings that define how the filter operates, including the target attribute, mean calculation method, and exclusion thresholds.
+
+#### Usage Example
+
+You have a point cloud representing terrain elevation data. You want to keep only points that are above average elevation but exclude any that are too far above or below the mean.
+
+1. Set **Target** to your "Elevation" attribute.
+2. Set **MeanMethod** to **Average**.
+3. Enable **bDoExcludeBelowMean** and set **ExcludeBelow** to `0.2`.
+4. Enable **bDoExcludeAboveMean** and set **ExcludeAbove** to `0.2`.
+5. Connect this subnode to a Filter pin on a processing node like "Filter Points".
+
+This setup will keep only points whose elevation is within 20% above or below the average elevation.
+
+#### Notes
+
+* The filter works best when input data has a relatively normal distribution.
+* Using **Mode** methods can be effective for filtering based on dominant values in clustered datasets.
+* Combining with other filters allows complex multi-criteria point selection.

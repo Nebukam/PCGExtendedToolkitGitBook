@@ -6,125 +6,113 @@ icon: circle-dashed
 # Direction
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Filters edges based on the dot product comparison between the edge direction and a reference direction.
+> Dot product comparison of the edge direction against a local attribute or constant.
 
-### Overview
+#### Overview
 
-This factory creates a filter that evaluates whether an edge's direction aligns with a specified reference direction. It's used to selectively keep or discard edges based on their orientation relative to a given vector.
+This subnode filters edges based on their directional alignment with a reference direction. It evaluates whether an edge's orientation matches or opposes a specified direction, which can be either a fixed vector or derived from point attributes. This is useful for creating directional constraints in graph-based procedural generation, such as ensuring paths flow in a certain direction or align with terrain features.
 
-{% hint style="info" %}
-Connects to **Filter** pins on edge processing nodes like "Path Builder", "Cluster Filter", or other nodes that accept edge filters.
-{% endhint %}
+It connects to the **Filter** pin of processing nodes that handle edge data.
 
-### How It Works
+#### How It Works
 
-The filter compares the direction of each edge against a reference vector using either:
+This subnode evaluates each edge in a cluster by computing a dot product between the edge's direction and a reference direction. The result determines whether the edge passes the filter.
 
-* A precise dot product comparison
-* A fast hash-based comparison with tolerance
+* If using **Dot** comparison, it computes the dot product of the edge direction and the reference direction.
+* If using **Hash** comparison, it performs a simplified hash-based check with tolerance.
+* The reference direction can be a constant value or read from an attribute on the input points.
+* When enabled, the reference direction can be transformed by the point's local transform.
+* Optionally, the result of the comparison can be inverted.
 
-It determines if an edge should be included in downstream processing based on this directional relationship.
+The subnode supports both **precise** (Dot) and **fast** (Hash) comparison modes. The Hash mode is faster but less accurate, and does not support adjacency consolidation.
 
-### Inputs
+<details>
 
-* **Edge Data**: The collection of edges to filter
-* **Point Data**: The point data used for attribute lookups and transforms
+<summary>Inputs</summary>
 
-### Outputs
+Expects edge data from a cluster, with optional point attributes for reference direction if using attribute-based input.
 
-* **Filtered Edges**: The subset of edges that pass the directional test
+</details>
 
-### Configuration
+<details>
 
-***
+<summary>Outputs</summary>
 
-#### General
+Filters edges based on the comparison result. Edges that meet the directional criteria are passed through; those that do not are discarded.
 
-**Direction Settings**
+</details>
 
-_Controls how the edge's direction is determined._
-
-The filter needs to know which way each edge points. You can configure it to:
-
-* Use the edge's start and end point indices directly
-* Sort endpoints using custom rules
-* Read a vector attribute from the edge data to determine direction
-* Use the edge's own directional vector if available
-
-**Comparison Quality**
-
-_Determines how precise the comparison is._
-
-* **Dot (Precise)**: Uses full dot product calculation for accurate results
-* **Hash (Fast)**: Uses simplified hash comparison, faster but less precise
-
-**Compare Against**
-
-_Specifies where the reference direction comes from._
-
-* **Constant**: Use a fixed vector value you define
-* **Attribute**: Read the reference direction from a point attribute
-
-**Direction (Attr)**
-
-_The attribute to read the reference direction from._
-
-Only visible when "Compare Against" is set to "Attribute". Selects which point attribute contains the reference vector.
-
-**Invert Direction**
-
-_Reverse the reference direction before comparison._
-
-When enabled, the filter uses the opposite of the selected attribute's vector value.
-
-**Direction**
-
-_The fixed reference vector used for comparison._
-
-Only visible when "Compare Against" is set to "Constant". Defines the vector against which edges are compared.
-
-**Transform Direction**
-
-_Apply local point transforms to the reference direction._
-
-When enabled, the reference direction is transformed by each point's local transform before comparison. Useful for aligning with world space or object-relative directions.
+#### Configuration
 
 ***
 
-#### Dot Comparison Settings
+**DirectionSettings**
 
-_Configures the dot product test parameters._
+_Defines the direction in which points will be ordered to form the final paths._
 
-**Tolerance**
+Controls how edge directions are computed from point positions.
 
-_The acceptable deviation from perfect alignment._
+**ComparisonQuality**
 
-A value of 0 means the edge must be perfectly aligned. Higher values allow more deviation.
+_Type of check; Note that Fast comparison ignores adjacency consolidation._
 
-**Invert Result**
+Determines whether to use precise dot product comparison or a faster hash-based method.
 
-_Change the comparison outcome._
+**Values**:
 
-When enabled, edges that would normally pass now fail, and vice versa.
+* **Dot (Precise)**: Extensive comparison using Dot product
+* **Hash (Fast)**: Simplified check using hash comparison with a destructive tolerance
 
-***
+**CompareAgainst**
 
-#### Hash Comparison Settings
+_Where to read the compared direction from._
 
-_Configures the fast hash-based test parameters._
+Specifies whether the reference direction is a constant value or comes from an attribute.
 
-**Tolerance**
+**Values**:
 
-_The tolerance for the hash comparison._
+* **Constant**: Use a constant, user-defined value.
+* **Attribute**: Read the value from the input data.
 
-Higher values make the comparison more lenient, allowing more edges to pass through.
+**bInvertDirection**
 
-**Invert Result**
+_When enabled, the reference direction will be inverted for comparison._
 
-_Change the comparison outcome._
+Reverses the reference direction before performing the dot product or hash comparison.
 
-When enabled, edges that would normally pass now fail, and vice versa.
+**DirectionConstant**
+
+_Direction for computing the dot product against the edge's._
+
+The fixed vector used as the reference direction when CompareAgainst is set to Constant.
+
+**bTransformDirection**
+
+_When enabled, transform the reference direction with the local point' transform._
+
+Applies the point's local transform to the reference direction before comparison.
+
+**DotComparisonDetails**
+
+_Dot comparison settings_
+
+Settings for fine-tuning the dot product comparison, such as tolerance thresholds.
+
+**HashComparisonDetails**
+
+_Hash comparison settings_
+
+Settings for fine-tuning the hash-based comparison, including tolerance and precision.
+
+#### Usage Example
+
+Use this subnode to filter edges so that only those pointing in a specific direction (e.g., upward along a slope) are included in the final graph. For example, you could set the reference direction to `FVector::UpVector` and enable **Invert Direction** to keep only edges that point downward.
+
+#### Notes
+
+* The Hash comparison mode is faster but less precise than Dot.
+* When using attribute-based directions, ensure the attribute exists on the input points.
+* This filter works best with clusters where edge directions are meaningful (e.g., from a graph or pathfinding setup).

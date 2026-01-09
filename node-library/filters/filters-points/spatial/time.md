@@ -6,125 +6,212 @@ icon: circle-dashed
 # Time
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Creates a filter definition that checks points position against a path/spline/polygon2D closest alpha.
 
-### Overview
+#### Overview
 
-This filter evaluates whether points are at a specific time/position along one or more paths, splines, or polygon shapes. It compares each point's closest position on the path to a target time value and passes or fails based on that comparison.
+This subnode filters points based on their time along a spline or polygon path. It evaluates where each point lies in relation to the path's parameterization and compares that value against a target operand. This is useful for creating effects like "points within 50% of a path's length" or "points near the start of a route."
 
-{% hint style="info" %}
-Connects to Filter pins on processing nodes like **Filter Points**, **Select Points**, or **Split Points**.
-{% endhint %}
+It connects to **Filter** pins on processing nodes, allowing you to define which points should pass through based on their position along a path.
 
-### How It Works
+#### How It Works
 
-The filter works by:
+This filter calculates how far along a path each point is, using a normalized time value (alpha) from 0.0 to 1.0. For each input point:
 
-1. Finding the closest point on a path/spline/polygon to each input point
-2. Calculating the "time" or alpha value of that closest point along the path (0 = start, 1 = end)
-3. Comparing this time value against a target value using the selected comparison operator
-4. Passing or failing points based on whether they meet the condition
+1. It projects the point onto one or more paths/splines.
+2. It determines the closest point on the path and computes its alpha value (time along the path).
+3. It compares this alpha value against a target operand using a comparison operator.
+4. The result of that comparison determines whether the point passes the filter.
 
-### Inputs
+The behavior changes depending on how multiple paths are handled:
 
-* **Points**: Points to be filtered
-* **Paths**: One or more paths, splines, or polygons to test against
+* If a point is near multiple paths, it can pick the closest or consolidate values from all paths.
+* You can choose to invert the result of the test for more complex filtering logic.
 
-### Outputs
+<details>
 
-* **Pass**: Points that meet the filter criteria
-* **Fail**: Points that do not meet the filter criteria
+<summary>Inputs</summary>
 
-### Configuration
+This subnode expects points and optionally one or more paths/splines to compare against. It can also use collection data if configured to do so.
+
+</details>
+
+<details>
+
+<summary>Outputs</summary>
+
+It outputs a filtered set of points based on whether their projected time along the path meets the comparison criteria.
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
+**SampleInputs**
 
-**Sample Inputs**
+_Sample inputs._
 
-_Controls which input paths are used for testing._
+Controls how input paths are sampled. Can be "All" or "Selected".
 
-* **All**: All input paths will be considered for evaluation.
-* **Closest Only**: Only the closest path to each point is used.
+**Values**:
+
+* **All**: All input paths are used.
+* **Selected**: Only selected paths are used.
+
+***
 
 **Pick**
 
-_Determines how to handle multiple paths when a point is near more than one._
+_If a point is both inside and outside a spline (if there are multiple ones), decide what value to favor._
 
-* **Closest**: Use only the time value from the closest path.
-* **All**: Combine time values from all paths using consolidation method.
+Controls how to handle cases where a point is near multiple paths.
 
-**Time Consolidation**
+**Values**:
 
-_Controls how to combine time values when multiple paths are considered._
+* **Closest**: Use the time from the closest path.
+* **All**: Use all times and consolidate them.
+
+***
+
+**TimeConsolidation**
+
+_If a point is both inside and outside a spline (if there are multiple ones), decide what value to favor._
+
+Only used when `Pick` is set to **All**. Determines how to combine time values from multiple paths.
+
+**Values**:
 
 * **Min**: Use the smallest time value.
 * **Max**: Use the largest time value.
 * **Average**: Use the average of all time values.
 
+***
+
 **Comparison**
 
-_Selects the condition used to compare time values._
+_Comparison_
 
-* **==**: Point passes only if its time exactly matches the target.
-* **!=**: Point passes only if its time does not match the target.
-* **>=**: Point passes if its time is greater than or equal to the target.
-* **<=**: Point passes if its time is less than or equal to the target.
-* **>**: Point passes if its time is strictly greater than the target.
-* **<**: Point passes if its time is strictly less than the target.
-* **\~=**: Point passes if its time is nearly equal to the target (within tolerance).
-* \*\*!\~=: Point passes if its time is not nearly equal to the target (outside tolerance).
+The comparison operator used to test the point's time against the operand.
 
-**Compare Against**
+**Values**:
 
-_Specifies whether to compare against a constant value or an attribute._
+* **StrictlyEqual**: `==`
+* **StrictlyNotEqual**: `!=`
+* **EqualOrGreater**: `>=`
+* **EqualOrSmaller**: `<=`
+* **StrictlyGreater**: `>`
+* **StrictlySmaller**: `<`
+* **NearlyEqual**: `~=` (near equality with tolerance)
+* **NearlyNotEqual**: `!~=` (near inequality with tolerance)
 
-* **Constant**: Use the fixed value in Operand B.
+***
+
+**CompareAgainst**
+
+_Type of OperandB_
+
+Defines whether the operand is a constant value or an attribute from the input data.
+
+**Values**:
+
+* **Constant**: Use a fixed numeric value.
 * **Attribute**: Read the comparison value from a point attribute.
 
-**Operand B (Attr)**
-
-_The attribute containing time values for comparison when "Compare Against" is set to Attribute._
+***
 
 **Operand B**
 
-_The fixed time value for comparison when "Compare Against" is set to Constant._
+_Operand B for testing_
+
+The value to compare against when `CompareAgainst` is set to **Constant**.
+
+***
+
+**Operand B (Attr)**
+
+_Operand B for testing_
+
+The attribute name to read the comparison value from when `CompareAgainst` is set to **Attribute**.
+
+***
 
 **Tolerance**
 
-_Tolerance range used for nearly equal comparisons._
+_Near-equality tolerance_
 
-**Invert**
+Only used when using "Nearly Equal" or "Nearly Not Equal" comparisons. Defines how close two values must be to be considered equal.
 
-_When enabled, reverses the filter result (pass becomes fail and vice versa)._
+***
 
-**Winding Mutation**
+**bInvert**
 
-_Controls how path winding is handled for polygon testing._
+_If enabled, invert the result of the test_
 
-* **Unchanged**: Use original winding.
-* **Clockwise**: Force all paths to be clockwise.
-* **CounterClockwise**: Force all paths to be counter-clockwise.
+When enabled, points that would normally pass now fail and vice versa.
+
+***
+
+**WindingMutation**
+
+_Lets you enforce a path winding for testing_
+
+Controls whether the path winding is preserved or forced to a specific orientation during projection.
+
+**Values**:
+
+* **Unchanged**: Preserve original winding.
+* **Clockwise**: Force clockwise winding.
+* **CounterClockwise**: Force counter-clockwise winding.
+
+***
 
 **Fidelity**
 
-_Determines the resolution of polygon approximation from splines._
+_When projecting, defines the resolution of the polygon created from the spline. Lower values means higher fidelity, but slower execution._
 
-Lower values = higher fidelity but slower performance. Higher values = lower fidelity but faster execution.
+Controls how accurately a spline is converted into a polygon for projection. Higher fidelity (lower number) gives more precise results but takes longer to compute.
 
-**Check Against Data Bounds**
+***
 
-_When enabled, uses collection bounds instead of individual points for testing._
+**bCheckAgainstDataBounds**
 
-Useful when working with collections to avoid expensive per-point calculations.
+_If enabled, when used with a collection filter, will use collection bounds as a proxy point instead of per-point testing_
 
-**Ignore Self**
+When using this subnode in a collection context, it can test against the bounding box of collections rather than individual points for performance.
 
-_When enabled, prevents a collection from being tested against itself._
+***
 
-This is useful when using collection filters to avoid self-referencing scenarios.
+**bIgnoreSelf**
+
+_If enabled, a collection will never be tested against itself_
+
+In collection filtering, prevents a collection from being compared to its own data.
+
+***
+
+**Config**
+
+_Filter Config._
+
+A group of settings that define how the filter behaves. Includes all the above options in one place.
+
+#### Usage Example
+
+Use this subnode to filter points that are within the first 30% of a path. Set:
+
+* `Comparison` to **EqualOrSmaller**
+* `CompareAgainst` to **Constant**
+* `OperandBConstant` to `0.3`
+* `Pick` to **Closest**
+
+This will keep only those points that project onto the path before the 30% mark.
+
+#### Notes
+
+* This filter works best with closed paths or splines where a meaningful time parameter exists.
+* For open paths, the time is normalized from start to end of the path.
+* Using `bCheckAgainstDataBounds` can significantly improve performance when working with large collections.

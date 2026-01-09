@@ -4,67 +4,79 @@ icon: circle-dashed
 
 # Noise
 
-See [noises](../../misc/noises/ "mention")
-
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a filter that compares a point's attribute value against spatial noise.
+> Compare a point's value against spatial noise.
 
-### Overview
+#### Overview
 
-This filter evaluates whether a point passes or fails based on a comparison between an input value and the result of a 3D noise function at that point's location. It's useful for creating organic, natural-looking variations in procedural content.
+This subnode filters points based on their comparison to a generated noise value at their location. It evaluates whether a point passes or fails a condition using a noise function, making it useful for creating natural-looking variations in procedural content. You can use this to selectively include or exclude points that meet certain noise-based criteria.
 
 {% hint style="info" %}
-Connects to Filter pins on processing nodes like **Filter Points** or **Branch**
+Connects to **Filter** pins on processing nodes.
 {% endhint %}
 
-### How It Works
+#### How It Works
 
-The filter calculates a noise value at each point's position and compares it against a target value using the specified comparison operator. Points that meet the comparison condition will pass the filter.
+This subnode generates a 3D noise value at each point's location and compares it against a threshold using the configured comparison operator. The noise function is evaluated using the point's world position as input, creating spatially varying values that can be used to determine if a point should pass or fail the filter.
 
-### Inputs
+The process works as follows:
 
-* **Points**: Input points to be filtered
-* **Operand B**: The value to compare against the noise result
+1. For each point in the input data, its world position is used as input to a 3D noise generator
+2. A noise value is computed at that position
+3. The resulting noise value is compared against a fixed operand using the selected comparison operator
+4. If the comparison evaluates to true, the point passes the filter; otherwise, it fails
 
-### Outputs
+The noise function provides smooth, natural-looking variations across space, making this useful for creating organic patterns or selective filtering based on spatial properties.
 
-* **Pass**: Points that meet the comparison condition
-* **Fail**: Points that do not meet the comparison condition
+<details>
 
-### Configuration
+<summary>Inputs</summary>
+
+Expects a collection of points with valid world positions. The filter uses these positions to evaluate noise values.
+
+</details>
+
+<details>
+
+<summary>Outputs</summary>
+
+Points that pass the comparison against the noise value are included in the output; those that fail are excluded.
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
-
 **Comparison**
 
-_Controls how to compare the input value against the noise result._
+_The comparison operator used to evaluate the noise value against the operand._
 
-The filter evaluates whether `NoiseValue` compared to `OperandB` passes the test.
+Controls how the generated noise value is compared to the fixed operand.
 
 **Values**:
 
-* **==**: Input equals noise value
-* **!=**: Input does not equal noise value
-* **>=**: Input is greater than or equal to noise value
-* **<=**: Input is less than or equal to noise value
-* **>**: Input is strictly greater than noise value
-* **<**: Input is strictly less than noise value
-* **\~=**: Input is nearly equal to noise value (within tolerance)
-* \*\*!\~=: Input is not nearly equal to noise value (outside tolerance)
+* **==**: The noise value must exactly equal the operand
+* **!=**: The noise value must not equal the operand
+* **>=**: The noise value must be greater than or equal to the operand
+* **<=**: The noise value must be less than or equal to the operand
+* **>**: The noise value must be strictly greater than the operand
+* **<**: The noise value must be strictly less than the operand
+* **\~=**: The noise value must be nearly equal to the operand (within a small tolerance)
 
-### Usage Example
+**Config**
 
-Use this filter to randomly select a percentage of points for special treatment. For example, set OperandB to 0.5 and use the `>` comparison to pass only points where the noise value is greater than 0.5. This creates a random selection that varies spatially.
+_Filter Config._
 
-### Notes
+Defines how the comparison between the noise value and the operand is performed.
 
-* The noise function uses 3D coordinates to generate values
-* Points with no valid attribute data will be handled based on the initialization failure policy
-* Combine multiple filters to create more complex selection patterns
-* Useful for creating natural-looking distributions, terrain variations, or organic point placement
+#### Usage Example
+
+Use this subnode to create a terrain where only points with noise values above 0.5 are selected for further processing, such as placing vegetation. This ensures that vegetation appears in areas of higher noise values, creating a natural-looking distribution across the landscape.
+
+#### Notes
+
+The noise function used is deterministic and will produce consistent results for the same input position. Adjusting the noise parameters (frequency, amplitude) in the underlying noise generator affects how the filtering behaves spatially.

@@ -6,106 +6,117 @@ icon: circle-dashed
 # String
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Creates a filter definition that compares two string attribute values.
 
-### Overview
+#### Overview
 
-This filter factory generates a comparison operation between two string values, allowing you to test conditions such as equality, substring matching, or length-based comparisons. It's used to filter points based on string attribute values in your PCG graph.
+This subnode defines a filtering condition based on comparing two string values. It's used to determine whether points in a dataset meet specific text-based criteria, such as matching or differing in length. You can compare an attribute from the point data against either another attribute or a constant string value.
+
+It connects to the **Filter** input pin of processing nodes that support point filtering. Multiple filter subnodes can be combined to create more complex filtering logic.
 
 {% hint style="info" %}
-Connects to **Filter** pins on processing nodes like **Point Filter**, **Point Switch**, or **Point Merge**.
+Connects to the **Filter** pin of processing nodes (e.g., Point Filter, Path Filter).
 {% endhint %}
 
-### How It Works
+#### How It Works
 
-This factory evaluates a comparison between two string operands. The first operand (Operand A) is always read from an attribute on the input points. The second operand (Operand B) can be either a constant value or another attribute, depending on your configuration. You can choose from various comparison types to define what constitutes a "pass" for each point.
+This subnode evaluates a comparison between two string operands for each point. The first operand (Operand A) is always read from an attribute on the input data. The second operand (Operand B) can be either another attribute or a constant string value, depending on the **CompareAgainst** setting.
 
-### Configuration
+The comparison logic depends on the selected **Comparison** type:
+
+* For strict comparisons (`==`, `!=`), it checks if the strings are exactly equal or not.
+* For length-based comparisons (`>= (Length)`, `< (Length)`), it compares the number of characters in each string.
+* For locale-aware comparisons (`> (Locale)`, `< (Locale)`), it performs a lexicographical comparison based on system locale settings.
+
+If **bSwapOperands** is enabled, the order of operands is reversed before the comparison is made. This can be useful for inverting certain conditions like "contains" checks.
+
+<details>
+
+<summary>Inputs</summary>
+
+Expects point data with attributes that match the names specified in Operand A and Operand B (if using attribute mode).
+
+</details>
+
+<details>
+
+<summary>Outputs</summary>
+
+Produces a filter definition that can be consumed by point filtering nodes to determine which points pass or fail the comparison.
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
-
 **Operand A**
 
-_The first string value to compare, read from an attribute on the input points._
+_The first string operand, read from an attribute on the input data._
 
-Set this to the name of the string attribute you want to test. For example, if you have an attribute named `ObjectName`, set this to `ObjectName`.
+This defines the source of the first string value for comparison. It must match an existing attribute name in your input data.
 
 **Comparison**
 
-_How to compare the two operands._
+_The type of comparison to perform between the two operands._
 
 **Values**:
 
-* **==**: Operand A strictly equals Operand B
-* **!=**: Operand A strictly does not equal Operand B
-* **== (Length)**: Operand A's length strictly equals Operand B's length
-* **!= (Length)**: Operand A's length strictly does not equal Operand B's length
-* **>= (Length)**: Operand A's length is equal to or greater than Operand B's length
-* **<= (Length)**: Operand A's length is equal to or smaller than Operand B's length
-* **> (Length)**: Operand A's length is strictly greater than Operand B's length
-* **< (Length)**: Operand A's length is strictly smaller than Operand B's length
-* **> (Locale)**: Operand A is locale strictly greater than Operand B (lexicographical)
-* **< (Locale)**: Operand A is locale strictly smaller than Operand B (lexicographical)
-* **Contains**: Operand A contains Operand B as a substring
-* **Starts With**: Operand A starts with Operand B
-* **Ends With**: Operand A ends with Operand B
+* **==**: Checks if Operand A is strictly equal to Operand B.
+* **!=**: Checks if Operand A is strictly not equal to Operand B.
+* **== (Length)**: Checks if the length of Operand A equals the length of Operand B.
+* **!= (Length)**: Checks if the length of Operand A does not equal the length of Operand B.
+* **>= (Length)**: Checks if the length of Operand A is greater than or equal to the length of Operand B.
+* **<= (Length)**: Checks if the length of Operand A is less than or equal to the length of Operand B.
+* **> (Length)**: Checks if the length of Operand A is strictly greater than the length of Operand B.
+* **< (Length)**: Checks if the length of Operand A is strictly smaller than the length of Operand B.
+* **> (Locale)**: Performs a locale-aware lexicographical comparison, checking if Operand A is greater than Operand B.
+* **< (Locale)**: Performs a locale-aware lexicographical comparison, checking if Operand A is smaller than Operand B.
 
 **Compare Against**
 
-_Whether Operand B is a constant or an attribute._
+_Determines whether Operand B reads from an attribute or uses a constant value._
 
-When set to **Attribute**, Operand B will be read from another string attribute on the input points. When set to **Constant**, Operand B uses the value you provide in the next setting.
+**Values**:
+
+* **Constant**: Operand B will use the value set in **Operand B**.
+* **Attribute**: Operand B will read from an attribute on the input data, specified by **Operand B (Attr)**.
 
 **Operand B (Attr)**
 
-_The second string value to compare, read from an attribute on the input points._
+_The second string operand, read from an attribute on the input data._
 
-Only visible when "Compare Against" is set to **Attribute**. Set this to the name of the second string attribute you want to test against.
+Only visible when **Compare Against** is set to **Attribute**. This defines the source of the second string value for comparison.
 
 **Operand B**
 
-_The second string value to compare, used as a constant._
+_The second string operand, used as a constant value._
 
-Only visible when "Compare Against" is set to **Constant**. Enter the string value you want to compare against.
+Only visible when **Compare Against** is set to **Constant**. This sets the fixed string value for Operand B.
 
 **Swap Operands**
 
-_When enabled, swaps the order of operands in the comparison._
+_When enabled, reverses the order of operands before performing the comparison._
 
-This is useful for inverting certain comparisons like "contains". For example, if you're checking that a point's attribute contains a specific substring, you might swap the operands to check if the substring contains the point's attribute instead.
+Useful for inverting certain comparisons or changing how "contains" checks are interpreted.
 
-### Usage Example
+#### Usage Example
 
-You have a set of points with a `Category` string attribute and want to filter only those where the category is "Building".
+You have a point cloud with an attribute named `ObjectName` and want to filter points where the object name is longer than 10 characters. Set:
 
-1. Create a **Filter : Compare (String)** node
-2. Set **Operand A** to `Category`
-3. Set **Comparison** to **==**
-4. Set **Compare Against** to **Constant**
-5. Set **Operand B** to `"Building"`
+* Operand A = `ObjectName`
+* Comparison = `>= (Length)`
+* Compare Against = `Constant`
+* Operand B = `10`
 
-This filter will pass only points where the `Category` attribute strictly equals "Building".
+This will pass all points where the length of `ObjectName` is greater than or equal to 10.
 
-### Notes
+#### Notes
 
-* The comparison is case-sensitive by default
-* For length-based comparisons, the string lengths are compared numerically
-* Use "Swap Operands" when you need to reverse the direction of a substring check
-* This filter works with any string attributes in your point data
-* You can chain multiple instances together using **Filter : Combine** to create complex filtering logic
-
-### Inputs and Outputs
-
-#### Inputs
-
-* **Default**: Accepts point data with string attributes to be filtered
-
-#### Outputs
-
-* **Filter**: Outputs the filtered point data based on the comparison criteria
+* The comparison logic treats empty strings as valid inputs.
+* For locale-aware comparisons, results may vary based on system language settings.
+* When using attribute-based operands, ensure the attributes exist and are of string type in your input data.
+* Combining multiple filter subnodes allows for complex filtering rules.

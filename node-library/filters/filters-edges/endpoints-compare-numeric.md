@@ -6,52 +6,65 @@ icon: circle-dashed
 # Endpoints Compare (Numeric)
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Filters edges based on a numeric comparison between attribute values at the edge's endpoints.
+> Compare the value of an attribute on each of the edge endpoint.
 
-### Overview
+#### Overview
 
-This filter factory creates a condition that compares numeric attribute values at the start and end points of edges. It determines whether an edge should pass or fail a test based on the result of that comparison.
+This subnode filters edges based on a numeric comparison between attribute values at the edge's endpoints. It allows you to define conditions that must be met for an edge to pass through the filter, such as ensuring one endpoint's attribute is greater than another's.
+
+It connects to Filter pins on processing nodes that handle edge data, enabling conditional logic in your procedural graphs. You can use it to create rules like "only keep edges where the start point has a higher value than the end point" or "filter out edges where both endpoints have nearly equal values."
 
 {% hint style="info" %}
-Connects to **Filter** pins on edge processing nodes like **Edge Filter**, **Edge Splitter**, or **Edge Transformer**.
+Connects to **Filter** pins on processing nodes that accept edge filters.
 {% endhint %}
 
-### How It Works
+#### How It Works
 
-This filter evaluates a numeric comparison between attribute values at an edge's endpoints. The specific comparison depends on the mode selected, and the result determines if the edge passes the filter.
+This subnode evaluates numeric attribute values at the two endpoints of each edge and compares them using a specified comparison operator. The logic depends on the selected mode:
 
-The filter supports multiple comparison operators (equal, greater than, etc.) and can be inverted to reverse the logic.
+* **Start <-> End**: Compares the start point's attribute value against the end point's attribute value.
+* **Edge <-> Start**: Compares an edge's own attribute value against its start point's attribute value.
+* **Edge <-> End**: Compares an edge's own attribute value against its end point's attribute value.
+* **Edge <-> Start, End**: Compares an edge's own attribute value against both endpoints' attribute values.
 
-### Inputs
+For each edge, it retrieves the numeric values from the specified attribute at the relevant points (start, end, or the edge itself), applies the comparison operator (e.g., greater than, equal to, nearly equal), and determines whether the edge passes the filter. If `bInvert` is enabled, it reverses the result of the comparison.
 
-* **Edge Data**: The edge data containing the attributes to compare
-* **Point Data**: The point data containing the attributes to compare
+<details>
 
-### Outputs
+<summary>Inputs</summary>
 
-* **Filter**: The resulting filter that can be connected to other edge processing nodes
+Expects edge data with a numeric attribute defined in the configuration.
 
-### Configuration
+</details>
+
+<details>
+
+<summary>Outputs</summary>
+
+Filters edges based on the comparison result; only edges that meet the condition pass through.
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
-
 **Attribute**
 
-_The numeric attribute to compare on each endpoint._
+_The numeric attribute to compare._
 
-Specify which attribute's value will be used for comparison. This should be a numeric attribute present on both the edge data and the point data.
+Selects which attribute's value will be used for comparison. This attribute must exist on the edge or its endpoints.
+
+***
 
 **Comparison**
 
-_The comparison operator to use._
+_The comparison check to perform._
 
-Select how to compare the values from the endpoints.
+Defines how the two values are compared.
 
 **Values**:
 
@@ -62,62 +75,38 @@ Select how to compare the values from the endpoints.
 * **>**: Operand A Strictly Greater to Operand B
 * **<**: Operand A Strictly Smaller to Operand B
 * **\~=**: Operand A Nearly Equal to Operand B
-* \*\*!\~=: Operand A Nearly Not Equal to Operand B
-
-**Tolerance**
-
-_The tolerance value for approximate comparisons._
-
-Only used when the comparison is set to "Nearly Equal" or "Nearly Not Equal". Defines how close the values must be to be considered equal.
-
-**Invert**
-
-_When enabled, the filter result is inverted._
-
-If enabled, edges that would have passed now fail, and vice versa. This is useful for creating "not" conditions without needing multiple filters.
+* **!\~=:** Operand A Nearly Not Equal to Operand B
 
 ***
 
-#### Comparison Mode
+**Tolerance**
 
-**Against Each**
+_Rounding mode for approx. comparison modes._
 
-_Compare Edge's start point value against Edge's end point value._
+Only used when the comparison is set to "Nearly Equal" or "Nearly Not Equal". Defines how close the values must be to be considered equal.
 
-The attribute values from both endpoints are compared directly to each other.
+***
 
-**Against Start**
+**bInvert**
 
-_Compare the Edge's start point value against the Edge itself._
+_When enabled, inverts the result of the comparison._
 
-The start point's attribute value is compared against the edge's own attribute value (if it has one).
+If enabled, edges that would normally pass the filter will fail, and vice versa.
 
-**Against End**
+***
 
-_Compare the Edge's end point value against the Edge itself._
+**Config**
 
-The end point's attribute value is compared against the edge's own attribute value (if it has one).
+_Test Config._
 
-**Against Self Both**
+Internal configuration for the subnode's behavior. Typically managed by the system and not modified directly.
 
-_Compare the Edge's value against each of its end points._
+#### Usage Example
 
-The edge's own attribute value is compared against both endpoints' values.
+You have a graph with edges representing connections between points in a terrain. Each point has a "Height" attribute. You want to keep only edges where the start point is higher than the end point. Set the **Attribute** to "Height", the **Comparison** to "Strictly Greater", and leave **bInvert** unchecked.
 
-### Usage Example
+#### Notes
 
-You want to filter edges where the start point's height is greater than the end point's height.
-
-1. Set **Attribute** to "Height"
-2. Set **Comparison** to ">="
-3. Set **Mode** to "Against Each"
-4. Connect this filter factory to an edge processing node like **Edge Filter**
-
-This will pass only edges where the start point's height is greater than or equal to the end point's height.
-
-### Notes
-
-* The filter works on both edge and point data, so make sure your attribute exists in the appropriate data domain
-* When using "Nearly Equal" comparisons, consider what tolerance value makes sense for your data
-* You can combine multiple filters using **Filter Merge** nodes to create complex conditions
-* For performance reasons, it's best to use this filter with a small number of edges or when combined with other filters that reduce the edge count early in the graph
+* The selected attribute must be numeric (double or float).
+* When using "Nearly Equal" or "Nearly Not Equal", ensure the tolerance is appropriate for your data scale.
+* This filter can be combined with other edge filters to create complex selection criteria.

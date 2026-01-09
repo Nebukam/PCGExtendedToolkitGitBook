@@ -6,7 +6,8 @@ icon: circle
 # Path to Clusters
 
 {% hint style="info" %}
-## AI-generated page -- to be reviewed 
+### AI-generated page -- to be reviewed
+
 While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
 {% endhint %}
 
@@ -173,4 +174,3 @@ _Specifies how the resulting clusters are built, including axis alignment and gr
 * Enable fusion if you need to detect intersections between paths; otherwise, keep it disabled to preserve separate clusters.
 * Custom blending settings are useful when you have specific requirements for how overlapping points or edges should be merged.
 * The output can be directly used in nodes that require clustered edge data, such as pathfinding or graph traversal algorithms.
-
