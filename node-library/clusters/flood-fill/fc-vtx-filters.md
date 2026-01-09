@@ -6,73 +6,80 @@ icon: circle-dashed
 # FC : Vtx Filters
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Filter that checks vtx points.
+> Filter that checks vertex data for flood fill operations.
 
-### Overview
+#### Overview
 
-This factory creates a **fill control filter** that evaluates conditions based on the properties of **vtx points** during flood fill operations. It allows you to define rules that determine whether a point can be captured, probed, or considered as a candidate during diffusion.
+This subnode defines filtering behavior for vertex-based flood fill operations. It allows you to specify which vertices are valid candidates for diffusion based on criteria derived from vertex attributes or spatial relationships.
 
-This factory connects to **Fill Control pins** on flood fill nodes (like `Flood Fill` or `Flood Fill With Constraints`). It's used when you want to apply filtering logic based on the attributes or properties of the vtx points being processed.
+It connects to the **Filter** input pin of flood fill processing nodes, where it determines whether a vertex should be considered during the diffusion process.
 
 {% hint style="info" %}
-Connects to **Fill Control pins** on flood fill processing nodes.
+Connects to the **Filter** pin of flood fill processing nodes.
 {% endhint %}
 
-### How It Works
+#### How It Works
 
-This filter factory evaluates conditions using a set of point filters applied to the **vtx points**. Each filter defines a condition that must be met for a point to pass through. The filter checks:
+This subnode evaluates each vertex in the context of a flood fill operation and decides whether it meets specific criteria for inclusion. It uses a collection of point filters defined in its configuration to determine validity.
 
-* **Capture**: If a point is being captured by a diffusion
-* **Probe**: If a point is being probed (visited neighbors)
-* **Candidate**: If a point is considered as a candidate for flooding
+The evaluation process works as follows:
 
-If any of the configured filters fail, the point will not be allowed to proceed in that stage of the flood fill process.
+1. For each candidate vertex, it applies all configured point filters
+2. A vertex is accepted if ALL filters pass (logical AND)
+3. If any filter fails, the vertex is rejected
 
-### Inputs
+This behavior ensures that only vertices meeting all specified conditions are considered for diffusion, allowing precise control over which parts of a dataset participate in the flood fill process.
 
-* **Filter Factories** (Array): List of point filters to apply to vtx points. These are other filter nodes that define the conditions to check against each vtx point. You can add multiple filters here, and they will be evaluated in order. A point passes the filter if **all** specified filters accept it.
+<details>
 
-### Outputs
+<summary>Inputs</summary>
 
-* **Fill Control** (Pin): The output pin that connects to the Fill Control input of flood fill nodes.
+* Point data containing vertex information
+* Optional secondary data for attribute lookups or spatial queries
+* Configuration specifying which filters to apply
 
-### Configuration
+</details>
+
+<details>
+
+<summary>Outputs</summary>
+
+* Modified flood fill behavior where only valid vertices are processed
+* Filtered candidate set used in diffusion operations
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
-
 **Config**
 
-_The configuration settings for how this filter behaves._
+_Control Config._
 
-Controls general behavior such as whether it supports source points or not. For this factory, it's fixed to not support source points.
+Controls general settings for the vertex filter behavior, such as whether source data is supported.
 
-**Filter Factories**
+**FilterFactories**
 
-_List of point filters to apply to vtx points._
+_Point Filters._
 
-These are other filter nodes that define the conditions to check against each vtx point. You can add multiple filters here, and they will be evaluated in order. A point passes the filter if **all** specified filters accept it.
+A list of point filter subnodes that define the criteria for accepting or rejecting vertices. Each filter must pass for a vertex to be considered valid.
 
-### Usage Example
+When multiple filters are added, they are combined using logical AND — all filters must return true for the vertex to be accepted.
 
-Use this factory when you want to control which points are allowed to participate in a flood fill operation based on their vtx properties. For example:
+#### Usage Example
 
-1. Create a `Fill Control : Vtx Filters` node
-2. Connect point filters (like `Attribute Range`, `Boolean`, or `Distance`) to the `Filter Factories` input
-3. Use it as a Fill Control in a `Flood Fill` node
-4. Points that pass all the vtx filters will be considered for capture, probing, and candidate evaluation during the flood fill
+Use this subnode in a flood fill setup where you want to limit diffusion to specific regions of a mesh. For example:
 
-This is useful when you want to restrict flooding based on attributes like height, color, or distance from a seed point.
+* Apply a distance-based filter to only allow vertices within 10 units of a source point
+* Combine with a normal angle filter to restrict diffusion along certain surface orientations
+* Add a custom attribute filter to exclude vertices with a specific material tag
 
-### Notes
+#### Notes
 
-* This filter factory works only with **vtx points**.
-* Multiple filters can be combined; all must pass for a point to be accepted.
-* The order of filters matters if there are dependencies between them.
-* You can use this to create complex rules like "only flood points that are above a certain height AND within a distance threshold".
+* The order of filters does not affect the outcome, as all must pass for inclusion
+* Performance can be improved by minimizing the number of active filters
+* This subnode is particularly useful when working with complex mesh topologies where you want fine-grained control over which vertices participate in diffusion

@@ -6,26 +6,33 @@ icon: circle-dashed
 # Picker : Indices from Set
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> A picker that reads lists of indices from attributes and uses them to select points or data.
+> A Picker subnode that reads lists of indices from attributes and uses them to select points or elements.
 
-### Overview
+#### Overview
 
-This node allows you to define a set of indices by reading values from one or more attributes on your input data. It's particularly useful when you want to cherry-pick specific elements from a dataset using pre-defined index lists stored in attributes. The picker can read multiple attributes and combine their values into a single list of indices.
+This Picker subnode allows you to define which indices to pick from your data using one or more existing attributes. Instead of hardcoding values, it reads index lists directly from point attributes, making it flexible for dynamic selection based on input data. It's especially useful when you have precomputed sets of indices stored in attributes and want to use those as the basis for picking.
 
 {% hint style="info" %}
-If no attribute is specified in the node details, it will automatically use the first available attribute from your input data.
+Connects to **Picker** processing nodes that require a list of indices to pick.
 {% endhint %}
+
+#### How It Works
+
+This Picker subnode reads index values from one or more point attributes. Each attribute is expected to contain a list of integers representing indices. These indices are used to select elements (such as points or edges) from the input data.
+
+The node supports negative indices, which allow you to pick from the end of the list. For example, an index of `-1` refers to the last element, `-2` to the second-to-last, and so on.
+
+When multiple attributes are provided, it combines their values into a single set of picks. If an attribute contains invalid or out-of-bounds indices, the behavior is controlled by the **Index Safety** setting in the Picker configuration, which can ignore, tile, clamp, or mirror such indices.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Points** (Required): Input point data containing attributes with index lists
+* Expects point data with attributes containing integer lists.
+* Each attribute must be a valid integer array (e.g., `int[]`, `int32[]`).
 
 </details>
 
@@ -33,33 +40,27 @@ If no attribute is specified in the node details, it will automatically use the 
 
 <summary>Outputs</summary>
 
-* **Picker** (Output Pin): The picker factory that can be used by other nodes to select points based on the defined indices
+* Provides a list of indices to pick from the input data.
+* These indices are used by the connected Picker node to determine which elements to select.
 
 </details>
 
-### Properties Overview
-
-Controls how the node reads and processes index data from attributes.
+#### Configuration
 
 ***
 
-#### General
-
-Reads lists of indices from one or more attributes and uses them as a source for selection.
-
 **Attributes**
 
-_The list of attributes to read individual indices from._
+_List of attributes to read individual indices from. Use negative values to select from the end._
 
-* Each attribute should contain integer values that represent indices
-* Negative values can be used to select from the end of the list (e.g., -1 selects the last element)
-* Multiple attributes can be specified to combine different index sets
+Each attribute contains a list of integer indices that will be used for selection. You can specify multiple attributes, and their values are combined into one set of picks. Negative values are interpreted as reverse indexing (e.g., `-1` is the last element).
 
-**Example**: If you have an attribute named "PickList" with values \[0, 2, 4] and another named "ExtraPicks" with \[1, 3], the picker will use indices \[0, 2, 4, 1, 3] for selection.
+#### Usage Example
 
-### Notes
+You have a point cloud with an attribute called `PickList` that contains lists of indices like `[0, 3, 5]`. You connect this Picker subnode to a Picker node and configure it to read from the `PickList` attribute. The Picker will then select points at indices 0, 3, and 5 from your input data.
 
-* This node is useful for creating dynamic pickers from existing data
-* You can combine multiple attributes to build complex index sets
-* The picker will automatically handle out-of-bounds indices based on the safety mode you set in your picker configuration
-* Consider using this node when you need to select specific points or elements based on pre-defined lists stored in attributes
+#### Notes
+
+* If no attributes are specified in the details panel, the node defaults to using the first available attribute.
+* Index safety settings in the parent Picker node control how out-of-bounds indices are handled.
+* This subnode is ideal for dynamic selection workflows where index lists are computed or stored in point attributes.

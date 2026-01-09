@@ -6,26 +6,38 @@ icon: circle-dashed
 # Picker : Range
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> A Picker that selects a range of values from a list or sequence.
+> A Picker that selects a range of values.
 
-### Overview
+#### Overview
 
-This node allows you to define a range of indices to pick from a collection of data points. It's useful when you want to select a continuous subset of items, such as picking the first 5 points, or the last 3 points, or any arbitrary slice in between. You can specify both start and end points for your range, and choose whether to treat these values as absolute indices or relative percentages.
+This subnode defines a range of indices or values to select from a dataset. It's commonly used in filtering operations where you want to pick a subset of points, edges, or other data elements based on their position or value. The selected range can be specified using either discrete integer indices or relative decimal positions, allowing for flexible selection logic.
+
+This subnode connects to Picker nodes that require a range-based selection mechanism. It's typically used in conjunction with filtering or sampling operations to extract specific parts of your dataset.
 
 {% hint style="info" %}
-The Picker : Range works with indexed data, such as point sequences or arrays of data. It's commonly used in conjunction with other nodes that generate or manipulate ordered collections.
+Connects to **Picker** processing nodes.
 {% endhint %}
+
+#### How It Works
+
+This subnode selects a continuous range of items from a dataset by defining start and end points. The selection process works as follows:
+
+1. It evaluates the start and end indices, which can be either discrete (integer) or relative (decimal).
+2. For discrete indices, positive values count from the beginning of the dataset, while negative values count from the end.
+3. For relative indices, decimal values are interpreted as percentages of the dataset size (e.g., 0.5 = halfway through).
+4. It then generates a list of all valid indices between the start and end points.
+5. The resulting set of indices is used to filter or sample the input data.
+
+The selection logic handles out-of-bounds cases by applying a safety mode, such as clamping or tiling, depending on your configuration.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Source** (optional): A collection of points or data to pick from.
+Expects a dataset with indexed elements (points, edges, etc.) that can be selected using integer indices.
 
 </details>
 
@@ -33,62 +45,53 @@ The Picker : Range works with indexed data, such as point sequences or arrays of
 
 <summary>Outputs</summary>
 
-* **Picker** (output pin): The resulting selection of indices based on the defined range.
+Produces a set of indices that define the range to be picked from the input data. These indices are used by downstream nodes for filtering or sampling.
 
 </details>
 
-### Properties Overview
-
-This node lets you define a range of indices to select. You can choose between absolute and relative indexing modes, and specify start and end points for your selection.
+#### Configuration
 
 ***
 
-#### General
+**DiscreteStartIndex**
 
-Controls how the range is interpreted and applied.
+_The starting index of the range, using discrete integer values._
 
-**Discrete Start Index**
+Use positive numbers to select from the beginning of the dataset and negative numbers to select from the end.
 
-_The starting index of the range in absolute terms._
+**RelativeStartIndex**
 
-* Determines where the selection begins.
-* Use negative values to count from the end (e.g., -1 selects the last item).
-* Example: If you have 10 items and set this to 2, the selection starts at the third item.
+_The starting index of the range, using relative decimal values (0.0 to 1.0)._
 
-**Relative Start Index**
+Values are interpreted as percentages of the dataset size. For example, 0.25 selects a quarter of the way through the data.
 
-_The starting index of the range as a percentage of total items._
+**DiscreteEndIndex**
 
-* When enabled, values are treated as percentages between 0 and 1.
-* Use negative values to count from the end (e.g., -0.5 selects halfway from the end).
-* Example: If you have 10 items and set this to 0.25, the selection starts at the 25% mark.
+_The ending index of the range, using discrete integer values._
 
-**Discrete End Index**
+Use positive numbers to select from the beginning of the dataset and negative numbers to select from the end.
 
-_The ending index of the range in absolute terms._
+**RelativeEndIndex**
 
-* Determines where the selection ends.
-* Use negative values to count from the end (e.g., -1 selects the last item).
-* Example: If you have 10 items and set this to 7, the selection ends at the eighth item.
+_The ending index of the range, using relative decimal values (0.0 to 1.0)._
 
-**Relative End Index**
+Values are interpreted as percentages of the dataset size. For example, 0.75 selects three-quarters of the way through the data.
 
-_The ending index of the range as a percentage of total items._
+#### Usage Example
 
-* When enabled, values are treated as percentages between 0 and 1.
-* Use negative values to count from the end (e.g., -0.5 selects halfway from the end).
-* Example: If you have 10 items and set this to 0.75, the selection ends at the 75% mark.
+Suppose you have a point cloud with 100 points and want to select points from index 20 to 40 (inclusive):
 
-**Treat As Normalized**
+* Set `DiscreteStartIndex` to **20**
+* Set `DiscreteEndIndex` to **40**
 
-_When enabled, start and end indices are interpreted as relative values between 0 and 1._
+If you want to select the middle half of the dataset:
 
-* When disabled, indices are treated as absolute positions.
-* Example: With 10 items, setting Start to 0.25 and End to 0.75 selects the middle 50% of items.
+* Set `RelativeStartIndex` to **0.25**
+* Set `RelativeEndIndex` to **0.75**
 
-### Notes
+#### Notes
 
-* The range is inclusive on both ends, meaning both start and end indices are included in the selection.
-* Negative indices count from the end of the list (e.g., -1 is the last item).
-* If your range extends beyond the available data, it will be clamped to valid bounds.
-* This node works best with ordered data such as point sequences where index order matters.
+* Negative indices count from the end of the dataset (e.g., -1 is the last element).
+* Relative indices are normalized between 0.0 and 1.0, where 0.0 is the first element and 1.0 is the last.
+* The range selection includes both start and end indices.
+* This subnode works best when used with datasets that have a consistent order or index structure.

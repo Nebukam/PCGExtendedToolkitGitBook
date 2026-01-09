@@ -6,87 +6,83 @@ icon: circle-dashed
 # FC : Length
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Stop fill after a certain distance have been captured.
+> Stop fill after a certain number of vtx have been captured.
 
-### Overview
+#### Overview
 
-This factory defines a stopping condition for flood fill operations based on the accumulated distance from the seed point. It controls how far the fill can spread by measuring the total path length from the starting point to each candidate node.
+This subnode controls how far a flood fill operation can propagate by limiting the total distance traveled from the seed point. It's useful for creating bounded, realistic-looking fills that respect spatial constraints.
 
-{% hint style="info" %}
-Connects to **Fill Control** pins on flood fill nodes
-{% endhint %}
+It defines a behavior for flood fill operations where the fill stops once a cumulative path length threshold is reached. This ensures that the fill doesn't extend indefinitely and respects physical or logical boundaries in your procedural generation.
 
-### How It Works
+This subnode connects to **Probe** pins on flood fill graph-building nodes, such as "Flood Fill" or "Cluster Flood Fill".
 
-This factory limits how far a flood fill operation can spread by measuring the total distance from the seed point to each candidate node. When the accumulated path length exceeds the defined maximum, no more nodes will be captured or probed.
+#### How It Works
 
-The distance is measured as the sum of all edge lengths along the path from the seed to the current node. This creates a natural boundary that follows the topology of your input data.
+This subnode defines a distance-based stopping condition for flood fill operations. It evaluates candidates based on how far they are from the starting point, using either:
 
-### Inputs
+1. **Edge Length**: The direct distance between two connected points
+2. **Path Length**: The total accumulated distance from the seed to the candidate point
 
-* **Probe** (Pin): Connects to flood fill nodes to define stopping conditions
-* **Input Data**: Point data containing the topology for path calculations
+The fill operation tracks the cumulative path length as it explores new candidates. When a candidate's path length exceeds the defined maximum, that candidate is rejected and no further exploration occurs along that branch.
 
-### Outputs
+When using path length, each step in the flood fill adds up the distances between connected points, building a total travel distance from the seed. The operation stops when this cumulative distance surpasses the configured limit.
 
-* **Control Output**: Provides the stopping condition for flood fill operations
+<details>
 
-### Configuration
+<summary>Inputs</summary>
+
+This subnode does not directly consume data points or edges. It is used as part of a flood fill process and interacts with candidates during probing and capture phases.
+
+</details>
+
+<details>
+
+<summary>Outputs</summary>
+
+This subnode doesn't produce new data. Instead, it modifies the behavior of flood fill operations by controlling when to stop exploring candidates based on distance thresholds.
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
-
 **Use Path Length**
 
-_When enabled, the fill stops based on the total accumulated path length from the seed point. When disabled, it stops based on the direct edge length._
+_When enabled, the fill stops based on the total accumulated path length from the seed point. When disabled, it uses the direct edge length between points._
 
-Enabling this allows for more intuitive control over how far the fill spreads, as it considers the actual traversal distance rather than just individual edges.
+This setting determines whether to measure distance along the actual path taken during flood fill (including all intermediate steps) or the straight-line distance of each individual edge.
 
-**Max Length Input Type**
+**Max Length Input**
 
-_Controls whether the maximum length is a fixed value or read from an attribute._
+_Determines how the maximum distance is defined._
 
 **Values**:
 
-* **Constant**: Use a fixed numeric value for the limit
-* **Attribute**: Read the limit from a point attribute on the input data
+* **Constant**: Use a fixed numeric value for the max length.
+* **Attribute**: Read the max length from an attribute on input data.
 
 **Max Length Attribute**
 
-_The name of the point attribute that contains the maximum fill distance._
+_The name of the attribute to read the max length from, when using "Attribute" mode._
 
-Only visible when "Max Length Input Type" is set to "Attribute".
+This setting only appears when "Max Length Input" is set to "Attribute".
 
 **Max Length**
 
-_The maximum accumulated path length allowed before stopping the fill._
+_The maximum allowed distance for the fill operation._
 
-Only visible when "Max Length Input Type" is set to "Constant". Must be a positive number.
+When "Max Length Input" is set to "Constant", this value defines the fixed limit. When "Attribute" is used, this value is ignored and the actual attribute value is used instead.
 
-### Usage Example
+#### Usage Example
 
-Use this factory to create a flood fill that spreads only within a certain distance from the seed point. For example:
+Use this subnode in a "Flood Fill" node to create a region that expands outward from a seed point but stops after traveling 50 units of distance. This can simulate effects like a splash, explosion radius, or influence area with limited reach.
 
-1. Create a `Flood Fill With Seed` node
-2. Connect this `Fill Control : Length` factory to its Probe pin
-3. Set "Max Length" to 50
-4. The fill will stop spreading once it reaches any point that is more than 50 units away from the seed along the path
+#### Notes
 
-This is useful for creating localized effects like:
-
-* Creating a circular area of influence around a point
-* Limiting how far a terrain feature spreads
-* Constraining procedural generation to specific distances
-
-### Notes
-
-* The path length calculation accounts for the actual traversal distance, not straight-line distance
-* When using attributes, make sure the attribute exists on all input points or the operation may fail
-* This control works best with connected point data where meaningful paths can be established
-* Combine with other fill controls to create complex stopping conditions (e.g., stop by both length and angle)
+* The path length calculation includes all edges traversed during the flood fill process.
+* Using attribute-based max length allows for dynamic control per input point.
+* This subnode works best when used in conjunction with other fill controls to define complex stopping behaviors.

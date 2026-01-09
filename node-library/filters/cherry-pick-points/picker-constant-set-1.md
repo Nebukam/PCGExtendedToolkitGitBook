@@ -6,26 +6,38 @@ icon: circle-dashed
 # Picker : Ranges from Set
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> A picker that reads lists of index ranges from attributes, where each range is defined as a FVector2.
+> A Picker that accepts lists of ranges in the form of FVector2, read from one or more attribute.
 
-### Overview
+#### Overview
 
-This node allows you to define multiple index ranges using attributes stored in your point data. Each attribute should contain FVector2 values, where the X component represents the start index and Y represents the end index of a range. These ranges are then used to select points for picking operations. It's particularly useful when you want to dynamically control which parts of your dataset are picked based on attribute values.
+This node allows you to define a set of index ranges using attributes containing FVector2 values. These ranges specify start and end points for selecting indices from a dataset. It's useful when you want to cherry-pick specific segments or portions of data based on pre-defined ranges stored in attributes.
+
+It reads one or more attributes that contain pairs of integers or floats representing start and end indices. These are interpreted as ranges, and the node will select all indices within those ranges. You can use negative values to select from the end of the dataset.
 
 {% hint style="info" %}
-If no attributes are specified in the node settings, it will automatically use the first available attribute from your input data.
+Connects to **Picker** processing nodes.
 {% endhint %}
+
+#### How It Works
+
+This node operates by reading one or more attributes that contain FVector2 values, where each vector represents a range with a start and end index. For each attribute specified:
+
+1. It reads the FVector2 values as ranges (start, end).
+2. It converts these ranges into a list of indices to be picked.
+3. If the indices are negative, they are interpreted as positions from the end of the dataset.
+4. The node then compiles all selected indices into a single set for use in downstream picker operations.
+
+The ranges can be either discrete (integer) or relative (floating-point), depending on how you configure the picker settings. For relative values, the indices are treated as percentages and scaled to match the size of your dataset.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Main**: Expects point data with attributes containing FVector2 values representing ranges.
+* **Points**: The input point data that contains the attributes with range information.
+* **Attributes**: One or more attributes containing FVector2 values representing ranges.
 
 </details>
 
@@ -33,32 +45,33 @@ If no attributes are specified in the node settings, it will automatically use t
 
 <summary>Outputs</summary>
 
-* **Picker**: Outputs a picker that can be used by downstream nodes to select points based on the defined ranges.
+* **Picks**: A set of indices selected from the input data based on the defined ranges in the attributes.
 
 </details>
 
-### Properties Overview
-
-This node reads index ranges from attributes and uses them to define which points to pick.
+#### Configuration
 
 ***
 
-#### General
-
-Controls how the node reads and interprets range data from attributes.
-
 **Attributes**
 
-_The list of attributes to read ranges of indices from. Each attribute should contain FVector2 values, where X is the start index and Y is the end index._
+_**List of attributes to read ranges of indices from FVector2. Use negative values to select from the end.**_
 
-* The node will read all specified attributes and combine their ranges.
-* Use negative values to select from the end of the dataset (e.g., -1 refers to the last point).
-* If left empty, the node will use the first available attribute in the input data.
+Specifies which attribute(s) contain the range data. Each attribute should store FVector2 values, where the X component is the start index and Y component is the end index.
 
-### Notes
+You can specify multiple attributes to combine different sets of ranges into a single picker output. If no attribute is specified in the details, it will use the first available one.
 
-* Each FVector2 in an attribute defines a range: `[X, Y]` where X is inclusive and Y is exclusive.
-* Ranges can overlap or be non-contiguous; all points within any defined range will be included.
-* Negative indices are supported and refer to positions from the end of the dataset (e.g., -1 = last point).
-* This picker works best when used in combination with other nodes that consume pickers, such as "Cherry Pick Points" or "Filter by Picker".
-* You can define multiple attributes to create complex selection patterns across your dataset.
+#### Usage Example
+
+1. Create a point grid with 100 points.
+2. Add an attribute to store ranges (e.g., `RangeData`) as FVector2 values.
+3. Populate this attribute with values like `(0, 5)` and `(20, 30)` to define two index ranges.
+4. Connect the point data to a **Picker : Ranges from Set** node.
+5. Assign the `RangeData` attribute to the node's input.
+6. The picker will select indices 0 through 5 and 20 through 30 from the point grid.
+
+#### Notes
+
+* Negative index values are interpreted as positions from the end of the dataset (e.g., -1 refers to the last element).
+* If no attributes are specified, the node defaults to using the first available attribute.
+* This node is particularly useful for selecting specific segments or regions in data sets where ranges are already defined.

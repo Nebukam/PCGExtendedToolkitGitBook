@@ -6,29 +6,40 @@ icon: scrubber
 # Uber Filter (Collection)
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Filter entire collections based on multiple rules & conditions.
 
-### Overview
+#### Overview
 
-This node filters collections of points using a variety of filter types, allowing you to determine which collections pass or fail based on their contents. It's particularly useful when working with multiple collections and needing to apply consistent filtering logic across them.
+This node evaluates collections of points and determines whether they meet specified filtering criteria. It can be used to separate data into "inside" and "outside" groups, or to write a result directly to the input points. This is useful for organizing procedural content by logical groupings or applying conditional logic across entire sets of data.
 
-The node evaluates each collection against one or more filters and decides whether to keep the entire collection or discard it. You can choose between different modes that control how many points in a collection must pass the filters for the collection itself to be considered valid.
+It connects to point inputs and outputs, allowing it to process multiple collections simultaneously.
 
 {% hint style="info" %}
-This node works with collections, not individual points. It evaluates entire collections as units.
+Connects to **point inputs** and supports **multiple input pins**.\
+Subnode: Point Filters
 {% endhint %}
+
+#### How It Works
+
+This node evaluates each collection of points against a set of filter rules defined by subnodes. Based on the selected mode, it decides whether the entire collection passes or fails the filters:
+
+* **All**: All points in a collection must pass the filters for the collection to be considered "inside."
+* **Any**: At least one point in a collection must pass the filters for the collection to be considered "inside."
+* **Partial**: A specified number or proportion of points in a collection must pass the filters for the collection to be considered "inside."
+
+For partial mode, you can define whether the threshold is based on a relative value (0–1) or an absolute count. The comparison operator determines how the threshold is evaluated against the actual number of passing points.
+
+The node supports optional inversion of the filter result via the **Swap** toggle, which flips the inside/outside classification.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Main Input** (default): Collection data to filter
-* **Filters**: Optional point filters to apply to the collection
+* Point data collections that will be filtered.
+* Optional subnode filters to apply to each point in a collection.
 
 </details>
 
@@ -36,29 +47,24 @@ This node works with collections, not individual points. It evaluates entire col
 
 <summary>Outputs</summary>
 
-* **Inside** (default): Collections that passed the filter
-* **Outside** (default): Collections that failed the filter
-* **Filtered** (optional): Points that passed the filter, written as attributes instead of split outputs
+* If not using "Write Result to Point" mode, outputs two sets of points:
+  * Points that passed the filter (inside)
+  * Points that failed the filter (outside)
+* If enabled, writes a boolean result directly to each point's data.
 
 </details>
 
-### Properties Overview
-
-Controls how collections are filtered and what happens to them after evaluation.
+#### Configuration
 
 ***
 
-#### Filtering Mode
-
-Controls how many points in a collection must pass the filters for the collection to be considered valid.
-
 **Mode**
 
-_Controls which points must pass the filters._
+_Controls how the node evaluates collections._
 
-* When set to **All**, all points in a collection must pass the filters.
-* When set to **Any**, at least one point in a collection must pass the filters.
-* When set to **Partial**, a specified amount of points must pass the filters.
+When set to **All**, only collections where every point passes the filters are considered "inside."\
+When set to **Any**, collections with at least one passing point are considered "inside."\
+When set to **Partial**, a specific number or proportion of points must pass for the collection to be considered "inside."
 
 **Values**:
 
@@ -68,86 +74,87 @@ _Controls which points must pass the filters._
 
 ***
 
-#### Partial Mode Settings
-
-Controls how the "partial" mode evaluates the number of passing points against the threshold.
-
 **Measure**
 
-_Determines whether the threshold is a relative percentage or an absolute count._
+_Partial value type._
 
-* When set to **Relative**, the threshold is interpreted as a percentage (0.0 to 1.0) of points that must pass.
-* When set to **Discrete**, the threshold is interpreted as an absolute number of points that must pass.
-
-**Values**:
-
-* **Relative**: Input value will be normalized between 0..1, or used as a factor.
-* **Discrete**: Raw value will be used, or used as absolute.
-
-**Comparison**
-
-_Selects how to compare the actual number of passing points against the threshold._
-
-* When set to **EqualOrGreater**, at least the specified amount of points must pass.
-* When set to **StrictlyGreater**, more than the specified amount of points must pass.
-* When set to **EqualOrSmaller**, no more than the specified amount of points can pass.
-* When set to **StrictlySmaller**, fewer than the specified amount of points can pass.
-* When set to **StrictlyEqual**, exactly the specified amount of points must pass.
-* When set to **StrictlyNotEqual**, not exactly the specified amount of points can pass.
-* When set to **NearlyEqual**, approximately the specified amount of points must pass (within tolerance).
-* When set to **NearlyNotEqual**, approximately not the specified amount of points can pass (within tolerance).
+Controls whether the threshold for partial mode is interpreted as a relative proportion (0 to 1) or an absolute count.
 
 **Values**:
 
-* **==**: Operand A Strictly Equal to Operand B
-* **!=**: Operand A Strictly Not Equal to Operand B
-* **>=**: Operand A Equal or Greater to Operand B
-* **<=**: Operand A Equal or Smaller to Operand B
-* **>**: Operand A Strictly Greater to Operand B
-* **<**: Operand A Strictly Smaller to Operand B
-* **\~=**: Operand A Nearly Equal to Operand B
-* \*\*!\~=: Operand A Nearly Not Equal to Operand B
-
-**DblThreshold**
-
-_The percentage of points that must pass when using relative measure._
-
-* Value is interpreted as a percentage between 0.0 and 1.0.
-* For example, setting this to 0.75 means 75% of points in a collection must pass.
-
-**IntThreshold**
-
-_The absolute number of points that must pass when using discrete measure._
-
-* Value is interpreted as a count of points.
-* For example, setting this to 10 means at least 10 points in a collection must pass.
-
-**Tolerance**
-
-_Tolerance for nearly equal comparisons._
-
-* Only used when comparison is set to Nearly Equal or Nearly Not Equal.
-* Controls how close the actual value must be to the threshold to be considered "equal".
+* **Relative**: Threshold is a proportion between 0 and 1.
+* **Discrete**: Threshold is an absolute number of points.
 
 ***
 
-#### General Settings
+**Comparison**
 
-Controls additional behavior of the filter node.
+_Partial value comparison._
+
+Determines how the threshold is compared to the actual number of passing points in a collection.
+
+**Values**:
+
+* **Strictly Equal**: Exactly matches the threshold.
+* **Strictly Not Equal**: Must not match the threshold.
+* **Equal or Greater**: Must be greater than or equal to the threshold.
+* **Equal or Smaller**: Must be less than or equal to the threshold.
+* **Strictly Greater**: Must be strictly greater than the threshold.
+* **Strictly Smaller**: Must be strictly smaller than the threshold.
+* **Nearly Equal**: Matches within a tolerance range.
+* **Nearly Not Equal**: Does not match within a tolerance range.
+
+***
+
+**DblThreshold**
+
+_Partial value type._
+
+The threshold value used when **Measure** is set to **Relative**. This defines how many points (as a proportion) must pass the filter for partial mode.
+
+**Range**: 0 to 1\
+**Default**: 0.5
+
+***
+
+**IntThreshold**
+
+_Partial value type._
+
+The threshold value used when **Measure** is set to **Discrete**. This defines how many points must pass the filter for partial mode.
+
+**Range**: 0 and above\
+**Default**: 10
+
+***
+
+**Tolerance**
+
+_Rounding mode for relative measures._
+
+Controls how closely a value must match when using "Nearly Equal" or "Nearly Not Equal" comparisons in partial mode.
+
+**Default**: `DBL_COMPARE_TOLERANCE`
+
+***
 
 **bSwap**
 
-_When enabled, inverts the filter result._
+_Invert the filter result._
 
-* If a collection would normally pass the filter, it will now fail and vice versa.
-* Useful for creating exclusion filters or testing different logic flows.
+When enabled, the node flips the classification of inside and outside points. Points that would normally be considered "inside" are marked as "outside" and vice versa.
 
-### Notes
+#### Usage Example
 
-* This node works with collections as units, not individual points.
-* Use **All** mode when you need every point in a collection to meet criteria.
-* Use **Any** mode when you only care if at least one point meets criteria.
-* Use **Partial** mode when you want to specify an exact number or percentage of points that must pass.
-* The node supports multiple filter types connected to the Filters input for complex filtering logic.
-* When using **Partial** mode, consider whether you want a relative threshold (percentage) or discrete count (number of points).
-* Performance can be improved by enabling caching if the same filters are applied repeatedly.
+1. Create a collection of points representing terrain features.
+2. Add a subnode filter to identify points with elevation above 100 units.
+3. Set the mode to **Partial**.
+4. Choose **Relative** measure and set threshold to 0.7.
+5. Use **Equal or Greater** comparison.
+6. This will classify collections where at least 70% of points pass the elevation filter as "inside."
+
+#### Notes
+
+* The node supports multiple input pins, allowing you to process several point collections simultaneously.
+* When using partial mode with relative thresholds, ensure that your collection sizes are large enough to provide meaningful comparisons.
+* Use **Swap** to reverse filter logic when needed for complex conditional setups.

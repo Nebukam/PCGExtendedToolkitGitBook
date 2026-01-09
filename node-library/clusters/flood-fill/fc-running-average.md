@@ -6,94 +6,105 @@ icon: circle-dashed
 # FC : Running Average
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Ignore candidates which attribute value isn't within the given tolerance of a running average.
 
-### Overview
+#### Overview
 
-This factory defines a **candidate validation rule** for flood fill operations. It filters out candidates based on how their attribute values compare to a moving average of previously accepted candidates.
+This subnode defines a filtering behavior for flood fill operations that evaluates candidate points based on how their attribute values compare to a moving average of previously accepted candidates. It's used to ensure that new candidates are not too far from the current "trend" of selected points, helping maintain consistency or smoothness in procedural generation.
 
-{% hint style="info" %}
-Connects to **Fill Control** pins on flood fill nodes
-{% endhint %}
+It connects to **Probe** pins on graph-building nodes, where it controls which candidates are considered valid for inclusion in the diffusion process.
 
-### How It Works
+#### How It Works
 
-This factory calculates a running average of the selected attribute values from all previously accepted candidates in the current diffusion. When a new candidate is considered, it checks whether that candidate's attribute value falls within a specified tolerance range of the current running average.
+This subnode maintains a running average of attribute values from previously accepted candidates within a defined window size. When evaluating a new candidate:
 
-If the candidate's value is outside this tolerance, it will be ignored and not added to the flood fill. This creates a controlled expansion where the next point chosen must be "close" to the average of previously selected points.
+1. It calculates the average of the last N accepted candidates' attribute values (where N is the window size).
+2. It compares the candidate's attribute value to this average.
+3. If the absolute difference between the candidate’s value and the average is less than or equal to the configured tolerance, the candidate is accepted.
+4. Otherwise, it is rejected.
 
-### Inputs
+The window size determines how many previous candidates are considered in the average calculation, and the tolerance controls how strict the comparison is.
 
-* **Probe**: Accepts candidate data from flood fill nodes
-* **Source**: Optional input for additional data when using attribute-based settings
+<details>
 
-### Outputs
+<summary>Inputs</summary>
 
-* **Valid**: Passes candidates that meet the running average criteria
-* **Invalid**: Rejects candidates that fall outside the tolerance range
+* Expects a data source with attributes that can be used for the `Operand` property.
+* Requires a valid flood fill context and handler to operate within.
 
-### Configuration
+</details>
+
+<details>
+
+<summary>Outputs</summary>
+
+* Modifies the list of candidates considered valid during flood fill diffusion.
+* Does not produce new data; it filters existing candidates based on the running average logic.
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
-
 **Window Size Input**
 
-_Controls whether the window size (number of values used in the average) is a constant or comes from an attribute._
+_Controls whether the window size is a constant or read from an attribute._
+
+When set to **Constant**, use the `Window Size` value.\
+When set to **Attribute**, use the `Window Size (Attr)` value from input data.
 
 **Values**:
 
-* **Constant**: Use the fixed `Window Size` value below.
-* **Attribute**: Read the window size from the input data using the `Window Size (Attr)` selector.
-
-**Window Size (Attr)**
-
-_The attribute to read the window size from, when `Window Size Input` is set to "Attribute"._
+* **Constant**: Use a fixed integer window size.
+* **Attribute**: Read the window size from a point attribute.
 
 **Window Size**
 
-_The number of previously accepted candidates to include in the running average calculation. This value is ignored if `Window Size Input` is set to "Attribute"._
+_Window Size Constant_
+
+Controls how many of the most recent accepted candidates are included in the running average calculation.\
+A larger window size smooths out fluctuations more, while a smaller one allows for more variation.
+
+**Range**: Minimum value is 1.
 
 **Tolerance Input**
 
-_Controls whether the tolerance (acceptable deviation from the average) is a constant or comes from an attribute._
+_Controls whether the tolerance is a constant or read from an attribute._
+
+When set to **Constant**, use the `Tolerance` value.\
+When set to **Attribute**, use the `Tolerance (Attr)` value from input data.
 
 **Values**:
 
-* **Constant**: Use the fixed `Tolerance` value below.
-* **Attribute**: Read the tolerance from the input data using the `Tolerance (Attr)` selector.
-
-**Tolerance (Attr)**
-
-_The attribute to read the tolerance from, when `Tolerance Input` is set to "Attribute"._
+* **Constant**: Use a fixed double tolerance.
+* **Attribute**: Read the tolerance from a point attribute.
 
 **Tolerance**
 
-_Maximum allowed deviation from the running average for a candidate to be accepted. This value is ignored if `Tolerance Input` is set to "Attribute"._
+_Tolerance Constant_
+
+Defines how close a candidate's attribute value must be to the running average to be accepted.\
+A higher tolerance allows more variation, while a lower one enforces stricter adherence to the trend.
+
+**Range**: Minimum value is 0.
 
 **Operand**
 
-_The attribute whose values are averaged and compared against candidates._
+_The property that will be averaged and checked against candidates -- will be broadcasted to a `double`._
 
-### Usage Example
+Specifies which attribute of the input points is used for calculating the running average and comparing candidate values.\
+For example, using `$Position.Z` would base the average on Z coordinates.
 
-You're creating a procedural path that should stay relatively close to an average direction or elevation.
+#### Usage Example
 
-1. Use this factory with a flood fill node.
-2. Set the **Operand** to a point's Z-coordinate (elevation).
-3. Set **Window Size** to 5 and **Tolerance** to 2.
-4. As the flood fills, each new point must have a Z value within 2 units of the average Z of the last 5 points.
-5. This results in a path that gently follows elevation changes but avoids sharp deviations.
+Use this subnode in a flood fill graph where you want to maintain a consistent height or value trend. For instance, when generating terrain features like ridges or valleys, you can set the operand to `Z Position`, window size to 10, and tolerance to 5. This ensures that new points added to the fill are within 5 units of the average Z height of the last 10 points.
 
-### Notes
+#### Notes
 
-* The window size is dynamically adjusted based on how many candidates have been accepted so far — it will never exceed the number of available candidates.
-* For best results, use a relatively large tolerance compared to the variation in your attribute values.
-* This control works well with other fill controls to create complex filtering rules.
-* If you're using an attribute for window size or tolerance, make sure that attribute exists on all input points.
+* The running average is updated only with accepted candidates.
+* If fewer than the window size of candidates have been accepted, the average will be calculated over all available candidates.
+* This subnode works best when used in scenarios where a smooth or gradual transition between values is desired.

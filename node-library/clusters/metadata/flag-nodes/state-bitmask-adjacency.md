@@ -6,97 +6,86 @@ icon: circle-dashed
 # State : Bitmask Adjacency
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> A filter factory that evaluates directional adjacency between points using bitmask collections, checking if point directions align with specified bitmasks.
+> A bulk-check for directional adjacency, using bitmask collections.
 
-### Overview
+#### Overview
 
-This factory creates a specialized filter that checks whether the direction from one point to another matches predefined bitmask patterns. It's designed for bulk-checking adjacency relationships in clusters or graphs, using bitwise operations to efficiently evaluate multiple conditions at once.
+This subnode evaluates the adjacency relationships between points in a cluster based on their directional orientation. It performs a fast, bulk check to determine whether points are aligned in specific directions and applies bitwise operations to flag them accordingly. This is useful for defining spatial relationships or directional constraints within procedural data.
 
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes like `Cluster : Filter` or `Graph : Filter`. Can be used alongside other filters to build complex adjacency logic.
-{% endhint %}
+It connects to **Filter** pins on processing nodes that support cluster state definitions.
 
-### How It Works
+#### How It Works
 
-The factory evaluates the direction from each point to its neighbors and compares that direction against predefined bitmasks. It uses dot product calculations to determine if the angle between directions falls within a specified threshold. If the check passes, it applies success bitmasks; otherwise, it can apply alternative bitmasks when configured.
+This subnode evaluates adjacency by comparing the direction of each point's orientation with its neighbors. For each point, it calculates a dot product between its own direction and the direction of adjacent points. If the angle between these directions is within a specified threshold, the point is considered aligned.
 
-### Inputs
+It then applies bitwise operations to a flag based on this alignment check:
 
-* **Points**: The collection of points to evaluate for adjacency.
-* **Neighbors**: The set of neighboring points to compare against each point.
-* **Filter**: Optional input for applying additional filtering logic before adjacency checks.
+* When all adjacency checks pass, it applies the **Compositions** and **Collections** defined for success.
+* If any check fails and **bUseAlternativeBitmasksOnFilterFail** is enabled, it applies alternative bitwise operations from **OnFailCompositions** and **OnFailCollections**.
 
-### Outputs
+The direction used in the dot product can optionally be transformed using the point's local transform if **bTransformDirection** is enabled. The result of the dot product check can also be inverted by enabling **bInvert**, which flips the logic so that non-matching directions are flagged instead.
 
-* **Filtered Points**: Points that pass the adjacency test.
-* **Bitmask Flags**: Updated bitmask values applied to points based on adjacency results.
-
-### Configuration
+#### Configuration
 
 ***
 
-#### Settings
-
 **Angle**
 
-_The maximum angle (in degrees) allowed for adjacency checks._
+_Shared angle threshold_
 
-If the angle between two directions is less than or equal to this value, the adjacency condition passes. For example, setting this to 22.5° allows for very tight directional alignment.
+Controls the maximum angular difference (in degrees) allowed between two directions for them to be considered aligned. A value of 22.5° means that if two points have orientations within 22.5° of each other, they are considered adjacent in direction.
 
 **bTransformDirection**
 
-_Whether to apply point transforms when calculating directions._
+_Whether to transform directions using the vtx' point transform_
 
-When enabled, directions are transformed using each point's local transform before comparison. This is useful when working with rotated or scaled clusters where you want to evaluate directions in world space.
+When enabled, the direction used in the dot product is transformed by the point's local transform before comparison. This allows for directional checks in world space rather than object space.
 
 **Compositions**
 
-_A list of bitmask compositions to apply when adjacency passes._
+_Operations executed on the flag if all filters pass (or if no filter is set)_
 
-These define the bitmasks that will be applied to points when they pass the adjacency test. Each composition can reference a collection and specify how bits should be combined.
+A list of bitmask operations to apply when adjacency conditions are met. These define how the flag is modified if all directional checks pass.
 
 **Collections**
 
-_A map of bitmask collections to apply when adjacency passes._
+_Operations executed on the flag if all filters pass (or if no filter is set)_
 
-Allows you to associate specific collections with operations to be performed on the flags. This is useful for applying different bitmasks based on various conditions or categories.
+A map of bitmask collections and their associated bitwise operations to apply when adjacency conditions are met.
 
 **bUseAlternativeBitmasksOnFilterFail**
 
-_Whether to use alternative bitmasks when adjacency fails._
+_If enabled, and if filters exist, will apply alternative bitwise operations when filters fail._
 
-When enabled, this allows you to define a separate set of bitmask operations that are applied when the adjacency check fails.
+When enabled, this subnode applies different bitwise operations if any adjacency check fails. This allows for more nuanced flagging based on partial success or failure.
 
 **OnFailCompositions**
 
-_A list of bitmask compositions to apply when adjacency fails._
+_Operations executed on the flag if any filters fails_
 
-These bitmasks are applied when the adjacency test does not pass. Only used if `bUseAlternativeBitmasksOnFilterFail` is enabled.
+A list of bitmask operations to apply when at least one adjacency condition fails. Only used if **bUseAlternativeBitmasksOnFilterFail** is enabled.
 
 **OnFailCollections**
 
-_A map of bitmask collections to apply when adjacency fails._
+_Operations executed on the flag if any filters fails_
 
-Similar to `Collections`, but applied when the adjacency check fails. Only active if `bUseAlternativeBitmasksOnFilterFail` is enabled.
+A map of bitmask collections and their associated bitwise operations to apply when at least one adjacency condition fails. Only used if **bUseAlternativeBitmasksOnFilterFail** is enabled.
 
 **bInvert**
 
-_Whether to invert the dot product check._
+_Whether to invert the dot product check. Bitmasks will be applied with direction does NOT match._
 
-When enabled, the filter passes when directions do **NOT** match the bitmask criteria. This can be used to exclude certain directional relationships from consideration.
+When enabled, the logic is inverted so that points are flagged if their directions do **not** align within the threshold instead of when they **do** align.
 
-### Usage Example
+#### Usage Example
 
-Create a cluster with points that represent nodes in a graph. Use this factory to define adjacency rules where points must face toward each other within 30°. Apply bitmasks to mark these connections, then use the resulting flags to drive further processing like pathfinding or connectivity analysis.
+Use this subnode in a cluster state definition to flag points that have aligned neighbors. For instance, you might use it to mark all points that are facing similar directions as part of a terrain or structure alignment system. You could then use these flags to influence further procedural operations like mesh generation or material assignment.
 
-### Notes
+#### Notes
 
-* This factory is optimized for bulk operations and works best with large datasets.
-* The angle threshold acts as a tolerance for directional alignment.
-* Bitmask collections can be shared across multiple factories for consistent behavior.
-* Combine this with other filter types to create complex adjacency rules (e.g., "must face toward AND be within distance").
+* This subnode is designed for performance and works on bulk adjacency checks.
+* It does not modify the actual point data, only applies flags based on directional relationships.
+* The **Angle** setting should be tuned to match the expected spatial orientation of your data.

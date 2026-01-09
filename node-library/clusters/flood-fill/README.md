@@ -6,27 +6,42 @@ icon: scrubber
 # Flood Fill
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-### Overview
+> Diffuses vertex attributes onto their neighbors.
 
-This node performs a diffusion process that spreads values from seed points across connected nodes in clusters, similar to how water would spread out from a source point. It's useful for creating organic-looking patterns, propagating data through networks, or simulating influence areas.
+#### Overview
 
-The node works by starting from seed points and expanding outward along edges, assigning values to neighboring nodes based on configurable rules. You can control how the diffusion spreads, how it's ordered, and what attributes are written back to the points.
+This node performs a diffusion process on clustered data, spreading vertex attributes across connected nodes in a graph. It's useful for propagating information such as scores, weights, or other values from seed points throughout a cluster structure.
+
+It works by selecting seed points and then "flood-filling" attribute values to neighboring vertices based on defined rules. The diffusion process can be controlled to run either in parallel or sequentially, allowing for different behaviors depending on the desired outcome.
+
+This node connects to clusters and expects edge data that defines how nodes are connected. It outputs modified vertex data with new attributes reflecting the diffusion results.
 
 {% hint style="info" %}
-This node requires clusters to be defined in your graph. It operates on the connectivity of points within each cluster.
+Connects to **Clusters** and **Edges** inputs.
 {% endhint %}
+
+#### How It Works
+
+The Flood Fill node begins by selecting seed points from the input cluster using a defined selection method. These seeds are then used as starting points for diffusing attributes across connected nodes.
+
+It supports two modes of diffusion:
+
+* **Parallel**: Each vertex is processed once per iteration before moving to the next.
+* **Sequential**: Each vertex is fully diffused until it stops before proceeding to the next vertex.
+
+The process continues iteratively, spreading values from each node to its neighbors based on the defined flow rules. The algorithm tracks how far each vertex has been diffused and whether it reached an endpoint, allowing for complex attribute propagation patterns.
+
+Each diffusion step can be configured with distance thresholds and blending operations, enabling fine-grained control over the spread behavior.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Main Input**: Points that define the cluster structure
-* **Edges**: Optional edge data that defines connections between points
+* **Clusters**: A collection of clustered data points.
+* **Edges**: Defines connections between nodes in the clusters.
 
 </details>
 
@@ -34,150 +49,165 @@ This node requires clusters to be defined in your graph. It operates on the conn
 
 <summary>Outputs</summary>
 
-* **Output Points**: Modified point data with diffusion attributes
-* **Output Edges**: Optional edge output if path information is requested
-* **Paths**: Optional path data representing the diffusion paths
+* **Points**: Modified vertex data with new attributes reflecting diffusion results.
+* **Edges**: (Optional) Modified edge data if needed for further processing.
 
 </details>
 
-### Properties Overview
-
-Settings to configure how the diffusion process works and what data is written.
+#### Configuration
 
 ***
 
-#### Seeds
+**SeedPicking**
 
-Controls how seed points are selected and ordered for diffusion.
+_Drive how a seed point selects a node._
 
-**Seed Picking Method**
-
-_Controls how a seed point selects a node within its cluster._
-
-* Uses either the closest vertex or edge to the seed point as the starting node
-* Distance-based selection can be limited with MaxDistance
+Controls the method used to select initial seed points from the cluster. This can be based on index, distance, or other selection criteria.
 
 **Ordering**
 
-_Drives how seeds are ordered for processing._
+_Defines the sorting used for the vtx_
 
-* **Index**: Seeds are processed in their original index order
-* **Sorting**: Seeds are sorted using the sorting rules defined below
+Determines whether the order of processing vertices is driven by their index or by a sorting rule.
 
-**Sort Direction**
+**SortDirection**
 
-_Sets the direction of the seed sorting._
+_Sort direction_
 
-* **Ascending**: Smallest values first
-* **Descending**: Largest values first
+Controls whether the sorting order is ascending or descending.
 
-***
+**Seeds**
 
-#### Diffusion Settings
+_Seeds settings_
 
-Controls how the diffusion process behaves.
+Settings related to how seed points are selected and processed.
 
-**Processing Mode**
+**Processing**
 
-_Determines how diffusions are processed._
+_Defines how each vtx is diffused_
 
-* **Parallel**: Each vertex is diffused once before moving to the next iteration
-* **Sequential**: Each vertex is diffused until it stops before moving to the next one
+Sets the diffusion mode:
 
-**Max Diffusion Distance**
+* **Parallel**: Diffuse all vertices once per iteration.
+* **Sequential**: Fully diffuse one vertex before moving to the next.
 
-_Limits how far the diffusion can spread._
+**Diffusion**
 
-* Set to 0 or negative to allow unlimited spread
-* Positive values cap the total distance of the diffusion
+_Diffusion settings_
 
-**Max Diffusion Depth**
+Controls how the diffusion process behaves, including distance limits and blending operations.
 
-_Sets the maximum number of steps a diffusion can take._
+**bUseOctreeSearch**
 
-* Set to -1 for unlimited depth
-* Higher values create longer, more complex diffusions
+_Whether or not to search for closest node using an octree. Depending on your dataset, enabling this may be either much faster, or much slower._
 
-**Fill Controls**
-
-_Configures how the diffusion fills nodes._
-
-* Controls rate and behavior of node filling during diffusion
-* Can be used to simulate different types of influence or spread behaviors
+When enabled, uses an octree structure to optimize neighbor searches, which can improve performance with large datasets.
 
 ***
 
-#### Outputs
+**bWriteDiffusionDepth**
 
-Controls what data is written back to the points.
+_Write the diffusion depth the vtx was subjected to._
 
-**Write Diffusion Depth**
+When enabled, writes how many steps of diffusion a vertex went through.
 
-_When enabled, writes the depth at which each point was reached._
+**DiffusionDepthAttributeName**
 
-* Creates an integer attribute named "DiffusionDepth" by default
-* Useful for visualizing how far each point was diffused from its seed
+_Name of the 'int32' attribute to write diffusion depth to._
 
-**Write Diffusion Order**
+The name of the attribute where the diffusion depth is stored.
 
-_When enabled, writes the order in which points were processed._
+**bWriteDiffusionOrder**
 
-* Creates an integer attribute named "DiffusionOrder" by default
-* Helps track the sequence of diffusion steps
+_Write the final diffusion order._
 
-**Write Diffusion Distance**
+When enabled, records the order in which vertices were processed during diffusion.
 
-_When enabled, writes the cumulative distance traveled during diffusion._
+**DiffusionOrderAttributeName**
 
-* Creates a double attribute named "DiffusionDistance" by default
-* Useful for creating gradient effects or distance-based visualizations
+_Name of the 'int32' attribute to write order to._
 
-**Write Diffusion Ending**
+The name of the attribute where the diffusion order is stored.
 
-_When enabled, marks points that are endpoints of diffusions._
+**bWriteDiffusionDistance**
 
-* Creates a boolean attribute named "DiffusionEnding" by default
-* Points marked as true are at the end of their diffusion path
+_Write the final diffusion distance._
 
-**Seed Forwarding**
+When enabled, stores the total distance traveled during diffusion.
 
-_Configures which seed attributes to forward to the diffused points._
+**DiffusionDistanceAttributeName**
 
-* Selects which attributes from the seed point will be copied to the target points
-* Useful for propagating properties like color, material, or other characteristics
+_Name of the 'double' attribute to write diffusion distance to._
+
+The name of the attribute where the diffusion distance is stored.
+
+**bWriteDiffusionEnding**
+
+_Write on the vtx whether it's a diffusion "endpoint"._
+
+When enabled, marks vertices that reached an endpoint in the diffusion process.
+
+**DiffusionEndingAttributeName**
+
+_Name of the 'bool' attribute to write diffusion ending to._
+
+The name of the attribute where the endpoint flag is stored.
+
+**SeedForwarding**
+
+_Which Seed attributes to forward on the vtx they diffused to._
+
+Controls which attributes from seed points are copied onto the vertices they diffuse to.
 
 ***
 
-#### Outputs - Paths
+**PathOutput**
 
-Controls how path data is generated and output.
+_TBD_
 
-**Path Output Mode**
+Controls whether and how paths are output during diffusion.
 
-_Specifies how paths are output._
+**Values**:
 
-* **None**: No path data is generated
-* **Full**: Generates full paths from seed to endpoint (can create overlaps)
-* **Partitions**: Generates partial paths with overlapping endpoints only
+* **None**: No paths are generated.
+* **Full**: Full paths from seed to endpoint are generated.
+* **Partitions**: Only partial paths are generated, with overlapping endpoints.
 
-**Partition Over**
+**PathPartitions**
 
-_Determines how partitions are sorted when using "Partitions" mode._
+\_ ├─ Partition over\_
 
-* **Length**: Sort by path length
-* **Score**: Sort by path score
-* **Depth**: Sort by path depth
+Controls how paths are partitioned when using the "Partitions" output mode.
 
-**Partition Sorting**
+**Values**:
 
-_Sets the sorting direction for path partitions._
+* **Length**: Partition by path length.
+* **Score**: Partition by score.
+* **Depth**: Partition by diffusion depth.
 
-* **Ascending**: Shorter paths first
-* **Descending**: Longer paths first
+**PartitionSorting**
 
-**Seed Attributes to Path Tags**
+\_ └─ Sorting\_
 
-_Configures which seed attributes are used to tag path data._
+Determines the sorting order for partitions in the path output.
 
-* Maps seed point attributes to tags in the output path data
-* Useful for categorizing or filtering paths based on seed properties
+**Values**:
+
+* **Ascending**: Sort ascending.
+* **Descending**: Sort descending.
+
+**SeedAttributesToPathTags**
+
+_TBD_
+
+Defines which seed attributes are used to tag paths during output.
+
+#### Usage Example
+
+Use this node to simulate a "spread" effect, such as propagating influence from a central point across a network of connected nodes. For example, you could use it to model how a resource spreads through a terrain cluster or how a signal propagates through a graph structure.
+
+#### Notes
+
+* The performance of the diffusion process can be affected by the number of vertices and edges in your clusters.
+* Enabling octree search may improve performance for large datasets but could slow things down with small data sets.
+* Diffusion depth and distance attributes are useful for visualizing or analyzing how far values have spread.

@@ -6,85 +6,83 @@ icon: circle-dashed
 # FC : Keep Direction
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Stops flood fill operations after a certain number of vertices have been captured, based on directional consistency.
+> Stops flood fill operations after a certain number of vertices have been captured in a specific direction.
 
-### Overview
+#### Overview
 
-This factory defines a stopping condition for flood fill operations that prevents the fill from continuing indefinitely. It's designed to halt the fill process once a specified number of vertices have been captured in a consistent direction, helping to control the scope and behavior of procedural fills.
+This subnode controls how flood fill operations proceed by limiting the number of vertices captured along a given direction. It's particularly useful when you want to prevent fills from spreading too far or in a particular orientation, such as stopping a fill at a certain distance from a starting point in a specific direction.
+
+It defines a behavior that is consumed by flood fill processing nodes to determine whether a candidate vertex should be included in the current diffusion step. It does not process data directly but provides rules for how to evaluate candidates during the fill process.
 
 {% hint style="info" %}
-Connects to **Probe** pins on flood fill nodes (like `Flood Fill` or `Flood Fill With Seed`)
+Connects to **Probe** pins on flood fill graph-building nodes.
 {% endhint %}
 
-### How It Works
+#### How It Works
 
-This factory works by tracking how many vertices are captured in a consistent direction during the flood fill process. When the number of consecutive captures exceeds the defined window size, the fill stops.
+This subnode evaluates candidates based on their spatial relationship and direction relative to the current diffusion path. It uses a window size to define how many vertices are allowed in a specific direction before stopping further capture.
 
-The directional consistency is determined by comparing the direction from the previous vertex to the current one against a hash-based comparison system. This allows for tolerance in direction changes while still enforcing the capture limit.
+The algorithm works by:
 
-### Configuration
+1. Tracking candidate vertices within a defined "window" around the current fill direction.
+2. When the number of valid candidates within that window exceeds the specified **Window Size**, it stops accepting new candidates in that direction.
+3. It uses hash-based comparisons to determine if two points are considered equivalent or close enough to be part of the same directional sequence.
+
+This allows for controlled, directional filling that respects spatial constraints and avoids over-spreading in certain regions.
+
+<details>
+
+<summary>Inputs</summary>
+
+Expects a set of candidate vertices from the flood fill operation. These candidates are evaluated based on their position and direction relative to the current diffusion path.
+
+</details>
+
+<details>
+
+<summary>Outputs</summary>
+
+Modifies which candidates are accepted during the flood fill process, effectively limiting how far or in what direction the fill can propagate.
+
+</details>
+
+#### Configuration
 
 ***
-
-#### General
 
 **Window Size Input**
 
 _Controls whether the window size is a constant value or read from an attribute._
 
-When set to **Attribute**, the window size is read from the input data using the specified attribute. When set to **Constant**, the window size is fixed at the value defined below.
-
-**Values**:
-
-* **Constant**: Use a fixed number of captures
-* **Attribute**: Read the capture count from an input attribute
+When set to **Constant**, the **Window Size** setting is used directly. When set to **Attribute**, the **Window Size (Attr)** selector defines which attribute to use.
 
 **Window Size (Attr)**
 
-_The attribute used to define the window size when "Window Size Input" is set to "Attribute"._
+_The attribute to read the window size from._
 
-This attribute should contain integer values that determine how many consecutive captures are allowed before stopping.
+Only visible when **Window Size Input** is set to **Attribute**.
 
 **Window Size**
 
-_The fixed number of captures to allow before stopping when "Window Size Input" is set to "Constant"._
+_The maximum number of vertices allowed in a direction before stopping._
 
-Minimum value is 1. For example, setting this to 5 means the fill will stop after capturing 5 vertices in a consistent direction.
+Must be at least 1. A value of 1 means only one vertex per direction will be accepted.
 
-**Hash Comparison Settings**
+**Hash Comparison Details**
 
-_Configuration for how directional comparisons are made._
+_Configuration for how spatial comparisons are made when evaluating candidates._
 
-This affects how the system determines whether two directions are considered "the same" for the purpose of counting consecutive captures. Lower tolerance values mean stricter directional consistency is required.
+Controls the tolerance for considering two points as equivalent or close enough to be part of the same directional sequence.
 
-### Usage Example
+#### Usage Example
 
-Use this factory to create a fill that stops after capturing a certain number of vertices in a consistent direction. For example, you could use it to create a procedural path that follows a general direction but doesn't extend indefinitely.
+Use this subnode in a flood fill setup where you want to limit how far the fill spreads in a given direction. For example, if you're creating a cave system and want to stop the fill at 5 vertices from the starting point in any direction, set **Window Size** to 5.
 
-1. Create a `Flood Fill With Seed` node
-2. Connect this factory to its Probe pin
-3. Set the window size to 10
-4. The fill will stop after capturing 10 vertices in a consistent direction
+#### Notes
 
-### Notes
-
-* This factory only affects the **Candidate** step of flood fill operations
-* The directional consistency check is based on vector hash comparisons, allowing for small variations in direction
-* Use this with caution when working with complex topologies where direction changes are frequent
-* Combine with other fill controls to create more sophisticated stopping conditions
-
-***
-
-### Inputs
-
-* **Probe**: Connection point for flood fill nodes
-* **Input Data**: Source data containing optional attribute for window size
-
-### Outputs
-
-* **Result**: Processed data with directional stopping condition applied
+* The **Hash Comparison Details** affect how closely points must align to be considered part of the same directional chain.
+* This subnode is best used with directional flood fill operations where the concept of "direction" makes sense (e.g., following a path or direction vector).
+* A small window size may result in early termination of fills, while a large one allows more spread.

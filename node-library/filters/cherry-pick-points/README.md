@@ -6,27 +6,37 @@ icon: scrubber
 # Cherry Pick Points
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Filter points by indices, either read from local attributes or using external sources.
 
-### Overview
+#### Overview
 
-This node allows you to selectively keep or discard specific points from a dataset based on their index positions. You can define which indices to pick either directly from an attribute on the input data or by connecting additional source inputs that contain the indices. This is useful for extracting specific elements from a larger point cloud, such as selecting certain vertices from a mesh or choosing specific locations from a procedural distribution.
+The Cherry Pick Points node allows you to selectively keep or discard specific points from a dataset based on predefined indices. These indices can come from an attribute within the input data or from external sources connected to the node. This is useful for extracting specific elements from a larger point cloud, such as selecting certain locations for further processing or removing unwanted points.
 
 {% hint style="info" %}
-This node supports both inverting the selection (keeping all points except the specified indices) and optionally outputting discarded points to a separate dataset.
+Connects to **Points** processing nodes and supports subnodes for defining how indices are sourced.
 {% endhint %}
+
+#### How It Works
+
+This node operates by reading a list of indices that define which points should be kept or discarded. It evaluates each point in the input dataset against these indices:
+
+1. If the source is set to **Self**, it reads the indices from an attribute on the input data.
+2. If the source is set to **Sources**, it uses indices provided by external subnodes connected to the node's input pins.
+3. For each point, it checks if its index matches one of the specified indices:
+   * When **Invert** is disabled, points with matching indices are kept.
+   * When **Invert** is enabled, points with matching indices are discarded.
+4. If **Output Discarded Points** is enabled, discarded points are sent to a separate output dataset.
+5. The node can optionally allow empty outputs when no points match the criteria.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Default Input** _(Required)_: Point data to filter.
-* **Sources** _(Optional, Multiple)_: Additional inputs containing point index data for filtering.
+* **Main Input**: A point dataset from which points are filtered.
+* **Sources (optional)**: Additional input pins that provide index lists for filtering, used when the source is set to "Sources".
 
 </details>
 
@@ -34,50 +44,39 @@ This node supports both inverting the selection (keeping all points except the s
 
 <summary>Outputs</summary>
 
-* **Default Output** _(Required)_: Points that match the cherry-pick criteria.
-* **Discarded** _(Optional)_: Points that were filtered out when "Output Discarded Points" is enabled.
+* **Output Points**: The filtered point dataset containing either the selected or discarded points, depending on the settings.
+* **Discarded Points (optional)**: A separate output dataset containing points that were discarded if **Output Discarded Points** is enabled.
 
 </details>
 
-### Properties Overview
-
-Controls how the node filters and processes point data.
+#### Configuration
 
 ***
 
-#### Settings
+**bInvert**
 
-Defines core filtering behavior.
+_Whether to invert the picking (picked indices will be discarded instead or kept)._
 
-**Invert**
+When enabled, the node keeps all points except those whose indices match the specified list. When disabled, only points with matching indices are retained.
 
-_When enabled, the node will discard the specified indices instead of keeping them._
+**bOutputDiscardedPoints**
 
-* Reverses the selection logic
-* Useful for excluding specific points from a larger dataset
+_Whether to output discard points to their own dataset._
 
-**Output Discarded Points**
+When enabled, points that are filtered out are sent to a separate output pin named "Discarded Points". This allows you to process or visualize discarded elements separately from the main result.
 
-_When enabled, discarded points are sent to a separate output pin._
+**bAllowEmptyOutputs**
 
-* Creates an additional output called "Discarded"
-* Allows you to visualize or further process the filtered-out points
-* Only active when "Allow Empty Outputs" is also enabled
+_Whether to output discard points collections to be empty._
 
-**Allow Empty Outputs**
+When enabled, even if no points match the filtering criteria, an empty output dataset is still generated. When disabled, no output is produced for discarded points if none are filtered out.
 
-_When enabled, output pins can be left empty if no points match criteria._
+#### Usage Example
 
-* Prevents errors when no points are selected
-* Useful for conditional workflows where some outputs may legitimately be empty
+You have a point cloud representing a forest with each point being a tree location. You want to extract only the trees at specific indices (e.g., every 5th tree) and discard the rest. You can use this node with the **Self** source, where an attribute on the input points contains the desired indices. Alternatively, you could connect a subnode that generates these indices dynamically, using the **Sources** option.
 
-#### Source
+#### Notes
 
-Controls how indices are read for filtering.
-
-**Source Type**
-
-_Specifies whether to read indices from the input data or external sources._
-
-* **Self**: Read indices from an attribute on the current input dataset.
-* **Sources**: Read indices from one or more connected source inputs.
+* The node supports both single and multiple data inputs for flexibility in how point data is structured.
+* Using the **Invert** option allows for easy exclusion of specific points instead of inclusion.
+* When using external sources, ensure that the subnode providing indices is properly configured to output integer arrays or lists compatible with this node.

@@ -6,84 +6,61 @@ icon: circle-dashed
 # FC : Edge Filters
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Filters edges along which the diffusion can occur.
+> Filter edges along which the diffusion can occur.
 
-### Overview
+#### Overview
 
-This factory creates a **fill control** that restricts how flood fill operations spread by filtering the edges between points. It uses point filters to determine whether an edge should be considered valid for diffusion.
+This subnode defines which edges are valid for use in flood fill operations. It acts as a filter that evaluates whether an edge between two points should be considered when propagating a diffusion process. This is useful for creating controlled, structured diffusion patterns where not all connections between points are allowed.
 
-{% hint style="info" %}
-Connects to **Fill Control** pins on flood fill nodes
-{% endhint %}
+It connects to the **Edge Filters** input pin of flood fill processing nodes, allowing you to define which edges can be traversed during diffusion.
 
-### How It Works
+#### How It Works
 
-This factory defines a set of rules that control which connections (edges) between points are allowed during a flood fill operation. Instead of spreading freely, the diffusion is constrained by filters applied to the edges. This allows for complex behaviors like:
+This subnode evaluates edges in a point cloud to determine if they should be used for diffusion. It uses a collection of point filters to test each edge's validity. For an edge to be considered valid, **all** configured filters must pass the test for that edge. The filters are applied to the points at both ends of the edge.
 
-* Only allowing diffusion along specific geometric relationships
-* Restricting spread based on point attributes
-* Creating barriers or pathways in your procedural generation
+Each filter operates on the data associated with the two points connected by the edge. If any filter rejects an edge, that edge is excluded from the diffusion process. This allows you to define complex rules about which connections should be allowed, such as filtering based on point attributes like height, color, or custom tags.
 
-### Inputs
+<details>
 
-#### Config
+<summary>Inputs</summary>
 
-_The configuration settings that define how this fill control operates._
+This node expects a set of point filters to be connected to its input pins. These filters are applied to edges in the point cloud.
 
-Controls the core behavior of the edge filtering system.
+</details>
 
-#### Filter Factories
+<details>
 
-_List of point filters to apply to edges._
+<summary>Outputs</summary>
 
-Each filter defines a condition that must be met for an edge to be considered valid. Multiple filters can be combined, and they all must pass for an edge to be allowed.
+The output is a configuration that defines which edges are valid for diffusion based on the applied filters.
 
-### Outputs
+</details>
 
-#### Fill Control
-
-_The resulting fill control that can be connected to flood fill nodes._
-
-This output provides the configured edge filtering behavior that controls how diffusion spreads through your point cloud.
-
-### Configuration
+#### Configuration
 
 ***
 
-#### General
-
 **Config**
 
-_The configuration settings that define how this fill control operates._
+_Control Config._
 
-Controls the core behavior of the edge filtering system.
+Controls general settings related to how this filter operates within the flood fill system.
 
-**Filter Factories**
+**FilterFactories**
 
-_List of point filters to apply to edges._
+_The list of point filters to apply to each edge._
 
-Each filter defines a condition that must be met for an edge to be considered valid. Multiple filters can be combined, and they all must pass for an edge to be allowed.
+Each connected filter will be evaluated against the points at both ends of an edge. An edge is only considered valid if **all** filters pass for that edge.
 
-### Usage Example
+#### Usage Example
 
-Use this factory with a **Flood Fill** node to create a diffusion that only spreads along specific connections. For example:
+Use this subnode in a flood fill setup where you want to restrict diffusion to specific types of edges. For example, you might connect a "Height Difference" filter to ensure that diffusion only occurs between points with a height difference below a certain threshold. This would prevent diffusion from crossing steep terrain features.
 
-1. Create a point cloud representing terrain
-2. Add a **Fill Control : Edge Filters** node
-3. Connect a **Filter : Distance** node to the filter input
-4. Set the distance threshold to 2 units
-5. Connect this to a Flood Fill node
+#### Notes
 
-Result: The flood fill will only spread between points that are within 2 units of each other, creating a localized diffusion pattern.
-
-### Notes
-
-* This factory works by evaluating filters on the edges connecting points during the flood fill process
-* Multiple filters can be combined to create complex edge restrictions
-* Filters are applied in order, and all must pass for an edge to be valid
-* The filter inputs should be connected to point filter factories that define your edge conditions
+* Multiple filters can be connected to define complex edge validity rules.
+* The order of filters does not matter; all must pass for an edge to be valid.
+* Filters are applied per-edge, so performance depends on the number and complexity of filters used.

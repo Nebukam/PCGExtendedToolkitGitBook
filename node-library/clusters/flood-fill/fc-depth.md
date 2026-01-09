@@ -6,70 +6,82 @@ icon: circle-dashed
 # FC : Depth
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Control flood fill behavior based on how far a point is from the seed point in terms of diffusion steps.
+> Control fill behavior based on how far a point has diffused from its starting location.
 
-### Overview
+#### Overview
 
-This factory defines how flood fill operations prioritize and limit their expansion based on the depth (number of steps) from the starting point. It's used with flood fill nodes to control how deeply the fill spreads through connected points.
+This subnode defines how flood-fill operations progress by limiting diffusion based on depth. It ensures that points can only spread a certain number of steps away from their origin, which is useful for creating controlled, bounded fills in procedural generation workflows.
+
+It connects to the **Probe** pin of flood-fill graph-building nodes, where it determines whether a candidate point should be considered for inclusion in the diffusion based on its current depth.
 
 {% hint style="info" %}
-Connects to **Probe** pins on flood fill nodes
+Connects to **Probe** pins on flood-fill graph-building nodes.
 {% endhint %}
 
-### How It Works
+#### How It Works
 
-This factory controls the diffusion process by limiting how far a fill can spread based on the number of steps taken from the seed point. Each time a point is flooded, it increases the depth count by one. When the current depth reaches the maximum allowed depth, no further points at that depth or deeper will be considered for flooding.
+This subnode enforces a maximum diffusion depth for each point during a flood-fill operation. As points spread outward from their starting locations, they are tracked by how many steps they've taken away from the original seed.
 
-### Inputs
+When a new candidate point is considered for inclusion in the diffusion:
 
-* **Seed Point**: The starting point for the flood fill operation
-* **Connected Points**: Points that are connected to the seed point and can be flooded
+* The system checks if the candidate's current depth (number of steps from the origin) is less than or equal to the configured maximum depth.
+* If it exceeds the limit, the candidate is rejected and not added to the fill.
+* If it meets the criteria, the candidate is allowed to continue the diffusion process.
 
-### Outputs
+This creates a bounded region that expands outward in a controlled way, preventing infinite or overly expansive fills.
 
-* **Flooded Points**: Points that have been successfully flooded within the depth limit
-* **Depth Information**: Metadata about the depth of each flooded point
+<details>
 
-### Configuration
+<summary>Inputs</summary>
+
+Expects input data with points that are part of a cluster or graph structure. The system uses point positions and their relationships to determine depth during diffusion.
+
+</details>
+
+<details>
+
+<summary>Outputs</summary>
+
+Does not produce new data but modifies how the flood-fill process evaluates candidates, effectively limiting the spread of the fill based on depth.
+
+</details>
+
+#### Configuration
 
 ***
 
-#### General
-
 **Max Depth Input**
 
-_Controls whether the maximum depth is defined as a constant value or read from an attribute._
+_Controls whether the maximum depth is a fixed value or read from an attribute._
 
-When set to **Constant**, use the fixed value in the "Max Depth" setting. When set to **Attribute**, read the maximum depth from the specified attribute on each point.
-
-**Values**:
-
-* **Constant**: Use the fixed value in the "Max Depth" setting
-* **Attribute**: Read the maximum depth from an attribute
+When set to **Constant**, the system uses the value defined in **Max Depth**. When set to **Attribute**, the system reads the depth limit from the point's **Max Depth (Attr)** attribute.
 
 **Max Depth (Attr)**
 
-_The name of the attribute to read the maximum depth from._
+_The name of the attribute used to define maximum depth when "Max Depth Input" is set to "Attribute"._
 
-This setting is only active when "Max Depth Input" is set to **Attribute**.
+This attribute must be an integer and will be read per point during diffusion.
 
 **Max Depth**
 
-_The maximum number of steps a point can be from the seed before it's no longer considered for flooding._
+_The fixed maximum depth value when "Max Depth Input" is set to "Constant"._
 
-This value must be at least 1. A value of 1 means only the seed point itself will be flooded.
+Must be a positive integer. A value of 1 means only the starting point is included, while higher values allow more expansion.
 
-### Usage Example
+#### Usage Example
 
-Use this factory when you want to create a fill that spreads out in layers from a seed point, like creating a ripple effect or limiting how far a flood fills from its origin. For example, set Max Depth to 5 to ensure the fill stops expanding after 5 steps from the seed point.
+Use this subnode in a flood-fill setup where you want to limit how far points can spread from their source. For example:
 
-### Notes
+* Create a cluster of points.
+* Use a **Flood Fill** node with this **Fill Control : Depth** subnode.
+* Set **Max Depth** to 5.
+* This ensures that the fill only spreads up to 5 steps away from the original point, creating a controlled, bounded region.
 
-* This control is useful for creating layered or bounded fills
-* Combine with other fill controls to create complex diffusion behaviors
-* When using attribute input, make sure the attribute exists on all points that will be processed
+#### Notes
+
+* The depth is calculated as the number of steps taken during the diffusion process, not based on spatial distance.
+* This subnode works best when used with graph-based flood-fill algorithms where step tracking is meaningful.
+* A low maximum depth value can create sharp boundaries, while higher values allow more organic, gradual expansion.

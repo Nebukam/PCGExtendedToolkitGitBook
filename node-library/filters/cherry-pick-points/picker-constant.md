@@ -6,26 +6,41 @@ icon: circle-dashed
 # Picker : Constant
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> A Picker that selects a single index or relative position from a collection of data.
+> A Picker that has a single value.
 
-### Overview
+#### Overview
 
-This node allows you to pick one specific item from a set of data using either an absolute index or a relative position. It's useful when you want to consistently select the same item regardless of how many items are in your dataset, such as always picking the first, last, or a specific middle element.
+The Picker : Constant subnode selects a specific point or index from a dataset using a fixed value. It's useful when you want to consistently pick one item, such as the first, last, or a specific numbered point in a sequence.
+
+This node is typically used as a subnode for other processing nodes that need to select specific data points, like cherry-picking or sampling operations.
 
 {% hint style="info" %}
-This picker is ideal for selecting a fixed item from a list or array, rather than randomizing or sampling from it.
+Connects to **Picker** pins on nodes that support index-based selection.
 {% endhint %}
+
+#### How It Works
+
+This Picker selects one or more indices from an input set of data using a constant value. It supports both discrete (integer) and relative (floating-point) indexing.
+
+* If **DiscreteIndex** is used, it directly picks the point at that position in the dataset.
+  * Positive values select from the start (0 = first point)
+  * Negative values select from the end (-1 = last point)
+* If **RelativeIndex** is used, it treats the value as a normalized percentage of the dataset size.
+  * 0.0 = first point
+  * 1.0 = last point
+  * 0.5 = middle point
+
+The node supports different handling strategies for out-of-bounds indices, which can be configured in the picker settings.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Source** (Points): Expects a collection of points to pick from.
+* **Points**: The dataset of points to pick from.
+* **Picker**: Optional input for additional picker configuration or override behavior.
 
 </details>
 
@@ -33,58 +48,57 @@ This picker is ideal for selecting a fixed item from a list or array, rather tha
 
 <summary>Outputs</summary>
 
-* **Picker** (Points): Outputs the selected point(s) based on the configured index or relative position.
+* **Picker**: A set of indices that were selected based on the constant value.
 
 </details>
 
-### Properties Overview
-
-This node selects one item using either an absolute index or a normalized relative value.
+#### Configuration
 
 ***
 
-#### General
+**DiscreteIndex**
 
-Controls how the picker chooses which item to select.
+_The index of the point to select, using discrete (integer) values._
 
-**Discrete Index**
+Use positive numbers to count from the start of the dataset and negative numbers to count from the end. For example:
 
-_Selects a specific item by its position in the list._
+* `0` selects the first point.
+* `-1` selects the last point.
 
-* When set to 0, it picks the first item.
-* Negative values count from the end (e.g., -1 selects the last item).
-* If the index is out of bounds, behavior depends on the safety mode selected.
+When enabled, this setting overrides **RelativeIndex** if both are configured.
 
-**Values**:
+**RelativeIndex**
 
-* **0**: Selects the first item
-* **1**: Selects the second item
-* **-1**: Selects the last item
+_The index of the point to select, using relative (floating-point) values._
 
-**Relative Index**
+This value is interpreted as a percentage of the dataset size:
 
-_Selects a specific item by its normalized position in the list._
+* `0.0` = first point
+* `0.5` = middle point
+* `1.0` = last point
 
-* Value ranges from 0.0 to 1.0, where 0.0 is the first item and 1.0 is the last.
-* Useful when you want to pick items based on percentage or proportion.
-* If the value is outside the 0.0–1.0 range, behavior depends on the safety mode selected.
+When enabled, this setting overrides **DiscreteIndex** if both are configured.
 
-**Values**:
+**Config**
 
-* **0.0**: Selects the first item
-* **0.5**: Selects the middle item
-* **1.0**: Selects the last item
+_Picker properties_
 
-**Treat As Normalized**
+This section allows you to configure how the picker behaves when selecting indices, including handling of out-of-bounds values and index normalization.
 
-_When enabled, the index is treated as a relative value between 0 and 1._
+#### Usage Example
 
-* When enabled, the picker uses `RelativeIndex` instead of `DiscreteIndex`.
-* When disabled, the picker uses `DiscreteIndex`.
+To always select the third point in a dataset:
 
-### Notes
+1. Set **DiscreteIndex** to `2` (zero-based indexing).
+2. Connect this Picker subnode to a cherry-pick or sampling node that needs a fixed selection.
 
-* This node works best when you know exactly which item you want to pick from your dataset.
-* For example, if you have 10 points and set Discrete Index to 5, it will always select the 6th point (zero-indexed).
-* If you're working with dynamic data where the number of items changes frequently, consider using a relative index (0.0–1.0) for more consistent results.
-* The picker supports negative indices when `Treat As Normalized` is disabled, allowing you to select from the end of the list.
+To always select the middle point of a dataset:
+
+1. Set **RelativeIndex** to `0.5`.
+2. Connect this Picker subnode to a node that requires a central selection.
+
+#### Notes
+
+* The picker supports both positive and negative indices for discrete selection.
+* Relative indexing is useful when you want to pick a point based on percentage rather than absolute position.
+* Out-of-bounds handling can be configured in the parent picker settings to control behavior when an index exceeds dataset bounds.

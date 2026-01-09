@@ -6,29 +6,43 @@ icon: circle
 # Discard by Overlap
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Discard entire datasets based on how they overlap with each other.
 
-### Overview
+#### Overview
 
-This node evaluates how different point datasets overlap with each other and discards (removes) entire datasets based on overlap scores. It's useful for removing redundant or conflicting data in procedural generation workflows, such as eliminating overlapping terrain features, duplicate objects, or conflicting placements.
+This node evaluates multiple point datasets for spatial overlap and removes datasets that exceed certain overlap thresholds. It's useful when you want to eliminate redundant or overlapping content in procedural generation, such as avoiding duplicate terrain features or preventing object clustering in game levels.
 
-The node calculates overlap between datasets using various methods and assigns each dataset a score. Datasets with the lowest scores (or highest, depending on settings) are discarded to reduce redundancy or conflict in your final output.
+It processes all input datasets simultaneously, calculating how much each dataset overlaps with others using configurable weights and metrics. Based on these scores, it determines which datasets should be discarded from the output.
 
 {% hint style="info" %}
-This node works best when you have multiple point datasets that may contain overlapping elements. It's particularly useful for cleaning up procedural content where overlap introduces visual artifacts or logical conflicts.
+Connects to **Point Filters** subnodes for filtering points before overlap evaluation.
 {% endhint %}
+
+#### How It Works
+
+This node compares all input datasets against each other to determine how much they spatially overlap. For each pair of datasets, it calculates an intersection volume and various overlap statistics.
+
+First, it builds a spatial index (octree) for fast overlap detection between points in different datasets. Then, it performs pairwise overlap checks using the selected test mode (Fast, Box, or Sphere). The actual overlap volume is computed based on the bounds of each point.
+
+Each dataset gets assigned a score based on:
+
+* How many other datasets it overlaps with
+* How many points are involved in overlaps
+* The total volume of overlaps
+* Static properties like number of points and volume
+
+These scores are combined using configurable weights for both static (fixed) and dynamic (based on overlap) factors. Datasets are then pruned according to a prioritization logic, either removing those with the lowest scores first or highest scores first.
+
+The pruning process continues iteratively until no more datasets meet the discard criteria, based on the minimum threshold defined by the user.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Main Input** (Default): Point data to process
-* **Point Filters**: Optional input to filter which points are considered for overlap detection
+Expects multiple point datasets as input. Each dataset represents a collection of points that will be compared against all others for overlap.
 
 </details>
 
@@ -36,181 +50,99 @@ This node works best when you have multiple point datasets that may contain over
 
 <summary>Outputs</summary>
 
-* **Default Output**: Point data that passed overlap filtering, with discarded datasets removed
+Outputs the remaining point datasets after overlap pruning. Datasets that were discarded are not included in the output.
 
 </details>
 
-### Properties Overview
-
-Controls how overlap is calculated and which datasets are discarded.
+#### Configuration
 
 ***
-
-#### Overlap Settings
-
-How the node determines overlap between datasets.
 
 **Test Mode**
 
-_Controls how overlap is tested between datasets._
+_Overlap test mode_
 
-* Uses different methods to detect overlaps:
-  * **Fast**: Only tests using datasets' overall bounds (fastest)
-  * **Box**: Tests every point's bounds as transformed box (more accurate than Fast, but may miss some overlaps)
-  * **Sphere**: Tests every point's bounds as spheres (fastest, but may produce false positives)
+Controls how overlap is computed between points from different datasets.
+
+* **Fast**: Only compares overall bounding boxes of datasets.
+* **Box**: Tests each point's bounds as transformed boxes, may miss some overlaps.
+* **Sphere**: Tests each point's bounds as spheres, can produce false positives.
 
 **Bounds Source**
 
-_Controls which bounds are used to compute overlap._
+_Point bounds to be used to compute overlaps_
 
-* Determines how the size and shape of each point is considered:
-  * **Scaled Bounds**: Uses scaled bounds (default)
-  * **Density Bounds**: Scaled bounds with steepness factor
-  * **Bounds**: Unscaled bounds
-  * **Center**: Tiny size 1 box
+Determines how the spatial bounds of individual points are calculated.
+
+* **Scaled Bounds**: Uses scaled bounds based on point transform and scale.
+* **Density Bounds**: Scales bounds using density and steepness parameters.
+* **Bounds**: Uses unscaled bounds.
+* **Center**: Treats each point as a tiny box centered at its location.
 
 **Expansion**
 
-_Adds a margin of error to bounds._
+_Expand bounds by that amount to account for a margin of error due to multiple layers of transformation and lack of OBB_
 
-* Expands the bounds by this amount in world units to account for transformation errors or multi-layered transformations.
-* Default value: 10
+Adds padding around point bounds to account for transformations or inaccuracies in bounding calculations. A value of 10 means the bounds are expanded by 10 units in all directions.
 
-**Threshold Measure**
+**Weighting**
 
-_How to interpret the minimum overlap threshold._
+_Scores weighting_
 
-* **Discrete**: Distance in world space
-* **Relative**: Percentage (0-1) of the averaged radius
+Controls how different overlap metrics contribute to the final score used for pruning.
 
-**Min Threshold**
-
-_The minimum amount two points must overlap to be counted._
-
-* Higher values require more overlap before points are considered overlapping.
-* Default value: 0.1
-
-**Include Filtered In Metrics**
-
-_Whether filtered points still contribute to static metrics._
-
-* When enabled, points that are filtered out from overlap detection still participate in overall bounds shape and other static calculations.
-* When disabled, these points are completely ignored for metric computation.
-
-***
-
-#### Weighting Settings
-
-Controls how scores are calculated for each dataset.
-
-**Dynamic Balance**
-
-_How much of the dynamic weights to account for vs. static ones._
-
-* Controls the influence of dynamic overlap metrics (like actual overlap count) versus static metrics.
-* Default value: 1
-
-**Overlap Count**
-
-_Weight for how many sets overlap._
-
-* Higher values make datasets with more overlaps less likely to be kept.
-* Default value: 2
-
-**Overlap Sub-Count**
-
-_Weight for how many points overlap._
-
-* Higher values penalize datasets with more overlapping points.
-* Default value: 1
-
-**Overlap Volume**
-
-_Weight for cumulative volume overlap._
-
-* Higher values penalize datasets with larger overlapping volumes.
-* Default value: 0
-
-**Overlap Volume Density**
-
-_Weight for volume overlap divided by number of overlapping points._
-
-* Higher values penalize datasets where overlaps are concentrated.
-* Default value: 0
-
-**Static Balance**
-
-_How much of the static weights to account for vs. dynamic ones._
-
-* Controls the influence of static metrics (like point count) versus dynamic overlap metrics.
-* Default value: 0.5
-
-**Num Points**
-
-_Weight for number of points in a dataset._
-
-* Higher values make larger datasets more likely to be kept.
-* Default value: 1
-
-**Volume**
-
-_Weight for total volume of a dataset._
-
-* Higher values make datasets with larger volumes more likely to be kept.
-* Default value: 0
-
-**Volume Density**
-
-_Weight for volume density._
-
-* Higher values penalize datasets where points are clustered tightly.
-* Default value: 0
-
-**Custom Tag Weight**
-
-_Weight for custom tag scores._
-
-* If tags are defined, this controls how much they influence the score.
-* Default value: 0
-
-**Tag Scores**
-
-_Lets you add custom 'score' by tags._
-
-* Assigns specific scores to tags found on collections.
-* Example: "Forest" = 10, "Water" = -5
-
-**Data Score Weight**
-
-_Weight for custom data attribute scores._
-
-* If attributes are defined, this controls how much they influence the score.
-* Default value: 0
-
-**Data Scores**
-
-_Lets you add extra custom 'score' using @Data attributes._
-
-* Specifies which point attributes to use for scoring.
-* Example: "@Density", "@Size"
-
-***
-
-#### Pruning Settings
-
-Controls which datasets are discarded based on their scores.
+* **Dynamic Balance**: How much dynamic scores (based on overlaps) influence the final score vs. static ones.
+* **Overlap Count**: Weight of how many datasets overlap with this one.
+* **Overlap Sub-Count**: Weight of how many points are involved in overlaps.
+* **Overlap Volume**: Weight of total volume of overlaps.
+* **Overlap Volume Density**: Weight of average overlap volume per overlapping point.
+* **Static Balance**: How much static scores (based on dataset properties) influence the final score vs. dynamic ones.
+* **Num Points**: Weight of number of points in a dataset.
+* **Volume**: Weight of total volume of the dataset.
+* **Volume Density**: Weight of average volume per point.
+* **Custom Tag Weight**: Weight of custom tag scores.
+* **Tag Scores**: Custom scores assigned to specific tags found on datasets.
+* **Data Score Weight**: Weight of data attribute scores.
+* **Data Scores**: Custom scores based on @Data attributes.
 
 **Logic**
 
-_How to prioritize which datasets to discard._
+_Pruning order & prioritization_
 
-* **Low to High**: Lower weights are pruned first (keeps the most overlapping datasets)
-* **High to Low**: Higher weights are pruned first (keeps the least overlapping datasets)
+Determines which datasets are removed first during pruning.
 
-### Notes
+* **Low to High**: Removes datasets with the lowest scores first.
+* **High to Low**: Removes datasets with the highest scores first.
 
-* This node is computationally expensive for large datasets due to overlap calculations.
-* Use the "Fast" test mode for performance-critical workflows where exact overlap detection isn't required.
-* The "Include Filtered In Metrics" option can be useful when you want to maintain accurate bounds even if some points are filtered out.
-* Consider using point filters to limit which points participate in overlap detection, improving performance and reducing false positives.
-* Scores are calculated per dataset and used to determine pruning order; higher scores generally mean a dataset is more valuable or less redundant.
+**Min Threshold**
+
+_The minimum amount two sub-points must overlap to be added to the comparison. The higher, the more "overlap" there must be._
+
+Sets a minimum required overlap level for a dataset to be considered for pruning. Higher values require more substantial overlaps before discarding.
+
+**Threshold Measure**
+
+_How to interpret the min overlap value. Discrete means distance in world space Relative means uses percentage (0-1) of the averaged radius._
+
+Controls how the minimum threshold is interpreted.
+
+* **Relative**: The threshold is a fraction of the average point radius.
+* **Discrete**: The threshold is an absolute distance in world units.
+
+**Include Filtered In Metrics**
+
+_If enabled, points that are filtered out from overlap detection are still accounted for in static metrics/maths. i.e they still participate to the overall bounds shape etc instead of being thoroughly ignored._
+
+When enabled, filtered-out points still contribute to static calculations like bounds and volume measurements, ensuring more accurate overlap computations.
+
+#### Usage Example
+
+You have multiple terrain generation layers that might produce overlapping features like trees or rocks. Set the node to use "Sphere" test mode with a relative threshold of 0.2. Configure weights so that datasets with high overlap volume are more likely to be discarded. Use "High to Low" pruning logic to remove the most overlapping datasets first, keeping only the least redundant layers.
+
+#### Notes
+
+* The node works best when datasets are relatively small and well-separated.
+* Using higher expansion values can help catch edge cases but may increase processing time.
+* Custom tag and data scores provide fine-grained control over which datasets get pruned.
+* Performance scales with the number of input datasets and points per dataset.
+* Consider using point filters to remove irrelevant points before overlap evaluation for better performance.

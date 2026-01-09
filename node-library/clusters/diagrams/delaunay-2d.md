@@ -6,26 +6,40 @@ icon: circle
 # Delaunay 2D
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Create a 2D delaunay triangulation for each input dataset.
+> Create a 2D Delaunay triangulation for each input dataset.
 
-### Overview
+#### Overview
 
-This node generates a Delaunay triangulation from a set of 2D points, creating a mesh where no point lies inside the circumcircle of any triangle. It's commonly used for terrain generation, mesh creation, and spatial analysis. The output consists of vertices (points) connected by edges (triangles), forming a graph structure.
+This node generates a Delaunay triangulation from a set of 2D points, forming a mesh where no point lies inside the circumcircle of any triangle. It's commonly used for creating natural-looking meshes, Voronoi diagrams, or spatial partitioning in procedural content generation.
+
+It can optionally output the Urquhart graph, which removes the longest edge from each Delaunay triangle to produce a sparser, more organic structure. You can also mark hull points and edges to identify boundary elements in your point set.
 
 {% hint style="info" %}
-The node works on 2D projections of your input points. You can control how the projection is performed using the Projection settings.
+Connects to **Cluster** processing pins.
 {% endhint %}
+
+#### How It Works
+
+This node takes input points and performs the following steps:
+
+1. **Projection**: Projects the 3D points onto a 2D plane using specified projection settings (e.g., XY, XZ, or YZ).
+2. **Triangulation**: Constructs a Delaunay triangulation from these projected points. This ensures that no point in the set lies inside the circumcircle of any triangle in the mesh.
+3. **Optional Urquhart Graph**: If enabled, it removes the longest edge from each Delaunay triangle, creating a sparser graph that emphasizes local connectivity and avoids long-range edges.
+4. **Hull Marking**: Optionally marks points and edges that lie on the outer boundary (hull) of the point set.
+5. **Output Generation**:
+   * Generates a new cluster with triangulated edges.
+   * Optionally outputs the original input points as sites in the resulting graph.
+   * If Urquhart is enabled and site output is active, it can merge adjacent sites into single points based on the merge mode.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Default Input** _(Multiple)_: Point data to triangulate. Each dataset will generate its own Delaunay graph.
+* **Points**: A collection of 3D points to triangulate. These are projected onto a 2D plane for triangulation.
+* **Optional Filters**: Can be used to restrict which points are considered in the triangulation.
 
 </details>
 
@@ -33,165 +47,92 @@ The node works on 2D projections of your input points. You can control how the p
 
 <summary>Outputs</summary>
 
-* **Default Output**: Triangulated points and edges forming the Delaunay graph.
-* **Sites Output** (Optional): Individual point sites used for triangulation, if enabled.
+* **Cluster**: A new cluster containing the Delaunay triangulation edges and optionally the original input points as vertices.
+* **Attributes**: Hull markers on points and edges if enabled.
 
 </details>
 
-### Properties Overview
-
-Controls how the Delaunay triangulation is generated and what output is produced.
+#### Configuration
 
 ***
 
-#### Settings
+**bUrquhart**
 
-Configures core triangulation behavior.
+_When enabled, outputs the Urquhart graph of the Delaunay triangulation by removing the longest edge from each triangle._
 
-**Enable Urquhart Graph**
+This simplifies the graph by eliminating long edges, which often appear unnatural in procedural generation. It's useful for creating more organic-looking networks or reducing visual complexity.
 
-_When enabled, outputs an Urquhart graph which removes the longest edge of each Delaunay cell._
+**bMarkHull**
 
-* Creates a sparser graph by removing long edges from the Delaunay triangulation
-* Useful for creating more natural-looking networks or reducing complexity
+_When enabled, marks points and edges that lie on the hull of the point set._
 
-**Output Sites**
+This allows downstream nodes to identify boundary elements, such as for terrain edge detection or mesh boundary handling.
 
-_When enabled, outputs the original input points as sites in the triangulation._
+**HullAttributeName**
 
-* Allows you to see the raw point data used for triangulation
-* Useful when combined with Urquhart graph settings to understand site merging
+_Name of the attribute to output the Hull boolean to. True if point is on the hull, otherwise false._
 
-**Mark Hull Points**
+Controls where the hull marker data is stored on the output points.
 
-_When enabled, marks points that lie on the outer boundary of the triangulation._
+**bMarkEdgeOnTouch**
 
-* Adds a boolean attribute indicating whether each point is on the hull
-* Helps identify edge points in your dataset
+_When enabled, edges that have at least one point on the hull are marked as being on the hull._
 
-**Hull Attribute Name**
+This extends the hull marking to include edges that connect to boundary points, which can be useful for visualizing or filtering boundaries.
 
-_Name of the boolean attribute that stores hull information._
+**ProjectionDetails**
 
-* Default is `bIsOnHull`
-* Used when "Mark Hull Points" is enabled
+_Projection settings used to map 3D points to a 2D plane for triangulation._
 
-**Merge Urquhart Sites**
+Choose how to project your 3D data onto a 2D space. For example, projecting along the XZ axis will ignore Y coordinates and treat the points as if viewed from above.
 
-_Controls how adjacent sites are merged when generating the Urquhart graph._
+**GraphBuilderDetails**
 
-* **None**: No merging occurs, each site remains separate
-* **Merge Sites**: Merges adjacent sites into a single point using their average position
-* **Merge Edges**: Merges sites based on the average of removed edges
+_Settings for building the output graph, including edge properties like radius and solidification._
 
-**Mark Hull Edges**
-
-_When enabled, marks edges that lie on the outer boundary of the triangulation._
-
-* Adds a boolean attribute indicating whether each edge is on the hull
-* Useful for visualizing or filtering boundary elements
-
-**Hull Edge Attribute Name**
-
-_Name of the boolean attribute that stores hull edge information._
-
-* Default is `bIsOnHull`
-* Used when "Mark Hull Edges" is enabled
-
-**Mark Edges on Touch**
-
-_When enabled, edges touching hull points are also marked as being on the hull._
-
-* Extends hull marking to include edges connected to hull points
-* Creates a more inclusive boundary representation
+Controls how the resulting edges are structured in the output cluster.
 
 ***
 
-#### Projection Settings
+**bOutputSites**
 
-Controls how 3D points are projected onto a 2D plane for triangulation.
+_When enabled, outputs the original input points as sites in the resulting graph._
 
-**Projection Method**
+This allows you to retain the input point data in the output cluster, useful if you want to maintain both the triangulation and the original point positions.
 
-_Selects the method used to project 3D points into 2D space._
+**bMarkSiteHull**
 
-* **Normal**: Projects using a fixed normal vector (default is Up)
-* **Best Fit**: Automatically computes the best-fit plane through all points
+_When enabled, marks points and edges that lie on the hull of the point set for the output sites._
 
-**Projection Normal**
+Similar to `bMarkHull`, but applied specifically to the output site data.
 
-_Vector defining the plane onto which points are projected._
+**SiteHullAttributeName**
 
-* Only used when "Projection Method" is set to "Normal"
-* Default is Up vector (Z-axis)
+_Name of the attribute to output the Hull boolean to. True if point is on the hull, otherwise false._
 
-**Use Local Normal**
+Controls where the hull marker data is stored on the output points when `bOutputSites` is enabled.
 
-_When enabled, uses a local normal attribute from each point._
+**UrquhartSitesMerge**
 
-* Requires a valid normal attribute on input points
-* Overrides the fixed projection normal
+_Merge adjacent sites into a single point when using the Urquhart graph._
 
-**Local Normal Attribute**
+This setting only applies when `bUrquhart` and `bOutputSites` are both enabled. It determines how to merge points that were removed during the Urquhart process:
 
-_Name of the attribute containing per-point normal vectors._
+* **None**: Do not merge sites.
+* **Merge Sites**: The merged site is the average of the two original points.
+* **Merge Edges**: The merged site is the average of the endpoints of the removed edge.
 
-* Only used when "Use Local Normal" is enabled
-* Must be a vector-type attribute
+#### Usage Example
 
-***
+1. Place a **Cluster : Delaunay 2D** node in your graph.
+2. Connect it to a point source (e.g., a **Points : Scatter** node).
+3. Enable `bUrquhart` to get a more organic, sparser triangulation.
+4. Enable `bMarkHull` and set `bMarkEdgeOnTouch` to highlight the outer boundary of your points.
+5. Connect the output cluster to a **Cluster : Mesh** node to generate a mesh from the triangulation.
 
-#### Graph Output Settings
+#### Notes
 
-Controls how the resulting graph data is structured and output.
-
-**Solidification Axis**
-
-_Selects which axis to align edge points along._
-
-* **None**: No alignment applied
-* **X, Y, Z**: Aligns edge points along the selected axis
-
-**Edge Radius Type**
-
-_Determines how the radius of edges is calculated._
-
-* **Average**: Uses average of endpoint radii
-* **Lerp**: Interpolates between endpoint radii
-* **Min**: Uses smallest endpoint radius
-* **Max**: Uses largest endpoint radius
-* **Fixed**: Uses a constant value
-
-**Fixed Radius Value**
-
-_The fixed radius used when "Edge Radius Type" is set to "Fixed"._
-
-* Default is 5 units
-* Only visible when using fixed edge radius type
-
-**Radius Scale Factor**
-
-_Scales the computed edge radius by this factor._
-
-* Multiplies the calculated radius by this value
-* Default is 1 (no scaling)
-
-**Edge Solidification**
-
-_Controls how edges are solidified in the output graph._
-
-* When enabled, applies the selected solidification settings to edge points
-
-**Output Cluster Edges**
-
-_When enabled, outputs edges connecting triangulated points._
-
-* Creates a network of connections between points
-* Useful for mesh generation or pathfinding
-
-**Output Cluster Vertices**
-
-_When enabled, outputs the triangulated point vertices._
-
-* Produces the actual point data used in the triangulation
-* Forms the base structure for further processing
+* Delaunay triangulations are sensitive to input point distribution. Dense or clustered points may lead to thin, elongated triangles.
+* The Urquhart graph is useful for creating natural-looking networks where long-range connections are undesirable.
+* Hull marking is particularly helpful when generating terrain features or boundary-based effects.
+* Projection settings can significantly affect the output shape; experiment with different axes to achieve desired results.

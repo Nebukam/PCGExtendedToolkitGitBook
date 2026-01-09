@@ -6,29 +6,35 @@ icon: scrubber
 # Uber Filter
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Filter points based on multiple rules & conditions.
 
-### Overview
+#### Overview
 
-The Uber Filter node allows you to apply complex filtering logic to your point data using multiple filter factories. It's designed to handle advanced filtering scenarios where a single filter isn't sufficient, enabling you to combine various conditions and rules into one cohesive operation.
+The Uber Filter node allows you to apply complex filtering logic to your point data using multiple subnodes that define different conditions. It evaluates each point against these filters and decides whether to keep or discard it, depending on the mode selected.
 
-This node is particularly useful when you need to process points based on several criteria that must be evaluated together — such as checking if a point meets all conditions or any of multiple conditions. You can choose how the filtered results are output: either by splitting them into separate inside/outside datasets, or by writing the boolean result directly to an attribute.
+This node is useful when you want to combine several logical checks into a single operation, such as filtering points that meet all criteria, any criteria, or a custom combination of rules. You can also write the result directly to an attribute instead of splitting outputs, which is helpful for downstream processing or visualization.
 
 {% hint style="info" %}
-The node supports multiple input filters connected via the "Filters" pin. These filters are evaluated in order, and their combined result determines whether a point passes or fails.
+Connects to **Point Filters** subnode pin.
 {% endhint %}
+
+#### How It Works
+
+The Uber Filter node evaluates each point against a set of filter conditions defined by its connected subnodes. For every point, it runs through all the filters and determines if the point passes or fails based on how those filters are combined.
+
+If the mode is set to **Partition points**, it splits the input into two datasets: one containing points that passed all filters (inside), and another with points that failed at least one filter (outside). If the mode is set to **Write result**, it writes a boolean or numeric value to an attribute on each point indicating whether it passed the filters.
+
+The node also supports tagging behaviors, where you can tag the entire dataset based on whether any, all, or none of the points passed the filters. This allows for conditional logic in subsequent nodes.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Source (Default)**: Point data to be filtered
-* **Filters**: Multiple filter factories that define the conditions for filtering
+* Point data to be filtered
+* One or more filter subnodes that define the conditions
 
 </details>
 
@@ -36,107 +42,128 @@ The node supports multiple input filters connected via the "Filters" pin. These 
 
 <summary>Outputs</summary>
 
-* **Inside** (when Mode = Partition): Points that passed all filters
-* **Outside** (when Mode = Partition): Points that failed at least one filter
-* **Output** (when Mode = Write): Original point data with a new attribute containing the filter result
+* If mode is **Partition points**: Two outputs — one with points that passed all filters, and another with those that failed.
+* If mode is **Write result**: One output where each point has an attribute indicating pass/fail status.
+* Optionally tagged data based on global filtering results.
 
 </details>
 
-### Properties Overview
-
-Controls how the filtering is performed and how results are output.
+#### Configuration
 
 ***
 
-#### General Settings
-
-Controls core behavior of the filtering operation.
-
 **Mode**
 
-_Controls how the filtered results are handled._
+_Controls how the filter results are handled._
 
-* When set to **Partition points**, the node creates two separate datasets: one for points that pass all filters (Inside), and another for those that fail at least one filter (Outside).
-* When set to **Write result**, the node writes a boolean attribute to each point indicating whether it passed all filters, without changing the structure of the data.
+When set to **Partition points**, the node creates two separate outputs: one for points that passed all filters and another for those that did not. When set to **Write result**, it writes the outcome directly to an attribute on each point.
 
 **Values**:
 
 * **Partition points**: Create inside/outside dataset from the filter results.
-* **Write result**: Write filter result to an attribute but don't change point structure.
-
-**ResultDetails**
-
-_Configures how the filter result is written when Mode = Write._
-
-* This setting allows you to customize the name and behavior of the attribute that stores the filter outcome.
-* Includes options for using a boolean, counter, or bitmask to represent the result.
-
-**bSwap**
-
-_When enabled, inverts the final filter result._
-
-* If a point would normally pass the filters, it will be marked as failing, and vice versa.
-* Useful when you want to exclude points that meet certain criteria rather than include them.
-
-**bOutputDiscardedElements**
-
-_Controls whether discarded elements are output when Mode = Partition._
-
-* When enabled, the Outside dataset includes all points that failed at least one filter.
-* When disabled, no data is created for the Outside pin, saving performance if you don't need to process discarded points.
-
-**UnpickedFallback**
-
-_Determines how points not selected by any picker are treated._
-
-* If a point doesn't match any of your defined filters (e.g., due to missing data or invalid conditions), this setting defines whether it should be considered as passing or failing the filter.
-
-**Values**:
-
-* **Pass**: Points without valid filter results are considered to pass.
-* **Fail**: Points without valid filter results are considered to fail.
+* **Write result**: write filter result to an attribute but doesn't change point structure.
 
 ***
 
-#### Tagging Settings
+**ResultDetails**
 
-Controls optional tagging behavior for the entire dataset based on overall filter performance.
+_Controls how the result is written when in "Write result" mode._
+
+This setting defines what type of data is written to the point attribute, such as a boolean value or a counter that tracks how many times a point passed or failed.
+
+**Values**:
+
+* **Boolean**: Sets a boolean attribute on the points. True when filters pass, False if they don't.
+* **Counter**: Mutates a int32 counter with the specified increment/decrement associated with pass/fail. (i.e +1 on pass, -2 on fail)
+* **Bitmask**: Mutates a bitmask flag with the operations associated with pass/fail.
+
+***
+
+**bSwap**
+
+_When enabled, inverts the filter result._
+
+If enabled, points that would normally be kept are discarded and vice versa.
+
+***
+
+**bOutputDiscardedElements**
+
+_Controls whether discarded elements are output._
+
+When enabled, the node outputs both inside and outside datasets. When disabled, only the inside dataset is created, omitting the discarded data entirely.
+
+***
 
 **bTagIfAnyPointPassed**
 
-_When enabled, tags the output data if at least one point passed all filters._
+_When enabled, tags the data if any point passed the filters._
 
-* Adds a tag to the output indicating that some points met all criteria.
-* Useful for conditional logic in downstream nodes.
+This applies a tag to the entire dataset if at least one point passes all filters.
+
+***
 
 **HasAnyPointPassedTag**
 
-_Name of the tag added when bTagIfAnyPointPassed is enabled._
+_Name of the tag applied when any point passes._
 
-* Defaults to "SomePointsPassed".
+Controls what label is used for tagging when some points pass the filter.
+
+***
 
 **bTagIfAllPointsPassed**
 
-_When enabled, tags the output data if every point passed all filters._
+_When enabled, tags the data if all points passed the filters._
 
-* Adds a tag indicating that all points met all criteria.
-* Useful for validating complete success in filtering.
+This applies a tag to the entire dataset if every point passes all filters.
+
+***
 
 **AllPointsPassedTag**
 
-_Name of the tag added when bTagIfAllPointsPassed is enabled._
+_Name of the tag applied when all points pass._
 
-* Defaults to "AllPointsPassed".
+Controls what label is used for tagging when all points pass the filter.
+
+***
 
 **bTagIfNoPointPassed**
 
-_When enabled, tags the output data if no point passed all filters._
+_When enabled, tags the data if no point passed the filters._
 
-* Adds a tag indicating that none of the points met all criteria.
-* Useful for detecting failure states in filtering.
+This applies a tag to the entire dataset if none of the points pass any filter.
+
+***
 
 **NoPointPassedTag**
 
-_Name of the tag added when bTagIfNoPointPassed is enabled._
+_Name of the tag applied when no point passes._
 
-* Defaults to "NoPointPassed".
+Controls what label is used for tagging when no points pass the filter.
+
+***
+
+**UnpickedFallback**
+
+_Determines how points that don't match any filters are treated._
+
+This setting controls whether points that fail to meet any condition are considered as passing or failing by default.
+
+**Values**:
+
+* **Pass**: Points that aren’t picked will be considered to successfully pass the filter.
+* **Fail**: Points that aren’t picked will be considered to failing to pass the filter.
+
+#### Usage Example
+
+1. Connect a set of points to the Uber Filter node.
+2. Add multiple filter subnodes (e.g., distance, angle, attribute value).
+3. Set the mode to **Partition points** to separate valid and invalid points.
+4. Optionally enable tagging so that downstream nodes can react differently depending on whether any or all points passed.
+
+#### Notes
+
+* The Uber Filter is ideal for combining multiple filtering criteria into one operation.
+* Using the **Write result** mode allows you to store pass/fail information directly on each point, which can be useful for advanced logic or visualization.
+* Tagging options help track global filter behavior across datasets.
+* Performance may vary depending on how many filters are applied and how complex they are.

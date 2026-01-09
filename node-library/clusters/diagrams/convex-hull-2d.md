@@ -6,28 +6,35 @@ icon: circle
 # Convex Hull 2D
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Create a 2D Convex Hull triangulation for each input dataset. Deprecated as of 5.4; use Find Convex Hull 2D instead.
 
-### Overview
+#### Overview
 
-This node generates a convex hull from point clusters and creates a triangulated mesh within that hull. It's useful for creating solid, enclosed shapes from scattered points, such as generating terrain contours, defining boundaries, or creating polygonal representations of clustered data.
+This node generates a convex hull from clusters of points in 2D space, forming a polygon that encloses all input points. It's useful for creating boundary shapes around point groups, such as defining the outer limits of terrain features or object placements.
 
-The node operates on each input cluster independently, computing the convex hull of the points in that cluster and then triangulating the interior to form a mesh. The resulting output can be used for further processing or visualization.
+It transforms point data into a structured output that can be used for further processing like pathfinding, collision detection, or visual representation. The node supports optional edge graph creation to represent the hull structure.
 
 {% hint style="info" %}
-This node is deprecated as of Unreal Engine 5.4. Use the "Find Convex Hull 2D" node instead, which provides more flexibility and better performance.
+Connects to **Cluster** input pins and outputs **Points** and optionally **Graph** data.
 {% endhint %}
+
+#### How It Works
+
+This node processes each cluster of points independently to compute a convex hull in 2D space. The algorithm first projects the 3D point coordinates onto a 2D plane using specified projection settings, then calculates the smallest convex polygon that contains all the projected points.
+
+The resulting hull is triangulated, meaning it's divided into triangles that fill the interior of the hull. These triangles are represented as edges in an optional graph output. The winding order of the hull can be set to either clockwise or counter-clockwise, affecting how the shape is oriented.
+
+If enabled, the node also outputs a cluster representation of the hull points, which can be used for downstream operations like path generation or filtering.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Default Input (Points)**: Expects point data to be processed. The points are grouped into clusters based on their relationships or proximity.
+* **Cluster Input**: Accepts point data grouped into clusters.
+* Optional **Point Filter** input (if configured).
 
 </details>
 
@@ -35,71 +42,51 @@ This node is deprecated as of Unreal Engine 5.4. Use the "Find Convex Hull 2D" n
 
 <summary>Outputs</summary>
 
-* **Default Output (Points)**: Contains the triangulated convex hull points.
-* **Cluster Output**: Optional output containing cluster data, if enabled.
+* **Points Output**: Contains the vertices of the convex hull for each cluster.
+* **Graph Output**: Optional, contains edges forming the hull structure and optionally triangulation.
+* **Cluster Output**: Optional, outputs a new cluster containing the hull points.
 
 </details>
 
-### Properties Overview
-
-Controls how the convex hull is computed and what kind of output is generated.
+#### Configuration
 
 ***
 
-#### General Settings
+**bOutputClusters**
 
-Controls basic behavior for hull generation and output.
+_When enabled, outputs a new cluster containing the convex hull vertices._
 
-**Output Clusters**
+This setting determines whether to produce an additional output cluster with the computed hull points. Useful when you want to continue working with the hull as a separate data structure.
 
-_When enabled, outputs cluster data in addition to the triangulated points._
+**ProjectionDetails**
 
-* Determines whether cluster information is included in the output.
-* Useful when you want to preserve original cluster structure alongside the hull.
+_Projection settings._
 
-**Projection Settings**
+Controls how 3D coordinates are projected onto a 2D plane for hull computation. This is important for accurate results in non-flat spaces, like terrain or spherical environments.
 
-_Configures how 3D points are projected onto a 2D plane for hull computation._
+**Winding**
 
-* **Method**: Choose between "Normal" or "Best Fit" projection methods.
-  * **Normal**: Projects using a fixed normal vector (default is Up).
-  * **Best Fit**: Computes the best-fit plane based on point distribution.
-* **Projection Normal**: Vector defining the plane's orientation when using "Normal" method.
-* **Local Projection Normal**: When enabled, uses a local attribute to determine projection direction.
+_Path Winding_
 
-**Path Winding**
+Determines the orientation of the convex hull's boundary.
 
-_Specifies the winding order of the resulting hull._
+* **Clockwise**: Hull points are ordered to form a clockwise path.
+* **Counter Clockwise**: Hull points are ordered to form a counter-clockwise path.
 
-* **Clockwise**: Hull points are ordered in a clockwise direction.
-* **Counter Clockwise**: Hull points are ordered in a counter-clockwise direction.
-  * Default is Counter Clockwise, which is standard for most mesh generation tools.
+This affects how the shape is rendered or interpreted by downstream systems.
 
-***
+**GraphBuilderDetails**
 
-#### Graph & Edges Output Settings
+_Cluster Output Settings_
 
-Controls how the triangulated mesh is structured and output.
+Controls properties of the optional graph output, such as edge creation and solidification settings. This allows fine-tuning of how the hull edges are represented in the graph.
 
-**Graph Builder Details**
+#### Usage Example
 
-_Configures how the hull is built as a graph structure._
+Use this node to generate boundary shapes for clusters of objects or terrain points. For instance, when placing trees randomly across a landscape, you might use this node to create convex hulls around each group of trees to define their collective area. The resulting hull can then be used for collision detection or visual effects.
 
-* **Solidification Axis**: Aligns edge points along a specific axis.
-  * **None**: No alignment.
-  * **X, Y, Z**: Aligns along the selected axis.
-* **Radius Type**: Determines how edge radius is calculated.
-  * **Average**: Uses average of endpoint radii.
-  * **Lerp**: Linear interpolation between endpoint radii.
-  * **Min**: Uses the smaller of the two endpoint radii.
-  * **Max**: Uses the larger of the two endpoint radii.
-  * **Fixed**: Uses a constant radius value.
-* **Radius Constant**: Value used when "Radius Type" is set to "Fixed".
-* **Radius Scale**: Multiplier applied to computed edge radius.
+#### Notes
 
-### Notes
-
-* This node is deprecated and should be replaced with "Find Convex Hull 2D" for new projects.
-* The triangulation is generated using a convex hull algorithm, which ensures all interior points are enclosed by the hull.
-* For best results, ensure input point clusters are well-defined and not too sparse.
-* When using "Best Fit" projection, the node will compute the optimal plane based on point distribution to maintain accuracy.
+* This node is deprecated as of Unreal Engine 5.4; consider using the "Find Convex Hull 2D" node instead.
+* The triangulation is generated using a Delaunay-style approach, ensuring no triangles overlap within the hull.
+* Performance may degrade with large clusters due to the computational complexity of convex hull algorithms.

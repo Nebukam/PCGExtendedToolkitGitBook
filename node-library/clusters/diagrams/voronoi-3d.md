@@ -6,28 +6,48 @@ icon: circle
 # Voronoi 3D
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Create a 3D Voronoi graph for each input dataset.
 
-### Overview
+#### Overview
 
-This node generates a 3D Voronoi diagram from a set of input points, creating a partitioning of space into regions based on proximity. Each region contains all points closer to its generating point than to any other point in the dataset. The output consists of Voronoi vertices (cell centers) and edges connecting them.
+This node generates a 3D Voronoi diagram from a set of input points. A Voronoi diagram divides 3D space into regions, where each region contains all points closer to one specific input point than to any other. The result is both a set of Voronoi cell centers and the edges connecting them into a graph structure.
 
-The node supports multiple methods for determining cell centers, including centroid, circumcenter, or balanced selection. It can also prune points outside a defined bounding volume and mark hull points for further processing or visualization.
+This is useful for creating natural-looking partitions or territories in procedural content, such as generating terrain features, city districts, or resource distribution zones. It's particularly effective when combined with other processing nodes to refine or visualize the resulting graph.
 
 {% hint style="info" %}
-Voronoi diagrams are commonly used in procedural generation to create organic-looking structures such as terrain features, city layouts, or natural formations.
+Connects to **Points** and **Edges** pins of downstream nodes that process graph data.
 {% endhint %}
+
+#### How It Works
+
+This node calculates a 3D Voronoi diagram by performing the following steps:
+
+1. **Input Point Processing**: It takes input points and optionally prunes those outside a defined bounding volume, based on the `ExpandBounds` setting.
+2. **Voronoi Cell Calculation**:
+   * For each input point, it determines the center of its corresponding Voronoi cell.
+   * The method used to calculate this center is controlled by the `Method` setting:
+     * **Balanced**: Uses the circumcenter if it's within bounds; otherwise, defaults to the centroid.
+     * **Canon (Circumcenter)**: Uses the exact circumcenter of the Delaunay triangle.
+     * **Centroid**: Uses the average position of all vertices in the cell.
+3. **Graph Construction**:
+   * It builds a graph where each Voronoi cell center becomes a point.
+   * Edges are created between adjacent cells, forming the Voronoi graph structure.
+4. **Hull Marking** (optional):
+   * If enabled via `bMarkHull`, it marks points and edges that lie on the outer boundary of the diagram.
+   * The attribute name for hull marking can be customized using `HullAttributeName`.
+   * If `bMarkEdgeOnTouch` is enabled, edges connected to any hull point are also marked.
+5. **Output Generation**:
+   * Outputs the Voronoi cell centers as points.
+   * Outputs the graph structure (edges) connecting these points.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Default Input**: Points to generate the Voronoi diagram from. Supports multiple input datasets.
+* Points: Input point data that defines the seed locations for Voronoi cells.
 
 </details>
 
@@ -35,110 +55,85 @@ Voronoi diagrams are commonly used in procedural generation to create organic-lo
 
 <summary>Outputs</summary>
 
-* **Default Output**: Points representing Voronoi cell centers (vertices).
-* **Graph Output**: Edges connecting Voronoi vertices, forming the graph structure.
-* **Hull Marking**: Optional boolean attributes marking hull points and edges if enabled.
+* Points: Output points representing the Voronoi cell centers.
+* Edges: Output edges forming the graph structure of the Voronoi diagram.
 
 </details>
 
-### Properties Overview
-
-Controls how the Voronoi diagram is generated and what data is produced.
+#### Configuration
 
 ***
-
-#### Cell Center Method
-
-Determines how cell centers are calculated for each Voronoi region.
 
 **Method**
 
-_Controls which method is used to compute the center of each Voronoi cell._
+_Controls how the center of each Voronoi cell is calculated._
 
-* Uses either centroid, circumcenter, or a balanced approach.
-* **Balanced**: Chooses between centroid and circumcenter based on validity.
-* **Canon (Circumcenter)**: Uses Delaunay triangulation's circumcenter.
-* **Centroid**: Averages the positions of all vertices in the cell.
+This setting determines whether to use the circumcenter, centroid, or a balanced approach for computing cell centers.
 
-**Expand Bounds**
+**Values**:
 
-_Controls how much to expand the bounding volume used for point pruning._
-
-* Expands the input point bounds by this amount before computing Voronoi cells.
-* Useful when points are near boundaries or when you want to include some padding.
-* Example: Setting this to 100 means the diagram will be computed within a volume that is 100 units larger than the input point bounds.
-
-**Prune Out Of Bounds**
-
-_When enabled, removes Voronoi cells whose centers lie outside the expanded bounds._
-
-* Only available when using the **Canon (Circumcenter)** method.
-* Helps reduce computational overhead and avoid artifacts from out-of-bounds cells.
-* Useful for creating clean, bounded diagrams within a specific area.
-
-**Mark Hull**
-
-_When enabled, marks points and edges that form the outer boundary of the Voronoi diagram._
-
-* Adds boolean attributes to identify hull elements.
-* Can be useful for generating terrain contours or defining structural boundaries.
-* Example: Points on the outer edge of the diagram are marked as true in the Hull attribute.
-
-**Hull Attribute Name**
-
-_Name of the boolean attribute used to mark hull points._
-
-* Only relevant when **Mark Hull** is enabled.
-* Default name is `bIsOnHull`.
-* You can change this to match your project's naming conventions.
-
-**Mark Edge On Touch**
-
-_When enabled, marks edges that connect to at least one hull point as being on the hull._
-
-* Helps identify the full hull structure including edges.
-* Useful for creating outlines or defining outer boundaries in procedural generation.
+* **Balanced**: Picks the centroid if the circumcenter is out of bounds; otherwise uses the circumcenter.
+* **Canon (Circumcenter)**: Uses Delaunay cells' circumcenter.
+* **Centroid**: Uses Delaunay cells' averaged vertex positions.
 
 ***
 
-#### Graph Output Settings
+**ExpandBounds**
 
-Controls how the resulting graph is built and output.
+_Controls the size of the bounding volume used for pruning and centroid calculations._
 
-**Solidification Axis**
+This value defines how much to expand the input point bounds when calculating Voronoi cell centers. A larger value can help avoid edge effects but may increase processing time.
 
-_Selects which axis to align edge points along during solidification._
+***
 
-* Aligns edge points along the selected axis (X, Y, Z) to ensure consistent orientation.
-* Useful for ensuring edges are aligned with world axes for better visual or performance results.
+**bPruneOutOfBounds**
 
-**Radius Type**
+_When enabled, removes points that fall outside the defined bounds._
 
-_Determines how the radius of each edge is calculated._
+This setting is only active when `Method` is set to **Canon (Circumcenter)**. It ensures that only points whose Voronoi cells are fully within the bounds are considered.
 
-* **Average**: Uses the average of both endpoints' radii.
-* **Lerp**: Linearly interpolates between endpoint radii based on edge position.
-* **Min**: Uses the smaller of the two endpoint radii.
-* **Max**: Uses the larger of the two endpoint radii.
-* **Fixed**: Uses a constant fixed radius value.
+***
 
-**Radius Constant**
+**bMarkHull**
 
-_Sets the fixed radius used when Radius Type is set to Fixed._
+_When enabled, marks points and edges that lie on the outer boundary of the Voronoi diagram._
 
-* Only visible when **Radius Type** is set to **Fixed**.
-* Controls the uniform size of all edges in the graph.
+This helps identify the hull of the point set for further processing or visualization.
 
-**Radius Scale**
+***
 
-_Scales the computed edge radius by this factor._
+**HullAttributeName**
 
-* Multiplies the calculated radius by this value.
-* Allows fine-tuning of edge thickness or spacing in the output graph.
+_Name of the boolean attribute to store hull marking results._
 
-### Notes
+The output point data will include a boolean attribute with this name. The value is `true` if the point lies on the hull, otherwise `false`.
 
-* Voronoi diagrams are computationally intensive for large datasets. Consider using point filtering or pruning to reduce input size.
-* The **Canon (Circumcenter)** method produces mathematically precise results but may generate cells outside your bounds if not pruned.
-* Use the Hull marking features to identify and visualize the outer boundary of your diagram, which is helpful for terrain generation or layout design.
-* Combine this node with other graph processing nodes to create complex procedural structures like city grids or natural formations.
+***
+
+**bMarkEdgeOnTouch**
+
+_When enabled, edges connected to any hull point are also marked as being on the hull._
+
+This ensures that the entire hull boundary (both points and edges) is flagged for further processing.
+
+***
+
+**GraphBuilderDetails**
+
+_Configuration for how the output graph is built._
+
+Controls settings like edge radius calculation and solidification. Only available when `bPruneOutOfBounds` is enabled, as it otherwise generates a complete graph.
+
+#### Usage Example
+
+1. **Generate Voronoi Cells**: Connect a set of points to this node.
+2. **Visualize Regions**: Use the output points and edges to create visual representations of Voronoi cells.
+3. **Add Hull Marking**: Enable `bMarkHull` and `bMarkEdgeOnTouch` to identify boundary regions.
+4. **Process Further**: Connect downstream nodes to refine or modify the Voronoi graph, such as applying noise or clustering.
+
+#### Notes
+
+* The node works best with a sufficient number of input points to form meaningful Voronoi cells.
+* Using the **Balanced** method often produces visually pleasing results by avoiding extreme cell shapes.
+* Enabling `bPruneOutOfBounds` can significantly reduce computation time if you're only interested in a subset of the full Voronoi diagram.
+* Hull marking is useful for creating boundary constraints or identifying edge regions in procedural generation.
