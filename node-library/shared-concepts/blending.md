@@ -28,7 +28,7 @@ This configuration appears in nodes like: Sub Points Blend Operation, Clipper 2,
 
 <details>
 
-<summary>BlendingFilter <br><em>Controls which attributes are considered for blending.</em></summary>
+<summary><strong>BlendingFilter</strong> <br><em>Controls which attributes are considered for blending.</em></summary>
 
 Determines whether all attributes are blended or only a selected subset.
 
