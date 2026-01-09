@@ -4,8 +4,9 @@ icon: sliders
 
 # Tangents : Catmull-Rom
 
-{% hint style="danger" %}
-This documentation has been AI-generated from the source code and may not be 100% accurate.
+{% hint style="warning" %}
+## AI-generated page - To be reviewed. 
+While not 100% accurante, it should properly capture what it does. It stills needs to be reviewed and proofread by a human.
 {% endhint %}
 
 > Creates tangents for points along a path using the Catmull-Rom spline interpolation method.

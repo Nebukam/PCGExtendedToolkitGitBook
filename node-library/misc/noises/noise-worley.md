@@ -4,8 +4,9 @@ icon: circle-dashed
 
 # Noise : Worley
 
-{% hint style="danger" %}
-This documentation has been AI-generated from the source code and may not be 100% accurate.
+{% hint style="warning" %}
+## AI-generated page - To be reviewed. 
+While not 100% accurante, it should properly capture what it does. It stills needs to be reviewed and proofread by a human.
 {% endhint %}
 
 > Creates cell-like patterns using Worley/Cellular noise, which generates procedural values based on distance to feature points in a grid.

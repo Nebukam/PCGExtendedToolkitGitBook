@@ -4,8 +4,9 @@ icon: circle-dashed
 
 # Noise : Perlin
 
-{% hint style="danger" %}
-This documentation has been AI-generated from the source code and may not be 100% accurate.
+{% hint style="warning" %}
+## AI-generated page - To be reviewed. 
+While not 100% accurante, it should properly capture what it does. It stills needs to be reviewed and proofread by a human.
 {% endhint %}
 
 > Creates classic 3D Perlin gradient noise, a smooth, natural-looking noise pattern commonly used for terrain generation, displacement effects, and organic variations.

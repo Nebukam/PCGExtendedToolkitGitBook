@@ -5,8 +5,9 @@ icon: circle-dashed
 
 # HX : Inertia
 
-{% hint style="danger" %}
-This documentation has been AI-generated from the source code and may not be 100% accurate.
+{% hint style="warning" %}
+## AI-generated page - To be reviewed. 
+While not 100% accurante, it should properly capture what it does. It stills needs to be reviewed and proofread by a human.
 {% endhint %}
 
 > Creates a heuristic that evaluates path direction consistency based on the inertia of previous movement directions.

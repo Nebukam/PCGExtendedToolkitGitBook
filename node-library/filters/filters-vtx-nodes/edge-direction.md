@@ -5,8 +5,9 @@ icon: circle-dashed
 
 # Edge Direction
 
-{% hint style="danger" %}
-This documentation has been AI-generated from the source code and may not be 100% accurate.
+{% hint style="warning" %}
+## AI-generated page - To be reviewed. 
+While not 100% accurante, it should properly capture what it does. It stills needs to be reviewed and proofread by a human.
 {% endhint %}
 
 > Filters points based on the direction of their connected edges, comparing against a reference direction.

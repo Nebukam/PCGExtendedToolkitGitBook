@@ -5,8 +5,9 @@ icon: circle
 
 # Decomposition
 
-{% hint style="danger" %}
-This documentation has been AI-generated from the source code and may not be 100% accurate.
+{% hint style="warning" %}
+## AI-generated page - To be reviewed. 
+While not 100% accurante, it should properly capture what it does. It stills needs to be reviewed and proofread by a human.
 {% endhint %}
 
 > Compute convex/k decomposition of clusters and write partition as an ID on the nodes.

@@ -5,8 +5,9 @@ icon: circle
 
 # Connect Clusters
 
-{% hint style="danger" %}
-This documentation has been AI-generated from the source code and may not be 100% accurate.
+{% hint style="warning" %}
+## AI-generated page - To be reviewed. 
+While not 100% accurante, it should properly capture what it does. It stills needs to be reviewed and proofread by a human.
 {% endhint %}
 
 > Connects isolated edge clusters by their closest vertices, if they share the same vtx group.

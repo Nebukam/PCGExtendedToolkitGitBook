@@ -5,8 +5,9 @@ icon: circle-dashed
 
 # Length
 
-{% hint style="danger" %}
-This documentation has been AI-generated from the source code and may not be 100% accurate.
+{% hint style="warning" %}
+## AI-generated page - To be reviewed. 
+While not 100% accurante, it should properly capture what it does. It stills needs to be reviewed and proofread by a human.
 {% endhint %}
 
 > Filters edges based on their length, allowing you to selectively keep or discard edges that meet specific length criteria.

@@ -4,8 +4,9 @@ icon: circle-dashed
 
 # Probe : Anisotropic
 
-{% hint style="danger" %}
-This documentation has been AI-generated from the source code and may not be 100% accurate.
+{% hint style="warning" %}
+## AI-generated page - To be reviewed. 
+While not 100% accurante, it should properly capture what it does. It stills needs to be reviewed and proofread by a human.
 {% endhint %}
 
 > Creates a probe that searches in 16 directions around the X/Y axis to find nearby connections. This probe is particularly useful for detecting connections that follow a directional pattern, such as roads or pathways that prefer certain orientations.
