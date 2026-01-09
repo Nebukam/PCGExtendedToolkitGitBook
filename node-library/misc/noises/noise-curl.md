@@ -5,8 +5,8 @@ icon: circle-dashed
 # Noise : Curl
 
 {% hint style="warning" %}
-## AI-generated page - To be reviewed. 
-While not 100% accurante, it should properly capture what it does. It stills needs to be reviewed and proofread by a human.
+## AI-generated page -- to be reviewed 
+While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
 {% endhint %}
 
 > Creates a divergence-free 3D vector field using curl noise, ideal for fluid simulation, particle movement, or any application requiring incompressible flow fields.

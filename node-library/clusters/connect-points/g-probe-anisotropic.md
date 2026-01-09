@@ -5,8 +5,8 @@ icon: circle-dashed
 # G-Probe : Anisotropic
 
 {% hint style="warning" %}
-## AI-generated page - To be reviewed. 
-While not 100% accurante, it should properly capture what it does. It stills needs to be reviewed and proofread by a human.
+## AI-generated page -- to be reviewed 
+While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
 {% endhint %}
 
 > Creates a directional connectivity probe that uses an ellipsoidal distance metric to define spatial relationships between points.

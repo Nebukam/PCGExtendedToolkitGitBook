@@ -5,8 +5,8 @@ icon: sliders
 # Tangents : Transform
 
 {% hint style="warning" %}
-## AI-generated page - To be reviewed. 
-While not 100% accurante, it should properly capture what it does. It stills needs to be reviewed and proofread by a human.
+## AI-generated page -- to be reviewed 
+While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
 {% endhint %}
 
 > Creates tangents based on the rotation of input transforms, defining direction and orientation for path or curve operations.

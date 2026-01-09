@@ -6,8 +6,8 @@ icon: circle-dashed
 # Contains (Hash)
 
 {% hint style="warning" %}
-## AI-generated page - To be reviewed. 
-While not 100% accurante, it should properly capture what it does. It stills needs to be reviewed and proofread by a human.
+## AI-generated page -- to be reviewed 
+While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
 {% endhint %}
 
 > Creates a filter definition that checks whether a given value hash is contained within one or more sets of values. This filter uses hash comparisons, making it highly type-sensitive.

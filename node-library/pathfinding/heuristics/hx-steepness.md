@@ -6,8 +6,8 @@ icon: circle-dashed
 # HX : Steepness
 
 {% hint style="warning" %}
-## AI-generated page - To be reviewed. 
-While not 100% accurante, it should properly capture what it does. It stills needs to be reviewed and proofread by a human.
+## AI-generated page -- to be reviewed 
+While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
 {% endhint %}
 
 > Creates a heuristic that evaluates the steepness of terrain or surfaces based on the angle between edges and an upward vector.

@@ -5,8 +5,8 @@ icon: circle-dashed
 # Noise : Spots
 
 {% hint style="warning" %}
-## AI-generated page - To be reviewed. 
-While not 100% accurante, it should properly capture what it does. It stills needs to be reviewed and proofread by a human.
+## AI-generated page -- to be reviewed 
+While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
 {% endhint %}
 
 > Creates procedural noise patterns with circular or shaped spots, useful for generating polka dots, animal patterns, cell structures, and stylized textures.

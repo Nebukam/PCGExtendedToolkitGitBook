@@ -6,8 +6,8 @@ icon: circle-dashed
 # HX : Feedback
 
 {% hint style="warning" %}
-## AI-generated page - To be reviewed. 
-While not 100% accurante, it should properly capture what it does. It stills needs to be reviewed and proofread by a human.
+## AI-generated page -- to be reviewed 
+While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
 {% endhint %}
 
 > Creates a heuristic that penalizes points and edges that have already been visited during pathfinding, encouraging the algorithm to explore new areas.
