@@ -5,8 +5,8 @@ icon: sliders
 
 # Force Directed
 
-{% hint style="info" %}
-This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
+{% hint style="warning" %}
+This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
 {% endhint %}
 
 > Applies a force-directed layout algorithm to clusters, adjusting point positions based on spring and electrostatic forces.

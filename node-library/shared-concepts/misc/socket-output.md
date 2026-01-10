@@ -1,7 +1,7 @@
 # Socket Output
 
-{% hint style="info" %}
-This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
+{% hint style="warning" %}
+This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
 {% endhint %}
 
 > Controls how socket data is output from PCG nodes, including filtering options and attribute assignments.

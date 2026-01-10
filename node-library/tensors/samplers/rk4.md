@@ -4,8 +4,8 @@ icon: sliders
 
 # RK4
 
-{% hint style="info" %}
-This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
+{% hint style="warning" %}
+This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
 {% endhint %}
 
 > Samples tensor fields using the Runge-Kutta 4 integration method for accurate and stable field traversal.

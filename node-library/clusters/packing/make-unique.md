@@ -5,8 +5,8 @@ icon: circle
 
 # Make Unique
 
-{% hint style="info" %}
-This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
+{% hint style="warning" %}
+This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
 {% endhint %}
 
 > Creates independent copies of input clusters to prevent data conflicts and ensure each operation works with its own unique data.

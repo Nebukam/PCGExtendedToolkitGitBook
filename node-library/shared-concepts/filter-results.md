@@ -4,8 +4,8 @@ icon: arrow-right-to-bracket
 
 # Filter Results
 
-{% hint style="info" %}
-This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
+{% hint style="warning" %}
+This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
 {% endhint %}
 
 > Controls how filter results are written and processed in PCG operations.

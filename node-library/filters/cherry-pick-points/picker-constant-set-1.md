@@ -5,8 +5,8 @@ icon: circle-dashed
 
 # Picker : Ranges from Set
 
-{% hint style="info" %}
-This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
+{% hint style="warning" %}
+This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
 {% endhint %}
 
 > A Picker that reads lists of ranges in the form of FVector2 from one or more attributes and uses them to define which indices to pick.

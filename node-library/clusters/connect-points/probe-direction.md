@@ -4,8 +4,8 @@ icon: circle-dashed
 
 # Probe : Direction
 
-{% hint style="info" %}
-This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
+{% hint style="warning" %}
+This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
 {% endhint %}
 
 > Defines a probe that searches for nearby connections in a specified direction.

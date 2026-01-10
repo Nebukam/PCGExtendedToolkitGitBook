@@ -5,8 +5,8 @@ icon: circle
 
 # Find Cluster Hull
 
-{% hint style="info" %}
-This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
+{% hint style="warning" %}
+This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
 {% endhint %}
 
 > Generates a single boundary shape (hull) for each group of points, outputting it as a path.

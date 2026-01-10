@@ -5,8 +5,8 @@ icon: circle-dashed
 
 # Attribute Check
 
-{% hint style="info" %}
-This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
+{% hint style="warning" %}
+This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
 {% endhint %}
 
 > Checks for the existence and optionally the type of a point attribute.

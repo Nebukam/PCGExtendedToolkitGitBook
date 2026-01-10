@@ -4,8 +4,8 @@ icon: circle-dashed
 
 # Probe : Anisotropic
 
-{% hint style="info" %}
-This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
+{% hint style="warning" %}
+This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
 {% endhint %}
 
 > Probe in 16 directions over the X/Y axis. It's recommended to use internal projection to get the best results.

@@ -5,8 +5,8 @@ icon: circle
 
 # Mesh to Clusters
 
-{% hint style="info" %}
-This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
+{% hint style="warning" %}
+This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
 {% endhint %}
 
 > Creates clusters from mesh topology by generating points and edges based on the mesh structure.

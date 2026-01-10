@@ -5,8 +5,8 @@ icon: circle-dashed
 
 # Tag Check
 
-{% hint style="info" %}
-This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
+{% hint style="warning" %}
+This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
 {% endhint %}
 
 > Filters points based on whether they contain a specific tag that matches a given condition.

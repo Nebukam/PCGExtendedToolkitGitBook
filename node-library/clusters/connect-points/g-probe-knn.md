@@ -4,8 +4,8 @@ icon: circle-dashed
 
 # G-Probe : KNN
 
-{% hint style="info" %}
-This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
+{% hint style="warning" %}
+This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
 {% endhint %}
 
 > Finds K nearest neighbors for each point and creates connections based on proximity.

@@ -5,8 +5,8 @@ icon: circle-dashed
 
 # Sampler : Test Neighbors
 
-{% hint style="info" %}
-This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
+{% hint style="warning" %}
+This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
 {% endhint %}
 
 > Tests neighbors against filters and writes counts of passing and failing samples to attributes.

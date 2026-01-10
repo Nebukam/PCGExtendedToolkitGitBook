@@ -5,8 +5,8 @@ icon: scrubber
 
 # Partition by Values
 
-{% hint style="info" %}
-This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
+{% hint style="warning" %}
+This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
 {% endhint %}
 
 > Separates input points into distinct groups based on attribute values, with each group stored in its own output dataset named after the attribute value.

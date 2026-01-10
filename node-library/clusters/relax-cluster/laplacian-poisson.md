@@ -5,8 +5,8 @@ icon: sliders
 
 # Laplacian (Poisson)
 
-{% hint style="info" %}
-This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
+{% hint style="warning" %}
+This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
 {% endhint %}
 
 > Applies a Laplacian relaxation operation to cluster vertices, smoothing their positions based on neighboring influences.
