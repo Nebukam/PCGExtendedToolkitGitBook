@@ -9,7 +9,7 @@ There is a handful of recurring settings blocs that are exposed by a lot of diff
 
 > To in order to highlight the different, common settings are accessible via buttons (_instead of regular links_) like so:
 >
-> <a href="comparisons.md" class="button secondary">Comparison Settings</a>  -  <a href="fitting.md" class="button secondary">Fitting Settings</a>  -  <a href="blending.md" class="button secondary">Blending Settings</a>
+> <a href="comparisons.md" class="button secondary">Comparison Settings</a>  -  <a href="fitting.md" class="button secondary">Fitting Settings</a>  -  <a href="blending/" class="button secondary">Blending Settings</a>
 
 ### Note on Dynamic Parameters
 

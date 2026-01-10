@@ -6,223 +6,253 @@ icon: circle
 # Best Fit Packing
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Optimal bin packing using best-fit decreasing algorithm with rotation support.
+> Optimally packs points into bins using a best-fit decreasing algorithm with rotation support.
 
-### Overview
+#### How It Works
 
-This node arranges input points into predefined bins using an optimized bin packing algorithm. It's particularly useful for organizing scattered elements into containers or spaces, such as placing objects into rooms, arranging items on shelves, or distributing assets across multiple areas. The algorithm uses a "best-fit decreasing" approach, sorting items by size and then placing each item in the best available space.
+Best Fit Packing organizes input points into predefined containers by placing each item into the most suitable container based on available space and fit quality. It uses a variant of the classic Best-Fit Decreasing (BFD) algorithm, which first sorts items by size before attempting to place them. This approach minimizes wasted space and maximizes container utilization.
 
-{% hint style="info" %}
-The node requires both input points (items to place) and bin points (containers). Items will be placed into bins based on their relative positions and sizes.
-{% endhint %}
+The process begins by sorting items from largest to smallest, ensuring that bigger items are placed first for better packing efficiency. Then, each item is evaluated against all available containers to find the best fit. If rotation is enabled, multiple orientations are tested to improve fit quality. A scoring system determines how well an item fits into a specific space based on settings like tightness or waste minimization.
+
+Once a suitable container and position are found, the item is placed, and the remaining space within that container is updated by splitting it into new free areas using the configured split mode and axis. This process repeats for all items until they are either placed or discarded if no suitable container exists. When enabled, global best-fit evaluation checks every container for each item to find the absolute best placement.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Sort Direction</strong><br><em>Controls the order in which points will be sorted, when using sorting rules. Uses largest-first by default for best-fit decreasing.</em></summary>
 
-* **Input Points**: The items to be packed into bins
-* **Bin Points**: The containers or spaces where items will be placed
+Determines whether items are sorted ascending or descending by volume before packing.
+
+**Values**:
+
+* **Ascending**: Sorts items from smallest to largest.
+* **Descending**: Sorts items from largest to smallest (default).
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Sort By Volume</strong><br><em>If enabled, items will be sorted by volume (largest first) before packing. This is the classic BFD approach.</em></summary>
 
-* **Output Points**: Input points with updated transforms and attributes reflecting their final placement
-* **Discarded Points**: Items that couldn't be placed due to size or bin constraints
+When enabled, items are sorted by their total volume before packing to improve efficiency.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the packing algorithm behaves, including sorting, rotation, scoring, and space splitting.
+<summary><strong>Seed Mode</strong><br><em>Per-bin seed. Represent a bound-relative location to start packing from.</em></summary>
 
-***
+Controls how the starting point for packing within each bin is determined.
 
-#### Sorting
+**Values**:
 
-Controls how items are ordered before packing.
+* **UVW Constant**: Uses a fixed UVW vector.
+* **UVW Attribute**: Uses a point attribute to define the UVW seed.
+* **Position Constant**: Uses a fixed position vector.
+* **Position Attribute**: Uses a point attribute to define the position seed.
 
-**Sort Direction**
+</details>
 
-_Controls whether items are sorted from largest to smallest (descending) or vice versa._
+<details>
 
-* Largest-first sorting is recommended for best-fit decreasing behavior
-* **Values**:
-  * **Ascending**: Sort from smallest to largest
-  * **Descending**: Sort from largest to smallest
+<summary><strong>Seed UVW</strong><br><em>Per-bin seed. Represent a bound-relative location to start packing from.</em></summary>
 
-**Sort By Volume**
+Fixed UVW coordinate used as the seed when Seed Mode is set to UVW Constant.
 
-_When enabled, items will be sorted by volume before packing._
+</details>
 
-* This is the standard approach for bin packing algorithms
-* Larger items are placed first to maximize space efficiency
+<details>
 
-***
+<summary><strong>Seed UVW Attribute</strong><br><em>Per-bin seed. Represent a bound-relative location to start packing from.</em></summary>
 
-#### Bin Seed
+Point attribute that defines the UVW seed for each bin when Seed Mode is set to UVW Attribute.
 
-Determines where packing starts within each bin.
+</details>
 
-**Seed Mode**
+<details>
 
-_Selects how to define the starting position for packing within each bin._
+<summary><strong>Seed Position</strong><br><em>Per-bin seed. Represent a bound-relative location to start packing from.</em></summary>
 
-* **Values**:
-  * **UVW Constant**: Use a fixed UVW vector to determine seed location
-  * **UVW Attribute**: Read UVW from an attribute on the bin point
-  * **Position Constant**: Use a fixed world position as seed
-  * **Position Attribute**: Read world position from an attribute on the bin point
+Fixed position vector used as the seed when Seed Mode is set to Position Constant.
 
-**Seed UVW**
+</details>
 
-_The UVW coordinates used to determine where packing begins within each bin._
+<details>
 
-* UVW values are relative to the bin's bounds (0,0,0 = bottom-left-back, 1,1,1 = top-right-front)
-* **Values**:
-  * **Corner**: Bottom-left-back corner (default)
-  * **Center**: Center of the bin
-  * **Seed Proximity**: Closest point to the bin's seed
+<summary><strong>Seed Position Attribute</strong><br><em>Per-bin seed. Represent a bound-relative location to start packing from.</em></summary>
 
-**Seed Position**
+Point attribute that defines the position seed for each bin when Seed Mode is set to Position Attribute.
 
-_The world position used as the starting point for packing within each bin._
+</details>
 
-* Only used when Seed Mode is set to "Position Constant"
+<details>
 
-**Seed Position Attribute**
+<summary><strong>Score Mode</strong><br><em>Scoring method for selecting the best placement.</em></summary>
 
-_The attribute on bin points that contains the world position used as the starting point._
+Determines how placements are scored to select the best fit.
 
-* Only used when Seed Mode is set to "Position Attribute"
+**Values**:
 
-***
+* **Tightest Fit**: Prioritizes spaces where the item fits most tightly.
+* **Smallest Space**: Prioritizes the smallest space that can contain the item.
+* **Least Waste**: Minimizes volume wasted after placement.
+* **Balanced**: Balances tightness and waste minimization.
 
-#### Fitting
+</details>
 
-Controls how items are evaluated and placed.
+<details>
 
-**Score Mode**
+<summary><strong>Rotation Mode</strong><br><em>Rotation testing mode. More rotations = better fit but slower.</em></summary>
 
-_Selects the method for scoring potential placements._
+Controls how many orientations an item is tested in to find the best fit.
 
-* **Values**:
-  * **Tightest Fit**: Prioritizes spaces where the item fits most tightly
-  * **Smallest Space**: Prioritizes smallest space that can contain the item
-  * **Least Waste**: Minimizes volume wasted after placement
-  * **Balanced**: Balances between tight fit and space conservation
+**Values**:
 
-**Rotation Mode**
+* **None**: No rotation.
+* **Cardinal (90°)**: Tests 90° rotations only (4 orientations).
+* **All Orthogonal**: Tests all 24 orthogonal orientations.
 
-_Selects how to test rotations for each item._
+</details>
 
-* **Values**:
-  * **None**: No rotation testing
-  * **Cardinal (90°)**: Test 90° rotations only (4 orientations)
-  * **All Orthogonal**: Test all 24 orthogonal orientations
+<details>
 
-**Placement Anchor**
+<summary><strong>Placement Anchor</strong><br><em>How to position items within their chosen space.</em></summary>
 
-_Determines where items are positioned within their chosen space._
+Determines where an item is placed within its chosen space.
 
-* **Values**:
-  * **Corner**: Place items at corner of free space
-  * **Center**: Place items at center of free space
-  * **Seed Proximity**: Place items as close to seed as possible
+**Values**:
 
-**Split Axis**
+* **Corner**: Places the item at the corner of the free space.
+* **Center**: Centers the item within the free space.
+* **Seed Proximity**: Places the item as close to the bin's seed location as possible.
 
-_Selects the axis along which new spaces are created after item placement._
+</details>
 
-* **Values**:
-  * **Forward**: X+ axis (default)
-  * **Backward**: X- axis
-  * **Right**: Y+ axis
-  * **Left**: Y- axis
-  * **Up**: Z+ axis
-  * **Down**: Z- axis
+<details>
 
-**Split Mode**
+<summary><strong>Split Axis</strong><br><em>The main split axis for creating new free spaces after placement.</em></summary>
 
-_Selects how to split the remaining space after an item is placed._
+Defines which axis is used to split the remaining space after placing an item.
 
-* **Values**:
-  * **Minimal**: Create minimal partitions (default)
-  * **Minimal (Cross Axis)**: Create partitions with cross-axis splitting
-  * **Equal Split**: Split space evenly
-  * **Cone**: Split in a cone shape (hidden)
-  * **Cone (Cross Axis)**: Split in a cone shape with cross axis (hidden)
+</details>
 
-**Avoid Wasted Space**
+<details>
 
-_When enabled, the algorithm will avoid creating very small free spaces._
+<summary><strong>Split Mode</strong><br><em>Space splitting mode after item placement.</em></summary>
 
-* Helps prevent fragmentation of available space
-* Smaller spaces are discarded to reduce waste
+Controls how the free space is divided after an item is placed.
 
-**Wasted Space Threshold**
+**Values**:
 
-_Sets the minimum size threshold for free spaces as a ratio of the smallest item dimension._
+* **Minimal**: Splits space in a minimal way.
+* **Minimal (Cross Axis)**: Splits space along the cross axis.
+* **Equal Split**: Divides space equally.
+* **Cone**: Splits space using a cone shape.
+* **Cone (Cross Axis)**: Splits space using a cone along the cross axis.
 
-* Only used when "Avoid Wasted Space" is enabled
-* **Range**: 0.1 - 1.0 (default: 0.5)
-* Smaller values allow more fragmentation
+</details>
 
-**Global Best Fit**
+<details>
 
-_When enabled, evaluates all bins for each item to find the globally best placement._
+<summary><strong>Avoid Wasted Space</strong><br><em>If enabled, fitting will try to avoid wasted space by not creating free spaces below a threshold.</em></summary>
 
-* If disabled, items are placed sequentially into bins
-* Can be slower but may produce better results overall
+When enabled, small unused spaces are discarded to prevent fragmentation.
 
-**Tightness Weight**
+</details>
 
-_Sets the weight of tightness in balanced scoring mode._
+<details>
 
-* Only used when "Score Mode" is set to "Balanced"
-* **Range**: 0.0 - 1.0 (default: 0.6)
-* Higher values prefer tighter fits
+<summary><strong>Wasted Space Threshold</strong><br><em>Minimum space threshold as a ratio of the smallest item dimension. Spaces smaller than this are discarded.</em></summary>
 
-***
+Sets the minimum size of free space that is considered useful. Smaller spaces are ignored.
 
-#### Padding
+</details>
 
-Controls how much padding is applied around placed items.
+<details>
 
-**Occupation Padding Input**
+<summary><strong>Global Best Fit</strong><br><em>If enabled, will evaluate all bins for each item to find the globally best placement.</em></summary>
 
-_Selects whether to use a constant or attribute value for padding._
+When enabled, evaluates every bin for each item to find the absolute best fit instead of placing sequentially.
 
-* **Values**:
-  * **Constant**: Use a fixed padding value
-  * **Attribute**: Read padding from an attribute on the item point
+</details>
 
-**Occupation Padding Attribute**
+<details>
 
-_The attribute that contains the padding values for each item._
+<summary><strong>Tightness Weight</strong><br><em>Weight for tightness in balanced scoring mode. Higher = prefer tighter fits.</em></summary>
 
-* Only used when "Occupation Padding Input" is set to "Attribute"
-* Values are broadcast to FVector format
+Controls the balance between tightness and waste when Score Mode is set to Balanced.
 
-**Occupation Padding**
+</details>
 
-_The fixed padding value applied around each item._
+<details>
 
-* Applied in local space relative to the item's orientation
-* **Values**:
-  * **Zero Vector**: No padding (default)
-  * **Custom Vector**: Custom padding values
+<summary><strong>Occupation Padding Input</strong><br><em>Occupation padding source</em></summary>
 
-**Absolute Padding**
+Defines how padding is applied around items during placement.
 
-_When enabled, padding is not rotated with the item._
+**Values**:
 
-* If disabled, padding values are rotated along with the item's orientation
-* When enabled, padding remains fixed in world space
+* **Constant**: Uses a fixed padding value.
+* **Attribute**: Uses an attribute to define padding per item.
+
+</details>
+
+<details>
+
+<summary><strong>Occupation Padding (Attr)</strong><br><em>Occupation padding attribute -- Will be broadcast to FVector.</em></summary>
+
+Point attribute used for padding when Occupation Padding Input is set to Attribute.
+
+</details>
+
+<details>
+
+<summary><strong>Occupation Padding</strong><br><em>Occupation padding constant value.</em></summary>
+
+Fixed padding value applied around items during placement.
+
+</details>
+
+<details>
+
+<summary><strong>Absolute Padding</strong><br><em>If enabled, the padding will not be relative (rotated) if the item is rotated.</em></summary>
+
+When enabled, padding remains fixed regardless of item rotation.
+
+</details>
+
+<details>
+
+<summary><strong>Quiet Too Many Bins Warning</strong><br><em>If enabled, won't throw a warning if there are more bins than there are inputs.</em></summary>
+
+Disables warnings when more bins are provided than items to pack.
+
+</details>
+
+<details>
+
+<summary><strong>Quiet Too Few Bins Warning</strong><br><em>If enabled, won't throw a warning if there are fewer bins than there are inputs.</em></summary>
+
+Disables warnings when fewer bins are provided than items to pack.
+
+</details>
+
+#### Usage Example
+
+To pack a set of objects into containers:
+
+1. Create a point cloud representing the objects to be packed.
+2. Define bins as points with appropriate sizes and positions.
+3. Connect both the object points and bin points to the Best Fit Packing node.
+4. Adjust settings like Rotation Mode or Score Mode to optimize packing for your use case.
+5. Use the output points to visualize or further process the packed arrangement.
+
+#### Notes
+
+* The algorithm prioritizes efficient space usage, but may not always produce a perfect fit due to the complexity of 3D bin packing.
+* Performance can be affected by rotation testing and global best-fit evaluation.
+* For best results with rotation, consider enabling Cardinal Only or All Orthogonal modes.

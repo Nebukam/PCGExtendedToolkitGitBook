@@ -5,52 +5,50 @@ icon: sliders
 # Tangents : Transform
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates tangents based on the rotation of input transforms, defining direction and orientation for path or curve operations.
+> Defines tangents based on the rotation of point transforms in a path.
 
-### Overview
+#### How It Works
 
-This factory generates tangent vectors that align with the rotation of input transforms. It's used to define how paths or curves should bend or turn based on transform orientations.
+This subnode computes tangent directions for each point in a path by analyzing the orientation of its transform. For every point, it:
 
-{% hint style="info" %}
-Connects to **Tangent** input pins on nodes like **Path Builder**, **Curve**, or **Path Smooth**
-{% endhint %}
+1. Reads the rotation of the point's transform
+2. Selects a specific axis (Forward, Right, Up, etc.) from that rotation
+3. Converts the selected axis into a direction vector
+4. Inverts the vector to ensure correct tangent orientation
+5. Applies scaling factors to define both arrive and leave tangents
 
-### How It Works
+The process is repeated for every point in the path, creating smooth transitions between tangents. The chosen axis determines which direction from the transform becomes the tangent.
 
-This factory reads the rotation of each input transform and uses it to compute tangent directions. The tangent vectors are derived from the specified axis (forward, right, up, etc.) of each transform's rotation, inverted for proper orientation.
+#### Configuration
 
-### Inputs
+<details>
 
-* **Transform** (Required): Input transforms that define the orientation for tangent generation
-* **Tangent** (Output): Generated tangent vectors aligned with the input transform rotations
+<summary><strong>Axis</strong><br><em>The axis of the transform to use for computing tangents.</em></summary>
 
-### Configuration
+Controls which direction from the transform is used as the tangent.
 
-***
+**Values**:
 
-#### General
+* **Forward**: Uses the X+ axis (typically forward direction)
+* **Backward**: Uses the X- axis (typically backward direction)
+* **Right**: Uses the Y+ axis (typically rightward direction)
+* **Left**: Uses the Y- axis (typically leftward direction)
+* **Up**: Uses the Z+ axis (typically upward direction)
+* **Down**: Uses the Z- axis (typically downward direction)
 
-**Axis**
+</details>
 
-_Controls which axis of the transform rotation is used to compute the tangent direction._
+#### Usage Example
 
-The selected axis defines the direction of the tangent vector. For example:
+Use this subnode when you want path tangents to match the orientation of objects placed along the path. For example, if you're placing vehicles on a road, you can use "From Transform" with the Forward axis so that each vehicle's tangent points in the direction it's facing.
 
-* **Forward** uses the X-axis of the transform
-* **Right** uses the Y-axis of the transform
-* **Up** uses the Z-axis of the transform
+#### Notes
 
-### Usage Example
+* The tangent vectors are inverted for proper orientation (e.g., -1 multiplier)
+* This subnode works best with paths where transforms represent meaningful orientations
+*   Consider using with smoothing operations to avoid sharp transitions between tangents
 
-Use this factory when you want to create paths or curves that follow the orientation of input transforms. For instance, if you have a set of transforms representing waypoints along a road, using "Forward" as the axis will make your path follow the direction each waypoint is facing.
-
-### Notes
-
-* Tangents are inverted for proper path orientation (so they point in the opposite direction of the transform's axis)
-* This factory works best when input transforms represent meaningful orientations (like vehicle directions or camera views)
-* Combine with other tangent factories to create more complex path behaviors
+    <div data-gb-custom-block data-tag="hint" data-style="info" class="hint hint-info"><p>Connects to <strong>Tangents</strong> input pins on path processing nodes.</p></div>

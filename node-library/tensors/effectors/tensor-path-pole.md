@@ -6,111 +6,79 @@ icon: circle-dashed
 # Tensor : Path Pole
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> A tensor that represents a vector/flow field along a path.
+> Creates a tensor that represents a vector/flow field along a path.
 
-### Overview
+#### How It Works
 
-This node creates a flow field that follows the shape of a path, applying influence along its length. It's useful for guiding particles, objects, or effects along curved or straight paths in your procedural content. The resulting tensor can be used to direct movement, rotation, or other behaviors based on position relative to the path.
+This node builds a directional flow field that follows the shape of input paths. It works by:
 
-{% hint style="info" %}
-This node works with paths created from point data. Make sure your input points form a valid path (either open or closed) for best results.
-{% endhint %}
+1. Sampling points from the input paths based on the selected sampling mode (All, Closed loops only, Open lines only).
+2. Creating a spline representation of each path using the chosen point type (Linear, Curve, etc.).
+3. For every point in space, it checks how close that point is to the path.
+4. If the point is within the defined radius, it calculates a vector pointing along the path at that location.
+5. The strength of this vector depends on distance from the path and falloff settings.
+6. The resulting tensor field can be used to guide or influence other elements in your procedural graph.
+
+The node supports different spline types for defining how points are interpolated, allowing you to create smooth curves or sharp linear transitions along the path.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Point Type</strong><br><em>Which point type to use. Shared amongst all points; if you want tight control, create a fully-fledged spline instead.</em></summary>
 
-* **Points** (Primary): Point data that defines the path to follow
-* **Secondary Points** (Optional): Additional point data used for sampling or reference
+Controls how the path is interpolated between points.
+
+**Values**:
+
+* **Linear (0)**: Points are connected with straight lines.
+* **Curve (1)**: Points are connected with smooth curves.
+* **Constant (2)**: Each point maintains its value without interpolation.
+* **CurveClamped (3)**: Smooth curves with clamped tangents for more predictable results.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Smooth Linear</strong><br><em>When enabled, linear points are smoothed.</em></summary>
 
-* **Tensor**: A flow field tensor that applies influence along the path
+When enabled, linear point types will be smoothed to create a more natural-looking path. This is only applicable when Point Type is set to Linear.
 
 </details>
 
-### Properties Overview
+<details>
 
-Settings for defining how the path is interpreted and how the tensor behaves.
+<summary><strong>Sample Inputs</strong><br><em>Sample inputs.</em></summary>
 
-***
+Determines which input paths are used in the tensor generation.
 
-#### Path Settings
+**Values**:
 
-Controls how the input points are interpreted as a path.
+* **All**: All input paths are sampled.
+* **Closed loops only**: Only closed-loop paths (e.g., circles) are used.
+* **Open lines only**: Only open-line paths are used.
 
-**Point Type**
+</details>
 
-_The type of interpolation used between points._
+<details>
 
-* Defines whether the path is linear, curved, or constant between control points
-* **Linear (0)**: Straight lines between points
-* **Curve (1)**: Smooth curves using Catmull-Rom splines
-* **Constant (2)**: Constant value at each point
-* **CurveClamped (3)**: Smooth curves with clamped tangents
+<summary><strong>Radius</strong><br><em>Base radius of the spline. Will be scaled by control points' scale length.</em></summary>
 
-**Smooth Linear**
+Controls how far from the path the tensor field has an effect. The actual radius is scaled by the scale of each control point in the input paths.
 
-_When enabled, applies smoothing to linear interpolation._
+</details>
 
-* Only affects the path when Point Type is set to Linear
-* Makes transitions between points less sharp and more gradual
+#### Usage Example
 
-**Sample Inputs**
+Create a set of open line paths that represent riverbeds or roads. Connect them to this node and configure it to use Curve point types for smooth flow directions. Use the resulting tensor field to guide particle systems or character movement along these paths, creating natural-looking flows or navigation routes.
 
-_Determines which inputs are used for sampling._
+#### Notes
 
-* **All**: Uses all input paths regardless of whether they are open or closed
-* **Closed loops only**: Only samples closed loop paths
-* **Open lines only**: Only samples open line paths
+* The tensor field is evaluated at runtime when other nodes sample it.
+* For best performance, avoid very complex or numerous input paths.
+*   The radius setting affects both the influence distance and computational cost of the tensor evaluation.
 
-**Radius**
-
-_Base radius of the tensor influence._
-
-* Controls how far the tensor's effect extends from the path
-* Value is scaled by control points' scale length
-* Example: With a base radius of 100 and a point with scale 2, the effective radius becomes 200
-
-#### Tensor Settings
-
-Controls how the tensor applies its influence.
-
-**Tensor Weight**
-
-_The overall strength of the tensor._
-
-* Affects how strongly the tensor influences the sampled points
-* Higher values make the effect more pronounced
-
-**Potency Falloff**
-
-_Configures how potency decreases with distance._
-
-* Controls the rate at which influence weakens as you move away from the path
-* Uses a lookup table to define falloff curve
-
-**Weight Falloff**
-
-_Configures how weight decreases with distance._
-
-* Controls how much each point contributes to the final tensor result
-* Also uses a lookup table for falloff curve
-
-### Notes
-
-* This node works best when input points form a continuous path (open or closed loop)
-* The tensor's influence is strongest along the path and weakens as you move away from it
-* Combine with other tensors to create complex flow fields
-* Use the Radius setting to control how far the effect extends from the path
-* For smooth paths, consider using Curve interpolation for Point Type
-* When using Smooth Linear, the effect will be less sharp at corners, creating a more natural transition
+    <div data-gb-custom-block data-tag="hint" data-style="info" class="hint hint-info"><p>Connects to <strong>Tensor</strong> processing nodes as a Subnode.</p></div>

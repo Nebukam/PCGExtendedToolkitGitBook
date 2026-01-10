@@ -6,29 +6,41 @@ icon: circle
 # Spawn Dynamic Mesh
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> A more flexible alternative to the native Spawn Dynamic Mesh.
+> Spawns dynamic mesh instances from point data using a template actor and optional property overrides.
 
-### Overview
+#### Overview
 
-This node allows you to spawn dynamic mesh components from procedural data points, giving you fine-grained control over how each instance is created and configured. It's particularly useful for generating complex, varied geometry that needs to be dynamically placed and customized based on point attributes or other procedural inputs.
+This node creates instances of a specified actor template at each input point, effectively spawning dynamic meshes in the level. It's a more flexible alternative to Unreal's native Spawn Dynamic Mesh node, allowing for complex actor setups with custom properties and behaviors.
 
-The node works by taking input points and using them as spawn locations for dynamic mesh instances. You can define a base mesh template, configure rendering and collision settings, and even specify how the spawned meshes should be attached to each other or to parent objects.
+It transforms point data into spawned actors, making it useful for creating procedural environments, object placement, or dynamic scene elements that require individualized properties per instance. This is particularly valuable when working with clusters or surfaces where you want to place unique objects at each point.
 
 {% hint style="info" %}
-This node requires a valid mesh template to function properly. Make sure your mesh is set up correctly in the **Template Descriptor** before using this node.
+Connects to **Points** input pin and outputs **Actors**.
 {% endhint %}
+
+#### How It Works
+
+This node iterates through all input points and spawns a copy of the specified target actor at each point's location. For each spawned instance, it applies any configured property overrides and attachment rules. If post-process functions are defined, they are executed on each spawned actor after creation.
+
+The process involves:
+
+1. Reading input points
+2. Creating an instance of the target actor at each point's location and rotation
+3. Applying property overrides to customize each instance
+4. Attaching instances according to specified attachment rules (location, rotation, scale)
+5. Calling any defined post-process functions on the spawned actors
+
+Each spawned actor inherits the template's default properties but can be customized per instance through property overrides.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Main Input (Default)**: Points that define spawn locations and attributes for each dynamic mesh instance.
-* **Point Filter**: Optional input to filter which points should be processed.
+* **Points** (Default): Input point data that defines where to spawn actors.
+* **(Optional)** Additional inputs may be used for filtering or additional metadata, depending on node configuration.
 
 </details>
 
@@ -36,64 +48,65 @@ This node requires a valid mesh template to function properly. Make sure your me
 
 <summary>Outputs</summary>
 
-* **Main Output (Default)**: The resulting dynamic mesh components spawned at the point locations.
+* **Actors** (Default): Output of spawned actor instances. Each instance corresponds to an input point and is positioned at that point's location.
 
 </details>
 
-### Properties Overview
+#### Configuration
 
-Controls how the dynamic meshes are created and configured.
+<details>
 
-***
+<summary><strong>Template Descriptor</strong><br><em>Defines the mesh and component properties to use for spawning.</em></summary>
 
-#### General Settings
+Controls how the dynamic mesh is created from the template actor. Allows specifying which components or meshes to use for instance generation.
 
-Configures the core behavior of the node, including the mesh template, target actor, and attachment rules.
+</details>
 
-**Template Descriptor**
+<details>
 
-_The base mesh configuration used for spawning instances._
+<summary><strong>Target Actor</strong><br><em>The actor template to spawn at each point.</em></summary>
 
-* Defines rendering settings, collision properties, and other component behaviors
-* Supports overridable properties from point attributes
-* Must contain a valid mesh asset to function properly
+Specifies the actor blueprint or asset that will be duplicated and spawned at each input point location. This defines what type of object is created.
 
-**Target Actor**
+</details>
 
-_The actor that will be used as the template for spawned meshes._
+<details>
 
-* If specified, this actor's components will be used as a base for spawning new dynamic meshes
-* Useful when you want to replicate an existing actor's structure and properties
-* Can be left empty to use the mesh directly from the descriptor
+<summary><strong>Property Override Descriptions</strong><br><em>List of properties to override on each spawned instance.</em></summary>
 
-**Property Override Descriptions**
+Allows defining which properties from the target actor should be modified per instance. These overrides can reference point data or use constant values.
 
-_Describes how point attributes should override component properties._
+</details>
 
-* Allows mapping point data to mesh properties (e.g., scale, material index)
-* Each override defines which attribute to read from and what property to update
-* Supports multiple overrides per mesh component
+<details>
 
-**Attachment Rules**
+<summary><strong>Attachment Rules</strong><br><em>How to attach spawned actors to their source points.</em></summary>
 
-_How spawned meshes are attached to their parent or other objects._
+Controls how the spawned actors are positioned relative to the input points. Options include keeping relative position, snapping to the point, or applying custom offsets.
 
-* Controls location, rotation, and scale attachment behavior
-* Can be set to keep relative positions or align with world space
-* Includes option to weld simulated bodies together when attaching
+</details>
 
-**Post Process Function Names**
+<details>
 
-_List of function names to call on the target actor after spawning._
+<summary><strong>Post Process Function Names</strong><br><em>List of function names to call on each spawned actor after creation.</em></summary>
 
-* Functions must be parameter-less and have the "CallInEditor" flag enabled
-* Useful for triggering custom logic or updates after mesh generation
-* Can be used to refresh lighting, physics, or other systems
+Specifies functions defined in the target actor that should be executed after an instance is created. These functions must be parameter-less and marked with "CallInEditor".
 
-### Notes
+</details>
 
-* This node is designed to work with point data that defines spawn locations and optional attributes.
-* For best performance, ensure your mesh assets are optimized and use appropriate LOD settings.
-* The **Target Actor** setting is useful when you want to replicate an existing actor's structure, but it's not required if you're using the descriptor directly.
-* When using property overrides, make sure that the point data contains attributes with matching names and types.
-* Consider using this node in combination with other processing nodes like filters or transformers to control which points are used for spawning.
+#### Usage Example
+
+1. Create a simple actor blueprint with a mesh component and some custom properties
+2. Set this blueprint as the **Target Actor**
+3. Add property overrides to customize scale or material per instance using point data
+4. Connect input points from a cluster or surface node
+5. Optionally define post-process functions to trigger additional logic on each spawned actor
+
+This setup allows you to generate complex, varied scenes with minimal effort while maintaining control over individual instance properties.
+
+#### Notes
+
+* The node requires the target actor to be a valid blueprint or asset that can be instantiated.
+* Property overrides must reference valid properties in the target actor.
+* Post-process functions are only called if they exist and are properly marked for editor execution.
+* Performance may vary depending on the complexity of the target actor and number of spawned instances.

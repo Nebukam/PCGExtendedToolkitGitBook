@@ -6,122 +6,109 @@ icon: circle
 # Normalize
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Output normalized position against data bounds to a new vector attribute.
+> Normalize point positions against data bounds and output them as a new vector attribute.
 
-### Overview
+#### How It Works
 
-This node maps the input point positions into a normalized space, typically between 0 and 1, based on the bounding box of your data. It's useful for creating consistent scaling, positioning, or blending effects across different datasets. The output is written to a new vector attribute that you define.
+The Normalize node adjusts the position of each point so that it falls within a standardized range—typically 0 to 1—based on the boundaries of your input data. This makes it easier to align or scale geometry consistently, especially when working with multiple datasets or preparing data for further processing.
 
-{% hint style="info" %}
-The normalization is performed in local space relative to the bounds of your input data. If you need world-space normalization, consider using a "Transform" node before this one.
-{% endhint %}
+The process works like this:
+
+1. First, it determines the size and shape of the area that contains all input points (the bounding box).
+2. If needed, it applies a transformation—like scaling, rotating, or moving—before normalizing.
+3. Then, each point's position is mapped into a 0-to-1 range along each axis using the determined bounds.
+4. Optional adjustments like offsetting or tiling can be applied to change how the normalized values are distributed.
+5. Finally, it creates a new attribute containing these normalized coordinates.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Bounds Source</strong><br><em>Which bounds to use for normalization.</em></summary>
 
-* **Main Input** (Default): Points to be normalized
-* **Optional Transform Attribute** (when enabled): A transform attribute to apply before normalization
+Controls how the bounding box used for normalization is calculated.
+
+* **Scaled Bounds**: Uses the scaled bounds of the data, which may include padding or scaling factors.
+* **Density Bounds**: Uses density-based bounds, including steepness adjustments.
+* **Bounds**: Uses the raw, unscaled bounds of the data.
+* **Center**: Uses a tiny 1x1x1 box centered at the origin.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Offset</strong><br><em>Apply an offset to the normalized values.</em></summary>
 
-* **Main Output** (Default): Points with normalized positions written to a new vector attribute
+Adds a constant offset to the normalized position. For example, setting this to (0.5, 0.5, 0.5) shifts the normalized range from \[0,1] to \[-0.5, 1.5].
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the normalization is calculated and applied.
+<summary><strong>Tile</strong><br><em>Apply tiling behavior for out-of-bounds values.</em></summary>
 
-***
+Controls how values outside the 0-1 range are handled when normalized.
 
-#### Normalization Settings
+* **One Vector (default)**: No tiling, values remain in \[0,1].
+* **Custom Vector**: Tiling is applied per axis. For example, setting to (2, 2, 2) will repeat the pattern every 2 units.
 
-Determines the space into which points are normalized.
+</details>
 
-**Bounds Source**
+<details>
 
-_Controls what bounds are used for normalization._
+<summary><strong>Wrapping</strong><br><em>How out-of-bounds indices are handled.</em></summary>
 
-* Uses either scaled bounds, density bounds, raw bounds, or a tiny center box
-* **Scaled Bounds**: Scaled version of the point cloud's bounding box
-* **Density Bounds**: Scaled bounds adjusted by density parameters
-* **Bounds**: Raw, unscaled bounding box
-* **Center**: A tiny size 1 box centered at the origin
+Determines how to treat values that fall outside the normalized range.
 
-**Offset**
+* **Tile**: Wraps around, so a value of 1.7 becomes 0.7.
+* **Clamp**: Clamps values to the \[0,1] range (e.g., 1.7 becomes 1).
+* **Yoyo**: Mirrors and back (e.g., 1.7 becomes 0.3).
+* **Ignore**: Leaves out-of-bounds values unchanged.
 
-_Adds a constant offset to the normalized result._
+</details>
 
-* Applied after normalization, before tiling or wrapping
-* Can be used to shift the output space (e.g., offset by -0.5 to center around zero)
+<details>
 
-**Tile**
+<summary><strong>One Minus</strong><br><em>Which components should be one minus'd.</em></summary>
 
-_Tiles the normalized values across each axis._
+Inverts the normalized value for selected axes (X, Y, Z). For example, if only X is selected, the X component of the output will be `1 - normalized_X`.
 
-* Values are repeated in a grid pattern when they exceed 1 or go below 0
-* Useful for creating repeating patterns or tiling effects
-* Example: Setting to (2, 1, 1) will repeat the normalized range twice along the X-axis
+</details>
 
-**Wrapping**
+<details>
 
-_How to handle values that fall outside the \[0,1] range._
+<summary><strong>Transform Input</strong><br><em>Whether to read the transform from an attribute or use a constant.</em></summary>
 
-* **Tile**: Repeats values in a grid pattern (0,1,2,0,1,2...)
-* **Clamp**: Clamps values to 0 or 1 (0,1,1,1,1,1...)
-* **Yoyo**: Mirrors and bounces values back (0,1,2,1,0,1...)
-* **Ignore**: Leaves out-of-bounds values unchanged
+Controls whether the transform applied before normalization is constant or comes from an input attribute.
 
-**One Minus**
+* **Constant**: Use the `Transform` value.
+* **Attribute**: Read the transform from the selected attribute.
 
-_Toggles whether to invert specific components of the normalized vector._
+</details>
 
-* When enabled for a component (X, Y, or Z), the result is subtracted from 1
-* Useful for inverting axis directions or creating mirrored effects
-* Example: Enabling only X will flip the X component of the output
+<details>
 
-**Transform Input**
+<summary><strong>Transform (Attr)</strong><br><em>Attribute to read transform from.</em></summary>
 
-_Controls whether to read transform data from an attribute or use a constant._
+If `Transform Input` is set to "Attribute", this selects which attribute to use for the transform.
 
-* **Constant**: Use the constant transform value below
-* **Attribute**: Read the transform from an attribute on input points
+</details>
 
-**Transform (Attr)**
+<details>
 
-_The attribute containing the transform to apply before normalization._
+<summary><strong>Transform</strong><br><em>Constant transform applied before normalization.</em></summary>
 
-* Only visible when "Transform Input" is set to "Attribute"
-* Allows per-point transformation before normalization
+A constant transform that is applied to each point's position before normalization. This can be used to scale, rotate, or translate points prior to normalization.
 
-**Transform**
+</details>
 
-_The constant transform to apply before normalization._
+<details>
 
-* Only visible when "Transform Input" is set to "Constant"
-* Applies the same transform to all points
+<summary><strong>Output</strong><br><em>Name of the output vector attribute.</em></summary>
 
-**Output**
+The name of the new vector attribute where normalized positions are stored.
 
-_Name of the new vector attribute where normalized positions are stored._
-
-* This attribute will be created if it doesn't exist
-* The output values are in the range \[0,1] for each component unless modified by other settings
-
-### Notes
-
-* Normalization is particularly useful when you want to map data to a consistent space regardless of its original scale or position
-* Combine with "One Minus" and "Tile" to create complex mapping effects
-* Use "Offset" to shift the normalized space, which can be helpful for centering or aligning with other data
-* The node works best when your input points form a coherent cluster; scattered points may produce unexpected results
-* Performance is generally good, but large datasets benefit from enabling bulk initialization in node settings
+</details>

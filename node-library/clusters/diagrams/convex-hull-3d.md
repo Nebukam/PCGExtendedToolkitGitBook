@@ -11,59 +11,43 @@ This page was generated from the source code. It should properly capture what th
 
 > Create a 3D Convex Hull triangulation for each input dataset.
 
-#### Overview
-
-This node generates a convex hull mesh from a set of 3D points, forming a triangulated surface that encloses all input points. It's useful for creating solid boundaries or visual representations of point clouds in procedural content generation workflows.
-
-Each input cluster is processed independently to produce a single convex hull mesh. The resulting output contains edges and faces that define the boundary surface of the point set. This can be used for collision detection, visual effects, or as a base for further geometric operations.
-
-{% hint style="info" %}
-Connects to **Cluster Input** pins and outputs to **Graph Output** pins.
-{% endhint %}
-
 #### How It Works
 
-This node computes the 3D convex hull of each input cluster by finding the smallest convex polyhedron that contains all points in the cluster. The algorithm works by:
+The Cluster : Convex Hull 3D node builds a solid 3D mesh that wraps around all the points in each input cluster. It finds the smallest possible convex shape that contains every point, forming a surface mesh made of triangles. This is useful for creating geometric representations of point groups, such as collision shapes or visual boundaries.
 
-1. Taking all points from a cluster
-2. Computing the set of points that form the outer boundary of the point cloud
-3. Triangulating the resulting surface to create a mesh
-4. Outputting edges and faces that define this convex hull
-
-The triangulation is computed using a 3D Delaunay-based approach, which ensures that no input point lies inside any triangle's circumcircle, producing a well-formed mesh.
-
-<details>
-
-<summary>Inputs</summary>
-
-Expects clusters of points as input. Each cluster will generate its own convex hull.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-Produces a graph output containing the edges and faces that define the 3D convex hull for each input cluster.
-
-</details>
+For each group of points, the node calculates the outer surface by determining which points form the edges and faces of the hull. The result is a triangulated mesh where each triangle connects three points on the surface. These meshes can be used for rendering, physics simulations, or spatial analysis.
 
 #### Configuration
 
-***
+<details>
 
-**Cluster Output Settings**
+<summary><strong>Cluster Output Settings</strong><br><em>Graph &#x26; Edges output properties.</em></summary>
 
-_Controls how the resulting graph is built and structured._
+Controls how the resulting graph is structured and what data it contains.
 
-This subnode defines properties related to the output graph, such as edge creation, point alignment, and mesh solidification settings. These affect how the final convex hull is represented in terms of edges and vertices.
+**Values**:
+
+* **Edge Radius Type**: How edge radii are computed
+  * **Average**: Edge radius is the average of each endpoint's bounds radii
+  * **Lerp**: Edge radius is interpolated between endpoint radii
+  * **Min**: Edge radius is the smallest endpoint radius
+  * **Max**: Edge radius is the largest endpoint radius
+  * **Fixed**: Edge radius is a fixed size
+* **Solidification Axis**: Aligns edge points to the selected axis
+* **Edge Radius**: Fixed size for edge radius when using "Fixed" mode
+
+</details>
 
 #### Usage Example
 
-Use this node to generate solid boundaries around groups of points, such as creating terrain contours from sampled elevation points or generating collision meshes for clustered objects in a scene.
+1. Create a group of points or clusters in your graph
+2. Connect the point data to the Cluster : Convex Hull 3D node
+3. The node will generate a triangulated mesh representing the convex hull of those points
+4. Use the output graph for rendering, collision detection, or further processing
 
 #### Notes
 
-* The convex hull is computed per-cluster, so multiple input clusters will produce multiple hulls.
-* The resulting mesh is a triangulated surface that encloses all input points.
-* Performance scales with the number of points in each cluster; larger clusters may take longer to compute.
+* This node is computationally intensive for large datasets due to the convex hull calculation
+* The resulting graph contains only the triangulated surface of the hull, not volume data
+* Each input dataset produces one output graph, so multiple clusters will result in multiple outputs
+* Performance scales with the number of input points; consider using point filtering before this node for very large datasets

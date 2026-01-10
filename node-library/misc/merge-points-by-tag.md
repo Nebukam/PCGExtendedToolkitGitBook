@@ -6,108 +6,104 @@ icon: circle
 # Merge Points by Tag
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Merge points based on shared tags.
+> Merge points that share common tags into unified outputs.
 
-### Overview
+#### How It Works
 
-This node groups and merges point data based on common tag attributes, allowing you to combine related point clouds into unified outputs. It's useful when you have multiple sets of points that should be treated as a single unit if they share certain identifying characteristics.
+This node organizes point data based on shared tags and then combines points that belong to the same tag group. It supports different merging strategies depending on how you want overlapping or duplicate data handled.
 
-For example, you might have several point clouds representing different sections of a building (like walls, windows, and doors), each tagged with their respective categories. Using this node, you can merge all wall points together, all window points together, etc., based on those tags.
+First, it sorts input points into groups based on their assigned tags. Each unique tag becomes a category, and all points with that tag are placed together.
 
-{% hint style="info" %}
-This node works best when your input data has consistent tag attributes across point sets. If some inputs lack certain tags, the fallback behavior determines how those are handled.
-{% endhint %}
+Next, it applies the selected merge mode:
+
+* In **Strict** mode, higher-priority tags remove overlapping data from lower-priority ones.
+* With **Overlap** mode, all data within the same tag group is merged together.
+* Using **Flatten** mode combines all tags into one identifier and merges points based on that.
+
+Points that don't match any filters are managed according to the fallback behavior:
+
+* **Omit**: Excludes unmatched points from output.
+* **Merge**: Groups unmatched points into a single combined output.
+* **Forward**: Passes unmatched points through without merging them.
+
+Finally, the merged results are sent out via the output pins in the specified order.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Mode</strong><br><em>How overlapping tags are resolved during merging.</em></summary>
 
-* **Default Input** (Multiple): Accepts multiple point data inputs that will be processed for merging based on tags.
+Controls how to handle data when multiple tags overlap or conflict.
+
+**Values**:
+
+* **Strict**: Merge happens per-tag, and higher priority tags remove overlapping lower-priority data.
+* **Overlap**: Merge happens per-tag, overlapping data is merged entirely.
+* **Flatten**: Flatten all tags into a unique identifier and match-merge based on that identifier.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>SortDirection</strong><br><em>Sorting direction</em></summary>
 
-* **Default Output**: Merged point data grouped by shared tags.
-* Additional outputs may be created depending on the merge mode and fallback behavior settings.
+Determines the order in which points are sorted within each tag bucket before merging. Only used when Mode is not "Flatten".
+
+**Values**:
+
+* **Ascending**: Sorts from lowest to highest.
+* **Descending**: Sorts from highest to lowest.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how points are matched, merged, and handled when no matching tags exist.
+<summary><strong>FallbackBehavior</strong><br><em>How unmatched points are handled in Flatten mode.</em></summary>
 
-***
+Defines what happens to points that don't match any tag filters when using the "Flatten" merge mode.
 
-#### Merge Settings
+**Values**:
 
-Determines how overlapping or matching tags are processed.
+* **Omit**: Do not output data that didn't pass filters.
+* **Merge**: Merge all data that didn't pass filter in a single blob.
+* **Forward**: Forward data that didn't pass filter without merging them.
 
-**Merge Mode**
+</details>
 
-_Controls the method used to merge point data based on shared tags._
+<details>
 
-* **Strict**: Merges per-tag, with higher priority tags removing lower priority overlaps.
-* **Overlap**: Merges per-tag, allowing overlapping data to be fully merged together.
-* **Flatten**: Treats all tags as a single identifier and matches based on that flattened value.
+<summary><strong>TagFilters</strong><br><em>Tags to be processed or ignored.</em></summary>
 
-**Sorting Direction**
+Defines which tags are included, excluded, or all considered for merging. Tags not matching the filter are skipped.
 
-_Controls how tag priorities are sorted when using Strict or Overlap modes._
+</details>
 
-* When set to **Ascending**, lower priority tags are processed first.
-* When set to **Descending**, higher priority tags are processed first.
+<details>
 
-**Fallback Behavior**
+<summary><strong>ResolutionPriorities</strong><br><em>Which tag has merging authority over another.</em></summary>
 
-_Determines what happens to point data that doesn't match any defined tags._
+Sets the priority order of tags when resolving overlaps in "Strict" mode. Tags listed earlier take precedence over later ones.
 
-* **Omit**: Points without matching tags are excluded from output.
-* **Merge**: All unmatched points are merged into a single output blob.
-* **Forward**: Unmatched points are passed through without merging, maintaining their original structure.
+</details>
 
-***
+<details>
 
-#### Tag Filters
+<summary><strong>CarryOverDetails</strong><br><em>Meta filter settings.</em></summary>
 
-Define which tags to include or exclude from processing.
+Controls how attributes and metadata are carried over during merging, including filtering rules for which data to include or exclude.
 
-**Tag Filters**
+</details>
 
-_Specifies which tag attributes to process._
+#### Usage Example
 
-* Use this to limit the merge operation to specific tags only.
-* Supports both inclusion and exclusion modes for flexible filtering.
+You have a point cloud representing different terrain types (e.g., "Grass", "Water", "Rock") and want to merge all points with the same type into single outputs. Use this node to group points by tag and merge them, ensuring that higher-priority tags (like "Water" over "Grass") are respected when overlaps occur.
 
-***
+#### Notes
 
-#### Priority Settings
-
-Control how tags are prioritized during merging.
-
-**Resolution Priorities**
-
-_List of tags ordered by priority._
-
-* Tags listed first take precedence when resolving overlaps in Strict or Overlap modes.
-* Example: If you have tags "A", "B", and "C", and tag "A" is listed first, it will override any lower-priority tags in overlapping regions.
-
-***
-
-#### Carry Over Settings
-
-Configure how attributes from input points are carried over to merged outputs.
-
-**Carry Over Settings**
-
-_Determines which attributes are preserved during merging._
-
-* Controls whether point attributes like color, scale, or custom data are copied into the merged output.
-* Helps maintain important metadata when combining multiple point sets.
+* The node works best when point data has consistent tag naming.
+* For large datasets, consider using "Flatten" mode for better performance.
+* When using "Strict" mode, ensure your priority list is well-defined to avoid unexpected merges.

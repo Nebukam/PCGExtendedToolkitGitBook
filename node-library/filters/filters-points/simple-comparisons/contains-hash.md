@@ -9,121 +9,91 @@ icon: circle-dashed
 This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a filter definition that checks whether a given value hash is contained within a one or more set of values. Important note: this is a hash comparison, so it's highly type sensitive! Float 0 != Double 0.
-
-#### Overview
-
-This subnode defines a filtering behavior that evaluates whether the hash of a point's attribute value exists in one or more sets of pre-defined hashes. It is useful for quickly checking if a point matches any of a predefined list of values, especially when dealing with large datasets where performance matters.
-
-It connects to **Filter** pins on processing nodes, allowing you to control which points are processed further based on their attribute values being present in specified sets.
-
-{% hint style="info" %}
-Connects to Filter pins on processing nodes.
-{% endhint %}
+> Creates a filter definition that checks whether a given value hash is contained within a one or more set of values.
 
 #### How It Works
 
-This filter performs a hash-based comparison between an input point's attribute value and a set of pre-defined hashes. It works by:
+This subnode evaluates whether a point's attribute value exists within a collection of reference values. It uses hash-based comparison, which is fast but sensitive to data types (for example, float 0 and double 0 are treated as different). The filter compares the hash of an input value against hashes stored in one or more reference sets.
 
-1. Reading the value from a specified attribute (Operand A) on each point.
-2. Computing a hash for that value.
-3. Comparing this hash against a collection of known hashes from one or more data sets.
-4. Determining whether the point passes the filter based on how many of the input sets contain the hash:
-   * If **Merged** mode is used, all sets are combined into one large set and checked.
-   * If **Individual** mode is used, each set is tested separately, and the result depends on the **Inclusion** setting:
-     * **Any**: The point passes if its hash is found in at least one set.
-     * **All**: The point passes only if its hash is found in all sets.
+* First, it reads the value from the point using the `OperandA` attribute name.
+* Then, it computes a hash for that value.
+* If the `Mode` is **Merged**, all reference sets are combined into one large set before comparison.
+* If the `Mode` is **Individual**, each reference set is checked separately:
+  * If `Inclusion` is **Any**, the point passes if its hash matches any value in at least one set.
+  * If `Inclusion` is **All**, the point passes only if its hash matches all values in every set.
+* The result can be inverted using the `bInvert` flag.
 
-The comparison is sensitive to data types. For example, a float value of `0` and a double value of `0` will have different hashes, so they are treated as distinct values.
-
-<details>
-
-<summary>Inputs</summary>
-
-* Points with an attribute matching the **Operand A** setting.
-* Optional input sets containing attributes named by **SetAttributeName**, which define the hash values to check against.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* Points that pass or fail the hash containment test, depending on the filter result and whether inversion is enabled.
-
-</details>
+This approach allows for efficient lookups, especially when dealing with large datasets or multiple reference sets. It's particularly useful for filtering based on discrete categories or predefined lists of values.
 
 #### Configuration
 
-***
+<details>
 
-**Mode**
+<summary><strong>Mode</strong><br><em>How to process input sets.</em></summary>
 
-_Controls how input sets are processed._
-
-When set to **Merged**, all input sets are combined into one large set before comparison. When set to **Individual**, each set is tested separately based on the **Inclusion** setting.
+Controls how the reference sets are handled during comparison.
 
 **Values**:
 
-* **Merged**: All input set will be merged into a single set.
-* **Individual**: Input set are kept separated, and tested individually.
+* **Merged**: All reference sets are combined into one large set for comparison.
+* **Individual**: Reference sets are kept separate and tested individually.
 
-***
+</details>
 
-**Inclusion**
+<details>
 
-_How to test against input sets when using Individual mode._
+<summary><strong>Inclusion</strong><br><em>How to test against input sets.</em></summary>
 
-Controls whether a point must match at least one or all of the sets to pass the filter.
+Only applies when `Mode` is set to **Individual**. Determines how the filter evaluates matches across multiple sets.
 
 **Values**:
 
-* **Any**: Value must be present in at least one set for the filter to pass.
-* **All**: Value must be present in all input set for the filter to pass.
+* **Any**: The point passes if its hash matches at least one value in any of the sets.
+* **All**: The point passes only if its hash matches all values in every set.
 
-***
+</details>
 
-**OperandA**
+<details>
 
-_Name of the attribute on points whose value is hashed and compared._
+<summary><strong>OperandA</strong><br><em>Operand A for testing.</em></summary>
 
-This defines which point attribute's value will be used to compute the hash for comparison. For example, if set to `Value`, it will compare the hash of each point’s `Value` attribute.
+The name of the attribute on points to compare against the reference sets. For example, if you're filtering based on a "Category" attribute, this would be set to `Category`.
 
-***
+</details>
 
-**SetAttributeName**
+<details>
 
-_Name of the attribute in input sets that contains the values to compare against._
+<summary><strong>SetAttributeName</strong><br><em>Name of the attribute to read on sets.</em></summary>
 
-This specifies which attribute from the input data sets holds the values to be hashed and compared. The values are expected to be stored as hashes, not raw values.
+The name of the attribute in the reference data that contains the values to compare against. This is used when reading from external data sources.
 
-***
+</details>
 
-**bTypeInsensitive**
+<details>
 
-_When enabled, the hash comparison will be less sensitive to data types._
+<summary><strong>bTypeInsensitive</strong><br><em>If enabled, the hash comparison will be less sensitive.</em></summary>
 
-If enabled, numeric values of different types (e.g., float vs double) may be treated as equivalent during hashing, reducing strictness of comparisons.
+When enabled, the filter attempts to normalize type differences during hash computation (e.g., treating float and double values as equivalent). This is useful when you want to ignore minor type variations in your data.
 
-***
+</details>
 
-**bInvert**
+<details>
 
-_Whether to invert the result of the filter._
+<summary><strong>bInvert</strong><br><em>Whether to invert the result of the filter.</em></summary>
 
-When enabled, points that would normally pass the filter will instead fail, and vice versa.
+When enabled, the filter logic is inverted. Points that would normally pass now fail, and vice versa.
+
+</details>
 
 #### Usage Example
 
-You have a set of points with an attribute named `ColorID`, and you want to keep only those whose color ID matches one or more specific predefined IDs. You can:
-
-1. Create input sets containing lists of valid `ColorID` values.
-2. Set **SetAttributeName** to `ColorID`.
-3. Choose **Individual** mode and **Any** inclusion to allow points that match any of the given IDs.
-4. Optionally enable **bInvert** if you want to exclude rather than include matching points.
+1. Create a point cloud with a "MaterialType" attribute.
+2. Set up a data source containing reference values like `["Wood", "Metal", "Stone"]`.
+3. Use this subnode to filter points where the `MaterialType` matches any of these values.
+4. Connect it to a processing node (e.g., a "Filter Points" node) to apply the condition.
 
 #### Notes
 
-* Hash comparisons are type-sensitive, so `0f` and `0d` are treated as different values.
-* Performance is improved when using **Merged** mode with a single large set instead of multiple small sets.
-* This filter works best when the input sets contain pre-computed hashes for fast lookup.
+* Hash comparisons are fast but type-sensitive. Be mindful of data types when defining your reference sets.
+* The `bTypeInsensitive` flag can help reduce false negatives due to type mismatches, but may increase computational overhead.
+* This filter works best with discrete or categorical data rather than continuous values.

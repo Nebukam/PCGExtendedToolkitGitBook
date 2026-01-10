@@ -5,80 +5,83 @@ icon: circle-dashed
 # Noise : Flow
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates time-coherent animated noise patterns with smoothly rotating gradients. Ideal for creating flowing, dynamic effects like clouds, water, smoke, or fire.
+> Flow noise generates time-coherent animated patterns using smoothly rotating gradients.
 
-### Overview
+#### How It Works
 
-This factory generates procedural noise that evolves smoothly over time with rotating gradient directions. Unlike standard noise where gradients change randomly, this noise maintains temporal coherence by rotating gradients in a predictable way.
+This subnode creates animated noise patterns by rotating gradients over time. Instead of using random noise values, it uses a system where each point has its own unique rotation rate. These rates are determined by the point's position and then scaled by the Rotation Speed setting. As time passes, these gradients rotate in the XY plane, creating smooth, flowing motion. The result is a continuous pattern that feels natural and organic, like water flowing or clouds drifting across the sky.
 
-{% hint style="info" %}
-Connects to **Noise** input pins on nodes that sample 3D noise values.
-{% endhint %}
+#### Configuration
 
-### How It Works
+<details>
 
-Instead of using fixed or randomly changing gradient directions, this noise generator rotates the gradient vectors over time. This creates smooth, coherent animations where patterns flow in a consistent direction rather than appearing chaotic.
+<summary><strong>Octaves</strong><br><em>Number of noise layers to combine.</em></summary>
 
-The rotation speed is determined by a per-cell random factor that's consistent over time, ensuring that each location in space has a unique but stable rotational behavior.
+Controls how many layers of noise are combined. Each octave adds more detail and complexity to the pattern. Higher values create more intricate, noisy results.
 
-### Configuration
+**Values**:
 
-***
+* **1**: Single layer noise
+* **4**: Four-layer noise with increased complexity
+* **8**: Eight-layer noise for highly detailed patterns
 
-#### General Settings
+</details>
 
-**Octaves**
+<details>
 
-_Controls the number of noise layers combined to create the final pattern._
+<summary><strong>Lacunarity</strong><br><em>Spacing between noise frequencies.</em></summary>
 
-Higher values add more detail and complexity. Typical values range from 1 to 8.
+Controls how quickly the frequency of noise increases with each octave. Higher values create more rapid changes in pattern detail.
 
-**Lacunarity**
+**Values**:
 
-_Determines the frequency multiplier between octaves._
+* **1.0**: Minimal spacing between octaves
+* **2.0**: Standard spacing (default)
+* **4.0**: Fast spacing for sharp transitions
 
-A value of 2.0 doubles the frequency with each octave. Higher values create more intricate patterns.
+</details>
 
-**Persistence**
+<details>
 
-_Control the amplitude multiplier between octaves._
+<summary><strong>Persistence</strong><br><em>Amplitude of each noise octave.</em></summary>
 
-Controls how much each octave contributes to the final result. Values typically range from 0.1 to 1.0.
+Controls how much each successive octave contributes to the final pattern. Lower values reduce the influence of higher-frequency details.
 
-**Time**
+**Values**:
 
-_Sets the time parameter for animation._
+* **0.0**: No contribution from higher octaves
+* **0.5**: Balanced contribution (default)
+* **1.0**: Full contribution from all octaves
 
-This value advances over time to create animated effects. Use a time source node or increment this manually for looping animations.
+</details>
 
-**Rotation Speed**
+<details>
 
-_Control how fast gradients rotate over time._
+<summary><strong>Time</strong><br><em>Time parameter for animation.</em></summary>
 
-Values from 0.0 (no rotation) to 10.0 (very fast rotation). Higher values create more dynamic, turbulent motion.
+Controls the time value used to animate the noise pattern. Increasing this value moves the animation forward through time.
 
-### Inputs
+**Values**:
 
-* **Noise** - Input pin that accepts noise data for sampling
-* **Time** - Time parameter used to animate the noise pattern over time
+* **0.0**: Start of animation
+* **1.0**: One unit of time forward
+* **Any number**: Custom time progression
 
-### Outputs
+</details>
 
-* **Noise** - Output pin that provides the generated noise pattern
+<details>
 
-### Usage Example
+<summary><strong>RotationSpeed</strong><br><em>Rotation speed of gradients.</em></summary>
 
-Create animated cloud formations by connecting this factory to a **Noise** input pin on a **Sample Points** node. Set the Time parameter to increment over time using a **Time** node or similar. Adjust Octaves to 4-6 for detailed cloud structures and Rotation Speed to 0.5-2.0 for natural-looking flow.
+Controls how fast the noise gradients rotate over time, affecting the motion and flow of the pattern.
 
-### Notes
+**Values**:
 
-* Best used with time-based animation where the Time parameter is incremented
-* Lower octaves create large-scale patterns, higher octaves add fine detail
-* Rotation speed controls how quickly features move through space
-* Good for simulating fluid dynamics like water or smoke
-* Combine multiple noise sources with different rotation speeds for complex motion effects
+* **0.0**: No rotation (static pattern)
+* **1.0**: Standard rotation speed (default)
+* **10.0**: Very fast rotation for dramatic motion
+
+</details>

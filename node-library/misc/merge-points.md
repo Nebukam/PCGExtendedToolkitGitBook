@@ -6,95 +6,72 @@ icon: circle
 # Merge Points
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> An alternative to the native Merge Points node with additional controls.
+> Merges multiple point collections into a single output, with advanced sorting and attribute handling options.
 
-### Overview
+#### How It Works
 
-This node combines multiple point inputs into a single output, similar to the standard Merge Points node but with enhanced functionality. It allows you to control how data is merged and carried over from multiple inputs, including sorting options and tag-to-attribute conversion. This is particularly useful when working with complex procedural workflows where you need fine-grained control over how multiple point datasets are combined.
+The Merge Points node combines several input point collections into one unified dataset. It processes each collection in order, merging all points together before applying any sorting rules. The node then evaluates which attributes or metadata should be carried over based on your specified settings. If enabled, it can also convert point tags into attributes using a defined list of tag names.
 
-{% hint style="info" %}
-This node supports multiple input pins and will merge all points from connected inputs into a single output.
-{% endhint %}
+The sorting step ensures that the final merged collection is organized according to your preferences — such as by position, index, or custom properties. This allows you to control how the data flows through your procedural pipeline and makes downstream processing more predictable and efficient.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Collection Sorting</strong><br><em>Sorting settings for the merged collection.</em></summary>
 
-* **Default Input** (Multiple): Accepts one or more point data inputs to be merged
-* **Optional Filter Input**: Optional point filter that can be used to filter input points before merging
+Controls how the final merged point set is ordered. You can sort by various criteria such as position, index, or custom attributes.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Carry Over Settings</strong><br><em>Meta filter settings for which data to keep during merge.</em></summary>
 
-* **Default Output**: A single merged point dataset containing all points from the inputs
+Determines which metadata or attributes from the input collections are preserved in the output. You can choose to include, exclude, or keep all attributes.
 
 </details>
 
-### Properties Overview
+<details>
 
-This node provides controls for sorting merged data, carrying over attributes and tags, and converting tags into attributes.
+<summary><strong>Convert Tags to Attributes</strong><br><em>If enabled, will convert tags into attributes.</em></summary>
 
-***
+When enabled, point tags are converted into attributes in the output. Simple tags become boolean values; other formats like int32, double, FString, and FVector (2-4 components) are also supported.
 
-#### Settings
+</details>
 
-Controls how the points are merged and what metadata is preserved.
+<details>
 
-**Collection Sorting**
+<summary><strong>Tags to Attributes</strong><br><em>Tags that will be converted to attributes.</em></summary>
 
-_Specifies how to sort the merged point collection._
+Lists the specific tags to convert into attributes. Only tags listed here will be processed if "Convert Tags to Attributes" is enabled.
 
-* Points will be sorted according to this rule after merging
-* Sorting can be applied to any tag or attribute value
-* Sorting direction can be set to ascending or descending
+</details>
 
-**Values**:
+<details>
 
-* **Enabled**: Enable sorting of the merged collection
-* **Direction**: Set sorting direction (ascending or descending)
-* **Tag Name**: The tag or attribute used for sorting values
-* **Tolerance**: Tolerance for floating point comparisons when sorting
+<summary><strong>Quiet Tag Overlap Warning</strong><br><em>Suppresses warnings when overlapping tags are encountered.</em></summary>
 
-**Carry Over Settings**
+When enabled, suppresses warning messages that would otherwise appear if multiple input collections have overlapping tag names during the conversion process.
 
-_Configures which attributes and tags are carried over from input points._
+</details>
 
-* Determines what data is preserved in the output points
-* Can filter which attributes and tags are copied over
-* Useful for maintaining metadata across merged datasets
+#### Usage Example
 
-**Values**:
+Suppose you're generating a terrain with multiple noise layers and want to merge them into one point cloud. You could use this node to:
 
-* **Filter Mode**: Choose to include, exclude, or keep all attributes
-* **Matches**: List of attribute/tag names to include/exclude
-* **Comma Separated Names**: Simple list of names (comma-separated) to apply the same filter mode to
+1. Merge all the point collections from your different noise generators.
+2. Sort the points by their Y position (height).
+3. Carry over specific attributes like "Elevation" and "Material ID".
+4. Convert tags like "IsWater" or "IsMountain" into boolean attributes for downstream filtering.
 
-**Tag To Attributes**
+This setup gives you full control over how your point data is combined, sorted, and structured for further use in your procedural pipeline.
 
-_When enabled, converts simple tags into attributes._
+#### Notes
 
-* Converts tags that are not already attributes into actual attributes
-* Supports conversion to boolean, int32, double, FString, and FVector (2-4 components)
-* Simple tags will be converted to boolean values by default
-
-**Values**:
-
-* **Tags To Attributes**: Enable tag-to-attribute conversion
-* **Tags To Convert**: List of tag names to convert into attributes
-
-**Warnings and Errors**
-
-**bQuietTagOverlapWarning**
-
-_When enabled, suppresses warnings about overlapping tag names._
-
-* Prevents warning messages when tags with the same name exist in multiple inputs
-* Useful when you're intentionally using overlapping tags and want to avoid cluttered logs
+* The node supports multiple input collections, making it ideal for combining complex procedural datasets.
+* Sorting can significantly impact performance if dealing with large numbers of points.
+* When converting tags to attributes, be mindful of potential name conflicts between different input collections.

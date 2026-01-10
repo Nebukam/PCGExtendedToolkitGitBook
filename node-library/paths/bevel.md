@@ -6,293 +6,267 @@ icon: circle
 # Bevel
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Bevels the corners of paths by replacing sharp angles with smooth transitions.
+> Bevels path points to create smooth transitions or custom shapes at corners.
 
-### Overview
+#### How It Works
 
-This node modifies path points to create rounded or angled transitions at corners, giving paths a more organic appearance. It's commonly used for creating smooth road networks, pathways, or any scenario where sharp turns need to be softened.
+The Path : Bevel node modifies path data by replacing sharp angles with smooth or shaped transitions. It analyzes each point in the path and determines whether it should be beveled based on filters. When a point is selected for beveling, the node calculates how far the bevel extends along the incoming and outgoing segments of the path.
 
-The operation works by identifying points that form corners in the path and replacing them with a custom profile (line, arc, or custom shape) that smoothly connects the adjacent segments. You can control how much the corner is beveled, whether to keep the original point, and how to subdivide the new profile.
+It then constructs a profile shape (line, arc, or custom) at that corner using the specified width and profile type. The resulting points are added to the output path, replacing the original corner point. If subdivision is enabled, additional points are inserted along the bevel profile for smoother curves or more detailed shapes.
 
-{% hint style="info" %}
-Beveling affects only points that are part of paths. Points not connected to a path will remain unchanged.
-{% endhint %}
+For paths with multiple beveled points, it applies limiting logic to prevent overlapping bevels. Bevels can also slide along the path to avoid conflicts, especially when using "Closest neighbor" or "Balanced" limit types.
+
+When enabled, flags are written to indicate which points are bevel endpoints, start points, end points, or subdivision points for further processing or visualization.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Mode</strong><br><em>Type of Bevel operation.</em></summary>
 
-* **Main Input**: Points representing a path or collection of paths
-* **Filters (Optional)**: Point filters to determine which points should be beveled
+Controls how the width value is interpreted when computing bevel distances.
+
+* **Radius**: Width is treated as a radius to compute the distance along each segment.
+* **Distance**: Width is used directly as a distance along each segment.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Type</strong><br><em>Type of Bevel profile.</em></summary>
 
-* **Main Output**: Modified points with beveled corners, potentially more points than the input
+Defines the shape of the bevel at each corner.
+
+* **Line**: Simple straight-line transition between segments.
+* **Arc**: Curved arc profile for smooth transitions.
+* **Custom**: Use a custom profile defined in a subnode.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the beveling operation is applied to path points.
+<summary><strong>bKeepCornerPoint</strong><br><em>Whether to keep the corner point or not. If enabled, subdivision is ignored.</em></summary>
 
-***
+When enabled, the original corner point is retained and not replaced by the bevel shape. Subdivision settings are ignored in this case.
 
-#### Settings
+</details>
 
-What core parameters control the bevel behavior.
+<details>
 
-**Mode**
+<summary><strong>MainAxisScaling</strong><br><em>Define how the custom profile will be scaled on the main axis.</em></summary>
 
-_Controls how the width value is interpreted._
+Controls how the custom profile is stretched or shrunk along its primary direction.
 
-* When set to **Radius**, the width defines a radius from the corner point along each adjacent segment.
-* When set to **Distance**, the width defines a distance along each adjacent segment.
+* **Uniform**: Keep the original profile ratio.
+* **Scale**: Scale the profile based on a factor relative to the bevel distance.
+* **Distance**: Use a fixed distance relative to the bevelled point.
 
-**Values**:
+</details>
 
-* **Radius**: Width is used as a radius value to compute distance along each point neighboring segments
-* **Distance**: Width is used as a distance along each point neighboring segments
+<details>
 
-**Type**
+<summary><strong>CrossAxisScaling</strong><br><em>Define how the custom profile will be scaled on the cross axis.</em></summary>
 
-_Controls the shape of the bevel profile._
+Controls how the custom profile is stretched or shrunk along its secondary direction.
 
-* When set to **Line**, a straight line connects the segments.
-* When set to **Arc**, an arc smoothly transitions between segments.
-* When set to **Custom**, a custom profile defined by another input is used.
+* **Uniform**: Keep the original profile ratio.
+* **Scale**: Scale the profile based on a factor relative to the bevel distance.
+* **Distance**: Use a fixed distance relative to the bevelled point.
 
-**Values**:
+</details>
 
-* **Line**: Line profile
-* **Arc**: Arc profile
-* **Custom**: Custom profile
+<details>
 
-**bKeepCornerPoint**
+<summary><strong>WidthMeasure</strong><br><em>Bevel width value interpretation.</em></summary>
 
-_When enabled, the original corner point is kept in the output._
+Determines how the width value is interpreted (relative or absolute).
 
-* If enabled, the original point remains at its location.
-* If disabled, the original point is replaced with the bevel profile.
+* **Relative**: Input value is normalized between 0..1, or used as a factor.
+* **Discrete**: Raw value is used directly.
 
-**Limit**
+</details>
 
-_Limits how far the bevel can extend from the corner point._
+<details>
 
-* When set to **None**, no limit is applied.
-* When set to **Closest neighbor**, the bevel is limited to the closest neighboring point along the path.
-* When set to **Balanced**, the bevel is balanced against the opposite side of the corner, falling back to closest neighbor if needed.
+<summary><strong>WidthInput</strong><br><em>Bevel width source.</em></summary>
 
-**Values**:
+Controls whether the bevel width is constant or read from an attribute.
 
-* **None**: Bevel is not limited
-* **Closest neighbor**: Closest neighbor position is used as upper limit
-* **Balanced**: Weighted balance against opposite bevel position, falling back to closest neighbor
+* **Constant**: Use a fixed value defined in WidthConstant.
+* **Attribute**: Read the width from an input point attribute.
 
-***
+</details>
 
-#### Profile Scaling
+<details>
 
-Controls how the custom profile is scaled along its main and cross axes.
+<summary><strong>WidthConstant</strong><br><em>Bevel width constant.</em></summary>
 
-**MainAxisScaling**
+The fixed width value used when WidthInput is set to Constant. This value is interpreted based on WidthMeasure.
 
-_Determines how the custom profile is scaled on the main axis._
+</details>
 
-**Values**:
+<details>
 
-* **Uniform**: Keep the profile ratio uniform
-* **Scale**: Use a scale factor relative to the bevel distance
-* **Distance**: Use a fixed distance relative to the bevelled point
+<summary><strong>Limit</strong><br><em>Bevel limit type.</em></summary>
 
-**MainAxisScale**
+Controls how bevels interact with each other to prevent overlap or conflict.
 
-_Scale or distance value for the main axis._
+* **None**: Bevels are not limited.
+* **ClosestNeighbor**: Bevels are limited by the position of the nearest non-beveled point.
+* **Balanced**: Bevels balance against opposite bevel positions, falling back to closest neighbor if needed.
 
-* Controls how much the custom profile is scaled along its main axis.
-* Only visible when **MainAxisScaling** is set to **Scale** or **Distance**.
+</details>
 
-**CrossAxisScaling**
+<details>
 
-_Determines how the custom profile is scaled on the cross axis._
+<summary><strong>bSlideAlongPath</strong><br><em>Whether to allow sliding along path.</em></summary>
 
-**Values**:
+When enabled, bevels can extend past non-beveled points, limited only by neighboring bevels or path endpoints. Bevel endpoints will traverse along the path geometry, and intermediate non-beveled points will be removed.
 
-* **Uniform**: Keep the profile ratio uniform
-* **Scale**: Use a scale factor relative to the bevel distance
-* **Distance**: Use a fixed distance relative to the bevelled point
+</details>
 
-**CrossAxisScale**
+<details>
 
-_Scale or distance value for the cross axis._
+<summary><strong>bSubdivide</strong><br><em>Whether to subdivide the profile.</em></summary>
 
-* Controls how much the custom profile is scaled along its cross axis.
-* Only visible when **CrossAxisScaling** is set to **Scale** or **Distance**.
+When enabled, additional points are inserted along the bevel profile for smoother curves or more detailed shapes.
 
-***
+</details>
 
-#### Width
+<details>
 
-Controls how wide the bevel is applied.
+<summary><strong>SubdivideMethod</strong><br><em>Subdivision method.</em></summary>
 
-**WidthMeasure**
+Controls how subdivision is calculated.
 
-_Determines whether width values are relative or absolute._
-
-* When set to **Relative**, input values are normalized between 0..1, or used as a factor.
-* When set to **Discrete**, raw values are used as absolute distances.
-
-**Values**:
-
-* **Relative**: Input value will be normalized between 0..1, or used as a factor
-* **Discrete**: Raw value will be used, or used as absolute
-
-**WidthInput**
-
-_Specifies whether the width is constant or comes from an attribute._
-
-* When set to **Constant**, use the **WidthConstant** value.
-* When set to **Attribute**, read the width from the **WidthAttribute**.
-
-**Values**:
-
-* **Constant**: Use a constant, user-defined value
-* **Attribute**: Read the value from the input data
-
-**WidthAttribute**
-
-_Name of the attribute to read the bevel width from._
-
-* Only visible when **WidthInput** is set to **Attribute**.
-
-**WidthConstant**
-
-_Value used for bevel width when **WidthInput** is set to **Constant**._
-
-***
-
-#### Subdivision
-
-Controls how the beveled profile is subdivided into multiple points.
-
-**bSubdivide**
-
-_When enabled, the bevel profile is subdivided into multiple points._
-
-* If disabled, the bevel profile is a single smooth transition.
-* If enabled, the profile is split into segments based on subdivision settings.
-
-**SubdivideMethod**
-
-_Determines how subdivision is calculated._
-
-**Values**:
-
-* **Distance**: Number of subdivisions depends on length
-* **Count**: Number of subdivisions is fixed
+* **Distance**: Number of subdivisions depends on length.
+* **Count**: Fixed number of subdivisions.
 * **Manhattan**: Manhattan subdivision, number of subdivisions depends on spatial relationship between the points; will be in the \[0..2] range.
 
-**SubdivisionAmountInput**
+</details>
 
-_Specifies whether the subdivision count is constant or comes from an attribute._
+<details>
 
-**Values**:
+<summary><strong>SubdivisionAmountInput</strong><br><em>Whether to subdivide the profile.</em></summary>
 
-* **Constant**: Use a constant, user-defined value
-* **Attribute**: Read the value from the input data
+Controls whether the subdivision count is constant or read from an attribute.
 
-**SubdivisionDistance**
+* **Constant**: Use a fixed value defined in SubdivisionCount or SubdivisionDistance.
+* **Attribute**: Read the subdivision amount from an input point attribute.
 
-_Number of subdivisions based on distance._
+</details>
 
-* Only visible when **bSubdivide** is enabled and **SubdivideMethod** is set to **Distance**.
-* Controls how far apart each subdivision point is placed.
+<details>
 
-**SubdivisionCount**
+<summary><strong>SubdivisionDistance</strong><br><em>Subdivisions (Distance).</em></summary>
 
-_Fixed number of subdivisions._
+The distance between subdivision points when SubdivideMethod is Distance and SubdivisionAmountInput is Constant.
 
-* Only visible when **bSubdivide** is enabled and **SubdivideMethod** is set to **Count**.
-* Controls how many points are used to define the bevel profile.
+</details>
 
-**SubdivisionAmount**
+<details>
 
-_Name of the attribute to read subdivision count from._
+<summary><strong>SubdivisionCount</strong><br><em>Subdivisions (Count).</em></summary>
 
-* Only visible when **bSubdivide** is enabled and **SubdivideMethod** is not **Manhattan** and **SubdivisionAmountInput** is set to **Attribute**.
+The number of subdivisions to use when SubdivideMethod is Count and SubdivisionAmountInput is Constant.
 
-**ManhattanDetails**
+</details>
 
-_Manhattan subdivision settings._
+<details>
 
-* Only visible when **bSubdivide** is enabled and **SubdivideMethod** is set to **Manhattan**.
-* Controls how subdivisions are calculated based on the spatial relationship between points.
+<summary><strong>SubdivisionAmount</strong><br><em>Subdividions (Attr).</em></summary>
 
-***
+The attribute to read subdivision count from when SubdivisionAmountInput is Attribute.
 
-#### Flags
+</details>
 
-Controls whether flags are added to indicate bevel-related properties of points.
+<details>
 
-**bFlagPoles**
+<summary><strong>ManhattanDetails</strong><br><em>Manhattan.</em></summary>
 
-_When enabled, a boolean flag is added to mark bevel endpoints._
+Settings for Manhattan subdivision, such as minimum and maximum subdivision counts.
 
-* Adds a flag indicating if a point is a bevel endpoint (either start or end).
+</details>
 
-**PoleFlagName**
+<details>
 
-_Name of the boolean flag for bevel endpoints._
+<summary><strong>bFlagPoles</strong><br><em>Whether to flag bevel poles.</em></summary>
 
-* Only visible when **bFlagPoles** is enabled.
+When enabled, a boolean flag is written to indicate whether the point is a bevel endpoint (either start or end).
 
-**bFlagStartPoint**
+</details>
 
-_When enabled, a boolean flag is added to mark bevel start points._
+<details>
 
-* Adds a flag indicating if a point is the start of a bevel.
+<summary><strong>PoleFlagName</strong><br><em>Name of the boolean flag to write whether the point is a Bevel endpoint or not.</em></summary>
 
-**StartPointFlagName**
+The name of the attribute where the pole flag will be written.
 
-_Name of the boolean flag for bevel start points._
+</details>
 
-* Only visible when **bFlagStartPoint** is enabled.
+<details>
 
-**bFlagEndPoint**
+<summary><strong>bFlagStartPoint</strong><br><em>Whether to flag start points.</em></summary>
 
-_When enabled, a boolean flag is added to mark bevel end points._
+When enabled, a boolean flag is written to indicate whether the point is a bevel start point.
 
-* Adds a flag indicating if a point is the end of a bevel.
+</details>
 
-**EndPointFlagName**
+<details>
 
-_Name of the boolean flag for bevel end points._
+<summary><strong>StartPointFlagName</strong><br><em>Name of the boolean flag to write whether the point is a Bevel start point or not.</em></summary>
 
-* Only visible when **bFlagEndPoint** is enabled.
+The name of the attribute where the start point flag will be written.
 
-**bFlagSubdivision**
+</details>
 
-_When enabled, a boolean flag is added to mark subdivision points._
+<details>
 
-* Adds a flag indicating if a point was created as part of a subdivision.
+<summary><strong>bFlagEndPoint</strong><br><em>Whether to flag end points.</em></summary>
 
-**SubdivisionFlagName**
+When enabled, a boolean flag is written to indicate whether the point is a bevel end point.
 
-_Name of the boolean flag for subdivision points._
+</details>
 
-* Only visible when **bFlagSubdivision** is enabled.
+<details>
 
-### Notes
+<summary><strong>EndPointFlagName</strong><br><em>Name of the boolean flag to write whether the point is a Bevel end point or not.</em></summary>
 
-* Beveling works best on paths with sharp angles. Gentle curves will not be affected.
-* When using **Custom** profile type, ensure that the input data contains a valid custom profile to avoid unexpected results.
-* Subdivision can increase the number of points significantly, especially for complex paths or high subdivision counts.
-* Use flags to track which points were modified by this node for further processing or visualization.
+The name of the attribute where the end point flag will be written.
+
+</details>
+
+<details>
+
+<summary><strong>bFlagSubdivision</strong><br><em>Whether to flag subdivision points.</em></summary>
+
+When enabled, a boolean flag is written to indicate whether the point is a subdivision point.
+
+</details>
+
+<details>
+
+<summary><strong>SubdivisionFlagName</strong><br><em>Name of the boolean flag to write whether the point is a subdivision point or not.</em></summary>
+
+The name of the attribute where the subdivision flag will be written.
+
+</details>
+
+#### Usage Example
+
+1. Create a path using a Path : Generate node.
+2. Add a Path : Bevel node to the graph.
+3. Set **Type** to "Arc" and **WidthConstant** to 0.5.
+4. Enable **bSubdivide** with **SubdivideMethod** set to Count and **SubdivisionCount** to 5.
+5. Connect the path output to the Path : Bevel input.
+6. The resulting path will have smooth arc-shaped bevels at each corner, with additional subdivision points for smoother curves.
+
+#### Notes
+
+* Beveling affects only points that pass the filters; other points remain unchanged.
+* When using "Balanced" or "Closest neighbor" limits, overlapping bevels are resolved by adjusting their extent.
+* Custom profiles must define a shape that can be scaled and applied to each corner.
+* Subdivision settings have no effect when **bKeepCornerPoint** is enabled.

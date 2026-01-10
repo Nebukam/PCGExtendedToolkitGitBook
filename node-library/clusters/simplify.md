@@ -6,149 +6,143 @@ icon: circle
 # Simplify
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Simplify connections by operating on isolated chains of nodes (only two neighbors).
 
-### Overview
+#### How It Works
 
-This node simplifies graph structures by removing intermediate nodes from chains where each node has exactly two neighbors. It's useful for cleaning up overly complex networks, reducing visual clutter, or preparing data for downstream processing that benefits from simpler topologies.
+This node cleans up graph structures by identifying and simplifying linear chains of nodes where each node (except the endpoints) has exactly two neighbors. These are referred to as "isolated chains" or "linear segments."
 
-The node works by identifying "chains" of connected nodes and collapsing them into direct connections between endpoints. This is particularly effective in scenarios like road networks, skeletal structures, or any graph where intermediate points are redundant.
+For each identified chain, the node performs the following actions:
 
-{% hint style="info" %}
-This node only operates on chains where each node has exactly two neighbors. It does not modify nodes with more than two connections or isolated nodes.
-{% endhint %}
+1. If enabled, it checks whether the angular deviation between consecutive edges in the chain is below a specified threshold.
+2. If so, it merges nodes based on that angle or distance criteria.
+3. It then removes intermediate nodes from the chain and connects the remaining endpoints directly with new edges.
+4. Optionally, it can remove dead ends (nodes with only one neighbor) if enabled.
+
+This process ensures that linear paths are simplified while preserving important structural features like sharp turns or junctions.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Operate On Leaves Only</strong><br><em>If enabled, only check for dead ends.</em></summary>
 
-* **Cluster Input** (Required): Point data representing the graph's nodes
-* **Edge Input** (Required): Point data representing edges between nodes
+When enabled, the node will only simplify chains that are at the "ends" of the graph (i.e., nodes with only one neighbor). When disabled, it processes all linear chains regardless of their position in the graph.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Edge Filter Role</strong><br><em>Define the behavior of connected edge filters, if any.</em></summary>
 
-* **Cluster Output**: Simplified point data with reduced node count
-* **Edge Output**: Simplified edge data reflecting the new connections
+Controls how edge filters are handled during simplification:
+
+* **Preserve**: Endpoints of edges that pass the filter are kept.
+* **Collapse**: Endpoints of edges that pass the filter are collapsed into a single point.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the simplification process behaves and what data is carried over.
+<summary><strong>Merge Above Angular Threshold</strong><br><em>If enabled, uses an angular threshold below which nodes are merged.</em></summary>
 
-***
+When enabled, the node will merge consecutive nodes in a chain if the angle between their connecting edges is below the specified threshold. This helps simplify paths that are nearly straight.
 
-#### General Settings
+</details>
 
-Controls basic behavior of the simplification operation.
+<details>
 
-**Operate On Leaves Only**
+<summary><strong>Angular Threshold</strong><br><em>If enabled, uses an angular threshold below which nodes are merged.</em></summary>
 
-_When enabled, only check for dead ends._
+Sets the maximum angle (in degrees) allowed for two consecutive edges in a chain to be considered collinear. If the angle is smaller than this value, the intermediate node will be removed.
 
-* Only processes chains that end in nodes with no neighbors (leaves)
-* Useful for preserving certain structural elements while simplifying others
+**Range**: 0 to 180 degrees
 
-**Edge Filter Role**
+</details>
 
-_Define the behavior of connected edge filters, if any_
+<details>
 
-**Values**:
+<summary><strong>Invert</strong><br><em>Removes hard angles instead of collinear ones.</em></summary>
 
-* **Preserve**: Preserve endpoints of edges that pass the filters
-* **Collapse**: Collapse endpoints of edges that pass the filters
+When enabled, the node removes nodes at sharp angles (where the angle is greater than the threshold) rather than those that are nearly straight.
 
-**Merge Above Angular Threshold**
+</details>
 
-_If enabled, uses an angular threshold below which nodes are merged._
+<details>
 
-* When enabled, checks the angle between consecutive segments in a chain
-* If the angle is below the specified threshold, the middle node is removed and the segments are merged
-* Useful for smoothing curves or removing sharp turns that don't contribute to structure
+<summary><strong>Fuse Collocated</strong><br><em>If enabled, will consider collocated binary nodes for collocation and remove them as part of the simplification.</em></summary>
 
-**Angular Threshold**
+When enabled, nodes that are located very close to each other (within the Fuse Distance) are merged into a single point during simplification.
 
-_If enabled, uses an angular threshold below which nodes are merged._
+</details>
 
-* Value in degrees between 0 and 180
-* Smaller values mean more aggressive simplification
-* Example: Setting to 10° will remove nodes where the angle between connected segments is less than 10°
+<details>
 
-**Invert Angular Threshold**
+<summary><strong>Fuse Distance</strong><br><em>Distance used to consider point to be overlapping.</em></summary>
 
-_Removes hard angles instead of collinear ones._
+Sets the minimum distance between two points for them to be considered collocated and eligible for merging. Smaller values result in more aggressive merging.
 
-* When enabled, removes nodes that create sharp angles rather than straight lines
-* Useful for preserving angular features while simplifying straight sections
+**Range**: 0.001 and above
 
-**Fuse Collocated**
+</details>
 
-_If enabled, will consider collocated binary nodes for collocation and remove them as part of the simplification._
+<details>
 
-* When enabled, checks if nodes are located at the same position
-* If they are within the specified tolerance, they are merged into a single node
-* Useful for cleaning up overlapping points in generated geometry
+<summary><strong>Prune Leaves</strong><br><em>If enabled, prune dead ends.</em></summary>
 
-**Fuse Distance**
+When enabled, the node removes nodes that have only one neighbor (dead ends) from the graph, effectively trimming off terminal branches.
 
-_Distance used to consider point to be overlapping._
+</details>
 
-* Only active when "Fuse Collocated" is enabled
-* Value in world units (default 0.001)
-* Points closer than this distance are considered overlapping and merged
+<details>
 
-**Prune Leaves**
+<summary><strong>Edge Blending Details</strong><br><em>Defines how fused point properties and attributes are merged together for Edges.</em></summary>
 
-_If enabled, prune dead ends._
+Controls how data from merged points is combined when creating new edges. This affects attribute values on the resulting edges.
 
-* Removes nodes that have no neighbors (leaves) from the graph
-* Useful for cleaning up terminal points that don't contribute to structure
+</details>
 
-***
+<details>
 
-#### Data Blending Settings
+<summary><strong>Carry Over Settings</strong><br><em>Meta filter settings for edge data.</em></summary>
 
-Controls how attributes are handled when nodes are collapsed.
+Determines which attributes or metadata from the original edges are carried over to the simplified edges.
 
-**Edge Blending Details**
+</details>
 
-_Defines how fused point properties and attributes are merged together for Edges._
+<details>
 
-* Controls how data is combined when edges are created from simplified chains
-* Example: If two edges had different "Width" values, this setting determines whether to average them or use one value
+<summary><strong>Edge Union Data</strong><br><em>Edge Union Data</em></summary>
 
-**Carry Over Settings**
+Defines how unioned attributes from multiple edges are handled during simplification, particularly when multiple edges are collapsed into one.
 
-_Meta filter settings for edge data._
+</details>
 
-* Determines which attributes are carried over from the original edges to the simplified ones
-* Useful for preserving important metadata like material types or connection weights
+<details>
 
-**Edge Union Data**
+<summary><strong>Cluster Output Settings</strong><br><em>Graph &#x26; Edges output properties</em></summary>
 
-_Controls how union metadata is written for edge data._
+Controls how the resulting graph and edge data are structured in the output. This includes settings for metadata, attribute handling, and output formatting.
 
-* Allows you to track which original points were merged together
-* Useful for debugging or maintaining references back to source data
+</details>
 
-***
+#### Usage Example
 
-#### Cluster Output Settings
+You have a procedural path network with many intermediate nodes that represent minor waypoints or noise in the path. You want to simplify it so that only meaningful turns or junctions remain.
 
-Controls the output format and structure of the simplified graph.
+1. Connect your cluster input to this node.
+2. Enable **Prune Leaves** to remove terminal branches.
+3. Set **Merge Above Angular Threshold** to true and set an angular threshold of 10 degrees.
+4. Optionally, enable **Fuse Collocated** with a small tolerance like 0.001 to merge very close points.
 
-**Graph Builder Details**
+This setup will clean up the path by removing unnecessary intermediate nodes while preserving sharp turns and maintaining structural integrity.
 
-_Graph & Edges output properties_
+#### Notes
 
-* Defines how the final graph is constructed
-* Controls edge creation, node positioning, and overall topology of the output
+* This node works best on linear or near-linear chains of nodes.
+* Enabling both angular merging and collocation can produce more aggressive simplification.
+* Be cautious with very low thresholds, as they may remove important features from your graph.
+* The node does not modify the original input data; it creates a new simplified version.

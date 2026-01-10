@@ -6,78 +6,51 @@ icon: scrubber
 # Batch Actions
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Batch various actions together.
 
-### Overview
+#### How It Works
 
-This node allows you to execute multiple operations on point data in a single pass, improving performance and reducing the number of nodes needed in your graph. It's particularly useful when you want to apply several transformations or modifications to your points without creating separate nodes for each action.
+The Batch Actions node processes point data by applying a series of configured operations in sequence. Each operation is executed one after another, with the results flowing from one to the next. This approach allows you to combine multiple transformations into a single processing step, which improves performance and keeps your graph organized.
 
-{% hint style="info" %}
-Batch Actions processes all input points together as one unit, which can be more efficient than running individual actions sequentially.
-{% endhint %}
+The node reads all input points and passes them through each defined action subnode in the order they are listed. After all actions have been applied, it can optionally filter or remove certain attributes to manage data flow efficiently.
 
-<details>
-
-<summary>Inputs</summary>
-
-* **Default Input** (Required): Points to process
-* **Optional Inputs**: Additional point data that can be used by the actions
-
-</details>
+#### Configuration
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Default Attributes Filter</strong><br><em>Filter for default attributes to be included or excluded from the processing.</em></summary>
 
-* **Default Output**: Processed points with applied actions
-
-</details>
-
-### Properties Overview
-
-Controls how the batched actions are configured and executed.
-
-***
-
-#### Settings
-
-Configures the general behavior of the node.
-
-**Default Attributes Filter**
-
-_Controls which attributes are included by default in the processing._
-
-* Only attributes matching this filter will be processed unless explicitly overridden
-* Useful for limiting the scope of operations to specific data sets
+Controls which attributes are considered when applying operations. You can define a list of attribute names to include or exclude, based on the selected filter mode.
 
 **Values**:
 
-* **All**: All attributes are considered
-* **Exclude**: Discard listed attributes, keep the others
-* **Include**: Keep listed attributes, discard the others
+* **All**: All attributes are processed.
+* **Exclude**: Listed attributes are discarded; others are kept.
+* **Include**: Only listed attributes are kept; others are discarded.
 
-**Do Consume Processed Attributes**
+</details>
 
-_When enabled, removes processed attributes from the output._
+<details>
 
-* Useful for cleaning up temporary or intermediate data after processing
-* Helps reduce memory usage and keeps outputs clean
+<summary><strong>bDoConsumeProcessedAttributes</strong><br><em>When enabled, the node consumes processed attributes after applying all actions.</em></summary>
 
-**Consume Processed Attributes**
+When enabled, this setting causes the node to remove or mark certain attributes for consumption after processing is complete. This helps manage memory and prevents unnecessary attribute retention.
 
-_Configures which specific attributes to remove when "Do Consume Processed Attributes" is enabled._
+</details>
 
-* Allows fine-grained control over which attributes are discarded
-* Supports both comma-separated names and detailed filter settings
+<details>
 
-### Notes
+<summary><strong>ConsumeProcessedAttributes</strong><br><em>Defines which attributes are consumed when bDoConsumeProcessedAttributes is enabled.</em></summary>
 
-* Use this node when you want to apply multiple actions efficiently without increasing graph complexity
-* The batched approach can significantly improve performance on large datasets
-* Consider using the attribute filtering options to limit processing scope for better performance
-* This node works best with actions that don't depend on each other's results, as they're all applied simultaneously
+Specifies the names of attributes to be consumed, using a filter mode (Include or Exclude) and a list of attribute names.
+
+**Values**:
+
+* **All**: All attributes are consumed.
+* **Exclude**: Listed attributes are not consumed; others are.
+* **Include**: Only listed attributes are consumed; others are not.
+
+</details>

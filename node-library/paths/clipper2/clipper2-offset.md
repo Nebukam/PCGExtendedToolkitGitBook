@@ -6,210 +6,183 @@ icon: circle
 # Clipper2 : Offset
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Does a Clipper2 offset operation with optional dual (inward+outward) offset.
+> Applies a geometric offset to paths in your PCG graph, useful for creating outlines, expanding or contracting shapes, and generating buffer zones.
 
-### Overview
+#### How It Works
 
-This node applies an offset operation to input paths, creating new geometries that are either inset or outset from the original shapes. It's particularly useful for creating outlines, borders, or expanding/shrinking shapes while maintaining their topological structure. The node supports both single and dual offsets, allowing you to generate both inward and outward variations of your input geometry.
+This node takes input paths and applies a geometric offset using Clipper2's offsetting algorithm. The process involves:
 
-{% hint style="info" %}
-This node requires paths as input. Make sure your data is structured as paths before applying this operation.
-{% endhint %}
+1. Projecting the path onto a 2D plane based on the specified projection settings (normal or best-fit).
+2. Applying an offset amount to each path segment, either inward or outward.
+3. Handling corner joins according to the selected join type (round, square, miter, etc.).
+4. Managing path ends with specific end types for open and closed paths.
+5. Optionally applying multiple iterations of the offset operation, with a consolidation method to determine how many iterations to apply when sources have different values.
+6. Writing iteration data to attributes or tags if enabled.
+
+The node supports both single and dual (inward + outward) offsets, allowing you to create shapes that are simultaneously expanded and contracted from the original path.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Projection Details</strong><br><em>Projection settings.</em></summary>
 
-* **Main** (required): Input paths to offset
-* **Secondary** (optional): Additional paths for more complex operations
+Controls how the input paths are projected onto a 2D plane for offsetting. This affects the orientation of the offset operation.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Iterations</strong><br><em>Number of iterations to apply</em></summary>
 
-* **Main**: Offset paths, potentially with multiple iterations and optional tagging
-* **Secondary** (optional): Secondary output paths if used
+The number of times the offset operation is applied to each path. For example, setting this to 3 will apply the offset three times in sequence.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the offset operation is performed and what output is generated.
+<summary><strong>Iteration Consolidation</strong><br><em>How to determine final iteration count when iteration attribute from multiple source differ</em></summary>
 
-***
+Determines how to resolve differences in iteration counts if multiple input paths have different values. Options are:
 
-#### Projection Settings
+* **First**: Use the first path's value.
+* **Last**: Use the last path's value.
+* **Average**: Take the average of all values.
+* **Min**: Use the minimum value.
+* **Max**: Use the maximum value.
 
-Controls how 3D input data is projected onto a 2D plane for processing.
+</details>
 
-**Projection Normal**
+<details>
 
-_The normal vector of the 2D projection plane. Defaults to Up for XY projection._
+<summary><strong>Min Iterations</strong><br><em>Minimum guaranteed iterations</em></summary>
 
-* Used when projecting 3D points into 2D space for offset calculations
-* Affects the orientation of the final offset geometry
+Sets a minimum number of iterations to apply, even if the input iteration count is lower. This ensures at least this many offset operations are performed.
 
-**Use Local Normal**
+</details>
 
-_When enabled, uses a local normal attribute from input data._
+<details>
 
-* If true, reads normal from an attribute named "Normal" (or custom name)
-* Falls back to Projection Normal if no valid local normal is found
+<summary><strong>Offset</strong><br><em>Offset amount</em></summary>
 
-**Method**
+The distance by which to offset the paths. Positive values expand the shape outward; negative values contract it inward.
 
-_How to compute the 2D projection plane._
+</details>
 
-* **Normal**: Uses a fixed or local normal vector
-* **Best Fit**: Computes the best-fit plane using eigen values from input points
+<details>
 
-***
+<summary><strong>Offset Scale</strong><br><em>Offset Scale (mostly useful when using attributes)</em></summary>
 
-#### Iterations Settings
+A multiplier applied to the base offset value, useful when the offset is driven by an attribute.
 
-Controls how many times the offset operation is applied and how iteration counts are handled.
+</details>
 
-**Iterations**
+<details>
 
-_Number of iterations to apply._
+<summary><strong>Join Type</strong><br><em>Join type for corners</em></summary>
 
-* Can be set as a constant value or read from an attribute on input data
-* Each iteration applies the same offset amount, building up the effect progressively
-* Example: Setting this to 3 will create 3 nested offsets
+Controls how sharp corners are handled during offsetting. Options include:
 
-**Consolidation**
+* **Round**: Corners are rounded.
+* **Square**: Corners are squared.
+* **Miter**: Corners are extended to meet at a point (with a limit).
+* **Bevel**: Corners are cut off.
 
-_How to determine final iteration count when iteration attributes from multiple sources differ._
+</details>
 
-* **First**: Use the first source's iteration count
-* **Last**: Use the last source's iteration count
-* **Average**: Use the average of all iteration counts
-* **Min**: Use the minimum iteration count
-* **Max**: Use the maximum iteration count
+<details>
 
-**Min Iterations**
+<summary><strong>Miter Limit</strong><br><em>Miter limit (only used with Miter join type)</em></summary>
 
-_Minimum guaranteed iterations._
+When using the Miter join type, this controls how far the corner can extend before being clipped. A value of 2.0 means that if the miter length exceeds twice the offset distance, it will be clipped to a square end.
 
-* Ensures at least this many iterations are applied, even if input data suggests fewer
-* Useful for preventing empty results when using attribute-based iteration counts
+</details>
 
-***
+<details>
 
-#### Offset Settings
+<summary><strong>End Type Closed</strong><br><em>End type for closed paths</em></summary>
 
-Controls the core offset parameters and behavior.
+Controls how closed paths are treated at their endpoints. Options include:
 
-**Offset Amount**
+* **Polygon**: Treats as a closed polygon.
+* **Joined**: Joins the ends (creates thin paths with double-sided offsets).
+* **Butt**: Ends are cut off square.
+* **Square**: Ends are extended square.
+* **Round**: Ends are rounded.
 
-_The distance to offset by._
+</details>
 
-* Can be a constant value or read from an attribute on input data
-* Positive values create outward offsets (expanding shapes)
-* Negative values create inward offsets (shrinking shapes)
-* Example: Setting this to 20 will expand all paths by 20 units
+<details>
 
-**Offset Scale**
+<summary><strong>End Type Open</strong><br><em>End type for open paths</em></summary>
 
-_Scale factor applied to the offset amount._
+Controls how open paths are treated at their endpoints. Options include:
 
-* Multiplies the base offset value before applying it
-* Useful for adjusting relative sizing when using attribute-based offsets
-* Example: With an offset of 10 and scale of 0.5, the actual offset becomes 5
+* **Polygon**: Treats as a closed polygon.
+* **Joined**: Joins the ends (creates thin paths with double-sided offsets).
+* **Butt**: Ends are cut off square.
+* **Square**: Ends are extended square.
+* **Round**: Ends are rounded.
 
-**Join Type**
+</details>
 
-_How corners are joined in the offset geometry._
+<details>
 
-* **Round**: Creates rounded corners
-* **Square**: Creates square corners (extends to meet at right angles)
-* **Miter**: Creates sharp corners with extended lines
-* **Bevel**: Creates beveled (angled) corners
+<summary><strong>Write Iteration</strong><br></summary>
 
-**Miter Limit**
+When enabled, writes the iteration index to a data attribute.
 
-_Limit for miter joins, only used when Join Type is set to Miter._
+</details>
 
-* Controls how far mitered corners can extend before being clipped
-* Higher values allow sharper angles
-* Example: Setting this to 3.0 will allow miters up to 3 times the offset distance
+<details>
 
-**End Type (Closed Paths)**
+<summary><strong>Iteration Attribute Name</strong><br><em>Write the iteration index to a data attribute</em></summary>
 
-_How closed paths are handled at their endpoints._
+The name of the data attribute where the iteration index will be written.
 
-* **Polygon**: Treats all paths as closed polygons (ignores open/closed state)
-* **Joined**: Creates thin paths with double-sided offsets
-* **Butt**: Ends are cut square to the path
-* **Square**: Ends extend beyond the path
-* **Round**: Ends are rounded
+</details>
 
-**End Type (Open Paths)**
+<details>
 
-_How open paths are handled at their endpoints._
+<summary><strong>Tag Iteration</strong><br></summary>
 
-* Only visible when "Skip Open Paths" is disabled
-* Same options as closed paths but affects open path ends differently
+When enabled, writes the iteration index to a tag.
 
-***
+</details>
 
-#### Output Settings
+<details>
 
-Controls how iteration data and tags are written to output.
+<summary><strong>Iteration Tag</strong><br><em>Write the iteration index to a tag</em></summary>
 
-**Write Iteration**
+The name of the tag where the iteration index will be written.
 
-_When enabled, writes the iteration index to a data attribute._
+</details>
 
-* Useful for tracking which offset iteration each point belongs to
-* Enables downstream operations that depend on iteration level
+<details>
 
-**Iteration Attribute Name**
+<summary><strong>Tag Dual</strong><br></summary>
 
-_Name of the attribute where iteration index is stored._
+When enabled, writes a tag to indicate dual (negative) offsets.
 
-* Default is "Iteration"
-* Must be unique and not conflict with existing attributes
+</details>
 
-**Tag Iteration**
+<details>
 
-_When enabled, writes the iteration index as a tag._
+<summary><strong>Dual Tag</strong><br><em>Write this tag on the dual (negative) offsets</em></summary>
 
-* Tags are useful for filtering or grouping by offset level
-* Helps organize output data in downstream nodes
+The name of the tag to apply to negative offset paths when using dual mode.
 
-**Iteration Tag Name**
+</details>
 
-_Name of the tag used to mark iteration levels._
+#### Usage Example
 
-* Default is "OffsetNum"
-* Used when "Tag Iteration" is enabled
+Create a set of open and closed paths, then use this node to generate an offset version of each. Set the offset amount to 50 units, and choose "Round" for join type and "Butt" for end type. This will create clean, rounded outlines around your original paths with square ends.
 
-**Tag Dual**
+#### Notes
 
-_When enabled, tags dual (negative) offsets._
-
-* Useful for distinguishing between inward and outward offsets
-* Helps in creating complex offset structures with both types
-
-**Dual Tag Name**
-
-_Name of the tag used to mark dual offsets._
-
-* Default is "Dual"
-* Applied only when "Tag Dual" is enabled
-
-### Notes
-
-* This node uses Clipper2's robust offsetting algorithm, which handles self-intersections and complex geometries well
-* When using attribute-based inputs, ensure the attributes exist on all input points to avoid unexpected behavior
-* For best results with complex shapes, consider using a minimum iteration count to prevent empty outputs
-* The dual offset feature is particularly useful for creating nested structures or hollow shapes
-* Iteration tagging can be combined with filtering nodes to process specific offset levels separately
+* The offset operation is performed in 2D space, projected using the specified projection settings.
+* Iteration consolidation can be used to ensure consistent results when combining paths with different iteration counts.
+* Dual offset mode allows you to generate both inward and outward offsets from a single path, useful for creating shapes like borders or outlines.

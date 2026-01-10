@@ -5,90 +5,118 @@ icon: circle-dashed
 # Noise : Caustic
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Caustic noise generates procedural patterns that simulate light refraction through water, creating dynamic, organic light effects.
+> Simulates light patterns refracted through water, creating caustic effects.
 
-### Overview
+#### How It Works
 
-This factory produces 3D noise that mimics the complex light patterns created by sunlight refracting through water surfaces. It's designed to create underwater lighting effects, magical illumination, or sci-fi energy patterns.
+This subnode generates procedural noise that mimics the complex light refraction patterns seen beneath water surfaces, known as caustics. It does this by layering multiple sine wave patterns that move in different directions across 3D space. Each layer contributes to the overall pattern with its own angle and timing, creating overlapping waves that produce intricate, organic light behaviors.
 
-{% hint style="info" %}
-Connects to **Noise** input pins on nodes that sample procedural values (like Noise Sampling, Displacement, or Material Parameter nodes).
-{% endhint %}
+The process works like this:
 
-### How It Works
+1. For each point in 3D space, it calculates projections along several directions
+2. Each direction uses a unique angle offset to create overlapping wave patterns
+3. Each wave layer applies two sine functions with different wavelengths and phases
+4. These layered patterns are combined using a weighted average to produce the final noise value
+5. The result is then modulated by intensity and focus parameters to enhance focal points
 
-The caustic noise creates overlapping wave patterns in 3D space. Each wave layer contributes to the final pattern with different angles and phases, producing complex, organic light distributions. The result features bright focal points that move over time when animated.
+The animation effect comes from advancing time across all layers, creating shifting light patterns over time.
 
-### Inputs
+#### Configuration
 
-* **Noise** (Input pin): Connects to nodes that sample procedural values
-* **Time** (Input pin, optional): Sets the animation time offset for motion
-* **Animation Speed** (Input pin, optional): Controls how fast the caustic pattern moves
+<details>
 
-### Outputs
+<summary><strong>WaveLayers</strong><br><em>Number of overlapping wave layers.</em></summary>
 
-* **Noise** (Output pin): Provides the generated caustic noise pattern
+Controls how many sine wave patterns are layered together to create complexity. Higher numbers produce more intricate, detailed patterns but may increase computational cost.
 
-### Configuration
+**Values**:
 
-***
+* **1**: Single wave pattern
+* **3**: Standard caustic complexity
+* **8**: Maximum detail
 
-#### General Settings
+</details>
 
-**Wave Layers**
+<details>
 
-_Controls how many overlapping wave patterns are used._
+<summary><strong>Wavelength</strong><br><em>Base wavelength of the sine waves.</em></summary>
 
-More layers create more complex, detailed patterns. Values between 2-5 typically produce good results for most applications.
+Controls the spacing between light and dark bands in the caustic pattern. Smaller values create finer details, while larger values produce broader, smoother patterns.
 
-**Wavelength**
+**Values**:
 
-_Determines the spacing between light and dark bands._
+* **0.1**: Very fine detail
+* **1.0**: Standard scale
+* **10.0**: Broad, smooth waves
 
-Smaller values (0.1-0.5) create fine detail with many bright spots. Larger values (2-5) produce broader, smoother patterns.
+</details>
 
-**Time**
+<details>
 
-_Sets the animation time offset for motion._
+<summary><strong>Time</strong><br><em>Time parameter for animation.</em></summary>
 
-Use this to animate the pattern over time. Set to 0 for static patterns.
+Sets the base time value for animation. When set to 0, the pattern is static. Higher values animate the noise over time.
 
-**Animation Speed**
+**Values**:
 
-_Control how fast the caustic pattern moves._
+* **0.0**: Static pattern
+* **1.0**: One second of animation
+* **Any positive number**: Custom time offset
 
-Higher values create faster motion. Values between 0.5-2.0 work well for subtle movement.
+</details>
 
-**Intensity**
+<details>
 
-_Adjusts overall brightness of the light pattern._
+<summary><strong>AnimationSpeed</strong><br><em>How fast the animation progresses.</em></summary>
 
-Higher values make the bright focal points more prominent. Values between 1.5-3.0 typically look good.
+Controls how quickly the noise pattern evolves over time. Higher values make the caustics move faster.
 
-**Focus**
+**Values**:
 
-_Controls sharpness of the bright focal points._
+* **0.0**: No animation
+* **1.0**: Normal speed
+* **5.0**: Fast motion
 
-Higher values create sharper, more intense highlights. Lower values produce softer, more diffused patterns.
+</details>
 
-### Usage Example
+<details>
 
-Use this factory to create underwater lighting effects on a water surface:
+<summary><strong>Intensity</strong><br><em>Caustic intensity (creates bright focal points).</em></summary>
 
-1. Connect the Caustic noise factory to a Noise Sampling node
-2. Set Time to a variable or use the Time parameter from your graph
-3. Apply the output to a material's light intensity or color
-4. Animate the Time value over time for dynamic underwater lighting
+Controls how strong the bright focal points are in the pattern. Higher values create more pronounced highlights.
 
-### Notes
+**Values**:
 
-* The pattern is inherently 3D, so it works best on surfaces that are oriented in 3D space
-* Combine multiple noise sources using different blend modes for more complex effects
-* Lower Focus values with higher Intensity create dramatic, spotlight-like patterns
-* For static effects, set Time to 0 and Animation Speed to 0
-* This noise is particularly effective for creating magical or sci-fi energy patterns
+* **0.5**: Subtle caustics
+* **2.0**: Standard intensity
+* **4.0**: Very bright focal points
+
+</details>
+
+<details>
+
+<summary><strong>Focus</strong><br><em>Focus sharpness (higher = brighter focal points).</em></summary>
+
+Controls how sharp and concentrated the bright spots are in the pattern. Higher values create more defined, intense focal points.
+
+**Values**:
+
+* **1.0**: Soft focus
+* **2.0**: Standard focus
+* **8.0**: Very sharp focal points
+
+</details>
+
+#### Usage Example
+
+Use this subnode to animate underwater lighting effects on a water surface. Connect it to a material's scalar parameter and use the output to control emission or opacity. Set Time to a variable that updates each frame, and AnimationSpeed to 0.5 to create slow-moving light patterns.
+
+#### Notes
+
+* The noise is deterministic, meaning identical inputs will always produce identical outputs
+* For best results, combine multiple noise sources with different settings for more complex effects
+* Performance scales linearly with WaveLayers; use lower values for real-time applications
+* The output is normalized to a range suitable for most material parameters

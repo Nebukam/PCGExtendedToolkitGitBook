@@ -6,57 +6,28 @@ icon: circle
 # Iterations
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> A simple data generator that creates dummy iteration data for loop nodes.
+> Generates dummy data objects to represent iterations for loop nodes.
 
-### Overview
+#### How It Works
 
-This node generates a specified number of dummy data objects, each representing one iteration in a loop. It's designed to work with loop nodes that require iteration data to function properly. The generated data is lightweight and serves as placeholders for more complex data structures that would normally be used in iterations.
+The Iterations node creates a set of dummy data objects that simulate individual iterations for use in loop processing. It starts by generating a single dummy object of the specified type, then duplicates it based on the number of iterations you define. Each duplicate represents one step in a loop, allowing loop subnodes to process the same operation multiple times with different inputs.
 
-The node outputs multiple copies of a single dummy data object, which can then be consumed by loop nodes to perform repetitive operations. This is particularly useful when building procedural graphs where you need to iterate over a set number of times without having actual point or spline data to iterate over.
+This node bridges static data generation and iterative workflows by providing lightweight placeholders that can be consumed by loop nodes without requiring complex procedural logic or external data sources.
 
 {% hint style="info" %}
-This node is primarily used as an input for loop nodes and doesn't produce meaningful data on its own. It's meant to be connected to loop nodes that will use the iteration data to repeat operations.
+Connects to **Loop** nodes or other iteration-aware processing nodes. The output is typically used as input for loop subnodes.
 {% endhint %}
 
-<details>
-
-<summary>Inputs</summary>
-
-* None (Inputless node)
-
-</details>
+#### Configuration
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Type</strong><br><em>Type of dummy data to generate.</em></summary>
 
-* Multiple outputs representing individual iterations of dummy data
-* Output type depends on the selected data type setting
-
-</details>
-
-### Properties Overview
-
-Controls how many dummy iteration objects are generated and what type of data they represent.
-
-***
-
-#### Settings
-
-Controls the basic behavior of the node.
-
-**Type**
-
-_Controls the type of dummy data to generate._
-
-* Determines what kind of output pin is used for the iterations
-* Each type maps to a different data structure: Attribute Set, Points, Spline, or Texture
-* When set to **Any**, it outputs using an untyped attribute set pin
+Controls what kind of dummy data object is created for each iteration.
 
 **Values**:
 
@@ -66,26 +37,36 @@ _Controls the type of dummy data to generate._
 * **Spline**: Output dummy iteration data of type Spline.
 * **Texture**: Output dummy iteration data of type Texture.
 
-**Iterations**
+</details>
 
-_Number of dummy iteration objects to generate._
+<details>
 
-* Controls how many times the loop will iterate
-* Must be a non-negative integer
-* Setting this to 0 produces no output
+<summary><strong>Iterations</strong><br><em>Number of dummy data objects to generate.</em></summary>
 
-**bOutputUtils**
+Determines how many copies of the dummy object will be output. Each copy represents one iteration in a loop context.
 
-_When enabled, outputs additional utility parameters for each iteration._
+</details>
 
-* Adds extra data fields that can be useful for tracking iteration state
-* Slightly less performant than the basic version
-* Only available when Type is set to **Attribute Set** or **Any**
+<details>
 
-### Notes
+<summary><strong>bOutputUtils</strong><br><em>Output per-iteration params with useful values.</em></summary>
 
-* This node is specifically designed to work with loop nodes and should typically be connected as input to a loop node
-* The generated data is lightweight and doesn't contain meaningful information beyond iteration identification
-* When using with loop nodes, ensure the loop node's pin types match the selected Type setting
-* For performance-critical workflows, avoid enabling bOutputUtils unless specifically needed for utility values
-* Setting Iterations to 0 will result in no output being generated, which may cause downstream nodes to receive no data
+When enabled, the generated dummy objects include additional parameter data that can be useful for debugging or testing purposes. This is less optimized than the standard version but provides more information.
+
+</details>
+
+#### Usage Example
+
+1. Set **Iterations** to 3.
+2. Set **Type** to "Points".
+3. Connect this node's output to a loop node.
+4. The loop will execute three times, with each iteration receiving one of the generated point-based dummy objects.
+
+This setup is useful when you want to repeat an operation a fixed number of times without needing complex data sources or conditions.
+
+#### Notes
+
+* This node is primarily used as a helper in loop structures.
+* The dummy data objects are lightweight and do not carry meaningful content, only structure.
+* Using **bOutputUtils** can aid debugging but may impact performance slightly.
+* When using with loop nodes, ensure the loop subnode expects the correct data type based on the **Type** setting.

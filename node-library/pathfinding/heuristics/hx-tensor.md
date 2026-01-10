@@ -6,88 +6,67 @@ icon: circle-dashed
 # HX : Tensor
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a heuristic filter based on tensor field sampling, used to evaluate point suitability in pathfinding operations.
+> Defines heuristics based on tensor field sampling for pathfinding.
 
-### Overview
+#### How It Works
 
-This factory generates a heuristic that evaluates points using tensor field data. It's designed to be connected to pathfinding nodes like A\* or Dijkstra to influence which paths are considered during graph traversal.
+This subnode evaluates each point in the cluster by sampling tensor fields at that location. For each point, it calculates a scalar score based on the tensor data, which can be used as a heuristic for pathfinding.
 
-{% hint style="info" %}
-Connects to **Filter** pins on pathfinding processing nodes
-{% endhint %}
+1. **Tensor Sampling**: At each point's location, it samples one or more tensor fields using the configured sampling settings.
+2. **Score Calculation**: The sampled tensor values are processed to produce a scalar score. If `bAbsolute` is enabled, the absolute value of the tensor component is used; otherwise, the raw value is used.
+3. **Global vs Edge Scoring**:
+   * For global scoring (used in initial node evaluation), it evaluates the tensor at the point's location relative to seed and goal positions.
+   * For edge scoring (used when evaluating path segments), it evaluates the tensor along the direction of movement from one point to another.
 
-### Inputs
+The resulting score is used by pathfinding algorithms to prioritize or penalize certain paths based on the spatial characteristics defined in the tensor fields.
 
-* **Point**: Input points to evaluate
-* **Tensor Field**: Tensor field data used for sampling
-* **Settings**: Configuration parameters for the heuristic
+#### Configuration
 
-### Outputs
+<details>
 
-* **Heuristic**: Evaluated scores for each input point
+<summary><strong>bAbsolute</strong><br><em>When enabled, uses absolute values of tensor samples for scoring.</em></summary>
 
-### How It Works
+Controls whether the heuristic score is based on the absolute value of the tensor sample (`true`) or its raw value (`false`). This affects how negative tensor values are treated in scoring.
 
-This heuristic evaluates points by sampling tensor fields at their location. The result is a score that represents how favorable a point is for pathfinding, with the score being either higher or lower depending on your configuration. The tensor sampling can be configured to use different methods and parameters.
+**Values**:
 
-### Configuration
+* **true**: Uses absolute tensor values.
+* **false**: Uses raw tensor values.
 
-***
+</details>
 
-#### General
+<details>
 
-**Absolute**
+<summary><strong>TensorHandlerDetails</strong><br><em>Tensor sampling settings. Note that these are applied on the flattened sample, e.g after &#x26; on top of individual tensors' mutations.</em></summary>
 
-_When enabled, the heuristic score will be computed using absolute values._
+Defines how tensor fields are sampled at each point. This includes parameters like radius, step size, and error tolerance for adaptive sampling.
 
-When enabled, the heuristic uses absolute tensor field values for scoring. When disabled, it may use relative or normalized values depending on the tensor type.
+</details>
 
-**Tensor Sampling Settings**
+<details>
 
-_Tensor sampling settings. Note that these are applied on the flattened sample, e.g after & on top of individual tensors' mutations._
+<summary><strong>Config</strong><br><em>Filter Config.</em></summary>
 
-**Radius**
+General configuration options shared with other heuristic subnodes, such as weight factors and inversion settings.
 
-_Sampling radius._
+</details>
 
-The distance from each point to sample the tensor field. Larger values will consider more distant data but may be slower to compute.
+#### Usage Example
 
-**Min Step Fraction**
+1. Create a tensor field using a "Tensor Field" node.
+2. Add a "Heuristics : Tensor" subnode to your pathfinding graph.
+3. Connect the tensor field output to the subnode's input.
+4. Configure `bAbsolute` to true if you want to prioritize magnitude over direction.
+5. Set sampling parameters in `TensorHandlerDetails` to control how deeply the tensor is sampled.
+6. Connect this subnode to a pathfinding node's Filter pin to apply the heuristic.
 
-_Minimum step size as fraction of base radius._
+This setup allows paths to be influenced by spatial gradients or other tensor-defined patterns, such as guiding agents along terrain slopes or flow directions.
 
-Controls how small steps can be when sampling the tensor field. Smaller values allow for finer resolution but increase computation time.
+#### Notes
 
-**Max Step Fraction**
-
-_Maximum step size as fraction of base radius._
-
-Controls how large steps can be when sampling the tensor field. Larger values speed up computation but may miss fine details.
-
-**Error Tolerance**
-
-_Error tolerance for step size adaptation._
-
-How much error is acceptable in adaptive sampling. Lower values mean more precise but slower sampling.
-
-**Max Sub-Steps**
-
-_Maximum sub-steps per sample._
-
-Maximum number of subdivisions allowed when adapting step sizes during tensor sampling.
-
-### Usage Example
-
-Use this factory with an A\* pathfinding node to create a heuristic that considers tensor field data like terrain difficulty or flow direction. For example, you could use it to make paths prefer areas with higher "walkability" scores from a tensor field representing terrain quality.
-
-### Notes
-
-* The tensor sampling settings affect performance and accuracy
-* This factory works best when connected to pathfinding nodes that support custom heuristics
-* Scores are normalized based on your configured "Lower is Better" or "Higher is Better" setting
-* Multiple tensor factories can be connected for complex heuristic combinations
+* The tensor sampling logic adapts step sizes based on local changes in tensor values for better accuracy.
+* Multiple tensor fields can be combined through their mutation operations before being sampled.
+* Performance scales with the number of points and complexity of tensor fields.

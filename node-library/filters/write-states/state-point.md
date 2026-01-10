@@ -9,104 +9,79 @@ icon: circle-dashed
 This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Base class for state subnode management.
-
-#### Overview
-
-This abstract subnode defines a reusable state condition that can be applied to points in a procedural graph. It acts as a template for creating point-based filters that evaluate conditions and manage flag states based on whether those conditions pass or fail. It's designed to be inherited by concrete implementations that define specific behaviors.
-
-When used, this subnode connects to filter pins of processing nodes, allowing you to define complex conditional logic for point filtering or state management. It's particularly useful when building systems where points need to be categorized or flagged based on multiple criteria.
-
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes.
-{% endhint %}
+> Defines a point state that can be used to flag or categorize points based on filter conditions.
 
 #### How It Works
 
-This subnode defines a behavior that evaluates whether a set of conditions (filters) pass for each point. It operates by:
+This subnode sets up a logical condition that checks each point in a procedural graph. When the system processes a point, it runs all configured filters in sequence. If all filters pass, the "On Pass" flag operations are applied to the point's state flags. If any filter fails, the "On Fail" flag operations are applied instead.
 
-1. **Testing Conditions**: For each point, it runs a series of filter checks defined in its configuration
-2. **State Management**: Based on the test result:
-   * If all filters pass, it executes operations defined in `PassStateFlags`
-   * If any filter fails, it executes operations defined in `FailStateFlags`
-3. **Flag Operations**: It modifies flag values using bitmask operations, which can be used to track point states or categories
-4. **Priority Handling**: It supports priority ordering so that multiple state definitions can be applied in a specific sequence
-
-The subnode itself is abstract and must be inherited by concrete implementations to define the actual filtering logic.
-
-<details>
-
-<summary>Inputs</summary>
-
-* Point data (from a data source node)
-* Filter subnodes that define the conditions to test
-* Optional bitmask operations for state management
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* Modified point flags based on pass/fail conditions
-* Bitmask outputs if enabled (for debugging or further processing)
-
-</details>
+The logic is evaluated per point, and the result determines how that point's internal state flags are modified. This allows you to build complex categorization systems or state machines by combining multiple filters and flag behaviors.
 
 #### Configuration
 
-***
+<details>
 
-**bOnTestPass**
+<summary><strong>bOnTestPass</strong><br><em>Flags whether to execute operations when all filters pass.</em></summary>
 
-_Controls whether the pass flag operations are executed._
+When enabled, the "On Pass" flag operations are executed if all filters in this state pass.
 
-When enabled, the subnode will execute the operations defined in `PassStateFlags` when all filters pass for a point.
+</details>
 
-***
+<details>
 
-**PassStateFlags**
+<summary><strong>PassStateFlags</strong><br><em>Operations executed on the flag if all filters pass.</em></summary>
 
-_Operations executed on the flag if all filters pass._
+Defines what actions to perform on the point's flags when all filters in this state pass. This includes setting, clearing, or toggling specific bits.
 
-Defines what actions to take on the point's flags when all filter conditions are satisfied. This includes bitmask operations like setting, clearing, or toggling specific bits.
+</details>
 
-***
+<details>
 
-**bOnTestFail**
+<summary><strong>bOnTestFail</strong><br><em>Flags whether to execute operations when any filter fails.</em></summary>
 
-_Controls whether the fail flag operations are executed._
+When enabled, the "On Fail" flag operations are executed if any filter in this state fails.
 
-When enabled, the subnode will execute the operations defined in `FailStateFlags` when any filter fails for a point.
+</details>
 
-***
+<details>
 
-**FailStateFlags**
+<summary><strong>FailStateFlags</strong><br><em>Operations executed on the flag if any filters fail.</em></summary>
 
-_Operations executed on the flag if any filters fail._
+Defines what actions to perform on the point's flags when any filter in this state fails. This includes setting, clearing, or toggling specific bits.
 
-Defines what actions to take on the point's flags when one or more filter conditions are not satisfied. This includes bitmask operations like setting, clearing, or toggling specific bits.
+</details>
 
-***
+<details>
 
-**Name**
+<summary><strong>Name</strong><br><em>Name of the state definition.</em></summary>
 
-_Name of this state definition._
+A unique identifier for this state definition, used to reference it in other parts of the graph.
 
-A unique identifier used to distinguish this state from others in a processing graph. It helps with debugging and organization.
+</details>
 
-***
+<details>
 
-**Priority**
+<summary><strong>Priority</strong><br><em>Execution priority of this state.</em></summary>
 
-_Specifies the order in which this state is processed._
+Determines the order in which states are evaluated. Higher values execute first.
 
-Higher priority values are processed first. This allows you to define dependencies between different state definitions, ensuring that some flags are set before others are evaluated.
+</details>
 
-***
+<details>
 
-**bOutputBitmasks**
+<summary><strong>bOutputBitmasks</strong><br><em>Whether to output bitmask data for debugging or further processing.</em></summary>
 
-_Toggles whether bitmask outputs are generated._
+When enabled, outputs additional bitmask data that can be used for visualization or advanced filtering downstream.
 
-When enabled, the subnode will output additional data streams containing the bitmask results for both pass and fail conditions, useful for debugging or visualizing state transitions.
+</details>
+
+#### Usage Example
+
+Create a point state definition that flags points as "High Altitude" if they are above 100 units in height. Configure the filter to check the Z coordinate of each point. When the condition passes, set a specific flag bit to indicate high altitude. When it fails, clear that same bit.
+
+#### Notes
+
+* This is an abstract subnode and must be extended with concrete implementations.
+* States can be combined with other states to create complex logical systems.
+* The priority setting allows you to control evaluation order when multiple states are applied.
+* Bitmask outputs can help visualize or debug state assignments during graph execution.

@@ -6,76 +6,59 @@ icon: circle
 # Lloyd Relax 2D
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Applies Lloyd relaxation to input points, creating a more uniform distribution by iteratively moving points toward the centroids of their Voronoi cells.
+> Applies Lloyd relaxation to input points to improve their distribution.
 
-### Overview
+#### How It Works
 
-Lloyd relaxation is a technique used to improve point distribution by iteratively moving each point to the centroid (center of mass) of its Voronoi cell. This process results in a more even spacing between points, which is useful for creating natural-looking layouts or distributing objects with consistent density.
+Lloyd relaxation is a technique that helps spread points out more evenly in 2D space. The process works by first dividing the area into regions around each point, called Voronoi cells. Then, each point moves to the center (centroid) of its own cell. This movement is repeated multiple times, gradually making the points distribute more uniformly across the area.
 
-This node works in 2D space and supports projection onto different planes, making it flexible for various use cases such as terrain point distribution, object placement, or procedural mesh generation.
+This method is especially useful for creating natural-looking layouts where you want to avoid clumps or gaps, such as placing trees, rocks, or buildings in a way that looks both random and balanced.
 
-{% hint style="info" %}
-Lloyd relaxation improves point uniformity but does not guarantee perfect uniformity. The number of iterations determines how much the points are adjusted.
-{% endhint %}
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Iterations</strong><br><em>Number of relaxation iterations to perform.</em></summary>
 
-* **Points**: Input points to be relaxed. These will be modified in place.
+Controls how many times the Lloyd relaxation process is repeated. More iterations lead to a more uniform distribution but take longer to compute.
+
+**Values**: Integer, minimum 1
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>InfluenceDetails</strong><br><em>Influence Settings</em></summary>
 
-* **Points**: Output points with updated positions after Lloyd relaxation.
+Settings that control how influence is applied during the relaxation process. This affects how points move based on their neighbors.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls the behavior of the Lloyd relaxation process.
+<summary><strong>ProjectionDetails</strong><br><em>Projection settings.</em></summary>
 
-***
+Settings for projecting points onto a surface or plane, affecting how the relaxation is calculated in 2D space.
 
-#### Settings
+</details>
 
-Configures how the relaxation is applied.
+#### Inputs
 
-**Iterations**
+* **Points**: Input points to be relaxed
 
-_The number of times to apply the Lloyd relaxation step._
+#### Outputs
 
-* Each iteration moves points closer to their Voronoi cell centroids
-* Higher values produce more uniform distributions but take longer to compute
-* **Default**: 5
+* **Points**: Output points after Lloyd relaxation has been applied
 
-**Influence Details**
+#### Usage Example
 
-_Settings for controlling how much influence each point has during relaxation._
+Use this node to distribute points more evenly across a terrain. For example, after placing random trees on a map, connect them to this node with 5 iterations to create a more natural and uniform forest layout.
 
-* Adjusts the weight applied to each point's movement
-* Can be constant or read from an attribute on input points
-* Useful for creating variations in point density or behavior
+#### Notes
 
-**Projection Details**
-
-_Settings for projecting points onto a 2D plane before relaxation._
-
-* Defines how the 3D points are projected into 2D space
-* Supports normal projection (using a fixed or local normal vector)
-* Supports best-fit plane projection (computes the best-fitting plane from the point cloud)
-
-### Notes
-
-* This node is ideal for creating natural-looking distributions of objects, such as vegetation placement or particle systems.
-* For best results with large datasets, consider using fewer iterations to maintain performance.
-* The projection settings allow you to control how 3D data maps to 2D space, which is especially useful when working with terrain or complex geometry.
-* If your points are already well-distributed, additional iterations may not significantly change the result.
+* The number of iterations should be chosen based on desired balance between quality and performance.
+* This node modifies the input point positions directly.
+* It works best when the initial point distribution is reasonably spread out.

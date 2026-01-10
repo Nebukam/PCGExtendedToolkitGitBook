@@ -6,149 +6,165 @@ icon: circle
 # Subdivide
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Subdivide path segments into smaller segments.
+> Breaks path segments into smaller, more detailed segments.
 
-### Overview
+#### Overview
 
-This node allows you to break down existing path segments into smaller, more detailed segments. It's useful for creating smoother curves, adding more geometry for visual detail, or preparing paths for further processing that requires finer granularity. You can control how many subdivisions are created based on distance, count, or Manhattan distance between points.
+The Path : Subdivide node splits existing path segments into smaller parts. This is useful for creating smoother paths, adding more control points for further processing, or preparing paths for visual detail enhancement. You can define how many subdivisions are created per segment using different methods such as fixed distance, fixed count, or Manhattan-based spacing.
+
+This node works on path data and outputs modified paths with additional intermediate points along the original segments. You can also configure it to add flags or alpha values to these new subdivision points for further use in downstream nodes.
 
 {% hint style="info" %}
-This node modifies path data by inserting new points along existing segments, increasing the total number of points in your paths.
+Connects to **Path** processing pins. Subnode: Blending
 {% endhint %}
 
+#### How It Works
+
+The node takes each segment of a path and breaks it down based on the selected method. With "Distance", it calculates how many subdivisions are needed to keep segments under a specified length. With "Count", it divides each segment into a fixed number of parts. With "Manhattan", it uses Manhattan distance between points to determine subdivision count, resulting in values typically between 0 and 2.
+
+The node then generates new points along the original path at calculated intervals. These new points are inserted into the output data, and optionally, flags or alpha values can be added to them for downstream processing.
+
+If blending is enabled, it applies a blending operation to the newly created subdivision points, interpolating their properties based on neighboring points in the original path.
+
+#### Inputs
+
+* **Main Input**: Path data containing segments to subdivide.
+* **Point Filters (Optional)**: Filter which segments will be subdivided.
+
+#### Outputs
+
+* **Main Output**: Modified paths with subdivided segments.
+* **Additional Outputs**:
+  * Optional flags on subdivision points if `bFlagSubPoints` is enabled.
+  * Optional alpha attribute values if `bWriteAlpha` is enabled.
+
+#### Configuration
+
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Subdivide Method</strong><br><em>Reference for computing the blending interpolation point point.</em></summary>
 
-* **Main Input** (Default): Accepts point data representing paths with segments to be subdivided.
+Controls how the number of subdivisions per segment is determined.
+
+**Values**:
+
+* **Distance**: Subdivisions are based on a fixed maximum distance between points.
+* **Count**: Each segment is divided into a fixed number of parts.
+* **Manhattan**: Subdivisions are computed using Manhattan distance, resulting in values typically between 0 and 2.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Amount Input</strong><br><em>How the subdivision amount is defined.</em></summary>
 
-* **Main Output** (Default): Modified point data with subdivided path segments.
-* **Additional Outputs**: Optionally flags new points or writes alpha values for blending.
+Determines whether the subdivision amount is a constant value or read from an attribute.
+
+**Values**:
+
+* **Constant**: Use a fixed value for subdivision.
+* **Attribute**: Read the subdivision amount from an input attribute.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the subdivision is performed and what additional data to generate.
+<summary><strong>Distance</strong><br><em>Subdivision distance when using Distance mode.</em></summary>
 
-***
+The maximum distance between points in the subdivided segments. Must be greater than 0.1.
 
-#### Subdivision Settings
+</details>
 
-Determines how many subdivisions are created per segment.
+<details>
 
-**Subdivide Method**
+<summary><strong>Count</strong><br><em>Number of subdivisions per segment when using Count mode.</em></summary>
 
-_Controls the method used to determine how many subdivisions are made._
+The fixed number of parts each segment is divided into. Must be at least 1.
 
-* **Distance**: Subdivisions are based on a fixed distance between points.
-* **Count**: A fixed number of subdivisions is applied to each segment.
-* **Manhattan**: Uses Manhattan distance to compute subdivisions, which results in a value between 0 and 2.
+</details>
 
-**Amount Input**
+<details>
 
-_Controls whether the subdivision amount is defined by a constant or an attribute._
+<summary><strong>Subdivision Amount Attribute</strong><br><em>Attribute to read subdivision amount from.</em></summary>
 
-* When set to **Constant**, you define a fixed value for the subdivision method.
-* When set to **Attribute**, you specify an attribute from the input data that defines the subdivision amount per segment.
+When `AmountInput` is set to "Attribute", this defines the attribute that holds the subdivision count per segment.
 
-**Distance**
+</details>
 
-_The distance between each new point when using the "Distance" subdivision mode._
+<details>
 
-* Affects how many points are inserted along each segment.
-* Higher values result in fewer subdivisions.
-* Minimum value is 0.1.
+<summary><strong>Redistribute Evenly</strong><br><em>When enabled, evenly redistributes subdivision points along the segment length.</em></summary>
 
-**Count**
+When enabled, ensures that subdivision points are distributed evenly along the segment, rather than being placed at fixed intervals based on distance or count.
 
-_The number of subdivisions to apply when using the "Count" subdivision mode._
+</details>
 
-* Defines a fixed number of new points per segment.
-* Minimum value is 1.
+<details>
 
-**Subdivision Amount (Attribute)**
+<summary><strong>Manhattan Details</strong><br><em>Settings for Manhattan-based subdivision.</em></summary>
 
-_The attribute used for defining subdivision values when using "Attribute" input mode._
+Controls how Manhattan distance is used to determine subdivision count when `SubdivideMethod` is set to "Manhattan".
 
-* The attribute must be present on the input data.
-* Values are interpreted based on the selected subdivision method.
+</details>
 
-**Redistribute Evenly**
+<details>
 
-_When enabled, evenly distributes subdivision points along each segment._
+<summary><strong>Blending Subnode</strong><br><em>Optional blending operation applied to subdivision points.</em></summary>
 
-* Ensures that subdivision points are spaced uniformly.
-* Only applies when using Distance-based subdivision.
+A subnode that defines how to blend properties of subdivision points with their neighbors.
 
-**Manhattan Details**
+</details>
 
-_Configuration for Manhattan-based subdivision._
+<details>
 
-* Controls how the number of subdivisions is calculated using Manhattan distance.
-* Applies only when "Manhattan" subdivision mode is selected.
+<summary><strong>Flag Sub Points</strong><br><em>When enabled, flags subdivision points in the output.</em></summary>
 
-***
+When enabled, adds a boolean flag attribute to subdivision points to identify them as such.
 
-#### Blending Settings
+</details>
 
-Controls how to blend data from original points to new subdivided points.
+<details>
 
-**Blending Factory**
+<summary><strong>Sub Point Flag Name</strong><br><em>Name of the flag attribute for subdivision points.</em></summary>
 
-_The blending factory used to interpolate or transfer data between original and subdivided points._
+The name of the boolean attribute that will be added to subdivision points if `bFlagSubPoints` is enabled.
 
-* Allows for smooth transitions of attributes like scale, rotation, or color.
-* If not set, no blending is performed.
+</details>
 
-***
+<details>
 
-#### Additional Outputs
+<summary><strong>Write Alpha</strong><br><em>When enabled, writes an alpha value to subdivision points.</em></summary>
 
-Controls optional flags and alpha values written to the output points.
+When enabled, adds a numeric alpha attribute to subdivision points for interpolation or other uses.
 
-**Flag Sub Points**
+</details>
 
-_When enabled, marks new subdivision points with a flag attribute._
+<details>
 
-* Creates a boolean attribute on each new point.
-* Useful for identifying which points were generated during subdivision.
+<summary><strong>Alpha Attribute Name</strong><br><em>Name of the alpha attribute to write.</em></summary>
 
-**Sub Point Flag Name**
+The name of the numeric attribute that will be added to subdivision points if `bWriteAlpha` is enabled.
 
-_Name of the boolean attribute used to mark subdivision points._
+</details>
 
-* Default is "IsSubPoint".
-* Must be unique and not conflict with existing attributes.
+<details>
 
-**Write Alpha**
+<summary><strong>Default Alpha</strong><br><em>Default value for the alpha attribute.</em></summary>
 
-_When enabled, writes an alpha value to each new point._
+The default value assigned to the alpha attribute on subdivision points.
 
-* Allows for interpolation or blending based on position along the original segment.
-* Useful for effects like fading or gradient transitions.
+</details>
 
-**Alpha Attribute Name**
+#### Usage Example
 
-_Name of the attribute used to store alpha values._
+A designer wants to create a detailed path for a character's movement that includes more control points for smoother animation. They use this node with "Count" mode and set the count to 5, so each segment of their path is divided into 5 smaller segments. They also enable "Flag Sub Points" to tag these new points for later filtering or visualization.
 
-* Default is "Alpha".
-* Must be unique and not conflict with existing attributes.
+#### Notes
 
-**Default Alpha**
-
-_The default alpha value assigned to new points._
-
-* Used when no attribute is provided or when blending is disabled.
-* Typically ranges from 0 (fully transparent) to 1 (fully opaque).
+* The node modifies path data in-place by inserting new points.
+* Blending operations can be used to interpolate properties like position, rotation, or scale across subdivision points.
+* Using "Manhattan" mode is useful for grid-based pathing where you want subdivisions based on spatial relationships rather than straight-line distances.
+* Enabling "Redistribute Evenly" ensures that subdivision points are placed uniformly along the segment, which can improve visual consistency in certain scenarios.

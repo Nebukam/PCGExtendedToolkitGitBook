@@ -6,115 +6,79 @@ icon: circle
 # Sample Texture
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Sample texture data using UV coordinates.
 
-### Overview
+#### How It Works
 
-This node samples texture data at the location of each point using UV coordinates, allowing you to transfer visual information from textures into your procedural data. It's commonly used for terrain texturing, material assignment, or any scenario where you want to use texture values as attributes on points.
+This node retrieves color or scalar values from textures at specific UV coordinates and assigns them as attributes to points. For each point, it uses the UV coordinates stored in an attribute to look up corresponding texture values. It can sample multiple textures simultaneously, mapping the results into different output attributes based on channel settings.
 
-The node reads UV coordinates from a specified attribute and uses those coordinates to sample one or more textures. You can configure which channels (R, G, B, A) to sample and how to output the results as point attributes.
+The node supports tagging points that successfully or unsuccessfully sampled from textures. If enabled, it can also remove points that failed to sample any data from the output.
 
-{% hint style="info" %}
-This node supports multiple texture parameters and can sample different data types (float, vector, etc.) based on your configuration.
-{% endhint %}
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>UVSource</strong><br><em>Attribute used to retrieve UV coordinates for sampling.</em></summary>
 
-* **Points**: Input points to sample textures for
-* **Texture Parameters** (optional): Texture parameter factories that define which textures to sample from
+Specifies the attribute that contains the UV coordinates (typically a Vector2D) from which texture samples are taken.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>bTagIfHasSuccesses</strong><br><em>When enabled, tag points that successfully sampled at least once.</em></summary>
 
-* **Points**: Points with new attributes containing sampled texture data
+When enabled, adds a boolean tag to points that had at least one successful sample. The tag name is defined by `HasSuccessesTag`.
 
 </details>
 
-### Properties Overview
+<details>
 
-This node allows you to configure UV source, output attribute names, and how to handle failed samples.
+<summary><strong>HasSuccessesTag</strong><br><em>Name of the tag added to points with at least one successful sample.</em></summary>
 
-***
+The name of the boolean attribute that gets set to true for points that successfully sampled from at least one texture.
 
-#### Settings
+</details>
 
-Controls the core sampling behavior.
+<details>
 
-**UV Source**
+<summary><strong>bTagIfHasNoSuccesses</strong><br><em>When enabled, tag points that failed to sample from all textures.</em></summary>
 
-_The attribute that contains the UV coordinates to sample from._
+When enabled, adds a boolean tag to points that did not successfully sample from any texture. The tag name is defined by `HasNoSuccessesTag`.
 
-* These coordinates are used to sample the textures
-* Must be a Vector2D or Vector attribute
-* If not specified, the node will use default UVs (0,0)
+</details>
 
-**Process Filtered Out As Fails**
+<details>
 
-_When enabled, points that fail to pass filters are marked as "failed" instead of being skipped._
+<summary><strong>HasNoSuccessesTag</strong><br><em>Name of the tag added to points with no successful samples.</em></summary>
 
-* Only applies if point filters are configured
-* Useful for tracking which points couldn't be processed
+The name of the boolean attribute that gets set to true for points that failed to sample from any texture.
 
-**Prune Failed Samples**
+</details>
 
-_When enabled, points that failed to sample anything will be removed from the output._
+<details>
 
-* Points with no valid texture samples are discarded
-* Can help reduce noise in downstream processing
+<summary><strong>bProcessFilteredOutAsFails</strong><br><em>If enabled, mark filtered out points as "failed". Otherwise, skip the processing altogether.</em></summary>
 
-***
+Controls whether points that are filtered out by point filters are treated as failed samples. If disabled, existing attribute values are preserved for those points.
 
-#### Tagging
+</details>
 
-Add tags to mark points based on sampling success.
+<details>
 
-**Tag If Has Successes**
+<summary><strong>bPruneFailedSamples</strong><br><em>If enabled, points that failed to sample anything will be pruned.</em></summary>
 
-_When enabled, points that successfully sampled at least one texture are tagged._
+When enabled, removes points from the output if they did not successfully sample any texture data.
 
-* Creates a boolean attribute named according to "Has Successes Tag"
-* Useful for filtering or visualizing successful samples
+</details>
 
-**Has Successes Tag**
+<details>
 
-_The name of the tag attribute for points with successful samples._
+<summary><strong>bQuietDuplicateSampleNamesWarning</strong><br><em>Suppress warnings about duplicate sample attribute names.</em></summary>
 
-* Default is "HasSuccesses"
-* Used when "Tag If Has Successes" is enabled
+If enabled, suppresses warnings that appear when multiple samplers try to write to attributes with the same name.
 
-**Tag If Has No Successes**
-
-_When enabled, points that failed to sample any textures are tagged._
-
-* Creates a boolean attribute named according to "Has No Successes Tag"
-* Useful for identifying failed samples in downstream processing
-
-**Has No Successes Tag**
-
-_The name of the tag attribute for points with no successful samples._
-
-* Default is "HasNoSuccesses"
-* Used when "Tag If Has No Successes" is enabled
-
-***
-
-#### Warnings and Errors
-
-Controls how warnings are handled during execution.
-
-**Quiet Duplicate Sample Names Warning**
-
-_When enabled, suppresses warnings about duplicate sample names._
-
-* Useful if you're intentionally using the same attribute name for multiple samples
-* Prevents log spam when working with many texture parameters
+</details>

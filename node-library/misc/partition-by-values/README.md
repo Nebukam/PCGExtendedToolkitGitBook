@@ -6,88 +6,66 @@ icon: scrubber
 # Partition by Values
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Outputs separate buckets of points based on an attribute's value. Each bucket is named after a unique attribute value.
+> Separates input points into distinct groups based on attribute values, with each group stored in its own output dataset named after the attribute value.
 
-### Overview
+#### How It Works
 
-This node separates your point data into distinct groups, or "buckets", based on the values found in a specified attribute. It's useful for organizing points into categories that can be processed independently or visualized separately.
+This node organizes input points into separate datasets according to unique values found in a specified attribute. For every distinct value in that attribute, it creates a new output dataset. The name of each dataset matches the value it represents.
 
-For example, if you have a set of points with a "Color" attribute that contains values like "Red", "Blue", and "Green", this node will create three separate outputs: one for all red points, one for blue points, and one for green points. Each output bucket is named after its corresponding attribute value.
+For example, if you have points with a "Material" attribute containing values like "Grass", "Stone", and "Water", this node will create three separate outputs named accordingly. Each output contains only the points that match its corresponding attribute value.
 
-{% hint style="info" %}
-It's recommended to use a Merge node before this one if you're working with multiple point datasets that need to be combined into a single dataset before partitioning.
-{% endhint %}
+You can also choose to keep all points in one dataset while tagging them with their group identifier instead of splitting into multiple outputs. This is useful when you want to maintain a single data stream but still know which group each point belongs to.
+
+The node supports hierarchical grouping through rules that define how to organize the points into partitions. These rules let you specify conditions for assigning points to different groups, enabling more complex partitioning logic.
+
+Additionally, it can calculate and store the total of attribute values per group in a new attribute. This is helpful for statistical analysis or when you need aggregated data for downstream processing.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Split Output</strong><br><em>If disabled, points are not split into separate datasets but instead tagged with their partition identifier.</em></summary>
 
-* **Main Input**: Points to be partitioned. Supports multiple inputs.
+When enabled, each unique value in the attribute creates a new output dataset. When disabled, all points remain in one dataset but are labeled with which group they belong to.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Write Key Sum</strong><br><em>Calculates and stores the total of attribute values for each partition.</em></summary>
 
-* **Main Output**: The partitioned point data, split into separate buckets based on attribute values.
-* **Additional Outputs**: Each bucket gets its own output pin named after the unique value found in the attribute.
+When enabled, this feature computes the sum of the attribute values for each group and writes it into a new attribute. This is useful for tracking totals per category.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the partitioning is performed and what data is generated.
+<summary><strong>Key Sum Attribute Name</strong><br><em>The name of the attribute where the sum of each partition's values will be stored.</em></summary>
 
-***
+Specifies the name of the attribute that holds the calculated sum for each group. By default, this is set to "KeySum".
 
-#### Settings
+</details>
 
-Determines how the node processes your points.
+<details>
 
-**Split Output**
+<summary><strong>Partition Rules</strong><br><em>Defines how points are grouped into partitions using conditions and actions.</em></summary>
 
-_When enabled, splits points into separate datasets for each unique attribute value. When disabled, writes partition identifiers to an attribute instead._
+These rules determine how input points are assigned to different groups. Each rule specifies an attribute and the conditions used to classify points into specific partitions.
 
-* If enabled, creates one output pin per unique attribute value.
-* If disabled, writes the partition key directly to a point attribute.
+</details>
 
-**Write Key Sum**
+#### Usage Example
 
-_When enabled, calculates and stores the sum of all partition keys in an attribute._
+1. Start with a collection of points that have a "Material" attribute.
+2. Apply this node to separate those points based on material type.
+3. The result will be multiple output datasets, one for each material (e.g., "Grass", "Stone").
+4. Optionally enable **Write Key Sum** to track the total area or count per material.
 
-* Useful for tracking how many points belong to each partition.
-* Requires **Split Output** to be enabled.
+#### Notes
 
-**Key Sum Attribute Name**
-
-_The name of the attribute where the key sum will be written._
-
-* Only used when **Write Key Sum** is enabled.
-* The attribute must exist or be created automatically if it doesn't.
-
-***
-
-#### Partition Rules
-
-Defines how points are grouped together based on their attribute values.
-
-**Partition Rules**
-
-_A list of rules that define how to partition the data._
-
-* Each rule specifies an attribute and how to filter points into partitions.
-* You can add multiple rules to create more complex partitioning logic.
-* Rules are applied in order, with each rule potentially creating sub-partitions.
-
-### Notes
-
-* This node works best when used with a Merge node beforehand if you're combining multiple datasets.
-* If **Split Output** is disabled, the node will not create separate outputs but instead write partition identifiers directly to an attribute on each point.
-* The attribute used for partitioning must be of a type that supports comparison (e.g., integer, string).
-* For performance reasons, avoid using very high numbers of unique values in your partitioning attribute.
+* It's recommended to use a Merge node before this one if you're combining data from multiple sources.
+* The node works best with discrete attribute values such as integers or strings.
+* If using **Split Output**, make sure your graph has enough output pins available.

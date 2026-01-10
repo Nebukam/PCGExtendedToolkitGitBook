@@ -5,115 +5,68 @@ icon: circle-dashed
 # Noise : Marble
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates procedural marble-like patterns with veined structures and turbulence distortion.
+> Generates marble-like veined patterns with turbulence distortion.
 
-### Overview
+#### How It Works
 
-This factory generates 3D noise that produces veined, marble-like patterns by combining sine wave oscillations with turbulent distortion. The result is a natural-looking pattern that can simulate stone textures, wood grain, or geological formations.
+This subnode creates natural-looking veining by combining a base sine wave pattern with turbulent noise distortion. The process begins with a sine wave aligned to a chosen axis (X, Y, Z, or radial), which defines the basic direction and spacing of the veins. This base pattern is then distorted using multi-octave turbulence to simulate organic flow and variation found in real marble. The sharpness parameter controls how defined the vein edges appear, allowing for soft transitions or crisp, well-defined lines. The result is a procedural noise value that represents the marble pattern, where higher values indicate vein areas.
 
-{% hint style="info" %}
-Connects to **Noise** input pins on nodes that sample procedural values
-{% endhint %}
+#### Configuration
 
-### How It Works
+<details>
 
-The marble noise factory creates patterns by:
+<summary><strong>Direction</strong><br><em>Direction of marble veins.</em></summary>
 
-1. Generating a base sine wave pattern along a specified axis
-2. Applying turbulent distortion to create organic, flowing veins
-3. Combining the base pattern with distortion to produce natural-looking veining
+Controls which axis the base sine wave is aligned to.
 
-The pattern is generated in 3D space and can be sampled at any point to get a scalar value representing the "marble-ness" at that location.
+**Values**:
 
-### Inputs
+* **X**: Veins run along the X-axis
+* **Y**: Veins run along the Y-axis
+* **Z**: Veins run along the Z-axis
+* **Radial**: Veins radiate from a central point
 
-* **Noise** (Input): Connects to other noise generation nodes to build complex patterns
-* **Seed** (Input): Controls the randomness of the pattern generation
+</details>
 
-### Outputs
+<details>
 
-* **Noise** (Output): Provides the generated marble pattern for use in other nodes
+<summary><strong>VeinFrequency</strong><br><em>Frequency of the sine wave creating veins.</em></summary>
 
-### Configuration
+Controls how closely spaced the veins are. Higher values create more frequent, finer veining.
 
-***
+Range: 0.1 to 20.0 Default: 5.0
 
-#### General
+</details>
 
-**Direction**
+<details>
 
-_Controls the primary axis along which veins are oriented._
+<summary><strong>TurbulenceStrength</strong><br><em>Strength of turbulence distortion.</em></summary>
 
-* **X Axis**: Veins run horizontally (left to right)
-* **Y Axis**: Veins run vertically (top to bottom)
-* **Z Axis**: Veins run depth-wise (front to back)
-* **Radial**: Veins radiate outward from a central point
+Controls how much the veins are distorted by turbulent noise. Higher values create more organic, flowing patterns.
 
-**Vein Frequency**
+Range: 0.0 to 5.0 Default: 1.0
 
-_Control the density of veins in the pattern._
+</details>
 
-Higher values create more frequent, tighter veins. For example:
+<details>
 
-* Value of 2.0: Sparse, wide veins
-* Value of 10.0: Dense, fine veins
+<summary><strong>TurbulenceOctaves</strong><br><em>Number of turbulence octaves.</em></summary>
 
-**Turbulence Strength**
+Controls the complexity of the turbulence distortion. More octaves create more detailed, rougher patterns.
 
-_Control how much the veins are distorted._
+Range: 1 to 8 Default: 4
 
-Values between 0.0 and 5.0:
+</details>
 
-* 0.0: No distortion, clean sine waves
-* 1.0: Gentle, natural-looking distortion
-* 3.0+: More chaotic, irregular veining
+<details>
 
-**Turbulence Octaves**
+<summary><strong>VeinSharpness</strong><br><em>Sharpness of vein edges (1 = soft, higher = sharper).</em></summary>
 
-_Control the complexity of turbulence._
+Controls how defined the vein edges appear. Lower values create softer transitions between veins and background, while higher values create crisp, well-defined veins.
 
-Higher values create more detailed, complex distortion patterns:
+Range: 1.0 to 8.0 Default: 1.0
 
-* 1 octave: Simple, smooth distortion
-* 4 octaves: Rich, organic-looking veining
-* 8 octaves: Very detailed, noisy patterns
-
-**Vein Sharpness**
-
-_Control how defined vein edges are._
-
-Values between 1.0 and 8.0:
-
-* 1.0: Soft, gradual transitions between veins
-* 4.0: Medium definition
-* 8.0+: Very sharp, well-defined veins
-
-### Usage Example
-
-Use this factory to create a marble texture effect on a mesh:
-
-1. Connect the Marble noise factory to a **Noise** input pin
-2. Use it with a **Sample Noise** node to generate values for material parameters
-3. Set Direction to **X Axis** for horizontal veining
-4. Set Vein Frequency to **5.0** for balanced density
-5. Set Turbulence Strength to **1.0** for natural-looking distortion
-6. Connect the output to a **Material Parameter Collection** or **Scalar Parameter** node
-
-This creates a procedural marble pattern that can be used for:
-
-* Stone textures
-* Wood grain effects
-* Geological surface variations
-* Stylized artistic patterns
-
-### Notes
-
-* The noise is most effective when combined with other noise sources using blending operations
-* Lower Vein Frequency values work well with higher Turbulence Strength for dramatic veining
-* Radial direction creates circular patterns that are great for simulating rings or growth patterns
-* Combine with **Remap Curve** to adjust the distribution of values for more control over contrast and range
+</details>

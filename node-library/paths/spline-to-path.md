@@ -6,129 +6,166 @@ icon: circle
 # Spline to Path
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Turns splines into paths for further processing.
+> Converts spline data into path data for use in procedural graphs.
 
-### Overview
+#### How It Works
 
-This node converts spline data into path data, making it possible to work with spline geometry as a series of points that can be processed by other PCG nodes. It's particularly useful when you want to sample or manipulate the shape of splines using point-based operations.
+This node takes input splines and transforms them into path structures that can be used for further processing. For each spline, it calculates key attributes like tangent vectors, cumulative length, and normalized position along the path. These attributes help maintain the shape and characteristics of the original spline while making it compatible with path-based operations.
 
-The node supports various options for how to process the input splines and what attributes to write back to the output points, such as tangent information, point type, and length along the spline.
+The node supports different sampling options to control which splines are processed:
+
+* All input splines
+* Only closed-loop splines (like circles or loops)
+* Only open-line splines (like straight paths or curves)
+
+It also allows you to write additional information about each point into attributes, such as arrive and leave tangents, cumulative length, normalized position (alpha), and point type identifiers. These extra details are useful for downstream processing like object placement, animation, or visualization.
+
+Tags from the original splines can be carried over to help maintain metadata during conversion.
 
 {% hint style="info" %}
-This node works on spline inputs and outputs path data. It's ideal for converting spline-based geometry into point-based workflows.
+This node connects to **Points** processing nodes and works well with other path-based nodes in your procedural graph.
 {% endhint %}
 
+#### Configuration
+
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Transform Details</strong><br><em>Point transform settings</em></summary>
 
-* **Splines** (Optional): Input splines to convert to paths. If no input is provided, the node will not process any data.
+Controls how the spline points are transformed into the output path space.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Sample Inputs</strong><br><em>Which splines to sample</em></summary>
 
-* **Default Output**: The resulting path data, with points sampled from the input splines and optional attributes written to each point.
+Determines which input splines are converted:
+
+* **All**: Convert all input splines.
+* **Closed loops only**: Only convert closed-loop splines.
+* **Open lines only**: Only convert open-line splines.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how splines are converted into paths and what additional data is written to the output points.
+<summary><strong>Write Arrive Tangent</strong><br><em>Writes arrive tangents to a vector attribute</em></summary>
 
-***
+When enabled, the node writes tangent vectors at the start of each path point into an attribute named in **Arrive Tangent**.
 
-#### Sampling Settings
+</details>
 
-Determines which splines are processed and how they're sampled.
+<details>
 
-**Sample Inputs**
+<summary><strong>Arrive Tangent</strong><br><em>Name of the 'FVector' attribute to write arrive tangents to</em></summary>
 
-_Controls which spline types to process._
+The name of the vector attribute where arrive tangents are written if **Write Arrive Tangent** is enabled.
 
-* **All**: Process all input splines.
-* **Closed loops only**: Only process closed-loop splines (e.g., circles).
-* **Open lines only**: Only process open-line splines (e.g., curves that don't loop back).
+</details>
 
-**Write Arrive Tangent**
+<details>
 
-_When enabled, writes the arrive tangent of each point to an attribute._
+<summary><strong>Write Leave Tangent</strong><br><em>Writes leave tangents to a vector attribute</em></summary>
 
-**Arrive Tangent Attribute Name**
+When enabled, the node writes tangent vectors at the end of each path point into an attribute named in **Leave Tangent**.
 
-_Name of the FVector attribute where arrive tangents are written._
+</details>
 
-**Write Leave Tangent**
+<details>
 
-_When enabled, writes the leave tangent of each point to an attribute._
+<summary><strong>Leave Tangent</strong><br><em>Name of the 'FVector' attribute to write leave tangents to</em></summary>
 
-**Leave Tangent Attribute Name**
+The name of the vector attribute where leave tangents are written if **Write Leave Tangent** is enabled.
 
-_Name of the FVector attribute where leave tangents are written._
+</details>
 
-**Write Length at Point**
+<details>
 
-_When enabled, writes the cumulative length along the spline up to each point._
+<summary><strong>Tags To Data</strong><br><em>Tag handling options</em></summary>
 
-**Length at Point Attribute Name**
+Controls how tags from source splines are handled:
 
-_Name of the double attribute where lengths are written._
+* **Do Nothing**: Ignore tags.
+* **To @Data**: Copy tag:value to @Data domain attributes.
+* **Attribute**: Copy tag:value to element domain attributes.
 
-**Write Alpha**
+</details>
 
-_When enabled, writes normalized alpha values (0 to 1) representing position along the spline._
+<details>
 
-**Alpha Attribute Name**
+<summary><strong>Write Length At Point</strong><br><em>Writes cumulative length at each point</em></summary>
 
-_Name of the double attribute where alpha values are written._
+When enabled, the node writes the total path length up to each point into an attribute named in **Length at Point**.
 
-**Write Point Type**
+</details>
 
-_When enabled, writes point type information (linear, curve, etc.) to an attribute._
+<details>
 
-**Point Type Attribute Name**
+<summary><strong>Length At Point</strong><br><em>Name of the 'double' attribute to write length at point to</em></summary>
 
-_Name of the int32 attribute where point types are written._
+The name of the double attribute where cumulative lengths are written if **Write Length At Point** is enabled.
 
-***
+</details>
 
-#### Tagging Settings
+<details>
 
-Controls how tags from input splines are handled.
+<summary><strong>Write Alpha</strong><br><em>Writes normalized alpha values for each point</em></summary>
 
-**Tags to Data**
+When enabled, the node writes a normalized position value (0 to 1) along the path into an attribute named in **Alpha**.
 
-_Determines how spline tags are copied to output data._
+</details>
 
-* **Do Nothing**: No tag copying occurs.
-* **To @Data**: Copies tags to the @Data domain attributes.
-* **Attribute**: Copies tags to element domain attributes.
+<details>
 
-**Tag Forwarding**
+<summary><strong>Alpha</strong><br><em>Name of the 'double' attribute to write alpha values to</em></summary>
 
-_List of tags to forward from input splines to output points._
+The name of the double attribute where alpha values are written if **Write Alpha** is enabled.
 
-***
+</details>
 
-#### Carry Over Settings
+<details>
 
-Controls how other properties from the input splines are carried over to the output paths.
+<summary><strong>Write Point Type</strong><br><em>Writes a point type identifier</em></summary>
 
-**Carry Over Settings**
+When enabled, the node writes an integer identifier for each point into an attribute named in **Point Type**.
 
-_Controls which additional spline properties are copied to the output path points._
+</details>
 
-### Notes
+<details>
 
-* This node is ideal for converting spline-based geometry into point-based workflows for further processing.
-* Tangent attributes can be used in downstream nodes that require orientation information, such as rotation or alignment operations.
-* The alpha attribute is useful for interpolation-based operations along the length of a spline.
-* When working with closed splines, consider using "Closed loops only" sampling to avoid unexpected results.
-* Tag forwarding allows you to preserve metadata from the original splines, which can be used for filtering or grouping in later steps.
+<summary><strong>Point Type</strong><br><em>Name of the 'int32' attribute to store point types</em></summary>
+
+The name of the int32 attribute where point types are written if **Write Point Type** is enabled.
+
+</details>
+
+<details>
+
+<summary><strong>Tag Forwarding</strong><br><em>Tags to forward from source splines</em></summary>
+
+Filters which tags from the input splines should be carried over to the output paths.
+
+</details>
+
+<details>
+
+<summary><strong>Carry Over Settings</strong><br><em>Meta filter settings</em></summary>
+
+Controls how metadata and attributes are passed through from the source splines to the output paths.
+
+</details>
+
+#### Usage Example
+
+Use this node when you have a set of splines that represent routes or paths in your scene, such as roads, rivers, or character movement paths. After converting them into paths, you can apply path filters, sample points along them, or use them for procedural generation like placing objects or generating navmeshes.
+
+#### Notes
+
+* The node supports both open and closed splines.
+* Tangent attributes are useful for smooth interpolation in downstream nodes.
+* Alpha values allow for normalized sampling along the path.
+* Tag forwarding can be used to carry over metadata such as road types or terrain tags.

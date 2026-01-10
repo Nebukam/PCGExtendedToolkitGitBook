@@ -4,89 +4,65 @@ icon: circle-dashed
 
 # Tensor : Noise
 
-See [noises](../../misc/noises/ "mention")
-
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> A tensor that uses 3D noises as direction.
+> Generates tensor directions using 3D noise functions.
 
-### Overview
+#### How It Works
 
-This node creates a tensor that samples 3D noise values to define directional influence. Instead of using fixed vectors, it generates dynamic directions based on noise functions, which can create organic, natural-looking patterns in procedural generation workflows. It's particularly useful for creating terrain features, vegetation placement, or any effect where you want smooth, flowing directional forces.
+This node creates directional influences for points in space by sampling a 3D noise field at each point's location. The noise values are converted into vector directions that define how the tensor affects nearby elements. Each point receives a unique direction based on its position within the noise field, creating organic and varied patterns across the entire set of points.
 
-{% hint style="info" %}
-The noise sampling is deterministic based on the input point's position, ensuring consistent results across runs.
-{% endhint %}
+The process works as follows:
+
+1. For each input point, the system samples a 3D noise function at that point's coordinates.
+2. The resulting noise value is interpreted as a directional vector in three-dimensional space.
+3. Optionally, this direction can be normalized to ensure consistent strength across all points.
+4. The final direction becomes the tensor's influence for that specific point.
+
+This approach allows for natural-looking effects like wind patterns, fluid flow, or terrain features where the influence varies smoothly and organically through space.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>bNormalizeNoiseSampling</strong><br><em>If enabled, normalize the sampled noise direction.</em></summary>
 
-* **Main Input**: Points to sample the tensor from
-* **Optional Secondary Input**: Additional data for tensor configuration (not required)
+When enabled, this setting ensures that all resulting tensor directions have the same strength or magnitude. This prevents some directions from being much stronger than others due to variations in raw noise values.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>TensorWeight</strong><br><em>Tensor weight factor.</em></summary>
 
-* **Main Output**: Points with updated tensor directions based on noise sampling
+Controls how strongly this tensor influences other elements in downstream operations. A higher value increases the impact of this tensor's direction on the final result.
 
 </details>
 
-### Properties Overview
+<details>
 
-This node uses standard tensor properties along with noise-specific settings to control how the 3D noise is sampled and applied.
+<summary><strong>Potency</strong><br><em>Tensor potency factor.</em></summary>
 
-***
+Defines the overall strength or intensity of the tensor effect. Increasing this value amplifies how much the noise-based directions affect the output.
 
-#### General Settings
+</details>
 
-Controls the core behavior of the noise-based tensor.
+<details>
 
-**Tensor Weight**
+<summary><strong>Mutations</strong><br><em>Tensor mutations settings.</em></summary>
 
-_Sets the overall influence strength of this tensor._
+These settings control how this tensor interacts with other tensors when multiple are applied together. Options include blending modes or priority rules for combining different influences.
 
-* Affects how much this tensor contributes to the final direction when multiple tensors are combined
-* Value range: Any positive number (default: 1)
+</details>
 
-**Potency**
+#### Usage Example
 
-_Sets the strength multiplier for the tensor's effect._
+Use this node to create a natural-looking wind field for particle systems. Connect it to a **Tensor Subnode Provider** and then to a **Path : Extrude Tensors** node. The noise-based tensor will cause particles to follow organic, flowing paths instead of straight lines.
 
-* Controls how powerful the noise influence is at each point
-* Value range: Any positive number (default: 1)
+#### Notes
 
-**Normalize Noise Sampling**
-
-_When enabled, normalizes the sampled noise direction to unit length._
-
-* Ensures all directions have equal magnitude, preventing bias toward longer vectors
-* Useful for consistent force application across different noise regions
-
-**Sampling Mutations**
-
-_Configures how the tensor sampling can be modified during evaluation._
-
-* Allows for variation in how the noise is applied (e.g., rotation, scale)
-* Can create more organic or varied results
-
-**Config**
-
-_Internal configuration settings for the noise tensor._
-
-* Advanced settings that control internal behavior of the noise sampling process
-* Typically left at default unless fine-tuning is required
-
-### Notes
-
-* This node works best with a large number of points to achieve smooth, continuous noise patterns
-* Combine multiple noise tensors with different parameters to create complex directional effects
-* The noise direction is deterministic based on point position, so identical points will always produce the same result
-* Useful for creating natural-looking wind patterns, water flow directions, or terrain slope variations
+* The quality and appearance of the tensor depend heavily on the underlying 3D noise parameters.
+* Normalizing the sampling can prevent extreme variations in direction magnitude.
+* This node works best when used with other tensor processing nodes for complex effects.

@@ -6,118 +6,93 @@ icon: circle
 # Branch on Data
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Branch on a @Data domain attribute to route points to different outputs based on their values.
+> Route points to different output branches based on the value of a specified attribute.
 
-### Overview
+#### How It Works
 
-This node allows you to split your point data into multiple output branches based on the value of an attribute from the @Data domain. It's useful for organizing points into categories or applying different processing logic depending on their attribute values.
+The Branch on Data node evaluates each point in the input data using a selected attribute. For every point, it checks the attribute's value against a list of defined conditions. If a match is found, the point is sent to the corresponding output pin. If no match is found, the point is routed to a default output pin.
 
-For example, you could route points to different outputs based on a "Type" attribute that contains values like "Forest", "Desert", or "Ocean". Each branch can then be processed separately with different settings or operations.
+The comparison logic depends on the type of data being checked (numeric or string). For numeric comparisons, you can use operators like equal, greater than, or nearly equal with a tolerance value. For strings, you can compare exact matches or lengths. The node supports multiple branches and allows for flexible routing logic.
 
-{% hint style="info" %}
-The node creates dynamic output pins based on your configuration. You must connect all active output pins to avoid warnings in the graph.
-{% endhint %}
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Branch Source</strong><br><em>The attribute to check.</em></summary>
 
-* **Default Input**: Points to process (from previous node)
-* **@Data Domain**: Attribute data used for branching
+Specifies which attribute in the input data is used for branching. For example, if set to `@Data.Type`, it will use the value of that attribute to determine the output branch.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Selection Mode</strong><br><em>Determines the type of value to be used to select an output.</em></summary>
 
-* **Default Output**: Points that don't match any defined branch
-* **Dynamic Outputs**: Created based on your branch configuration, each containing points matching a specific value
+Controls how branches are defined:
+
+* **UserDefined**: Manually define each branch with custom values and comparisons.
+* **EnumInteger**: Use an enum's integer values for branching.
+* **EnumName**: Use an enum's name strings for branching.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the node evaluates attribute values and routes points to outputs.
+<summary><strong>Branches</strong><br><em>List of conditions to evaluate.</em></summary>
 
-***
+A list of branch definitions. Each branch specifies a value and comparison operator to match against the attribute value. Only visible when Selection Mode is set to UserDefined.
 
-#### General
+</details>
 
-Controls the main branching behavior.
+<details>
 
-**Branch Source**
+<summary><strong>Enum Source</strong><br><em>Determines which Enum be used.</em></summary>
 
-_The @Data domain attribute to check for branching._
+Selects whether to use an enum from Blueprint or C++. Only active when Selection Mode is not UserDefined.
 
-* Points are evaluated using this attribute's value
-* Must be an existing attribute in the @Data domain
-* Example: If you have a "Material" attribute with values like "Stone", "Wood", "Metal", this is where you'd specify that attribute
+</details>
 
-**Selection Mode**
+<details>
 
-_How to determine which output pin to route points to._
+<summary><strong>Enum Class</strong><br><em>Determines which Enum be used.</em></summary>
 
-**Values**:
+Blueprint enum selection. Only visible when Enum Source is Picker.
 
-* **UserDefined**: Manually define each branch condition and value
-* **EnumInteger**: Use an enum's integer values as branches
-* **EnumName**: Use an enum's string names as branches
+</details>
 
-**Default Pin Name**
+<details>
 
-_Name of the default/fallback output pin._
+<summary><strong>Enum Picker</strong><br><em>Determines which Enum be used. Enum selection is ignored here, it's only using the class value internally.</em></summary>
 
-* Points that don't match any defined branch go to this output
-* Useful when you want to handle unmatched cases in a specific way
-* Example: If you have branches for "Forest", "Desert", and "Ocean", points with other values will go to this "Default" output
+C++ enum selection. Only visible when Enum Source is Selector.
 
-***
+</details>
 
-#### User Defined Branches
+<details>
 
-Configure individual branches when Selection Mode is set to UserDefined.
+<summary><strong>Default Pin Name</strong><br><em>Name of the default/fallback output pin.</em></summary>
 
-**Branches**
+Defines the name of the output pin where unmatched points are sent. This helps avoid confusion when "default" might be a valid branch value.
 
-_List of conditions and values that define each branch._
+</details>
 
-* Each branch defines a comparison type, operator, and value
-* Points matching the condition are routed to that branch's output pin
-* Example: A branch with "Numeric Compare" = "Greater Than", "Value" = 50 would route points where the attribute is > 50 to this branch
+#### Usage Example
 
-***
+1. Set up a point source with an attribute like `@Data.Type` containing values such as "A", "B", or "C".
+2. Configure Branch on Data to use this attribute.
+3. Define three branches:
+   * Branch 1: Value = "A", Comparison = Strictly Equal → Output pin named "BranchA"
+   * Branch 2: Value = "B", Comparison = Strictly Equal → Output pin named "BranchB"
+   * Branch 3: Value = "C", Comparison = Strictly Equal → Output pin named "BranchC"
+4. Set the default pin name to "Default".
+5. Connect downstream nodes to each output pin to process points in different ways.
 
-#### Enum Branches
+#### Notes
 
-Settings for when Selection Mode is set to EnumInteger or EnumName.
-
-**Enum Source**
-
-_Where to get the enum definition from._
-
-**Values**:
-
-* **Picker**: Browse through Blueprint enums
-* **Selector**: Browse through C++ enums
-
-**Enum Class**
-
-_The enum type to use for branching._
-
-* Required when Enum Source is Picker
-* Selects which enum values will become output pins
-* Example: If you select an enum with values "Red", "Green", "Blue", three output pins will be created
-
-**Enum Picker**
-
-_The enum type to use for branching._
-
-* Required when Enum Source is Selector
-* Selects which enum values will become output pins
-* Example: If you select an enum with values "Small", "Medium", "Large", three output pins will be created
+* The node dynamically creates output pins based on branch definitions.
+* When using string comparisons, consider case sensitivity and length-based checks.
+* If a point's attribute value doesn't match any defined branch, it goes to the default pin.
+* For numeric comparisons with floating-point values, use "Nearly Equal" with an appropriate tolerance.

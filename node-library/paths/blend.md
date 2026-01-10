@@ -6,135 +6,109 @@ icon: circle
 # Blend
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Blend path individual points between its start and end points.
 
-### Overview
+#### How It Works
 
-This node blends attributes along the length of a path, smoothly interpolating values from the first point to the last. It's useful for creating gradual transitions in properties like color, scale, or rotation along a path. You can control how the blending is applied using different blending modes and settings.
+The Path : Blend node modifies point attributes along a path by smoothly transitioning values from the starting point to the ending point. It calculates how much of each point's attribute should come from the start versus the end, based on where that point sits along the path.
 
-{% hint style="info" %}
-This node works on paths that have been processed by other PCGEx nodes such as "Path : Extract" or "Path : Generate". It modifies point data within each path.
-{% endhint %}
+First, it measures the total length of the path and determines how far each point is from the beginning. Then, it assigns a blend factor between 0 (fully start point) and 1 (fully end point) to each point based on its position. Using this factor, it interpolates or blends attribute values using the selected blending method.
+
+The node can optionally apply blending to the first and last points in the path, which helps create smoother transitions when using certain blending modes.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Blend Over</strong><br><em>Attribute to read the direction from.</em></summary>
 
-* **Main Input (Default)**: Points representing a path. Each path is processed independently.
+Controls how the blend factor is calculated along the path.
+
+**Values**:
+
+* **Distance**: Blend based on distance along the path.
+* **Fixed**: Use a fixed value for blending (see Lerp Constant and Lerp Input settings).
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Lerp Input</strong><br><em>Constant direction.</em></summary>
 
-* **Main Output (Default)**: Modified points with blended attributes along the path.
+Defines how to determine the blend factor when "Blend Over" is set to "Fixed".
+
+**Values**:
+
+* **Constant**: Use a fixed constant value for blending.
+* **Attribute**: Read the blend factor from an attribute on the input points.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the blending operation is performed along each path.
+<summary><strong>Lerp</strong><br><em>Constant direction.</em></summary>
 
-***
+The fixed blend factor used when "Lerp Input" is set to "Constant". This value should be between 0 and 1, where:
 
-#### Blending Mode
+* 0 means only the start point's attributes are used.
+* 1 means only the end point's attributes are used.
+* 0.5 means a 50/50 blend.
 
-Determines how the blending is applied from start to end of the path.
+</details>
 
-**Path Blend Mode**
+<details>
 
-_Controls how the blending is applied along the path._
+<summary><strong>Blending Settings</strong><br><em>Blending settings used to smooth attributes.</em></summary>
 
-* When set to **Start to End**, the blending transitions from the first point to the last.
-* When set to **Switch**, it switches between two different behaviors based on filters.
-
-**Values**:
-
-* **Start to End**: Blend properties & attributes of all path' points from start point to last point
-* **Switch**: Switch between pruning/non-pruning based on filters
-
-***
-
-#### Blending Settings
-
-Controls how attribute values are blended between points.
-
-**Blend Over**
-
-_Determines the basis for blending along the path._
-
-* When set to **Distance**, blending is based on the distance along the path.
-* When set to **Fixed**, blending uses a constant value or an attribute to determine the blend factor.
+Defines how attribute values are blended between points. For example, using "Lerp" will interpolate values linearly, while "Weight" uses distance-based weighting.
 
 **Values**:
 
-* **Distance**: Blend based on the actual distance along the path
-* **Fixed**: Use a fixed blend factor
-
-**Lerp Input**
-
-_Specifies whether the blend factor is constant or derived from an attribute._
-
-* When set to **Constant**, use the value in the "Lerp" field.
-* When set to **Attribute**, read the blend factor from the specified attribute.
-
-**Values**:
-
-* **Constant**: Use a constant, user-defined value
-* **Attribute**: Read the value from the input data
-
-**Lerp (Attr)**
-
-_The attribute to read the blend factor from when "Lerp Input" is set to Attribute._
-
-* This field only appears when "Lerp Input" is set to **Attribute**.
-* The attribute should contain values between 0 and 1.
-
-**Lerp**
-
-_The constant blend factor to use when "Lerp Input" is set to Constant._
-
-* Value range: 0 to 1.
-* A value of 0 means no blending, 1 means full blending from start to end.
-
-**Blending Type**
-
-_Selects the method used to blend values._
-
-* **None**: No blending applied.
+* **None**: No blending is applied.
 * **Average**: Average all sampled values.
-* **Weight**: Weights based on distance to blend targets. If results are unexpected, try 'Lerp' instead.
-* **Min/Max**: Component-wise MIN/MAX operations.
+* **Weight**: Weights based on distance to blend targets.
+* **Min**: Component-wise minimum operation.
+* **Max**: Component-wise maximum operation.
 * **Copy (Target)**: Copy target data (second value).
 * **Sum**: Sum of all values.
-* **Weighted Sum**: Sum of all the data, weighted.
-* **Lerp**: Uses weight as lerp. If results are unexpected, try 'Weight' instead.
+* **Weighted Sum**: Sum of all values, weighted.
+* **Lerp**: Uses weight as lerp.
 * **Subtract**: Subtract values.
-* **Unsigned Min/Max**: Component-wise MIN/MAX on unsigned value, but keeps the sign on written data.
-* **Absolute Min/Max**: Component-wise MIN/MAX of absolute value.
+* **Unsigned Min**: Component-wise minimum on unsigned values.
+* **Unsigned Max**: Component-wise maximum on unsigned values.
 
-**Blend First Point**
+</details>
 
-_When enabled, applies blending to the first point in the path._
+<details>
 
-* Useful for ensuring smooth transitions from the start of the path.
+<summary><strong>Blend First Point</strong><br><em>If enabled, will apply blending to the first point. Can be useful with some blendmodes.</em></summary>
 
-**Blend Last Point**
+When enabled, the node applies blending to the first point in the path, which can help smooth transitions when using certain blending modes.
 
-_When enabled, applies blending to the last point in the path._
+</details>
 
-* Useful for ensuring smooth transitions to the end of the path.
+<details>
 
-### Notes
+<summary><strong>Blend Last Point</strong><br><em>If enabled, will apply blending to the last point. Can be useful with some blendmodes.</em></summary>
 
-* This node modifies point attributes along a path, so it should be used after paths have been generated or extracted.
-* The "Lerp" value controls how much blending occurs from start to end (0 = no blend, 1 = full blend).
-* Use the "Blend First Point" and "Blend Last Point" options if you want to ensure the start and/or end points are also affected by the blending.
-* For smooth transitions, consider using a blending type like **Lerp** or **Weight**.
-* You can use an attribute as the blend factor to create more dynamic effects, such as varying blend intensity along the path.
+When enabled, the node applies blending to the last point in the path, which can help smooth transitions when using certain blending modes.
+
+</details>
+
+#### Usage Example
+
+1. Create a path using a Path : Generate node.
+2. Add a Path : Blend node and connect it to the path output.
+3. Set "Blend Over" to "Distance" to blend based on path length.
+4. Configure "Blending Settings" to use "Lerp" for smooth transitions.
+5. Connect an attribute (e.g., color) to the input of the Path : Blend node.
+6. The resulting points will have interpolated attribute values from start to end.
+
+#### Notes
+
+* Blending is applied per point, so the effect depends on how many points are in your path.
+* For best results with "Lerp", keep the blend factor between 0 and 1.
+* If you're using a fixed blend factor, ensure that it aligns with your desired blending behavior.

@@ -5,82 +5,64 @@ icon: circle-dashed
 # G-Probe : Spanner
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a global probe that generates a sparse graph with guaranteed path length bounds using a greedy t-spanner algorithm.
+> Creates a sparse graph with guaranteed path length bounds using a greedy t-spanner algorithm.
 
-### Overview
+#### How It Works
 
-This probe factory defines a connection logic that builds a sparse graph where the shortest path between any two connected points is at most `t` times their Euclidean distance. It's useful for creating efficient navigation graphs or connectivity networks that maintain certain topological properties while minimizing edge count.
+The Greedy Spanner subnode builds a network of connections between points that ensures all paths between any two points are no longer than a certain multiple of their direct distance. This is done by applying a greedy algorithm that carefully selects which points should be connected.
 
-{% hint style="info" %}
-Connects to **Probe** pins on graph-building nodes like "Connect Points" or "Build Graph"
-{% endhint %}
+The process works by:
 
-### How It Works
+1. Looking at every possible pair of points in your dataset
+2. For each pair, checking if connecting them would break the stretch factor rule (i.e., if there's already a shorter path between them)
+3. If no conflict exists, it adds the connection to the graph
+4. This continues until all valid connections are made or a maximum number of candidates is reached
 
-The greedy t-spanner algorithm creates a sparse graph by iteratively adding edges between points that are not already connected, ensuring that the resulting graph maintains a maximum path length constraint. The stretch factor `t` controls how much longer paths can be compared to direct Euclidean distance.
+The result is a network that balances sparsity with path quality — meaning it doesn't create too many connections (which would make it slow), but still ensures that nearby points can be reached quickly.
 
-This creates a trade-off: lower stretch factors (closer to 1) produce denser graphs with better path quality, while higher stretch factors (like 2 or 3) create sparser graphs that are more efficient but may have longer paths.
+#### Configuration
 
-### Inputs
+<details>
 
-* **Probe** - Connection point for graph-building nodes
-* **Points** - Input point cloud to process
+<summary><strong>Stretch Factor</strong><br><em>Controls how sparse or dense the resulting graph is.</em></summary>
 
-### Outputs
-
-* **Graph** - Generated sparse graph with guaranteed path bounds
-
-### Configuration
-
-***
-
-#### General
-
-**Stretch Factor**
-
-_Controls the maximum allowed path length between connected points._
-
-The algorithm ensures that for any two connected points, the shortest path in the graph is at most `t` times their Euclidean distance. A value of 2 means paths are at most twice as long as direct distance.
+Defines the stretch factor `t` for the spanner. A lower value results in a denser graph with shorter paths, while a higher value produces a sparser graph.
 
 **Values**:
 
-* **1.0**: Creates a complete graph (every point connects to every other)
-* **2.0**: Default - creates a sparse graph with reasonable path quality
-* **3.0**: Even sparser, but paths may be significantly longer
+* **1.0**: Minimal stretch - very dense graph
+* **2.0**: Standard stretch factor - good balance between density and path quality
+* **5.0**: High stretch - sparse graph with longer paths
 
-**Max Edge Candidates**
+</details>
 
-_Limits the number of candidate edges considered for each point._
+<details>
 
-Controls performance by limiting how many potential connections are evaluated when building the spanner. Higher values allow better graph quality but increase processing time.
+<summary><strong>Max Edge Candidates</strong><br><em>Limits the number of edges considered for performance.</em></summary>
+
+Sets an upper limit on how many potential connections are evaluated during the greedy spanner process. This helps control performance and memory usage, especially with large datasets.
 
 **Values**:
 
-* **100**: Very limited candidates, fastest but lowest quality
-* **50000**: Default - good balance of performance and quality
+* **100**: Very low candidate count - faster but may miss connections
+* **50000**: Default value - good balance for most use cases
 
-### Usage Example
+</details>
 
-Use this probe with a "Connect Points" node to create a navigation mesh where:
+#### Usage Example
 
-1. You want to minimize the number of connections (sparse graph)
-2. You guarantee that no path is more than twice the direct distance
-3. You're building a large-scale world with efficient connectivity
+Use this subnode when you want to generate a navigation graph that maintains short paths between nearby points, but without creating a fully connected graph. For example:
 
-This is ideal for:
+1. Create a point cloud representing waypoints in a level
+2. Connect these points using the Greedy Spanner subnode with a stretch factor of `2.0`
+3. The resulting graph ensures that any two nearby waypoints can be reached via a path that is at most twice their direct distance, while keeping the number of connections manageable
 
-* Navigation meshes for AI pathfinding
-* Network connectivity in large worlds
-* Graph-based procedural content generation where edge count matters
+#### Notes
 
-### Notes
-
-* The stretch factor directly impacts graph density and path quality
-* Higher max edge candidates improve results but slow down processing
-* Best used with large point clouds where sparse connectivity is desired
-* The resulting graph maintains theoretical guarantees about path lengths, making it predictable for gameplay systems
+* The algorithm is greedy and may not produce the optimal t-spanner for all datasets
+* Higher stretch factors result in significantly fewer connections, improving performance but potentially increasing path lengths
+* The Max Edge Candidates setting can be tuned to balance between accuracy and performance depending on dataset size
+* This subnode works best with point clouds where spatial proximity is meaningful

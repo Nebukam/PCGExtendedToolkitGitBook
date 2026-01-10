@@ -6,54 +6,51 @@ icon: circle
 # Refresh Seed
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Refresh point seed based on position.
 
-### Overview
+#### Overview
 
-This node updates the random seed value of each point based on its world position, ensuring that points at different locations receive unique random values. This is useful when you want to maintain reproducible randomness across multiple runs while ensuring spatial variation in your procedural generation.
+The Refresh Seed node updates the random seed value for each point in your data set using its world position coordinates. This allows you to introduce spatial variation into procedural operations that rely on randomness, ensuring that points at different locations produce different random results while maintaining deterministic behavior within a given seed value.
+
+This is useful when you want to ensure that similar points in space don't generate identical random outcomes, or when you're using seeded random functions and need to vary the seed per point based on their location. It's often used in combination with other nodes that perform randomized operations like noise sampling, distribution, or variation.
 
 {% hint style="info" %}
-The seed refresh happens per-point, so points with similar positions will have similar seeds, but points at different world coordinates will have distinct seeds.
+This node does not connect to any specific subnodes. It operates directly on point data.
 {% endhint %}
 
+#### How It Works
+
+The node calculates a new seed value for each point by combining the point's world position with the Base seed value you provide. For each point, it takes the X, Y, and Z coordinates of the point's location and uses them to generate a unique integer seed that is then assigned to that point.
+
+The exact method of combining these values isn't specified in the code but typically involves some form of hashing or mathematical transformation that ensures spatially distinct points produce different seeds. This makes the seed value dependent on position, which allows for reproducible yet varied random behavior across your dataset.
+
+#### Inputs
+
+* **Points** (main input): Accepts point data that will have their seed values refreshed based on position.
+
+#### Outputs
+
+* **Points** (main output): The same point data with updated seed values assigned to each point.
+
+#### Configuration
+
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Base</strong><br><em>Base seed.</em></summary>
 
-* **Default Input** (Required): Points to process. Each point's position is used to calculate a new seed value.
+Sets the base integer value used in calculating the new seed for each point. This value is combined with the point's position to determine the final seed.
 
 </details>
 
-<details>
+#### Usage Example
 
-<summary>Outputs</summary>
+You have a set of points distributed across a landscape and want to apply noise-based variation to each point such that nearby points get slightly different noise values. By connecting a Noise node after this Refresh Seed node, you can ensure that each point uses its own unique seed derived from its position, leading to varied but reproducible noise results.
 
-* **Default Output** (Required): Points with updated seed values based on their world positions.
+#### Notes
 
-</details>
-
-### Properties Overview
-
-Controls how the seed values are calculated and applied to your points.
-
-***
-
-#### Settings
-
-Configures the base seed used in the calculation.
-
-**Base**
-
-_The base integer value used to offset the seed calculation._
-
-* This value is added to the position-based seed to create a unique seed per point.
-* For example, if `Base` is set to 100 and a point's world X coordinate is 50, the resulting seed will be offset by 100 + 50 = 150.
-
-### Notes
-
-This node is particularly useful when you need consistent but spatially varying randomness across your points. For example, if you're generating terrain features or vegetation where each location should have a unique but deterministic random behavior, this node ensures that nearby points get similar seeds while distant points get very different ones.
+* The seed value is updated in-place on the point data and will be used by downstream nodes that rely on seeded random functions.
+* This node does not change the actual point positions or other attributes — only the seed values.
+* If you use this node with a fixed Base value, points at identical world coordinates will get the same seed, which may be useful for maintaining consistency in certain procedural effects.

@@ -6,94 +6,71 @@ icon: circle
 # Bitmask Operation
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Do a bitwise operation on an attribute to modify its flags.
+> Perform bitwise operations on integer attributes to manage flags or settings represented as bitmasks.
 
-### Overview
+#### How It Works
 
-This node performs bitwise operations on integer attributes, allowing you to manipulate flag values in your point data. It's useful for combining or modifying bitmasks stored in attributes, such as object types, permissions, or state flags. You can apply operations like AND, OR, XOR, and NOT to existing flags using either a constant value or an attribute from the input points.
+This node modifies integer attributes using bitwise operations, which are useful for managing multiple boolean states within a single number. For each point in your data, it reads the current value of an attribute and applies a specified operation with a mask. The mask can be a fixed value or read from another attribute. The result is stored back into the target attribute.
 
-{% hint style="info" %}
-The operation modifies the target attribute directly, overwriting its current value with the result of the bitwise calculation.
-{% endhint %}
+The process works as follows:
+
+1. Read the current value from the target attribute on each point.
+2. Determine what mask value to use - either a constant value you define, or a value read from an attribute on each point.
+3. Apply one of several bitwise operations (AND, OR, XOR, NOT, or SET) between the current value and the mask.
+4. Store the resulting value back into the target attribute.
+
+This operation is performed in parallel across all points, making it efficient for large datasets.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Target Attribute</strong><br><em>Integer attribute to modify</em></summary>
 
-* **Main Input** (optional): Points with attributes to modify. Supports multiple inputs.
-* **Point Filter** (optional): Filters points to process.
+The name of the integer attribute that will be modified by the bitwise operation. This attribute must exist on your input points.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Operation Type</strong><br><em>Type of bitwise operation</em></summary>
 
-* **Main Output**: Points with updated attribute values based on the bitwise operation.
+Select how to combine the current value with the mask:
+
+* **Set**: Replace the entire value with the mask.
+* **AND**: Keep only bits that are 1 in both values.
+* **OR**: Set any bit to 1 if either value has it set.
+* **NOT**: Apply AND with the inverted mask.
+* **XOR**: Flip bits where the mask equals 1.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the bitmask operation is applied to your data.
+<summary><strong>Mask Source</strong><br><em>How to determine the mask value</em></summary>
 
-***
+Choose whether to use a fixed value or read from an attribute:
 
-#### Settings
+* **Constant**: Use the value you specify in the "Bitmask Value" setting.
+* **Attribute**: Read the mask from an integer attribute on each point.
 
-Configures the core behavior of the node.
+</details>
 
-**Flag Attribute**
+<details>
 
-_The name of the attribute containing the flags to be modified._
+<summary><strong>Mask Attribute</strong><br><em>Attribute to read mask from</em></summary>
 
-* Must be an integer type (int64)
-* The result of the operation will overwrite this attribute's value
+The name of the integer attribute that contains the mask values, when "Mask Source" is set to "Attribute". This attribute must exist on your input points and contain integer values.
 
-**Operation**
+</details>
 
-_The bitwise operation to perform on the flags._
+<details>
 
-**Values**:
+<summary><strong>Bitmask Value</strong><br><em>Fixed integer mask</em></summary>
 
-* **Set**: Sets the bits to match the mask exactly.
-* **AND**: Performs a bitwise AND, keeping only bits that are set in both values.
-* **OR**: Performs a bitwise OR, setting any bit that is set in either value.
-* **NOT**: Inverts the bits specified by the mask (AND with inverted mask).
-* **XOR**: Performs a bitwise XOR, flipping bits where the mask has 1s.
+The constant integer value used as the mask when "Mask Source" is set to "Constant". This defines which bits are affected by the operation.
 
-**Mask Input**
-
-_Determines whether to use a constant or attribute value for the mask._
-
-**Values**:
-
-* **Constant**: Use a fixed integer value.
-* **Attribute**: Read the mask value from an attribute on the input points.
-
-**Mask Attribute**
-
-_The name of the attribute containing the mask value, used when "Mask Input" is set to "Attribute."_
-
-* Must be an integer type (int64)
-* Each point will use its own mask value for the operation
-
-**Bitmask**
-
-_The constant value to use as the mask, used when "Mask Input" is set to "Constant."_
-
-* Accepts any 64-bit signed integer
-* Example: A value of `5` (binary `101`) will affect bits 0 and 2
-
-### Notes
-
-* Bitmasks are commonly used for storing multiple boolean flags in a single integer.
-* Use the **OR** operation to add new flags without affecting existing ones.
-* Use the **AND** operation with an inverted mask to clear specific flags.
-* The **XOR** operation is useful for toggling bits on and off.
-* For performance, prefer using constant masks when possible rather than attribute-based masks.
+</details>

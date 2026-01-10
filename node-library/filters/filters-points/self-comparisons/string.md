@@ -11,137 +11,122 @@ This page was generated from the source code. It should properly capture what th
 
 > Creates a filter definition that compares an attribute value against itself at another index.
 
-#### Overview
-
-This subnode defines a filtering behavior that compares string values from one point in your data set with the same attribute value from another point, using a configurable index. It's useful for creating conditions based on relationships between points, such as checking if a point's attribute matches a neighbor's attribute or a specific offset.
-
-It connects to the **Filter** input pin of processing nodes that support point filtering. Multiple filter subnodes can be combined to create complex filtering logic.
-
 #### How It Works
 
-This subnode evaluates whether a string attribute value at the current point matches (or fails to match, based on comparison type) the same string attribute from another point in the data set. The "other point" is determined by an index, which can be a fixed number or read from an attribute.
+This subnode evaluates each point in your data and compares its string attribute value with the same attribute from another point in the dataset. The comparison is based on a defined index mode and operand, which determines how the target point is selected.
 
-1. It reads the string value of the specified **Operand A** attribute from the current point.
-2. It calculates the **Operand B** index using either:
-   * A constant value (if `CompareAgainst` is set to **Constant**)
-   * The value from a specified attribute (if `CompareAgainst` is set to **Attribute**)
-3. Depending on the **Index Mode**, this index is interpreted as:
-   * An absolute index in the data set
-   * An offset relative to the current point's index
-4. It retrieves the string value of the same attribute from the calculated index.
-5. The two values are compared using the specified **Comparison** operation (e.g., equal, contains, starts with).
-6. If the comparison passes, the point is considered to pass the filter; otherwise, it fails.
-
-The result depends on whether the current point's attribute matches the target point's attribute based on the defined logic.
-
-<details>
-
-<summary>Inputs</summary>
-
-* Point data containing string attributes
-* An optional attribute for Operand B if `CompareAgainst` is set to **Attribute**
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* A boolean result indicating whether a point passes or fails this specific filter condition
-
-</details>
+1. For each point, it retrieves the value of the specified string attribute (Operand A).
+2. It calculates the index of the point to compare against using the Index Mode and Compare Against settings.
+3. Depending on the index mode:
+   * If **Pick**, it uses the index directly.
+   * If **Offset**, it adds an offset to the current point's index.
+4. The index is adjusted according to the Index Safety setting if it goes out of bounds:
+   * **Ignore**: Invalid indices are skipped.
+   * **Tile**: Wraps around to valid indices.
+   * **Clamp**: Uses the closest valid index.
+   * **Yoyo**: Mirrors back from the boundary.
+5. If the target point's attribute value is accessible, it compares the two string values using the specified comparison method.
+6. If the comparison passes, the original point is included in the filtered output.
 
 #### Configuration
 
-***
+<details>
 
-**Operand A**
+<summary><strong>Operand A</strong><br><em>String attribute to test.</em></summary>
 
-_The name of the string attribute to compare from the current point._
+The name of the string attribute whose value will be compared against another instance of itself.
 
-This defines which attribute's value is used as the first operand in the comparison.
+</details>
 
-**Comparison**
+<details>
 
-_The type of comparison to perform between the two string values._
+<summary><strong>Comparison</strong><br><em>Comparison method for string values.</em></summary>
 
-**Values**:
+How the two string values are compared.
 
-* **StrictlyEqual**: Values must be exactly identical.
-* **Contains**: The second value appears anywhere within the first.
-* **StartsWith**: The first value begins with the second.
-* **EndsWith**: The first value ends with the second.
+* **StrictlyEqual**: Values must match exactly.
+* **Contains**: First value contains second as a substring.
+* **StartsWith**: First value starts with second.
+* **EndsWith**: First value ends with second.
 
-**Index Mode**
+</details>
 
-_How to interpret the index value used for Operand B._
+<details>
 
-**Values**:
+<summary><strong>Index Mode</strong><br><em>How the comparison index is calculated.</em></summary>
 
-* **Pick**: The index is treated as an absolute position in the data set.
-* **Offset**: The index is added to the current point's index to determine the target point.
+Whether to pick a specific index or calculate an offset from the current point's index.
 
-**Compare Against**
+* **Pick**: Use a fixed index directly.
+* **Offset**: Add an offset value to the current index.
 
-_Whether Operand B is a constant or read from an attribute._
+</details>
 
-**Values**:
+<details>
 
-* **Constant**: Use a fixed integer value for Operand B.
-* **Attribute**: Read the value from an input attribute.
+<summary><strong>Compare Against</strong><br><em>Source of operand B.</em></summary>
 
-**Index (Attr)**
+Determines whether Operand B is a constant or comes from an attribute.
 
-_The attribute containing the index value when `CompareAgainst` is set to **Attribute**._
+* **Constant**: Use a fixed integer value.
+* **Attribute**: Read the index value from an input attribute.
 
-Only visible when `CompareAgainst` is set to **Attribute**.
+</details>
 
-**Index**
+<details>
 
-_The constant index value used when `CompareAgainst` is set to **Constant**._
+<summary><strong>Index (Attr)</strong><br><em>Attribute to read comparison index from.</em></summary>
 
-Only visible when `CompareAgainst` is set to **Constant**.
+When Compare Against is set to Attribute, this defines which attribute to use for the index value.
 
-**Index Safety**
+</details>
 
-_How to handle cases where the calculated index is out of bounds._
+<details>
 
-**Values**:
+<summary><strong>Index</strong><br><em>Fixed index value for comparison.</em></summary>
 
-* **Ignore**: Skip comparisons for invalid indices.
-* **Tile**: Wrap around to valid indices (e.g., index 5 with 3 points becomes index 2).
-* **Clamp**: Clamp the index to the nearest valid value (e.g., index -1 becomes 0, index 5 becomes 2).
-* **Yoyo**: Mirror indices back and forth (e.g., index -1 becomes 1, index 4 becomes 1).
+When Compare Against is set to Constant, this defines the fixed integer index to compare against.
 
-**Invalid Index Fallback**
+</details>
 
-_How to treat points when the target index is invalid._
+<details>
 
-**Values**:
+<summary><strong>Index Safety</strong><br><em>How out-of-bounds indices are handled.</em></summary>
 
-* **Pass**: Points with invalid indices are considered to pass the filter.
-* **Fail**: Points with invalid indices are considered to fail the filter.
+What to do when the calculated index exceeds data bounds.
 
-**Swap Operands**
+* **Ignore**: Skip invalid comparisons.
+* **Tile**: Wrap around to valid indices.
+* **Clamp**: Use the nearest valid index.
+* **Yoyo**: Mirror back from boundary.
 
-_When enabled, swaps the order of operands in the comparison._
+</details>
 
-Useful for inverting "contains" checks. For example, if you want to check that a point's attribute does **not** contain another value, you can swap the operands and use "StrictlyEqual".
+<details>
+
+<summary><strong>Invalid Index Fallback</strong><br><em>How to treat points with invalid indices.</em></summary>
+
+Whether points with invalid indices should pass or fail the filter.
+
+* **Pass**: Points are included in output.
+* **Fail**: Points are excluded from output.
+
+</details>
+
+<details>
+
+<summary><strong>Swap Operands</strong><br><em>Invert comparison direction for contains checks.</em></summary>
+
+When enabled, swaps the operands so that the comparison becomes "B contains A" instead of "A contains B". Useful for inverting substring checks.
+
+</details>
 
 #### Usage Example
 
-You have a set of points with a string attribute named `Tag`. You want to filter points where the tag matches the tag of the point at index 1 (i.e., the second point in the data set).
-
-1. Set **Operand A** to `Tag`.
-2. Set **Compare Against** to **Constant**.
-3. Set **Index** to `1`.
-4. Set **Index Mode** to **Pick**.
-5. Set **Comparison** to **StrictlyEqual**.
-
-This will only pass points where the `Tag` matches the value of the second point in your data set.
+You have a sequence of points representing a path and want to filter out points where the point's name matches the name of another point at an offset of 2. Set Operand A to your point's name attribute, Index Mode to Offset, Compare Against to Constant, Index to 2, and Comparison to StrictlyEqual.
 
 #### Notes
 
-* The index used for comparison is calculated before each test, so it can vary per point if using an attribute-based index.
-* Be cautious with **Offset** mode and large offsets; they may lead to out-of-bounds errors unless properly handled by **Index Safety** settings.
-* Using **Swap Operands** allows for more flexible comparisons, such as checking for non-containment.
+* This subnode is useful for creating self-referential filters.
+* Be cautious with large offsets or index safety settings that may cause unexpected behavior in small datasets.
+* The comparison logic supports case-sensitive operations by default; consider using string conversion utilities if needed.

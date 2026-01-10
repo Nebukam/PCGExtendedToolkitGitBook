@@ -6,29 +6,45 @@ icon: circle
 # Attribute Rolling
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Does a rolling blending of properties & attributes along paths.
+> Applies a rolling blend of properties and attributes along paths.
 
-### Overview
+#### Overview
 
-This node applies a rolling blend operation to points along a path, allowing you to gradually transition attribute values based on position within a defined range. It's particularly useful for creating smooth transitions between different states or properties as you move along a path — such as changing color, scale, or other attributes from start to end.
+This node applies a rolling operation to points along a path, determining when to begin and stop applying blending or attribute modifications based on filter conditions. It's useful for creating smooth transitions or effects that begin at one point in a path and end at another, such as gradual lighting changes, terrain blending, or procedural material transitions.
 
-The node supports two main modes of rolling: **Start/Stop** and **Toggle**, which define how the rolling range is determined. You can also control whether the blending happens inside or outside the defined range, and choose what value to use for reference during the rolling process.
+It operates by scanning through the points of each path and using configurable filters to decide when to initiate or halt a rolling effect. The rolling can be controlled either via two separate filters (start/stop) or a single toggle filter that switches on and off as it passes points.
 
 {% hint style="info" %}
-This node modifies point attributes based on their position in a path and applies blending operations accordingly.
+Connects to **Path** processing pins.
 {% endhint %}
+
+#### How It Works
+
+This node processes each path sequentially, evaluating points in order to determine when to begin and end a rolling effect. It uses filters defined by subnodes to decide whether a point should trigger the start or stop of a rolling range.
+
+The rolling process works as follows:
+
+1. The node evaluates the first point of the path to set an initial rolling state.
+2. As it moves through points, it checks if the current point meets the criteria for starting or stopping the rolling effect.
+3. If using **Start/Stop** mode, it uses two separate filters: one to detect when to start rolling and another to detect when to stop.
+4. If using **Toggle** mode, a single filter determines whether to switch the rolling state on or off.
+5. While rolling, it applies blending operations based on the current point's position within the range.
+6. It optionally writes attributes to indicate where the rolling started, stopped, or is currently active.
+
+The node supports reverse rolling order and can blend outside of the defined rolling range if enabled.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Main Input**: Points that make up the path(s) to process.
-* **Optional Filters**: Point filters can be applied to define when rolling starts or stops.
+* **Main Input**: Paths (Point data representing paths)
+* **Optional Filter Subnodes**:
+  * Pin filter subnode: Used to determine when a point should be considered for rolling
+  * Start filter subnode: Used in Start/Stop mode to detect the start of a rolling range
+  * Stop filter subnode: Used in Start/Stop mode to detect the end of a rolling range
 
 </details>
 
@@ -36,131 +52,208 @@ This node modifies point attributes based on their position in a path and applie
 
 <summary>Outputs</summary>
 
-* Modified points with updated attributes based on rolling blending.
-* Optional output attributes for tracking range start, stop, pole, index, and inside-range status.
+* **Main Output**: Modified paths with updated attributes based on rolling behavior
+* **Optional Attribute Outputs**:
+  * Range start indicator
+  * Range stop indicator
+  * Range pole (start or stop)
+  * Range index
+  * Inside-range boolean flag
+  * Index inside range
 
 </details>
 
-### Properties Overview
+#### Configuration
 
-Settings that control how the rolling blending is applied along paths.
+<details>
 
-***
+<summary><strong>RangeControl</strong><br><em>Rolling range control.</em></summary>
 
-#### Settings
+Controls how the rolling range is determined.
 
-Controls how the rolling behavior is defined and executed.
+**Values**:
 
-**Rolling Range Control**
+* **StartStop**: Uses two separate set of filters to start & stop rolling
+* **Toggle**: Uses a single set of filter that switches roll on/off whenever a point passes
 
-_Controls whether the rolling uses a single toggle or two separate filters for start and stop._
+</details>
 
-* **Start/Stop**: Uses two separate sets of filters to define where rolling begins and ends.
-* **Toggle**: Uses one set of filters that switches rolling on/off when a point passes through it.
+<details>
 
-**Rolling Value Control**
+<summary><strong>ValueControl</strong><br><em>Rolling value control.</em></summary>
 
-_Determines what value is used as the reference for rolling._
+Controls how the reference value for rolling is determined.
 
-* **Pin**: Uses a filter to determine which points are used as reference for rolling.
-* **Previous**: Uses the previous point's value as the rolling reference.
-* **Range Start**: Uses the first point of a range as the rolling reference.
+**Values**:
 
-**Initial Value Mode**
+* **Pin**: Uses filter to determine when a point should be used as reference for rolling
+* **Previous**: Use the previous point' value
+* **RangeStart**: Use the first point of a range
 
-_Specifies how the initial rolling state is determined._
+</details>
 
-* **Constant**: Starts with a fixed boolean value.
-* **Constant (Preserve)**: Starts with a constant value but does not switch if the first point matches that value.
-* **From Point**: Uses the value from the first point in the path.
+<details>
 
-**Starting Toggle Value**
+<summary><strong>InitialValueMode</strong><br><em>How the initial rolling state is set.</em></summary>
 
-_The initial rolling state when using "Constant" or "Constant (Preserve)" modes._
+Sets how the initial rolling state (true/false) is determined.
 
-* When enabled, rolling starts as active; otherwise, it starts inactive.
+**Values**:
 
-**Reverse Rolling Order**
+* **Constant**: Use a constant value.
+* **ConstantPreserve**: Use a constant value, but does not switch if the first value is the same.
+* **FromPoint**: Use the first point starting value.
 
-_When enabled, reverses the direction of the rolling process along the path._
+</details>
 
-* Useful for creating effects that begin at the end of a path and progress toward the start.
+<details>
 
-**Blend Outside Range**
+<summary><strong>bInitialValue</strong><br><em>Starting toggle value.</em></summary>
 
-_Controls whether blending operations are applied outside the defined rolling range._
+When InitialValueMode is set to Constant or ConstantPreserve, this sets the initial rolling state.
 
-* When enabled, blending continues beyond the start/stop points.
-* When disabled, blending only occurs within the defined range.
+</details>
 
-**Blend Stop Element**
+<details>
 
-_When blending outside the range is disabled, this controls how the stop element is handled._
+<summary><strong>bReverseRolling</strong><br><em>Reverse rolling order.</em></summary>
 
-* When enabled, the stop point is included in the blending process.
+When enabled, the rolling effect proceeds in reverse order along the path.
 
-***
+</details>
 
-#### Output
+<details>
 
-Configures which attributes are written to track rolling state and progress.
+<summary><strong>bBlendOutsideRange</strong><br><em>Enable blend operations to be processed outside the rolling range.</em></summary>
 
-**Write Range Start**
+When enabled, blending operations are applied even if a point is outside the defined rolling range. This can be useful for creating smooth transitions that extend beyond the start/stop points.
 
-_When enabled, writes a boolean attribute indicating when a point marks the start of a rolling range._
+</details>
 
-**Range Start Attribute Name**
+<details>
 
-_Name of the boolean attribute that stores whether a point is at the range start._
+<summary><strong>bBlendStopElement</strong><br><em>Whether to blend the stop element.</em></summary>
 
-**Write Range Stop**
+When enabled and blending outside the range is disabled, the node will blend the point at which rolling stops.
 
-_When enabled, writes a boolean attribute indicating when a point marks the stop of a rolling range._
+</details>
 
-**Range Stop Attribute Name**
+<details>
 
-_Name of the boolean attribute that stores whether a point is at the range stop._
+<summary><strong>bWriteRangeStart</strong><br><em>Enable writing range start indicator.</em></summary>
 
-**Write Range Pole**
+When enabled, a boolean attribute is written to indicate where the rolling range starts.
 
-_When enabled, writes a boolean attribute indicating whether a point is either start or stop of a rolling range._
+</details>
 
-**Range Pole Attribute Name**
+<details>
 
-_Name of the boolean attribute that stores whether a point is a pole (start or stop)._
+<summary><strong>RangeStartAttributeName</strong><br><em>Name of the 'bool' attribute to write range start to.</em></summary>
 
-**Write Range Index**
+The name of the attribute that will store whether a point marks the start of the rolling range.
 
-_When enabled, writes an integer index representing the current rolling range._
+</details>
 
-**Range Index Attribute Name**
+<details>
 
-_Name of the integer attribute that stores the rolling range index._
+<summary><strong>bWriteRangeStop</strong><br><em>Enable writing range stop indicator.</em></summary>
 
-**Index Offset**
+When enabled, a boolean attribute is written to indicate where the rolling range stops.
 
-_Adds an offset to the range index value. Default is -1, so first valid index is 0._
+</details>
 
-**Write Is Inside Range**
+<details>
 
-_When enabled, writes a boolean attribute indicating whether a point is inside the rolling range._
+<summary><strong>RangeStopAttributeName</strong><br><em>Name of the 'bool' attribute to write range stop to.</em></summary>
 
-**Is Inside Range Attribute Name**
+The name of the attribute that will store whether a point marks the end of the rolling range.
 
-_Name of the boolean attribute that stores whether a point is inside the rolling range._
+</details>
 
-**Write Index Inside Range**
+<details>
 
-_When enabled, writes an integer index representing position within the current rolling range._
+<summary><strong>bWriteRangePole</strong><br><em>Enable writing range pole indicator.</em></summary>
 
-**Index Inside Range Attribute Name**
+When enabled, a boolean attribute is written to indicate whether a point is either the start or stop of the rolling range (a "pole").
 
-_Name of the integer attribute that stores the index within the rolling range._
+</details>
 
-### Notes
+<details>
 
-* Use this node to create smooth transitions in visual properties along paths.
-* Combine with point filters to control exactly where blending begins and ends.
-* The **Toggle** mode is great for creating dynamic effects that respond to specific points along a path.
-* Consider using **Blend Outside Range** when you want to extend the influence of rolling beyond the defined range.
-* Attribute outputs can be used in downstream nodes to further manipulate or visualize the rolling effect.
+<summary><strong>RangePoleAttributeName</strong><br><em>Name of the 'bool' attribute to write range pole to.</em></summary>
+
+The name of the attribute that will store whether a point is a range pole (start or stop).
+
+</details>
+
+<details>
+
+<summary><strong>bWriteRangeIndex</strong><br><em>Enable writing range index.</em></summary>
+
+When enabled, an integer attribute is written to indicate the position within the rolling range.
+
+</details>
+
+<details>
+
+<summary><strong>RangeIndexAttributeName</strong><br><em>Name of the 'int32' attribute to write range index to.</em></summary>
+
+The name of the attribute that will store the current range index value.
+
+</details>
+
+<details>
+
+<summary><strong>RangeIndexOffset</strong><br><em>Let you add an offset to the range index value.</em></summary>
+
+Adds a fixed offset to the range index values, useful for adjusting the starting index.
+
+</details>
+
+<details>
+
+<summary><strong>bWriteIsInsideRange</strong><br><em>Enable writing inside-range indicator.</em></summary>
+
+When enabled, a boolean attribute is written to indicate whether a point is currently within the rolling range.
+
+</details>
+
+<details>
+
+<summary><strong>IsInsideRangeAttributeName</strong><br><em>Name of the 'bool' attribute to write whether a point is inside the range or not.</em></summary>
+
+The name of the attribute that will store whether a point is currently inside the rolling range.
+
+</details>
+
+<details>
+
+<summary><strong>bWriteIndexInsideRange</strong><br><em>Enable writing index inside range.</em></summary>
+
+When enabled, an integer attribute is written to indicate the index relative to the rolling range start.
+
+</details>
+
+<details>
+
+<summary><strong>IndexInsideRangeAttributeName</strong><br><em>Name of the 'int32' attribute to write range index to.</em></summary>
+
+The name of the attribute that will store the index within the rolling range.
+
+</details>
+
+#### Usage Example
+
+Use this node to create a smooth transition effect along a path, such as changing material properties from one end to another. For example:
+
+1. Set up a path with points.
+2. Use a filter subnode to mark where the rolling should start (e.g., when a point's Y position exceeds 10).
+3. Use another filter subnode to mark where it should stop (e.g., when a point's Y position is less than 5).
+4. Configure blending operations to modify attributes like color or opacity.
+5. Enable output flags to write range start/stop indicators for visual debugging.
+
+#### Notes
+
+* The node works best with paths that have a clear beginning and end.
+* Blending outside the rolling range can cause unexpected behavior if not carefully configured.
+* Use the range index attributes to create more complex effects, such as animating through a sequence of values.

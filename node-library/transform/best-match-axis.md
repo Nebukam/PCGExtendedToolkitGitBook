@@ -5,110 +5,94 @@ icon: circle
 # Best Match Axis
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Rotate a point or transform to closely match an input direction (or look at location) but preserve orthogonality.
 
-### Overview
+#### How It Works
 
-This node rotates points so they align as closely as possible with a specified direction or target location, while maintaining their orthogonal structure (i.e., preserving the relationship between X, Y, and Z axes). It's useful for orienting objects to face a particular direction or target, such as making trees grow toward a wind direction, or having buildings face a specific point in space.
+The Best Match Axis node adjusts the orientation of points or transforms so they align as closely as possible with a specified direction or target. It ensures that the alignment preserves right angles between axes, which is useful for creating natural-looking placements or orientations in procedural content.
 
-The node supports multiple modes of operation:
+This node calculates the best rotation for each point based on the selected mode:
 
-* **Direction**: Align with a fixed vector.
-* **Look at Position (World)**: Orient toward a world-space location.
-* **Look at Position (Relative)**: Orient toward a relative position.
-*   **Look at Closest Target**: Orient toward the closest point from a set of targets.
+1. **Direction** – Rotates the point so its up axis aligns with a given vector (either fixed or from an attribute).
+2. **Look at Position (World)** – Rotates the point so its up axis points toward a world-space position.
+3. **Look at Position (Relative)** – Rotates the point so its up axis points toward a relative position in local space.
+4. **Look at Closest Target** – Rotates the point so its up axis points toward the closest target from a set of potential targets.
 
-    <div data-gb-custom-block data-tag="hint" data-style="info" class="hint hint-info"><p>This node preserves orthogonality, meaning it will rotate points to align with the target direction while maintaining the integrity of their local coordinate system. This is especially useful for ensuring that objects like trees or buildings maintain their structural orientation during procedural placement.</p></div>
+In all cases, the rotation is computed to best match the desired direction while maintaining orthogonality — ensuring that the resulting orientation doesn't introduce skewing or distortion. This is particularly useful when working with procedural placements where clean, predictable rotations are important.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Mode</strong><br><em>Drive the best match axis.</em></summary>
 
-* **Main Input** (Default): Points to be rotated.
-* **Target Input** (Optional, when using "Look at Closest Target" mode): Additional points used as targets for alignment.
+Controls how the target direction is determined.
+
+**Values**:
+
+* **Direction**: Aligns with a fixed vector (either constant or from an attribute).
+* **Look at Position (World)**: Aligns toward a world-space position.
+* **Look at Position (Relative)**: Aligns toward a relative position in local space.
+* **Look at Closest Target**: Aligns toward the closest point from a set of targets.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>MatchInput</strong><br><em>Up vector source.</em></summary>
 
-* **Main Output** (Default): Rotated points with updated transforms.
+Determines whether to use a constant value or an attribute from the input data for the up vector.
+
+**Values**:
+
+* **Constant**: Use a fixed vector defined in the node.
+* **Attribute**: Read the vector from an attribute on the input points.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the node aligns points and what data it uses for orientation.
+<summary><strong>MatchSource</strong><br><em>The attribute or property on selected source to use as Up vector for the look at transform.</em></summary>
 
-***
+The name of the attribute to read the up vector from, when "MatchInput" is set to "Attribute".
 
-#### Alignment Mode
+</details>
 
-Controls the method by which the node determines the target direction or position to match.
+<details>
 
-**Mode**
+<summary><strong>MatchConstant</strong><br><em>The constant to use as Up vector for the look at transform.</em></summary>
 
-_The alignment mode to use._
+A fixed vector used as the up direction when "MatchInput" is set to "Constant".
 
-* Determines whether the node rotates based on a fixed vector, a world position, a relative position, or the closest point from a set of targets.
-* **Direction**: Align with a constant or attribute-defined vector.
-* **Look at Position (World)**: Orient toward a world-space location.
-* **Look at Position (Relative)**: Orient toward a relative position.
-* **Look at Closest Target**: Orient toward the closest point in the target input.
+</details>
 
-***
+<details>
 
-#### Match Input
+<summary><strong>DataMatching</strong><br><em>If enabled, allows you to filter out which targets get sampled by which data.</em></summary>
 
-Controls how the direction or target is defined for alignment.
+When using "Look at Closest Target", this setting lets you define how the matching process filters or groups target points.
 
-**Match Input**
+</details>
 
-_Whether to use a constant value or an attribute from the input points._
+<details>
 
-* When set to **Attribute**, the node reads the match vector from a specified attribute on each point.
-* When set to **Constant**, it uses the fixed value provided in the **Match** setting.
+<summary><strong>DistanceDetails</strong><br><em>Distance method to be used for source &#x26; target points.</em></summary>
 
-**Match Source**
+Specifies how distances are calculated when finding the closest target point, affecting which point is selected as the match.
 
-_The attribute to read the match vector from when using Attribute mode._
+</details>
 
-* This is only shown when **Match Input** is set to **Attribute**.
+#### Usage Example
 
-**Match Constant**
+You have a set of trees placed on a sloped terrain and want them to grow upright while still facing the slope's direction. You can use this node with the **Direction** mode, setting the up vector to be the terrain normal at each tree’s location. This will orient each tree so it stands straight up but follows the slope’s tilt.
 
-_The constant vector used for alignment when using Constant mode._
+Alternatively, if you're placing buildings along a path and want them to face the center of the world, you can use the **Look at Position (World)** mode with a constant vector pointing toward the world origin.
 
-* This is only shown when **Match Input** is set to **Constant**.
+#### Notes
 
-***
-
-#### Target Matching
-
-Controls how the node handles target points when using "Look at Closest Target" mode.
-
-**Data Matching**
-
-_Whether to filter which targets are considered for matching._
-
-* When enabled, you can define rules to match specific data to specific targets.
-* Only applicable in **Look at Closest Target** mode.
-
-**Distance Details**
-
-_Distance method used to find the closest target point._
-
-* Defines how distance is calculated between source and target points.
-* Only shown when using **Look at Closest Target** mode.
-
-### Notes
-
-* This node works best with points that have a defined orientation or transform, such as those generated by other PCG nodes like "Transform Points" or "Place Objects".
-* When using **Look at Closest Target**, ensure the target input contains enough points to provide meaningful matches.
-* For performance reasons, consider disabling **Bulk Init Data** if you're working with large datasets and don't require parallel processing benefits.
+* The node preserves orthogonality during rotation, ensuring clean, non-skewed transformations.
+* When using "Look at Closest Target", performance can be improved by limiting the number of potential targets or using spatial filtering.
+* This node works best when used with point data that has a defined orientation (e.g., transforms or rotation attributes).

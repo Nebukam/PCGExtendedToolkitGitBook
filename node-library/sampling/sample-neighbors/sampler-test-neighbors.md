@@ -6,167 +6,184 @@ icon: circle-dashed
 # Sampler : Test Neighbors
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Writes the number of neighbors that pass the provided filters.
+> Tests neighbors against filters and writes counts of passing and failing samples to attributes.
 
-### Overview
+#### How It Works
 
-This node counts how many neighboring points satisfy your filter criteria and writes those counts as attributes on the target points. It's useful for analyzing local neighborhood properties, such as how many nearby points meet certain conditions like being within a specific distance, having particular attributes, or matching a certain type.
+This node evaluates each point in a cluster by checking its neighboring points against a set of conditions defined in a **Filter Subnode**. For every neighbor, it determines whether the neighbor meets the filter criteria or not.
 
-You can configure it to count neighbors that pass (inside) or fail (outside) your filters, and optionally normalize these counts by the total number of neighbors or their combined weight. This is helpful for creating density-like attributes or comparing neighborhoods of different sizes.
+* If a neighbor meets the filter criteria:
+  * Its weight is added to the "inside weight" total.
+  * The neighbor count is incremented for "inside count".
+* If a neighbor does not meet the filter criteria:
+  * Its weight is added to the "outside weight" total.
+  * The neighbor count is incremented for "outside count".
 
-{% hint style="info" %}
-This node requires a neighbor sampling context to function. It must be used within a graph that has established neighbor relationships (e.g., using a "Flood Fill" or "Cluster" node).
-{% endhint %}
+At the end of processing, it writes these counts (and optionally normalized values) into new attributes on each point. These can include:
+
+* Number of neighbors that passed the filters
+* Number of neighbors that failed the filters
+* Total number of neighbors tested
+* Weighted sum of neighbors that passed the filters
+* Weighted sum of neighbors that failed the filters
+* Total weight of neighbors tested
+
+Normalization options allow you to express results as ratios (e.g., "what fraction of neighbors passed the filter").
+
+#### ConfigurationConnects to **Neighbor Sampler** processing nodes. Requires a **Filter Subnode** to define the conditions for passing/failing.
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>bWriteInsideNum</strong><br><em>If enabled, writes the number of neighbors that passed the filters.</em></summary>
 
-* **Default**: Points to sample neighbors for
-* **Filters** (Optional): Filters to apply when testing neighbors
+When enabled, this setting creates an attribute to store how many neighbors passed the filter criteria for each point.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>InsideNumAttributeName</strong><br><em>Name of the attribute to write the number of tests that passed (inside filters).</em></summary>
 
-* **Sampler**: The modified points with new attributes added based on neighbor test results
+The name of the attribute where the count of passing neighbors is stored. Defaults to "InsideNum".
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the neighbor tests are performed and which attributes are written.
+<summary><strong>bNormalizeInsideNum</strong><br><em>If enabled, outputs the value divided by the total number of samples.</em></summary>
 
-***
+When enabled, the inside neighbor count is normalized by dividing it by the total number of neighbors tested.
 
-#### Sampling Settings
+</details>
 
-Configures how the node counts neighbors that pass or fail filters.
+<details>
 
-**Write Inside Num**
+<summary><strong>bWriteOutsideNum</strong><br><em>If enabled, writes the number of neighbors that failed the filters.</em></summary>
 
-_When enabled, writes the count of neighbors that passed the filters._
+When enabled, this setting creates an attribute to store how many neighbors failed the filter criteria for each point.
 
-* How it affects results: Adds a new integer attribute with the number of passing neighbors
-* Value ranges: Integer values representing neighbor counts
+</details>
 
-**Inside Num Attribute Name**
+<details>
 
-_Name of the attribute to write the number of tests that passed (inside filters)._
+<summary><strong>OutsideNumAttributeName</strong><br><em>Name of the attribute to write the number of tests that failed (outside filters).</em></summary>
 
-* How it affects results: Determines where the inside count is stored on each point
-* Value ranges: Any valid attribute name
+The name of the attribute where the count of failing neighbors is stored. Defaults to "OutsideNum".
 
-**Normalize Inside Num**
+</details>
 
-_When enabled, outputs the inside count divided by the total number of neighbors._
+<details>
 
-* How it affects results: Produces a normalized value between 0 and 1 for easier comparison across different neighborhood sizes
+<summary><strong>bNormalizeOutsideNum</strong><br><em>If enabled, outputs the value divided by the total number of samples.</em></summary>
 
-**Write Outside Num**
+When enabled, the outside neighbor count is normalized by dividing it by the total number of neighbors tested.
 
-_When enabled, writes the count of neighbors that failed the filters._
+</details>
 
-* How it affects results: Adds a new integer attribute with the number of failing neighbors
-* Value ranges: Integer values representing neighbor counts
+<details>
 
-**Outside Num Attribute Name**
+<summary><strong>bWriteTotalNum</strong><br><em>If enabled, writes the total number of neighbors tested.</em></summary>
 
-_Name of the attribute to write the number of tests that failed (outside filters)._
+When enabled, this setting creates an attribute to store how many neighbors were evaluated for each point.
 
-* How it affects results: Determines where the outside count is stored on each point
-* Value ranges: Any valid attribute name
+</details>
 
-**Normalize Outside Num**
+<details>
 
-_When enabled, outputs the outside count divided by the total number of neighbors._
+<summary><strong>TotalNumAttributeName</strong><br><em>Name of the attribute to write the total number of points tested.</em></summary>
 
-* How it affects results: Produces a normalized value between 0 and 1 for easier comparison across different neighborhood sizes
+The name of the attribute where the total neighbor count is stored. Defaults to "TotalNum".
 
-**Write Total Num**
+</details>
 
-_When enabled, writes the total number of neighbors tested._
+<details>
 
-* How it affects results: Adds a new integer attribute with the total neighbor count
-* Value ranges: Integer values representing neighbor counts
+<summary><strong>bWriteInsideWeight</strong><br><em>If enabled, writes the total weight of neighbors that passed the filters.</em></summary>
 
-**Total Num Attribute Name**
+When enabled, this setting creates an attribute to store the cumulative weight of neighbors that passed the filter criteria.
 
-_Name of the attribute to write the total number of points tested._
+</details>
 
-* How it affects results: Determines where the total count is stored on each point
-* Value ranges: Any valid attribute name
+<details>
 
-***
+<summary><strong>InsideWeightAttributeName</strong><br><em>Name of the attribute to write the number of tests weight that passed (inside filters).</em></summary>
 
-#### Weighted Sampling Settings
+The name of the attribute where the total passing weight is stored. Defaults to "InsideWeight".
 
-Controls how weights are used in the neighbor tests.
+</details>
 
-**Write Inside Weight**
+<details>
 
-_When enabled, writes the total weight of neighbors that passed the filters._
+<summary><strong>bNormalizeInsideWeight</strong><br><em>If enabled, outputs the value divided by the total weight of samples.</em></summary>
 
-* How it affects results: Adds a new double attribute with the sum of passing neighbor weights
-* Value ranges: Double values representing accumulated weights
+When enabled, the inside weight count is normalized by dividing it by the total weight of all neighbors tested.
 
-**Inside Weight Attribute Name**
+</details>
 
-_Name of the attribute to write the number of tests weight that passed (inside filters)._
+<details>
 
-* How it affects results: Determines where the inside weight is stored on each point
-* Value ranges: Any valid attribute name
+<summary><strong>bWriteOutsideWeight</strong><br><em>If enabled, writes the total weight of neighbors that failed the filters.</em></summary>
 
-**Normalize Inside Weight**
+When enabled, this setting creates an attribute to store the cumulative weight of neighbors that failed the filter criteria.
 
-_When enabled, outputs the inside weight divided by the total weight of neighbors._
+</details>
 
-* How it affects results: Produces a normalized value between 0 and 1 for easier comparison across different neighborhood weights
+<details>
 
-**Write Outside Weight**
+<summary><strong>OutsideWeightAttributeName</strong><br><em>Name of the attribute to write the number of tested weight that passed (inside filters).</em></summary>
 
-_When enabled, writes the total weight of neighbors that failed the filters._
+The name of the attribute where the total failing weight is stored. Defaults to "OutsideWeight".
 
-* How it affects results: Adds a new double attribute with the sum of failing neighbor weights
-* Value ranges: Double values representing accumulated weights
+</details>
 
-**Outside Weight Attribute Name**
+<details>
 
-_Name of the attribute to write the number of tested weight that passed (inside filters)._
+<summary><strong>bNormalizeOutsideWeight</strong><br><em>If enabled, outputs the value divided by the total weight of samples.</em></summary>
 
-* How it affects results: Determines where the outside weight is stored on each point
-* Value ranges: Any valid attribute name
+When enabled, the outside weight count is normalized by dividing it by the total weight of all neighbors tested.
 
-**Normalize Outside Weight**
+</details>
 
-_When enabled, outputs the outside weight divided by the total weight of neighbors._
+<details>
 
-* How it affects results: Produces a normalized value between 0 and 1 for easier comparison across different neighborhood weights
+<summary><strong>bWriteTotalWeight</strong><br><em>If enabled, writes the total weight of neighbors tested.</em></summary>
 
-**Write Total Weight**
+When enabled, this setting creates an attribute to store the cumulative weight of all neighbors evaluated for each point.
 
-_When enabled, writes the total weight of all neighbors tested._
+</details>
 
-* How it affects results: Adds a new double attribute with the sum of all neighbor weights
-* Value ranges: Double values representing accumulated weights
+<details>
 
-**Total Weight Attribute Name**
+<summary><strong>TotalWeightAttributeName</strong><br><em>Name of the attribute to write the total weight tested.</em></summary>
 
-_Name of the attribute to write the total weight tested._
+The name of the attribute where the total neighbor weight is stored. Defaults to "TotalWeight".
 
-* How it affects results: Determines where the total weight is stored on each point
-* Value ranges: Any valid attribute name
+</details>
 
-### Notes
+<details>
 
-* The node only works when used within a graph that has established neighbor relationships.
-* Use normalized values when comparing neighborhoods of different sizes or weights.
-* Combine this with other sampling nodes to build complex neighborhood analysis workflows.
-* Consider using the "Neighbor Sample" node as a base for more advanced neighbor-based operations.
+<summary><strong>Config</strong><br><em>Sampler Settings.</em></summary>
+
+A collection of settings that define which attributes are written and how they are normalized.
+
+</details>
+
+#### Usage Example
+
+You have a point cloud representing terrain features, and you want to know how many nearby points (within a certain distance) have a height value above a threshold. You can use this node with a **Filter Subnode** that checks the height attribute. Then, for each point, it will write:
+
+* The number of neighbors that are higher than the threshold
+* The number of neighbors that are lower than the threshold
+* The total number of neighbors tested
+
+This allows you to create features like "steepness" or "height variation" maps directly from your point data.
+
+#### Notes
+
+* This node works best with neighbor relationships already defined in the graph (e.g., from a **Find Neighbors** node).
+* If no filters are applied, all neighbors will be counted as passing.
+* Normalization is useful for comparing results across clusters or datasets of different sizes.
+* Attribute names can be customized to match your workflow's naming conventions.

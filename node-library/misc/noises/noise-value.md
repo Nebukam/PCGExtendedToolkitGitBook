@@ -5,93 +5,69 @@ icon: circle-dashed
 # Noise : Value
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the subnode does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates value noise, a fast procedural noise pattern that interpolates random values at grid points.
+> Generates procedural noise using interpolated random values at grid points.
 
-### Overview
+#### How It Works
 
-Value noise generates smooth, interpolated random values across 3D space by sampling random values at grid points and interpolating between them. It's faster than gradient noise but produces a more "blocky" or "chunky" appearance.
+This subnode creates noise by assigning random scalar values to points on a 3D grid. For any given position in space, it identifies the surrounding grid points and interpolates between their assigned values to produce a smooth output.
 
-This factory creates data that can be connected to Noise pins on other nodes for value sampling. It's commonly used for terrain generation, displacement effects, texture variation, and procedural pattern creation.
+The process works as follows:
 
-{% hint style="info" %}
-Connects to **Noise** input pins on nodes like **PCGEx | Noise Sample**, **PCGEx | Noise Blend**, or any node that accepts noise data.
-{% endhint %}
+1. It determines which grid cell the input position falls into.
+2. It retrieves the random values at the 8 corners of that cell.
+3. It interpolates these values using a smoothstep function to generate a continuous value.
+4. For multi-octave noise, it combines multiple layers of noise at different frequencies and amplitudes.
 
-### How It Works
+The resulting noise pattern is smooth but retains a "blocky" character due to the interpolation between discrete values, making it distinct from gradient noise which uses vector gradients for smoother transitions.
 
-Value noise works by:
+#### Configuration
 
-1. Placing random values at each point in a 3D grid
-2. Interpolating between these values to create smooth transitions
-3. Using trilinear interpolation for smooth gradients between grid points
-4. Optionally combining multiple layers (octaves) for more complex patterns
+<details>
 
-The result is a smooth, continuous noise field that varies gradually across space.
+<summary><strong>Octaves</strong><br><em>Number of noise layers to combine.</em></summary>
 
-### Configuration
+Controls how many layers of noise are combined to create the final output. Each octave adds finer detail and complexity.
 
-***
+* **Range**: 1 to 16
+* **Default**: 1
 
-#### General
+Higher values produce more detailed patterns but increase computation cost.
 
-**Octaves**
+</details>
 
-_Controls how many layers of noise are combined._
+<details>
 
-Each octave adds finer detail to the pattern. Higher values create more complex, detailed noise but require more computation.
+<summary><strong>Lacunarity</strong><br><em>Frequency multiplier between octaves.</em></summary>
 
-* **1**: Single layer (smoothest)
-* **4**: Four layers (more detailed)
-* **8**: Eight layers (very detailed)
+Determines how quickly the frequency increases with each octave. A higher lacunarity creates more rapid changes in detail.
 
-**Lacunarity**
+* **Range**: 1.0 to 4.0
+* **Default**: 2.0
 
-_Controls the frequency multiplier between octaves._
+Typical values range from 1.5 to 3.0 for natural-looking results.
 
-Higher values increase the frequency of each octave, creating finer details. Typical values range from 1.0 to 4.0.
+</details>
 
-* **2.0**: Standard frequency progression
-* **3.0**: Faster frequency increase
+<details>
 
-**Persistence**
+<summary><strong>Persistence</strong><br><em>Amplitude multiplier between octaves.</em></summary>
 
-_Controls the amplitude multiplier between octaves._
+Controls how much each octave contributes to the final result. Lower persistence values reduce the influence of higher-frequency layers.
 
-This determines how much each octave contributes to the final result. Lower values make higher octaves less influential.
+* **Range**: 0.0 to 1.0
+* **Default**: 0.5
 
-* **0.5**: Balanced contribution from all octaves
-* **0.25**: Higher octaves contribute less
+Values near 0.5 are common for balanced multi-octave noise.
 
-### Usage Example
+</details>
 
-Use this factory to create terrain height variation:
+#### Usage Example
 
-1. Connect a **Noise : Value** factory to a **PCGEx | Noise Sample** node
-2. Set Octaves to 4 for detailed terrain features
-3. Set Lacunarity to 2.0 and Persistence to 0.5 for natural-looking variation
-4. Use the output to drive point elevation in a terrain generation setup
+Use this subnode to create terrain heightmaps where you want smooth but not overly refined noise. For example, set Octaves to 4, Lacunarity to 2.0, and Persistence to 0.5 to generate a natural-looking elevation pattern with both large-scale features and fine details.
 
-### Notes
+#### Notes
 
-* Value noise is faster than gradient noise but produces more blocky results
-* Good for creating organic-looking patterns with less computational cost
-* Can be combined with other noise types using **Noise Blend** nodes
-* Lower octaves create large-scale features, higher octaves add fine details
-* Use persistence < 0.5 to prevent overly sharp transitions in multi-octave noise
-
-### Inputs and Outputs
-
-#### Inputs
-
-* **Source**: Optional input for transforming the noise pattern
-* **Seed**: Random seed value for deterministic noise generation
-
-#### Outputs
-
-* **Noise**: The generated noise data that can be used by other nodes
-* **Transformed Noise**: The noise data after applying any source transformation
+Value noise is computationally efficient compared to gradient noise, making it suitable for real-time applications or when performance is a concern. However, its blocky nature may not be ideal for smooth surfaces like water or clouds where gradient noise would produce better results.

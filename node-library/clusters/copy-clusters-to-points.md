@@ -6,97 +6,67 @@ icon: circle
 # Copy Clusters to Points
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Create copies of input clusters onto target points.
 
-### Overview
+#### Overview
 
-This node allows you to duplicate existing clusters and place them onto a set of target points. It's useful for scenarios where you want to replicate cluster structures at different locations, such as placing multiple instances of a building layout across a terrain or duplicating network topologies at various positions.
-
-The node operates by taking input clusters (which can be thought of as structured point sets) and creating copies of them at each target point. Each copy maintains the original cluster's structure but is positioned according to the target point's location.
+This node duplicates input clusters and places them at the locations defined by target points. It's useful for scenarios where you want to replicate cluster data across multiple locations, such as placing multiple instances of a structure or pattern at different positions in a scene. The node supports matching input clusters to target points, allowing fine-grained control over which cluster is copied where.
 
 {% hint style="info" %}
-This node does not sanitize input data, so ensure your clusters and target points are properly formatted before using this node.
+Connects to **Clusters** and **Points** pins.
 {% endhint %}
 
+#### How It Works
+
+This node first gathers all the input clusters and target points. If data matching is enabled, it uses a matching mechanism to determine which clusters should be copied to which points. For each target point, it creates a copy of the selected cluster, placing it at that point's location. The transform settings control how the copied cluster inherits or overrides properties like position, rotation, and scale from the target point. Optionally, attributes from the target points can be added to the clusters or passed through to them.
+
+#### Configuration
+
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Data Matching</strong><br><em>If enabled, allows you to pick which input gets copied to which target point.</em></summary>
 
-* **Clusters**: Input clusters to be copied
-* **Points**: Target points where copies will be placed
+When enabled, this setting lets you define a matching logic between clusters and points. This is useful when you want to control which cluster data is placed at each point, rather than copying all clusters to all points.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Transform Details</strong><br><em>Target inherit behavior</em></summary>
 
-* **Clusters**: Output clusters that are copies of the input clusters, positioned at target points
-* **Edges**: Optional edge data from the original clusters (if enabled)
+Controls how the transform (position, rotation, scale) of the copied cluster inherits from or overrides the target point's transform. This allows for precise control over placement and orientation.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the cluster copying process is performed.
+<summary><strong>Targets Attributes To Cluster Tags</strong><br><em>How to apply attributes from target points as tags on clusters.</em></summary>
 
-***
+This setting controls how attributes from the target points are added to the clusters as metadata or tags. This can be useful for preserving point-specific information in the cluster data.
 
-#### General
+</details>
 
-Controls core behavior for copying clusters to points.
+<details>
 
-**Data Matching**
+<summary><strong>Targets Forwarding</strong><br><em>Which target attributes to pass through to clusters.</em></summary>
 
-_Controls how input clusters are matched to target points._
+Determines which attributes from the target points are passed through to the cluster data. This allows you to propagate point-specific information (like color, ID, or custom data) into the copied cluster data.
 
-* Determines which input cluster gets copied to which target point
-* When disabled, clusters are distributed in order to target points
-* When enabled, allows you to define custom matching rules based on attributes or tags
+</details>
 
-**Values**:
+#### Usage Example
 
-* **Default**: Uses default matching behavior
-* **Cluster**: Matches based on cluster properties
-* **Sampling**: Matches using sampling methods
+1. Create a set of clusters representing different building types.
+2. Set up a series of points that define where buildings should be placed.
+3. Use this node to copy each cluster type to the corresponding point.
+4. Enable data matching if you want specific clusters to go to specific points.
+5. Adjust transform settings to ensure proper orientation and scale when placing the clusters.
 
-**Transform Details**
+#### Notes
 
-_Configures how copied clusters are transformed._
-
-* Controls position, rotation, and scale of each copy
-* Allows you to apply transformations relative to the target point
-* Can be used to offset copies or align them with point orientation
-
-#### Tagging & Forwarding
-
-Controls attribute handling for copied clusters.
-
-**Targets Attributes To Cluster Tags**
-
-_Controls how attributes from target points are converted to cluster tags._
-
-* When enabled, attributes from the target point data can be used to tag the copied clusters
-* Useful for adding metadata or categorization based on point properties
-* Applies to both vertex and edge data of the copied clusters
-
-**Targets Forwarding**
-
-_Configures which attributes from the target points are forwarded to the copied clusters._
-
-* When enabled, selected attributes from the target points are copied to the output clusters
-* Allows you to preserve information from the target point data in the cluster structure
-* Can be used to maintain point-specific data like height, color, or material properties
-
-### Notes
-
-* This node does not validate or sanitize input data, so ensure your clusters and points are properly formatted
-* When using matching, make sure there's a one-to-one correspondence between clusters and target points or define appropriate matching rules
-* The output clusters will maintain the original structure of the input clusters but will be positioned at the target point locations
-* For performance reasons, consider using fewer copies when possible, as each copy increases processing time
-* This node is particularly useful for creating procedural layouts where you want to replicate a base pattern across multiple locations
+* This node does not sanitize input data, so make sure your clusters and points are valid before using it.
+* The matching logic can be complex; use with care when dealing with large datasets.
+* Forwarding attributes from target points can significantly increase data size, especially if many attributes are selected.

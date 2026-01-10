@@ -5,108 +5,116 @@ icon: circle-dashed
 # Noise : Tiling
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates seamless, tileable gradient noise patterns that can repeat without visible seams.
+> Generates seamless, tileable noise patterns using periodic hashing and fractal techniques.
 
-### Overview
+#### How It Works
 
-This factory generates fractal noise that is designed to tile seamlessly in 3D space. It's particularly useful when you need to create repeating patterns that look natural and continuous across boundaries, such as textures for terrain, backgrounds, or materials.
+This subnode creates repeatable noise patterns that seamlessly connect at their edges. It uses a combination of fractal noise and periodic wrapping techniques to ensure that when the pattern is repeated, there are no visible seams or discontinuities.
+
+The process begins with a base noise function, typically gradient noise, which produces smooth variations in values. To make this noise tileable, the subnode wraps the input coordinates using modulo arithmetic based on specified tile periods for each axis. This wrapping ensures that the noise values at the edges of a tile match exactly with the values at the corresponding edges of adjacent tiles.
+
+For multi-octave noise, multiple layers are combined with different frequencies and amplitudes. Each octave uses its own periodic wrapping to maintain consistency across all noise layers, resulting in a complex but seamless pattern.
 
 {% hint style="info" %}
-Connects to **Noise** input pins on nodes like **Noise Sample**, **Noise Blend**, or **Noise Remap**.
+Connects to **Noise** pins on processing nodes that accept procedural noise data.
 {% endhint %}
 
-### How It Works
+#### Configuration
 
-The tiling noise algorithm uses a hash-based gradient noise approach that wraps coordinates at specified periods along each axis. This ensures that when the noise pattern repeats, it matches perfectly at the edges, creating seamless transitions.
+<details>
 
-The fractal behavior is achieved through multiple layers (octaves) of noise with varying frequencies and amplitudes, controlled by lacunarity and persistence parameters.
+<summary><strong>Octaves</strong><br><em>Number of noise layers to combine.</em></summary>
 
-### Inputs
+Controls how many layers of noise are combined to create the final output. More octaves add more detail and complexity, but also increase computation cost.
 
-* **Noise** - Output pin for connecting to other noise processing nodes
+**Values**:
 
-### Outputs
+* **1**: Single layer noise
+* **4**: Standard fractal noise with good detail
+* **8**: High-detail fractal noise
 
-* **Noise** - Generated tileable noise pattern that can be used for various procedural effects
+</details>
 
-### Configuration
+<details>
 
-***
+<summary><strong>Lacunarity</strong><br><em>Frequency multiplier between octaves.</em></summary>
 
-#### General
+Controls how quickly the frequency increases with each octave. Higher values create more rapid changes in pattern, while lower values produce smoother transitions.
 
-**Octaves**
+**Values**:
 
-_Controls how many layers of noise are combined._
+* **1.0**: No change in frequency
+* **2.0**: Doubling of frequency per octave (standard)
+* **4.0**: Quadrupling of frequency per octave
 
-Higher values create more detailed patterns but increase computation cost.\
-**Default:** 1\
-**Range:** 1 to 16
+</details>
 
-**Lacunarity**
+<details>
 
-_Determines the frequency multiplier between octaves._
+<summary><strong>Persistence</strong><br><em>Amplitude multiplier between octaves.</em></summary>
 
-Higher values increase the frequency of detail in each octave.\
-**Default:** 2.0\
-**Range:** 1.0 to 4.0
+Controls how much each octave contributes to the final result. Lower values make higher-frequency layers less influential, resulting in smoother patterns.
 
-**Persistence**
+**Values**:
 
-_Control the amplitude multiplier between octaves._
+* **0.0**: No contribution from higher octaves
+* **0.5**: Standard persistence (halved amplitude per octave)
+* **1.0**: Full amplitude (no attenuation)
 
-Controls how much each octave contributes to the final result. Lower values make higher octaves less influential.\
-**Default:** 0.5\
-**Range:** 0.0 to 1.0
+</details>
 
-***
+<details>
 
-#### Tiling
+<summary><strong>PeriodX</strong><br><em>Tile period on X axis.</em></summary>
 
-**Period X**
+Defines how many units along the X-axis before the pattern repeats. Smaller values create more frequent tiling, while larger values extend the tile size.
 
-_Specifies the tile period along the X axis._
+**Values**:
 
-The noise pattern repeats every N units along the X axis, where N is this value.\
-**Default:** 4\
-**Range:** 1 to 256
+* **1**: Minimum tile size
+* **4**: Standard tile size
+* **256**: Very large tile
 
-**Period Y**
+</details>
 
-_Specifies the tile period along the Y axis._
+<details>
 
-The noise pattern repeats every N units along the Y axis, where N is this value.\
-**Default:** 4\
-**Range:** 1 to 256
+<summary><strong>PeriodY</strong><br><em>Tile period on Y axis.</em></summary>
 
-**Period Z**
+Defines how many units along the Y-axis before the pattern repeats. Controls horizontal tiling behavior.
 
-_Specifies the tile period along the Z axis._
+**Values**:
 
-The noise pattern repeats every N units along the Z axis, where N is this value.\
-**Default:** 4\
-**Range:** 1 to 256
+* **1**: Minimum tile size
+* **4**: Standard tile size
+* **256**: Very large tile
 
-### Usage Example
+</details>
 
-Use this factory to create seamless terrain textures or repeating material patterns.
+<details>
 
-1. Place a **Noise : Tiling** node in your graph
-2. Connect it to the **Noise** input of a **Noise Sample** node
-3. Adjust Period X/Y/Z to control how often the pattern repeats
-4. Use the output to drive texture coordinates or scalar values for material variation
+<summary><strong>PeriodZ</strong><br><em>Tile period on Z axis.</em></summary>
 
-This setup will generate a seamless, tileable noise pattern that can be used as a base for terrain heightmaps or procedural textures.
+Defines how many units along the Z-axis before the pattern repeats. Controls vertical tiling behavior.
 
-### Notes
+**Values**:
 
-* The Period settings define how far apart the repeating patterns are
-* Lower period values create coarser, more obvious repeats
-* Higher period values produce finer, less noticeable tiling
-* Combine multiple tiling noise sources with different periods to create complex, seamless patterns
-* Tiling noise works best when used in 3D space for texture generation or terrain displacement
+* **1**: Minimum tile size
+* **4**: Standard tile size
+* **256**: Very large tile
+
+</details>
+
+#### Usage Example
+
+Create a seamless terrain texture by using this subnode to generate height values for a landscape. Set PeriodX and PeriodY to 8 to create an 8x8 unit tile pattern, then use the output to drive a material's height map. This ensures that when multiple tiles are placed next to each other, there are no visible seams at the edges.
+
+#### Notes
+
+* The noise is designed to be perfectly seamless along all three axes
+* Higher octaves increase computation time significantly
+* Use larger period values for less frequent tiling patterns
+* Combine with other noise subnodes using blend modes for complex effects

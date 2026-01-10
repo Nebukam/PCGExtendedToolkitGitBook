@@ -6,221 +6,224 @@ icon: circle
 # Transform Points
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Apply position, rotation, and scale transformations with per-point variation support.
+> Transforms point positions, rotations, and scales with variation and snapping support.
 
-### Overview
+#### How It Works
 
-This node allows you to transform points by applying random variations to their position, rotation, and scale. It's useful for creating procedural variation in point-based assets like foliage, particles, or instanced meshes. You can control how much variation is applied to each transformation component and whether the final result should be snapped to specific increments.
+The Transform Points node modifies the location, orientation, and size of points in your procedural graph. It applies random variations within specified ranges for each transformation type, allowing you to introduce subtle differences into your point placements.
+
+For position, it calculates a random offset between minimum and maximum values, which can be scaled or snapped to grid steps. If enabled, rotation is first reset to zero before applying a random variation, also with optional scaling and snapping. Scale transformations work similarly, resetting to one if selected, then applying a random variation that can be uniform across all axes.
+
+Each transformation operates independently, so you can combine offsetting, rotating, and scaling effects on the same set of points. The node also supports resetting point centers and adjusting scale based on bounding volumes.
 
 {% hint style="info" %}
-The node supports attribute overrides for all transformation parameters, allowing you to vary transformations based on input data.
+Connects to **Point Filters** subnode (for filtering points), and expects input via the main **Points** pin.
 {% endhint %}
 
+#### Configuration
+
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>OffsetMin</strong><br><em>Minimum offset to apply to point position.</em></summary>
 
-* **Main Input** (Points): Points to transform
-* **Filters** (Optional): Point filters to apply before transforming
+Defines the minimum translation vector applied to each point's position. Values are in world units.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>OffsetMax</strong><br><em>Maximum offset to apply to point position.</em></summary>
 
-* **Main Output** (Points): Transformed points with updated positions, rotations, and scales
+Defines the maximum translation vector applied to each point's position. Values are in world units.
 
 </details>
 
-### Properties Overview
+<details>
 
-This node allows you to control position, rotation, and scale transformations with optional variation and snapping.
+<summary><strong>OffsetScaling</strong><br><em>Scale applied to both Offset Min &#x26; Offset Max.</em></summary>
 
-***
+Multiplies the offset range defined by `OffsetMin` and `OffsetMax`. Useful for scaling the variation uniformly.
 
-#### Position
+</details>
 
-Controls how the point positions are transformed.
+<details>
 
-**Offset Min**
+<summary><strong>SnapPosition</strong><br><em>Snapping behavior for position variations.</em></summary>
 
-_The minimum offset applied to each point's position._
+Controls how variation values are snapped:
 
-* When using an attribute, the value is read from the input points
-* Values are added to the original position
+* **No Snapping**: No snapping occurs.
+* **Snap Offset**: The variation value is snapped to grid steps before being applied.
+* **Snap Result**: The final result after applying the variation is snapped to grid steps.
 
-**Offset Max**
+</details>
 
-_The maximum offset applied to each point's position._
+<details>
 
-* When using an attribute, the value is read from the input points
-* Values are added to the original position
+<summary><strong>OffsetSnap</strong><br><em>Grid step size for position snapping.</em></summary>
 
-**Scaling**
+Defines the grid step size used when snapping position variations. Only active when `SnapPosition` is set to "Snap Offset" or "Snap Result".
 
-_Scales both Offset Min and Offset Max by this factor._
+</details>
 
-* Applied after min/max values are determined
-* Useful for adjusting the overall magnitude of variation
+<details>
 
-**Snap Position**
+<summary><strong>AbsoluteOffset</strong><br><em>Whether offset should be applied in world space.</em></summary>
 
-_Controls how variation values are snapped to specific increments._
+When enabled, the offset is applied in absolute world coordinates rather than relative to the point's current position.
 
-**Values**:
+</details>
 
-* **No Snapping**: Variation values are applied as-is
-* **Snap Offset**: The variation value is snapped before being added to the position
-* **Snap Result**: The final result is snapped to the specified increment
+<details>
 
-**Offset Step**
+<summary><strong>bResetRotation</strong><br><em>If enabled will first reset rotation to 0, then apply variation.</em></summary>
 
-_The increment to snap to when snapping is enabled._
+When enabled, all rotations are reset to zero before applying the random variation from `RotationMin` to `RotationMax`.
 
-* Only visible when Snap Position is not "No Snapping"
-* Used for both offset and scale snapping
+</details>
 
-**Absolute Offset**
+<details>
 
-_When enabled, offsets are applied relative to world space instead of local space._
+<summary><strong>RotationMin</strong><br><em>Minimum rotation to apply to point.</em></summary>
 
-* Useful for applying global offsets that don't depend on point orientation
+Defines the minimum rotation applied to each point. Values are in degrees.
 
-***
+</details>
 
-#### Rotation
+<details>
 
-Controls how the point rotations are transformed.
+<summary><strong>RotationMax</strong><br><em>Maximum rotation to apply to point.</em></summary>
 
-**Reset Rotation**
+Defines the maximum rotation applied to each point. Values are in degrees.
 
-_When enabled, all rotation is reset to zero before applying variation._
+</details>
 
-* Ensures consistent starting point for random rotation
+<details>
 
-**Rotation Min**
+<summary><strong>RotationScaling</strong><br><em>Scale applied to both Rotation Min &#x26; Rotation Max.</em></summary>
 
-_The minimum rotation applied to each point._
+Multiplies the rotation range defined by `RotationMin` and `RotationMax`. Useful for scaling the variation uniformly.
 
-* When using an attribute, the value is read from the input points
-* Values are added to the original rotation
+</details>
 
-**Rotation Max**
+<details>
 
-_The maximum rotation applied to each point._
+<summary><strong>SnapRotation</strong><br><em>Snapping behavior for rotation variations.</em></summary>
 
-* When using an attribute, the value is read from the input points
-* Values are added to the original rotation
+Controls how rotation variation values are snapped:
 
-**Scaling**
+* **No Snapping**: No snapping occurs.
+* **Snap Offset**: The variation value is snapped to grid steps before being applied.
+* **Snap Result**: The final result after applying the variation is snapped to grid steps.
 
-_Scales both Rotation Min and Rotation Max by this factor._
+</details>
 
-* Applied after min/max values are determined
-* Useful for adjusting the overall magnitude of rotation variation
+<details>
 
-**Snap Rotation**
+<summary><strong>RotationSnap</strong><br><em>Grid step size for rotation snapping.</em></summary>
 
-_Controls how rotation variation values are snapped to specific increments._
+Defines the grid step size used when snapping rotation variations. Only active when `SnapRotation` is set to "Snap Offset" or "Snap Result".
 
-**Values**:
+</details>
 
-* **No Snapping**: Variation values are applied as-is
-* **Snap Offset**: The variation value is snapped before being added to the rotation
-* **Snap Result**: The final result is snapped to the specified increment
+<details>
 
-**Rotation Step**
+<summary><strong>bResetScale</strong><br><em>If enabled will first reset scale to 1, then apply variation.</em></summary>
 
-_The increment to snap to when snapping is enabled._
+When enabled, all scales are reset to one before applying the random variation from `ScaleMin` to `ScaleMax`.
 
-* Only visible when Snap Rotation is not "No Snapping"
-* Used for both offset and rotation snapping
+</details>
 
-**Absolute Rotation**
+<details>
 
-_Controls which components of rotation are applied absolutely._
+<summary><strong>ScaleMin</strong><br><em>Minimum scale to apply to point.</em></summary>
 
-* **Pitch**: Apply pitch rotation absolutely (world space)
-* **Yaw**: Apply yaw rotation absolutely (world space)
-* **Roll**: Apply roll rotation absolutely (world space)
+Defines the minimum scale applied to each point. Values are multipliers.
 
-***
+</details>
 
-#### Scale
+<details>
 
-Controls how the point scales are transformed.
+<summary><strong>ScaleMax</strong><br><em>Maximum scale to apply to point.</em></summary>
 
-**Reset Scale**
+Defines the maximum scale applied to each point. Values are multipliers.
 
-_When enabled, all scale is reset to 1 before applying variation._
+</details>
 
-* Ensures consistent starting point for random scaling
+<details>
 
-**Scale Min**
+<summary><strong>ScaleScaling</strong><br><em>Scale applied to both Scale Min &#x26; Scale Max.</em></summary>
 
-_The minimum scale applied to each point._
+Multiplies the scale range defined by `ScaleMin` and `ScaleMax`. Useful for scaling the variation uniformly.
 
-* When using an attribute, the value is read from the input points
-* Values are multiplied with the original scale
+</details>
 
-**Scale Max**
+<details>
 
-_The maximum scale applied to each point._
+<summary><strong>UniformScale</strong><br><em>Whether to apply uniform scaling.</em></summary>
 
-* When using an attribute, the value is read from the input points
-* Values are multiplied with the original scale
+When enabled, all three axes are scaled equally using a single scalar value derived from the scale range.
 
-**Scaling**
+</details>
 
-_Scales both Scale Min and Scale Max by this factor._
+<details>
 
-* Applied after min/max values are determined
-* Useful for adjusting the overall magnitude of scale variation
+<summary><strong>SnapScale</strong><br><em>Snapping behavior for scale variations.</em></summary>
 
-**Uniform Scale**
+Controls how scale variation values are snapped:
 
-_When enabled, all three axes are scaled uniformly._
+* **No Snapping**: No snapping occurs.
+* **Snap Offset**: The variation value is snapped to grid steps before being applied.
+* **Snap Result**: The final result after applying the variation is snapped to grid steps.
 
-* Ensures that X, Y, and Z scales remain equal
-* Applies to both min and max scale values
+</details>
 
-**Snap Scale**
+<details>
 
-_Controls how scale variation values are snapped to specific increments._
+<summary><strong>ScaleSnap</strong><br><em>Grid step size for scale snapping.</em></summary>
 
-**Values**:
+Defines the grid step size used when snapping scale variations. Only active when `SnapScale` is set to "Snap Offset" or "Snap Result".
 
-* **No Snapping**: Variation values are applied as-is
-* **Snap Offset**: The variation value is snapped before being multiplied with the scale
-* **Snap Result**: The final result is snapped to the specified increment
+</details>
 
-***
+<details>
 
-#### Extras
+<summary><strong>bApplyScaleToBounds</strong><br><em>Whether to apply scaling based on bounds.</em></summary>
 
-Additional options for controlling the transformation behavior.
+When enabled, the scale is adjusted so that the points fit within a defined bounding box.
 
-**Apply Scale To Bounds**
+</details>
 
-_When enabled, applies the scale transformation to the point bounds._
+<details>
 
-* Useful when working with bounds-based operations or collision detection
+<summary><strong>bResetPointCenter</strong><br><em>Whether to reset point center location.</em></summary>
 
-**Reset Point Center**
+When enabled, resets the center of each point's bounds to a specified coordinate.
 
-_When enabled, resets the point center to a specific location._
+</details>
 
-* Can be used to adjust how bounds are calculated after transformation
+<details>
 
-**Point Center Location**
+<summary><strong>PointCenterLocation</strong><br><em>Bounds-relative coordinate used for the new center.</em></summary>
 
-_The relative location within the bounds to use as the new center._
+Defines where the new center should be located within the bounds. Values are relative coordinates (0-1).
 
-* Only visible when Reset Point Center is enabled
-* Values range from 0 (min) to 1 (max) for each axis
+</details>
+
+#### Usage Example
+
+To scatter trees with slight variations in position and rotation:
+
+1. Connect a point source to the input.
+2. Set `OffsetMin` to `(-50, -50, 0)` and `OffsetMax` to `(50, 50, 0)` to randomly shift points horizontally.
+3. Enable `bResetRotation` and set `RotationMin` to `(-10, 0, 0)` and `RotationMax` to `(10, 0, 0)` for small random rotations.
+4. Apply the node — each tree will be placed within a 100x100 area around its original spot and rotated slightly.
+
+#### Notes
+
+* Transformations are applied in order: offset → rotation → scale.
+* Snapping works differently depending on the mode selected (`Snap Offset` vs `Snap Result`).
+* Using `AbsoluteOffset`, `AbsoluteRotation`, or `UniformScale` can override default behavior for more precise control.

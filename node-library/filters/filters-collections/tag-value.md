@@ -9,145 +9,127 @@ icon: circle-dashed
 This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Test the value of one or multiple tags.
-
-#### Overview
-
-This subnode filters points based on the value of specified tags. It checks whether a point's tag matches certain conditions and returns true or false accordingly. You can configure how many matching tags are required to pass the filter, and whether to invert the result.
-
-It connects to Filter pins on processing nodes, where it defines which points should be included in downstream operations.
-
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes.
-{% endhint %}
+> Tests whether point tags match specified values using numeric or string comparisons.
 
 #### How It Works
 
-This subnode evaluates tags attached to each point and compares their values against a set of criteria. It first identifies all tags that match the configured tag name, then applies comparison logic based on the specified value type (numeric or string). If multiple matching tags are found, it uses the multi-match mode to determine whether any or all must pass. Finally, if inversion is enabled, it flips the result.
+This subnode checks if the value of a specified tag on points matches certain criteria. It can compare both numbers and text, making it flexible for different filtering needs. The subnode evaluates all tags with the same name on each point and determines whether they meet the set conditions using either OR or AND logic.
 
-<details>
+When processing a point:
 
-<summary>Inputs</summary>
+1. It looks up all tags that match the specified name
+2. For each matching tag, it compares the tag's value against the comparison value using the selected operation
+3. If any match passes (in OR mode) or all matches pass (in AND mode), the subnode returns true
+4. Optionally, the result can be inverted before being passed on
 
-* Points with associated tags
-* Tag name to test
-* Comparison criteria (value type, comparison operator, operand)
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* Boolean result indicating whether a point passes or fails the filter
-
-</details>
+This allows you to create precise selection rules based on tag content that can be combined with other filters to build complex point selection logic.
 
 #### Configuration
 
-***
+<details>
 
-**Tag Name**
+<summary><strong>Tag Name</strong><br><em>Constant tag name value.</em></summary>
 
-_Name of the tag to check on each point._
+Specifies which tag to check on each point. For example, setting this to "Health" will evaluate the "Health" tag value for each point.
 
-This defines which tag's value will be tested. For example, if set to "Health", it checks the "Health" tag on each point.
+</details>
 
-**Match**
+<details>
 
-_How to match tags with the given name._
+<summary><strong>Match</strong><br><em>OR only requires a single match to pass, AND requires all matches to pass.</em></summary>
 
-* **Equals**: Matches exact tag names.
-* **Contains**: Matches tag names that contain the specified string.
-* **StartsWith**: Matches tag names starting with the specified string.
-* **EndsWith**: Matches tag names ending with the specified string.
+Controls how multiple matching tags are evaluated:
 
-**Value Type**
+* **Equals**: Only one tag must match
+* **Contains**: Only one tag must contain the operand string
+* **StartsWith**: Only one tag must start with the operand string
+* **EndsWith**: Only one tag must end with the operand string
 
-_Specifies whether to compare numeric or string values._
+</details>
 
-* **Numeric**: Compares tag values as numbers.
-* **String**: Compares tag values as text.
+<details>
 
-**Comparison (Numeric)**
+<summary><strong>Expected Value Type</strong><br><em>Expected value type, this is a strict check.</em></summary>
 
-_The comparison operator for numeric values._
+Determines whether to compare numeric or string values:
 
-* **==**: Equal to
-* **!=**: Not equal to
-* **>**: Greater than
-* **<**: Less than
-* **>=**: Greater or equal to
-* **<=**: Less or equal to
-* **NearlyEqual**: Equal within a tolerance
-* **NearlyNotEqual**: Not equal within a tolerance
+* **Numeric**: Compares tag values as numbers
+* **String**: Compares tag values as text
 
-**Operand B (Numeric)**
+</details>
 
-_The numeric value to compare against._
+<details>
 
-This is the second operand in the comparison. For example, if comparing "Health" tag with `>50`, this sets the threshold to 50.
+<summary><strong>Comparison</strong><br><em>Comparison</em></summary>
 
-**Near-equality Tolerance**
+The comparison operation to perform when evaluating numeric values:
 
-_Tolerance for nearly equal comparisons._
+* **==**: Equal to operand B
+* **!=**: Not equal to operand B
+* **>**: Greater than operand B
+* **<**: Less than operand B
+* **>=**: Greater or equal to operand B
+* **<=**: Less or equal to operand B
+* **Nearly Equal**: Equal within tolerance
+* **Nearly Not Equal**: Not equal within tolerance
 
-Only used when using **NearlyEqual** or **NearlyNotEqual**. Defines how close two numbers must be to be considered equal.
+</details>
 
-**Comparison (String)**
+<details>
 
-_The comparison operator for string values._
+<summary><strong>Comparison</strong><br><em>Comparison</em></summary>
 
-* **==**: Strictly equal
-* **!=**: Strictly not equal
-* **Contains**: Contains the substring
-* **StartsWith**: Starts with the substring
-* **EndsWith**: Ends with the substring
-* **Length ==**: Equal to length
-* **Length !=**: Not equal to length
-* **Length >=**: Greater or equal to length
-* **Length <=**: Less or equal to length
-* **> (Length)**: Greater than length
-* **< (Length)**: Less than length
-* **> (Locale)**: Locale strictly greater
-* **< (Locale)**: Locale strictly smaller
+The comparison operation to perform when evaluating string values:
 
-**Operand B (String)**
+* **==**: Strictly equal to operand B
+* **!=**: Strictly not equal to operand B
+* **== (Length)**: Equal in length to operand B
+* **!= (Length)**: Not equal in length to operand B
+* **>= (Length)**: Equal or greater in length than operand B
+* **<= (Length)**: Equal or smaller in length than operand B
+* **> (Length)**: Strictly greater in length than operand B
+* **< (Length)**: Strictly smaller in length than operand B
+* **> (Locale)**: Locale strictly greater than operand B
+* **< (Locale)**: Locale strictly smaller than operand B
+* **Contains**: Contains operand B as substring
+* **Starts With**: Starts with operand B
+* **Ends With**: Ends with operand B
 
-_The string value to compare against._
+</details>
 
-This is the second operand in the comparison. For example, if comparing a "Name" tag with `== "Player"`, this sets the target name to "Player".
+<details>
 
-**Multi-Match**
+<summary><strong>Multi-Match</strong><br><em>OR only requires a single match to pass, AND requires all matches to pass.</em></summary>
 
-_How multiple matching tags are evaluated._
+Controls how multiple matching tags are evaluated:
 
-* **AND**: All matching tags must satisfy the condition.
-* **OR**: At least one matching tag must satisfy the condition.
+* **AND**: All matching tags must pass the comparison
+* **OR**: At least one matching tag must pass the comparison
 
-**Invert**
+</details>
 
-_Inverts the result of the filter._
+<details>
 
-When enabled, points that would normally pass now fail, and vice versa.
+<summary><strong>Invert Result</strong><br><em>Invert the result of this filter.</em></summary>
+
+When enabled, the subnode returns the opposite boolean result. If a point would normally pass, it will now fail, and vice versa.
+
+</details>
 
 #### Usage Example
 
-Suppose you have a collection of points tagged with "Type" and "Health". You want to keep only points where:
+A game designer wants to select all points that are tagged with "Enemy" and have a health value greater than 50.
 
-* The "Type" tag equals "Enemy"
-* The "Health" tag is greater than 100
-
-You can use two instances of this subnode:
-
-1. First filter: Tag = "Type", Value Type = String, Comparison = ==, Operand B = "Enemy"
-2. Second filter: Tag = "Health", Value Type = Numeric, Comparison = >, Operand B = 100
-
-Connect both filters to a processing node using **AND** mode so that only points passing both conditions are included.
+1. Create a **Data Filter : Tag Value** subnode
+2. Set **Tag Name** to "Health"
+3. Set **Expected Value Type** to **Numeric**
+4. Set **Comparison** to **>**
+5. Set **Operand B (Numeric)** to 50
+6. Connect this filter to a processing node that expects a Filter input
+7. The subnode will now only pass points with a "Health" tag value greater than 50
 
 #### Notes
 
-* If no tags match the specified name, the filter returns false.
-* When multiple matching tags exist and Multi-Match is set to OR, the filter passes if any of them meet the criteria.
-* This subnode works with any tag type, but comparisons must align with the expected data type.
-* Performance can be affected when using many tags or complex string comparisons.
+* This subnode can match multiple tags with the same name, which is useful when working with point collections that have repeated tags.
+* When using **String** comparison types, be careful about case sensitivity and special characters.
+* The tolerance setting for numeric comparisons is only used when comparing near-equality.

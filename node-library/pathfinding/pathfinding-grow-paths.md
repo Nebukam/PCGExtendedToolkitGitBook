@@ -5,226 +5,266 @@ icon: scrubber
 
 # Pathfinding : Grow Paths
 
-{% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
-{% endhint %}
-
 {% hint style="warning" %}
 Grow Paths has been deprecated in favor of [flood-fill](../clusters/flood-fill/ "mention").
 {% endhint %}
 
-> Grow paths from seed points by iteratively extending them through connected nodes.
-
-### Overview
-
-This node takes seed points and grows paths by extending them through a graph structure, connecting to neighboring nodes based on defined rules. It's useful for creating network-like structures such as roads, rivers, or pathways that branch out from starting points.
-
-The node supports multiple growth modes, allowing you to control how paths are extended and how many iterations each seed performs. You can also define limits on path length and stop conditions to prevent infinite growth or unwanted extensions.
-
 {% hint style="info" %}
-This node works with graph data from previous nodes in the PCG graph. It requires a valid set of points representing nodes and edges connecting them.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
+> Grow paths from seeds using iterative expansion.
+
+#### How It Works
+
+This node starts by selecting seed points and expanding them into paths through a series of steps. Each seed begins a path that grows outward based on configurable rules like how many steps it can take, which direction it moves, and whether it can branch into multiple paths.
+
+At each step, the node looks at neighboring points in the graph to find valid candidates for growth. If a candidate is allowed (not blocked by limits such as maximum distance or stop conditions), it adds that point to the path and continues. The process repeats until the path reaches its maximum number of steps or no more valid neighbors are found.
+
+If branching is enabled, multiple paths can start from one seed point, up to a defined limit. The node supports both parallel and sequential growth modes, allowing flexibility in how paths expand across the graph.
+
+#### Configuration
+
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>SeedPicking</strong><br><em>Drive how a seed selects a node.</em></summary>
 
-* **Main Input**: Points representing graph nodes
-* **Edges Input**: Edges connecting the nodes
+Controls how seeds are selected from input points to begin path growth. For example, it can select the closest node in the graph to each seed point.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>GrowthMode</strong><br><em>Controls how iterative growth is managed.</em></summary>
 
-* **Output**: Generated paths as point collections, each containing a sequence of connected points
+* **Parallel**: All seeds grow simultaneously, advancing one step at a time.
+* **Sequence**: Each seed grows completely before the next seed begins.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how path growth is managed and what data is used during the process.
+<summary><strong>NumIterations</strong><br><em>The maximum number of growth iterations for a given seed.</em></summary>
 
-***
-
-#### General
-
-Controls core behavior for how paths are grown from seeds.
-
-**GrowthMode**
-
-_Controls how iterative growth is managed._
-
-* When set to **Parallel**, all active seeds grow simultaneously, processing one iteration for each before moving to the next.
-* When set to **Sequence**, each seed grows completely to its end before moving to the next seed.
+Controls how many steps each path can take. Can be set as a constant or read from an attribute on the seed point.
 
 **Values**:
 
-* **Parallel**: Does one growth iteration on each seed until none remain
-* **Sequence**: Grow a seed to its end, then move to the next seed
+* **Constant**: Use a fixed value.
+* **SeedAttribute**: Read the value from an integer attribute on the seed point.
+* **VtxAttribute**: Read the value from an integer attribute on the graph vertex.
 
-**NumIterations**
+</details>
 
-_Determines how many growth iterations each seed performs._
+<details>
 
-* When set to **Constant**, uses the value in `NumIterationsConstant`.
-* When set to **Seed Attribute**, reads an integer attribute from each seed point.
-* When set to **Vtx Attribute**, reads an integer attribute from each node.
+<summary><strong>NumIterationsAttribute</strong><br><em>Num iteration attribute name.</em></summary>
 
-**Values**:
+Name of the attribute used when `NumIterations` is set to "Seed Attribute" or "Vtx Attribute".
 
-* **Constant**: Use a single constant for all seeds
-* **Seed Attribute**: Attribute read on the seed
-* **Vtx Attribute**: Attribute read on the vtx
+</details>
 
-**NumIterationsConstant**
+<details>
 
-_The fixed number of iterations for each seed when `NumIterations` is set to Constant._
+<summary><strong>NumIterationsConstant</strong><br><em>Num iteration constant</em></summary>
 
-* Controls how many times each seed will grow its path.
+Fixed number of iterations if `NumIterations` is set to "Constant".
 
-**NumIterationsUpdateMode**
+</details>
 
-_How the number of iterations is updated during growth._
+<details>
 
-* When set to **Once**, reads the iteration count only once at the beginning.
-* When set to **Set Each Iteration**, updates the remaining iterations after each growth step.
-* When set to **Add Each Iteration**, adds to the remaining iterations after each growth step.
+<summary><strong>NumIterationsUpdateMode</strong><br><em>How to update the number of iteration for each seed.</em></summary>
+
+Controls how the remaining number of iterations is updated during growth.
 
 **Values**:
 
-* **Once**: Read once at the beginning of the computation
-* **Set Each Iteration**: Set the remaining number of iteration after each iteration
-* **Add Each Iteration**: Add to the remaning number of iterations after each iteration
+* **Once**: Read once at the beginning.
+* **SetEachIteration**: Reset the value after each iteration.
+* **AddEachIteration**: Add to the remaining iterations after each step.
 
-**SeedNumBranches**
+</details>
 
-_Determines how many branches are started from each seed._
+<details>
 
-* When set to **Constant**, uses the value in `NumBranchesConstant`.
-* When set to **Seed Attribute**, reads an integer attribute from each seed point.
-* When set to **Vtx Attribute**, reads an integer attribute from each node.
+<summary><strong>SeedNumBranches</strong><br><em>The maximum number of growth started by a given seed.</em></summary>
 
-**Values**:
-
-* **Constant**: Use a single constant for all seeds
-* **Seed Attribute**: Attribute read on the seed
-* **Vtx Attribute**: Attribute read on the vtx
-
-**SeedNumBranchesMean**
-
-_How the number of branches is interpreted when using attribute-based values._
-
-* When set to **Discrete**, uses the raw integer value.
-* When set to **Relative**, normalizes the value between 0 and 1, then multiplies by the actual number of neighbors.
+Controls how many paths can branch from a single seed. Can be set as a constant or read from an attribute on the seed point.
 
 **Values**:
 
-* **Discrete**: Raw value will be used, or used as absolute
-* **Relative**: Input value will be normalized between 0..1, or used as a factor
+* **Constant**: Use a fixed value.
+* **SeedAttribute**: Read the value from an integer attribute on the seed point.
+* **VtxAttribute**: Read the value from an integer attribute on the graph vertex.
 
-**NumBranchesConstant**
+</details>
 
-_The fixed number of branches for each seed when `SeedNumBranches` is set to Constant._
+<details>
 
-* Controls how many paths are started from each seed.
+<summary><strong>SeedNumBranchesMean</strong><br><em>How the NumBranches value is to be interpreted against the actual number of neighbors.</em></summary>
 
-**NumBranchesAttribute**
-
-_Name of the attribute to read branch count from when `SeedNumBranches` is set to Seed Attribute._
-
-* Used to dynamically control branching per seed point.
-
-**GrowthDirection**
-
-_Determines which direction paths grow from seeds._
-
-* When set to **Constant**, uses the value in `GrowthDirectionConstant`.
-* When set to **Seed Attribute**, reads a vector attribute from each seed point.
-* When set to **Vtx Attribute**, reads a vector attribute from each node.
+Defines how the branch count is interpreted when it's a relative value (e.g., 0.5 means half the available neighbors).
 
 **Values**:
 
-* **Constant**: Use a single constant for all seeds
-* **Seed Attribute**: Attribute read on the seed
-* **Vtx Attribute**: Attribute read on the vtx
+* **Relative**: Input is normalized between 0..1 and used as a factor.
+* **Discrete**: Raw value is used directly.
 
-**GrowthDirectionConstant**
+</details>
 
-_The fixed direction for growth when `GrowthDirection` is set to Constant._
+<details>
 
-* Controls which direction each path extends from its starting point.
+<summary><strong>NumBranchesConstant</strong><br><em>Num branches constant</em></summary>
 
-**GrowthDirectionUpdateMode**
+Fixed number of branches if `SeedNumBranches` is set to "Constant".
 
-_How the growth direction is updated during growth._
+</details>
 
-* When set to **Once**, reads the direction only once at the beginning.
-* When set to **Set Each Iteration**, updates the direction after each growth step.
-* When set to **Add Each Iteration**, adds to the direction vector after each growth step.
+<details>
 
-**Values**:
+<summary><strong>NumBranchesAttribute</strong><br><em>Num branches attribute name.</em></summary>
 
-* **Once**: Read once at the beginning of the computation
-* **Set Each Iteration**: Set the remaining number of iteration after each iteration
-* **Add Each Iteration**: Add to the remaning number of iterations after each iteration
+Name of the attribute used when `SeedNumBranches` is set to "Seed Attribute" or "Vtx Attribute".
 
-**GrowthMaxDistance**
+</details>
 
-_Determines how far paths can grow from seeds._
+<details>
 
-* When set to **Constant**, uses the value in `GrowthMaxDistanceConstant`.
-* When set to **Seed Attribute**, reads a double attribute from each seed point.
-* When set to **Vtx Attribute**, reads a double attribute from each node.
+<summary><strong>GrowthDirection</strong><br><em>The maximum number of growth iterations for a given seed.</em></summary>
+
+Controls the direction in which each path grows. Can be a constant vector or read from an attribute.
 
 **Values**:
 
-* **Constant**: Use a single constant for all seeds
-* **Seed Attribute**: Attribute read on the seed
-* **Vtx Attribute**: Attribute read on the vtx
+* **Constant**: Use a fixed vector.
+* **SeedAttribute**: Read the vector from an attribute on the seed point.
+* **VtxAttribute**: Read the vector from an attribute on the graph vertex.
 
-**GrowthMaxDistanceConstant**
+</details>
 
-_The maximum distance a path can grow when `GrowthMaxDistance` is set to Constant._
+<details>
 
-* Controls how far each path extends from its seed.
+<summary><strong>GrowthDirectionAttribute</strong><br><em>Growth direction attribute name.</em></summary>
 
-***
+Name of the attribute used when `GrowthDirection` is set to "Seed Attribute" or "Vtx Attribute".
 
-#### Tagging & Forwarding
+</details>
 
-Controls which attributes are copied from seeds to generated paths.
+<details>
 
-**SeedAttributesToPathTags**
+<summary><strong>GrowthDirectionConstant</strong><br><em>Growth direction constant</em></summary>
 
-_Specifies which seed attributes should be converted into tags on the resulting paths._
+Fixed vector direction if `GrowthDirection` is set to "Constant".
 
-* Enables tagging paths with information from seed points, useful for categorizing or filtering later in the pipeline.
+</details>
 
-**SeedForwarding**
+<details>
 
-_Configures which seed attributes are forwarded to the output paths._
+<summary><strong>GrowthMaxDistance</strong><br><em>The maximum growth distance for a given seed.</em></summary>
 
-* Allows copying of attributes from seed points to the generated path data for downstream processing.
+Controls the maximum total distance a path can travel. Can be a constant or read from an attribute.
 
-***
+**Values**:
 
-#### Advanced
+* **Constant**: Use a fixed value.
+* **SeedAttribute**: Read the value from a double attribute on the seed point.
+* **VtxAttribute**: Read the value from a double attribute on the graph vertex.
 
-Controls performance and statistics options.
+</details>
 
-**Statistics**
+<details>
 
-_Enables writing usage statistics to output paths._
+<summary><strong>GrowthMaxDistanceAttribute</strong><br><em>Max growth distance attribute name.</em></summary>
 
-* When enabled, writes point use count and edge use count attributes to help analyze path density or usage patterns.
+Name of the attribute used when `GrowthMaxDistance` is set to "Seed Attribute" or "Vtx Attribute".
 
-**bUseOctreeSearch**
+</details>
 
-_Whether to use an octree for faster node lookups during growth._
+<details>
 
-* When enabled, improves performance on large datasets by using spatial indexing.
-* May be slower on small datasets due to overhead.
+<summary><strong>GrowthMaxDistanceConstant</strong><br><em>Max growth distance constant</em></summary>
+
+Fixed maximum distance if `GrowthMaxDistance` is set to "Constant".
+
+</details>
+
+<details>
+
+<summary><strong>bUseGrowthStop</strong><br><em>Whether or not to stop growth at a vertex.</em></summary>
+
+When enabled, paths will stop growing if a vertex has a boolean attribute set to true.
+
+</details>
+
+<details>
+
+<summary><strong>GrowthStopAttribute</strong><br><em>An attribute read on the Vtx as a boolean. If true and this node is used in a path, the path stops there.</em></summary>
+
+Name of the boolean attribute on graph vertices that stops growth when true.
+
+</details>
+
+<details>
+
+<summary><strong>bInvertGrowthStop</strong><br><em>Inverse Growth Stop behavior</em></summary>
+
+When enabled, paths stop growing if a vertex has a boolean attribute set to false.
+
+</details>
+
+<details>
+
+<summary><strong>bUseNoGrowth</strong><br><em>Whether or not to prevent growth on a vertex.</em></summary>
+
+When enabled, vertices with a true value in the specified attribute will never be used for growth, but can still act as seeds.
+
+</details>
+
+<details>
+
+<summary><strong>NoGrowthAttribute</strong><br><em>An attribute read on the Vtx as a boolean. If true, this point will never be grown on, but may be still used as seed.</em></summary>
+
+Name of the boolean attribute on graph vertices that prevents growth.
+
+</details>
+
+<details>
+
+<summary><strong>bInvertNoGrowth</strong><br><em>Inverse No Growth behavior</em></summary>
+
+When enabled, paths will not grow on vertices with a false value in the specified attribute.
+
+</details>
+
+<details>
+
+<summary><strong>SeedAttributesToPathTags</strong><br><em>TBD</em></summary>
+
+Controls how seed attributes are converted into tags for output paths.
+
+</details>
+
+<details>
+
+<summary><strong>SeedForwarding</strong><br><em>Which Seed attributes to forward on paths.</em></summary>
+
+Determines which attributes from the seed points are copied to the resulting path data.
+
+</details>
+
+<details>
+
+<summary><strong>Statistics</strong><br><em>Output various statistics.</em></summary>
+
+When enabled, outputs performance and processing statistics for debugging or optimization.
+
+</details>
+
+<details>
+
+<summary><strong>bUseOctreeSearch</strong><br><em>Whether or not to search for closest node using an octree.</em></summary>
+
+When enabled, uses an octree structure for faster neighbor lookups. May improve performance on large datasets.
+
+</details>

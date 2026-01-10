@@ -6,81 +6,82 @@ icon: circle-dashed
 # Tensor : Inertia Constant
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a constant tensor that applies inertia-based forces using the seed transform.
+> Applies a constant tensor inertia effect based on the seed transform.
 
-### Overview
+#### How It Works
 
-This node generates a tensor that applies a constant inertia effect to points in your PCG graph. It's designed to simulate physical properties like mass or resistance to change in direction, based on the original point transforms. The tensor can be configured to apply force along a specific axis and with an optional rotational offset.
+This node creates a fixed rotational resistance for each point in a procedural graph. It uses the original position and orientation of each point as a reference to determine how the tensor should influence its rotation. The tensor's direction is defined by choosing an axis from the point's original orientation, and an optional rotation can be added to fine-tune this direction.
 
-{% hint style="info" %}
-This node is typically used as part of a larger tensor setup for effects like path following, attraction/repulsion forces, or procedural movement constraints.
-{% endhint %}
+The process works like this:
+
+1. Each point’s original transform is used as a base.
+2. A primary axis (like forward, up, or right) is selected to define the tensor’s main direction.
+3. An additional rotation can be applied to adjust the tensor's orientation.
+4. If enabled, a fixed rotational resistance value is calculated for each point based on this setup.
+5. This tensor is then passed to other nodes in the graph that use it to influence how points rotate or move.
+
+This approach ensures consistent and predictable rotational behavior across all points, making it easy to control how they respond to forces or animations.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Axis</strong><br><em>Defines the primary direction of the tensor's axis.</em></summary>
 
-* **Main Input**: Points that will be affected by the tensor
-* **Optional Secondary Input**: Additional data for advanced tensor operations
+Controls which direction from the point’s original orientation is used to define the tensor’s main axis.
+
+**Values**:
+
+* **Forward**: Uses the X+ axis.
+* **Backward**: Uses the X- axis.
+* **Right**: Uses the Y+ axis.
+* **Left**: Uses the Y- axis.
+* **Up**: Uses the Z+ axis.
+* **Down**: Uses the Z- axis.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Offset</strong><br><em>Applies an additional rotation to the tensor's orientation.</em></summary>
 
-* **Main Output**: Modified points with tensor effects applied
-* **Optional Outputs**: Tensor data and debug information (if enabled)
+Adds a rotational adjustment to the tensor’s direction, allowing for more precise control over how it influences point behavior.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the constant inertia tensor is applied to your points.
+<summary><strong>bSetInertiaOnce</strong><br><em>If enabled, will set a constant per-point inertia based on the original point transform.</em></summary>
 
-***
+When enabled, the node calculates and stores a fixed rotational resistance value for each point using its original orientation. When disabled, the resistance is recalculated during processing.
 
-#### General Settings
+</details>
 
-Configures the core behavior of the tensor.
+<details>
 
-**Axis**
+<summary><strong>TensorWeight</strong><br><em>Controls how much influence this tensor has in weighted operations.</em></summary>
 
-_The axis along which the tensor will apply its effect._
+Determines how strongly this tensor affects other tensors when multiple are combined in a weighted average calculation.
 
-* Determines the direction of the tensor's influence
-* **Values**:
-  * **Forward**: X+ axis (default)
-  * **Backward**: X- axis
-  * **Right**: Y+ axis
-  * **Left**: Y- axis
-  * **Up**: Z+ axis
-  * **Down**: Z- axis
+</details>
 
-**Offset**
+<details>
 
-_Rotational offset applied to the tensor's orientation._
+<summary><strong>Potency</strong><br><em>Defines the strength of the tensor's effect.</em></summary>
 
-* Adjusts how the tensor is rotated relative to the point's transform
-* Values are in degrees (X, Y, Z)
-* Default is zero rotation
+Controls how much influence the tensor has on point behavior, such as rotation or movement.
 
-**bSetInertiaOnce**
+</details>
 
-_When enabled, applies a constant inertia value per point based on its original transform._
+#### Usage Example
 
-* If disabled, inertia values are recalculated for each sample
-* Useful for creating consistent, predictable effects
-* When enabled, the tensor's influence remains constant regardless of sampling position
+Use this node to make points rotate around a fixed axis with a consistent pull. For example, you could align the tensor along the Z-axis and add a 45-degree twist to make all points rotate in a similar way. Set Axis to "Up" and Offset to (0, 0, 45) to achieve this effect.
 
-### Notes
+#### Notes
 
-* This node is ideal for creating uniform, directional forces that maintain a consistent orientation
-* Combine with other tensor nodes to build complex procedural behaviors
-* The "Set Inertia Once" option is particularly useful when you want to preserve the original point orientation for consistent effects
-* Use the Axis and Offset settings to control how the tensor interacts with your points' directionality
+* The effect is applied per-point using its original orientation.
+* This node works best when used with other tensor operations in a graph.
+* Enabling `bSetInertiaOnce` can improve performance for static scenarios where the rotational resistance doesn't need to change.

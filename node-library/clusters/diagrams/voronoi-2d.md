@@ -11,171 +11,139 @@ This page was generated from the source code. It should properly capture what th
 
 > Create a 2D Voronoi graph for each input dataset.
 
-#### Overview
+#### How It Works
 
-This node generates a Voronoi diagram from a set of input points, creating a partitioning of space into regions based on proximity. Each region (cell) contains all points closer to its associated input point than to any other input point. The result is a graph structure where vertices represent cell boundaries and edges define the connections between them.
+This node creates a Voronoi diagram by dividing space into regions based on proximity to input points. Each region contains all locations that are closer to its associated point than to any other input point. The result is a network of connected cells where the boundaries represent the equidistant lines between neighboring points.
 
-This processing node is ideal for generating spatial partitions, influence zones, or tessellated layouts that respond to the distribution of your input data. It's commonly used in procedural level design, terrain generation, or creating organic-looking structures from point distributions.
+The process begins by processing the input points to determine which ones will be used in the diagram. If enabled, it removes any points that fall outside a defined boundary area.
+
+Next, it calculates the Delaunay triangulation - a mathematical relationship that's the dual of the Voronoi diagram. From this triangulation, it determines where each Voronoi cell should be positioned using one of three methods:
+
+* **Centroid**: Uses the average position of triangle corners
+* **Circumcenter**: Calculates the center of the circle passing through all three triangle corners
+* **Balanced**: Chooses between centroid and circumcenter based on whether the circumcenter lies within bounds
+
+The node then builds a graph structure where:
+
+* Each point represents a Voronoi cell center
+* Lines connect adjacent cells, forming the boundaries of the diagram
+
+If enabled, it identifies points and edges that form the outer edge of the input set and can optionally flag these for further use. It also supports adding extra information like how many points influence each cell or the maximum distance from each cell to its nearest point.
 
 {% hint style="info" %}
 Connects to **Points** inputs and outputs **Points** and **Edges**.
 {% endhint %}
 
-#### How It Works
-
-This node constructs a Voronoi diagram by performing the following steps:
-
-1. **Input Processing**: It takes input points and optionally prunes those that fall outside a defined bounding box, depending on settings.
-2. **Voronoi Computation**: For each point in the dataset, it calculates the Voronoi cell — the area of space closest to that point compared to all others.
-3. **Graph Construction**: It builds a graph from the computed Voronoi cells:
-   * Vertices are placed at the intersections of Voronoi edges.
-   * Edges connect these vertices, forming the structure of the Voronoi diagram.
-4. **Output Generation**:
-   * The node outputs the Voronoi sites (input points) as points in the graph.
-   * It also outputs the edges that define the Voronoi cells.
-5. **Optional Hull Marking**: If enabled, it marks points and edges that lie on the outer boundary of the point set (the convex hull).
-6. **Additional Data Output**: It can write extra information about each cell, such as influence count, minimum/maximum radii, or flags for open cells.
-
-The method used to determine cell centers (centroid, circumcenter, or balanced) affects how Voronoi cells are computed and whether they stay within bounds.
-
-<details>
-
-<summary>Inputs</summary>
-
-* **Points**: Input point data representing the seed locations for Voronoi cells.
-* **Optional Filters**: Can be connected via a filter subnode to restrict which points are used in the Voronoi computation.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Points**: Output points that represent the vertices of the Voronoi diagram (cell boundaries).
-* **Edges**: Output edges connecting the Voronoi vertices, forming the graph structure.
-* **Optional Additional Attributes**: Written to the output points if enabled in settings, such as:
-  * Influence count per cell
-  * Minimum and maximum radii
-  * Hull flags
-  * Open site flags
-
-</details>
-
 #### Configuration
 
-***
+<details>
 
-**Method**
+<summary><strong>Method</strong><br><em>Method used to find Voronoi cell location.</em></summary>
 
-_Controls how Voronoi cell locations are determined._
-
-This setting defines how the center of each Voronoi cell is calculated.
+Controls how the center of each Voronoi cell is calculated.
 
 **Values**:
 
-* **Balanced**: Uses the centroid if the circumcenter is out of bounds; otherwise, uses the circumcenter.
-* **Canon (Circumcenter)**: Uses the Delaunay triangle's circumcenter for cell centers.
-* **Centroid**: Uses the average position of all vertices in the corresponding Delaunay triangle.
+* **Balanced**: Pick centroid if circumcenter is out of bounds, otherwise uses circumcenter.
+* **Canon (Circumcenter)**: Uses Delaunay cells' circumcenter.
+* **Centroid**: Uses Delaunay cells' averaged vertice positions.
 
-***
+</details>
 
-**ExpandBounds**
+<details>
 
-_Controls the size of the bounding box used to prune points and calculate balanced centroids._
+<summary><strong>ExpandBounds</strong><br><em>Bounds used for point pruning &#x26; balanced centroid.</em></summary>
 
-This value expands the input point bounds by a fixed amount to ensure that Voronoi cells are computed correctly, especially near boundaries. A larger value may include more points but can slow down processing.
+Defines the size of the bounding volume used to determine valid points and calculate cell centers when using the "Balanced" method.
 
-***
+</details>
 
-**bPruneOutOfBounds**
+<details>
 
-_When enabled, removes points that fall outside the defined bounds._
+<summary><strong>bPruneOutOfBounds</strong><br><em>Prune points outside bounds.</em></summary>
 
-This setting is only active when using **Canon (Circumcenter)** as the method. It ensures that Voronoi cells are computed within a controlled area, preventing artifacts from distant points.
+When enabled, removes input points that fall outside the defined boundary before generating the Voronoi diagram.
 
-***
+</details>
 
-**bMarkHull**
+<details>
 
-_When enabled, marks points and edges that lie on the convex hull of the input point set._
+<summary><strong>bMarkHull</strong><br><em>Mark points &#x26; edges that lie on the hull.</em></summary>
 
-This helps identify boundary elements in the resulting graph, useful for creating edge constraints or visualizing the outer shape of the data.
+When enabled, marks points and edges that form the outer boundary of the input point set.
 
-***
+</details>
 
-**HullAttributeName**
+<details>
 
-_Name of the boolean attribute to mark hull points and edges._
+<summary><strong>HullAttributeName</strong><br><em>Name of the attribute to output the Hull boolean to. True if point is on the hull, otherwise false.</em></summary>
 
-Only relevant when **bMarkHull** is enabled. This attribute will be added to the output points and edges, with a value of `true` if the point or edge lies on the hull.
+The name of the boolean attribute written to points that are marked as being on the hull.
 
-***
+</details>
 
-**bMarkEdgeOnTouch**
+<details>
 
-_When enabled, marks edges that have at least one point on the hull._
+<summary><strong>bMarkEdgeOnTouch</strong><br><em>When true, edges that have at least a point on the Hull as marked as being on the hull.</em></summary>
 
-This setting extends the hull marking to edges that are adjacent to hull points, helping define boundary regions in the Voronoi graph.
+When enabled, edges connected to any hull point are also flagged as being part of the hull.
 
-***
+</details>
 
-**ProjectionDetails**
+<details>
 
-_Settings for projecting 3D points onto a 2D plane._
+<summary><strong>ProjectionDetails</strong><br><em>Projection settings.</em></summary>
 
-Controls how 3D input data is projected into 2D space for Voronoi computation. Options include X, Y, Z axis projection or custom projection settings.
+Settings for projecting 3D points onto a 2D plane before computing the Voronoi diagram. This affects how the spatial relationships are interpreted.
 
-***
+</details>
 
-**GraphBuilderDetails**
+<details>
 
-_Settings for building the output graph structure._
+<summary><strong>GraphBuilderDetails</strong><br><em>Graph &#x26; Edges output properties. Only available if bPruneOutsideBounds as it otherwise generates a complete graph.</em></summary>
 
-These settings control how the resulting graph is structured and what attributes are written to it. Only available when **bPruneOutOfBounds** is enabled because otherwise a complete graph is generated.
+Controls how the resulting graph is built, including edge radius calculation and solidification settings.
 
-***
+</details>
 
-**bOutputSites**
+<details>
 
-_Whether to output updated sites._
+<summary><strong>bOutputSites</strong><br><em>Whether to output updated sites.</em></summary>
 
-When enabled, the original input points are included in the output as Voronoi sites. When disabled, only the computed Voronoi vertices and edges are output.
+When enabled, outputs the Voronoi cell centers as points in addition to the edges.
 
-***
+</details>
 
-**bPruneOpenSites**
+<details>
 
-_If enabled, sites that belong to an removed (out-of-bound) cell will be removed from the output._
+<summary><strong>bPruneOpenSites</strong><br><em>If enabled, sites that belong to an removed (out-of-bound) cell will be removed from the output.</em></summary>
 
-Only active when **bOutputSites** is true and **bPruneOutOfBounds** is enabled. This removes points that were pruned due to being outside bounds.
+When enabled and `bOutputSites` is true, removes Voronoi cells whose corresponding input points were pruned due to being outside bounds.
 
-***
+</details>
 
-**OpenSiteFlag**
+<details>
 
-_Flag sites belonging to an open cell with a boolean attribute._
+<summary><strong>OpenSiteFlag</strong><br><em>Flag sites belonging to an open cell with a boolean attribute.</em></summary>
 
-Only active when **bOutputSites** is true, **bPruneOutOfBounds** is enabled, and **bPruneOpenSites** is disabled. Adds a boolean attribute to identify points that were not included in the final Voronoi diagram due to being outside bounds.
+The name of the boolean attribute used to mark Voronoi cells that originated from pruned input points.
 
-***
+</details>
 
-**SitesOutputDetails**
+<details>
 
-_Settings for writing additional data about Voronoi sites._
+<summary><strong>SitesOutputDetails</strong><br></summary>
 
-Controls which extra attributes are written to the output points, such as influence count, minimum/maximum radii, or flags for open cells. Only active when **bOutputSites** is enabled.
+Configuration for additional outputs related to Voronoi sites, such as influence counts or radius information.
+
+</details>
 
 #### Usage Example
 
-A game designer wants to create a procedural map where each point represents a resource location. They use this node to generate Voronoi regions around these points, representing the area of influence for each resource. The resulting graph can then be used to:
-
-* Assign territories to resource points.
-* Create terrain features based on Voronoi cell shapes.
-* Generate paths or roads that follow Voronoi edges.
+Use this node to generate a Voronoi diagram from a set of scattered points. For example, place points across a map and use the Voronoi output to define territories or regions that each point controls. You can then use the resulting graph to drive further procedural generation like city placement or terrain partitioning.
 
 #### Notes
 
-* Voronoi diagrams are sensitive to input point distribution. Dense clusters may result in very small cells, while sparse regions may produce large, irregular cells.
-* The **Balanced** method is often a good default choice as it avoids extreme cell shapes while remaining computationally efficient.
-* Enabling **bPruneOutOfBounds** with **bOutputSites** and **bPruneOpenSites** can be useful for cleaning up data when points are outside the desired area.
-* Hull marking helps identify boundary elements, which is useful for creating edge constraints or visualizing the outer shape of the input point set.
+* The node works best with a relatively uniform distribution of input points.
+* Using "Circumcenter" for cell center calculation may result in cells extending beyond bounds if not combined with pruning.
+* Pruning points outside bounds can significantly reduce computation time and improve performance.

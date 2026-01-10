@@ -9,83 +9,75 @@ icon: circle-dashed
 This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Uses filters applied to the edge endpoints in order to determine whether this filter result.
-
-#### Overview
-
-This subnode evaluates whether an edge passes or fails a filter based on the results of filters applied to its start and end points. It allows you to define conditions that must be met by one or both endpoints of an edge for the edge itself to be considered valid.
-
-It's useful when you want to restrict edges based on properties of their connected points, such as point type, height, color, or other attributes. You can configure how many endpoints must pass a filter and whether the result should be inverted.
-
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes that accept edge filters.
-{% endhint %}
+> Filters edges based on whether their start and end points pass or fail specified criteria.
 
 #### How It Works
 
-This subnode evaluates an edge by running a set of point-based filters against its start and end points. The outcome depends on the selected mode:
+This filter evaluates each endpoint of an edge independently using point-based subnodes. It then combines the results according to the selected mode logic to determine if the edge should be included in the output. The process works as follows:
 
-* If **Mode = "Both"**, both endpoints must meet the expected result (pass or fail) for the edge to pass.
-* If **Mode = "Any Pass"**, at least one endpoint must meet the expected result.
-* If **Mode = "Start"**, only the start point is evaluated.
-* If **Mode = "End"**, only the end point is evaluated.
-* If **Mode = "None"**, neither endpoint can meet the expected result for the edge to pass.
-* If **Mode = "SeeSaw"**, one endpoint must pass and the other must fail.
+1. Each endpoint (start and end) is tested against its assigned point filters
+2. The results for both endpoints are combined based on the selected mode
+3. If the final result matches the expected comparison (pass or fail), the edge is kept
 
-The expected result (Pass or Fail) is determined by the **Comparison** setting. The **Invert** toggle flips the final outcome of the check.
+The mode controls how the two endpoint results are combined:
 
-#### Inputs
+* **None**: Neither endpoint needs to match the expected result
+* **Both**: Both endpoints must match the expected result
+* **Any Pass**: At least one endpoint must match the expected result
+* **Start**: Only the start endpoint must match the expected result
+* **End**: Only the end endpoint must match the expected result
+* **SeeSaw**: One endpoint must pass while the other must fail
 
-* Edge data
-* Point data associated with the edge's start and end points
-* A set of point filter subnodes to be applied to each endpoint
-
-#### Outputs
-
-* A boolean result indicating whether the edge passes or fails the filter check
+When the invert option is enabled, the final result is flipped - edges that would normally pass are excluded, and those that fail are included.
 
 #### Configuration
 
-***
+<details>
 
-**Mode**
+<summary><strong>Mode</strong><br><em>How to combine results from both endpoints.</em></summary>
 
-_Controls which endpoints are evaluated and how their results are combined._
-
-This setting determines which endpoints must meet the expected result for the edge to pass.
+Controls how the filter evaluates the two endpoints.
 
 **Values**:
 
-* **None**: None of the endpoint must have the expected result.
+* **None**: Neither endpoint must have the expected result.
 * **Both**: Both endpoints must have the expected result.
 * **Any Pass**: At least one endpoint must have the expected result.
-* **Start**: Start must have the expected result.
-* **End**: End must have the expected result.
-* **SeeSaw**: One must pass and the other must fail
+* **Start**: Only the start endpoint must have the expected result.
+* **End**: Only the end endpoint must have the expected result.
+* **SeeSaw**: One endpoint must pass and the other must fail.
 
-**Comparison**
+</details>
 
-_The expected result of the filter, in regard to the selected mode._
+<details>
 
-This setting defines whether both endpoints (or the relevant one) must pass or fail the filters.
+<summary><strong>Comparison</strong><br><em>The expected result of the filter, in regard to the selected mode.</em></summary>
+
+Specifies whether both endpoints should pass or fail the filters.
 
 **Values**:
 
-* **Pass**: The endpoint(s) must pass the filters.
-* **Fail**: The endpoint(s) must fail the filters.
+* **Pass**: The endpoints must pass the filters.
+* **Fail**: The endpoints must fail the filters.
 
-**bInvert**
+This setting is only available when Mode is not "SeeSaw".
 
-_When enabled, inverts the final result of the filter._
+</details>
 
-If enabled, an edge that would normally pass will fail, and vice versa.
+<details>
+
+<summary><strong>Invert</strong><br><em>When enabled, flips the result of the filter.</em></summary>
+
+When enabled, edges that would normally pass the filter will be excluded, and those that fail will be included.
+
+</details>
 
 #### Usage Example
 
-You're creating a terrain network where only edges connecting points with specific heights should exist. You set up two point filters: one for "High Points" (height > 100) and another for "Low Points" (height < 50). Then you use this edge filter subnode in "Both" mode with the "Pass" comparison to ensure that both endpoints of an edge are either high or low points. This creates a network where edges only connect similar elevation points.
+You're building a terrain mesh where you want to only connect points that are both above a certain elevation. You use this subnode with "Both" mode and "Pass" comparison, connecting it to point filters that check if a point's Z value is greater than 100. Only edges whose start and end points both exceed this elevation will be included in the final mesh.
 
 #### Notes
 
-* The subnode requires at least one point filter to be connected.
-* When using "SeeSaw" mode, it's recommended to pair with filters that have a balanced pass/fail ratio for predictable behavior.
-* Performance is affected by the number of point filters applied; keep them optimized.
+* The filter evaluates each endpoint independently before combining results according to the selected mode.
+* Using "SeeSaw" mode allows for creating alternating patterns or constraints where one endpoint must pass while the other fails.
+* When using multiple filters, ensure they are compatible with the expected comparison type (e.g., all should be checking similar attributes).

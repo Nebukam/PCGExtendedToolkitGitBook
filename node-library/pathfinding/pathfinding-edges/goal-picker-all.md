@@ -6,27 +6,39 @@ icon: sliders
 # Goal Picker : All
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Selects all goals for each seed point.
+> Selects all goals for each seed.
 
-### Overview
+#### Overview
 
-This node assigns every goal point to every seed point, making it useful when you want all possible connections or when you're working with a small set of goals and want to explore all combinations. It's particularly helpful in scenarios where you need to evaluate every potential destination from each starting point, such as in pathfinding for AI decision-making or generating complete connectivity graphs.
+This subnode defines a behavior where every seed point in a pathfinding operation will target all available goal points. It's useful when you want to compute paths from each seed to every possible destination, rather than selecting one or a subset of goals.
+
+It ensures that each seed will generate multiple paths — one to each goal — making it ideal for scenarios like finding the closest exit from multiple spawn points, or evaluating all possible destinations for a unit's movement.
 
 {% hint style="info" %}
-This node is ideal for small datasets where performance isn't a concern, as it creates a full Cartesian product of seeds and goals.
+Connects to the **Goal Picker** input pin on pathfinding nodes.
 {% endhint %}
+
+#### How It Works
+
+This subnode assigns every goal index to each seed point. When a pathfinding operation begins, it iterates through all available goals and adds their indices to the list of targets for each seed. This results in multiple output paths per seed — one for each goal.
+
+The process is straightforward:
+
+1. It determines how many goals exist.
+2. For every seed point, it creates a list containing all goal indices.
+3. Each seed will therefore generate a path to every goal in the dataset.
+
+This behavior is particularly useful when you want to explore all possible destinations from a set of starting points without filtering or selecting specific targets.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Seeds**: Point data representing starting positions
-* **Goals**: Point data representing destination positions
+* Seeds: Points that act as starting locations for pathfinding.
+* Goals: Points that act as destination locations for pathfinding.
 
 </details>
 
@@ -34,34 +46,34 @@ This node is ideal for small datasets where performance isn't a concern, as it c
 
 <summary>Outputs</summary>
 
-* **Output**: Modified point data with all goal indices assigned to each seed
+* Multiple paths per seed, each leading to a different goal.
+* Each seed will have one output path for every goal in the dataset.
 
 </details>
 
-### Properties Overview
+#### Configuration
 
-Controls how the node assigns goals to seeds.
+<details>
 
-***
+<summary><strong>Index Safety</strong><br><em>Determines how out-of-bounds indices are handled.</em></summary>
 
-#### General Settings
-
-Configures the behavior of goal assignment.
-
-**Index Safety**
-
-_Controls how out-of-bounds indices are handled when assigning goals._
-
-* When an index would go out of bounds, this setting determines what happens
-* For example, if you have 3 goals and try to access index 5, it will be treated according to this mode
+Controls what happens when an index would exceed the valid range of goal indices.
 
 **Values**:
 
-* **Ignore**: Out of bounds indices are ignored (0,1,2,-1,-1,-1,...)
-* **Tile**: Out of bounds indices are tiled (0,1,2,0,1,2...)
-* **Clamp**: Out of bounds indices are clamped (0,1,2,2,2,2...)
-* **Yoyo**: Out of bounds indices are mirrored and back (0,1,2,1,0,1...)
+* **Ignore**: Out-of-bounds indices are ignored (e.g., -1, -1, 0, 1).
+* **Tile**: Out-of-bounds indices wrap around (e.g., 0, 1, 2, 0, 1).
+* **Clamp**: Out-of-bounds indices are clamped to the maximum valid index (e.g., 0, 1, 2, 2, 2).
+* **Yoyo**: Out-of-bounds indices mirror back and forth (e.g., 0, 1, 2, 1, 0).
 
-### Notes
+</details>
 
-This node is most effective when the number of goals is small. For large datasets, consider using other goal picker nodes to reduce computational overhead. It's commonly used in scenarios where you want to generate all possible paths or connections between a set of start and end points.
+#### Usage Example
+
+Imagine you have a set of enemy spawn points and multiple exit locations in a level. You want to find the shortest path from each spawn point to every exit. By using this "All" goal picker subnode, each spawn point will generate a path to all exits, allowing you to evaluate which exit is most accessible from each spawn.
+
+#### Notes
+
+* This subnode always outputs multiple goals per seed.
+* It's computationally heavier than selecting a single goal, as it generates more paths.
+* The performance impact increases linearly with the number of goals.

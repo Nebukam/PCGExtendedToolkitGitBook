@@ -6,158 +6,162 @@ icon: circle-dashed
 # Tags × Attributes
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Compares attribute values on targets against tags on inputs, allowing you to match data based on tag names and optional tag values.
+> Compares attribute values on targets against tags on inputs to determine matches.
 
-### Overview
+#### How It Works
 
-This node enables you to create matching rules that compare attributes from your target data against tags present on input data. It's particularly useful for filtering or grouping points based on their associated tags, such as matching a point's category attribute against a tag name or value.
+This node evaluates whether a target element matches an input tag based on two criteria:
 
-The node works by reading tag information from input data and comparing it with attribute values from target data. You can match both tag names and optional tag values using various comparison methods.
+1. The **tag name** must match
+2. Optionally, the **tag value** must also match according to a comparison rule
 
-{% hint style="info" %}
-This node requires inputs to have tags defined, typically through nodes like "Tag Points" or similar tagging operations.
-{% endhint %}
+It reads tag names from either a constant string or an attribute on the input data. Then it compares this against tags present on the target elements. If a tag name matches and the optional value comparison passes, the match is considered successful.
+
+The matching process supports both exact and partial string matching for tag names, and numeric or string comparisons for tag values when enabled.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Tag Name Input</strong><br><em>Type of Tag Name value.</em></summary>
 
-* **Tags Input** (required): Data containing tags to match against
-* **Targets Input** (required): Data with attributes to compare against tag values
+Controls whether the tag name is a constant string or read from an attribute.
+
+**Values**:
+
+* **Constant**: Use the value specified in "Tag Name"
+* **Attribute**: Read the tag name from the attribute specified in "Tag Name (Attr)"
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Tag Name (Attr)</strong><br><em>Attribute to read tag name value from.</em></summary>
 
-* **Match Rule Output**: A match rule that can be used by matching nodes like "Find Matches" or "Filter Points"
+The attribute to read the tag name from when "Tag Name Input" is set to "Attribute".
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the node compares tag names and optional tag values.
+<summary><strong>Tag Name</strong><br><em>Constant tag name value.</em></summary>
 
-***
+The constant tag name used when "Tag Name Input" is set to "Constant".
 
-#### Tag Name Source
+</details>
 
-Configures how to read the tag name for comparison.
+<details>
 
-**Tag Name Input Type**
+<summary><strong>Match</strong><br><em>How tag names are compared.</em></summary>
 
-_Controls whether the tag name is read from an attribute or used as a constant._
-
-* When set to **Constant**, the tag name is taken directly from the "Tag Name" setting
-* When set to **Attribute**, the tag name is read from the input data using the "Tag Name (Attr)" attribute
-
-**Tag Name (Attr)**
-
-_The attribute to read the tag name from when "Tag Name Input Type" is set to "Attribute"._
-
-* Must be an attribute of type String on the input data
-* Used only when "Tag Name Input Type" is set to **Attribute**
-
-**Tag Name**
-
-_The constant tag name to match against when "Tag Name Input Type" is set to "Constant"._
-
-* Used only when "Tag Name Input Type" is set to **Constant**
-* Example: If set to "Forest", the node will look for a tag named "Forest" on input data
-
-**Match**
-
-_The method used to compare tag names._
+Defines how the tag name from input data is matched against tag names on targets.
 
 **Values**:
 
-* **Equals**: Tag name must exactly match the specified name
-* **Contains**: Tag name must contain the specified name as a substring
-* **Starts With**: Tag name must start with the specified name
-* **Ends With**: Tag name must end with the specified name
+* **Equals**: Exact match
+* **Contains**: Input tag name must be contained within target tag name
+* **Starts With**: Input tag name must start with target tag name
+* **Ends With**: Input tag name must end with target tag name
 
-***
+</details>
 
-#### Value Matching
+<details>
 
-When enabled, compares tag values against target attributes.
+<summary><strong>Do Value Match</strong><br><em>Whether to do a tag value match or not.</em></summary>
 
-**Do Value Match**
+When enabled, the node also compares the values of matching tags.
 
-_When enabled, the node will also compare tag values against target attribute values._
+</details>
 
-* If disabled, only tag names are compared
-* When enabled, you can specify how to compare the values using numeric or string comparisons
+<details>
 
-**Value Type**
+<summary><strong>Value Type</strong><br><em>Expected value type, this is a strict check.</em></summary>
 
-_Specifies whether the tag value should be treated as a numeric or string type for comparison._
-
-**Values**:
-
-* **Numeric**: Tag values are treated as numbers
-* **String**: Tag values are treated as text
-
-**Value Attribute**
-
-_The attribute to read the target value from when "Do Value Match" is enabled._
-
-* Must match the data type specified in "Value Type"
-* For numeric comparisons, this should be a numeric attribute
-* For string comparisons, this should be a string attribute
-
-**Numeric Comparison**
-
-_The comparison method used for numeric values._
+Specifies whether to compare numeric or string values when "Do Value Match" is enabled.
 
 **Values**:
 
-* **Strictly Equal**: Values must be exactly equal
-* **Nearly Equal**: Values must be within tolerance range
-* **Strictly Not Equal**: Values must not be exactly equal
-* **Nearly Not Equal**: Values must not be within tolerance range
-* **Greater Than**: Target value must be greater than tag value
-* **Greater Than or Equal**: Target value must be greater than or equal to tag value
-* **Less Than**: Target value must be less than tag value
-* **Less Than or Equal**: Target value must be less than or equal to tag value
+* **Numeric**: Compare as numbers
+* **String**: Compare as text
 
-**String Comparison**
+</details>
 
-_The comparison method used for string values._
+<details>
+
+<summary><strong>Value Attribute</strong><br><em>Attribute to read tag name value from.</em></summary>
+
+The attribute on the target data that contains the value to compare when "Do Value Match" is enabled.
+
+</details>
+
+<details>
+
+<summary><strong>Comparison</strong><br><em>Comparison for numeric values.</em></summary>
+
+How numeric values are compared when "Value Type" is set to Numeric and "Do Value Match" is enabled.
 
 **Values**:
 
-* **Strictly Equal**: Strings must exactly match
-* **Strictly Not Equal**: Strings must not exactly match
-* **Length Strictly Equal**: String lengths must be exactly equal
-* **Length Strictly Unequal**: String lengths must not be exactly equal
-* **Length Equal or Greater**: Target string length must be equal to or greater than tag string length
-* **Length Equal or Smaller**: Target string length must be equal to or smaller than tag string length
-* **Strictly Greater**: Target string must be lexicographically greater than tag string
-* **Strictly Smaller**: Target string must be lexicographically smaller than tag string
-* **Contains**: Target string must contain the tag string as a substring
-* **Starts With**: Target string must start with the tag string
-* **Ends With**: Target string must end with the tag string
+* **Equal**: Values must be exactly equal
+* **Not Equal**: Values must not be equal
+* **Greater Than**: First value must be greater than second
+* **Less Than**: First value must be less than second
+* **Greater Or Equal**: First value must be greater or equal to second
+* **Less Or Equal**: First value must be less or equal to second
+* **Nearly Equal**: Values are considered equal within tolerance
+* **Nearly Not Equal**: Values are considered not equal within tolerance
 
-**Tolerance**
+</details>
 
-_The tolerance range used for "Nearly Equal" and "Nearly Not Equal" comparisons._
+<details>
 
-* Only applies when using numeric comparisons with "Nearly Equal" or "Nearly Not Equal"
-* Default value is `DBL_COMPARE_TOLERANCE` (typically around 1e-4)
-* Affects how close two numbers must be to be considered equal
+<summary><strong>Tolerance</strong><br><em>Near-equality tolerance.</em></summary>
 
-### Notes
+The tolerance used when comparing numeric values with "Nearly Equal" or "Nearly Not Equal".
 
-* This node is commonly used in combination with nodes like "Find Matches" or "Filter Points" to create conditional logic based on tag data
-* Tag names and values are case-sensitive by default
-* When using string comparisons, the comparison methods work on the full string content
-* For performance reasons, avoid complex string operations when possible
-* You can chain multiple match rules together to create more complex matching conditions
-* The "Match" setting allows for flexible tag name matching, useful when tags have prefixes or suffixes that should be ignored during matching
+</details>
+
+<details>
+
+<summary><strong>Comparison</strong><br><em>Comparison for string values.</em></summary>
+
+How string values are compared when "Value Type" is set to String and "Do Value Match" is enabled.
+
+**Values**:
+
+* **Strictly Equal**: Strings must be exactly equal
+* **Strictly Not Equal**: Strings must not be equal
+* **Length Strictly Equal**: Strings must have the same length
+* **Length Strictly Unequal**: Strings must have different lengths
+* **Length Equal Or Greater**: First string's length must be equal or greater than second
+* **Length Equal Or Smaller**: First string's length must be equal or smaller than second
+* **Strictly Greater**: First string must be lexicographically greater than second
+* **Strictly Smaller**: First string must be lexicographically smaller than second
+* **Locale Strictly Greater**: First string must be locale-awarely greater than second
+* **Locale Strictly Smaller**: First string must be locale-awarely smaller than second
+
+</details>
+
+#### Usage Example
+
+You have a set of points tagged with "EnemyType" and "Health". You want to match these against another set of points that are tagged with "TargetType" and "Damage".
+
+1. Set "Tag Name Input" to "Attribute"
+2. Set "Tag Name (Attr)" to "EnemyType"
+3. Set "Match" to "Equals"
+4. Enable "Do Value Match"
+5. Set "Value Type" to "Numeric"
+6. Set "Value Attribute" to "@Data.Damage"
+7. Set "Comparison" to "Greater Than"
+
+This will match enemy points with target points where the enemy type matches and the damage value is greater than the target's health.
+
+#### Notes
+
+* This node works best when tags are consistently formatted across input and target data
+* When using "Do Value Match", ensure that the attribute values are of the correct type (numeric or string)
+* The tolerance setting only applies to numeric comparisons with "Nearly Equal" or "Nearly Not Equal"
+* Matching is case-sensitive by default

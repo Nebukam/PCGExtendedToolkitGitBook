@@ -5,54 +5,39 @@ icon: sliders
 # Orient : Weighted
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the subnode does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates an orientation operation that orients points along a path using a weighted average of adjacent segment directions.
+> Defines a weighted orientation behavior for path points based on neighboring segment lengths.
 
-### Overview
+#### How It Works
 
-This factory generates an orientation action that orients points based on the weighted direction between adjacent path segments. It's commonly used for creating smooth, natural-looking rotations along paths where the orientation should follow the path's curvature.
+This subnode calculates how each point along a path should be oriented by looking at the lengths of the segments before and after that point. For every point, it:
 
-{% hint style="info" %}
-Connects to **Orient** nodes that accept action factories
-{% endhint %}
+1. Identifies the previous point (A), current point (B), and next point (C)
+2. Measures the squared distances from A to B and from B to C
+3. Computes a weight using the formula: `(AB + BC) / Min(AB, BC)`
+4. Uses this weight to blend the directions from the previous and next segments
+5. Applies the resulting direction to orient the point
 
-### How It Works
+When the **Inverse Weight** option is enabled, it flips the blending so that shorter segments have more influence on orientation.
 
-The factory calculates a weighted average of the directions from the previous and next path segments. The weight is determined by the relative lengths of these segments, with shorter segments having more influence on the final orientation. This creates smooth transitions along the path that follow its natural curvature.
+#### Configuration
 
-When enabled, the inverse weight option flips the weighting so that longer segments have more influence instead.
+<details>
 
-### Configuration
+<summary><strong>bInverseWeight</strong><br><em>When enabled, inverts the weight used for orientation interpolation.</em></summary>
 
-***
+When enabled, the orientation calculation uses `1 - Weight` instead of `Weight`, causing the point to orient more toward the direction of shorter segments.
 
-#### Settings
+</details>
 
-**Inverse Weight**
+#### Usage Example
 
-_When enabled, the weighting is inverted._
+Use this subnode when you want a path to have smooth, natural-looking orientations. For example, when generating a winding road or a flowing river, weighted orientation makes the path appear to follow the curve more naturally by aligning points toward longer segments.
 
-Instead of giving more influence to shorter segments, longer segments will have more influence on the final orientation. This can create different visual effects along the path.
+#### Notes
 
-### Inputs
-
-* **Path**: Input path to orient points along
-* **Points**: Points to be oriented
-
-### Outputs
-
-* **Action**: Orientation action that can be used by **Orient** nodes
-
-### Usage Example
-
-Use this factory with an **Orient** node to create smooth rotations along a path. For example, you could use it to orient trees or objects along a winding river, where the orientation follows the river's curvature naturally. The inverse weight option allows you to fine-tune how much influence adjacent segments have on the final rotation.
-
-### Notes
-
-* This factory works best with paths that have sufficient point density for meaningful segment comparisons
-* The weighting algorithm prevents extreme directional shifts by using a normalized ratio of segment lengths
-* Consider using this with **Orient** nodes that support action factories to achieve smooth path-following rotations
+* This behavior is particularly useful for visual effects like foliage placement along paths where consistent orientation improves realism.
+* The weight calculation ensures that sharp turns are less abrupt than they would be with simple direction vectors.
+* Performance impact is minimal as it only computes local distances and interpolations.

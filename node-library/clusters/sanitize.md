@@ -6,62 +6,47 @@ icon: circle
 # Sanitize
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Ensure the input set of vertex and edges outputs clean, interconnected clusters. May create new clusters, but does not creates nor deletes points/edges.
+{% hint style="success" %}
+Sanitization is ONLY required if you modify clusters using non-cluster nodes.&#x20;
 
-### Overview
-
-This node cleans up your graph data by ensuring that all vertices and edges form properly connected clusters. It removes isolated or disconnected components, merges overlapping clusters, and ensures that each cluster is fully interconnected. This is especially useful after operations that may have introduced gaps or inconsistencies in your graph structure.
-
-The node does not modify the point or edge count; it only reorganizes existing data into clean, valid clusters. You can think of this as a "cleanup" step that makes your graph topology consistent and usable for downstream processing.
-
-{% hint style="info" %}
-This node is particularly useful when working with graph-based procedural generation where disconnected components may cause issues in pathfinding, clustering algorithms, or other graph-dependent operations.
+**PCGEx nodes that have vtx/edges pins output clean data**.
 {% endhint %}
+
+> Clean and reconnect clusters of points and edges to ensure they form valid, interconnected structures. May create new connections between components, but does not add or remove points or edges.
+
+#### How It Works
+
+This node analyzes existing clusters of points and edges to identify any disconnected or fragmented sections. It then connects these sections by creating new links between nearby components, ensuring that all output clusters are fully connected and represent valid topological structures.
+
+The process begins by evaluating the current connections within each cluster. Any isolated components — those not linked to other parts of the cluster — are identified. If such components are close enough to others, the node creates new connections to merge them into a single coherent cluster. This helps maintain logical groupings even after operations that might have scattered related data.
+
+Clusters that are completely separate and not connected to any other clusters will remain as individual units unless they can be logically grouped based on proximity or other criteria.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Cluster Output Settings</strong><br><em>Graph &#x26; Edges output properties. Note that pruning isolated points is ignored.</em></summary>
 
-* **Main Input (Vertex Points)**: The set of vertex points that define the nodes of your graph.
-* **Edge Inputs (Edges)**: The set of edges connecting the vertex points.
+Controls how the output graph and edge data are structured.
 
-</details>
+**Values**:
 
-<details>
-
-<summary>Outputs</summary>
-
-* **Main Output (Vertex Points)**: Cleaned and reorganized vertex points, grouped into interconnected clusters.
-* **Edge Output (Edges)**: Edges that connect the cleaned vertex points within each cluster.
+* **Output Type**: Controls whether to output as a single cluster or multiple clusters.
+* **Build Edges**: Whether to generate new edges during sanitization.
+* **Prune Isolated Points**: This setting is ignored in this node.
 
 </details>
 
-### Properties Overview
+#### Usage Example
 
-This node primarily controls how the output graph is structured through its cluster builder settings.
+Use this node after operations that may have broken up clusters, such as point removal or edge filtering. For example, if you split a large cluster into smaller ones and then want to reconnect those that were originally part of the same logical group, this node will automatically detect and merge them based on proximity.
 
-***
+#### Notes
 
-#### Cluster Output Settings
-
-Controls how the final clusters are built and organized in the output.
-
-**Graph Builder Details**
-
-_Controls how the output graph is constructed, including edge creation, vertex handling, and cluster organization._
-
-* Determines whether edges are rebuilt or preserved from input
-* Controls how vertices are assigned to clusters
-* Affects the structure of the final output graph
-
-### Notes
-
-* This node does not add or remove points or edges; it only reorganizes existing data.
-* It's ideal for use after operations that may have created disconnected components, such as filtering or randomization steps.
-* The output will always contain interconnected clusters with no isolated nodes or dangling edges.
-* Consider using this node before pathfinding or graph traversal operations to ensure valid topology.
+* This node is ideal for cleaning up data after complex graph manipulations.
+* It preserves all original points and edges but may alter their connections.
+* Does not support point or edge creation/deletion; only reconnection.

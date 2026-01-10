@@ -11,112 +11,86 @@ This page was generated from the source code. It should properly capture what th
 
 > Creates a filter definition that compares two string attribute values.
 
-#### Overview
-
-This subnode defines a filtering condition based on comparing two string values. It's used to determine whether points in a dataset meet specific text-based criteria, such as matching or differing in length. You can compare an attribute from the point data against either another attribute or a constant string value.
-
-It connects to the **Filter** input pin of processing nodes that support point filtering. Multiple filter subnodes can be combined to create more complex filtering logic.
-
-{% hint style="info" %}
-Connects to the **Filter** pin of processing nodes (e.g., Point Filter, Path Filter).
-{% endhint %}
-
 #### How It Works
 
-This subnode evaluates a comparison between two string operands for each point. The first operand (Operand A) is always read from an attribute on the input data. The second operand (Operand B) can be either another attribute or a constant string value, depending on the **CompareAgainst** setting.
+This subnode sets up a condition that compares two string values. You can choose to compare either constant strings or values taken from point attributes. The comparison logic determines whether the two strings match exactly, differ, or meet specific length requirements. Based on this evaluation, points are either allowed to pass through or filtered out.
 
-The comparison logic depends on the selected **Comparison** type:
-
-* For strict comparisons (`==`, `!=`), it checks if the strings are exactly equal or not.
-* For length-based comparisons (`>= (Length)`, `< (Length)`), it compares the number of characters in each string.
-* For locale-aware comparisons (`> (Locale)`, `< (Locale)`), it performs a lexicographical comparison based on system locale settings.
-
-If **bSwapOperands** is enabled, the order of operands is reversed before the comparison is made. This can be useful for inverting certain conditions like "contains" checks.
-
-<details>
-
-<summary>Inputs</summary>
-
-Expects point data with attributes that match the names specified in Operand A and Operand B (if using attribute mode).
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-Produces a filter definition that can be consumed by point filtering nodes to determine which points pass or fail the comparison.
-
-</details>
+The comparison operation can be customized to check for exact matches, differences in string lengths, or even locale-aware ordering. When the "Swap Operands" option is enabled, the order of the values being compared is reversed, which helps invert certain logical checks like "contains" conditions.
 
 #### Configuration
 
-***
+<details>
 
-**Operand A**
+<summary><strong>Operand A</strong><br><em>First operand for comparison</em></summary>
 
-_The first string operand, read from an attribute on the input data._
+Specifies the first value in the comparison. This can be an attribute name from your input data, which will be read as a string.
 
-This defines the source of the first string value for comparison. It must match an existing attribute name in your input data.
+</details>
 
-**Comparison**
+<details>
 
-_The type of comparison to perform between the two operands._
+<summary><strong>Comparison</strong><br><em>Type of comparison to perform</em></summary>
+
+Defines how the two values are evaluated. Options include:
+
+* **Strictly Equal**: Checks if Operand A equals Operand B.
+* **Strictly Not Equal**: Checks if Operand A does not equal Operand B.
+* **Length Strictly Equal**: Compares the length of Operand A and Operand B.
+* **Length Strictly Unequal**: Checks if the lengths are different.
+* **Length Equal or Greater**: Checks if Operand A's length is greater than or equal to Operand B's.
+* **Length Equal or Smaller**: Checks if Operand A's length is less than or equal to Operand B's.
+* **Strictly Greater**: Compares the lengths, checking if Operand A's length is strictly greater.
+* **Strictly Smaller**: Checks if Operand A's length is strictly smaller.
+* **Locale Strictly Greater**: Compares strings using locale-aware ordering (e.g., alphabetical).
+* **Locale Strictly Smaller**: Checks if Operand A's string comes before Operand B's in locale order.
+
+</details>
+
+<details>
+
+<summary><strong>Compare Against</strong><br><em>Type of second operand</em></summary>
+
+Determines whether the second value is a constant string or an attribute from the input data.
 
 **Values**:
 
-* **==**: Checks if Operand A is strictly equal to Operand B.
-* **!=**: Checks if Operand A is strictly not equal to Operand B.
-* **== (Length)**: Checks if the length of Operand A equals the length of Operand B.
-* **!= (Length)**: Checks if the length of Operand A does not equal the length of Operand B.
-* **>= (Length)**: Checks if the length of Operand A is greater than or equal to the length of Operand B.
-* **<= (Length)**: Checks if the length of Operand A is less than or equal to the length of Operand B.
-* **> (Length)**: Checks if the length of Operand A is strictly greater than the length of Operand B.
-* **< (Length)**: Checks if the length of Operand A is strictly smaller than the length of Operand B.
-* **> (Locale)**: Performs a locale-aware lexicographical comparison, checking if Operand A is greater than Operand B.
-* **< (Locale)**: Performs a locale-aware lexicographical comparison, checking if Operand A is smaller than Operand B.
+* **Constant**: Second value is a user-defined string.
+* **Attribute**: Second value is read from an attribute in the input data.
 
-**Compare Against**
+</details>
 
-_Determines whether Operand B reads from an attribute or uses a constant value._
+<details>
 
-**Values**:
+<summary><strong>Operand B (Attr)</strong><br><em>Attribute to use for second operand</em></summary>
 
-* **Constant**: Operand B will use the value set in **Operand B**.
-* **Attribute**: Operand B will read from an attribute on the input data, specified by **Operand B (Attr)**.
+If "Compare Against" is set to "Attribute", this field specifies which attribute to use for Operand B.
 
-**Operand B (Attr)**
+</details>
 
-_The second string operand, read from an attribute on the input data._
+<details>
 
-Only visible when **Compare Against** is set to **Attribute**. This defines the source of the second string value for comparison.
+<summary><strong>Operand B</strong><br><em>Constant string value for second operand</em></summary>
 
-**Operand B**
+If "Compare Against" is set to "Constant", this field allows you to define the constant string used as Operand B.
 
-_The second string operand, used as a constant value._
+</details>
 
-Only visible when **Compare Against** is set to **Constant**. This sets the fixed string value for Operand B.
+<details>
 
-**Swap Operands**
+<summary><strong>Swap Operands</strong><br><em>Reverse the order of operands</em></summary>
 
-_When enabled, reverses the order of operands before performing the comparison._
+When enabled, swaps the order of Operand A and Operand B in the comparison. This can be helpful for inverting certain logical conditions.
 
-Useful for inverting certain comparisons or changing how "contains" checks are interpreted.
+</details>
 
 #### Usage Example
 
-You have a point cloud with an attribute named `ObjectName` and want to filter points where the object name is longer than 10 characters. Set:
+You want to filter points where a label attribute matches a specific string. Set Operand A to the label attribute name, Operand B to "TargetLabel", and Comparison to "Strictly Equal". This will pass only those points where the label equals "TargetLabel".
 
-* Operand A = `ObjectName`
-* Comparison = `>= (Length)`
-* Compare Against = `Constant`
-* Operand B = `10`
-
-This will pass all points where the length of `ObjectName` is greater than or equal to 10.
+Alternatively, you could use this to filter out points with labels shorter than 5 characters by setting Operand A to a label attribute, Operand B to 5, and using the "Length Equal or Greater" comparison.
 
 #### Notes
 
-* The comparison logic treats empty strings as valid inputs.
-* For locale-aware comparisons, results may vary based on system language settings.
-* When using attribute-based operands, ensure the attributes exist and are of string type in your input data.
-* Combining multiple filter subnodes allows for complex filtering rules.
+* The string comparison is case-sensitive.
+* When comparing lengths, the actual string content does not matter — only the number of characters.
+* For locale-aware comparisons, ensure that your data supports proper localization settings.

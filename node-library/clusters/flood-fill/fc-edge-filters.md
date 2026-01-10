@@ -9,58 +9,38 @@ icon: circle-dashed
 This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Filter edges along which the diffusion can occur.
-
-#### Overview
-
-This subnode defines which edges are valid for use in flood fill operations. It acts as a filter that evaluates whether an edge between two points should be considered when propagating a diffusion process. This is useful for creating controlled, structured diffusion patterns where not all connections between points are allowed.
-
-It connects to the **Edge Filters** input pin of flood fill processing nodes, allowing you to define which edges can be traversed during diffusion.
+> Filters edges along which the diffusion can occur in flood fill operations.
 
 #### How It Works
 
-This subnode evaluates edges in a point cloud to determine if they should be used for diffusion. It uses a collection of point filters to test each edge's validity. For an edge to be considered valid, **all** configured filters must pass the test for that edge. The filters are applied to the points at both ends of the edge.
+This subnode evaluates edges between points in a cluster to determine if they are valid for diffusion. It uses a collection of point filters that are applied to each edge. For an edge to be considered valid, all configured filters must pass for both points involved in the edge.
 
-Each filter operates on the data associated with the two points connected by the edge. If any filter rejects an edge, that edge is excluded from the diffusion process. This allows you to define complex rules about which connections should be allowed, such as filtering based on point attributes like height, color, or custom tags.
-
-<details>
-
-<summary>Inputs</summary>
-
-This node expects a set of point filters to be connected to its input pins. These filters are applied to edges in the point cloud.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-The output is a configuration that defines which edges are valid for diffusion based on the applied filters.
-
-</details>
+The filtering process happens during the flood fill algorithm's candidate evaluation phase. When a new point is being considered as part of the diffusion, this subnode checks if the edge connecting it to its parent point meets the defined criteria. If not, that edge is skipped and the diffusion cannot proceed through it.
 
 #### Configuration
 
-***
+<details>
 
-**Config**
+<summary><strong>Config</strong><br><em>Control Config.</em></summary>
 
-_Control Config._
+Controls general behavior of this filter subnode. This includes settings that define how filters are applied and whether the system should consider source data during evaluation.
 
-Controls general settings related to how this filter operates within the flood fill system.
+</details>
 
-**FilterFactories**
+<details>
 
-_The list of point filters to apply to each edge._
+<summary><strong>Filter Subnodes</strong><br><em>List of point filter subnodes to apply to edge points.</em></summary>
 
-Each connected filter will be evaluated against the points at both ends of an edge. An edge is only considered valid if **all** filters pass for that edge.
+A list of point filter subnodes that will be used to evaluate each point in an edge. All filters must pass for an edge to be valid.
+
+</details>
 
 #### Usage Example
 
-Use this subnode in a flood fill setup where you want to restrict diffusion to specific types of edges. For example, you might connect a "Height Difference" filter to ensure that diffusion only occurs between points with a height difference below a certain threshold. This would prevent diffusion from crossing steep terrain features.
+Use this subnode when you want to restrict flood fill diffusion based on point properties such as height, color, or other attributes. For example, if you're simulating water flow through a terrain, you might use this to prevent water from flowing uphill by filtering out edges where the destination point is higher than the source.
 
 #### Notes
 
-* Multiple filters can be connected to define complex edge validity rules.
-* The order of filters does not matter; all must pass for an edge to be valid.
-* Filters are applied per-edge, so performance depends on the number and complexity of filters used.
+* Multiple filters can be combined to create complex edge filtering logic.
+* The order of filters in the list does not affect evaluation; all filters are applied equally.
+* Performance is optimized when filters are fast and early-out conditions are used.

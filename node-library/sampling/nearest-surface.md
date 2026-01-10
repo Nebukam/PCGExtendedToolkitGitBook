@@ -6,235 +6,320 @@ icon: circle
 # Nearest Surface
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Find the closest point on the nearest collidable surface.
+> Find the closest point on the nearest collidable surface for each input point.
 
-### Overview
+#### How It Works
 
-This node searches for the nearest collidable surface to each input point and returns information about that surface, such as location, normal, and distance. It's useful for snapping points to surfaces, finding collision data, or sampling environment geometry.
+For each input point, this node searches for the nearest collidable surface within a defined range. It performs a raycast or trace from the point in a direction toward potential surfaces and evaluates all hits within that distance. The system then selects the closest valid hit based on collision settings and available data. This process can be constrained to specific actors or include all collidable surfaces in the level.
 
-The node can work with either all collidable surfaces in the world or a specific set of actor references. When using actor references, it expects a point attribute containing paths to actors in the level.
+The node supports optional tagging of points based on whether they successfully sampled a surface or not, and can remove points that fail to sample.
 
-{% hint style="info" %}
-This node uses Unreal's physics system for raycasting and surface queries, so your scene must have proper collision setup.
-{% endhint %}
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Surface Source</strong><br><em>Surface source</em></summary>
 
-* **Main Input** (default): Points to sample
-* **Point Filters** (optional): Filter which points get processed
+Controls which surfaces are considered for sampling.
+
+**Values**:
+
+* **Any surface**: Tests all collidable surfaces within range.
+* **Actor Reference**: Only tests surfaces associated with actors referenced by the "Actor Reference" attribute.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Actor Reference</strong><br><em>Name of the attribute that contains a path to an actor in the level, usually from a GetActorData PCG Node in point mode.</em></summary>
 
-* **Main Output** (default): Points with sampled surface data added as attributes
-* **Filtered Output** (optional): Points that failed to sample, if enabled in settings
+Attribute name containing paths to actors. Only used when "Surface Source" is set to "Actor Reference".
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the node searches for surfaces and what data it outputs.
+<summary><strong>Max Distance</strong><br><em>Search max distance</em></summary>
 
-***
+Maximum distance to search for a surface hit. All hits beyond this distance are ignored.
 
-#### Settings
+</details>
 
-Controls the core sampling behavior and surface selection.
+<details>
 
-**Surface Source**
+<summary><strong>Use Local Max Distance</strong><br><em>Use a per-point maximum distance</em></summary>
 
-_Whether to search all collidable surfaces or only those referenced by actor paths._
+When enabled, uses the value from the "Local Max Distance" attribute instead of the fixed "Max Distance".
 
-* **Any surface**: Searches for collisions against any collidable object in the world
-* **Actor Reference**: Only tests against a list of actors specified by an attribute
+</details>
 
-**Actor Reference Attribute**
+<details>
 
-_Name of the point attribute containing actor references._
+<summary><strong>Local Max Distance</strong><br><em>Use a per-point maximum distance</em></summary>
 
-* Used when "Actor Reference" is selected as Surface Source
-* Should contain paths to actors in the level, typically from a GetActorData node
+Attribute name to read the local max distance from. Only used when "Use Local Max Distance" is enabled.
 
-**Max Distance**
+</details>
 
-_Maximum distance to search for a surface._
+<details>
 
-* Default: 1000 units
-* Points further than this distance will not be sampled
-* Set to a smaller value for better performance
+<summary><strong>Apply Sampling</strong><br><em>Whether and how to apply sampled result directly (not mutually exclusive with output)</em></summary>
 
-**Use Local Max Distance**
+Controls whether and how the sampling results are applied directly to the point data. This can include setting position, rotation, or other properties.
 
-_When enabled, use an attribute to define per-point maximum distances._
+</details>
 
-* If enabled, the Local Max Distance attribute is used instead of the global Max Distance
-* Useful for varying search distances based on point properties
+<details>
 
-**Local Max Distance Attribute**
+<summary><strong>Write Success</strong><br><em>Write whether the sampling was successful or not to a boolean attribute.</em></summary>
 
-_Name of the attribute containing per-point max distance values._
+When enabled, writes a boolean value indicating whether the sampling succeeded for each point.
 
-* Only used when Use Local Max Distance is enabled
-* Should contain numeric values (float or double)
+</details>
 
-**Apply Sampling**
+<details>
 
-_Controls how sampled surface data is applied directly to points._
+<summary><strong>Success Attribute Name</strong><br><em>Name of the 'boolean' attribute to write sampling success to.</em></summary>
 
-* When enabled, applies position, rotation, and scale from the surface to the input point
-* Allows for direct transformation of points based on surface properties
+Name of the boolean attribute to store the sampling success status.
 
-***
+</details>
 
-#### Outputs
+<details>
 
-Controls which surface data gets written as attributes to the output points.
+<summary><strong>Write Location</strong><br><em>Write the sample location.</em></summary>
 
-**Write Success**
+When enabled, writes the sampled surface location as a vector to an attribute.
 
-_When enabled, writes a boolean attribute indicating if sampling was successful._
+</details>
 
-* Creates an attribute named "bSamplingSuccess" by default
-* True if a surface was found within range, false otherwise
+<details>
 
-**Write Location**
+<summary><strong>Location Attribute Name</strong><br><em>Name of the 'vector' attribute to write sampled Location to.</em></summary>
 
-_When enabled, writes the sampled surface location._
+Name of the vector attribute to store the sampled surface location.
 
-* Creates an attribute named "NearestLocation" by default
-* Contains the 3D position of the closest point on the surface
+</details>
 
-**Write LookAt**
+<details>
 
-_When enabled, writes a direction vector from the input point to the surface._
+<summary><strong>Write LookAt</strong><br><em>Write the sample "look at" direction from the point.</em></summary>
 
-* Creates an attribute named "NearestLookAt" by default
-* Useful for orienting objects toward the surface
+When enabled, writes a vector representing the direction from the input point to the sampled surface location.
 
-**Write Normal**
+</details>
 
-_When enabled, writes the surface normal at the sampled point._
+<details>
 
-* Creates an attribute named "NearestNormal" by default
-* Vector perpendicular to the surface at the sampling location
+<summary><strong>LookAt Attribute Name</strong><br><em>Name of the 'vector' attribute to write sampled LookAt to.</em></summary>
 
-**Write Distance**
+Name of the vector attribute to store the look-at direction.
 
-_When enabled, writes the distance from input point to surface._
+</details>
 
-* Creates an attribute named "NearestDistance" by default
-* Can be normalized or scaled using additional options below
+<details>
 
-**Output Normalized Distance**
+<summary><strong>Write Normal</strong><br><em>Write the sampled normal.</em></summary>
 
-_When enabled, outputs a normalized distance between 0 and 1._
+When enabled, writes the surface normal at the sampled point as a vector.
 
-* Normalizes the distance based on Max Distance setting
-* Useful for creating smooth transitions or effects based on proximity
+</details>
 
-**Output OneMinus Distance**
+<details>
 
-_When enabled, subtracts the normalized distance from 1._
+<summary><strong>Normal Attribute Name</strong><br><em>Name of the 'vector' attribute to write sampled Normal to.</em></summary>
 
-* Creates an inverted distance effect (closer = higher value)
-* Useful for fading or blending effects
+Name of the vector attribute to store the surface normal.
 
-**Distance Scale**
+</details>
 
-_Scales the output distance by this factor._
+<details>
 
-* Allows inverting distances using -1
-* Can be used to adjust the magnitude of distance values
+<summary><strong>Write Distance</strong><br><em>Write the sampled distance.</em></summary>
 
-**Write Is Inside**
+When enabled, writes the distance from the input point to the sampled surface location.
 
-_When enabled, writes whether the point is inside a collision volume._
+</details>
 
-* Creates an attribute named "IsInside" by default
-* True if the point is within a solid collision object
+<details>
 
-**Write Actor Reference**
+<summary><strong>Distance Attribute Name</strong><br><em>Name of the 'double' attribute to write sampled distance to.</em></summary>
 
-_When enabled, writes the path to the actor that was sampled._
+Name of the double attribute to store the sampled distance.
 
-* Creates an attribute named "ActorReference" by default
-* Useful for tracking which surface was hit
+</details>
 
-**Write Phys Mat**
+<details>
 
-_When enabled, writes the physical material of the sampled surface._
+<summary><strong>Output Normalized Distance</strong><br><em>Whether to output normalized distance or not</em></summary>
 
-* Creates an attribute named "PhysMat" by default
-* Contains a reference to the physical material used on the surface
+When enabled, outputs a normalized distance value (0-1) based on the maximum search distance.
 
-***
+</details>
 
-#### Tagging & Forwarding
+<details>
 
-Controls how points are tagged and how attributes are forwarded.
+<summary><strong>Output OneMinus Distance</strong><br><em>Whether to do a OneMinus on the normalized distance value</em></summary>
 
-**Attributes Forwarding**
+When enabled, subtracts the normalized distance from 1 (i.e., 1 - normalized\_distance) before applying scale.
 
-_Which actor reference point attributes to forward to the output points._
+</details>
 
-* Only active when Surface Source is set to "Actor Reference"
-* Allows copying attributes from referenced actors to the sampled points
-* Supports include/exclude filters for fine-grained control
+<details>
 
-**Tag If Has Successes**
+<summary><strong>Distance Scale</strong><br><em>Scale factor applied to the distance output; allows to invert it using -1</em></summary>
 
-_When enabled, adds a tag to the output data if any sampling succeeded._
+A scalar value to multiply the distance by. Useful for inverting or scaling the result.
 
-* Adds a tag named "HasSuccesses" by default
-* Useful for conditional processing based on sampling results
+</details>
 
-**Tag If Has No Successes**
+<details>
 
-_When enabled, adds a tag to the output data if no sampling succeeded._
+<summary><strong>Write Is Inside</strong><br><em>Write the inside/outside status of the point.</em></summary>
 
-* Adds a tag named "HasNoSuccesses" by default
-* Useful for identifying areas where no surfaces were found
+When enabled, writes a boolean indicating whether the point is considered inside a surface (e.g., embedded in geometry).
 
-***
+</details>
 
-#### Settings
+<details>
 
-Controls how failed samples are handled.
+<summary><strong>IsInside Attribute Name</strong><br><em>Name of the 'bool' attribute to write sampled point inside or outside the collision.</em></summary>
 
-**Process Filtered Out As Fails**
+Name of the boolean attribute to store whether the point is inside.
 
-_When enabled, treats points that fail filters as failed samples._
+</details>
 
-* If disabled, points that don't pass filters are skipped entirely
-* Default: Enabled to ensure consistent behavior
+<details>
 
-**Prune Failed Samples**
+<summary><strong>Write Actor Reference</strong><br><em>Write the actor reference hit.</em></summary>
 
-_When enabled, removes points that failed to sample from the output._
+When enabled, writes a string path to the actor that was hit by the sampling ray.
 
-* Points with no valid surface within range are discarded
-* Useful for cleaning up invalid data
+</details>
 
-**Process Inside As Failed Samples**
+<details>
 
-_When enabled, treats points inside collision volumes as failed samples._
+<summary><strong>ActorReference Attribute Name</strong><br><em>Name of the 'string' attribute to write actor reference to.</em></summary>
 
-* Points that start inside a solid object are considered failures
-* Useful for ensuring points are always outside surfaces
+Name of the string attribute to store the actor reference path.
 
-**Process Outside As Failed Samples**
+</details>
 
-_When enabled, treats points outside collision volumes as failed samples._
+<details>
 
-* Points that end up outside any valid surface are considered failures
-* Useful when you want to ensure sampling only occurs on actual surfaces
+<summary><strong>Write Phys Mat</strong><br><em>Write the actor reference hit.</em></summary>
+
+When enabled, writes a string path to the physical material of the surface that was hit.
+
+</details>
+
+<details>
+
+<summary><strong>PhysMat Attribute Name</strong><br><em>Name of the 'string' attribute to write actor reference to.</em></summary>
+
+Name of the string attribute to store the physical material reference path.
+
+</details>
+
+<details>
+
+<summary><strong>Attributes Forwarding</strong><br><em>Which actor reference points attributes to forward on points.</em></summary>
+
+Defines which attributes from the referenced actors should be forwarded to the output points. Only used when "Surface Source" is set to "Actor Reference".
+
+</details>
+
+<details>
+
+<summary><strong>Collision Settings</strong><br><em>Collision settings for sampling.</em></summary>
+
+Subnode defining how collision tests are performed (channel, object type, profile, etc.).
+
+</details>
+
+<details>
+
+<summary><strong>Process Filtered Out As Fails</strong><br><em>If enabled, mark filtered out points as "failed". Otherwise, skip the processing altogether. Only uncheck this if you want to ensure existing attribute values are preserved.</em></summary>
+
+When enabled, points that are filtered out by point filters are marked as failed samples.
+
+</details>
+
+<details>
+
+<summary><strong>Prune Failed Samples</strong><br><em>If enabled, points that failed to sample anything will be pruned.</em></summary>
+
+When enabled, points that fail to sample a surface are removed from the output.
+
+</details>
+
+<details>
+
+<summary><strong>Process Inside As Failed Samples</strong><br><em>Consider points that are inside as failed samples.</em></summary>
+
+When enabled, points that are determined to be inside a surface are treated as failed sampling attempts.
+
+</details>
+
+<details>
+
+<summary><strong>Process Outside As Failed Samples</strong><br><em>Consider points that are outside as failed samples.</em></summary>
+
+When enabled, points that are determined to be outside the collision bounds are treated as failed sampling attempts.
+
+</details>
+
+<details>
+
+<summary><strong>Tag If Has Successes</strong><br><em>Tag points that have at least one successful sample.</em></summary>
+
+When enabled, adds a tag to points that successfully sampled at least once.
+
+</details>
+
+<details>
+
+<summary><strong>Has Successes Tag</strong><br><em>Tag name for points with successes.</em></summary>
+
+Name of the tag to apply to points that have at least one successful sample.
+
+</details>
+
+<details>
+
+<summary><strong>Tag If Has No Successes</strong><br><em>Tag points that have no successful samples.</em></summary>
+
+When enabled, adds a tag to points that failed to sample any surface.
+
+</details>
+
+<details>
+
+<summary><strong>Has No Successes Tag</strong><br><em>Tag name for points with no successes.</em></summary>
+
+Name of the tag to apply to points that have no successful samples.
+
+</details>
+
+#### Usage Example
+
+1. **Snap Points to Ground**: Use this node to snap a set of points (e.g., placed randomly in the air) to the nearest ground surface.
+   * Set "Surface Source" to "Any surface".
+   * Set "Max Distance" to a value like `500`.
+   * Enable "Write Location" and "Write Normal".
+   * Optionally enable "Apply Sampling" to directly move points to the sampled location.
+2. **Align Objects to Terrain**: Place objects at the surface of terrain or other collidable geometry.
+   * Use a "GetActorData" node with point mode to assign actor references to points.
+   * Set "Surface Source" to "Actor Reference".
+   * Configure the "ActorReference" attribute name accordingly.
+   * Enable "Write Location", "Write Normal", and "Apply Sampling".
+
+#### Notes
+
+* This node uses multi-threading for sampling operations, making it efficient for large datasets.
+* The "Apply Sampling" option can be used to directly modify point positions or rotations in the graph.
+* When using "Actor Reference" as surface source, ensure that the referenced actors are valid and have collision components.
+* Performance can be affected by high "Max Distance" values or complex geometry. Consider using local max distances for better control.

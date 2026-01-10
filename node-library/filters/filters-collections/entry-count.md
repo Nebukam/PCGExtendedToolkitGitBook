@@ -6,39 +6,35 @@ icon: circle-dashed
 # Entry Count
 
 {% hint style="info" %}
-This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the subnode does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Does a numeric comparison against the number of entries in a data collection.
+> Filters data points based on how many entries they contain.
 
 #### Overview
 
-This filter subnode evaluates whether the number of entries (points or elements) in a data collection meets a specified numeric condition. It's useful for filtering collections based on their size, such as selecting only those with more than a certain number of points or exactly matching a target count.
-
-It connects to **Filter** pins on processing nodes that accept point-based filters. You can chain multiple filter subnodes together to apply complex conditions.
+This subnode selects data points by checking whether the number of entries they contain meets specific criteria. For example, you can choose to keep only those points that have exactly 5 entries or more than 10 entries. You can compare the entry count against either a fixed number or a value from an attribute on the point.
 
 {% hint style="info" %}
-Connects to Filter pins on processing nodes.
+Connects to **Filter** pins on processing nodes.
 {% endhint %}
 
 #### How It Works
 
-This filter evaluates the number of entries in a data collection against a target value using a comparison operator. The number of entries is typically the count of points in a point IO or elements in a data collection.
+This subnode evaluates whether the number of entries in each data point matches a specified condition. It compares the entry count of each point against a target value using a comparison operator. The comparison can be strict (e.g., equal to) or approximate (e.g., nearly equal), and it supports both fixed values and attribute-based values for the comparison operand.
 
-The logic works as follows:
+The subnode first determines what value to compare against:
 
-1. It reads the entry count from the input data.
-2. It retrieves the comparison operand (Operand B), which can be either a constant value or an attribute from the input data.
-3. It performs a numeric comparison between the entry count and the operand using the selected operator.
-4. If the comparison evaluates to true, the data passes the filter; otherwise, it is filtered out.
+* If set to **Constant**, it uses the fixed number provided in the **Operand B** setting.
+* If set to **Attribute**, it reads a numeric value from an attribute on the input point and uses that as the comparison operand.
 
-The result depends on the chosen comparison type (e.g., greater than, equal to, nearly equal) and whether tolerance is used for floating-point comparisons.
+Then, it applies the selected comparison operator (e.g., greater than, equal to) between the entry count and the operand. If the condition is met, the point passes the filter.
 
 <details>
 
 <summary>Inputs</summary>
 
-Expects a point IO or data collection with an entry count to evaluate.
+Expects a collection of data points, each containing a variable number of entries.
 
 </details>
 
@@ -46,73 +42,74 @@ Expects a point IO or data collection with an entry count to evaluate.
 
 <summary>Outputs</summary>
 
-Returns filtered data based on the comparison result.
+Points that pass the comparison test are included in the output.
 
 </details>
 
 #### Configuration
 
-***
+<details>
 
-**Comparison**
+<summary><strong>Comparison</strong><br><em>Comparison operator to use.</em></summary>
 
-_The operator used to compare the entry count against Operand B._
-
-Determines how the filter evaluates whether to pass or fail a collection. For example, using "Greater Than" will only allow collections with more than the specified number of entries.
+Controls how the entry count is compared to the operand.
 
 **Values**:
 
-* **Strictly Equal**: Entry count must exactly match Operand B.
-* **Strictly Not Equal**: Entry count must not exactly match Operand B.
-* **Equal Or Greater**: Entry count must be greater than or equal to Operand B.
-* **Equal Or Smaller**: Entry count must be less than or equal to Operand B.
-* **Strictly Greater**: Entry count must be strictly greater than Operand B.
-* **Strictly Smaller**: Entry count must be strictly smaller than Operand B.
-* **Nearly Equal**: Entry count must be approximately equal to Operand B, within tolerance.
-* **Nearly Not Equal**: Entry count must not be approximately equal to Operand B, outside tolerance.
+* **==**: Strictly equal
+* **!=**: Strictly not equal
+* **>=**: Equal or greater than
+* **<=**: Equal or smaller than
+* **>**: Strictly greater than
+* **<**: Strictly smaller than
+* **\~=**: Nearly equal (within tolerance)
+* **!\~=**: Nearly not equal (outside tolerance)
 
-**Compare Against**
+</details>
 
-_Determines whether Operand B is a constant or an attribute value._
+<details>
 
-Controls how the comparison operand is sourced. If set to "Attribute", the filter reads the value from an input attribute instead of using a fixed number.
+<summary><strong>Compare Against</strong><br><em>Type of operand to compare against.</em></summary>
+
+Determines whether the comparison value is a fixed number or read from an attribute.
 
 **Values**:
 
-* **Constant**: Use a fixed numeric value for Operand B.
-* **Attribute**: Read Operand B from an attribute on the input data.
+* **Constant**: Use a fixed number from the **Operand B** setting.
+* **Attribute**: Read the comparison value from an attribute on the input point.
 
-**Operand B (Attr)**
+</details>
 
-_The attribute used as the comparison operand when Compare Against is set to "Attribute"._
+<details>
 
-This setting only appears when "Compare Against" is set to "Attribute". It specifies which attribute to read the comparison value from.
+<summary><strong>Operand B</strong><br><em>Fixed value to compare entry count against.</em></summary>
 
-**Operand B**
+The numeric value used for comparison when **Compare Against** is set to **Constant**. Must be a non-negative integer.
 
-_The numeric value used for comparison when Compare Against is set to "Constant"._
+</details>
 
-This is the fixed number that the entry count is compared against. The minimum allowed value is 0.
+<details>
 
-**Tolerance**
+<summary><strong>Operand B (Attr)</strong><br><em>Attribute to read the comparison value from.</em></summary>
 
-_Tolerance used for near-equality comparisons._
+The attribute whose value will be used for comparison when **Compare Against** is set to **Attribute**. The attribute must contain numeric data.
 
-Only applies when using "Nearly Equal" or "Nearly Not Equal" comparisons. Defines how close the entry count must be to Operand B to be considered equal.
+</details>
+
+<details>
+
+<summary><strong>Tolerance</strong><br><em>Near-equality tolerance.</em></summary>
+
+Used only when the comparison operator is **Nearly Equal** or **Nearly Not Equal**. Defines how close the values need to be to be considered equal or not equal.
+
+</details>
 
 #### Usage Example
 
-You have a collection of points representing trees, and you want to only process groups that contain exactly 5 trees. You would set:
-
-* **Comparison** to "Strictly Equal"
-* **Compare Against** to "Constant"
-* **Operand B** to `5`
-
-Alternatively, if you want to filter collections with more than 10 entries, set:
-
-* **Comparison** to "Strictly Greater"
-* **Operand B** to `10`
+You're generating a set of points representing cities, and each city has a variable number of roads entering it. You want to keep only those cities that have exactly 4 roads entering them. Set **Compare Against** to **Constant**, **Operand B** to `4`, and **Comparison** to **==**. This will filter out all cities except those with exactly 4 entries.
 
 #### Notes
 
-This filter is useful for filtering collections based on their size. It can be combined with other filters to create complex selection criteria. When using attribute-based operands, ensure the attribute exists and contains valid numeric data.
+* The entry count refers to the number of data items (e.g., roads, connections) associated with a point.
+* When using **Attribute** for comparison, ensure that the attribute exists and contains valid numeric values.
+* For approximate comparisons, consider the tolerance value carefully to avoid unintended filtering.

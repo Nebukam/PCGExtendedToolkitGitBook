@@ -9,32 +9,39 @@ icon: circle-dashed
 This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Dot product comparison of connected edges against themselves. Mostly useful on binary nodes only.
+> Filters points based on the angle between edges connected to a node using dot product comparison.
 
 #### Overview
 
-This filter evaluates the angle between edges connected to a vertex (node) using dot products. It's primarily designed for binary nodes — those with exactly two connected edges. For nodes with fewer or more edges, it uses fallback behavior to determine whether they pass or fail the filter.
+This filter evaluates the angular relationship between edges connected to each node in a graph. It's primarily useful for binary nodes — those with exactly two edges — where it compares the direction of these edges using a dot product. For leaf nodes (with only one edge) or complex nodes (with more than two edges), fallback behaviors are used to determine whether they pass or fail the filter.
 
-This subnode is useful when you want to define rules based on angular relationships between connected edges in a graph structure, such as filtering sharp turns or straight paths in procedural road networks or branching structures.
+This subnode connects to Filter pins on processing nodes that operate on graph vertices, allowing you to selectively include or exclude nodes based on their edge angles.
 
 {% hint style="info" %}
-Connects to **Filter** pins on processing nodes that accept vertex filters.
+Connects to **Filter** pins on processing nodes.
 {% endhint %}
 
 #### How It Works
 
-This filter calculates the angle between two edges that connect to a node by computing their dot product. The dot product is then compared against a threshold value using configurable comparison logic.
+This filter computes the angle between edges connected to a node by taking the dot product of their normalized directions. For binary nodes (two edges), it compares this dot product against a threshold defined in the settings.
 
-For binary nodes (with exactly two connected edges), it computes the angle between those two edges and evaluates whether that angle meets the specified condition (e.g., greater than 45 degrees). For leaf nodes (single edge) or complex nodes (more than two edges), it returns either a pass or fail based on the configured fallback behavior.
+* If the node has exactly two edges, it calculates the dot product of the two edge vectors and evaluates whether that value meets the comparison criteria.
+* If the node is a leaf (one edge) or non-binary (more than two edges), the filter returns either `Pass` or `Fail` based on the configured fallback settings.
+* The result can be inverted using the invert toggle, which also affects the fallback behavior.
 
-The filter supports inverting its result, which also affects how fallbacks are interpreted. It does not directly modify data but instead defines a condition that can be used to determine whether a node should be included or excluded from further processing.
+The dot product of two normalized vectors ranges from -1 to 1:
+
+* A value of 1 means the vectors are aligned (0° angle).
+* A value of -1 means they are opposite (180° angle).
+* A value of 0 means they are perpendicular (90° angle).
+
+This allows you to define conditions like "edges are nearly parallel" or "edges are nearly perpendicular" using comparison operators.
 
 <details>
 
 <summary>Inputs</summary>
 
-* Vertex (Node) data
-* Edge data connecting vertices
+Expects a graph data input with nodes and edges. It operates on vertex data associated with each node in the graph.
 
 </details>
 
@@ -42,67 +49,60 @@ The filter supports inverting its result, which also affects how fallbacks are i
 
 <summary>Outputs</summary>
 
-* Boolean result per vertex indicating pass/fail based on angle comparison
+Returns filtered results based on whether each node's edge angle meets the defined criteria. Nodes that pass the filter are included; those that fail are excluded.
 
 </details>
 
 #### Configuration
 
-***
+<details>
 
-**LeavesFallback**
+<summary><strong>LeavesFallback</strong><br><em>What should this filter return when dealing with leaf nodes? (nodes that only have one edge)</em></summary>
 
-_What should this filter return when dealing with leaf nodes? (nodes that only have one edge)_
-
-When a node has only one connected edge, the filter cannot compute an angle between two edges. This setting determines whether such nodes are considered to pass or fail the filter.
+Controls behavior for nodes with only one connected edge.
 
 **Values**:
 
-* **Pass**: Leaf nodes will be included in the filtered result.
-* **Fail**: Leaf nodes will be excluded from the filtered result.
+* **Pass**: Nodes with one edge will be considered to pass the filter.
+* **Fail**: Nodes with one edge will be considered to fail the filter.
 
-***
+</details>
 
-**NonBinaryFallback**
+<details>
 
-_What should this filter return when dealing with complex, non-binary nodes? (nodes that have more than two edges)_
+<summary><strong>NonBinaryFallback</strong><br><em>What should this filter return when dealing with complex, non-binary nodes? (nodes that have more than two edges)</em></summary>
 
-When a node has more than two connected edges, the filter cannot compute a meaningful angle between two edges. This setting determines whether such nodes are considered to pass or fail the filter.
+Controls behavior for nodes with more than two connected edges.
 
 **Values**:
 
-* **Pass**: Complex nodes will be included in the filtered result.
-* **Fail**: Complex nodes will be excluded from the filtered result.
+* **Pass**: Nodes with more than two edges will be considered to pass the filter.
+* **Fail**: Nodes with more than two edges will be considered to fail the filter.
 
-***
+</details>
 
-**DotComparisonDetails**
+<details>
 
-_Dot comparison settings_
+<summary><strong>DotComparisonDetails</strong><br><em>Dot comparison settings</em></summary>
 
-This controls how the dot product of edge vectors is compared against a threshold. It includes options for comparison type (e.g., greater than, equal to) and the threshold value itself.
+Settings that define how the dot product result is compared against a threshold.
 
-***
+</details>
 
-**bInvert**
+<details>
 
-_Whether the result of the filter should be inverted or not. Note that this will also invert fallback results!_
+<summary><strong>bInvert</strong><br><em>Whether the result of the filter should be inverted or not. Note that this will also invert fallback results!</em></summary>
 
-When enabled, the pass/fail behavior of the filter is reversed. That is, nodes that would normally pass now fail, and vice versa. This also applies to fallback behaviors.
+When enabled, the output of the filter is flipped — what would normally pass now fails, and vice versa.
+
+</details>
 
 #### Usage Example
 
-Use this filter in a graph-based procedural generation setup where you want to identify straight paths or sharp turns. For instance:
-
-* Set `LeavesFallback` to **Fail** so leaf nodes (dead ends) are excluded.
-* Set `NonBinaryFallback` to **Fail** so branching points with more than two edges are not included.
-* Configure the dot comparison to require that the angle between connected edges is greater than 90 degrees, effectively filtering for sharp turns.
-
-This configuration would let you isolate only nodes where edges form acute angles — useful for creating winding paths or detecting corners in a terrain mesh.
+Use this subnode to filter nodes where edges are aligned in a specific way. For instance, you might want to keep only nodes where two connected edges form an angle close to 90 degrees (i.e., nearly perpendicular). Configure the comparison to test if the dot product is near zero, and set fallbacks to `Fail` for leaf or non-binary nodes.
 
 #### Notes
 
-* This filter works best on binary nodes (nodes with exactly two connected edges).
-* For leaf or complex nodes, the fallback behavior is applied.
-* The dot product comparison can be used to detect various angular relationships such as straight lines, sharp turns, or wide angles.
-* Inverting the result allows for filtering out specific angular configurations instead of including them.
+* This filter works best on binary nodes. On leaf or complex nodes, it uses fallback behavior.
+* The invert toggle affects both regular filtering and fallback results.
+* Dot product comparisons are sensitive to vector normalization — ensure edge directions are normalized if needed.

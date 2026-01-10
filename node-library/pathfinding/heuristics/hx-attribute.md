@@ -6,110 +6,95 @@ icon: circle-dashed
 # HX : Attribute
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Read a vertex or edge attribute as an heuristic value.
+> Reads vertex or edge attributes and uses them as heuristic values for pathfinding.
 
-### Overview
+#### How It Works
 
-This node reads a numeric attribute from either points or edges in your cluster and uses it as a heuristic score for pathfinding operations. It's useful when you want to influence pathfinding behavior based on pre-computed data like terrain difficulty, cost, or other measurable properties.
+This node evaluates attribute values from either points or edges in your data and converts them into scores that influence how pathfinding algorithms make decisions. It can automatically determine the range of values in the attribute, or you can define your own range for consistent results. The final score is then passed to pathfinding nodes so they can use it when calculating the best route.
 
-The node supports three modes of operation: automatically normalizing the attribute values using existing min/max, manually specifying min/max for normalization, or using the raw attribute value directly (with caution). You can also define a fallback value when normalization fails.
-
-{% hint style="info" %}
-This node is designed to work with pathfinding nodes. It defines how to interpret a numeric attribute as a cost or preference score during path evaluation.
-{% endhint %}
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Mode</strong><br><em>Specify how to deal with the attribute value.</em></summary>
 
-* **Heuristics** (optional): Input heuristics data, if used in a chain.
+Controls how the attribute value is interpreted and converted into a heuristic score.
+
+**Values**:
+
+* **Auto Curve**: Automatically normalize using the actual minimum and maximum values found in the attribute.
+* **Manual Curve**: Normalize using custom minimum and maximum values you provide.
+* **Raw**: Use the raw attribute value directly as the score. Use with caution.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Source</strong><br><em>Read the data from either vertices or edges.</em></summary>
 
-* **Heuristics**: Output heuristic data that can be consumed by pathfinding nodes.
+Determines whether to read the attribute from point (vertex) data or edge data.
+
+**Values**:
+
+* **Point**: Read attribute from the point being evaluated.
+* **Edge**: Read attribute from the edge connecting to the point being evaluated.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the attribute value is interpreted and processed for pathfinding.
+<summary><strong>Attribute</strong><br><em>Attribute to read modifier value from.</em></summary>
 
-***
+The name of the attribute to use for heuristic calculation. This should be a numeric attribute present in your data.
 
-#### General
+</details>
 
-Specifies how to read and interpret the attribute data.
+<details>
 
-**Input Mode**
+<summary><strong>InMin</strong><br><em>If enabled, will use this value as input min remap reference instead of the one found on the attribute.</em></summary>
 
-_Controls how the attribute value is converted into a score._
+The minimum value used for normalization when **Mode** is set to **Manual Curve**. Only active if **Mode** is **Manual Curve**.
 
-* Determines whether to automatically normalize using existing min/max, manually set min/max, or use raw values.
-* When using **Auto Curve**, the node will sample the curve using normalized values from the attribute's actual min and max.
-* When using **Manual Curve**, you define the min and max range for normalization.
-* When using **Raw**, the attribute value is used directly as a score.
+</details>
 
-**Values**:
+<details>
 
-* **Auto Curve**: Automatically sample the curve using normalized value from existing min/max input.
-* **Manual Curve**: Sample the curve using normalized value from manual min/max values.
-* **Raw**: Use raw attribute as score. Use at your own risks!
+<summary><strong>InMax</strong><br><em>If enabled, will use this value as input max remap reference instead of the one found on the attribute.</em></summary>
 
-**Source**
+The maximum value used for normalization when **Mode** is set to **Manual Curve**. Only active if **Mode** is **Manual Curve**.
 
-_Specifies whether to read the attribute from points or edges._
+</details>
 
-* When set to **Vtx**, the node reads the attribute from the point being evaluated.
-* When set to **Edge**, it reads the attribute from the edge connecting to the point.
+<details>
 
-**Values**:
+<summary><strong>bUseCustomFallback</strong><br><em>Enable custom fallback value for normalization edge cases.</em></summary>
 
-* **Point**: Value is fetched from the point being evaluated.
-* **Edge**: Value is fetched from the edge connecting to the point being evaluated.
+When enabled, a custom fallback value is used when the attribute's min and max are equal (e.g., all values are identical), preventing invalid normalization.
 
-**Attribute**
+</details>
 
-_Name of the attribute to read._
+<details>
 
-* This is the numeric attribute that will be used as the heuristic score.
-* The attribute must exist on either points or edges, depending on the **Source** setting.
+<summary><strong>FallbackValue</strong><br><em>Default weight when no valid internal normalization can be made.</em></summary>
 
-**Manual Min**
+The value to use as a fallback when normalization fails due to equal min/max values. Only active if **bUseCustomFallback** is enabled. Value clamped between 0 and 1.
 
-_Manual minimum value for normalization._
+</details>
 
-* Only active when **Input Mode** is set to **Manual Curve**.
-* Defines the lower bound of the range used to normalize the attribute values.
-* For example, if your attribute ranges from 0 to 100 and you set this to 50, then a value of 75 will be normalized to 0.5.
+#### Usage Example
 
-**Manual Max**
+You have a graph representing a terrain with an attribute `Cost` on each edge that indicates how difficult it is to traverse that edge. You want to use this cost as a heuristic in pathfinding, where lower values mean easier traversal.
 
-_Manual maximum value for normalization._
+1. Set **Source** to **Edge**.
+2. Set **Attribute** to `Cost`.
+3. Set **Mode** to **Auto Curve** to automatically normalize the attribute values.
+4. Connect this node to a pathfinding node to use it as a heuristic definition.
 
-* Only active when **Input Mode** is set to **Manual Curve**.
-* Defines the upper bound of the range used to normalize the attribute values.
-* For example, if your attribute ranges from 0 to 100 and you set this to 50, then a value of 25 will be normalized to 0.5.
+#### Notes
 
-**Use Custom Fallback**
-
-_When enabled, defines a custom fallback score._
-
-* If normalization fails (e.g., all points have the same value), this value is used instead.
-* Useful for avoiding undefined behavior when attribute values are constant or invalid.
-
-**Fallback Value**
-
-_Custom fallback score when normalization fails._
-
-* Only active when **Use Custom Fallback** is enabled.
-* Defines the score to use when normalization cannot be performed.
-* Must be between 0 and 1, inclusive.
+* When using **Raw** mode, ensure your attribute values are already in a suitable range for pathfinding (e.g., 0–1).
+* If you're unsure about the min/max values of your attribute, use **Auto Curve** mode to let the system determine them.
+* For consistent behavior, always validate that your attribute contains valid numeric data before using this node.

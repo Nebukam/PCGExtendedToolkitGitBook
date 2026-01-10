@@ -11,136 +11,131 @@ This page was generated from the source code. It should properly capture what th
 
 > Creates a filter definition that compares an attribute numeric value against itself at another index.
 
-#### Overview
-
-This subnode defines a filtering behavior that evaluates whether a point's numeric attribute meets a condition when compared to the same attribute from another point in the data set. It is useful for creating rules based on relationships between points, such as comparing a point's height to its neighbor’s height or checking if a value is greater than the one at an offset index.
-
-This subnode connects to Filter pins on processing nodes that support point filtering. It allows you to define custom logic using numeric comparisons and self-referencing indices.
-
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes.
-{% endhint %}
-
 #### How It Works
 
-This filter evaluates a comparison between two numeric values:
+This subnode evaluates whether a point's numeric attribute meets a comparison condition against the same attribute from another point in the data set. For each input point, it reads a value from Operand A and compares it to a value from Operand B, which is taken from a different point based on an index calculation.
 
-1. The first value (Operand A) is read from the current point's attribute.
-2. The second value (Operand B) is read from another point in the data set, determined by an index offset or pick.
+The process works like this:
 
-The subnode calculates the comparison result and returns whether the condition passes or fails based on that evaluation. It supports multiple comparison types such as equal, not equal, greater than, etc., with a tolerance for floating-point near-equality checks.
+1. It reads the numeric value of Operand A from the current point.
+2. It calculates which other point to compare against using the Index Mode and either a fixed index or an attribute-based index.
+3. If the calculated index is valid, it reads the value of Operand B from that point.
+4. It checks if the comparison between Operand A and Operand B passes the defined condition.
+5. If the comparison passes, the point is included in the output; otherwise, it's excluded.
 
-It uses a configurable index mode to determine which point to compare against:
+The index calculation can be either:
 
-* In **Pick** mode, it directly references a specific index.
-* In **Offset** mode, it calculates the target index by adding an offset to the current point's index.
+* **Pick**: Uses a specific fixed index.
+* **Offset**: Adds an offset value to the current point's index.
 
-Index safety options control how out-of-bounds indices are handled (ignore, tile, clamp, or yoyo).
+Index safety modes determine how invalid indices are handled:
 
-<details>
-
-<summary>Inputs</summary>
-
-Expects a point data input with numeric attributes that can be read for Operand A and Operand B.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-Returns a boolean result indicating whether the current point passes the comparison test.
-
-</details>
+* **Ignore**: Invalid indices are skipped.
+* **Tile**: Wraps around to valid indices.
+* **Clamp**: Clamps invalid indices to the nearest valid one.
+* **Yoyo**: Mirrors invalid indices back and forth.
 
 #### Configuration
 
-***
+<details>
 
-**Operand A**
+<summary><strong>Operand A</strong><br><em>Operand A for testing -- Will be translated to `double` under the hood.</em></summary>
 
-_The attribute to use as the first operand in the comparison._
+The numeric attribute from the current point that will be used as the left-hand side of the comparison.
 
-This is the numeric value from the current point that will be compared against another value. It can be an attribute or a constant.
+</details>
 
-**Comparison**
+<details>
 
-_The type of comparison to perform._
+<summary><strong>Comparison</strong><br><em>Comparison</em></summary>
 
-**Values**:
+The comparison operator to use. Options include:
 
-* **Equal**: The values must be exactly equal.
-* **Not Equal**: The values must not be equal.
+* **Equal**: Values must be exactly equal.
+* **Not Equal**: Values must not be equal.
+* **Nearly Equal**: Values must be within tolerance.
+* **Nearly Not Equal**: Values must differ by more than tolerance.
 * **Greater Than**: Operand A must be greater than Operand B.
+* **Greater Than or Equal**: Operand A must be greater than or equal to Operand B.
 * **Less Than**: Operand A must be less than Operand B.
-* **Greater Or Equal**: Operand A must be greater than or equal to Operand B.
-* **Less Or Equal**: Operand A must be less than or equal to Operand B.
-* **Nearly Equal**: The values are considered equal if they are within the tolerance range.
-* **Nearly Not Equal**: The values are considered not equal if they differ by more than the tolerance.
+* **Less Than or Equal**: Operand A must be less than or equal to Operand B.
 
-**Tolerance**
+</details>
 
-_The tolerance used for near-equality comparisons._
+<details>
 
-Only affects comparisons set to **Nearly Equal** or **Nearly Not Equal**. Defines how close two floating-point numbers must be to be considered equal.
+<summary><strong>Tolerance</strong><br><em>Near-equality tolerance</em></summary>
 
-**Index Mode**
+The tolerance used when comparing values for "Nearly Equal" and "Nearly Not Equal". Only applies if the comparison is set to those options.
 
-_How the index of the second operand is calculated._
+</details>
 
-**Values**:
+<details>
 
-* **Pick**: Use a specific index directly.
-* **Offset**: Add an offset value to the current point's index.
+<summary><strong>Index Mode</strong><br><em>Index mode</em></summary>
 
-**Compare Against**
+How the index of the point to compare against is calculated:
 
-_The source for Operand B's value._
+* **Pick**: Uses a fixed index.
+* **Offset**: Adds an offset value to the current point's index.
 
-**Values**:
+</details>
 
-* **Constant**: Use a fixed integer value as the index.
-* **Attribute**: Read the index from an attribute on the input data.
+<details>
 
-**Index (Attr)**
+<summary><strong>Compare Against</strong><br><em>Type of OperandB</em></summary>
 
-_The attribute used to determine the index when "Compare Against" is set to "Attribute."_
+Whether to use a constant or attribute value for the comparison:
 
-Only visible when Compare Against is set to Attribute. This attribute should contain valid indices for referencing other points in the dataset.
+* **Constant**: Use Index Constant.
+* **Attribute**: Use Index Attribute.
 
-**Index**
+</details>
 
-_The constant index value used when "Compare Against" is set to "Constant."_
+<details>
 
-Only visible when Compare Against is set to Constant. This determines which point's value will be used as Operand B.
+<summary><strong>Index (Attr)</strong><br><em>Const Index value to use according to the selected Index Mode</em></summary>
 
-**Index Safety**
+The attribute used as the index when Compare Against is set to "Attribute".
 
-_How out-of-bounds indices are handled._
+</details>
 
-**Values**:
+<details>
 
-* **Ignore**: Skip points with invalid indices.
-* **Tile**: Wrap around the index using modulo arithmetic.
-* **Clamp**: Clamp the index to the valid range.
-* **Yoyo**: Mirror the index back and forth when exceeding bounds.
+<summary><strong>Index</strong><br><em>Const Index value to use according to the selected Index Mode</em></summary>
 
-**Invalid Index Fallback**
+The fixed index value used when Compare Against is set to "Constant".
 
-_How to treat points where the target index is invalid._
+</details>
 
-**Values**:
+<details>
 
-* **Pass**: Points with invalid indices are considered to pass the filter.
-* **Fail**: Points with invalid indices are considered to fail the filter.
+<summary><strong>Index Safety</strong><br><em>Index safety</em></summary>
+
+How invalid indices are handled:
+
+* **Ignore**: Invalid indices are ignored.
+* **Tile**: Wraps around to valid indices.
+* **Clamp**: Clamps invalid indices to the nearest valid one.
+* **Yoyo**: Mirrors invalid indices back and forth.
+
+</details>
+
+<details>
+
+<summary><strong>Invalid Index Fallback</strong><br><em>How to deal with invalid indices</em></summary>
+
+What happens when an index is invalid:
+
+* **Pass**: Invalid indices are treated as passing the filter.
+* **Fail**: Invalid indices are treated as failing the filter.
+
+</details>
 
 #### Usage Example
 
-You want to filter points so that only those whose height is greater than the height of the point at an offset index (e.g., 5 positions ahead) are kept. Set Operand A to a "Height" attribute, Comparison to Greater Than, Index Mode to Offset, and Index Constant to 5.
+You want to filter points so that only those whose height attribute is greater than the height of the point at index 5. Set Operand A to a height attribute, Comparison to "Greater Than", Index Mode to "Pick", and Index Constant to 5. This will keep only points where their own height exceeds that of the point at index 5.
 
 #### Notes
 
-* This subnode compares values from the same attribute but across different points.
-* The index used for comparison can be constant or dynamic via an attribute.
-* Be cautious with large offsets or non-clamped indices, as they may cause unexpected behavior in datasets with fewer points.
-* For floating-point comparisons, use Near Equal/Not Equal with a defined tolerance to avoid precision errors.
+This filter is useful for creating spatial or sequential dependencies in procedural generation. Be careful with index safety settings when using offsets, as they can lead to unexpected behavior if not properly constrained.

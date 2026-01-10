@@ -1,5 +1,6 @@
 ---
 description: 'Topology : Toggle'
+hidden: true
 icon: circle
 ---
 

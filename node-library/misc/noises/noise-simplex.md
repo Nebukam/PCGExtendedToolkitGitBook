@@ -5,87 +5,72 @@ icon: circle-dashed
 # Noise : Simplex
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates procedural gradient noise using Ken Perlin's improved simplex algorithm. This noise type produces smooth, natural-looking variations that are efficient to compute.
+> Generates high-quality, efficient gradient noise using Ken Perlin's Simplex algorithm.
 
-### Overview
+#### How It Works
 
-This factory generates 3D gradient noise values for use in procedural content generation. It's designed to create organic patterns like terrain heightmaps, displacement effects, or surface variations.
+This subnode creates a noise operation based on Ken Perlin's Simplex algorithm. The algorithm works by:
 
-{% hint style="info" %}
-Connects to **Noise** input pins on nodes that require procedural noise sampling
-{% endhint %}
+1. Creating a grid of random gradients at lattice points in 3D space
+2. For each input point, determining which grid cells it lies between
+3. Computing the contribution from each corner of the surrounding cell
+4. Combining these contributions using smooth interpolation
 
-### How It Works
+The fractal nature is achieved through multiple octaves:
 
-Simplex noise is an improvement over classic Perlin noise that produces smoother transitions with lower computational cost. It generates continuous noise values that vary gradually across 3D space, making it ideal for creating natural-looking patterns.
+* Each octave increases frequency (Lacunarity) and decreases amplitude (Persistence)
+* The final value is a weighted sum of all octaves
+* This creates natural-looking terrain-like patterns with fine detail
 
-The algorithm uses a combination of octaves (layers) to build complexity:
+The noise pattern is continuous and differentiable, meaning there are no sharp transitions or artifacts in the output.
 
-* Each octave adds finer detail
-* Lacunarity controls how much frequency increases per octave
-* Persistence controls how much amplitude decreases per octave
+#### Configuration
 
-### Configuration
+<details>
 
-***
+<summary><strong>Octaves</strong><br><em>Number of fractal octaves.</em></summary>
 
-#### General
+Controls how many layers of noise are combined. Each octave adds finer detail to the pattern. Higher values create more complex, detailed patterns but require more computation.
 
-**Octaves**
+**Range:** 1 to 16
 
-_Number of noise layers to combine._
+</details>
 
-Controls the level of detail in the noise pattern. More octaves create more complex, detailed patterns.
+<details>
 
-* **1** - Smooth, simple noise (good for large-scale variations)
-* **4** - Medium complexity (good for terrain features)
-* **8** - High detail (good for fine surface textures)
+<summary><strong>Lacunarity</strong><br><em>Frequency multiplier per octave.</em></summary>
 
-**Lacunarity**
+Controls how much the frequency increases with each octave. Higher values create more "zoomed-in" patterns. A value of 2.0 doubles the frequency at each octave.
 
-_Frequency multiplier per octave._
+**Range:** 1.0 to 4.0
 
-Controls how quickly the frequency increases between octaves. Higher values create more rapid changes in pattern detail.
+</details>
 
-* **2.0** - Standard progression (default)
-* **1.5** - Slower frequency increase (smoother transitions)
-* **4.0** - Fast frequency increase (more chaotic patterns)
+<details>
 
-**Persistence**
+<summary><strong>Persistence</strong><br><em>Amplitude multiplier per octave.</em></summary>
 
-_Amplitude multiplier per octave._
+Controls how much each octave contributes to the final result. Lower values make higher octaves less influential. A value of 0.5 halves the amplitude at each octave.
 
-Controls how much each octave contributes to the final result. Lower values make higher octaves less influential.
+**Range:** 0.0 to 1.0
 
-* **0.5** - Standard persistence (default)
-* **0.25** - Subtle high-frequency details
-* **0.75** - Stronger high-frequency components
+</details>
 
-### Usage Example
+#### Usage Example
 
-Use this noise factory to create terrain heightmaps by connecting it to a **Noise** pin on a **Point** or **Mesh** node. For example:
+Use this subnode to create terrain variation:
 
-1. Connect the Noise : Simplex factory to a **Noise** input
-2. Set Octaves to 6 for detailed terrain features
-3. Set Lacunarity to 2.0 and Persistence to 0.5 for natural-looking variation
-4. Use the output to drive height or displacement properties
+1. Connect it to a "Noise" pin on a node like "Point Noise"
+2. Set Octaves to 4 for detailed terrain features
+3. Set Lacunarity to 2.0 and Persistence to 0.5 for natural-looking hills and valleys
+4. Sample the noise at point locations to drive height or color variation
 
-### Notes
+#### Notes
 
-* Simplex noise is ideal for creating organic, natural-looking patterns
-* Combine multiple noise sources using different blend modes for complex effects
-* Lower octave counts work well for large-scale features like continents or terrain baselines
-* Higher octave counts are better for fine details like surface textures or small-scale variations
-
-### Inputs
-
-* **Noise** - Input pin for connecting to nodes that require procedural noise sampling
-
-### Outputs
-
-* **Noise** - Output pin that provides the generated noise values for use in downstream nodes
+* Simplex noise produces continuous, smooth results with no visible grid artifacts
+* Higher octave counts create more complex patterns but may impact performance
+* The combination of Lacunarity and Persistence controls the balance between large-scale and fine-scale features
+* This noise type is particularly effective for creating natural-looking terrain or organic textures

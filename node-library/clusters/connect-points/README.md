@@ -5,156 +5,91 @@ icon: scrubber
 # Connect Points
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Connect points according to a set of probes.
 
-### Overview
+#### Overview
 
-This node creates connections between points in clusters using probe operations, which define how points are linked together. It's useful for generating networks, paths, or relationships between clustered data. The node supports multiple connection strategies and can project points onto 2D planes for more controlled layouts.
+This node establishes connections between points in clusters using probe operations. It allows you to define how points relate to each other by specifying probe behaviors that determine which points are connected. This is useful for generating graphs or networks from clustered point data, such as creating roads between cities, links between nodes in a system, or structural connections in procedural environments.
+
+It takes input points and applies probe-based logic to create edges between them, optionally projecting points onto surfaces or preventing overlapping connections. You can control the output graph structure through various settings related to edge creation and point handling.
 
 {% hint style="info" %}
-The node requires a valid set of probes to function. These are typically created using the "Probe : Factory" node.
+Connects to **Points** inputs. Subnodes: **Probe**, **Filter (Generators)**, **Filter (Connectables)**
 {% endhint %}
 
+#### How It Works
+
+This node processes input points in clusters and uses probe operations to determine how they connect. For each point, it evaluates the defined probes to find potential connections. Probes can be configured to search for nearby points or use specific rules to define relationships.
+
+The system first filters the input points using optional generator and connectable filters. Then, it applies probe operations to generate edges between points based on their spatial relationships or other criteria. These edges are added to a graph builder that constructs the final output structure.
+
+If projection is enabled, points are projected onto surfaces before connection logic is applied. Coincidence prevention ensures that no two points end up at exactly the same location after processing, which helps avoid degenerate cases in the resulting graph.
+
+The node supports multiple types of probe operations:
+
+* Direct connections
+* Chained operations (where one point connects to another through a chain)
+* Shared operations (where multiple points connect to a common target)
+* Global operations (applied across all points)
+
+Each operation type can be configured independently, and their results are combined into a single graph.
+
+#### Configuration
+
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Prevent Coincidence</strong><br><em>When enabled, prevents generated points from overlapping.</em></summary>
 
-* **Points** (Main): Input points to be connected
-* **Probes** (Optional): Probe factory data used to define connection rules
+When enabled, the node ensures that no two output points occupy the exact same location. This helps avoid issues in downstream processing where overlapping points could cause errors or unexpected behavior.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Coincidence Tolerance</strong><br><em>Minimum distance between points to consider them distinct.</em></summary>
 
-* **Vertices**: Output points with new connections
-* **Edges**: Generated edges connecting the points
+Controls how close two points can be before they are considered coincident. A value of 0.001 means that any two points closer than this distance will be treated as overlapping and adjusted to prevent overlap.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how points are connected and processed.
+<summary><strong>Project Points</strong><br><em>When enabled, projects points onto surfaces before connection logic.</em></summary>
 
-***
+When enabled, points are projected onto surfaces (such as terrain or mesh surfaces) before any connection logic is applied. This ensures that connections respect surface geometry.
 
-#### Connection Settings
+</details>
 
-Define how points connect based on probe operations.
+<details>
 
-**Prevent Coincidence**
+<summary><strong>Projection Details</strong><br><em>Settings for projecting points onto surfaces.</em></summary>
 
-_When enabled, prevents multiple connections from being created at the same location._
+Controls how projection is performed, including the axis used for projection and other geometric considerations.
 
-* Avoids overlapping or duplicate connections in the output
-* Useful for avoiding visual clutter in dense networks
+</details>
 
-**Values**:
+<details>
 
-* **Disabled**: Allow connections to overlap
-* **Enabled**: Prevent overlapping connections (default)
+<summary><strong>Cluster Output Settings</strong><br><em>Graph &#x26; Edges output properties.</em></summary>
 
-**Coincidence Tolerance**
+Defines how the resulting graph and edges are structured. Includes options such as edge radius calculation methods and solidification settings.
 
-_Controls how close two connections can be before they are considered coincident._
+</details>
 
-* Only used when "Prevent Coincidence" is enabled
-* Value is in world units, default is 0.001
+#### Usage Example
 
-**Project Points**
+1. Create a set of points representing city locations.
+2. Add a **Probe** subnode to define how cities connect (e.g., nearest neighbor or distance-based).
+3. Optionally add **Filter** subnodes to control which cities can act as generators or targets.
+4. Enable **Project Points** if you want connections to respect terrain elevation.
+5. Connect the node to your graph output to generate a network of city connections.
 
-_When enabled, projects points onto a 2D plane before processing._
+#### Notes
 
-* Can help create cleaner, flatter layouts for networks or graphs
-* Useful for 2D map generation or planar visualization
-
-**Values**:
-
-* **Disabled**: Process points in 3D space (default)
-* **Enabled**: Project points to 2D plane
-
-**Projection Details**
-
-_Configuration for how points are projected onto a 2D plane._
-
-* Only used when "Project Points" is enabled
-* Choose between normal-based or best-fit projection methods
-* Can use local normals from attributes if available
-
-***
-
-#### Graph Output Settings
-
-Controls the structure and properties of the generated graph.
-
-**Cluster Output Settings**
-
-_Settings for how the resulting graph is built._
-
-* Defines how edges are constructed and connected
-* Includes options for edge radius handling and solidification
-* Controls whether edges align to a specific axis (X, Y, or Z)
-
-**Solidification Axis**
-
-_Selects which axis to align edge points along._
-
-* When set to "None", no alignment occurs
-* Useful for creating structured layouts where edges should be aligned along a particular direction
-
-**Values**:
-
-* **None**: No alignment (default)
-* **X**: Align along X axis
-* **Y**: Align along Y axis
-* **Z**: Align along Z axis
-
-**Radius Type**
-
-_Determines how edge radius is calculated._
-
-* Controls the thickness or width of connections in the graph
-* Affects visual appearance and can be used for data visualization
-
-**Values**:
-
-* **Average**: Average of endpoint radii (default)
-* **Lerp**: Interpolated between endpoint radii
-* **Min**: Minimum of endpoint radii
-* **Max**: Maximum of endpoint radii
-* **Fixed**: Use a constant fixed size
-
-**Radius Constant**
-
-_The fixed radius value when "Radius Type" is set to "Fixed"._
-
-* Only used when "Radius Type" is set to "Fixed"
-* Value represents the edge width in world units
-
-**Radius Scale**
-
-_Scales the computed edge radius by a factor._
-
-* Multiplies the calculated radius by this value
-* Useful for adjusting visual thickness of connections
-
-**Edge Solidification**
-
-_Controls how edges are solidified or aligned._
-
-* Can make edges appear more structured or aligned along an axis
-* Helps with creating clean, geometric layouts
-
-### Notes
-
-* This node works best when used with probe factories that define clear connection rules
-* For complex networks, consider using multiple probe operations to create varied connection patterns
-* Projection can significantly change the visual appearance of your graph and is useful for 2D visualization tasks
-* The "Prevent Coincidence" feature helps avoid overlapping connections in dense clusters
-* Performance can be improved by disabling "Project Points" when working with large datasets
+* The node works best with clustered point data where logical relationships exist between points.
+* Projection settings are only effective when "Project Points" is enabled.
+* Coincidence prevention can slightly increase processing time, especially with many points.
+* Probe operations must be carefully configured to avoid excessive or unintended edge creation.

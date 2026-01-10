@@ -6,58 +6,45 @@ icon: circle-dashed
 # Tensor : Null
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a tensor that represents a null field, effectively producing no influence or effect.
+> Creates a tensor that represents a null field, effectively doing nothing.
 
-### Overview
+#### How It Works
 
-This node generates a tensor that has no actual influence on point positioning or transformation. It's useful for creating placeholder tensors in scenarios where you want to define a tensor slot but don't want it to contribute any force or direction. This can be particularly helpful when building conditional tensor setups or when you need a default tensor state.
+This tensor performs no actual computation. When sampled, it returns a zero-weighted result that effectively cancels out any influence from this tensor component. It does not modify point positions or attributes in any way.
+
+The node defines an empty tensor configuration that can be used as part of a larger tensor system. It acts as a placeholder or neutral element within a tensor operation chain, allowing for flexible composition where some effectors may intentionally do nothing.
+
+#### Overview
+
+This node generates a tensor that has no effect on point positions or attributes. It's useful when you want to define a tensor component that contributes nothing to the overall transformation or influence of points in your procedural generation setup. This can be helpful for conditional logic, placeholder tensors, or when you need to disable certain tensor behaviors without removing them from the graph.
+
+This node is typically used as part of a tensor configuration where multiple effectors are combined, and one or more may be intentionally set to null to avoid applying any transformation.
 
 {% hint style="info" %}
-This node is primarily used as a placeholder or default tensor and does not produce any meaningful effect on data.
+Connects to **Tensor Subnode Provider** nodes (e.g., `Create Tensor Null`) via the **Subnode** pin.
 {% endhint %}
 
-<details>
-
-<summary>Inputs</summary>
-
-* **Main Input**: Expects point data to be processed by the tensor operation.
-* **Optional Input**: May accept additional tensor or factory inputs if used in a multi-tensor setup.
-
-</details>
+#### Configuration
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Config</strong><br><em>Tensor properties</em></summary>
 
-* **Main Output**: Returns the same point data with no changes made due to this tensor's influence.
+Controls the settings that define how this null tensor behaves within a tensor system.
+
+This configuration is intentionally minimal, as the node represents a null field with no actual behavior or influence.
 
 </details>
 
-### Properties Overview
+#### Usage Example
 
-Controls how the null tensor behaves within the system.
+Use this node in a tensor setup where you want to conditionally apply or skip certain tensor effectors. For example, you might have a graph that applies different types of tensor forces (e.g., attraction, repulsion, noise) based on some criteria. If a particular condition is not met, you can route the output through this null tensor node to effectively disable that effector without breaking the flow.
 
-***
+#### Notes
 
-#### Tensor Settings
-
-Configures the properties of the null tensor.
-
-**Config**
-
-_The configuration settings for the null tensor._
-
-* This setting defines how the tensor is initialized and behaves.
-* The null tensor will always return zero influence regardless of input parameters.
-* It's used as a default or fallback state in multi-tensor setups.
-
-### Notes
-
-* This node is ideal for use in conditional logic where you might want to disable certain tensors without removing them from the graph.
-* It can be used as a placeholder when building complex tensor networks that require a consistent number of inputs.
-* Since it produces no effect, it's safe to include in production graphs without performance impact.
+* This node is primarily used for composition and conditional logic within tensor systems.
+* It does not produce any data or modify points directly; it only defines a neutral tensor component.
+* Useful in combination with other tensor nodes to create flexible, conditional procedural behaviors.

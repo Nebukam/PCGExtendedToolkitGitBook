@@ -5,66 +5,41 @@ icon: sliders
 # Bidirectional
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> A heuristic factory that defines a bidirectional search algorithm for pathfinding.
+> Performs a bidirectional search algorithm that explores from both the seed and goal simultaneously to find a path.
 
-### Overview
+#### How It Works
 
-This factory creates a search strategy that simultaneously explores the graph from both the starting point (seed) and the target point (goal). It's designed to be connected to the Heuristic pin of pathfinding nodes like **Find Path** or **Find All Paths**. When used, it significantly improves performance for large graphs by reducing the search space.
+The bidirectional search algorithm works by running two simultaneous searches:
+
+1. One from the seed (starting point) toward the goal
+2. One from the goal toward the seed
+
+Each search maintains its own data structures including visited node tracking, cost calculations, and priority queues. The searches continue until they meet at a common node in the graph.
+
+When the forward and backward searches intersect, the algorithm reconstructs the complete path by combining:
+
+* The path from the seed to the meeting point
+* The path from the goal to the meeting point (in reverse)
+
+This approach reduces the number of nodes that need to be explored compared to a single-direction search, especially in large graphs where the branching factor is high. The time complexity improves from O(b^d) to approximately O(b^(d/2)), making it significantly faster for complex scenarios.
+
+#### Configuration
+
+This subnode defines a behavior for pathfinding operations, specifically how to traverse the graph when searching for connections between points. It's designed to be connected to pathfinding processing nodes that require a specific search strategy.
 
 {% hint style="info" %}
-Connects to the Heuristic pin of pathfinding nodes
+Connects to **pathfinding** processing nodes that accept a search algorithm subnode.
 {% endhint %}
 
-### How It Works
+#### Notes
 
-Instead of searching from only one direction (seed to goal), this algorithm searches from both directions at the same time. It maintains two separate searches:
+The bidirectional search is most effective when:
 
-* One starting from the seed node
-* One starting from the goal node
-
-The search continues until the two paths meet somewhere in the middle, then reconstructs the complete path by combining the forward and backward segments.
-
-This approach is particularly effective for large graphs where the branching factor is high, as it reduces the time complexity from O(b^d) to approximately O(b^(d/2)).
-
-### Inputs
-
-* **Seed**: The starting point of the pathfinding operation
-* **Goal**: The target point of the pathfinding operation
-
-### Outputs
-
-* **Path**: The complete bidirectional path from seed to goal, if found
-
-### Configuration
-
-***
-
-#### Search Settings
-
-**Early Exit**
-
-_When enabled, the search stops as soon as a path is found._
-
-Enabling this setting will cause the algorithm to stop searching once it finds any valid path between seed and goal. This can improve performance when you only need one path, but may miss shorter paths if multiple exist.
-
-### Usage Example
-
-Use this factory when:
-
-* You're working with large graphs (e.g., city layouts, complex networks)
-* You want to optimize pathfinding performance
 * The graph has a high branching factor
+* The search space is large
+* You're looking for shortest paths between distant points
 
-Connect it to the Heuristic pin of a **Find Path** node. The algorithm will then search from both seed and goal simultaneously, potentially finding paths much faster than unidirectional approaches.
-
-### Notes
-
-* This factory is most beneficial for large graphs where traditional single-direction searches would be slow
-* It requires more memory than standard pathfinding due to maintaining separate data structures for both directions
-* The bidirectional approach works best when the graph structure allows for efficient mid-point detection
-* For small graphs, the overhead of managing two searches might not provide significant benefits
+Performance gains are most noticeable in complex environments where standard pathfinding would explore many unnecessary nodes.

@@ -6,143 +6,131 @@ icon: circle
 # Mesh to Clusters
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates clusters from mesh topology.
+> Creates clusters from mesh topology by generating points and edges based on the mesh structure.
 
-### Overview
+#### How It Works
 
-This node takes input points and generates clusters based on the topology of a static mesh. It's useful for converting mesh geometry into a graph structure that can be used for further procedural operations like pathfinding, clustering, or spatial analysis. The resulting clusters are built from the mesh vertices and edges, allowing you to work with the mesh's structural data in your PCG workflow.
+This node takes an existing static mesh and converts its geometry into a cluster-based graph. It reads the mesh data and generates points at each vertex, then creates connections (edges) between these points based on how the mesh is structured. The way these connections are made depends on the selected triangulation method.
 
-{% hint style="info" %}
-The node requires a valid static mesh source to generate clusters. You can provide this via a constant value or an attribute on the input points.
-{% endhint %}
+The node can either use a single static mesh asset or read mesh data from an attribute on input points. For each vertex in the mesh, it creates a cluster point. Then, depending on the chosen method, it builds edges between these points to represent the mesh's topology. This allows you to turn existing geometry into procedural graphs for further processing.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Graph Output Type</strong><br><em>Triangulation type used to define how mesh topology is converted into clusters.</em></summary>
 
-* **Source Targets** (Optional): Points that define where clusters are generated from. If not provided, the node will use the default point input.
-* **Mesh Data** (Optional): Input mesh data to extract topology from.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Output Vertices**: Points representing the vertices of the mesh clusters.
-* **Output Edges**: Lines connecting the vertices based on mesh topology.
-* **Graph Output**: Optional graph representation of the mesh structure.
-
-</details>
-
-### Properties Overview
-
-Controls how the mesh is processed and how clusters are generated.
-
-***
-
-#### Mesh Settings
-
-Configures how the mesh topology is interpreted and converted into clusters.
-
-**Graph Output Type**
-
-_Controls how the mesh edges and vertices are connected to form the output graph._
-
-* Determines whether to use raw triangle data, a dual graph, or other topological representations.
-* **Raw Triangles**: Creates a graph from the raw triangle mesh.
-* **Dual Graph**: Uses triangle centroids and adjacency relationships.
-* **Hollow Graph**: Connects centroids to vertices but removes triangle edges.
-* **Boundaries**: Outputs only boundary edges of the mesh.
-
-**Static Mesh Input**
-
-_Specifies how the static mesh is provided to the node._
-
-* **Constant**: Use a fixed static mesh asset.
-* **Attribute**: Read the mesh from an attribute on the input points.
+Controls how the mesh's topology is interpreted when generating clusters.
 
 **Values**:
 
-* **Constant**: Use a single static mesh asset.
-* **Attribute**: Read mesh data from a point attribute.
+* **Raw**: Creates edges from raw triangle faces.
+* **Dual Graph**: Builds a dual graph using triangle centroids and adjacency.
+* **Hollow Graph**: Connects centroids to vertices but removes triangle edges.
+* **Boundaries**: Outputs only boundary edges of the mesh.
 
-**Static Mesh Attribute**
+</details>
 
-_Name of the attribute that contains the static mesh reference._
+<details>
 
-* Only used when "Static Mesh Input" is set to "Attribute".
-* Can be FString, FName, or FSoftObjectPath.
+<summary><strong>Static Mesh Input</strong><br><em>Defines whether the mesh is provided as a constant or read from an attribute.</em></summary>
 
-**Static Mesh Constant**
+Controls how the mesh source is determined.
 
-_The static mesh asset to use when "Static Mesh Input" is set to "Constant"._
+**Values**:
 
-* This is the actual mesh asset that will be processed.
-* Example: A cube or sphere mesh from your content folder.
+* **Constant**: Uses the value set in the Static Mesh Constant property.
+* **Attribute**: Reads the mesh from the input points using the Static Mesh Attribute name.
 
-**Attribute Handling**
+</details>
 
-_Determines how to interpret the mesh attribute data._
+<details>
 
-* **StaticMesh Soft Path**: Treats the attribute as a soft path to a static mesh.
+<summary><strong>Static Mesh Attribute</strong><br><em>Name of the attribute to read the mesh from when using attribute input.</em></summary>
+
+The name of the attribute in the input points that contains the mesh data.
+
+</details>
+
+<details>
+
+<summary><strong>Static Mesh Constant</strong><br><em>The static mesh to use when using constant input.</em></summary>
+
+The actual static mesh asset used when Static Mesh Input is set to Constant.
+
+</details>
+
+<details>
+
+<summary><strong>Attribute Handling</strong><br><em>How to interpret the mesh attribute data.</em></summary>
+
+Defines how to process the mesh path or reference from the attribute.
+
+**Values**:
+
+* **StaticMesh Soft Path**: Interprets the attribute as a soft path to a static mesh.
 * **Actor Reference**: Interprets the attribute as an actor reference to extract primitive data from.
 
-#### Transform Settings
+</details>
 
-Controls how the generated clusters are positioned and oriented in space.
+<details>
 
-**Transform Details**
+<summary><strong>Transform Details</strong><br><em>How transforms are applied or inherited for the generated clusters.</em></summary>
 
-_Configures how the output points inherit transform properties._
+Controls how the transform of each cluster point is determined based on the input points and mesh data.
 
-* Defines how position, rotation, and scale are applied to the cluster points.
-* Can be used to align clusters with the original mesh or apply custom transformations.
+</details>
 
-#### Import Settings
+<details>
 
-Determines which data from the static mesh is imported onto the generated points.
+<summary><strong>Import Details</strong><br><em>Which data from the static mesh should be imported onto the generated points.</em></summary>
 
-**Import Details**
+Defines which properties like normals, UVs, or custom attributes are copied from the mesh to the output points.
 
-_Specifies which mesh data should be imported onto the output points._
+</details>
 
-* Controls whether vertex colors, UVs, and other mesh attributes are copied.
-* **Vertex Color**: Import vertex color data.
-* **UVs**: Import UV coordinate data.
-* **UV Channels Mapping**: Define how UV channels map to output attributes.
+<details>
 
-**Ignore Mesh Warnings**
+<summary><strong>Ignore Mesh Warnings</strong><br><em>Skip invalid meshes and do not throw warnings about them.</em></summary>
 
-_When enabled, invalid meshes will be skipped without logging warnings._
+When enabled, invalid or missing meshes will be skipped without logging a warning.
 
-* Useful for large datasets where some meshes might be missing or invalid.
-* Prevents cluttering the log with warnings about missing assets.
+</details>
 
-#### Graph Output Settings
+<details>
 
-Configures the structure and properties of the generated graph data.
+<summary><strong>Cluster Output Settings</strong><br><em>Graph &#x26; Edges output properties. Only available if bPruneOutsideBounds as it otherwise generates a complete graph.</em></summary>
 
-**Graph Builder Details**
+Controls how the graph and edges are built for the output clusters.
 
-_Specifies how to build the output graph from the mesh topology._
+</details>
 
-* Controls edge creation, node connections, and graph properties.
-* Only active when pruning outside bounds is enabled.
-* Allows for fine-tuning of graph structure and performance.
+<details>
 
-#### Forwarding Settings
+<summary><strong>Attributes Forwarding</strong><br><em>Which input points attributes to forward on clusters. NOTE : Not implemented</em></summary>
 
-Controls which input point attributes are passed through to the output clusters.
+Currently not implemented. This setting has no effect.
 
-**Attributes Forwarding**
+</details>
 
-_Specifies which point attributes should be forwarded to the output._
+{% hint style="info" %}
+This node connects to \*\*Points\*\* processing pins. Subnodes: - \*\*GraphBuilderDetails\*\*: Configures how the graph is built and edges are generated. - \*\*ImportDetails\*\*: Controls which data from the mesh is imported onto the output points. - \*\*TransformDetails\*\*: Defines how transforms are inherited or applied to the generated clusters.
+{% endhint %}
 
-* Currently not implemented in this version.
-* Future versions may support attribute forwarding from input points to generated clusters.
+#### Usage Example
+
+1. Create a set of points that define where you want to generate clusters.
+2. Connect a static mesh asset to the node using the "Static Mesh Constant" input.
+3. Set the "Graph Output Type" to "Raw Triangles" to generate edges between all triangle vertices.
+4. Optionally, enable "Import Details" to copy mesh data like normals or UVs onto the output points.
+5. Connect the output points and graph edges to downstream processing nodes for further manipulation.
+
+#### Notes
+
+* The node supports multiple triangulation methods to define how the mesh topology is interpreted.
+* If using attribute input, ensure that the specified attribute contains valid mesh references.
+* The node can be used to generate procedural graphs from existing geometry.
+* Performance may vary depending on the complexity of the source mesh and the selected triangulation type.

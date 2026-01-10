@@ -6,92 +6,87 @@ icon: circle-dashed
 # Tensor : Flow
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a tensor that represents a vector/flow field, where each point contributes a directional influence.
+> Creates a tensor that represents a vector/flow field based on point directions.
 
-### Overview
+#### How It Works
 
-This node generates a flow field tensor that defines directional influences across space. It's useful for creating forces, movement patterns, or guidance fields that can be used by other PCG nodes to influence point placement, movement, or transformation. Each input point contributes a vector direction that affects the surrounding space based on distance and falloff.
+This node builds a directional flow field by assigning a consistent direction vector to each input point. The direction can be set in two ways:
 
-{% hint style="info" %}
-The flow field is computed using a tensor-based system where each point acts as an effector with a defined direction and influence radius.
-{% endhint %}
+* **Constant mode**: All points use the same fixed axis (such as Forward, Up, etc.)
+* **Attribute mode**: Each point uses a direction value from a specified attribute on the input points
+
+When using attribute mode, you can choose whether to invert the direction for opposite effect. The node also supports both absolute and relative coordinate modes when reading directions from attributes. In relative mode, the direction is transformed by the owning node's local space, while in absolute mode, it uses world-space directions.
+
+The resulting tensor field defines how other nodes in your procedural graph will process or transform the input points based on this directional influence.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Direction Input</strong><br><em>Direction type.</em></summary>
 
-* **Main Input**: Points that define the source of the flow field
-* **Optional Secondary Input**: Additional data used for attribute sampling
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Output**: A tensor factory that can be consumed by other nodes to sample flow field values at any point in space
-
-</details>
-
-### Properties Overview
-
-Controls how the flow field is generated and what direction each effector contributes.
-
-***
-
-#### General Settings
-
-Configures the core behavior of the flow field tensor.
-
-**Direction Input**
-
-_Controls whether the direction is defined by a constant value or read from an attribute._
-
-* When set to **Constant**, uses the "Direction" setting to define the vector direction for all effectors.
-* When set to **Attribute**, reads the direction from the input points' "Direction (Attr)" attribute.
+Controls whether the direction is defined by a constant axis or read from an attribute on the input points.
 
 **Values**:
 
-* **Constant**: Use a fixed axis direction
-* **Attribute**: Read direction from point data
+* **Constant**: Use a fixed axis (Forward, Up, etc.) for all points.
+* **Attribute**: Read the direction from a point attribute.
 
-**Direction (Attr)**
+</details>
 
-_The attribute name used to read directional vectors when "Direction Input" is set to "Attribute"._
+<details>
 
-* The attribute must contain a vector value representing the desired direction
-* Typically used with rotation or vector attributes from input points
+<summary><strong>Direction (Attr)</strong><br><em>Fetch the direction from a local attribute.</em></summary>
 
-**Invert Direction**
+The name of the attribute to read the direction from when "Direction Input" is set to "Attribute".
 
-_When enabled, reverses the direction of the flow field._
+</details>
 
-* Useful for creating opposing forces or counter-directional effects
-* Applies to both constant and attribute-based directions
+<details>
 
-**Direction**
+<summary><strong>└─ Invert</strong><br><em>Whether to invert the direction.</em></summary>
 
-_The axis direction used when "Direction Input" is set to "Constant"._
+When enabled, reverses the direction vector read from the attribute.
 
-* Defines which axis (Forward, Right, Up, etc.) points will contribute their flow in
-* Commonly set to **Forward** for movement along object orientation or **Up** for vertical flows
+</details>
 
-**Direction Transform**
+<details>
 
-_Control how the direction vector is interpreted._
+<summary><strong>Direction</strong><br><em>Direction axis, read from the input points' transform.</em></summary>
 
-* When set to **Relative**, the direction is applied relative to each point's local transform
-* When set to **Absolute**, the direction is applied in world space regardless of point rotation
+The fixed axis used when "Direction Input" is set to "Constant". This defines the default orientation for all points.
 
-### Notes
+**Values**:
 
-* This tensor type is particularly useful for creating wind patterns, flow-based movement, or directional guidance fields
-* Combine with nodes like "Tensor : Sample" to extract flow field values at specific locations
-* The influence radius and falloff settings from the parent tensor factory control how far each effector affects surrounding space
-* For best results, ensure input points are well-distributed to create smooth flow field transitions
-* Can be used in conjunction with other tensor types to create complex multi-layered effects
+* **Forward**: X+ direction
+* **Backward**: X- direction
+* **Right**: Y+ direction
+* **Left**: Y- direction
+* **Up**: Z+ direction
+* **Down**: Z- direction
+
+</details>
+
+<details>
+
+<summary><strong>Direction Transform</strong><br><em>Whether the direction is absolute or should be transformed by the owner' transform.</em></summary>
+
+Controls how the direction from an attribute is interpreted.
+
+**Values**:
+
+* **Absolute**: The direction is in world space.
+* **Relative**: The direction is relative to the local space of the owning node.
+
+</details>
+
+#### Usage Example
+
+Use this node to define a flow field that guides point movement or influence. For example, you could use it to make points flow along a terrain slope by setting the direction to "Down" and using an attribute that represents surface normals. You can also use it to create directional forces in particle systems or procedural animations.
+
+#### Notes
+
+The tensor created by this node is typically used as input for other nodes like "Tensor : Inertia Constant" or similar effectors that apply forces based on the defined flow field. Connect this node to **Tensor Point Subnode** nodes to define how point data should be influenced by directional fields.

@@ -6,137 +6,201 @@ icon: circle-dashed
 # Shape : Polygon
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Create points as a regular polygon or star.
 
-### Overview
+#### How It Works
 
-This node generates polygonal shapes from seed points, allowing you to create regular polygons like triangles, squares, pentagons, and more, or star-shaped patterns. Each seed point becomes the center of a polygon, with the shape's size, number of vertices, and orientation determined by settings and optionally input attributes.
+This node generates a polygon or star shape by calculating the positions of multiple points around a central location. It starts with a seed point that defines where the shape will be placed, then uses mathematical calculations to determine the locations of each vertex.
 
-You can generate either convex polygons (like triangles or hexagons) or star shapes with inward-pointing spikes. The node also supports creating a skeleton — a line connection between points — which can be attached to vertices, edges, or both.
+For each point in the shape:
 
-{% hint style="info" %}
-The output is generated in the local space of each seed point, so the shape will be centered on that point and oriented according to the seed's rotation.
-{% endhint %}
+* The system calculates its position using trigonometric functions (sine and cosine) based on the number of vertices and the radius.
+* For star shapes, it alternates between two different radii to create the pointed appearance.
+* If skeleton connections are enabled, additional points are added along edges or vertices to form a skeletal structure.
+
+The orientation of the shape can be controlled:
+
+* **Vertex Forward**: The first point aligns with the local X-axis.
+* **Edge Forward**: The first edge is perpendicular to the local X-axis.
+* **Custom**: A custom angle in degrees can be specified for precise control.
+
+Finally, it outputs all generated points and optionally adds attributes like angle, edge index, or hull status to help track each point's role in the shape.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Polygon Type</strong><br><em>Type of shape to generate.</em></summary>
 
-* **Seed Points**: The points used as centers for polygon generation.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Points**: Generated polygon points, optionally with skeleton lines.
-* **Shape Builder** (optional): A shape builder object that can be consumed by a Shape processor node.
-
-</details>
-
-### Properties Overview
-
-These settings control how polygons are generated from seed points.
-
-***
-
-#### General Settings
-
-Controls the basic type and properties of the generated polygon.
-
-**Polygon Type**
-
-_Whether to generate a regular convex polygon or a star._
-
-* **Polygon**: Creates a regular convex polygon (e.g., triangle, square).
-* **Star**: Creates a star shape with inward-pointing spikes.
-
-**Number of Vertices**
-
-_Number of points that make up the polygon._
-
-* This can be a fixed number or read from an attribute on the seed point.
-* Minimum value is 3 (a triangle).
-* Example: Setting this to 6 creates a hexagon.
+Controls whether the output is a regular convex polygon or a star shape.
 
 **Values**:
 
-* **Constant**: Use a fixed number.
+* **Polygon**: Creates a regular convex polygon.
+* **Star**: Creates a star shape with alternating inner and outer radii.
+
+</details>
+
+<details>
+
+<summary><strong>Number of Vertices Source</strong><br><em>Source for the number of vertices.</em></summary>
+
+Determines how the number of vertices is selected.
+
+**Values**:
+
+* **Constant**: Use the constant value specified in the next setting.
 * **Attribute**: Read the number from an input attribute.
 
-**Add Skeleton**
+</details>
 
-_When enabled, connects points with lines forming a skeleton._
+<details>
 
-* Creates a line mesh connecting polygon vertices.
-* Useful for visualizing or using the shape as a path.
+<summary><strong>Number of Vertices</strong><br><em>Constant number of vertices for the polygon.</em></summary>
 
-**Skeleton Connection Mode**
+Defines how many points make up the shape. For example, a pentagon would use 5 vertices.
 
-_How the skeleton connects to the polygon._
+</details>
 
-* **Vertex**: Connects to each vertex of the polygon.
-* **Edge**: Connects to the center of each edge.
-* **Both**: Connects to both vertices and edges.
+<details>
 
-**Polygon Orientation**
+<summary><strong>Add Skeleton Source</strong><br><em>Source for enabling skeleton connections.</em></summary>
 
-_How the polygon is aligned relative to the seed point._
+Controls whether to generate a skeletal structure that connects the polygon's edges or vertices.
 
-* **Vertex Forward**: First vertex points along the local X axis.
-* **Edge Forward**: First edge is perpendicular to the local X axis.
-* **Custom**: Use a custom angle (in degrees) for alignment.
+**Values**:
 
-**Custom Polygon Orientation**
+* **Constant**: Use the constant value specified in the next setting.
+* **Attribute**: Read from an input attribute.
 
-_Custom angle in degrees to rotate the polygon._
+</details>
 
-* Only used when "Polygon Orientation" is set to "Custom".
-* Example: Setting this to 90 rotates the shape so that its first vertex points upward.
+<details>
 
-**Is Closed Loop**
+<summary><strong>Add Skeleton</strong><br><em>If enabled, adds skeleton connections to the shape.</em></summary>
 
-_When enabled, marks the last point as connecting back to the first._
+When enabled, creates a skeletal structure that connects vertices or edges of the polygon.
 
-* Ensures the polygon forms a complete loop.
-* Useful for creating closed meshes or paths.
+</details>
 
-***
+<details>
 
-#### Output Attributes
+<summary><strong>Skeleton Connection Mode</strong><br><em>Where the skeleton goes.</em></summary>
 
-Controls which additional attributes are written to the output points.
+Defines how the skeleton is connected to the polygon.
 
-**Write Hull Attribute**
+**Values**:
 
-_When enabled, writes a boolean attribute indicating if a point is on the hull._
+* **Vertex**: Connects skeleton points to each vertex.
+* **Edge**: Connects skeleton points to each edge midpoint.
+* **Both**: Connects skeleton points to both vertices and edges.
 
-* Attribute name can be customized.
-* Example: `bIsOnHull` will be true for all polygon vertices and false for skeleton points.
+</details>
 
-**Write Angle Attribute**
+<details>
 
-_When enabled, writes an angle value for each point._
+<summary><strong>Polygon Orientation</strong><br><em>Alignment for the polygon within the bounds of the seed.</em></summary>
 
-* Attribute name can be customized.
-* Useful for creating radial patterns or controlling point behavior based on angular position.
+Controls how the shape is oriented relative to the seed point's local space.
 
-**Write Edge Index Attribute**
+**Values**:
 
-_When enabled, writes the index of the edge a point belongs to._
+* **Vertex Forward**: Aligns the first vertex along the local X-axis.
+* **Edge Forward**: Aligns the first edge perpendicular to the local X-axis.
+* **Custom**: Uses a custom angle specified in the next setting.
 
-* Attribute name can be customized.
-* Helps identify which part of the polygon a point is associated with.
+</details>
 
-**Write Edge Alpha Attribute**
+<details>
 
-_When enabled, writes a normalized alpha value along each edge._
+<summary><strong>Custom Polygon Orientation</strong><br><em>Custom alignment for the polygon.</em></summary>
 
-* Attribute name can be customized.
-* Useful for smooth transitions or interpolation along edges.
+When "Polygon Orientation" is set to "Custom", this value defines the rotation of the shape in degrees.
+
+</details>
+
+<details>
+
+<summary><strong>Is Closed Loop</strong><br><em>If enabled, will flag polygon as being closed if possible.</em></summary>
+
+When enabled, marks the generated shape as a closed loop, which can be useful for path or edge-based operations.
+
+</details>
+
+<details>
+
+<summary><strong>Write Hull Attribute</strong><br><em>Output attributes.</em></summary>
+
+When enabled, writes a boolean attribute indicating whether each point is on the hull of the shape.
+
+</details>
+
+<details>
+
+<summary><strong>Hull Attribute Name</strong><br><em>Name of the hull attribute to write.</em></summary>
+
+The name of the boolean attribute that marks points as being part of the shape's hull.
+
+</details>
+
+<details>
+
+<summary><strong>Write Angle Attribute</strong><br><em>Output attributes.</em></summary>
+
+When enabled, writes an angle attribute for each point based on its position around the center.
+
+</details>
+
+<details>
+
+<summary><strong>Angle Attribute Name</strong><br><em>Name of the angle attribute to write.</em></summary>
+
+The name of the float attribute that stores the angular position of each point.
+
+</details>
+
+<details>
+
+<summary><strong>Write Edge Index Attribute</strong><br><em>Output attributes.</em></summary>
+
+When enabled, writes an integer attribute indicating which edge each point belongs to.
+
+</details>
+
+<details>
+
+<summary><strong>Edge Index Attribute Name</strong><br><em>Name of the edge index attribute to write.</em></summary>
+
+The name of the integer attribute that stores the edge index for each point.
+
+</details>
+
+<details>
+
+<summary><strong>Write Edge Alpha Attribute</strong><br><em>Output attributes.</em></summary>
+
+When enabled, writes a float attribute indicating where along an edge each point lies (0.0 to 1.0).
+
+</details>
+
+<details>
+
+<summary><strong>Edge Alpha Attribute Name</strong><br><em>Name of the edge alpha attribute to write.</em></summary>
+
+The name of the float attribute that stores the interpolation value along each edge.
+
+</details>
+
+#### Usage Example
+
+Create a grid of pentagonal shapes using a Point Grid node as input. Connect the output to a Shape : Polygon node, set "Number of Vertices" to 5, and enable "Add Skeleton". This creates a series of pentagons with skeletal connections at each vertex, useful for creating decorative or structural elements.
+
+#### Notes
+
+* The number of vertices should be at least 3 for valid polygons.
+* For star shapes, the inner radius must be less than the outer radius to avoid degenerate geometry.
+* Skeleton connections increase the total number of output points.
+* Orientation settings are especially useful when aligning shapes with terrain or other directional constraints.

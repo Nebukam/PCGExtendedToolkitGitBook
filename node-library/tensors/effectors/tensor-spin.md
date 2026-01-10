@@ -6,84 +6,89 @@ icon: circle-dashed
 # Tensor : Spin
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> A tensor that represents a spin around a given axis.
+> Creates a tensor that represents a spin or rotational force around a specified axis.
 
-### Overview
+#### How It Works
 
-This node creates a rotational tensor that applies a spinning force around a specified axis. It's useful for creating vortex effects, rotating objects around a central point, or generating spiral patterns in procedural content. The spin can be configured to rotate around different axes and can be made relative to the input points' transforms.
+This node generates a rotational tensor for each input point based on a selected axis. For every point, it calculates how much spin should be applied and in which direction. The spin is determined by:
 
-{% hint style="info" %}
-This tensor is particularly effective when combined with other tensor operations like attraction or repulsion to create complex motion patterns.
-{% endhint %}
+1. Choosing whether the rotation axis is fixed or varies per point.
+2. If using a fixed axis, it applies the same spin direction to all points.
+3. If using a varying axis, it reads the spin direction from an attribute on each point.
+4. Applying the spin strength and orientation based on the selected transform mode (world space or local space).
+5. The resulting tensor can then be used by other nodes to apply rotational effects.
+
+This process allows for flexible control over how rotation is applied — whether it's consistent across all points or customized per point.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Axis Input</strong><br><em>Direction type.</em></summary>
 
-* **Points**: Input points that will be affected by the spin tensor
-* **Attributes** (optional): Attributes used for axis direction and transform mode
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Factory**: A tensor factory that can be consumed by other tensor operations
-
-</details>
-
-### Properties Overview
-
-Controls how the spin tensor is configured and applied.
-
-***
-
-#### Spin Settings
-
-Configures the rotational behavior of the tensor.
-
-**Axis Input**
-
-_Controls whether the spin axis is constant or read from an attribute._
-
-* When set to **Constant**, uses the fixed axis defined in the settings
-* When set to **Attribute**, reads the axis direction from a point attribute
+Controls whether the spin axis is defined by a constant value or read from an attribute.
 
 **Values**:
 
-* **Constant**: Use a single, fixed axis for all points
-* **Attribute**: Read axis direction from input data
+* **Constant**: Uses the fixed axis specified in the "Axis" setting.
+* **Attribute**: Reads the axis from a point attribute, allowing per-point variation.
 
-**Axis (Attr)**
+</details>
 
-_The name of the attribute that contains the spin axis direction._
+<details>
 
-* Only visible when "Axis Input" is set to **Attribute**
-* Should contain a vector attribute representing the desired spin axis
+<summary><strong>Axis (Attr)</strong><br><em>Fetch the direction from a local attribute.</em></summary>
 
-**Axis**
+The name of the attribute to read the spin axis from. Only visible when Axis Input is set to Attribute.
 
-_The fixed axis around which points will spin._
+</details>
 
-* Only visible when "Axis Input" is set to **Constant**
-* Defines the direction of rotation (Forward, Backward, Right, Left, Up, Down)
+<details>
 
-**Axis Transform**
+<summary><strong>Axis</strong><br><em>Direction axis, read from the input points' transform.</em></summary>
 
-_Controls whether the axis direction is interpreted in world or local space._
+The fixed axis used for spinning when Axis Input is set to Constant.
 
-* When enabled, the axis is relative to each point's transform
-* When disabled, the axis is interpreted in world space
+**Values**:
 
-### Notes
+* **Forward**: X+ direction
+* **Backward**: X- direction
+* **Right**: Y+ direction
+* **Left**: Y- direction
+* **Up**: Z+ direction
+* **Down**: Z- direction
 
-* Combine with other tensor operations to create complex motion patterns like spirals or vortexes
-* Use attribute-based axis input for dynamic spin directions per point
-* The spin effect is strongest at the center and tapers off with distance
-* This tensor works best when used with a relatively small radius to avoid over-saturating the effect
+</details>
+
+<details>
+
+<summary><strong>Axis Transform</strong><br><em>Whether the direction is absolute or should be transformed by the owner' transform.</em></summary>
+
+Controls whether the spin axis is interpreted in world space or local space.
+
+**Values**:
+
+* **Absolute**: The axis is applied in world space, ignoring the point's orientation.
+* **Relative**: The axis is applied relative to the point’s local transform.
+
+</details>
+
+{% hint style="info" %}
+Connects to \*\*Tensor Point Subnode\*\* subnodes.
+{% endhint %}
+
+#### Usage Example
+
+1. Create a set of points in a grid.
+2. Add a "Tensor : Spin" node and configure it to spin around the Up axis.
+3. Connect this tensor to a force or transformation node that applies rotational effects.
+4. The points will be influenced by the spin, creating a swirling or spiral-like motion.
+
+#### Notes
+
+* The spin effect is applied per point, so different axes can be used for different points if using attribute-based input.
+* This node works best when combined with other tensor-consuming nodes like force or transform processors.
+* The axis definition and transform mode allow for flexible control over how the spin is applied in space.

@@ -13,28 +13,33 @@ This page was generated from the source code. It should properly capture what th
 
 #### Overview
 
-This subnode controls how far a flood fill operation can propagate by limiting the total distance traveled from the seed point. It's useful for creating bounded, realistic-looking fills that respect spatial constraints.
+This subnode controls how far a flood fill operation can propagate by limiting the total distance traveled from the starting point. It's useful when you want to define a maximum reach for your fill, such as creating a circular or spherical region around a seed point with a defined radius.
 
-It defines a behavior for flood fill operations where the fill stops once a cumulative path length threshold is reached. This ensures that the fill doesn't extend indefinitely and respects physical or logical boundaries in your procedural generation.
+It modifies the behavior of flood fill operations by stopping further expansion once a specified length threshold is reached. This can help control performance and create more predictable, bounded fills.
 
-This subnode connects to **Probe** pins on flood fill graph-building nodes, such as "Flood Fill" or "Cluster Flood Fill".
+{% hint style="info" %}
+Connects to **Probe** pins on graph-building nodes like `Flood Fill` or `Cluster Flood Fill`.
+{% endhint %}
 
 #### How It Works
 
-This subnode defines a distance-based stopping condition for flood fill operations. It evaluates candidates based on how far they are from the starting point, using either:
+This subnode defines a distance-based stopping condition for flood fill operations. It evaluates each candidate point during the diffusion process and compares its accumulated path length (from the seed) to a maximum allowed value.
 
-1. **Edge Length**: The direct distance between two connected points
-2. **Path Length**: The total accumulated distance from the seed to the candidate point
+The logic works as follows:
 
-The fill operation tracks the cumulative path length as it explores new candidates. When a candidate's path length exceeds the defined maximum, that candidate is rejected and no further exploration occurs along that branch.
+1. As points are discovered during flood fill, their cumulative path length from the seed is tracked.
+2. For each new candidate point, the system calculates whether adding it would exceed the defined maximum distance.
+3. If the total path length would surpass the limit, that candidate is rejected and not added to the fill.
+4. The process continues until no more valid candidates can be found within the distance constraint.
 
-When using path length, each step in the flood fill adds up the distances between connected points, building a total travel distance from the seed. The operation stops when this cumulative distance surpasses the configured limit.
+This approach ensures that the fill does not expand beyond a certain spatial extent, creating bounded regions based on actual travel distance rather than vertex count or simple Euclidean distance.
 
 <details>
 
 <summary>Inputs</summary>
 
-This subnode does not directly consume data points or edges. It is used as part of a flood fill process and interacts with candidates during probing and capture phases.
+* Expects a set of points to be processed by a flood fill operation.
+* Requires access to the diffusion context and candidate data for path length calculations.
 
 </details>
 
@@ -42,47 +47,57 @@ This subnode does not directly consume data points or edges. It is used as part 
 
 <summary>Outputs</summary>
 
-This subnode doesn't produce new data. Instead, it modifies the behavior of flood fill operations by controlling when to stop exploring candidates based on distance thresholds.
+* Modifies the set of valid candidates during flood fill.
+* Prevents candidates from being added if they would exceed the maximum distance threshold.
+* Does not produce new data, but influences which points are included in the final fill.
 
 </details>
 
 #### Configuration
 
-***
+<details>
 
-**Use Path Length**
+<summary><strong>Use Path Length</strong><br><em>Path length is the accumulated length from the seed to the evaluated candidate, while regular length is the length of the edge.</em></summary>
 
-_When enabled, the fill stops based on the total accumulated path length from the seed point. When disabled, it uses the direct edge length between points._
+When enabled, the system uses the total path distance from the seed point to the current candidate for comparison against the maximum length. When disabled, it compares only the direct edge length between two adjacent points.
 
-This setting determines whether to measure distance along the actual path taken during flood fill (including all intermediate steps) or the straight-line distance of each individual edge.
+</details>
 
-**Max Length Input**
+<details>
 
-_Determines how the maximum distance is defined._
+<summary><strong>Max Length Input</strong><br><em>How to define the maximum allowed distance.</em></summary>
+
+Controls whether the maximum distance is a fixed constant or read from an attribute on the input data.
 
 **Values**:
 
-* **Constant**: Use a fixed numeric value for the max length.
-* **Attribute**: Read the max length from an attribute on input data.
+* **Constant**: Use the value defined in the Max Length setting.
+* **Attribute**: Read the maximum length from a numeric attribute on the input points.
 
-**Max Length Attribute**
+</details>
 
-_The name of the attribute to read the max length from, when using "Attribute" mode._
+<details>
 
-This setting only appears when "Max Length Input" is set to "Attribute".
+<summary><strong>Max Length (Attr)</strong><br><em>Max Length Attribute</em></summary>
 
-**Max Length**
+The name of the attribute that contains the maximum allowed distance for each point, when Max Length Input is set to "Attribute".
 
-_The maximum allowed distance for the fill operation._
+</details>
 
-When "Max Length Input" is set to "Constant", this value defines the fixed limit. When "Attribute" is used, this value is ignored and the actual attribute value is used instead.
+<details>
+
+<summary><strong>Max Length</strong><br><em>Max Length Constant</em></summary>
+
+The fixed value used as the maximum allowed distance when Max Length Input is set to "Constant". Must be greater than 0.
+
+</details>
 
 #### Usage Example
 
-Use this subnode in a "Flood Fill" node to create a region that expands outward from a seed point but stops after traveling 50 units of distance. This can simulate effects like a splash, explosion radius, or influence area with limited reach.
+Use this subnode in a flood fill setup where you want to limit how far the fill spreads from the seed point. For instance, if you're generating a forest area around a tree, you could use a Max Length of 50 units to ensure that the fill only covers a circular region with a 50-unit radius.
 
 #### Notes
 
-* The path length calculation includes all edges traversed during the flood fill process.
-* Using attribute-based max length allows for dynamic control per input point.
-* This subnode works best when used in conjunction with other fill controls to define complex stopping behaviors.
+* The path length calculation considers the actual route taken through the graph, not straight-line distances.
+* This subnode is particularly useful for creating organic or natural-looking fills where you want to avoid infinite propagation.
+* Performance can be improved by setting a reasonable Max Length value to limit the number of candidates processed.

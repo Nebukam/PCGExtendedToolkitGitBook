@@ -6,86 +6,72 @@ icon: circle
 # Copy to Points
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Copy source points to target points, with size-to-fit and justification goodies.
 
-### Overview
+#### How It Works
 
-This node allows you to duplicate or copy points from one set (source) to another (target), with advanced control over how the copied points are positioned, scaled, and oriented. It's particularly useful for creating instances of geometry, duplicating procedural layouts, or mapping data between different point clouds.
+This node takes a set of input points and duplicates them onto another set of points. It allows you to control how the source data is applied to each target location. You can choose which source points map to which target points using matching rules, and apply transformations like scaling and rotation to ensure the copies fit properly.
 
-The node supports matching source points to target points based on various criteria, and offers options to scale and justify the copied points relative to their target bounds. You can also forward attributes from source points to the copied ones, making it easy to preserve metadata during duplication.
+The process works as follows:
 
-{% hint style="info" %}
-This node is commonly used in conjunction with point filters or other data manipulation nodes to control which points get duplicated and how they're positioned.
-{% endhint %}
+1. The node retrieves both the source point data and the target point data.
+2. If a matching rule is defined, it determines how source points are assigned to target points.
+3. For each target point, the node:
+   * Copies the relevant source point data.
+   * Applies any specified transformations (position, rotation, scale).
+   * Optionally scales or fits the copied point to match the size of the target.
+   * Copies attributes from the source to the target based on forwarding settings.
+4. The final output is a collection of points that are copies of the input points, positioned and transformed according to the target points.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>DataMatching</strong><br><em>If enabled, allows you to pick which input gets copied to which target point.</em></summary>
 
-* **Source Points**: The points that will be copied.
-* **Target Points**: The points where the source points will be copied to.
-* **Optional Filters**: Point filters can be applied to control which source points are processed.
+When enabled, this setting lets you define how source points are matched to target points. For example, you can assign the first source point to the first target point, or match based on index, offset, or other criteria.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>TransformDetails</strong><br><em>Target inherit behavior</em></summary>
 
-* **Output Points**: The resulting points after copying, with optional transformations applied.
-* **Unmatched Points (if enabled)**: Points from the source that did not match any target point, if splitting unmatched is enabled.
+Controls how transforms (position, rotation, scale) are applied when copying points. You can choose to inherit the transform from the target point or override it with custom values.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the duplication and transformation of points are handled.
+<summary><strong>TargetsAttributesToCopyTags</strong><br><em>TBD</em></summary>
 
-***
+This setting is currently undocumented. It likely controls how attributes are tagged during the copy process.
 
-#### General
+</details>
 
-Controls core behavior for matching and copying data between source and target points.
+<details>
 
-**Data Matching**
+<summary><strong>TargetsForwarding</strong><br><em>Which target attributes to forward on copied points.</em></summary>
 
-_Controls how source points are matched to target points._
+Defines which attributes from the source points should be copied or forwarded to the output points. This allows you to preserve specific data like color, scale, or custom tags when duplicating points.
 
-* When enabled, allows you to define rules to determine which source points map to which target points.
-* If disabled, each source point is copied once to each target point (Cartesian product).
-* Useful for mapping specific data or geometry from one set to another.
+</details>
 
-**Transform Details**
+#### Usage Example
 
-_Configures how the copied points are transformed._
+1. Create a set of source points (e.g., a grid of cubes).
+2. Create a set of target points (e.g., scattered locations on a terrain).
+3. Connect both sets to the Copy to Points node.
+4. Enable **DataMatching** and set it to "Pick" to map each source point to a specific target point.
+5. Set **TransformDetails** to inherit from targets to apply their position, rotation, and scale.
+6. Configure **TargetsForwarding** to copy attributes like color or material index.
+7. The output will be a set of points that match the positions and transforms of the target points, with attributes copied from the source.
 
-* **Scale**: Controls the size of the copied points relative to their target bounds.
-* **Justification**: Determines how the copied points are aligned within their target bounds (e.g., top-left, center).
-* **Rotation**: Allows you to rotate the copied points around their local origin.
-* **Translation**: Adjusts the position of copied points after scaling and justification.
+#### Notes
 
-**Targets Attributes To Copy Tags**
-
-_Controls which attributes from source points are copied to the target points._
-
-* When enabled, specifies a list of attributes to copy from the source point data to the output points.
-* This is useful for preserving metadata like color, ID, or other properties during duplication.
-
-**Targets Forwarding**
-
-_Configures which attributes are forwarded to the output points._
-
-* When enabled, allows you to specify a set of attributes from the source data that should be copied to the target points.
-* Supports filtering by name and can preserve default values if needed.
-
-### Notes
-
-* This node is performance-sensitive when copying large datasets. Consider using point filters or limiting the number of inputs to improve execution speed.
-* When using matching, ensure that your matching criteria are well-defined to avoid unexpected duplication behavior.
-* The scale-to-fit and justification features work best when target points have meaningful bounds (e.g., from meshes or volumes).
-* For complex transformations, combine this node with other transformation nodes like "Transform Points" for more control.
+* This node is ideal for placing instances or data onto specific locations in a scene.
+* Matching rules can be used to create complex mappings between source and target points.
+* Transform settings allow fine control over how copies are positioned and oriented.

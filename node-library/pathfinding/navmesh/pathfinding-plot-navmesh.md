@@ -6,124 +6,121 @@ icon: scrubber
 # Pathfinding : Plot Navmesh
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Extract a single path from navmesh, going through each seed points in order.
+> Extract a paths from navmesh, going through each seed point in order.
 
-### Overview
+#### How It Works
 
-This node generates a single continuous path by finding connected routes between seed points using the navigation mesh. It's designed to create logical sequences of points that follow navigable surfaces, making it ideal for creating paths that respect terrain, obstacles, and other environmental constraints.
+This node creates continuous routes by connecting seed points using Unreal's navigation system. It calculates valid paths between each pair of consecutive points and combines them into a single output path. The process begins with the first seed point as the starting location and ends at the last seed point, following the navmesh constraints.
 
-The node takes input seed points and connects them in order to form one or more paths. Each path is constructed by finding a valid route from one seed point to the next using the navmesh system. The resulting paths can be used for character movement, vehicle routing, or any application requiring navigable pathways through complex environments.
+When multiple seed points are provided, the node computes individual segments between each pair and joins them together. If enabled, it can also add extra points along the route to smooth transitions or provide more detail. The final path can be configured to form a closed loop, where the last point connects back to the first point.
 
-{% hint style="info" %}
-This node works best when seed points are already positioned in locations where navigation is possible. Points that are too far apart or in unreachable areas may result in failed path segments.
-{% endhint %}
+The node supports various settings that control how the path is constructed, including whether to include the original seed points at the start and end of each segment, how many intermediate points to add, and how to handle cases where parts of the path cannot be computed.
+
+#### Inputs
+
+* **Points**: A collection of seed points that define the start and end locations for pathfinding.
+* **Nav Agent Properties**: Defines how the navigation system interprets movement constraints (e.g., agent radius, height, etc.).
+
+#### Outputs
+
+* **Paths**: A collection of paths connecting the seed points via the navmesh. Each path is composed of multiple sub-points that represent the navigable route.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Add Seed to Path</strong><br><em>Whether to include the seed point at the beginning of each path.</em></summary>
 
-* **Main Input**: Seed points to be connected into paths
-* **Optional Filters**: Point filters to select which seed points to process
+When enabled, the first point in each path will be the original seed point. This is useful for ensuring the path starts exactly where intended.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Add Goal to Path</strong><br><em>Whether to include the goal point at the end of each path.</em></summary>
 
-* **Output Paths**: Generated paths connecting the seed points in order
+When enabled, the final point in each path will be the original goal point. This ensures the path ends precisely where intended.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the node processes seed points and generates paths from them.
+<summary><strong>Add Plot Points to Path</strong><br><em>Whether to insert additional plot points inside the path.</em></summary>
 
-***
+When enabled, intermediate points are added between seed points based on blending settings. These can be used to smooth or refine paths for visual effects or gameplay.
 
-#### General
+</details>
 
-Controls core pathfinding behavior and settings.
+<details>
 
-**Add Seed To Path**
+<summary><strong>Closed Loop</strong><br><em>Whether to connect the last point back to the first point.</em></summary>
 
-_When enabled, includes the starting seed point at the beginning of each generated path._
+When enabled, the path forms a closed loop by connecting the final point to the initial seed point. This is useful for creating circular routes or zones.
 
-* This ensures that the first point in your path matches exactly with your input seed point
-* Useful when you want to maintain precise start positions
+</details>
 
-**Add Goal To Path**
+<details>
 
-_When enabled, includes the ending goal point at the end of each generated path._
+<summary><strong>Require Navigable End Location</strong><br><em>Whether the pathfinding requires a naviguable end location.</em></summary>
 
-* Ensures that the final point in your path matches exactly with your input seed point
-* Helps maintain accurate endpoint positioning
+When enabled, the node will fail if the final destination cannot be reached via the navmesh. When disabled, it may still produce a path even if the last point is unreachable.
 
-**Add Plot Points To Path**
+</details>
 
-_When enabled, inserts intermediate points along the path to create more detailed curves or smooth transitions._
+<details>
 
-* Creates additional points between seed points for smoother visual paths
-* Can be useful for creating natural-looking movement routes or for visual effects
+<summary><strong>Fuse Distance</strong><br><em>Fuse sub points by distance.</em></summary>
 
-**Closed Loop**
+Controls how close two points must be to be merged into one. A value of 10 means any two points closer than 10 units will be fused together, reducing the number of intermediate points.
 
-_When enabled, connects the last point back to the first point to form a closed loop._
+</details>
 
-* Creates a continuous path that returns to its starting position
-* Useful for creating circular routes or closed pathways
+<details>
 
-**Require Navigable End Location**
+<summary><strong>Blending</strong><br><em>Controls how path points blend from seed to goal.</em></summary>
 
-_When enabled, ensures that each destination point is navigable._
+A Subnode that defines how to interpolate or generate additional points between seed points. This can be used to smooth paths, add detail, or control point distribution.
 
-* If disabled, paths may be generated even if the final destination is not reachable
-* Helps prevent invalid paths when strict navigation requirements are needed
+</details>
 
-**Fuse Distance**
+<details>
 
-_Sets the minimum distance between points in the resulting path._
+<summary><strong>Pathfinding Mode</strong><br><em>Pathfinding mode.</em></summary>
 
-* Points closer than this value will be merged into a single point
-* Reduces the number of intermediate points for cleaner output
-* Value range: 0.001 and above (default: 10)
+* **Regular**: Standard pathfinding using the navmesh.
+* **Hierarchical**: Uses a cell-based approach for faster computation in large environments.
 
-**Omit Complete Path On Failed Plot**
+</details>
 
-_When enabled, omits the entire path if any segment fails to plot._
+<details>
 
-* Prevents partial paths from being created when navigation fails partway through
-* Useful for ensuring complete validity of generated paths
+<summary><strong>Nav Agent Properties</strong><br><em>Nav agent to be used by the nav system.</em></summary>
 
-***
+Defines movement properties such as radius, height, and step height that affect how the pathfinding behaves. These settings must match the character or object for which you're generating paths.
 
-#### Pathfinding Mode
+</details>
 
-Controls how the node performs pathfinding.
+<details>
 
-**Pathfinding Mode**
+<summary><strong>Omit Complete Path on Failed Plot</strong><br><em>Whether to omit a complete path if any part of it fails.</em></summary>
 
-_Specifies the method used to find paths between seed points._
+When enabled, if a segment of the path cannot be computed (e.g., due to unreachable points), the entire path is discarded. When disabled, partial paths may still be generated.
 
-**Values**:
+</details>
 
-* **Regular**: Standard pathfinding using the full navmesh system
-* **Hierarchical**: Cell-based pathfinding that may be faster for large datasets
+#### Usage Example
 
-***
+1. Place seed points in your scene that represent locations you want to connect.
+2. Connect these points to the input of this node.
+3. Set `Pathfinding Mode` to **Regular** and configure `Nav Agent Properties` to match your character's dimensions.
+4. Enable `Add Plot Points to Path` if you want smooth curves or additional detail.
+5. Use a path visualization tool or a mesh generator to render the resulting paths.
 
-#### Nav Agent Properties
+#### Notes
 
-Defines the navigation agent properties used during pathfinding.
-
-**Nav Agent Properties**
-
-_Specifies the characteristics of the agent performing pathfinding._
-
-* This affects how paths are calculated based on agent size, movement capabilities, and other factors
-* Settings include agent radius, height, step height, and other navigation parameters
+* This node requires a valid navmesh in the scene for pathfinding to work.
+* Performance can be affected by the number of seed points and blending complexity.
+* For large datasets, consider using `Fuse Distance` to reduce output point count.

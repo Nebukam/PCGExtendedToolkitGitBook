@@ -6,115 +6,106 @@ icon: circle
 # Resample
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Resample path to enforce equally spaced points.
 
-### Overview
+#### How It Works
 
-This node adjusts the distribution of points along a path so that they are evenly spaced. It's useful when you want to ensure consistent spacing between points, which is important for things like procedural road generation, character movement paths, or any situation where uniform point distribution matters.
+This node adjusts the distribution of points along a path so that they are evenly spaced. It processes each path individually and can either place new points at regular intervals or redistribute existing points more evenly. The method used depends on the selected mode:
 
-The node works by either sampling at fixed intervals (distance-based) or by generating a specific number of points along the path. You can choose between two modes: Sweep, which samples points based on distance or count, and Redistribute, which redistributes existing points more evenly.
+* **Sweep**: The node walks along the path and places new points at fixed intervals, determined by the resolution setting. If the path is closed (like a loop), the last point connects back to the first.
+* **Redistribute**: The node redistributes existing points more evenly along the path, without adding or removing points.
 
-{% hint style="info" %}
-This node modifies point positions and attributes along paths. Make sure to connect it after nodes that generate or modify paths.
-{% endhint %}
+The resolution controls how frequently points are placed:
+
+* In **Distance** mode, it defines spacing in world units (e.g., 10 units apart).
+* In **Count** mode, it defines a fixed number of points to place along the path.
+
+If enabled, blending settings smooth attribute values between resampled points using interpolation or other methods. The node also supports truncation modes to control how fractional point counts are handled.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Mode</strong><br><em>Resampling approach to use.</em></summary>
 
-* **Main Input**: Points representing a path (or multiple paths)
-* **Point Filter** (optional): Filters points before processing
+Controls how the resampling is performed.
+
+**Values**:
+
+* **Sweep**: Walks along the path and places points at fixed intervals.
+* **Redistribute**: Redistributes existing points more evenly without changing point count.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Resolution Mode</strong><br><em>Resolution mode.</em></summary>
 
-* **Main Output**: Resampled path(s) with evenly spaced points
-* **Point Filter** (optional): Filtered points based on input settings
+Defines how resolution is interpreted.
+
+**Values**:
+
+* **Distance**: Points are placed at a fixed distance apart (in world units).
+* **Count**: A fixed number of points are placed along the path.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the resampling is performed and what attributes are blended.
+<summary><strong>Redistribute Evenly</strong><br><em>When enabled, redistribute points evenly.</em></summary>
 
-***
+When enabled, the node redistributes existing points more evenly along the path. When disabled, it uses a sweep-based approach.
 
-#### General Settings
+</details>
 
-Controls the core resampling behavior.
+<details>
 
-**Mode**
+<summary><strong>Preserve Last Point</strong><br><em>(ignored for closed loops)</em></summary>
 
-_Controls whether to sample points by distance or count._
+When enabled, ensures that the last point of an open path is preserved in the resampled output, even if it doesn't align with the resolution interval.
 
-* **Sweep**: Sample points at regular intervals along the path.
-* **Redistribute**: Redistribute existing points more evenly along the path.
+</details>
 
-**Resolution Mode**
+<details>
 
-_Controls how the sampling resolution is defined._
+<summary><strong>Resolution</strong><br><em>Resolution.</em></summary>
 
-* When set to **Distance**, points are spaced by a fixed distance.
-* When set to **Count**, a fixed number of points are generated.
+Controls how many points are placed along the path or at what distance they are spaced, depending on the resolution mode.
 
-**Sample Length**
+</details>
 
-_Specifies the spacing between points when using Distance mode._
+<details>
 
-* For example, setting this to `5.0` will place points every 5 units along the path.
-* Can be a constant value or read from an attribute on input points.
+<summary><strong>Truncate</strong><br><em>How to handle fractional point counts.</em></summary>
 
-**Truncate Mode**
+Determines how to round the number of points when the calculated count is not a whole number.
 
-_How to round fractional point positions when sampling._
+**Values**:
 
-* **None**: No rounding, uses exact position.
-* **Round**: Rounds to nearest integer.
-* **Ceil**: Rounds up to next integer.
-* **Floor**: Rounds down to previous integer.
+* **None**: No truncation.
+* **Round**: Rounds to the nearest integer.
+* **Ceil**: Rounds up to the next integer.
+* **Floor**: Rounds down to the previous integer.
 
-**Redistribute Evenly**
+</details>
 
-_When enabled, evenly redistributes points along the path._
+<details>
 
-* This is only effective in Sweep mode.
-* When disabled, points are placed at fixed intervals but may not be perfectly even.
+<summary><strong>Blending Settings</strong><br><em>Blending settings used to smooth attributes.</em></summary>
 
-**Preserve Last Point**
+Controls how attribute values are interpolated or blended between resampled points.
 
-_When enabled, keeps the last point of the path during resampling._
+</details>
 
-* Only applies when **Redistribute Evenly** is disabled.
-* Useful for ensuring closed loops or paths that must end at a specific location.
+#### Usage Example
 
-**Blending Settings**
+You have a path that represents a winding river, but the points along it are unevenly spaced. You want to create a set of evenly distributed waypoints for AI navigation. Set the mode to **Sweep**, resolution mode to **Distance**, and resolution to 5 units. This will place waypoints every 5 world units along the river, ensuring consistent spacing.
 
-_Configures how attributes are interpolated between resampled points._
+#### Notes
 
-* Controls how attribute values are blended across the new point distribution.
-* Defaults to Lerp blending, which smoothly interpolates values between points.
-
-**Ensure Unique Seeds**
-
-_When enabled, ensures each resampled path has unique random seeds._
-
-* Prevents identical random behavior when multiple paths are processed together.
-
-***
-
-#### Deprecated Settings
-
-**Resolution\_DEPRECATED**
-
-_Deprecated setting for resolution. Use Sample Length instead._
-
-* This field is no longer functional and should be ignored.
-* The new **Sample Length** setting provides the same functionality with more flexibility.
+* The node works on individual paths; it does not merge or split them.
+* For closed loops, the last point is automatically connected to the first, so preserving the last point has no effect.
+* Blending settings are only applied when resampling using the **Sweep** mode.

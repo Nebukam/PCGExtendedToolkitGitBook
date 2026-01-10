@@ -6,128 +6,116 @@ icon: circle
 # Connect Clusters
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Connects isolated edge clusters by their closest vertices, if they share the same vtx group.
+> Connects isolated edge clusters by their closest vertices, if they share the same vertex group.
 
-### Overview
+#### How It Works
 
-This node links separate groups of connected edges (clusters) into a single continuous graph. It's useful when you want to ensure all your edge-based geometry is connected, such as creating roads, pipelines, or network structures that span across multiple disconnected segments.
+This node identifies disconnected groups of edges (clusters) that have matching vertex groups. It then finds the nearest points between these clusters and creates new connections, called "bridges", to merge them into a single graph. This helps form continuous paths or networks from fragmented data while preserving cluster integrity.
 
-The node finds the closest points between clusters and creates new connections (bridges) between them. You can choose different methods for determining how these bridges are created, from simple proximity to more complex graph-based algorithms.
+The process works by first grouping edges into clusters using vertex information, then evaluating which clusters are eligible for connection based on shared vertex groups. For each pair of eligible clusters, the node determines where to place a bridge using one of several methods:
 
-{% hint style="info" %}
-This node works on edge data only and requires that your input data has been properly clustered using a clustering operation before this step.
-{% endhint %}
+* **Delaunay 3D**: Uses 3D Delaunay triangulation to find optimal connection points.
+* **Delaunay 2D**: Projects points into 2D space and uses 2D Delaunay triangulation.
+* **Least Edges**: Ensures all clusters are connected using the minimum number of bridges.
+* **Most Edges**: Connects every cluster to every other cluster.
+* **Node Filters**: Uses filters to define which nodes act as generators and connectables, then connects them by proximity.
+
+Once a bridge is identified, it creates a new edge between the closest points in each cluster. If multiple clusters are eligible for connection, the method determines how many bridges to create based on its logic.
+
+The node also supports carrying over metadata from input points to the newly created bridge edges and can flag these bridge points or edges for further processing.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Connect Method</strong><br><em>Method used to find &#x26; insert bridges.</em></summary>
 
-* **Main Input (Default)**: Point data containing edge clusters to connect
-* **Edge Input (Optional)**: Additional edge data to be included in the output
+Determines how the node identifies and places connections between clusters.
+
+**Values**:
+
+* **Delaunay 3D**: Uses Delaunay 3D graph to find connections.
+* **Delaunay 2D**: Uses Delaunay 2D graph to find connections.
+* **Least Edges**: Ensure all clusters are connected using the least possible number of bridges.
+* **Most Edges**: Each cluster will have a bridge to every other cluster.
+* **Node Filters**: Isolate nodes in each cluster as generators & connectable and connect by proximity.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Projection Settings</strong><br><em>Projection settings.</em></summary>
 
-* **Main Output**: Connected edge data with new bridge connections added
-* **Edge Output (Optional)**: Additional edge data if specified in settings
-* **Cluster Output (Optional)**: Graph representation of the connected clusters
+Settings for projecting points into 2D space when using the Delaunay 2D method.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how clusters are connected and what additional data is generated.
+<summary><strong>Carry Over Settings</strong><br><em>Meta filter settings.</em></summary>
 
-***
+Controls which metadata attributes are carried over from input points to the bridge edges.
 
-#### Connection Settings
+</details>
 
-Determines the method used to find and create connections between clusters.
+<details>
 
-**Connect Method**
+<summary><strong>Cluster Output Settings</strong><br><em>Graph &#x26; Edges output properties.</em></summary>
 
-_The algorithm used to determine how to connect clusters._
+Defines how the final graph and edge data are structured in the outputs.
 
-* Uses proximity or graph theory to find the best way to bridge clusters
-* **Delaunay 3D**: Creates bridges using a 3D Delaunay triangulation of cluster points
-* **Delaunay 2D**: Creates bridges using a 2D Delaunay triangulation (projected onto a plane)
-* **Least Edges**: Connects clusters with the minimum number of new edges needed to fully connect them
-* **Most Edges**: Ensures every cluster connects directly to every other cluster
-* **Node Filters**: Uses filters to define generator and connectable nodes, then connects them by proximity
+</details>
 
-**Projection Settings**
+<details>
 
-_Controls how 3D points are projected onto a 2D plane for Delaunay 2D calculations._
+<summary><strong>Flag Vtx Connector</strong><br><em>If enabled, flags points that were used as bridge endpoints.</em></summary>
 
-* Only affects the **Delaunay 2D** method
-* Defines the coordinate system used for 2D projection
-* Default is to use the world space XZ plane
+When enabled, adds a flag to vertex points that served as connection points between clusters.
 
-**Carry Over Settings**
+</details>
 
-_Configures which attributes are copied from input points to bridge points._
+<details>
 
-* Controls how data flows through the connection process
-* Allows you to preserve important metadata like material, elevation, or other point properties
+<summary><strong>Vtx Connector Flag Name</strong><br><em>Name of the flag attribute for vertex connectors.</em></summary>
 
-**Cluster Output Settings**
+The name of the metadata attribute used to mark vertex points that were bridge endpoints.
 
-_Specifies how the output graph is built and what data it contains._
+</details>
 
-* Defines the structure of the final graph representation
-* Controls whether to include edge metadata in the cluster output
+<details>
 
-***
+<summary><strong>Flag Edge Connector</strong><br><em>If enabled, flags edges that are bridges between clusters.</em></summary>
 
-#### Additional Outputs
+When enabled, adds a flag to edge points that represent connections between clusters.
 
-Controls extra flags that can be added to points and edges to track connection information.
+</details>
 
-**Flag Vtx Connector**
+<details>
 
-_When enabled, adds a flag attribute to vertices that indicates how many bridges connect to them._
+<summary><strong>Edge Connector Flag Name</strong><br><em>Name of the flag attribute for edge connectors.</em></summary>
 
-* Useful for identifying key junctions or nodes with high connectivity
-* Attribute name is configurable via **Vtx Connector Flag Name**
+The name of the metadata attribute used to mark bridge edges.
 
-**Vtx Connector Flag Name**
+</details>
 
-_Name of the flag attribute added to vertices when **Flag Vtx Connector** is enabled._
+<details>
 
-* Default is "NumBridges"
-* Can be any valid attribute name
+<summary><strong>Quiet No Bridge Warning</strong><br><em>If enabled, won't throw a warning if no bridge could be created.</em></summary>
 
-**Flag Edge Connector**
+When enabled, suppresses warnings when no bridges are generated between clusters.
 
-_When enabled, adds a flag attribute to edges that indicates whether they are bridge connections._
+</details>
 
-* Useful for identifying which edges were newly created during the connection process
-* Attribute name is configurable via **Edge Connector Flag Name**
+#### Usage Example
 
-**Edge Connector Flag Name**
+You have a set of disconnected paths that represent roads or trails. You want to connect these paths at their closest points to form a continuous network. Use this node with the **Least Edges** method to ensure all paths are connected using as few new connections as possible, maintaining a clean and efficient topology.
 
-_Name of the flag attribute added to edges when **Flag Edge Connector** is enabled._
+#### Notes
 
-* Default is "IsBridge"
-* Can be any valid attribute name
-
-***
-
-#### Warnings and Errors
-
-Controls how warnings are handled during processing.
-
-**Quiet No Bridge Warning**
-
-_When enabled, suppresses warnings if no bridges could be created._
-
-* Useful when you expect some clusters to remain disconnected
-* Prevents noisy output in cases where disconnection is intentional
+* The node only connects clusters that share the same vertex group.
+* Delaunay methods require sufficient data density for accurate triangulation.
+* Using **Most Edges** can create dense connectivity but may increase complexity.
+* Flags are useful for identifying bridge points or edges in downstream processing steps.

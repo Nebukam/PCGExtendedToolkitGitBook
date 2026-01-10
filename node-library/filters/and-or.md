@@ -9,63 +9,52 @@ icon: circle-dashed
 This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Combines multiple filters using logical AND or OR operations to define a single filtering condition.
-
-#### Overview
-
-Filter Group is a subnode that allows you to combine multiple connected filter subnodes into one logical operation. It defines how the results of individual filters are combined—either requiring all filters to pass (AND) or only one to pass (OR). This enables complex filtering logic by chaining together simpler conditions.
-
-This subnode connects to Filter pins on processing nodes, where it acts as a single unit that evaluates multiple filter conditions simultaneously. You can use it to create more sophisticated selection criteria for points, edges, or clusters in your procedural workflows.
-
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes.
-{% endhint %}
+> Groups multiple filter subnodes together and applies a logical operation (AND or OR) to their results.
 
 #### How It Works
 
-Filter Group defines a logical combination of multiple connected filters by evaluating them according to either an AND or OR rule.
+Filter Group defines a behavior that evaluates multiple connected filter subnodes and applies a logical operation to their results. When a point is tested, each connected filter is evaluated in sequence. The group then applies either an AND or OR logic:
 
-* When set to **AND**, all connected filters must return true for the point/edge/cluster to pass the group filter.
-* When set to **OR**, only one of the connected filters needs to return true for the group filter to pass.
+* In **AND mode**, all connected filters must return true for the point to pass.
+* In **OR mode**, only one connected filter needs to return true for the point to pass.
 
-The group also respects a priority system: it uses the highest priority value between its own setting and those defined by the connected filters. If inversion is enabled, the final result is flipped—passing points become failing, and vice versa.
-
-Each connected filter is evaluated in sequence during processing, and their results are combined using the selected logical operation before being returned as a single pass/fail result.
-
-<details>
-
-<summary>Inputs</summary>
-
-This node expects one or more connected subnodes that define individual filtering conditions (e.g., distance, angle, attribute values).
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-A combined filter result based on the logical operation (AND/OR) of all connected filters.
-
-</details>
+The group also supports priority handling where it uses the highest priority value between its own setting and those of the connected filters. If inversion is enabled, the final result is flipped (true becomes false and vice versa).
 
 #### Configuration
 
-***
+<details>
 
-**Priority**
+<summary><strong>Mode</strong><br><em>Filter Mode.</em></summary>
 
-_Controls the priority level used when combining with other filters._
+Determines how the group evaluates connected filter subnodes.
 
-The group will use the highest value between this setting and any priorities defined by the connected filters. Higher values are processed first.
+**Values**:
 
-**Mode**
+* **AND**: All connected filter subnodes must pass for the point to be included.
+* **OR**: Only one connected filter subnode needs to pass for the point to be included.
 
-_Specifies how to combine the results from connected filters._
+</details>
 
-**AND**: All connected filters must return true for the point to pass. **OR**: Only one connected filter needs to return true for the point to pass.
+<details>
 
-**bInvert**
+<summary><strong>Priority</strong><br><em>Filter Priority. Will use the highest value between the one set here and from the connected filters.</em></summary>
 
-_When enabled, flips the final result of the group._
+Sets the priority level of this group. When multiple filters are evaluated, the highest priority value is used to determine execution order or weighting.
 
-If enabled, points that would normally pass the group filter will fail, and those that fail will pass. This is useful for creating exclusion logic or negating a combined condition.
+</details>
+
+<details>
+
+<summary><strong>bInvert</strong><br><em>Inverts the group output value.</em></summary>
+
+When enabled, the result of the group evaluation is flipped. If all filters pass in AND mode, the point will be excluded instead of included.
+
+</details>
+
+#### Usage Example
+
+Create a Filter Group with two subnodes: one that checks if a point's height is above 10 units, and another that checks if its color is blue. Set the group to **AND** mode so only points that are both tall and blue will pass. Then connect this group to a Point Filter node to selectively include only those points in your procedural generation.
+
+#### Notes
+
+Filter Group evaluates filters in the order they are connected. The priority setting helps determine how the group interacts with other filters in complex workflows. Inversion can be used to create exclusion criteria from inclusive filter combinations.

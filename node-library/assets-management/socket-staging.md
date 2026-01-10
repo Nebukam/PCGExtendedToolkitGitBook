@@ -6,107 +6,45 @@ icon: circle
 # Socket Staging
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates point data from sockets defined in asset staging collections.
+> Stages points based on sockets defined in an Asset Staging Collection Map.
 
-### Overview
+#### How It Works
 
-This node extracts socket information from assets that have been staged using the Asset Staging collection system. It allows you to generate procedural points at the locations of these sockets, which can then be used for further processing like spawning actors or placing objects.
+The Socket Staging node reads an Asset Staging Collection Map that contains asset entries with socket data. For each input point, it checks if that point corresponds to an asset entry in the collection map. If so, it retrieves all sockets defined for that asset and generates new points at each socket's location.
 
-The node reads from a collection map containing asset staging data and creates new points at each socket location. You can filter which points get processed and control how socket data is written to the output points.
+Each generated point inherits attributes from the source point but is positioned according to the socket's transform. The node supports filtering via a point filter subnode to determine which input points are used for staging. It also allows customization of how the output points are structured through the Output Socket Details configuration, including whether to include socket names and other metadata.
 
-{% hint style="info" %}
-This node requires that you have already created an Asset Staging collection with sockets defined on your assets.
-{% endhint %}
+The processing is batched and optimized for performance across multiple points and sockets.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>OutputSocketDetails</strong><br><em>Controls how socket data is output as point attributes.</em></summary>
 
-* **Source Points**: Point data to be filtered and processed
-* **Collection Map (Optional)**: Asset staging collection map containing socket data
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Output Points**: Generated points at socket locations
-* **Collection Map (Optional)**: Modified collection map with socket data
-
-</details>
-
-### Properties Overview
-
-Controls how sockets are extracted and written to output points.
-
-***
-
-#### Socket Output Settings
-
-Configures which socket data gets written to the output points.
-
-**Write Socket Name**
-
-_When enabled, writes the socket name to an attribute on the output points._
-
-* Adds a new attribute containing the socket's name
-* Useful for identifying which socket each point came from
+Defines how the socket information (like name, transform) is written to the output points.
 
 **Values**:
 
-* **False**: Socket names are not written to output points
-* **True**: Socket names are written to output points
+* **None**: No additional socket data is added.
+* **Name Only**: Adds only the socket name as an attribute.
+* **Full**: Adds full socket data including transform and name.
 
-**Socket Name Attribute Name**
+</details>
 
-_The name of the attribute that will contain the socket name._
+#### Usage Example
 
-* Only used when "Write Socket Name" is enabled
-* Defaults to "SocketName"
+1. Create an Asset Staging Collection with assets that have sockets defined (e.g., a building asset with attachment points for windows or doors).
+2. Connect this collection to the Socket Staging node via the `Map` input.
+3. Optionally, use a point filter subnode to control which source points are used for staging.
+4. Configure OutputSocketDetails to include socket names or full data in the output points.
+5. The result will be a set of points placed at each socket location from the assets in your collection.
 
-**Write Socket Tag**
+#### Notes
 
-_When enabled, writes the socket tag to an attribute on the output points._
-
-* Adds a new attribute containing the socket's tag
-* Useful for categorizing sockets during processing
-
-**Values**:
-
-* **False**: Socket tags are not written to output points
-* **True**: Socket tags are written to output points
-
-**Socket Tag Attribute Name**
-
-_The name of the attribute that will contain the socket tag._
-
-* Only used when "Write Socket Tag" is enabled
-* Defaults to "SocketTag"
-
-**Socket Tag Filters**
-
-_Filter which sockets to include or exclude based on their tag._
-
-* Supports both inclusion and exclusion filtering modes
-* Uses a list of tags to match against
-
-**Socket Name Filters**
-
-_Filter which sockets to include or exclude based on their name._
-
-* Supports both inclusion and exclusion filtering modes
-* Uses a list of names to match against
-
-### Notes
-
-* This node works with the Asset Staging collection system, so make sure your assets have been staged with socket data defined
-* The output points will inherit the position, rotation, and scale from the original socket data
-* You can use point filters to control which source points get processed
-* Consider using this node in combination with other nodes like "Spawn" or "Transform" to create meaningful procedural content
-* Performance is optimized when using point filters to reduce the number of input points that need processing
+* Ensure that your Asset Staging Collection Map is properly configured with sockets before using this node.
+* The point filter subnode allows you to selectively stage only certain points, which can improve performance when working with large datasets.
+* Socket data includes position and orientation, so output points will be correctly aligned with the asset's socket transforms.

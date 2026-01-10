@@ -6,171 +6,145 @@ icon: circle
 # Path to Clusters
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Merge paths into edge clusters for pathfinding and graph generation.
+> Merge paths into edge clusters for pathfinding and graph-based operations.
 
-### Overview
+#### How It Works
 
-This node takes input paths and converts them into clustered edge representations, which can be used for pathfinding, graph analysis, or further processing. It supports both fusing multiple paths into a single unified graph and generating individual clusters from each path separately. The fused output allows for complex intersection detection between paths, while the non-fused mode preserves separate clusters for each input path.
+This node takes input paths and converts them into cluster structures that can be used for navigation or pathfinding. It can either combine all paths into one unified graph or process each path separately, depending on your settings.
 
-{% hint style="info" %}
-This node is particularly useful when you want to convert linear path data into a format suitable for graph-based algorithms or when you need to analyze how multiple paths interact with each other.
-{% endhint %}
+When combining paths, the node looks for places where paths intersect — such as where a point lies on an edge, or where two edges cross. At these intersection points, it adds new vertices and updates connections between edges to reflect the actual layout of the merged paths.
+
+The node also allows you to control how data from different paths is combined when intersections occur. You can define blending rules for both points and edges so that properties like position, height, or other attributes are merged in a way that suits your needs.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>bFusePaths</strong><br><em>Whether to merge all input paths into one unified graph.</em></summary>
 
-* **Main Input**: Paths (Point data)
-* **Optional Point Filter**: Filters points before processing
+When enabled, all input paths are combined into a single cluster. When disabled, each path is processed independently.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>PointPointIntersectionDetails</strong><br><em>Fuse Settings for Point-to-Point Intersections</em></summary>
 
-* **Output Vertices**: Clustered point data representing the graph nodes
-* **Output Edges**: Edge data connecting the clustered vertices
-* **Optional Output**: Additional outputs based on settings (e.g., fused path data)
+Settings that control how intersections between points and other points are handled when merging paths.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how paths are processed and converted into clusters.
+<summary><strong>bFindPointEdgeIntersections</strong><br><em>Detect Points on Edges</em></summary>
 
-***
+When enabled, the node identifies when a point lies directly on an edge and includes it in the graph as a vertex.
 
-#### General Settings
+</details>
 
-Controls basic behavior of the node.
+<details>
 
-**Fuse Paths**
+<summary><strong>PointEdgeIntersectionDetails</strong><br><em>Settings for Point-to-Edge Intersections</em></summary>
 
-_When enabled, multiple input paths are merged into a single unified graph with intersection detection._
+Controls how intersections between points and edges are processed during fusion.
 
-* Merges all input paths into one graph
-* Detects intersections between paths to create a more complex network
-* Useful for creating interconnected pathfinding graphs
+</details>
 
-**Carry Over Settings**
+<details>
 
-_Configures how attributes and metadata from the input paths are carried over to the output clusters._
+<summary><strong>bFindEdgeEdgeIntersections</strong><br><em>Detect Edge Crossings</em></summary>
 
-* Controls which properties are preserved during cluster creation
-* Helps maintain important data like path IDs or other metadata
+When enabled, the node finds where two edges cross each other and adds new vertices at those crossing points.
 
-***
+</details>
 
-#### Fusing Settings
+<details>
 
-Controls how paths are merged when fusion is enabled.
+<summary><strong>EdgeEdgeIntersectionDetails</strong><br><em>Settings for Edge-to-Edge Intersections</em></summary>
 
-**Point/Point Settings**
+Controls how edge crossings are handled during fusion.
 
-_Specifies how points from different paths are considered for merging._
+</details>
 
-* Defines distance thresholds and methods for detecting point overlaps
-* Determines whether to merge points that are close together
+<details>
 
-**Find Point-Edge Intersections**
+<summary><strong>DefaultPointsBlendingDetails</strong><br><em>How to Blend Point Attributes During Fusion</em></summary>
 
-_When enabled, detects where points lie on edges of other paths._
+Defines how point properties and attributes are merged when multiple points are combined into one.
 
-* Identifies intersections between points and edges
-* Adds new nodes at intersection points to improve graph accuracy
+</details>
 
-**Point/Edge Settings**
+<details>
 
-_Configures how point-edge intersections are detected and handled._
+<summary><strong>DefaultEdgesBlendingDetails</strong><br><em>How to Blend Edge Attributes During Fusion</em></summary>
 
-* Sets tolerance for detecting if a point lies on an edge
-* Controls inclusion criteria for points that intersect with edges
+Controls how edge properties and attributes are merged when edges are fused together.
 
-**Find Edge-Edge Intersections**
+</details>
 
-_When enabled, detects where paths cross each other._
+<details>
 
-* Identifies crossings between edges of different paths
-* Creates new nodes at crossing points to form accurate graph topology
+<summary><strong>bUseCustomPointEdgeBlending</strong><br><em>Use Custom Blending for Point/Edge Intersections</em></summary>
 
-**Edge/Edge Settings**
+When enabled, uses custom blending rules defined in `CustomPointEdgeBlendingDetails` to merge attributes at point-edge intersections.
 
-_Configures how edge-edge intersections are detected and handled._
+</details>
 
-* Sets tolerance for detecting edge crossings
-* Controls how to resolve overlapping or intersecting edges
+<details>
 
-***
+<summary><strong>CustomPointEdgeBlendingDetails</strong><br><em>Custom Blending Rules for Point/Edge Intersections</em></summary>
 
-#### Data Blending Settings
+Custom settings that define how point and edge properties are merged when a point intersects with an edge.
 
-Controls how attributes and properties are merged when paths are fused.
+</details>
 
-**Default Points Blending**
+<details>
 
-_Specifies how point properties and attributes are combined during fusion._
+<summary><strong>bUseCustomEdgeEdgeBlending</strong><br><em>Use Custom Blending for Edge/Edge Intersections</em></summary>
 
-* Determines the method used to blend values from multiple points at the same location
-* Applies to all fused points unless overridden by custom blending settings
+When enabled, uses custom blending rules defined in `CustomEdgeEdgeBlendingDetails` to merge attributes at edge crossings.
 
-**Default Edges Blending**
+</details>
 
-_Specifies how edge properties and attributes are combined during fusion._
+<details>
 
-* Determines the method used to blend values from multiple edges that connect to the same nodes
-* Applies to all fused edges unless overridden by custom blending settings
+<summary><strong>CustomEdgeEdgeBlendingDetails</strong><br><em>Custom Blending Rules for Edge/Edge Intersections</em></summary>
 
-**Use Custom Point/Edge Blending**
+Custom settings that define how edge properties are merged when two edges cross each other.
 
-_When enabled, allows you to define a separate blending method for point-edge intersections._
+</details>
 
-* Overrides default blending for intersections between points and edges
-* Useful when specific handling is needed for these types of intersections
+<details>
 
-**Point/Edge Blending Settings**
+<summary><strong>CarryOverDetails</strong><br><em>Metadata Filter Settings</em></summary>
 
-_Configures how attributes are blended specifically for point-edge intersection points._
+Controls which metadata from input paths is passed through to the output clusters.
 
-* Customizes the behavior of attribute merging at point-edge crossings
-* Allows fine-tuning of data consistency in complex intersections
+</details>
 
-**Use Custom Edge/Edge Blending**
+<details>
 
-_When enabled, allows you to define a separate blending method for edge-edge intersections (crossings)._
+<summary><strong>GraphBuilderDetails</strong><br><em>Graph and Edge Output Properties</em></summary>
 
-* Overrides default blending for intersections between edges
-* Useful when specific handling is needed for crossing paths
+Settings that define how the final graph and its edges are structured in the output.
 
-**Edge/Edge Blending Settings**
+</details>
 
-_Configures how attributes are blended specifically for edge-edge intersection points._
+#### Usage Example
 
-* Customizes the behavior of attribute merging at edge crossings
-* Allows fine-tuning of data consistency in complex graph topologies
+1. **Input**: Connect a set of paths (e.g., from a Path Generator node).
+2. **Fusion**: Enable `bFusePaths` to merge all paths into one cluster.
+3. **Intersections**:
+   * Enable `bFindPointEdgeIntersections` if you want points on edges to be included as nodes.
+   * Enable `bFindEdgeEdgeIntersections` to detect and add nodes at edge crossings.
+4. **Blending**: Adjust blending settings to control how point/edge attributes are merged.
+5. **Output**: The node outputs a cluster graph suitable for pathfinding or navigation mesh generation.
 
-***
+#### Notes
 
-#### Cluster Output Settings
-
-Controls how the final clustered output is structured and formatted.
-
-**Cluster Output Settings**
-
-_Specifies how the resulting clusters are built, including axis alignment and graph structure._
-
-* Determines which axis to align the cluster along (X, Y, or Z)
-* Controls overall structure of the output graph
-* Sets up parameters for edge creation and node positioning
-
-### Notes
-
-* Use this node when you want to convert path data into a format suitable for pathfinding or graph analysis.
-* Enable fusion if you need to detect intersections between paths; otherwise, keep it disabled to preserve separate clusters.
-* Custom blending settings are useful when you have specific requirements for how overlapping points or edges should be merged.
-* The output can be directly used in nodes that require clustered edge data, such as pathfinding or graph traversal algorithms.
+* Enabling fusion can significantly increase the number of nodes and edges in the output, especially with many intersections.
+* Use `bFindEdgeEdgeIntersections` cautiously as it can create dense graphs that may impact performance.
+* Attribute blending is critical when paths have overlapping or conflicting data; custom settings help maintain desired values.

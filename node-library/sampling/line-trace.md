@@ -6,383 +6,154 @@ icon: circle
 # Line Trace
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Find the collision point on the nearest collidable surface in a given direction.
 
-### Overview
+#### How It Works
 
-This node performs a line trace (raycast) from each input point in a specified direction to find the closest collidable surface. It's useful for placing objects on terrain, aligning geometry to surfaces, or sampling spatial data from the world. The node supports both constant and attribute-based trace distances, and can output various hit information like location, normal, UV coordinates, and material references.
+This node casts rays from input points to detect intersections with surfaces in the level. For each point, it calculates where a ray would hit based on an origin and direction vector. The ray's maximum distance can be set as a fixed value or read from an attribute. If the ray hits something, it records information like position, surface normal, and distance. You can choose to apply this data directly to the point's location or rotation, or write it to attributes for further use.
 
-{% hint style="info" %}
-This node requires a valid collision setup in your project. Ensure that actors have appropriate collision shapes and that the physics settings are enabled for accurate raycasting.
-{% endhint %}
+The node supports different modes for determining which surfaces to test against, such as all collidable objects or specific actors referenced by an attribute. It also allows you to define how the ray's direction is inverted and how the rotation of the point should be calculated based on the surface hit.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Surface Source</strong><br><em>Controls which surfaces are tested during the raycast.</em></summary>
 
-* **Main Input**: Points to trace from
-* **Point Filters (Optional)**: Filter which points to process
+* **Any surface**: Tests against all collidable surfaces in the level
+* **Actor Reference**: Only tests against surfaces belonging to actors referenced by a point attribute
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Actor Reference</strong><br><em>Name of the attribute that contains a path to an actor in the level, usually from a GetActorData PCG Node in point mode.</em></summary>
 
-* **Main Output**: Processed points with optional new attributes added
-* **Filtered Points (Optional)**: Points that failed the filter
+Attribute name used when `SurfaceSource` is set to "Actor Reference". This attribute should contain paths to actors in the level.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the line trace is performed and what data is written to the output points.
+<summary><strong>Origin</strong><br><em>The origin of the trace</em></summary>
 
-***
+Attribute selector for the starting point of the raycast. This can be a fixed value or an attribute on the input points.
 
-#### Settings
+</details>
 
-Configures the core behavior of the raycast operation.
+<details>
 
-**Surface Source**
+<summary><strong>Direction</strong><br><em>The direction to use for the trace</em></summary>
 
-_Controls which surfaces are considered for the trace._
+Attribute selector for the direction vector of the raycast. This can be a fixed value or an attribute on the input points.
 
-* **Any surface**: Any surface within range will be tested
-* **Actor Reference**: Only a list of actor surfaces will be included
+</details>
 
-**Actor Reference Attribute**
+<details>
 
-_Name of the attribute that contains a path to an actor in the level, usually from a GetActorData PCG Node in point mode._
+<summary><strong>Invert Direction</strong><br><em>Whether to invert the direction vector before performing the trace.</em></summary>
 
-* When "Actor Reference" is selected as the surface source, this attribute specifies which actors to trace against.
+When enabled, the direction vector is reversed before performing the trace.
 
-**Origin**
+</details>
 
-_Selects the attribute used for the trace origin point._
+<details>
 
-* This defines where each ray starts from
+<summary><strong>Distance Input</strong><br><em>This UV Channel will be selected when retrieving UV Coordinates from a raycast query.</em></summary>
 
-**Direction**
+Controls how the maximum distance of the trace is determined:
 
-_Selects the attribute used for the trace direction._
+* **Direction Length**: Uses the length of the direction vector as the max distance
+* **Constant**: Uses a fixed value defined by Max Distance
+* **Attribute**: Reads the max distance from an attribute on each point
 
-* This defines the direction and length of each ray
+</details>
 
-**Invert Direction**
+<details>
 
-_When enabled, reverses the trace direction._
+<summary><strong>Max Distance</strong><br><em>Trace max distance</em></summary>
 
-* Useful for casting backwards from a surface normal or other directional vector
+Maximum distance for the raycast when `DistanceInput` is set to "Constant".
 
-**Distance Input**
+</details>
 
-_Determines how the maximum trace distance is calculated._
+<details>
 
-* **Direction Length**: Uses the length of the direction vector as the trace distance
-* **Constant**: Uses a fixed value set in Max Distance
-* **Attribute**: Reads the trace distance from an attribute on the input points
+<summary><strong>Local Max Distance</strong><br><em>Attribute or property to read the local size from.</em></summary>
 
-**Max Distance**
+Attribute used to determine the maximum trace distance when `DistanceInput` is set to "Attribute". The value of this attribute is used as the max distance for each point.
 
-_Sets the maximum distance for the trace when using Constant distance input._
+</details>
 
-* Value must be greater than 0.001
+<details>
 
-**Local Max Distance Attribute**
+<summary><strong>Apply Sampling</strong><br><em>Whether and how to apply sampled result directly (not mutually exclusive with output)</em></summary>
 
-_Selects the attribute to read the trace distance from when using Attribute distance input._
+Controls whether and how the sampled results are applied directly to the points' transforms. This can be used to position or orient points based on the raycast hit.
 
-* Only used when Distance Input is set to "Attribute"
+</details>
 
-**Apply Sampling**
+<details>
 
-_Controls how the sampling results are applied directly to the points._
+<summary><strong>Rotation Construction</strong><br><em>How hit transform rotation should be constructed. First value used is the impact normal.</em></summary>
 
-* Allows you to modify point properties like location, rotation, or scale directly on the input points
+Defines how the rotation of the point is calculated from the raycast hit:
 
-**Rotation Construction**
+* **X**: Use X axis as forward direction
+* **XY**: Use X axis as forward, Y axis as right
+* **XZ**: Use X axis as forward, Z axis as up
+* **Y**: Use Y axis as forward direction
+* **YX**: Use Y axis as forward, X axis as right
+* **YZ**: Use Y axis as forward, Z axis as up
+* **Z**: Use Z axis as forward direction
+* **ZX**: Use Z axis as forward, X axis as right
+* **ZY**: Use Z axis as forward, Y axis as right
 
-_Determines how the hit transform rotation is constructed._
+</details>
 
-* **X**: Uses X axis as forward direction
-* **XY**: Uses X axis as forward, Y axis as right
-* **XZ**: Uses X axis as forward, Z axis as up
-* **Y**: Uses Y axis as forward direction
-* **YX**: Uses Y axis as forward, X axis as right
-* **YZ**: Uses Y axis as forward, Z axis as up
-* **Z**: Uses Z axis as forward direction
-* **ZX**: Uses Z axis as forward, X axis as right
-* **ZY**: Uses Z axis as forward, Y axis as right
+<details>
 
-**Cross Axis**
+<summary><strong>Cross Axis</strong><br><em>Second value used for constructing rotation</em></summary>
 
-_Specifies the secondary axis used for rotation construction._
+Defines the second axis used to construct the point's rotation when `RotationConstruction` is set to a cross-axis option (e.g., XY, XZ, etc.).
 
-* Controls the orientation of the rotation matrix when constructing the hit transform
+</details>
 
-***
+<details>
 
-#### Outputs
+<summary><strong>Process Filtered Out As Fails</strong><br><em>If enabled, mark filtered out points as "failed". Otherwise, skip the processing altogether. Only uncheck this if you want to ensure existing attribute values are preserved.</em></summary>
 
-Controls which data is written to the output points.
+When enabled, points that are filtered out by point filters are marked as failed instead of being skipped entirely.
 
-**Write Success**
+</details>
 
-_When enabled, writes whether the trace was successful to an attribute._
+<details>
 
-* Useful for debugging or filtering failed samples later in the graph
+<summary><strong>Prune Failed Samples</strong><br><em>If enabled, points that failed to sample anything will be pruned.</em></summary>
 
-**Success Attribute Name**
+When enabled, points that fail to find a valid surface hit during the raycast are removed from the output.
 
-_Name of the boolean attribute to write success status to._
+</details>
 
-* Only used when "Write Success" is enabled
+#### Usage Example
 
-**Write Location**
+You want to place trees on terrain by casting rays downward from each point to find ground level. Set:
 
-_When enabled, writes the hit location to a vector attribute._
+* **Surface Source** to "Any surface"
+* **Origin** to a vector attribute like `TreeHeight` (point's Y offset)
+* **Direction** to `(0, 0, -1)` for downward ray
+* **Max Distance** to `1000`
+* Enable **bWriteLocation**, **bWriteNormal**, and **bWriteDistance**
+* Set output attributes to `GroundLocation`, `GroundNormal`, and `HeightFromGround`
 
-* The point will be placed at the surface intersection
+This will place each point at the surface it hits, with normal and distance information available for further processing.
 
-**Location Attribute Name**
+#### Notes
 
-_Name of the vector attribute to write hit location to._
-
-* Only used when "Write Location" is enabled
-
-**Write LookAt**
-
-_When enabled, writes a direction pointing from the trace origin to the hit location._
-
-* Useful for orienting objects toward the surface
-
-**LookAt Attribute Name**
-
-_Name of the vector attribute to write look-at direction to._
-
-* Only used when "Write LookAt" is enabled
-
-**Write Normal**
-
-_When enabled, writes the surface normal at the hit location._
-
-* Useful for aligning geometry or calculating lighting
-
-**Normal Attribute Name**
-
-_Name of the vector attribute to write surface normal to._
-
-* Only used when "Write Normal" is enabled
-
-**Write Distance**
-
-_When enabled, writes the distance from origin to hit point._
-
-* Can be normalized and scaled for various effects
-
-**Distance Attribute Name**
-
-_Name of the double attribute to write hit distance to._
-
-* Only used when "Write Distance" is enabled
-
-**Output Normalized Distance**
-
-_When enabled, outputs a normalized value between 0 and 1._
-
-* Useful for controlling effects based on proximity
-
-**Output OneMinus Distance**
-
-_When enabled, inverts the normalized distance (1 - normalized)._
-
-* Creates an inverse relationship with distance
-
-**Distance Scale**
-
-_Scales the output distance by this factor._
-
-* Allows easy inversion using -1
-
-**Write Is Inside**
-
-_When enabled, writes whether the point was inside a collision volume._
-
-* Useful for detecting if points are embedded in geometry
-
-**Is Inside Attribute Name**
-
-_Name of the boolean attribute to write inside/outside status to._
-
-* Only used when "Write Is Inside" is enabled
-
-**Write UV Coords**
-
-_When enabled, writes UV coordinates from the hit surface._
-
-* Requires 'Project Settings->Physics->Support UV From Hit Results' set to true
-
-**UV Coords Attribute Name**
-
-_Name of the vector2D attribute to write UV coordinates to._
-
-* Only used when "Write UV Coords" is enabled
-
-**UV Channel**
-
-_Selects which UV channel to read from the hit surface._
-
-* Only used when "Write UV Coords" is enabled
-
-**Write Face Index**
-
-_When enabled, writes the index of the face that was hit._
-
-* Useful for mesh-based sampling or material assignment
-
-**Face Index Attribute Name**
-
-_Name of the integer attribute to write face index to._
-
-* Only used when "Write Face Index" is enabled
-
-**Write Vertex Color**
-
-_When enabled, attempts to extract vertex color from the hit surface._
-
-* Requires complex trace settings and proper mesh setup
-
-**Write Actor Reference**
-
-_When enabled, writes a reference to the actor that was hit._
-
-* Useful for linking points to specific actors in your scene
-
-**Actor Reference Attribute Name**
-
-_Name of the string attribute to write actor reference to._
-
-* Only used when "Write Actor Reference" is enabled
-
-**Write Hit Component Reference**
-
-_When enabled, writes a reference to the component that was hit._
-
-* Useful for identifying which part of an actor was hit
-
-**Hit Component Reference Attribute Name**
-
-_Name of the string attribute to write component reference to._
-
-* Only used when "Write Hit Component Reference" is enabled
-
-**Write Phys Mat**
-
-_When enabled, writes a reference to the physical material of the hit surface._
-
-* Useful for applying different behaviors based on surface type
-
-**Phys Mat Attribute Name**
-
-_Name of the string attribute to write physical material reference to._
-
-* Only used when "Write Phys Mat" is enabled
-
-**Write Render Mat**
-
-_When enabled, writes a reference to the render material of the hit surface._
-
-* Useful for copying visual properties from surfaces
-
-**Render Mat Attribute Name**
-
-_Name of the string attribute to write render material reference to._
-
-* Only used when "Write Render Mat" is enabled
-
-**Render Material Index**
-
-_Selects which material index to query from the hit component._
-
-* Only used when "Write Render Mat" is enabled
-
-**Extract Texture Parameters**
-
-_When enabled, attempts to extract texture parameters from the render material._
-
-* Requires a valid texture parameter factory setup
-
-***
-
-#### Output (Actor Data)
-
-Controls how actor data attributes are forwarded.
-
-**Attributes Forwarding**
-
-_Specifies which attributes from the source actors should be copied to the output points._
-
-* Allows you to maintain information about the actors that were hit during the trace
-
-***
-
-#### Tagging
-
-Controls how success/failure states are tagged on points.
-
-**Tag If Has Successes**
-
-_When enabled, tags points that successfully found a surface._
-
-* Useful for filtering or debugging
-
-**Has Successes Tag**
-
-_Name of the tag to apply to points with successful traces._
-
-* Only used when "Tag If Has Successes" is enabled
-
-**Tag If Has No Successes**
-
-_When enabled, tags points that failed to find a surface._
-
-* Useful for identifying problematic areas in your generation
-
-**Has No Successes Tag**
-
-_Name of the tag to apply to points with failed traces._
-
-* Only used when "Tag If Has No Successes" is enabled
-
-***
-
-#### Settings
-
-Controls how filtered-out points are handled.
-
-**Process Filtered Out As Fails**
-
-_When enabled, marks filtered out points as failed instead of skipping them._
-
-* Useful for maintaining consistent output counts
-
-**Prune Failed Samples**
-
-_When enabled, removes points that failed to sample a surface._
-
-* Useful for cleaning up invalid data from your point cloud
-
-### Notes
-
-* This node is computationally expensive and should be used sparingly in large datasets
-* For best performance, use constant distances when possible instead of attribute-based values
-* UV coordinates require specific engine settings to work properly
-* Texture parameter extraction requires additional setup with texture parameter factories
-* Consider using point filters to reduce the number of traces performed
-* The "Apply Sampling" feature can be used to directly modify point properties without needing additional nodes
+* The node supports both simple and complex raycasting modes, depending on your collision settings.
+* UV coordinates are only available in complex traces if "Project Settings->Physics->Support UV From Hit Results" is enabled.
+* Texture parameters can be extracted from materials when `bExtractTextureParameters` is enabled.
+* If you're using actor references, ensure that the referenced actors have valid collision shapes.

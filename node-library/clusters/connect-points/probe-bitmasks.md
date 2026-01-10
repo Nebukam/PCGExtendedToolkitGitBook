@@ -5,80 +5,66 @@ icon: circle-dashed
 # Probe : Bitmasks
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a probe that evaluates bitmask conditions against candidate points, using configurable operations and prioritization.
+> Probe using bitmasks references & collections.
 
-### Overview
+#### How It Works
 
-This factory defines a probe operation that checks bitmask values of candidate points against configured filters. It's used in probing nodes to find nearby connections based on bitmask matching logic.
+This subnode evaluates nearby points based on bitmask flags and collections to determine which ones are suitable for connection or interaction. It checks each point's bitmask against defined filters and uses prioritization rules to select the best candidate. The selection process considers either how well a point aligns with a direction vector or how close it is to the source point, depending on your settings.
 
-{% hint style="info" %}
-Connects to **Probe** pins on processing nodes like "Find Nearest" or "Connect Points"
-{% endhint %}
+When multiple filters are configured, all must pass for a point to be considered valid. The subnode calculates alignment scores using dot products and distance metrics, then applies bitmask composition operations to the selected candidate's flags if all conditions are met.
 
-### How It Works
+#### Configuration
 
-The probe evaluates candidate points by checking if their bitmask values satisfy configured conditions. It supports multiple bitmask collections and operations, allowing for complex matching logic. The results are prioritized either by best alignment with the probe direction or by closest distance.
+<details>
 
-### Inputs
+<summary><strong>bTransformDirection</strong><br><em>Transform the direction with the point's.</em></summary>
 
-* **Probe** (Pin): Input pin for connecting to probing nodes
-* **Direction** (Pin): Optional input for defining probe orientation
+When enabled, the direction used for alignment checks is adjusted according to each point's local orientation. This allows directional probing that respects individual point orientations.
 
-### Outputs
+</details>
 
-* **Result** (Pin): Output pin that provides matching candidates based on bitmask conditions
+<details>
 
-### Configuration
+<summary><strong>Favor</strong><br><em>What matters more?</em></summary>
 
-***
+Controls how candidates are prioritized when selecting the best match.
 
-#### General
+* **Best alignment**: Prioritizes candidates that align most closely with the direction vector, even if they're not the closest.
+* **Closest position**: Prioritizes candidates that are nearest to the source point, regardless of alignment.
 
-**Transform Direction**
+</details>
 
-_When enabled, the probe direction is transformed using the point's orientation._
+<details>
 
-Enables directional transformation based on point rotation, which affects how alignment is calculated.
+<summary><strong>Angle</strong><br><em>Shared angle threshold</em></summary>
 
-**Favor**
+The maximum angle (in degrees) allowed between a candidate's direction and the probe direction for it to be considered in the alignment calculation. A lower value means stricter alignment requirements.
 
-_Controls whether to prioritize candidates based on alignment or distance._
+</details>
 
-**Values**:
+<details>
 
-* **Best alignment**: Candidates that align best with the probe direction are favored
-* **Closest position**: Candidates that are closest in space are favored, regardless of alignment
+<summary><strong>Compositions</strong><br><em>Operations executed on the flag if all filters pass (or if no filter is set)</em></summary>
 
-**Angle**
+A list of bitmask operations that are applied to the selected candidate's flags when all filters pass. These operations define how the final bitmask value is computed from the candidate's original flags.
 
-_Sets the angle threshold for directional alignment checks._
+</details>
 
-Defines how strict the alignment check is. A value of 22.5 degrees means candidates must be within 22.5° of the probe direction to be considered aligned.
+<details>
 
-**Compositions**
+<summary><strong>Config</strong><br><em>Filter Config.</em></summary>
 
-_List of bitmask operations to apply when filters pass._
+The core configuration for this probe, including filter settings and bitmask operations to apply.
 
-Specifies a list of bitmask mutations that are applied to candidate flags when all conditions are met.
+</details>
 
-**Collections**
+#### Usage Example
 
-_Map of bitmask collections and their operations._
+Use this subnode in a graph where you want to connect points based on their bitmask compatibility. For example, if you have points representing different types of terrain (mountain, forest, water) defined by bitmasks, you could use this probe to find nearby points that match specific terrain combinations for generating paths or connections.
 
-Defines which collections to check against, with each collection having an associated operation (AND, OR, etc.) for combining results.
+#### Notes
 
-### Usage Example
-
-Use this factory in a "Find Nearest" node to locate points that match specific bitmask criteria. For example, you could find the closest point that has both bits 3 and 5 set, or the point with the best alignment that satisfies a specific bitmask pattern.
-
-### Notes
-
-* The probe works with multiple collections simultaneously
-* Operations are applied in order from left to right
-* When no filters are defined, all candidates pass by default
-* Directional alignment is only used when "Best alignment" is selected as the favor setting
+This subnode is designed to work with point data that has been processed through bitmask-related nodes. The performance of the probe can be affected by the number of candidate points and the complexity of the bitmask operations defined in the Compositions list.

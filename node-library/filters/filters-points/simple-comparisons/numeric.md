@@ -11,109 +11,98 @@ This page was generated from the source code. It should properly capture what th
 
 > Creates a filter definition that compares two numeric attribute values.
 
-#### Overview
-
-This subnode defines a filtering condition based on comparing two numeric values. It evaluates whether a point passes or fails a comparison test, making it useful for selecting points that meet specific numeric criteria. You can compare an attribute value from the input data against either a constant or another attribute value.
-
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes.
-{% endhint %}
-
 #### How It Works
 
-This subnode performs a comparison between two numeric values for each point in the input data. The first operand (Operand A) is always read from an attribute of the input points. The second operand (Operand B) can be either a constant value or another attribute, as defined by the **CompareAgainst** setting.
+This subnode evaluates whether points meet specific numeric criteria by comparing two values. One value is always taken from an attribute on each point, while the second value can either be a fixed number or another attribute. The comparison operator determines if a point passes the filter based on this evaluation.
 
-The comparison operation is determined by the **Comparison** setting, which defines how the two operands are evaluated. For example, if Operand A is 5 and Operand B is 3, and the comparison is "Greater Than", then the point passes the filter only if 5 > 3.
+The process works in four steps:
 
-If the comparison type is set to "Nearly Equal" or "Nearly Not Equal", a tolerance value is used to determine equality within a small range. This helps avoid issues with floating-point precision when comparing values that should be equal but might differ slightly due to computation.
+1. Read the first value (Operand A) from the selected attribute on each point
+2. Determine the second value (Operand B) - either a constant or from another attribute
+3. Apply the chosen comparison operation between these two values
+4. Return true if the condition is met, false otherwise
 
-The result of this evaluation determines whether the point passes the filter or not, and thus affects which points are processed by downstream nodes.
-
-<details>
-
-<summary>Inputs</summary>
-
-Expects a set of points with numeric attributes. The **Operand A** attribute must exist on the input data.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-Produces a boolean result per point indicating whether it passes the comparison test defined by this filter subnode.
-
-</details>
+For comparisons that involve floating-point numbers, a tolerance value helps handle small precision differences by allowing a small margin of error.
 
 #### Configuration
 
-***
+<details>
 
-**Operand A**
+<summary><strong>Operand A</strong><br><em>First operand for comparison -- Will be translated to `double` under the hood.</em></summary>
 
-_The first operand for comparison — read from an attribute._
+Selects which attribute from the input data will be used as the first value in the comparison. Each point's value is read individually.
 
-This defines which numeric attribute of the input points is used as the first value in the comparison. For example, if you have a point with an attribute named "Height", you would select that attribute here to compare against another value.
+</details>
 
-**Comparison**
+<details>
 
-_The type of comparison to perform._
+<summary><strong>Comparison</strong><br><em>Type of comparison to perform</em></summary>
 
-Controls how the two operands are compared.
-
-**Values**:
-
-* **Strictly Equal**: Checks if Operand A equals Operand B.
-* **Strictly Not Equal**: Checks if Operand A does not equal Operand B.
-* **Equal or Greater**: Checks if Operand A is greater than or equal to Operand B.
-* **Equal or Smaller**: Checks if Operand A is less than or equal to Operand B.
-* **Strictly Greater**: Checks if Operand A is strictly greater than Operand B.
-* **Strictly Smaller**: Checks if Operand A is strictly smaller than Operand B.
-* **Nearly Equal**: Checks if Operand A is approximately equal to Operand B, within the tolerance range.
-* **Nearly Not Equal**: Checks if Operand A is not approximately equal to Operand B, outside the tolerance range.
-
-**Compare Against**
-
-_Determines whether Operand B is a constant or an attribute._
-
-Controls how the second operand is sourced.
+Specifies how the two values are compared.
 
 **Values**:
 
-* **Constant**: Use the value specified in **Operand B (Constant)**.
-* **Attribute**: Read the second operand from an attribute of the input points.
+* **StrictlyEqual**: Checks if Operand A equals Operand B exactly.
+* **StrictlyNotEqual**: Checks if Operand A does not equal Operand B exactly.
+* **EqualOrGreater**: Checks if Operand A is greater than or equal to Operand B.
+* **EqualOrSmaller**: Checks if Operand A is less than or equal to Operand B.
+* **StrictlyGreater**: Checks if Operand A is strictly greater than Operand B.
+* **StrictlySmaller**: Checks if Operand A is strictly smaller than Operand B.
+* **NearlyEqual**: Checks if Operand A is nearly equal to Operand B, within tolerance.
+* **NearlyNotEqual**: Checks if Operand A is not nearly equal to Operand B, outside tolerance.
 
-**Operand B (Constant)**
+</details>
 
-_The second operand when comparing against a constant._
+<details>
 
-When **Compare Against** is set to "Constant", this numeric value is used as Operand B in the comparison. For example, if you want to filter points where Height > 10, set this to 10.
+<summary><strong>Compare Against</strong><br><em>Type of second operand</em></summary>
 
-**Operand B (Attribute)**
+Determines whether the second value (Operand B) is a fixed number or comes from an attribute.
 
-_The second operand when comparing against an attribute._
+**Values**:
 
-When **Compare Against** is set to "Attribute", this defines which attribute of the input points is used as Operand B in the comparison. For example, if you want to filter points where Height > Width, select the "Width" attribute here.
+* **Constant**: Use a fixed numeric value for Operand B.
+* **Attribute**: Read Operand B from an attribute on the input points.
 
-**Tolerance**
+</details>
 
-_Near-equality tolerance for floating-point comparisons._
+<details>
 
-Used only when the **Comparison** is set to "Nearly Equal" or "Nearly Not Equal". Defines how close two values must be to be considered equal. For example, if Operand A is 1.0 and Operand B is 1.0001, they are considered nearly equal if the tolerance is set to 0.001.
+<summary><strong>Operand B (Attr)</strong><br><em>Second operand attribute</em></summary>
+
+When "Compare Against" is set to "Attribute", this selects which attribute will be used for Operand B.
+
+</details>
+
+<details>
+
+<summary><strong>Operand B</strong><br><em>Fixed value for second operand</em></summary>
+
+When "Compare Against" is set to "Constant", this sets the fixed numeric value for Operand B.
+
+</details>
+
+<details>
+
+<summary><strong>Tolerance</strong><br><em>Near-equality tolerance</em></summary>
+
+Used when performing nearly equal comparisons. Defines how close the two values must be to be considered equal, accounting for floating-point precision errors.
+
+</details>
 
 #### Usage Example
 
-Suppose you have a point cloud with attributes "Temperature" and "Humidity". You want to filter points where Temperature is greater than or equal to Humidity.
+A filter that selects points where the "Height" attribute is greater than or equal to 100 units:
 
-1. Set **Operand A** to "Temperature".
-2. Set **Compare Against** to "Attribute".
-3. Set **Operand B (Attribute)** to "Humidity".
-4. Set **Comparison** to "Equal or Greater".
+1. Set Operand A to the "Height" attribute
+2. Choose the comparison "EqualOrGreater"
+3. Set Compare Against to "Constant"
+4. Set Operand B to 100
 
-This will pass only those points where the Temperature attribute is greater than or equal to the Humidity attribute.
+This will pass all points where Height >= 100.
 
 #### Notes
 
-* The comparison logic is applied per point, so each point is evaluated independently.
-* When using "Nearly Equal" or "Nearly Not Equal", ensure that your tolerance value is appropriate for the scale of your numeric data.
-* This subnode can be combined with other filters to create more complex selection criteria.
+* For floating-point comparisons, use "NearlyEqual" or "NearlyNotEqual" with an appropriate tolerance.
+* When using attribute-based Operand B, ensure the attribute exists on all input points to avoid runtime errors.
+* The tolerance value is typically set to a small number like `0.001` for most cases.

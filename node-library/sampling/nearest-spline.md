@@ -6,27 +6,48 @@ icon: circle
 # Nearest Spline
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Find the closest transform on nearest polylines.
 
-### Overview
+#### Overview
 
-This node finds the closest point along any polyline or spline within a specified distance range for each input point. It's useful for snapping points to curves, sampling curve data, or generating procedural placements along paths. The node supports multiple output attributes that describe the sampled location, distance, angle, and other properties.
+This node samples transforms from nearby spline data, using the closest point along each spline to determine where to sample. It's useful for placing objects along splines or aligning them with spline geometry in a procedural way.
+
+It evaluates the distance from each input point to all available spline data and finds the nearest valid sample within a specified range. The sampled result can be used to position, orient, or scale objects based on spline properties.
+
+This node is ideal for scenarios like placing trees along paths, aligning buildings to roads, or generating procedural layouts that follow spline-based structures.
 
 {% hint style="info" %}
-This node is designed to work with polylines and splines from input data. It will sample from all valid inputs within range, using weighting based on distance.
+Connects to **Points** processing pins. Subnodes:
+
+* Point Filters (SourcePointFilters)
+* Weight Over Distance Curve
+* Apply Sampling
 {% endhint %}
+
+#### How It Works
+
+This node performs the following steps:
+
+1. **Spatial Query**: For each input point, it identifies nearby spline data using spatial partitioning (octree) to optimize performance.
+2. **Distance Calculation**: It calculates the distance from each point to all candidate splines.
+3. **Range Filtering**: Only considers splines that are within the specified minimum and maximum range.
+4. **Sampling Selection**: For each valid spline, it determines a sample point along the spline using either:
+   * A fixed alpha value (0-1), or
+   * An alpha derived from time or distance along the spline
+5. **Weighted Blending**: If multiple splines are found within range, their samples are blended based on distance weights.
+6. **Output Generation**: The final sampled transform and associated values (distance, angle, etc.) are written to attributes as specified.
+
+The node supports various output types including position, rotation, tangent vectors, and additional metrics like signed distances or depth values.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Points**: Input points to be sampled
-* **Spline Data**: Polylines or splines to sample from
+* Points: Input points to sample from.
+* Splines: Spline data to sample transforms from.
 
 </details>
 
@@ -34,503 +55,687 @@ This node is designed to work with polylines and splines from input data. It wil
 
 <summary>Outputs</summary>
 
-* **Points**: Output points with additional attributes based on sampling results
+* Points: Output points with sampled attributes added based on configuration.
 
 </details>
 
-### Properties Overview
+#### Configuration
 
-Settings are organized into categories for sampling, weighting, outputs, and tagging.
+<details>
 
-***
+<summary><strong>SampleInputs</strong><br><em>Sample inputs.</em></summary>
 
-#### Sampling Settings
+Controls which spline data to sample from.
 
-Controls how the node samples polylines and what range to consider.
+**Values**:
 
-**Sample Inputs**
+* **All**: Sample all input splines.
+* **ClosedLoopOnly**: Only sample closed-loop splines.
+* **OpenSplineOnly**: Only sample open-line splines.
 
-_Which types of input splines to sample from._
+</details>
 
-* **All**: Sample all input splines
-* **Closed loops only**: Only sample closed loop splines
-* **Open lines only**: Only sample open line splines
+<details>
 
-**Sampling Method**
+<summary><strong>SampleMethod</strong><br><em>Sampling method.</em></summary>
 
-_How to determine which points to sample._
+Controls how the sampling is performed.
 
-* **Within Range**: Samples points within the defined range
-* **Closest**: Only samples the closest spline, regardless of distance
+**Values**:
 
-**Spline Scales Ranges**
+* **WithinRange**: Sample within the specified range.
+* **ClosestOnly**: Sample only the closest spline.
 
-_When enabled, spline scale affects the sampling range._
+</details>
 
-* When enabled, the scale of input splines will be factored into the range calculations.
+<details>
 
-***
+<summary><strong>bSplineScalesRanges</strong><br><em>If enabled, spline scale affect range.</em></summary>
 
-#### Sampling Range
+When enabled, the scale of each spline affects how far it can be sampled from. A larger scale increases the effective sampling range.
 
-Defines the minimum and maximum distance to consider when looking for splines.
+</details>
 
-**Range Min Input Type**
+<details>
 
-_How to define the minimum sampling distance._
+<summary><strong>RangeMinInput</strong><br><em>Type of Range Min</em></summary>
 
-* **Constant**: Use a fixed value
-* **Attribute**: Read the value from an attribute on input points
+Controls whether the minimum range is a constant or taken from an attribute.
 
-**Range Min Attribute**
+**Values**:
 
-_The attribute to read the minimum range from, if using Attribute mode._
+* **Constant**: Use the constant value.
+* **Attribute**: Read the value from an attribute.
 
-**Range Min Constant**
+</details>
 
-_The fixed minimum range value, if using Constant mode._
+<details>
 
-**Range Max Input Type**
+<summary><strong>RangeMin</strong><br><em>Minimum target range to sample targets.</em></summary>
 
-_How to define the maximum sampling distance._
+The minimum distance from each point to consider splines for sampling. Only used when RangeMinInput is set to Constant.
 
-* **Constant**: Use a fixed value
-* **Attribute**: Read the value from an attribute on input points
+</details>
 
-**Range Max Attribute**
+<details>
 
-_The attribute to read the maximum range from, if using Attribute mode._
+<summary><strong>RangeMaxInput</strong><br><em>Type of Range Min</em></summary>
 
-**Range Max Constant**
+Controls whether the maximum range is a constant or taken from an attribute.
 
-_The fixed maximum range value, if using Constant mode._
+**Values**:
 
-***
+* **Constant**: Use the constant value.
+* **Attribute**: Read the value from an attribute.
 
-#### Specific Alpha Sampling
+</details>
 
-When enabled, samples a specific point along each spline based on alpha values.
+<details>
 
-**Sample Specific Alpha**
+<summary><strong>RangeMax</strong><br><em>Maximum target range to sample targets.</em></summary>
 
-_When enabled, samples a specific point along each spline._
+The maximum distance from each point to consider splines for sampling. Only used when RangeMaxInput is set to Constant.
 
-* When enabled, the node will sample at a specific alpha value along each spline instead of just finding the closest point.
+</details>
 
-**Sample Alpha Input Type**
+<details>
 
-_How to define the alpha value for sampling._
+<summary><strong>bSampleSpecificAlpha</strong><br><em>Whether spline should be sampled at a specific alpha</em></summary>
 
-* **Constant**: Use a fixed value
-* **Attribute**: Read the value from an attribute on input points
+When enabled, the node samples at a specific alpha value along each spline instead of using the closest point.
 
-**Sample Alpha Mode**
+</details>
 
-_How to interpret the alpha value._
+<details>
 
-* **Alpha**: Value between 0 and 1
-* **Time**: Value between 0 and number of segments
-* **Distance**: Distance along the spline
+<summary><strong>SampleAlphaInput</strong><br><em>Where to read the sampling alpha from.</em></summary>
 
-**Wrap Closed Loop Alpha**
+Controls whether the alpha value is constant or taken from an attribute.
 
-_When enabled, wraps alpha values for closed loops._
+**Values**:
 
-* When enabled, alpha values that exceed the spline length will wrap around for closed loops.
+* **Constant**: Use the constant value.
+* **Attribute**: Read the value from an attribute.
 
-**Sample Alpha Attribute**
+</details>
 
-_The attribute to read the alpha value from, if using Attribute mode._
+<details>
 
-**Sample Alpha Constant**
+<summary><strong>SampleAlphaMode</strong><br><em>How to interpret the sample alpha value.</em></summary>
 
-_The fixed alpha value, if using Constant mode._
+Controls how the alpha value is interpreted when sampling.
 
-***
+**Values**:
 
-#### Apply Sampling
+* **Alpha**: Alpha value between 0 and 1.
+* **Time**: Time value where N is the number of segments.
+* **Distance**: Distance along the spline to sample at.
 
-Controls how the sampling results are applied directly to the input points.
+</details>
 
-**Apply Sampling**
+<details>
 
-_Whether and how to apply sampled result directly to input points._
+<summary><strong>bWrapClosedLoopAlpha</strong><br><em>Whether to wrap out of bounds value on closed loops.</em></summary>
 
-* When enabled, the node will modify the input point's transform based on the sampling results.
+When enabled, alpha values that go beyond a spline's length are wrapped around for closed loops.
 
-***
+</details>
 
-#### Weighting Settings
+<details>
 
-Controls how distances are weighted when multiple splines are found within range.
+<summary><strong>SampleAlphaConstant</strong><br><em>Constant sample alpha.</em></summary>
 
-**Distance Method**
+The constant alpha value to use when SampleAlphaInput is set to Constant.
 
-_How to measure distance from points to splines._
+</details>
 
-* **Center**: Use center point of the point
-* **Sphere Bounds**: Use sphere bounds of the point
-* **Box Bounds**: Use box bounds of the point
+<details>
 
-**Weight Method**
+<summary><strong>ApplySampling</strong><br><em>Whether and how to apply sampled result directly (not mutually exclusive with output)</em></summary>
 
-_How to weight samples based on distance._
+Controls whether the sampled transform is applied directly to the point's location or rotation. This can be used to instantly align points with splines.
 
-* **Full Range**: All samples are weighted equally
-* **Linear**: Weight decreases linearly with distance
-* **Exponential**: Weight decreases exponentially with distance
+</details>
 
-**Use Local Curve**
+<details>
 
-_Whether to use an in-editor curve or external asset for weighting._
+<summary><strong>DistanceSettings</strong><br><em>Distance method to be used for source points.</em></summary>
 
-* When enabled, uses the local weight over distance curve.
-* When disabled, uses an external curve asset.
+The method used to calculate distance from input points to splines.
 
-**Weight Over Distance Curve**
+**Values**:
 
-_The curve that balances weight over distance._
+* **Center**: Use the center point of each spline.
+* **ClosestPoint**: Use the closest point on the spline to the input point.
 
-* If using local curve, this is the in-editor curve.
-* If using external asset, this is a reference to a curve asset.
+</details>
 
-**Weight Curve Lookup**
+<details>
 
-_How to sample the weight curve._
+<summary><strong>WeightMethod</strong><br><em>Weight method used for blending</em></summary>
 
-* **Direct**: Direct sampling
-* **Lookup**: Lookup table sampling
+Controls how weights are calculated when multiple splines are within range.
 
-***
+**Values**:
 
-#### Output Settings
+* **FullRange**: Full range weighting.
+* **HalfRange**: Half range weighting.
+* **CustomCurve**: Use a custom curve for weighting.
 
-Controls which attributes are written to output points.
+</details>
 
-**Write Success**
+<details>
 
-_When enabled, writes whether sampling was successful._
+<summary><strong>bUseLocalCurve</strong><br><em>Whether to use in-editor curve or an external asset.</em></summary>
 
-* When enabled, adds a boolean attribute indicating if sampling succeeded.
+When enabled, uses the local curve defined in the node. When disabled, uses an external curve asset.
 
-**Success Attribute Name**
+</details>
 
-_Name of the boolean attribute to write success to._
+<details>
 
-**Write Transform**
+<summary><strong>LocalWeightOverDistance</strong><br><em>Weight Over Distance</em></summary>
 
-_When enabled, writes the sampled transform._
+The curve used to define how weight decreases with distance when bUseLocalCurve is enabled.
 
-* When enabled, adds a transform attribute with the sampled position and orientation.
+</details>
 
-**Transform Attribute Name**
+<details>
 
-_Name of the transform attribute to write to._
+<summary><strong>WeightOverDistance</strong><br><em>Curve that balances weight over distance</em></summary>
 
-**Write LookAt Transform**
+The external curve asset used for weighting when bUseLocalCurve is disabled.
 
-_When enabled, writes a look-at transform._
+</details>
 
-* When enabled, adds a transform attribute that points from the input point toward the sampled location.
+<details>
 
-**LookAt Axis Align**
+<summary><strong>bWriteSuccess</strong><br><em>Write whether the sampling was sucessful or not to a boolean attribute.</em></summary>
 
-_The axis to align the look-at vector to._
+When enabled, writes a boolean value indicating if sampling was successful to an attribute.
 
-* **Forward**: Forward (X+)
-* **Backward**: Backward (X-)
-* **Right**: Right (Y+)
-* **Left**: Left (Y-)
-* **Up**: Up (Z+)
-* **Down**: Down (Z-)
+</details>
 
-**LookAt Up Selection**
+<details>
 
-_How to determine the up vector for look-at._
+<summary><strong>SuccessAttributeName</strong><br><em>Name of the 'boolean' attribute to write sampling success to.</em></summary>
 
-* **Source**: Use an attribute from input points
-* **Target**: Use a specific axis on the target spline
-* **Constant**: Use a constant vector
+The name of the boolean attribute to store the sampling success status.
 
-**LookAt Up Source Attribute**
+</details>
 
-_The attribute to use as up vector, if using Source mode._
+<details>
 
-**LookAt Up Axis**
+<summary><strong>bWriteTransform</strong><br><em>Write the sampled transform.</em></summary>
 
-_The axis to use as up vector, if using Target mode._
+When enabled, writes the sampled transform to an attribute.
 
-**LookAt Up Constant Vector**
+</details>
 
-_The constant vector to use as up vector, if using Constant mode._
+<details>
 
-**Write Distance**
+<summary><strong>TransformAttributeName</strong><br><em>Name of the 'transform' attribute to write sampled Transform to.</em></summary>
 
-_When enabled, writes the sampled distance._
+The name of the transform attribute to store the sampled transform.
 
-* When enabled, adds a double attribute with the distance from point to spline.
+</details>
 
-**Distance Attribute Name**
+<details>
 
-_Name of the distance attribute to write to._
+<summary><strong>bWriteLookAtTransform</strong><br><em>Write the sampled transform.</em></summary>
 
-**Output Normalized Distance**
+When enabled, writes a look-at transform based on the sampled spline direction.
 
-_When enabled, outputs normalized distance._
+</details>
 
-* When enabled, the distance is normalized between 0 and 1 based on range.
+<details>
 
-**Output OneMinus Distance**
+<summary><strong>LookAtTransformAttributeName</strong><br><em>Name of the 'transform' attribute to write sampled Transform to.</em></summary>
 
-_When enabled, outputs one minus the normalized distance._
+The name of the transform attribute to store the look-at transform.
 
-* When enabled, subtracts the normalized distance from 1.
+</details>
 
-**Distance Scale**
+<details>
 
-_Scale factor applied to the distance output._
+<summary><strong>LookAtAxisAlign</strong><br><em>The axis to align transform the look at vector to.</em></summary>
 
-* Allows inverting the distance using -1.
+Controls which axis of the look-at transform is aligned with the spline direction.
 
-**Write Signed Distance**
+**Values**:
 
-_When enabled, writes the signed distance._
+* **Forward**: Align forward axis.
+* **Backward**: Align backward axis.
+* **Right**: Align right axis.
+* **Left**: Align left axis.
+* **Up**: Align up axis.
+* **Down**: Align down axis.
 
-* When enabled, adds a double attribute with the signed distance (positive or negative).
+</details>
 
-**Signed Distance Attribute Name**
+<details>
 
-_Name of the signed distance attribute to write to._
+<summary><strong>LookAtUpSelection</strong><br><em>Up vector source.</em></summary>
 
-**Sign Axis**
+Controls where the up vector for the look-at transform comes from.
 
-_The axis to use for calculating the sign._
+**Values**:
 
-* **Forward**: Forward (X+)
-* **Backward**: Backward (X-)
-* **Right**: Right (Y+)
-* **Left**: Left (Y-)
-* **Up**: Up (Z+)
-* **Down**: Down (Z-)
+* **Constant**: Use a constant vector.
+* **Source**: Use an attribute from the input point.
+* **Target**: Use an axis from the target spline.
 
-**Only Sign If Closed**
+</details>
 
-_When enabled, only signs the distance if sampled spline is closed._
+<details>
 
-* When enabled, the signed distance is only calculated for closed splines.
+<summary><strong>LookAtUpConstant</strong><br><em>The constant to use as Up vector for the look at transform.</em></summary>
 
-**Signed Distance Scale**
+The constant vector used as the up vector when LookAtUpSelection is set to Constant.
 
-_Scale factor applied to the signed distance output._
+</details>
 
-* Allows inverting the signed distance using -1.
+<details>
 
-**Write Component Wise Distance**
+<summary><strong>bWriteDistance</strong><br><em>Write the sampled distance.</em></summary>
 
-_When enabled, writes component-wise distances._
+When enabled, writes the distance from the point to the sampled spline to an attribute.
 
-* When enabled, adds a vector attribute with distances along each axis.
+</details>
 
-**Component Wise Distance Attribute Name**
+<details>
 
-_Name of the component-wise distance attribute to write to._
+<summary><strong>DistanceAttributeName</strong><br><em>Name of the 'double' attribute to write sampled distance to.</em></summary>
 
-**Absolute Component Wise Distance**
+The name of the double attribute to store the sampled distance.
 
-_When enabled, outputs absolute values for component-wise distances._
+</details>
 
-* When enabled, all component-wise distances are positive.
+<details>
 
-**Write Angle**
+<summary><strong>bOutputNormalizedDistance</strong><br><em>Whether to output normalized distance or not</em></summary>
 
-_When enabled, writes the angle between point and spline._
+When enabled, outputs a normalized distance between 0 and 1.
 
-* When enabled, adds a double attribute with the angle.
+</details>
 
-**Angle Attribute Name**
+<details>
 
-_Name of the angle attribute to write to._
+<summary><strong>bOutputOneMinusDistance</strong><br><em>Whether to do a OneMinus on the normalized distance value</em></summary>
 
-**Angle Axis**
+When enabled, inverts the normalized distance (1 - distance).
 
-_The axis to use for calculating the angle._
+</details>
 
-* **Forward**: Forward (X+)
-* **Backward**: Backward (X-)
-* **Right**: Right (Y+)
-* **Left**: Left (Y-)
-* **Up**: Up (Z+)
-* **Down**: Down (Z-)
+<details>
 
-**Angle Range**
+<summary><strong>DistanceScale</strong><br><em>Scale factor applied to the distance output; allows to invert it using -1</em></summary>
 
-_The unit/range to output the angle in._
+A scale factor applied to the distance output. Use -1 to invert.
 
-* **Radians (0..+PI)**: 0 to PI radians
-* **Radians (-PI..+PI)**: -PI to PI radians
-* **Radians (0..+TAU)**: 0 to 2\*PI radians
-* **Degrees (0..+180)**: 0 to 180 degrees
-* **Degrees (-180..+180)**: -180 to 180 degrees
-* **Degrees (0..+360)**: 0 to 360 degrees
-* **Normalized Half (0..180 -> 0..1)**: Normalized 0 to 180 degrees to 0 to 1
-* **Normalized (0..+360 -> 0..1)**: Normalized 0 to 360 degrees to 0 to 1
-* **Inv. Normalized Half (0..180 -> 1..0)**: Inverted normalized 0 to 180 degrees to 1 to 0
-* **Inv. Normalized (0..+360 -> 1..0)**: Inverted normalized 0 to 360 degrees to 1 to 0
+</details>
 
-**Write Time**
+<details>
 
-_When enabled, writes the spline time._
+<summary><strong>bWriteSignedDistance</strong><br><em>Write the sampled Signed distance.</em></summary>
 
-* When enabled, adds a double attribute with the time along the spline.
+When enabled, writes a signed distance indicating whether the point is inside or outside the spline's area.
 
-**Time Attribute Name**
+</details>
 
-_Name of the time attribute to write to._
+<details>
 
-**Write Arrive Tangent**
+<summary><strong>SignedDistanceAttributeName</strong><br><em>Name of the 'double' attribute to write sampled Signed distance to.</em></summary>
 
-_When enabled, writes the arrive tangent._
+The name of the double attribute to store the signed distance.
 
-* When enabled, adds a vector attribute with the tangent at the sampling point.
+</details>
 
-**Arrive Tangent Attribute Name**
+<details>
 
-_Name of the arrive tangent attribute to write to._
+<summary><strong>SignAxis</strong><br><em>Axis to use to calculate the distance' sign</em></summary>
 
-**Write Leave Tangent**
+Controls which axis is used to determine the sign of the distance.
 
-_When enabled, writes the leave tangent._
+**Values**:
 
-* When enabled, adds a vector attribute with the tangent at the sampling point.
+* **Forward**: Use forward axis.
+* **Backward**: Use backward axis.
+* **Right**: Use right axis.
+* **Left**: Use left axis.
+* **Up**: Use up axis.
+* **Down**: Use down axis.
 
-**Leave Tangent Attribute Name**
+</details>
 
-_Name of the leave tangent attribute to write to._
+<details>
 
-**Write Num Inside**
+<summary><strong>bOnlySignIfClosed</strong><br><em>Only sign the distance if at least one sampled spline is a bClosedLoop spline.</em></summary>
 
-_When enabled, writes the number of splines this point lies inside._
+When enabled, only signs the distance if at least one of the sampled splines is closed.
 
-* When enabled, adds an integer attribute with the count of closed splines this point is inside.
+</details>
 
-**Num Inside Attribute Name**
+<details>
 
-_Name of the num inside attribute to write to._
+<summary><strong>SignedDistanceScale</strong><br><em>Scale factor applied to the signed distance output; allows to invert it using -1</em></summary>
 
-**Only Increment If Closed**
+A scale factor applied to the signed distance output. Use -1 to invert.
 
-_When enabled, only counts closed splines for num inside._
+</details>
 
-* When enabled, only closed splines contribute to the num inside count.
+<details>
 
-**Write Num Samples**
+<summary><strong>bWriteComponentWiseDistance</strong><br><em>Write the sampled component-wise distance.</em></summary>
 
-_When enabled, writes the number of samples._
+When enabled, writes a vector containing distances along each axis.
 
-* When enabled, adds an integer attribute with the count of valid samples.
+</details>
 
-**Num Samples Attribute Name**
+<details>
 
-_Name of the num samples attribute to write to._
+<summary><strong>ComponentWiseDistanceAttributeName</strong><br><em>Name of the 'FVector' attribute to write component-wise distance to.</em></summary>
 
-**Write Closed Loop**
+The name of the FVector attribute to store the component-wise distance.
 
-_When enabled, writes whether sampled spline is closed._
+</details>
 
-* When enabled, adds a boolean attribute indicating if the sampled spline was closed.
+<details>
 
-**Closed Loop Attribute Name**
+<summary><strong>bAbsoluteComponentWiseDistance</strong><br><em>Whether to output absolute or signed component wise distances</em></summary>
 
-_Name of the closed loop attribute to write to._
+When enabled, outputs absolute values for component-wise distances.
 
-**Write Total Weight**
+</details>
 
-_When enabled, writes the total weight computed for that point._
+<details>
 
-* When enabled, adds a double attribute with the total weight from all samples.
+<summary><strong>bWriteAngle</strong><br><em>Write the sampled angle.</em></summary>
 
-**Total Weight Attribute Name**
+When enabled, writes an angle value based on the sampled spline direction.
 
-_Name of the total weight attribute to write to._
+</details>
 
-**Write Depth**
+<details>
 
-_When enabled, writes the sampled depth._
+<summary><strong>AngleAttributeName</strong><br><em>Name of the 'double' attribute to write sampled Signed distance to.</em></summary>
 
-* When enabled, adds a double attribute with the depth value.
+The name of the double attribute to store the sampled angle.
 
-**Depth Attribute Name**
+</details>
 
-_Name of the depth attribute to write to._
+<details>
 
-**Depth Range**
+<summary><strong>AngleAxis</strong><br><em>Axis to use to calculate the angle</em></summary>
 
-_The range used for calculating depth._
+Controls which axis is used for angle calculation.
 
-* Defines how far to consider when computing depth values.
+**Values**:
 
-**Invert Depth**
+* **Forward**: Use forward axis.
+* **Backward**: Use backward axis.
+* **Right**: Use right axis.
+* **Left**: Use left axis.
+* **Up**: Use up axis.
+* **Down**: Use down axis.
 
-_When enabled, inverts the depth output._
+</details>
 
-* When enabled, the depth values are inverted.
+<details>
 
-**Depth Mode**
+<summary><strong>AngleRange</strong><br><em>Unit/range to output the angle to.</em></summary>
 
-_How to compute depth from multiple samples._
+Controls how the angle is represented in the output.
 
-* **Min**: Use minimum depth value
-* **Max**: Use maximum depth value
-* **Average**: Use average of all depths
+**Values**:
 
-***
+* **URadians**: 0 to +PI radians.
+* **PIRadians**: -PI to +PI radians.
+* **TAURadians**: 0 to TAU radians.
+* **UDegrees**: 0 to +180 degrees.
+* **PIDegrees**: -180 to +180 degrees.
+* **TAUDegrees**: 0 to +360 degrees.
+* **NormalizedHalf**: 0 to 180 degrees mapped to 0 to 1.
+* **Normalized**: 0 to 360 degrees mapped to 0 to 1.
+* **InvertedNormalizedHalf**: 0 to 180 degrees mapped to 1 to 0.
+* **InvertedNormalized**: 0 to 360 degrees mapped to 1 to 0.
 
-#### Tagging Settings
+</details>
 
-Controls how points are tagged based on sampling results.
+<details>
 
-**Tag If Has Successes**
+<summary><strong>bWriteTime</strong><br><em>Write the sampled time (spline space).</em></summary>
 
-_When enabled, adds a tag if at least one spline was sampled._
+When enabled, writes the time along the spline where sampling occurred.
 
-* When enabled, adds a tag to output points that successfully sampled at least one spline.
+</details>
 
-**Has Successes Tag**
+<details>
 
-_Name of the tag to add when sampling succeeds._
+<summary><strong>TimeAttributeName</strong><br><em>Name of the 'double' attribute to write sampled spline Time to.</em></summary>
 
-**Tag If Has No Successes**
+The name of the double attribute to store the spline time.
 
-_When enabled, adds a tag if no spline was found within range._
+</details>
 
-* When enabled, adds a tag to output points that failed to sample any splines.
+<details>
 
-**Has No Successes Tag**
+<summary><strong>bWriteArriveTangent</strong><br><em>Arrive tangent</em></summary>
 
-_Name of the tag to add when sampling fails._
+When enabled, writes the arrive tangent vector from the sampled spline.
 
-***
+</details>
 
-#### Additional Settings
+<details>
 
-Controls how filtered points are handled and performance optimizations.
+<summary><strong>ArriveTangentAttributeName</strong><br><em>Arrive tangent</em></summary>
 
-**Process Filtered Out As Fails**
+The name of the FVector attribute to store the arrive tangent.
 
-_When enabled, treats filtered out points as failures._
+</details>
 
-* When enabled, points that fail filters will be marked as failed samples.
-* When disabled, filtered points are skipped entirely.
+<details>
 
-**Prune Failed Samples**
+<summary><strong>bWriteLeaveTangent</strong><br><em>Leave tangent</em></summary>
 
-_When enabled, removes points that failed to sample._
+When enabled, writes the leave tangent vector from the sampled spline.
 
-* When enabled, points that failed to sample anything are removed from the output.
+</details>
 
-**Use Octree**
+<details>
 
-_When enabled, uses spatial partitioning for performance._
+<summary><strong>LeaveTangentAttributeName</strong><br><em>Leave tangent</em></summary>
 
-* When enabled, uses an octree to optimize spatial lookups.
-* When disabled, performs brute-force search.
+The name of the FVector attribute to store the leave tangent.
+
+</details>
+
+<details>
+
+<summary><strong>bWriteNumInside</strong><br><em>Write the inside/outside status of the point toward any sampled spline.</em></summary>
+
+When enabled, writes a count of how many closed splines the point lies inside.
+
+</details>
+
+<details>
+
+<summary><strong>NumInsideAttributeName</strong><br><em>Name of the 'int32' attribute to write the number of spline this point lies inside</em></summary>
+
+The name of the int32 attribute to store the count of inside splines.
+
+</details>
+
+<details>
+
+<summary><strong>bOnlyIncrementInsideNumIfClosed</strong><br><em>Only increment num inside count when comes from a bClosedLoop spline.</em></summary>
+
+When enabled, only increments the inside count if the sampled spline is closed.
+
+</details>
+
+<details>
+
+<summary><strong>bWriteNumSamples</strong><br><em>Write the sampled distance.</em></summary>
+
+When enabled, writes the number of splines that were sampled for each point.
+
+</details>
+
+<details>
+
+<summary><strong>NumSamplesAttributeName</strong><br><em>Name of the 'int32' attribute to write the number of sampled neighbors to.</em></summary>
+
+The name of the int32 attribute to store the number of samples.
+
+</details>
+
+<details>
+
+<summary><strong>bWriteClosedLoop</strong><br><em>Write the whether the sampled spline is closed or not.</em></summary>
+
+When enabled, writes a boolean indicating if the sampled spline was closed.
+
+</details>
+
+<details>
+
+<summary><strong>ClosedLoopAttributeName</strong><br><em>Name of the 'bool' attribute to write whether a closed spline was sampled or not.</em></summary>
+
+The name of the bool attribute to store the closed loop status.
+
+</details>
+
+<details>
+
+<summary><strong>bWriteTotalWeight</strong><br><em>Write the whether the sampled spline is closed or not.</em></summary>
+
+When enabled, writes the total weight computed for that point from all splines.
+
+</details>
+
+<details>
+
+<summary><strong>TotalWeightAttributeName</strong><br><em>Name of the 'double' attribute to write the total weight computed for that point.</em></summary>
+
+The name of the double attribute to store the total weight.
+
+</details>
+
+<details>
+
+<summary><strong>bWriteDepth</strong><br><em>Write the sampled depth.</em></summary>
+
+When enabled, writes a depth value based on the sampled spline.
+
+</details>
+
+<details>
+
+<summary><strong>DepthAttributeName</strong><br><em>Name of the 'double' attribute to write sampled depth to.</em></summary>
+
+The name of the double attribute to store the depth.
+
+</details>
+
+<details>
+
+<summary><strong>DepthRange</strong><br><em>Depth range</em></summary>
+
+Controls the maximum depth value used for calculations.
+
+</details>
+
+<details>
+
+<summary><strong>bInvertDepth</strong><br><em>Inverts depth</em></summary>
+
+When enabled, inverts the depth values.
+
+</details>
+
+<details>
+
+<summary><strong>DepthMode</strong><br><em>Depth mode</em></summary>
+
+Controls how depth is calculated from multiple splines.
+
+**Values**:
+
+* **Min**: Use minimum depth.
+* **Max**: Use maximum depth.
+* **Average**: Use average depth.
+
+</details>
+
+<details>
+
+<summary><strong>bTagIfHasSuccesses</strong><br><em>If enabled, add the specified tag to the output data if at least a single spline has been sampled.</em></summary>
+
+When enabled, adds a tag to the output data if any sampling was successful.
+
+</details>
+
+<details>
+
+<summary><strong>HasSuccessesTag</strong><br><em>If enabled, add the specified tag to the output data if at least a single spline has been sampled.</em></summary>
+
+The tag name to apply when sampling succeeds.
+
+</details>
+
+<details>
+
+<summary><strong>bTagIfHasNoSuccesses</strong><br><em>If enabled, add the specified tag to the output data if no spline was found within range.</em></summary>
+
+When enabled, adds a tag to the output data if no splines were found within range.
+
+</details>
+
+<details>
+
+<summary><strong>HasNoSuccessesTag</strong><br><em>If enabled, add the specified tag to the output data if no spline was found within range.</em></summary>
+
+The tag name to apply when sampling fails.
+
+</details>
+
+<details>
+
+<summary><strong>bProcessFilteredOutAsFails</strong><br><em>If enabled, mark filtered out points as "failed". Otherwise, skip the processing altogether. Only uncheck this if you want to ensure existing attribute values are preserved.</em></summary>
+
+When enabled, treats filtered-out points as failed samples instead of skipping them.
+
+</details>
+
+<details>
+
+<summary><strong>bPruneFailedSamples</strong><br><em>If enabled, points that failed to sample anything will be pruned.</em></summary>
+
+When enabled, removes points that failed to sample any spline from the output.
+
+</details>
+
+<details>
+
+<summary><strong>bUseOctree</strong><br><em>Optimize spatial partitioning, but limit the "reach" of splines to their bounding box.</em></summary>
+
+When enabled, uses an octree for faster spatial queries. When disabled, considers all splines regardless of proximity.
+
+</details>
+
+#### Usage Example
+
+1. Create a set of splines representing paths or roads.
+2. Add points that represent objects you want to place along those paths.
+3. Connect the splines and points to this node.
+4. Configure the range to control how far from each point the node will look for splines.
+5. Enable outputs like Transform and Distance to position and orient your objects.
+6. Use the LookAtTransform output to align objects with spline direction.
+
+#### Notes
+
+* The node can be computationally expensive if many splines are present or if sampling ranges are large.
+* Using octree optimization (`bUseOctree`) improves performance when dealing with large numbers of splines.
+* For best results, ensure that the input splines have appropriate scale and resolution for your use case.
+* When using `bSampleSpecificAlpha`, consider how alpha values are interpreted based on the selected mode (Alpha, Time, or Distance).

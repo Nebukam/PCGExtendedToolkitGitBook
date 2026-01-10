@@ -5,90 +5,64 @@ icon: circle-dashed
 # G-Probe : DBSCAN
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a density-based connectivity probe that identifies points forming clusters based on local density and reachability, similar to the DBSCAN clustering algorithm.
+> Defines density-based connectivity between points using a DBSCAN-style algorithm.
 
-### Overview
+#### How It Works
 
-This factory generates a global probe that defines how points connect to each other based on their spatial density. It's used to create graph connections between points that are close together and form dense regions, making it ideal for generating natural-looking clusters or networks.
+This subnode creates connections between points based on how densely they are grouped together in space. It mimics the behavior of the DBSCAN clustering algorithm by identifying points that have enough nearby neighbors to be considered part of a dense region, and then linking those points together.
 
-{% hint style="info" %}
-Connects to **Probe** pins on graph-building nodes like **Graph : Connect Points** or **Graph : Build Clusters**
-{% endhint %}
+The process works in two main steps:
 
-### How It Works
+1. **Identifying Dense Regions**: For each point, it counts how many other points fall within a certain distance (the search radius). If this number meets or exceeds the minimum required count (`MinPoints`), that point is marked as a core point — meaning it's part of a dense cluster.
+2. **Connecting Points**: Core points are connected to other core points nearby. Border points — those that aren't core but are close to one — can be connected in different ways depending on settings:
+   * If enabled, border points connect only to the nearest core point.
+   * If disabled, border points connect to all core points reachable through a chain of connections from other core points.
 
-This probe analyzes the spatial distribution of points and groups them into clusters based on local density. It identifies core points (points with enough neighbors within a radius) and connects them based on reachability. Points that are not core but are within range of a core point become part of the cluster.
+This method produces natural-looking clusters and networks that reflect real-world density patterns rather than simple distance thresholds.
 
-The algorithm works by:
+#### Configuration
 
-1. For each point, finding all neighbors within a specified search distance
-2. Identifying "core points" that have at least a minimum number of neighbors
-3. Connecting core points to each other if they are within reachability distance
-4. Connecting non-core points (border points) to core points based on configuration
+<details>
 
-### Inputs & Outputs
+<summary><strong>MinPoints</strong><br><em>Minimum number of neighbors within the search radius for a point to be considered a core point.</em></summary>
 
-#### Inputs
+Controls how many nearby points must exist for a point to be treated as part of a dense cluster. A higher value means fewer, more tightly packed clusters.
 
-* **Points**: Input point data to be processed
-* **Epsilon**: Search radius for neighbor lookups
-* **Min Points**: Minimum number of neighbors required to form a cluster
-* **Core To Core Only**: Toggle for connecting only core points
-* **Border To Nearest Core Only**: Toggle for border point connection behavior
+**Values**: Integer, minimum 1
 
-#### Outputs
+</details>
 
-* **Probe**: Output probe data that can be used by graph building nodes
+<details>
 
-### Configuration
+<summary><strong>bCoreToCoreOnly</strong><br><em>If true, only connects core points to each other.</em></summary>
 
-***
+When enabled, core points are only linked to other core points. When disabled, core points may also connect to border points that are near them.
 
-#### General
+</details>
 
-**Min Points**
+<details>
 
-_Minimum points within Epsilon to be considered a core point_
+<summary><strong>bBorderToNearestCoreOnly</strong><br><em>If true, connects border points to their nearest core point only. If false, connects to all reachable core points.</em></summary>
 
-Controls how dense a region must be to form a cluster. A higher value requires more nearby points to define a core point, resulting in fewer but more tightly-knit clusters.
+When enabled, border points link directly to the closest core point. When disabled, they connect to all core points that can be reached through a series of connections from other core points.
 
-**Example**: With `MinPoints = 5`, a point needs at least 5 neighbors within its search radius to be considered a core point.
+</details>
 
-**Core To Core Only**
+#### Usage Example
 
-_If true, only connects core points to each other_
+Use this subnode in graph-building nodes like **Create Graph** or **Build Graph** to define how points should connect based on density. For example:
 
-When enabled, only core points are connected to each other. Border points (points that are not core but are near core points) are not connected to each other or to non-core points.
+* Set `MinPoints` to 5 to require at least 5 neighbors for a point to be considered part of a dense cluster.
+* Enable `bCoreToCoreOnly` to only connect core points to each other, forming a skeleton of dense regions.
+* Enable `bBorderToNearestCoreOnly` to ensure border points link directly to the nearest core point, creating a star-like structure around clusters.
 
-**Example**: With `CoreToCoreOnly = true`, clusters form as isolated groups of core points, with no connections between border points.
+This is ideal for generating natural-looking networks such as road systems, foliage clustering, or terrain connectivity where density determines spatial relationships.
 
-**Border To Nearest Core Only**
+#### Notes
 
-_If true, connects border points to their nearest core point only. If false, connects to all reachable core points._
-
-Controls how border points connect to the cluster. When enabled, a border point connects only to its closest core point. When disabled, it connects to all core points that are within reachability distance.
-
-**Example**: With `BorderToNearestCoreOnly = true`, each border point connects to exactly one core point, creating a star-like structure around clusters.
-
-### Usage Example
-
-Use this probe when you want to create natural-looking clusters or networks based on point density. For example:
-
-1. Create a set of scattered points representing locations
-2. Connect them using **Graph : Connect Points** with this DBSCAN probe
-3. Configure `MinPoints = 4` to form clusters of at least 4 points
-4. Set `CoreToCoreOnly = false` to allow border points to connect to multiple core points
-5. This will generate a graph where dense regions are connected, but sparse areas remain disconnected
-
-### Notes
-
-* This is a global probe that processes all points together rather than individually
-* Requires an octree for efficient neighbor lookups, so performance scales well with large datasets
-* Best used when you want to preserve natural clustering behavior based on point density
-* The search radius is determined by the node's Epsilon setting or attribute-based values
-* Can be combined with other probes using conditional logic to create complex connectivity rules
+* This subnode uses an octree structure for fast neighbor lookups, making it efficient even with large datasets.
+* The `MinPoints` setting directly affects how tightly clustered the resulting connections are. Lower values create more sparse connections, while higher values lead to denser clusters.
+* Consider using this with a **Search Radius** attribute or similar to control the spatial extent of the density check.

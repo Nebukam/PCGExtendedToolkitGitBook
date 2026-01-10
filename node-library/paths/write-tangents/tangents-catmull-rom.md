@@ -5,52 +5,46 @@ icon: sliders
 # Tangents : Catmull-Rom
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates tangents for points along a path using the Catmull-Rom spline interpolation method.
+> Defines Catmull-Rom tangents for path data.
 
-### Overview
+#### How It Works
 
-This factory generates smooth, natural-looking tangent vectors that define the direction and curvature of points along a path. It's commonly used in procedural animation, path following, and curve-based effects where you want smooth transitions between waypoints.
+This subnode calculates smooth tangent directions for paths using the Catmull-Rom spline method. For each point in a sequence, it evaluates the positions of the neighboring points before and after it to determine how the path should enter and leave that point.
 
-{% hint style="info" %}
-Connects to **Tangent** input pins on nodes like **Write Tangents**, **Path Follow**, or **Spline Mesh**
-{% endhint %}
+The process works as follows:
 
-### How It Works
+1. It identifies the previous point (P-1) and next point (P+1) in the sequence
+2. It computes the vector between these two points
+3. It splits this vector in half to establish a base tangent magnitude
+4. It applies scaling factors from the input data to adjust the length of the tangents
+5. It assigns the resulting vectors as arrive and leave tangents for the current point
 
-The Catmull-Rom method calculates tangents by taking the vector between the previous and next points in a sequence, then scaling it to create smooth curves. For each point, it computes both an arriving tangent (how the path approaches the point) and a leaving tangent (how the path continues from the point). The result is a smooth curve that passes through all control points.
+This method ensures that paths flow smoothly through or near control points, creating natural-looking curves that avoid sharp transitions.
 
-### Inputs
+#### Configuration
 
-* **Points**: Input points to generate tangents for
-* **Closed Loop**: Enable to treat first and last points as adjacent for continuous looping
+<details>
 
-### Outputs
+<summary><strong>Closed Loop</strong><br><em>When enabled, treats the path as a closed loop where the last point connects back to the first.</em></summary>
 
-* **Tangents**: Generated tangent vectors for each input point
+When enabled, the subnode will use the first point as the "next" point for the last point in the sequence and the last point as the "previous" point for the first point. This creates a continuous loop where the path smoothly transitions from the end back to the start.
 
-### Configuration
+</details>
 
-***
+#### Usage Example
 
-#### General Settings
+Use this subnode when creating smooth, natural-looking paths for:
 
-**Closed Loop**
+* Navigation meshes
+* Camera movement along routes
+* Vehicle or character motion paths
+* Organic terrain features like rivers or roads
 
-_When enabled, the first and last points are treated as adjacent to create a continuous loop._
+For example, if you have a set of waypoints defining a mountain trail, connecting this subnode to **Write Tangents** will generate smooth tangent vectors that make the path appear as a continuous, flowing curve rather than sharp turns.
 
-This setting affects how tangents are calculated at the start and end of the path. When disabled (default), the first point uses the second and third points to calculate its tangent, and the last point uses the second-to-last and second points.
+#### Notes
 
-### Usage Example
-
-Use this factory when you want to create smooth paths for vehicles, characters, or effects that follow waypoints. For example, if you have a series of points representing a race track, connect this factory to a **Write Tangents** node to generate smooth curves that make the path look natural and flowing.
-
-### Notes
-
-* The Catmull-Rom method produces visually pleasing curves but may not be suitable for all mathematical applications
-* For closed loops, ensure your point sequence forms a proper continuous shape
-* Combine with other tangent factories to create varied path behaviors along different sections of your data
+The Catmull-Rom algorithm produces tangents that are proportional to the distance between adjacent points. When point spacing is irregular, the resulting curves may appear uneven. Consider using uniform point spacing or applying smoothing operations before this subnode for more consistent results.

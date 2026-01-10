@@ -9,80 +9,59 @@ icon: circle-dashed
 This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Stops flood fill operations after a certain number of vertices have been captured in a specific direction.
-
-#### Overview
-
-This subnode controls how flood fill operations proceed by limiting the number of vertices captured along a given direction. It's particularly useful when you want to prevent fills from spreading too far or in a particular orientation, such as stopping a fill at a certain distance from a starting point in a specific direction.
-
-It defines a behavior that is consumed by flood fill processing nodes to determine whether a candidate vertex should be included in the current diffusion step. It does not process data directly but provides rules for how to evaluate candidates during the fill process.
-
-{% hint style="info" %}
-Connects to **Probe** pins on flood fill graph-building nodes.
-{% endhint %}
+> Stop fill after a certain number of vtx have been captured.
 
 #### How It Works
 
-This subnode evaluates candidates based on their spatial relationship and direction relative to the current diffusion path. It uses a window size to define how many vertices are allowed in a specific direction before stopping further capture.
+This subnode controls flood fill operations by setting a limit on how many points can be added in each direction before stopping. It tracks the number of captured points within a defined window size for each directional axis. When that limit is reached, the fill stops exploring in that direction.
 
-The algorithm works by:
-
-1. Tracking candidate vertices within a defined "window" around the current fill direction.
-2. When the number of valid candidates within that window exceeds the specified **Window Size**, it stops accepting new candidates in that direction.
-3. It uses hash-based comparisons to determine if two points are considered equivalent or close enough to be part of the same directional sequence.
-
-This allows for controlled, directional filling that respects spatial constraints and avoids over-spreading in certain regions.
-
-<details>
-
-<summary>Inputs</summary>
-
-Expects a set of candidate vertices from the flood fill operation. These candidates are evaluated based on their position and direction relative to the current diffusion path.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-Modifies which candidates are accepted during the flood fill process, effectively limiting how far or in what direction the fill can propagate.
-
-</details>
+The system uses a hash-based method to group points into directional windows. This ensures that only a specific number of points are accepted per direction, creating a controlled spread that prevents overfilling in any one area.
 
 #### Configuration
 
-***
+<details>
 
-**Window Size Input**
+<summary><strong>Window Size Input</strong><br><em>How to define the window size.</em></summary>
 
-_Controls whether the window size is a constant value or read from an attribute._
+Controls whether the window size is defined as a constant or read from an attribute.
 
-When set to **Constant**, the **Window Size** setting is used directly. When set to **Attribute**, the **Window Size (Attr)** selector defines which attribute to use.
+**Values**:
 
-**Window Size (Attr)**
+* **Constant**: Use a fixed, user-defined value.
+* **Attribute**: Read the window size from an input point attribute.
 
-_The attribute to read the window size from._
+</details>
 
-Only visible when **Window Size Input** is set to **Attribute**.
+<details>
 
-**Window Size**
+<summary><strong>Window Size (Attr)</strong><br><em>Window Size Attribute.</em></summary>
 
-_The maximum number of vertices allowed in a direction before stopping._
+The attribute to read the window size from when using attribute-based input.
 
-Must be at least 1. A value of 1 means only one vertex per direction will be accepted.
+</details>
 
-**Hash Comparison Details**
+<details>
 
-_Configuration for how spatial comparisons are made when evaluating candidates._
+<summary><strong>Window Size</strong><br><em>Window Size Constant.</em></summary>
 
-Controls the tolerance for considering two points as equivalent or close enough to be part of the same directional sequence.
+The fixed value for the window size when using constant input. Must be at least 1.
+
+</details>
+
+<details>
+
+<summary><strong>Hash Comparison Details</strong><br><em>Hash comparison settings.</em></summary>
+
+Settings that define how point positions are hashed and compared to determine if they fall within the same directional window.
+
+</details>
 
 #### Usage Example
 
-Use this subnode in a flood fill setup where you want to limit how far the fill spreads in a given direction. For example, if you're creating a cave system and want to stop the fill at 5 vertices from the starting point in any direction, set **Window Size** to 5.
+Use this subnode in a flood fill setup where you want to control how far the fill spreads in any given direction. For example, when creating a terrain fill that should not extend too far from a central point in one direction, you can set a window size of 5 to limit how many points are captured in each direction before stopping.
 
 #### Notes
 
-* The **Hash Comparison Details** affect how closely points must align to be considered part of the same directional chain.
-* This subnode is best used with directional flood fill operations where the concept of "direction" makes sense (e.g., following a path or direction vector).
-* A small window size may result in early termination of fills, while a large one allows more spread.
+* The window size acts as a directional limit, not a total point count.
+* This subnode is particularly useful for creating structured or constrained fills that maintain shape.
+* Performance is affected by the hash comparison settings; finer precision may slow down processing.

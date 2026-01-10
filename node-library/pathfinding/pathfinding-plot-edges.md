@@ -6,257 +6,129 @@ icon: scrubber
 # Pathfinding : Plot Edges
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Extract a single path from edges clusters, going through every seed points in order.
+> Extract a paths from edges clusters, going through every seed point in order.
 
-### Overview
+#### How It Works
 
-This node processes edge-based graph data to create ordered paths that connect seed points within each cluster. It's designed for scenarios where you want to generate a continuous route through a set of points, such as creating roads, rivers, or connectivity paths between locations.
+This node creates a continuous route by connecting seed points across different groups of edges. It starts by identifying where each seed point is located within the graph structure, then builds a path that moves through all the specified points in sequence. The path respects the connections defined by the edges and can include various elements like vertex points (intersections) or edge segments (road sections). You can choose whether to add starting and ending points, insert additional plot points along the way, or form a closed loop back to the beginning.
 
-The node takes clusters of edges and finds a path that visits all seed points in the order they were defined, using a specified search algorithm. It can output paths made of vertices, edges, or both, allowing for flexible visualization and further processing.
-
-{% hint style="info" %}
-This node works best when your input data is organized into clear clusters with well-defined seed points. The path will follow the structure of your graph edges to connect these seeds.
-{% endhint %}
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Data Matching</strong><br><em>If enabled, allows you to filter which plot data gets associated with which cluster.</em></summary>
 
-* **Main Input (Required)**: Point data representing clusters of edges
-* **Edge Input (Optional)**: Additional edge data that can be used for pathfinding
+When enabled, this setting lets you define rules that control how plot points are matched to clusters. This is useful when you want to limit which plot points are used for path generation within a specific cluster.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Add Seed To Path</strong><br><em>Adds the seed point at the beginning of the path.</em></summary>
 
-* **Output**: Generated paths connecting seed points in each cluster
-* **Unmatched** (Optional): Data that couldn't be matched to any cluster, if matching is enabled
+When enabled, the starting point of the path is added as the first element in the output.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the node processes and outputs paths.
+<summary><strong>Add Goal To Path</strong><br><em>Adds the goal point at the end of the path.</em></summary>
 
-***
+When enabled, the ending point of the path is added as the last element in the output.
 
-#### General
+</details>
 
-Controls core path generation behavior.
+<details>
 
-**Add Seed To Path**
+<summary><strong>Add Plot Points To Path</strong><br><em>Inserts plot points inside the path.</em></summary>
 
-_When enabled, includes the seed point at the beginning of each generated path._
+When enabled, any plot points defined in the input are inserted into the path at appropriate locations.
 
-* Adds the starting point of your path to the output
-* Useful for creating clear start locations in your routes
+</details>
 
-**Add Goal To Path**
+<details>
 
-_When enabled, includes the goal point at the end of each generated path._
+<summary><strong>Closed Loop</strong><br><em>Whether or not to close the path back to the start point.</em></summary>
 
-* Adds the ending point of your path to the output
-* Helps define clear destinations in your routes
+When enabled, the path connects back to the first point, forming a closed loop.
 
-**Add Plot Points To Path**
+</details>
 
-_When enabled, inserts additional points along the path._
+<details>
 
-* Adds intermediate points between seed and goal locations
-* Creates more detailed paths with smoother curves or additional waypoints
+<summary><strong>Path Composition</strong><br><em>What elements make up the path.</em></summary>
 
-**Closed Loop**
+Controls what elements are included in the output path:
 
-_When enabled, creates a closed loop by connecting the last point back to the first._
+* **Vtx**: Only vertex points.
+* **Edges**: Only edge segments.
+* **Vtx & Edges**: Both vertex and edge data.
 
-* Forms a continuous cycle from start to end and back to start
-* Useful for creating circular routes like city walls or race tracks
+</details>
 
-**Path Composition**
+<details>
 
-_Determines what elements make up the output path._
+<summary><strong>Seed Picking</strong><br><em>Determines how a seed selects a node.</em></summary>
 
-**Values**:
+Defines how the system chooses which node to start from when building the path. This can be based on proximity or other criteria.
 
-* **Vtx**: Output only vertex points
-* **Edge**: Output only edge segments
-* **Vtx & Edges**: Output both vertices and edges
+</details>
 
-**Use Octree Search**
+<details>
 
-_When enabled, uses an octree for faster node lookup during pathfinding._
+<summary><strong>Goal Picking</strong><br><em>Determines how a goal selects a node.</em></summary>
 
-* Can significantly speed up pathfinding in large datasets
-* May slow down performance with very small datasets or simple graphs
+Defines how the system chooses which node to end at when building the path. This can be based on proximity or other criteria.
 
-**Omit Complete Path On Failed Plot**
+</details>
 
-_When enabled, skips outputting a complete path if the search fails._
+<details>
 
-* Prevents partial or invalid paths from being generated
-* Useful when you need fully valid results only
+<summary><strong>Search Algorithm</strong><br><em>Algorithm used to find paths between nodes.</em></summary>
 
-**Quiet Invalid Plot Warning**
+Selects the method used to locate paths between nodes in the graph. Examples include A\*, Dijkstra, or custom implementations.
 
-_When enabled, suppresses warnings about invalid plot operations._
+</details>
 
-* Reduces clutter in the log when processing many plots
-* Helpful for large datasets where some plots may naturally fail
+<details>
 
-**Greedy Queries**
+<summary><strong>Statistics</strong><br><em>Output various performance statistics.</em></summary>
 
-_When enabled, forces sequential query execution for memory conservation._
+When enabled, this option collects data about processing time and resource usage for analysis.
 
-* Uses less memory but runs slower
-* Recommended only when working with limited system resources
+</details>
 
-***
+<details>
 
-#### Node Picking
+<summary><strong>Use Octree Search</strong><br><em>Whether or not to search for closest node using an octree. Depending on your dataset, enabling this may be either much faster, or much slower.</em></summary>
 
-Controls how seed and goal points are selected within each cluster.
+When enabled, the system uses a spatial structure called an octree to speed up finding nearby nodes. This can significantly improve performance for large datasets but may slow things down in smaller or irregularly structured data.
 
-**Seed Picking Method**
+</details>
 
-_Determines how the seed point is chosen from available nodes._
+<details>
 
-**Values**:
+<summary><strong>Omit Complete Path On Failed Plot</strong><br><em>If a plot fails to generate a valid path, this setting determines whether the entire path is omitted from the output.</em></summary>
 
-* **Closest vtx**: Selects the closest vertex to the seed point
-* **Closest edge**: Selects the closest edge, then endpoint
+Controls what happens if one of the plots cannot be processed. If enabled, the whole path is removed; otherwise, it continues with other plots.
 
-**Seed Max Distance**
+</details>
 
-_Maximum distance at which a node can be selected as a seed._
+<details>
 
-* Set to -1 to ignore distance check
-* Use to prevent seeds from being selected too far away
+<summary><strong>Paths Output Settings</strong><br><em>Controls how the resulting paths are structured and output.</em></summary>
 
-**Goal Picking Method**
+Determines how the generated paths are organized in the final output.
 
-_Determines how the goal point is chosen from available nodes._
+</details>
 
-**Values**:
+<details>
 
-* **Closest vtx**: Selects the closest vertex to the goal point
-* **Closest edge**: Selects the closest edge, then endpoint
+<summary><strong>Greedy Queries</strong><br><em>If disabled, will share memory allocations between queries, forcing them to execute one after another. Much slower, but very conservative for memory.</em></summary>
 
-**Goal Max Distance**
+When enabled, each query uses its own memory allocation, allowing parallel processing. When disabled, memory is shared between queries, which may reduce memory usage but can slow down execution.
 
-_Maximum distance at which a node can be selected as a goal._
-
-* Set to -1 to ignore distance check
-* Use to prevent goals from being selected too far away
-
-***
-
-#### Search Algorithm
-
-Configures the pathfinding algorithm used to connect seed points.
-
-**Search Algorithm**
-
-_Selects the pathfinding method for connecting seed points._
-
-* Choose from various search algorithms (A\*, Dijkstra, etc.)
-* Different algorithms may produce different route qualities and performance characteristics
-
-***
-
-#### Data Matching
-
-Controls how input data is matched to clusters.
-
-**Matching Mode**
-
-_Enables matching of plots to clusters._
-
-**Values**:
-
-* **Disabled**: No matching applied
-* **Exact**: Matches exactly by name or tag
-* **Fuzzy**: Allows approximate matching
-
-**Cluster Match Mode**
-
-_Determines which cluster component must match the tags._
-
-**Values**:
-
-* **Vtx**: Match vertex components
-* **Edge**: Match edge components
-
-**Split Unmatched**
-
-_When enabled, outputs unmatched data to a separate pin._
-
-* Separates data that couldn't be matched into its own output
-* Useful for debugging or handling unmatched elements
-
-***
-
-#### Path Output Settings
-
-Controls filtering and validation of generated paths.
-
-**Remove Small Paths**
-
-_When enabled, filters out paths with fewer points than the minimum._
-
-* Prevents very short or incomplete paths from being output
-* Set minimum point count to control this behavior
-
-**Minimum Point Count**
-
-_Sets the minimum number of points required for a path to be output._
-
-* Only paths with at least this many points will be generated
-* Use to filter out overly short routes
-
-**Remove Large Paths**
-
-_When enabled, filters out paths with more points than the maximum._
-
-* Prevents extremely long or complex paths from being output
-* Set maximum point count to control this behavior
-
-**Maximum Point Count**
-
-_Sets the maximum number of points allowed in an output path._
-
-* Paths exceeding this limit will be filtered out
-* Use to prevent performance issues with very long routes
-
-***
-
-#### Tagging & Forwarding
-
-Controls which attributes are forwarded from input data to output paths.
-
-**Plot Forwarding**
-
-_Configures which plot data is forwarded to the output paths._
-
-* Selects which attributes from the input plots are preserved in the output
-* Can forward multiple attributes at once using name filters
-
-**Vtx Data Forwarding**
-
-_Configures which vertex data is forwarded to the output paths._
-
-* Only active when Path Composition includes vertices
-* Preserves vertex attributes along the path
-
-**Edges Data Forwarding**
-
-_Configures which edge data is forwarded to the output paths._
-
-* Only active when Path Composition includes edges
-* Preserves edge attributes along the path
+</details>

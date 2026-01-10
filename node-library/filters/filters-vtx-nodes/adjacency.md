@@ -9,139 +9,146 @@ icon: circle-dashed
 This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Numeric comparison of adjacent values, testing either adjacent nodes or connected edges.
-
-#### Overview
-
-This filter evaluates whether a point meets specific numeric conditions based on its neighboring points or connecting edges. It allows you to define rules that compare a value from the current point against values from its neighbors using various comparison operators. This is useful for creating spatial logic where point behavior depends on local topology or attribute values.
-
-It connects to **Filter** pins on processing nodes that accept vertex filters, enabling conditional filtering based on adjacency relationships.
+> Tests points based on numeric comparisons against adjacent node or edge values.
 
 #### How It Works
 
-This subnode performs a numeric comparison between a value from the current point and a value derived from its neighbors. It first determines which neighbors are considered (based on adjacency settings), then calculates a test value from those neighbors (either individually or as an aggregate). The comparison is performed using a specified operator, such as "equal to" or "greater than", with optional tolerance for floating-point comparisons.
+This subnode evaluates each point in relation to its neighboring elements — either connected points or edges — using a comparison operation. It first identifies which adjacent elements to use based on the **Operand B Source** setting. Then, it retrieves values from both the point itself (Operand A) and the adjacent element (Operand B), performs the specified comparison, and determines whether the point should pass through the filter.
 
-The logic works in steps:
+The process follows these steps:
 
-1. For each point being evaluated, it identifies its adjacent points or edges.
-2. It fetches a value from the current point (Operand A) and a value from neighbors (Operand B).
-3. Depending on the configuration, it may test against all neighbors individually or compute an aggregate value (like average, min, max).
-4. The comparison is made using the selected operator, and the result determines whether the point passes the filter.
+1. For each point, collect its neighboring nodes or connected edges.
+2. Based on **Test Config**, decide how to handle the adjacency data (e.g., test against all neighbors, average them, etc.).
+3. Get Operand A value from either a constant or an attribute of the point.
+4. Get Operand B value from the neighbor node or edge using the selected source.
+5. Apply the comparison operation between Operand A and Operand B.
+6.  If the result matches the filter criteria, the point is allowed to pass.
 
-<details>
+    <div data-gb-custom-block data-tag="hint" data-style="info" class="hint hint-info"><p>Connects to <strong>Filter</strong> pins on processing nodes.</p></div>
 
-<summary>Inputs</summary>
+#### Inputs
 
-* Points with attributes to be evaluated
-* Adjacent points or edges in a cluster structure
+* **Point Data**: Points to be filtered
+* **Edge Data**: Edges connecting points (used when Operand B Source is Edge)
 
-</details>
+#### Outputs
 
-<details>
-
-<summary>Outputs</summary>
-
-* Points that satisfy the adjacency-based comparison condition
-
-</details>
+* **Filtered Points**: Points that pass the comparison test
 
 #### Configuration
 
-***
+<details>
 
-**Adjacency**
+<summary><strong>Adjacency</strong><br><em>Adjacency Settings.</em></summary>
 
-_Controls how neighbors are selected for testing._
-
-This setting defines whether all adjacent nodes are considered, or only some of them.
+Controls how adjacency data is gathered and processed.
 
 **Values**:
 
-* **All**: Tests the condition using all adjacent nodes.
-* **Some**: Tests the condition using a subset of adjacent nodes based on threshold settings.
+* **All**: Test against all adjacent nodes.
+* **Some**: Test against some adjacent nodes only (based on threshold).
 
-***
+</details>
 
-**CompareAgainst**
+<details>
 
-_Determines if Operand A is a constant value or an attribute._
+<summary><strong>CompareAgainst</strong><br><em>Type of Operand A.</em></summary>
 
-Controls whether the first operand (Operand A) is a fixed number or fetched from an attribute on the input data.
-
-**Values**:
-
-* **Constant**: Use a user-defined constant value.
-* **Attribute**: Read the value from an attribute on the point being evaluated.
-
-***
-
-**Operand A**
-
-_The fixed value used for comparison when CompareAgainst is set to Constant._
-
-This is the static number used in comparisons when Operand A is not derived from attributes.
-
-***
-
-**Comparison**
-
-_Selects the type of numeric comparison to perform._
-
-Defines how the two operands are compared. For example, "equal to" or "greater than".
+Determines whether Operand A is a constant or fetched from an attribute.
 
 **Values**:
 
-* **==**: Strictly equal to
-* **!=**: Strictly not equal to
-* **>=**: Equal or greater than
-* **<=**: Equal or smaller than
-* **>**: Strictly greater than
-* **<**: Strictly smaller than
-* **\~=**: Nearly equal to (with tolerance)
-* \*\*!\~=: Nearly not equal to (with tolerance)
+* **Constant**: Use the value specified in Operand A Constant.
+* **Attribute**: Read Operand A from an attribute on the input point.
 
-***
+</details>
 
-**OperandBSource**
+<details>
 
-_Specifies whether Operand B is fetched from the point or edge._
+<summary><strong>OperandAConstant</strong><br><em>Constant Operand A for testing.</em></summary>
 
-Controls if the second operand comes from the neighboring point or the connecting edge.
+The constant value used when Compare Against is set to Constant.
 
-**Values**:
+</details>
 
-* **Point**: Value is fetched from the adjacent point.
-* **Edge**: Value is fetched from the edge connecting to the point.
+<details>
 
-***
+<summary><strong>Comparison</strong><br><em>Comparison operation to perform.</em></summary>
 
-**Operand B**
-
-_The attribute used for Operand B when OperandBSource is set to Point._
-
-This defines which attribute on the neighbor point or edge is used in the comparison.
-
-***
-
-**Tolerance**
-
-_Rounding tolerance used for nearly equal comparisons._
-
-Controls how close two floating-point values must be to be considered "nearly equal".
+The comparison logic used to evaluate the operands.
 
 **Values**:
 
-* Any positive double value (default is `DBL_COMPARE_TOLERANCE`)
+* **==**: Strictly equal
+* **!=**: Strictly not equal
+* **>=**: Equal or greater
+* **<=**: Equal or smaller
+* **>**: Strictly greater
+* **<**: Strictly smaller
+* **\~=**: Nearly equal (within tolerance)
+* **!\~=**: Nearly not equal (outside tolerance)
 
-***
+</details>
 
-**Config**
+<details>
 
-_Configuration settings for adjacency testing._
+<summary><strong>OperandBSource</strong><br><em>Source of the Operand B value.</em></summary>
 
-Sets up the mode of adjacency testing, including how many neighbors are tested and whether the test passes if a minimum or maximum number of conditions are met.
+Specifies whether Operand B is fetched from adjacent nodes or edges.
 
 **Values**:
 
-* **All**: All neighbors must satisfy the condition.
-* **Some**: Only some neighbors (based on threshold) need to satisfy the condition.
+* **Point**: Fetch value from the neighboring point.
+* **Edge**: Fetch value from the edge connecting to the point.
+
+</details>
+
+<details>
+
+<summary><strong>OperandB</strong><br><em>Operand B attribute selector.</em></summary>
+
+Attribute used to fetch Operand B when Operand B Source is set to Point or Edge.
+
+</details>
+
+<details>
+
+<summary><strong>Tolerance</strong><br><em>Rounding mode for near measures.</em></summary>
+
+Used only when the comparison is Nearly Equal or Nearly Not Equal. Defines how close values must be to be considered equal.
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong><br><em>Test Config.</em></summary>
+
+Defines how adjacency data is processed (e.g., test against all neighbors, average them, etc.).
+
+**Values**:
+
+* **Individual**: Test each neighbor individually.
+* **Average**: Test against the average of all neighbors.
+* **Min**: Test against the minimum value of neighbors.
+* **Max**: Test against the maximum value of neighbors.
+* **Sum**: Test against the sum of all neighbors.
+
+</details>
+
+#### Usage Example
+
+Create a filter that only passes points where the point's height is nearly equal to the average height of its adjacent points. Set:
+
+* Compare Against = Attribute
+* Operand A = Height attribute
+* Operand B Source = Vtx
+* Comparison = \~= (nearly equal)
+* Config = Average
+
+This ensures terrain features like flat areas or ridges are preserved in your procedural generation.
+
+#### Notes
+
+* The filter works on point data and requires edge data for edge-based comparisons.
+* When using "Some" adjacency mode, the threshold determines how many neighbors must meet the condition.
+* For performance, avoid complex attribute lookups or large adjacency sets.

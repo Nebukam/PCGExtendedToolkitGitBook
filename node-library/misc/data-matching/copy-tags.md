@@ -5,61 +5,52 @@ icon: circle-dashed
 # Copy Tags
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Copy matched targets tags to candidate.
 
-### Overview
+#### Overview
 
-This node is used in matching workflows to copy tags from matched target elements to their corresponding candidate elements. It's particularly useful when you want to transfer attribute data or metadata from one set of points to another based on a match relationship.
+This node allows you to copy attribute tags from matching target data to candidate data during a match operation. It's useful when you want to propagate metadata or properties from one dataset to another based on matching criteria. For example, if you're matching points from two different datasets and want to transfer tags like "Type", "Color", or "Category" from the matched targets to their corresponding candidates.
 
-The node works as part of a larger matching pipeline, where it takes the results of a match operation and applies tag copying from targets to candidates. This allows for downstream processing to use the copied tags as conditions or data sources.
+This node is typically used in conjunction with matching nodes that support tag copying, such as those performing shape-based or attribute-based matching. It helps enrich your candidate data with information derived from matched target data.
 
 {% hint style="info" %}
-This node requires an existing match rule factory to be connected to it. It operates on the matched relationships defined by that factory.
+Connects to **Match Rule Definition** subnodes.
 {% endhint %}
 
+#### How It Works
+
+This node operates during the matching phase of a PCG graph. When a match is found between a candidate and one or more targets, this node copies the tags (attributes) from the matched target(s) to the candidate. The copying behavior depends on how the matching rules are configured.
+
+The process involves:
+
+1. Evaluating whether a match exists between a candidate and targets.
+2. If a match is successful, retrieving the tag data from the matched target(s).
+3. Applying those tags to the candidate point or data element.
+
+This operation does not modify the original target data; it only affects the candidate data being processed.
+
+#### Configuration
+
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Config</strong><br><em>Rules properties.</em></summary>
 
-* **Match Rule Factory** (Required): A match rule factory node that defines how elements should be matched
-* **Target Data** (Optional): The data containing target elements with tags to copy
-* **Candidate Data** (Optional): The data containing candidate elements that will receive the copied tags
+This setting group defines how matching rules are applied. It includes settings for controlling match behavior, such as strictness and mode of operation.
 
 </details>
 
-<details>
+#### Usage Example
 
-<summary>Outputs</summary>
+1. Create two datasets: one with points labeled "Target" and another with points labeled "Candidate".
+2. Set up a matching node that uses this "Match : Copy Tags" subnode.
+3. Configure the matching rules to define how candidates should match targets (e.g., by proximity or attribute values).
+4. Run the graph — the candidate points will receive tags from their matched target points.
 
-* **Output Match Rule Label**: The configured match rule output
+#### Notes
 
-</details>
-
-### Properties Overview
-
-This node has no configurable properties in its settings. It inherits all configuration from the parent match rule factory.
-
-***
-
-#### General
-
-This node operates based on the matching rules defined by the connected match rule factory.
-
-**Config**
-
-_The configuration for this match rule._
-
-* This setting is inherited from the parent match rule factory and cannot be directly modified here
-* All matching behavior is controlled through the parent factory settings
-
-### Notes
-
-* Use this node after a matching operation to propagate tag data from matched targets to candidates
-* The copied tags will appear on the candidate elements in downstream processing nodes
-* This node doesn't modify the original target data, only copies information to candidates
-* Common use case: transferring material or component tags from target objects to their generated variants during procedural generation
+* This node only works in contexts where matching is performed.
+* Ensure that the matching rules are properly defined to avoid unexpected tag propagation.
+* Tags copied from multiple targets during a single match operation may overwrite each other depending on the order of processing.

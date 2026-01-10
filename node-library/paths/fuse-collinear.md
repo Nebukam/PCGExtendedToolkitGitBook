@@ -6,144 +6,81 @@ icon: circle
 # Fuse Collinear
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Fuse collinear points in paths to reduce complexity and clean up geometry.
+> Fuse collinear points along paths to reduce complexity and smooth geometry.
 
-### Overview
+#### How It Works
 
-This node removes points that are aligned (collinear) along a path, reducing the number of points while preserving the overall shape. It's useful for simplifying complex paths, removing unnecessary detail, or preparing paths for further processing where fewer points are preferred.
+This node simplifies paths by identifying and merging points that are nearly aligned with their neighboring points. It evaluates the angle formed between three consecutive points in a path. If that angle is below a set threshold, the middle point is considered collinear and can be removed or merged with others.
 
-The node works by identifying sequences of points that lie on the same straight line and fusing them into a single point. You can control how collinearity is defined using an angular threshold, and optionally blend attributes from the fused points into the remaining one.
+When enabled, it also merges points that exist at exactly the same location. The node supports combining attributes from merged points into the first point of a group using different blending methods like averaging or weighted interpolation.
 
-{% hint style="info" %}
-This node modifies path geometry by removing intermediate points. The original point data is preserved in the output, but the number of points per path will be reduced.
-{% endhint %}
+If a point is merged, it's removed from the path, and its properties are combined with those of the remaining point based on the selected blending settings. Paths that become invalid after merging (for example, having fewer than two points) can be excluded from the output.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Threshold</strong><br><em>Angular threshold for collinearity.</em></summary>
 
-* **Main Input**: Paths to process (point data with path information)
+Controls how strict the collinearity check is. A lower value means more points will be considered collinear and removed. For example, a value of 5 degrees allows very tight angles to be fused, while 45 degrees lets much wider angles pass through.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>bInvertThreshold</strong><br><em>Fuse points that are not collinear (Smooth-like).</em></summary>
 
-* **Main Output**: Processed paths with collinear points fused
+When enabled, the node fuses points that are **not** collinear instead of those that are. This creates a smoothing effect by removing sharp turns and keeping only the most significant directional changes.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the node identifies and fuses collinear points, as well as optional attribute blending.
+<summary><strong>bFuseCollocated</strong><br><em>If enabled, will consider collocated points as collinear.</em></summary>
 
-***
+When enabled, points that are located at the exact same position (within a small tolerance) are treated as collinear and merged into one point.
 
-#### General Settings
+</details>
 
-Controls basic behavior for identifying and removing collinear points.
+<details>
 
-**Threshold**
+<summary><strong>FuseDistance</strong><br><em>Distance used to consider point to be overlapping.</em></summary>
 
-_The maximum angle (in degrees) between consecutive segments to consider them collinear._
+Defines how close two points must be to be considered overlapping when `bFuseCollocated` is enabled. Smaller values mean stricter matching, while larger values allow more tolerance.
 
-* Points that form an angle less than this threshold are considered part of a straight line
-* Smaller values mean stricter collinearity requirements, keeping more points
-* Larger values allow for more deviation before points are fused
+</details>
 
-**Example**: With a 10° threshold, three points forming a 5° angle between segments will be fused.
+<details>
 
-**Invert Threshold**
+<summary><strong>bDoBlend</strong><br><em>Enable blending of fused point properties.</em></summary>
 
-_When enabled, the node fuses points that are NOT collinear (i.e., creates smooth curves)._
+When enabled, the node blends attributes from fused points into the first point of a chain using settings defined in **BlendingDetails** and **UnionDetails**.
 
-* This is useful for creating smooth transitions between path segments
-* When disabled (default), it removes collinear points to simplify straight sections
+</details>
 
-**Fuse Collocated**
+<details>
 
-_When enabled, points that are located at the same position are considered collinear._
+<summary><strong>BlendingDetails</strong><br><em>Defines how fused point properties and attributes are merged together into the first point of a collinear chain.</em></summary>
 
-* Useful for cleaning up paths where points may have slight positional differences due to floating-point precision
-* Helps remove duplicate or near-duplicate points
+Controls how values from multiple points are combined when they are fused. Options include averaging, summing, or using weighted interpolation.
 
-**Fuse Distance**
+</details>
 
-_The maximum distance between points to consider them collocated (only used when "Fuse Collocated" is enabled)._
+<details>
 
-* Points closer than this distance are treated as overlapping and fused together
-* Default value of 0.001 works well for most cases
+<summary><strong>UnionDetails</strong><br><em>Metadata union settings for fused points.</em></summary>
 
-***
+Defines how metadata from fused points is merged into the first point of a chain. This includes which attributes are preserved and how they are combined.
 
-#### Blending Settings
+</details>
 
-Controls how attributes from fused points are combined into the remaining point.
+<details>
 
-**Do Blend**
+<summary><strong>bOmitInvalidPathsFromOutput</strong><br><em>Omits paths that become invalid after fusion.</em></summary>
 
-_When enabled, attributes from fused points are blended into the first point in a collinear chain._
+When enabled, paths that become invalid (for example, have fewer than two points after fusion) are excluded from the output entirely.
 
-* Allows you to preserve data from removed points by merging their values
-* Useful when you want to maintain average or summed properties across the fused segment
-
-**Blending Details**
-
-_Configures how different attributes are merged during fusion._
-
-* **Point Properties**: Controls how position, rotation, scale, and other point properties are blended
-* **Custom Attributes**: Allows you to define blending behavior for custom attributes
-* Default is "Average" blending for most properties
-
-***
-
-#### Union Metadata Settings
-
-Controls optional metadata writing for fused points.
-
-**Write Is Union**
-
-_When enabled, writes a boolean attribute indicating whether a point was part of a fused group._
-
-* Useful for tracking which points were modified during processing
-* Helps with debugging or post-processing logic
-
-**Is Union Attribute Name**
-
-_Name of the boolean attribute that marks union points._
-
-* Default is "bIsUnion"
-* Should be unique to avoid conflicts with other attributes
-
-**Write Union Size**
-
-_When enabled, writes an integer attribute indicating how many points were fused into each point._
-
-* Useful for understanding how much simplification occurred
-* Helps visualize the impact of fusion on path complexity
-
-**Union Size Attribute Name**
-
-_Name of the integer attribute that stores the number of fused points._
-
-* Default is "UnionSize"
-* Should be unique to avoid conflicts with other attributes
-
-***
-
-#### Output Settings
-
-Controls how invalid or empty paths are handled in the output.
-
-**Omit Invalid Paths From Output**
-
-_When enabled, paths that become empty after fusion will not appear in the output._
-
-* Prevents clutter from degenerate paths
-* Useful when you want only valid, non-empty paths in your results
+</details>

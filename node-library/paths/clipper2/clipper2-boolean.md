@@ -6,118 +6,89 @@ icon: circle
 # Clipper2 : Boolean
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Does a Clipper2 Boolean operation.
+> Performs Clipper2 Boolean operations on path data.
 
-### Overview
+#### How It Works
 
-This node performs boolean operations between polygonal shapes, such as union, intersection, difference, and XOR. It's useful for combining or modifying shapes in procedural generation workflows. You can think of it like using a Venn diagram to merge or cut shapes together.
+This node takes two sets of paths as input and performs a Clipper2 Boolean operation on them. The first set is considered the "subject" and the second set (if provided) is the "operand".
 
-{% hint style="info" %}
-The node works with 2D polygons projected onto a plane. Make sure your input data is properly oriented for the best results.
-{% endhint %}
+The operation is performed in 2D space, projected onto a plane based on the specified projection settings. Each path is converted into a polygonal representation before the boolean logic is applied.
+
+1. **Projection**: All input paths are projected onto a 2D plane using the configured projection method (Normal or Best Fit).
+2. **Polygon Conversion**: The 2D projected paths are converted into Clipper2 polygons.
+3. **Boolean Operation**: The selected operation (Union, Intersection, Difference, or XOR) is applied to the subject and operand polygons.
+4. **Fill Rule**: The fill rule determines how overlapping regions are interpreted when computing the result.
+5. **Output Generation**: The resulting polygon(s) are converted back into paths and output.
+
+The node supports both closed and open paths, but open paths may be treated as lines or curves depending on the operation and settings.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Projection Details</strong><br><em>Projection settings.</em></summary>
 
-* **Main** (Points): The primary set of polygonal shapes to process
-* **Operand** (Points, optional): Secondary set of shapes used in the boolean operation
+Controls how the input paths are projected onto a 2D plane for processing.
+
+* **Method**: Choose between "Normal" or "Best Fit".
+  * **Normal**: Projects using a fixed normal vector.
+  * **Best Fit**: Computes the best-fit plane based on the path's geometry.
+* **Projection Normal**: When using "Normal", this defines the direction of the projection plane. Defaults to Up for XY projection.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Operation</strong><br><em>Which Clipper2 Boolean operation to perform.</em></summary>
 
-* **Output** (Points): Resulting shapes after the boolean operation
+Selects the type of boolean logic to apply between subject and operand paths.
+
+**Values**:
+
+* **Intersection**: Keeps only the overlapping regions.
+* **Union**: Combines both shapes into one.
+* **Difference**: Removes the operand shape from the subject.
+* **XOR**: Keeps only non-overlapping regions.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the boolean operation is performed and what data is processed.
+<summary><strong>Fill Rule</strong><br><em>How to interpret overlapping regions.</em></summary>
 
-***
-
-#### Projection Settings
-
-Defines how the 3D input data is projected into 2D space for processing.
-
-**Projection Method**
-
-_Controls whether to use a fixed normal or compute the best-fit plane._
-
-* **Normal**: Projects using a fixed vector (default is Up)
-* **Best Fit**: Automatically computes the best-fitting plane based on the point cloud
-
-**Projection Normal**
-
-_Vector used when projecting with "Normal" method._
-
-* Controls which direction the projection happens from
-* Default value is Up vector (0, 0, 1)
-
-**Local Normal Support**
-
-_When enabled, allows using a local attribute for projection normal._
-
-* If enabled, you can specify an attribute that contains the normal vector per point
-* Useful when your points have varying orientations
-
-#### Boolean Operation
-
-Specifies which type of boolean operation to perform.
-
-**Operation Type**
-
-_What kind of boolean operation to apply._
+Determines how self-intersecting or overlapping polygons are filled during the boolean operation.
 
 **Values**:
 
-* **Intersection**: Keeps only the overlapping areas between shapes
-* **Union**: Combines all shapes into one unified shape
-* **Difference**: Subtracts the operand shapes from the main shapes
-* **XOR**: Keeps only the non-overlapping parts of the shapes
+* **Even Odd**: Uses even/odd rule for filling.
+* **Non Zero**: Uses non-zero winding number for filling.
+* **Positive**: Fills only positive areas.
+* **Negative**: Fills only negative areas.
 
-#### Fill Rule
+</details>
 
-Controls how to interpret overlapping regions when computing the result.
+<details>
 
-**Fill Rule Type**
+<summary><strong>bUseOperand Pin</strong><br><em>Display operand pin as a separate pin.</em></summary>
 
-_How to handle self-intersections and overlapping areas._
+When enabled, the node will have a dedicated operand input pin for additional paths. This is only relevant when using Difference or XOR operations.
 
-**Values**:
+</details>
 
-* **Even Odd**: Uses even/odd rule for filling (good for complex shapes)
-* **Non Zero**: Uses non-zero winding number (standard for most cases)
-* **Positive**: Only fills regions with positive winding numbers
-* **Negative**: Only fills regions with negative winding numbers
+#### Usage Example
 
-#### Processing Settings
+To create a shape that combines two overlapping circles with a hole in the middle:
 
-Controls how the node handles input data and operand pins.
+1. Create two circle paths.
+2. Connect them to the **Subject** and **Operand** pins of this node.
+3. Set the **Operation** to "Difference".
+4. The output will be the first circle with the second circle removed from it, creating a ring-like shape.
 
-**Use Operand Pin**
+#### Notes
 
-_When enabled, creates a separate operand input pin._
-
-* If disabled, the operand is taken from the same input as main shapes
-* When enabled, you can connect different sets of shapes to each pin
-* Only applies when operation is not Union (since Union doesn't require an operand)
-
-### Notes
-
-* Boolean operations work best with closed polygonal paths
-* Complex self-intersecting polygons may produce unexpected results
-* Consider using "Best Fit" projection method for irregularly oriented data
-* The node preserves point attributes from the main input when possible
-* For performance, try to keep the number of points per shape reasonable (under 1000 points recommended)
-* Use "Intersection" to create overlapping regions between shapes
-* Use "Difference" to cut holes or subtract shapes from others
-* Combine with other nodes like "Clipper2 : Offset" for more complex shape manipulation
+* Boolean operations are sensitive to path orientation. Clockwise and counter-clockwise paths may behave differently depending on the fill rule.
+* For best results, ensure input paths are well-formed and do not self-intersect excessively.
+* The node supports both open and closed paths, but complex open paths may produce unexpected results.

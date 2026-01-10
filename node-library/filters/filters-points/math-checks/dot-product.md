@@ -13,29 +13,37 @@ This page was generated from the source code. It should properly capture what th
 
 #### Overview
 
-This subnode filters points based on the dot product of two vector operands. It's useful for determining angular relationships between vectors, such as whether a point's forward direction is pointing toward or away from a target, or if it aligns with a specific orientation.
+The Dot Filter Subnode evaluates whether the dot product of two vectors meets a specified condition. It's useful for filtering points based on angular relationships or directional alignment. For example, you might want to keep only points facing a certain direction or those aligned within a specific angle range.
 
-It connects to **Filter** pins on processing nodes that accept point-based filtering.
+This subnode connects to Filter pins on processing nodes and can be combined with other filters to create complex selection criteria. It allows you to define vector operands using either constant values or attributes from your input data.
+
+{% hint style="info" %}
+Connects to **Filter** pins on processing nodes.
+{% endhint %}
 
 #### How It Works
 
-This subnode evaluates the dot product of two vectors for each input point and compares the result against a threshold. The dot product is a mathematical operation that measures how aligned two vectors are, with values ranging from -1 (completely opposite) to 1 (identical direction).
+This filter computes the dot product of two vectors — Operand A and Operand B — then compares that result against a threshold using a comparison operator. The dot product represents the cosine of the angle between two normalized vectors, scaled by their magnitudes.
 
-The process works as follows:
+It first retrieves or calculates the two vectors:
 
-1. It calculates vector **Operand A** at each point, optionally transforming it by the point's local transform.
-2. It calculates vector **Operand B**, which can be a constant or read from an attribute, and optionally transforms it using the point's local transform.
-3. It computes the dot product of these two vectors.
-4. It compares the resulting scalar value against a threshold defined in the comparison settings.
+1. **Operand A**: Can be a constant vector or an attribute from the input point.
+2. **Operand B**: Can also be a constant vector or an attribute from the input point.
 
-The filter passes points where the dot product meets the specified comparison criteria (e.g., greater than or equal to a minimum angle).
+Each operand can optionally be transformed using the local point's transform and inverted before computing the dot product.
+
+Once both operands are ready, their dot product is calculated:
+
+* If both vectors are normalized, the result ranges from -1 (opposite directions) to 1 (same direction).
+* The comparison operator determines if this value satisfies the filter condition.
+
+The final decision is made by checking if the computed dot product meets the specified comparison criteria. Points that pass this test are included in the output; those that fail are excluded.
 
 <details>
 
 <summary>Inputs</summary>
 
-* Points with optional transform data
-* Optional attribute for Operand B if using "Attribute" mode
+Expects a point-based input data with optional attribute fields for Operand A and Operand B.
 
 </details>
 
@@ -43,101 +51,101 @@ The filter passes points where the dot product meets the specified comparison cr
 
 <summary>Outputs</summary>
 
-* A set of points that pass the dot product comparison
+Filters points based on the dot product comparison. Only points where the condition is satisfied will be passed through to downstream nodes.
 
 </details>
 
 #### Configuration
 
-***
+<details>
 
-**Vector Operand A**
+<summary><strong>Operand A</strong><br><em>Vector operand A.</em></summary>
 
-_The first vector used in the dot product calculation._
+Defines the first vector used in the dot product calculation. Can be a constant or an attribute from the input point.
 
-This defines the first operand. It can be a constant vector or read from an attribute on the input points.
+</details>
 
-***
+<details>
 
-**Transform OperandA with Local Point Transform**
+<summary><strong>Transform Operand A</strong><br><em>Transform OperandA with the local point' transform.</em></summary>
 
-_When enabled, transforms Operand A using the point's local transform._
+When enabled, applies the local point's transform to Operand A before computing the dot product.
 
-If enabled, the vector is transformed by the point's rotation and scale before computing the dot product.
+</details>
 
-***
+<details>
 
-**└─ Invert Operand A**
+<summary><strong>Invert Operand A</strong><br><em>└─ Invert</em></summary>
 
-_When enabled, inverts the direction of Operand A._
+When enabled, negates Operand A before computing the dot product.
 
-This flips the direction of Operand A before computing the dot product.
+</details>
 
-***
+<details>
 
-**Type of Operand B**
+<summary><strong>Compare Against</strong><br><em>Type of OperandB.</em></summary>
 
-_How to define the second vector used in the dot product._
+Determines whether Operand B is a constant value or an attribute from the input data.
+
+**Values**:
 
 * **Constant**: Use a fixed vector value.
-* **Attribute**: Read the vector from an attribute on the input points.
+* **Attribute**: Read the vector from an attribute on the input point.
 
-***
+</details>
 
-**└─ Invert Operand B**
+<details>
 
-_When enabled, inverts the direction of Operand B._
+<summary><strong>Invert Operand B</strong><br><em>└─ Invert</em></summary>
 
-This flips the direction of Operand B before computing the dot product.
+When enabled, negates Operand B before computing the dot product. Only visible when Compare Against is set to Attribute.
 
-***
+</details>
 
-**Operand B (Attr)**
+<details>
 
-_The attribute to read Operand B from, when using "Attribute" mode._
+<summary><strong>Operand B (Attr)</strong><br><em>Operand B for computing the dot product.</em></summary>
 
-Only visible when **Type of Operand B** is set to **Attribute**.
+The attribute used as Operand B when Compare Against is set to Attribute.
 
-***
+</details>
 
-**Operand B**
+<details>
 
-_The constant vector used as Operand B, when using "Constant" mode._
+<summary><strong>Operand B</strong><br><em>Operand B for computing the dot product.</em></summary>
 
-Only visible when **Type of Operand B** is set to **Constant**.
+The constant vector used as Operand B when Compare Against is set to Constant.
 
-***
+</details>
 
-**Transform OperandB with Local Point Transform**
+<details>
 
-_When enabled, transforms Operand B using the point's local transform._
+<summary><strong>Transform Operand B</strong><br><em>Transform OperandB with the local point' transform.</em></summary>
 
-If enabled, the vector is transformed by the point's rotation and scale before computing the dot product.
+When enabled, applies the local point's transform to Operand B before computing the dot product.
 
-***
+</details>
 
-**Dot Comparison Settings**
+<details>
 
-_Configuration for how the dot product result is compared to a threshold._
+<summary><strong>Dot Comparison Details</strong><br><em>Dot comparison settings.</em></summary>
 
-This includes:
+Defines how the computed dot product is compared against a threshold. Includes operator and tolerance settings for floating-point comparisons.
 
-* **Comparison Type**: How to compare the dot product (e.g., greater than, equal to, less than).
-* **Threshold Value**: The value to compare against.
-* **Tolerance**: For approximate comparisons like "nearly equal".
+</details>
 
 #### Usage Example
 
-A common use case is filtering points based on their orientation relative to a target. For example:
+Suppose you want to filter points that are facing upwards (i.e., have a dot product of at least 0.5 with the up vector). You would:
 
-1. Set Operand A to the point's forward vector (e.g., using an attribute like `ForwardVector`).
-2. Set Operand B to a constant vector pointing toward a desired direction (e.g., `FVector::ForwardVector`).
-3. Configure the comparison to pass points where the dot product is greater than 0.5, meaning the point is facing toward the target within about 60 degrees.
+1. Set Operand A to a constant vector like FVector::UpVector.
+2. Set Operand B to an attribute representing the point's forward direction.
+3. Configure Dot Comparison Details to use "Greater or Equal" with a threshold of 0.5.
+
+This ensures only points aligned within 60 degrees of the upward direction are selected.
 
 #### Notes
 
-* The dot product of two unit vectors ranges from -1 to 1.
-* A value of 1 means the vectors are perfectly aligned.
-* A value of -1 means they are perfectly opposite.
-* A value of 0 means they are perpendicular.
-* This filter is commonly used for directional checks in procedural generation, such as orienting objects toward a light source or aligning structures with terrain normals.
+* The dot product is sensitive to vector magnitudes, so ensure vectors are normalized if you're interested in angular relationships alone.
+* Combining multiple filters allows for more precise control over point selection based on directional criteria.
+* This filter supports both constant and attribute-based operands, enabling flexible use across various data sources.

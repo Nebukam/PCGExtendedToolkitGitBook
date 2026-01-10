@@ -6,189 +6,60 @@ icon: circle
 # Cluster Surface
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Create a cluster surface topology from point data.
+> Create a surface topology from clustered point data.
 
-### Overview
+#### How It Works
 
-This node generates a surface mesh that represents the topological structure of clustered point data. It creates a triangulated surface by connecting points within each cluster based on their connectivity relationships, forming a continuous mesh that follows the shape and structure of the clusters.
+This node builds a surface mesh by analyzing how points within each cluster connect to one another. It uses the relationships between points—defined by edges—to form polygonal faces that represent the shape of each cluster. The process starts by examining each cluster's structure, then connects related points into loops or polygons. These polygons are then converted into triangles to create a complete mesh that can be used for rendering or further processing.
 
-The output is typically used to visualize or generate geometry from clustered data, such as creating terrain surfaces, building structures, or any mesh that should follow the natural grouping of your point data.
+The node works best when clusters have well-defined connections between their points. It tries to form closed shapes from the edges and then fills them with triangular faces to generate solid geometry.
 
-{% hint style="info" %}
-This node requires input data to be organized into clusters. Ensure your data has been processed through a clustering operation before using this node.
-{% endhint %}
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Output Type</strong><br><em>How the output geometry is structured.</em></summary>
 
-* **Main Input** (Point): Point data that has been clustered
-* **Edges Input** (Point): Optional edge data representing connections between points
+Controls whether the output generates individual geometries per cluster or a single merged geometry.
+
+**Values**:
+
+* **Per-item Geometry**: Each cluster outputs as a separate geometry object.
+* **Merged Geometry**: All clusters are combined into a single geometry output.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>UV Input</strong><br><em>Controls UV mapping for the generated surface.</em></summary>
 
-* **Output** (Geometry): Generated surface geometry for each cluster
+Enables UV mapping on the generated surface. Configure UV channels and attribute names to map UV coordinates from input data.
 
 </details>
 
-### Properties Overview
+<details>
 
-This node creates a mesh topology from clustered point data, generating a continuous surface that represents the connectivity and structure of each cluster.
+<summary><strong>Surface Settings</strong><br><em>Adjusts how the surface is constructed.</em></summary>
 
-***
+Controls various aspects of surface generation including solidification settings, edge radius handling, and axis alignment for better geometric consistency.
 
-#### Surface Settings
+</details>
 
-Controls how the surface mesh is generated from the cluster data.
+#### Usage Example
 
-**Output Type**
+1. Start with a point cloud that has been clustered using a clustering node.
+2. Connect the clustered points to the Cluster Input pin.
+3. Use an edge generation node (like "Graph : Build Edges") to define connections between cluster points.
+4. Connect the edges to the Edge Input pin of this node.
+5. Configure output settings to generate either individual or merged geometry.
+6. The result is a mesh surface that represents the connectivity and structure of each cluster.
 
-Whether to output one geometry per cluster or merge all into a single geometry.
+#### Notes
 
-* **Per-item Geometry**: Each cluster outputs its own separate geometry object
-* **Merged Geometry**: All clusters are combined into a single geometry object
-
-**Surface Method**
-
-How the surface is constructed from the cluster's points and edges.
-
-* **Triangulation**: Creates a triangulated mesh using Delaunay triangulation
-* **Convex Hull**: Forms a convex hull around each cluster's points
-* **Voronoi**: Uses Voronoi diagram to generate cell boundaries
-
-**Use Edge Data**
-
-When enabled, uses edge connections to influence surface generation.
-
-* If disabled, the surface is generated based on point positions only
-* If enabled, edges are used to define connectivity and shape constraints
-
-**Solidify Edges**
-
-Whether to create solid geometry from edges rather than just lines.
-
-* When enabled, creates a 3D volume from edge connections
-* When disabled, outputs only the edge structure as lines or thin surfaces
-
-***
-
-#### Triangulation Settings
-
-Controls the triangulation process when using the "Triangulation" surface method.
-
-**Enable Triangulation**
-
-When enabled, uses Delaunay triangulation to generate the surface.
-
-* Generates a mesh that fills the convex hull of each cluster
-* Creates a smooth, continuous surface from point data
-
-**Max Iterations**
-
-Maximum number of attempts to refine the triangulation.
-
-* Higher values allow for more complex surface shapes
-* Default value is 100 iterations
-
-**Tolerance**
-
-Tolerance threshold for triangulation calculations.
-
-* Smaller values create more precise but potentially slower results
-* Larger values may produce faster but less accurate triangulations
-
-***
-
-#### Projection Settings
-
-Controls how the surface is projected onto a plane or axis.
-
-**Enable Projection**
-
-When enabled, projects points onto a 2D plane before triangulation.
-
-* Useful for creating flat surfaces from 3D point data
-* Can help avoid issues with irregular point distributions
-
-**Projection Axis**
-
-Axis along which to project points when using projection.
-
-* **X**: Project onto YZ plane
-* **Y**: Project onto XZ plane
-* **Z**: Project onto XY plane
-* **Normal**: Use the best-fit normal vector for projection
-
-**Normal Source**
-
-Source of the normal vector used for projection.
-
-* **Fixed**: Use a fixed normal vector defined below
-* **Local**: Use local point normals if available
-* **Best Fit**: Compute the best-fit plane normal from all points
-
-**Fixed Normal Vector**
-
-Normal vector to use when "Fixed" is selected as the normal source.
-
-* Defines the direction of the projection plane
-* Default is up vector (0, 0, 1)
-
-***
-
-#### Geometry Settings
-
-Controls the final geometry output and mesh properties.
-
-**Enable UVs**
-
-When enabled, generates UV coordinates for the surface.
-
-* UVs are mapped based on point positions or attributes
-* Useful for texturing the generated surface
-
-**UV Attribute Name**
-
-Name of the attribute containing UV data.
-
-* If empty, uses default UV generation
-* Must be a vector2 attribute
-
-**Enable Normals**
-
-When enabled, generates normal vectors for each vertex.
-
-* Normals are computed based on the surface geometry
-* Useful for lighting and shading effects
-
-**Enable Tangents**
-
-When enabled, generates tangent vectors for each vertex.
-
-* Tangents are used for advanced shading techniques like normal mapping
-* Requires normals to be enabled
-
-**Enable Colors**
-
-When enabled, assigns color attributes to vertices.
-
-* Colors are based on point attributes or default values
-* Useful for visualizing data properties directly on the mesh
-
-### Notes
-
-* This node works best with clustered point data that has clear connectivity relationships
-* For complex cluster structures, consider using the "Convex Hull" method to simplify output
-* When using projection, ensure your point data is well-distributed to avoid degenerate cases
-* The triangulation process may be computationally intensive for large clusters
-* UV generation can significantly increase processing time for large datasets
-* Consider enabling edge solidification when creating 3D volumes from edge-based data
+* This node requires valid clusters with associated edges to function correctly.
+* The generated surfaces are typically used for visualization, collision detection, or further mesh processing.
+* Performance can be affected by the number of points and edges in each cluster.
+* The triangulation process may produce non-planar polygons if edge connections form complex topologies.

@@ -5,89 +5,110 @@ icon: circle-dashed
 # G-Probe : Anisotropic
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a directional connectivity probe that uses an ellipsoidal distance metric to define spatial relationships between points.
+> Ellipsoidal distance metric for directional connectivity.
 
-### Overview
+#### Overview
 
-This probe factory defines how connections are discovered in a graph by using an anisotropic (directional) distance metric. It's particularly useful for creating directional networks like roads, pipes, or flow structures where certain directions should be preferred over others.
+The GlobalAnisotropic probe defines a method for determining spatial connections between points based on an ellipsoidal distance metric that accounts for directional preferences. Instead of using simple Euclidean distance, it weights the space along specific axes to favor certain directions when looking for nearby points. This is particularly useful in scenarios where you want to simulate directional constraints—such as preferring connections along a surface normal or a preferred axis.
+
+This probe subnode connects to Probe pins on graph-building nodes and determines how candidates are evaluated for connection. It's ideal when your point data has inherent directional properties, such as terrain normals or object orientations, that should influence which points connect to each other.
 
 {% hint style="info" %}
-Connects to **Probe** pins on graph-building nodes such as "Connect Points" or "Build Graph"
+Connects to **Probe** pins on graph-building nodes.
 {% endhint %}
 
-### How It Works
+#### How It Works
 
-Instead of measuring distance using a simple Euclidean metric (like a sphere), this probe uses an ellipsoidal shape that can be stretched along different axes. This allows you to define preferred connection directions by adjusting the scale factors along each axis.
+This probe evaluates candidate points using an ellipsoidal distance metric. It constructs a transformation matrix based on three axes: primary, secondary, and tertiary (computed as the cross product of the first two). Each axis is scaled according to user-defined scale factors, effectively warping the space in which distances are computed.
 
-The probe finds connections by looking at K nearest neighbors within this custom ellipsoidal space, rather than a uniform sphere around each point.
+When looking for neighbors, it calculates the squared distance between a point and its candidates using this transformed coordinate system. The result is used to rank candidates by proximity, with closer points (in ellipsoidal space) being more likely to be selected as connections.
 
-### Configuration
+The probe uses a global K-nearest neighbor search, where K defines how many candidates are considered for each point. It can optionally use per-point normals as the primary axis, allowing for dynamic directional preferences based on geometry.
 
-***
+#### Inputs
 
-#### General
+This subnode does not take direct inputs but is configured via its settings and connects to graph-building nodes that define the point data to be processed.
 
-**Primary Axis**
+#### Outputs
 
-_The preferred direction for connections._
+This subnode defines a probe behavior that modifies how connections are evaluated in downstream graph-building operations. It does not produce or modify data directly.
 
-When "Use Per-Point Normal" is disabled, this vector defines the primary axis of the ellipsoid. For example, setting this to Up Vector makes vertical connections more likely than horizontal ones.
+#### Configuration
 
-**Secondary Axis**
+<details>
 
-_The cross direction for connections._
+<summary><strong>PrimaryAxis</strong><br><em>Primary axis (preferred connection direction)</em></summary>
 
-This vector defines a secondary axis perpendicular to the primary axis. Together with the primary axis, it helps define the orientation of the ellipsoidal probe.
+Defines the preferred direction for connections. This axis is scaled by `PrimaryScale` to influence how candidates are ranked.
 
-**Primary Scale**
+</details>
 
-_Scale factor for the primary axis (higher = prefer connections along this axis)._
+<details>
 
-Controls how much the ellipsoid is stretched along the primary axis. A value of 2.0 means connections are twice as likely along this direction compared to perpendicular directions.
+<summary><strong>SecondaryAxis</strong><br><em>Secondary axis (cross direction)</em></summary>
 
-**Secondary Scale**
+Defines a secondary axis perpendicular to the primary one. Together with the primary axis, it forms the basis of the ellipsoidal space used for distance calculations.
 
-_Scale factor for the secondary axis._
+</details>
 
-Controls stretching along the secondary axis. Higher values make connections more likely in this direction.
+<details>
 
-**Tertiary Scale**
+<summary><strong>PrimaryScale</strong><br><em>Scale factor for primary axis (>1 = prefer connections along this axis)</em></summary>
 
-_Scale factor for the tertiary axis (computed as cross product)._
+Controls how much weight is given to the primary axis when computing distances. A value greater than 1 makes connections along this axis more likely, while a value less than 1 reduces preference.
 
-The third axis is automatically computed as the cross product of primary and secondary axes, then scaled accordingly.
+**Range:** Minimum 0.1
 
-**K**
+</details>
 
-_Number of nearest neighbors to consider._
+<details>
 
-This defines how many potential connection targets are evaluated when looking for candidates. A value of 5 means each point will look at its 5 closest neighbors in ellipsoidal space.
+<summary><strong>SecondaryScale</strong><br><em>Scale factor for secondary axis</em></summary>
 
-**Use Per-Point Normal**
+Controls the scaling of the secondary axis in distance calculations. A higher value increases the influence of this direction on connection preferences.
 
-_When enabled, uses the point's normal as the primary axis._
+**Range:** Minimum 0.1
 
-If enabled, this overrides the Primary Axis setting and instead uses the normal vector of each point to define the preferred connection direction. This is useful for creating connections that follow surface orientation (like roads following terrain slopes).
+</details>
 
-### Usage Example
+<details>
 
-Create a mesh with normals pointing in various directions, then use this probe with:
+<summary><strong>TertiaryScale</strong><br><em>Scale factor for tertiary axis (computed as cross product)</em></summary>
 
-* Primary Axis = Up Vector
-* Secondary Scale = 3.0
-* K = 3
+Controls the scaling of the tertiary axis, which is automatically computed as the cross product of the primary and secondary axes.
 
-This setup will create connections that prefer vertical movement but still allow for wider horizontal spread, useful for generating network structures like tree branches or pipe systems.
+**Range:** Minimum 0.1
 
-### Notes
+</details>
 
-* The probe works globally across all points in the dataset
-* Higher scale values make the ellipsoid more elongated along that axis
-* When using "Use Per-Point Normal", ensure your input data has valid normal attributes
-* This probe is computationally more expensive than standard probes due to the anisotropic distance calculation
-* Combine with "Connect Points" or similar graph-building nodes for best results
+<details>
+
+<summary><strong>K</strong><br><em>Number of nearest neighbors (in GlobalAnisotropic distance)</em></summary>
+
+Determines how many candidates are considered when finding connections for each point. A higher value increases the number of potential connections.
+
+**Range:** Minimum 1
+
+</details>
+
+<details>
+
+<summary><strong>bUsePerPointNormal</strong><br><em>If true, uses per-point normals as primary axis</em></summary>
+
+When enabled, the probe will use the normal vector of each point (if available) as its primary axis. This allows for dynamic directional preferences based on geometry.
+
+</details>
+
+#### Usage Example
+
+Imagine you're generating a network of roads that should follow terrain slopes. You can set the `PrimaryAxis` to align with the surface normal, and scale it higher than the other axes using `PrimaryScale`. This makes the probe prefer connecting points along the slope direction, creating more natural-looking road layouts.
+
+#### Notes
+
+* The probe uses an ellipsoidal distance metric, which means it's not a straight line but rather a warped space.
+* If `bUsePerPointNormal` is enabled, ensure your point data includes normal attributes for best results.
+* Increasing `K` can lead to more connections but may also increase computational cost.
+* The scaling factors affect how the ellipsoid is stretched or compressed in each direction, allowing fine-tuning of directional preferences.

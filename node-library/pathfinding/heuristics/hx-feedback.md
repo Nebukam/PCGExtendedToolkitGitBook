@@ -6,81 +6,92 @@ icon: circle-dashed
 # HX : Feedback
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a heuristic that penalizes points and edges that have already been visited during pathfinding, encouraging the algorithm to explore new areas.
+> Heuristics based on visited score feedback.
 
-### Overview
+#### Overview
 
-This factory generates a feedback-based heuristic that modifies pathfinding scores based on how many times nodes and edges have been traversed in previous path queries. It's particularly useful for creating diverse paths or preventing algorithms from getting stuck in loops.
+This subnode modifies pathfinding heuristics by incorporating feedback from previously visited points and edges. It encourages or discourages revisiting elements of a path based on how often they've been used, which can help avoid redundant paths or promote exploration in certain scenarios. This is especially useful in procedural generation where you want to influence the flow of paths through a graph without completely constraining them.
+
+It connects to Filter pins on pathfinding nodes to define how visited elements affect scoring during path computation.
 
 {% hint style="info" %}
-Connects to **Heuristics** input pins on pathfinding nodes like **Pathfinder** or **Pathfinder With Constraints**
+Connects to **Filter** pins on pathfinding nodes.
 {% endhint %}
 
-### How It Works
+#### How It Works
 
-This heuristic works by tracking how often each point (node) and edge has been visited during previous pathfinding operations. When a point or edge is encountered in the current path query, its "feedback score" increases based on how frequently it's been used before.
+This subnode tracks how many times each point and edge has been part of a path. When computing scores for potential next steps, it adjusts the weight based on this history:
 
-The feedback score is then applied as a penalty to future pathfinding decisions, making previously visited areas less attractive for new paths. This encourages exploration of unvisited regions and helps avoid repetitive or overly similar paths.
+1. If a point or edge has already been visited in prior paths, its score is modified.
+2. The modification depends on whether `bBinary` is enabled:
+   * When **enabled**, the score is either fully penalized (0) or left unchanged (1).
+   * When **disabled**, the score is scaled by a factor based on how often it's been visited.
+3. If `bGlobalFeedback` is enabled, feedback persists across multiple path queries within the same node, affecting all future paths.
+4. The `VisitedPointsWeightFactor` and `VisitedEdgesWeightFactor` control how strongly this feedback influences point and edge scores respectively.
 
-### Inputs
+This creates a dynamic weighting system that adapts to the exploration history of the graph, making paths more varied or avoiding repetition depending on configuration.
 
-* **Heuristics** (Input pin): Connects to pathfinding nodes to apply the feedback heuristic
-* **Pathfinder** (Input pin): Required for pathfinding operations that support multiple queries
+#### Configuration
 
-### Outputs
+<details>
 
-* **Heuristic Result**: The modified pathfinding score with feedback penalties applied
+<summary><strong>bBinary</strong><br><em>If enabled, weight doesn't scale with overlap; the base score is either 0 or 1.</em></summary>
 
-### Configuration
+When enabled, visited elements are given a fixed weight of either 0 (penalized) or 1 (unchanged), regardless of how many times they were visited.
 
-***
+</details>
 
-#### General
+<details>
 
-**Binary Mode**
+<summary><strong>VisitedPointsWeightFactor</strong><br><em>Weight to add to points that are already part of the plotted path.</em></summary>
 
-_When enabled, weight doesn't scale with overlap; the base score is either 0 or 1._
+Controls how much weight is added to point scores based on their visitation count. Only used when `bBinary` is disabled.
 
-When enabled, the heuristic will only apply a full penalty (weight = 1) or no penalty (weight = 0) to visited points/edges. When disabled, it uses a continuous scale based on how many times each point/edge has been visited.
+**Values**:
 
-**Visited Points Weight Factor**
+* **0**: No effect from visited points
+* **1**: Full effect from visited points
 
-_Weight to add to points that are already part of the plotted path._
+</details>
 
-Controls how much additional weight is added to points that have been visited in previous path queries. For example, if set to 0.5, a point visited twice will receive an additional 1.0 weight penalty.
+<details>
 
-**Visited Edges Weight Factor**
+<summary><strong>VisitedEdgesWeightFactor</strong><br><em>Weight to add to edges that are already part of the plotted path.</em></summary>
 
-_Weight to add to edges that are already part of the plotted path._
+Controls how much weight is added to edge scores based on their visitation count. Only used when `bBinary` is disabled.
 
-Controls how much additional weight is added to edges that have been visited in previous path queries. For example, if set to 0.3, an edge visited three times will receive an additional 0.9 weight penalty.
+**Values**:
 
-**Global Feedback**
+* **0**: No effect from visited edges
+* **1**: Full effect from visited edges
 
-_Global feedback weight persist between path query in a single pathfinding node. IMPORTANT NOTE: This break parallelism, and may be slower._
+</details>
 
-When enabled, the feedback tracking persists across multiple path queries within the same pathfinding node. This means that if you're generating multiple paths from the same start point, visited points/edges will affect all subsequent paths.
+<details>
 
-**Affect All Connected Edges**
+<summary><strong>bGlobalFeedback</strong><br><em>Global feedback weight persist between path query in a single pathfinding node.</em></summary>
 
-_Controls whether to apply feedback to all edges connected to a visited node._
+When enabled, the feedback history persists across multiple path queries within the same node. This can slow performance due to reduced parallelism.
 
-When enabled, visiting a node applies feedback to all edges connected to it. When disabled, only the specific edge used to reach that node is penalized.
+</details>
 
-### Usage Example
+<details>
 
-Use this factory when you want to generate diverse paths from the same start point. For example, if you're creating multiple routes for AI units to follow, you can use this heuristic to ensure they don't all take identical paths through the same locations.
+<summary><strong>bAffectAllConnectedEdges</strong><br><em>Whether to apply feedback to all edges connected to a visited point.</em></summary>
 
-Connect this factory to a **Pathfinder** node's **Heuristics** input pin. Set **Visited Points Weight Factor** to 0.5 and **Visited Edges Weight Factor** to 0.3. This will make previously visited points and edges increasingly less attractive for new paths, encouraging exploration of different areas.
+When enabled, feedback is applied not to the specific edge used but also to all edges connected to the visited point.
 
-### Notes
+</details>
 
-* This heuristic works best when used with pathfinding nodes that support multiple queries
-* Enabling **Global Feedback** will slow down processing due to the need to maintain state between queries
-* The feedback system is designed to be lightweight but can become memory-intensive if tracking many unique points/edges
-* Combine this with other heuristics for more complex pathfinding behaviors
+#### Usage Example
+
+Use this subnode in a pathfinding setup where you want to avoid creating identical or very similar paths repeatedly. For example, when generating multiple routes through a dungeon, applying feedback can encourage exploration of different corridors instead of looping back to previously used ones.
+
+#### Notes
+
+* Enabling `bGlobalFeedback` disables parallel execution for better consistency.
+* The feedback mechanism works best with a sufficient number of path queries to build meaningful statistics.
+* This subnode is ideal for creating dynamic and varied procedural paths in games or simulations.

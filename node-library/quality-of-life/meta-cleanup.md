@@ -6,28 +6,38 @@ icon: circle
 # Meta Cleanup
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Keep or remove tags and attributes using string queries.
 
-### Overview
+#### Overview
 
-The Meta Cleanup node allows you to filter out unwanted metadata from your points, such as tags and attributes, based on simple string matching rules. This is useful for cleaning up point data before further processing, removing unnecessary metadata that might interfere with downstream operations, or preparing data for export.
+The Meta Cleanup node allows you to selectively remove metadata (tags and attributes) from points in your procedural data. You define which metadata elements to target using string-based filters, making it easy to clean up or refine point data before further processing.
 
-It works by specifying a list of attribute names to either keep or remove using pattern matching. You can define multiple patterns to match against, and the node will apply those rules to your input points.
+It's particularly useful when working with large datasets where you want to strip out unnecessary or outdated metadata, or when preparing data for downstream nodes that require a specific set of attributes.
 
 {% hint style="info" %}
-This node modifies point metadata only. It does not change the geometry or structure of your points.
+Connects to **Point Filters** pins on other nodes.
 {% endhint %}
+
+#### How It Works
+
+This node processes the point data by evaluating the list of attribute names defined in its Filters subnode. For each attribute, it applies a filtering mode that determines whether to keep or remove it from the points.
+
+It checks if an attribute's name matches any of the specified patterns in the filter list. If a match is found, the behavior depends on the filter mode:
+
+* **All**: Keeps all attributes (no action taken).
+* **Exclude**: Removes matching attributes.
+* **Include**: Keeps only matching attributes and removes all others.
+
+The filtering logic uses string matching to determine if an attribute name should be processed, allowing for flexible control over which metadata is retained or discarded.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Default Input** (Points): Points with attributes to filter.
+Expects point data with optional metadata (tags and attributes).
 
 </details>
 
@@ -35,51 +45,34 @@ This node modifies point metadata only. It does not change the geometry or struc
 
 <summary>Outputs</summary>
 
-* **Default Output** (Points): Points with filtered attributes.
+Produces modified point data with specified attributes either removed or retained based on the filter configuration.
 
 </details>
 
-### Properties Overview
+#### Configuration
 
-Controls how the node filters point metadata.
+<details>
 
-***
+<summary><strong>Filters</strong><br><em>List of attributes to delete.</em></summary>
 
-#### Filters
+Defines which attributes to target for removal or retention. This subnode allows you to specify a list of attribute names and how they should be processed.
 
-Define which attributes to keep or remove using string matching.
+**Filter Mode**:
 
-**Filter Mode**
+* **All**: Keep all attributes.
+* **Exclude**: Remove matching attributes.
+* **Include**: Keep only matching attributes.
 
-_Controls whether to include or exclude matching attributes._
+**Matches**: A map of attribute name patterns to match against. You can define multiple patterns, and any successful match will trigger the filter action.
 
-* When set to **Include**, only attributes that match your patterns will be kept.
-* When set to **Exclude**, attributes that match your patterns will be removed, while others are preserved.
-* When set to **All**, all attributes are kept (no filtering applied).
+</details>
 
-**Values**:
+#### Usage Example
 
-* **All**: Keep all attributes
-* **Exclude**: Remove matching attributes, keep the rest
-* **Include**: Keep only matching attributes, remove the rest
+You have a set of points with various metadata tags like `IsSelected`, `IsLocked`, `HasCollision`, and `TempTag`. You want to remove all attributes that start with "Temp" to clean up temporary data. Configure the Filters subnode with an **Exclude** mode and add a match pattern for `"Temp*"`. This removes all attributes starting with "Temp" from your points.
 
-**Matches**
+#### Notes
 
-_List of attribute name patterns to match._
-
-* Each pattern is a string that can contain wildcards or exact matches.
-* If any pattern matches an attribute name, it will be processed according to the Filter Mode.
-
-**Comma Separated Names**
-
-_Easy way to define multiple patterns as a comma-separated list._
-
-* This field allows you to quickly enter several patterns at once.
-* All patterns defined here use the same filter mode as specified above.
-
-**Use Comma Separated Names**
-
-_When enabled, the comma-separated list is used for filtering._
-
-* If disabled, only the individual Matches are used.
-* Enable this when you want to define multiple simple patterns quickly.
+* The node works on both tags and regular attributes.
+* String matching supports wildcards (e.g., `*Tag` matches any attribute ending in "Tag").
+* Be cautious when using **Include** mode, as it will remove all non-matching attributes.

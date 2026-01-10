@@ -5,62 +5,25 @@ icon: sliders
 # Bellman-Ford
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a pathfinding heuristic that uses the Bellman-Ford algorithm for finding shortest paths.
+> Defines a Bellman-Ford pathfinding search operation that handles negative edge weights and detects negative cycles.
 
-### Overview
+#### How It Works
 
-This factory generates a search algorithm that can handle negative edge weights in pathfinding graphs. It's particularly useful when your heuristics or cost calculations might produce negative values, which other algorithms like Dijkstra cannot process correctly.
+The Bellman-Ford algorithm works by repeatedly relaxing all edges in the graph up to a specific number of times—equal to the number of nodes minus one. During each relaxation, it checks whether moving through a neighboring node results in a shorter path to reach the current node. This process continues until no further improvements can be made.
 
-{% hint style="info" %}
-Connects to the **Heuristic** pin of pathfinding nodes (like PCGEx Pathfinding, PCGEx Multi-Pathfinding)
-{% endhint %}
+After completing these iterations, if the algorithm finds that it can still improve any path, it means there's a negative weight cycle within the graph. A negative cycle is a loop where the total cost decreases as you traverse it repeatedly, which can lead to infinite paths in other algorithms like Dijkstra’s.
 
-### How It Works
+When enabled, this subnode will detect such cycles and stop the search if one is found, ensuring that only valid paths are returned.
 
-The Bellman-Ford algorithm computes shortest paths from a source node to all other nodes in a weighted graph. Unlike Dijkstra's algorithm, it can handle negative edge weights and will detect if there are negative weight cycles (loops that decrease total cost infinitely). This makes it more robust for complex pathfinding scenarios where costs might be negative due to heuristics or terrain modifications.
+#### Configuration
 
-### Inputs
+<details>
 
-* **Source Points**: Points from which the pathfinding search begins
-* **Graph Data**: The weighted graph structure containing nodes and edges
-* **Heuristic Settings**: Configuration for cost calculations and path evaluation
+<summary><strong>bDetectNegativeCycles</strong><br><em>If enabled, the search will fail if a negative weight cycle is detected.</em></summary>
 
-### Outputs
+When enabled, the algorithm will check for negative weight cycles after computing paths. If one is found, the search fails and no valid path is returned.
 
-* **Path Results**: Computed paths from source points to target locations
-* **Cost Information**: Distance values and cost metrics for each path
-* **Cycle Detection**: Warnings or errors when negative weight cycles are found
-
-### Configuration
-
-***
-
-#### Settings
-
-**Detect Negative Cycles**
-
-_When enabled, the search will fail if a negative weight cycle is detected._
-
-If this setting is enabled, and the algorithm encounters a loop in the graph that continuously decreases the path cost (a negative cycle), it will stop the search and report an error. This prevents infinite loops in certain edge cases.
-
-### Usage Example
-
-Use this factory when you're building a pathfinding system where:
-
-* Your heuristics might produce negative values
-* You want to detect impossible or unstable paths with negative cycles
-* You need robustness over performance (e.g., for dynamic environments)
-
-Connect it to the Heuristic pin of a PCGEx Pathfinding node. The algorithm will then compute paths using Bellman-Ford's method, which can handle negative weights and will warn you if a problematic cycle is detected.
-
-### Notes
-
-* Bellman-Ford is slower than A\* (O(V×E) vs O(E log V)) but more robust
-* It's ideal for scenarios where heuristics or cost functions may produce negative values
-* Enable "Detect Negative Cycles" when you want to ensure path stability and avoid infinite loops
-* This algorithm can detect if a path leads to an infinitely decreasing cost, which is useful for debugging unstable heuristics
+</details>

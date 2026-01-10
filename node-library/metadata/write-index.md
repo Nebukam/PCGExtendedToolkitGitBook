@@ -6,174 +6,147 @@ icon: circle
 # Write Index
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Writes the current point index and related metadata to attributes.
+> Writes point or collection indices to attributes or tags.
 
-### Overview
+#### How It Works
 
-This node assigns sequential indices to points, which is useful for tracking point order, creating unique identifiers, or enabling data-driven behaviors based on position in a dataset. It supports writing both individual point indices and collection-level metadata like total entry count and collection index.
+The Write Index node assigns sequential numbers to points based on their order within collections. For each point, it can write:
 
-{% hint style="info" %}
-The point index starts at 0 and increments by 1 for each point in the input data.
-{% endhint %}
+* The point's position within its collection (starting from zero)
+* The total number of points in the collection
+* A unique identifier for the collection itself (when multiple collections are present)
+
+These values can be stored as attributes or tags and optionally normalized to a 0–1 range. If your data includes multiple collections, each one gets its own index and entry count.
+
+The node also supports interpolation for attribute outputs, which helps ensure smooth transitions when using the data in other nodes that require continuous values.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>bOutputPointIndex</strong><br><em>Whether to write the index of the point on the point.</em></summary>
 
-* **Default Input** (Required): Points to write indices to. Can accept multiple inputs.
+When enabled, writes the current point's index within its collection to an attribute or tag.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>OutputAttributeName</strong><br><em>The name of the attribute to write its index to.</em></summary>
 
-* **Default Output**: Modified points with new attributes added based on settings.
+Defines the name of the attribute where the point index will be stored. Defaults to "CurrentIndex".
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how and what index data is written to the point attributes.
+<summary><strong>bOneMinus</strong><br><em>Whether to subtract the index from 1.</em></summary>
 
-***
+When enabled, outputs `1 - Index` instead of the raw index.
 
-#### Point Index Settings
+</details>
 
-Writes individual point indices to an attribute.
+<details>
 
-**Write Point Index**
+<summary><strong>bNormalizedEntryIndex</strong><br><em>Whether to write the index as a normalized output value.</em></summary>
 
-_When enabled, writes the current point index to an attribute._
+When enabled, normalizes the point index between 0 and 1 using the total number of entries in the collection.
 
-* Adds a numeric attribute containing the sequential index of each point.
-* The index starts at 0 and increases by 1 for each subsequent point.
+</details>
 
-**Values**:
+<details>
 
-* **Disabled**: No point index is written.
-* **Enabled**: Point index is written.
+<summary><strong>bOutputCollectionIndex</strong><br><em>Whether to output the collection index.</em></summary>
 
-**Attribute Name**
+When enabled, writes a unique index for each collection to an attribute or tag.
 
-_Name of the attribute to write the point index to._
+</details>
 
-* The name must be unique within the point data.
-* Default value is "CurrentIndex".
+<details>
 
-**One Minus**
+<summary><strong>CollectionIndexAttributeName</strong><br><em>The name of the attribute/tag to write the collection index to.</em></summary>
 
-_When enabled, writes (index - 1) instead of the raw index._
+Defines the name of the attribute or tag where the collection index will be stored. Defaults to "@Data.CollectionIndex".
 
-* Useful for creating zero-based indices that start at -1.
-* For example, if a point has an index of 5, it will write 4.
+</details>
 
-**Normalized**
+<details>
 
-_When enabled, writes a normalized value between 0 and 1._
+<summary><strong>CollectionIndexOutputType</strong><br><em>Type of output for collection index.</em></summary>
 
-* The normalized value is calculated as: `index / (total_points - 1)`.
-* This ensures that the first point is 0 and the last point is 1.
-* Useful for interpolating or mapping values across the dataset.
+Specifies whether the collection index is written as a **Double**, **Float**, **Int32**, or **Int64**.
 
-***
+</details>
 
-#### Collection Index Settings
+<details>
 
-Writes metadata about the collection to attributes.
+<summary><strong>bOutputCollectionIndexToTags</strong><br><em>If enabled, output the collection index as a tag.</em></summary>
 
-**Write Collection Index**
+When enabled, writes the collection index to a tag instead of an attribute.
 
-_When enabled, writes the index of the collection this point belongs to._
+</details>
 
-* Useful when processing multiple data inputs or collections.
-* Each collection gets a unique index starting from 0.
+<details>
 
-**Attribute Name**
+<summary><strong>bOutputCollectionNumEntries</strong><br><em>Whether to output the collection number of entries.</em></summary>
 
-_Name of the attribute to write the collection index to._
+When enabled, writes the total number of points in each collection to an attribute or tag.
 
-* Default value is "@Data.CollectionIndex".
+</details>
 
-**Type**
+<details>
 
-_Data type for the collection index._
+<summary><strong>NumEntriesAttributeName</strong><br><em>The name of the attribute/tag to write the collection num entries to.</em></summary>
 
-* **Double**: Floating-point number.
-* **Float**: Single-precision floating-point number.
-* **Int32**: 32-bit integer.
-* **Int64**: 64-bit integer.
+Defines the name of the attribute or tag where the entry count will be stored. Defaults to "@Data.NumEntries".
 
-**Output to Tags**
+</details>
 
-_When enabled, writes the collection index as a tag instead of an attribute._
+<details>
 
-* Tags are used for filtering or grouping in downstream nodes.
-* Useful when you want to group points by their collection without storing numeric data.
+<summary><strong>NumEntriesOutputType</strong><br><em>Type of output for number of entries.</em></summary>
 
-***
+Specifies whether the entry count is written as a **Double**, **Float**, **Int32**, or **Int64**.
 
-#### Collection Num Entries Settings
+</details>
 
-Writes the total number of entries in each collection.
+<details>
 
-**Write Num Entries**
+<summary><strong>bNormalizeNumEntries</strong><br><em>If enabled, output the normalized collection num entries to the points.</em></summary>
 
-_When enabled, writes the total number of points in the collection._
+When enabled, normalizes the entry count between 0 and 1.
 
-* Useful for calculating ratios or scaling values based on collection size.
-* Each point receives the same value: the total count of points in its collection.
+</details>
 
-**Attribute Name**
+<details>
 
-_Name of the attribute to write the number of entries to._
+<summary><strong>bOutputNumEntriesToTags</strong><br><em>If enabled, output the collection num entries as a tag.</em></summary>
 
-* Default value is "@Data.NumEntries".
+When enabled, writes the entry count to a tag instead of an attribute.
 
-**Type**
+</details>
 
-_Data type for the number of entries._
+<details>
 
-* **Double**: Floating-point number.
-* **Float**: Single-precision floating-point number.
-* **Int32**: 32-bit integer.
-* **Int64**: 64-bit integer.
+<summary><strong>bAllowInterpolation</strong><br><em>Whether the created attributes allows interpolation or not.</em></summary>
 
-**Normalized**
+When enabled, marks the output attributes to allow interpolation in downstream nodes.
 
-_When enabled, writes a normalized value between 0 and 1._
+</details>
 
-* The normalized value is calculated as: `num_entries / max_num_entries`.
-* Useful for mapping collection sizes to a consistent range.
+#### Usage Example
 
-**Output to Tags**
+Use this node to track point order within collections. For example:
 
-_When enabled, writes the number of entries as a tag instead of an attribute._
+* Assign a unique index to each point in a procedural forest.
+* Tag points with their collection index to group them later.
+* Normalize indices for use in shaders or animations that require 0–1 values.
 
-* Tags are used for filtering or grouping in downstream nodes.
-* Useful when you want to group points by collection size without storing numeric data.
+#### Notes
 
-***
-
-#### General Settings
-
-Controls how attributes are created and handled.
-
-**Allow Interpolation**
-
-_Whether the created attributes allow interpolation._
-
-* When enabled, attributes can be interpolated between points.
-* This is useful for smooth transitions or blending in visual effects.
-
-### Notes
-
-* The node supports both single and multi-input scenarios. In multi-input cases, each collection will get a unique index.
-* Use normalized values when you need consistent ranges across different-sized datasets.
-* Writing to tags instead of attributes can simplify filtering logic in later stages of your graph.
-* If you're using this node with other nodes that expect specific attribute names, make sure the attribute names match their expectations.
+* The node works on both single and multiple collection inputs.
+* Normalized outputs are useful when you want consistent ranges across different data sizes.
+* Interpolation is helpful for smooth transitions in visual effects or procedural animations.

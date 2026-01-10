@@ -6,28 +6,40 @@ icon: circle
 # Inside Path
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Sample points that lie inside paths, with optional distance-based filtering and blending.
+> Sample points that lie inside paths.
 
-### Overview
+#### Overview
 
-This node samples points that are located inside one or more paths (such as splines or polygons). It determines whether each input point lies within the boundaries of a path and optionally samples nearby target points based on distance criteria. This is useful for placing objects inside areas defined by paths, such as placing trees inside forests or buildings inside lots.
+This node identifies and samples points that are located within the boundaries of defined paths. It determines whether each point is inside or outside a path and can optionally sample nearby paths based on distance and inclusion criteria. This is useful for placing objects or applying effects only to areas enclosed by paths, such as inside buildings, gardens, or other enclosed regions.
+
+It connects to points and paths data in the graph, processing point data against path geometry to determine inclusion status and sampling results.
 
 {% hint style="info" %}
-The node works with both closed loops (polygons) and open lines (splines). You can configure whether to sample only closed paths or include open lines.
+Connects to **Points** input pin and **Paths** input pin. Outputs to **Points** output pin.
 {% endhint %}
+
+#### How It Works
+
+This node evaluates each point against a set of paths to determine if the point lies inside one or more paths. For each point, it performs the following steps:
+
+1. **Projection**: Projects the point onto a 2D plane using specified projection settings.
+2. **Inclusion Test**: Checks whether the projected point is inside any of the provided paths. This test can be adjusted with an inclusion offset to create an inset boundary for more precise control.
+3. **Distance Filtering**: Filters paths based on distance from the point, using a minimum and maximum range. If a path is within this range and the point is inside it, it's considered for sampling.
+4. **Sampling Logic**: Depending on the sampling method (within range or best candidate), it either samples all qualifying paths or selects the closest one.
+5. **Weighting**: Applies a weight to the sampled result based on distance using a curve, which can be local or from an external asset.
+6. **Output Writing**: Writes attributes such as success status, distance, number of paths inside, and number of samples to the point data.
+
+The node supports various output modes that control whether all points are output or only those with successful samples.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Main Input** (Required): Points to be sampled
-* **Target Paths** (Required): Paths that define the areas to sample inside
-* **Filter** (Optional): Optional point filter to apply before sampling
+* **Points Input Pin** (default): Point data to be processed.
+* **Paths Input Pin** (default): Path data used for inclusion and sampling tests.
 
 </details>
 
@@ -35,209 +47,314 @@ The node works with both closed loops (polygons) and open lines (splines). You c
 
 <summary>Outputs</summary>
 
-* **Main Output**: Points with sampling results and optional attributes written based on settings
-* **Success Only** (Optional, when "Split" output mode is selected): Points that successfully sampled at least one target
-* **Failure Only** (Optional, when "Split" output mode is selected): Points that failed to sample any targets
+* **Points Output Pin** (default): Modified point data with optional attributes added based on the sampling results.
 
 </details>
 
-### Properties Overview
+#### Configuration
 
-These settings control how the node samples points inside paths and what data it outputs.
+<details>
 
-***
+<summary><strong>Data Matching</strong><br><em>If enabled, allows you to filter out which targets get sampled by which data.</em></summary>
 
-#### General
+When enabled, allows filtering of which path data is used for sampling each point. Useful when you have multiple sets of paths and want to control which ones are considered per point.
 
-Controls basic sampling behavior and path inclusion logic.
+</details>
 
-**Process Inputs**
+<details>
 
-_Controls which types of paths are processed._
+<summary><strong>Projection Details</strong><br><em>Projection settings.</em></summary>
 
-* **All**: Process all input paths, whether they are closed loops or open lines.
-* **Closed loops only**: Only process closed-loop paths (e.g., polygons).
-* **Open lines only**: Only process open-line paths (e.g., splines).
+Settings that define how the 3D point coordinates are projected onto a 2D plane for inclusion testing. This is important for accurate inside/outside detection.
 
-**Sample Method**
+</details>
 
-_Determines how points are sampled from the target paths._
+<details>
 
-* **Within Range**: Sample points within a specified distance range.
-* **Best Candidate**: Select the closest point to each input point among all targets.
+<summary><strong>Process Inputs</strong><br><em>Process inputs.</em></summary>
 
-**Sort Direction**
+Controls which types of paths are considered:
 
-_Specifies the sorting order when using "Best Candidate" sampling._
+* **All**: All paths, whether open or closed.
+* **Closed loops only**: Only closed-loop paths.
+* **Open lines only**: Only open-line paths.
 
-* **Ascending**: Sort by ascending distance (closest first).
-* **Descending**: Sort by descending distance (farthest first).
+</details>
 
-**Always Sample When Inside**
+<details>
 
-_When enabled, points inside a path are sampled even if they're outside the max range._
+<summary><strong>Sample Method</strong><br><em>Sampling method.</em></summary>
 
-**Only Sample When Inside**
+Determines how points are sampled from paths:
 
-_When enabled, only points that lie inside a path will be considered for sampling._
+* **Within Range**: Samples all paths within the specified range.
+* **Best Candidate**: Samples only the closest path within range.
 
-**Inclusion Offset**
+</details>
 
-_Adds an offset to the path boundaries for inclusion testing. Positive values inset the path, negative values outset it._
+<details>
 
-**Distance Type**
+<summary><strong>Sort Direction</strong><br><em>Sort direction</em></summary>
 
-_Selects the distance metric used for inclusion and sampling calculations._
+When using "Best Candidate" sampling, this setting determines whether to sort by ascending (closest) or descending (farthest) distance.
 
-* **Euclidian**: Standard straight-line distance.
-* **Manhattan**: Distance along grid lines (sum of absolute differences).
-* **Chebyshev**: Maximum of absolute differences.
+</details>
 
-**Height Inclusion**
+<details>
 
-_If non-zero, adds a vertical check to inclusion testing. Points must be within this height range above or below the path._
+<summary><strong>Always Sample When Inside</strong><br><em>If enabled, will always sample points if they lie inside, even if further away from the edges than the specified max range.</em></summary>
 
-***
+When enabled, a point that is inside a path will be sampled regardless of its distance from the path's edge. When disabled, only paths within the defined range are considered.
 
-#### Sampling Range
+</details>
 
-Controls the distance-based filtering for sampling.
+<details>
 
-**Range Min Input**
+<summary><strong>Only Sample When Inside</strong><br><em>If enabled, will only sample paths if the point lies inside</em></summary>
 
-_Selects how the minimum sampling range is defined._
+When enabled, only paths that contain the point are sampled. If disabled, paths can be sampled even if the point is outside them.
 
-* **Constant**: Use a fixed value.
-* **Attribute**: Read the value from an input point attribute.
+</details>
 
-**Range Min (Attribute)**
+<details>
 
-_The name of the attribute to read the minimum range from, when "Attribute" is selected._
+<summary><strong>Inclusion Offset</strong><br><em>If non-zero, will apply an offset (inset) to the data used for inclusion testing.</em></summary>
 
-**Range Min**
+Applies a distance-based inset to the path boundary for inclusion testing. A positive value creates an inner boundary, ensuring that only points inside this inset are considered inside the path.
 
-_The constant minimum distance for sampling, when "Constant" is selected._
+</details>
 
-**Range Max Input**
+<details>
 
-_Selects how the maximum sampling range is defined._
+<summary><strong>Distance Type</strong><br><em>Distance type.</em></summary>
 
-* **Constant**: Use a fixed value.
-* **Attribute**: Read the value from an input point attribute.
+Defines how distance is calculated:
 
-**Range Max (Attribute)**
+* **Euclidian**: Straight-line distance.
+* **Manhattan**: Sum of absolute differences in coordinates.
 
-_The name of the attribute to read the maximum range from, when "Attribute" is selected._
+</details>
 
-**Range Max**
+<details>
 
-_The constant maximum distance for sampling, when "Constant" is selected._
+<summary><strong>Range Min Input</strong><br><em>Type of Range Min</em></summary>
 
-***
+Controls whether the minimum range is a constant value or an attribute from the point data.
 
-#### Weighting
+</details>
 
-Controls how weights are calculated for blending sampled data.
+<details>
 
-**Weight Method**
+<summary><strong>Range Min (Attr)</strong><br><em>Minimum target range to sample targets.</em></summary>
 
-_Determines how distances are normalized for weighting._
+If `Range Min Input` is set to "Attribute", this selects the attribute used for minimum range values.
 
-* **Full Range**: Normalize in the \[0..1] range using \[0..Max Value] range.
+</details>
+
+<details>
+
+<summary><strong>Range Min</strong><br><em>Minimum target range to sample targets.</em></summary>
+
+The constant value for the minimum sampling distance if `Range Min Input` is set to "Constant".
+
+</details>
+
+<details>
+
+<summary><strong>Range Max Input</strong><br><em>Type of Range Min</em></summary>
+
+Controls whether the maximum range is a constant value or an attribute from the point data.
+
+</details>
+
+<details>
+
+<summary><strong>Range Max (Attr)</strong><br><em>Maximum target range to sample targets.</em></summary>
+
+If `Range Max Input` is set to "Attribute", this selects the attribute used for maximum range values.
+
+</details>
+
+<details>
+
+<summary><strong>Range Max</strong><br><em>Maximum target range to sample targets.</em></summary>
+
+The constant value for the maximum sampling distance if `Range Max Input` is set to "Constant".
+
+</details>
+
+<details>
+
+<summary><strong>Height Inclusion</strong><br><em>If the value is greater than 0, will do a rough vertical check as part of the projected inclusion. 0 is infinite.</em></summary>
+
+If non-zero, adds a vertical tolerance for inclusion testing. A value of 0 means no vertical check is performed.
+
+</details>
+
+<details>
+
+<summary><strong>Weight Method</strong><br><em>Weight method used for blending</em></summary>
+
+Defines how weights are normalized:
+
+* **Full Range**: Normalize using \[0..Max Value] range.
 * **Effective Range**: Remap the input \[Min..Max] range to \[0..1].
 
-**Use Local Curve**
+</details>
 
-_When enabled, uses a local curve for weight distribution over distance._
+<details>
 
-**Weight Over Distance (Local)**
+<summary><strong>Use Local Curve</strong><br><em>Whether to use in-editor curve or an external asset.</em></summary>
 
-_The curve used to define how weight decreases with distance when "Use Local Curve" is enabled._
+When enabled, uses the local curve defined in "Weight Over Distance". When disabled, uses an external curve asset.
 
-**Weight Over Distance (External)**
+</details>
 
-_The external curve asset used for weight distribution when "Use Local Curve" is disabled._
+<details>
 
-**Weight Curve Lookup**
+<summary><strong>Weight Over Distance</strong><br><em>Curve that balances weight over distance</em></summary>
 
-_Configures the lookup table settings for the weighting curve._
+The curve used to weight samples based on their distance from the point. This affects how strongly nearby paths influence the result.
 
-***
+</details>
 
-#### Outputs
+<details>
 
-Controls which data is written to output points and how results are filtered.
+<summary><strong>Output Mode</strong><br><em>If enabled, will only output paths that have at least sampled one target point</em></summary>
 
-**Output Mode**
+Controls which points are output:
 
-_Specifies which points are output from this node._
+* **All**: All input points are output.
+* **Success Only**: Only points with at least one successful sample are output.
+* **Split**: Outputs to two pins: one for success and one for failure.
 
-* **All**: Output all input points, regardless of whether they sampled any targets.
-* **Success only**: Only output points that successfully sampled at least one target.
-* **Split**: Split the output into two pins: one for successful samples and one for failed.
+</details>
 
-**Write Success**
+<details>
 
-_When enabled, writes a boolean attribute indicating if sampling was successful._
+<summary><strong>Write Success</strong><br><em>Write whether the sampling was sucessful or not to a boolean attribute.</em></summary>
 
-**Success Attribute Name**
+When enabled, writes a boolean attribute indicating if the point had at least one successful sample.
 
-_Name of the boolean attribute to write success status to._
+</details>
 
-**Write Distance**
+<details>
 
-_When enabled, writes the sampled distance to an attribute._
+<summary><strong>Success Attribute Name</strong><br><em>Name of the 'boolean' attribute to write sampling success to.</em></summary>
 
-**Distance Attribute Name**
+The name of the boolean attribute that stores whether the point was successfully sampled.
 
-_Name of the double attribute to write sampled distance to._
+</details>
 
-**Write Num Inside**
+<details>
 
-_When enabled, writes a count of how many paths each point lies inside._
+<summary><strong>Write Distance</strong><br><em>Write the sampled distance.</em></summary>
 
-**Num Inside Attribute Name**
+When enabled, writes a numeric attribute with the weighted distance from the point to the sampled path.
 
-_Name of the int32 attribute to write the number of paths inside to._
+</details>
 
-**Only If Closed Path**
+<details>
 
-_When enabled, only counts closed-loop paths when writing "Num Inside"._
+<summary><strong>Distance Attribute Name</strong><br><em>Name of the 'double' attribute to write sampled distance to.</em></summary>
 
-**Write Num Samples**
+The name of the numeric attribute that stores the weighted distance.
 
-_When enabled, writes a count of how many targets were sampled per point._
+</details>
 
-**Num Samples Attribute Name**
+<details>
 
-_Name of the int32 attribute to write the number of samples to._
+<summary><strong>Write Num Inside</strong><br><em>Write the inside/outside status of the point toward any sampled spline.</em></summary>
 
-**Tag If Has Successes**
+When enabled, writes an integer attribute indicating how many paths the point lies inside.
 
-_When enabled, adds a tag to the output data if at least one target was sampled._
+</details>
 
-**Has Successes Tag**
+<details>
 
-_Name of the tag added when sampling succeeds for at least one target._
+<summary><strong>NumInside Attribute Name</strong><br><em>Name of the 'int32' attribute to write the number of spline this point lies inside</em></summary>
 
-**Tag If Has No Successes**
+The name of the integer attribute that stores the count of paths the point is inside.
 
-_When enabled, adds a tag to the output data if no targets were sampled._
+</details>
 
-**Has No Successes Tag**
+<details>
 
-_Name of the tag added when sampling fails for all targets._
+<summary><strong>Only If Closed Path</strong><br><em>Only increment num inside count when comes from a bClosedLoop spline.</em></summary>
 
-***
+When enabled, only counts paths that are closed loops toward the NumInside value.
 
-#### Advanced
+</details>
 
-Advanced settings that affect performance and behavior.
+<details>
 
-**Ignore Self**
+<summary><strong>Write Num Samples</strong><br><em>Write the sampled distance.</em></summary>
 
-_When enabled, prevents points from sampling themselves (if they are also part of the target paths)._
+When enabled, writes an integer attribute indicating how many paths were sampled for this point.
 
-**Data Matching**
+</details>
 
-_Configures how to match input points to target data. Can be used to filter which targets get sampled by which points._
+<details>
+
+<summary><strong>NumSamples Attribute Name</strong><br><em>Name of the 'int32' attribute to write the number of sampled neighbors to.</em></summary>
+
+The name of the integer attribute that stores the count of sampled paths.
+
+</details>
+
+<details>
+
+<summary><strong>Tag If Has Successes</strong><br><em>If enabled, add the specified tag to the output data if at least a single spline has been sampled.</em></summary>
+
+When enabled, adds a tag to the output data if any path was successfully sampled for the point.
+
+</details>
+
+<details>
+
+<summary><strong>Has Successes Tag</strong><br><em>If enabled, add the specified tag to the output data if at least a single spline has been sampled.</em></summary>
+
+The name of the tag added when at least one path is successfully sampled.
+
+</details>
+
+<details>
+
+<summary><strong>Tag If Has No Successes</strong><br><em>If enabled, add the specified tag to the output data if no spline was found within range.</em></summary>
+
+When enabled, adds a tag to the output data if no paths were found within range for the point.
+
+</details>
+
+<details>
+
+<summary><strong>Has No Successes Tag</strong><br><em>If enabled, add the specified tag to the output data if no spline was found within range.</em></summary>
+
+The name of the tag added when no paths are found within range.
+
+</details>
+
+<details>
+
+<summary><strong>Ignore Self</strong><br><em>/</em></summary>
+
+When enabled, ignores self-referencing paths during sampling.
+
+</details>
+
+#### Usage Example
+
+To place trees only inside a garden path:
+
+1. Create a closed-loop path representing the garden boundary.
+2. Add points to represent potential tree locations.
+3. Connect both point and path data to this node.
+4. Set `Only Sample When Inside` to true.
+5. Configure `Range Max` to define how far from the path edge trees can be placed.
+6. Enable `Write Num Inside` to track which points are inside the garden.
+
+#### Notes
+
+* This node is computationally intensive for large datasets. Consider using filtering or limiting the number of paths if performance is a concern.
+* The inclusion test is based on 2D projection, so ensure your projection settings match your data's orientation.
+* Using `Inclusion Offset` can help avoid sampling points that are very close to path edges.

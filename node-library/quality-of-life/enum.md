@@ -6,184 +6,164 @@ icon: circle
 # Enum
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Break an enum into handy constant values.
 
-### Overview
+#### How It Works
 
-This node allows you to convert an enumeration (enum) into a set of constant values that can be used in your procedural graphs. It's particularly useful when you want to work with predefined sets of named values, such as categories, states, or types, and need to output them as attributes or bitflags for downstream processing.
+This node takes a selected enum and generates data points based on the chosen output mode. It can output all enum values as separate items, a single value, or a subset of values you select. For each output item, it optionally includes metadata such as the enum key (short name), description (human-readable label), and numeric value.
 
-The node supports multiple output modes, letting you choose how to distribute the enum values across pins. You can output all values to a single dataset, or split them into separate outputs. It also supports optional attribute outputs for keys, descriptions, and numeric values, which can be used in subsequent nodes for filtering, branching, or data manipulation.
+If enabled, it also supports generating bitflags for the enum values, which are stored in a bitmask attribute. This allows downstream nodes to perform bitwise operations on the enum values efficiently.
 
-{% hint style="info" %}
-This node requires a valid enum source. You can select an enum from either Blueprint or C++ code using the Picker or Selector options.
-{% endhint %}
+The node dynamically creates output pins based on the selected mode:
+
+* In "All to Separate Outputs" or "Selection to Separate Outputs", each enum value gets its own output pin.
+* In other modes, it outputs to a single pin with all relevant data.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Source</strong><br><em>Whether to select the enum from Blueprint or C++.</em></summary>
 
-None
+Controls how you select the enum to use.
+
+* **Picker**: Browse and select a Blueprint enum.
+* **Selector**: Select a C++ enum using the Enum Selector UI.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Output Mode</strong><br><em>How to output the enum values.</em></summary>
 
-* **Out** (optional): A single output pin containing all selected enum values
-* **Flags** (optional): A bitflag output attribute set, if enabled
-* **Multiple pins** (optional): Separate output pins for each selected enum value, when using "Selection to Multiple Pins" or "All to Separate Outputs" modes
+Determines how many outputs are created and what data is included.
+
+* **Single**: Output one enum value.
+* **All**: Output all values in a single dataset.
+* **All to Separate Outputs**: Output each value to its own pin.
+* **Selection**: Select specific values to output in a single dataset.
+* **Selection to Separate Outputs**: Select specific values, each output to its own pin.
 
 </details>
 
-### Properties Overview
+<details>
 
-Settings for how the enum is processed and output.
+<summary><strong>Picker Enum</strong><br><em>Select a Blueprint enum to use.</em></summary>
 
-***
+When Source is set to Picker, this allows you to select a Blueprint enum from the list.
 
-#### Settings
+</details>
 
-Controls the source and general behavior of the enum node.
+<details>
 
-**Source**
+<summary><strong>Selected Enum</strong><br><em>Select a C++ enum to use.</em></summary>
 
-_The method used to select the enum._
+When Source is set to Selector, this allows you to select a C++ enum from the list.
 
-* Determines whether you browse for a Blueprint enum (Picker) or a C++ enum (Selector)
-* When Picker is selected, the PickerEnum property becomes available
-* When Selector is selected, the SelectedEnum property becomes available
+</details>
 
-**Values**:
+<details>
 
-* **Picker**: Browse through Blueprint enums.
-* **Selector**: Browse through CPP enums.
+<summary><strong>Enabled Export Values</strong><br><em>Which enum values to include in output when using Selection modes.</em></summary>
 
-**Output Mode**
+Used only when Output Mode is "Selection" or "Selection to Separate Outputs". Specifies which enum values should be included in the output.
 
-_How to distribute the enum values across outputs._
+</details>
 
-* Controls whether you output all values at once or split them into separate pins
-* When "Single" is selected, all values are output to one dataset
-* When "All" is selected, all values are output as a single dataset
-* When "Selection" is selected, you can choose which values to include in the output
-* When "All to Separate Outputs" or "Selection to Separate Outputs", each value gets its own output pin
+<details>
 
-**Values**:
+<summary><strong>Output Enum Keys</strong><br><em>Whether to output the enum value keys, which are the short names used in C++.</em></summary>
 
-* **Single**: Output a single enum value
-* **All**: Output all values in the enum to one dataset
-* **All to Separate Outputs**: Output all values in the enum to different pins
-* **Selection**: Select values to output as one dataset
-* **Selection to Separate Outputs**: Select values to output to multiple pins
+When enabled, outputs the key (short name) of each enum value. For example, if an enum is `EColor::Red`, the key would be `Red`.
 
-**Picker Enum**
+</details>
 
-_The Blueprint enum to use._
+<details>
 
-* Only visible when Source is set to Picker
-* Allows you to select a Blueprint enum from your project
+<summary><strong>Strip Enum Namespace From Key</strong><br><em>If true, removes the enum namespace from keys.</em></summary>
 
-**Selected Enum**
+When enabled, removes the enum name prefix from the output key. For example, if an enum is `EColor::Red`, the key would be `Red` instead of `EColor::Red`.
 
-_The C++ enum to use._
+</details>
 
-* Only visible when Source is set to Selector
-* Allows you to select a C++ enum from your project
+<details>
 
-**Enabled Export Values**
+<summary><strong>Key Attribute</strong><br><em>Name of the attribute to store the enum key.</em></summary>
 
-_Which enum values to include in the output._
+The name of the attribute that stores the enum key when Output Enum Keys is enabled.
 
-* Only visible when Output Mode is set to Selection or Selection to Separate Outputs
-* Allows you to toggle individual enum values on or off for output
-* Each value appears as a checkbox in the node's properties
+</details>
 
-***
+<details>
 
-#### Output Attributes
+<summary><strong>Output Enum Descriptions</strong><br><em>Whether to output the enum value descriptions, which are the human-readable names for values shown by the UI.</em></summary>
 
-Controls which attributes are added to the output data.
+When enabled, outputs the description (human-readable label) of each enum value. For example, if an enum is `EColor::Red`, the description might be `Red`.
 
-**Output Enum Keys**
+</details>
 
-_Whether to include the short names of enum values._
+<details>
 
-* When enabled, outputs the key attribute (e.g., "SomeEnum::SomeKey")
-* Can be used for filtering or matching against other data
+<summary><strong>Description Attribute</strong><br><em>Name of the attribute to store the enum description.</em></summary>
 
-**Strip Enum Namespace From Key**
+The name of the attribute that stores the enum description when Output Enum Descriptions is enabled.
 
-_Whether to remove the enum name from the key._
+</details>
 
-* Only applies when Output Enum Keys is enabled
-* If true, outputs just "SomeKey" instead of "SomeEnum::SomeKey"
-* Useful for cleaner attribute names
+<details>
 
-**Key Attribute**
+<summary><strong>Output Enum Values</strong><br><em>Whether to output the numeric enum values.</em></summary>
 
-_Name of the output key attribute._
+When enabled, outputs the numeric value of each enum entry. This is stored as an int64 to match native PCG behavior.
 
-* Only visible when Output Enum Keys is enabled
-* Sets the name of the attribute that holds the enum keys
+</details>
 
-**Output Enum Descriptions**
+<details>
 
-_Whether to include human-readable descriptions of enum values._
+<summary><strong>Value Output Attribute</strong><br><em>Name of the attribute to store the enum value.</em></summary>
 
-* When enabled, outputs the description attribute (e.g., "Some Value")
-* Useful for UI display or debugging
+The name of the attribute that stores the numeric enum value when Output Enum Values is enabled.
 
-**Description Attribute**
+</details>
 
-_Name of the output description attribute._
+<details>
 
-* Only visible when Output Enum Descriptions is enabled
-* Sets the name of the attribute that holds the enum descriptions
+<summary><strong>bOutputFlags</strong><br><em>Whether to output the enum as a bitmask.</em></summary>
 
-**Output Enum Values**
+When enabled, outputs all enum values as bitflags in a single attribute. This allows downstream nodes to perform bitwise operations on the enum values.
 
-_Whether to include the numeric values of enum entries._
+</details>
 
-* When enabled, outputs the value attribute as an integer
-* Useful for comparisons or mathematical operations
+<details>
 
-**Value Output Attribute**
+<summary><strong>Flags Name</strong><br><em>Name of the attribute to store the bitmask.</em></summary>
 
-_Name of the output value attribute._
+The name of the attribute that stores the bitmask when bOutputFlags is enabled.
 
-* Only visible when Output Enum Values is enabled
-* Sets the name of the attribute that holds the numeric enum values
+</details>
 
-***
+<details>
 
-#### Output Bitflags
+<summary><strong>Flag Bit Offset</strong><br><em>Bit to start writing the enum bits to.</em></summary>
 
-Controls how bitflag attributes are generated.
+Controls which bit position in the bitmask to start writing the enum flags. Valid range is 0-63.
 
-**bOutput Flags**
+</details>
 
-_Whether to generate a bitmask from the enum._
+#### Usage Example
 
-* When enabled, outputs a single attribute containing all selected enum values as bits
-* Useful for representing multiple states or categories in a compact form
+1. Set Source to "Picker" and select a Blueprint enum like `EColor`.
+2. Choose Output Mode as "All to Separate Outputs".
+3. Enable "Output Enum Keys", "Output Enum Descriptions", and "Output Enum Values".
+4. Connect each output pin to a downstream node that uses these values for filtering or branching logic.
+5. Optionally, enable "bOutputFlags" to generate a bitmask attribute for bitwise operations.
 
-**Flags Name**
+#### Notes
 
-_Name of the output bitflag attribute._
-
-* Only visible when bOutputFlags is enabled
-* Sets the name of the attribute that holds the bitmask
-
-**Flag Bit Offset**
-
-_Starting bit position for the bitmask._
-
-* Only visible when bOutputFlags is enabled
-* Determines where in the 64-bit integer the enum bits begin
-* Useful for packing multiple bitmasks into a single attribute
+* The node dynamically creates pins based on the selected Output Mode.
+* Bitflags are stored as 64-bit integers and can be used in bitwise comparisons.
+* When using "Selection" modes, you must manually select which enum values to include.
+* This node does not support outputting to strings directly; use Attribute Set for attribute-based outputs.

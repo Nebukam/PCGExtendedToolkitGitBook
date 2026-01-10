@@ -6,81 +6,59 @@ icon: circle
 # Find Clusters
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Find vtx/edge pairs inside a soup of data collections.
+> Identifies connected vertex and edge data within input collections to help organize procedural content into meaningful groups.
 
-### Overview
+#### How It Works
 
-This node identifies and groups related vertex and edge data from multiple input collections, creating clusters based on spatial or topological relationships. It's particularly useful for organizing scattered point and edge data into meaningful groups that can be processed further in your procedural pipeline.
+The Find Clusters node examines all input data to locate relationships between points (vertices) and connections (edges). Based on the selected search mode, it determines how these elements relate to each other:
 
-The node searches through all provided inputs to find connections between points and edges, then outputs either the vertices or edges that form these clusters. This is especially helpful when working with complex networks or multi-layered geometry where you need to isolate specific components for additional processing.
+* In **All** mode, it looks for both vertex-to-edge and edge-to-vertex connections across all inputs.
+* In **Vtx from Edges** mode, it identifies which vertices are connected to each edge in the input data.
+* In **Edges from Vtx** mode, it finds which edges connect to specific vertices.
 
-{% hint style="info" %}
-This node works best when your input data contains both points and edges, as it relies on relationships between them to form clusters.
-{% endhint %}
+The node creates a mapping or lookup table without changing the original data. It also checks for consistency between inputs and can show warnings about mismatches if enabled.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Search Mode</strong><br><em>Defines how the node searches for connections between vertices and edges.</em></summary>
 
-* **Default Input** (Multiple): Accepts multiple point collections that may contain vertices and/or edges
-* **Point Filter** (Optional): Filters points before processing
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Default Output**: Points or edges based on the selected search mode
-* **Edges** (Optional): Additional output pin for edge data when using "Vtx from Edges" mode
-* **Vtx** (Optional): Additional output pin for vertex data when using "Edges from Vtx" mode
-
-</details>
-
-### Properties Overview
-
-Controls how the node searches and groups your input data.
-
-***
-
-#### Search Settings
-
-Configures how the node identifies relationships between points and edges.
-
-**Search Mode**
-
-_Controls which data types are used to find clusters._
-
-* When set to **All**, both vertices and edges from all inputs are considered for clustering
-* When set to **Vtx from Edges**, the node searches for vertex data that connects to edges in the input collections
-* When set to **Edges from Vtx**, the node searches for edge data that originates from vertices in the input collections
+Controls the type of search performed across input data.
 
 **Values**:
 
-* **All**: All
-* **Vtx from Edges**: Vtx from Edges
-* **Edges from Vtx**: Edges from Vtx
+* **All**: Searches for both vertex-to-edge and edge-to-vertex relationships.
+* **Vtx from Edges**: Focuses on finding which vertices are associated with each edge.
+* **Edges from Vtx**: Identifies which edges connect to specific vertices.
 
-**Skip Trivial Warnings**
+</details>
 
-_When enabled, suppresses non-critical warnings about input data mismatches._
+<details>
 
-* Reduces noise in the log when you're confident about your input setup
+<summary><strong>Skip Trivial Warnings</strong><br><em>Suppresses warnings about input mismatches and triage issues.</em></summary>
 
-**Skip Important Warnings**
+When enabled, prevents display of minor warnings related to data inconsistencies or mismatched inputs.
 
-_When enabled, suppresses warnings that may affect cluster formation._
+</details>
 
-* Only disable this if you understand the implications of mismatched inputs
+<details>
 
-### Notes
+<summary><strong>Skip Important Warnings</strong><br><em>Suppresses warnings that would normally appear when using incompatible inputs in a cluster node.</em></summary>
 
-* Use this node to organize scattered point and edge data into logical groups before applying further processing
-* The "All" search mode is best for general clustering where you want to consider all available data
-* When using "Vtx from Edges" or "Edges from Vtx", make sure your inputs contain compatible vertex/edge relationships
-* This node can help identify connected components in networks or spatially related groups of geometry
+When enabled, suppresses critical warnings about input compatibility that are otherwise shown during execution.
+
+</details>
+
+#### Usage Example
+
+Use this node to prepare data for a cluster processing workflow. For instance, if you have multiple point clouds and edge networks representing different parts of a structure, you can use Find Clusters in **Edges from Vtx** mode to determine which edges connect to each vertex. Then, feed that output into a node that groups connected components together.
+
+#### Notes
+
+* This node is typically used as part of a larger graph where the results are consumed by other cluster or connectivity-related nodes.
+* The search behavior changes based on the selected mode, so it's important to choose the correct one for your use case.
+* Warnings can be suppressed if you're confident about input consistency and want cleaner logs.

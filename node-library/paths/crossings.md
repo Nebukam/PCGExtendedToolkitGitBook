@@ -6,224 +6,261 @@ icon: circle
 # Crossings
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Find crossing points between & inside paths.
+> Find crossing points between and inside paths.
 
-### Overview
+#### How It Works
 
-This node identifies where paths intersect or cross each other, creating new points at those locations. It's useful for generating junctions, intersections, or nodes where multiple paths meet in a network or route system. You can control which paths are allowed to cut others, filter based on tags, and blend attributes from the crossing points.
+This node analyzes paths to detect where they intersect or cross each other. It can identify both self-intersections (where a single path crosses itself) and intersections between different paths. The node evaluates each path against others based on filtering settings, calculates the exact location of crossings, and optionally creates new points at those locations.
 
-{% hint style="info" %}
-This node works with path data that has been created using PCGEx Path nodes. It does not process point clouds directly.
-{% endhint %}
+When enabled, it applies blending to attributes from nearby points along the path and writes optional output attributes such as alpha values, cross direction vectors, and flags indicating if a point is a crossing. It also supports tagging paths based on whether they have intersections or not.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Self Intersection Only</strong><br><em>If enabled, crossings are only computed per path, against themselves only.</em></summary>
 
-* **Main Input**: Path data (from PCGEx Path nodes)
-* **Filter Input** (optional): Point filters to apply to the input paths
+When enabled, the node will only look for self-intersections within a single path. This ignores the "bEnableSelfIntersection" from details below.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Can Be Cut Tag</strong><br><em>Filter entire dataset. If any tag is found on these paths, they are considered cut-able.</em></summary>
 
-* **Main Output**: Points at crossing locations, with optional blending and attributes
-* **Path Output** (optional): Modified paths with additional crossing information
+Paths with this tag are considered cut-able (i.e., they can be intersected by other paths). Empty or None will ignore filtering.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how crossings are detected, filtered, and written to output points.
+<summary><strong>Invert Can Be Cut Tag</strong><br><em>If enabled, the absence of the specified tag considers paths as cut-able.</em></summary>
 
-***
+When enabled, paths without the specified tag are considered cut-able instead of those with it.
 
-#### Settings
+</details>
 
-Controls general behavior for detecting and processing path crossings.
+<details>
 
-**Self Intersection Only**
+<summary><strong>Can Cut Tag</strong><br><em>Filter entire dataset. If any tag is found on these paths, they are considered cutters.</em></summary>
 
-_When enabled, only detects intersections within each individual path._
+Paths with this tag are considered cutters (i.e., they can intersect other paths). Empty or None will ignore filtering.
 
-* Useful for finding self-intersections in a single path (e.g., loops or figure-eights)
-* Ignores the "Can Cut" and "Can Be Cut" tag filtering settings
+</details>
 
-**Can Be Cut Tag**
+<details>
 
-_If set, paths with this tag are considered cut-able._
+<summary><strong>Invert Can Cut Tag</strong><br><em>If enabled, the absence of the specified tag considers paths as cutters.</em></summary>
 
-* Paths that have this tag can be intersected by other paths
-* Leave empty to disable filtering based on this tag
+When enabled, paths without the specified tag are considered cutters instead of those with it.
 
-**Invert Can Be Cut Tag**
+</details>
 
-_When enabled, paths without the "Can Be Cut Tag" are considered cut-able._
+<details>
 
-* If you set a tag but want to exclude paths with that tag instead of including them
+<summary><strong>Create Point At Crossings</strong><br><em>If enabled, a point will be created at the crossing' location.</em></summary>
 
-**Can Cut Tag**
+When enabled, new points are generated at each intersection location. When disabled, only attribute data is written without creating new points.
 
-_If set, paths with this tag are considered cutters._
+</details>
 
-* Paths that have this tag can intersect and cut other paths
-* Leave empty to disable filtering based on this tag
+<details>
 
-**Invert Can Cut Tag**
+<summary><strong>Intersection Details</strong><br><em>Settings for how intersections are detected and handled.</em></summary>
 
-_When enabled, paths without the "Can Cut Tag" are considered cutters._
+Controls the precision and behavior of intersection detection, such as tolerance thresholds or edge handling.
 
-* If you set a tag but want to exclude paths with that tag instead of including them
+</details>
 
-**Create Point At Crossings**
+<details>
 
-_When enabled, creates new points at crossing locations._
+<summary><strong>Blending</strong><br><em>Blending applied on intersecting points along the path prev and next point.</em></summary>
 
-* Disabling this will only write attributes to existing points without adding new ones
+Defines how to blend properties from adjacent points when computing crossing attributes. This is distinct from external property inheritance.
 
-**Intersection Details**
+</details>
 
-_Configures how intersections are computed._
+<details>
 
-* Controls strictness and tolerance for detecting crossings
-* Affects performance and accuracy of intersection detection
+<summary><strong>Do Cross Blending</strong><br><em>If enabled, blend in properties &#x26; attributes from external sources.</em></summary>
 
-**Blending**
+When enabled, blending operations are performed using data from other sources (e.g., point attributes) during crossing processing.
 
-_Specifies how to blend data from intersecting paths._
+</details>
 
-* Allows blending of point properties like position, rotation, scale, etc.
-* Works on the points that are part of the crossing
+<details>
 
-**Do Cross Blending**
+<summary><strong>Crossing Carry Over</strong><br><em>If enabled, blend in properties &#x26; attributes from external sources.</em></summary>
 
-_When enabled, blends attributes from external sources at crossings._
+Controls how external attributes are carried over into the crossing points when blending is active.
 
-* Enables more advanced attribute blending for crossing points
+</details>
 
-**Crossing Carry Over**
+<details>
 
-_Configures which attributes to carry over from input paths._
+<summary><strong>Crossing Blending</strong><br><em>If enabled, blend in properties &#x26; attributes from external sources.</em></summary>
 
-* Specifies what data should be copied from the original path points to the crossing points
+Defines how to blend attributes at crossing points using a specified blending method (e.g., average, lerp).
 
-**Crossing Blending**
+</details>
 
-_Specifies how to blend attributes from external sources._
+<details>
 
-* Controls blending type (average, lerp, etc.) for crossing point attributes
+<summary><strong>Write Alpha</strong><br><em>If enabled, an alpha value is written to the output points.</em></summary>
 
-**Write Alpha**
+When enabled, an alpha attribute is added to each point indicating its crossing status or blending weight.
 
-_When enabled, writes an alpha value to indicate crossing intensity._
+</details>
 
-* Useful for visualizing or controlling effects based on how many paths cross at a point
+<details>
 
-**Crossing Alpha Attribute Name**
+<summary><strong>Crossing Alpha Attribute Name</strong><br><em>Name of the alpha attribute to write.</em></summary>
 
-_Name of the attribute that stores the alpha value._
+The name of the attribute that stores the alpha value for crossing points.
 
-* Default is "Alpha"
-* Set to a custom name if you want to use a different attribute
+</details>
 
-**Default Alpha Value**
+<details>
 
-_Value used when no crossing occurs._
+<summary><strong>Default Alpha Value</strong><br><em>Default alpha value if none is computed.</em></summary>
 
-* Typically set to -1 or 0 to indicate no crossing
+The default alpha value used when no specific blending is applied.
 
-**Orient Crossing**
+</details>
 
-_When enabled, sets the orientation of crossing points._
+<details>
 
-* Rotates crossing points based on the specified axis direction
+<summary><strong>Orient Crossing</strong><br><em>If enabled, crossing points are oriented based on the specified axis.</em></summary>
 
-**Crossing Orient Axis**
+When enabled, crossing points are rotated to align with a chosen axis (forward, backward, etc.).
 
-_Specifies which axis to use for orienting crossing points._
+</details>
 
-* **Forward**: X+
-* **Backward**: X-
-* **Right**: Y+
-* **Left**: Y-
-* **Up**: Z+
-* **Down**: Z-
+<details>
 
-**Write Cross Direction**
+<summary><strong>Crossing Orient Axis</strong><br><em>Axis used for orienting crossing points.</em></summary>
 
-_When enabled, writes a vector indicating the crossing direction._
+The axis along which crossing points should be oriented.
 
-* Useful for creating visual effects or controlling behavior at crossings
+**Values**:
 
-**Cross Direction Attribute Name**
+* **Forward**: Forward (X+).
+* **Backward**: Backward (X-).
+* **Right**: Right (Y+).
+* **Left**: Left (Y-).
+* **Up**: Up (Z+).
+* **Down**: Down (Z-).
 
-_Name of the attribute that stores the cross direction vector._
+</details>
 
-* Default is "Cross"
-* Set to a custom name if you want to use a different attribute
+<details>
 
-**Default Cross Direction Value**
+<summary><strong>Write Cross Direction</strong><br><em>If enabled, a cross direction vector is written to the output points.</em></summary>
 
-_Value used when no crossing occurs._
+When enabled, a vector indicating the crossing direction is added to each point.
 
-* Typically set to zero vector (0,0,0)
+</details>
 
-**Write Is Point Crossing**
+<details>
 
-_When enabled, writes a boolean flag indicating whether a point is at a crossing._
+<summary><strong>Cross Direction Attribute Name</strong><br><em>Name of the cross direction attribute to write.</em></summary>
 
-* Useful for filtering or conditional logic based on crossing points
+The name of the attribute that stores the cross direction vector.
 
-**Is Point Crossing Attribute Name**
+</details>
 
-_Name of the attribute that stores the crossing flag._
+<details>
 
-* Default is "IsPointCrossing"
-* Set to a custom name if you want to use a different attribute
+<summary><strong>Default Cross Direction Value</strong><br><em>Default cross direction vector if none is computed.</em></summary>
 
-**Tag If Has Crossings**
+The default cross direction vector used when no specific direction is determined.
 
-_When enabled, adds a tag to paths that have at least one crossing._
+</details>
 
-* Useful for identifying and filtering paths with intersections
+<details>
 
-**Has Crossings Tag**
+<summary><strong>Write Is Point Crossing</strong><br><em>If enabled, a flag indicating whether the point is a crossing is written.</em></summary>
 
-_Name of the tag added to paths with crossings._
+When enabled, a boolean attribute indicates if a point is located at an intersection.
 
-* Default is "HasCrossings"
-* Set to a custom name if you want to use a different tag
+</details>
 
-**Tag If Has No Crossings**
+<details>
 
-_When enabled, adds a tag to paths that have no crossings._
+<summary><strong>Is Point Crossing Attribute Name</strong><br><em>Name of the attribute to write.</em></summary>
 
-* Useful for identifying and filtering paths without intersections
+The name of the attribute that stores whether a point is a crossing.
 
-**Has No Crossings Tag**
+</details>
 
-_Name of the tag added to paths with no crossings._
+<details>
 
-* Default is "HasNoCrossings"
-* Set to a custom name if you want to use a different tag
+<summary><strong>Tag If Has Crossing</strong><br><em>If enabled, paths with crossings are tagged.</em></summary>
 
-**Omit Uncuttable From Output**
+When enabled, paths that contain intersections are tagged with `HasCrossingsTag`.
 
-_When enabled, removes paths that are only cutters (no intersections)._
+</details>
 
-* Useful for cleaning up path networks by removing unused or isolated paths
+<details>
 
-### Notes
+<summary><strong>Has Crossings Tag</strong><br><em>Name of the tag applied to paths with crossings.</em></summary>
 
-* This node can be computationally expensive on large datasets with many paths
-* Consider using filtering tags to reduce the number of path combinations being checked
-* The "Crossing Blending" and "Crossing Carry Over" settings allow for advanced attribute manipulation at intersection points
-* Use the alpha value output to create visual effects that respond to path density or intersection frequency
-* For complex networks, consider using "Self Intersection Only" mode to analyze individual paths before combining them
+The name of the tag assigned to paths that have intersections.
+
+</details>
+
+<details>
+
+<summary><strong>Tag If Has No Crossings</strong><br><em>If enabled, paths without crossings are tagged.</em></summary>
+
+When enabled, paths that do not contain intersections are tagged with `HasNoCrossingsTag`.
+
+</details>
+
+<details>
+
+<summary><strong>Has No Crossings Tag</strong><br><em>Name of the tag applied to paths without crossings.</em></summary>
+
+The name of the tag assigned to paths that have no intersections.
+
+</details>
+
+<details>
+
+<summary><strong>Omit Uncuttable From Output</strong><br><em>If enabled, paths that are only "cutters" (paths that will cut but won't be cut) are excluded.</em></summary>
+
+When enabled, paths that act as cutters but are not cut themselves are removed from the output.
+
+</details>
+
+#### Inputs
+
+* **Main Paths**: Input paths to process for crossings.
+* **Filter Subnodes**:
+  * Optional subnode for filtering paths that can be cut (`CanBeCutTag`).
+  * Optional subnode for filtering paths that are cutters (`CanCutTag`).
+
+#### Outputs
+
+* **Main Points**: Modified or new points, including crossing points if enabled.
+* **Tags** (if tagging is enabled):
+  * Paths tagged with `HasCrossingsTag` if they have intersections.
+  * Paths tagged with `HasNoCrossingsTag` if they do not.
+
+#### Usage Example
+
+1. Create a set of paths representing roads or tracks.
+2. Connect them to this node's **Main Paths** input.
+3. Optionally, use subnodes to tag some paths as "cutters" and others as "cut-able".
+4. Enable **Create Point At Crossings** to generate junction points.
+5. Enable **Write Alpha** and set a custom attribute name to track intersection weights.
+6. Use the output points to place road junctions or traffic lights.
+
+#### Notes
+
+* This node is computationally expensive due to intersection detection across all paths.
+* Consider using filtering tags to reduce the number of comparisons.
+* The blending settings allow for smooth transitions in crossing attributes, useful for visual effects or path interpolation.

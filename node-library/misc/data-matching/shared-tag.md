@@ -5,86 +5,71 @@ icon: circle-dashed
 # Shared Tag
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Matches data that share common tags, optionally checking for matching tag values.
+> Match data that share common tags.
 
-### Overview
+#### How It Works
 
-This node defines a matching rule based on shared tags between data elements. It's useful when you want to find relationships or connections between points, edges, or other data based on their assigned tags. For example, you might use it to connect points that have the same "Room" tag, or to group together elements that share a "Type" attribute.
+This node finds and groups data elements that have one or more matching tags. It compares the tags assigned to each element and determines if they share common tag names (and optionally, tag values). When a match is found, it marks those elements as related so they can be grouped or linked together.
 
-The node supports both tag name matching and optional tag value matching. You can define how many of multiple tag tests must pass (All or Any) and whether each test is required or optional for a match to succeed.
+The process works by:
 
-{% hint style="info" %}
-This node is designed to work with data that has been tagged using the "Tag : Add" or similar nodes. The tags are stored as attributes on the data elements.
-{% endhint %}
+1. Reading the tag information from each data element.
+2. Comparing these tags against a defined target tag name or attribute.
+3. If enabled, checking whether the tag values also match.
+4. Returning a result when one or more shared tags are found.
+
+This matching logic is applied to all input elements and determines which ones are considered "related" based on their tag content.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Tag Name Input</strong><br><em>Type of Tag Name value.</em></summary>
 
-* **Main Input** (Required): Data to be matched against (points, edges, etc.)
-* **Match Rule Output** (Required): This node outputs a match rule that can be used by matching nodes like "Match : By Rule"
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Output Match Rule**: A match rule definition that can be consumed by matching nodes
-
-</details>
-
-### Properties Overview
-
-Settings for defining how tag-based matching is performed.
-
-***
-
-#### General
-
-Controls the core matching behavior based on tags.
-
-**Tag Name Input**
-
-_Controls whether to use a constant tag name or read it from an attribute._
-
-* How it affects results: Determines the source of the tag name used for matching.
-* Value ranges: None, but affects how other settings are displayed.
+Controls whether the tag name is read from a constant string or an attribute on the input data.
 
 **Values**:
 
-* **Constant**: Use a fixed tag name defined below.
+* **Constant**: Use a fixed tag name defined in the node.
 * **Attribute**: Read the tag name from an attribute on the input data.
 
-**Tag Name (Attr)**
+</details>
 
-_The attribute to read the tag name from when "Tag Name Input" is set to "Attribute"._
+<details>
 
-* How it affects results: This attribute's value becomes the tag name used for matching.
-* Value ranges: Any valid attribute name.
+<summary><strong>Tag Name (Attr)</strong><br><em>Attribute to read tag name value from.</em></summary>
 
-**Tag Name**
+The name of the attribute from which to read the tag name, when **Tag Name Input** is set to **Attribute**.
 
-_The constant tag name to use for matching when "Tag Name Input" is set to "Constant"._
+</details>
 
-* How it affects results: All data elements are matched against this fixed tag name.
-* Value ranges: Any string value.
+<details>
 
-**Do Value Match**
+<summary><strong>Tag Name</strong><br><em>Constant tag name value.</em></summary>
 
-_When enabled, the match rule will also check that the tag values match._
+The fixed tag name to use for matching, when **Tag Name Input** is set to **Constant**.
 
-* How it affects results: If disabled, only the presence of a matching tag name is checked. If enabled, both the tag name and its value must match for a successful match.
-* Value ranges: Boolean (True/False)
+</details>
 
-### Notes
+<details>
 
-* This node works best with data that has been tagged using PCGEx's tagging system.
-* When "Do Value Match" is enabled, make sure your tags have consistent values across matching elements.
-* You can combine multiple "Match : Shared Tag" nodes to create complex matching rules.
-* The match rule created by this node can be reused in multiple matching operations throughout your graph.
+<summary><strong>Do Value Match</strong><br><em>Whether to do a tag value match or not.</em></summary>
+
+When enabled, the node will also compare the values of the tags. When disabled, only matching tag names are considered.
+
+</details>
+
+#### Usage Example
+
+1. Tag several points with common tags like `"CategoryA"` and `"TypeX"`.
+2. Use this node to find all points that share at least one tag.
+3. Connect the output to a **Match Points** node to group or link those points together.
+
+#### Notes
+
+* This node works best when input data has been pre-tagged using nodes like **Tag Points** or **Tag Clusters**.
+* Matching on tag values adds computational overhead, so disable it if you only care about tag names.
+* The matching is performed per data element, so performance scales with the number of elements being matched.

@@ -6,26 +6,42 @@ icon: circle
 # Reduce Data
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Reduce multiple @Data domain attributes into a single output value using various aggregation methods.
+> Reduces metadata attributes from multiple input points into a single output value using various aggregation methods.
 
-### Overview
+#### Overview
 
-This node combines multiple attributes from the @Data domain into a single output value using different mathematical or logical operations. It's useful when you want to consolidate several attribute values into one, such as combining multiple scalar values into an average, or joining string values together.
+This node allows you to combine data from multiple input points and reduce it down to a single value per point. It's useful when you have grouped or clustered data that needs to be summarized, such as averaging values from several points in a cluster or finding the maximum value among them.
+
+It operates on metadata attributes and supports different reduction methods like minimum, maximum, sum, average, joining strings, or hashing values. You can specify which attribute to process and how to combine its values.
 
 {% hint style="info" %}
-The node operates on the @Data domain attributes and does not modify the input points directly. The output is written to a new attribute in the output data.
+Connects to **Points** processing nodes (e.g., Cluster, Group) via the main input pin.
 {% endhint %}
+
+#### How It Works
+
+This node takes multiple points as input and processes a specified metadata attribute from each point. It applies an aggregation method to combine these values into a single output value per point.
+
+The process works in steps:
+
+1. It reads the selected metadata attribute from all input points.
+2. Based on the chosen **Method**, it performs an operation across those values:
+   * For **Min**, **Max**, **Sum**, and **Average**, it computes the respective mathematical result.
+   * For **Join**, it concatenates string values using a delimiter.
+   * For **Hash** or **UnsignedHash**, it combines values into a hash, with sorted order for UnsignedHash.
+3. The resulting value is written to the output point's metadata attribute.
+
+The node supports both numeric and string types depending on the method used. For methods like Join, only string-based attributes are valid.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **@Data** (Multiple): One or more input data sources containing attributes to be reduced.
+* **Main Input**: Points with metadata attributes to be reduced.
+* **Optional Filters**: Point filters can be applied before processing.
 
 </details>
 
@@ -33,59 +49,73 @@ The node operates on the @Data domain attributes and does not modify the input p
 
 <summary>Outputs</summary>
 
-* **Default**: Output point data with the reduced attribute written to it.
+* **Main Output**: Points with the same structure as input, but with the specified attribute replaced by a single computed value per point.
 
 </details>
 
-### Properties Overview
+#### Configuration
 
-Controls how the reduction is performed and what output is generated.
+<details>
 
-***
+<summary><strong>Attributes</strong><br><em>Selects which metadata attributes to process.</em></summary>
 
-#### Settings
+Choose the source and target attributes. The node will read from the source and write the result to the target.
 
-Configures the reduction operation and output behavior.
+</details>
 
-**Attributes**
+<details>
 
-_The input attributes to reduce._
+<summary><strong>Method</strong><br><em>Determines how values are combined.</em></summary>
 
-* Specifies which attributes from the @Data domain will be processed
-* Multiple attributes can be selected for reduction
-* The node will process all selected attributes using the chosen method
+Controls the logic used to reduce multiple values into one.
 
-**Method**
+**Values**:
 
-_How to combine the attribute values._
+* **Min**: Selects the smallest value.
+* **Max**: Selects the largest value.
+* **Sum**: Adds all values together.
+* **Average**: Computes the arithmetic mean.
+* **Join**: Concatenates string values with a delimiter.
+* **Hash**: Combines values into a hash (in order of inputs).
+* **Hash (Sorted)**: Sorts values first, then combines them into a hash.
 
-* **Min**: Take the smallest value among all inputs
-* **Max**: Take the largest value among all inputs
-* **Sum**: Add all values together
-* **Average**: Calculate the mean of all values
-* **Join**: Concatenate string values with a delimiter
-* **Hash**: Generate a hash from the values in input order
-* **Hash (Sorted)**: Sort values first, then generate a hash
+</details>
 
-**bCustomOutputType**
+<details>
 
-_When enabled, allows you to specify the output attribute type._
+<summary><strong>bCustomOutputType</strong><br><em>When enabled, allows specifying the output data type.</em></summary>
 
-* Enable this to control the data type of the resulting attribute
-* If disabled, the node will infer the output type from the input attributes
+When enabled, you can override the default output type for numeric results. This is not supported for string-based methods like Join or Hash.
 
-**OutputType**
+</details>
 
-_The data type of the resulting attribute._
+<details>
 
-* Only visible when "bCustomOutputType" is enabled
-* Determines how the reduced value is stored in the output attribute
-* Not supported for "Join" method as it always produces a string result
+<summary><strong>OutputType</strong><br><em>Specifies the data type of the reduced output.</em></summary>
 
-**JoinDelimiter**
+Only used when **bCustomOutputType** is enabled. Determines how numeric values are stored in the output attribute.
 
-_The delimiter used to separate joined values._
+</details>
 
-* Only visible when "Method" is set to "Join"
-* Controls how individual string values are combined
-* Default is ", " (comma followed by space)
+<details>
+
+<summary><strong>JoinDelimiter</strong><br><em>Defines the separator used when joining strings.</em></summary>
+
+Used only when the **Method** is set to Join. Controls what separates each joined value in the final string.
+
+</details>
+
+#### Usage Example
+
+You have a cluster of points, each with a "Health" attribute. You want to find the average health of all points within each cluster and store that as a new attribute on the cluster's representative point.
+
+1. Connect your clustering node to this node.
+2. Set **Method** to Average.
+3. Select "Health" as the input attribute.
+4. The output will contain a single averaged value per cluster point.
+
+#### Notes
+
+* For methods like Join or Hash, only string-type attributes are valid.
+* When using **Hash (Sorted)**, values are sorted before hashing for consistent results.
+* Performance can be impacted by large numbers of input points due to sorting and hash computation.

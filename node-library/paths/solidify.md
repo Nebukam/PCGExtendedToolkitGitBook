@@ -6,219 +6,234 @@ icon: circle
 # Solidify
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Solidify a path by creating a 3D volume around it using radius values along three axes.
+> Solidify a path by expanding it into a 3D shape using axis-aligned offsets.
 
-### Overview
+#### How It Works
 
-This node takes a path and creates a solid 3D shape around it by extending the path points outward in three directions. It's useful for creating walls, roads, or any tubular geometry from a path. The solidification works by taking each point on the path and creating a volume along the segment direction (primary axis), with additional radii for secondary and tertiary axes.
+The Path : Solidify node takes a path and transforms it into a solid 3D volume by applying offset distances along three perpendicular axes. For each point in the path, it calculates the local orientation using the segment direction and normal, then applies specified offsets to generate new points that define an expanded shape around the original path.
 
-{% hint style="info" %}
-The node requires closed paths to fully solidify all points. For open paths, the last point will be skipped unless you enable "Remove Last Point".
-{% endhint %}
+The process works as follows:
+
+1. The node determines the local orientation at each point based on the path's direction and normal.
+2. It applies offset distances along three axes (Primary, Secondary, Tertiary) which are defined by the selected axis order.
+3. New points are generated using these offsets to create a solid shape around the original path.
+4. If the path is not closed, the final point is optionally removed to prevent invalid solidification at the end.
+
+The node supports both fixed values and attribute-driven settings for all offset parameters, allowing dynamic control over how the solidification is applied along the path.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Remove Last Point</strong><br><em>If the path is not closed, the last point cannot be solidified, thus it's usually preferable to remove it.</em></summary>
 
-* **Main Input**: Points representing a path
-* **Optional Filters**: Point filters can be applied to select which points to process
+When enabled, removes the final point of open paths to avoid invalid solidification at the end of the path.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Solidification Order</strong><br><em>Axis order. First axis will use the segment direction, second is the path normal. These are Primary > Secondary > Tertiary.</em></summary>
 
-* **Main Output**: Modified point data with solidified volumes
-* **Additional Outputs**: None
+Defines the sequence in which axes are applied to calculate the offset shape.
+
+* **XYZ**: Primary = Segment Direction, Secondary = Path Normal, Tertiary = Cross Product
+* **XZY**: Primary = Segment Direction, Secondary = Cross Product, Tertiary = Path Normal
+* **YXZ**: Primary = Path Normal, Secondary = Segment Direction, Tertiary = Cross Product
+* **YZX**: Primary = Path Normal, Secondary = Cross Product, Tertiary = Segment Direction
+* **ZXY**: Primary = Cross Product, Secondary = Segment Direction, Tertiary = Path Normal
+* **ZYX**: Primary = Cross Product, Secondary = Path Normal, Tertiary = Segment Direction
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the path is solidified and what shape is created.
+<summary><strong>Read Order From Attribute</strong><br><em>.</em></summary>
 
-***
+When enabled, reads the axis order from a point attribute instead of using the constant value.
 
-#### General Settings
+</details>
 
-Controls core behavior for solidification.
+<details>
 
-**Remove Last Point**
+<summary><strong>Order Attribute</strong><br><em>Solidification Order attribute.</em></summary>
 
-_When enabled, removes the last point of open paths to ensure all points can be solidified._
+The name of the attribute to read the axis order from. Requires integer values that map to EPCGExAxisOrder.
 
-* Prevents issues with open paths where the last point cannot be fully processed
-* Recommended to enable when working with open paths
+</details>
 
-**Solidification Order**
+<details>
 
-_Determines how the three axes are assigned to the path's direction, normal, and binormal._
+<summary><strong>Order Safety</strong><br><em>How to "sanitize" the input value.</em></summary>
 
-* **XYZ**: Primary = Segment Direction, Secondary = Path Normal, Tertiary = Binormal
-* **ZYX**: Primary = Binormal, Secondary = Path Normal, Tertiary = Segment Direction
-* Controls the orientation of the solidification
+Controls how invalid or out-of-bounds values from the attribute are handled.
 
-**Read Order From Attribute**
+* **Ignore**: Uses default order if the attribute value is invalid
+* **Tile**: Wraps around valid indices (0,1,2,0,1,2...)
+* **Clamp**: Clamps to nearest valid index (0,1,2,2,2,2...)
+* **Yoyo**: Mirrors and back (0,1,2,1,0,1...)
 
-_When enabled, reads the axis order from a point attribute._
+</details>
 
-* Allows dynamic axis assignment per point
-* Requires a valid integer attribute with values between 0 and 5 (representing EPCGExAxisOrder enum)
+<details>
 
-**Order Attribute**
+<summary><strong>Use Construction Mapping</strong><br><em>.</em></summary>
 
-_Name of the attribute to read axis order from._
+When enabled, allows mapping of rotation construction based on the selected axis order.
 
-* Only active when "Read Order From Attribute" is enabled
-* Should contain integer values representing axis orders
+</details>
 
-**Order Safety**
+<details>
 
-_Determines how invalid values in the order attribute are handled._
+<summary><strong>Rotation Mapping</strong><br><em>Map of rotation construction orders based on selected mapping.</em></summary>
 
-* **Tile**: Wraps around valid values (0,1,2,3,4,5,0,1,2...)
-* **Clamp**: Clamps to valid range (0,1,2,2,2,2...)
-* **Ignore**: Uses default axis order when invalid
+Defines how rotations are constructed for each axis order. Maps EPCGExAxisOrder to EPCGExMakeRotAxis.
 
-**Use Construction Mapping**
+</details>
 
-_When enabled, allows mapping different rotation constructions based on axis order._
+<details>
 
-* Enables more complex rotation behavior per path segment
-* Requires setting up a mapping between axis orders and rotation axes
+<summary><strong>Rotation Construction</strong><br><em>Defines how the selected axis will be used to construct the point' rotation.</em></summary>
 
-**Rotation Mapping**
+Controls how the rotation is calculated when not using mapping.
 
-_Map of axis orders to rotation construction axes._
+* **X**: Use Primary Axis
+* **Y**: Use Secondary Axis
+* **Z**: Use Tertiary Axis
 
-* Only active when "Use Construction Mapping" is enabled
-* Defines how rotations are constructed for each axis order
+</details>
 
-**Rotation Construction**
+<details>
 
-_Determines which axis is used to construct the point's rotation._
+<summary><strong>Read Construction From Attribute</strong><br><em>.</em></summary>
 
-* **X**: Use primary axis (segment direction) for rotation
-* **Y**: Use secondary axis (path normal) for rotation
-* **Z**: Use tertiary axis (binormal) for rotation
-* Only active when "Use Construction Mapping" is disabled
+When enabled, reads the rotation construction from a point attribute instead of using the constant value.
 
-**Read Construction From Attribute**
+</details>
 
-_When enabled, reads the rotation construction from a point attribute._
+<details>
 
-* Allows dynamic rotation construction per point
-* Requires a valid integer attribute with values between 0 and 2 (representing EPCGExMakeRotAxis enum)
+<summary><strong>Construction Attribute</strong><br><em>Rotation Construction attribute.</em></summary>
 
-**Construction Attribute**
+The name of the attribute to read the rotation construction from. Requires integer values that map to EPCGExMakeRotAxis.
 
-_Name of the attribute to read rotation construction from._
+</details>
 
-* Only active when "Read Construction From Attribute" is enabled
-* Should contain integer values representing rotation axes
+<details>
 
-**Construction Safety**
+<summary><strong>Construction Safety</strong><br><em>How to "sanitize" the input value.</em></summary>
 
-_Determines how invalid values in the construction attribute are handled._
+Controls how invalid or out-of-bounds values from the attribute are handled.
 
-* **Tile**: Wraps around valid values (0,1,2,0,1,2...)
-* **Clamp**: Clamps to valid range (0,1,2,2,2,2...)
-* **Ignore**: Uses default rotation construction when invalid
+* **Ignore**: Uses default construction if the attribute value is invalid
+* **Tile**: Wraps around valid indices (0,1,2,0,1,2...)
+* **Clamp**: Clamps to nearest valid index (0,1,2,2,2,2...)
+* **Yoyo**: Mirrors and back (0,1,2,1,0,1...)
 
-***
+</details>
 
-#### Axis Settings
+<details>
 
-Controls the radius and flip behavior for each of the three axes.
+<summary><strong>Primary Axis</strong><br><em>Primary axis settings (direction aligned to the segment)</em></summary>
 
-**Primary**
+Settings for the primary offset axis, aligned with the path's segment direction.
 
-_Settings for the primary axis (aligned with segment direction)._
+* **Flip Input**: Toggle between constant or attribute-driven flip
+* **Flip**: Whether to invert the offset direction along this axis
+* **Flip (Attr)**: Attribute name for flip value
 
-* Controls how far the solidification extends along the path's direction
-* Includes flip option to reverse direction
+</details>
 
-**Secondary**
+<details>
 
-_Settings for the secondary axis (typically path normal)._
+<summary><strong>Secondary Axis</strong><br><em>Secondary axis settings, relative to the selected order</em></summary>
 
-* Controls how far the solidification extends perpendicular to the path
-* Includes radius and flip options
-* Radius can be constant or attribute-driven
+Settings for the secondary offset axis, typically aligned with the path normal.
 
-**Tertiary**
+* **Radius Input**: Toggle between constant or attribute-driven radius
+* **Radius**: Constant offset distance along this axis
+* **Radius (Attr)**: Attribute name for radius value
+* **Flip Input**: Toggle between constant or attribute-driven flip
+* **Flip**: Whether to invert the offset direction along this axis
+* **Flip (Attr)**: Attribute name for flip value
 
-_Settings for the tertiary axis (typically binormal)._
+</details>
 
-* Controls how far the solidification extends in the third dimension
-* Includes radius and flip options
-* Radius can be constant or attribute-driven
+<details>
 
-***
+<summary><strong>Tertiary Axis</strong><br><em>Tertiary axis settings, relative to the selected order</em></summary>
 
-#### Normal Settings
+Settings for the tertiary offset axis, typically perpendicular to the path.
 
-Controls how the cross direction (normal) is computed for the solidification.
+* **Radius Input**: Toggle between constant or attribute-driven radius
+* **Radius**: Constant offset distance along this axis
+* **Radius (Attr)**: Attribute name for radius value
+* **Flip Input**: Toggle between constant or attribute-driven flip
+* **Flip**: Whether to invert the offset direction along this axis
+* **Flip (Attr)**: Attribute name for flip value
 
-**Normal Type**
+</details>
 
-_Determines whether to use a constant normal or read from an attribute._
+<details>
 
-* **Constant**: Use a fixed normal type
-* **Attribute**: Read normal from point attribute
+<summary><strong>Normal Type</strong><br><em>How should the cross direction (Cross) be computed.</em></summary>
 
-**Normal Attribute**
+Controls how the path normal is determined.
 
-_Name of the attribute containing normal vectors._
+* **Constant**: Use the constant Normal setting
+* **Attribute**: Read normal from a point attribute
 
-* Only active when "Normal Type" is set to "Attribute"
-* Should contain vector values for cross direction
+</details>
 
-**Normal**
+<details>
 
-_Type of arithmetic path point cross direction when using constant mode._
+<summary><strong>Normal</strong><br><em>Type of arithmetic path point cross direction.</em></summary>
 
-* **Normal**: Use standard path normal
-* **Binormal**: Use path binormal
-* **Average Normal**: Use average of normal and binormal
+Defines how to compute the cross direction when using constant mode.
 
-**Invert Direction**
+* **Normal**: Standard path normal
+* **Binormal**: Alternate normal based on binormal vector
+* **Average Normal**: Averaged normal from adjacent segments
 
-_When enabled, inverts the computed normal direction._
+</details>
 
-* Reverses the orientation of the solidification
-* Only active when "Normal Type" is set to "Attribute"
+<details>
 
-***
+<summary><strong>Invert Direction</strong><br><em>Inverts normal direction.</em></summary>
 
-#### Solidification Lerp
+When enabled, flips the computed normal direction.
 
-Controls how much of the path's original position is retained during solidification.
+</details>
 
-**Solidification Lerp Input**
+<details>
 
-_Determines whether to use a constant or attribute-driven lerp value._
+<summary><strong>Solidification Lerp Input</strong><br><em>Solidification Lerp attribute .</em></summary>
 
-* **Constant**: Use fixed lerp value between 0 and 1
-* **Attribute**: Read lerp value from point attribute
+Controls how to interpolate between solidification settings.
 
-**Solidification Lerp Attribute**
+* **Constant**: Use a fixed value
+* **Attribute**: Read from a point attribute
 
-_Name of the attribute containing lerp values._
+</details>
 
-* Only active when "Solidification Lerp Input" is set to "Attribute"
-* Should contain float values between 0 and 1
+<details>
 
-**Solidification Lerp Constant**
+<summary><strong>Solidification Lerp</strong><br><em>Solidification Lerp constant.</em></summary>
 
-_Fixed lerp value between 0 and 1._
+The fixed interpolation value when using constant mode. Ranges from 0 (no solidification) to 1 (full solidification).
 
-* **0**: Full solidification (original point position ignored)
-* **1**: No solidification (original point position preserved)
-* **0.5**: Halfway between original and solidified positions
+</details>
+
+#### Usage Example
+
+Create a path representing a winding road, then use Path : Solidify to extrude it into a 3D road shape. Set the Secondary and Tertiary axes to have a radius of 5 units each, and enable "Remove Last Point" for open paths. This will generate a solid road volume that can be used as a base for textures or collision geometry.
+
+#### Notes
+
+* The node works best with closed paths but can handle open paths by removing the last point.
+* Axis order affects how the offset shape is calculated; experiment with different orders to achieve desired results.
+* Attribute-driven settings allow dynamic control over solidification based on point properties.
+* Performance may be impacted when using attribute-driven values for large datasets.

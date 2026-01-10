@@ -6,146 +6,124 @@ icon: circle
 # Slide
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Slides points along a path, either toward the next or previous point in the sequence.
+> Slides points along a path either toward the next or previous point, optionally storing and restoring their original positions.
 
-### Overview
+#### How It Works
 
-This node allows you to move points along a path segment, shifting them closer to the next or previous point in the sequence. It's useful for creating smooth transitions, adjusting point placement, or preparing data for further processing that requires specific spatial relationships. You can also store and restore original positions using attributes.
+The Path : Slide node adjusts the location of points on a path by moving them along the direction of the path. It can move each point toward the next or previous point in the sequence, using either a percentage of the segment length or an absolute distance for how far to slide.
 
-{% hint style="info" %}
-The node works on paths defined by input points. Make sure your data is structured as a path before applying this node.
-{% endhint %}
+For each point, the node calculates where it should move based on:
+
+1. The direction you choose (toward the next or previous point)
+2. How far to slide, defined as either a percentage or a fixed distance
+3. Whether to save the original position before moving
+
+If enabled, the node stores the starting position in an attribute so that you can later restore the points to their original locations.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Mode</strong><br><em>Whether to slide or restore position.</em></summary>
 
-* **Main Input** (Default): Points that define the path to be processed
-* **Filters** (Optional): Filters to determine which points are affected
+Controls whether the node moves points along the path or returns them to their original positions.
+
+**Values**:
+
+* **Slide**: Moves points and optionally stores their original positions.
+* **Restore**: Returns points to their stored positions and removes the stored data.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Direction</strong><br><em>Whether to slide toward the next or previous point.</em></summary>
 
-* **Main Output** (Default): Modified points with updated positions, or restored positions if using Restore mode
+Determines which direction points move along the path.
+
+**Values**:
+
+* **Next**: Moves points toward the next point in the sequence.
+* **Previous**: Moves points toward the previous point in the sequence.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the sliding operation is performed and what data is used.
+<summary><strong>AmountMeasure</strong><br><em>Discrete means actual distance, relative means a percentage of the segment length.</em></summary>
 
-***
-
-#### Mode
-
-Determines whether to slide points along the path or restore their original positions.
-
-**Slide Mode**
-
-_Whether to slide points or restore their original positions._
-
-* When enabled, points are moved along the path
-* When disabled, points are restored from an attribute
+Defines how the slide amount is interpreted.
 
 **Values**:
 
-* **Slide**: Slide points along the path
-* **Restore**: Restore original positions and delete the stored attribute
+* **Relative**: The input value is treated as a percentage (0 to 1) of the segment length.
+* **Discrete**: The input value is treated as an absolute distance in world units.
 
-***
+</details>
 
-#### Direction
+<details>
 
-Controls whether points slide toward the next or previous point in the path.
+<summary><strong>SlideAmountInput</strong><br><em>Whether to use a constant or attribute for slide amount.</em></summary>
 
-**Slide Direction**
-
-_Whether to slide points toward the next or previous point._
-
-* When set to "Next", points move toward the subsequent point in the path
-* When set to "Previous", points move toward the prior point in the path
+Controls whether the slide amount is defined by a fixed number or read from an attribute on the input points.
 
 **Values**:
 
-* **Next**: Slide toward next point
-* **Previous**: Slide toward previous point
+* **Constant**: Uses the fixed value in **Slide Amount**.
+* **Attribute**: Reads the slide amount from the attribute specified in **Slide Amount (Attr)**.
 
-***
+</details>
 
-#### Amount
+<details>
 
-Controls how far along the path each point is moved.
+<summary><strong>Slide Amount (Attr)</strong><br><em>Attribute to read slide amount from.</em></summary>
 
-**Amount Measure**
+The name of the attribute to read the slide amount from when **SlideAmountInput** is set to **Attribute**.
 
-_Whether the slide amount is a percentage of the segment or an absolute distance._
+</details>
 
-* When set to "Relative", the value is treated as a percentage (0.0 to 1.0) of the segment length
-* When set to "Discrete", the value is treated as an absolute distance
+<details>
 
-**Values**:
+<summary><strong>Slide Amount</strong><br><em>Constant slide amount value.</em></summary>
 
-* **Relative**: Input value will be normalized between 0..1, or used as a factor
-* **Discrete**: Raw value will be used, or used as absolute
+The fixed value used for sliding when **SlideAmountInput** is set to **Constant**.
 
-**Slide Amount Input**
+</details>
 
-_Whether to use a constant or attribute value for the slide amount._
+<details>
 
-* When set to "Constant", a fixed value is used
-* When set to "Attribute", the value is read from an input point attribute
+<summary><strong>bWriteOldPosition</strong><br><em>Whether to store the old position.</em></summary>
 
-**Values**:
+When enabled, the node saves the original point positions in an attribute before moving them.
 
-* **Constant**: Use a constant, user-defined value
-* **Attribute**: Read the value from the input data
+</details>
 
-**Slide Amount (Attribute)**
+<details>
 
-_The name of the attribute containing the slide amount._
+<summary><strong>RestorePositionAttributeName</strong><br><em>Attribute to write to or restore from.</em></summary>
 
-* The attribute must be of type float or double
-* Used only when "Slide Amount Input" is set to "Attribute"
+The name of the attribute used to store and retrieve the original point positions when sliding or restoring.
 
-**Slide Amount**
+</details>
 
-_The fixed slide amount used when "Slide Amount Input" is set to "Constant"._
+#### Usage Example
 
-* For relative measure, use values between 0.0 and 1.0
-* For discrete measure, use actual distance values
+You have a path with several points and want to gently slide each point toward the next one by 30% of the segment length. You would:
 
-***
+1. Set **Mode** to **Slide**
+2. Set **Direction** to **Next**
+3. Set **AmountMeasure** to **Relative**
+4. Set **Slide Amount** to `0.3`
+5. Enable **bWriteOldPosition**
 
-#### Position Storage
+This results in each point being moved 30% of the way along its segment toward the next point, with original positions stored for potential later restoration.
 
-Controls whether to store original positions for later restoration.
+#### Notes
 
-**Write Old Position**
-
-_Whether to store the original position in an attribute before sliding._
-
-* When enabled, the original point position is saved to an attribute
-* When disabled, no storage occurs and restore functionality is not available
-
-**Restore Position Attribute Name**
-
-_Name of the attribute used to store or retrieve the original position._
-
-* Used only when "Write Old Position" is enabled or in Restore mode
-* Default is "PreSlidePosition"
-
-### Notes
-
-* Sliding works on path segments; points are moved along the line between their current position and the target point (next or previous)
-* For best results, ensure your input points form a continuous path with no gaps
-* When using relative amounts, values of 0.5 will move points halfway along each segment
-* Restore mode requires that original positions were previously stored using "Write Old Position"
-* The node supports both closed loops and open paths, but behavior may differ for the first and last points in an open path
+* The node works on individual paths within a path collection.
+* When using relative amounts, values outside the 0–1 range may cause unexpected behavior.
+* The **Restore** mode requires that the attribute specified in **RestorePositionAttributeName** exists and contains valid position data.
+* Sliding is applied per point, so overlapping or extreme sliding can result in point clustering or self-intersection.

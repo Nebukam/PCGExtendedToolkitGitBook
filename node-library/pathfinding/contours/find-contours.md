@@ -6,171 +6,89 @@ icon: circle
 # Find Cells
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Attempts to find a closed cell of connected edges around seed points.
+> Finds closed polygonal shapes, or "cells," around seed points by tracing connected edges in a graph.
 
-### Overview
+#### How It Works
 
-This node searches for closed polygonal cells formed by connected edges in your graph data, starting from seed points. It's useful for extracting meaningful shapes or regions from procedural graphs, such as finding the boundaries of areas, rooms, or terrain features.
+This node searches for closed loops formed by connecting edges in a graph around each seed point. It starts at a seed and follows connected edges to trace out a shape. If the resulting shape meets specific criteria defined in the settings, it's considered a valid cell and is output as a path.
 
-It works by taking a set of seed points and attempting to trace a path around them using connected edges. The resulting paths form closed cells that can be output as new point collections. You can filter the results based on whether the generated cells are convex or concave.
+The process evaluates whether the traced shape satisfies constraints such as minimum or maximum number of sides, angle thresholds, or other geometric rules. Valid cells are returned as closed polygons, while the original seed points can optionally be filtered based on whether they successfully created a valid cell.
 
-{% hint style="info" %}
-The node requires valid edge data in your input to function properly. Make sure your graph has connected edges for meaningful results.
-{% endhint %}
+To improve performance with large datasets, the node can use an octree-based search to quickly locate the closest edge to each seed point instead of checking every edge individually.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>SeedPicking</strong><br><em>Controls how a seed selects which edge or vertex to start tracing from.</em></summary>
 
-* **Main Input** (Point): Seed points from which to start the cell search
-* **Edges Input** (Edge): Graph edges that define connectivity between points
+Determines where the tracing begins around each seed point. This affects where the contour starts and can influence the shape of the resulting cell.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Constraints</strong><br><em>Rules that define what makes a valid cell.</em></summary>
 
-* **Main Output** (Point): Generated cells as point collections, each representing a closed path
-* **SeedGenSuccess** (Point): Filtered set of seed points that successfully generated a valid cell
-* **SeedGenFailed** (Point): Seed points that failed to generate a valid cell
+Sets criteria for evaluating whether a traced shape is considered valid. These include settings like minimum or maximum number of sides, angle thresholds, and other geometric properties.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the node searches for cells and formats the output.
+<summary><strong>Artifacts</strong><br><em>Data computed or output for each generated cell.</em></summary>
 
-***
+Controls how additional information about each cell is calculated or included in the output. This can include properties like convexity, steepness, or color values derived from the cell's structure.
 
-#### Cell Search Settings
+</details>
 
-Configures how the node finds and processes closed paths from seed points.
+<details>
 
-**Seed Picking**
+<summary><strong>bOutputFilteredSeeds</strong><br><em>Whether to output a separate set of seeds that successfully created valid cells.</em></summary>
 
-_Drives how a seed selects a node._
+When enabled, this subnode outputs an additional point set containing only those seed points that generated a valid closed cell. This helps identify which seeds worked well and can be useful for debugging or filtering.
 
-* Determines whether the seed point itself or the closest node in the graph is used as the starting point for pathfinding
-* When using "Closest edge", it will search for the nearest edge to the seed point and use that edge's endpoints
+</details>
 
-**Use Octree Search**
+<details>
 
-_Whether or not to search for closest node using an octree._
+<summary><strong>SeedMutations</strong><br><em>Transformations applied to the seed point before generating the cell.</em></summary>
 
-* When enabled, uses spatial acceleration for faster seed-to-node lookups
-* Can improve performance on large datasets but may slow down smaller ones
+Defines modifications made to the seed point before it's used in tracing. For example, shifting its position or adjusting its properties to influence the resulting shape.
 
-***
+</details>
 
-#### Cell Constraints
+<details>
 
-Sets rules for what constitutes a valid cell.
+<summary><strong>ProjectionDetails</strong><br><em>Settings for projecting 3D points onto a 2D plane.</em></summary>
 
-**Max Path Length**
+Controls how three-dimensional data is flattened into two dimensions for processing. This is helpful when working with geographic or spatial data that needs to be simplified for contour detection.
 
-_Maximum number of edges in a path._
+</details>
 
-* Limits how far the search can extend from the seed point
-* Set to 0 or less to disable this constraint
+<details>
 
-**Min Path Length**
+<summary><strong>SeedAttributesToPathTags</strong><br><em>Mapping of seed attributes to tags on the resulting path.</em></summary>
 
-_Minimum number of edges in a path._
+Defines how properties from the original seed point are transferred to tags on the generated cell. This allows associating metadata from the seed with the resulting shape.
 
-* Ensures that only paths with at least this many edges are considered valid
-* Useful for filtering out very small or degenerate cells
+</details>
 
-**Max Angle Deviation**
+<details>
 
-_Maximum angle deviation allowed during path building._
+<summary><strong>SeedForwarding</strong><br><em>Which seed attributes are copied to the output paths.</em></summary>
 
-* Controls how sharp turns are allowed in the generated cell boundaries
-* Lower values create smoother, more rounded shapes
+Specifies which properties from the original seed points should be carried over to the generated cells. This helps retain important information like ID, color, or other attributes.
 
-**Shape Type Output**
+</details>
 
-_Which types of cells to output._
+<details>
 
-**Values**:
+<summary><strong>bUseOctreeSearch</strong><br><em>Whether to use an octree structure for finding the closest edge to a seed.</em></summary>
 
-* **Convex & Concave**: Output both convex and concave cells
-* **Convex Only**: Output only convex cells
-* **Concave Only**: Output only concave cells
+When enabled, this subnode uses an octree to speed up the process of locating nearby edges. This improves performance when working with large datasets but may slow things down in some cases.
 
-***
-
-#### Cell Artifacts
-
-Controls what additional data is attached to the generated cells.
-
-**Output Orientation**
-
-_Direction in which cell points are ordered._
-
-**Values**:
-
-* **Clockwise**: Points are ordered in a clockwise direction
-* **Counter Clockwise**: Points are ordered in a counter-clockwise direction
-
-**Output Properties**
-
-_Additional properties to compute and output for each cell._
-
-**Values**:
-
-* **None**: No extra properties
-* **Density**: Compute how densely the edges are packed
-* **Steepness**: Measure of how steep the path is
-* **R Channel**: Red channel color value
-* **G Channel**: Green channel color value
-* **B Channel**: Blue channel color value
-* **A Channel**: Alpha channel color value
-
-***
-
-#### Seed Mutation
-
-Controls how seed points are adjusted when generating cells.
-
-**Seed Location**
-
-_Where to place the seed point within the generated cell._
-
-**Values**:
-
-* **Original**: Keep the seed at its original position
-* **Centroid**: Place the seed at the geometric center of the path
-* **Path bounds center**: Place the seed at the center of the path's bounding box
-* **First Node**: Place the seed on the first node of the path
-
-**Seed Scale**
-
-_Scale factor applied to the seed point._
-
-* Multiplies the seed's scale by this value when placing it within the cell
-* Useful for adjusting how the seed appears in relation to the generated shape
-
-***
-
-#### Forwarding Settings
-
-Controls which attributes from the input points are forwarded to the output.
-
-**Seed Attributes To Path Tags**
-
-_Forward attributes from seeds as tags on paths._
-
-* When enabled, selected attributes from seed points are added as tags to the resulting cell paths
-
-**Seed Forwarding**
-
-_Forward attributes from seeds to paths._
-
-* When enabled, selected attributes from seed points are copied to the generated cell point data
-* Can preserve original point properties like color, height, or other metadata
+</details>

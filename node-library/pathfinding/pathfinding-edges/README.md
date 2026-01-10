@@ -6,183 +6,145 @@ icon: scrubber
 # Pathfinding : Edges
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Extract paths from edges clusters.
+> Extracts paths from edge clusters using pathfinding algorithms.
 
-### Overview
+#### How It Works
 
-This node finds and outputs paths between seed and goal points within edge-based clusters, such as road networks or graph structures. It's designed for scenarios where you want to generate routes through connected edges, like finding the shortest path between two locations in a city grid or navigating a network of connections.
+This node processes edge-based graph data to find routes between starting and ending points. It works with clusters of connected edges and uses a chosen search method to determine valid paths. The node selects start and end points from the cluster, then builds a path based on the configured settings. You can choose what elements make up the output path — vertices (nodes), edges, or both. The node also supports adding the start and end points to the path itself, and can forward attributes from these points to the resulting paths.
 
-It operates on clusters of edges (like roads or links) and uses a pathfinding algorithm to determine the route from a seed point to a goal point. The resulting paths can be made up of either vertices (points), edges, or both, depending on your configuration.
+The process includes:
 
-{% hint style="info" %}
-This node works best with pre-clustered edge data, such as roads or network connections. It does not perform clustering itself.
-{% endhint %}
+1. Selecting a starting point (seed) and an ending point (goal) from the cluster
+2. Using a selected search algorithm to find a route between them
+3. Building the output path using the specified composition settings
+4. Optionally including the start and end points in the final path
+5. Copying attributes from the seed and goal points to the resulting paths
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>GoalPicker</strong><br><em>Controls how goals are picked.</em></summary>
 
-* **Main Input** (Default): Clustered edges to process
-* **Seeds** (Optional): Points used as starting locations for pathfinding
-* **Goals** (Optional): Points used as destination locations for pathfinding
+A subnode that defines how goal points are selected from the input data or cluster.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>bAddSeedToPath</strong><br><em>Add seed point at the beginning of the path</em></summary>
 
-* **Paths** (Default): Generated paths from seed to goal points, represented as point collections
-* **Edges** (Optional): Original edges that were part of the pathfinding process
+When enabled, adds the seed point as the first element in the resulting path.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how paths are generated and what data is included in the output.
+<summary><strong>bAddGoalToPath</strong><br><em>Add goal point at the beginning of the path</em></summary>
 
-***
+When enabled, adds the goal point as the last element in the resulting path.
 
-#### Node Picking
+</details>
 
-Configures how seed and goal points are mapped to nodes within clusters.
+<details>
 
-**Seed Picking Method**
+<summary><strong>PathComposition</strong><br><em>What are the paths made of.</em></summary>
 
-_Controls how a seed point selects a node within a cluster._
+Controls what elements make up the output path:
 
-* Determines whether the closest edge or vertex is used for pathfinding start
-* When set to **Closest vtx**, the path starts at the nearest vertex
-* When set to **Closest edge**, the path starts at the nearest edge, then to its endpoint
+* **Vtx**: Only vertices (nodes) from the graph
+* **Edge**: Only edges connecting the nodes
+* **Vtx & Edges**: Both vertices and edges in alternating order
 
-**Goal Picking Method**
+</details>
 
-_Controls how a goal point selects a node within a cluster._
+<details>
 
-* Determines whether the closest edge or vertex is used for pathfinding end
-* When set to **Closest vtx**, the path ends at the nearest vertex
-* When set to **Closest edge**, the path ends at the nearest edge, then to its endpoint
+<summary><strong>SeedPicking</strong><br><em>Drive how a seed selects a node.</em></summary>
 
-**Max Distance**
+A subnode that defines how seed points are selected from the cluster.
 
-_Maximum distance allowed between a point and a node._
+</details>
 
-* If a point is further than this distance from any node, it will be skipped
-* Set to -1 to ignore distance checks (default)
+<details>
 
-***
+<summary><strong>GoalPicking</strong><br><em>Drive how a goal selects a node.</em></summary>
 
-#### Path Composition
+A subnode that defines how goal points are selected from the cluster.
 
-Controls what elements make up the resulting paths.
+</details>
 
-**Path Composition**
+<details>
 
-_What are the paths made of._
+<summary><strong>SearchAlgorithm</strong><br><em>Search algorithm.</em></summary>
 
-* **Vtx**: Paths consist only of vertices (points)
-* **Edge**: Paths consist only of edges (connections between points)
-* **Vtx & Edges**: Paths include both vertices and edges in sequence
+A subnode that specifies which pathfinding algorithm to use (e.g., A\*, Dijkstra, etc.).
 
-***
+</details>
 
-#### Tagging & Forwarding
+<details>
 
-Controls how attributes from seed and goal points are transferred to the output paths.
+<summary><strong>SeedAttributesToPathTags</strong><br><em>TBD</em></summary>
 
-**Seed Attributes To Path Tags**
+Defines how attributes from seed points are used as tags in the output paths.
 
-_Which seed attributes to use as tags on paths._
+</details>
 
-* Selects attributes from seed points to tag each path with
-* Useful for categorizing or identifying paths based on seed properties
+<details>
 
-**Seed Forwarding**
+<summary><strong>SeedForwarding</strong><br><em>Which Seed attributes to forward on paths.</em></summary>
 
-_Which seed attributes to forward on paths._
+Specifies which attributes from seed points should be copied to the resulting paths.
 
-* Copies selected attributes from seed points to the output paths
-* Enable this to preserve data like names, types, or other metadata from seeds
+</details>
 
-**Goal Attributes To Path Tags**
+<details>
 
-_Which goal attributes to use as tags on paths._
+<summary><strong>GoalAttributesToPathTags</strong><br><em>Which Goal attribute to use as tag.</em></summary>
 
-* Selects attributes from goal points to tag each path with
-* Useful for categorizing or identifying paths based on goal properties
+Defines how attributes from goal points are used as tags in the output paths.
 
-**Goal Forwarding**
+</details>
 
-_Which goal attributes to forward on paths._
+<details>
 
-* Copies selected attributes from goal points to the output paths
-* Enable this to preserve data like names, types, or other metadata from goals
+<summary><strong>GoalForwarding</strong><br><em>TBD</em></summary>
 
-***
+Specifies which attributes from goal points should be copied to the resulting paths.
 
-#### Advanced
+</details>
 
-Additional settings that control path generation and performance.
+<details>
 
-**Add Seed To Path**
+<summary><strong>Statistics</strong><br><em>Output various statistics.</em></summary>
 
-_When enabled, adds the seed point at the beginning of each path._
+When enabled, outputs performance and processing statistics about the pathfinding operations.
 
-* Useful for visualizing where paths start
-* Adds one extra point to each path
+</details>
 
-**Add Goal To Path**
+<details>
 
-_When enabled, adds the goal point at the end of each path._
+<summary><strong>PathOutputDetails</strong><br><em>Paths Output Settings</em></summary>
 
-* Useful for visualizing where paths end
-* Adds one extra point to each path
+Controls how paths are structured in the output, including point order and attribute handling.
 
-**Search Algorithm**
+</details>
 
-_Selects the algorithm used to find paths between nodes._
+<details>
 
-* Choose from various pathfinding algorithms (e.g., A\*, Dijkstra)
-* Different algorithms may perform better depending on your data structure and requirements
+<summary><strong>bUseOctreeSearch</strong><br><em>Whether or not to search for closest node using an octree.</em></summary>
 
-**Goal Picker**
+When enabled, uses an octree structure to speed up node lookups during pathfinding. Can improve performance on large datasets but may be slower in some cases.
 
-_Configures how goals are selected for pathfinding._
+</details>
 
-* Determines which goal point is used when multiple goals exist for a seed
-* Options include selecting by index, closest point, or other methods
+<details>
 
-**Path Output Settings**
+<summary><strong>bGreedyQueries</strong><br><em>If disabled, will share memory allocations between queries.</em></summary>
 
-_Configures filtering of output paths based on length._
+When disabled, forces sequential query execution to reduce memory usage. This is slower but more memory-efficient.
 
-* **Remove Small Paths**: Removes paths with fewer points than the minimum threshold
-* **Minimum Points**: Minimum number of points required for a path to be output (default: 3)
-* **Remove Large Paths**: Removes paths with more points than the maximum threshold
-* **Maximum Points**: Maximum number of points allowed in an output path (default: 500)
-
-**Statistics**
-
-_Enables outputting various performance and pathfinding statistics._
-
-* When enabled, outputs additional data about the pathfinding process
-* Useful for debugging or optimizing your setup
-
-**Use Octree Search**
-
-_Whether to use octree-based search for finding closest nodes._
-
-* Can significantly speed up node selection in large datasets
-* May slow down processing in small datasets due to overhead
-
-**Greedy Queries**
-
-_Controls memory allocation behavior for pathfinding queries._
-
-* When enabled, each query uses its own memory allocations (faster but more memory)
-* When disabled, queries share memory allocations (slower but more conservative)
+</details>

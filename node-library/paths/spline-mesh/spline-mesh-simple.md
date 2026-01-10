@@ -6,291 +6,221 @@ icon: circle
 # Spline Mesh (Simple)
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Create spline mesh components from paths.
 
-### Overview
+#### How It Works
 
-This node generates spline mesh components along paths, allowing you to create continuous meshes like roads, rivers, or trails that follow the shape of your input paths. It's ideal for building dynamic geometry that adapts to path shapes without manual mesh creation.
+This node processes input paths and generates spline mesh components along each segment of those paths. For every path segment, it calculates start and end positions based on offset settings, then places a spline mesh component between those points.
 
-{% hint style="info" %}
-The output is a collection of spline mesh components that can be used directly in the level or as part of more complex spawning operations.
-{% endhint %}
+The node supports multiple ways to select which mesh asset to use:
+
+* Use a single static mesh for all segments
+* Read mesh paths from a point attribute
+* Apply different meshes per point
+
+It also allows you to control how the mesh is oriented along the path using either a fixed up vector or by reading up vectors from an attribute. If tangents are defined, it can compute an up vector that avoids gimbal lock.
+
+You can apply materials either from a constant or from a point attribute, and specify which material slot to use. The generated meshes can be placed in a specific actor or added to the default world. You can also configure post-processing functions to run on the target actor after mesh creation.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Asset Type</strong><br><em>How the asset gets selected.</em></summary>
 
-* **Main Input**: Paths (Point data with path information)
-* **Optional Filters**: Point filters to control which paths are processed
+Controls whether to use a constant static mesh or read mesh paths from an attribute.
+
+**Values**:
+
+* **Constant**: Use the Static Mesh setting as the asset
+* **Attribute**: Read asset path from the point attribute named Asset Path Attribute
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Asset Path Attribute</strong><br><em>The name of the attribute to write asset path to.</em></summary>
 
-* **Main Output**: Point data with spline mesh components attached
-* **Optional**: Additional outputs for filtering or processing
+The name of the attribute containing static mesh paths when Asset Type is set to "Attribute".
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the spline meshes are generated, including asset selection, material handling, and mesh configuration.
+<summary><strong>Static Mesh</strong><br><em>Constant static mesh .</em></summary>
 
-***
+The static mesh to use when Asset Type is set to "Constant".
 
-#### General Settings
+</details>
 
-Controls how assets are selected and applied to the generated spline meshes.
+<details>
 
-**Asset Type**
+<summary><strong>Read Material From Attribute</strong><br><em>When enabled, read material from an attribute.</em></summary>
 
-_Controls whether a constant static mesh is used or one read from an attribute._
+When enabled, the node reads material paths from a point attribute instead of using a constant material.
 
-* When set to **Constant**, the mesh specified in "Asset" will be used for all spline meshes.
-* When set to **Attribute**, the node reads a mesh path from the attribute named in "Asset (Attr)".
+</details>
+
+<details>
+
+<summary><strong>Material Attribute Name</strong><br><em>The name of the attribute to write material path to.</em></summary>
+
+The name of the attribute containing material paths when Read Material From Attribute is enabled.
+
+</details>
+
+<details>
+
+<summary><strong>Material Slot Constant</strong><br><em>The index of the slot to set the material to, if found.</em></summary>
+
+The material slot index to apply the material to when Read Material From Attribute is enabled.
+
+</details>
+
+<details>
+
+<summary><strong>Target Actor</strong><br><em>Target actor to place spline meshes in.</em></summary>
+
+The actor where generated spline mesh components will be placed. If none is specified, they are added to the default world.
+
+</details>
+
+<details>
+
+<summary><strong>Start Offset Input</strong><br><em>Type of Start Offset</em></summary>
+
+Controls whether to use a constant or attribute-based start offset.
 
 **Values**:
 
-* **Constant**: Use a single static mesh asset
-* **Attribute**: Read mesh paths from an attribute
+* **Constant**: Use the Start Offset setting
+* **Attribute**: Read offset from the point attribute named Start Offset Attribute
 
-**Asset (Attr)**
+</details>
 
-_The name of the attribute containing static mesh paths when Asset Type is set to Attribute._
+<details>
 
-* This attribute should contain valid paths to static mesh assets.
-* The node will load and apply these meshes dynamically.
+<summary><strong>Start Offset Attribute</strong><br><em>Start Offset Attribute (Vector 2 expected)</em></summary>
 
-**Asset**
+The name of the attribute containing start offsets when Start Offset Input is set to "Attribute".
 
-_The constant static mesh to use for all generated spline meshes when Asset Type is set to Constant._
+</details>
 
-* This is the default mesh used if no attribute-based mesh is specified.
-* Must be a valid static mesh asset reference.
+<details>
 
-**Read Material From Attribute**
+<summary><strong>Start Offset</strong><br><em>Start Offset Constant</em></summary>
 
-_When enabled, materials are read from an attribute instead of using the default material._
+The constant start offset value used when Start Offset Input is set to "Constant".
 
-* Useful for creating varied appearances along paths.
-* If disabled, the default material from Static Mesh Descriptor will be used.
+</details>
 
-**Material (Attr)**
+<details>
 
-_The name of the attribute to read material paths from when "Read Material From Attribute" is enabled._
+<summary><strong>End Offset Input</strong><br><em>Type of End Offset</em></summary>
 
-* This attribute should contain valid paths to material assets.
-* Materials are applied to the first slot by default unless specified otherwise.
-
-**Material Slot**
-
-_The index of the material slot to apply the loaded material to._
-
-* Only relevant when reading materials from an attribute.
-* Defaults to slot 0 (first material slot).
-
-**Target Actor**
-
-_The actor that will contain the generated spline mesh components._
-
-* If set, all generated components will be attached to this actor.
-* Useful for organizing spawned geometry in the level.
-
-***
-
-#### Tangents
-
-Controls how tangents are calculated and applied to the spline meshes.
-
-**Use Tangents**
-
-_When enabled, tangent information from point data is used to orient the spline mesh up vector._
-
-* This helps maintain consistent orientation along curves.
-* Requires that your input paths have valid tangent attributes.
-
-**Arrive Scale (Attr)**
-
-_The name of the attribute to read arrive scale values from._
-
-* Controls how much the spline mesh scales at the start of each segment.
-
-**Leave Scale (Attr)**
-
-_The name of the attribute to read leave scale values from._
-
-* Controls how much the spline mesh scales at the end of each segment.
-
-**Arrive Scale**
-
-_The constant value used for arrive scaling when "Arrive Scale Input" is set to Constant._
-
-* Affects the width of the spline mesh at the start of segments.
-
-**Leave Scale**
-
-_The constant value used for leave scaling when "Leave Scale Input" is set to Constant._
-
-* Affects the width of the spline mesh at the end of segments.
-
-***
-
-#### Offsets
-
-Controls how the start and end points of each segment are offset, allowing for fine-tuning of mesh placement.
-
-**Start Offset (Attr)**
-
-_The name of the attribute containing start offset values._
-
-* Values should be 2D vectors representing X/Y offsets.
-* Applied to the beginning of each path segment.
-
-**Start Offset**
-
-_The constant vector used as the start offset when "Start Offset Input" is set to Constant._
-
-* Offsets the starting point of each spline mesh segment.
-
-**End Offset (Attr)**
-
-_The name of the attribute containing end offset values._
-
-* Values should be 2D vectors representing X/Y offsets.
-* Applied to the end of each path segment.
-
-**End Offset**
-
-_The constant vector used as the end offset when "End Offset Input" is set to Constant._
-
-* Offsets the ending point of each spline mesh segment.
-
-***
-
-#### Mutations
-
-Controls how segments are expanded or contracted along their length.
-
-**Expansion**
-
-_Configures how segments are pushed inward or outward from their original positions._
-
-* Includes options for pushing start and end points.
-* Can be relative to segment size or absolute values.
-
-**Push Start**
-
-_When enabled, the start of each segment is pushed inward or outward._
-
-* Useful for creating overlapping or non-overlapping segments.
-
-**Push End**
-
-_When enabled, the end of each segment is pushed inward or outward._
-
-* Allows fine control over how segments connect or overlap.
-
-***
-
-#### Spline Mesh Up Vector
-
-Controls how the up vector of each spline mesh is calculated and applied.
-
-**Spline Mesh Up Mode**
-
-_Determines how the up vector for each spline mesh is computed._
+Controls whether to use a constant or attribute-based end offset.
 
 **Values**:
 
-* **Constant**: Use a fixed vector defined in "Spline Mesh Up Vector"
+* **Constant**: Use the End Offset setting
+* **Attribute**: Read offset from the point attribute named End Offset Attribute
+
+</details>
+
+<details>
+
+<summary><strong>End Offset Attribute</strong><br><em>End Offset Attribute (Vector 2 expected)</em></summary>
+
+The name of the attribute containing end offsets when End Offset Input is set to "Attribute".
+
+</details>
+
+<details>
+
+<summary><strong>End Offset</strong><br><em>End Offset Constant</em></summary>
+
+The constant end offset value used when End Offset Input is set to "Constant".
+
+</details>
+
+<details>
+
+<summary><strong>Mutation Details</strong><br><em>Push details</em></summary>
+
+Controls how the spline mesh components are expanded or mutated along the path.
+
+</details>
+
+<details>
+
+<summary><strong>Spline Mesh Up Mode</strong><br><em>How to determine the up vector for the spline mesh.</em></summary>
+
+Controls how the up vector is calculated for each spline mesh component.
+
+**Values**:
+
+* **Constant**: Use a fixed up vector
 * **Attribute**: Read up vector from an attribute
-* **From Tangents (Gimbal fix)**: Automatically compute up vector using tangents to prevent gimbal lock
+* **From Tangents (Gimbal fix)**: Automatically compute up vector from tangents to avoid gimbal lock
 
-**Spline Mesh Up Vector (Attr)**
+</details>
 
-_The name of the attribute containing up vectors when "Spline Mesh Up Mode" is set to Attribute._
+<details>
 
-* Should contain 3D vectors representing up directions.
-* Used to orient each spline mesh component.
+<summary><strong>Spline Mesh Up Vector Attribute</strong><br><em>Spline Mesh Up Vector (Attr)</em></summary>
 
-**Spline Mesh Up Vector**
+The name of the attribute containing up vectors when Spline Mesh Up Mode is set to "Attribute".
 
-_The constant vector used as the up direction when "Spline Mesh Up Mode" is set to Constant._
+</details>
 
-* Defines the default orientation of all spline meshes.
-* Typically set to FVector::UpVector (0, 0, 1).
+<details>
 
-***
+<summary><strong>Spline Mesh Up Vector</strong><br><em>Spline Mesh Up Vector</em></summary>
 
-#### Static Mesh Descriptor
+The fixed up vector used when Spline Mesh Up Mode is set to "Constant".
 
-Controls rendering and behavior properties for generated spline mesh components.
+</details>
 
-**Visibility**
+<details>
 
-_Whether the generated spline mesh components are visible in the level._
+<summary><strong>Static Mesh Descriptor</strong><br><em>Default static mesh config applied to spline mesh components.</em></summary>
 
-* When disabled, components won't appear in the viewport or game.
+Defines default properties for created spline mesh components, such as scale, rotation, and other component settings.
 
-**Min Draw Distance**
+</details>
 
-_The minimum distance at which the component is rendered._
+<details>
 
-* Components closer than this value won't be drawn.
-* Helps with performance by reducing unnecessary rendering.
+<summary><strong>Property Override Descriptions</strong><br><em>List of property overrides for the generated components.</em></summary>
 
-**Max Draw Distance**
+Allows you to override specific properties of the generated spline mesh components.
 
-_The maximum distance at which the component is rendered._
+</details>
 
-* Components farther than this value won't be drawn.
-* Useful for controlling LOD and performance.
+<details>
 
-**Indirect Lighting Cache Quality**
+<summary><strong>Post Process Function Names</strong><br><em>Specify a list of functions to be called on the target actor after spline mesh creation. Functions need to be parameter-less and with "CallInEditor" flag enabled.</em></summary>
 
-_Determines how much indirect lighting affects the mesh._
+List of function names to call on the target actor after spline mesh components are created.
 
-* Higher values improve lighting quality but increase cache update times.
-* Affects movable primitives only.
+</details>
 
-**Lightmap Type**
+#### Usage Example
 
-_Controls how lightmaps are applied to the mesh._
+1. Create a path using a Path Generator node
+2. Connect it to this Path : Spline Mesh (Simple) node
+3. Set the Static Mesh to a road or fence asset
+4. Optionally set a Target Actor to place the meshes in a specific location
+5. Add point filters if you want to only generate meshes on certain points
+6. Run the graph - you'll now have spline mesh components along your path
 
-**Values**:
+#### Notes
 
-* **Default**: Use default lightmap settings
-* **Static**: Static lightmaps for performance
-* **Dynamic**: Dynamic lightmaps for real-time lighting
-
-**Cast Shadow**
-
-_Whether the component casts shadows._
-
-* Enables or disables shadow casting from this component.
-
-**Receive Shadows**
-
-_Whether the component receives shadows._
-
-* Controls if the mesh can be affected by other objects' shadows.
-
-***
-
-#### Post Processing
-
-Controls functions to call after spline mesh creation.
-
-**Post Process Function Names**
-
-_A list of function names to call on the target actor after spline mesh creation._
-
-* Functions must be parameter-less and have the "CallInEditor" flag enabled.
-* Useful for custom logic or post-processing after component generation.
+* The node supports both closed and open paths
+* When using attribute-based asset or material selection, make sure the attributes exist and contain valid paths
+* If tangents are used for up vector calculation, ensure that tangent data is present in the input points
+* For performance reasons, avoid using many different mesh assets per path segment
+* Post-process functions must be defined on the target actor with the "CallInEditor" flag enabled

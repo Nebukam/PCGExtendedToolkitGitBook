@@ -5,84 +5,74 @@ icon: circle-dashed
 # Noise : Voronoi
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates Voronoi cell patterns with multiple output modes for procedural content generation.
+> Generates Voronoi cell patterns with multiple output modes for procedural content.
 
-### Overview
+#### How It Works
 
-This factory generates Voronoi noise, which produces cellular patterns based on randomly distributed points in 3D space. The resulting pattern creates distinct regions (cells) around each point, with boundaries forming natural-looking cell walls.
+This subnode creates a 3D Voronoi pattern by calculating the distance from any point in space to its nearest feature point. Each point belongs to the cell defined by the closest feature point, forming distinct cells. The process uses a grid-based search over a 3x3x3 neighborhood of cells to find the closest feature point and computes the distance to it.
 
-{% hint style="info" %}
-Connects to **Noise** input pins on other nodes that require procedural value sampling.
-{% endhint %}
+The output mode determines what value is returned:
 
-### How It Works
+* **Cell Value**: Returns an integer representing which cell the point belongs to.
+* **Distance to Center**: Returns the Euclidean distance from the point to its nearest feature point.
+* **Edge Distance**: Returns the shortest distance to any edge of the Voronoi cell.
+* **Crackle (F2-F1)**: Returns the difference between the two closest distances, creating a "crackled" effect.
 
-Voronoi noise works by generating a set of random points in 3D space. For any given position, it calculates the distance to the nearest point and returns a value based on that distance or cell characteristics. The pattern creates natural-looking cellular structures with sharp boundaries between regions.
+The jitter parameter controls how much feature points are displaced from their grid positions, adding variation. The smoothness parameter modifies how sharp or soft the cell boundaries appear when computing distances.
 
-The factory supports multiple output modes:
+#### Configuration
 
-* **Cell Value**: Returns a unique scalar value for each cell
-* **Distance to Center**: Returns the distance from input position to the center of its cell
-* **Edge Distance**: Returns the distance to the nearest cell boundary
-* **Crackle**: Returns the difference between the two closest distances (F2-F1)
+<details>
 
-### Configuration
+<summary><strong>Output Type</strong><br><em>Controls what value is returned by the noise.</em></summary>
 
-***
+Determines how the Voronoi pattern's output is interpreted.
 
-#### General
+**Values**:
 
-**Output Type**
+* **Cell Value**: Returns an integer ID for each cell
+* **Distance to Center**: Returns distance from point to nearest feature point
+* **Edge Distance**: Returns distance to the closest edge of the Voronoi cell
+* **Crackle (F2-F1)**: Returns difference between two closest distances
 
-_Controls what value is returned for each cell._
+</details>
 
-When set to:
+<details>
 
-* **Cell Value**: Each cell returns a unique scalar value
-* **Distance to Center**: Distance from input position to cell center
-* **Edge Distance**: Distance from input position to nearest cell boundary
-* **Crackle (F2-F1)**: Difference between two closest distances
+<summary><strong>Jitter</strong><br><em>Amount of displacement for feature points.</em></summary>
 
-**Jitter Amount**
+Controls how much each Voronoi feature point is randomly displaced from its grid position.
 
-_Control how much randomness is applied to cell positions._
+Range: 0.0 to 1.0
 
-A value of 0.0 creates perfectly aligned cells, while 1.0 creates maximum randomness in cell placement. Values between 0 and 1 allow for controlled variation in cell patterns.
+* 0.0 = No jitter, regular grid
+* 1.0 = Full jitter, maximum displacement
 
-**Smoothness**
+</details>
 
-_Control the smoothness of cell boundaries._
+<details>
 
-When set to 0.0, cell boundaries are sharp and angular. Higher values (0.1-1.0) create smoother transitions between cells, making the pattern appear more organic and less grid-like. Use this to control how "crisp" or "soft" the cell edges appear.
+<summary><strong>Smoothness</strong><br><em>Controls the softness of cell boundaries.</em></summary>
 
-### Usage Example
+Applies a smooth minimum function to blend distances between cells.
 
-Use this factory to create natural-looking terrain features like:
+Range: 0.0 to 1.0
 
-* Stone or tile patterns with distinct regions
-* Organic growth patterns for vegetation placement
-* Displacement maps for rock or terrain texturing
-* Procedural material variations based on cell membership
+* 0.0 = Sharp, hard edges
+* 1.0 = Very soft, blended edges
 
-Connect the output to a **Noise** pin on nodes like **Point Noise**, **Attribute Noise**, or **Mesh Noise** to apply the Voronoi pattern to point positions or attributes.
+</details>
 
-### Notes
+#### Usage Example
 
-* Higher jitter values create more organic, less structured patterns
-* Smoothness controls how much cell boundaries blend into each other
-* Edge Distance output is ideal for creating natural-looking borders or outlines
-* Crackle mode can be used to create interesting texture variations by emphasizing differences between neighboring cells
-* Combine multiple Voronoi noise sources with different settings for complex layered patterns
+Use this subnode in a path smoothing operation where you want to vary the smoothness or shape of the path based on Voronoi cell patterns. For instance, you could use it to create organic-looking terrain paths that follow Voronoi cell boundaries, with the "Edge Distance" output driving the curvature.
 
-### Inputs
+#### Notes
 
-* **Noise** (Optional): Input noise to use as base for the Voronoi pattern. If not connected, the node generates its own random points.
-
-### Outputs
-
-* **Noise**: The generated Voronoi noise pattern that can be connected to other nodes requiring procedural value sampling.
+* Voronoi noise is computationally efficient and works well for large-scale procedural generation.
+* The "Crackle" mode can be used to add texture variation or noise-like effects.
+* Higher jitter values produce more organic-looking patterns.
+* Smoothness affects performance slightly, as it uses an iterative smooth minimum calculation.

@@ -11,157 +11,179 @@ This page was generated from the source code. It should properly capture what th
 
 > Creates a filter definition that checks points inclusion against path-like data (paths, splines, polygons).
 
-#### Overview
-
-This subnode defines a filtering behavior that determines whether individual points are inside or outside of path-like geometric data such as splines, paths, or polygons. It's used to selectively pass or reject points based on their spatial relationship to these shapes.
-
-It is particularly useful for creating boundaries, exclusion zones, or area-based selection logic in procedural content generation workflows. For example, you might use it to only place trees inside a forest boundary defined by a spline, or to avoid placing buildings within a water body.
-
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes that support point filtering.
-{% endhint %}
-
 #### How It Works
 
-This subnode evaluates whether each input point lies inside or outside of one or more path-like shapes. It uses geometric algorithms to determine inclusion:
+This subnode evaluates whether points fall inside, outside, or on the edge of path-like shapes such as splines, paths, or polygons. It projects 3D points into 2D space and performs inclusion tests based on the shape's geometry.
 
-1. It projects the point onto the shape's surface or boundary for comparison.
-2. For splines and polygons, it checks if a point is inside or outside using winding rules or ray casting methods.
-3. If multiple shapes are present, it evaluates each one and combines results based on the **Pick** setting.
-4. Optionally, it applies an offset (inset or outset) to the shape for more flexible inclusion testing.
-5. It can enforce a specific winding order for consistent behavior.
-6. Results can be inverted using the **Invert** toggle.
+For each point:
 
-The evaluation process considers:
+1. If a single path is used, it determines if the point lies within that path.
+2. When multiple paths are present, it evaluates all paths and combines results according to the **Pick** setting.
+3. The result can be inverted using the **Invert** toggle.
+4. Optional tolerance and offset settings allow for fine-tuning of inclusion boundaries.
+5. For collections, it can optionally use bounds instead of individual point testing.
 
-* The type of shape (spline, path, polygon)
-* Whether the point is within tolerance of the shape's edge
-* The number of shapes intersecting with the point (controlled by Min/Max Inclusion Count)
-* Whether to use per-point or collection bounds for testing
-
-<details>
-
-<summary>Inputs</summary>
-
-Expects a set of points and associated path-like data such as splines, paths, or polygons. The path data is used to define inclusion boundaries.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-Produces a boolean result per point indicating whether it passes the inclusion test (true) or fails (false). This result can be used by downstream nodes to filter or process points accordingly.
-
-</details>
+The subnode supports both polygonal and spline-based inclusion checks, with options to control how paths are projected and evaluated.
 
 #### Configuration
 
-***
+<details>
 
-**ProjectionDetails**
+<summary><strong>ProjectionDetails</strong><br><em>Projection settings (used for inclusion checks).</em></summary>
 
-_Controls how points are projected onto the path data for inclusion testing._
+Controls how the 3D point data is projected into 2D space for inclusion testing. This affects the accuracy of the check when working with non-planar geometry.
 
-This setting defines the coordinate system and projection method used when evaluating point inclusion. It affects how the point's position is interpreted relative to the shape.
+</details>
 
-**SampleInputs**
+<details>
 
-_Controls which input paths are sampled during inclusion checks._
+<summary><strong>SampleInputs</strong><br><em>Sample inputs.</em></summary>
 
-* **All**: All input paths are considered.
-* **Closest**: Only the closest path is used for testing.
+Determines how input splines are sampled during inclusion testing:
 
-**CheckType**
+* **All**: Tests against all points along the spline.
+* **Closest**: Only tests against the closest point on the spline.
 
-_Determines what type of inclusion test to perform._
+</details>
 
-* **IsInside**: Point must be inside the shape.
-* **IsOutside**: Point must be outside the shape.
+<details>
 
-**Pick**
+<summary><strong>CheckType</strong><br><em>Type of inclusion test to perform.</em></summary>
 
-_Controls behavior when a point intersects multiple paths._
+Defines the type of inclusion test to perform:
 
-* **Closest**: If a point is both inside and outside different paths, use the result from the closest path.
-* **All**: Use all path results to determine final inclusion (logical AND/OR based on other settings).
+* **IsInside**: Point is inside the shape.
+* **IsOutside**: Point is outside the shape.
+* **IsOnEdge**: Point is on the edge of the shape.
 
-**Tolerance**
+</details>
 
-_Tolerance value used to determine whether a point is considered on the spline or not._
+<details>
 
-A small distance value that defines how close a point must be to a shape's edge to be treated as "on" the shape. Higher values make the inclusion test more lenient.
+<summary><strong>Pick</strong><br><em>If a point is both inside and outside a spline (if there are multiple ones), decide what value to favor.</em></summary>
 
-**bSplineScalesTolerance**
+Controls behavior when a point's inclusion status conflicts across multiple paths:
 
-_When enabled, scales the tolerance based on the spline's thickness._
+* **Closest**: Uses the result from the closest path.
+* **All**: Requires all paths to agree for a pass.
 
-If enabled, the tolerance is multiplied by the spline's scale factor (its "thickness"), making it adaptive to varying path sizes.
+</details>
 
-**InclusionOffset**
+<details>
 
-_If non-zero, applies an inset or outset to the shape used for inclusion testing._
+<summary><strong>Tolerance</strong><br><em>Tolerance value used to determine whether a point is considered on the spline or not.</em></summary>
 
-Positive values create an inset (shrink) of the original shape. Negative values create an outset (expand). This allows for more flexible boundary definitions.
+A distance threshold used to determine if a point lies on or near the spline. Larger values make inclusion checks more lenient.
 
-**bUseMinInclusionCount**
+</details>
 
-_When enabled, requires a minimum number of paths to include a point._
+<details>
 
-If enabled, a point must be included in at least the specified number of paths to pass the filter.
+<summary><strong>bSplineScalesTolerance</strong><br><em>Scale the tolerance with spline' "thickness" (Scale' length).</em></summary>
 
-**MinInclusionCount**
+When enabled, scales the tolerance value based on the spline's thickness to account for varying scale in inclusion checks.
 
-_Number of paths that must include a point when Min Inclusion Count is enabled._
+</details>
 
-Sets the minimum number of path intersections required for a point to be considered inside.
+<details>
 
-**bUseMaxInclusionCount**
+<summary><strong>InclusionOffset</strong><br><em>If non-zero, will apply an offset (inset) to the data used for inclusion testing.</em></summary>
 
-_When enabled, limits the maximum number of paths a point can be included in._
+Applies a uniform offset to the shape used for inclusion testing. Positive values inset the shape, negative values outset it.
 
-If enabled, a point cannot be included in more than the specified number of paths.
+</details>
 
-**MaxInclusionCount**
+<details>
 
-_Maximum number of paths that can include a point when Max Inclusion Count is enabled._
+<summary><strong>bUseMinInclusionCount</strong><br><em>Require a minimum number of paths to include a point.</em></summary>
 
-Sets the upper limit on path intersections for a point to pass the filter.
+When enabled, requires a minimum number of paths to include a point.
 
-**bInvert**
+</details>
 
-_When enabled, inverts the result of the inclusion test._
+<details>
 
-If enabled, points that would normally pass the filter (inside) are rejected, and vice versa.
+<summary><strong>MinInclusionCount</strong><br><em>Minimum number of paths that must include a point for it to pass the filter.</em></summary>
 
-**ExpandZAxis**
+The minimum number of paths that must include a point for it to pass the filter. Only used when **bUseMinInclusionCount** is enabled.
 
-_Advanced setting that controls Z-axis expansion for 2D projections._
+</details>
 
-Controls how the Z-axis is treated when projecting 2D shapes into 3D space. Negative values use default behavior.
+<details>
 
-**WindingMutation**
+<summary><strong>bUseMaxInclusionCount</strong><br><em>Set a maximum number of paths that can include a point.</em></summary>
 
-_Enforces a specific winding order for path inclusion testing._
+When enabled, sets a maximum number of paths that can include a point.
 
-* **Unchanged**: Uses the original winding of the shape.
-* **Clockwise**: Forces all paths to be interpreted as clockwise.
-* **CounterClockwise**: Forces all paths to be interpreted as counter-clockwise.
+</details>
 
-**Fidelity**
+<details>
 
-_Resolution of polygon created from spline during projection._
+<summary><strong>MaxInclusionCount</strong><br><em>Maximum number of paths that can include a point for it to pass the filter.</em></summary>
 
-Affects how accurately the spline is represented when converted into a polygon for inclusion testing. Lower values mean higher resolution and more accurate results, but slower performance.
+The maximum number of paths that can include a point for it to pass the filter. Only used when **bUseMaxInclusionCount** is enabled.
 
-**bCheckAgainstDataBounds**
+</details>
 
-_When enabled, uses collection bounds instead of individual points for testing._
+<details>
 
-If enabled, when working with collections, the filter tests against the bounding box of each collection rather than testing each point individually.
+<summary><strong>bInvert</strong><br><em>If enabled, invert the result of the test.</em></summary>
 
-**bIgnoreSelf**
+When enabled, reverses the inclusion logic. Points that would normally pass now fail and vice versa.
 
-_When enabled, prevents a collection from being tested against itself._
+</details>
 
-If enabled, when using collection-based inclusion, a collection will not be tested against its own data.
+<details>
+
+<summary><strong>ExpandZAxis</strong><br><em>Controls how Z-axis values are handled during projection (advanced setting).</em></summary>
+
+Controls how Z-axis values are handled during projection (advanced setting).
+
+</details>
+
+<details>
+
+<summary><strong>WindingMutation</strong><br><em>Lets you enforce a path winding for testing.</em></summary>
+
+Forces the winding direction of paths to ensure consistent inclusion results:
+
+* **Unchanged**: Uses original winding.
+* **Clockwise**: Forces clockwise winding.
+* **CounterClockwise**: Forces counter-clockwise winding.
+
+</details>
+
+<details>
+
+<summary><strong>Fidelity</strong><br><em>When projecting, defines the resolution of the polygon created from the spline. Lower values means higher fidelity, but slower execution.</em></summary>
+
+Controls how many points are used to approximate a spline when converting it into a polygon for inclusion testing. Lower values mean more accurate but slower tests.
+
+</details>
+
+<details>
+
+<summary><strong>bCheckAgainstDataBounds</strong><br><em>If enabled, when used with a collection filter, will use collection bounds as a proxy point instead of per-point testing.</em></summary>
+
+When enabled, uses the bounding box of each data source for inclusion testing instead of individual points. Improves performance for large collections.
+
+</details>
+
+<details>
+
+<summary><strong>bIgnoreSelf</strong><br><em>If enabled, a collection will never be tested against itself.</em></summary>
+
+When enabled, prevents a collection from being tested against its own data, avoiding self-inclusion issues.
+
+</details>
+
+#### Usage Example
+
+A game designer wants to place trees only within a defined forest area. They create a polygonal path representing the forest boundary and use this filter subnode to ensure that any point placed outside the boundary is discarded. The designer sets **CheckType** to "IsInside", and **Invert** to false, so only points inside the polygon pass the test.
+
+#### Notes
+
+* This subnode works best with closed paths or polygons.
+* Performance can be improved by using **bCheckAgainstDataBounds** for large collections.
+* Tolerance settings are important when dealing with splines that have sharp turns or small details.
+* The **Pick** setting is useful when multiple overlapping shapes are used to define inclusion zones.

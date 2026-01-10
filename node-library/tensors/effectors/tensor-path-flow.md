@@ -6,98 +6,90 @@ icon: circle-dashed
 # Tensor : Path Flow
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> A tensor that represents a vector/flow field along a path.
+> Creates a tensor that represents a vector/flow field along a path.
 
-### Overview
+#### How It Works
 
-This node creates a tensor that defines a flow or direction along a path, useful for guiding procedural generation behaviors like particle movement, object placement, or deformation. It operates by sampling from a set of paths and computing a vector field that follows the shape and orientation of those paths.
+This node builds a directional flow field that guides points along a path. It calculates how strongly each point is influenced by the path based on its distance and orientation. The influence decreases smoothly as points move away from the path, creating a natural falloff effect. The direction of the tensor's influence aligns with the path's orientation, determined by the selected axis.
 
-The resulting tensor can be used to influence other nodes in your graph, such as point placement or mesh deformation, based on how points relate to the underlying path structure.
+1. For each input point, it checks if the point lies within the tensor's radius.
+2. If inside the radius, it calculates how far along the path the point is.
+3. It then determines the direction and strength of the flow based on that position and the path's orientation.
+4. The resulting vector guides the point along the path, with stronger influence closer to the path.
+
+#### Configuration
+
+<details>
+
+<summary><strong>Point Type</strong><br><em>Which point type to use. Shared amongst all points; if you want tight control, create a fully-fledged spline instead.</em></summary>
+
+Controls how the path is interpreted when building the tensor.
+
+**Values**:
+
+* **Linear**: Interpolates points linearly along the path.
+* **Smooth**: Uses smooth interpolation for a more natural curve.
+
+</details>
+
+<details>
+
+<summary><strong>Smooth Linear</strong><br><em>When enabled, uses smooth interpolation for linear point types.</em></summary>
+
+When enabled, applies smooth interpolation to the path when using the Linear point type. This creates a more natural curve.
+
+</details>
+
+<details>
+
+<summary><strong>Sample Inputs</strong><br><em>Sample inputs.</em></summary>
+
+Controls which points along the path are used for sampling the tensor field.
+
+**Values**:
+
+* **All**: Samples all input points.
+* **Start Only**: Samples only the first point.
+* **End Only**: Samples only the last point.
+
+</details>
+
+<details>
+
+<summary><strong>Radius</strong><br><em>Base radius of the spline. Will be scaled by control points' scale length.</em></summary>
+
+Defines how far from the path the tensor has an effect. Larger values mean a wider influence area.
+
+</details>
+
+<details>
+
+<summary><strong>Spline Direction</strong><br><em>Which spline transform axis is to be used.</em></summary>
+
+Determines which direction along the spline is considered "forward" for the tensor's orientation.
+
+**Values**:
+
+* **Forward**: X+ axis.
+* **Backward**: X- axis.
+* **Right**: Y+ axis.
+* **Left**: Y- axis.
+* **Up**: Z+ axis.
+* **Down**: Z- axis.
+
+</details>
 
 {% hint style="info" %}
-This node requires input paths to define the flow direction. Make sure your input data contains valid paths for best results.
+Connects to \*\*Tensor\*\* processing nodes as a Subnode.
 {% endhint %}
 
-<details>
+#### Usage Example
 
-<summary>Inputs</summary>
+Use this node to create a wind effect that follows the shape of a winding river. Connect a path to the input, set the radius to cover the area around the river, and configure the direction to match the flow of water. Then connect it to a tensor processing node to apply the effect to points in your scene.
 
-* **Main Input**: Points or paths that define the flow field
-* **Secondary Input (Optional)**: Additional data used for tensor configuration
+#### Notes
 
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Output**: A tensor that can be consumed by other nodes in your graph to apply path-based flow effects
-
-</details>
-
-### Properties Overview
-
-Controls how the tensor is generated from input paths.
-
-***
-
-#### Path Settings
-
-Configures how the tensor interprets and samples from input paths.
-
-**Point Type**
-
-_Controls the type of interpolation used between points along the path._
-
-* Determines how the shape of the path is represented
-* **Linear (0)**: Straight lines between points
-* **Curve (1)**: Smooth curves between points
-* **Constant (2)**: Constant value at each point
-* **CurveClamped (3)**: Smooth curves with clamped tangents
-
-**Smooth Linear**
-
-_When enabled, applies smoothing to linear interpolation._
-
-* Makes the path appear less angular when using linear point types
-* Improves visual continuity in flow fields
-
-**Sample Inputs**
-
-_Determines which input paths are included in the tensor generation._
-
-* **All**: Includes all input paths
-* **Closed loops only**: Only includes closed-loop paths
-* **Open lines only**: Only includes open line paths
-
-**Radius**
-
-_Scales the base radius of the spline used to define the flow field._
-
-* Controls how far the tensor influences points around the path
-* Larger values result in wider influence zones
-* Value is in world units (e.g., 100 = 100 units)
-
-**Spline Direction**
-
-_Selects which axis of the spline defines the primary direction of the flow._
-
-* **Forward (X+)**: Uses the X-axis as the forward direction
-* **Backward (X-)**: Uses the negative X-axis as the forward direction
-* **Right (Y+)**: Uses the Y-axis as the forward direction
-* **Left (Y-)**: Uses the negative Y-axis as the forward direction
-* **Up (Z+)**: Uses the Z-axis as the forward direction
-* **Down (Z-)**: Uses the negative Z-axis as the forward direction
-
-### Notes
-
-* This tensor is particularly useful for creating natural-looking flows, such as rivers, roads, or wind patterns
-* The radius setting effectively controls how "wide" the influence of each path is
-* Consider using a smaller radius with many paths to create detailed flow fields
-* Combine with other tensor nodes to blend multiple flow patterns together
-* For best results, ensure your input paths are well-defined and don't intersect in unexpected ways
+The tensor's influence is strongest at the center of the path and decreases with distance. Adjust the radius to control how far the effect extends. The spline direction setting allows you to define which way the flow points along the path.

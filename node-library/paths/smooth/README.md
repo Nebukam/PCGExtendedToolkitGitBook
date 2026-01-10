@@ -6,138 +6,143 @@ icon: circle
 # Smooth
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Smooths the points of input paths to create more natural-looking curves.
+> Applies smoothing to path points using configurable methods and influence.
 
-### Overview
+#### How It Works
 
-This node applies smoothing operations to the points of paths, making them appear less angular and more fluid. It's particularly useful for creating organic-looking terrain, roads, rivers, or any procedural geometry that benefits from smooth transitions between waypoints.
+The Path : Smooth node adjusts the positions of path points to reduce sharp angles and create smoother curves. It works by analyzing each point in relation to its neighbors and applying a mathematical operation based on the selected smoothing method.
 
-The smoothing algorithm can be customized through different methods and parameters, allowing you to control how much influence each point has on its neighbors and how many points are considered during the smoothing operation.
+The process starts by iterating through all points in a path, with the first and last points optionally remaining unchanged if the preserve settings are enabled. For each point, the node calculates a new position using influence values that determine how much neighboring points affect it. These influence values can be constant or derived from attributes on the input data.
 
-{% hint style="info" %}
-Smoothing is applied per-path, so each path will be processed independently. This ensures that paths don't interfere with each other during the smoothing process.
-{% endhint %}
+The smoothing amount controls how aggressively the adjustment is applied. Different methods like Gaussian or Catmull-Rom produce different visual results, with some emphasizing natural curves and others maintaining more defined turns. Additionally, the node supports blending attribute values from neighboring points using various modes such as average or linear interpolation, ensuring that not just positions but other data like color, height, or width are smoothly transitioned along the path.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Preserve Start</strong><br><em>When enabled, the start point of each path is not affected by smoothing.</em></summary>
 
-* **Main Input (Default)**: Points representing paths to smooth
-* **Point Filters**: Optional filters to specify which points in the input should be smoothed
+If enabled, the first point in each path remains fixed during the smoothing operation.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Preserve End</strong><br><em>When enabled, the end point of each path is not affected by smoothing.</em></summary>
 
-* **Main Output (Default)**: Smoothed paths with updated point positions
+If enabled, the last point in each path remains fixed during the smoothing operation.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how smoothing is applied to your paths.
+<summary><strong>Smoothing Method</strong><br><em>The method used to smooth points.</em></summary>
 
-***
+Selects the algorithm used for smoothing. This defines how neighboring points influence the current point's position.
 
-#### General Settings
+</details>
 
-Controls core behavior for how paths are smoothed.
+<details>
 
-**Preserve Start**
+<summary><strong>Influence Input</strong><br><em>Fetch the influence from a local attribute.</em></summary>
 
-_When enabled, the first point of each path will not be modified by the smoothing operation._
+Controls whether the influence value is constant or read from an attribute.
 
-* Ensures that the starting position of paths remains unchanged
-* Useful when you want to maintain specific anchor points
+**Values**:
 
-**Preserve End**
+* **Constant**: Use a fixed value defined in "Influence (Attr)".
+* **Attribute**: Read influence values from a point attribute specified in "Influence (Attr)".
 
-_When enabled, the last point of each path will not be modified by the smoothing operation._
+</details>
 
-* Ensures that the ending position of paths remains unchanged
-* Useful when you want to maintain specific anchor points
+<details>
 
-**Smoothing Method**
+<summary><strong>Influence (Attr)</strong><br><em>The amount of smoothing applied.</em></summary>
 
-_Specifies which algorithm is used to smooth the points._
+The attribute to read influence values from when "Influence Input" is set to "Attribute". Influence controls how much a point is affected by its neighbors.
 
-* Choose from various smoothing algorithms (e.g., linear, cubic, etc.)
-* Different methods produce different visual results and performance characteristics
+</details>
 
-**Influence Input Type**
+<details>
 
-_Determines whether the influence value is constant or read from an attribute._
+<summary><strong>Influence</strong><br><em>The amount of smoothing applied.</em></summary>
 
-* **Constant**: Use a fixed value for all points
-* **Attribute**: Read influence values from a point attribute
+A constant value used for influence when "Influence Input" is set to "Constant". Value range is -1 to 1.
 
-**Influence Attribute**
+</details>
 
-_The name of the point attribute to use as influence values when "Influence Input Type" is set to "Attribute."_
+<details>
 
-* Only visible when "Influence Input Type" is set to "Attribute"
-* Controls how much each point influences its neighbors during smoothing
+<summary><strong>Smoothing Amount Type</strong><br><em>Fetch the smoothing from a local attribute.</em></summary>
 
-**Influence (Constant)**
+Controls whether the smoothing amount is constant or read from an attribute.
 
-_The fixed amount of influence applied to all points when "Influence Input Type" is set to "Constant."_
+**Values**:
 
-* Value range: -1 to 1
-* Negative values can reverse the direction of smoothing
-* Higher absolute values result in more pronounced smoothing effects
+* **Constant**: Use a fixed value defined in "Smoothing (Attr)".
+* **Attribute**: Read smoothing values from a point attribute specified in "Smoothing (Attr)".
 
-**Smoothing Amount Input Type**
+</details>
 
-_Determines whether the smoothing amount is constant or read from an attribute._
+<details>
 
-* **Constant**: Use a fixed value for all points
-* **Attribute**: Read smoothing amounts from a point attribute
+<summary><strong>Smoothing (Attr)</strong><br><em>The amount of smoothing applied.</em></summary>
 
-**Smoothing Amount Attribute**
+The attribute to read smoothing values from when "Smoothing Amount Type" is set to "Attribute". This value determines the strength of the smoothing effect, and its impact depends on the chosen smoothing method.
 
-_The name of the point attribute to use as smoothing values when "Smoothing Amount Input Type" is set to "Attribute."_
+</details>
 
-* Only visible when "Smoothing Amount Input Type" is set to "Attribute"
-* Controls how many neighbors are considered during the smoothing operation
+<details>
 
-**Smoothing (Constant)**
+<summary><strong>Smoothing</strong><br><em>The amount of smoothing applied. Range of this value is highly dependant on the chosen smoothing method.</em></summary>
 
-_The fixed amount of smoothing applied to all points when "Smoothing Amount Input Type" is set to "Constant."_
+A constant value used for smoothing when "Smoothing Amount Type" is set to "Constant". Must be greater than or equal to 1.
 
-* Value range: 1 and above
-* Higher values result in more smoothing
-* The exact effect depends on the chosen smoothing method
+</details>
 
-**Scale Smoothing Amount Attribute**
+<details>
 
-_A multiplier applied to the smoothing amount attribute._
+<summary><strong>Scale Smoothing Amount Attribute</strong><br><em>Static multiplier for the local smoothing amount.</em></summary>
 
-* Value range: 0.001 and above
-* Allows scaling of smoothing intensity without changing the attribute values
+Multiplies the smoothing value by this factor, allowing fine-tuning of the effect. Minimum value is 0.001.
 
-***
+</details>
 
-#### Blending Settings
+<details>
+
+<summary><strong>Blending Interface</strong><br><em>How to blend data from sampled points.</em></summary>
 
 Controls how attributes are blended during smoothing.
 
-**Blending Interface**
+**Values**:
 
-_Determines how data blending is handled across points._
+* **Individual**: Blending settings are applied per attribute.
+* **Monolithic**: A single blending configuration is used for all attributes.
 
-* **Individual**: Each point's attributes are blended independently
-* **Monolithic**: All attributes are blended together as a group
+</details>
 
-**Blending Settings**
+<details>
 
-_Configuration for how attribute values are combined during smoothing._
+<summary><strong>Blending Settings</strong><br><em>Blending settings used to smooth attributes.</em></summary>
 
-* Only visible when "Blending Interface" is set to "Monolithic"
-* Defines the blending operation used for each attribute (e.g., average, weighted sum)
+Defines how to blend attribute values from neighboring points. Only visible when "Blending Interface" is set to "Monolithic".
+
+**Values**:
+
+* **None**: No blending applied.
+* **Average**: Average all sampled values.
+* **Weight**: Weights based on distance to blend targets.
+* **Min**: Component-wise minimum operation.
+* **Max**: Component-wise maximum operation.
+* **Copy (Target)**: Copy target data.
+* **Sum**: Sum of all values.
+* **Weighted Sum**: Sum of all values, weighted.
+* **Lerp**: Linear interpolation using weights.
+* **Subtract**: Subtract values.
+* **Unsigned Min**: Component-wise minimum on unsigned values.
+* **Unsigned Max**: Component-wise maximum on unsigned values.
+
+</details>

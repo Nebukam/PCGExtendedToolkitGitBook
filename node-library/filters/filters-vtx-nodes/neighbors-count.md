@@ -9,102 +9,93 @@ icon: circle-dashed
 This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Check if a vertex's neighbor count meets a specified condition.
-
-#### Overview
-
-This filter subnode evaluates whether each vertex in a cluster meets a specific condition based on its number of neighboring vertices. It's useful for filtering out vertices that have too few or too many connections, which can be important for graph-based procedural generation, such as creating networks, road systems, or connectivity constraints.
-
-It connects to the **Filter** pin of processing nodes that operate on vertex data in a cluster.
+> Filter points based on how many neighbors they have in a cluster.
 
 #### How It Works
 
-This subnode performs a comparison between a vertex's actual neighbor count and a target value. For each vertex, it retrieves the number of connected neighbors and compares it against the configured operand using the specified comparison operator. If the condition is met, the vertex passes the filter and is included in downstream processing.
+This subnode examines each point in a cluster and counts how many other points it connects to (its neighbor count). It then compares this count against a specified value using a comparison operator. The result determines whether the point passes the filter or not.
 
-The neighbor count can be either a fixed constant or derived from an attribute on the input data. When using an attribute, the value is read per-vertex and used as the operand for that specific vertex's test.
+The process works like this:
 
-<details>
+1. For each point, calculate its number of neighbors.
+2. Retrieve the comparison value (either a fixed number or a value from an attribute).
+3. Apply the selected comparison operation between the neighbor count and the comparison value.
+4. Return true if the condition is met, false otherwise.
 
-<summary>Inputs</summary>
+The comparison can be strict equality, inequality, or near-equality (with tolerance). This allows for flexible filtering based on exact counts or approximate values.
 
-This node expects vertex data from a cluster, typically provided by a graph or cluster processing node.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-Vertices that pass the neighbor count condition are included in the filtered output. Vertices that fail are excluded.
-
-</details>
+{% hint style="info" %}
+Connects to **Filter** pins on processing nodes.
+{% endhint %}
 
 #### Configuration
 
-***
+<details>
 
-**Comparison**
+<summary><strong>Comparison</strong><br><em>Comparison</em></summary>
 
-_The comparison operator used to evaluate the neighbor count against the operand._
-
-Controls how the vertex's neighbor count is compared to the target value.
+Determines how to compare the neighbor count against the operand.
 
 **Values**:
 
-* **==**: The neighbor count must exactly match the operand.
-* **!=**: The neighbor count must not exactly match the operand.
-* **>=**: The neighbor count must be equal to or greater than the operand.
-* **<=**: The neighbor count must be equal to or smaller than the operand.
-* **>**: The neighbor count must be strictly greater than the operand.
-* **<**: The neighbor count must be strictly smaller than the operand.
-* **\~=**: The neighbor count must nearly match the operand (within tolerance).
-* **!\~=:** The neighbor count must not nearly match the operand (outside tolerance).
+* **==**: Strictly equal
+* **!=**: Strictly not equal
+* **>=**: Equal or greater
+* **<=**: Equal or smaller
+* **>**: Strictly greater
+* **<**: Strictly smaller
+* **\~=**: Nearly equal (within tolerance)
+* **!\~=**: Nearly not equal (outside tolerance)
 
-**Compare Against**
+</details>
 
-_Determines whether the operand is a constant or read from an attribute._
+<details>
 
-Controls how the comparison value is sourced.
+<summary><strong>Compare Against</strong><br><em>Type of Count</em></summary>
+
+Defines whether the comparison value is a fixed number or read from an attribute.
 
 **Values**:
 
-* **Constant**: Use the fixed value set in the **Operand A** field.
-* **Attribute**: Read the value from an attribute on the input data, using the **Operand A (Attr)** selector.
+* **Constant**: Use a fixed number defined in the "Operand A" field.
+* **Attribute**: Read the comparison value from an attribute on the input data.
 
-**Operand A**
+</details>
 
-_The target neighbor count to compare against._
+<details>
 
-This value is used as the right-hand side of the comparison. When "Compare Against" is set to "Constant", this field defines the fixed number. When "Attribute", this selects the attribute whose values will be used per-vertex.
+<summary><strong>Operand A (Attr)</strong><br><em>Operand A for testing -- Will be translated to `double` under the hood.</em></summary>
 
-**Operand A (Attr)**
+The attribute used as the comparison value when "Compare Against" is set to "Attribute". Only visible when CompareAgainst is Attribute.
 
-_The attribute from which to read the neighbor count for comparison._
+</details>
 
-Only visible when **Compare Against** is set to **Attribute**. Selects the attribute that contains the per-vertex values to compare against.
+<details>
 
-**Tolerance**
+<summary><strong>Operand A</strong><br><em>Constant Operand A for testing.</em></summary>
 
-_Rounding tolerance for nearly equal comparisons._
+The fixed number used as the comparison value when "Compare Against" is set to "Constant". Only visible when CompareAgainst is Constant.
 
-Only used when the **Comparison** is set to **\~=** or **!\~=:** This defines how close the neighbor count must be to the operand to be considered "nearly equal".
+</details>
+
+<details>
+
+<summary><strong>Tolerance</strong><br><em>Rounding mode for near measures</em></summary>
+
+Used only when the comparison is "Nearly Equal" or "Nearly Not Equal". Defines how close the values must be to be considered equal.
+
+</details>
 
 #### Usage Example
 
-You want to keep only vertices that have exactly 3 neighbors. Set:
+You want to keep only points that have exactly 4 neighbors in a cluster. Set:
 
 * **Comparison** to `==`
 * **Compare Against** to `Constant`
-* **Operand A** to `3`
+* **Operand A** to `4`
 
-Alternatively, if you want each vertex to have a number of neighbors defined by an attribute called "TargetNeighbors", set:
-
-* **Comparison** to `==`
-* **Compare Against** to `Attribute`
-* **Operand A (Attr)** to `TargetNeighbors`
+This will filter out all points with fewer or more than 4 neighbors.
 
 #### Notes
 
-* The neighbor count is determined based on the cluster's graph structure.
-* When using attribute-based operands, ensure the attribute exists and contains valid numeric data.
-* For nearly equal comparisons, consider the tolerance value carefully to avoid false negatives due to floating-point precision.
+When using "Attribute" as the comparison type, ensure the attribute exists on your input data and is of a numeric type. The tolerance setting is only active for near-equality comparisons and helps handle floating-point precision issues.

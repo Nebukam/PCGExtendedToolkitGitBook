@@ -6,140 +6,110 @@ icon: circle
 # Bounds to Points
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Generate a point on the surface of the bounds.
+> Generate points positioned on the surface of input bounds.
 
-### Overview
+#### Overview
 
-This node creates new points positioned on the surface of input bounds, allowing you to place procedural elements along the edges or faces of bounding volumes. It's useful for generating placement points for foliage, particles, or other procedural assets that need to align with object boundaries.
+The Bounds To Points node creates new points located on the surface of input bounds. It's useful for placing objects or markers at specific locations relative to existing geometry, such as generating spawn points along the edges of a bounding box or distributing points across a volume's surface.
 
-The node can generate multiple points per input point using UVW coordinates, and supports symmetry operations to create mirrored placements. You can also scale or modify the bounds before generating points.
+This node operates by taking the bounds of input data and placing one or more points based on parameters like UVW coordinates, symmetry settings, and scale. It can also generate per-point data collections if needed.
 
 {% hint style="info" %}
-This node works on bounds data and generates new points based on those bounds. It's commonly used in conjunction with other nodes that compute or modify bounds.
+Connects to **Point** processing pins.
 {% endhint %}
 
+#### How It Works
+
+The node first calculates the bounding volume of all input points. Then, it generates new points positioned on the surface of that volume using UVW coordinates, which define a position within the bounds (0 = min, 1 = max). If symmetry is enabled, it creates mirrored points along the specified axis.
+
+If "Set Extents" is enabled, the node modifies the bounds size before placing points. It can either set a fixed extent or multiply the existing bounds by a multiplier. The scale setting allows further adjustment of point placement relative to the bounds.
+
+When "Generate Per Point Data" is enabled, each output point gets its own data collection that can be used for downstream processing.
+
+#### Configuration
+
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Generate Per Point Data</strong><br><em>Generates a point collections per generated point.</em></summary>
 
-* **Main Input** (Point Data): Points with bounds information
-* **Optional Filters**: Point filters can be applied to determine which input points are processed
+When enabled, each output point will have its own data collection for further processing.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Symmetry Axis</strong><br><em>Generate points in symmetry.</em></summary>
 
-* **Main Output** (Point Data): Generated points positioned on the surface of bounds
-* **Per Point Data** (when enabled): Additional point collections per generated point
+Defines the axis along which mirrored points are generated. Options are:
+
+* **None**: No symmetry
+* **X**: Mirror along X-axis
+* **Y**: Mirror along Y-axis
+* **Z**: Mirror along Z-axis
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how points are generated and positioned.
+<summary><strong>UVW</strong><br><em>Controls where on the surface of the bounds each generated point is placed.</em></summary>
 
-***
+Controls where on the surface of the bounds each generated point is placed. Each component (U, V, W) ranges from 0 to 1, defining a position within the bounds.
 
-#### Generation Settings
+</details>
 
-Controls core behavior for point generation.
+<details>
 
-**Generate Per Point Data**
+<summary><strong>Set Extents</strong><br><em>Modifies the size of the bounds before generating points.</em></summary>
 
-_When enabled, creates additional point data collections for each generated point._
+When enabled, modifies the size of the bounds before generating points. This allows for fine-tuning the spacing or positioning of output points.
 
-* Creates separate output data for each new point
-* Useful when you need to attach unique attributes or data per generated point
+</details>
 
-**Values**:
+<details>
 
-* **Disabled**: Each generated point is a simple point with no extra data
-* **Enabled**: Each generated point includes its own data collection
+<summary><strong>Extents</strong><br><em>Defines the size of the bounds when "Set Extents" is enabled.</em></summary>
 
-**Symmetry Axis**
+Defines the size of the bounds when "Set Extents" is enabled. Values are in world units.
 
-_When enabled, generates points in mirrored fashion along the selected axis._
+</details>
 
-* Creates symmetric point placements across the chosen axis
-* Useful for creating balanced or mirrored procedural layouts
-* **Values**:
-  * **None**: No symmetry is applied
-  * **X**: Points are mirrored along the X-axis
-  * **Y**: Points are mirrored along the Y-axis
-  * **Z**: Points are mirrored along the Z-axis
+<details>
 
-**UVW Coordinates**
+<summary><strong>Multiply Extents</strong><br><em>Multiplies the existing bounds instead of replacing them.</em></summary>
 
-_Specifies how to map points onto the surface using U, V, W coordinates._
+When enabled, the current bounds are multiplied by the Extents value instead of replacing them entirely.
 
-* Controls where on the bounds surface each point is placed
-* U, V, and W values range from 0 to 1, representing normalized positions
-* **U**: Horizontal position (left to right)
-* **V**: Vertical position (bottom to top)
-* **W**: Depth position (back to front)
+</details>
 
-**Set Extents**
+<details>
 
-_When enabled, defines the size of the generated point._
+<summary><strong>Set Scale</strong><br><em>Scales the generated points using the Scale value.</em></summary>
 
-* Controls how large each generated point is in 3D space
-* **Values**:
-  * **Disabled**: Uses default point size
-  * **Enabled**: Sets custom extents
+When enabled, scales the generated points using the Scale value. This affects how far apart or close together the output points appear.
 
-**Extents**
+</details>
 
-_Sets the dimensions of the generated point._
+<details>
 
-* Defines the width, height, and depth of each point
-* Values are in world units
-* Example: Setting (1.0, 2.0, 0.5) creates points that are 1 unit wide, 2 units tall, and 0.5 units deep
+<summary><strong>Scale</strong><br><em>Defines the scale factor applied to the bounds when "Set Scale" is enabled.</em></summary>
 
-**Multiply Extents**
+Defines the scale factor applied to the bounds when "Set Scale" is enabled. Values are in world units.
 
-_When enabled, multiplies the existing bounds by the extents value._
+</details>
 
-* Treats the extents as a multiplier rather than absolute size
-* Useful for scaling bounds while maintaining proportions
-* **Values**:
-  * **Disabled**: Extents are treated as absolute values
-  * **Enabled**: Extents multiply existing bounds
+#### Usage Example
 
-**Set Scale**
+To place a point at each corner of a bounding box:
 
-_When enabled, scales the generated point._
+1. Set UVW to (0, 0, 0) for one corner
+2. Set UVW to (1, 1, 1) for the opposite corner
+3. Enable symmetry along all axes to generate additional points
 
-* Controls how much to scale each generated point
-* **Values**:
-  * **Disabled**: Uses default scaling
-  * **Enabled**: Applies custom scaling
+#### Notes
 
-**Scale**
-
-_Scales the generated point along each axis._
-
-* Multiplies the size of each point by these values
-* Example: Setting (2.0, 1.0, 1.0) doubles the width while keeping height and depth unchanged
-
-**Point Attributes To Output Tags**
-
-_Controls which point attributes are converted to tags on the output._
-
-* Allows you to forward specific point data as tags
-* Useful for passing through attribute information to downstream nodes
-* Only active when "Generate Per Point Data" is enabled
-
-### Notes
-
-* This node works with bounds data, so it's often used after nodes that compute or modify bounds
-* The UVW coordinates determine where on the surface each point is placed (0 = back/left/bottom, 1 = front/right/top)
-* Symmetry can be combined with UVW coordinates to create complex mirrored patterns
-* When "Generate Per Point Data" is enabled, each generated point gets its own data collection for additional processing
-* For best performance with large datasets, consider using the "Bulk Init Data" option in node settings
+* The node works best with point inputs that define a clear bounding volume.
+* Symmetry can significantly increase output point count depending on axis selection.
+* Extents and scale settings allow precise control over point distribution.

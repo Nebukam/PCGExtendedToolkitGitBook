@@ -6,126 +6,115 @@ icon: circle
 # Flat Projection
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Project points from their position in space to the XY plane.
+\> Project points from their position in space to the XY plane.
 
-### Overview
+#### Overview
 
-This node projects points onto a 2D plane, typically the XY plane, which is useful for flattening 3D geometry into 2D space. It can be used to create flat layouts, simplify complex geometries, or prepare data for 2D operations like mesh generation or UI layout.
+The Flat Projection node maps 3D point positions onto a 2D XY plane. This is useful for creating flat representations of 3D data, such as top-down views, map projections, or simplifying complex geometries for visualization or further processing. It can either perform a new projection or restore an existing one using saved transform data.
+
+This node modifies the position of points in your dataset, effectively flattening them along the Z-axis while optionally preserving or restoring their original transforms. It's commonly used in scenarios where you want to simplify spatial data or prepare it for 2D operations.
 
 {% hint style="info" %}
-The projection operation modifies point positions and optionally stores the original transform information for later restoration.
+Connects to **Points** pins.
 {% endhint %}
 
+#### How It Works
+
+The node performs a projection of 3D points onto the XY plane by setting their Z-component to zero. Optionally, it can save or restore transform data associated with each point to allow for reversing the operation later.
+
+If **bRestorePreviousProjection** is disabled (default), the node:
+
+1. Projects all points to the XY plane.
+2. Optionally saves the original transform data into an attribute named using the **AttributePrefix** setting.
+3. Optionally aligns the local transform of each point with the projection.
+
+If **bRestorePreviousProjection** is enabled, the node:
+
+1. Reads the saved transform data from the attribute.
+2. Applies that transform to each point, effectively restoring its original 3D position.
+3. Optionally applies additional transform components (position, rotation, scale) based on the bitmask settings.
+
+The node supports applying only specific components of a transform when restoring projection, allowing for fine-grained control over how the point's local space is adjusted.
+
+#### Configuration
+
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>bRestorePreviousProjection</strong><br><em>Whether this is a new projection or an old one.</em></summary>
 
-* **Default Input** (Points): Points to be projected onto a 2D plane.
+When enabled, the node reads saved transform data from the point attributes and applies it to restore the original 3D positions. When disabled, it performs a new projection onto the XY plane.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>AttributePrefix</strong><br><em>The name of the attribute to write its index to.</em></summary>
 
-* **Default Output** (Points): Projected points with updated positions.
-* **Optional Outputs**: If enabled, additional outputs for storing original transforms or applying inverse projections.
+Defines the base name for the transform attribute that stores the original point transforms when performing a new projection. The actual attribute names will be constructed as `AttributePrefix + "_Transform"`.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the projection is performed and whether to store or restore transform data.
+<summary><strong>TransformPosition</strong><br><em>Which position components from the stored transform should be applied to the point.</em></summary>
 
-***
+Bitmask setting that controls which components of the saved position are applied when restoring a projection. Only used when **bRestorePreviousProjection** is enabled.
 
-#### Projection Settings
+</details>
 
-Controls how points are projected onto the 2D plane.
+<details>
 
-**Restore Previous Projection**
+<summary><strong>TransformRotation</strong><br><em>Which rotation components from the stored transform should be applied to the point.</em></summary>
 
-_When enabled, this node will attempt to restore the original point positions using previously stored transform data._
+Bitmask setting that controls which components of the saved rotation are applied when restoring a projection. Only used when **bRestorePreviousProjection** is enabled.
 
-* If disabled, the node performs a new projection.
-* This is useful when you want to reverse a previous flat projection.
+</details>
 
-**Attribute Prefix**
+<details>
 
-_Name of the attribute prefix used for storing and retrieving transform data._
+<summary><strong>TransformScale</strong><br><em>Which scale components from the stored transform should be applied to the point.</em></summary>
 
-* Default is "FlatProjection".
-* Used to name attributes like `FlatProjection_Transform` if saving data or `FlatProjection_Transform` if restoring.
+Bitmask setting that controls which components of the saved scale are applied when restoring a projection. Only used when **bRestorePreviousProjection** is enabled.
 
-**Save Attribute For Restore**
+</details>
 
-_When enabled, the node stores the original point transform in an attribute for later restoration._
+<details>
 
-* Only active when "Restore Previous Projection" is disabled.
-* Allows you to reverse the projection later using another instance of this node.
+<summary><strong>bSaveAttributeForRestore</strong><br><em>Whether to save transform data for later restoration.</em></summary>
 
-**Align Local Transform**
+When enabled, saves the original transform data into an attribute for later restoration. Only used when **bRestorePreviousProjection** is disabled.
 
-_When enabled, aligns the local transform of points with the projection plane._
+</details>
 
-* Useful for maintaining orientation relative to the 2D plane after projection.
+<details>
 
-**Projection Method**
+<summary><strong>bAlignLocalTransform</strong><br><em>Whether to align the local transform with the projection plane.</em></summary>
 
-_Selects how the projection plane is determined._
+When enabled, aligns the local transform of each point to match the projection plane. Only used when **bRestorePreviousProjection** is disabled.
 
-* **Normal**: Uses a fixed normal vector to define the projection plane.
-* **Best Fit**: Computes the best-fit plane based on point distribution.
+</details>
 
-**Projection Normal**
+<details>
 
-_Vector defining the direction of the projection plane._
+<summary><strong>ProjectionDetails</strong><br><em>Projection settings for the operation.</em></summary>
 
-* Only used when "Projection Method" is set to "Normal".
-* Defaults to Up vector (0, 0, 1) for XY plane projection.
+Configuration options for how the 3D-to-2D projection is performed, including any necessary parameters or transformations.
 
-**Local Projection Normal**
+</details>
 
-_When enabled, uses a local attribute to determine the normal vector for each point._
+#### Usage Example
 
-* Requires a valid attribute name in "Local Attribute Name".
-* Overrides the fixed "Projection Normal" when enabled.
+1. Take a set of scattered points in 3D space.
+2. Connect them to a Flat Projection node.
+3. Leave **bRestorePreviousProjection** disabled to project them onto the XY plane.
+4. Enable **bSaveAttributeForRestore** to save their original transforms for later restoration.
+5. Later, connect the same point data to another Flat Projection node with **bRestorePreviousProjection** enabled to restore the 3D positions.
 
-**Local Attribute Name**
+#### Notes
 
-_Name of the attribute containing the normal vector for each point._
-
-* Only used when "Local Projection Normal" is enabled.
-* Should contain a vector-type attribute with normalized values.
-
-***
-
-#### Transform Components
-
-Controls which components of the stored transform are applied during restoration.
-
-**Position Components**
-
-_Which position components from the stored transform should be applied to the point._
-
-* Bitmask selection for X, Y, Z components.
-* Only active when "Restore Previous Projection" is enabled.
-
-**Rotation Components**
-
-_Which rotation components from the stored transform should be applied to the point._
-
-* Bitmask selection for Pitch, Yaw, Roll components.
-* Only active when "Restore Previous Projection" is enabled.
-
-**Scale Components**
-
-_Which scale components from the stored transform should be applied to the point._
-
-* Bitmask selection for X, Y, Z components.
-* Only active when "Restore Previous Projection" is enabled.
+* This node is useful for creating top-down views or simplifying complex 3D geometries for 2D rendering or analysis.
+* When restoring a projection, ensure that the attribute names match exactly what was saved during the initial projection.
+* The bitmask settings allow precise control over which transform components are applied during restoration.

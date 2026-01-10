@@ -6,108 +6,89 @@ icon: sliders
 # Goal Picker : Random
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Picks random goals from a set of available targets.
+> Randomly selects one or more goals from a set of possible targets.
 
-### Overview
+#### Overview
 
-This node randomly selects one or more goals from a collection of possible targets. It's useful when you want to introduce randomness into pathfinding, such as having units move to random destinations or selecting random objectives for AI behavior.
-
-The node supports three modes: picking a single goal, picking a fixed number of goals, or picking a random number of goals. You can control the randomness using a local seed and optionally read the number of goals from an attribute on the input data.
+This node randomly picks goals for each seed point, allowing for varied and unpredictable pathfinding outcomes. It's useful when you want to introduce randomness into your procedural paths, such as making enemies choose different destinations or creating dynamic obstacle avoidance behaviors. You can configure it to pick a single goal or multiple goals per seed.
 
 {% hint style="info" %}
-This node works best when you have more than one goal to choose from. If there's only one goal available, it will always return that same goal regardless of the randomization settings.
+Connects to **Goal Picker** pins on pathfinding nodes.
 {% endhint %}
 
+#### How It Works
+
+This node selects goals based on the configured random behavior:
+
+* For each seed point, it generates a random index within the range of available goals.
+* If **Single** is selected, one goal is picked.
+* If **Multiple Fixed** is selected, a fixed number of goals are picked (based on the Num Goals setting).
+* If **Multiple Random** is selected, a random number of goals are picked (between 1 and the Num Goals value).
+
+The randomness can be made deterministic by using a local seed. The selection process uses the configured index safety mode to handle cases where the random index might exceed available goal count.
+
+#### Configuration
+
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Local Seed</strong><br><em>Seed value for the random number generator.</em></summary>
 
-* **Seeds**: Points that act as starting locations for pathfinding
-* **Goals**: Points that serve as potential destinations
+Controls the deterministic behavior of the random selection. When set to a fixed value, the same sequence of random numbers will be generated each time, ensuring consistent results.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Goal Count</strong><br><em>Determines how many goals are selected per seed.</em></summary>
 
-* **Output**: Modified point data with selected goal indices assigned to each seed
+Controls whether one or multiple goals are selected for each seed point.
+
+**Values**:
+
+* **Single**: A single random goal is picked.
+* **Multiple Fixed**: A fixed number of random goals is picked.
+* **Multiple Random**: A random number of random goals is picked.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the random selection is performed and what goals are picked.
+<summary><strong>Num Goals Type</strong><br><em>Fetch the number of goals from a local attribute.</em></summary>
 
-***
-
-#### General
-
-Determines how many goals to select and how randomness is applied.
-
-**LocalSeed**
-
-_Sets a seed for the random number generator._
-
-* Affects which goals are selected when multiple options are available
-* Use different seeds to get varied results across runs
-* Set to 0 for default behavior (based on time)
+Controls whether the number of goals to pick is a constant value or read from an input attribute.
 
 **Values**:
 
-* **0**: Uses a time-based seed
-* **Non-zero**: Uses the specified value as a fixed seed
+* **Constant**: Use a fixed number defined in the Num Goals setting.
+* **Attribute**: Read the number of goals from an attribute on the input data.
 
-**GoalCount**
+</details>
 
-_Specifies how many goals to pick per seed._
+<details>
 
-* Controls whether to select one goal or multiple
-* Affects the output data structure and downstream processing
+<summary><strong>Num Goals (Attr)</strong><br><em>Attribute to read the number of goals from.</em></summary>
 
-**Values**:
+The attribute used when Num Goals Type is set to Attribute. It should contain integer values representing how many goals to select per seed.
 
-* **Single**: Picks exactly one random goal
-* **Multiple Fixed**: Picks a set number of random goals
-* **Multiple Random**: Picks a random number of random goals
+</details>
 
-**NumGoalsType**
+<details>
 
-_Specifies whether to use a constant value or read from an attribute._
+<summary><strong>Num Goals</strong><br><em>Fixed number of goals to pick if Num Goals Type is Constant.</em></summary>
 
-* Determines how the number of goals is defined when using "Multiple Fixed" or "Multiple Random"
-* When set to Attribute, you must specify the attribute name in the next field
+The fixed number of goals to select when Goal Count is set to Multiple Fixed or Multiple Random. Must be at least 1.
 
-**Values**:
+</details>
 
-* **Constant**: Use a fixed number
-* **Attribute**: Read the number from input data
+#### Usage Example
 
-**NumGoalAttribute**
+Use this node in a pathfinding graph where you want enemies to randomly choose different destinations from a list of possible targets. Set the goal count to "Multiple Random" and configure Num Goals to 3, so each enemy will select between 1 and 3 random goals from the available target set.
 
-_Reads the number of goals from an attribute on the seed point._
+#### Notes
 
-* Only visible when "NumGoalsType" is set to Attribute
-* The attribute value must be an integer
-* Used in "Multiple Fixed" and "Multiple Random" modes
-
-**NumGoals**
-
-_Sets a fixed number of goals to pick when using "Multiple Fixed" mode._
-
-* Only visible when "GoalCount" is set to "Multiple Fixed"
-* Must be at least 1
-* Determines how many random goals are selected per seed
-
-### Notes
-
-* When using "Multiple Random", the number of goals picked will vary between runs unless a fixed seed is used
-* For consistent results, use a non-zero LocalSeed value
-* The node respects the index safety setting from the parent class to handle edge cases where goal indices might be out of bounds
-* In "Single" mode, each seed gets exactly one goal; in "Multiple" modes, multiple goals are assigned per seed
-* If you're using this with pathfinding nodes that expect a single goal, make sure to use "Single" mode or post-process the output to select one goal from the list
+* The Local Seed ensures reproducible results when using random selection.
+* When using "Multiple Random", the actual number of goals selected per seed will be between 1 and the value specified in Num Goals.
+* Index safety settings determine how out-of-bounds indices are handled during random selection.

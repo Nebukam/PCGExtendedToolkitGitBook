@@ -6,68 +6,51 @@ icon: circle
 # Tuple
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> A Simple Tuple attribute.
+> Creates a structured data attribute by combining multiple typed values into a single tuple that can be used for storage or further processing.
 
-### Overview
+#### How It Works
 
-This node allows you to create structured data attributes using a tuple format, where each tuple entry can contain multiple typed values. It's useful when you want to store related data together in a single attribute, such as position and color information, or any combination of supported data types.
+The Tuple node organizes related data by grouping multiple typed values into a single structured attribute. Each tuple contains named fields, each with its own data type and default value. The node assigns these values to each point or element in the input data, creating a consistent structure that can be used throughout your procedural workflow.
 
-Each tuple entry is defined by a composition (the structure) and values (the actual data). You define the fields in the composition and then set their values in the values array. This node is particularly helpful for creating complex metadata that can be used later in other nodes or for visualizing data in tools like the PCG Graph Editor.
+When processing input data:
 
-{% hint style="info" %}
-The tuple structure must be defined before setting values. Changing the type of a field after setting values may cause unexpected behavior.
-{% endhint %}
+1. The node reads the defined structure from the Composition settings
+2. It creates a new metadata attribute for each tuple row
+3. For every point or element, it assigns values from the Values array to the corresponding fields
+4. The result is a structured tuple that maintains all field relationships
+
+This approach keeps related information together, making it easier to manage complex data sets and pass them between different processing steps.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Composition</strong><br><em>Defines the structure of each tuple row with named fields and their data types.</em></summary>
 
-* None
+Sets up the format for your tuple data. Each entry defines one row containing multiple fields, each with a name and type.
+
+* **Name**: The label used to identify this row in the tuple
+* **DefaultData**: The data type and default value for this field (such as float, vector, or color)
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Values</strong><br><em>Provides the actual data values for each tuple row.</em></summary>
 
-* **Default Output**: A point or vertex data with the tuple attributes applied.
+Contains the real data that will be stored in your tuples. Each entry corresponds to a row defined in Composition.
+
+* **Row**: An array of typed values matching the structure defined in Composition. These are the actual values assigned to each field
 
 </details>
 
-### Properties Overview
+<details>
 
-This node allows you to define a tuple structure and populate it with values. The composition defines the fields, while the values array sets their content.
+<summary><strong>CommaSeparatedTags</strong><br><em>A list of tags separated by commas, for easy filtering and organization.</em></summary>
 
-***
+A string of comma-separated labels used to categorize or filter this node's behavior in certain contexts. Useful for organizing and managing multiple nodes.
 
-#### General
-
-Defines the tuple's structure and data.
-
-**Composition**
-
-_The list of fields that make up your tuple._
-
-* Each field can be one of several supported types: Boolean, Float, Double, Integer 32, Vector2, Vector, Vector4, Color, Transform, Rotator, String, Name, Soft Object Path, Soft Class Path, or Enum Selector.
-* You can define multiple fields in a single tuple.
-* The order of fields in the composition determines how they are written to the attribute.
-
-**Values**
-
-_The actual data for each field in your tuple._
-
-* Each row corresponds to one tuple entry.
-* The number of values per row must match the number of fields defined in the composition.
-* Values can be set directly in this array, and will be applied to the corresponding fields in the composition.
-
-**CommaSeparatedTags**
-
-_A list of tags separated by a comma, for easy overrides._
-
-* Tags can be used to categorize or filter nodes in the graph.
-* Useful when you have multiple tuples and want to apply different settings based on tags.
+</details>

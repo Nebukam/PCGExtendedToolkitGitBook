@@ -6,66 +6,55 @@ icon: sliders
 # Goal Picker (Default)
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a heuristic that calculates path costs based on the distance between seed points and goal points.
+> Selects a single goal index using a default method with configurable safety for out-of-bounds indices.
 
-### Overview
+#### How It Works
 
-This factory generates a heuristic operation for pathfinding nodes. It defines how the cost of a path is calculated when moving from a seed point toward a goal point, using the Euclidean distance as the basis for the cost calculation.
+This subnode selects a single goal index from a set of available goal points for each seed point. It uses the configured index safety method to handle cases where the selected index would be out of bounds (negative or greater than the number of goals). The selection is based on the seed point's index in the input data.
 
-{% hint style="info" %}
-Connects to **Heuristic** pins on pathfinding nodes like **Pathfinder**, **Pathfinder (Multi-Source)**, and **Pathfinder (Multi-Goal)**
-{% endhint %}
+The process works as follows:
 
-### How It Works
+1. Takes a seed point and its index within the input data
+2. Uses that index to select a goal from the goal set
+3. Applies the configured index safety method if the calculated index is out of bounds
+4. Returns a single goal index for use in pathfinding operations
 
-This heuristic calculates a cost value based on the distance between each seed point and its associated goal point. The cost is directly proportional to the Euclidean distance between them, meaning paths that travel shorter distances will have lower costs.
+For example, with 5 goals and `Tile` safety:
 
-The factory determines which goal point to use for each seed by looking at the seed's index in the goal data. If a seed's index exceeds the number of available goals, it uses the `IndexSafety` setting to determine how to handle the out-of-bounds case.
+* Seed index 0 → Goal index 0
+* Seed index 1 → Goal index 1
+* Seed index 5 → Goal index 0 (wrapped around)
+* Seed index -1 → Goal index 4 (wrapped around)
 
-### Inputs
+#### Configuration
 
-* **Seeds**: Point data representing starting locations for pathfinding
-* **Goals**: Point data representing destination locations for pathfinding
+<details>
 
-### Outputs
+<summary><strong>Index Safety</strong><br><em>How to handle out-of-bounds indices.</em></summary>
 
-* **Heuristic**: Configured heuristic operation that can be used by pathfinding nodes
+Controls what happens when the selected goal index is negative or exceeds the number of available goals.
 
-### Configuration
+**Values**:
 
-***
+* **Ignore**: Out of bounds indices are ignored, typically resulting in no goal being selected.
+* **Tile**: Out of bounds indices wrap around (0,1,2,0,1,2...).
+* **Clamp**: Out of bounds indices are clamped to the valid range (0,1,2,2,2,2...).
+* **Yoyo**: Out of bounds indices mirror back and forth (0,1,2,1,0,1...).
 
-#### General
+</details>
 
-**Index Safety**
+#### Usage Example
 
-_Controls how out-of-bounds indices are handled when mapping seeds to goals._
+Use this subnode when you want a simple, deterministic way to assign goals to seed points in pathfinding. For example:
 
-When a seed point's index is greater than or equal to the number of goal points, this setting determines what happens:
+1. Create a set of goal points scattered around your world
+2. Connect them to a `Pathfinder` node
+3. Assign this "Default" goal picker subnode to the Goal Picker input
+4. Configure Index Safety to `Tile` if you want to cycle through goals when there are more seeds than goals
 
-* **Ignore**: Out of bounds indices are ignored. (0,1,2,-1,-1,-1,...)
-* **Tile**: Out of bounds indices are tiled. (0,1,2,0,1,2...)
-* **Clamp**: Out of bounds indices are clamped. (0,1,2,2,2,2...)
-* **Yoyo**: Out of bounds indices are mirrored and back. (0,1,2,1,0,1...)
+#### Notes
 
-### Usage Example
-
-Use this heuristic when you want to prioritize paths that travel the shortest distance between seed points and goal points. For example:
-
-* Create a set of seed points representing starting locations
-* Create a set of goal points representing destinations
-* Connect both sets to a **Pathfinder** node
-* Assign this "Default" heuristic factory to the **Heuristic** input pin
-* The pathfinding will favor routes that minimize travel distance
-
-### Notes
-
-* This is the most commonly used heuristic for basic pathfinding scenarios
-* The cost values are calculated using Euclidean distance, which works well for open spaces
-* When using multiple goals per seed, consider using the **All** or **Random** goal pickers instead of this default factory
-* If your seeds and goals have a one-to-one mapping, ensure that the number of seed points matches the number of goal points to avoid unexpected behavior with index safety
+This is the default behavior for pathfinding operations and works well in most scenarios where a simple index-based selection is sufficient.

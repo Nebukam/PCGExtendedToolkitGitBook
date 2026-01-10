@@ -5,67 +5,59 @@ icon: circle-dashed
 # G-Probe : Chain
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates sequential chain connections between points based on sorting criteria, forming ordered paths or loops.
+> Creates sequential chain connections based on sorting criteria.
 
-### Overview
+#### How It Works
 
-This factory defines how points are connected in a sequential chain when building graph structures. It determines the order in which points are linked together to form paths or closed loops, based on various sorting methods.
+This subnode organizes points into a logical sequence by sorting them according to a chosen method. Once sorted, each point connects to the next one in line, forming a chain. The sorting approach determines how the order is established:
 
-{% hint style="info" %}
-Connects to **Probe** pins on graph-building nodes like "Connect Points" or "Build Graph"
-{% endhint %}
+* **By Attribute**: Points are arranged using a numeric value from an attribute (like density or height). You can choose whether to sort from low to high or high to low values.
+* **By Axis Projection**: Points are aligned along a specific direction (X, Y, or Z axis) and sorted by their position on that axis. This is useful for creating linear arrangements.
+* **By Spatial Curve (TSP)**: Uses an approximation of the Traveling Salesman Problem to sort points so they follow the shortest possible path. This results in a more efficient spatial route.
+* **By Hilbert Curve**: Sorts points based on their location along a space-filling curve, which helps keep nearby points close together in the sequence.
 
-### How It Works
+After sorting, each point connects to the next one in order. If "Closed Loop" is enabled, the final point links back to the first, forming a continuous cycle.
 
-This probe factory sorts input points using a specified method and then connects them sequentially in that order. The resulting connections form either an open chain (from first to last) or a closed loop (connecting last back to first). The sorting criteria determine the logical flow of the chain.
+#### Configuration
 
-### Configuration
+<details>
 
-***
+<summary><strong>Sort Mode</strong><br><em>How to sort the points when creating the chain.</em></summary>
 
-#### General
-
-**Sort Mode**
-
-_Controls how points are ordered before creating connections._
+Controls how the points are ordered before connecting them.
 
 **Values**:
 
-* **By Attribute**: Sort by a scalar attribute value
-* **By Axis Projection**: Sort by projection onto a specific axis
-* **By Spatial Curve (TSP)**: Sort using a greedy traveling salesman approximation
-* **By Hilbert Curve**: Sort by spatial locality using Hilbert curve indexing
+* **By Attribute**: Sort by a scalar attribute value.
+* **By Axis Projection**: Sort by projection onto a specific axis.
+* **By Spatial Curve (TSP)**: Use a greedy TSP approximation for spatially efficient ordering.
+* **By Hilbert Curve**: Sort using a Hilbert curve index to maintain spatial locality.
 
-**Sort Attribute**
+</details>
 
-_The scalar attribute used for sorting when "By Attribute" mode is selected._
+<details>
 
-**Example**: If you have a point cloud with a "Density" attribute, setting this to "$Density" will sort points from lowest to highest density value.
+<summary><strong>Sort Attribute</strong><br><em>Attribute to sort by (for ByAttribute mode).</em></summary>
 
-**Projection Axis**
+The scalar attribute used when sorting points in "By Attribute" mode. For example, you could sort by a "Density" or "Height" attribute.
 
-_The axis used for projection when "By Axis Projection" mode is selected._
+</details>
 
-**Example**: Setting this to `FVector::UpVector` (0, 0, 1) will sort points by their Z-coordinate values.
+<details>
 
-**Closed Loop**
+<summary><strong>Projection Axis</strong><br><em>Axis to project onto (for ByAxisProjection mode).</em></summary>
 
-_When enabled, connects the last point back to the first point to form a closed loop._
+The axis along which points are projected and sorted when using "By Axis Projection" mode. For example, setting this to `ForwardVector` (X-axis) will sort points from left to right.
 
-**Example**: With 5 points sorted as A-B-C-D-E, enabling this creates connections A-B, B-C, C-D, D-E, E-A instead of just A-B-C-D-E.
+</details>
 
-### Usage Example
+<details>
 
-Create a point cloud with a "Height" attribute and use this probe factory to connect points in height order. Set the Sort Mode to "By Attribute" and the Sort Attribute to "$Height". This will create a chain that follows elevation from lowest to highest point, useful for generating terrain paths or elevation-based connectivity.
+<summary><strong>Closed Loop</strong><br><em>If true, creates a closed loop connecting last to first.</em></summary>
 
-### Notes
+When enabled, the last point in the sorted sequence connects back to the first point, forming a continuous cycle. Useful for creating rings or loops in your data.
 
-* The "By Spatial Curve (TSP)" mode provides an approximation of the shortest path through all points, which is useful for minimizing total edge length
-* "By Hilbert Curve" sorting ensures spatial locality, meaning nearby points in space are also nearby in the chain order
-* When using "Closed Loop", the first and last points in the sorted sequence will be connected to form a complete cycle
-* This probe factory works best when there's sufficient point density to create meaningful chains
+</details>

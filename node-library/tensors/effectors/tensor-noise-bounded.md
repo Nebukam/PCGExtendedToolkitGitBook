@@ -4,61 +4,46 @@ icon: circle-dashed
 
 # Tensor : Noise (Bounded)
 
-See [noises](../../misc/noises/ "mention")
-
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a tensor that uses 3D noise as direction within effector bounds.
+> A tensor that uses 3D noises as direction, within effector bounds.
 
-### Overview
+#### How It Works
 
-This node generates a tensor field where each point's direction is determined by sampling 3D noise. The noise is confined to the boundaries of effectors, creating natural-looking directional fields for procedural generation. It's particularly useful for generating organic movement patterns, flow directions, or spatially varying orientations that follow noise-based gradients.
+This node creates a directional field by sampling 3D noise at each point's location. The noise function generates a vector that defines the direction for that point. The key feature of this bounded version is that it respects effector boundaries — meaning the noise-based directions are only applied within the defined spatial limits of each effector.
 
-{% hint style="info" %}
-This node works with effector bounds - the noise direction is only computed within the influence area of each effector.
-{% endhint %}
+The process works as follows:
+
+1. For each input point, the node identifies which effectors are relevant based on spatial proximity.
+2. It samples a 3D noise function at the point's location to generate a direction vector.
+3. If enabled, the sampled direction is normalized to ensure consistent magnitude.
+4. The resulting vector becomes the tensor's direction for that point, constrained by the effector's bounds.
+
+This creates smooth, natural-looking directional fields useful for effects like wind patterns, fluid flow, or organic growth directions.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>bNormalizeNoiseSampling</strong><br><em>If enabled normalize the sampled noise direction.</em></summary>
 
-* **Points** (Optional): Input points to process
-* **Effectors** (Required): Effector points that define the spatial bounds and influence areas
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Factory**: A tensor factory that can be used by other nodes to sample noise directions
+When enabled, the sampled noise vector is normalized to unit length. This ensures that all directions have equal magnitude, which can be important for consistent tensor influence.
 
 </details>
 
-### Properties Overview
+#### Usage Example
 
-Controls how the noise-based tensor is generated and applied.
+Use this node in a graph where you want to create organic directional fields for point placement or movement. For example:
 
-***
+1. Create a set of points using a grid or scatter node.
+2. Connect those points to a **Tensor : Noise (Bounded)** Subnode.
+3. Configure the noise settings to control the flow pattern.
+4. Use the resulting tensor field with a **Transform** or **Path** node to influence point behavior.
 
-#### General
+#### Notes
 
-Configures core tensor behavior and noise sampling parameters.
-
-**Normalize Noise Sampling**
-
-_When enabled, the sampled noise direction is normalized to unit length._
-
-* Ensures consistent magnitude for all noise vectors
-* Useful when you want uniform directional influence regardless of noise value
-
-### Notes
-
-* Combine this with other tensor nodes like "Tensor : Extrude" or "Tensor : Transform" to create complex procedural effects
-* The noise sampling is deterministic based on seed and position, so identical inputs will produce identical outputs
-* Use with "Tensor : Noise (Unbounded)" for different noise behavior outside of effector bounds
-* Good for creating organic flow patterns, wind directions, or natural-looking vector fields
+* The noise sampling is deterministic based on seed and position, so identical inputs will produce identical outputs.
+* This node works best when combined with effectors that define clear spatial boundaries.
+* Performance can be affected by the complexity of the noise function and the number of input points.

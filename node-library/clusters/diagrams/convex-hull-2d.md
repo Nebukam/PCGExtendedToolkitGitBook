@@ -11,82 +11,59 @@ This page was generated from the source code. It should properly capture what th
 
 > Create a 2D Convex Hull triangulation for each input dataset. Deprecated as of 5.4; use Find Convex Hull 2D instead.
 
-#### Overview
-
-This node generates a convex hull from clusters of points in 2D space, forming a polygon that encloses all input points. It's useful for creating boundary shapes around point groups, such as defining the outer limits of terrain features or object placements.
-
-It transforms point data into a structured output that can be used for further processing like pathfinding, collision detection, or visual representation. The node supports optional edge graph creation to represent the hull structure.
-
-{% hint style="info" %}
-Connects to **Cluster** input pins and outputs **Points** and optionally **Graph** data.
-{% endhint %}
-
 #### How It Works
 
-This node processes each cluster of points independently to compute a convex hull in 2D space. The algorithm first projects the 3D point coordinates onto a 2D plane using specified projection settings, then calculates the smallest convex polygon that contains all the projected points.
+This node processes point data by first grouping it into clusters, then creating a convex hull around each cluster in 2D space. A triangulation is generated inside the hull using a Delaunay-style method to ensure optimal triangle shapes. The resulting structure can be used for mesh generation or visualizing point distributions.
 
-The resulting hull is triangulated, meaning it's divided into triangles that fill the interior of the hull. These triangles are represented as edges in an optional graph output. The winding order of the hull can be set to either clockwise or counter-clockwise, affecting how the shape is oriented.
-
-If enabled, the node also outputs a cluster representation of the hull points, which can be used for downstream operations like path generation or filtering.
-
-<details>
-
-<summary>Inputs</summary>
-
-* **Cluster Input**: Accepts point data grouped into clusters.
-* Optional **Point Filter** input (if configured).
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Points Output**: Contains the vertices of the convex hull for each cluster.
-* **Graph Output**: Optional, contains edges forming the hull structure and optionally triangulation.
-* **Cluster Output**: Optional, outputs a new cluster containing the hull points.
-
-</details>
+Each cluster is processed independently, so multiple groups of points will produce separate hulls and triangulations. The node projects 3D points onto a 2D plane before computing the hull, using settings that define which axes to use for projection.
 
 #### Configuration
 
-***
+<details>
 
-**bOutputClusters**
+<summary><strong>Output Clusters</strong><br><em>When enabled, outputs a graph representation of each cluster.</em></summary>
 
-_When enabled, outputs a new cluster containing the convex hull vertices._
+When enabled, this node will output a graph containing the edges and vertices that define the convex hull and triangulation for each cluster.
 
-This setting determines whether to produce an additional output cluster with the computed hull points. Useful when you want to continue working with the hull as a separate data structure.
+</details>
 
-**ProjectionDetails**
+<details>
 
-_Projection settings._
+<summary><strong>Projection Settings</strong><br><em>Projection settings.</em></summary>
 
-Controls how 3D coordinates are projected onto a 2D plane for hull computation. This is important for accurate results in non-flat spaces, like terrain or spherical environments.
+Controls how 3D points are projected into 2D space for hull computation. Options include:
 
-**Winding**
+* **XY**: Project onto the X-Y plane.
+* **XZ**: Project onto the X-Z plane.
+* **YZ**: Project onto the Y-Z plane.
 
-_Path Winding_
+</details>
 
-Determines the orientation of the convex hull's boundary.
+<details>
 
-* **Clockwise**: Hull points are ordered to form a clockwise path.
-* **Counter Clockwise**: Hull points are ordered to form a counter-clockwise path.
+<summary><strong>Winding Order</strong><br><em>Path Winding</em></summary>
 
-This affects how the shape is rendered or interpreted by downstream systems.
+Determines the orientation of the resulting triangulation:
 
-**GraphBuilderDetails**
+* **Clockwise**: Triangles are oriented in a clockwise direction.
+* **Counter Clockwise**: Triangles are oriented in a counter-clockwise direction.
 
-_Cluster Output Settings_
+</details>
 
-Controls properties of the optional graph output, such as edge creation and solidification settings. This allows fine-tuning of how the hull edges are represented in the graph.
+<details>
+
+<summary><strong>Cluster Output Settings</strong><br><em>Graph &#x26; Edges output properties</em></summary>
+
+Controls how the graph representation of the cluster is built, including edge solidification and radius settings.
+
+</details>
 
 #### Usage Example
 
-Use this node to generate boundary shapes for clusters of objects or terrain points. For instance, when placing trees randomly across a landscape, you might use this node to create convex hulls around each group of trees to define their collective area. The resulting hull can then be used for collision detection or visual effects.
+You have a point cloud representing scattered trees in a forest. You want to create a simplified boundary polygon that encloses all trees in each area. Use this node with a cluster input to generate a convex hull for each group of trees, then use the output edges to visualize the boundaries or as input for further mesh generation.
 
 #### Notes
 
-* This node is deprecated as of Unreal Engine 5.4; consider using the "Find Convex Hull 2D" node instead.
-* The triangulation is generated using a Delaunay-style approach, ensuring no triangles overlap within the hull.
-* Performance may degrade with large clusters due to the computational complexity of convex hull algorithms.
+* This node is deprecated as of Unreal Engine 5.4. Use **Find Convex Hull 2D** instead.
+* The triangulation is based on Delaunay principles, ensuring optimal triangle shapes.
+* Performance may be affected by large clusters with many points; consider breaking up large datasets into smaller groups.

@@ -6,82 +6,68 @@ icon: circle-dashed
 # Tensor : Spline Flow
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a tensor that represents a vector/flow field along a spline.
+> Generates a tensor that represents a vector/flow field along a spline.
 
-### Overview
+#### How It Works
 
-This node generates a tensor that defines a directional flow along the path of a spline. It's useful for creating forces, movement patterns, or influence fields that follow a curved path. The tensor can be used to guide particles, objects, or other procedural elements along a defined route.
+This node creates a directional flow field that follows the shape of input splines. For each point in space, it calculates how strongly that point is influenced by nearby splines. The influence decreases with distance from the spline, creating a smooth transition between areas affected by different splines.
 
-The resulting tensor field will have a direction aligned with the spline's curve and can be scaled by the spline's control points. This allows for dynamic flow patterns that change based on the shape of the spline.
+The node evaluates each point to determine its proximity to splines and assigns a vector direction based on the spline's orientation at that location. This creates a continuous flow field where points near a spline are pulled along its path, while points farther away experience less influence.
+
+#### Configuration
+
+<details>
+
+<summary><strong>Sample Inputs</strong><br><em>Which spline inputs to sample.</em></summary>
+
+Controls which splines are used in the tensor generation.
+
+**Values**:
+
+* **All**: Sample all input splines.
+* **Closed loops only**: Only use closed-loop splines (e.g., circles).
+* **Open lines only**: Only use open-line splines (e.g., curves that don't loop back).
+
+</details>
+
+<details>
+
+<summary><strong>Radius</strong><br><em>Base radius of the spline. Will be scaled by control points' scale length.</em></summary>
+
+Defines how far from a spline the tensor will have an effect. The actual radius is scaled by the spline's control point scale.
+
+</details>
+
+<details>
+
+<summary><strong>Spline Direction</strong><br><em>Which spline transform axis is to be used.</em></summary>
+
+Determines which direction along the spline is considered "forward" for the tensor's output vector.
+
+**Values**:
+
+* **Forward**: Use the X+ axis of the spline.
+* **Backward**: Use the X- axis of the spline.
+* **Right**: Use the Y+ axis of the spline.
+* **Left**: Use the Y- axis of the spline.
+* **Up**: Use the Z+ axis of the spline.
+* **Down**: Use the Z- axis of the spline.
+
+</details>
 
 {% hint style="info" %}
-This node requires input splines to function properly. It processes these splines to create a continuous vector field along their paths.
+Connects to \*\*Tensor Subnode\*\* nodes that define how the tensor is generated.
 {% endhint %}
 
-<details>
+#### Usage Example
 
-<summary>Inputs</summary>
+Use this node to create a flow field that guides particle systems along a series of curved paths. For example, you could generate a set of splines representing river courses and use this tensor to make particles flow along those rivers. Connect the output to a **Tensor : Apply** node to influence point placement or movement.
 
-* **Main Input**: Points or splines that define the path for the tensor field
-* **Secondary Input** (Optional): Additional data used for weighting or influence
+#### Notes
 
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Output**: A tensor field that can be consumed by other nodes to apply forces or directions along the spline path
-
-</details>
-
-### Properties Overview
-
-Settings for configuring how the tensor field is generated from the input splines.
-
-***
-
-#### General Settings
-
-Controls the core behavior of the tensor field generation.
-
-**Sample Inputs**
-
-_Controls which splines are processed._
-
-* Only splines that match the selected mode will be included in the tensor field
-* **All**: Process all input splines
-* **Closed loops only**: Only process closed spline loops (e.g., circles)
-* **Open lines only**: Only process open-ended splines
-
-**Radius**
-
-_Base radius of the spline._
-
-* Controls how far the tensor field extends from the spline path
-* Value is scaled by control point scale length
-* Larger values create a wider influence area around the spline
-
-**Spline Direction**
-
-_Which axis of the spline transform defines the flow direction._
-
-* **Forward**: Uses the X+ axis of the spline's local space
-* **Backward**: Uses the X- axis of the spline's local space
-* **Right**: Uses the Y+ axis of the spline's local space
-* **Left**: Uses the Y- axis of the spline's local space
-* **Up**: Uses the Z+ axis of the spline's local space
-* **Down**: Uses the Z- axis of the spline's local space
-
-### Notes
-
-* The tensor field will be strongest at the spline path and weaken as distance from the path increases
-* Combine with other tensor nodes to create complex flow patterns
-* Use this node to simulate river flows, wind patterns, or guided movement paths
-* The radius setting allows you to control how far the influence extends from the spline
-* This node works best when input splines are well-defined and smooth curves
+* The tensor's effect is strongest near the spline and tapers off as distance increases.
+* This node works best with smooth, continuous splines for predictable flow behavior.
+* Adjust the radius to control how far the influence extends from the spline.

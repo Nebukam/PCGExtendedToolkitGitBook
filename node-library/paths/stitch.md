@@ -6,142 +6,135 @@ icon: circle
 # Stitch
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Stitch paths together by their endpoints.
+> Stitch paths together by connecting their endpoints.
 
-### Overview
+#### Overview
 
-This node connects or merges multiple paths at their endpoints, allowing you to create continuous routes from separate path segments. It's useful for joining disconnected paths into a single continuous path, such as connecting road segments, building pathways, or creating seamless navigation meshes.
+The Path : Stitch node connects or merges multiple paths at their endpoints to form longer continuous paths. This is useful for joining fragmented path data into coherent routes, such as roads, trails, or any linear structure that should logically connect.
 
-The node offers two main methods: "Connect" which preserves all original points and adds segments between paths, and "Fuse" which merges overlapping endpoints into a single point. You can control how the stitching is performed based on spatial proximity or alignment requirements.
+It operates on collections of paths and determines which paths can be joined based on proximity or alignment of their start and end points. The node supports two main methods: "Connect", which preserves all original points and adds segments between paths, and "Fuse", which merges overlapping or nearby endpoints into a single point.
+
+This node is especially helpful when working with procedural data that generates disconnected path segments and needs to be unified for further processing or visualization.
 
 {% hint style="info" %}
-When using the Fuse method, you can choose whether to keep the start or end point of each path during the merge operation.
+Connects to **Input** pins of type _Path_.
 {% endhint %}
 
+#### How It Works
+
+The node first evaluates all input paths and identifies potential stitching candidates based on the proximity of their start and end points. It then applies a matching logic:
+
+* If **Only Match Start and Ends** is enabled, it only considers connecting a path's end point to another path's start point.
+* Otherwise, it matches any nearby start or end point with another path’s start or end point.
+
+If alignment is required (via the **Requires Alignment** toggle), paths must also be roughly aligned within a specified angular tolerance for stitching to occur.
+
+Once candidates are identified:
+
+* With **Connect** method: Segments are added between paths, preserving all original points.
+* With **Fuse** method: Points are merged using one of three operations:
+  * **None**: Keeps the selected point as-is.
+  * **Average**: Averages the position of the two connecting points.
+  * **Line Intersection**: Calculates where the two path segments would intersect if extended.
+
+The stitching process is performed in a way that avoids conflicts, ensuring each point is only merged once. The final result is a set of continuous paths with potentially fewer points or additional segments, depending on the chosen method.
+
+#### Configuration
+
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Method</strong><br><em>Choose how paths are connected.</em></summary>
 
-* **Main Input** (Default): Path data to be stitched together
-* **Point Filter**: Optional filter for which points to consider
+Controls whether paths are joined with new segments (Connect) or points are merged (Fuse).
+
+**Values**:
+
+* **Connect**: Connects paths by adding segments between them, preserving all original points.
+* **Fuse**: Merges overlapping or nearby endpoints into a single point.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Fuse Method</strong><br><em>Choose which endpoint to keep during merging.</em></summary>
 
-* **Main Output** (Default): Stitched path data
+Only active when **Method** is set to **Fuse**. Determines which endpoint of the two paths to keep during merging.
+
+**Values**:
+
+* **Keep Start**: Retains the start point of the first path.
+* **Keep End**: Retains the end point of the first path.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how paths are connected or merged.
+<summary><strong>Merge Operation</strong><br><em>Choose how the merged point position is calculated.</em></summary>
 
-***
-
-#### Stitching Method
-
-Determines how paths are joined together.
-
-**Method**
-
-_Controls whether paths are connected with new segments or fused into single points._
-
-* When set to **Connect**, existing points are preserved and new segments are added between paths.
-* When set to **Fuse**, overlapping endpoints are merged into a single point.
+Only active when **Method** is set to **Fuse**. Defines how the position of the merged point is calculated.
 
 **Values**:
 
-* **Connect**: Connect existing point with a segment (preserve all input points)
-* **Fuse**: Merge points that should be connected, only leaving a single one.
+* **None**: Keeps the selected point as-is.
+* **Average**: Averages the coordinates of both connecting points.
+* **Line Intersection**: Calculates where the two path segments would intersect if extended.
 
-**Fuse Method**
+</details>
 
-_Controls which endpoint is kept when fusing paths._
+<details>
 
-* When enabled, you can choose whether to keep the start or end point of each path during the merge.
-* This affects how the fused point's position is determined.
+<summary><strong>Only Match Start and Ends</strong><br><em>If enabled, stitching will only happen between a path's end point and another path start point. Otherwise, it's based on spatial proximity alone.</em></summary>
 
-**Values**:
+When enabled, paths are only stitched if one ends where another starts.
 
-* **Keep Start**: Keep start point during the merge
-* **Keep End**: Keep end point during the merge
+</details>
 
-**Merge Operation**
+<details>
 
-_Controls how the position of the merged point is calculated._
+<summary><strong>Requires Alignment</strong><br><em>If enabled, foreign segments must be aligned within a given angular threshold.</em></summary>
 
-* Only applies when using the Fuse method.
-* Determines whether to keep the original point position, average positions, or calculate intersection.
+When enabled, paths must align within a certain angle to be considered for stitching.
 
-**Values**:
+</details>
 
-* **None**: Keep the chosen point as-is
-* **Average**: Average connect point position
-* **Line Intersection**: Connection point position is at the line/line intersection
+<details>
 
-***
+<summary><strong>Tolerance</strong><br><em>Controls the maximum distance between points to consider them for stitching.</em></summary>
 
-#### Matching Behavior
+Sets how close two points must be to be considered for connection or merging. A value of 10 means points within 10 units are candidates.
 
-Controls how paths are matched for stitching.
+</details>
 
-**Only Match Start and Ends**
+<details>
 
-_When enabled, paths are only stitched if one's end connects to another's start._
+<summary><strong>Sort Direction</strong><br><em>Controls the order in which data will be sorted.</em></summary>
 
-* If disabled, paths are stitched based on spatial proximity alone.
-* If enabled, paths must have matching start/end points to be connected.
-
-**Require Alignment**
-
-_When enabled, paths must align within a given angular threshold before stitching._
-
-* Ensures that paths are properly oriented when connecting.
-* Useful for creating clean, continuous routes where direction matters.
-
-**Dot Comparison Details**
-
-_Configuration for alignment checking._
-
-* Defines how the angular alignment is measured between path segments.
-* Only used if "Require Alignment" is enabled.
-
-**Tolerance**
-
-_Sets the maximum distance at which paths can be considered for stitching._
-
-* Paths closer than this distance will be connected or fused.
-* Default value is 10 units, but can be adjusted based on your scene scale.
-
-***
-
-#### Sorting and Data Handling
-
-Controls how data is sorted and carried over during stitching.
-
-**Sort Direction**
-
-_Sets the order in which paths are processed for stitching._
-
-* Paths are processed either in ascending or descending order.
-* Affects which paths get stitched first when multiple candidates exist.
+Determines whether the paths are processed in ascending or descending order, affecting stitching priority.
 
 **Values**:
 
-* **Ascending**: Process paths from lowest to highest index
-* **Descending**: Process paths from highest to lowest index
+* **Ascending**: Process paths from lowest to highest.
+* **Descending**: Process paths from highest to lowest.
 
-**Carry Over Settings**
+</details>
 
-_Configures which attributes and metadata are preserved during stitching._
+<details>
 
-* Controls how data is transferred between input paths and the resulting stitched path.
-* Useful for preserving properties like material, height, or other custom data.
+<summary><strong>Carry Over Settings</strong><br><em>Meta filter settings.</em></summary>
+
+Controls which attributes or metadata are carried over during stitching operations.
+
+</details>
+
+#### Usage Example
+
+Imagine you have a set of disconnected road segments generated procedurally. You can use the Path : Stitch node to connect them into a continuous route. Set the **Method** to **Connect**, and adjust the **Tolerance** to match how close the ends of roads must be to be joined. If you want to merge overlapping road junctions, switch to **Fuse** mode and choose an appropriate **Merge Operation** like **Average**.
+
+#### Notes
+
+* The node works best when input paths are relatively clean and don’t have excessive overlap or complex intersections.
+* Using **Fuse** with **Line Intersection** can produce unexpected results if segments are nearly parallel.
+* Sorting paths before stitching can help control which connections take precedence.

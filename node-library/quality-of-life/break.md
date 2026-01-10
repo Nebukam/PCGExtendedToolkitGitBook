@@ -6,182 +6,181 @@ icon: circle
 # Break
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> A Simple Recursion tracker to make working with recursive subgraphs easier. Acts as a "break" by tracking a counter, and/or checking if data meet certain requirements.
+> A simple recursion tracker that helps manage looping in procedural graphs. Acts as a "break" by tracking a counter and checking if data meets certain requirements.
 
-### Overview
+#### How It Works
 
-The Break node is designed to help manage recursion in procedural graphs by tracking iteration counts and controlling when to continue or stop processing. It acts like a loop counter that can be updated and checked at each step of a recursive subgraph.
+The Break node manages recursive processes by tracking how many times a loop has run and determining whether to continue or stop. It works by:
 
-This node is particularly useful for creating bounded loops within PCG workflows, preventing infinite recursion, and managing the flow of data through recursive structures. It can track multiple trackers simultaneously or work with individual trackers depending on its configuration.
+1. **Initialization**: When set to create a new tracker, it sets up a counter with a maximum number of iterations.
+2. **Iteration Tracking**: With each pass through the loop, it reduces the remaining count and updates the tracker's state.
+3. **Condition Checking**: It decides whether to continue processing based on:
+   * Whether the remaining count has reached zero
+   * A boolean attribute named "Continue" (if defined)
+   * Additional filtering conditions (when enabled)
+4. **Output Generation**: It provides a signal indicating if the loop should continue, and optionally outputs progress information like normalized progress, current index, or remaining iterations.
+5. **Data Filtering**: If enabled, it filters input data to determine whether to proceed with the next iteration.
 
-{% hint style="info" %}
-The Break node must be used in conjunction with a recursive subgraph setup to function properly. The tracker data is created and updated within the context of that recursion.
-{% endhint %}
+The node supports two types of trackers:
+
+* **Simple**: Can manage multiple trackers simultaneously
+* **Branch**: Works with a single tracker at a time
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Type</strong><br><em>How is this recursion tracker supposed to be used.</em></summary>
 
-* **Default Input** (Optional): Points or data to process
-* **Tracker Input** (Optional): Existing tracker data to update or read from
+Determines how the tracker behaves.
+
+**Values**:
+
+* **Simple**: Can update multiple trackers at once.
+* **Branch**: Can only work with a single tracker.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Mode</strong><br><em>How is this recursion tracker supposed to be used.</em></summary>
 
-* **Default Output**: Processed points or data
-* **Continue Output**: Data that should continue processing in the recursive loop
-* **Stop Output**: Data that should stop processing and exit the recursion
-* **Tracker Output** (Optional): Updated tracker data for use in subsequent iterations
+Controls how the tracker is initialized or updated.
+
+**Values**:
+
+* **Create**: Creates a new tracker. Use this outside of recursive subgraphs.
+* **Update**: Processes and updates an existing tracker. Use this inside recursive subgraphs.
+* **Create or Update**: Creates a new tracker if input is empty, otherwise updates an existing one. Useful for creating trackers directly within the recursive subgraph.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the Break node behaves and what information it tracks.
+<summary><strong>ContinueAttributeName</strong><br><em>Name of the bool attribute that will be set on the tracker.</em></summary>
 
-***
+The name of the boolean attribute used to control whether the recursion continues.
 
-#### Settings
+</details>
 
-Configures the core behavior of the recursion tracker.
+<details>
 
-**Type**
+<summary><strong>MaxCount</strong><br><em>Max count.</em></summary>
 
-_Controls whether this tracker works with a single tracker or multiple trackers._
+Maximum number of iterations allowed before stopping the recursion.
 
-* **Simple**: Can update multiple trackers at once, useful for managing several recursive processes simultaneously.
-* **Branch**: Works with a single tracker only, ideal for linear recursion paths.
+</details>
 
-**Mode**
+<details>
 
-_Determines how the tracker is created and updated._
+<summary><strong>AddTags</strong><br><em>Tags to be added to the tracker</em></summary>
 
-* **Create**: Creates a new tracker. This is for creating an initial tracker outside the subgraph.
-* **Update**: Processes and updates an existing tracker. This is for use inside the recursive subgraph.
-* **Create or Update**: Creates a new tracker if input is empty, otherwise falls back to mutate. Useful to create tracker directly inside the recursive subgraph.
+A string of tags to assign to the tracker. Tags are separated by commas.
 
-**Continue Attribute Name**
+</details>
 
-_Name of the boolean attribute that will be set on the tracker to control recursion._
+<details>
 
-* Controls whether the recursion continues (true) or stops (false)
-* Default value: "Continue"
+<summary><strong>RemoveTags</strong><br><em>Tags to be removed from the tracker(s)</em></summary>
 
-**Max Count**
+A string of tags to remove from the tracker. Tags are separated by commas.
 
-_Maximum number of iterations allowed before stopping._
+</details>
 
-* Sets an upper limit to prevent infinite loops
-* Must be greater than 0
-* Example: Setting this to 5 means the recursion will stop after 5 iterations
+<details>
 
-**Add Tags**
+<summary><strong>CounterUpdate</strong><br></summary>
 
-_Tags to be added to the tracker._
+Controls how the counter is updated during processing. A value of -1 means default behavior, otherwise it specifies a fixed update amount.
 
-* Adds metadata tags for filtering or identification purposes
-* Multiple tags can be specified, separated by commas
+</details>
 
-**Remove Tags**
+<details>
 
-_Tags to be removed from the tracker(s)._
+<summary><strong>bOutputProgress</strong><br><em>If enabled, will create a pin that outputs the normalized progress value.</em></summary>
 
-* Removes existing metadata tags from trackers
-* Only available when Mode is not "Create"
+When enabled, creates an output pin for the normalized progress (0 to 1) of the recursion.
 
-***
+</details>
 
-#### Tagging
+<details>
 
-Controls how tags are managed on the tracker.
+<summary><strong>bOutputIndex</strong><br><em>If enabled, will create a pin that outputs the current iteration index (Max - Remainder).</em></summary>
 
-**Remove Tags**
+When enabled, creates an output pin for the current iteration index (how many iterations have passed).
 
-_Tags to be removed from the tracker(s)._
+</details>
 
-* Removes specified tags from existing trackers
-* Only available when Mode is not "Create"
+<details>
 
-***
+<summary><strong>bOutputRemainder</strong><br><em>If enabled, will create a pin that outputs the current remainder.</em></summary>
 
-#### Extra Outputs
+When enabled, creates an output pin for the remaining iterations.
 
-Enables additional output pins for tracking progress and state.
+</details>
 
-**Output Progress**
+<details>
 
-_If enabled, creates a pin that outputs the normalized progress value._
+<summary><strong>bOneMinus</strong><br><em>└─ One Minus</em></summary>
 
-* Useful for visualizing how far along the recursion has progressed
-* Progress ranges from 0.0 (start) to 1.0 (completion)
+When enabled, outputs `1 - Progress` instead of the progress value.
 
-**Output Index**
+</details>
 
-_If enabled, creates a pin that outputs the current iteration index._
+<details>
 
-* Outputs the current iteration number (Max - Remainder)
-* Helpful for tracking which step of recursion is currently active
+<summary><strong>bForceOutputContinue</strong><br><em>If enabled, will override the value of the "Continue" attribute to a valid one. Use this is you give the tracker some attribute set that may already have a boolean with the same name and a wrong value.</em></summary>
 
-**Output Remainder**
+When enabled, ensures the continue output is always valid even if the input has conflicting data.
 
-_If enabled, creates a pin that outputs the current remainder._
+</details>
 
-* Shows how many iterations are left before stopping
-* Useful for understanding remaining work in the recursion
+<details>
 
-**One Minus**
+<summary><strong>bDoAdditionalDataTesting</strong><br><em>If enabled, does additional collection-level filtering on a separate set of datas. If no data passes those filters, the tracker will return a single false value.</em></summary>
 
-_When enabled, outputs 1 - progress value._
+When enabled, performs extra filtering on test data to determine if recursion should continue.
 
-* Inverts the progress value for use in reverse calculations
-* Only available when Output Progress is enabled
+</details>
 
-***
+<details>
 
-#### Advanced Settings
+<summary><strong>bAddEntryWhenCreatingFromExistingData</strong><br><em>.</em></summary>
 
-Controls additional behaviors and edge cases.
+When enabled, adds an entry when creating a tracker from existing data.
 
-**Force Output Continue**
+</details>
 
-_If enabled, overrides the value of the "Continue" attribute to a valid one._
+<details>
 
-* Ensures that the continue flag is properly set even if it already exists with an incorrect value
-* Useful when working with existing data that may have conflicting attributes
+<summary><strong>RemainderOffsetWhenCreateInsteadOfUpdate</strong><br><em>An offset applied when creating a tracker in "Create or Update" mode. The default value assume the tracker is created from inside a subgraph and thus that one iteration passed already.</em></summary>
 
-**Do Additional Data Testing**
+Adjusts the initial remainder when creating a tracker in "Create or Update" mode.
 
-_If enabled, performs additional collection-level filtering on separate data sets._
+</details>
 
-* Checks if any data passes specified filters before continuing recursion
-* If no data passes the filters, returns a single false value to stop recursion
-* Only available when Type is "Simple" and Mode is not "Create"
+<details>
 
-**Add Entry When Creating From Existing Data**
+<summary><strong>bGroupBranchPins</strong><br><em>For OCD purposes.</em></summary>
 
-_When enabled, adds an entry when creating tracker from existing data._
+When enabled, groups related output pins together for better visual organization.
 
-* Controls behavior when creating trackers from existing data sources
-* May be needed for proper initialization in some workflows
+</details>
 
-**Remainder Offset When Create Instead Of Update**
+#### Usage Example
 
-_An offset applied when creating a tracker in "Create or Update" mode._
+1. Place a Break node at the start of a recursive subgraph.
+2. Set Mode to "Create" and MaxCount to 5.
+3. Connect the main input to your data.
+4. Use the Continue output to control the loop in your subgraph.
+5. Inside the subgraph, connect the Break node's output back to its own input to create a recursive loop.
 
-* Default value assumes tracker is created from inside a subgraph, so one iteration has already passed
-* Adjust this if you need different starting conditions
+#### Notes
 
-**Group Branch Pins**
-
-_For OCD purposes._
-
-* Affects pin grouping in the graph editor for better visual organization
-* Does not affect functionality
+* The Break node is essential for preventing infinite recursion in procedural graphs.
+* When using "Create or Update" mode, it's recommended to set `RemainderOffsetWhenCreateInsteadOfUpdate` to -1 if creating inside a subgraph.
+* The Continue attribute can be used to override the default behavior of the tracker.
+* Additional data testing is useful for complex conditions that depend on multiple datasets.

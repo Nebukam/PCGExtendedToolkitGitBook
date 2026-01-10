@@ -6,103 +6,102 @@ icon: circle
 # Bin Packing
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> \[EXPERIMENTAL] An simple bin packing node.
+> \[EXPERIMENTAL] A simple bin packing node that organizes input points into predefined bins using an efficient space-fitting algorithm.
 
-### Overview
+#### How It Works
 
-This node organizes input points into bins using a bin packing algorithm, placing items as efficiently as possible within defined containers. It's useful for distributing objects across multiple areas while minimizing wasted space and maintaining logical grouping.
+The Bin Packing node arranges input points into bins by first sorting them based on a specified rule, then placing each point into available spaces within the bins. Each bin has defined boundaries and a starting point for placement, which is determined by a seed value.
 
-The node takes an input set of points (items to place) and another set of points (bins or containers). It attempts to fit each item into the most appropriate bin based on available space, using configurable rules for sorting, seed positioning, and packing behavior. Items that cannot be placed in any bin are sent to a separate output.
+1. Input points are sorted according to the configured sort direction.
+2. For each bin:
+   * A seed point determines where to begin placing items.
+   * The algorithm attempts to fit each item into available space within the bin.
+3. When an item cannot fit in any current space, it may be discarded or placed in a new bin if allowed.
+4. Placement decisions are influenced by the selected split axis and mode, which define how free space is partitioned after each item placement.
+5. Padding can be applied to items to simulate physical constraints or spacing requirements.
 
-{% hint style="info" %}
-This node is experimental and may not behave as expected in all scenarios. Use with caution.
-{% endhint %}
+The algorithm attempts to minimize wasted space by choosing placements that leave the smallest amount of unused volume for future items, unless configured otherwise.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Sort Direction</strong><br><em>Controls the order in which points will be sorted, when using sorting rules.</em></summary>
 
-* **Main Input**: Points to be packed into bins
-* **Bins Input**: Points defining the containers or bins where items will be placed
+Determines whether the input points are sorted in ascending or descending order before packing. This affects how items are placed into bins.
+
+**Values**:
+
+* **Ascending**: Sorts from lowest to highest.
+* **Descending**: Sorts from highest to lowest.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Seed Mode</strong><br><em>Per-bin seed. Represent a bound-relative location to start packing from.</em></summary>
 
-* **Main Output**: Points that were successfully placed in bins
-* **Discarded Output**: Points that could not be placed in any bin
+Defines how the starting point for packing within each bin is determined.
+
+**Values**:
+
+* **UVWConstant**: Uses a constant UVW vector.
+* **UVWAttribute**: Uses a per-bin attribute value for UVW.
+* **PositionConstant**: Uses a constant world position.
+* **PositionAttribute**: Uses a per-bin attribute value for world position.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how items are sorted, positioned, and packed into bins.
+<summary><strong>Seed UVW</strong><br><em>A constant bound-relative position.</em></summary>
 
-***
+A vector defining the relative position within each bin where packing begins, when using UVWConstant mode.
 
-#### Settings
+</details>
 
-Configures the core packing behavior and rules.
+<details>
 
-**Sort Direction**
+<summary><strong>Seed UVW Attribute</strong><br><em>A per-bin bound-relative position.</em></summary>
 
-_Controls the order in which points are processed._
+An attribute that defines a UVW vector for each bin, used to determine the starting point for packing.
 
-* Items are sorted before packing to influence placement priority
-* **Ascending**: Process smaller items first
-* **Descending**: Process larger items first
+</details>
 
-**Seed Mode**
+<details>
 
-_Determines how bin seeds (starting positions) are defined._
+<summary><strong>Seed Position</strong><br><em>A constant world position.</em></summary>
 
-* **UVW (Constant)**: Use a constant UVW coordinate relative to bin bounds
-* **UVW**: Read UVW coordinates from an attribute on the bin point
-* **Position (Constant)**: Use a constant world position as seed
-* **Position (Attribute)**: Read world position from an attribute on the bin point
+A world-space vector defining where packing begins within each bin, when using PositionConstant mode.
 
-**Seed UVW**
+</details>
 
-_The UVW coordinate used as the seed when using "UVW (Constant)" mode._
+<details>
 
-* A value between 0 and 1, representing relative position within bin bounds
-* Example: `FVector(0.5, 0.5, 0)` places seed at center bottom of bin
+<summary><strong>Seed Position Attribute</strong><br><em>A per-bin world position.</em></summary>
 
-**Seed UVW Attribute**
+An attribute that defines a world-space vector for each bin, used to determine the starting point for packing.
 
-_The attribute to read UVW coordinates from when using "UVW" mode._
+</details>
 
-* Must be a vector attribute on the bin point data
+<details>
 
-**Seed Position**
+<summary><strong>Infer Split Axis From Seed</strong><br><em>Will attempt to infer the split axis from relative seed positioning, and fall back to selected axis if it can't find one.</em></summary>
 
-_The world position used as the seed when using "Position (Constant)" mode._
+When enabled, the node attempts to automatically determine which axis should be used for stacking based on the relative position of the seed point. If this fails, it falls back to the manually selected Split Axis.
 
-* Example: `FVector(0, 0, 0)` places seed at origin
+</details>
 
-**Seed Position Attribute**
+<details>
 
-_The attribute to read world position from when using "Position (Attribute)" mode._
+<summary><strong>Split Axis</strong><br><em>The main stacking axis is the axis that will generate the smallest free space for further insertion.</em></summary>
 
-* Must be a vector attribute on the bin point data
+The primary axis along which items are stacked within a bin. This affects how the available space is partitioned after each item placement.
 
-**Infer Split Axis From Seed**
-
-_When enabled, attempts to determine the main packing axis based on seed positions._
-
-* If disabled, uses the manually selected Split Axis
-* Useful for dynamic layouts where bins are positioned in different orientations
-
-**Split Axis**
-
-_The primary axis along which items will be stacked._
+**Values**:
 
 * **Forward**: X+
 * **Backward**: X-
@@ -111,71 +110,111 @@ _The primary axis along which items will be stacked._
 * **Up**: Z+
 * **Down**: Z-
 
-**Split Mode**
+</details>
 
-_How the packing algorithm splits free space when placing items._
+<details>
 
-* **Minimal**: Splits space to minimize remaining free volume
-* **Minimal (Cross Axis)**: Splits space along cross axis to minimize remaining free volume
-* **Equal Split**: Divides space evenly between two partitions
-* **Cone**: Creates a cone-shaped partition
-* **Cone (Cross Axis)**: Creates a cone-shaped partition along the cross axis
+<summary><strong>Split Mode</strong><br><em>The cross stacking axis is the axis that will generate the largest free space on the "sides" of the main axis.</em></summary>
 
-**Avoid Wasted Space**
+Controls how the remaining space is divided after placing an item. This determines whether to prioritize minimizing or maximizing space on the sides.
 
-_When enabled, prevents creating small unused spaces._
+**Values**:
 
-* Helps reduce fragmentation and improves packing efficiency
-* May result in fewer items fitting but better space usage overall
+* **Minimal**: Minimizes the space left for further insertion.
+* **Minimal (Cross Axis)**: Minimizes space along the cross axis.
+* **Equal Split**: Splits space evenly.
+* **Cone**: Uses a cone-shaped split pattern.
+* **Cone (Cross Axis)**: Uses a cone-shaped split along the cross axis.
 
-**Placement Favor**
+</details>
 
-_Determines how to prioritize placement when multiple options are available._
+<details>
 
-* **Seed Proximity**: Prioritizes placing items closer to the bin seed
-* **Space Conservation**: Prioritizes placing items to conserve overall space
+<summary><strong>Avoid Wasted Space</strong><br><em>If enabled, fitting will try to avoid wasted space by not creating free spaces that are below a certain threshold.</em></summary>
 
-**Occupation Padding Input**
+When enabled, the node avoids placing items if doing so would result in a small amount of unused space, aiming for more efficient packing.
 
-_Specifies whether padding is constant or read from an attribute._
+</details>
 
-* **Constant**: Use a fixed padding value
-* **Attribute**: Read padding values from an attribute on the input points
+<details>
 
-**Occupation Padding Attribute**
+<summary><strong>Placement Favor</strong><br><em>Determines whether the algorithm prioritizes placing items close to the seed point or conserves space for future items.</em></summary>
 
-_The attribute to read padding values from when using "Attribute" mode._
+Determines whether the algorithm prioritizes placing items near the seed or minimizes wasted space.
 
-* Must be a vector attribute on the input point data
+**Values**:
 
-**Occupation Padding**
+* **Seed Proximity**: Prioritizes placing items near the seed.
+* **Space Conservation**: Prioritizes minimizing wasted space.
 
-_The padding applied to placed items, increasing their footprint._
+</details>
 
-* Example: `FVector(0.1, 0.1, 0.1)` adds 0.1 units of padding in all directions
-* Affects how much space an item occupies after placement
+<details>
 
-**Absolute Padding**
+<summary><strong>Occupation Padding Input</strong><br><em>Occupation padding source</em></summary>
 
-_When enabled, padding is not rotated with the item._
+Controls how the padding value is defined for each item.
 
-* If disabled, padding will rotate with the item's orientation
-* Useful for maintaining consistent spacing regardless of rotation
+**Values**:
 
-***
+* **Constant**: Uses a fixed padding value.
+* **Attribute**: Uses an attribute to define padding per item.
 
-#### Warnings and Errors
+</details>
 
-Controls warning messages when there are more or fewer bins than input points.
+<details>
 
-**Quiet Too Many Bins Warning**
+<summary><strong>Occupation Padding Attribute</strong><br><em>An attribute that defines the padding for each item.</em></summary>
 
-_When enabled, suppresses warnings if there are more bins than input points._
+An attribute that defines the padding for each item, used to expand its bounds after placement. Only visible when Occupation Padding Input is set to Attribute.
 
-* Prevents cluttering the log with unimportant messages
+</details>
 
-**Quiet Too Few Bins Warning**
+<details>
 
-_When enabled, suppresses warnings if there are fewer bins than input points._
+<summary><strong>Occupation Padding</strong><br><em>Occupation padding. Occupation padding is an amount by which the bounds of a placed point will be expanded by after placement. This yield to greater fragmentation.</em></summary>
 
-* Useful when you expect some items to be discarded due to lack of bins
+A fixed vector defining how much padding to apply to each item's bounds when placing it. This can help simulate physical constraints or spacing.
+
+</details>
+
+<details>
+
+<summary><strong>Absolute Padding</strong><br><em>If enabled, the padding will not be relative (rotated) if the item is rotated.</em></summary>
+
+When enabled, padding values are applied in world space rather than being rotated with the item. This ensures consistent spacing regardless of orientation.
+
+</details>
+
+<details>
+
+<summary><strong>Quiet Too Many Bins Warning</strong><br><em>If enabled, won't throw a warning if there are more bins than there are inputs.</em></summary>
+
+When enabled, suppresses warnings that would otherwise appear when the number of bins exceeds the number of input points.
+
+</details>
+
+<details>
+
+<summary><strong>Quiet Too Few Bins Warning</strong><br><em>If enabled, won't throw a warning if there are fewer bins than there are inputs.</em></summary>
+
+When enabled, suppresses warnings that would otherwise appear when the number of bins is less than the number of input points.
+
+</details>
+
+#### Usage Example
+
+To arrange scattered trees into a grid of containers:
+
+1. Create a set of bin points representing container locations.
+2. Connect these to the Bin Packing node's input.
+3. Set the Seed Mode to PositionConstant and define a seed vector that places items near the center of each bin.
+4. Enable Avoid Wasted Space to ensure efficient packing.
+5. Optionally, use Occupation Padding to add spacing between items.
+
+#### Notes
+
+* This is an experimental feature and may not be fully optimized for performance.
+* Bin Packing works best when bins are large enough to accommodate most items.
+* Sorting rules can significantly affect the final layout; experiment with different sort orders.
+* The algorithm prioritizes minimizing space waste, but this can sometimes lead to suboptimal packing in complex scenarios.

@@ -6,156 +6,66 @@ icon: scrubber
 # Sample Neighbors
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Sample values from neighboring points in a cluster and write them to the current point.
+> Sample values from neighboring points within clusters.
 
-### Overview
+#### Overview
 
-This node allows you to gather data from nearby points within a cluster and store it as new tags on the current point. It's useful for creating local influence effects, such as averaging neighbor properties, finding the closest neighbor, or collecting multiple neighbors based on distance or sorting criteria.
-
-You can sample values from either the points themselves (vtx) or from edges connecting to those points. The node supports various sampling methods and allows you to define how many neighbors to collect and how to sort them.
+This node retrieves and samples data from the neighboring points of each point in a cluster. It's useful for gathering contextual information from nearby elements, such as color, height, or other attributes, to influence the behavior or appearance of the current point. This is commonly used in terrain generation, vegetation placement, or any scenario where local neighborhood data affects individual point properties.
 
 {% hint style="info" %}
-This node works within clusters, so it expects input data to be organized into clusters. It will process each cluster separately.
+Connects to **Cluster** processing nodes and requires a **Neighbor Sampler** subnode.
 {% endhint %}
 
+#### How It Works
+
+This node processes each point in the input clusters and evaluates its neighbors based on defined criteria. For each point, it collects data from neighboring points within a specified distance or count. The collected neighbor values are then processed according to the configuration of the connected **Neighbor Sampler** subnode, which defines how these values are aggregated or transformed.
+
+The node supports both vertex-based and edge-based sampling modes, allowing for flexible neighborhood definitions. It can sample multiple attributes from neighbors and apply sorting rules if needed, ensuring that the sampled data is representative and well-ordered.
+
+#### Configuration
+
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Neighbor Sampler Subnode</strong><br><em>Defines how neighbor data is collected and processed.</em></summary>
 
-* **Main Input (Points)**: Points that define the cluster structure and are used as the base for sampling.
-* **Edges**: Optional edge data defining relationships between points in the cluster.
+This subnode controls the behavior of how neighbors are sampled. It determines which attributes are fetched from neighboring points, how many neighbors are considered, and whether sorting or filtering is applied.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Sampling Mode</strong><br><em>Determines whether to sample from points or edges.</em></summary>
 
-* **Output Points**: Points with new tags added from sampled neighbor values.
-* **Output Edges**: Optional, if enabled, outputs modified edges.
+* **Point**: Sample values from the point itself.
+* **Edge**: Sample values from the edge connecting to the point being evaluated.
 
 </details>
 
-### Properties Overview
+<details>
 
-Settings for controlling how neighbors are selected and sampled.
+<summary><strong>Max Distance</strong><br><em>Maximum distance to consider neighbors within.</em></summary>
 
-***
+Only neighbors within this distance will be included in sampling. A value of 0 means all neighbors are considered regardless of distance.
 
-#### Sampling Settings
+</details>
 
-Controls the method and parameters for selecting neighbors to sample from.
+<details>
 
-**Sample From**
+<summary><strong>Neighbor Count</strong><br><em>Maximum number of neighbors to sample from.</em></summary>
 
-_Whether to sample data from points or edges._
+Limits the number of neighbors used for sampling. If set to 0, all neighbors within range are used.
 
-* When set to **Point**, values are fetched from the point being evaluated.
-* When set to **Edge**, values are fetched from the edge connecting to the point being evaluated.
+</details>
 
-**Values**:
+#### Usage Example
 
-* **Point**: Value is fetched from the point being evaluated.
-* **Edge**: Value is fetched from the edge connecting to the point being evaluated.
+A terrain generation setup where you want each point to inherit color or height values from its closest neighbors. You would connect a **Neighbor Sampler** subnode that fetches color data and applies an average operation. This allows for smooth transitions between different terrain types based on local neighbor properties.
 
-**Max Distance**
+#### Notes
 
-_Maximum distance at which a neighbor can be considered._
-
-* Use `-1` or `0` to ignore distance checks and consider all neighbors within the cluster.
-* Positive values limit sampling to neighbors within that distance.
-
-**Sampling Method**
-
-_How to select neighbors from the cluster._
-
-* **Closest vtx**: Selects neighbors based on proximity to the point's position.
-* **Closest edge**: Selects neighbors based on proximity to the connecting edge, then to endpoints.
-
-**Values**:
-
-* **Closest vtx**: Proximity to node position
-* **Closest edge**: Proximity to edge, then endpoint
-
-**Number of Samples**
-
-_Number of neighbors to sample from._
-
-* Determines how many neighbor values are collected and stored.
-* If set to `0`, no sampling occurs.
-* If more samples are requested than available neighbors, all available neighbors will be used.
-
-**Sort Neighbors**
-
-_Whether to sort neighbors before sampling._
-
-* When enabled, neighbors are sorted based on the specified sorting rules before sampling.
-* Sorting is applied per cluster and can improve consistency of results.
-
-**Sort Rules**
-
-_Configuration for how neighbors are sorted._
-
-* Defines which tags to use for sorting and whether to invert the order.
-* Multiple rules can be added to create complex sorting behavior.
-
-***
-
-#### Output Settings
-
-Controls how sampled values are written to output points.
-
-**Output Tags**
-
-_Tags to write sampled values into._
-
-* Each tag corresponds to a sampled neighbor value.
-* If more samples are taken than tags, only the first N samples will be written.
-* If fewer samples are taken than tags, unused tags will remain empty.
-
-**Tag Prefix**
-
-_Prefix added to all output tag names._
-
-* Helps organize and identify sampled data in the output.
-* Example: If prefix is `Neighbor`, output tags would be `Neighbor0`, `Neighbor1`, etc.
-
-**Use Index as Tag Suffix**
-
-_Whether to append neighbor index to output tags._
-
-* When enabled, adds a numeric suffix to each tag (e.g., `MyTag0`, `MyTag1`).
-* When disabled, all samples are written to the same tag name.
-
-**Sample Value Test**
-
-_Whether to perform a value test on sampled neighbors._
-
-* When enabled, only neighbors whose values meet a specified condition are included in sampling.
-* Useful for filtering based on criteria like distance or specific value ranges.
-
-**Value Test Tag**
-
-_Tag used for testing neighbor values._
-
-* Specifies which tag's value should be tested against the threshold.
-* Only neighbors with matching values will be considered for sampling.
-
-**Value Test Threshold**
-
-_Threshold value for neighbor selection._
-
-* Neighbors must meet this condition to be included in sampling.
-* Can be a fixed number or a dynamic value from another tag.
-
-**Value Test Invert**
-
-_Invert the value test condition._
-
-* When enabled, neighbors that do NOT match the threshold will be selected.
-* Useful for excluding certain values from sampling.
+* Ensure the connected **Neighbor Sampler** subnode is properly configured to avoid unexpected results.
+* Performance can be affected by large neighbor counts or complex sampling operations.
+* The node works best when used with clustered data where neighbors are logically grouped.

@@ -11,129 +11,110 @@ This page was generated from the source code. It should properly capture what th
 
 > Filter points using a random value based on a threshold and optional weight.
 
-#### Overview
-
-This subnode filters points by comparing a random value against a defined threshold. It can optionally use per-point weights to influence the filtering behavior, making it useful for creating randomized selection or exclusion patterns across point data. This is especially helpful when you want to introduce stochastic variation into procedural generation workflows.
-
-It connects to **Filter** pins on processing nodes that accept point filters. Multiple filter subnodes can be combined to create more complex filtering logic.
-
 #### How It Works
 
-This subnode generates a random value for each point and compares it against a threshold to determine whether the point passes or fails the filter. The random number is generated using a seed, which can be constant or derived from point attributes. Optionally, a weight per point can be used to adjust the effective threshold or influence how the random value is interpreted.
+This Subnode evaluates each point in a dataset by generating a pseudo-random value and comparing it against a defined threshold. The outcome determines whether the point passes or fails the filter.
 
 The process works as follows:
 
-1. For each point, a random number is generated within the 0-1 range.
-2. If a **per-point weight** is enabled, that weight is retrieved and optionally remapped to the 0-1 range.
-3. The threshold is either a constant value or taken from an attribute, and can also be remapped if needed.
-4. The random value is compared against the adjusted threshold:
-   * If the random value is **less than** the threshold, the point passes the filter.
-   * If the **bInvertResult** is enabled, this logic is flipped.
-5. A curve can optionally remap the weight to alter how it influences the filtering behavior.
+1. For each point, a random number is generated based on a seed value.
+2. If using per-point attributes, the Subnode reads threshold and/or weight values from the input data.
+3. These values are normalized to a 0-1 range if enabled.
+4. A curve transformation can be applied to the weight value before comparison.
+5. The resulting value is compared against the threshold.
+6. The point either passes or fails based on this comparison, with an option to invert the result.
 
-<details>
-
-<summary>Inputs</summary>
-
-Expects a set of points with optional attributes for threshold and weight if using attribute-based inputs.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-Points that pass the random filter are passed through; those that fail are excluded from further processing.
-
-</details>
+This approach allows for stochastic filtering that can be controlled through various settings like seed, threshold, and weight attributes.
 
 #### Configuration
 
-***
+<details>
 
-**RandomSeed**
+<summary><strong>Random Seed</strong><br><em>Sets the seed for the pseudo-random number generator.</em></summary>
 
-_The seed used to initialize the random number generator._
+Using the same seed will produce consistent results across runs. This is useful when you need reproducible outcomes in procedural generation.
 
-Controls the starting point for the random sequence. Using a fixed seed ensures reproducible results, while a dynamic seed (e.g., based on point position) introduces variation per point.
+</details>
 
-**ThresholdInput**
+<details>
 
-_Type of value source for the threshold._
+<summary><strong>Threshold Input</strong><br><em>Controls whether the threshold is a constant or read from an attribute.</em></summary>
 
-Determines whether the threshold is a constant or read from an attribute on the input points.
+* **Constant**: Uses the fixed value defined in the Threshold setting.
+* **Attribute**: Reads the threshold value from a point attribute.
 
-**Values**:
+</details>
 
-* **Constant**: Use a fixed numeric value.
-* **Attribute**: Read the threshold value from a specified attribute.
+<details>
 
-**bRemapThresholdInternally**
+<summary><strong>Remap to 0..1 (Threshold)</strong><br><em>Whether to normalize the threshold internally or not.</em></summary>
 
-_Whether to normalize the threshold internally._
+When enabled, normalizes the threshold value to a 0-1 range. This is useful when your input threshold values are outside that range.
 
-When enabled, the threshold value is remapped to fit within a 0–1 range. Useful when your input threshold values are outside that range.
+</details>
 
-**Threshold**
+<details>
 
-_The fixed threshold value used for comparison._
+<summary><strong>Threshold</strong><br><em>Pass threshold.</em></summary>
 
-Only active when **ThresholdInput** is set to **Constant**. Value must be between 0 and 1.
+The fixed threshold value used for comparison when Threshold Input is set to Constant. Must be between 0 and 1.
 
-**bPerPointWeight**
+</details>
 
-_Whether to use per-point weights for filtering._
+<details>
 
-When enabled, each point can have a different weight that affects the random filtering behavior.
+<summary><strong>Per-Point Weight</strong><br><em>Whether to use a per-point weight attribute.</em></summary>
 
-**Weight**
+When enabled, reads a weight value from a point attribute to influence the random filter outcome.
 
-_The attribute used to define per-point weights._
+</details>
 
-Only active when **bPerPointWeight** is enabled. Defines which attribute to read the weight from.
+<details>
 
-**bRemapWeightInternally**
+<summary><strong>Weight</strong><br><em>Per-point weight.</em></summary>
 
-_Whether to normalize the weight internally._
+The name of the point attribute used for weights when Per-Point Weight is enabled.
 
-When enabled, the weight value is remapped to fit within a 0–1 range. Useful if your input weights are outside that range.
+</details>
 
-**bUseLocalCurve**
+<details>
 
-_Whether to use an in-editor curve or an external asset._
+<summary><strong>Remap to 0..1 (Weight)</strong><br><em>Whether to normalize the weights internally or not.</em></summary>
 
-Controls whether to define the weight curve directly in the node or reference an external curve asset.
+When enabled, normalizes the weight values to a 0-1 range. Useful when input weights are outside that range.
 
-**LocalWeightCurve**
+</details>
 
-_The curve used to remap the weight._
+<details>
 
-Only visible when **bUseLocalCurve** is enabled. Defines how weights are transformed before being applied.
+<summary><strong>Use Local Curve</strong><br><em>Whether to use in-editor curve or an external asset.</em></summary>
 
-**WeightCurve**
+When enabled, uses the in-editor curve defined in Weight Curve. When disabled, uses an external curve asset.
 
-_External curve asset used for weight remapping._
+</details>
 
-Only active when **bUseLocalCurve** is disabled. Allows referencing a pre-defined curve asset from disk.
+<details>
 
-**bInvertResult**
+<summary><strong>Weight Curve</strong><br><em>Curve the value will be remapped over.</em></summary>
 
-_Whether to invert the filter result._
+The curve used to transform weight values before comparison. Either a local editor curve or an external asset depending on Use Local Curve setting.
 
-When enabled, points that would normally pass now fail and vice versa.
+</details>
 
-**Config**
+<details>
 
-_Filter configuration settings._
+<summary><strong>Invert Result</strong><br><em>Reverses the filter result.</em></summary>
 
-Contains all of the above settings grouped together for easier management.
+When enabled, reverses the filter result — points that would pass now fail and vice versa.
+
+</details>
 
 #### Usage Example
 
-Use this subnode to randomly select 30% of points from a point cloud. Set **Threshold** to `0.3`, enable **bPerPointWeight**, and use an attribute like "Density" as the weight. This creates a weighted random selection where denser areas are more likely to be included.
+Use this Subnode to randomly select 30% of points from a dataset. Set Threshold to 0.3, enable Per-Point Weight, and use a constant weight attribute with value 1.0 for all points. This will result in approximately 30% of the points passing the filter.
 
 #### Notes
 
-* The random seed can be set to a constant or derived from point attributes for varied results.
-* When using per-point weights, consider remapping them to a 0–1 range if they're not already.
-* Combining this filter with other filters allows for complex conditional logic in procedural workflows.
+* The Random Seed ensures reproducible results if needed.
+* Use Remap settings when your input data does not naturally fit within a 0-1 range.
+* Combining this with other filters allows for complex probabilistic selection logic.

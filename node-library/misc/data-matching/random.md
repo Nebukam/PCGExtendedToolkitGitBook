@@ -6,27 +6,37 @@ icon: circle-dashed
 # Random
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Randomly passes or fails a match based on a threshold value.
+> Randomly determines whether matching operations succeed or fail based on a probability threshold.
 
-### Overview
+#### Overview
 
-This node randomly determines whether a match should succeed or fail, using a configurable probability threshold. It's useful for introducing randomness into matching logic, such as randomly selecting candidates from a set, applying chance-based filtering, or creating stochastic behavior in procedural generation workflows.
+The Match : Random subnode adds randomness to data matching workflows. Instead of making fixed decisions about which matches should pass or fail, it uses a probability-based system to determine outcomes. This is useful for creating varied and unpredictable results in procedural content generation, such as randomly selecting which points or edges participate in a match.
+
+This subnode connects to matching processing nodes that support data matching operations. It defines the logic for how matches are evaluated based on a random threshold value.
 
 {% hint style="info" %}
-The random seed ensures consistent results across runs when the same seed is used. Changing the seed will produce different match outcomes.
+Connects to **Match** processing nodes (e.g., Match Points, Match Edges) via its output pin.
 {% endhint %}
+
+#### How It Works
+
+This subnode evaluates each potential match against a randomly generated value. For each candidate being considered for a match:
+
+1. A random number is generated between 0 and 1 using the configured seed.
+2. The match passes if this random number is less than or equal to the threshold value.
+3. If `bInvertThreshold` is enabled, the match passes when the random number is **greater** than the threshold.
+4. The threshold can be a fixed value or read from an attribute on the input data.
+
+This creates a probabilistic matching system where some matches succeed and others fail based on chance, enabling varied procedural outputs.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Default Input Pin**: Expects point data to be matched against.
-* **Optional Extra Input Pin**: Optional secondary point data for matching.
+Expects data that supports matching operations (points, edges, etc.), typically connected via pins on matching processing nodes.
 
 </details>
 
@@ -34,52 +44,63 @@ The random seed ensures consistent results across runs when the same seed is use
 
 <summary>Outputs</summary>
 
-* **Output Match Rule Label**: Outputs a match rule that can be consumed by nodes that support matching logic.
+Produces a match rule definition that can be consumed by matching processing nodes to determine which candidates pass or fail based on the random threshold logic.
 
 </details>
 
-### Properties Overview
+#### Configuration
 
-Controls how the random matching is performed, including the probability threshold and seed.
+<details>
 
-***
+<summary><strong>RandomSeed</strong><br><em>TBD</em></summary>
 
-#### General
+Controls the seed used for generating random numbers. Changing this value will change the sequence of random decisions made by this subnode.
 
-Configures the core behavior of the random matching.
+</details>
 
-**Random Seed**
+<details>
 
-_Sets the seed used for random number generation._
+<summary><strong>ThresholdInput</strong><br><em>Type of Threshold value source.</em></summary>
 
-* Affects reproducibility of results. Same seed produces same match outcomes.
-* Use different seeds to get varied randomness in your procedural content.
+Determines whether the threshold is a constant value or read from an attribute.
 
-**Threshold Input Type**
+**Values**:
 
-_Specifies whether the threshold value is constant or read from an attribute._
+* **Constant**: Use the fixed `Threshold` value.
+* **Attribute**: Read the threshold from an attribute on the input data.
 
-* **Constant**: Use a fixed value for the pass threshold.
-* **Attribute**: Read the pass threshold from an attribute on the input data.
+</details>
 
-**Threshold (Attribute)**
+<details>
 
-_The attribute to read the pass threshold from, when using Attribute mode._
+<summary><strong>ThresholdAttribute</strong><br><em>Pass threshold -- Value is expected to fit within a 0-1 range.</em></summary>
 
-* Only visible when Threshold Input Type is set to "Attribute".
-* The attribute should contain values between 0 and 1.
+The attribute from which to read the threshold value, when `ThresholdInput` is set to **Attribute**.
 
-**Threshold**
+</details>
 
-_The fixed value used as the pass threshold, when using Constant mode._
+<details>
 
-* Only visible when Threshold Input Type is set to "Constant".
-* Values are clamped between 0 and 1.
-* A value of 0.5 means a 50% chance of passing the match.
+<summary><strong>Threshold</strong><br><em>Pass threshold</em></summary>
 
-**Invert Threshold**
+The fixed threshold value used for matching decisions when `ThresholdInput` is set to **Constant**. Must be between 0 and 1.
 
-_When enabled, inverts the pass/fail logic based on the threshold._
+</details>
 
-* If the threshold is 0.7, and this is enabled, the node will fail 70% of the time.
-* Useful for creating inverse matching behavior or probabilistic rejection.
+<details>
+
+<summary><strong>bInvertThreshold</strong><br></summary>
+
+When enabled, the match passes if the random number is greater than the threshold, rather than less than or equal to it.
+
+</details>
+
+#### Usage Example
+
+Use this subnode in a graph where you want to randomly include or exclude certain matches. For example, when matching points to form connections, you could use this to only connect 30% of possible pairs. Set `Threshold` to 0.3 and `bInvertThreshold` to false. This will cause about 30% of potential matches to pass through.
+
+#### Notes
+
+* The random seed ensures reproducible results when the same seed is used.
+* When using attribute-based thresholds, ensure the attribute values are within the 0–1 range for consistent behavior.
+* This subnode works best in scenarios where you want to introduce variability into deterministic matching systems.

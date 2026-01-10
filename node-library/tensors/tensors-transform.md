@@ -6,152 +6,187 @@ icon: scrubber
 # Tensors Transform
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Transform input points using tensors.
+> Transform input points using tensor-based operations.
 
-### Overview
+#### How It Works
 
-This node applies tensor-based transformations to point data, allowing you to simulate physics-like behaviors or procedural movements. It's particularly useful for creating organic motion, particle systems with complex interactions, or any scenario where you want points to be influenced by multiple "effectors" that apply forces or transformations over time.
+The Tensors Transform node applies tensor-based transformations to each point in a set. It evaluates a tensor field at the location of each point and uses that information to adjust the point's position and/or rotation. This process is repeated for a specified number of iterations, allowing for smooth, continuous changes over time.
 
-The node operates iteratively, applying transformations based on tensor effectors and optionally stopping when certain conditions are met. You can control how the transform affects position and rotation, and choose between absolute, relative, or alignment-based rotation modes.
+Each iteration checks whether the point meets certain stopping conditions (such as reaching a threshold or entering a forbidden area). If so, the point may be excluded from further processing depending on your settings. The node supports three modes for applying rotation changes:
 
-{% hint style="info" %}
-This node requires valid tensor factories to be connected to the input. Without them, no transformation will occur.
-{% endhint %}
+* **Absolute**: The tensor directly defines the new rotation.
+* **Relative**: The tensor modifies the current rotation by adding or scaling it.
+* **Align**: The rotation is updated to align with the movement direction, which is useful for orienting objects along a path.
+
+The node also tracks how many transformations were applied and whether the point reached its maximum iterations or stopped early. This data can be written as attributes to help visualize and debug the behavior of transformed points.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Transform Position</strong><br><em>Whether to apply tensor-based transformations to the point's position.</em></summary>
 
-* **In** (Point): Input points to transform
-* **Tensors** (Tensor): Tensor factories that define how points are transformed
-* **Stop Filters** (Filter Point): Optional filters to determine when a point should stop being affected
+When enabled, the node modifies the point’s location based on tensor fields during each iteration.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Transform Rotation</strong><br><em>Whether to apply tensor-based transformations to the point's rotation.</em></summary>
 
-* **Out** (Point): Transformed points with optional metadata attributes
+When enabled, the node modifies the point’s orientation based on tensor fields during each iteration.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the tensor transformations are applied and what data is written back to the points.
+<summary><strong>Rotation Mode</strong><br><em>How to interpret and apply rotation changes from tensors.</em></summary>
 
-***
+Controls how rotation is updated:
 
-#### Transform Settings
+* **Absolute**: Tensor defines the new rotation directly.
+* **Relative**: Tensor modifies the current rotation.
+* **Align**: Rotation is aligned with the movement direction.
 
-Controls whether position and rotation are transformed, and how rotation is handled.
+**Values**:
 
-**Transform Position**
+* **Absolute**: The tensor's output directly defines the new rotation without considering the current state.
+* **Relative**: The tensor's output modifies the current rotation by adding or scaling it.
+* **Align**: Rotation is updated to align with the movement direction, useful for orienting objects along paths.
 
-_When enabled, the node will apply positional transformations based on tensors._
+</details>
 
-* Affects the actual location of the points in space
-* Default: Enabled
+<details>
 
-**Transform Rotation**
+<summary><strong>Align Axis</strong><br><em>The axis used when aligning rotation.</em></summary>
 
-_When enabled, the node will apply rotational transformations based on tensors._
+Determines which axis of the point should be aligned with the movement direction when using "Align" mode. For example, setting this to "Forward" makes the forward direction of the point follow its movement path.
 
-* Affects the orientation of the points
-* Default: Enabled
+**Values**:
 
-**Rotation Mode**
+* **Forward**: Forward (X+).
+* **Backward**: Backward (X-).
+* **Right**: Right (Y+).
+* **Left**: Left (Y-).
+* **Up**: Up (Z+).
+* **Down**: Down (Z-).
 
-_Determines how rotation is calculated when transforming._
+</details>
 
-* **Absolute**: Rotation is applied independently of any source transform.
-* **Relative**: Rotation is relative to the current point's existing rotation.
-* **Align**: Rotation is aligned with the movement direction, useful for orienting objects along their path.
+<details>
 
-**Align Axis**
+<summary><strong>Iterations</strong><br><em>Number of times to apply tensor transformations to each point.</em></summary>
 
-_Controls which axis is aligned with the movement direction when using "Align" mode._
+Controls how many times the tensor field is sampled and applied to modify the point's position and rotation. A higher value allows for more complex, gradual changes over time.
 
-* **Forward**: Aligns the forward axis (X+) with movement
-* **Backward**: Aligns the backward axis (X-) with movement
-* **Right**: Aligns the right axis (Y+) with movement
-* **Left**: Aligns the left axis (Y-) with movement
-* **Up**: Aligns the up axis (Z+) with movement
-* **Down**: Aligns the down axis (Z-) with movement
+</details>
 
-**Iterations**
+<details>
 
-_Number of times to apply the tensor transformations._
+<summary><strong>Stop Condition Handling</strong><br><em>How to deal with points that are stopped.</em></summary>
 
-* Higher values allow for more complex, cumulative effects
-* Example: Setting this to 5 means each point will be transformed 5 times in sequence
-* Default: 1
+Defines whether to include or exclude points that meet a stop condition during processing:
 
-***
+* **Exclude**: Points that stop early are not included in the output.
+* **Include**: Points that stop early are included in the output.
 
-#### Stop Condition Handling
+**Values**:
 
-Controls how points that meet a stop condition are treated.
+* **Exclude**: Ignore the stopping sample and don't add it to the path.
+* **Include**: Include the stopping sample to the path.
 
-**Stop Condition Handling**
+</details>
 
-_Determines whether points that reach a stop condition are included or excluded from the output._
+<details>
 
-* **Exclude**: Points that stop early are removed from the output
-* **Include**: Points that stop early are kept in the output with their final state
+<summary><strong>Write Effectors Pings</strong><br><em>Whether to write the total number of effectors that affected the transform.</em></summary>
 
-***
+When enabled, writes an attribute indicating how many tensor effectors influenced the point across all iterations.
 
-#### Output Attributes
+</details>
 
-Controls which metadata attributes are written back to the points.
+<details>
 
-**Write Effectors Pings**
+<summary><strong>Effectors Pings Attribute Name</strong><br><em>Name of the 'int32' attribute to write the total number of effectors that affected the transform.</em></summary>
 
-_When enabled, writes an attribute tracking how many effectors influenced each point._
+The name of the output attribute storing the count of tensor effectors that influenced the point.
 
-* Useful for debugging or creating visual effects based on interaction count
-* Attribute name: "EffectorsPings"
+</details>
 
-**Write Update Count**
+<details>
 
-_When enabled, writes an attribute tracking how many iterations a point was affected._
+<summary><strong>Write Update Count</strong><br><em>Whether to write the number of iterations that affected the point before it stopped.</em></summary>
 
-* Useful for understanding how long points were active in the simulation
-* Attribute name: "UpdateCount"
+When enabled, writes an attribute indicating how many iterations modified the point before it stopped.
 
-**Write Traveled Distance**
+</details>
 
-_When enabled, writes an attribute tracking the approximate distance traveled by each point._
+<details>
 
-* Useful for creating effects that depend on path length or motion history
-* Attribute name: "TraveledDistance"
+<summary><strong>Update Count Attribute Name</strong><br><em>Name of the 'int32' attribute to write the number of iterations that affected the point before it stopped.</em></summary>
 
-**Write Gracefully Stopped**
+The name of the output attribute storing the number of iterations that modified the point.
 
-_When enabled, writes a boolean attribute indicating if a point stopped before max iterations._
+</details>
 
-* Useful for identifying points that were influenced but eventually came to rest
-* Attribute name: "GracefullyStopped"
+<details>
 
-**Write Max Iterations Reached**
+<summary><strong>Write Traveled Distance</strong><br><em>Whether to write the approximative distance travelled by this point.</em></summary>
 
-_When enabled, writes a boolean attribute indicating if a point reached the maximum iteration count._
+When enabled, writes an attribute storing the approximate total travel distance of the point.
 
-* Faster alternative to checking multiple attributes
-* Attribute name: "MaxIterationsReached"
+</details>
 
-***
+<details>
 
-### Notes
+<summary><strong>Traveled Distance Attribute Name</strong><br><em>Name of the 'double' attribute to write the approximative distance travelled by this point.</em></summary>
 
-* This node is designed for iterative tensor-based transformations and works best with multiple iterations
-* The "Align" rotation mode is particularly useful for orienting objects along their movement path, such as particles or projectiles
-* Consider using stop filters to create more natural stopping behaviors in simulations
-* Performance can be improved by reducing the number of iterations or limiting the number of effectors
-* The output points will maintain their original attributes unless overwritten by tensor transformations
+The name of the output attribute storing the traveled distance.
+
+</details>
+
+<details>
+
+<summary><strong>Write Gracefully Stopped</strong><br><em>Whether to tag the point with a boolean if transform stopped before max iterations.</em></summary>
+
+When enabled, writes an attribute tagging points that stopped early rather than reaching max iterations.
+
+</details>
+
+<details>
+
+<summary><strong>Gracefully Stopped Attribute Name</strong><br><em>Name of the 'bool' attribute to tag the point with if transform stopped before max iterations.</em></summary>
+
+The name of the output attribute storing whether the point was stopped early.
+
+</details>
+
+<details>
+
+<summary><strong>Write Max Iterations Reached</strong><br><em>Whether to tag the point with a boolean if it has reached the max number of iterations set.</em></summary>
+
+When enabled, writes an attribute tagging points that reached their maximum iteration limit.
+
+</details>
+
+<details>
+
+<summary><strong>Max Iterations Reached Attribute Name</strong><br><em>Name of the 'bool' attribute to tag the point with if it has reached the max number of iterations set.</em></summary>
+
+The name of the output attribute storing whether the point reached maximum iterations.
+
+</details>
+
+#### Usage Example
+
+A common use case is simulating particle movement influenced by a vector field. For example, you can use this node to make points move toward or away from certain areas based on a tensor field representing wind or gravity. Set Iterations to 10 and enable both position and rotation transforms. Use an Align mode for rotation so that each point rotates to face its direction of motion. Optionally, write the traveled distance to visualize how far each particle moved.
+
+#### Notes
+
+* The node supports multiple iterations, allowing for smooth, continuous transformation over time.
+* Tensor sampling settings are applied after individual tensor mutations, enabling layered effects.
+* Stop filters can be used to define regions where points should cease movement.
+* Writing attributes like "Update Count" or "Traveled Distance" helps in debugging and visualizing the behavior of transformed points.

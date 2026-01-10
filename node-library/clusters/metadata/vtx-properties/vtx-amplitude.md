@@ -6,222 +6,202 @@ icon: circle-dashed
 # Vtx : Amplitude
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Amplitude of a vertex, based on neighboring connections.
+> Computes amplitude values for vertices based on their connections and neighboring data.
 
-### Overview
+#### How It Works
 
-This node calculates the amplitude of each vertex in a cluster based on its connection to neighboring vertices. It measures how much a vertex deviates from its neighbors in terms of distance or directional orientation, which is useful for creating organic shapes, surface variations, or procedural displacement effects.
+This node analyzes each vertex in a cluster and evaluates its connections to neighboring vertices. For each vertex, it calculates amplitude values by examining the directions and lengths of edges connecting to neighbors.
 
-The amplitude can be computed as either a scalar value (overall length) or component-wise (individual X/Y/Z components), and it supports writing multiple outputs including minimum, maximum, and range values. You can also compute a sign value that indicates whether the vertex is pointing toward or away from its neighbors using an up vector.
+It determines:
 
-{% hint style="info" %}
-This node works on cluster data and requires an input with vertex and edge information. It's commonly used in terrain generation, mesh deformation, or procedural surface manipulation workflows.
-{% endhint %}
+1. The **minimum amplitude**, which is the smallest distance or component value among all neighbor connections.
+2. The **maximum amplitude**, which is the largest distance or component value among all neighbor connections.
+3. The **amplitude range**, which is the difference between maximum and minimum amplitudes.
+4. The **amplitude sign**, which indicates whether the vertex's position tends to align with or against a chosen up vector.
+
+These values are computed either as a single scalar (using edge lengths) or component-wise (using individual X/Y/Z components), depending on the mode settings. The sign is determined using dot products between edge vectors and an up vector, which can be derived from average neighbor directions or a custom constant vector.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Write Min Amplitude</strong><br><em>When enabled, writes the minimum amplitude value to an attribute.</em></summary>
 
-* **Main Input**: Cluster data containing vertices and edges
-* **Optional Filters**: Point filters to restrict which vertices are processed
+If enabled, this node will compute and store the smallest amplitude value for each vertex in a new attribute.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Min Attribute Name</strong><br><em>Name of the attribute to write the minimum amplitude to.</em></summary>
 
-* **Property Output**: Vertex properties written to the cluster's vertex data
-  * Min amplitude (scalar or vector)
-  * Max amplitude (scalar or vector)
-  * Amplitude range (scalar or vector)
-  * Amplitude sign (scalar)
+The name of the attribute where the computed minimum amplitude values are stored. Defaults to "MinAmplitude".
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how amplitude is calculated and what outputs are generated.
+<summary><strong>Min Absolute</strong><br><em>When enabled, uses absolute values for the minimum amplitude calculation.</em></summary>
 
-***
+If enabled, the node computes the absolute value of the minimum amplitude before writing it.
 
-#### Amplitude Settings
+</details>
 
-Configures the core amplitude calculation behavior.
+<details>
 
-**Write Min Amplitude**
+<summary><strong>Min Mode</strong><br><em>How to compute the minimum amplitude.</em></summary>
 
-_When enabled, writes the minimum amplitude value to an attribute._
+Controls whether the amplitude is computed as a scalar (length) or component-wise.
 
-* This can be scalar or vector depending on the mode selected
-* Useful for identifying the most constrained or least mobile points in a cluster
+* **Length**: Uses the length of edge vectors.
+* **Individual**: Computes per-component (X/Y/Z) values.
 
-**Values**:
+</details>
 
-* **False**: Do not write minimum amplitude
-* **True**: Write minimum amplitude
+<details>
 
-**Min Amplitude Attribute Name**
+<summary><strong>Write Max Amplitude</strong><br><em>When enabled, writes the maximum amplitude value to an attribute.</em></summary>
 
-_Name of the attribute where the minimum amplitude will be written._
+If enabled, this node will compute and store the largest amplitude value for each vertex in a new attribute.
 
-* Default is "MinAmplitude"
-* Can be any valid attribute name
+</details>
 
-**Absolute Min**
+<details>
 
-_When enabled, takes absolute value of the min amplitude._
+<summary><strong>Max Attribute Name</strong><br><em>Name of the attribute to write the maximum amplitude to.</em></summary>
 
-* Useful for analyzing magnitude regardless of direction
-* Only applies when using individual mode
+The name of the attribute where the computed maximum amplitude values are stored. Defaults to "MaxAmplitude".
 
-**Min Mode**
+</details>
 
-_Selects whether to compute amplitude as a scalar or component-wise._
+<details>
 
-**Values**:
+<summary><strong>Max Absolute</strong><br><em>When enabled, uses absolute values for the maximum amplitude calculation.</em></summary>
 
-* **Length**: Computes amplitude as a single scalar value (overall length)
-* **Individual**: Computes amplitude per component (X, Y, Z)
+If enabled, the node computes the absolute value of the maximum amplitude before writing it.
 
-**Write Max Amplitude**
+</details>
 
-_When enabled, writes the maximum amplitude value to an attribute._
+<details>
 
-* This can be scalar or vector depending on the mode selected
-* Useful for identifying the most extended or mobile points in a cluster
+<summary><strong>Max Mode</strong><br><em>How to compute the maximum amplitude.</em></summary>
 
-**Values**:
+Controls whether the amplitude is computed as a scalar (length) or component-wise.
 
-* **False**: Do not write maximum amplitude
-* **True**: Write maximum amplitude
+* **Length**: Uses the length of edge vectors.
+* **Individual**: Computes per-component (X/Y/Z) values.
 
-**Max Amplitude Attribute Name**
+</details>
 
-_Name of the attribute where the maximum amplitude will be written._
+<details>
 
-* Default is "MaxAmplitude"
-* Can be any valid attribute name
+<summary><strong>Write Amplitude Range</strong><br><em>When enabled, writes the amplitude range to an attribute.</em></summary>
 
-**Absolute Max**
+If enabled, this node will compute and store the difference between maximum and minimum amplitudes in a new attribute.
 
-_When enabled, takes absolute value of the max amplitude._
+</details>
 
-* Useful for analyzing magnitude regardless of direction
-* Only applies when using individual mode
+<details>
 
-**Max Mode**
+<summary><strong>Range Attribute Name</strong><br><em>Name of the attribute to write the amplitude range to.</em></summary>
 
-_Selects whether to compute amplitude as a scalar or component-wise._
+The name of the attribute where the computed amplitude range values are stored. Defaults to "AmplitudeRange".
 
-**Values**:
+</details>
 
-* **Length**: Computes amplitude as a single scalar value (overall length)
-* **Individual**: Computes amplitude per component (X, Y, Z)
+<details>
 
-**Write Amplitude Range**
+<summary><strong>Range Absolute</strong><br><em>When enabled, uses absolute values for the amplitude range calculation.</em></summary>
 
-_When enabled, writes the difference between max and min amplitude._
+If enabled, the node computes the absolute value of the amplitude range before writing it.
 
-* This can be scalar or vector depending on the mode selected
-* Useful for creating variation maps or controlling displacement intensity
+</details>
 
-**Values**:
+<details>
 
-* **False**: Do not write amplitude range
-* **True**: Write amplitude range
+<summary><strong>Range Mode</strong><br><em>How to compute the amplitude range.</em></summary>
 
-**Amplitude Range Attribute Name**
+Controls whether the amplitude is computed as a scalar (length) or component-wise.
 
-_Name of the attribute where the amplitude range will be written._
+* **Length**: Uses the length of edge vectors.
+* **Individual**: Computes per-component (X/Y/Z) values.
 
-* Default is "AmplitudeRange"
-* Can be any valid attribute name
+</details>
 
-**Absolute Range**
+<details>
 
-_When enabled, takes absolute value of the amplitude range._
+<summary><strong>Write Amplitude Sign</strong><br><em>When enabled, writes the amplitude sign to an attribute.</em></summary>
 
-* Useful for analyzing magnitude regardless of direction
-* Only applies when using individual mode
+If enabled, this node will compute and store a directional sign value based on the dot product of edge vectors and an up vector.
 
-**Range Mode**
+</details>
 
-_Selects whether to compute amplitude as a scalar or component-wise._
+<details>
 
-**Values**:
+<summary><strong>Sign Attribute Name</strong><br><em>Name of the attribute to write the amplitude sign to.</em></summary>
 
-* **Length**: Computes amplitude as a single scalar value (overall length)
-* **Individual**: Computes amplitude per component (X, Y, Z)
+The name of the attribute where the computed amplitude sign values are stored. Defaults to "AmplitudeSign".
 
-**Write Amplitude Sign**
+</details>
 
-_When enabled, writes a sign value indicating the vertex's orientation relative to neighbors._
+<details>
 
-* Useful for controlling directional displacement or surface normals
-* The sign is computed using dot product with an up vector
+<summary><strong>Sign Output Mode</strong><br><em>How to compute the amplitude sign value.</em></summary>
 
-**Values**:
+Controls how the sign is calculated:
 
-* **False**: Do not write amplitude sign
-* **True**: Write amplitude sign
+* **Raw**: The raw dot product.
+* **Size**: Dot product multiplied by edge size.
+* **Normalized Size**: Dot product multiplied by normalized edge size.
+* **Sign**: Returns 0, 1, or -1 based on the dot product.
 
-**Amplitude Sign Attribute Name**
+</details>
 
-_Name of the attribute where the amplitude sign will be written._
+<details>
 
-* Default is "AmplitudeSign"
-* Can be any valid attribute name
+<summary><strong>Sign Absolute</strong><br><em>When enabled, uses absolute values for the amplitude sign calculation.</em></summary>
 
-**Sign Output Mode**
+If enabled, the node computes the absolute value of the amplitude sign before writing it.
 
-_Selects how the sign value is calculated and output._
+</details>
 
-**Values**:
+<details>
 
-* **Raw**: Raw dot product value
-* **Size**: Dot product multiplied by edge size
-* **Size (Normalized)**: Dot product multiplied by normalized edge size
-* **Sign**: Returns 0, 1, or -1 based on sign
+<summary><strong>Up Mode</strong><br><em>How to determine the up vector used for amplitude sign calculations.</em></summary>
 
-**Absolute Sign**
+Controls how the up vector is determined:
 
-_When enabled, takes absolute value of the amplitude sign._
+* **Average Direction**: Uses the average direction from neighbors.
+* **Custom Up Vector**: Uses a user-defined constant or attribute.
 
-* Useful for analyzing magnitude regardless of direction
+</details>
 
-**Up Mode**
+<details>
 
-_Selects how the up vector is determined for sign calculation._
+<summary><strong>Up Input Type</strong><br><em>Whether to use a constant or attribute for the up vector.</em></summary>
 
-**Values**:
+Controls whether the up vector is defined as a constant value or read from an input attribute.
 
-* **Average Direction**: Uses average direction to neighbors
-* **Custom Up Vector**: Uses a user-defined up vector
+* **Constant**: Use a fixed vector.
+* **Attribute**: Read from an attribute on the vertex data.
 
-**Up Input Type**
+</details>
 
-_Controls whether the up vector is defined as a constant or read from an attribute._
+<details>
 
-**Values**:
+<summary><strong>Up Vector (Attr)</strong><br><em>The attribute to use for the up vector, if using Attribute mode.</em></summary>
 
-* **Constant**: Use a fixed vector value
-* **Attribute**: Read up vector from an input attribute
+The name of the attribute used as the up vector when "Up Input Type" is set to "Attribute".
 
-**Up Vector (Attribute)**
+</details>
 
-_The attribute to read the up vector from when using attribute input type._
+<details>
 
-* Only visible when "Up Input Type" is set to "Attribute"
+<summary><strong>Up Vector</strong><br><em>The constant vector to use as the up vector, if using Constant mode.</em></summary>
 
-**Up Vector**
+The fixed vector used as the up vector when "Up Input Type" is set to "Constant". Defaults to FVector::UpVector.
 
-_The constant up vector used for sign calculation when using constant input type._
-
-* Only visible when "Up Input Type" is set to "Constant"
-* Default is FVector::UpVector (0, 0, 1)
+</details>

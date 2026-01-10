@@ -6,114 +6,93 @@ icon: circle-dashed
 # Length
 
 {% hint style="info" %}
-This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the subnode does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Check edges based on their length against a threshold value.
-
-#### Overview
-
-This subnode filters edges in a graph by comparing their length to a defined threshold. It's useful for removing or keeping only edges that meet certain size criteria, such as filtering out very short connections between points or ensuring all edges are above a minimum length.
-
-It connects to the **Filter** input pin of processing nodes that work with edges, allowing you to define which edges should pass through in downstream operations.
-
-{% hint style="info" %}
-Connects to Filter pins on edge-processing nodes.
-{% endhint %}
+> Filters edges based on their length using a configurable comparison.
 
 #### How It Works
 
-This subnode evaluates each edge in a graph and compares its length to a threshold value using a comparison operator. The result determines whether the edge passes the filter or not.
+This subnode evaluates each edge in a graph and determines whether it meets a specific length condition. It calculates the distance between the start and end points of an edge, then compares that distance to a defined threshold using a selected operator. If the comparison is true, the edge passes through; otherwise, it's filtered out.
 
-* It first calculates the length of an edge, which is the Euclidean distance between its start and end points.
-* Then, it compares this length against the configured threshold using the selected comparison mode.
-* If the comparison evaluates to true, the edge passes the filter; otherwise, it fails.
-* Optionally, the result can be inverted so that edges that would normally pass instead fail, and vice versa.
+The process includes:
 
-<details>
-
-<summary>Inputs</summary>
-
-Expects a graph data input containing edges to be filtered.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-Produces a filtered list of edges based on the defined length criteria.
-
-</details>
+1. Measuring the straight-line distance between the two points of each edge.
+2. Comparing this measured length against a set threshold using the chosen operator.
+3. Optionally flipping the result if the invert toggle is enabled.
 
 #### Configuration
 
-***
+<details>
 
-**ThresholdInput**
+<summary><strong>Threshold Input</strong><br><em>Whether to read the threshold from an attribute on the edge or a constant.</em></summary>
 
-_Whether to read the threshold from an attribute on the edge or a constant._
-
-When set to **Constant**, the node uses the value specified in the **Threshold** setting.\
-When set to **Attribute**, it reads the threshold value from an attribute on the edge data.
+Controls whether the filter uses a fixed value or reads the threshold from an attribute on the edges.
 
 **Values**:
 
-* **Constant**: Use a fixed value for comparison.
-* **Attribute**: Read the comparison threshold from an attribute on each edge.
+* **Constant**: Use a fixed user-defined value.
+* **Attribute**: Read the threshold value from an attribute on the input data.
 
-***
+</details>
 
-**ThresholdConstant**
+<details>
 
-_Threshold value used for comparison when ThresholdInput is set to Constant._
+<summary><strong>Threshold (Attr)</strong><br><em>Attribute to fetch threshold from.</em></summary>
 
-Controls the length value that edges are compared against.\
-For example, setting this to 50 means edges shorter than 50 units will be filtered out if using a "Greater Than" comparison.
+The name of the edge attribute that contains the threshold values, used when Threshold Input is set to Attribute.
 
-***
+</details>
 
-**Comparison**
+<details>
 
-_Comparison check used to evaluate edge lengths._
+<summary><strong>Threshold</strong><br><em>Constant value for the length threshold.</em></summary>
 
-Determines how the edge's length is compared to the threshold.
+The fixed threshold value used when Threshold Input is set to Constant. Must be greater than or equal to 1.
+
+</details>
+
+<details>
+
+<summary><strong>Comparison</strong><br><em>Comparison check.</em></summary>
+
+The logical operation used to compare edge lengths against the threshold.
 
 **Values**:
 
-* **==**: Strictly equal to threshold.
-* **!=**: Strictly not equal to threshold.
-* **>=**: Equal or greater than threshold.
-* **<=**: Equal or smaller than threshold.
-* **>**: Strictly greater than threshold.
-* **<**: Strictly smaller than threshold.
-* **\~=**: Nearly equal to threshold (within tolerance).
-* **!\~=**: Nearly not equal to threshold (outside tolerance).
+* **==**: Strictly equal to
+* **!=**: Strictly not equal to
+* **>=**: Equal or greater than
+* **<=**: Equal or smaller than
+* **>**: Strictly greater than
+* **<**: Strictly smaller than
+* **\~=**: Nearly equal to (within tolerance)
+* **!\~=**: Nearly not equal to (outside tolerance)
 
-***
+</details>
 
-**Tolerance**
+<details>
 
-_Rounding mode for approximate comparison modes._
+<summary><strong>Tolerance</strong><br><em>Rounding mode for approx. comparison modes.</em></summary>
 
-Only used when using **Nearly Equal** or **Nearly Not Equal** comparisons.\
-Controls how close the edge length must be to the threshold to be considered "nearly equal".
+A small value used when using approximate comparisons (e.g., Nearly Equal). Defines how close the edge length must be to the threshold to pass.
 
-***
+</details>
 
-**bInvert**
+<details>
 
-_When enabled, inverts the filter result._
+<summary><strong>Invert</strong><br><em>When enabled, the result of the comparison is flipped.</em></summary>
 
-When enabled, edges that would normally pass the filter are rejected, and those that fail are accepted.
+When enabled, edges that would normally pass the filter are excluded, and those that fail are included.
+
+</details>
 
 #### Usage Example
 
-You're building a terrain mesh using point clusters connected by edges. You want to remove any edges that are shorter than 10 units to avoid creating overly dense geometry. Set **ThresholdInput** to **Constant**, **ThresholdConstant** to 10, and **Comparison** to **StrictlyGreater**. This will only allow edges longer than 10 units to pass through.
+You're building a procedural city network and want to ensure roads (represented as edges) are at least 50 units long. You set the Threshold to 50, Comparison to "Greater Than or Equal", and leave Invert unchecked. This filters out all edges shorter than 50 units, keeping only the significant road connections.
 
 #### Notes
 
-* The edge length is calculated as the straight-line distance between its start and end points.
-* Using **Attribute** for threshold input allows dynamic filtering based on per-edge data, such as varying thresholds across a graph.
-* The **Tolerance** setting is helpful when dealing with floating-point precision issues in comparisons.
-* Inverting the filter can be useful for creating exclusion zones or removing specific edge types from further processing.
+* The length is calculated using the Euclidean distance between the two points of each edge.
+* Using Attribute input allows for dynamic thresholds per edge, useful for varying requirements across a dataset.
+* When using approximate comparisons (e.g., Nearly Equal), ensure tolerance is set appropriately to avoid unintended filtering.

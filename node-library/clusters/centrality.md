@@ -6,98 +6,79 @@ icon: scrubber
 # Centrality
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Compute betweenness centrality for nodes within clusters.
 
-### Overview
+#### How It Works
 
-This node calculates the betweenness centrality of each node in a cluster, which measures how often a node lies on the shortest path between other nodes. It's useful for identifying key structural points in networks or spatial layouts.
+This node determines how central each point is within a cluster by calculating betweenness centrality. It measures how often each point lies on the shortest path between other points in the cluster. The calculation uses a variation of Brandes' algorithm, which involves:
 
-The computation can be time-intensive, especially for large clusters, as processing time increases exponentially with the number of nodes. For performance optimization, you can sample a subset of nodes to get an approximate result.
+1. For each point in the cluster, finding all shortest paths to every other point
+2. Counting how many times each point appears on these paths
+3. Normalizing or inverting the results based on your settings
+
+The process builds a graph representation of the cluster and runs a shortest path algorithm for each point. The frequency with which each point appears in these paths determines its centrality score.
+
+For large clusters, you can choose to compute centrality only on a subset of points to speed up processing while still getting a reasonable approximation.
 
 {% hint style="info" %}
-Betweenness centrality is commonly used in network analysis to identify influential nodes, but it's computationally expensive for large graphs.
+This node connects to **clusters** processing pins.
 {% endhint %}
 
+#### Configuration
+
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>CentralityValueAttributeName</strong><br><em>Name of the attribute</em></summary>
 
-* **Cluster Points**: Point data representing the nodes of a cluster
-* **Cluster Edges**: Edge data defining connections between nodes
+Controls the name of the output attribute that will store the centrality scores.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Normalize</strong><br><em>Discrete mode write the number as-is, relative will normalize against the highest number of overlaps found.</em></summary>
 
-* **Cluster Points**: Modified point data with centrality values written to an attribute
-* **Cluster Edges**: (Optional) Edge data, if enabled in settings
+When enabled, normalizes the centrality values so they range between 0 and 1. When disabled, outputs raw counts.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the centrality is calculated and output.
+<summary><strong>OneMinus</strong><br><em>Whether to do a OneMinus on the normalized overlap count value</em></summary>
 
-***
+When enabled, subtracts the normalized centrality from 1. This inverts the values so that high centrality points get low scores and vice versa.
 
-#### Centrality Settings
+</details>
 
-Configures the core behavior of the centrality calculation.
+<details>
 
-**Centrality Value Attribute Name**
+<summary><strong>DownsamplingMode</strong><br></summary>
 
-_The name of the attribute where centrality values will be stored._
+Controls whether to compute centrality on all points or a subset:
 
-* Values are written to this attribute on each point
-* Default value is "Centrality"
+* **None**: Compute on all points
+* **Ratio**: Sample using a random subset of the points
+* **Filters**: Use filters to determine which points are included
 
-**Normalize**
+</details>
 
-_Whether to normalize the centrality scores._
+<details>
 
-* When enabled, values are normalized between 0 and 1 based on the highest overlap count found
-* When disabled, raw counts are written
+<summary><strong>Ratio</strong><br><em>If enabled, only compute centrality on a subset of the points to get a rough approximation. This is useful for large clusters, or if you want to tradeoff precision for speed.</em></summary>
 
-**OneMinus**
+When downsampling is set to "Ratio", this setting controls what fraction of points are used in the computation.
 
-_When enabled, outputs 1 - normalized centrality._
+</details>
 
-* Useful for inverting the centrality measure (high centrality becomes low)
-* Only applies when "Normalize" is enabled
+#### Usage Example
 
-**Downsampling Mode**
+Use this node to identify key junctions or bottlenecks in a network cluster. For example, in a road network cluster, it can help identify which intersections are most critical for traffic flow. You might connect this to a "Cluster" node and then use the output to color-code points based on their centrality.
 
-_How to sample nodes when computing centrality._
+#### Notes
 
-* **None**: Compute on all nodes
-* **Random ratio**: Sample a random subset of nodes
-* **Filters**: Use filters to select which nodes to include in the computation
-
-***
-
-#### Downsampling Settings
-
-Controls how nodes are selected for approximate computation.
-
-**Ratio**
-
-_The fraction of nodes to sample when using "Random ratio" downsampling._
-
-* Value is treated as a relative percentage (0.0 to 1.0)
-* For example, 0.2 means 20% of nodes will be sampled
-* Only active when Downsampling Mode is set to "Random ratio"
-
-### Notes
-
-* Centrality computation is computationally expensive and scales exponentially with cluster size
-* Use downsampling for large clusters to reduce processing time
-* The output attribute can be used in downstream nodes for visualizations or further analysis
-* Consider using a point filter to limit which points are processed if needed
-* Betweenness centrality measures the importance of nodes in terms of connectivity within the cluster
+* Computation time increases exponentially with cluster size; consider downsampling for large clusters.
+* Normalization is recommended when comparing centrality across different sized clusters.
+* The OneMinus option can be useful for highlighting low-centrality points, such as isolated or peripheral elements in a network.

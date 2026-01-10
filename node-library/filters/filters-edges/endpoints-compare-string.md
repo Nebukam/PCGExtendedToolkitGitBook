@@ -13,27 +13,31 @@ This page was generated from the source code. It should properly capture what th
 
 #### Overview
 
-This subnode filters edges based on a comparison between the string values of a specified attribute at both endpoints of the edge. It's useful for creating conditions that depend on matching or differing text data between connected points.
+This subnode filters edges based on a comparison between the values of a specified string attribute at both endpoints of each edge. It's useful for creating conditions that depend on how data at the start and end points of an edge relate to each other, such as ensuring two points have matching names or that one point's name is longer than another's.
 
-It connects to **Filter** pins on processing nodes, such as those in graph filtering or clustering workflows.
+It connects to Filter pins on processing nodes to define which edges should pass through a filter.
+
+{% hint style="info" %}
+Connects to **Filter** pins on processing nodes.
+{% endhint %}
 
 #### How It Works
 
-This subnode evaluates each edge by retrieving the string value of a specified attribute from both the start and end points of the edge. It then applies a comparison operation between these two values to determine whether the edge should pass the filter.
+This subnode evaluates each edge by retrieving the value of a specified string attribute from both the start and end points of the edge. It then performs a comparison operation between these two values, based on the selected comparison type. If the comparison condition is met, the edge passes through the filter; otherwise, it's rejected.
 
-The comparison can be based on:
+The comparison logic depends on the selected **Comparison** mode:
 
-* Exact string equality or inequality
-* Length-based comparisons (e.g., one string is longer than another)
-* Locale-aware ordering (e.g., alphabetical order)
+* For **StrictlyEqual**, **StrictlyNotEqual**, and **Length** variants, it compares either the actual string values or their lengths.
+* For **LengthEqualOrGreater**, **LengthEqualOrSmaller**, **StrictlyGreater**, and **StrictlySmaller**, it compares the length of the strings.
+* For **LocaleStrictlyGreater** and **LocaleStrictlySmaller**, it performs a locale-aware comparison of the string values.
 
-If the comparison evaluates to true, the edge passes the filter and is included in downstream processing. If false, it is excluded.
+When **bInvert** is enabled, the result of the comparison is flipped — an edge that would normally pass now fails, and vice versa.
 
 <details>
 
 <summary>Inputs</summary>
 
-Expects an input graph with points that have a string attribute defined at both endpoints of edges.
+Expects edges with associated point data containing the specified attribute.
 
 </details>
 
@@ -41,49 +45,61 @@ Expects an input graph with points that have a string attribute defined at both 
 
 <summary>Outputs</summary>
 
-Filters edges based on the comparison result between endpoint attributes. Edges that meet the criteria pass through; others are filtered out.
+Filters edges based on the comparison between endpoint attribute values.
 
 </details>
 
 #### Configuration
 
-***
+<details>
 
-**Attribute**
+<summary><strong>Attribute</strong><br><em>Attribute to compare.</em></summary>
 
-_The attribute to compare._
+Selects which string attribute to retrieve from both endpoints of each edge for comparison.
 
-Specifies which string attribute from the edge endpoints will be used for the comparison.
+</details>
 
-**Comparison**
+<details>
 
-_The type of comparison to perform._
+<summary><strong>Comparison</strong><br><em>Comparison check.</em></summary>
 
-Defines how the two string values are compared:
+Defines how the two attribute values are compared:
 
-* **StrictlyEqual**: The strings must match exactly.
-* **StrictlyNotEqual**: The strings must not match exactly.
-* **LengthStrictlyEqual**: The length of the strings must be equal.
-* **LengthStrictlyUnequal**: The length of the strings must not be equal.
-* **LengthEqualOrGreater**: The first string's length must be greater than or equal to the second.
-* **LengthEqualOrSmaller**: The first string's length must be less than or equal to the second.
-* **StrictlyGreater**: The first string's length must be strictly greater than the second.
-* **StrictlySmaller**: The first string's length must be strictly smaller than the second.
-* **LocaleStrictlyGreater**: The first string is lexicographically greater than the second using locale-aware comparison.
-* **LocaleStrictlySmaller**: The first string is lexicographically smaller than the second using locale-aware comparison.
+* **StrictlyEqual**: Values must be exactly identical.
+* **StrictlyNotEqual**: Values must not be identical.
+* **LengthStrictlyEqual**: Lengths of the strings must be equal.
+* **LengthStrictlyUnequal**: Lengths of the strings must not be equal.
+* **LengthEqualOrGreater**: First string's length must be greater than or equal to the second.
+* **LengthEqualOrSmaller**: First string's length must be less than or equal to the second.
+* **StrictlyGreater**: First string's length must be strictly greater than the second.
+* **StrictlySmaller**: First string's length must be strictly smaller than the second.
+* **LocaleStrictlyGreater**: First string must be greater than the second according to locale rules.
+*
+  * **LocaleStrictlySmaller**: First string must be smaller than the second according to locale rules.
 
-**bInvert**
+</details>
 
-_When enabled, the result of the comparison is inverted._
+<details>
 
-If enabled, edges that would normally pass the filter will be excluded, and those that would fail will pass.
+<summary><strong>bInvert</strong><br><em>When enabled, inverts the result of the comparison.</em></summary>
+
+When enabled, edges that would normally pass the filter are rejected, and those that would fail are accepted.
+
+</details>
 
 #### Usage Example
 
-You have a graph where each point has a "Name" attribute containing a string. You want to keep only edges where both endpoints have names of the same length. Set the **Attribute** to "Name", **Comparison** to "LengthStrictlyEqual", and leave **bInvert** disabled.
+Suppose you're generating a network of cities connected by roads, and each city has a name stored as a string attribute. You want to only keep roads where both cities have names of equal length. You would:
+
+1. Add this subnode to your graph.
+2. Set the **Attribute** to the city name field.
+3. Choose **LengthStrictlyEqual** for **Comparison**.
+4. Connect it to a filter pin on a processing node like "Filter Edges".
+
+This ensures only roads connecting cities with names of the same character count are included in the output.
 
 #### Notes
 
-* This filter works on string attributes only.
-* The comparison logic is applied per edge, so each edge's start and end points are evaluated independently.
-* When using locale-aware comparisons, the system uses the current locale settings for sorting.
+* The attribute must exist on both endpoints of each edge for comparison to occur.
+* If an edge's endpoint lacks the specified attribute, the edge is typically rejected unless handled otherwise by upstream logic.
+* Using **bInvert** can be helpful for creating exclusion rules or negating conditions.

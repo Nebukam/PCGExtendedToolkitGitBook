@@ -11,85 +11,59 @@ This page was generated from the source code. It should properly capture what th
 
 > Creates a filter definition that compares dot value of a vector and tensors.
 
-#### Overview
-
-This subnode defines a filtering behavior that evaluates whether a point's vector operand meets specific criteria when compared against a tensor field's dot product result. It's useful for selecting points based on directional relationships with spatial data like terrain normals, wind directions, or magnetic fields.
-
-It connects to the **Filter** pin of processing nodes that support point filtering. Multiple filter subnodes can be combined to create complex selection logic.
-
 #### How It Works
 
-This filter evaluates a dot product between a vector operand (from a point attribute) and a sampled tensor value at the same point. The comparison is then made against a threshold or range defined by the filter settings.
+This subnode evaluates whether points meet specific directional criteria based on tensor field data. For each point, it:
 
-1. **Vector Operand A** is read from the point's attributes.
-2. If enabled, **Transform OperandA** applies the point's local transform to the vector before processing.
-3. A **tensor sample** is taken at the point using the configured tensor sampling settings.
-4. The dot product between the transformed vector and the sampled tensor value is calculated.
-5. This resulting dot product is compared against the filter's comparison criteria (e.g., greater than, equal to).
-6. Points that meet the comparison condition pass through the filter; others are discarded.
+1. Reads a vector from the point's attributes.
+2. Optionally transforms this vector using the point's local rotation and scale.
+3. Samples a tensor field at the point's location.
+4. Computes the dot product between the vector and the sampled tensor direction.
+5. Compares the resulting dot product value against a threshold using a configurable comparison operation.
+6. Determines if the point should pass the filter based on this comparison.
 
-<details>
-
-<summary>Inputs</summary>
-
-* Point data with a vector attribute specified in **Operand A**
-* Tensor field data for sampling
-* Point transforms (if **Transform OperandA** is enabled)
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* Filtered points that satisfy the dot product comparison condition
-
-</details>
+The outcome is used to include or exclude points from downstream processing, depending on how their orientation relates to the tensor field's direction.
 
 #### Configuration
 
-***
+<details>
 
-**Vector Operand A**
+<summary><strong>OperandA</strong><br><em>Vector operand A.</em></summary>
 
-_The vector attribute used in the dot product calculation._
+Specifies the attribute containing the vector to compare against the tensor field. This vector is used as one operand in the dot product calculation.
 
-Specifies which point attribute contains the vector to compare. This can be any vector-valued attribute, such as normal vectors or direction data.
+</details>
 
-**Transform OperandA**
+<details>
 
-_When enabled, applies the point's local transform to the operand vector before comparison._
+<summary><strong>bTransformOperandA</strong><br><em>Transform OperandA with the local point' transform.</em></summary>
 
-If enabled, the vector from **Operand A** is transformed using the point’s world transform (position, rotation, scale) before computing the dot product. This allows for directional comparisons in world space rather than object space.
+When enabled, the vector from **OperandA** is transformed using the point's local transform (rotation and scale) before being used in the dot product calculation.
 
-**Dot Comparison Settings**
+</details>
 
-_Controls how the computed dot product is compared to a threshold or range._
+<details>
 
-This setting defines the comparison operation used to determine if a point passes the filter. Options include strict equality, greater than, less than, and more nuanced comparisons like "nearly equal".
+<summary><strong>DotComparisonDetails</strong><br><em>Dot comparison settings.</em></summary>
 
-**Values**:
+Defines how the computed dot product value is compared against a threshold. Includes options for strict equality, greater than, less than, and more.
 
-* **==**: Point passes if the dot product equals the target value
-* **!=**: Point passes if the dot product does not equal the target value
-* **>=**: Point passes if the dot product is greater than or equal to the target value
-* **<=**: Point passes if the dot product is less than or equal to the target value
-* **>**: Point passes if the dot product is strictly greater than the target value
-* **<**: Point passes if the dot product is strictly less than the target value
-* **\~=**: Point passes if the dot product is nearly equal to the target value (within tolerance)
+</details>
 
-**Tensor Sampling Settings**
+<details>
 
-_Configures how the tensor field is sampled at each point._
+<summary><strong>TensorHandlerDetails</strong><br><em>Tensor Sampling Settings.</em></summary>
 
-These settings control how the tensor data is read from the tensor field. For example, it can sample a single location or perform interpolation across nearby points. The sampling happens before any mutations are applied.
+Controls how the tensor field is sampled at each point. This includes settings like sampling radius, step size, and how to combine multiple tensors if present.
+
+</details>
 
 #### Usage Example
 
-Use this filter to select points where the surface normal aligns with a specific direction, such as only keeping points facing upward (dot product > 0 with up vector). Or use it to filter vegetation placement based on terrain slope or wind direction.
+Use this subnode to filter points that are aligned with a specific direction defined by a tensor field. For example, you could use it to select only points where the surface normal (from a tensor field) aligns closely with an upward vector, effectively filtering for "upward-facing" surfaces.
 
 #### Notes
 
-* The **Operand A** vector should ideally be normalized for consistent results.
-* Combining this filter with other filters allows for complex spatial selections.
-* Performance is affected by the complexity of tensor sampling and number of points being evaluated.
+* The **OperandA** vector should ideally be normalized for consistent dot product results.
+* The **Tensor Sampling Settings** affect how the tensor data is interpreted and sampled. Adjusting these can change the sensitivity of the filter.
+* This subnode is particularly useful in terrain or surface-based filtering where you want to select points based on their orientation relative to a tensor field like normals or tangents.

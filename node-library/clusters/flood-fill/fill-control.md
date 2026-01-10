@@ -8,96 +8,61 @@ icon: comment-dots
 This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a single Fill Control subnode, to be used with flood fill nodes.
-
-#### Overview
-
-This subnode defines how flood fill operations behave by specifying control parameters that influence diffusion behavior at different stages of the process. It acts as a configuration layer that tells flood fill nodes when and how to apply specific rules or constraints during the propagation of fills through data structures like graphs or point clouds.
-
-It allows you to fine-tune how fills spread, which points are considered candidates for flooding, and when certain conditions should be evaluated. This is particularly useful in procedural generation workflows where you want to control the flow and behavior of diffusion-based algorithms, such as area filling, pathfinding, or cluster expansion.
-
-{% hint style="info" %}
-Connects to **Flood Fill** processing nodes via the **Fill Controls** input pin.
-{% endhint %}
+> Defines a fill control behavior for use with flood fill operations.
 
 #### How It Works
 
-This subnode defines a set of rules that govern how flood fill operations behave during different stages of diffusion. It allows you to specify at which steps in the process these rules should be applied and from where attribute data should be fetched.
-
-The behavior is determined by two core settings:
-
-1. **Support Source**: Controls whether this control supports fetching data from attributes.
-2. **Support Steps**: Determines if this control applies to specific diffusion stages (Capture, Probing, Candidate).
-
-When enabled, the subnode sets up configuration flags that define when and how a fill control should be used during flood fill operations. It ensures that the control is properly registered with the context and can be consumed by downstream flood fill nodes.
-
-<details>
-
-<summary>Inputs</summary>
-
-This node does not take direct inputs. It defines a configuration that gets consumed by flood fill processing nodes.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-This node outputs a Fill Control configuration object that can be used by flood fill nodes to modify their behavior during diffusion.
-
-</details>
+This subnode sets up parameters that define how a fill control operates within a flood fill process. It determines whether the control uses seed data or another source, and specifies at which stages of the diffusion (capture, probing, candidate) the control should be active. The configuration is passed to the flood fill node to influence how it processes points during each step.
 
 #### Configuration
 
-***
+<details>
 
-**bSupportSource**
+<summary><strong>Support Source</strong><br><em>When enabled, allows specifying the source of attribute data.</em></summary>
 
-_Controls whether this control supports fetching data from attributes._
+When enabled, this setting lets you choose where the control's attribute data is fetched from. If disabled, the control will not use an external attribute source.
 
-When enabled, the subnode allows you to specify an attribute source for the control's parameters. This enables dynamic behavior based on point or vertex data.
+</details>
 
-**bSupportSteps**
+<details>
 
-_Controls whether this control applies to specific diffusion stages._
+<summary><strong>Support Steps</strong><br><em>When enabled, allows specifying at which diffusion step the control should be applied.</em></summary>
 
-When enabled, you can define at which stages of the flood fill process (Capture, Probing, Candidate) this control should be active.
+When enabled, this setting lets you define during which stages of the flood fill process (capture, probing, candidate) the control is active. If disabled, the control applies to all steps.
 
-**Source**
+</details>
 
-_Where to fetch the attribute from. Note that this may not be supported by all controls._
+<details>
 
-Determines the data source for the control's parameters. Options include Seed or other attribute types depending on your setup.
+<summary><strong>Source</strong><br><em>Where to fetch the attribute from.</em></summary>
 
-**Values**:
-
-* **Seed**: Fetch data from the seed point
-* **Other**: Fetch data from a specified attribute
-
-**Steps**
-
-_At which diffusion step should this control be applied. Note that this may not be supported by all controls._
-
-Defines the specific stages in the flood fill process where this control is active.
+Determines where the attribute data for this control comes from. Options include using seed data or other sources depending on the flood fill implementation.
 
 **Values**:
 
-* **Capture**: Applied when a node is captured during diffusion
-* **Probing**: Applied when nodes are probed for potential candidates
-* **Candidate**: Applied when nodes are identified as candidates for flooding
+* **Seed**: Uses the point's seed value.
+* **Other**: Fetches from a different source (if supported).
+
+</details>
+
+<details>
+
+<summary><strong>Steps</strong><br><em>At which diffusion step should this control be applied.</em></summary>
+
+Defines at which stages of the flood fill process this control is active. Multiple steps can be selected.
+
+**Values**:
+
+* **Capture**: Applied when a node is captured by a diffusion.
+* **Probing**: Applied during the probing phase, iterating through unvisited neighbors.
+* **Candidate**: Applied when a node is identified as a candidate for flooding (neighbor of a captured node).
+
+</details>
 
 #### Usage Example
 
-1. Create a point cloud with attributes like "FillWeight" and "IsBlocked"
-2. Add a Fill Controls Definition subnode to your graph
-3. Set `bSupportSource` to true and choose "FillWeight" as the source
-4. Set `bSupportSteps` to true and select "Candidate" as the step
-5. Connect this subnode to a Flood Fill node's Fill Controls input pin
-6. The flood fill will now use the "FillWeight" attribute when evaluating candidates
+Create a fill control subnode and connect it to a flood fill node. Configure it to apply only during the "Candidate" step and fetch its attribute from the point's seed value. This allows you to define specific behaviors when nodes are identified as candidates for flooding, such as applying different weights or thresholds.
 
 #### Notes
 
-* This is an abstract subnode that must be extended by specific implementations for actual behavior.
-* The control settings are only active if their respective support flags are enabled.
-* Multiple Fill Controls Definition subnodes can be used together to create complex flood fill behaviors.
-* Attribute data fetched via the Source setting should match the expected data type for the target flood fill operation.
+This is an abstract base subnode that must be extended with specific implementations. The configuration defined here is used by flood fill processing nodes to determine how to apply control logic during their execution.

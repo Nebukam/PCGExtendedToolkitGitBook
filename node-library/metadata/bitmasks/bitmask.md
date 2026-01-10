@@ -6,68 +6,55 @@ icon: circle
 # Bitmask
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> A Simple bitmask attribute.
+> Applies bitmask operations to attributes in a procedural data set.
 
-### Overview
+#### How It Works
 
-This node allows you to create and manipulate bitmask values, which are useful for storing multiple boolean flags in a single integer value. It's commonly used in procedural generation for tagging points with various attributes or states, such as "isWalkable", "isWater", or "isDangerous". The node supports both direct bitmask assignment and bit-by-bit mutation operations.
+The Bitmask node modifies attribute flags using bitwise operations. It evaluates filter conditions for each point and applies the selected operation only when those conditions are met. The node supports several types of bitwise operations that let you combine or modify flag states in flexible ways.
 
-{% hint style="info" %}
-Bitmasks are particularly useful when you need to combine multiple binary flags into a single attribute for efficient storage and fast lookups.
-{% endhint %}
+For each point, the system first checks if any defined filters pass. If they do, it performs the chosen bitmask operation (such as setting specific bits, combining flags with AND or OR, or toggling bits with XOR) using a provided mask value. This process is repeated for every point, allowing precise control over how flag values are updated across your dataset.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Bitmask</strong><br><em>Operations executed on the flag if all filters pass.</em></summary>
 
-* **Source** (optional): Points or data to process. If not connected, the node will use the default input points.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Output** (default): The processed points with the new bitmask attribute applied.
-
-</details>
-
-### Properties Overview
-
-Controls how the bitmask is generated and applied.
-
-***
-
-#### General
-
-Controls general behavior of the bitmask node.
-
-**Bitmask**
-
-_The bitmask value to generate or mutate._
-
-* How it affects results: This defines the base value for the bitmask, which can be directly used or modified through operations.
-* Value ranges: Any integer value (0 to 2^63 - 1)
+Controls how the bitmask is applied to the target attribute. This subnode defines the operation type and mask value.
 
 **Values**:
 
-* **Direct**: Used for easy override mostly. Will use the value of the bitmask as-is
-* **Mutations**: Use an array to mutate the bits of the incoming bitmask (will modify the input if one is provided)
+* **Set**: Sets the bits in the flag to match the mask exactly.
+* **AND**: Performs a bitwise AND between the flag and mask, keeping only bits that are set in both.
+* **OR**: Performs a bitwise OR between the flag and mask, setting any bit that is set in either value.
+* **NOT**: Performs a bitwise AND with the inverted mask, clearing bits where the mask has 1s.
+* **XOR**: Performs a bitwise XOR between the flag and mask, flipping bits where the mask has 1s.
 
-**TitleCharLimit**
+</details>
 
-_Limit of characters for the title._
+<details>
 
-* How it affects results: Controls how many characters are used when displaying the node's title.
-* Value ranges: Any positive integer
+<summary><strong>TitleCharLimit</strong><br><em>Limit of characters for the title.</em></summary>
 
-### Notes
+Limits how many characters are used in the node's display title. This is useful when working with long attribute names or complex configurations.
 
-* Bitmasks can store up to 64 distinct flags, each represented by a single bit.
-* You can use this node to combine multiple boolean conditions into a single attribute for efficient data handling.
-* The Mutations mode allows you to modify specific bits of an existing bitmask, making it easy to add or remove flags without recalculating the entire value.
+</details>
+
+#### Usage Example
+
+You're creating a terrain generation graph where each point represents a tile that can be flagged as "Water", "Forest", or "Mountain". You want to mark tiles that are both water and forest as "Wetland".
+
+1. Add a Bitmask node.
+2. Set the operation to **OR**.
+3. Define a mask value of `0b110` (binary) to represent "Forest" and "Water".
+4. Apply this to an attribute like `TileFlags`.
+5. The node will set the appropriate bits for any point that matches your filter conditions.
+
+#### Notes
+
+* Bitmask operations are efficient and fast, making them ideal for large datasets.
+* Ensure that the target attribute is compatible with integer-based bitwise operations.
+* Use filters to control which points are affected by the operation.

@@ -9,149 +9,99 @@ icon: circle-dashed
 This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Compares the directions of edges connected to each vertex against a reference direction to determine which vertices to keep or remove.
-
-#### Overview
-
-This subnode helps control which vertices remain in your procedural graph based on how their connected edges are oriented. You can use it to ensure that edges point in a certain direction, like making sure roads in a city flow toward the north or that terrain slopes follow a specific pattern.
-
-It works by calculating how aligned each edge is with a reference direction and then checking whether that alignment meets your criteria. The process can be precise or fast, depending on your needs.
-
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes.
-{% endhint %}
+> Filters points based on the dot product of their connected edges and a direction attribute.
 
 #### How It Works
 
-This subnode evaluates the orientation of edges connected to each vertex and compares them against a reference direction. For every vertex, it:
+This subnode evaluates whether the edges connected to each point align with a specified direction. For every edge attached to a point, it calculates how closely that edge's direction matches the reference direction. If any edge meets the alignment criteria, the point passes the filter.
 
-1. Collects all edges linked to that vertex.
-2. Determines what direction to compare against:
-   * If set to **Constant**, it uses a fixed direction you define.
-   * If set to **Attribute**, it reads the direction from an attribute on the vertex.
-3. Optionally adjusts the reference direction using the vertex's local orientation if enabled.
-4. Calculates the direction of each connected edge (from one node to another).
-5. Computes how aligned each edge is with the reference direction using a dot product.
-6. Compares that alignment value against a threshold or tolerance:
-   * If **Dot (Precise)** is selected, it uses detailed calculations.
-   * If **Hash (Fast)** is selected, it performs a quicker approximation.
-7. A vertex passes the filter if its connected edges meet the alignment requirements.
-
-The result is a yes/no decision for each vertex that determines whether it continues to the next step in your graph.
-
-<details>
-
-<summary>Inputs</summary>
-
-This subnode expects data containing vertices and their connected edges, typically from graph-based processing nodes. It reads edge directions and optionally vertex attributes for reference direction.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-The output is a filtered set of vertices that meet the directional alignment criteria defined by this filter.
-
-</details>
+The reference direction can come from a constant value or be read from an attribute on the point. Optionally, this direction can be adjusted using the point's local transformation before comparison.
 
 #### Configuration
 
-***
+<details>
 
-**ComparisonQuality**
+<summary><strong>Comparison Quality</strong><br><em>Type of check; Note that Fast comparison ignores adjacency consolidation.</em></summary>
 
-_Controls whether to use precise dot product comparisons or faster hash-based checks._
-
-When **Dot (Precise)** is selected, it performs detailed calculations with configurable tolerance. When **Hash (Fast)** is selected, it uses a simplified method that ignores adjacency consolidation.
+Determines whether to use a precise dot product comparison or a faster hash-based comparison.
 
 **Values**:
 
-* **Dot (Precise)**: Performs accurate dot product comparisons
-* **Hash (Fast)**: Uses fast hash-based comparison
+* **Dot (Precise)**: Uses full dot product calculations for accurate results.
+* **Hash (Fast)**: Uses simplified hash comparison with tolerance, ignoring adjacency consolidation.
 
-***
+</details>
 
-**Adjacency**
+<details>
 
-_Adjacency Settings_
+<summary><strong>Adjacency</strong><br><em>Adjacency Settings</em></summary>
 
-Controls how edges are considered when evaluating the vertex. This includes settings for adjacency consolidation and filtering.
+Settings that define how edges are considered when performing the direction check.
 
-***
+</details>
 
-**DirectionOrder**
+<details>
 
-_Determines the orientation of edge directions used in the comparison._
+<summary><strong>Direction Order</strong><br><em>Direction orientation</em></summary>
 
-This setting defines whether the edge direction is calculated from node to neighbor or from neighbor to node.
-
-**Values**:
-
-* **From Node to Neighbor**: Edge direction points from the current vertex to its neighbor
-* **From Neighbor to Node**: Edge direction points from the neighbor back to the current vertex
-
-***
-
-**CompareAgainst**
-
-_Specifies whether to read the reference direction from a constant value or an attribute._
-
-When set to **Attribute**, it reads the direction vector from a specified vertex attribute. When set to **Constant**, it uses a fixed vector defined in the settings.
+Defines whether the edge direction is calculated from node to neighbor or vice versa.
 
 **Values**:
 
-* **Constant**: Use a fixed vector
-* **Attribute**: Read direction from a vertex attribute
+* **From Node to Neighbor**: Edge points from the current node toward its neighbor.
+* **From Neighbor to Node**: Edge points from the neighbor toward the current node.
 
-***
+</details>
 
-**bInvertDirection**
+<details>
 
-_When enabled, inverts the reference direction before comparison._
+<summary><strong>Compare Against</strong><br><em>Where to read the compared direction from.</em></summary>
 
-This allows flipping the direction for testing alignment in the opposite orientation.
+Controls whether the reference direction is a constant value or read from an attribute on the point.
 
-***
+**Values**:
 
-**DirectionConstant**
+* **Constant**: Uses the `Direction` constant.
+* **Attribute**: Reads the direction from the `Direction` attribute.
 
-_Reference direction when using constant mode._
+</details>
 
-A fixed 3D vector that defines the direction to compare against. For example, pointing upward or along the X-axis.
+<details>
 
-***
+<summary><strong>Invert</strong><br><em>When enabled, the reference direction is inverted.</em></summary>
 
-**bTransformDirection**
+When enabled, the reference direction is negated before comparison. Only visible when `CompareAgainst` is set to "Attribute".
 
-_When enabled, applies the vertex's local transform to the reference direction._
+</details>
 
-This allows the reference direction to be rotated or scaled according to the vertex’s orientation in space.
+<details>
 
-***
+<summary><strong>Direction</strong><br><em>Direction for computing the dot product against the edge's.</em></summary>
 
-**DotComparisonDetails**
+The reference direction used for comparison. This can be a constant vector or an attribute on the point.
 
-_Configuration for precise dot product comparisons._
+</details>
 
-Controls tolerance and comparison logic when using **Dot (Precise)** mode.
+<details>
 
-***
+<summary><strong>Transform Direction</strong><br><em>When enabled, transform the reference direction with the local point' transform.</em></summary>
 
-**HashComparisonDetails**
+When enabled, the reference direction is transformed using the point's local transform before comparison.
 
-_Configuration for fast hash-based comparisons._
+</details>
 
-Controls tolerance and comparison logic when using **Hash (Fast)** mode.
+<details>
 
-***
+<summary><strong>Dot Comparison Details</strong><br><em>Dot comparison settings</em></summary>
 
-#### Usage Example
+Settings for fine-tuning the dot product comparison, such as tolerance thresholds.
 
-Use this filter to only keep vertices where connected edges mostly point in a specific direction, such as ensuring all roads in a city grid flow toward the north. You can set the reference direction to point upward and configure the dot product threshold to allow only edges with high alignment (e.g., 0.8 or higher).
+</details>
 
-#### Notes
+<details>
 
-* The **Hash (Fast)** mode is less accurate but faster, especially for large graphs.
-* Ensure that edge directions are well-defined in your graph data before applying this filter.
-* Combining this filter with other vertex filters can create complex directional constraints in procedural generation workflows.
+<summary><strong>Hash Comparison Details</strong><br><em>Hash comparison settings</em></summary>
+
+Settings for configuring the hash-based comparison, including tolerance and precision.
+
+</details>

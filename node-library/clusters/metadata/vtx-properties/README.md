@@ -6,103 +6,75 @@ icon: scrubber
 # Vtx Properties
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Extract & write extra informations from the edges connected to the vtx.
+> Extract and write extra information from edges connected to vertices in clusters.
 
-### Overview
+#### How It Works
 
-This node analyzes the edges connected to each vertex in a cluster and extracts useful information that can be written back as vertex attributes. It's particularly helpful when you want to enrich vertex data with topological or geometric properties derived from neighboring connections.
+This node processes each cluster individually by examining the edges that connect to its vertices. For each vertex, it aggregates information from the connected edges and computes new properties such as edge count or normal vectors.
 
-The most common use cases include writing edge count per vertex and computing vertex normals based on connected edges. These properties are valuable for effects like vertex blending, procedural mesh deformation, or visual variations based on connectivity.
+It first identifies which edges are connected to each vertex, then calculates the requested attributes based on those connections. If enabled, it can also update the vertex's position to align with its orientation derived from neighboring edges.
 
-{% hint style="info" %}
-This node operates on clusters and requires input data to be structured as such. It processes each vertex in the cluster and gathers information from its associated edges.
-{% endhint %}
+The node supports writing two types of data:
+
+1. **Edge Count**: The number of edges connected to each vertex.
+2. **Normal Vector**: A computed normal vector derived from the directions and orientations of connected edges, using a specified axis of the vertex's bounding box as reference.
+
+These values are stored in new vertex attributes with customizable names.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Mutate Vtx to OOB</strong><br><em>Mutate Vtx into their OOB based on neighboring connections.</em></summary>
 
-* **Main Input (Point)**: Cluster points (vertices) to process.
-* **Edges Input (Point)**: Edge data connected to the vertices.
+When enabled, the vertex positions are adjusted to align with the orientation derived from its connected edges. This can be useful for making vertices better fit within a structured layout or for visual alignment.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Write Edge Count</strong><br><em>Write normal from edges on vertices.</em></summary>
 
-* **Main Output (Point)**: Vertices with potentially updated attributes.
-* **Edge Output (Point)**: Edges, if needed for further processing.
+When enabled, the node counts how many edges are connected to each vertex and writes this value into a new vertex attribute.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how vertex properties are extracted and written.
+<summary><strong>EdgeCount Attribute Name</strong><br><em>Name of the 'normal' vertex attribute to write normal to.</em></summary>
 
-***
+Defines the name of the vertex attribute where the edge count will be stored. Defaults to "EdgeCount".
 
-#### Settings
+</details>
 
-Configures the output behavior of the node.
+<details>
 
-**Mutate Vtx into their OOB**
+<summary><strong>Write Normal</strong><br><em>Write normal from edges on vertices.</em></summary>
 
-_When enabled, vertices are adjusted to fit within their Out-of-Bounds (OOB) space based on neighboring connections._
+When enabled, the node computes a normal vector for each vertex based on its connected edges and stores it in a new vertex attribute.
 
-* This modifies the position and scale of each vertex to reflect its local neighborhood.
-* Useful for creating organic or clustered layouts where vertices stay close to their neighbors.
+</details>
 
-**Include Vtx In OOB**
+<details>
 
-_When enabled, the vertex itself is included in the OOB calculation when mutating it._
+<summary><strong>Normal Attribute Name</strong><br><em>Name of the 'normal' vertex attribute to write normal to.</em></summary>
 
-* Affects how the bounds are computed for the vertex's OOB.
-* When disabled, only the connected edges contribute to the bounds.
+Defines the name of the vertex attribute where the computed normal will be stored. Defaults to "Normal".
 
-**Write Vtx Edge Count**
+</details>
 
-_When enabled, writes the number of edges connected to each vertex as an attribute._
+<details>
 
-* Useful for creating visual variations or controlling procedural behaviors based on vertex connectivity.
-* For example, you can use this count to vary point size or color.
+<summary><strong>Normal Axis</strong><br><em>Which axis of the vtx OOB to use as normal.</em></summary>
 
-**EdgeCount Attribute Name**
+Selects which axis of the vertex's bounding box is used to define the orientation for the computed normal vector. Options are:
 
-_Name of the vertex attribute where the edge count is written._
+* **None**: No axis selected.
+* **X**: Use the X-axis.
+* **Y**: Use the Y-axis.
+* **Z**: Use the Z-axis.
 
-* Default name is `EdgeCount`.
-* You can customize this to match your existing attribute naming conventions.
-
-**Write Vtx Normal**
-
-_When enabled, computes and writes a normal vector for each vertex based on connected edges._
-
-* The normal is derived from the direction and orientation of adjacent edges.
-* Useful for lighting effects or surface shading that depends on vertex connectivity.
-
-**Normal Attribute Name**
-
-_Name of the vertex attribute where the computed normal is written._
-
-* Default name is `Normal`.
-* This attribute will be a vector (FVector) containing the normal direction.
-
-**Axis**
-
-_Selects which axis of the vertex OOB to use for the normal computation._
-
-* **None**: No specific axis is used.
-* **X, Y, Z**: The normal is computed using the specified axis as reference.
-* For example, setting this to `Z` will compute the normal along the Z-axis direction.
-
-### Notes
-
-* This node works best when your cluster data has well-defined edge connections. Make sure your edges are properly linked to vertices before applying this node.
-* The vertex normal computation can be influenced by the number and orientation of connected edges, so it's a good idea to visualize results in the editor to ensure desired behavior.
-* Using `EdgeCount` can help with creating varied effects like foliage density or mesh detail based on vertex connectivity.
+</details>

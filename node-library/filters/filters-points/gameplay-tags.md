@@ -9,115 +9,96 @@ icon: circle-dashed
 This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a filter definition that checks gameplay tags of an actor reference.
-
-#### Overview
-
-This subnode filters points based on the gameplay tags assigned to an actor referenced by each point. It's useful when you have points that represent locations or entities in your level, and each point references an actor (like a character, prop, or structure) whose gameplay tags you want to evaluate. The filter can determine whether a point should pass or fail based on the tag query applied.
-
-This subnode connects to Filter pins on processing nodes, such as **Filter Points** or **Filter Edges**, where it defines the condition that points must meet to be considered valid for further processing.
-
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes.
-{% endhint %}
+> Filters points based on gameplay tags assigned to actors referenced by those points.
 
 #### How It Works
 
-This filter evaluates each point by:
+This subnode evaluates whether each point in a PCG graph passes or fails a filter condition based on the gameplay tags of an actor. For every point, it:
 
-1. Resolving an actor reference from a specified attribute (e.g., `ActorReference`) on the point.
-2. Navigating to a tag container within that actor using a property path (e.g., `Component.TagContainer`).
-3. Applying a gameplay tag query against the resolved tag container.
-4. Returning whether the query passes or fails for that point.
+1. Retrieves an actor reference from a specified point attribute.
+2. Resolves that reference to an actual actor in the level.
+3. Navigates to a tag container on the actor using a defined path.
+4. Checks if the tags on that container match a specific gameplay tag query.
+5. If the actor or tag container cannot be found, it uses fallback settings to decide whether to pass or fail the point.
 
-If an actor cannot be found or the property path is invalid, it uses fallback values to determine the result.
+This process allows you to filter points based on complex tag relationships, such as requiring an actor to have certain tags or meet specific tag conditions.
 
-<details>
-
-<summary>Inputs</summary>
-
-* Points with an attribute containing a reference to an actor (e.g., `ActorReference`)
-* An actor with a tag container accessible via the provided property path
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* Points that pass or fail the gameplay tag query
-* The filter result is used by the parent node to decide which points proceed in the graph
-
-</details>
+{% hint style="info" %}
+Connects to **Filter** pins on processing nodes (e.g., Point Filter, Point Switch).
+{% endhint %}
 
 #### Configuration
 
-***
+<details>
 
-**ActorReference**
+<summary><strong>ActorReference</strong><br><em>Name of the attribute that contains a path to an actor in the level, usually from a GetActorData PCG Node in point mode.</em></summary>
 
-_Name of the attribute that contains a path to an actor in the level, usually from a GetActorData PCG Node in point mode._
+Specifies the name of the point attribute that holds the actor reference. This is typically set by a GetActorData node.
 
-Specifies the name of the attribute on each point that holds a reference to an actor in the level.
+**Example**: If you have a point attribute named `MyActorRef`, set this to `MyActorRef`.
 
-**Example**: If your points have an attribute named `ActorRef`, set this to `ActorRef`.
+</details>
 
-***
+<details>
 
-**PropertyPath**
+<summary><strong>PropertyPath</strong><br><em>Path to the tag container to be tested, resolve from the actor reference as root.</em></summary>
 
-_Path to the tag container to be tested, resolve from the actor reference as root._
+Defines how to navigate from the resolved actor to the tag container. This is a string path, such as `Component.TagContainer` or `Tags`.
 
-Defines how to navigate from the referenced actor to the tag container. This is a string path that can include component names and properties.
+**Example**: For an actor with a component named `MyTagComponent`, set this to `MyTagComponent.TagContainer`.
 
-**Example**: For an actor with a `GameplayTags` component, you might use `GameplayTags.TagContainer`.
+</details>
 
-***
+<details>
 
-**TagQuery**
+<summary><strong>TagQuery</strong><br><em>Query.</em></summary>
 
-_Query._
+A gameplay tag query that defines the conditions for passing the filter. This can include tag requirements, exclusions, and logical combinations.
 
-The gameplay tag query used to evaluate the tag container. This allows for complex filtering using tag relationships (e.g., `HasTagA AND NOT HasTagB`).
+**Example**:
 
-**Example**: A query like `Gameplay.Tag1 OR Gameplay.Tag2` will pass if the actor has either of those tags.
+* `GameplayTags.Tag1` (requires Tag1)
+* `GameplayTags.Tag1 & GameplayTags.Tag2` (requires both Tag1 and Tag2)
+* `GameplayTags.Tag1 | GameplayTags.Tag2` (requires either Tag1 or Tag2)
 
-***
+</details>
 
-**bFallbackMissingActor**
+<details>
 
-_Value the filter will return for point which actor reference cannot be resolved._
+<summary><strong>bFallbackMissingActor</strong><br><em>Value the filter will return for point which actor reference cannot be resolved.</em></summary>
 
-When enabled, points where the actor reference cannot be resolved will be considered to **fail** the filter. When disabled, they will **pass**.
+Controls the behavior when an actor cannot be resolved from the `ActorReference`. If enabled, the filter returns **true** (passes), otherwise it returns **false** (fails).
 
-***
+</details>
 
-**bFallbackPropertyPath**
+<details>
 
-_Value the filter will return if the actor is found, but the property path could not be resolved._
+<summary><strong>bFallbackPropertyPath</strong><br><em>Value the filter will return if the actor is found, but the property path could not be resolved.</em></summary>
 
-When enabled, points where the actor is found but the tag container cannot be accessed via the property path will be considered to **fail** the filter. When disabled, they will **pass**.
+Controls the behavior when an actor is found but the tag container at `PropertyPath` cannot be accessed. If enabled, the filter returns **true** (passes), otherwise it returns **false** (fails).
 
-***
+</details>
 
-**bQuietMissingPropertyWarning**
+<details>
 
-_Controls whether warnings are displayed for missing properties._
+<summary><strong>bQuietMissingPropertyWarning</strong><br><em>Suppresses warnings about missing properties during filtering.</em></summary>
 
-When enabled, suppresses warning messages when a property path fails to resolve on an actor.
+When enabled, suppresses warning messages in the log when a property path cannot be resolved. Useful to reduce noise in large graphs.
+
+</details>
 
 #### Usage Example
 
-1. Use a **GetActorData** node in point mode to assign actor references to points.
-2. Connect the output of that node to a **Filter Points** node.
-3. Add this **Filter : GameplayTags** subnode to the Filter pin of the **Filter Points** node.
-4. Set `ActorReference` to the attribute name used by GetActorData (e.g., `ActorRef`).
-5. Set `PropertyPath` to the path of the tag container on the actor (e.g., `GameplayTags.TagContainer`).
-6. Define a tag query that matches your desired gameplay tags.
-7. The **Filter Points** node will now only pass points where the referenced actor's tags match the query.
+1. Use a **GetActorData** node to extract actor references from points.
+2. Connect the output of that node to a **Point Filter** node.
+3. Add this **Filter : GameplayTags** subnode to the Point Filter's **Filter** input pin.
+4. Set `ActorReference` to match the attribute name from GetActorData (e.g., `ActorRef`).
+5. Set `PropertyPath` to point to the tag container on the actor (e.g., `Tags` or `Component.TagContainer`).
+6. Configure a `TagQuery` such as `CharacterType.Enemy` to filter only enemy characters.
+7. Use the output of the Point Filter to control downstream processing, like spawning different objects based on actor tags.
 
 #### Notes
 
-* Ensure the actor references are valid and point to actors with the expected tag containers.
-* Tag queries support complex logic using AND, OR, NOT operators.
-* Fallback settings allow you to control behavior when data is missing or invalid.
+* The `PropertyPath` must point to a valid tag container (e.g., `FGameplayTagContainer`) on the actor or its components.
+* Tag queries support complex logic using `&` (and), `|` (or), and `!` (not) operators.
+* This subnode works best when used with actors that have tag containers defined in their components or properties.

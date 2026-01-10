@@ -6,69 +6,40 @@ icon: circle-dashed
 # HX : Azimuth
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a heuristic that evaluates points based on their directional alignment toward a goal, using the angle between the current point and the goal direction.
+> Heuristics based on direction toward final goal (north star).
 
-### Overview
+#### How It Works
 
-This factory generates a heuristic operation that guides pathfinding by measuring how well a point's direction aligns with the overall direction toward the final goal. It's particularly useful for creating natural-looking paths that move consistently toward a target.
+This subnode evaluates how well a point's direction aligns with the overall path toward the goal. It calculates a score between 0 and 1, where 1 means the point moves directly toward the goal and 0 means it moves away from the goal.
 
-{% hint style="info" %}
-Connects to **Heuristics** input pins on pathfinding nodes like **Pathfinder** or **Pathfinder With Constraints**
-{% endhint %}
-
-### How It Works
-
-The azimuth heuristic works by calculating the angle between:
+The calculation uses the angle between:
 
 1. The direction from the current point to the goal
 2. The direction from the current point to its neighbor (for edge scoring)
 
-It then maps this angle to a score where:
+For global scoring, it measures how much a point's direction aligns with the overall path toward the goal. For edge scoring, it evaluates how well an edge's direction supports movement toward the goal.
 
-* **0** = Point is moving directly away from the goal (worst case)
-* **1** = Point is moving directly toward the goal (best case)
+The score is derived from the dot product of these two directions, remapped from -1 to 1 into a 0 to 1 range. A curve can be applied to adjust how scores are interpreted, allowing for different weighting behaviors.
 
-The resulting score helps pathfinding algorithms prioritize points that move in the right direction.
+#### Configuration
 
-### Inputs
+<details>
 
-* **Seed Point**: The starting point for the heuristic calculation
-* **Goal Point**: The target point that the heuristic guides toward
-* **Heuristics**: Input pin for connecting to pathfinding nodes
+<summary><strong>Config</strong><br><em>Filter Config.</em></summary>
 
-### Outputs
+Controls how the heuristic is applied. This includes settings for weight, curve shaping, and other parameters that affect how scores are calculated and interpreted.
 
-* **Heuristic**: The calculated heuristic value used by pathfinding algorithms
+</details>
 
-### Configuration
+#### Usage Example
 
-***
+Use this subnode in a pathfinding graph to guide agents toward a goal by favoring points that move in the correct direction. For example, when generating a path from point A to point B, this heuristic will prefer paths where each step moves progressively closer to point B rather than wandering away.
 
-#### General
+#### Notes
 
-**Config**
-
-_Heuristic configuration settings._
-
-Controls how the heuristic behaves, including weight factors and scoring curve.
-
-### Usage Example
-
-Use this with a **Pathfinder** node to create natural-looking paths that consistently move toward a goal. For example:
-
-1. Create a cluster of points representing terrain
-2. Connect a **Heuristics : Azimuth** factory to the Pathfinder's Heuristics pin
-3. Set your seed and goal points
-4. The pathfinding will favor points that align with the overall direction toward the goal
-
-### Notes
-
-* This heuristic works best when combined with other heuristics for more nuanced pathfinding
-* Scores are normalized between 0 and 1, where higher values indicate better alignment with the goal
-* The heuristic considers both global point positioning and edge traversal directions
-* Can be used in conjunction with **Heuristics : Distance** or **Heuristics : Curvature** for richer pathfinding behavior
+* The heuristic is directional and assumes a clear goal direction.
+* Scores are normalized between 0 and 1 for consistent behavior across different scenarios.
+* Can be combined with other heuristics to create more complex pathfinding behaviors.

@@ -6,81 +6,72 @@ icon: circle
 # Attribute Hash
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Generates a unique hash value from attribute data in your point data, which can be used for identification or grouping.
+> Generates a hash value from input data based on specified attributes or properties.
 
-### Overview
+#### How It Works
 
-This node creates a deterministic hash value based on the values of a specified attribute or property within your point data. The hash is calculated using a combination of the selected attribute's values and can be output as either an attribute or a tag. This is useful for identifying unique combinations of data, creating groupings, or adding metadata that can be used in downstream processing.
+The Attribute Hash node creates a unique numerical identifier for each point in your dataset. This identifier is calculated using values from selected attributes or properties, and it remains consistent every time the same input data is used. The hash can be stored either as an attribute or a tag, depending on how you configure the node.
 
-{% hint style="info" %}
-The generated hash is deterministic — the same input data will always produce the same hash value.
-{% endhint %}
+When you run the node, it first checks which attributes or properties to include in the calculation based on your settings. Then, it processes each point individually and computes a hash value that reflects the combination of those values. This makes it easy to identify similar points, group them together, or use them as stable references in procedural workflows.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>HashConfig</strong><br><em>Defines which attributes or properties to use for hashing.</em></summary>
 
-* **Default Input** (Required): Point data to process. This node accepts multiple inputs if configured to do so.
+Controls what data is used to compute the hash. You can choose to include a single attribute, multiple attributes, point coordinates, or define custom logic for how the hash is calculated.
+
+**Values**:
+
+* **Single Attribute**: Hashes only the value of one specific attribute.
+* **Multiple Attributes**: Combines values from several attributes into a single hash.
+* **Point Position**: Uses the X, Y, and Z coordinates of each point in the calculation.
+* **Custom Property**: Lets you define custom rules for how the hash is computed.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>OutputName</strong><br><em>Name to output the hash to (written on @Data domain)</em></summary>
 
-* **Default Output**: Modified point data with the new hash attribute or tag added.
+Specifies the name of the attribute or tag where the computed hash will be stored. For example, if set to "MyHash", the result will appear as an attribute named "MyHash".
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the hash is generated and where it's stored.
+<summary><strong>bOutputToTags</strong><br><em>Whether to add the hash as a tag</em></summary>
 
-***
+When enabled, stores the computed hash value as a point tag. Tags are useful for filtering or identifying points in later stages.
 
-#### Settings
+</details>
 
-Configures which attribute to use for hashing and how to combine its values.
+<details>
 
-**Source Attribute**
+<summary><strong>bOutputToAttribute</strong><br><em>Whether to add the hash as an attribute</em></summary>
 
-_The attribute whose values will be used to generate the hash._
+When enabled, stores the computed hash value as a numeric point attribute. This allows further mathematical operations or use in other nodes that expect attributes.
 
-* This determines what data contributes to the final hash value.
-* You can select any existing attribute from your input point data.
+</details>
 
-**Hash Scope**
+#### Usage Example
 
-_How to combine multiple values into a single hash._
+Imagine you're generating a forest with trees that have varying heights and trunk diameters. You want to assign each tree a stable identifier so that you can later reference them consistently across multiple procedural passes.
 
-* **All**: Combines all values in the attribute set.
-* **Uniques**: Combines only unique values, ignoring duplicates.
-* **First and Last**: Combines values from the first and last points only.
-* **First only**: Uses only the value from the first point.
-* **Last only**: Uses only the value from the last point.
+1. Use the Attribute Hash node.
+2. Set `HashConfig` to include both "Height" and "Diameter" attributes.
+3. Enable `bOutputToAttribute`.
+4. Name the output "TreeID".
+5. Connect this node to your tree generation graph.
+6. The resulting points will now have a unique, deterministic hash value based on their height and diameter.
 
-**Output Name**
+#### Notes
 
-_Name of the attribute or tag to write the hash to._
-
-* This is the name that will be used for the output attribute or tag.
-* Default is "Hash".
-
-**Output To Tags**
-
-_When enabled, writes the hash as a tag instead of an attribute._
-
-* Tags are simpler metadata that can be used for filtering or grouping in later nodes.
-* If both tags and attributes are enabled, both will be written.
-
-**Output To Attribute**
-
-_When enabled, writes the hash as an attribute._
-
-* Attributes store numerical data that can be used in calculations or further processing.
-* If both tags and attributes are enabled, both will be written.
+* Hashes are deterministic; identical input values will always produce the same hash.
+* If you change the input attributes or their values, the hashes will change accordingly.
+* Using `bOutputToTags` and `bOutputToAttribute` together is allowed but may lead to redundancy.
+* Performance is generally fast since hashing is a lightweight operation.

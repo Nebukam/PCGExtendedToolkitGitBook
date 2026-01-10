@@ -6,29 +6,38 @@ icon: scrubber
 # Get Texture Data
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Create texture data object from paths.
+> Create texture data objects from asset paths for procedural generation workflows.
 
-### Overview
+#### Overview
 
-This node reads texture or material paths from point attributes and resolves them into texture data that can be used for sampling in subsequent nodes. It's particularly useful when you want to sample textures based on point data, such as using different textures per instance or generating texture-based variations in your procedural content.
+This node reads texture or material paths from point attributes and builds texture data objects that can be used for sampling in procedural generation. It allows you to associate textures with points and define how those textures should be sampled, including filtering methods, transformations, and tiling options.
 
-The node supports both direct texture paths and material paths. When using materials, it can extract texture references from the material's parameters and build texture data objects for each unique texture found. It also handles advanced tiling options when sampling textures, allowing you to control how textures are mapped onto surfaces.
+It's useful when you want to apply texture-based data to points, such as using material paths from a mesh to sample heightmaps or normal maps, or when you need to generate point data based on texture values for further processing.
 
 {% hint style="info" %}
-This node requires point data with either texture or material paths in attributes. The resolved texture data can then be used by other sampling nodes in your graph.
+Connects to **Point Filters** subnode and outputs processed points with texture data.
 {% endhint %}
+
+#### How It Works
+
+This node processes input points by reading either texture paths or material paths from a specified attribute. For each unique reference found, it builds a texture data object that can be used for sampling. The processing involves:
+
+1. Reading the path type (texture or material) and attribute name to extract asset references
+2. Resolving material references to find associated textures
+3. Building texture data objects with defined sampling parameters
+4. Applying transformations and tiling settings to control how samples are taken
+5. Writing resolved texture paths and/or building texture data for each unique reference
+
+The node supports both point-based sampling (nearest texel) and bilinear interpolation between neighboring texels, allowing for smooth transitions in sampled values.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Default Input** (Required): Point data containing texture or material paths
-* **Filters** (Optional): Point filters to control which points are processed
+Expects points with an attribute containing either texture or material paths. The input can be filtered using the Point Filters subnode.
 
 </details>
 
@@ -36,145 +45,155 @@ This node requires point data with either texture or material paths in attribute
 
 <summary>Outputs</summary>
 
-* **Default Output**: Modified point data with texture sampling attributes
-* **Texture Data** (Optional): Texture data objects created from the resolved paths
+Produces points with associated texture data objects. If enabled, it writes resolved texture paths and builds PCG Texture data for each unique reference found.
 
 </details>
 
-### Properties Overview
+#### Configuration
 
-Settings for controlling how texture paths are read and processed.
+<details>
 
-***
+<summary><strong>SourceType</strong><br><em>Type of path.</em></summary>
 
-#### Data Source
-
-Controls how the node reads texture or material paths from input points.
-
-**Source Type**
-
-_Whether to read texture paths directly or extract them from material paths._
-
-* When set to **Texture Path**, the node reads direct texture asset paths from the attribute
-* When set to **Material Path**, the node reads material asset paths and extracts texture references from them
+Controls whether the node reads from a texture path or material path attribute.
 
 **Values**:
 
-* **Texture Path**: Read texture paths directly from the attribute
-* **Material Path**: Read material paths and extract texture references from materials
+* **TexturePath**: Point attribute contains a texture path
+* **MaterialPath**: Point attribute contains a material path
 
-**Source Attribute Name**
+</details>
 
-_Name of the point attribute containing paths._
+<details>
 
-* This attribute should contain either texture paths or material paths depending on the Source Type setting
-* The attribute must be of type String or Soft Object Path
+<summary><strong>SourceAttributeName</strong><br><em>Name of the attribute to read asset path from (material or texture).</em></summary>
 
-**Output Texture IDs**
+Name of the point attribute that contains either the texture or material path.
 
-_When enabled, writes resolved texture paths to output points._
+</details>
 
-* Creates a new attribute with the resolved texture paths for each point
-* Useful for debugging or when you need access to the actual texture paths in downstream nodes
+<details>
 
-**Build Texture Data**
+<summary><strong>bOutputTextureIds</strong><br><em>If enabled, will write resolved texture paths as per their definitions.</em></summary>
 
-_When enabled, creates PCG Texture data objects from material references._
+When enabled, writes resolved texture paths to output points. Only applicable when SourceType is set to MaterialPath.
 
-* Builds texture data for each unique texture found in materials
-* Required if you want to sample textures directly from this node's output
+</details>
 
-***
+<details>
 
-#### Sampling Settings
+<summary><strong>bBuildTextureData</strong><br><em>If enabled, will build PCG Texture data for each unique texture reference found.</em></summary>
 
-Controls how texture samples are computed and transformed.
+When enabled, creates PCG Texture data objects for each unique texture reference. Only applicable when SourceType is set to MaterialPath.
 
-**Filter Method**
+</details>
 
-_Method used to determine sample values based on nearby texels._
+<details>
 
-* **Point**: Takes the value of whatever texel the sample lands in (nearest neighbor sampling)
-* **Bilinear**: Bilinearly interpolates values from the four nearest texels (smooth sampling)
+<summary><strong>Filter</strong><br><em>Method used to determine the value for a sample based on the value of nearby texels.</em></summary>
 
-**Transform**
+Controls how samples are interpolated from texture data.
 
-_Transform applied to texture coordinates before sampling._
+**Values**:
 
-* Allows you to scale, rotate, or translate texture sampling coordinates
-* Useful for aligning textures with surfaces or creating UV variations
+* **Point**: Takes the value of whatever texel the sample lands in
+* **Bilinear**: Bilinearly interpolates the values of the four nearest texels to the sample location
 
-**Use Absolute Transform**
+</details>
 
-_When enabled, applies the transform without considering point location._
+<details>
 
-* The transform is applied directly to texture coordinates rather than being relative to point positions
-* Useful when you want consistent texture mapping regardless of point placement
+<summary><strong>Transform</strong><br><em>Surface transform.</em></summary>
 
-**Color Channel**
+Applies a transformation to the surface before sampling.
 
-_Color channel to sample from textures._
+</details>
 
-* Controls which channel (R, G, B, A) or combination of channels to read
-* For materials, this determines which parameter to sample from
-* Can be used to extract specific color components or alpha values
+<details>
 
-**Texel Size**
+<summary><strong>bUseAbsoluteTransform</strong><br><em>Whether to use absolute transform values.</em></summary>
 
-_Size of one texel in centimeters._
+When enabled, uses absolute transform values instead of relative ones.
 
-* Used when converting texture data to point data
-* Determines the resolution and scale of texture sampling
-* Default value is 50.0 cm (500 mm)
+</details>
 
-***
+<details>
 
-#### Advanced Tiling
+<summary><strong>ColorChannel</strong><br><em>Which color channel to sample from the texture.</em></summary>
 
-Controls how textures are tiled or stretched when sampled.
+Selects which color channel (R, G, B, A) to use for sampling.
 
-**Use Advanced Tiling**
+</details>
 
-_When enabled, allows advanced tiling controls._
+<details>
 
-* Enables rotation, tiling factors, and offset controls for texture mapping
-* Required to use any of the advanced tiling settings
+<summary><strong>TexelSize</strong><br><em>The size of one texel in cm, used when calling ToPointData.</em></summary>
 
-**Rotation**
+Defines the physical size of a single texel in centimeters. This is used when converting texture data to point data.
 
-_Rotation applied to texture coordinates in degrees._
+</details>
 
-* Rotates the texture before sampling
-* Can be used to align textures with surface orientation or create pattern variations
-* Value range: -360 to 360 degrees
+<details>
 
-**Tiling**
+<summary><strong>Rotation</strong><br><em>Rotation to apply when sampling texture.</em></summary>
 
-_Tiling factors for U and V coordinates._
+Applies a rotation to the sampling area, in degrees.
 
-* Controls how many times the texture repeats across the surface
-* Values of (1,1) = no tiling, (2,2) = texture repeats twice in both directions
-* Default value is (1.0, 1.0)
+</details>
 
-**Center Offset**
+<details>
 
-_Offset from center point for texture sampling._
+<summary><strong>bUseAdvancedTiling</strong><br><em>Whether to tile the source or to stretch it to fit target area.</em></summary>
 
-* Shifts the texture sampling location relative to the point
-* Can be used to create offset patterns or align textures with specific features
-* Values are normalized between -0.5 and 0.5
+When enabled, allows advanced tiling controls for texture sampling.
 
-**Use Tile Bounds**
+</details>
 
-_When enabled, restricts sampling to a specific tile area._
+<details>
 
-* Limits texture sampling to a defined rectangular region
-* Useful for creating texture variations within bounds or avoiding edge artifacts
+<summary><strong>Tiling</strong><br><em>Whether to tile the source or to stretch it to fit target area.</em></summary>
 
-**Tile Bounds**
+Controls how the texture is tiled across the sampling area. Values are in UV space.
 
-_Rectangular area defining the sampling bounds._
+</details>
 
-* Specifies the UV coordinates of the tile area to sample from
-* Default is centered on (0,0) with size (1,1)
-* Values are normalized between -0.5 and 0.5
+<details>
+
+<summary><strong>CenterOffset</strong><br><em>Offset from center for tiling.</em></summary>
+
+Shifts the tiling pattern by a specified offset in UV space.
+
+</details>
+
+<details>
+
+<summary><strong>bUseTileBounds</strong><br><em>Whether to use tile bounds for sampling.</em></summary>
+
+When enabled, restricts sampling to a specific tile bounds area.
+
+</details>
+
+<details>
+
+<summary><strong>TileBounds</strong><br><em>Bounds of the tile to sample from.</em></summary>
+
+Defines the UV bounds within which to sample when tiling is enabled.
+
+</details>
+
+#### Usage Example
+
+Use this node in a workflow where you have points with material paths and want to sample texture data for each point. For example, you could:
+
+1. Create points on a mesh
+2. Assign material paths to those points using a separate node
+3. Connect this node to read those paths and build texture data
+4. Use the resulting texture data in downstream nodes for height or normal map sampling
+
+#### Notes
+
+* The node supports both direct texture paths and material paths that resolve to textures
+* Texture data objects are built asynchronously to avoid blocking the main thread
+* When using bilinear filtering, performance is slightly reduced compared to point sampling
+* Tiling parameters allow for complex texture mapping scenarios
+* The node can output multiple texture data objects if different materials reference different textures

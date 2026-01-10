@@ -6,56 +6,37 @@ icon: circle-dashed
 # HX : Least Nodes
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a heuristic that prioritizes paths with fewer nodes, useful for pathfinding where minimizing complexity or traversal steps is desired.
+> Heuristics based on node count.
 
-### Overview
+#### How It Works
 
-This factory generates a **heuristic function** used in pathfinding operations to evaluate the cost of traversing from one node to another. It's designed to favor routes that involve fewer intermediate nodes, making it ideal for scenarios where simplicity or minimal branching is preferred.
+This subnode evaluates paths by counting how many nodes they contain. Paths with fewer nodes receive better scores, making them more likely to be selected during pathfinding. The scoring is inversely related to node count, meaning shorter paths are prioritized.
 
-{% hint style="info" %}
-Connects to **Pathfinding** nodes that require a heuristic definition, such as A\* or Dijkstra pathfinders.
-{% endhint %}
+The process works in three steps:
 
-### How It Works
+1. Count the total number of nodes in a given path
+2. Calculate a score that decreases as the node count increases
+3. Use this score to rank and compare different paths during the search
 
-This heuristic evaluates the cost of moving between nodes based on how many nodes are involved in the path. It's particularly useful when you want to avoid complex or highly branched routes in favor of simpler paths.
+This approach helps simplify routes and can improve performance by avoiding unnecessarily complex paths. The scoring uses a fixed weight factor of 0.5, which means it applies the same relative importance to all evaluations without adjusting based on other factors like distance or cost.
 
-The evaluation is based on a normalized score that reflects the relative number of nodes between two points, with lower scores indicating shorter or less complex paths.
+#### Configuration
 
-### Inputs
+<details>
 
-* **Start Point**: The starting location for pathfinding calculations
-* **End Point**: The target location for pathfinding calculations
-* **Node Count**: The number of nodes in the current path being evaluated
+<summary><strong>Config</strong><br><em>Filter Config.</em></summary>
 
-### Outputs
+This setting defines how the heuristic behaves. It includes options for weighting and other modifiers that influence how node counts are translated into scores.
 
-* **Heuristic Score**: A normalized value representing the cost of traversing between points based on node count
-* **Path Complexity**: A measure of how many intermediate steps are required in the path
+</details>
 
-### Configuration
+#### Usage Example
 
-***
+Use this subnode when you want to prioritize shorter paths in your graph traversal. For example, if you're building a navigation system where you want to avoid overly complex routes, you can apply this heuristic to encourage the selection of paths that go through fewer nodes.
 
-#### General
+#### Notes
 
-**Config**
-
-_The configuration settings for this heuristic._
-
-This setting allows you to define how the heuristic behaves. For "Least Nodes", the configuration primarily controls how weights and multipliers are applied to the scoring system.
-
-### Usage Example
-
-Use this factory when you want to guide pathfinding toward routes that involve fewer nodes or steps. For example, in a dungeon generation setup where you want to avoid overly complex corridors, connect this heuristic to an A\* pathfinder node. The pathfinder will prefer routes with fewer intermediate points, resulting in simpler and more direct paths.
-
-### Notes
-
-* This heuristic is best used when the goal is to minimize the number of nodes traversed.
-* It works well in combination with other heuristics for multi-criteria pathfinding.
-* The actual scoring behavior is fixed and does not require further tuning beyond general weight settings.
+This heuristic is most effective when combined with other heuristics or cost functions. It's designed to be simple and fast, making it suitable for real-time applications where performance is important.

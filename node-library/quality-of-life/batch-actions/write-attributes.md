@@ -6,88 +6,27 @@ icon: circle-dashed
 # Write Attributes
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a filter that forwards attribute values from the input data based on whether a match condition passes or fails.
+> Forward attributes based on the match result.
 
-### Overview
+#### How It Works
 
-This factory defines an action that writes attribute values to points depending on whether a matching condition succeeds or fails. It's used in conjunction with other filter nodes to control which attributes are written when a point matches or doesn't match a given condition.
+This subnode controls which attributes are passed through to output points depending on whether a matching condition is met or not. When a condition matches successfully, it forwards attributes defined in the Success Attributes Filter. When the condition fails, it forwards attributes from the Fail Attributes Filter.
 
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes such as "Action : Apply", "Action : Set", etc.
-{% endhint %}
+The filtering process uses different modes like "All", "Include", or "Exclude" to determine which attributes are selected. Each filter works independently, allowing you to specify exactly what data should be written based on the outcome of a match.
 
-### How It Works
+#### Configuration
 
-This factory defines two separate attribute sets:
+**SuccessAttributesFilter**
 
-* One for attributes to write when the filter **passes**
-* One for attributes to write when the filter **fails**
+Defines which attributes to forward when a match succeeds. You can choose to include all attributes, only specific ones, or exclude certain ones using the available filtering modes.
 
-When a point is processed, if it passes the match condition, the success attributes are written. If it fails, the fail attributes are written.
+**FailAttributesFilter**
 
-### Inputs
+Defines which attributes to forward when a match fails. Like the success filter, this supports "All", "Include", or "Exclude" modes for flexible attribute selection.
 
-* **Data**: Input point data to process
-* **Filter**: Filter condition that determines which attributes to write
+#### Usage Example
 
-### Outputs
-
-* **Result**: Processed point data with applied attribute values
-
-### Configuration
-
-***
-
-#### Success Attributes
-
-**Success Attributes Filter**
-
-_Controls which attributes are forwarded when a match succeeds._
-
-Specify which attributes from the input data should be copied to output points when the filter matches successfully.
-
-**Values**:
-
-* **All**: All attributes from the input point are forwarded
-* **Exclude**: Forward all attributes except those listed
-* **Include**: Forward only the listed attributes
-
-***
-
-#### Fail Attributes
-
-**Fail Attributes Filter**
-
-_Controls which attributes are forwarded when a match fails._
-
-Specify which attributes from the input data should be copied to output points when the filter does not match.
-
-**Values**:
-
-* **All**: All attributes from the input point are forwarded
-* **Exclude**: Forward all attributes except those listed
-* **Include**: Forward only the listed attributes
-
-### Usage Example
-
-1. Create a "Filter : By Attribute" node and connect it to your data
-2. Add an "Action : Write Attributes" factory to that filter's action pin
-3. Configure the success attributes to include "Color" and "Size"
-4. Configure the fail attributes to include "Color" only
-5. When points pass the attribute filter, they'll get both Color and Size
-6. When points fail, they'll only get Color
-
-This allows for conditional attribute assignment based on match results.
-
-### Notes
-
-* Attributes are written to the output data in the order specified by the factory
-* If an attribute doesn't exist in the input data, it will be skipped silently
-* The same attribute can be included in both success and fail filters
-* This factory works best when combined with other filter types like "Filter : By Attribute" or "Filter : By Value"
-* When using "Include" mode, make sure to list all desired attributes for each case to avoid unexpected behavior
+Use this subnode in workflows where you want to apply different attribute values based on matching conditions. For example, if you're sorting points by distance from a center point and want to color them red when close and blue when far, you would set up two attribute filters: one for success (red) and one for failure (blue).

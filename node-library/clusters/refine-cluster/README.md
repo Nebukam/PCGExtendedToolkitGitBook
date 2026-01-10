@@ -6,142 +6,99 @@ icon: scrubber
 # Refine Cluster
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Refine edges according to special rules.
+> Refine edges in clusters according to special rules and filtering logic.
 
-### Overview
+#### How It Works
 
-This node allows you to apply filtering and refinement operations to the edges of clusters, enabling you to clean up or modify edge connectivity in your procedural graphs. You can choose to output refined clusters, individual points representing the filtered edges, or write results directly to attributes for further processing.
+This node processes groups of points and their connections to improve or modify the structure of those connections. It uses a refinement process that evaluates each connection based on custom rules you define. The node can remove unwanted connections, restore specific connections when needed, and output the results in different formats depending on your needs.
 
-It's particularly useful when working with graph-based procedural generation where you need to remove certain edges based on criteria (like distance, angle, or custom filters) while preserving the overall structure of your clusters. The node supports various output modes and sanitization options to ensure that your final graph remains valid and usable.
+The process works like this:
 
-{% hint style="info" %}
-This node requires cluster data as input. Make sure your graph includes a cluster generation step before this node.
-{% endhint %}
+1. **Edge Evaluation**: Each connection between points is checked against the rules defined in the Refinement Subnode.
+2. **Filtering**: Connections that don't meet the criteria are removed from the graph.
+3. **Sanitization (if enabled)**: If a point ends up with no connections after filtering, the node can restore one or more connections based on specific conditions:
+   * **Shortest**: Restores the shortest connection that was previously removed.
+   * **Longest**: Restores the longest connection that was previously removed.
+   * **Filters**: Uses another set of rules to determine which connections should be restored.
+4. **Output Generation**:
+   * **Clusters Mode**: Outputs updated groups of points with modified connections.
+   * **Points Mode**: Outputs individual points representing the remaining connections.
+   * **Attribute Mode**: Writes the results of the filtering directly to point attributes.
+
+The node can process multiple groups at once for better performance when working with large datasets.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Mode</strong><br><em>Selects how the refined data is output.</em></summary>
 
-* **Main Input (Default)**: Cluster data containing points and edges to be refined.
-* **Filter Input**: Optional point filter used to determine which edges should be kept or removed.
+Controls how the node outputs its result:
+
+* **Clusters**: Outputs groups of points with updated connections.
+* **Points**: Outputs individual points representing the remaining connections.
+* **Attribute**: Writes filtering results to point attributes.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>ResultOutputVtx</strong><br><em>How vertex filtering results are written to attributes.</em></summary>
 
-* **Main Output (Default)**: Refined cluster data, depending on the selected output mode.
-* **Edge Output**: Additional edge data when using "Points" or "Attribute" modes.
+Configures how the filtering result for vertices is written when in Attribute mode. This includes options for writing boolean, counter, or bitmask values.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the refinement is applied and what kind of output is generated.
+<summary><strong>ResultOutputEdges</strong><br><em>How edge filtering results are written to attributes.</em></summary>
 
-***
+Configures how the filtering result for edges is written when in Attribute mode. This includes options for writing boolean, counter, or bitmask values.
 
-#### Refinement Settings
+</details>
 
-Configure the specific operation to apply to your edges.
+<details>
 
-**Refinement**
+<summary><strong>Sanitization</strong><br><em>How to restore edges when nodes end up with no connections.</em></summary>
 
-_The type of refinement operation to perform on the edges._
+Determines how the node handles cases where a point ends up with no remaining connections:
 
-* This determines how edges are filtered or modified.
-* Choose from various predefined operations like MST (Minimum Spanning Tree), Gabriel Graph, or custom filters.
-* The selected refinement will be applied to each cluster independently.
+* **None**: No edge restoration occurs.
+* **Shortest**: Restores the shortest previously removed connection.
+* **Longest**: Restores the longest previously removed connection.
+* **Filters**: Uses a filter subnode to determine which connections must be preserved.
 
-**Mode**
+</details>
 
-_Controls what kind of data is outputted._
+<details>
 
-* **Clusters**: Outputs refined clusters with updated edge connectivity.
-* **Points**: Outputs individual points representing the filtered edges.
-* **Attribute**: Writes the result of the filter operation directly to attributes on the input points.
+<summary><strong>bRestoreEdgesThatConnectToValidNodes</strong><br><em>When enabled, restores edges that connect to valid nodes.</em></summary>
 
-**Values**:
+When enabled, the node attempts to restore connections that link to points that still have valid connections. This helps maintain overall graph structure in complex networks.
 
-* **Clusters**: Outputs clusters.
-* **Points**: Outputs regular points (edges only).
-* **Attribute**: Writes the result of the filters to an attribute.
+</details>
 
-***
+<details>
 
-#### Output Settings
+<summary><strong>GraphBuilderDetails</strong><br><em>Settings for how clusters are built when outputting as graphs.</em></summary>
 
-Configure how results are written and what data is included in the output.
+Controls how the node constructs group graphs when in Clusters mode, including which edge and vertex attributes to include or exclude.
 
-**Result Output Vtx**
+</details>
 
-_Controls how vertex filter results are written._
+#### Usage Example
 
-* Only relevant when Mode is set to "Attribute".
-* Determines whether to write a boolean, counter, or bitmask result for vertex filtering.
-* Can be used to tag or count filtered points.
+1. **Create a Cluster** using a point distribution or mesh-based input.
+2. **Add an Edge Refinement Subnode** such as a Minimum Spanning Tree or Distance Filter to define how connections should be selected or removed.
+3. Set the **Mode** to **Clusters** to output refined groups with updated connection sets.
+4. Optionally, enable **Sanitization** to ensure that no point ends up isolated by restoring connections based on length or filter rules.
 
-**Result Output Edges**
+#### Notes
 
-_Controls how edge filter results are written._
-
-* Only relevant when Mode is set to "Attribute".
-* Determines whether to write a boolean, counter, or bitmask result for edge filtering.
-* Can be used to tag or count filtered edges.
-
-**Allow Zero Point Outputs**
-
-_When enabled, allows outputting empty point collections._
-
-* Only applicable when Mode is set to "Points".
-* Useful if you want to preserve empty outputs in your graph even when no edges are retained.
-
-***
-
-#### Sanitization Settings
-
-Controls how to handle cases where nodes end up with no edges after refinement.
-
-**Sanitization**
-
-_What to do when a node ends up with no edges after filtering._
-
-* **None**: No additional action is taken. Nodes may be left without any connections.
-* **Shortest**: If a node has no remaining edges, restore the shortest edge that connects to it.
-* **Longest**: If a node has no remaining edges, restore the longest edge that connects to it.
-* **Filters**: Use filters to determine which edges must be preserved even if they would normally be filtered out.
-
-**Values**:
-
-* **None**: No sanitization.
-* **Shortest**: Shortest.
-* **Longest**: Longest.
-* **Filters**: Filters.
-
-**Restore Edges That Connect To Valid Nodes**
-
-_When enabled, restores edges that connect to nodes that are still valid._
-
-* Only applicable when Mode is set to "Clusters".
-* Ensures that even if an edge would normally be removed, it's kept if one of its endpoints remains connected to a valid node.
-* Helps maintain graph connectivity in complex scenarios.
-
-***
-
-#### Graph Builder Settings
-
-Controls how cluster data is built and output when using the "Clusters" mode.
-
-**Cluster Output Settings**
-
-_Settings for building and outputting clusters._
-
-* These settings control how the refined cluster data is structured and what metadata is included.
-* Relevant only when Mode is set to "Clusters".
-* Includes options for edge radius, solidification, and other graph properties.
+* The Refinement Subnode is critical for defining behavior; it must be set to determine which connections are kept or removed.
+* Sanitization only applies when the output mode is set to Clusters.
+* Attribute mode allows for detailed inspection of filtering results without modifying graph structure.
+* For best performance with large datasets, ensure that the Refinement Subnode uses efficient filtering logic.

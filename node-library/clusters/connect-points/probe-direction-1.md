@@ -5,100 +5,102 @@ icon: circle-dashed
 # Probe : Tensor
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a probe that samples tensor field data at point locations and determines probe direction based on tensor properties.
+> Sample a tensor at point location and probe in that direction.
 
-### Overview
+#### Overview
 
-This factory generates a specialized probe that evaluates tensor field data at each point's location to determine an optimal direction for probing. It's designed to work with tensor fields (like gradient or orientation fields) to guide point selection toward meaningful directions in the data.
+This subnode defines a directional probe that samples tensor data at each point's location to determine a preferred direction. It then evaluates nearby candidates based on how well their directions align with the sampled tensor direction, making it ideal for creating connections or paths that follow natural flow patterns defined by tensor fields.
+
+It is used in scenarios where you want to guide procedural connections along directional data like velocity fields, magnetic fields, or other vector-based tensor data. This subnode connects specifically to Filter pins on processing nodes that support directional probing.
 
 {% hint style="info" %}
-Connects to Filter pins on processing nodes like "Find Connections" or "Find Nearest"
+Connects to **Filter** pins on processing nodes.
 {% endhint %}
 
-### How It Works
+#### How It Works
 
-This probe samples tensor field data at each point's location and uses that information to determine a preferred direction for finding nearby connections. Instead of simply looking for the closest points, it evaluates the local tensor field to find candidates that align with the tensor's orientation.
+This probe samples a tensor field at each point's location and extracts a direction vector from the tensor. It then evaluates nearby candidates based on how closely their directions align with the sampled tensor direction.
 
-The probe can prioritize either:
+The evaluation considers:
 
-* **Best alignment**: Candidates that best match the tensor's direction
-* **Closest position**: Candidates that are nearest regardless of alignment
+1. The tensor's sampled direction at the point
+2. The angle between candidate directions and the tensor direction
+3. Whether to favor alignment or proximity when selecting candidates
 
-### Configuration
+It can optionally invert the sampled direction, use component-wise angle thresholds, and perform chained processing for more complex candidate selection logic.
 
-***
+#### Configuration
 
-#### General Settings
+<details>
 
-**Invert Tensor Direction**
+<summary><strong>bInvertTensorDirection</strong><br><em>Mirror (*-1) the direction sampled from the tensors.</em></summary>
 
-_When enabled, the sampled tensor direction is mirrored (multiplied by -1) before being used for probing._
+When enabled, the direction sampled from the tensor is inverted (multiplied by -1) before being used for candidate evaluation.
 
-This allows you to reverse the direction that the tensor suggests for probing.
+</details>
 
-**Favor**
+<details>
 
-_Controls whether the probe prioritizes candidates based on alignment with the tensor field or proximity to the point._
+<summary><strong>Favor</strong><br><em>What matters more?</em></summary>
+
+Determines whether to prioritize candidates that align best with the tensor direction (**Dot**) or those that are closest in position (**Dist**).
 
 **Values**:
 
-* **Best alignment**: The probe favors candidates that align best with the tensor's direction, even if they're not the closest.
-* **Closest position**: The probe favors candidates that are closest to the point, regardless of their alignment with the tensor.
+* **Best alignment**: Favor candidates that best align with the tensor direction.
+* **Closest position**: Favor candidates that are closest, even if they don't align well.
 
-**Use Component-Wise Angle**
+</details>
 
-_When enabled, the angle constraint is applied separately on each axis._
+<details>
 
-This allows for different maximum angles in X, Y, and Z directions.
+<summary><strong>bUseComponentWiseAngle</strong><br><em>Enable component-wise angle thresholds.</em></summary>
 
-**Max Angle**
+When enabled, uses separate maximum angles for each axis (X, Y, Z) instead of a single scalar angle. This allows for more precise directional constraints.
 
-_Maximum angle (in degrees) within which candidates will be considered when not using component-wise angles._
+</details>
 
-Only candidates within this angular threshold relative to the tensor direction will be considered.
+<details>
 
-**Max Angles**
+<summary><strong>MaxAngle</strong><br><em>Max angle to search within.</em></summary>
 
-_Maximum angles (in degrees) per axis when using component-wise angle constraints._
+Maximum angle in degrees to consider candidates within when `bUseComponentWiseAngle` is disabled. Candidates outside this angle are filtered out.
 
-Controls the maximum angle allowed in each of the X, Y, and Z directions separately.
+</details>
 
-**Do Chained Processing**
+<details>
 
-_When enabled, the probe performs additional processing after initial candidate selection._
+<summary><strong>MaxAngles</strong><br><em>Max angle to search within.</em></summary>
 
-This can yield different results by allowing for more complex candidate evaluation logic.
+Separate maximum angles for each axis (X, Y, Z) when `bUseComponentWiseAngle` is enabled. Each component defines the angular threshold in that direction.
 
-**Tensor Sampling Settings**
+</details>
 
-_Configuration for how tensor data is sampled at point locations._
+<details>
 
-These settings control how the tensor field is evaluated:
+<summary><strong>bDoChainedProcessing</strong><br><em>This probe will sample candidates after the other. Can yield different results.</em></summary>
 
-* **Radius**: The sampling area around each point
-* **Min Step Fraction**: Minimum step size as a fraction of base radius
-* **Max Step Fraction**: Maximum step size as a fraction of base radius
-* **Error Tolerance**: How closely the sampling follows the tensor field
-* **Max Sub-Steps**: Maximum number of steps per sample
+When enabled, this probe performs additional processing on candidate points after initial evaluation. This can lead to different results compared to standard processing.
 
-### Usage Example
+</details>
 
-Use this probe when you want to find connections that follow a specific tensor field direction, such as:
+<details>
 
-* Finding terrain features aligned with slope gradients
-* Connecting points along flow directions in fluid simulations
-* Creating structures that follow magnetic field lines or other directional fields
+<summary><strong>TensorHandlerDetails</strong><br><em>Tensor sampling settings.</em></summary>
 
-Connect this factory to a "Find Connections" node's Filter pin. The probe will then evaluate each point against the tensor field and only pass through candidates that align with the tensor direction within your specified angle constraints.
+Settings that control how the tensor field is sampled at each point. These settings are applied after any individual tensor mutations and affect the final direction extracted from the tensor.
 
-### Notes
+</details>
 
-* This probe works best when connected to nodes that support directional probing
-* The tensor sampling settings can be tuned based on the complexity of your tensor field
-* Consider using "Closest position" favoring if you want to maintain some proximity while still respecting tensor directions
-* Component-wise angles allow for more nuanced control over directional constraints in different spatial dimensions
+#### Usage Example
+
+Use this subnode in a "Connect Points" graph to create paths that follow magnetic or velocity field directions. For instance, connect it to a "Cluster Connections" node where you want edges to align with a magnetic field's orientation rather than being the closest points.
+
+#### Notes
+
+* The tensor sampling settings are applied on flattened samples, meaning they work after any individual tensor mutations.
+* This subnode is particularly effective when used with tensor fields that define meaningful directional flow.
+* Chained processing can be useful for refining results in complex scenarios where multiple passes improve alignment.

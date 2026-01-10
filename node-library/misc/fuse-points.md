@@ -6,90 +6,85 @@ icon: circle
 # Fuse Points
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Fuses points that are within a specified distance of each other, creating a single point from multiple close points.
+> Combines nearby points into single entities based on distance thresholds.
 
-### Overview
+#### Overview
 
-This node combines points that are located near each other into a single representative point. It's useful for cleaning up dense point clouds or merging overlapping elements in procedural generation workflows. You can choose to blend the properties of fused points or keep only the most central one.
+The Fuse Points node merges points that are located close together into one representative point. This helps reduce visual clutter or duplicate elements in procedural content. You can choose to blend the properties of merged points or keep only one point from each group.
+
+This node is commonly used when you want to simplify a point cloud or ensure that features like trees, buildings, or other assets don't overlap too closely in your procedural generation setup.
 
 {% hint style="info" %}
-The fusing operation is performed in a single-threaded context, which means it may impact performance on very large datasets.
+Connects to **Point Input** and outputs to **Point Output** pins. Subnode: Point/Point Settings (Fuse Settings) Subnode: Carry Over Settings (Meta Filter Details)
 {% endhint %}
 
+#### How It Works
+
+The node starts by analyzing all input points to identify which ones are within a certain distance of each other. Points that fall within this threshold are grouped together.
+
+Once groups are formed, the node applies a method based on your selection:
+
+* **Blend**: All properties from the grouped points are combined using blending operations (like averaging or weighted sum) to create a new point.
+* **Keep Most Central**: The node selects one existing point from the group — specifically the one that is most central to the group's geometric center.
+
+The result maintains the original number of output points, but reduces the actual distinct locations by merging overlapping ones. It uses spatial distance as the main criterion for grouping and can optionally maintain the input order during fusion.
+
+#### Configuration
+
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Mode</strong><br><em>How to handle fused points.</em></summary>
 
-* **Main Input**: Points to be processed
-* **Filter Input (Optional)**: A point filter to apply before fusing
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Main Output**: Fused points based on the selected mode
-
-</details>
-
-### Properties Overview
-
-Controls how points are fused and what happens to their properties.
-
-***
-
-#### General
-
-Controls the core behavior of the fusing operation.
-
-**Mode**
-
-_Controls how fused points are handled._
-
-* When set to **Blend**, all points within the distance threshold are merged using blending operations.
-* When set to **Keep Most Central**, only the point that is most central to the group is kept, discarding others.
+Controls whether to blend properties from fused points or keep only one representative point.
 
 **Values**:
 
-* **Blend**: Blend all points within a radius
-* **Keep Most Central**: Keep the existing point that's most central to the sample group
+* **Blend**: Blend all properties from the fused points using the blending settings.
+* **Keep Most Central**: Keep the existing point that is most central to the group of fused points.
 
-**Point/Point Settings**
+</details>
 
-_Configures the distance-based criteria for fusing._
+<details>
 
-* Defines the minimum distance between points to consider them as candidates for fusion.
-* Points closer than this threshold will be merged together.
+<summary><strong>Point/Point Settings</strong><br><em>Fuse Settings.</em></summary>
 
-**Preserve the order of input points**
+Defines the distance threshold and method for determining which points are considered "nearby" and should be fused.
 
-_When enabled, maintains the original order of points in the output._
+</details>
 
-* This can affect performance slightly but ensures that the output sequence matches the input sequence.
+<details>
 
-**Blend Settings**
+<summary><strong>Preserve Order</strong><br><em>Preserve the order of input points.</em></summary>
 
-_Configures how point properties and attributes are combined when using the Blend mode._
+When enabled, ensures that the output point order matches the input point order as closely as possible during fusion.
 
-* Controls how different properties (like position, rotation, scale) are blended together.
-* Uses standard blending operations like average or weighted sum.
+</details>
 
-**Carry Over Settings**
+<details>
 
-_Configures which attributes from original points are carried over to the fused result._
+<summary><strong>Blending Details</strong><br><em>Defines how fused point properties and attributes are merged together.</em></summary>
 
-* Determines which attributes from the input points are preserved in the output.
-* Useful for maintaining important metadata during fusion.
+Controls how property values from multiple points are combined when using the Blend mode. This includes choosing the blending operation (e.g., average, weighted sum) for each attribute.
 
-### Notes
+</details>
 
-* The fusing operation is single-threaded, so performance may degrade with large point sets.
-* Use the **Keep Most Central** mode when you want to preserve specific point identities rather than blending them.
-* In **Blend** mode, consider using **Average** or **Weight** blending for smooth transitions between point properties.
-* The **Point/Point Settings** section controls the distance threshold; adjust this based on your desired density of output points.
+<details>
+
+<summary><strong>Carry Over Settings</strong><br><em>Meta filter settings.</em></summary>
+
+Configures which attributes or metadata from the input points are carried over to the fused output point when using the Blend mode.
+
+</details>
+
+#### Usage Example
+
+You have a set of points representing tree placements in a forest. Some trees are placed too close together, causing visual clutter. By connecting this node with a distance threshold of 2 units, it fuses overlapping points into single locations, effectively removing duplicate or near-duplicate trees while preserving the overall distribution.
+
+#### Notes
+
+* The node is optimized for performance when processing large point sets.
+* When using "Keep Most Central", only one point from each fused group will be retained; other points are discarded.
+* Blending mode allows fine-grained control over how properties like scale, rotation, or custom data are merged.

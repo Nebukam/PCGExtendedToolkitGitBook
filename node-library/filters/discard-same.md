@@ -11,159 +11,140 @@ This page was generated from the source code. It should properly capture what th
 
 > Discard entire datasets based on a selection of parameters.
 
-#### Overview
-
-This node filters out collections of points from your PCG graph by comparing them against each other using various criteria. It's useful when you want to remove duplicate or near-duplicate datasets, such as avoiding redundant geometry generation or eliminating overlapping placements in procedural content.
-
-It operates by comparing input datasets and discarding those that are considered "the same" based on the selected test parameters. You can configure which aspects of the data to compare — like bounds, point count, positions, or attribute values — and how to handle multiple matches.
-
-{% hint style="info" %}
-Connects to **Point Input** pins and outputs filtered **Point Output** pins.
-{% endhint %}
-
 #### How It Works
 
-This node processes multiple input datasets and compares them against each other using the selected comparison criteria. For each dataset, it evaluates whether it matches any previously processed dataset based on the configured parameters.
+The Discard Same node compares incoming collections of point data to identify and remove duplicates. It evaluates each collection against others using configurable criteria such as bounding box size, number of points, point positions, or attribute values. When two or more collections are considered the same according to these rules, the node applies a discard mode to determine which ones to keep.
 
-The process works in a loop where:
+The process works by comparing every collection in a batch with all others. If a match is found based on the selected criteria and tolerance settings, the duplicate collections are removed according to the chosen mode:
 
-1. Each incoming dataset is analyzed for its properties (bounds, point count, positions, or attribute hashes).
-2. These properties are compared against those of already-processed datasets.
-3. If a match is found within tolerance thresholds, the dataset is discarded according to the selected **Mode**.
-4. The node keeps track of which datasets are considered duplicates and removes them from further processing.
+* **FIFO** keeps the first collection encountered and discards subsequent duplicates.
+* **LIFO** keeps the last collection encountered and discards earlier duplicates.
+* **All** discards all collections that have duplicates.
 
-The comparison logic supports:
-
-* Bounds: Checks if bounding boxes of collections are similar.
-* Point count: Compares how many points each collection contains.
-* Positions: Evaluates whether point positions are close enough to be considered identical.
-* Attribute hashes: Computes a hash value from one or more attributes and compares those values.
-
-Depending on the **Mode** setting, it decides which dataset(s) to keep:
-
-* **FIFO**: Keeps the first dataset encountered and discards subsequent duplicates.
-* **LIFO**: Keeps the last dataset encountered and discards earlier duplicates.
-* **All**: Discards all datasets that have been found to be duplicates.
-
-<details>
-
-<summary>Inputs</summary>
-
-Expects multiple point datasets as input, typically from a collection of point sources or generated data.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-Outputs filtered point datasets, with duplicate or near-duplicate collections removed based on the configured comparison logic.
-
-</details>
+This helps clean up procedural workflows by removing redundant or overlapping datasets, ensuring only unique collections remain in the output.
 
 #### Configuration
 
-***
+<details>
 
-**Mode**
+<summary><strong>Mode</strong><br><em>How to handle duplicate collections.</em></summary>
 
-_Controls which dataset to keep when duplicates are found._
+Controls which collection is kept when duplicates are found.
 
-When enabled, the node keeps either the first or last dataset encountered that matches a previously seen one.
+* **FIFO**: Keeps the first collection and discards subsequent duplicates.
+* **LIFO**: Keeps the last collection and discards earlier duplicates.
+* **All**: Discards all collections that have duplicates.
 
-**Values**:
+</details>
 
-* **FIFO**: Keeps the first dataset and discards subsequent duplicates.
-* **LIFO**: Keeps the last dataset and discards earlier duplicates.
-* **All**: Discards all datasets that have been found to be duplicates.
+<details>
 
-**TestMode**
+<summary><strong>TestMode</strong><br><em>How to combine multiple tests.</em></summary>
 
-_Controls how multiple comparison criteria are combined._
+Determines how multiple comparison criteria are combined.
 
-When enabled, determines whether all tests must pass or only one needs to match for a dataset to be discarded.
+* **AND**: All selected tests must pass for a collection to be discarded.
+* **OR**: Only one of the selected tests needs to pass for a collection to be discarded.
 
-**Values**:
+</details>
 
-* **AND**: All selected tests must match for a discard.
-* **OR**: Only one of the selected tests needs to match for a discard.
+<details>
 
-***
+<summary><strong>bTestBounds</strong><br><em>Enable bounds comparison.</em></summary>
 
-**bTestBounds**
+When enabled, compares the bounding boxes of collections to determine if they are duplicates.
 
-_When enabled, compares bounding box properties._
+</details>
 
-Controls whether the node checks if collections have similar bounds.
+<details>
 
-**TestBoundsTolerance**
+<summary><strong>TestBoundsTolerance</strong><br><em>Tolerance for bounds equality.</em></summary>
 
-_Tolerance for comparing bounding box equality._
+Defines how close two bounds must be to be considered equal. Must be greater than 0.
 
-A value that defines how close two bounds must be to be considered equal.
+</details>
 
-**bTestPointCount**
+<details>
 
-_When enabled, compares point counts between collections._
+<summary><strong>bTestPointCount</strong><br><em>Enable point count comparison.</em></summary>
 
-Controls whether the node checks if collections contain the same number of points.
+When enabled, compares the number of points in each collection to determine if they are duplicates.
 
-**TestPointCountTolerance**
+</details>
 
-_Tolerance for comparing point count equality._
+<details>
 
-Defines how much difference in point count is acceptable before considering collections different.
+<summary><strong>TestPointCountTolerance</strong><br><em>Tolerance for point count equality.</em></summary>
 
-**bTestPositions**
+Defines how different two point counts can be and still be considered equal. Must be greater than or equal to 0.
 
-_When enabled, compares individual point positions._
+</details>
 
-Controls whether the node evaluates whether points are located close enough to be considered duplicates.
+<details>
 
-**TestPositionTolerance**
+<summary><strong>bTestPositions</strong><br><em>Enable position comparison.</em></summary>
 
-_Tolerance for comparing point position equality._
+When enabled, compares the actual positions of points in collections to determine if they are duplicates.
 
-A value that defines how close two points must be to be considered identical.
+</details>
 
-***
+<details>
 
-**TestAttributesHash**
+<summary><strong>TestPositionTolerance</strong><br><em>Tolerance for position equality.</em></summary>
 
-_Selects how to use attribute values for comparison._
+Defines how close two point positions must be to be considered equal. Must be greater than 0.
 
-Controls whether to include attribute-based comparisons in the duplicate detection logic.
+</details>
 
-**Values**:
+<details>
 
-* **None**: Do not use attributes to check sameness.
+<summary><strong>TestAttributesHash</strong><br><em>How to use attribute hashes in comparison.</em></summary>
+
+Controls whether attributes are used to determine duplicates.
+
+* **None**: Do not use attributes.
 * **Single**: Use a single, overridable attribute.
-* **List**: Use a list of attributes. Arrays are not overridable.
+* **List**: Use a list of attributes.
 
-**AttributeHashConfigs**
+</details>
 
-_List of attributes to include in hash computation._
+<details>
 
-Defines which attributes to compute hashes from for comparison when using the **List** mode.
+<summary><strong>AttributeHashConfigs</strong><br><em>List of attributes to hash for comparison.</em></summary>
 
-**bIncludeSingleAttribute**
+Defines which attributes are used when "TestAttributesHash" is set to "List". Arrays are not supported.
 
-_When enabled, includes a single attribute in addition to the list._
+</details>
 
-Controls whether to also use a single, overridable attribute alongside the list when computing hashes.
+<details>
 
-**AttributeHashConfig**
+<summary><strong>bIncludeSingleAttribute</strong><br><em>Whether to include a single attribute in the hash test.</em></summary>
 
-_Configuration for a single attribute hash._
+When enabled, includes an additional single attribute in the comparison if "TestAttributesHash" is set to "List".
 
-Defines which single attribute to compute a hash from when using the **Single** mode.
+</details>
+
+<details>
+
+<summary><strong>AttributeHashConfig</strong><br><em>Single attribute to hash for comparison.</em></summary>
+
+Defines a single attribute to be used when "TestAttributesHash" is set to "Single", or when "bIncludeSingleAttribute" is enabled in "List" mode.
+
+</details>
 
 #### Usage Example
 
-You're generating multiple clusters of points representing potential building placements. Some clusters may be placed in identical locations or have identical point counts, making them redundant. You can use this node to remove duplicate clusters by comparing their bounds and point count. Set **bTestBounds**, **bTestPointCount**, and **Mode** to **FIFO** to keep the first cluster found at each location and discard any duplicates.
+A common use case is generating multiple terrain patches that are nearly identical. You can use this node to discard all but one patch that has the same bounds, point count, and positions. For example:
+
+1. Generate 5 terrain patches using a noise-based system.
+2. Connect them to the Discard Same node.
+3. Enable "bTestBounds", "bTestPointCount", and "bTestPositions".
+4. Set tolerances to 0.1 for bounds and positions, and 0 for point count.
+5. Set Mode to "FIFO" to keep the first patch and discard duplicates.
 
 #### Notes
 
-* This node is particularly useful in scenarios where you're generating multiple datasets that may overlap or be identical due to procedural randomness.
-* Performance can be impacted when comparing large point clouds or using many attribute comparisons.
-* The tolerance values are important for determining how strict the comparison should be. A lower tolerance makes the comparison stricter, while a higher value allows more variation.
+* The node is optimized for batch processing of multiple collections.
+* Tolerances are important for handling floating-point inaccuracies in comparisons.
+* Attribute hashing can be computationally expensive if many attributes are involved.
+* This node works best when used with a consistent data structure across inputs.

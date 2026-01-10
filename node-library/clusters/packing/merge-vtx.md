@@ -6,58 +6,43 @@ icon: circle
 # Merge Vtx
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Merge vertices so all edges share the same vertex collection.
+> Merge vertex data so all edges share the same vertex collection.
 
-### Overview
+#### How It Works
 
-This node merges vertex data across all clusters in your graph, ensuring that every edge references a unified set of vertex points. It's particularly useful when you want to ensure consistent topology or when preparing data for operations that require shared vertex collections.
+This node combines vertex information from multiple clusters into a single shared set. It ensures that every edge in the dataset references the same collection of vertices, eliminating inconsistencies that can occur when working with separate or duplicated vertex groups.
 
-{% hint style="info" %}
-This node modifies the vertex data so that all edges reference the same collection of vertices. This is especially helpful when working with multiple clusters that need to be unified into a single graph structure.
-{% endhint %}
+The process begins by scanning all input clusters to identify all unique vertex positions. It then creates a unified index system that assigns consistent identifiers to each vertex across the entire dataset. Each cluster's edges are updated to use these shared indices instead of their original references.
+
+Vertex attributes and metadata are transferred according to the settings defined in the **Carry Over Settings** subnode, maintaining important data while ensuring uniformity across all elements.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Carry Over Settings</strong><br><em>Meta filter settings.</em></summary>
 
-* **Points** (Main Input): Vertex data for each cluster
-* **Edges** (Main Input): Edge data connecting the vertices
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Points** (Main Output): Unified vertex data with merged points
-* **Edges** (Main Output): Edge data referencing the unified vertex collection
-
-</details>
-
-### Properties Overview
-
-Controls how vertex data is carried over and merged.
-
-***
-
-#### Carry Over Settings
-
-Configure which attributes from the original vertex data are carried over to the merged output.
-
-**Carry Over Details**
-
-_Controls how attributes are copied from input points to the merged output._
-
-* Determines which point attributes are preserved in the final vertex collection
-* Affects memory usage and data integrity of the merged result
+Controls how vertex attributes are transferred from input clusters to the merged output.
 
 **Values**:
 
-* **All**: Carry over all attributes
-* **Exclude**: Discard listed attributes, keep the others
-* **Include**: Keep listed attributes, discard the others
+* **All**: Transfer all vertex attributes.
+* **Exclude**: Remove listed vertex attributes, keep the others.
+* **Include**: Keep only listed vertex attributes, discard the rest.
+
+</details>
+
+#### Usage Example
+
+1. Create clustered graph data using nodes like "Cluster : Build".
+2. Connect this to the "Cluster : Merge Vtx" node.
+3. Adjust the **Carry Over Settings** subnode to specify which vertex attributes should be included or excluded.
+4. The output provides unified vertex and edge data, with all edges pointing to the same shared vertex collection.
+
+#### Notes
+
+* This node is especially useful when preparing clustered graph data for rendering or simulation where consistent vertex references are required.
+* Performance can be improved by limiting the number of vertex attributes carried over if they're not needed downstream.

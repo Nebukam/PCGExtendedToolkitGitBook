@@ -6,187 +6,210 @@ icon: circle
 # Asset Collection to Set
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Converts an asset collection to an attribute set.
+> Converts an asset collection into an attribute set for use in procedural generation workflows.
 
-### Overview
+#### How It Works
 
-This node takes an asset collection and converts it into a point-based attribute set that can be used in subsequent procedural operations. It's useful when you want to work with asset data as points, for example to randomly select assets, or to access metadata like bounds and weights.
+This node processes an asset collection and turns it into a structured set of data attributes. It goes through each item in the collection and extracts useful information like the asset path, weight, category, bounding box dimensions (min, max, extents), and how deeply nested the item is within sub-collections.
 
-{% hint style="info" %}
-The output is a point-based attribute set containing one point per asset entry in the collection.
-{% endhint %}
+If the collection includes smaller groups or folders (sub-collections), you can choose how to handle them:
+
+* **Ignore**: Skip those groups entirely.
+* **Expand**: Include all items from each group.
+* **Random**: Pick one item at random from each group.
+* **Random weighted**: Pick one item based on its assigned weight.
+* **First item**: Use only the first item in each group.
+* **Last item**: Use only the last item in each group.
+
+The node then stores this information as attributes that can be used by other nodes in your procedural graph. You can also decide whether to allow duplicate entries or remove invalid items from the output.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Asset Collection</strong><br><em>The asset collection to convert to an attribute set.</em></summary>
 
-* **Main Input**: Asset Collection (UPCGExAssetCollection)
+The source asset collection from which the node extracts data. This can include assets, categories, and nested sub-collections.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>SubCollection Handling</strong><br><em>How to process sub-collections within the main collection.</em></summary>
 
-* **Main Output**: Attribute Set (Points with asset metadata as attributes)
+Controls how entries from sub-collections are handled when processing the main collection:
+
+* **Ignore**: Skip sub-collections entirely.
+* **Expand**: Add all items in each sub-collection.
+* **Random**: Select one item at random from each sub-collection.
+* **Random weighted**: Select one item based on its weight.
+* **First item**: Use the first item in each sub-collection.
+* **Last item**: Use the last item in each sub-collection.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the asset collection is converted into an attribute set.
+<summary><strong>Allow Duplicates</strong><br><em>If enabled, allows duplicate entries (duplicate is same object path &#x26; category).</em></summary>
 
-***
+When enabled, duplicate asset entries (based on path and category) are preserved. When disabled, duplicates are removed from the output.
 
-#### General
+</details>
 
-Controls core behavior for converting the collection.
+<details>
 
-**Asset Collection**
+<summary><strong>Omit Invalid and Empty</strong><br><em>If enabled, invalid or empty entries are removed from the output.</em></summary>
 
-_The asset collection to convert to an attribute set._
+When enabled, any entry that is invalid (e.g., missing asset path) or empty is excluded from the final attribute set.
 
-* This is the source data that will be processed.
-* The collection can contain multiple levels of sub-collections, which are handled based on the **Sub-collection Handling** setting.
+</details>
 
-**Sub-collection Handling**
+<details>
 
-_How to handle sub-collections within the main collection._
+<summary><strong>Write Asset Path</strong><br><em>If enabled, writes the asset path to an attribute.</em></summary>
 
-* Controls what happens when the asset collection contains nested collections.
-* **Ignore**: Sub-collections are skipped entirely.
-* **Expand**: All assets from sub-collections are included in the output.
-* **Random**: One asset is randomly selected from each sub-collection.
-* **Random weighted**: One asset is randomly selected, with weights taken into account.
-* **First item**: The first asset in each sub-collection is used.
-* **Last item**: The last asset in each sub-collection is used.
+When enabled, the node adds a new attribute containing the full path of each asset.
 
-**Allow Duplicates**
+**Values**:
 
-_If enabled, allows duplicate entries (duplicate is same object path & category)._
+* **True**: Writes the asset path.
+* **False**: Skips writing this attribute.
 
-* When disabled, duplicate assets are removed from the output.
-* Useful when you want to avoid having the same asset represented multiple times.
+</details>
 
-**Omit Invalid and Empty**
+<details>
 
-_If enabled, invalid or empty entries are removed from the output._
+<summary><strong>Asset Path Attribute Name</strong><br><em>Name of the attribute on the AttributeSet that contains the asset path to be staged.</em></summary>
 
-* Removes any entries that don't point to valid assets or have no data.
-* Helps clean up the output by filtering out broken or empty references.
+The name of the attribute that stores the asset path. Defaults to "AssetPath".
 
-***
+</details>
 
-#### Outputs
+<details>
 
-Controls which metadata attributes are written to the output attribute set.
+<summary><strong>Write Weight</strong><br><em>If enabled, writes the asset weight to an attribute.</em></summary>
 
-**Write Asset Path**
+When enabled, the node adds a new attribute containing the weight of each asset.
 
-_If enabled, writes the asset path to the output._
+**Values**:
 
-* Adds an attribute containing the full path to each asset.
-* Useful for referencing assets later in your graph.
+* **True**: Writes the asset weight.
+* **False**: Skips writing this attribute.
 
-**Asset Path Attribute Name**
+</details>
 
-_Name of the attribute on the AttributeSet that contains the asset path._
+<details>
 
-* The name of the attribute where the asset path is stored.
-* Defaults to **AssetPath**.
+<summary><strong>Weight Attribute Name</strong><br><em>Name of the attribute on the AttributeSet that contains the asset weight, if any.</em></summary>
 
-**Write Asset Class**
+The name of the attribute that stores the asset weight. Defaults to "Weight".
 
-_If enabled, writes the asset class to the output._
+</details>
 
-* Adds an attribute containing the type of each asset (e.g., StaticMesh, Material).
-* This setting is always enabled and cannot be disabled.
+<details>
 
-**Write Weight**
+<summary><strong>Write Category</strong><br><em>If enabled, writes the asset category to an attribute.</em></summary>
 
-_If enabled, writes the asset weight to the output._
+When enabled, the node adds a new attribute containing the category of each asset.
 
-* Adds an attribute containing the weight assigned to each asset.
-* Useful for weighted random selection or influence-based operations.
+**Values**:
 
-**Weight Attribute Name**
+* **True**: Writes the asset category.
+* **False**: Skips writing this attribute.
 
-_Name of the attribute on the AttributeSet that contains the asset weight._
+</details>
 
-* The name of the attribute where the weight is stored.
-* Defaults to **Weight**.
+<details>
 
-**Write Category**
+<summary><strong>Category Attribute Name</strong><br><em>Name of the attribute on the AttributeSet that contains the asset category, if any.</em></summary>
 
-_If enabled, writes the asset category to the output._
+The name of the attribute that stores the asset category. Defaults to "Category".
 
-* Adds an attribute containing the category assigned to each asset.
-* Categories help organize assets and can be used for filtering or grouping.
+</details>
 
-**Category Attribute Name**
+<details>
 
-_Name of the attribute on the AttributeSet that contains the asset category._
+<summary><strong>Write Extents</strong><br><em>If enabled, writes the asset bounds' Extents to an attribute.</em></summary>
 
-* The name of the attribute where the category is stored.
-* Defaults to **Category**.
+When enabled, the node adds a new attribute containing the bounding box extents of each asset.
 
-**Write Extents**
+**Values**:
 
-_If enabled, writes the asset bounds' Extents to the output._
+* **True**: Writes the asset extents.
+* **False**: Skips writing this attribute.
 
-* Adds an attribute containing the size of each asset's bounding box.
-* Useful for scaling or positioning based on asset dimensions.
+</details>
 
-**Extents Attribute Name**
+<details>
 
-_Name of the attribute on the AttributeSet that contains the asset bounds' Extents._
+<summary><strong>Extents Attribute Name</strong><br><em>Name of the attribute on the AttributeSet that contains the asset bounds' Extents, if any. Otherwise 0.</em></summary>
 
-* The name of the attribute where the extents are stored.
-* Defaults to **Extents**.
+The name of the attribute that stores the asset extents. Defaults to "Extents".
 
-**Write Bounds Min**
+</details>
 
-_If enabled, writes the asset BoundsMin to the output._
+<details>
 
-* Adds an attribute containing the minimum point of each asset's bounding box.
-* Useful for precise positioning or collision detection.
+<summary><strong>Write Bounds Min</strong><br><em>If enabled, writes the asset BoundsMin to an attribute.</em></summary>
 
-**Bounds Min Attribute Name**
+When enabled, the node adds a new attribute containing the minimum bounds of each asset.
 
-_Name of the attribute on the AttributeSet that contains the asset BoundsMin._
+**Values**:
 
-* The name of the attribute where the bounds minimum is stored.
-* Defaults to **BoundsMin**.
+* **True**: Writes the asset bounds min.
+* **False**: Skips writing this attribute.
 
-**Write Bounds Max**
+</details>
 
-_If enabled, writes the asset BoundsMax to the output._
+<details>
 
-* Adds an attribute containing the maximum point of each asset's bounding box.
-* Useful for precise positioning or collision detection.
+<summary><strong>Bounds Min Attribute Name</strong><br><em>Name of the attribute on the AttributeSet that contains the asset BoundsMin, if any. Otherwise 0.</em></summary>
 
-**Bounds Max Attribute Name**
+The name of the attribute that stores the asset bounds min. Defaults to "BoundsMin".
 
-_Name of the attribute on the AttributeSet that contains the asset BoundsMax._
+</details>
 
-* The name of the attribute where the bounds maximum is stored.
-* Defaults to **BoundsMax**.
+<details>
 
-**Write Nesting Depth**
+<summary><strong>Write Bounds Max</strong><br><em>If enabled, writes the asset BoundsMax to an attribute.</em></summary>
 
-_If enabled, writes the asset depth to the output._
+When enabled, the node adds a new attribute containing the maximum bounds of each asset.
 
-* Adds an attribute containing how deeply nested each asset is in the collection hierarchy.
-* Useful for understanding structure or applying depth-based logic.
+**Values**:
 
-**Nesting Depth Attribute Name**
+* **True**: Writes the asset bounds max.
+* **False**: Skips writing this attribute.
 
-_Name of the attribute on the AttributeSet that contains the asset depth._
+</details>
 
-* The name of the attribute where the nesting depth is stored.
-* Defaults to **NestingDepth**.
+<details>
+
+<summary><strong>Bounds Max Attribute Name</strong><br><em>Name of the attribute on the AttributeSet that contains the asset BoundsMax, if any. Otherwise 0.</em></summary>
+
+The name of the attribute that stores the asset bounds max. Defaults to "BoundsMax".
+
+</details>
+
+<details>
+
+<summary><strong>Write Nesting Depth</strong><br><em>If enabled, writes the nesting depth of the asset to an attribute.</em></summary>
+
+When enabled, the node adds a new attribute containing the nesting level (depth) of each asset in the collection hierarchy.
+
+**Values**:
+
+* **True**: Writes the nesting depth.
+* **False**: Skips writing this attribute.
+
+</details>
+
+<details>
+
+<summary><strong>Nesting Depth Attribute Name</strong><br><em>Name of the attribute on the AttributeSet that contains the asset depth, if any. Otherwise -1.</em></summary>
+
+The name of the attribute that stores the nesting depth. Defaults to "NestingDepth".
+
+</details>

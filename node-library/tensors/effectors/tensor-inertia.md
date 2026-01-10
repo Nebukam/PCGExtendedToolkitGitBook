@@ -6,78 +6,52 @@ icon: circle-dashed
 # Tensor : Inertia
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a tensor that applies a constant inertia force based on the seed transform.
+> Applies tensor-based inertia to points using their seed transform.
 
-### Overview
+#### How It Works
 
-This node generates a tensor that applies a consistent directional force to points, using the original point's transform as the basis for its orientation. It's useful for creating uniform pull or push effects that align with the input geometry's local space.
+This node calculates a tensor constant for each point based on its original orientation and scale. The tensor defines how much resistance each point has to changes in motion, which is essential for simulating realistic physical behavior. The calculation considers the point's direction and scale along a chosen axis, then applies this information as inertia data that downstream nodes can use.
 
-The tensor will apply a constant force in a specific direction (defined by the selected axis) and can be configured to use either a single inertia value per point or vary based on the seed transform.
+The node supports two modes of operation:
 
-{% hint style="info" %}
-This tensor is particularly effective when used with other tensor operations to create complex, directional forces that respond to the original geometry's orientation.
-{% endhint %}
+* **Set Once**: Computes and stores a single inertia value per point based on its initial transform.
+* **Recompute Each Time**: Recalculates the inertia value every time it's used, which is useful when transforms change dynamically.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Axis</strong><br><em>Direction used to compute the tensor constant.</em></summary>
 
-* **Points**: Input points that will be processed by the tensor operation
-* **Seed Transform**: The transform of each input point is used as the base for the inertia direction
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Factory**: A tensor factory that can be consumed by other tensor operations
-
-</details>
-
-### Properties Overview
-
-Controls how the inertia tensor is applied to points.
-
-***
-
-#### Settings
-
-Configures the behavior of the inertia tensor.
-
-**Axis**
-
-_Specifies which axis of the seed transform to use as the direction for the inertia force._
-
-* The tensor will apply a constant force along this axis
-* For example, selecting "Forward" uses the X-axis of the point's transform
-* This determines the primary direction of the force
+Defines which axis of the point's transform is used for computing the tensor value.
 
 **Values**:
 
-* **Forward**: Uses the forward (X+) axis of the seed transform
-* **Backward**: Uses the backward (X-) axis of the seed transform
-* **Right**: Uses the right (Y+) axis of the seed transform
-* **Left**: Uses the left (Y-) axis of the seed transform
-* **Up**: Uses the up (Z+) axis of the seed transform
-* **Down**: Uses the down (Z-) axis of the seed transform
+* **Forward**: Uses the X+ direction (default)
+* **Backward**: Uses the X- direction
+* **Right**: Uses the Y+ direction
+* **Left**: Uses the Y- direction
+* **Up**: Uses the Z+ direction
+*
+  * **Down**: Uses the Z- direction
 
-**Set Inertia Once**
+</details>
 
-_When enabled, applies a constant inertia value per point based on the original point's transform._
+<details>
 
-* If disabled, the tensor will compute inertia values dynamically for each sample
-* When enabled, it uses a single, consistent inertia value for all samples from that point
-* This can improve performance when you want uniform behavior across all samples
+<summary><strong>bSetInertiaOnce</strong><br><em>If enabled, will set a constant per-point inertia based on the original point transform.</em></summary>
 
-### Notes
+When enabled, the node computes and stores a single inertia value for each point based on its initial transform. When disabled, it recomputes the inertia value each time it's used.
 
-* The tensor applies a constant force in the selected axis direction
-* Use this node to create directional pull/push effects that align with your input geometry's orientation
-* Combine with other tensor operations to build complex force fields
-* The "Set Inertia Once" option is useful when you want predictable, consistent behavior across multiple samples from the same point
+</details>
+
+#### Usage Example
+
+Use this node to apply consistent inertia values to points in a particle system. For example, you could use it to make some points more resistant to movement than others by setting different axis directions or enabling the "set once" option for performance.
+
+#### Notes
+
+This node is typically used as part of a larger tensor processing chain where the computed inertia values are consumed by other effectors or processors that simulate physical behavior. It connects to **Tensor** subnodes that define the tensor properties.

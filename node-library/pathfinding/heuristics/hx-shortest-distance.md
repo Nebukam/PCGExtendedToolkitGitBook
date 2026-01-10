@@ -6,63 +6,43 @@ icon: circle-dashed
 # HX : Shortest Distance
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a heuristic that evaluates point proximity based on the shortest distance between points.
+> Heuristics based on distance.
 
-### Overview
+#### How It Works
 
-This factory generates a heuristic operation that computes scores based on the actual geometric distance between points in a cluster. It's designed for pathfinding scenarios where you want to prioritize points that are closer to a target, or evaluate how close a point is to an ideal route.
+This subnode evaluates path cost using the shortest distance between nodes. It helps guide pathfinding algorithms by estimating how close each node is to the goal. For global scoring, it calculates the straight-line distance from the current node to the target, normalized by the cluster's size. For edge scoring, it uses the actual movement cost between connected nodes.
 
-{% hint style="info" %}
-Connects to **Pathfinding** nodes that require a heuristic definition, such as A\* or Dijkstra pathfinding operations.
-{% endhint %}
+The normalization ensures consistent results across different scales and clusters. Because this subnode never overestimates the true cost to reach the goal, it works well with algorithms like A\* that require admissible heuristics for optimal pathfinding.
 
-### Inputs and Outputs
+#### Configuration
 
-#### Inputs
+<details>
 
-* **Cluster**: The input cluster containing points to evaluate
-* **Goal Point**: Target point used for distance calculations
+<summary><strong>Heuristic Config</strong><br><em>Heuristic Config.</em></summary>
 
-#### Outputs
+Controls how the heuristic behaves, such as whether to reverse scores or apply multipliers.
 
-* **Heuristic**: Generated heuristic data that can be used by pathfinding nodes
+**Values**:
 
-### How It Works
+* **Invert**: When enabled, higher distances result in lower scores (reverses the heuristic).
+* **Reference Weight**: A scalar multiplier applied to all scores.
+* **Weight Factor**: Additional scaling factor for score computation.
+* **Use Local Weight Multiplier**: When enabled, allows per-node or edge-specific weight adjustments.
+* **UVW Seed / UVW Goal**: Optional seed and goal coordinates used in advanced scoring logic.
+* **Local Weight Multiplier Source**: Specifies whether to use vertex or edge data for local weighting.
+* **Weight Multiplier Attribute**: The attribute name to read weight multipliers from if using a custom source.
 
-This heuristic evaluates how far each point is from the goal. It uses actual geometric distance measurements within the cluster's bounds to compute scores. The score represents how "good" a point is in terms of proximity to the target, with lower values being better when using "Lower is Better" mode.
+</details>
 
-The calculation normalizes distances by the cluster's bounding box size, making it scale-independent and suitable for clusters of varying sizes.
+#### Usage Example
 
-### Configuration
+Use this subnode when setting up an A\* pathfinding system where you want the algorithm to prefer paths that minimize spatial distance. For example, in a game with a navigation mesh, connect this to a Filter pin on a Pathfinding node to guide agents toward the goal using shortest-path heuristics.
 
-***
+#### Notes
 
-#### General
-
-**Config**
-
-_The configuration settings for this heuristic._
-
-This setting controls how the heuristic computes its scores. The default configuration uses standard distance-based scoring with no additional transformations.
-
-**Lower is Better**
-
-_When enabled, points closer to the goal receive better (lower) scores._
-
-When this option is enabled, the heuristic assigns lower scores to points that are closer to the target location. When disabled, higher scores are given to closer points.
-
-### Usage Example
-
-Use this heuristic when you want to guide pathfinding toward a specific goal point. For example, if you're creating a navigation mesh for AI agents, you might use this heuristic to direct them toward a target location, such as a player or objective. The pathfinding algorithm will prefer points that are closer to the goal, resulting in more efficient and natural-looking paths.
-
-### Notes
-
-* This heuristic is best used when the cluster's geometry is relatively uniform in scale
-* The normalized distance scoring ensures consistent behavior across different cluster sizes
-* Combine with other heuristics for more complex pathfinding behaviors
-* When using "Lower is Better" mode, points closer to the goal receive better (lower) scores
+* This heuristic is admissible and suitable for optimal pathfinding algorithms.
+* Normalization by cluster bounds ensures consistent behavior across different scales.
+* Performance is generally good as it only requires distance calculations.

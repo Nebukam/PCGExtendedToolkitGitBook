@@ -5,187 +5,178 @@ icon: circle
 # Self Pruning
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > A slower, more precise self pruning node.
 
-### Overview
+#### How It Works
 
-This node processes points to either remove overlapping ones or count how many overlaps each point has. It's particularly useful when you want to ensure that no two points occupy the same space or when you need to understand spatial density in your procedural content. Unlike faster alternatives, this node performs precise spatial tests to determine overlap, making it more accurate but also more computationally expensive.
+This node identifies and removes overlapping points within a dataset based on spatial proximity. Unlike faster methods that use approximate hashing, this node performs precise spatial tests for higher accuracy. It can either remove overlapping points or write the count of overlaps to an attribute, allowing for further processing or visual feedback.
+
+The process begins by calculating spatial bounds for each point, which may be expanded based on settings. Then, for every point, it determines how many other points fall within its defined bounds. This count is either used to remove overlapping points or written to an attribute.
+
+#### Configuration
+
+<details>
+
+<summary><strong>Mode</strong><br><em>Whether to prune points or write the number of overlaps.</em></summary>
+
+Controls whether overlapping points are removed from the output or if the number of overlaps is written to an attribute.
+
+**Values**:
+
+* **Prune**: Removes overlapping points.
+* **Write Result**: Writes overlap counts to an attribute.
+
+</details>
+
+<details>
+
+<summary><strong>Sort Direction</strong><br><em>Whether to sort hash components or not.</em></summary>
+
+Determines the order in which points are processed. Sorting can affect which points are retained when overlaps occur.
+
+**Values**:
+
+* **Ascending**: Points are sorted from low to high.
+* **Descending**: Points are sorted from high to low.
+
+</details>
+
+<details>
+
+<summary><strong>Randomize</strong><br><em>Sort over a random per-point value.</em></summary>
+
+When enabled, points are shuffled before processing using a random value. This ensures varied pruning results when overlaps are evenly distributed.
+
+</details>
+
+<details>
+
+<summary><strong>Range</strong><br><em>Sort over a random per-point value.</em></summary>
+
+Controls the range of randomness applied to point sorting. A higher value increases variation in processing order.
+
+</details>
+
+<details>
+
+<summary><strong>Output to</strong><br><em>Name of the attribute to write the number of overlap to.</em></summary>
+
+The name of the attribute where overlap counts are written when mode is set to "Write Result".
+
+</details>
+
+<details>
+
+<summary><strong>Units</strong><br><em>Discrete mode write the number as-is, relative will normalize against the highest number of overlaps found.</em></summary>
+
+Controls how overlap counts are stored in the output attribute.
+
+**Values**:
+
+* **Discrete**: Stores raw overlap count.
+* **Relative**: Normalizes overlap counts to a 0–1 range based on the maximum overlap found.
+
+</details>
+
+<details>
+
+<summary><strong>OneMinus</strong><br><em>Whether to do a OneMinus on the normalized overlap count value.</em></summary>
+
+When enabled and using relative units, the overlap count is inverted (1 - overlap). This can be useful for creating visual effects where higher density areas appear less prominent.
+
+</details>
+
+<details>
+
+<summary><strong>Precise Test</strong><br><em>If enabled, does very precise and EXPENSIVE spatial tests. Only supported for pruning.</em></summary>
+
+When enabled, uses more accurate but computationally expensive methods to determine overlaps. This is only available in Prune mode.
+
+</details>
+
+<details>
+
+<summary><strong>Primary Mode</strong><br><em>If and how to expand the primary bounds (bounds used for the main point being evaluated).</em></summary>
+
+Controls whether and how to expand the bounds of the main point being evaluated.
+
+**Values**:
+
+* **None**: No expansion.
+* **Before Transform**: Expands bounds before world transformation.
+* **After Transform**: Expands bounds after world transformation.
+
+</details>
+
+<details>
+
+<summary><strong>Primary Expansion Input</strong><br><em>Type of primary expansion.</em></summary>
+
+Defines whether the primary expansion value is a constant or read from an attribute.
+
+**Values**:
+
+* **Constant**: Use a fixed value.
+* **Attribute**: Read the expansion value from an input attribute.
+
+</details>
+
+<details>
+
+<summary><strong>Primary Expansion</strong><br><em>Primary Expansion value. Uniform, discrete offset applied to bounds.</em></summary>
+
+The amount by which to expand the primary bounds, either as a constant or read from an attribute depending on the input type.
+
+</details>
+
+<details>
+
+<summary><strong>Secondary Mode</strong><br><em>If and how to expand the secondary bounds (bounds used for neighbors points against the main point being evaluated).</em></summary>
+
+Controls whether and how to expand the bounds of neighbor points during overlap testing.
+
+**Values**:
+
+* **None**: No expansion.
+* **Before Transform**: Expands bounds before world transformation.
+* **After Transform**: Expands bounds after world transformation.
+
+</details>
+
+<details>
+
+<summary><strong>Secondary Expansion Input</strong><br><em>Type of secondary expansion.</em></summary>
+
+Defines whether the secondary expansion value is a constant or read from an attribute.
+
+**Values**:
+
+* **Constant**: Use a fixed value.
+* **Attribute**: Read the expansion value from an input attribute.
+
+</details>
+
+<details>
+
+<summary><strong>Secondary Expansion</strong><br><em>Secondary Expansion value. Uniform, discrete offset applied to bounds.</em></summary>
+
+The amount by which to expand the secondary bounds, either as a constant or read from an attribute depending on the input type.
+
+</details>
 
 {% hint style="info" %}
-This node is designed for scenarios where precision matters over performance. It's ideal for creating clean, non-overlapping point distributions or analyzing spatial relationships.
+Connects to \*\*Point Filters\*\* subnode for filtering which points can be processed.
 {% endhint %}
 
-<details>
+#### Usage Example
 
-<summary>Inputs</summary>
+You have a point cloud representing potential object placements and want to ensure no two objects are placed too close together. Set the mode to "Prune", enable randomization for varied results, and adjust expansion values to define how far apart points must be. This prevents overlapping placements while maintaining visual variety.
 
-* **Main Input** (Points): The set of points to process.
-* **Filters** (Optional, Point Filters): Filters that determine which points can be considered as overlapping.
+#### Notes
 
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Main Output** (Points): Points after pruning or with overlap counts written to an attribute.
-
-</details>
-
-### Properties Overview
-
-Controls how the node processes and prunes your point data.
-
-***
-
-#### Mode
-
-Determines whether the node removes overlapping points or writes overlap counts.
-
-**Prune**
-
-_When enabled, the node removes overlapping points from the output._
-
-* Removes points that are within a certain distance of each other.
-* Useful for creating clean, non-overlapping distributions.
-
-**Write Result**
-
-_When enabled, the node writes the number of overlaps to an attribute on each point._
-
-* Counts how many other points are within the specified proximity.
-* Useful for visualizing density or using overlap counts in downstream logic.
-
-***
-
-#### Sorting
-
-Controls how points are sorted before processing to improve performance or randomness.
-
-**Sort Direction**
-
-_Controls whether points are sorted in ascending or descending order._
-
-* **Ascending**: Points with lower values are processed first.
-* **Descending**: Points with higher values are processed first.
-
-**Randomize**
-
-_When enabled, the node sorts points based on a random per-point value to avoid deterministic pruning._
-
-* Helps prevent artifacts from processing points in a fixed order.
-* Only applies when using **Prune** mode.
-
-**Random Range**
-
-_Specifies how much randomness is applied to sorting._
-
-* A value of 0 means no randomness.
-* A value of 1 means full randomness.
-* Only visible when **Randomize** is enabled.
-
-***
-
-#### Output
-
-Controls the attribute and units used when writing overlap counts.
-
-**Output to**
-
-_Name of the attribute where overlap counts are written._
-
-* Only visible in **Write Result** mode.
-* Default is "NumOverlaps".
-
-**Units**
-
-_Determines how overlap counts are interpreted._
-
-* **Discrete**: Writes raw overlap count values.
-* **Relative**: Normalizes overlap counts between 0 and 1, based on the highest number of overlaps found.
-
-**OneMinus**
-
-_When enabled, subtracts the normalized overlap count from 1._
-
-* Useful for creating inverse density maps (high overlap = low value).
-* Only visible when **Units** is set to **Relative**.
-
-***
-
-#### Expansion
-
-Controls how bounds are expanded before spatial tests to include neighboring points.
-
-**Primary Mode**
-
-_Specifies whether and how to expand the bounds of the main point being evaluated._
-
-* **None**: No expansion.
-* **Before Transform**: Expands bounds before applying world transform.
-* **After Transform**: Expands bounds after applying world transform.
-
-**Primary Expansion Input**
-
-_Determines whether the expansion value is constant or read from an attribute._
-
-* **Constant**: Use a fixed numeric value.
-* **Attribute**: Read expansion value from an input attribute.
-
-**Primary Expansion (Attr)**
-
-_Name of the attribute to read expansion values from._
-
-* Only visible when **Primary Expansion Input** is set to **Attribute**.
-
-**Primary Expansion**
-
-_Fixed value used for expansion if **Primary Expansion Input** is set to **Constant**._
-
-* Only visible when **Primary Expansion Input** is set to **Constant**.
-
-**Secondary Mode**
-
-_Specifies whether and how to expand the bounds of neighbor points during overlap tests._
-
-* **None**: No expansion.
-* **Before Transform**: Expands bounds before applying world transform.
-* **After Transform**: Expands bounds after applying world transform.
-
-**Secondary Expansion Input**
-
-_Determines whether the expansion value is constant or read from an attribute._
-
-* **Constant**: Use a fixed numeric value.
-* **Attribute**: Read expansion value from an input attribute.
-
-**Secondary Expansion (Attr)**
-
-_Name of the attribute to read expansion values from._
-
-* Only visible when **Secondary Expansion Input** is set to **Attribute**.
-
-**Secondary Expansion**
-
-_Fixed value used for expansion if **Secondary Expansion Input** is set to **Constant**._
-
-* Only visible when **Secondary Expansion Input** is set to **Constant**.
-
-***
-
-#### Precision
-
-Controls whether the node performs precise spatial tests.
-
-**Precise Test**
-
-_When enabled, performs very accurate overlap checks using OBBs (Oriented Bounding Boxes)._
-
-* Ensures that only truly overlapping points are removed or counted.
-* Significantly slower than approximate methods.
-* Only supported in **Prune** mode.
+* The node is slower than standard pruning methods due to its precise spatial tests.
+* Expansion settings allow fine-tuning of overlap detection sensitivity.
+* When using "Write Result", the output attribute can be used for further filtering or visualization.

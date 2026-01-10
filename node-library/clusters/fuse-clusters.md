@@ -6,169 +6,91 @@ icon: circle
 # Fuse Clusters
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Finds Point/Edge and Edge/Edge intersections between all input clusters.
 
-### Overview
+#### How It Works
 
-This node identifies where points from different clusters intersect with edges, or where edges from different clusters cross each other. It's useful for creating connections or merging data at intersection points in procedural graphs. The results can be used to build networks, generate new geometry, or merge attributes across clusters.
+The Cluster : Fuse node identifies where points and edges from different clusters intersect with each other. It processes each pair of clusters and checks for three types of intersections:
 
-{% hint style="info" %}
-This node works on all input clusters simultaneously and finds intersections between them.
-{% endhint %}
+1. **Point/Point**: When two points from different clusters are close enough to be considered a single point
+2. **Point/Edge**: When a point from one cluster intersects with an edge from another cluster
+3. **Edge/Edge**: When edges from two different clusters cross each other
 
-<details>
+For each detected intersection, the node creates new fused geometry at that location. It blends properties and attributes of intersecting elements based on configured blending rules. The result is a collection of new points and edges that represent the merged spatial relationships between input clusters.
 
-<summary>Inputs</summary>
-
-* Point data (clusters)
-* Edge data (clusters)
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* Merged point data with fused points
-* Edge data representing intersections
-* Optional graph output for visualizing connections
-
-</details>
-
-### Properties Overview
-
-Controls how intersections are detected and how the resulting data is merged.
-
-***
-
-#### Intersection Settings
-
-Defines which types of intersections to look for and their parameters.
-
-**Find Point/Point Intersections**
-
-_When enabled, the node looks for points from different clusters that are located at the same position._
-
-* Enables detection of overlapping points across clusters
+#### Configuration
 
 **Point/Point Settings**
 
-_Settings for detecting point-to-point intersections._
+Controls how point-to-point intersections are detected and processed. Includes distance thresholds and blending options.
 
-* Controls how close points must be to be considered intersecting
-* Supports component-wise tolerance (manhattan-style)
+**Find Point-Edge intersection**
 
-**Find Point-Edge Intersections**
+Enable detection of Point-Edge intersections.
 
-_When enabled, the node looks for points that lie on edges from other clusters._
+[**Point/Edge Settings**](../shared-concepts/intersections/point-edge-intersections.md)
 
-* Enables detection of point-on-edge intersections
+Controls how point-edge intersections are detected and processed. Includes distance thresholds and blending options.
 
-**Point/Edge Settings**
+**Find Edge-Edge intersection**
 
-_Settings for detecting point-to-edge intersections._
+Enable detection of Edge-Edge intersections.
 
-* Controls how close a point must be to an edge to be considered intersecting
-* Supports component-wise tolerance (manhattan-style)
+[**Edge/Edge Settings**](../shared-concepts/intersections/edge-edge-intersections.md)
 
-**Find Edge-Edge Intersections**
+Controls how edge-edge intersections are detected and processed. Includes distance thresholds and blending options.
 
-_When enabled, the node looks for edges that cross each other across different clusters._
+**Default Points** [**Blending Details**](../shared-concepts/blending/)
 
-* Enables detection of edge-to-edge crossings
+Defines how fused point properties and attributes are merged together for fused points. This includes position, normal, and custom attributes.
 
-**Edge/Edge Settings**
+**Default Edges** [**Blending Details**](../shared-concepts/blending/)
 
-_Settings for detecting edge-to-edge intersections._
+Defines how fused point properties and attributes are merged together for fused edges. This includes start/end points, attributes, etc.
 
-* Controls how close edges must be to be considered crossing
-* Supports component-wise tolerance (manhattan-style)
+**Use Custom Point-Edge Blending**
 
-***
+Enable custom blending rules for Point/Edge intersections.
 
-#### Data Blending Settings
+**Custom Point-Edge** [**Blending Details**](../shared-concepts/blending/)
 
-Controls how attributes and properties are merged when points or edges are fused.
+Defines how fused point properties and attributes are merged together for Point/Edge intersections.
 
-**Default Points Blending**
+**Use Custom Edge-Edge Blending**
 
-_How to merge point properties and attributes when points from different clusters are fused._
+Enable custom blending rules for Edge/Edge intersections.
 
-* **None**: Keep original values
-* **Average**: Average all values
-* **Weight**: Blend based on distance
-* **Min/Max**: Component-wise minimum or maximum
-* **Copy (Target)**: Use the second value
-* **Sum**: Add all values together
-* **Weighted Sum**: Sum with weights applied
-* **Lerp**: Linear interpolation using weight
-* **Subtract**: Subtract values
-* **Unsigned Min/Max**: Component-wise min/max on unsigned values
-* **Absolute Min/Max**: Component-wise minimum or maximum of absolute values
+**Custom Edge-Edge** [**Blending Details**](../shared-concepts/blending/)
 
-**Default Edges Blending**
-
-_How to merge edge properties and attributes when edges from different clusters are fused._
-
-* Same blending options as points
-
-**Use Custom Point/Edge Blending**
-
-_When enabled, use custom blending settings for Point/Edge intersections._
-
-* Overrides default point blending settings for this specific intersection type
-
-**Custom Point/Edge Settings**
-
-_Custom blending settings for Point/Edge intersections._
-
-* Same blending options as points
-
-**Use Custom Edge/Edge Blending**
-
-_When enabled, use custom blending settings for Edge/Edge intersections._
-
-* Overrides default edge blending settings for this specific intersection type
-
-**Custom Edge/Edge Settings**
-
-_Custom blending settings for Edge/Edge intersections._
-
-* Same blending options as points
-
-***
-
-#### Meta Filters
-
-Controls which attributes are carried over from the original clusters to the fused results.
+Defines how fused point properties and attributes are merged together for Edge/Edge intersections (Crossings).
 
 **Carry Over Settings - Vtx**
 
-_Settings for which point attributes are copied during fusion._
-
-* Selects which attributes from input points are preserved in output points
+Controls which vertex attributes are carried over from input clusters to the fused output points.
 
 **Carry Over Settings - Edges**
 
-_Settings for which edge attributes are copied during fusion._
+Controls which edge attributes are carried over from input clusters to the fused output edges.
 
-* Selects which attributes from input edges are preserved in output edges
+**Cluster Output Settings**
 
-***
+Defines how the resulting graph and edge data are structured in the output. Includes options for edge creation, connectivity handling, and output formatting.
 
-#### Cluster Output Settings
+#### Usage Example
 
-Controls how the resulting graph is structured and output.
+A common use case is to fuse road networks from multiple clusters to create a unified intersection network. You would:
 
-**Graph Builder Details**
+1. Feed two or more cluster inputs representing different road segments
+2. Enable Point-Edge and Edge-Edge intersections
+3. Set appropriate distance thresholds for detecting intersections
+4. Configure blending rules to preserve important attributes like road type or direction
+5. Use the output points and edges to generate a complete road network with proper connectivity
 
-_Settings for building a graph from the fused clusters._
+#### Notes
 
-* Determines how to construct the output graph (node/edge connections)
-* Controls whether to generate new points or use existing ones
-* Defines how to merge attributes during graph construction
+* Performance can be affected by the number of clusters and their complexity; consider using filters to limit input data.
+* The node works best when cluster boundaries are well-defined and not overly dense.
+* Custom blending settings allow for advanced scenarios like preserving original edge directions or merging attributes in specific ways.

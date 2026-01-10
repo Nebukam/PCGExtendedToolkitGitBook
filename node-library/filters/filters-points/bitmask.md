@@ -11,110 +11,84 @@ This page was generated from the source code. It should properly capture what th
 
 > Filter points using bitwise flag comparisons.
 
-#### Overview
-
-This filter evaluates whether a point's flags match a specified bitmask according to a comparison rule. It's useful for filtering data based on combinations of boolean states or categories represented as bits. You can compare the flags against either a constant value or an attribute from the input data.
-
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes.
-{% endhint %}
-
 #### How It Works
 
-This filter performs bitwise operations between a point's flag value and a mask to determine if it passes the test. The comparison logic depends on the selected mode:
+The Bitmask filter subnode checks if a point's flags match a specified bitmask based on a comparison rule. It reads a flag value from each point and compares it with a mask using one of several logic options:
 
-* **Match (any)**: At least one bit in the mask is set in the flags
-* **Match (all)**: All bits in the mask are set in the flags
-* **Match (strict)**: Flags exactly equal the mask
-* **No match (any)**: No bits from the mask are set in the flags
-* **No match (all)**: Not all bits in the mask are set in the flags
+1. **Operand A** is the flags value from the point (read from an attribute or constant).
+2. **Operand B** is the mask, which can be a fixed value or read from an attribute.
+3. The comparison logic determines how these two values are evaluated:
+   * **Match (any)**: At least one flag in the mask is set in the operand.
+   * **Match (all)**: All flags in the mask are set in the operand.
+   * **Match (strict)**: The operand exactly matches the mask.
+   * **No match (any)**: No flags from the mask are set in the operand.
+   * **No match (all)**: Not all flags from the mask are set in the operand.
 
-The filter can also apply external compositions to the mask value, allowing for dynamic or computed masks. When enabled, the result is inverted.
-
-<details>
-
-<summary>Inputs</summary>
-
-Expects a point data input with an attribute containing flag values (int64) and optionally a mask attribute or constant value.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-Filters points based on whether they meet the specified bitflag criteria.
-
-</details>
+Optional external operations can be applied to Operand B to modify the mask before comparison. If invert result is enabled, the outcome of the comparison is flipped.
 
 #### Configuration
 
-***
+<details>
 
-**FlagsAttribute**
+<summary><strong>Flags Attribute</strong><br><em>Source value. (Operand A)</em></summary>
 
-_Source value. (Operand A)_
+The name of the attribute from which the flags value is read for comparison.
 
-Specifies the name of the attribute containing flag values to test against the mask.
+</details>
 
-**Comparison**
+<details>
 
-_Type of flag comparison_
+<summary><strong>Comparison</strong><br><em>Type of flag comparison</em></summary>
 
-Determines how the flags and mask are compared:
+How the flags and mask are compared:
 
-* **Match (any)**: Value & Mask != 0 (At least some flags in the mask are set)
-* **Match (all)**: Value & Mask == Mask (All the flags in the mask are set)
-* **Match (strict)**: Value == Mask (Flags strictly equals mask)
-* **No match (any)**: Value & Mask == 0 (Flags does not contains any from mask)
-* **No match (all)**: Value & Mask != Mask (Flags does not contains the mask)
+* **Match (any)**: At least some flags in the mask are set.
+* **Match (all)**: All flags in the mask are set.
+* **Match (strict)**: The flags exactly match the mask.
+* **No match (any)**: No flags from the mask are set.
+* **No match (all)**: Not all flags from the mask are set.
 
-**MaskInput**
+</details>
 
-_Type of Mask_
+<details>
 
-Controls whether to use a constant value or an attribute for the mask:
+<summary><strong>Mask Input</strong><br><em>Type of Mask</em></summary>
 
-* **Constant**: Use the fixed Bitmask value
-* **Attribute**: Read the mask from the specified attribute
+Whether the mask value is a constant or read from an attribute:
 
-**BitmaskAttribute**
+* **Constant**: Use the fixed value in the Bitmask field.
+* **Attribute**: Read the mask value from the specified attribute.
 
-_(Operand B)_
+</details>
 
-When using an attribute for the mask, this specifies which attribute to read the mask value from.
+<details>
 
-**Bitmask**
+<summary><strong>Bitmask (Attr)</strong><br><em>Mask for testing -- Must be int64. (Operand B)</em></summary>
 
-_(Operand B)_
+The name of the attribute containing the mask value, used when `MaskInput` is set to "Attribute".
 
-When using a constant for the mask, this is the fixed bitmask value to compare against.
+</details>
 
-**Compositions**
+<details>
 
-_External compositions applied to Operand B (whether it's a constant or not)_
+<summary><strong>Bitmask</strong><br><em>Mask for testing -- Must be int64. (Operand B)</em></summary>
 
-Applies additional transformations to the mask value before comparison. These can be used to compute dynamic masks from other data.
+The fixed bitmask value used when `MaskInput` is set to "Constant".
 
-**bInvertResult**
+</details>
 
-_TBD_
+<details>
 
-When enabled, inverts the result of the comparison — points that would pass now fail and vice versa.
+<summary><strong>Compositions</strong><br><em>External compositions applied to Operand B (whether it's a constant or not)</em></summary>
 
-**Config**
+Optional operations that modify the mask before comparison, such as shifting or combining with other values.
 
-_Filter Config._
+</details>
 
-A container for all filter settings, including flags attribute, comparison mode, mask input type, bitmask value, compositions, and inversion option.
+<details>
 
-#### Usage Example
+<summary><strong>Invert Result</strong><br><em>TBD</em></summary>
 
-Suppose you have a set of points with a "Flags" attribute representing different categories (e.g., 1 = Grass, 2 = Water, 4 = Forest). You want to keep only the points that are either grass or water. Set the **Comparison** to **Match (any)**, and the **Bitmask** to **3** (binary 11). This will pass any point where the flags contain at least one of those bits.
+When enabled, the result of the comparison is inverted. Points that would pass now fail, and vice versa.
 
-#### Notes
-
-* Bitmasks work with 64-bit integers, allowing up to 64 unique flags.
-* The filter supports both constant and attribute-based masks for flexibility.
-* Compositions can be used to combine multiple attributes or compute derived values.
-* Inversion is useful for creating "not" conditions in your filters.
+</details>

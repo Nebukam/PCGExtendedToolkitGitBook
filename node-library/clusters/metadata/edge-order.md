@@ -6,27 +6,40 @@ icon: circle
 # Edge Order
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Fix an order for edge start & end endpoints.
 
-### Overview
+#### Overview
 
-This node ensures that edges in your clusters have a consistent and predictable ordering of their start and end points. It's particularly useful when you want to establish a direction or sequence for edges, such as making sure all edges point from smaller to larger node IDs, or aligning them with a specific attribute value. The node can also sort edges based on various criteria, which helps in creating more structured and predictable procedural outputs.
+This node ensures that the start and end points of edges within clusters are consistently ordered. This is particularly useful when working with graph-based data where edge direction matters, such as in network layouts or pathfinding systems. It helps maintain predictable edge orientation by applying a consistent sorting rule to the endpoints of each edge.
+
+The node operates on clustered point data, processing the edges associated with each cluster and reordering their start and end points according to specified criteria.
 
 {% hint style="info" %}
-This node modifies edge data by reordering the start and end points of each edge. It does not create new edges or modify point data directly.
+Connects to **clusters** input and outputs modified **edges**.
 {% endhint %}
+
+#### How It Works
+
+This node processes clusters of points and their associated edges. For each edge in a cluster, it evaluates the positions of the two endpoints and reorders them based on the configured direction settings.
+
+The process works as follows:
+
+1. The node retrieves the current cluster's edges
+2. It applies a sorting rule to determine which endpoint should be considered the "start" and which the "end"
+3. Each edge is reordered so that its start point aligns with the determined direction
+4. The updated edge data is output with consistent endpoint ordering
+
+The direction settings define how the endpoints are compared, such as by position along an axis or relative to a center point.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Main Input (Points)**: Points representing nodes in your graph.
-* **Edges (Point IOs)**: Edges connecting the nodes, typically generated from a clustering operation.
+* **Clusters**: Point data representing clusters of points
+* **Edges**: Edge data associated with each cluster
 
 </details>
 
@@ -34,64 +47,35 @@ This node modifies edge data by reordering the start and end points of each edge
 
 <summary>Outputs</summary>
 
-* **Main Output (Points)**: The original node points, unchanged.
-* **Edge Output (Point IOs)**: Modified edges with reordered start and end points according to the specified settings.
+* **Edges**: Modified edge data where start and end points are consistently ordered
 
 </details>
 
-### Properties Overview
+#### Configuration
 
-Controls how edge endpoints are ordered and potentially sorted.
+<details>
 
-***
+<summary><strong>Direction Settings</strong><br><em>Defines the direction in which points will be ordered to form the final paths.</em></summary>
 
-#### Edge Direction Settings
-
-Defines how the direction of each edge is determined.
-
-**Direction Method**
-
-_Controls how the edge's start and end points are selected._
-
-* How it affects results: Determines whether edges are ordered based on their original point order, an attribute value, or other criteria.
-* Value ranges: Select from available methods like "Endpoints Order", "Edge Dot Attribute", etc.
+Controls how the start and end points of edges are ordered.
 
 **Values**:
 
-* **Endpoints Order**: Uses the original order of points in the edge.
-* **Edge Dot Attribute**: Orders edges using a dot product comparison against a specified attribute.
-* **Edge Length**: Orders edges by their length, with shortest or longest first.
-* **Custom Sort**: Allows sorting based on custom rules defined elsewhere.
+* **None**: No ordering is applied
+* **X Axis**: Order by X coordinate
+* **Y Axis**: Order by Y coordinate
+* **Z Axis**: Order by Z coordinate
+* **Distance to Center**: Order by distance from cluster center
+* **Custom Axis**: Order along a custom axis vector
 
-**Direction Choice**
+</details>
 
-_Determines which endpoint is considered the "start" and which is the "end"._
+#### Usage Example
 
-* How it affects results: Influences whether the edge points from smaller to larger values or vice versa.
-* Value ranges: Select between smallest-to-greatest or greatest-to-smallest ordering.
+Use this node when you have clusters of points connected by edges and need consistent edge direction for downstream processing. For example, if you're generating road networks or flow diagrams where all edges should point in the same general direction (e.g., from left to right), this node ensures that each edge's start and end are ordered consistently.
 
-**Values**:
+#### Notes
 
-* **Smallest To Greatest**: Orders edges so that the smaller value comes first.
-* **Greatest To Smallest**: Orders edges so that the larger value comes first.
-
-**Attribute Source**
-
-_The attribute used to determine edge direction when using "Edge Dot Attribute"._
-
-* How it affects results: The chosen attribute is used to compute a dot product, which then determines the ordering of endpoints.
-* Value ranges: Any valid point or edge attribute in your data.
-
-**Sort Rules**
-
-_Controls how edges are sorted after endpoint ordering is applied._
-
-* How it affects results: When enabled, edges are reordered based on one or more sorting criteria.
-* Value ranges: Define multiple rules with tolerance and invert options for fine-grained control.
-
-### Notes
-
-* This node is especially useful when you need consistent edge directions for downstream processing, such as pathfinding or graph traversal.
-* The "Edge Dot Attribute" method can be powerful for aligning edges with a specific vector or direction in your scene.
-* When using sorting rules, consider performance implications if dealing with large numbers of edges.
-* You can combine this node with other cluster operations to create complex and structured procedural graphs.
+* This node is most effective when used after cluster generation
+* The ordering logic can be customized per cluster using the Direction Settings
+* It modifies edge data in place, so it should be placed early in your graph before other edge-dependent operations

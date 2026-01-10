@@ -9,58 +9,44 @@ icon: circle-dashed
 This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> A Picker subnode that reads lists of indices from attributes and uses them to select points or elements.
-
-#### Overview
-
-This Picker subnode allows you to define which indices to pick from your data using one or more existing attributes. Instead of hardcoding values, it reads index lists directly from point attributes, making it flexible for dynamic selection based on input data. It's especially useful when you have precomputed sets of indices stored in attributes and want to use those as the basis for picking.
-
-{% hint style="info" %}
-Connects to **Picker** processing nodes that require a list of indices to pick.
-{% endhint %}
+> Reads a list of indices from one or more attributes and uses them as picks for point selection.
 
 #### How It Works
 
-This Picker subnode reads index values from one or more point attributes. Each attribute is expected to contain a list of integers representing indices. These indices are used to select elements (such as points or edges) from the input data.
+This node collects index values from specified attributes and converts them into a set of point selections. Each attribute contains a list of numbers that represent positions within your dataset. These numbers are interpreted as indices, where each index corresponds to a specific point in your data.
 
-The node supports negative indices, which allow you to pick from the end of the list. For example, an index of `-1` refers to the last element, `-2` to the second-to-last, and so on.
-
-When multiple attributes are provided, it combines their values into a single set of picks. If an attribute contains invalid or out-of-bounds indices, the behavior is controlled by the **Index Safety** setting in the Picker configuration, which can ignore, tile, clamp, or mirror such indices.
-
-<details>
-
-<summary>Inputs</summary>
-
-* Expects point data with attributes containing integer lists.
-* Each attribute must be a valid integer array (e.g., `int[]`, `int32[]`).
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* Provides a list of indices to pick from the input data.
-* These indices are used by the connected Picker node to determine which elements to select.
-
-</details>
+The node reads all values from each selected attribute and compiles them into a unified list of picks. These picks can then be used by downstream nodes to select specific points. Negative numbers count from the end of the dataset (for example, -1 selects the last point, -2 the second-to-last).
 
 #### Configuration
 
-***
+<details>
 
-**Attributes**
+<summary><strong>Attributes</strong><br><em>List of attributes to read individual indices from. Use negative values to select from the end.</em></summary>
 
-_List of attributes to read individual indices from. Use negative values to select from the end._
+Specifies which attributes contain the indices to use for picking.
 
-Each attribute contains a list of integer indices that will be used for selection. You can specify multiple attributes, and their values are combined into one set of picks. Negative values are interpreted as reverse indexing (e.g., `-1` is the last element).
+* If no attribute is specified, it will use the first available one
+* Each value in an attribute represents an index into the point data
+* Negative values count from the end of the dataset (e.g., -1 = last point)
+* Multiple attributes can be used to combine different sets of indices
+
+</details>
+
+{% hint style="info" %}
+Connects to \*\*Picker\*\* pins on processing nodes that require index-based selection.
+{% endhint %}
 
 #### Usage Example
 
-You have a point cloud with an attribute called `PickList` that contains lists of indices like `[0, 3, 5]`. You connect this Picker subnode to a Picker node and configure it to read from the `PickList` attribute. The Picker will then select points at indices 0, 3, and 5 from your input data.
+1. Create a set of points representing a terrain or mesh
+2. Add integer attributes to these points containing desired indices (e.g., "PickIndices")
+3. Configure this node with the attribute(s) containing your indices
+4. Connect the output to a picker-consuming node like "Cherry Pick Points"
+5. The node will select only the points at the specified indices
 
 #### Notes
 
-* If no attributes are specified in the details panel, the node defaults to using the first available attribute.
-* Index safety settings in the parent Picker node control how out-of-bounds indices are handled.
-* This subnode is ideal for dynamic selection workflows where index lists are computed or stored in point attributes.
+* Indices are 0-based, meaning index 0 refers to the first point
+* Out-of-bounds indices are handled according to the safety mode set in the picker configuration
+* Multiple attributes can be used to combine different sets of indices into a single picker
+* If no attribute is explicitly set, the node will attempt to use the first available one

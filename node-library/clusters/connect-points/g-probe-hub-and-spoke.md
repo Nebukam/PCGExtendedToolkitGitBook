@@ -5,110 +5,90 @@ icon: circle-dashed
 # G-Probe : Hub & Spoke
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a hierarchical hub-and-spoke network topology by identifying key points (hubs) and connecting other points (spokes) to them.
+> Creates hierarchical hub-and-spoke network topology by defining how points connect to hubs and spokes.
 
-### Overview
+#### How It Works
 
-This probe factory defines how to build a network where:
+This subnode builds a structured network where points are organized into a hub-and-spoke pattern. It first identifies central points called "hubs" based on a chosen method, then connects other points ("spokes") to these hubs. Each spoke can connect to just the nearest hub or to all hubs within a certain distance, depending on settings.
 
-* Some points are selected as "hubs"
-* Other points are connected to these hubs
-* Connections form a tree-like structure with a central hub(s)
+The selection of hubs depends on the chosen method:
 
-It's designed for creating spatial networks like city road systems, communication networks, or data structures where certain key nodes connect to many others.
+* **By Local Density**: Areas with many points become hubs.
+* **By Attribute**: Points with high values of a specific attribute are selected as hubs.
+* **By Centrality**: Points near the center of local groups become hubs.
+* **K-Means Centroids**: The system groups points into clusters and uses cluster centers as hubs.
 
-{% hint style="info" %}
-Connects to Probe pins on graph-building nodes such as **Connect Points** or **Graph Builder**
-{% endhint %}
+Once hubs are chosen, the subnode connects spokes to them. If "Nearest Hub Only" is enabled, each spoke links only to its closest hub. Otherwise, spokes connect to all hubs within a defined radius. Optionally, it can also link hubs together if that setting is enabled.
 
-### How It Works
+#### Configuration
 
-This factory builds a network topology by:
+<details>
 
-1. Identifying hub points based on the selected selection method
-2. For each spoke point, finding its connection(s) to hubs
-3. Creating directed edges from spokes to hubs (and optionally between hubs)
+<summary><strong>Hub Selection Mode</strong><br><em>How hubs are selected from the point cloud.</em></summary>
 
-The probe logic determines which points connect to which other points based on spatial relationships and the chosen hub selection criteria.
-
-### Inputs
-
-* **Points**: Input point data to process
-* **Attributes**: Optional attribute data for hub selection
-
-### Outputs
-
-* **Probe**: Output probe data used by graph-building nodes
-
-### Configuration
-
-***
-
-#### General
-
-**Hub Selection Mode**
-
-_Controls how hubs are selected from the input point data._
+Controls how the system identifies which points become hubs.
 
 **Values**:
 
-* **By Local Density**: Points in dense regions become hubs
-* **By Attribute**: Points with highest attribute values become hubs
-* **By Centrality**: Points closest to centroid of local region become hubs
-* **K-Means Centroids**: Run k-means clustering and use cluster centers as hubs
+* **By Local Density**: Points in dense regions become hubs.
+* **By Attribute**: Points with highest attribute values become hubs.
+* **By Centrality**: Points closest to centroid of local region become hubs.
+* **K-Means Centroids**: Run k-means and use cluster centers as hubs.
 
-**Number of Hubs**
+</details>
 
-_Number of hub points to select._
+<details>
 
-Default: 10\
-Minimum: 1
+<summary><strong>Number of Hubs</strong><br><em>How many hubs to create (for KMeans mode, this is K).</em></summary>
 
-**Hub Attribute**
+Determines how many hub points will be selected. In K-Means mode, this sets the number of clusters.
 
-_Attribute used for hub selection when mode is "By Attribute"._
+</details>
 
-Default: `$Density`
+<details>
 
-**Connect Hubs**
+<summary><strong>Hub Attribute</strong><br><em>Attribute for hub selection (for ByAttribute mode).</em></summary>
 
-_When enabled, hubs are also connected to each other._
+The attribute used to rank and select hubs when "By Attribute" is chosen as the selection mode.
 
-This creates a more complex network structure where hubs can be linked directly.
+</details>
 
-**Nearest Hub Only**
+<details>
 
-_Controls how spokes connect to hubs._
+<summary><strong>Connect Hubs</strong><br><em>If true, also connect hubs to each other.</em></summary>
 
-When enabled, each spoke connects only to its nearest hub. When disabled, spokes connect to all hubs within the specified radius.
+When enabled, creates connections between hubs themselves, forming a network of hub-to-hub links in addition to spoke-to-hub links.
 
-**K-Means Iterations**
+</details>
 
-_Number of iterations for k-means clustering when mode is "K-Means Centroids"._
+<details>
 
-Default: 10\
-Minimum: 1\
-Maximum: 100
+<summary><strong>Nearest Hub Only</strong><br><em>If true, each spoke connects only to nearest hub. If false, connects to all hubs within radius.</em></summary>
 
-### Usage Example
+Controls how spokes connect to hubs:
 
-Create a point cloud representing a city's street intersections. Use this probe to:
+* When enabled: Each spoke connects to only its closest hub.
+* When disabled: Each spoke connects to all hubs within a specified radius.
 
-1. Select 5 dense areas as hubs (like major intersections or districts)
-2. Connect all other points to their nearest hub
-3. Enable "Connect Hubs" to also link the hubs together
+</details>
 
-This results in a network where each street connects to a central hub, forming a hierarchical structure.
+<details>
 
-### Notes
+<summary><strong>K-Means Iterations</strong><br><em>K-Means iterations (for KMeansCentroids mode).</em></summary>
 
-* The probe works with any point data input and creates connections based on spatial proximity
-* When using "By Attribute", make sure the selected attribute exists on your points
-* For large datasets, "By Local Density" mode is typically faster than "K-Means Centroids"
-* Hubs are always connected to spokes in a one-way relationship (spokes → hubs)
-* The "Connect Hubs" option creates bidirectional connections between hubs when enabled
+The number of iterations used in the k-means clustering algorithm when "K-Means Centroids" is selected as the hub selection mode.
+
+</details>
+
+#### Usage Example
+
+Create a point cloud representing a city layout. Use this subnode to define hubs as the most densely populated areas (By Local Density). Configure it so that each spoke connects only to its nearest hub ("Nearest Hub Only" enabled) and that hubs are also connected to each other ("Connect Hubs" enabled). This results in a network where neighborhoods connect to nearby city centers, and city centers are linked together.
+
+#### Notes
+
+* The "By Attribute" mode requires an attribute to be specified.
+* K-Means mode is computationally more expensive but can create more evenly distributed hubs.
+* Enabling "Connect Hubs" increases the number of connections in the output graph.

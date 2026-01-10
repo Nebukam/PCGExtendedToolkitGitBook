@@ -5,95 +5,79 @@ icon: circle-dashed
 # Noise : White
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > White noise - fast, pure random.
 
-### Overview
+#### Overview
 
-Creates a pure random noise pattern with no spatial correlation. This factory generates procedural scalar values that are completely uncorrelated between adjacent points in space, producing a grainy, static-like appearance.
+White noise generates completely random values with no spatial correlation, making it ideal for adding grain or randomness to procedural content. It produces a "grainy" appearance and is extremely fast to compute. This subnode is commonly used as an input for noise blending operations, where its pure randomness can be combined with other noise types to create more complex patterns.
 
 {% hint style="info" %}
-Connects to **Noise** input pins on nodes that require procedural value sampling
+Connects to **Noise** pins on nodes that support procedural value sampling.
 {% endhint %}
 
-### How It Works
+#### How It Works
 
-White noise produces random values at every point in 3D space without any smooth transitions or patterns. Each position generates an independent random value, making it ideal for adding high-frequency variation or creating static-like textures.
+White noise generates a new random value for each unique 3D position. Instead of interpolating between values like other noise types, it directly hashes the integer portion of the input coordinates to produce a pseudo-random output. This creates a "grainy" texture with no smooth transitions or patterns, as each point is independent.
 
-The output values are uniformly distributed between -1 and 1, with no predictable pattern or continuity between neighboring points.
+The algorithm:
 
-### Configuration
+1. Takes the input 3D position
+2. Extracts the integer components (X, Y, Z)
+3. Hashes these components using a fast hash function
+4. Converts the resulting hash into a floating-point value between -1 and 1
 
-***
+This produces a uniform distribution of values with no correlation between nearby points.
 
-#### General
+#### Configuration
 
-**Weight Factor**
+<details>
 
-Controls how much this noise contributes when combined with other noise sources.
+<summary><strong>Weight Factor</strong><br><em>The weight factor for this Noise3D (used when combining multiple noise sources).</em></summary>
 
-Higher values increase the influence of this noise in blended operations. For example, setting to 2.0 will double its contribution compared to a default weight of 1.0.
+Controls how much influence this noise has when combined with others. A value of 1 means full influence, while values below 1 reduce its impact.
 
-**Blend Mode**
+</details>
 
-How this noise combines with other noise sources when stacked.
+<details>
 
-* **Blend (Weighted Average)**: Smooth weighted average of all values
-* **Add**: Adds all values together (clamped)
-* **Multiply**: Multiplies all values
-* **Min**: Takes the minimum value
-* **Max**: Takes the maximum value
-* **Subtract**: Subtracts subsequent values from first
-* **Screen**: Screen blend operation
-* **Overlay**: Overlay blend mode
-* **Soft Light**: Soft light blend mode
-* **First Valid**: Uses the first non-zero value
+<summary><strong>Blend Mode</strong><br><em>Blend mode when stacked against other noises.</em></summary>
 
-**Invert**
+Determines how this noise combines with other noise sources:
 
-When enabled, inverts the noise output.
+* **Blend (Weighted Average)**: Averages all noise values using their weights.
+* **Add**: Adds all values together, clamped to \[-1, 1].
+* **Multiply**: Multiplies all values together.
+* **Min**: Takes the minimum value among all inputs.
+* **Max**: Takes the maximum value among all inputs.
+* **Subtract**: Subtracts subsequent values from the first.
+* **Screen**: Uses screen blend (1 - (1-a)\*(1-b)).
+* **Overlay**: Uses overlay blend.
+* **Soft Light**: Uses soft light blend.
+* **First Valid**: Takes the first non-zero value.
 
-Flips all values from positive to negative and vice versa. A value of 0.5 becomes -0.5, and -0.8 becomes 0.8.
+</details>
 
-**Use Local Curve**
+<details>
 
-When enabled, remaps output values using a custom curve.
+<summary><strong>Invert</strong><br><em>Invert the noise output.</em></summary>
 
-Allows you to shape the distribution of noise values for more control over the final appearance.
+When enabled, flips the sign of all noise values. This effectively inverts the range from \[-1, 1] to \[1, -1].
 
-**Remap Curve**
+</details>
 
-Custom curve used to remap noise output when "Use Local Curve" is enabled.
+#### Usage Example
 
-Adjusts how the random values are distributed. For example, using a curve that peaks at 0.5 will produce more values near the center range.
+Use this subnode to add random variation to point positions or scalar attributes. For example:
 
-### Usage Example
+* Add white noise to a set of points to scatter them slightly
+* Combine it with a Perlin noise layer to create a more organic-looking terrain
+* Use it as a base for procedural texture generation where you want to introduce randomness
 
-Create a white noise pattern to add grain to terrain displacement:
+#### Notes
 
-1. Place a **Noise : White** node in your graph
-2. Connect it to a **PCGEx Noise Sample** node's Noise input
-3. Use the sampled values as displacement on a grid or mesh
-4. Set Weight Factor to 0.5 for subtle variation
-5. Enable Invert if you want negative displacement
-
-This creates a grainy, static-like texture that can be used for terrain roughness, material variations, or procedural scatter patterns.
-
-### Notes
-
-* White noise is computationally very fast since it doesn't require interpolation
-* Due to its lack of spatial correlation, it's excellent for creating high-frequency variation
-* Often used as a base layer in multi-layer noise setups for texture blending
-* Values are uniformly distributed between -1 and 1, making it ideal for creating random offsets or variations
-
-### Inputs
-
-* **Noise** (Input pin): Connects to nodes that require procedural value sampling
-
-### Outputs
-
-* **Noise** (Output pin): Provides the generated white noise values for downstream processing
+* White noise is the fastest noise type available, making it ideal for performance-critical applications.
+* It produces no smooth transitions or patterns, so it's best used in combination with other noise types.
+* The output values are uniformly distributed between -1 and 1.

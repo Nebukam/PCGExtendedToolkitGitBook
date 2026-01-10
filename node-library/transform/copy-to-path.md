@@ -6,201 +6,196 @@ icon: circle
 # Copy to Path
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Deform points along a path or spline.
 
-### Overview
+#### Overview
 
-This node allows you to copy or deform point data along a spline or path. It's useful for creating effects like vines growing along a branch, particles following a trajectory, or objects being deformed along a curve. You can control how the points are distributed and transformed along the path, including scaling, rotation, and positioning.
+This node takes input points and deforms them by aligning and positioning them along one or more paths or splines. It's useful for creating effects like objects following a route, distributing items on a curve, or morphing point clouds into spline-based shapes. The deformation can include scaling, rotation, and twisting based on the path's properties.
+
+It allows you to define how points are mapped onto paths, including options to control axis alignment, scale preservation, and twist behavior. You can also choose which parts of the path to use for deformation with masking settings.
 
 {% hint style="info" %}
-This node works by sampling transforms from the input paths/splines and applying them to the point data. The point's position, scale, and rotation will be modified based on where it is along the path.
+Connects to **Input** (points), **Path Input** (for splines/paths), and optionally a **Data Matching Subnode**.
 {% endhint %}
 
+#### How It Works
+
+This node processes each input point by sampling one or more paths. For each point, it calculates where along the path it should be positioned based on an alpha value (0 to 1) that corresponds to its location on the path. The position is then transformed using the path's tangent and normal vectors to orient the point correctly.
+
+The node supports multiple deformation modes:
+
+* **Main Axis**: Aligns the main axis of the point along the direction of the path.
+* **Cross Axis**: Applies transformations perpendicular to the main axis, such as scaling or rotation.
+* **Twist**: Rotates points around their main axis based on a twist amount that can vary along the path.
+* **Bounds**: Adjusts how the point's bounds are considered when mapping it to the path.
+
+The node supports both closed and open paths. For closed loops, you can choose whether to wrap the deformation or not. It also allows for custom spline point types and tangent handling to fine-tune the shape of the path.
+
+#### Inputs
+
+* **Points Input**: The points that will be deformed.
+* **Path Input**: One or more paths/splines used as the deformation guides.
+* **Data Matching Subnode (Optional)**: Defines how data is matched to targets for sampling.
+
+#### Outputs
+
+* **Points Output**: Deformed points aligned along the input paths.
+
+#### Configuration
+
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>DataMatching</strong><br><em>If enabled, allows you to filter out which targets get sampled by which data.</em></summary>
 
-* **Points** (Default Input): Point data to be deformed or copied along paths
-* **Paths** (Optional): Spline or path data used as the deformation guides
+When enabled, this setting lets you define how input points are matched with path data. This is useful when you have multiple paths and want to control which points are affected by which path.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>TransformScale</strong><br><em>Which scale components from the sampled transform should be applied to the point.</em></summary>
 
-* **Points** (Default Output): Deformed or duplicated point data along the paths
+Controls which components of the sampled transform (scale) are applied to the output points. You can choose to apply all, none, or specific axes.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how points are sampled and transformed along the input paths.
+<summary><strong>DefaultPointType</strong><br><em>Default spline point type.</em></summary>
 
-***
+Defines how the path's control points are interpreted. Options include Linear, Curve, Constant, and CurveClamped.
 
-#### General
+</details>
 
-Controls general settings for how the node processes data.
+<details>
 
-**Data Matching**
+<summary><strong>bApplyCustomPointType</strong><br><em>Override the default point type with an attribute.</em></summary>
 
-_Controls how to match input data with paths._
+When enabled, allows you to override the default spline point type using a point attribute.
 
-* When enabled, allows you to filter which paths are used to sample each point
-* Useful when you have multiple paths and want to control which ones affect which points
-* If disabled, all points will be processed using all available paths
+</details>
 
-***
+<details>
 
-#### Spline Settings
+<summary><strong>PointTypeAttribute</strong><br><em>Name of the attribute used to define the point type.</em></summary>
 
-Controls how the spline or path is interpreted and sampled.
+The name of the attribute that defines the spline point type for each point when `bApplyCustomPointType` is enabled.
 
-**Default Point Type**
+</details>
 
-_Specifies the default type of spline points._
+<details>
 
-* **Linear (0)**: Points are connected with straight lines
-* **Curve (1)**: Points are connected with smooth curves
-* **Constant (2)**: Points use constant interpolation
-* **CurveClamped (3)**: Points use clamped curve interpolation
+<summary><strong>Tangents</strong><br><em>Settings for tangent handling on the path.</em></summary>
 
-**Apply Custom Point Type**
+Controls how tangents are calculated or read from attributes. This affects how smoothly the path curves and how points are oriented along it.
 
-_When enabled, allows you to override the point type per point using an attribute._
+</details>
 
-* If enabled, uses a custom attribute to determine how each point is interpolated along the path
-* If disabled, uses the default point type specified above
+<details>
 
-**Point Type Attribute**
+<summary><strong>BoundsSource</strong><br><em>Which bounds to use when sampling.</em></summary>
 
-_Name of the attribute that defines the point type._
+Defines whether the point's center, minimum, maximum, or other bounds are used for sampling along the path.
 
-* Only used when "Apply Custom Point Type" is enabled
-* Should contain values matching the spline point types
+</details>
 
-**Tangents**
+<details>
 
-_Configures how tangents are calculated for custom tangent points._
+<summary><strong>MinBoundsOffset</strong><br><em>Offset applied to the minimum bounds.</em></summary>
 
-* Controls how curves are shaped at each point
-* Only relevant when using custom point types or curve interpolation
+Adjusts the minimum bounds of the point before sampling. Can be used to fine-tune how points are positioned.
 
-***
+</details>
 
-#### Deform Settings
+<details>
 
-Controls how the point data is transformed along the path.
+<summary><strong>MaxBoundsOffset</strong><br><em>Offset applied to the maximum bounds.</em></summary>
 
-**Bounds Source**
+Adjusts the maximum bounds of the point before sampling. Can be used to fine-tune how points are positioned.
 
-_Specifies which bounds of the input points are used for deformation._
+</details>
 
-* **Scaled Bounds**: Use scaled bounds of the point
-* **Density Bounds**: Use density-scaled bounds (includes steepness)
-* **Bounds**: Use unscaled bounds
-* **Center**: Use a tiny size 1 box centered on the point
+<details>
 
-**Min Bounds Offset**
+<summary><strong>AxisOrder</strong><br><em>Axis transformation order. [Main Axis] > [Cross Axis] > [...]</em></summary>
 
-_Offsets the minimum bounds used for deformation._
+Defines the order in which axes are transformed during deformation. For example, XYZ means main axis is applied first, then cross axis, etc.
 
-* Adjusts how much space is considered when sampling along the path
-* Values are added to the point's minimum bounds
+</details>
 
-**Max Bounds Offset**
+<details>
 
-_Offsets the maximum bounds used for deformation._
+<summary><strong>bPreserveOriginalInputScale</strong><br><em>When enabled, preserve the original scale of input points.</em></summary>
 
-* Adjusts how much space is considered when sampling along the path
-* Values are added to the point's maximum bounds
+When enabled, the original scale of the input points is preserved during transformation.
 
-**Axis Order**
+</details>
 
-_Specifies the order in which axes are processed._
+<details>
 
-* Controls how transformations are applied (e.g., X, Y, Z)
-* Affects how scaling and rotation are calculated
+<summary><strong>bPreserveAspectRatio</strong><br><em>When enabled, maintain aspect ratio during scaling.</em></summary>
 
-**Transform Scale**
+When enabled, ensures that the point's scale maintains its original proportions when deforming along the path.
 
-_Controls which components of the transform scale are applied._
+</details>
 
-* **X**: Apply X component of scale
-* **Y**: Apply Y component of scale
-* **Z**: Apply Z component of scale
-* **All**: Apply all components of scale
+<details>
 
-**Preserve Original Input Scale**
+<summary><strong>FlattenAxis</strong><br><em>Which axis to flatten (set to zero).</em></summary>
 
-_When enabled, preserves the original point scale during transformation._
+Sets one of the axes to zero, effectively flattening the point along that axis.
 
-* If disabled, the point's original scale is replaced by the path's sampled scale
+</details>
 
-**Preserve Aspect Ratio**
+<details>
 
-_When enabled, maintains the relative proportions of the point's scale._
+<summary><strong>bWrapClosedLoops</strong><br><em>When enabled, wrap closed loops when mapping points.</em></summary>
 
-* Ensures that scaling doesn't distort the shape of the point
+When enabled, allows points to wrap around closed paths when mapping them along the path.
 
-**Flatten Axis**
+</details>
 
-_Specifies which axis to flatten the point along._
+<details>
 
-* **None**: No flattening
-* **X**: Flatten along X axis
-* **Y**: Flatten along Y axis
-* **Z**: Flatten along Z axis
+<summary><strong>MainAxisSettings</strong><br><em>Main axis is "along the spline".</em></summary>
 
-***
+Controls how the main axis of the point is aligned with the path direction. Includes settings for scaling and offset.
 
-#### Main Axis Settings
+</details>
 
-Controls how points are positioned along the main axis of the path.
+<details>
 
-**Wrap Closed Loops**
+<summary><strong>bDoTwist</strong><br><em>When enabled, apply twist along the path.</em></summary>
 
-_When enabled, allows points to wrap around closed paths._
+When enabled, applies a rotational twist to points as they move along the path.
 
-* If disabled, points will not loop back on themselves when the path is closed
+</details>
 
-**Main Axis Settings**
+<details>
 
-_Configures how the main axis of the path is used for deformation._
+<summary><strong>TwistSettings</strong><br><em>Twist amount settings for the path.</em></summary>
 
-* Controls how points are distributed along the length of the path
-* Uses alpha values to determine position along the path
+Defines how much twist is applied along the path. Includes start and end values that can vary per point.
 
-**Do Twist**
+</details>
 
-_When enabled, applies twisting rotation along the path._
+<details>
 
-* Rotates points around the path's direction as they move along it
+<summary><strong>TargetMaskSettings</strong><br><em>Used to shrink the scope per-target, to distribute points only on a subselection.</em></summary>
 
-**Twist Settings**
+Allows you to define a range along the path where points are distributed. This is useful for applying deformation only to a section of the path.
 
-_Configures the twist transformation parameters._
+</details>
 
-* Controls how much and how the twist is applied along the path
-* Uses alpha values to determine twist amount
+#### Usage Example
 
-**Target Mask Settings**
+You have a set of trees and want to place them along a winding river path. Use this node to deform each tree point so it follows the river's curve, with rotation aligned to the path direction and scale adjusted based on distance along the path.
 
-_Specifies a subselection of the path to use for deformation._
+#### Notes
 
-* Allows you to limit where along the path points are placed
-* Useful for distributing points only on a portion of the path
-
-### Notes
-
-* This node can be used to create complex procedural effects by combining multiple paths and point data
-* The "Data Matching" feature allows for fine-grained control over which paths affect which points
-* When using closed loops, consider enabling "Wrap Closed Loops" to ensure proper distribution
-* For best results with scaling, use consistent bounds across your input data
-* You can create interesting effects by combining multiple Copy to Path nodes with different settings
+* The node works best when input points are close to the paths in terms of spatial proximity.
+* For closed loops, ensure that `bWrapClosedLoops` is enabled if you want seamless deformation.
+* Use `TargetMaskSettings` to apply deformation only to a portion of a path for more nuanced control.

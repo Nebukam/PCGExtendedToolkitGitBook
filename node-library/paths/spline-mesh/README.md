@@ -6,226 +6,217 @@ icon: circle
 # Spline Mesh
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Create spline mesh components from paths.
 
-### Overview
+#### How It Works
 
-This node converts path data into spline mesh components, allowing you to generate 3D geometry along paths. It's particularly useful for creating roads, rivers, fences, or any linear structure that should follow a defined route. The node supports multiple mesh assets and can apply scaling, fitting, and material distribution based on your settings.
+This node processes each path by breaking it into segments and generating spline mesh components along those segments. For each segment, it:
 
-{% hint style="info" %}
-This node requires input paths to be processed by a path-finding or path-generation system before it can create spline meshes.
-{% endhint %}
+1. Selects an asset from the configured collection (or uses a default descriptor)
+2. Applies scaling and orientation based on the path's shape
+3. Sets up spline mesh component properties like material, up vector, and transform
+4. Optionally outputs asset path or weight information as attributes
+
+It supports both uniform and distribution-based asset selection across paths. If enabled, it can scale components to fit within their bounds or apply custom tangents for smoother curves.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Collection Source</strong><br><em>How to source the collection of assets used for spline meshes.</em></summary>
 
-* **Main Input**: Paths (Point data with path information)
-* **Optional Point Filters**: Additional filters to apply to points before processing
+Controls whether to use a predefined asset collection or an attribute-based collection.
+
+**Values**:
+
+* **Asset**: Use a predefined mesh collection asset.
+* **Attribute Set**: Use a collection defined by point attributes.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Asset Collection</strong><br><em>The mesh collection asset to use when Collection Source is set to Asset.</em></summary>
 
-* **Main Output**: Point data with modified or added spline mesh components
-* **Optional Asset Path Attribute**: Writes the asset path used for each segment
-* **Optional Weight Attribute**: Writes the weight assigned to each segment
+The soft object reference to the mesh collection used for spline mesh generation. Only visible when Collection Source is Asset.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how paths are converted into spline meshes, including mesh selection, distribution, and component properties.
+<summary><strong>Attribute Set Details</strong><br><em>Settings for how to read a roaming asset collection from point attributes.</em></summary>
 
-***
+Controls how to extract or define a mesh collection from point attributes. Only visible when Collection Source is AttributeSet.
 
-#### General Settings
+</details>
 
-Controls the source of mesh assets and general behavior for spline mesh creation.
+<details>
 
-**Collection Source**
+<summary><strong>Distribution Settings</strong><br><em>Distribution details</em></summary>
 
-_Selects where to get the mesh assets from._
+Controls how assets are selected across paths, using distribution logic for randomization or weighting.
 
-* Determines whether to use a static asset collection or read from an attribute.
-* **Asset**: Use a single mesh collection asset.
-* **Attribute Set**: Read mesh collections from point attributes.
+</details>
 
-**Asset Collection**
+<details>
 
-_The mesh collection asset to use when "Collection Source" is set to "Asset"._
+<summary><strong>Material Distribution Settings</strong><br><em>How should materials be distributed and picked.</em></summary>
 
-* Specifies the collection of meshes that will be used for spline mesh generation.
-* Each entry in the collection can have different materials and properties.
+Controls how materials are assigned to spline mesh components, including distribution methods and picking logic.
 
-**Attribute Set Details**
+</details>
 
-_Configuration for reading mesh collections from point attributes._
+<details>
 
-* When "Collection Source" is set to "Attribute Set", this defines how to read the collection from a point attribute.
-* Allows dynamic selection of mesh collections per point.
+<summary><strong>Tangents</strong><br><em>Per-point tangent settings. Can't be set if the spline is linear.</em></summary>
 
-**Distribution Settings**
+Defines how tangents are calculated or read from attributes for smoother curve orientation. Only available when the path is not linear.
 
-_How to distribute assets along the path._
+</details>
 
-* Controls how many instances of each asset are created and how they're spaced.
-* Supports randomization, uniform distribution, and weighted selection.
+<details>
 
-**Material Distribution Settings**
+<summary><strong>Mutation Details</strong><br><em>Push details</em></summary>
 
-_How materials are applied to spline meshes._
+Controls how the spline mesh components are expanded or modified during creation, such as scaling or offsetting.
 
-* Defines how materials from the mesh collection are selected and applied.
-* Can use weights or random selection for material variation.
+</details>
 
-***
+<details>
 
-#### Tangent Settings
+<summary><strong>Spline Mesh Up Mode</strong><br><em>How to determine the up vector for spline meshes.</em></summary>
 
-Controls how tangents are calculated and used for spline mesh orientation.
+Determines how the up vector of each spline mesh is calculated.
 
-**Tangents**
+**Values**:
 
-_Configuration for tangent handling._
+* **Constant**: Use a fixed vector.
+* **Attribute**: Read up vector from a point attribute.
+* **From Tangents (Gimbal fix)**: Automatically compute an up vector based on tangents to avoid gimbal lock.
 
-* Defines how to compute or read tangents for each point along the path.
-* Tangents affect the direction and orientation of the spline mesh components.
+</details>
 
-**Scale To Fit**
+<details>
 
-_Scaling behavior to fit the spline mesh to the path._
+<summary><strong>Spline Mesh Up Vector (Attr)</strong><br><em>Per-point attribute value for up vector when Up Mode is Attribute.</em></summary>
 
-* Controls whether and how to scale the mesh to match the path's length.
-* **None**: No scaling applied.
-* **Uniform**: Uniform scaling along the entire path.
-* **Individual**: Per-segment scaling.
+The name of the point attribute that contains the up vector values. Only visible when Spline Mesh Up Mode is set to Attribute.
 
-**Justification**
+</details>
 
-_How to align the spline mesh components along the path._
+<details>
 
-* Determines how the mesh is positioned relative to the path points.
-* Useful for creating consistent spacing or alignment across segments.
+<summary><strong>Spline Mesh Up Vector</strong><br><em>Fixed up vector when Up Mode is Constant.</em></summary>
 
-**Mutation Details**
+The fixed vector used for the up direction of spline meshes. Only visible when Spline Mesh Up Mode is set to Constant.
 
-_Settings for modifying spline mesh properties during creation._
+</details>
 
-* Allows you to adjust expansion, rotation, and other transformations applied to each segment.
-* Can be used to add variation or offset components along the path.
+<details>
 
-***
+<summary><strong>Default Descriptor</strong><br><em>Default static mesh config applied to spline mesh components.</em></summary>
 
-#### Output Settings
+Defines default settings for spline mesh components, such as material and transform properties.
 
-Controls how attributes are written and what data is output from the node.
+</details>
 
-**Asset Path Attribute Name**
+<details>
 
-_Name of the attribute to write asset paths to._
+<summary><strong>Force Default Descriptor</strong><br><em>If enabled, override collection settings with the default descriptor settings.</em></summary>
 
-* When enabled, this attribute will contain the path to the mesh used for each segment.
-* Useful for debugging or referencing the assets later in the graph.
+When enabled, forces all spline mesh components to use the values defined in Default Descriptor, ignoring any settings from the collection.
 
-**Tagging Details**
+</details>
 
-_Configuration for tagging generated components._
+<details>
 
-* Allows you to assign tags to the created spline mesh components.
-* Tags can be used for filtering or identifying specific parts of your scene.
+<summary><strong>Target Actor</strong><br><em>The actor to which generated components are added.</em></summary>
 
-**Weight To Attribute**
+The target actor where the spline mesh components will be created. If left empty, components are added to the default world or a parent actor.
 
-_Output weight values as an attribute._
+</details>
 
-* When enabled, writes the weight assigned to each segment to an attribute.
-* **No Output**: Do not output weight.
-* **Raw**: Output raw integer weights.
-* **Normalized**: Output normalized weights (Weight / WeightSum).
-* **Normalized (Inverted)**: Output one minus normalized weight (1 - (Weight / WeightSum)).
-* **Normalized to Density**: Same as Normalized, but with a different interpretation for density-based workflows.
-* **Normalized (Inverted) to Density**: Same as Normalized (Inverted), but with a different interpretation for density-based workflows.
+<details>
 
-**Weight Attribute Name**
+<summary><strong>Post Process Function Names</strong><br><em>Specify a list of functions to be called on the target actor after spline mesh creation.</em></summary>
 
-_Name of the attribute to write weights to._
+A list of function names to call on the target actor after components are created. Functions must be parameter-less and have the "CallInEditor" flag enabled.
 
-* Specifies the name of the output attribute when weight output is enabled.
-* Only visible when "Weight To Attribute" is set to a value other than "No Output".
+</details>
 
-***
+<details>
 
-#### Spline Mesh Settings
+<summary><strong>Scale To Fit</strong><br><em>If enabled, will break scaling interpolation across the spline.</em></summary>
 
-Controls how spline mesh components are created and oriented.
+When enabled, scales spline mesh components to fit within their bounds along the path, rather than interpolating smoothly.
 
-**Spline Mesh Up Mode**
+</details>
 
-_How to determine the up vector for each spline mesh._
+<details>
 
-* **Constant**: Use a fixed vector for all meshes.
-* **Attribute**: Read the up vector from a point attribute.
-* **From Tangents (Gimbal fix)**: Automatically compute an up vector based on tangents to prevent gimbal lock.
+<summary><strong>Justification</strong><br><em>How to align or justify components along the path.</em></summary>
 
-**Spline Mesh Up Vector Attribute**
+Controls how components are aligned or positioned along the path, such as centering or offsetting.
 
-_Point attribute to read the up vector from._
+</details>
 
-* Only visible when "Spline Mesh Up Mode" is set to "Attribute".
-* Specifies which point attribute contains the up vector data.
+<details>
 
-**Spline Mesh Up Vector**
+<summary><strong>Asset Path Attribute Name</strong><br><em>The name of the attribute to write asset path to.</em></summary>
 
-_Fixed up vector for all spline meshes._
+The name of the point attribute where the selected asset's path will be written. Only used when outputting asset paths.
 
-* Only visible when "Spline Mesh Up Mode" is set to "Constant".
-* Defines the fixed vector used as the up direction for all generated components.
+</details>
 
-***
+<details>
 
-#### Component Settings
+<summary><strong>Tagging Details</strong><br><em>Tagging details</em></summary>
 
-Controls how the final spline mesh components are configured and rendered.
+Controls how tags are applied to generated components, for filtering or selection later in the graph.
 
-**Default Descriptor**
+</details>
 
-_Default settings for static mesh components._
+<details>
 
-* Specifies default properties for all created spline mesh components.
-* Includes visibility, draw distance, lighting settings, etc.
+<summary><strong>Weight To Attribute</strong><br><em>Update point scale so staged asset fits within its bounds</em></summary>
 
-**Force Default Descriptor**
+Controls whether to output weight information as an attribute on points. Weight can be raw, normalized, or inverted.
 
-_Override collection settings with default descriptor._
+**Values**:
 
-* When enabled, forces all components to use the default descriptor settings regardless of collection settings.
-* Useful when you want consistent component properties across all generated meshes.
+* **No Output**: Do not write weight.
+* **Raw**: Write raw integer weights.
+* **Normalized**: Write normalized weights (weight / total weight).
+* **Normalized (Inverted)**: Write 1 - (weight / total weight).
+* **Normalized to Density**: Same as Normalized.
+* **Normalized (Inverted) to Density**: Same as Normalized (Inverted).
 
-**Property Override Descriptions**
+</details>
 
-_List of property overrides for spline mesh components._
+<details>
 
-* Allows you to override specific properties on each component.
-* Can be used to customize individual aspects like materials or lighting.
+<summary><strong>Weight Attribute Name</strong><br><em>The name of the attribute to write asset weight to.</em></summary>
 
-**Target Actor**
+The name of the point attribute where the selected asset's weight will be written. Only visible when Weight To Attribute is not No Output.
 
-_Target actor to call functions on after creation._
+</details>
 
-* Specifies an actor that will have its functions called after spline mesh creation.
-* Useful for post-processing or custom logic after generation.
+#### Usage Example
 
-**Post Process Function Names**
+1. Create a path using a Path Generator node.
+2. Connect it to a Path : Spline Mesh node.
+3. Set up a mesh collection with various road or fence assets.
+4. Configure the node to use the collection and specify how components should be distributed along the path.
+5. Optionally, set a Target Actor to place components in a specific actor.
 
-_List of function names to call on the target actor._
+This setup can generate realistic roads or fences that follow terrain paths.
 
-* Only visible when a "Target Actor" is specified.
-* Defines which functions (with "CallInEditor" flag) should be invoked on the target actor.
+#### Notes
+
+* Spline mesh components are created using Unreal's USplineMeshComponent.
+* Tangents are only used if the path is not linear.
+* The node supports both uniform and distribution-based asset selection.
+* When using Attribute Set, ensure point attributes are properly defined before this node runs.

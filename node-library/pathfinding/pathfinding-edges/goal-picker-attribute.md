@@ -6,77 +6,96 @@ icon: sliders
 # Goal Picker : Attribute
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Selects goal indices from attributes on the input data.
+> Selects target locations for pathfinding based on point attributes.
 
-### Overview
+#### Overview
 
-This node lets you pick one or more goal indices from attributes in your input data. It's useful when you want to define goals based on pre-existing data, such as selecting specific points or areas from a dataset rather than using random or calculated values. You can choose either a single attribute or multiple attributes to determine the goal indices.
+The Index Attribute node chooses which targets (goals) each starting point (seed) should consider in a pathfinding setup. It reads integer values from point properties and uses them as references to select specific goals. This allows you to create dynamic routing where different start points are directed toward different destinations depending on their unique characteristics.
+
+This node works by looking at attribute data on seed points and interpreting those values as indexes into a list of possible targets. You can configure it to use either one attribute or multiple attributes to determine which goals to select.
 
 {% hint style="info" %}
-This node works with point data and requires that your input data contains valid index attributes.
+Connects to **Goal Picker** nodes in the pathfinding graph.
 {% endhint %}
 
+#### How It Works
+
+The node reads integer values from point attributes and uses them as indexes to pick targets from a list of available goals. For each starting point:
+
+1. If set to **Single Attribute**, it reads one attribute value from the point
+2. If set to **Multiple Attributes**, it reads multiple attribute values from the point
+3. These values are used as indexes to select goals from the goal list
+4. The selected indexes can be handled in different ways based on the index safety setting:
+   * **Ignore**: Skip invalid indexes
+   * **Tile**: Wrap around using modulo arithmetic
+   * **Clamp**: Limit invalid indexes to valid range
+   * **Yoyo**: Bounce back and forth for invalid indexes
+5. When using multiple attributes, it can return a list of target indexes
+
+#### Inputs
+
+This node requires:
+
+* Seed data (points) with attributes containing integer values
+* Goal data (points) that will be selected as targets
+
+#### Outputs
+
+This node modifies how pathfinding chooses which goals to consider for each seed point.
+
+#### Configuration
+
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>GoalCount</strong><br><em>Whether to pick a single or multiple attributes.</em></summary>
 
-* **Seeds** (optional): Points used as starting locations for pathfinding.
-* **Goals**: Points that serve as destinations for pathfinding.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Output**: Modified data with goal indices assigned based on attribute values.
-
-</details>
-
-### Properties Overview
-
-Controls how the node selects and uses goal indices from attributes.
-
-***
-
-#### General
-
-Determines whether to select a single or multiple goal indices.
-
-**Goal Count**
-
-_Selects whether to use a single or multiple attributes to define goal indices._
-
-* When set to **Single Attribute**, the node picks one goal index per seed using a single attribute.
-* When set to **Multiple Attributes**, the node picks multiple goal indices per seed using several attributes.
+Controls whether the node uses one attribute or multiple attributes to determine goal indexes.
 
 **Values**:
 
-* **Single Attribute**: Selects one goal index from a single attribute.
-* **Multiple Attributes**: Selects multiple goal indices from multiple attributes.
+* **Single Attribute**: Use a single attribute to determine one goal index
+* **Multiple Attributes**: Use multiple attributes to determine multiple goal indices
 
-**Single Selector**
+</details>
 
-_Selects the attribute used when "Goal Count" is set to "Single Attribute"._
+<details>
 
-* This attribute must contain integer values representing valid indices into your goals data.
-* The node will use these values to determine which goal point to select for each seed.
+<summary><strong>SingleSelector</strong><br><em>Attribute to read for single goal selection.</em></summary>
 
-**Comma Separated Names**
+The attribute from seed points that contains the integer index for selecting a single goal.
 
-_Used to quickly define multiple attributes when "Goal Count" is set to "Multiple Attributes"._
+</details>
 
-* Enter a comma-separated list of attribute names (e.g., `GoalA,GoalB,GoalC`).
-* These will be added as selectors in the **Attribute Selectors** list below.
+<details>
 
-**Attribute Selectors**
+<summary><strong>CommaSeparatedNames</strong><br><em>A list of attribute names separated by a comma, for easy overrides. They will be added to the in-place array of selectors.</em></summary>
 
-_List of attributes used when "Goal Count" is set to "Multiple Attributes"._
+A comma-separated list of attribute names to use when selecting multiple goals. These attributes must contain integer values that represent goal indexes.
 
-* Each attribute must contain integer values representing valid indices into your goals data.
-* The node will use these values to determine which goal points to select for each seed.
+</details>
+
+<details>
+
+<summary><strong>AttributeSelectors</strong><br><em>List of attribute selectors for multiple goal selection.</em></summary>
+
+The list of attributes from seed points that contain integer values used to determine multiple goal indexes.
+
+</details>
+
+#### Usage Example
+
+Use this node when you want to route different start points to different targets based on their properties. For example:
+
+* Assign different enemy types (seeds) to specific target locations (goals) using an attribute like "TargetID"
+* Route vehicles to different destinations based on their cargo type or destination attribute
+* Create dynamic goal selection where each seed chooses a goal based on its own unique property
+
+#### Notes
+
+* The node assumes integer attributes contain valid indexes into the goal dataset
+* Out-of-bounds indexes are handled according to the **Index Safety** setting
+* When using multiple attributes, ensure all attributes have matching data types and ranges
+* This node is typically used as part of a larger pathfinding setup with Goal Picker nodes

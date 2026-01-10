@@ -5,104 +5,99 @@ icon: circle-dashed
 # Noise : FBM
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates fractal Brownian motion noise with multiple variants including standard, ridged, billow, hybrid, and warped.
+> Generates fractal Brownian motion noise with multiple variants including ridged, billow, and warped.
 
-### Overview
+#### How It Works
 
-This factory generates procedural noise patterns using Fractal Brownian Motion (fBm) techniques. It supports several noise variants that produce different visual characteristics, making it useful for terrain generation, displacement effects, surface variations, and other procedural content needs.
+This subnode creates procedural noise by layering multiple noise samples at increasing frequencies and decreasing amplitudes. Each layer is called an octave, and the combination of these octaves produces a complex, natural-looking pattern.
 
-{% hint style="info" %}
-Connects to **Noise** input pins on nodes that require noise sampling.
-{% endhint %}
+The process starts with a base noise function (typically Perlin or Simplex) and then iteratively adds higher-frequency, lower-amplitude variations to create the fractal effect. The parameters control how many layers are combined, how quickly the frequency increases, and how much each layer contributes.
 
-### How It Works
+Different variants modify how these octaves are combined:
 
-Fractal Brownian Motion builds complex noise patterns by combining multiple layers (octaves) of noise at different frequencies and amplitudes. Each octave contributes to the final result, creating natural-looking variations and details.
+* **Standard**: Basic additive combination of noise values.
+* **Ridged**: Inverts the noise values and applies a ridge offset to create sharp peaks.
+* **Billow**: Takes absolute values of noise, creating smoother, cloud-like patterns.
+* **Hybrid**: Combines standard and billow methods for mixed results.
+* **Warped**: Distorts the input coordinates before sampling noise, creating spatial warping effects.
 
-The factory supports five distinct variants:
+#### Configuration
 
-* **Standard fBm**: Classic fractal noise
-* **Ridged Multifractal**: Creates sharp ridges and peaks
-* **Billow (Turbulence)**: Produces turbulent, swirling patterns
-* **Hybrid Multifractal**: Combines ridge and fractal characteristics
-* **Domain Warped**: Applies warping to the input coordinates before noise evaluation
+<details>
 
-### Configuration
+<summary><strong>Octaves</strong><br><em>Number of noise layers to combine.</em></summary>
 
-***
-
-#### General Settings
-
-**Octaves**
-
-_The number of noise layers to combine._
-
-More octaves create more detailed and complex patterns. Typical values range from 1 to 8, with higher numbers producing more intricate results.
-
-**Lacunarity**
-
-_The frequency multiplier between octaves._
-
-Controls how quickly the pattern changes at each octave level. Higher values (2.0–4.0) create more rapid transitions between noise layers. Default is 2.0.
-
-**Persistence**
-
-_The amplitude multiplier between octaves._
-
-Determines how much each successive octave contributes to the final result. Lower values (0.0–1.0) make higher octaves less influential, resulting in smoother patterns. Default is 0.5.
-
-**Variant**
-
-_The type of fractal noise to generate._
+Controls how many times the noise is sampled at different frequencies. More octaves create more detailed patterns but may increase computation cost.
 
 **Values**:
 
-* **Standard fBm**: Classic fractal Brownian motion
-* **Ridged Multifractal**: Sharp ridges and peaks
-* **Billow (Turbulence)**: Turbulent, swirling patterns
-* **Hybrid Multifractal**: Mix of ridge and fractal characteristics
-* **Domain Warped**: Warps input coordinates before noise evaluation
+* **1 to 16**: Number of noise layers. Higher values produce more complex patterns.
 
-**Ridge Offset**
+</details>
 
-_The offset applied to the ridged variant._
+<details>
 
-Only active when **Variant** is set to **Ridged Multifractal**. Adjusts the sharpness of ridges. Values typically range from 0.0 to 2.0.
+<summary><strong>Lacunarity</strong><br><em>Frequency multiplier between octaves.</em></summary>
 
-**Warp Strength**
+Determines how quickly the frequency increases with each octave. A value of 2 means each octave has twice the frequency of the previous one.
 
-_The amount of warping applied in the warped variant._
+**Values**:
 
-Only active when **Variant** is set to **Domain Warped**. Controls how much the input coordinates are distorted before noise evaluation. Values typically range from 0.0 to 2.0.
+* **1.0 to 4.0**: Frequency growth factor per octave. Higher values create more fine details.
 
-### Usage Example
+</details>
 
-Use this factory to create terrain heightmaps or surface displacement patterns:
+<details>
 
-1. Place a "Noise : FBM" node in your graph
-2. Connect it to a **Noise** pin on a node like "Point Noise" or "Mesh Noise"
-3. Set **Octaves** to 6 for detailed terrain features
-4. Choose **Ridged Multifractal** for mountain-like peaks
-5. Adjust **Lacunarity** to 2.2 and **Persistence** to 0.4 for natural-looking variation
+<summary><strong>Persistence</strong><br><em>Amplitude multiplier between octaves.</em></summary>
 
-This setup will generate a noise pattern suitable for creating rugged, mountainous terrain with sharp ridges and smooth transitions.
+Controls how much each octave contributes to the final result. Lower values make higher-frequency layers less influential.
 
-### Notes
+**Values**:
 
-* Higher octave counts increase computation time but add more detail
-* The **Warped** variant can create very organic-looking patterns by distorting the input space
-* Combine multiple FBM factories with different settings to layer complex noise effects
-* Use **Blend Mode** and **Weight Factor** when stacking multiple noise sources for fine control over their combined effect
+* **0.0 to 1.0**: Amplitude decay factor per octave. Lower values produce smoother results.
 
-### Inputs
+</details>
 
-* **Noise** (Required): Input noise source used for sampling.
+<details>
 
-### Outputs
+<summary><strong>Variant</strong><br><em>FBM variant.</em></summary>
 
-* **Noise**: Output noise pattern generated by the factory.
+Selects the method used to combine noise layers and modify their behavior.
+
+**Values**:
+
+* **Standard fBm**: Basic additive combination.
+* **Ridged Multifractal**: Sharp ridges in the pattern.
+* **Billow (Turbulence)**: Smooth, cloud-like appearance.
+* **Hybrid Multifractal**: Mix of standard and billow.
+* **Domain Warped**: Applies spatial distortion before noise sampling.
+
+</details>
+
+<details>
+
+<summary><strong>RidgeOffset</strong><br><em>Ridge offset for ridged variant.</em></summary>
+
+Adjusts the shape of ridges when using the Ridged variant. Affects how sharp or smooth the peaks appear.
+
+**Values**:
+
+* **0.0 to 2.0**: Ridge offset value. Higher values create sharper ridges.
+
+</details>
+
+<details>
+
+<summary><strong>WarpStrength</strong><br><em>Warp strength for warped variant.</em></summary>
+
+Controls how much the input coordinates are distorted when using the Warped variant. Affects the spatial warping effect.
+
+**Values**:
+
+* **0.0 to 2.0**: Strength of coordinate distortion. Higher values create more dramatic warping.
+
+</details>

@@ -6,26 +6,37 @@ icon: circle
 # Reverse Point Order
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Reverse the order of points or change winding of paths.
+> Reverse the sequence of points or adjust the winding direction of paths.
 
-### Overview
+#### Overview
 
-This node allows you to reverse the order of points in a point set or modify the winding direction of paths. It's particularly useful when you need to flip the orientation of shapes, correct winding issues, or reorder points for downstream processing. You can choose between reversing the point order directly, sorting-based reversal, or changing the winding direction of closed paths.
+The Reverse Order node lets you change how points are arranged in your data. You can reverse their order or adjust the winding of paths. This is helpful when you need consistent point sequencing for mesh creation, path following, or other procedural workflows that depend on ordered data.
+
+It works with both point data and path data. For points, it simply changes their sequence. For paths, it modifies how the points are oriented in 2D space to achieve a specific winding direction.
 
 {% hint style="info" %}
-Reversing winding is only meaningful for closed paths or polygons. For open paths, this setting has no effect.
+This node connects to **Point** and **Path** inputs and outputs modified point or path data.
 {% endhint %}
+
+#### How It Works
+
+The Reverse Order node changes point sequences based on the method you choose:
+
+* **None**: No changes are made. Points stay in their original order.
+* **Sorting Rules**: Points are reordered using a sorting rule, like arranging them from low to high along an axis. This reorders all points according to that rule.
+* **Winding**: For paths, this adjusts the direction the points follow in 2D space. It calculates how the path is oriented on a flat surface and then reverses the point order so it matches your desired winding (either clockwise or counter-clockwise).
+
+You can also mark points or paths that were changed, which helps with debugging or applying conditions later in your workflow.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Default Input** (Required): Points or paths to reverse the order of.
+* **Points**: Accepts point data to reorder.
+* **Paths**: Accepts path data to adjust winding.
 
 </details>
 
@@ -33,120 +44,109 @@ Reversing winding is only meaningful for closed paths or polygons. For open path
 
 <summary>Outputs</summary>
 
-* **Default Output** (Required): Modified points or paths with reversed order or winding.
+* **Points**: Outputs the reordered point data.
+* **Paths**: Outputs paths with adjusted winding or reordered points.
 
 </details>
 
-### Properties Overview
+#### Configuration
 
-Controls how the node reverses point order or changes path winding.
+<details>
 
-***
+<summary><strong>Method</strong><br><em>How to reverse the point order.</em></summary>
 
-#### Method
+Controls how the reversal is performed.
 
-Specifies the method used to reverse or change the order of points.
+**Values**:
 
-**None**
+* **None**: No reversal.
+* **Sorting Rules**: Reverses based on sorting rules.
+* **Winding**: Changes the winding direction of paths.
 
-_Leaves points in their original order._
+</details>
 
-* No modification is made to the input data.
-* Useful as a bypass when you want to conditionally apply reversal logic.
+<details>
 
-**Sorting Rules**
+<summary><strong>Sort Direction</strong><br><em>Sort direction</em></summary>
 
-_Reverse points using the current sorting rules._
+Only used when "Sorting Rules" is selected. Determines whether to sort in ascending or descending order.
 
-* Reverses the order of points based on how they are currently sorted.
-* This is useful when you want to reverse a sort that was applied earlier in your graph.
+**Values**:
 
-**Winding**
+* **Ascending**: Sorts points from low to high.
+* **Descending**: Sorts points from high to low.
 
-_Change the winding direction of paths._
+</details>
 
-* Changes the orientation of closed paths (polygons) to match the selected winding.
-* Only affects closed paths; open paths are unaffected.
+<details>
 
-***
+<summary><strong>Winding</strong><br><em>Winding</em></summary>
 
-#### Sorting Direction
+Only used when "Winding" is selected. Sets the desired winding direction for paths.
 
-Controls whether the sorting is ascending or descending when using the "Sorting Rules" method.
+**Values**:
 
-**Ascending**
+* **Clockwise**: Points are ordered clockwise.
+* **Counter Clockwise**: Points are ordered counter-clockwise.
 
-_Sorts points in ascending order before reversing._
+</details>
 
-* Points are sorted from lowest to highest values, then reversed.
-* Useful for creating ordered sequences that are then flipped.
+<details>
 
-**Descending**
+<summary><strong>Projection Details</strong><br><em>Projection settings. Winding is computed on a 2D plane.</em></summary>
 
-_Sorts points in descending order before reversing._
+Only used when "Winding" is selected. Defines how the 2D projection of the path is calculated for winding determination.
 
-* Points are sorted from highest to lowest values, then reversed.
-* Can be used to create reverse-ordered sequences from sorted data.
+</details>
 
-***
+<details>
 
-#### Winding Settings
+<summary><strong>Swap Attributes Values</strong><br><em>...</em></summary>
 
-Controls how winding is calculated and applied when using the "Winding" method.
+Allows swapping values between two attributes on points, optionally multiplying one by -1.
 
-**Winding Direction**
+</details>
 
-_Selects the desired winding direction for closed paths._
+<details>
 
-* **Clockwise**: Reorients paths to have clockwise winding.
-* **Counter Clockwise**: Reorients paths to have counter-clockwise winding.
+<summary><strong>Tag If Reversed</strong><br><em>...</em></summary>
 
-**Projection Settings**
+When enabled, adds a tag to points or paths that were reversed.
 
-_Configures how 2D projection is performed when calculating winding._
+</details>
 
-* **Method**: Choose between using a normal vector or computing the best-fit plane for 2D projection.
-* **Projection Normal**: The normal vector used for 2D projection if using the "Normal" method.
-* **Local Normal**: If enabled, uses a local attribute to determine the projection normal.
-* **Local Normal Attribute**: The name of the attribute containing the local normal vector.
+<details>
 
-***
+<summary><strong>Is Reversed Tag</strong><br><em>...</em></summary>
 
-#### Tagging
+The name of the tag applied when a point or path is reversed.
 
-Adds tags to points or paths based on whether they were reversed.
+</details>
 
-**Tag Reversed Points**
+<details>
 
-_When enabled, adds a tag to points that were reversed._
+<summary><strong>Tag If Not Reversed</strong><br><em>...</em></summary>
 
-* Adds a boolean attribute to indicate if a point was part of a reversed path.
-* Useful for tracking which elements were modified.
+When enabled, adds a tag to points or paths that were not reversed.
 
-**Reversed Tag Name**
+</details>
 
-_Name of the tag added when a point is reversed._
+<details>
 
-* Default value is "Reversed".
-* You can customize this to fit your naming conventions.
+<summary><strong>Is Not Reversed Tag</strong><br><em>...</em></summary>
 
-**Tag Unreversed Points**
+The name of the tag applied when a point or path was not reversed.
 
-_When enabled, adds a tag to points that were not reversed._
+</details>
 
-* Adds a boolean attribute to indicate if a point was part of an unreversed path.
-* Useful for tracking which elements were not modified.
+#### Usage Example
 
-**Unreversed Tag Name**
+1. Take a set of points representing a polygon.
+2. Use the Reverse Order node with the "Winding" method to ensure that the points are ordered counter-clockwise.
+3. Connect the output to a mesh generation node to create a correctly oriented mesh.
 
-_Name of the tag added when a point is not reversed._
+#### Notes
 
-* Default value is "NotReversed".
-* You can customize this to fit your naming conventions.
-
-### Notes
-
-* Use this node after sorting or other operations where you need to reverse the resulting order.
-* When using "Winding", ensure that paths are closed polygons for meaningful results.
-* Tagging can help track which elements were modified, especially in complex procedural graphs.
-* Performance impact is minimal when using "None" or "Sorting Rules" methods, but "Winding" may require additional computation for projection calculations.
+* When using the Winding method, projection settings affect how the 2D plane is calculated for winding determination.
+* Tagging can help identify which data was modified during processing.
+* The node does not modify the original point positions; it only changes their order or winding direction.

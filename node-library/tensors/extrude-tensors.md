@@ -6,429 +6,567 @@ icon: scrubber
 # Extrude Tensors
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Extrude input points into paths along tensors.
+> Extrude input points into paths along tensor directions.
 
-### Overview
+#### How It Works
 
-This node takes input points and generates paths by following tensor data, which defines direction and magnitude for each point. It's useful for creating procedural structures like roads, rivers, or growth patterns that follow directional fields.
+This node takes each input point and uses tensor data to determine a direction for extrusion. Starting from each point, it moves step-by-step along that direction, building a path one point at a time. Each step involves sampling the tensor at the current position, applying rotation if needed, and advancing the path.
 
-The extrusion process starts from each input point and continues along the tensor directions until certain conditions are met, such as reaching a maximum length or hitting stop filters. You can control how many iterations are performed per point, whether to close loops, and how to handle path intersections.
+The process continues until one of several stopping conditions is met:
 
-{% hint style="info" %}
-This node requires tensor data to be present in your input points. The tensor data defines the direction and magnitude of each extrusion step.
-{% endhint %}
+* The path reaches its maximum length
+* The path contains too many points
+* A filter condition stops the extrusion
+* The path intersects with another path (if intersection detection is enabled)
+* The path closes back onto itself to form a loop
+
+If intersection detection is enabled, the node checks for collisions with other paths or ongoing extrusions. Depending on settings, it can either cut off the path at an intersection, merge paths together, or detect when a path loops back on itself.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Transform Rotation</strong><br><em>Whether to apply rotation transformations based on tensor data.</em></summary>
 
-* **In** (Point): Input points with tensor data
-* **Filters** (Optional Point Filter): Filters to stop extrusion when hit
+When enabled, each point along the path is rotated according to the tensor's orientation.
+
+**Values**:
+
+* **True**: Apply rotation.
+* **False**: Do not modify rotation.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Rotation Mode</strong><br><em>How to apply rotation during extrusion.</em></summary>
 
-* **Out** (Path): Generated paths from the extrusion process
+Controls how the rotation is applied based on the tensor data.
+
+**Values**:
+
+* **Absolute**: Use the tensor's absolute rotation.
+* **Relative**: Apply the tensor's rotation relative to the current orientation.
+* **Align**: Align the rotation with the movement direction along the tensor.
 
 </details>
 
-### Properties Overview
+<details>
 
-Settings are organized into categories that control rotation, iteration limits, intersection handling, and output behavior.
+<summary><strong>Align Axis</strong><br><em>The axis to align when using the "Align" rotation mode.</em></summary>
 
-***
+Defines which axis should be aligned with the extrusion direction.
 
-#### Transform Settings
+**Values**:
 
-Controls how the extrusion direction is applied to each point.
+* **Forward**: Align with X+.
+* **Backward**: Align with X-.
+* **Right**: Align with Y+.
+* **Left**: Align with Y-.
+* **Up**: Align with Z+.
+* **Down**: Align with Z-.
 
-**Transform Rotation**
+</details>
 
-_When enabled, rotates each point according to tensor data._
+<details>
 
-* Rotates each point along the tensor's direction vector
-* Applies to all points in the path
+<summary><strong>Use Per-point Iterations</strong><br><em>Whether to use a per-point attribute for max iterations.</em></summary>
 
-**Rotation Mode**
+When enabled, each point uses an attribute value to determine how many steps to take during extrusion.
 
-_Selects how rotation is calculated._
+**Values**:
 
-* **Absolute**: Uses the tensor's absolute rotation
-* **Relative**: Applies the tensor's rotation relative to the current orientation
-* **Align**: Aligns the tensor's direction with a specific axis (Forward, Right, Up, etc.)
+* **True**: Use a point attribute.
+* **False**: Use a global value.
 
-**Align Axis**
+</details>
 
-_Specifies which axis to align with the tensor direction._
+<details>
 
-* **Forward**: X+
-* **Backward**: X-
-* **Right**: Y+
-* **Left**: Y-
-* **Up**: Z+
-* **Down**: Z-
+<summary><strong>Per-point Iterations</strong><br><em>Attribute name for per-point max iterations.</em></summary>
 
-***
+The name of the attribute that stores the number of steps to take for each seed point.
 
-#### Iteration Limits
+</details>
 
-Controls how far each extrusion can go.
+<details>
 
-**Use Per-point Max Iterations**
+<summary><strong>Max Iterations</strong><br><em>Global maximum number of steps for extrusion.</em></summary>
 
-_When enabled, uses a point attribute to define maximum iterations._
+Sets a global limit on how many steps each extrusion can take. If per-point iterations are used, this acts as a cap.
 
-* Uses the value from the specified attribute as the max iterations per point
-* Acts as a clamping mechanism when combined with constant max iterations
+</details>
 
-**Per-point Iterations Attribute**
+<details>
 
-_Name of the attribute that defines max iterations per point._
+<summary><strong>Use Max from Points</strong><br><em>Whether to adjust max iteration based on values found on points.</em></summary>
 
-* Attribute must be an integer type
-* Overrides constant max iterations if enabled
+When enabled, the node uses the highest value found among all points as the maximum number of iterations. Use with caution.
 
-**Max Iterations**
+**Values**:
 
-_Maximum number of steps to take for each extrusion._
+* **True**: Adjust based on point data.
+* **False**: Use global setting.
 
-* Default is 1 iteration
-* Minimum value is 1
+</details>
 
-**Use Max from Points**
+<details>
 
-_When enabled, uses the maximum value found in point data as a clamping limit._
+<summary><strong>Tensor Sampling Settings</strong><br><em>Settings for how tensor sampling is applied.</em></summary>
 
-* Uses the highest value found among all input points
-* Applies only when per-point max iterations is enabled
+Controls how the tensor data is sampled and applied to each step in the extrusion process.
 
-**Use Max Length**
+</details>
 
-_When enabled, limits the total length of each extruded path._
+<details>
 
-* Stops extrusion once the path reaches the specified maximum length
+<summary><strong>Use Max Length</strong><br><em>Whether to limit the total length of generated paths.</em></summary>
 
-**Max Length Input Type**
+When enabled, paths are cut off once they exceed a certain length.
 
-_Specifies whether to use a constant or attribute for max length._
+**Values**:
 
-* **Constant**: Uses a fixed value
-* **Attribute**: Reads from an attribute on input points
+* **True**: Enforce maximum length.
+* **False**: No length limit.
 
-**Max Length Attribute**
+</details>
 
-_Name of the attribute that defines maximum path length._
+<details>
 
-* Only visible when using attribute input type
-* Should be a numeric attribute
+<summary><strong>Max Length Input</strong><br><em>How to define the max path length.</em></summary>
 
-**Max Length Value**
+Controls whether the max length is constant or taken from a point attribute.
 
-_Fixed maximum length for all paths._
+**Values**:
 
-* Only visible when using constant input type
-* Minimum value is 1
+* **Constant**: Use a fixed value.
+* **Attribute**: Use an attribute on points.
 
-**Use Max Points Count**
+</details>
 
-_When enabled, limits the number of points in each extruded path._
+<details>
 
-* Stops extrusion once the path reaches the specified point count
+<summary><strong>Max Length (Attr)</strong><br><em>Point attribute for maximum path length.</em></summary>
 
-**Max Points Count Input Type**
+The name of the attribute used to define the max path length when using an attribute input.
 
-_Specifies whether to use a constant or attribute for max points._
+</details>
 
-* **Constant**: Uses a fixed value
-* **Attribute**: Reads from an attribute on input points
+<details>
 
-**Max Points Count Attribute**
+<summary><strong>Max Length</strong><br><em>Fixed maximum path length.</em></summary>
 
-_Name of the attribute that defines maximum points per path._
+A constant value that limits how far each path can extend.
 
-* Only visible when using attribute input type
-* Should be an integer attribute
+</details>
 
-**Max Points Count Value**
+<details>
 
-_Fixed maximum point count for all paths._
+<summary><strong>Use Max Points Count</strong><br><em>Whether to limit the number of points in a generated path.</em></summary>
 
-* Only visible when using constant input type
-* Minimum value is 1
+When enabled, paths are cut off once they exceed a certain number of points.
 
-**Fuse Distance**
+**Values**:
 
-_Distance threshold for merging nearby points._
+* **True**: Enforce maximum point count.
+* **False**: No point count limit.
 
-* Points closer than this distance are considered the same
-* Default is Unreal's collocation tolerance
+</details>
 
-**Stop Condition Handling**
+<details>
 
-_How to treat points that hit a stop condition._
+<summary><strong>Max Points Count Input</strong><br><em>How to define the max point count.</em></summary>
 
-* **Exclude**: Ignores stopping samples and doesn't add them to the path
-* **Include**: Includes the stopping sample in the path
+Controls whether the max point count is constant or taken from a point attribute.
 
-**Allow Child Extrusions**
+**Values**:
 
-_When enabled, allows new extrusions to start from stopped points._
+* **Constant**: Use a fixed value.
+* **Attribute**: Use an attribute on points.
 
-* New paths can begin even if the seed point was initially stopped
-* Useful for creating branching structures
+</details>
 
-**Ignore Stopped Seeds**
+<details>
 
-_When enabled, skips points that are already stopped._
+<summary><strong>Max Points Count (Attr)</strong><br><em>Point attribute for maximum point count.</em></summary>
 
-* Points that immediately hit stop filters won't be extruded at all
-* Otherwise, they will transform until conditions change
+The name of the attribute used to define the max point count when using an attribute input.
 
-***
+</details>
 
-#### Intersections (External)
+<details>
 
-Controls how paths interact with external path data.
+<summary><strong>Max Points Count</strong><br><em>Fixed maximum number of points in a path.</em></summary>
 
-**Do External Path Intersections**
+A constant value that limits how many points each path can contain.
 
-_When enabled, tests for intersections with external paths._
+</details>
 
-* Checks if the extrusion path intersects with other paths in the graph
-* Useful for creating roads that avoid obstacles or rivers that follow terrain
+<details>
 
-**Ignore Intersection on Origin**
+<summary><strong>Fuse Distance</strong><br><em>Minimum distance between points before adding to path.</em></summary>
 
-_When enabled, treats the starting point as non-intersecting._
+Controls how close points must be before they are added to the path. Lower values create denser paths.
 
-* Prevents false positives when seeds are perfectly placed on existing paths
-* Only applies when external intersections are enabled
+</details>
 
-**External Path Intersections Settings**
+<details>
 
-_Configuration for detecting external path intersections._
+<summary><strong>Stop Condition Handling</strong><br><em>How to deal with points that are stopped.</em></summary>
 
-* Controls distance and tolerance for intersection detection
+Defines whether to include or exclude a point when it is stopped by a filter.
 
-***
+**Values**:
 
-#### Intersections (Self)
+* **Exclude**: Ignore the stopping sample and don't add it.
+* **Include**: Include the stopping sample in the path.
 
-Controls how paths interact with each other during extrusion.
+</details>
 
-**Do Self Path Intersections**
+<details>
 
-_When enabled, tests for intersections between active extrusions._
+<summary><strong>Allow Child Extrusions</strong><br><em>Whether to allow new extrusions to start from stopped points.</em></summary>
 
-* Prevents paths from crossing themselves or other active extrusions
-* Useful for creating organic-looking structures that don't overlap
+When enabled, a point that stops due to filters can still begin a new extrusion if it later meets conditions again.
 
-**Self Intersection Mode**
+**Values**:
 
-_How to sort paths when resolving self-intersections._
+* **True**: Allow child extrusions.
+* **False**: Stop all extrusions once stopped.
 
-* **Path Length**: Sort by path length first, then by sorting rules
-* **Sorting Only**: Use only sorting rules to determine priority
+</details>
 
-**Sort Direction**
+<details>
 
-_Direction to sort paths when resolving intersections._
+<summary><strong>Ignore Stopped Seeds</strong><br><em>If enabled, seeds that start stopped won't be extruded at all.</em></summary>
 
-* **Ascending**: Shorter paths are prioritized
-* **Descending**: Longer paths are prioritized
+When enabled, points that are already stopped by filters at the start will not begin any extrusion.
 
-**Self Path Intersections Settings**
+**Values**:
 
-_Configuration for detecting self-intersections._
+* **True**: Ignore stopped seeds.
+* **False**: Transform them until they start extruding.
 
-* Controls distance and tolerance for intersection detection
+</details>
 
-**Merge on Proximity**
+<details>
 
-_When enabled, merges paths that get close to each other._
+<summary><strong>Do External Path Intersections</strong><br><em>Whether to check for intersections with external paths.</em></summary>
 
-* Instead of stopping at intersections, paths can merge together
-* Creates more organic-looking structures
+When enabled, the node checks if a path intersects with other paths provided as input.
 
-**Self Intersection Priority**
+**Values**:
 
-_Controls which type of intersection is resolved first._
+* **True**: Enable intersection detection.
+* **False**: Disable intersection detection.
 
-* **Favor Crossing**: Resolves crossing detection before merging
-* **Favor Merge**: Resolves merging before crossing detection
+</details>
 
-**Proximity Segment Balance**
+<details>
 
-_Specifies where to place the merge point along a segment._
+<summary><strong>Ignore Intersection On Origin</strong><br><em>If enabled, if the origin location of the extrusion is detected as an intersection, it is not considered an intersection.</em></summary>
 
-* 0 = start of segment, 1 = end of segment
-* 0.5 = middle of segment
+When enabled, paths that start exactly on an external path are not treated as intersecting.
 
-**Merge Details Settings**
+**Values**:
 
-_Configuration for path merging behavior._
+* **True**: Ignore intersections at origin.
+* **False**: Treat all intersections as such.
 
-* Controls how close paths must be before merging occurs
+</details>
 
-***
+<details>
 
-#### Closing Loops
+<summary><strong>External Path Intersections</strong><br><em>Settings for detecting intersections with external paths.</em></summary>
 
-Controls automatic loop detection and closure.
+Controls how intersection detection is performed against external paths.
 
-**Detect Closed Loops**
+</details>
 
-_When enabled, attempts to close loops based on angle and proximity._
+<details>
 
-* Checks if the end point gets close to the start point
-* Useful for creating circular or closed structures
+<summary><strong>Do Self Path Intersections</strong><br><em>Whether to test for intersection between actively extruding paths.</em></summary>
 
-**Search Distance**
+When enabled, the node checks if new extrusions intersect with already active paths.
 
-_Distance threshold for detecting potential loop closures._
+**Values**:
 
-* Default is 100 units
-* Controls how far from the start point the end must be to consider closure
+* **True**: Enable self-intersection detection.
+* **False**: Disable self-intersection detection.
 
-**Search Angle**
+</details>
 
-_Angle threshold for detecting potential loop closures._
+<details>
 
-* Default is 11.25 degrees
-* Controls how aligned the direction must be for a loop to close
+<summary><strong>Self Intersection Mode</strong><br><em>How to order intersection checks.</em></summary>
 
-***
+Controls how paths are sorted when resolving intersections.
 
-#### Tagging & Forwarding
+**Values**:
 
-Controls which paths receive tags based on their behavior.
+* **Path Length**: Sort by path length, then by sorting rules.
+* **Sorting only**: Only use sorting rules.
 
-**Attributes To Path Tags**
+</details>
 
-_Specifies which attributes should be forwarded as path tags._
+<details>
 
-* Maps point attributes to path tags
-* Useful for passing metadata along with generated paths
+<summary><strong>Sort Direction</strong><br><em>Controls the order in which paths extrusion will be stopped when intersecting.</em></summary>
 
-**Tag If Child Extrusion**
+Determines whether to prioritize shorter or longer paths during intersection resolution.
 
-_When enabled, tags paths that started from stopped points._
+**Values**:
 
-* Creates a tag when a new extrusion begins from an already stopped seed
-* Useful for identifying branching behavior
+* **Ascending**: Prioritize shorter paths.
+* **Descending**: Prioritize longer paths.
 
-**Is Child Extrusion Tag**
+</details>
 
-_Name of the tag to apply to child extrusions._
+<details>
 
-* Default is "Child"
-* Applied when bTagIfChildExtrusion is enabled
+<summary><strong>Self Path Intersections</strong><br><em>Settings for detecting intersections between extruding paths.</em></summary>
 
-**Tag If Is Stopped By Filters**
+Controls how self-intersection detection is performed.
 
-_When enabled, tags paths that were stopped by filters._
+</details>
 
-* Creates a tag when a path hits a stop filter
-* Useful for identifying paths that couldn't continue
+<details>
 
-**Is Stopped By Filters Tag**
+<summary><strong>Merge On Proximity</strong><br><em>Whether to merge paths when they get close to each other.</em></summary>
 
-_Name of the tag to apply to paths stopped by filters._
+When enabled, paths that come near each other are merged instead of intersecting.
 
-* Default is "StoppedByFilters"
-* Applied when bTagIfIsStoppedByFilters is enabled
+**Values**:
 
-**Tag If Is Stopped By Intersection**
+* **True**: Enable merging.
+* **False**: Disable merging.
 
-_When enabled, tags paths that were stopped by intersections._
+</details>
 
-* Creates a tag when a path hits another path
-* Useful for identifying collision points
+<details>
 
-**Is Stopped By Intersection Tag**
+<summary><strong>├─ Priority</strong><br><em>Whether to resolve crossing or merge first.</em></summary>
 
-_Name of the tag to apply to paths stopped by intersections._
+Controls the priority when both crossing and merging are possible.
 
-* Default is "StoppedByPath"
-* Applied when bTagIfIsStoppedByIntersection is enabled
+**Values**:
 
-**Tag If Is Stopped By Self Intersection**
+* **Favor Crossing**: Resolve crossings before merges.
+* **Favor Merge**: Resolve merges before crossings.
 
-_When enabled, tags paths that were stopped by self-intersections._
+</details>
 
-* Creates a tag when a path crosses itself
-* Useful for identifying crossing points
+<details>
 
-**Is Stopped By Self Intersection Tag**
+<summary><strong>├─ Balance</strong><br><em>Which end of the extruded segment should be favored for merging.</em></summary>
 
-_Name of the tag to apply to paths stopped by self-intersections._
+Controls which side of a segment is used when merging paths.
 
-* Default is "SelfCrossed"
-* Applied when bTagIfIsStoppedBySelfIntersection is enabled
+**Values**: 0 to 1, where 0 = start and 1 = end.
 
-**Tag If Self Merged**
+</details>
 
-_When enabled, tags paths that were merged with others._
+<details>
 
-* Creates a tag when a path was merged with another during extrusion
-* Useful for identifying merged structures
+<summary><strong>└─ Settings</strong><br><em>Settings for path merging behavior.</em></summary>
 
-**Is Self Merged Tag**
+Controls how merging is performed when paths are close.
 
-_Name of the tag to apply to paths that were self-merged._
+</details>
 
-* Default is "SelfMerged"
-* Applied when bTagIfSelfMerged is enabled
+<details>
 
-**Tag If Is Follow Up**
+<summary><strong>Detect Closed Loops</strong><br><em>Whether the node should attempt to close loops based on angle and proximity.</em></summary>
 
-_When enabled, tags paths that are continuation of others._
+When enabled, paths that return near their starting point are closed into loops.
 
-* Creates a tag for paths that follow up from previous extrusions
-* Useful for identifying sequential structures
+**Values**:
 
-**Is Follow Up Tag**
+* **True**: Attempt to close loops.
+* **False**: Do not close loops.
 
-_Name of the tag to apply to follow-up paths._
+</details>
 
-* Default is "IsFollowUp"
-* Applied when bTagIfIsFollowUp is enabled
+<details>
 
-***
+<summary><strong>├─ Search Distance</strong><br><em>Range at which the first point must be located to check angle.</em></summary>
 
-#### Tensor Sampling Settings
+The distance within which a path can be considered for loop closure.
 
-Controls how tensor data is sampled during extrusion.
+</details>
 
-**Tensor Sampling Settings**
+<details>
 
-_Configuration for how tensors are applied during sampling._
+<summary><strong>└─ Search Angle</strong><br><em>Angle at which the loop will be closed, if within range.</em></summary>
 
-* Controls how tensor directions and magnitudes are used in the extrusion process
+The maximum angle allowed for a path to be considered a loop.
 
-***
+</details>
 
-#### Output Settings
+<details>
 
-Controls how generated paths are output.
+<summary><strong>Attributes To Path Tags</strong><br><em>TBD</em></summary>
 
-**Refresh Seed**
+Controls how attributes are converted into tags on paths.
 
-_When enabled, gives each new point a fresh seed value._
+</details>
 
-* Prevents points from inheriting the original seed
-* Useful for creating independent path structures
+<details>
 
-**Paths Output Settings**
+<summary><strong>Tag If Child Extrusion</strong><br><em>Whether to tag paths that are started from stopped points.</em></summary>
 
-_Configuration for how output paths are structured._
+When enabled, paths that begin after a stop condition is met are tagged.
 
-* Controls naming and organization of output paths
+**Values**:
+
+* **True**: Tag child extrusions.
+* **False**: Do not tag.
+
+</details>
+
+<details>
+
+<summary><strong>Is Child Extrusion Tag</strong><br><em>Tag name for child extrusions.</em></summary>
+
+The tag to apply to paths that are started from stopped points.
+
+</details>
+
+<details>
+
+<summary><strong>Tag If Is Stopped By Filters</strong><br><em>Whether to tag paths that are stopped by filters.</em></summary>
+
+When enabled, paths that stop due to filter conditions are tagged.
+
+**Values**:
+
+* **True**: Tag stopped-by-filters paths.
+* **False**: Do not tag.
+
+</details>
+
+<details>
+
+<summary><strong>Is Stopped By Filters Tag</strong><br><em>Tag name for paths stopped by filters.</em></summary>
+
+The tag to apply to paths that stop due to filter conditions.
+
+</details>
+
+<details>
+
+<summary><strong>Tag If Is Stopped By Intersection</strong><br><em>Whether to tag paths that are stopped by external intersections.</em></summary>
+
+When enabled, paths that stop due to intersecting with external paths are tagged.
+
+**Values**:
+
+* **True**: Tag intersection-stopped paths.
+* **False**: Do not tag.
+
+</details>
+
+<details>
+
+<summary><strong>Is Stopped By Intersection Tag</strong><br><em>Tag name for paths stopped by intersections.</em></summary>
+
+The tag to apply to paths that stop due to external intersections.
+
+</details>
+
+<details>
+
+<summary><strong>Tag If Is Stopped By Self Intersection</strong><br><em>Whether to tag paths that are stopped by self-intersections.</em></summary>
+
+When enabled, paths that stop due to intersecting with themselves are tagged.
+
+**Values**:
+
+* **True**: Tag self-intersection-stopped paths.
+* **False**: Do not tag.
+
+</details>
+
+<details>
+
+<summary><strong>Is Stopped By Self Intersection Tag</strong><br><em>Tag name for paths stopped by self-intersections.</em></summary>
+
+The tag to apply to paths that stop due to self-intersections.
+
+</details>
+
+<details>
+
+<summary><strong>Tag If Self Merged</strong><br><em>Whether to tag paths that are merged with others.</em></summary>
+
+When enabled, paths that were merged with others are tagged.
+
+**Values**:
+
+* **True**: Tag merged paths.
+* **False**: Do not tag.
+
+</details>
+
+<details>
+
+<summary><strong>Is Self Merged Tag</strong><br><em>Tag name for merged paths.</em></summary>
+
+The tag to apply to paths that were merged with others.
+
+</details>
+
+<details>
+
+<summary><strong>Tag If Is Follow Up</strong><br><em>Whether to tag paths that are follow-ups of other paths.</em></summary>
+
+When enabled, paths that continue from another path are tagged.
+
+**Values**:
+
+* **True**: Tag follow-up paths.
+* **False**: Do not tag.
+
+</details>
+
+<details>
+
+<summary><strong>Is Follow Up Tag</strong><br><em>Tag name for follow-up paths.</em></summary>
+
+The tag to apply to paths that continue from another path.
+
+</details>
+
+<details>
+
+<summary><strong>Refresh Seed</strong><br><em>Whether to give a new seed to the points. If disabled, they will inherit the original one.</em></summary>
+
+When enabled, each extruded point gets a new seed; otherwise, it inherits the original seed.
+
+**Values**:
+
+* **True**: Assign new seeds.
+* **False**: Inherit original seeds.
+
+</details>
+
+<details>
+
+<summary><strong>Paths Output Settings</strong><br><em>Settings for how output paths are structured.</em></summary>
+
+Controls how the resulting paths are organized and outputted.
+
+</details>
+
+#### Usage Example
+
+You have a set of points representing locations where rivers start. Each point has a tensor that defines the direction of water flow. Use this node to extrude each point along its tensor direction, creating river paths. Enable intersection detection to prevent rivers from crossing each other or merging into one another.
+
+#### Notes
+
+* The node can generate complex branching patterns when using filters and child extrusions.
+* Intersection handling is computationally expensive; use with care on large datasets.
+* Closed loop detection works best with low-angle paths that return near their starting point.

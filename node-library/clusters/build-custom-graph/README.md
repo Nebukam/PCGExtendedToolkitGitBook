@@ -6,29 +6,38 @@ icon: scrubber
 # Build Custom Graph
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Create clusters using custom blueprint objects.
 
-### Overview
+#### Overview
 
-This node allows you to generate custom graph-based clusters by defining your own graph structure through blueprint logic. Instead of using standard clustering algorithms, you define the relationships between points manually in a custom graph builder. This gives you complete control over how nodes are connected and how the resulting cluster is structured.
+The **Cluster : Build Custom Graph** subnode allows you to define and generate custom graph-based clusters using blueprint logic. Instead of relying on standard clustering algorithms, this subnode lets you write custom logic in Blueprint to determine how nodes and edges are structured within your clusters. It is particularly useful for creating complex or domain-specific graph structures that don't fit into standard PCG clustering methods.
 
-The node works by creating one or more graph settings objects that define individual graph structures. Each graph setting object can be configured to build its own unique cluster based on your custom logic. The builder receives input actors and processes them to generate point-based graphs with defined connections.
+This subnode connects to the **Builder** input pin of a processing node, which defines how the cluster data is generated and processed. It allows you to define custom behavior for building nodes and edges, setting attributes, and initializing point metadata based on external data or logic.
 
 {% hint style="info" %}
-This node requires a custom blueprint class derived from "Custom Graph Builder" to function. You must create and assign this builder to define how your clusters are built.
+Connects to the **Builder** input pin of a processing node.
 {% endhint %}
+
+#### How It Works
+
+This subnode defines a custom graph-building process that runs in a multi-threaded environment. It works by:
+
+1. **Initialization**: The builder is initialized with settings from a custom Blueprint class, which defines how nodes and edges are created.
+2. **Graph Building**: For each cluster, the system calls the `BuildGraph` function of the custom settings object to define node relationships and edge connections.
+3. **Node Attributes**: The system allows you to initialize or set point attributes for each node in the graph using various data types (integers, floats, vectors, etc.).
+4. **Point Updates**: After building the graph, it updates each node's point with its final transform and properties.
+
+The process is executed per cluster, and all operations are thread-safe, meaning that multiple clusters can be built simultaneously without conflicts.
 
 <details>
 
 <summary>Inputs</summary>
 
-* Points: Input point data that will be used as cluster nodes
-* Actors (when using Actor References mode): Input actors with reference attributes
+* **Builder** (Subnode): A custom Blueprint class that defines how to build the graph. It handles node creation, edge definition, and attribute setting.
+* **Point Data** (Optional): Only required when using `ActorReferences` mode for fetching actors from point data.
 
 </details>
 
@@ -36,112 +45,61 @@ This node requires a custom blueprint class derived from "Custom Graph Builder" 
 
 <summary>Outputs</summary>
 
-* Vertices: Point data representing the graph nodes
-* Edges: Line data representing connections between nodes
+* **Cluster Output**: A set of clustered points representing nodes in the graph, with edges defined between them.
+* **Graph Settings**: Custom settings objects that define how each cluster is built and what attributes are assigned to its nodes.
 
 </details>
 
-### Properties Overview
+#### Configuration
 
-Settings for controlling how custom graphs are built from point data.
+<details>
 
-***
+<summary><strong>Mode</strong><br><em>Actor fetching mode. These actors will be forwarded to the builder so it can fetch components and data from there during its initialization.</em></summary>
 
-#### Data
-
-Controls how input actors are fetched and processed.
-
-**Mode**
-
-_Controls how input actors are sourced._
-
-* When set to **Owner**, the PCG component's owner actor is used as input
-* When set to **Actor References**, points must contain an attribute with actor references
+Controls how actors are retrieved for use in the graph-building process.
 
 **Values**:
 
-* **Owner**: Uses the PCG component owner actor
-* **Actor References**: Uses point data containing actor reference attributes
+* **Owner**: Uses the PCG component's owner as the source of data.
+* **Actor References**: Fetches actor references from a point attribute specified by `ActorReferenceAttribute`.
 
-**Actor Reference Attribute**
+</details>
 
-_The name of the point attribute that contains actor references._
+<details>
 
-* This attribute should contain valid actor references when using "Actor References" mode
-* Must be a valid attribute name in your input point data
+<summary><strong>ActorReferenceAttribute</strong><br><em>Actor reference</em></summary>
 
-***
+The name of the point attribute that contains actor references when using the `ActorReferences` mode.
 
-#### Result
+</details>
 
-Controls how graph results are handled and output.
+<details>
 
-**Graph Builder Details**
+<summary><strong>Builder</strong><br><em>Builder instance.</em></summary>
 
-_Configures how the generated graphs are structured._
+A Blueprint class that defines how to build each graph. This subnode must be a subclass of `UPCGExCustomGraphBuilder`.
 
-* Controls edge creation, node attributes, and graph properties
-* Defines how points and edges are connected in the final output
+</details>
 
-***
+<details>
 
-#### Inputs
+<summary><strong>GraphBuilderDetails</strong><br><em>Graph &#x26; Edges output properties</em></summary>
 
-Controls processing behavior for the graph building process.
+Settings that control how the resulting graph is structured and output, such as edge types, node count, and output attributes.
 
-**Do Edge Attribute Step**
+</details>
 
-_When enabled, processes edge attributes after graph construction._
+#### Usage Example
 
-* Allows you to set additional attributes on edges after they're created
-* Useful for adding metadata or properties to connections between nodes
+1. Create a new Blueprint class inheriting from `UPCGExCustomGraphBuilder`.
+2. Implement the `Initialize` and `BuildGraph` functions to define how your clusters are built.
+3. Add this subnode to a **Cluster : Build Custom Graph** node in your PCG graph.
+4. Assign your custom builder class to the **Builder** input.
+5. Configure the **Mode** to either use the PCG component owner or point data with actor references.
+6. Run the graph to generate custom clusters based on your logic.
 
-***
+#### Notes
 
-#### Outputs
-
-Controls how warnings and errors are handled during execution.
-
-**Quiet Unprocessed Settings Warning**
-
-_When enabled, suppresses warnings about unprocessed graph settings._
-
-* Prevents warning messages when some graph settings aren't fully processed
-* Useful when you expect some settings to be skipped intentionally
-
-**Quiet Failed Build Graph Warning**
-
-_When enabled, suppresses warnings when graph building fails._
-
-* Prevents warning messages when individual graph building operations fail
-* Useful for handling expected failures gracefully
-
-***
-
-#### Warnings and Errors
-
-Controls error reporting behavior.
-
-**Quiet Unprocessed Settings Warning**
-
-_When enabled, suppresses warnings about unprocessed graph settings._
-
-* Prevents warning messages when some graph settings aren't fully processed
-* Useful when you expect some settings to be skipped intentionally
-
-**Quiet Failed Build Graph Warning**
-
-_When enabled, suppresses warnings when graph building fails._
-
-* Prevents warning messages when individual graph building operations fail
-* Useful for handling expected failures gracefully
-
-### Notes
-
-* This node requires a custom blueprint class derived from "Custom Graph Builder" to function properly
-* The builder must implement the initialization and graph building logic in Blueprint
-* You can create multiple graph settings to generate multiple independent clusters
-* Edge attributes are only processed when "Do Edge Attribute Step" is enabled
-* When using "Actor References" mode, make sure your point data contains valid actor references
-* Graph settings are built in a multi-threaded context, so avoid modifying shared state directly
-* Consider performance implications when building large graphs with many nodes and edges
+* The `BuildGraph` function is executed in a multi-threaded context, so avoid using non-thread-safe operations.
+* Attribute initialization must be done during the `InitializeSettings` phase for deterministic behavior.
+* This subnode is best used when you need fine-grained control over how clusters are structured and what data they contain.

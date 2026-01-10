@@ -6,60 +6,44 @@ icon: circle
 # Destroy Actor
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Destroys actor references that were previously spawned by the PCG component this node is currently executing on.
+> Removes references to actors that were previously spawned by the PCG component this node is currently executing on.
 
-### Overview
+#### How It Works
 
-This node allows you to clean up actors that were created during a previous step in your procedural generation graph. It's particularly useful when you've used a "Spawn Actor" node to create temporary objects and now want to destroy them before continuing with further processing or exporting results.
+This node cleans up actor references that were created during earlier stages of procedural generation. It scans point data for a specific attribute containing actor references, then checks if those actors were spawned by the current PCG component. If so, it clears the reference from the point's data. This ensures that old actor associations are removed before new ones are created, preventing conflicts or duplicate references during repeated procedural runs.
 
-The node works by looking for actor references stored in point data, typically from a spawn operation, and destroying those actors in the game world. It ensures that only actors spawned by the current PCG component are destroyed, preventing accidental deletion of other actors in your scene.
+The node works by:
+
+1. Reading the specified attribute from each input point
+2. Validating whether that attribute contains a valid actor reference
+3. Checking if that actor was spawned by the current PCG component
+4. Clearing the reference in the point's data
+
+This process helps maintain clean state management during repeated procedural generation runs, especially when actors are created and destroyed multiple times.
 
 {% hint style="info" %}
-This node only destroys actors that were created during the same PCG execution context. It will not affect actors created by other systems or components.
+Connects to **Points** processing pins.
 {% endhint %}
 
-<details>
-
-<summary>Inputs</summary>
-
-* **Points** (Default): Points containing actor references to destroy
-
-</details>
+#### Configuration
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>ActorReferenceAttribute</strong><br><em>Actor reference</em></summary>
 
-* **Points** (Default): Points with actor references removed from the data
+Specifies the name of the attribute that holds the actor references to be cleared. This should match the attribute used by the "Spawn Actor" subnode to store references.
 
 </details>
 
-### Properties Overview
+#### Usage Example
 
-Controls how the node identifies and destroys actors.
+Use this node at the end of a PCG graph that spawns actors, especially when you want to regenerate content multiple times. For example, if your graph spawns buildings and then runs again, use this node to clear old building references before spawning new ones.
 
-***
+#### Notes
 
-#### Settings
-
-Specifies which attribute contains the actor references to destroy.
-
-**Actor Reference Attribute**
-
-_The name of the point attribute that stores the actor reference to destroy._
-
-* This should match the attribute name used when spawning the actors
-* Points without this attribute will be skipped
-* Common values include "ActorReference" or custom names like "SpawnedActor"
-
-### Notes
-
-* Use this node after a "Spawn Actor" operation to clean up generated content
-* The actor references must have been created by the same PCG component for destruction to work properly
-* This node does not modify point data beyond removing the reference attribute; it only destroys the actual actors in the world
-* Consider using this in combination with a "Clear Data" node if you want to remove all spawned data from your points after destruction
+* This node only clears attribute references, not actual actor destruction in the game world.
+* Ensure the attribute name matches what was used during actor spawning.
+* Useful for preventing memory leaks or duplicate references in repeated PCG executions.

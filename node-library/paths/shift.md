@@ -6,142 +6,135 @@ icon: circle
 # Shift
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Shift path points along a path by reordering them.
+> Reorders points along a path by shifting the starting point based on an index, metadata value, or custom attribute.
 
-### Overview
+#### How It Works
 
-This node allows you to reorder the points of a path by shifting them from their original positions. You can shift points by index, metadata value, or properties, and choose how the shift is applied using discrete values, relative ratios, or filters. It's useful for creating variations in path layouts, implementing cyclic behavior, or preparing paths for specific processing workflows.
+The Path : Shift node changes the order of points in a path by selecting a new starting point. It determines which point should become first using one of several methods: a fixed index number, a value from metadata, a property like position or rotation, or a filter that selects the first matching point.
 
-{% hint style="info" %}
-This node modifies the order of points within each path, but does not change the actual point positions themselves.
-{% endhint %}
+Once the new start point is chosen, all points in the path are reordered so that this point becomes the first one. If you enable the reverse option, the node also flips the entire path order after shifting — for example, changing A → B → C to A → C → B.
+
+The node supports different ways of calculating which point to shift to:
+
+* **Discrete**: Uses a fixed number.
+* **Relative**: Uses a decimal between 0 and 1 to find a proportional position along the path.
+* **Filter**: Finds the first point that meets a specific condition to use as the new start.
+
+It also includes safety options for when the calculated index goes beyond the path length, such as wrapping around, clamping to the maximum valid index, or bouncing back and forth.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Shift Type</strong><br><em>Determines how the shift index is calculated.</em></summary>
 
-* **Main Input**: Point data containing paths to be shifted
-* **Filters (optional)**: Point filters used when `InputMode` is set to "Filter"
+Controls which data source is used to determine the shift point.
+
+**Values**:
+
+* **Index**: Use a fixed integer index.
+* **Metadata**: Use metadata values from the path points.
+* **Properties**: Use native properties of the points (position, rotation, scale).
+* **Metadata and Properties**: Combine both metadata and properties.
+* **CherryPick**: Select specific point properties or attributes to shift.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Input Mode</strong><br><em>How the shift index is determined.</em></summary>
 
-* **Main Output**: Modified point data with reordered path points
+Controls whether the shift is based on a fixed value, relative position, or filtered selection.
+
+**Values**:
+
+* **Discrete**: Use a fixed integer value.
+* **Relative**: Use a decimal between 0 and 1 to determine a proportional point along the path.
+* **Filter**: Find the first point that passes a filter condition.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the shift operation is performed and what data is affected.
+<summary><strong>Relative Constant</strong><br><em>Used when Input Mode is Relative.</em></summary>
 
-***
+A decimal value between 0 and 1 that determines where along the path to begin the shift. For example, 0.5 shifts to the middle of the path.
 
-#### General Settings
+</details>
 
-Controls the core behavior of the shift operation.
+<details>
 
-**Shift Type**
+<summary><strong>Truncate</strong><br><em>How to handle fractional values in Relative mode.</em></summary>
 
-_Controls which data is used to determine the shift amount._
-
-* Determines whether the shift is based on point index, metadata, properties, or a combination
-* When set to **Index**, points are shifted by their position in the path
-* When set to **Metadata**, the shift amount is determined by a metadata attribute
-* When set to **Properties**, the shift amount is determined by a point property
-* When set to **Metadata and Properties**, both metadata and properties are used together
-* When set to **CherryPick**, you can select specific properties and attributes to shift
+Controls how decimal indices are rounded when using relative mode.
 
 **Values**:
 
-* **Index**: Shift points using their index in the path
-* **Metadata**: Shift points using a metadata value
-* **Properties**: Shift points using a point property
-* **Metadata and Properties**: Use both metadata and properties for shifting
-* **CherryPick**: Select specific properties and attributes to shift
+* **Round**: Round to nearest integer.
+* **Floor**: Truncate toward negative infinity.
+* **Ceil**: Truncate toward positive infinity.
 
-**Input Mode**
+</details>
 
-_Controls how the shift amount is interpreted._
+<details>
 
-* When set to **Discrete**, the shift amount is an absolute index value
-* When set to **Relative**, the shift amount is a ratio from 0.0 to 1.0, which is converted to an index
-* When set to **Filter**, the first point that passes the provided filters is used as the shift starting point
+<summary><strong>Discrete Constant</strong><br><em>Used when Input Mode is Discrete.</em></summary>
+
+An integer value that directly specifies the index of the point to shift to.
+
+</details>
+
+<details>
+
+<summary><strong>Index Safety</strong><br><em>How to handle out-of-bounds indices.</em></summary>
+
+Controls behavior when a calculated index exceeds the path length.
 
 **Values**:
 
-* **Discrete**: Shift point is selected using a discrete value
-* **Relative**: Shift point is selected using a value relative to the input size
-* **Filter**: Shift point using the first point that passes the provided filters
+* **Ignore**: Skip invalid indices.
+* **Tile**: Wrap around (e.g., index 5 on a 3-point path becomes index 2).
+* **Clamp**: Clamp to the maximum valid index (e.g., index 5 on a 3-point path becomes index 2).
+* **Yoyo**: Mirror back and forth (e.g., index 4 on a 3-point path becomes index 1).
 
-**Relative Constant**
+</details>
 
-_The relative shift amount when `InputMode` is set to "Relative"._
+<details>
 
-* Value between 0.0 and 1.0, where 0.0 means start at the beginning of the path, and 1.0 means start at the end
-* For example, a value of 0.5 shifts the path to start halfway through
+<summary><strong>Reverse Shift</strong><br><em>When enabled, reverses the order of points after shifting.</em></summary>
 
-**Truncate Mode**
+When enabled, the final path is reversed after shifting. This can be used to create mirrored or reversed versions of paths.
 
-_How to handle decimal values when `InputMode` is set to "Relative"._
+</details>
 
-* Controls how fractional relative values are converted to integer indices
-* **Round**: Rounds to the nearest integer (e.g., 0.7 becomes 1)
-* **Floor**: Truncates toward negative infinity (e.g., 0.7 becomes 0)
-* **Ceil**: Truncates toward positive infinity (e.g., 0.2 becomes 1)
+<details>
 
-**Discrete Constant**
+<summary><strong>Cherry-Picked Properties</strong><br><em>Point properties to be shifted when Shift Type is CherryPick.</em></summary>
 
-_The absolute shift amount when `InputMode` is set to "Discrete"._
+Selects which native point properties (position, rotation, scale) are affected by the shift operation.
 
-* A whole number representing the index from which to start the shifted path
-* For example, a value of 3 shifts the path so that point 3 becomes the first point
+</details>
 
-**Index Safety**
+<details>
 
-_How to handle out-of-bounds indices._
+<summary><strong>Cherry-Picked Attributes</strong><br><em>Attributes to be shifted when Shift Type is CherryPick.</em></summary>
 
-* Controls behavior when the calculated shift index exceeds the path bounds
-* **Ignore**: Out of bounds indices are ignored (0,1,2,-1,-1,-1,...)
-* **Tile**: Out of bounds indices wrap around (0,1,2,0,1,2...)
-* **Clamp**: Out of bounds indices are clamped to the path boundaries (0,1,2,2,2,2...)
-* **Yoyo**: Out of bounds indices mirror and back (0,1,2,1,0,1...)
+Lists specific attributes that should be shifted along with the path points.
 
-**Reverse Shift**
+</details>
 
-_When enabled, reverses the shift direction._
+#### Usage Example
 
-* If enabled, the path is shifted in the reverse direction
-* For example, a shift of 2 becomes a shift of -2
+Imagine you have a circular race track made of 10 waypoints. You want to start the race from the 3rd waypoint instead of the first. Set the **Shift Type** to **Index**, **Input Mode** to **Discrete**, and set **Discrete Constant** to `2` (since indices are zero-based). This will reorder the path so that the 3rd point becomes the first.
 
-**Cherry-Picked Properties**
+Alternatively, if you want to shift by half the path length, use **Input Mode** = **Relative** and set **Relative Constant** = `0.5`.
 
-_Selected point properties to be shifted when `ShiftType` is set to "CherryPick"._
+#### Notes
 
-* Allows you to specify which native point properties should be reordered
-* Use bitwise flags to select multiple properties
-
-**Cherry-Picked Attributes**
-
-_Selected attributes to be shifted when `ShiftType` is set to "CherryPick"._
-
-* Allows you to specify which custom attributes should be reordered
-* Enter attribute names separated by commas or use the array editor to add them individually
-
-#### Warnings and Errors
-
-Controls whether warnings are shown during execution.
-
-**Quiet Double Shift Warning**
-
-_When enabled, suppresses warnings about double shifts._
-
-* If enabled, no warning will appear if a path is shifted twice in sequence
-* Useful when you're intentionally chaining shift operations
+* The node modifies the order of points in a path without changing their actual positions.
+* When using **Filter** mode, ensure your filters are correctly configured to match expected points.
+* Be cautious with **Reverse Shift** as it can produce unexpected results if not used carefully.
+* Index safety modes help prevent errors when shifting beyond path bounds.

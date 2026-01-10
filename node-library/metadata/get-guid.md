@@ -6,105 +6,67 @@ icon: circle
 # Get GUID
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Retrieves a single GUID from a specified point index, similar to what the standard GetGUID node would produce given the same parameters.
+> Retrieves a unique identifier (GUID) for a specific point in a point cloud, based on the point's index and configuration settings.
 
-### Overview
+#### How It Works
 
-This node extracts a unique identifier from a specific point in your input data. It's helpful when you need to access or generate a consistent identifier for a particular point, especially when working with procedural content that requires uniform GUID generation across multiple nodes or sessions.
+This node fetches a GUID for a single point by:
 
-The output depends on the point index you specify and how you configure the GUID generation settings. This node functions like the standard GetGUID node but lets you target a specific point instead of processing all points.
+1. Taking the specified point index
+2. Applying the configured safety mode if the index is out of bounds (e.g., clamping or wrapping around)
+3. Using the provided configuration to determine how the GUID should be generated and formatted
+4. Returning the resulting GUID for that specific point
 
-{% hint style="info" %}
-This node does not modify your input data; it simply reads from a specified point and outputs a GUID value.
-{% endhint %}
+The GUID generation process uses a combination of point properties like position, seed, index, and grid data based on the settings in the Config subnode. This ensures deterministic results when given the same inputs.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Index</strong><br><em>Point Index</em></summary>
 
-* **Main Input** (Point Data): Expects point data to read from. The node will extract a GUID from one of these points.
+Specifies which point's GUID to retrieve. For example, setting this to `5` will return the GUID for the 6th point in the input data (0-based indexing).
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>IndexSafety</strong><br><em>How to handle out-of-bounds indices.</em></summary>
 
-* **Main Output** (Point Data): Outputs the same point data with an additional attribute containing the generated GUID value.
-* **Output Attribute**: A new attribute named based on your configuration settings, containing the GUID value for the specified point.
+Controls what happens when the specified index is outside the valid range of points.
+
+* **Ignore**: Invalid indices are skipped.
+* **Tile**: Wraps around to valid indices (e.g., index 7 with 5 points becomes index 2).
+* **Clamp**: Clamps invalid indices to the nearest valid value (e.g., index -1 becomes 0, index 7 becomes 4).
+* **Yoyo**: Mirrors indices back and forth (e.g., index 6 with 5 points becomes index 3).
 
 </details>
 
-### Properties Overview
+<details>
 
-Settings to control which point to read from and how to generate the GUID.
+<summary><strong>Config</strong><br><em>Config</em></summary>
 
-***
+Defines how the GUID is generated and formatted. This includes:
 
-#### Settings
+* Uniqueness flags to determine which point properties contribute to the GUID (Index, Position, Seed, Grid)
+* Output type (Integer or String)
+* Format style (Digits, Digits (Lowercase), Digits (Hyphens), etc.)
 
-Controls how the node identifies which point to read from and how to format the output GUID.
+</details>
 
-**Point Index**
+#### Usage Example
 
-_The index of the point from which to retrieve the GUID._
+1. Create a point distribution using a Scatter node.
+2. Connect it to a Get GUID node.
+3. Set the Index to `0` to retrieve the GUID of the first point.
+4. Configure the Config subnode to use Position and Seed for uniqueness.
+5. The output will contain the original points with an additional attribute holding the computed GUID for the first point.
 
-* Determines which specific point in your data set to use for GUID generation
-* Must be a valid index within your input data range
-* For example, if you have 10 points, valid indices are 0 through 9
+#### Notes
 
-**Values**:
-
-* **Index**: Uses point index as a marker of uniqueness
-* **Position**: Uses point position as a marker of uniqueness
-* **Seed**: Uses point seed as a marker of uniqueness
-* **Grid**: Uses PCG component Grid as a marker of uniqueness
-* **All**: Uses all markers of uniqueness
-
-**Index Safety**
-
-_Controls how out-of-bounds indices are handled._
-
-* When enabled, the node will use the specified safety mode to handle invalid indices
-* For example, if you specify index 15 but only have 10 points, this setting determines what happens
-
-**Values**:
-
-* **Ignore**: Out of bounds indices are ignored (0,1,2,-1,-1,-1,...)
-* **Tile**: Out of bounds indices are tiled (0,1,2,0,1,2...)
-* **Clamp**: Out of bounds indices are clamped (0,1,2,2,2,2...)
-* **Yoyo**: Out of bounds indices are mirrored and back (0,1,2,1,0,1...)
-
-**Config**
-
-_Configuration for how the GUID should be generated._
-
-* Controls the format and type of the output GUID
-* Includes options for integer or string output, and various formatting styles
-
-**Values**:
-
-* **Integer**: Output as a 64-bit integer value
-* **String**: Output as a formatted string value
-
-**Format Options**:
-
-* **Digits**: 32 digits (e.g., `00000000000000000000000000000000`)
-* **Digits (Lowercase)**: 32 digits in lowercase (e.g., `0123abc456def789abcd123ef4a5b6c7`)
-* **Digits (Hyphens)**: 32 digits separated by hyphens (e.g., `00000000-0000-0000-0000-000000000000`)
-* **Digits (RFC 4122)**: 32 digits separated by hyphens, in lowercase as described by RFC 4122 (e.g., `bd048ce3-358b-46c5-8cee-627c719418f8`)
-* **Digits (Hyphens in Braces)**: Same as above but wrapped in braces (e.g., `{bd048ce3-358b-46c5-8cee-627c719418f8}`)
-
-### Notes
-
-* This node is particularly useful when you need to reference a specific point's GUID across multiple nodes
-* The output attribute name will be based on your configuration settings and can be used in downstream nodes
-* When using Index Safety modes like Tile or Clamp, the node will automatically adjust invalid indices to valid ones
-* For performance reasons, consider caching this node if it's used frequently in your graph
-* This node works best when you have a consistent point data set with known indices
-* The GUID generation is deterministic based on the input parameters, ensuring reproducible results
+* This node is deterministic: given the same input data and configuration, it will always return the same GUID for a given index.
+* If you're using multiple indices or need to compute GUIDs for all points, consider using the full GetGUID node instead.
+* The IndexSafety setting helps prevent errors in cases where your point count might change dynamically.

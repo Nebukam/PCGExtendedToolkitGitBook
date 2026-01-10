@@ -6,29 +6,39 @@ icon: scrubber
 # Relax Cluster
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Relax point positions using edges connecting them.
+> Adjusts point positions within clusters using connection-based relaxation forces to create more evenly distributed layouts.
 
-### Overview
+#### Overview
 
-This node applies a relaxation process to points within clusters, moving them based on forces derived from the edges connecting them. It's commonly used to smooth out point distributions, create natural-looking layouts, or simulate physical systems where connected elements influence each other's positions.
+This node modifies the locations of points in clusters by applying relaxation forces based on connections between them. It simulates physical repulsion or attraction between connected points to achieve a smoother, more natural distribution. This is especially useful for reducing overlaps and creating organic-looking arrangements in procedural content.
 
-The relaxation algorithm iteratively adjusts point locations over a number of steps, using edge connections as the basis for movement. You can control how much influence each edge has and which relaxation method is applied.
+The node works iteratively, using edge data to determine how points relate to each other and applying force-based adjustments that can be customized through the Relaxing subnode.
 
 {% hint style="info" %}
-This node works on clusters of points and requires an input with cluster data. It modifies point positions based on their connectivity within clusters.
+Connects to **clusters** processing pins.
 {% endhint %}
+
+#### How It Works
+
+This node performs a relaxation simulation where it gradually adjusts point positions within clusters based on their connections. For each iteration:
+
+1. It evaluates how connected points influence each other using the configured **InfluenceDetails** settings.
+2. Each point calculates a movement vector based on its neighbors' positions and the chosen **Relaxing** operation.
+3. The point's position is updated by applying this movement, scaled by influence and relaxation parameters.
+4. This process repeats for the specified number of **Iterations**, gradually stabilizing the layout.
+
+The node uses edge data to define how points relate to one another, and applies a force-based relaxation algorithm that can be customized through the Relaxing subnode.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Main Input (Points)**: Points to be relaxed, must be part of a cluster
-* **Edges**: Edge connections between points used for relaxation calculations
+* **Points**: The point data representing the cluster elements to relax.
+* **Edges**: Edge data defining connections between points in the clusters.
+* **Relaxing Subnode**: Defines how the relaxation force is calculated (e.g., linear, inverse distance).
 
 </details>
 
@@ -36,118 +46,93 @@ This node works on clusters of points and requires an input with cluster data. I
 
 <summary>Outputs</summary>
 
-* **Output Points**: Modified point positions after relaxation
-* **Output Edges**: Original edges, potentially updated with new data if needed
+* Modified point positions after relaxation.
+* Optional output attributes for direction and amplitude of movement if enabled.
 
 </details>
 
-### Properties Overview
+#### Configuration
 
-Controls how the relaxation process is applied and what output attributes are generated.
+<details>
 
-***
+<summary><strong>Iterations</strong><br><em>Number of relaxation steps to perform.</em></summary>
 
-#### General Settings
+Controls how many times the relaxation algorithm is applied. Higher values result in more stable layouts but take longer to compute.
 
-Controls core relaxation behavior and iteration count.
+**Values**: Integer, minimum 1.
 
-**Iterations**
+</details>
 
-_Number of times to apply the relaxation algorithm._
+<details>
 
-* Each iteration refines the point positions further
-* Higher values produce more stable results but take longer to compute
-* Typical range: 5–50, depending on cluster size and desired smoothness
+<summary><strong>InfluenceDetails</strong><br><em>Influence Settings</em></summary>
 
-**Relaxing Arithmetics**
+Defines how influence from neighboring points affects each point's movement. This includes distance thresholds and influence curves.
 
-_The type of relaxation operation to perform._
+</details>
 
-* Select from a list of available relaxation methods (e.g., spring-based, force-directed)
-* Each method defines how point positions are adjusted based on edge connections
-* Different methods may produce different visual results
+<details>
 
-***
+<summary><strong>Relaxing</strong><br><em>Relaxing arithmetics</em></summary>
 
-#### Influence Settings
+A subnode that defines the mathematical operation used to compute relaxation forces between connected points.
 
-Controls how much each edge influences the relaxation.
+</details>
 
-**Influence Input Type**
+<details>
 
-_Whether to use a constant or attribute value for influence._
+<summary><strong>bWriteDirectionAndSize</strong><br><em>Write the final direction and size of the relaxation.</em></summary>
 
-* **Constant**: Use a fixed influence value
-* **Attribute**: Read influence from a point attribute
+When enabled, writes a vector attribute containing both the direction and magnitude of the final movement applied to each point.
 
-**Influence (Constant)**
+</details>
 
-_Fixed influence value when using constant input._
+<details>
 
-* Affects how strongly edges pull connected points together
-* Values typically range from 0.1 to 1.0
-* Higher values result in stronger relaxation forces
+<summary><strong>DirectionAndSizeAttributeName</strong><br><em>Name of the 'FVector' attribute to write direction and size to.</em></summary>
 
-**Influence (Attribute)**
+The name of the output attribute where the combined direction and size vector will be stored if `bWriteDirectionAndSize` is enabled.
 
-_Point attribute used for per-point influence._
+</details>
 
-* Attribute must be a scalar value
-* Each point's influence is read from this attribute
-* Useful for creating varied relaxation effects within a cluster
+<details>
 
-***
+<summary><strong>bWriteDirection</strong><br><em>Write the final direction of the relaxation.</em></summary>
 
-#### Output Settings
+When enabled, writes a vector attribute containing only the direction of the final movement applied to each point.
 
-Controls which additional attributes are written to the output points.
+</details>
 
-**Write Direction And Size**
+<details>
 
-_When enabled, writes both direction and size of the relaxation._
+<summary><strong>DirectionAttributeName</strong><br><em>Name of the 'FVector' attribute to write direction to.</em></summary>
 
-* Creates an `FVector` attribute named "DirectionAndSize"
-* The vector's length represents the relaxation amplitude
-* The direction shows where the point was moved
+The name of the output attribute where the direction vector will be stored if `bWriteDirection` is enabled.
 
-**Direction And Size Attribute Name**
+</details>
 
-_Name of the output attribute for direction and size._
+<details>
 
-* Only used when **Write Direction And Size** is enabled
-* Default name: `DirectionAndSize`
+<summary><strong>bWriteAmplitude</strong><br><em>Write the final amplitude of the relaxation. (that's the size of the DirectionAndSize vector)</em></summary>
 
-**Write Direction**
+When enabled, writes a scalar attribute containing the magnitude of the final movement applied to each point.
 
-_When enabled, writes only the direction of the relaxation._
+</details>
 
-* Creates an `FVector` attribute named "Direction"
-* Shows the direction in which the point was moved
+<details>
 
-**Direction Attribute Name**
+<summary><strong>AmplitudeAttributeName</strong><br><em>Name of the 'double' attribute to write amplitude to.</em></summary>
 
-_Name of the output attribute for direction._
+The name of the output attribute where the amplitude value will be stored if `bWriteAmplitude` is enabled.
 
-* Only used when **Write Direction** is enabled
-* Default name: `Direction`
+</details>
 
-**Write Amplitude**
+#### Usage Example
 
-_When enabled, writes the size of the relaxation._
+Use this node to create a more natural distribution of points in a cluster. For example, after generating a set of points with a grid or radial pattern, apply relaxation to spread them out and reduce overlaps. Configure the **Iterations** to 20 for smoother results, and use a **Relaxing** subnode that applies inverse-distance influence to make nearby points have stronger effects on each other.
 
-* Creates a `double` attribute named "Amplitude"
-* The scalar value represents the magnitude of movement
+#### Notes
 
-**Amplitude Attribute Name**
-
-_Name of the output attribute for amplitude._
-
-* Only used when **Write Amplitude** is enabled
-* Default name: `Amplitude`
-
-### Notes
-
-* Relaxation works best on small to medium-sized clusters; large clusters may require many iterations or reduced influence for performance.
-* Combine with filtering to apply relaxation only to specific points within a cluster.
-* Use the output attributes to drive additional effects like particle movement or visual deformation.
-* For complex layouts, consider using multiple relaxation passes with different settings.
+* Relaxation is computationally intensive when using many iterations or large clusters.
+* The node works best with well-defined edges connecting points in the cluster.
+* Output attributes are optional and can be used for debugging or further processing.

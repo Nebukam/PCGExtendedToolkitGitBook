@@ -5,126 +5,120 @@ icon: circle-dashed
 # Probe : Direction
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a probe that searches for nearby connections in a specified direction.
+> Defines a probe that searches for nearby connections in a specified direction.
 
-### Overview
+#### How It Works
 
-This factory defines a probe that looks for nearby points or elements along a given direction vector. It's designed to be connected to Filter pins on processing nodes like "Connect Points" or "Find Neighbors". The probe evaluates candidates based on their alignment with the specified direction and distance from the source point.
+This subnode evaluates nearby points or edges and filters them based on how well their orientation aligns with a given direction. It calculates the angle between each candidate's direction and the probe's direction to determine relevance. The probe can be configured to favor either alignment (how closely the directions match) or proximity (distance from the source), allowing for flexible directional searches.
 
-{% hint style="info" %}
-Connects to Filter pins on processing nodes such as "Connect Points" or "Find Neighbors"
-{% endhint %}
+The process works as follows:
 
-### How It Works
+1. First, it determines the search direction, which can come from a fixed vector or an attribute on the input points.
+2. Then it evaluates all nearby candidates using an angle constraint that defines how closely their directions must match the probe's direction.
+3. Candidates are scored based on their directional alignment and optionally filtered by distance.
+4. Finally, it selects the best candidate according to the prioritization setting.
 
-The probe searches for nearby points in a specific direction, using either a constant vector or an attribute-driven direction. It evaluates candidates based on how well they align with the search direction and their distance from the source point. The final result is determined by prioritizing either best alignment or closest position.
+#### Configuration
 
-### Inputs and Outputs
+<details>
 
-#### Inputs
+<summary><strong>bUseComponentWiseAngle</strong><br><em>Use separate angles for each axis.</em></summary>
 
-* **Point Input**: Accepts points to be processed by the probe
-* **Attribute Input** (when using attribute mode): Provides directional data for each point
+When enabled, allows defining different maximum angles per X, Y, and Z axis instead of a single angle.
 
-#### Outputs
+</details>
 
-* **Filtered Points**: Returns points that meet the probe's criteria
-* **Connection Data**: Provides connection information between points
+<details>
 
-### Configuration
+<summary><strong>MaxAngle</strong><br><em>Max angle to search within.</em></summary>
 
-***
+The maximum angle (in degrees) allowed between the probe direction and candidate directions. Only applies when `bUseComponentWiseAngle` is disabled.
 
-#### General
+</details>
 
-**Use Component-Wise Angle**
+<details>
 
-_When enabled, allows different maximum angles for each axis (X, Y, Z)._
+<summary><strong>MaxAngles</strong><br><em>Max angle to search within.</em></summary>
 
-When enabled, you can specify separate angle limits for each component of the direction vector. This creates a directional cone that's not uniform across all axes.
+Separate maximum angles for each axis when `bUseComponentWiseAngle` is enabled.
 
-**Max Angle**
+</details>
 
-_Maximum angle to search within._
+<details>
 
-Controls how wide the search cone is. A smaller angle means more focused searching in a specific direction. For example, setting this to 30 degrees will only consider candidates within 30 degrees of the probe direction.
+<summary><strong>bUnsignedCheck</strong><br><em>Allow both positive and negative directions.</em></summary>
 
-**Max Angles**
+When enabled, the probe considers both forward and reverse directions for alignment checks.
 
-_Maximum angle per component when using component-wise angle._
+</details>
 
-When "Use Component-Wise Angle" is enabled, this sets individual angle limits for each axis (X, Y, Z). For example, setting X=60, Y=30, Z=45 means the probe searches 60 degrees in the X direction, 30 degrees in Y, and 45 degrees in Z.
+<details>
 
-**Unsigned Check**
+<summary><strong>DirectionInput</strong><br><em>Constant direction</em></summary>
 
-_When enabled, considers both positive and negative directions._
+Controls whether the probe direction is defined by a constant value or read from an attribute on the input points.
 
-When enabled, the probe will consider candidates that are aligned with the direction vector or its opposite. For example, if the probe direction is forward (0,1,0), it will also consider candidates behind (0,-1,0) as valid.
+**Values**:
 
-**Direction Input**
+* **Constant**: Use the `DirectionConstant` setting.
+* **Attribute**: Read direction from the specified attribute.
 
-_Determines how the probe direction is defined._
+</details>
 
-**Constant**: Use a fixed direction vector. **Attribute**: Read the direction from an attribute on the input points.
+<details>
 
-**Direction Attribute**
+<summary><strong>bInvertDirection</strong><br><em>└─ Invert</em></summary>
 
-_Attribute to read the direction from when using attribute mode._
+When enabled, reverses the direction read from an attribute before using it for probing.
 
-When "Direction Input" is set to "Attribute", this selects which attribute contains the direction vectors. The attribute should be of type Vector.
+</details>
 
-**Invert Direction**
+<details>
 
-_When enabled, reverses the direction vector._
+<summary><strong>DirectionConstant</strong><br><em>Constant direction</em></summary>
 
-When enabled, the probe direction is inverted before evaluation. This can be useful for finding candidates in the opposite direction of an attribute.
+The fixed direction vector used when `DirectionInput` is set to "Constant".
 
-**Direction (Constant)**
+</details>
 
-_The fixed direction vector when using constant mode._
+<details>
 
-This sets the direction vector used by the probe when "Direction Input" is set to "Constant". The default is forward (0,1,0).
+<summary><strong>bTransformDirection</strong><br><em>Transform the direction with the point's</em></summary>
 
-**Transform Direction**
+When enabled, applies the point’s rotation or transform to the probe direction before comparison.
 
-_When enabled, applies the point's transform to the direction vector._
+</details>
 
-When enabled, the probe will apply the point's rotation and scale to the direction vector before searching. This allows for directional probing that respects the orientation of each input point.
+<details>
 
-**Favor**
+<summary><strong>Favor</strong><br><em>What matters more?</em></summary>
 
-_Determines whether to prioritize alignment or distance._
+Determines whether to prioritize candidates that best align with the probe direction (`Dot`) or those closest in position (`Dist`).
 
-**Best alignment**: Candidates are ranked by how well they align with the probe direction, even if they're further away. **Closest position**: Candidates are ranked by distance from the source point, even if they're not perfectly aligned.
+**Values**:
 
-**Do Chained Processing**
+* **Best alignment**: Prioritizes candidates with the highest directional match.
+* **Closest position**: Prioritizes candidates that are nearest, even if they have lower alignment.
 
-_When enabled, processes candidates in a chained manner._
+</details>
 
-When enabled, the probe evaluates candidates sequentially rather than all at once. This can produce different results when there are multiple valid candidates, as each candidate is processed in order and may affect subsequent evaluations.
+<details>
 
-### Usage Example
+<summary><strong>bDoChainedProcessing</strong><br><em>This probe will sample candidates after the other. Can yield different results.</em></summary>
 
-To create a probe that finds nearby points aligned with the forward direction of each input point:
+When enabled, this probe performs additional processing steps after other probes, potentially yielding different outcomes depending on earlier filtering.
 
-1. Connect this factory to a "Connect Points" node
-2. Set "Direction Input" to "Attribute"
-3. Select an attribute containing forward-facing vectors (like "ForwardVector")
-4. Set "Transform Direction" to true so each point's orientation is respected
-5. Adjust "Max Angle" to control how wide the search cone is (e.g., 60 degrees)
-6. Set "Favor" to "Best alignment" to prioritize candidates that are most aligned with the direction
+</details>
 
-This setup will find connections that are both close and aligned with each point's forward direction, creating a directional network.
+#### Usage Example
 
-### Notes
+Use this subnode when you want to connect points that are aligned in a specific direction, such as placing roads or pipes along a consistent orientation. For example, you could define a probe that searches for nearby points within 30 degrees of the forward vector and prioritizes alignment over distance.
 
-* The probe works best when used with nodes that support filtering, such as Connect Points or Find Neighbors
-* When using attribute-based directions, ensure the input data contains valid vector attributes
-* Chained processing can be useful for creating sequential connections but may produce different results than standard probing
-* For best performance, keep "Max Angle" as small as possible while still capturing desired candidates
-* The "Favor" setting allows you to control whether alignment or distance is more important in the final selection
+#### Notes
+
+* The probe works best with point data where each point has a defined orientation.
+* Combining multiple probes can help refine connection logic in complex scenarios.
+* Directional probing is especially effective when used alongside other filters like distance or angle constraints.

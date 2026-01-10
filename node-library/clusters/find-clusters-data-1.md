@@ -6,129 +6,105 @@ icon: scrubber
 # Filter Vtx
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Filter out vtx from clusters based on specified criteria.
+> Filter out vertices from clusters based on specified conditions.
 
-### Overview
+#### How It Works
 
-This node filters vertex points within clusters, removing those that don't meet certain conditions. It's useful for cleaning up cluster data by eliminating unwanted vertices or creating subsets of vertices that satisfy specific requirements. The filtered results can be output as clusters, regular points, or written to a boolean attribute for further processing.
+This node evaluates each vertex within a cluster using a set of configured filters. It determines whether each vertex should be kept or removed based on the results of those filters.
 
-{% hint style="info" %}
-This node operates on vertex data within clusters and supports various filtering methods including attribute-based conditions and custom filter factories.
-{% endhint %}
+* For each vertex in a cluster, it applies the configured **vertex filter subnode**.
+* If enabled, it also applies an optional **edge filter subnode** to evaluate edges connected to the vertex.
+* The node then decides how to handle the filtered data based on the selected output mode:
+  * In **Clusters** mode, it outputs modified clusters with filtered vertices removed.
+  * In **Points** mode, it separates points into inside and outside groups based on filter results.
+  * In **Attribute** mode, it writes a boolean attribute indicating whether each vertex passed the filters.
+
+The node supports inverting the filter results using the "Invert" toggle, which flips the pass/fail logic. It also allows swapping the inside and outside content when outputting points, and can tag clusters based on whether any/all/no vertices passed the filter.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Mode</strong><br><em>Type of output.</em></summary>
 
-* **Cluster Input** (Required): Points representing cluster vertices
-* **Edge Input** (Optional): Edges connecting the vertices in clusters
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Cluster Output**: Filtered clusters based on vertex filtering criteria
-* **Points Output**: Regular points from filtered vertices
-* **Attribute Output**: Boolean attribute indicating which vertices passed the filter
-
-</details>
-
-### Properties Overview
-
-Controls how the filtering is applied and what output is generated.
-
-***
-
-#### General Settings
-
-Controls the primary behavior of the node.
-
-**Mode**
-
-_Controls how the filtered results are output._
-
-* When set to **Clusters**, outputs modified clusters with filtered vertices.
-* When set to **Points**, outputs regular points from filtered vertices.
-* When set to **Attribute**, writes a boolean attribute indicating which vertices passed the filter.
+Determines how the filtered data is structured in the output.
 
 **Values**:
 
-* **Clusters**: Outputs clusters.
-* **Points**: Outputs regular points.
-* **Attribute**: Writes the result of the filters to a boolean attribute.
+* **Clusters**: Outputs clusters with vertices filtered out.
+* **Points**: Outputs points grouped into inside and outside based on filter results.
+* **Attribute**: Writes a boolean attribute to each vertex indicating pass/fail.
 
-**Result Output Vtx**
+</details>
 
-_Controls how the filter results are written when Mode is set to Attribute._
+<details>
 
-* This setting defines the attribute name and behavior for storing the filtering results.
-* Only visible when Mode is set to Attribute.
+<summary><strong>ResultOutputVtx</strong><br><em>└─ Result</em></summary>
 
-**Node Invalidate Edges**
+When mode is set to "Attribute", this setting controls how the result of the filter is written as an attribute on the points.
 
-_When enabled, invalidating a vertex will also invalidate connected edges._
+</details>
 
-* Useful when you want to ensure that edge connections reflect the current state of vertex filtering.
-* Applies only when Mode is set to Clusters.
+<details>
 
-**Invert**
+<summary><strong>bNodeInvalidateEdges</strong><br><em>If enabled, invalidating a node invalidate connected edges.</em></summary>
 
-_When enabled, the filter results are inverted._
+When enabled, changes in this node will propagate to connected edge data, ensuring consistency in downstream processing.
 
-* Points that would normally pass the filter will be excluded, and vice versa.
-* Affects all output modes.
+</details>
 
-**Invert Edge Filters**
+<details>
 
-_When enabled, the edge filter results are inverted._
+<summary><strong>bInvert</strong><br><em>Invert the filter result</em></summary>
 
-* Only affects output when Mode is set to Clusters.
-* Applies to any edge filters used in the operation.
+When enabled, vertices that would normally pass the filter are excluded, and those that fail are included.
 
-***
+</details>
 
-#### Output Settings
+<details>
 
-Controls how the filtered data is structured in the outputs.
+<summary><strong>bInvertEdgeFilters</strong><br><em>Invert the edge filters result</em></summary>
 
-**Split Outputs By Connectivity**
+When enabled, the results of the edge filters are inverted. Only applicable when mode is "Clusters".
 
-_When enabled, inside/outside groups are partitioned by initial edge connectivity._
+</details>
 
-* Only visible when Mode is set to Points.
-* Groups points based on their original edge connections for better organization.
+<details>
 
-**Swap**
+<summary><strong>bSplitOutputsByConnectivity</strong><br><em>If enabled, inside/outside groups will be partitioned by initial edge connectivity.</em></summary>
 
-_When enabled, swaps the inside and outside content._
+When enabled, points that pass or fail the filter are grouped based on their original edge connectivity in the cluster.
 
-* Only visible when Mode is set to Points.
-* Reverses which vertices are considered "inside" versus "outside" of the filter criteria.
+</details>
 
-***
+<details>
 
-#### Graph Builder Settings
+<summary><strong>bSwap</strong><br><em>Swap Inside &#x26; Outside content</em></summary>
 
-Controls how cluster data is built when Mode is set to Clusters.
+When enabled, the inside and outside point groups are swapped in the output when mode is "Points".
 
-**Cluster Output Settings**
+</details>
 
-_Configures how clusters are constructed from filtered data._
+<details>
 
-* Only visible when Mode is set to Clusters.
-* Defines properties like edge creation, vertex handling, and graph structure for output clusters.
+<summary><strong>GraphBuilderDetails</strong><br><em>Cluster Output Settings</em></summary>
 
-### Notes
+Controls how clusters are built and output when mode is set to "Clusters". Includes settings for edge creation, radius calculation, and solidification.
 
-* This node works with vertex data within clusters, not individual points.
-* When using the Attribute mode, you can chain multiple filters by creating a filter factory and connecting it to this node.
-* The Invert settings allow for more flexible filtering logic without needing separate nodes.
-* For best performance, avoid using complex filters if only a simple pass/fail is needed.
-* When working with large clusters, consider the performance impact of edge filtering operations.
+</details>
+
+#### Usage Example
+
+1. Connect a cluster input to the node.
+2. Add a vertex filter subnode to define which vertices should be removed from the cluster.
+3. Set the mode to **Clusters** to output modified clusters with filtered vertices.
+4. Optionally connect an edge filter subnode to refine filtering based on edge properties.
+
+#### Notes
+
+* This node is useful for cleaning up clusters by removing outliers or unwanted points.
+* The "Attribute" mode can be used to tag points for further processing in downstream nodes.
+* When using the "Points" output mode, consider enabling **bSplitOutputsByConnectivity** to maintain logical groupings of filtered points.

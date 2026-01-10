@@ -6,113 +6,119 @@ icon: circle
 # Pick Closest Cluster
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Pick the clusters closest to input targets.
+\> Pick the clusters closest to input targets.
 
-### Overview
+#### Overview
 
-This node finds the nearest cluster to each target point and allows you to decide how to handle cases where multiple targets might pick the same cluster. It's useful for assigning points or objects to their nearest cluster, such as grouping particles by proximity to cluster centers or distributing assets to nearby clusters.
+This node finds and selects the nearest clusters to a set of target points. It's useful when you want to associate each target with its closest cluster, such as assigning regions or zones to points based on proximity. You can configure how the proximity is measured (to vertex or edge) and whether multiple targets can pick the same cluster.
 
 {% hint style="info" %}
-The node works with clusters generated from a previous step in your graph and uses target points to determine which cluster is closest.
+Connects to **clusters** input pin and outputs **points** and **edges**.
 {% endhint %}
 
+#### How It Works
+
+This node performs a proximity search for each target point to determine which clusters are closest. For each target, it calculates distances to all available clusters using either vertex or edge proximity depending on the selected search mode. Based on the pick mode, it decides whether to allow duplicate cluster selections or to skip already-picked clusters and choose the next best match. The result is a set of selected clusters associated with each target point, which can then be used for further processing or output.
+
+#### Configuration
+
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Search Mode</strong><br><em>What type of proximity to look for.</em></summary>
 
-* **Main Input** (Points): Target points that will be used to find the closest clusters.
-* **Cluster Input** (Points): Clusters that are searched for proximity to targets.
+Controls how distance is calculated when comparing targets to clusters.
+
+**Values**:
+
+* **Closest vtx**: Measures distance from the target point to the closest vertex in each cluster.
+* **Closest edge**: Measures distance from the target point to the closest edge or endpoint in each cluster.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Pick Mode</strong><br><em>Whether to allow the same pick for multiple targets or not.</em></summary>
 
-* **Main Output** (Points): The target points, with cluster data attached or filtered based on your settings.
-* **Edge Output** (Edges): Edges connecting each target point to its closest cluster.
+Determines whether a cluster can be selected by more than one target.
+
+**Values**:
+
+* **Only Best**: Allows duplicate picks; each target gets the closest available cluster, even if it was already picked.
+* **Next Best**: Ensures no cluster is picked twice. If a cluster was already chosen for another target, the next closest available cluster is selected instead.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the node searches for and assigns clusters to targets.
+<summary><strong>Action</strong><br><em>Action type.</em></summary>
 
-***
+Defines how to handle the output data after processing.
 
-#### General
+**Values**:
 
-What type of proximity to look for and how to handle duplicate picks.
+* **Keep**: Only the selected targets are kept in the output.
+* **Omit**: The selected targets are removed from the output.
+* **Tag**: All targets are kept, but those matched with a cluster are tagged accordingly.
 
-**Search Mode**
+</details>
 
-_Controls whether the search is based on proximity to a cluster's vertex or to its edges._
+<details>
 
-* When set to **Closest vtx**, the node measures distance from each target point to the cluster's vertex (center).
-* When set to **Closest edge**, the node measures distance from each target point to the closest edge of the cluster, then to the endpoints if needed.
+<summary><strong>Target Bounds Expansion</strong><br><em>Expansion factor for target bounds during search.</em></summary>
 
-**Pick Mode**
+Controls how much to expand the bounding box of each target when searching for nearby clusters. A value of 10 means the search area is expanded by 10 units in all directions.
 
-_Controls whether multiple targets can select the same cluster._
+</details>
 
-* When set to **Only Best**, each target will pick the absolute closest cluster, even if it means multiple targets share the same cluster.
-* When set to **Next Best**, if a cluster was already picked by another target, the node will look for the next best candidate for that target.
+<details>
 
-***
+<summary><strong>Expand Search Outside Target Bounds</strong><br><em>Whether to search outside the bounds of the target.</em></summary>
 
-#### Filtering
+When enabled, the node searches for clusters even if they are outside the expanded bounds of the target point.
 
-How to handle the output data after picking clusters.
+</details>
 
-**Action**
+<details>
 
-_Determines what happens to the input points after processing._
+<summary><strong>Keep Tag</strong><br><em>Tag name to apply when keeping matched data.</em></summary>
 
-* When set to **Keep**, only the points that were successfully matched to a cluster are kept in the output.
-* When set to **Omit**, points that were matched to a cluster are removed from the output.
-* When set to **Tag**, all points are kept, and tags are added to indicate whether they were matched or not.
+The tag applied to points that match a cluster when using the "Tag" action mode.
 
-**Target Bounds Expansion**
+</details>
 
-_Expands the search area around each target point by this distance._
+<details>
 
-* Affects how far the node searches for clusters.
-* Useful when you want to include nearby clusters even if they're slightly outside the direct proximity of a target.
+<summary><strong>Omit Tag</strong><br><em>Tag name to apply when omitting matched data.</em></summary>
 
-**Expand Search Outside Target Bounds**
+The tag applied to points that do not match a cluster when using the "Tag" action mode.
 
-_When enabled, allows searching beyond the bounds defined by the expansion._
+</details>
 
-* If disabled, the search is limited to within the expanded bounds.
-* If enabled, the search can extend beyond those bounds.
+<details>
 
-**Keep Tag**
+<summary><strong>Target Attributes To Tags</strong><br><em>TBD</em></summary>
 
-_Tag name used when Action is set to Tag and the point is kept._
+Controls how attributes from target points are converted into tags in the output.
 
-**Omit Tag**
+</details>
 
-_Tag name used when Action is set to Tag and the point is omitted._
+<details>
 
-***
+<summary><strong>Target Forwarding</strong><br><em>Which Seed attributes to forward on paths.</em></summary>
 
-#### Attribute Forwarding
+Determines which attributes from the target points are forwarded to the resulting edges connecting targets and picked clusters.
 
-Controls which attributes from the target points are forwarded to the output.
+</details>
 
-**Target Attributes To Tags**
+#### Usage Example
 
-_Controls how certain attributes on the target points are converted into tags._
+Imagine you have a set of locations (targets) and want to assign each to the nearest zone or region (clusters). You can use this node to find the closest cluster for each location. For instance, if you're placing NPCs in a world with different biomes, you could use this node to assign each NPC to the closest biome cluster.
 
-* Useful for preserving data like IDs or types in the output.
+#### Notes
 
-**Target Forwarding**
-
-_Configures which attributes from the targets are forwarded to the resulting points._
-
-* Enables you to carry over useful metadata from the input points to the output.
+* The node works best when there are more clusters than targets.
+* Using "Next Best" pick mode can prevent overloading a single cluster with too many assignments.
+* Performance may degrade if the number of clusters is very large.

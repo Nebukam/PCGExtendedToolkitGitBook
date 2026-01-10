@@ -6,29 +6,38 @@ icon: circle
 # Split
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Split existing paths into multiple new paths.
 
-### Overview
+#### Overview
 
-This node allows you to break up existing paths at specific points, creating new paths from the original data. It's useful when you want to segment a path based on certain conditions or behaviors, such as splitting a road network at intersections or breaking a trail into sections based on terrain changes.
+This node takes existing paths and splits them into multiple new paths based on conditions defined by filters. It allows you to break up long paths at specific points, creating shorter segments or entirely new paths. This is useful for generating varied route networks, breaking up continuous paths into manageable chunks, or creating branching structures from a single path.
 
-The node evaluates each point in your input paths against a set of filters. Depending on the selected action, it can duplicate points, remove them, or disconnect segments to create new paths from the remaining data.
+It modifies the input paths by splitting them at points that match the specified filter criteria. The behavior of how the split occurs depends on the selected action mode. You can choose to duplicate points, remove them, disconnect segments, or partition paths based on changing filter results.
 
 {% hint style="info" %}
-This node works with point-based path data and requires at least one filter to be defined in the "Split Conditions" input.
+Connects to **Paths** input pin and outputs new **Paths**.
 {% endhint %}
+
+#### How It Works
+
+This node processes each point in the input path and evaluates whether it meets a split condition defined by the attached filters. Based on the selected action, it modifies how the path is split:
+
+1. For **Split**, it duplicates the point where the filter matches, creating two new paths: one ending at the original point, another starting from the duplicated point.
+2. For **Remove**, it removes the matching point and shortens both adjacent segments of the path.
+3. For **Disconnect**, it removes the connection between the matching point and the next point, starting a new path from the next point.
+4. For **Partition**, it creates a new path whenever the filter result changes compared to the previous point.
+5. For **Switch**, it uses the filter result as a switch signal to toggle between keeping or pruning points, creating paths based on this behavior.
+
+The node also supports tagging paths with even or odd split counts if enabled. It can optionally omit single-point outputs to avoid generating empty or minimal paths.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Main Input** (Default): Point data containing paths to split.
-* **Split Conditions** (Optional): Filters used to determine where to split points.
+Expects **Paths** input containing one or more path data sets to be processed.
 
 </details>
 
@@ -36,30 +45,17 @@ This node works with point-based path data and requires at least one filter to b
 
 <summary>Outputs</summary>
 
-* **Main Output** (Default): New point data with the split paths.
+Produces multiple new **Paths** outputs, each representing a segment or sub-path of the original input paths after splitting.
 
 </details>
 
-### Properties Overview
+#### Configuration
 
-Controls how paths are split and what happens at each split point.
+<details>
 
-***
+<summary><strong>Split Action</strong><br><em>If both split and remove are true, the selected behavior takes priority.</em></summary>
 
-#### Split Settings
-
-Controls the behavior of how paths are split.
-
-**Split Action**
-
-_What action to take when a point matches the filter._
-
-* Determines how the path is modified at the split point.
-* When set to **Split**, the point is duplicated so that one becomes the end of the previous path and another becomes the start of a new path.
-* When set to **Remove**, the point is removed, shrinking both the previous and next paths.
-* When set to **Disconnect**, the point is disconnected from the next point, starting a new path from the next point.
-* When set to **Partition**, it creates new data sets only when the filter result changes from its previous result.
-* When set to **Switch**, it uses the filter result as a switch signal to toggle between keep/prune behavior.
+Controls how points that match the filter are handled.
 
 **Values**:
 
@@ -69,15 +65,13 @@ _What action to take when a point matches the filter._
 * **Partition**: Works like split but only create new data set as soon as the filter result changes from its previous result.
 * **Switch**: Use the result of the filter as a switch signal to change between keep/prune behavior.
 
-**Initial Behavior**
+</details>
 
-_Controls how to handle the first point when using Partition or Switch modes._
+<details>
 
-* Only applies when Split Action is set to **Partition** or **Switch**.
-* When set to **Constant**, uses a fixed value defined by "Initial Value".
-* When set to **Constant (Preserve)**, same as Constant but does not switch if the first value is the same.
-* When set to **From Point**, uses the first point's starting value.
-* When set to **From Point (Preserve)**, uses the first point's starting value but preserves its behavior.
+<summary><strong>Initial Behavior</strong><br></summary>
+
+Defines how the initial state is determined for Partition and Switch modes.
 
 **Values**:
 
@@ -86,65 +80,77 @@ _Controls how to handle the first point when using Partition or Switch modes._
 * **From Point**: Use the first point starting value.
 * **From Point (Preserve)**: Use the first point starting value, but preserve its behavior.
 
-**Initial Value**
+</details>
 
-_The initial switch value to start from when using Partition or Switch modes._
+<details>
 
-* Only applies when Initial Behavior is set to **Constant** and Split Action is **Partition** or **Switch**.
-* If false, paths are created only after the first true result.
-* If true, paths are created starting from the beginning and stop at the first true result instead.
+<summary><strong>Initial Value</strong><br><em>The initial switch value to start from. If false, will only starting to create paths after the first true result. If false, will start to create paths from the beginning and stop at the first true result instead.</em></summary>
 
-**Inclusive**
+Sets the starting value for Switch or Partition modes when using Constant behavior.
 
-_Should point insertion be inclusive of the behavior change._
+</details>
 
-* Only applies when Split Action is set to **Partition** or **Switch**.
-* When enabled, the behavior change point is included in the new path it affects.
+<details>
 
-**Omit Single Point Outputs**
+<summary><strong>Inclusive</strong><br><em>Should point insertion be inclusive of the behavior change</em></summary>
 
-_Whether to output single-point data or not._
+When enabled, includes the point that triggers a behavior change in the current path segment before switching to the new one.
 
-* When enabled, paths with only one point are excluded from the output.
+</details>
 
-***
+<details>
 
-#### Tagging Settings
+<summary><strong>Omit Single Point Outputs</strong><br><em>Whether to output single-point data or not</em></summary>
 
-Controls optional tagging of split results.
+When enabled, prevents outputs with only one point from being generated.
 
-**Tag If Even Split**
+</details>
 
-_When enabled, tag paths that have an even number of points._
+<details>
 
-* Applies a tag to paths where the number of points is even.
-* Useful for distinguishing path segments based on their length.
+<summary><strong>Tag If Even Split</strong><br></summary>
 
-**Is Even Tag**
+When enabled, tags paths that result in an even number of splits.
 
-_Name of the tag applied to even-length paths._
+</details>
 
-* Only used when "Tag If Even Split" is enabled.
-* Defaults to "EvenSplit".
+<details>
 
-**Tag If Odd Split**
+<summary><strong>Is Even Tag</strong><br><em>...</em></summary>
 
-_When enabled, tag paths that have an odd number of points._
+Name of the tag to apply to paths with even split counts.
 
-* Applies a tag to paths where the number of points is odd.
-* Useful for distinguishing path segments based on their length.
+</details>
 
-**Is Odd Tag**
+<details>
 
-_Name of the tag applied to odd-length paths._
+<summary><strong>Tag If Odd Split</strong><br></summary>
 
-* Only used when "Tag If Odd Split" is enabled.
-* Defaults to "OddSplit".
+When enabled, tags paths that result in an odd number of splits.
 
-### Notes
+</details>
 
-* This node works best with point-based paths that have a clear sequence.
-* Use filters in the "Split Conditions" input to define where splits should occur.
-* The **Partition** and **Switch** modes are particularly useful for creating segmented paths based on dynamic conditions.
-* When using **Switch**, consider enabling **Inclusive** to ensure that behavior change points are included in the resulting segments.
-* For performance, avoid using complex filters or large datasets without caching enabled.
+<details>
+
+<summary><strong>Is Odd Tag</strong><br><em>...</em></summary>
+
+Name of the tag to apply to paths with odd split counts.
+
+</details>
+
+#### Usage Example
+
+To create a branching path network from a single continuous path:
+
+1. Connect a path input to this node.
+2. Add a filter subnode that evaluates point properties (e.g., position, angle).
+3. Set **Split Action** to **Split** or **Disconnect**.
+4. Configure the filters to identify where you want to split the path.
+5. This will generate multiple new paths from the original, each starting or ending at the specified points.
+
+#### Notes
+
+* The node works on point data within paths, not on edges or vertices directly.
+* For Switch and Partition modes, the initial behavior affects how the first segment is handled.
+* Tagging can help identify path segments for further processing or visualization.
+* Performance may be impacted by large numbers of filters or complex conditions.

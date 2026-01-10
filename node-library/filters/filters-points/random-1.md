@@ -9,11 +9,11 @@ icon: circle-dashed
 This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Filters points based on a random ratio, determining whether each point passes or fails a condition.
+> Filter points using a random ratio.
 
 #### Overview
 
-This subnode filters points using a random value to determine if they should pass or fail a condition. It's useful for introducing randomness into procedural generation workflows, such as randomly selecting a percentage of points for further processing or applying effects to a subset of data. The behavior is controlled by a ratio that defines how many points are selected, and whether the result is inverted.
+This filter subnode randomly includes or excludes points based on a configurable probability ratio. It's useful for introducing stochastic variation into procedural generation workflows, such as randomly selecting a percentage of points for further processing or applying effects to a subset of data. You can use it to create varied, non-uniform distributions or to simulate randomness in your content.
 
 {% hint style="info" %}
 Connects to **Filter** pins on processing nodes.
@@ -21,58 +21,40 @@ Connects to **Filter** pins on processing nodes.
 
 #### How It Works
 
-This subnode generates a random value for each point and compares it against a defined ratio. If the random value is less than or equal to the ratio, the point passes the filter; otherwise, it fails. The process uses a seed-based random number generator to ensure reproducibility. When the **Invert Result** option is enabled, points that would normally pass are filtered out and vice versa.
+This filter evaluates each point individually and decides whether to include or exclude it based on a random value compared against a configured ratio. For each point, a random number is generated using the specified seed and noise parameters. If this random number falls below the defined ratio (between 0 and 1), the point passes the filter. Optionally, the result can be inverted so that points pass when the random value is _above_ the ratio.
 
-<details>
-
-<summary>Inputs</summary>
-
-* Points to be filtered
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* Points that meet the random ratio condition
-
-</details>
+The randomness is seeded per-point to ensure consistent results across runs when using the same seed values, but still allows for variation within a single execution.
 
 #### Configuration
 
-***
+<details>
 
-**Random**
+<summary><strong>Random</strong><br><em>Type of seed input and noise parameters for randomness.</em></summary>
 
-_Controls how the random value is generated for each point._
-
-This setting defines the seed and method used to generate a random number per point. The seed can be based on the point's data or a fixed value, ensuring consistent results across runs.
+Controls how random values are generated per point. This includes settings like the base seed, noise type, and scale.
 
 **Values**:
 
-* **Base Seed**: Defines the base seed value used for generating the random number. Can use input data or a fixed integer.
-* **Use Point Index as Seed**: When enabled, uses the point index to vary the seed per point, increasing randomness.
-* **Amount**: Controls how many points are selected based on the ratio.
+* **BaseSeed**: The seed used to initialize the random number generator for each point.
+* **NoiseMode**: Type of spatial noise used to vary randomness across space (e.g., Perlin, Voronoi).
+* **Scale**: Controls how much variation is introduced by the noise function.
 
-**bInvertResult**
+</details>
 
-_When enabled, reverses the filter result._
+<details>
 
-If enabled, points that would normally pass the filter will be excluded and those that fail will be included. This allows for selecting the inverse of the random selection.
+<summary><strong>bInvertResult</strong><br><em>When enabled, points pass when their random value is greater than the ratio.</em></summary>
 
-**Config**
+When enabled, the filter logic is inverted. Instead of including points where the random value is less than or equal to the ratio, it includes points where the random value is greater than the ratio.
 
-_Configuration settings for the filter behavior._
-
-This section groups the core parameters of the filter, including the random generation method and inversion option.
+</details>
 
 #### Usage Example
 
-A game designer wants to randomly select 30% of points from a point cloud to apply a special effect. They use this subnode with a ratio of `0.3` to filter out 70% of the points, leaving only 30% for further processing. The seed is set to use the point index so that each point gets a unique random value.
+Use this subnode in a point filtering node to randomly select 30% of points for further processing. Set the ratio to 0.3 and leave invert disabled. This will include approximately one-third of all input points, with the selection being consistent across runs when using the same seed.
 
 #### Notes
 
-* The random behavior is deterministic when using a fixed seed.
-* Using point indices as seeds ensures varied results across different points.
-* This filter can be combined with other filters to create more complex selection criteria.
+* The random behavior is deterministic based on the point's position or index and the provided seed.
+* When using noise modes like Voronoi or Perlin, the ratio will vary spatially across the point cloud.
+* Inverting the result can be useful for creating exclusion zones or selecting the complement of a random subset.

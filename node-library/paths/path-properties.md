@@ -6,29 +6,36 @@ icon: circle
 # Path Properties
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > One-stop node to compute useful path infos.
 
-### Overview
+#### Overview
 
-This node calculates a wide range of geometric and topological properties for paths, including length, area, centroid, winding order, and more. It also computes per-point attributes like distances, angles, normals, and binormals. The results are written as attributes to the input data, making them available for downstream processing.
+This node calculates and outputs a comprehensive set of geometric and topological properties for paths in your procedural content. It's designed to extract meaningful data from path structures, such as length, area, direction, winding order, and more. These computed values can be used for filtering, styling, or driving other procedural operations.
 
-It's particularly useful when you need to analyze or classify paths based on their shape characteristics, or when you want to use path geometry in other procedural systems that rely on these computed values.
+It is particularly useful when you need to analyze the shape, size, orientation, or nesting of paths within your dataset. You can output these properties directly to attributes on the points that make up each path, as well as to the path data itself.
 
 {% hint style="info" %}
-This node can be computationally expensive for complex paths with many points. Consider using it early in your graph and caching results if needed.
+Connects to **Path** inputs and outputs to **Path** pins.
 {% endhint %}
+
+#### How It Works
+
+This node processes paths by first determining their geometric characteristics in a 2D projection plane. For each path, it computes various metrics like total length, area, perimeter, compactness, and winding order (clockwise or counter-clockwise). It also calculates the centroid and oriented bounding box properties.
+
+For individual points along each path, it evaluates directional relationships such as angles between consecutive segments, distances to neighbors, and normal vectors. These point-level attributes are useful for creating detailed path behaviors or visual effects.
+
+The node supports inclusion analysis to determine how paths relate to one another (e.g., which are outermost, inner, or at odd depths). It can optionally output filtered lists of these paths to dedicated pins based on their inclusion status.
+
+All computed values are written as attributes to the input data. The node allows you to control whether these attributes are packed per input or merged into a single set for efficiency.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Default Input Pin**: Expects point data representing paths (typically from a path generation or extraction operation).
-* **Point Filter Pin** _(optional)_: Filters which points to process based on custom criteria.
+Expects **Path** data containing point sequences that define paths.
 
 </details>
 
@@ -36,540 +43,567 @@ This node can be computationally expensive for complex paths with many points. C
 
 <summary>Outputs</summary>
 
-* **Default Output Pin**: Contains the input point data with new attributes added.
-* **Additional Pins** _(if enabled)_: Optional outputs for outer, inner, and odd-depth paths, filtered from the main output.
+Writes computed path and point attributes back to the input data. Optionally outputs filtered path lists to additional pins if inclusion pins are enabled.
 
 </details>
 
-### Properties Overview
+#### Configuration
 
-This node computes both path-level and point-level properties. Path-level properties are written once per path, while point-level properties are computed for each individual point along the path.
+<details>
 
-***
+<summary><strong>ProjectionDetails</strong><br><em>Projection settings. Some path data must be computed on a 2D plane.</em></summary>
 
-#### Projection Settings
+Controls how the node projects path data onto a 2D plane for calculations like area, perimeter, and winding order.
 
-Controls how 3D path data is projected onto a 2D plane for certain calculations like area or perimeter.
+**Values**:
 
-**Projection Method**
+* **Normal**: Uses a normal vector to project points onto a plane.
+* **Best Fit**: Computes an eigenvalue-based best-fit plane from the points.
 
-_Controls the method used to project points onto a 2D plane._
+</details>
 
-* Uses either a fixed normal vector or computes the best-fit plane based on point distribution.
-* **Values**:
-  * **Normal**: Projects using a specified normal vector.
-  * **Best Fit**: Computes the best-fit plane from the set of points.
+<details>
 
-**Projection Normal**
+<summary><strong>InclusionDetails</strong><br><em>Inclusion details settings.</em></summary>
 
-_Vector used to define the 2D projection plane._
+Settings for how inclusion relationships between paths are determined. This affects which paths are tagged as outer, inner, or odd-depth.
 
-* Only relevant when "Projection Method" is set to "Normal".
-* Defaults to Up vector for XY projection.
+</details>
 
-**Support Local Normal**
+<details>
 
-_When enabled, allows using a point attribute to define the normal for projection._
+<summary><strong>bUseInclusionPins</strong><br><em>If enabled, will output data to additional pins. Note that all outputs are added to the default Path pin; extra pins contain a filtered list of the same data.</em></summary>
 
-* If enabled, you can specify a local normal attribute in the next setting.
-* When disabled, uses the fixed "Projection Normal".
+When enabled, this node creates additional output pins for outer, inner, and odd-depth paths. These pins contain subsets of the main path data.
 
-**Local Projection Normal Attribute**
+</details>
 
-_Name of the attribute containing per-point normal vectors._
+<details>
 
-* Only visible when "Support Local Normal" is enabled.
-* Used to compute 2D projections based on local geometry.
+<summary><strong>bOuterIsNotOdd</strong><br><em>If enabled, outer path (inclusion depth of zero) will not be considered "odd" even if they technically are.</em></summary>
 
-***
+When enabled, paths with inclusion depth zero are never tagged as odd, even if their depth modulo 2 would normally classify them as such.
 
-#### Inclusion Settings
+</details>
 
-Controls how path inclusion tests are performed, useful for determining nesting relationships between paths.
+<details>
 
-**Inclusion Offset**
+<summary><strong>PathAttributePackingMode</strong><br><em>Attribute set packing</em></summary>
 
-_Distance offset applied to projected polygon during inclusion testing._
+Controls how attributes are organized in the output data.
 
-* Affects how strictly points must lie within a path to be considered "inside".
-* Larger values make inclusion tests more lenient.
-
-**Inclusion Tolerance**
-
-_Percentage of points that can lie outside a path and still be considered inside._
-
-* Value between 0 and 1.
-* 0 means all points must be inside; 1 means any point is acceptable.
-* Useful for handling floating-point precision issues or soft boundaries.
-
-***
-
-#### Path Output Settings
-
-Controls how path-level attributes are written to the data set.
-
-**Packing**
-
-_Determines how path attributes are organized in output._
+**Values**:
 
 * **Per Input**: Each input path gets its own attribute set.
-* **Merged**: All paths share a single attribute set, which can reduce memory usage but may cause conflicts if multiple paths have different attribute names.
+* **Merged**: All paths share a single merged attribute set.
 
-**Write Path Data to Points**
+</details>
 
-_When enabled, writes path-level attributes directly to each point._
+<details>
 
-* Can be memory-intensive for large datasets.
-* Useful for visualizing or using path properties per-point.
+<summary><strong>bWritePathDataToPoints</strong><br><em>Whether to also write path attribute to the data set. Looks appealing, but can have massive memory cost -- this is legacy only.</em></summary>
 
-***
+When enabled, writes all computed path attributes directly to the points that make up each path.
 
-#### Path Attributes
+</details>
 
-Individual settings for writing specific path-level properties.
+<details>
 
-**Write Path Length**
+<summary><strong>bWritePathLength</strong><br><em>Output Path Length.</em></summary>
 
-_When enabled, calculates and stores the total length of the path._
+When enabled, computes and stores the total length of the path as a double attribute.
 
-* Stored as a double attribute.
-* Useful for sorting paths by length or applying length-based rules.
+</details>
 
-**Path Length Attribute Name**
+<details>
 
-_Name of the attribute to store path length._
+<summary><strong>PathLengthAttributeName</strong><br><em>Name of the 'double' attribute to write path length to.</em></summary>
 
-* Default is "@Data.PathLength".
+The name of the attribute where the path's total length is stored.
 
-**Write Path Direction**
+</details>
 
-_When enabled, computes and stores the average direction vector of the path._
+<details>
 
-* Stored as a FVector attribute.
-* Helps determine the general orientation of the path.
+<summary><strong>bWritePathDirection</strong><br><em>Output averaged path direction.</em></summary>
 
-**Path Direction Attribute Name**
+When enabled, computes and stores an averaged direction vector for the entire path.
 
-_Name of the attribute to store averaged direction._
+</details>
 
-* Default is "@Data.PathDirection".
+<details>
 
-**Write Path Centroid**
+<summary><strong>PathDirectionAttributeName</strong><br><em>Name of the 'FVector' attribute to write averaged direction to.</em></summary>
 
-_When enabled, calculates and stores the centroid (center point) of the path._
+The name of the attribute where the averaged path direction is stored.
 
-* Stored as a FVector attribute.
-* Useful for positioning or aligning objects relative to paths.
+</details>
 
-**Path Centroid Attribute Name**
+<details>
 
-_Name of the attribute to store path centroid._
+<summary><strong>bWritePathCentroid</strong><br><em>Output averaged path direction.</em></summary>
 
-* Default is "@Data.PathCentroid".
+When enabled, computes and stores the centroid (average position) of all points in the path.
 
-**Write Is Clockwise**
+</details>
 
-_When enabled, determines if the path is oriented clockwise (when viewed from above)._
+<details>
 
-* Stored as a bool attribute.
-* Useful for distinguishing inner/outer paths in polygonal structures.
+<summary><strong>PathCentroidAttributeName</strong><br><em>Name of the 'FVector' attribute to write averaged direction to.</em></summary>
 
-**Is Clockwise Attribute Name**
+The name of the attribute where the path's centroid is stored.
 
-_Name of the attribute to store winding direction._
+</details>
 
-* Default is "@Data.Clockwise".
+<details>
 
-**Write Area**
+<summary><strong>bWriteIsClockwise</strong><br><em>Output path winding.</em></summary>
 
-_When enabled, computes and stores the 2D projected area enclosed by the path._
+When enabled, determines and stores whether the path follows a clockwise or counter-clockwise direction in 2D space.
 
-* Stored as a double attribute.
-* Helpful for categorizing shapes or applying area-based rules.
+</details>
 
-**Area Attribute Name**
+<details>
 
-_Name of the attribute to store path area._
+<summary><strong>IsClockwiseAttributeName</strong><br><em>Name of the 'bool' attribute to write winding to.</em></summary>
 
-* Default is "@Data.Area".
+The name of the attribute where the winding direction is stored (true = clockwise).
 
-**Write Perimeter**
+</details>
 
-_When enabled, calculates and stores the 2D projected perimeter of the path._
+<details>
 
-* Stored as a double attribute.
-* Useful for shape analysis and comparison.
+<summary><strong>bWriteArea</strong><br><em>Output path area.</em></summary>
 
-**Perimeter Attribute Name**
+When enabled, computes and stores the enclosed area of the path in 2D space.
 
-_Name of the attribute to store path perimeter._
+</details>
 
-* Default is "@Data.Perimeter".
+<details>
 
-**Write Compactness**
+<summary><strong>AreaAttributeName</strong><br><em>Name of the 'double' attribute to write area to.</em></summary>
 
-_When enabled, computes and stores the compactness ratio (perimeter squared over area)._
+The name of the attribute where the path's area is stored.
 
-* Stored as a double attribute.
-* A measure of how "round" or "compact" a shape is.
+</details>
 
-**Compactness Attribute Name**
+<details>
 
-_Name of the attribute to store compactness._
+<summary><strong>bWritePerimeter</strong><br><em>Output path perimeter.</em></summary>
 
-* Default is "@Data.Compactness".
+When enabled, computes and stores the 2D projected perimeter of the path.
 
-**Write Bounding Box Center**
+</details>
 
-_When enabled, calculates and stores the center point of the path's oriented bounding box._
+<details>
 
-* Stored as a FVector attribute.
-* Useful for alignment or positioning.
+<summary><strong>PerimeterAttributeName</strong><br><em>Name of the 'double' attribute to write perimeter to (differ from length because this is the 2D projected value used to infer other values).</em></summary>
 
-**Bounding Box Center Attribute Name**
+The name of the attribute where the path's perimeter is stored.
 
-_Name of the attribute to store bounding box center._
+</details>
 
-* Default is "@Data.OBBCenter".
+<details>
 
-**Write Bounding Box Extent**
+<summary><strong>bWriteCompactness</strong><br><em>Output path compactness.</em></summary>
 
-_When enabled, calculates and stores the dimensions of the path's oriented bounding box._
+When enabled, computes and stores a normalized measure of how compact the path is (perimeter squared divided by area).
 
-* Stored as a FVector attribute.
-* Useful for sizing or scaling based on shape dimensions.
+</details>
 
-**Bounding Box Extent Attribute Name**
+<details>
 
-_Name of the attribute to store bounding box extent._
+<summary><strong>CompactnessAttributeName</strong><br><em>Name of the 'double' attribute to write compactness to.</em></summary>
 
-* Default is "@Data.OBBExtent".
+The name of the attribute where the path's compactness is stored.
 
-**Write Bounding Box Orientation**
+</details>
 
-_When enabled, calculates and stores the orientation of the path's oriented bounding box._
+<details>
 
-* Stored as a FQuat attribute.
-* Useful for aligning objects with the shape's principal axes.
+<summary><strong>bWriteInclusionDepth</strong><br><em>Output path inclusion depth.</em></summary>
 
-**Bounding Box Orientation Attribute Name**
+When enabled, determines and stores how deeply nested a path is within other paths.
 
-_Name of the attribute to store bounding box orientation._
+</details>
 
-* Default is "@Data.OBBOrientation".
+<details>
 
-**Write Inclusion Depth**
+<summary><strong>InclusionDepthAttributeName</strong><br><em>Name of the 'int32' attribute to write inclusion depth to.</em></summary>
 
-_When enabled, determines how deeply nested a path is within other paths._
+The name of the attribute where the path's inclusion depth is stored.
 
-* Stored as an int32 attribute.
-* Useful for identifying outermost or innermost shapes.
+</details>
 
-**Inclusion Depth Attribute Name**
+<details>
 
-_Name of the attribute to store inclusion depth._
+<summary><strong>bWriteNumInside</strong><br><em>Output path number of children.</em></summary>
 
-* Default is "@Data.InclusionDepth".
+When enabled, counts and stores how many other paths are fully enclosed within this one.
 
-**Write Num Inside**
+</details>
 
-_When enabled, counts how many other paths are fully enclosed by this one._
+<details>
 
-* Stored as an int32 attribute.
-* Useful for hierarchical path structures.
+<summary><strong>NumInsideAttributeName</strong><br><em>Name of the 'int32' attribute to write how many paths are contained inside this one.</em></summary>
 
-**Num Inside Attribute Name**
+The name of the attribute where the number of enclosed paths is stored.
 
-_Name of the attribute to store number of enclosed paths._
+</details>
 
-* Default is "@Data.NumInside".
+<details>
 
-***
+<summary><strong>bWriteBoundingBoxCenter</strong><br><em>.</em></summary>
 
-#### Point Output Settings
+When enabled, computes and stores the center point of the path's oriented bounding box.
 
-Controls how point-level attributes are written to the data set.
+</details>
 
-**Up Vector**
+<details>
 
-_Vector used as a reference for computing normals and binormals._
+<summary><strong>BoundingBoxCenterAttributeName</strong><br><em>Name of the 'FVector' attribute to write bounding box center to.</em></summary>
 
-* Affects how directions are calculated.
-* Default is FVector::UpVector (pointing upward).
+The name of the attribute where the bounding box center is stored.
 
-***
+</details>
 
-#### Point Attributes
+<details>
 
-Individual settings for writing specific per-point properties.
+<summary><strong>bWriteBoundingBoxExtent</strong><br><em>.</em></summary>
 
-**Write Dot**
+When enabled, computes and stores the dimensions (extent) of the path's oriented bounding box.
 
-_When enabled, computes and stores the dot product of previous and next direction vectors._
+</details>
 
-* Stored as a double attribute.
-* Useful for detecting sharp turns or corners.
+<details>
 
-**Dot Attribute Name**
+<summary><strong>BoundingBoxExtentAttributeName</strong><br><em>Name of the 'FVector' attribute to write bounding box extent to.</em></summary>
 
-_Name of the attribute to store dot product._
+The name of the attribute where the bounding box extent is stored.
 
-* Default is "Dot".
+</details>
 
-**Write Angle**
+<details>
 
-_When enabled, computes and stores the angle between previous and next direction vectors._
+<summary><strong>bWriteBoundingBoxOrientation</strong><br><em>.</em></summary>
 
-* Stored as a double attribute.
-* Value depends on selected range unit (degrees/radians).
+When enabled, computes and stores the orientation (rotation) of the path's oriented bounding box.
 
-**Angle Attribute Name**
+</details>
 
-_Name of the attribute to store angle._
+<details>
 
-* Default is "Angle".
+<summary><strong>BoundingBoxOrientationAttributeName</strong><br><em>Name of the 'FQuat' attribute to write bounding box orientation to.</em></summary>
 
-**Angle Range**
+The name of the attribute where the bounding box orientation is stored.
 
-_Unit for outputting angles._
+</details>
 
-* **Radians (0..+PI)**: 0 to π radians.
-* **Radians (-PI..+PI)**: -π to +π radians.
-* **Radians (0..+TAU)**: 0 to 2π radians.
-* **Degrees (0..+180)**: 0 to 180 degrees.
-* **Degrees (-180..+180)**: -180 to +180 degrees.
-* **Degrees (0..+360)**: 0 to 360 degrees.
-* **Normalized Half (0..180 -> 0..1)**: Normalized from 0 to 1 based on 0 to 180 range.
-* **Normalized (0..+360 -> 0..1)**: Normalized from 0 to 1 based on 0 to 360 range.
-* **Inv. Normalized Half (0..180 -> 1..0)**: Inverted normalized from 180 to 0 based on 0 to 180 range.
-* **Inv. Normalized (0..+360 -> 1..0)**: Inverted normalized from 360 to 0 based on 0 to 360 range.
+<details>
 
-**Write Distance To Next**
+<summary><strong>UpVector</strong><br><em>Up Attribute constant</em></summary>
 
-_When enabled, computes and stores the distance to the next point in the path._
+A constant vector used as the up direction for various calculations like normal and binormal vectors.
 
-* Stored as a double attribute.
-* Useful for path traversal or spacing calculations.
+</details>
 
-**Distance To Next Attribute Name**
+<details>
 
-_Name of the attribute to store distance to next point._
+<summary><strong>bWriteDot</strong><br><em>Output Dot product of Prev/Next directions.</em></summary>
 
-* Default is "DistanceToNext".
+When enabled, computes and stores the dot product between the previous and next edge directions at each point.
 
-**Write Distance To Prev**
+</details>
 
-_When enabled, computes and stores the distance to the previous point in the path._
+<details>
 
-* Stored as a double attribute.
-* Useful for path traversal or spacing calculations.
+<summary><strong>DotAttributeName</strong><br><em>Name of the 'double' attribute to write distance to next point to.</em></summary>
 
-**Distance To Prev Attribute Name**
+The name of the attribute where the dot product is stored.
 
-_Name of the attribute to store distance to previous point._
+</details>
 
-* Default is "DistanceToPrev".
+<details>
 
-**Write Distance To Start**
+<summary><strong>bWriteAngle</strong><br><em>Output Dot product of Prev/Next directions.</em></summary>
 
-_When enabled, computes and stores the cumulative distance from the start of the path._
+When enabled, computes and stores the angle between the previous and next edge directions at each point.
 
-* Stored as a double attribute.
-* Useful for time-based or sequential processing.
+</details>
 
-**Distance To Start Attribute Name**
+<details>
 
-_Name of the attribute to store cumulative distance from start._
+<summary><strong>AngleAttributeName</strong><br><em>Name of the 'double' attribute to write angle to next point to.</em></summary>
 
-* Default is "DistanceToStart".
+The name of the attribute where the angle is stored.
 
-**Write Distance To End**
+</details>
 
-_When enabled, computes and stores the cumulative distance from the end of the path._
+<details>
 
-* Stored as a double attribute.
-* Useful for reverse traversal or sequential processing.
+<summary><strong>AngleRange</strong><br><em>Unit/range to output the angle to.</em></summary>
 
-**Distance To End Attribute Name**
+Controls how the angle is normalized or expressed (e.g., radians from 0 to π, or degrees from -180 to +180).
 
-_Name of the attribute to store cumulative distance from end._
+**Values**:
 
-* Default is "DistanceToEnd".
+* **Radians (0..+PI)**: Angle in radians from 0 to π.
+* **Radians (-PI..+PI)**: Angle in radians from -π to +π.
+* **Radians (0..+TAU)**: Angle in radians from 0 to 2π.
+* **Degrees (0..+180)**: Angle in degrees from 0 to 180.
+* **Degrees (-180..+180)**: Angle in degrees from -180 to +180.
+* **Degrees (0..+360)**: Angle in degrees from 0 to 360.
+* **Normalized Half (0..180 -> 0..1)**: Normalized angle from 0 to 1 based on 0–180° range.
+* **Normalized (0..+360 -> 0..1)**: Normalized angle from 0 to 1 based on 0–360° range.
+* **Inv. Normalized Half (0..180 -> 1..0)**: Inverted normalized angle from 1 to 0 based on 0–180° range.
+* **Inv. Normalized (0..+360 -> 1..0)**: Inverted normalized angle from 1 to 0 based on 0–360° range.
 
-**Write Point Time**
+</details>
 
-_When enabled, computes and stores a normalized time value along the path._
+<details>
 
-* Stored as a double attribute.
-* Can be used for animation or interpolation.
+<summary><strong>bWriteDistanceToNext</strong><br><em>Output distance to next.</em></summary>
 
-**Point Time Attribute Name**
+When enabled, computes and stores the Euclidean distance to the next point in the path.
 
-_Name of the attribute to store point time._
+</details>
 
-* Default is "PointTime".
+<details>
 
-**Time One Minus**
+<summary><strong>DistanceToNextAttributeName</strong><br><em>Name of the 'double' attribute to write distance to next point to.</em></summary>
 
-_When enabled, stores (1 - time) instead of time._
+The name of the attribute where the distance to the next point is stored.
 
-* Useful for reverse interpolation or symmetry.
+</details>
 
-**Write Point Normal**
+<details>
 
-_When enabled, computes and stores the normal vector at each point._
+<summary><strong>bWriteDistanceToPrev</strong><br><em>Output distance to prev.</em></summary>
 
-* Stored as a FVector attribute.
-* Helpful for surface alignment or lighting effects.
+When enabled, computes and stores the Euclidean distance to the previous point in the path.
 
-**Point Normal Attribute Name**
+</details>
 
-_Name of the attribute to store point normal._
+<details>
 
-* Default is "PointNormal".
+<summary><strong>DistanceToPrevAttributeName</strong><br><em>Name of the 'double' attribute to write distance to prev point to.</em></summary>
 
-**Write Point Average Normal**
+The name of the attribute where the distance to the previous point is stored.
 
-_When enabled, computes and stores an averaged normal vector based on neighboring points._
+</details>
 
-* Stored as a FVector attribute.
-* Useful for smoothing or reducing noise in normals.
+<details>
 
-**Point Average Normal Attribute Name**
+<summary><strong>bWriteDistanceToStart</strong><br><em>Output distance to start.</em></summary>
 
-_Name of the attribute to store averaged normal._
+When enabled, computes and stores the cumulative distance from the start of the path to the current point.
 
-* Default is "PointAvgNormal".
+</details>
 
-**Write Point Binormal**
+<details>
 
-_When enabled, computes and stores the binormal vector at each point._
+<summary><strong>DistanceToStartAttributeName</strong><br><em>Name of the 'double' attribute to write distance to start to.</em></summary>
 
-* Stored as a FVector attribute.
-* Useful for surface alignment or generating perpendicular vectors.
+The name of the attribute where the cumulative distance from the start is stored.
 
-**Point Binormal Attribute Name**
+</details>
 
-_Name of the attribute to store point binormal._
+<details>
 
-* Default is "PointBinormal".
+<summary><strong>bWriteDistanceToEnd</strong><br><em>Output distance to end.</em></summary>
 
-**Write Direction To Next**
+When enabled, computes and stores the cumulative distance from the current point to the end of the path.
 
-_When enabled, computes and stores the normalized direction vector to the next point._
+</details>
 
-* Stored as a FVector attribute.
-* Useful for path traversal or movement direction.
+<details>
 
-**Direction To Next Attribute Name**
+<summary><strong>DistanceToEndAttributeName</strong><br><em>Name of the 'double' attribute to write distance to start to.</em></summary>
 
-_Name of the attribute to store direction to next point._
+The name of the attribute where the cumulative distance to the end is stored.
 
-* Default is "DirectionToNext".
+</details>
 
-**Write Direction To Prev**
+<details>
 
-_When enabled, computes and stores the normalized direction vector to the previous point._
+<summary><strong>bWritePointTime</strong><br><em>Output distance to end.</em></summary>
 
-* Stored as a FVector attribute.
-* Useful for path traversal or movement direction.
+When enabled, computes and stores a normalized time value along the path (0 at start, 1 at end).
 
-**Direction To Prev Attribute Name**
+</details>
 
-_Name of the attribute to store direction to previous point._
+<details>
 
-* Default is "DirectionToPrev".
+<summary><strong>PointTimeAttributeName</strong><br><em>Name of the 'double' attribute to write distance to start to.</em></summary>
 
-***
+The name of the attribute where the normalized point time is stored.
 
-#### Tagging Settings
+</details>
 
-Controls how paths are tagged based on their inclusion properties.
+<details>
 
-**Tag Concave**
+<summary><strong>bTimeOneMinus</strong><br><em>.</em></summary>
 
-_When enabled, tags paths that are concave (have inward angles)._
+When enabled, stores 1 minus the normalized time (i.e., 1 at start, 0 at end).
 
-* Adds a string tag to points in concave paths.
-* Useful for filtering or styling based on shape type.
+</details>
 
-**Concave Tag Name**
+<details>
 
-_Name of the tag assigned to concave paths._
+<summary><strong>bWritePointNormal</strong><br><em>Output point normal.</em></summary>
 
-* Default is "Concave".
+When enabled, computes and stores a normal vector for each point based on its surrounding edges.
 
-**Tag Convex**
+</details>
 
-_When enabled, tags paths that are convex (have outward angles)._
+<details>
 
-* Adds a string tag to points in convex paths.
-* Useful for filtering or styling based on shape type.
+<summary><strong>PointNormalAttributeName</strong><br><em>Name of the 'FVector' attribute to write point normal to.</em></summary>
 
-**Convex Tag Name**
+The name of the attribute where the point normal is stored.
 
-_Name of the tag assigned to convex paths._
+</details>
 
-* Default is "Convex".
+<details>
 
-**Tag Outer**
+<summary><strong>bWritePointAvgNormal</strong><br><em>Output point normal.</em></summary>
 
-_When enabled, tags paths that are not enclosed by any other path (inclusion depth = 0)._
+When enabled, computes and stores an averaged normal vector for each point based on its neighbors.
 
-* Adds a string tag to points in outer paths.
-* Useful for identifying top-level shapes.
+</details>
 
-**Outer Tag Name**
+<details>
 
-_Name of the tag assigned to outer paths._
+<summary><strong>PointAvgNormalAttributeName</strong><br><em>Name of the 'FVector' attribute to write point averaged normal to.</em></summary>
 
-* Default is "Outer".
+The name of the attribute where the averaged point normal is stored.
 
-**Tag Inner**
+</details>
 
-_When enabled, tags paths that are enclosed by one or more other paths._
+<details>
 
-* Adds a string tag to points in inner paths.
-* Useful for identifying nested shapes.
+<summary><strong>bWritePointBinormal</strong><br><em>Output point normal.</em></summary>
 
-**Inner Tag Name**
+When enabled, computes and stores a binormal vector for each point (perpendicular to normal and up vector).
 
-_Name of the tag assigned to inner paths._
+</details>
 
-* Default is "Inner".
+<details>
 
-**Tag Odd Inclusion Depth**
+<summary><strong>PointBinormalAttributeName</strong><br><em>Name of the 'FVector' attribute to write point binormal to. Note that it's stabilized.</em></summary>
 
-_When enabled, tags paths with an odd inclusion depth (excluding outer paths if specified)._
+The name of the attribute where the point binormal is stored.
 
-* Adds a string tag to points in paths with odd inclusion depths.
-* Useful for hierarchical or alternating path structures.
+</details>
 
-**Odd Inclusion Depth Tag Name**
+<details>
 
-_Name of the tag assigned to paths with odd inclusion depth._
+<summary><strong>bWriteDirectionToNext</strong><br><em>Output direction to next normal.</em></summary>
 
-* Default is "OddDepth".
+When enabled, computes and stores the normalized direction vector from the current point to the next one.
 
-**Use Inclusion Pins**
+</details>
 
-_When enabled, outputs filtered data to additional pins based on inclusion properties._
+<details>
 
-* Outputs are added to the default pin; extra pins contain only specific path types.
-* Useful for separating outer, inner, and odd-depth paths.
+<summary><strong>DirectionToNextAttributeName</strong><br><em>Name of the 'FVector' attribute to write direction to next point to.</em></summary>
 
-**Outer Is Not Odd**
+The name of the attribute where the direction to the next point is stored.
 
-_When enabled, excludes outer paths (depth = 0) from being tagged as "odd"._
+</details>
 
-* Ensures that only truly nested paths are considered odd.
-* Useful for maintaining clear hierarchy definitions.
+<details>
 
-### Notes
+<summary><strong>bWriteDirectionToPrev</strong><br><em>Output direction to prev normal.</em></summary>
 
-* This node is best used after path generation or extraction to enrich your data with meaningful geometric properties.
-* Consider using the "Use Inclusion Pins" option if you need separate outputs for different types of paths (outer, inner, etc.).
-* For performance reasons, only enable attributes you actually need.
-* The "Path Data to Points" option can significantly increase memory usage; disable it unless necessary.
-* When using local normals for projection, ensure the input data has valid normal vectors in the specified attribute.
-* The inclusion depth and nesting information are computed based on the spatial relationships between paths. Make sure your paths do not overlap incorrectly or are too close to each other, as this might affect accuracy.
+When enabled, computes and stores the normalized direction vector from the current point to the previous one.
+
+</details>
+
+<details>
+
+<summary><strong>DirectionToPrevAttributeName</strong><br><em>Name of the 'FVector' attribute to write direction to prev point to.</em></summary>
+
+The name of the attribute where the direction to the previous point is stored.
+
+</details>
+
+<details>
+
+<summary><strong>bTagConcave</strong><br><em>.</em></summary>
+
+When enabled, tags points that form concave angles in the path.
+
+</details>
+
+<details>
+
+<summary><strong>ConcaveTag</strong><br><em>.</em></summary>
+
+The tag value used to identify concave points.
+
+</details>
+
+<details>
+
+<summary><strong>bTagConvex</strong><br><em>.</em></summary>
+
+When enabled, tags points that form convex angles in the path.
+
+</details>
+
+<details>
+
+<summary><strong>ConvexTag</strong><br><em>.</em></summary>
+
+The tag value used to identify convex points.
+
+</details>
+
+<details>
+
+<summary><strong>bTagOuter</strong><br><em>.</em></summary>
+
+When enabled, tags paths that are not enclosed by any other path.
+
+</details>
+
+<details>
+
+<summary><strong>OuterTag</strong><br><em>Outer paths are not enclosed by any other path</em></summary>
+
+The tag value used to identify outer paths.
+
+</details>
+
+<details>
+
+<summary><strong>bTagInner</strong><br><em>.</em></summary>
+
+When enabled, tags paths that are enclosed by one or more other paths.
+
+</details>
+
+<details>
+
+<summary><strong>InnerTag</strong><br><em>Inner paths are enclosed by one or more paths</em></summary>
+
+The tag value used to identify inner paths.
+
+</details>
+
+<details>
+
+<summary><strong>bTagOddInclusionDepth</strong><br><em>.</em></summary>
+
+When enabled, tags paths with an odd inclusion depth (i.e., depth % 2 != 0).
+
+</details>
+
+<details>
+
+<summary><strong>OddInclusionDepthTag</strong><br><em>Median paths are inner with a depth %2 != 0</em></summary>
+
+The tag value used to identify paths with odd inclusion depth.
+
+</details>

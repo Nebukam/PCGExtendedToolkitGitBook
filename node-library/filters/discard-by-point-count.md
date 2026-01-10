@@ -13,26 +13,31 @@ This page was generated from the source code. It should properly capture what th
 
 #### Overview
 
-This node filters clusters or point data based on the number of points they contain. It allows you to discard clusters that are either too small or too large, helping you control the granularity and size of your procedural output. This is useful when you want to exclude noisy or overly complex data from downstream processing.
+This node filters clusters or point data based on the number of points they contain. It allows you to discard clusters that are either too small or too large, helping you control the granularity and size of your output data. This is useful when working with clustered point data where certain cluster sizes are undesirable for downstream processing or visual representation.
+
+It operates on clusters or point sets and removes those that fall outside specified point count thresholds. You can configure it to remove clusters below a minimum point count, above a maximum point count, or both. The node supports optional empty output handling, which allows you to decide whether to pass through empty results when all clusters are filtered out.
 
 {% hint style="info" %}
-Connects to **Cluster** or **Point** inputs, and outputs filtered results to **Output** pins.
+This node connects to **Cluster** or **Point** inputs and outputs filtered data on the main output pin.
 {% endhint %}
 
 #### How It Works
 
-This node evaluates each cluster or group of points in the input and compares its point count against user-defined thresholds. It operates by checking two conditions:
+The node evaluates each cluster or point set based on its point count. For each input, it checks whether the number of points meets the configured thresholds:
 
-1. If **Remove Below** is enabled, it discards clusters with fewer points than the specified **Min Point Count**.
-2. If **Remove Above** is enabled, it discards clusters with more points than the specified **Max Point Count**.
+1. If `bRemoveBelow` is enabled, clusters with fewer points than `MinPointCount` are discarded.
+2. If `bRemoveAbove` is enabled, clusters with more points than `MaxPointCount` are discarded.
+3. Clusters that pass both checks are allowed to proceed to the output.
+4. If `bAllowEmptyOutputs` is enabled, even when all clusters are filtered out, an empty output is still passed through.
 
-Clusters that meet both discard criteria (too few or too many points) are excluded from the output. The node supports allowing empty outputs when no clusters pass the filter, which can be useful for handling cases where all data gets filtered out.
+The filtering happens in a single pass, and the node does not modify point data directly — it decides whether to include or exclude entire clusters based on their size.
 
 <details>
 
 <summary>Inputs</summary>
 
-Accepts **Cluster** or **Point** data as input, typically from a clustering or point generation operation.
+* **Main Input**: Accepts clusters or point data.
+* **Optional Filter Pin**: Not used by this node.
 
 </details>
 
@@ -40,52 +45,72 @@ Accepts **Cluster** or **Point** data as input, typically from a clustering or p
 
 <summary>Outputs</summary>
 
-Produces filtered **Cluster** or **Point** data based on the defined point count thresholds. Output pins are dynamically configured based on whether the node is filtering clusters or points.
+* **Main Output**: Contains filtered clusters or point sets that meet the point count criteria.
+* **Empty Output**: Optional, only created if `bAllowEmptyOutputs` is enabled and all input data is filtered out.
 
 </details>
 
 #### Configuration
 
-***
+<details>
 
-**bRemoveBelow**
+<summary><strong>bRemoveBelow</strong><br><em>Don't output Clusters if they have less points than a specified amount.</em></summary>
 
-_When enabled, clusters with fewer points than the specified minimum will be discarded._
+When enabled, clusters with fewer points than the defined `MinPointCount` are discarded.
 
-Controls whether to filter out clusters that contain fewer points than the **Min Point Count** value.
+</details>
 
-**MinPointCount**
+<details>
 
-_Discarded if point count is less than_
+<summary><strong>MinPointCount</strong><br><em>Discarded if point count is less than</em></summary>
 
-The minimum number of points a cluster must have to be included in the output. Any cluster with fewer points is removed.
+The minimum number of points a cluster must have to be included in the output. Any cluster with fewer points will be filtered out if `bRemoveBelow` is enabled.
 
-**bRemoveAbove**
+**Example**: If set to 5, clusters with 4 or fewer points are discarded.
 
-_When enabled, clusters with more points than the specified maximum will be discarded._
+</details>
 
-Controls whether to filter out clusters that contain more points than the **Max Point Count** value.
+<details>
 
-**MaxPointCount**
+<summary><strong>bRemoveAbove</strong><br><em>Don't output Clusters if they have more points than a specified amount.</em></summary>
 
-_Discarded if point count is more than_
+When enabled, clusters with more points than the defined `MaxPointCount` are discarded.
 
-The maximum number of points a cluster can have to be included in the output. Any cluster with more points is removed.
+</details>
 
-**bAllowEmptyOutputs**
+<details>
 
-_Whether or not to allow empty outputs (either discarded or not)_
+<summary><strong>MaxPointCount</strong><br><em>Discarded if point count is more than</em></summary>
 
-When enabled, allows the node to output nothing if no clusters pass the filtering criteria. When disabled, it may prevent downstream nodes from receiving valid data.
+The maximum number of points a cluster can have to be included in the output. Any cluster with more points will be filtered out if `bRemoveAbove` is enabled.
+
+**Example**: If set to 100, clusters with 101 or more points are discarded.
+
+</details>
+
+<details>
+
+<summary><strong>bAllowEmptyOutputs</strong><br><em>Whether or not to allow empty outputs (either discarded or not)</em></summary>
+
+When enabled, the node will still output an empty result if all input data is filtered out. When disabled, no output is produced if all clusters are discarded.
+
+</details>
 
 #### Usage Example
 
-You're generating clusters of points using a clustering algorithm and want to remove very small clusters that are likely noise. Set **bRemoveBelow** to true and **Min Point Count** to 5. This ensures only clusters with at least 5 points are passed forward, discarding smaller groups.
+You're generating a point cloud from a mesh and clustering the points. You want to remove very small clusters (e.g., less than 3 points) and also very large clusters (e.g., more than 1000 points) to keep your data manageable.
 
-Alternatively, if you're working with large point clouds and want to limit cluster sizes for performance reasons, set **bRemoveAbove** to true and **Max Point Count** to 1000. This will discard any cluster that contains more than 1000 points.
+1. Set `bRemoveBelow` to **true**.
+2. Set `MinPointCount` to **3**.
+3. Set `bRemoveAbove` to **true**.
+4. Set `MaxPointCount` to **1000**.
+5. Set `bAllowEmptyOutputs` to **false**.
+
+This configuration ensures only clusters with between 3 and 1000 points are passed through, discarding both tiny and overly large clusters.
 
 #### Notes
 
-* The node works on both clusters and individual point data.
-* If both **Remove Below** and **Remove Above** are enabled, only clusters with a point count within the specified range will be kept.
-* This node is commonly used in preprocessing steps to clean up noisy or overly complex data before further processing.
+* This node is useful for cleaning up noisy or overly dense data in point-based workflows.
+* If both `bRemoveBelow` and `bRemoveAbove` are enabled, the node applies both filters.
+* Empty outputs are only created when `bAllowEmptyOutputs` is enabled.
+* The node works on clusters and point sets, so it's best used after clustering or point generation operations.

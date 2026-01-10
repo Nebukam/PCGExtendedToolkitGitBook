@@ -6,77 +6,72 @@ icon: circle-dashed
 # Index
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Matches points based on index values from target and candidate data.
+> Matches data points based on index values between target and candidate data.
 
-### Overview
+#### How It Works
 
-This node compares index values between target and candidate data to determine matches. It's useful when you want to align data points based on their position or order in the input streams, rather than spatial or attribute-based criteria.
+This node pairs up data points from two sets — a target set and a candidate set — by comparing their index values. It checks whether the index of each point in one set matches an index in the other set, depending on how you configure the matching behavior.
 
-The matching logic works by reading an index value from either the target or candidate point and comparing it against the index of the other point. This is particularly helpful for pairing up elements that should correspond to each other in a sequence.
+The process works like this:
 
-{% hint style="info" %}
-This node requires that both target and candidate data have index values available. If your data doesn't contain index attributes, you may need to add them using nodes like "Set Index" or similar before using this matching rule.
-{% endhint %}
+1. The node reads an index value from either the **Target** or **Candidate** data, based on your selection.
+2. For every point in the target data:
+   * If the source is **Target**, it compares that point’s index with the candidate data's indices.
+   * If the source is **Candidate**, it compares the candidate’s index with the target data's indices.
+3. When a match is found, the corresponding points are considered matched.
+4. If an index is out of range (like a negative number or one higher than the available data), the node uses a safety mode to decide what to do:
+   * **Ignore**: Skips invalid indices.
+   * **Tile**: Wraps around so that a negative index becomes a valid one at the end.
+   * **Clamp**: Forces invalid indices into the nearest valid range.
+   * **Yoyo**: Bounces back and forth between valid indices.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Source</strong><br><em>Which data source to read the index from.</em></summary>
 
-* **Target**: The main data stream used as the reference for matching
-* **Candidates**: Data stream that will be tested against the target
+Controls whether the node reads the index value from the target or candidate data for comparison.
+
+**Values**:
+
+* **Target**: The index value is taken from the target data and compared against the candidate's indices.
+* **Candidate**: The index value is taken from the candidate data and compared against the target's indices.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>IndexAttribute</strong><br><em>The attribute to read on the candidates (the data that's not used as target).</em></summary>
 
-* **Output Match Rule**: A match rule definition that can be used by other matching nodes
+Defines which attribute contains the index values for matching. Only attributes in the `@Data` domain are supported.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how index-based matching is performed.
+<summary><strong>IndexSafety</strong><br><em>How to handle out-of-bounds indices.</em></summary>
 
-***
+Controls how the node behaves when an index is outside the valid range of available data.
 
-#### General
+**Values**:
 
-Sets the core matching behavior.
+* **Ignore**: Out-of-bounds indices are skipped.
+* **Tile**: Out-of-bounds indices wrap around to valid indices.
+* **Clamp**: Out-of-bounds indices are clamped to the nearest valid index.
+* **Yoyo**: Out-of-bounds indices are mirrored back and forth.
 
-**Source**
+</details>
 
-_Controls which data stream provides the index value for comparison._
+#### Usage Example
 
-* When set to **Target**, the node reads the index from each target point and compares it against the index of candidate points
-* When set to **Candidate**, the node reads the index from each candidate point and compares it against the index of target points
+Imagine you have two sets of points: one representing a mesh’s vertices (target) and another representing particles (candidate). You want to connect each particle to its corresponding vertex based on their position in the list. By setting `Source` to **Target**, reading an index attribute from the target, and using `IndexSafety` as **Tile**, you can match particles to vertices even if there are more particles than vertices.
 
-**Index Attribute**
+#### Notes
 
-_Specifies which attribute contains the index values to compare._
-
-* The attribute must be of type integer
-* Default value is `$Index`, which uses the built-in index attribute
-* Only data domain attributes are supported
-
-**Index Safety**
-
-_How to handle out-of-bounds index values._
-
-* **Ignore**: Out-of-bounds indices are skipped (0,1,2,-1,-1,-1,...)
-* **Tile**: Out-of-bounds indices wrap around (0,1,2,0,1,2...)
-* **Clamp**: Out-of-bounds indices are clamped to valid range (0,1,2,2,2,2...)
-* **Yoyo**: Out-of-bounds indices mirror back and forth (0,1,2,1,0,1...)
-
-### Notes
-
-* This matching method works best when both target and candidate data have meaningful sequential index values
-* Use the "Tile" safety mode if your index values might exceed the number of points in one of the datasets
-* Consider using this with nodes like "Match Points" or "Match Edges" to create complex matching workflows
-* For performance, ensure that index attributes are properly set and don't contain unnecessary data types
+* Ensure that the index attributes are properly defined and populated on both target and candidate data.
+* The `IndexAttribute` must be in the `@Data` domain.
+* Out-of-bounds indices are handled according to the selected `IndexSafety` mode, which can significantly affect matching behavior.

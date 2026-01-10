@@ -5,204 +5,197 @@ icon: circle
 
 # Offset
 
-See : [clipper2-offset.md](clipper2/clipper2-offset.md "mention")
-
-{% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+{% hint style="success" %}
+Consider the more robust [clipper2-offset.md](clipper2/clipper2-offset.md "mention")
 {% endhint %}
 
-> Offset paths points along their normal or custom direction.
-
-### Overview
-
-This node offsets the points of input paths by a specified distance, moving them perpendicular to the path's direction. It's useful for creating outlines, expanding shapes, or generating parallel paths. The offset can be applied using either the path's natural normal vector or a custom direction vector you provide.
-
 {% hint style="info" %}
-The node supports both constant and attribute-based offset values, allowing for dynamic adjustments based on point properties.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
+
+> Shifts path points along their normal or binormal direction to create parallel paths or modify existing shapes.
+
+#### How It Works
+
+This node moves each point in a path along a specific direction—either its normal, binormal, or a custom vector. The amount of movement is determined by a fixed value or an attribute that varies per point. For each point, the system calculates where it should be moved based on its neighbors to keep the path smooth and consistent.
+
+When paths have sharp turns, special adjustments are made:
+
+* **Auto Smooth**: Automatically softens tight angles.
+* **Custom Smooth**: Lets you define how much smoothing to apply.
+* **Mitre**: Prevents overlapping or excessive extension at acute angles.
+
+If cleanup is enabled, it can detect when points have flipped direction during offsetting and optionally collapse sections that self-intersect due to the offset.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Offset Method</strong><br><em>How to compute the offset direction.</em></summary>
 
-* **Main Input**: Paths to offset (point data with path structure)
-* **Filters** _(optional)_: Point filters to determine which points are affected by the offset
+Controls how the offset direction is calculated.
+
+**Values**:
+
+* **Slide**: Offset along a normal or binormal vector.
+* **Line/Plane**: Uses line-plane intersection for more complex offset behaviors.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Offset Input</strong><br><em>Whether to use a constant or attribute value for the offset.</em></summary>
 
-* **Main Output**: Modified paths with offset points
-* **Optional Outputs**:
-  * Mutated points flagging (if enabled)
-  * Flipped points flagging (if enabled)
+Controls whether the offset is defined by a fixed number or read from an attribute.
+
+**Values**:
+
+* **Constant**: Use the value in the "Offset" setting.
+* **Attribute**: Read the offset size from a point attribute.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the offset is applied and cleaned up.
+<summary><strong>Offset</strong><br><em>Distance to offset points.</em></summary>
 
-***
+The amount by which to shift each point. If using an attribute, this acts as a multiplier.
 
-#### Offset Settings
+</details>
 
-Controls the method and size of the offset.
+<details>
 
-**Offset Method**
+<summary><strong>Apply Point Scale To Offset</strong><br><em>Scales offset direction &#x26; distance using point scale.</em></summary>
 
-_Controls whether to use a slide or line/plane method for calculating the offset direction._
+When enabled, the offset is scaled based on the point's scale property, allowing for dynamic adjustments based on size.
 
-* **Slide**: Offsets points along the path's normal, which is calculated from the point's position relative to its neighbors.
-* **Line/Plane**: Uses a vector to define the plane on which to project the offset.
+</details>
 
-**Offset Input**
+<details>
 
-_Determines whether the offset size is constant or read from an attribute._
+<summary><strong>Up Vector</strong><br><em>Up vector used to calculate Offset direction.</em></summary>
 
-* When set to **Constant**, use the **Offset** value.
-* When set to **Attribute**, fetch the offset size from the point's **Offset (Attr)** attribute.
+Defines the world-space up vector used in calculations when computing normal or binormal directions.
 
-**Offset (Attr)**
+</details>
 
-_The name of the attribute to read the offset size from when using Attribute input._
+<details>
 
-* Must be a numeric attribute on the input points
-* The regular **Offset** parameter acts as a scale multiplier
+<summary><strong>Direction Type</strong><br><em>Type of arithmetic path point offset direction.</em></summary>
 
-**Offset**
+Controls whether the direction is constant or read from an attribute.
 
-_The base offset distance when using Constant input._
+**Values**:
 
-* Positive values move points outward
-* Negative values move points inward
-* Default is 1.0
+* **Constant**: Use the "Direction" setting.
+* **Attribute**: Read the direction vector from a point attribute.
 
-**Apply Point Scale to Offset**
+</details>
 
-_When enabled, scales the offset by each point's scale._
+<details>
 
-* Useful for maintaining consistent visual spacing across different scales
-* The scale factor is applied as a multiplier to the offset value
+<summary><strong>Direction</strong><br><em>Type of arithmetic path point offset direction.</em></summary>
 
-**Direction Type**
+The type of normal or binormal to use when calculating the offset direction. Only used if "Offset Method" is "Slide".
 
-_Determines whether to use a constant or attribute-based direction vector._
+**Values**:
 
-* When set to **Constant**, use the **Direction** value.
-* When set to **Attribute**, fetch the direction from the point's **Direction (Attr)** attribute.
+* **Normal**: Use the path's normal vector.
+* **Binormal**: Use the path's binormal vector.
+* **Average Normal**: Use an averaged normal from neighboring points.
 
-**Direction (Attr)**
+</details>
 
-_The name of the attribute to read the offset direction from when using Attribute input._
+<details>
 
-* Must be a vector attribute on the input points
-* The direction is used as the axis along which to offset the points
+<summary><strong>Invert Direction</strong><br><em>Inverts offset direction.</em></summary>
 
-**Direction**
+When enabled, reverses the direction of the offset. This is useful for consistent behavior regardless of sign in the offset value.
 
-_The direction vector used for offsetting when using Constant input with Slide method._
+</details>
 
-* **Normal**: Uses the path's default normal vector
-* **Binormal**: Uses the path's binormal vector (perpendicular to normal)
-* **Average Normal**: Uses an averaged normal from adjacent segments
+<details>
 
-**Invert Direction**
+<summary><strong>Adjustment</strong><br><em>Adjust aspect in tight angles.</em></summary>
 
-_When enabled, reverses the direction of the offset._
+Controls how to handle sharp turns or tight angles during offsetting.
 
-* Can be used instead of negative offset values for consistent behavior
-* Useful when you want to ensure the offset always goes in a specific direction regardless of sign
+**Values**:
 
-***
+* **Raw**: No adjustment.
+* **Custom Smooth**: Apply a custom smoothing factor.
+* **Auto Smooth**: Automatically smooth based on angle.
+* **Mitre**: Adjust for acute angles to prevent overlapping.
 
-#### Adjustment Settings
+</details>
 
-Controls how tight angles are handled during offsetting.
+<details>
 
-**Adjustment**
+<summary><strong>Adjustment Scale</strong><br><em>Adjust aspect in tight angles.</em></summary>
 
-_How to adjust the path points at tight angles._
+Used when "Adjustment" is set to "Custom Smooth". Controls the strength of the smoothing effect.
 
-* **Raw**: No adjustment is made at tight angles.
-* **Custom Smooth**: Apply custom smoothing based on the **Adjustment Scale** value.
-* **Auto Smooth**: Automatically smooth tight angles using a calculated factor.
-* **Mitre**: Use mitre joins, which extend lines to meet at a point.
+</details>
 
-**Adjustment Scale**
+<details>
 
-_Controls the intensity of the custom smoothing when using Custom Smooth._
+<summary><strong>Mitre Limit</strong><br><em>Offset size.</em></summary>
 
-* Positive values create more pronounced curves
-* Negative values create sharper turns
-* Default is -0.5
+Used when "Adjustment" is set to "Mitre". Defines how far the offset extends at acute angles.
 
-**Mitre Limit**
+</details>
 
-_Maximum length of mitre joins when using Mitre adjustment._
+<details>
 
-* Controls how far the offset lines extend before being clipped
-* Higher values result in longer mitre extensions
-* Default is 4.0
+<summary><strong>Cleanup Mode</strong><br><em>Whether to flag points that have been flipped during the offset.</em></summary>
 
-***
+Controls post-processing cleanup behavior after offsetting.
 
-#### Cleanup Settings
+**Values**:
 
-Controls post-processing to handle self-intersections and flipped segments.
+* **None**: No cleanup.
+* **Collapse Flipped Segments**: Collapse segments where points were flipped.
+* **Collapse Sections (Flipped)**: Remove sections of paths that self-intersect and contain flipped segments.
+* **Collapse Sections**: Remove sections of paths that self-intersect.
 
-**Cleanup Mode**
+</details>
 
-_How to clean up paths after offsetting._
+<details>
 
-* **None**: No cleanup is performed.
-* **Collapse Flipped Segments**: Remove segments that have been flipped during offsetting.
-* **Collapse Sections (Flipped)**: Remove sections of the path that self-intersect if they contain flipped segments.
-* **Collapse Sections**: Remove sections of the path that are between self-intersections.
+<summary><strong>Intersection Tolerance</strong><br><em>Tolerance to consider valid path segments as overlapping.</em></summary>
 
-**Intersection Tolerance**
+Used during cleanup to determine how close two segments must be to be considered overlapping.
 
-_Tolerance used to determine if two segments overlap during cleanup._
+</details>
 
-* Affects how aggressively overlapping segments are collapsed
-* Higher values mean more lenient overlap detection
-* Default is 1.0
+<details>
 
-**Flag Mutated Points**
+<summary><strong>Flag Mutated Points</strong><br><em>Attempt to adjust offset on mutated edges.</em></summary>
 
-_When enabled, marks points that were modified during the offset process._
+When enabled, attempts to flag points that were modified due to offsetting behavior.
 
-* Useful for debugging or visualizing which points were adjusted
-* Creates a boolean attribute named in **Mutated Attribute Name**
+</details>
 
-**Mutated Attribute Name**
+<details>
 
-_Name of the boolean attribute used to flag mutated points._
+<summary><strong>Mutated Attribute Name</strong><br><em>Name of the 'bool' attribute to flag the nodes that are the result of a mutation.</em></summary>
 
-* Only visible when **Flag Mutated Points** is enabled
-* Default is "IsMutated"
+The name of the boolean attribute used to mark mutated points if "Flag Mutated Points" is enabled.
 
-**Flag Flipped Points**
+</details>
 
-_When enabled, marks points that were flipped during offsetting._
+<details>
 
-* Useful for identifying problematic areas in paths
-* Creates a boolean attribute named in **Flipped Attribute Name**
+<summary><strong>Flag Flipped Points</strong><br><em>Whether to flag points that have been flipped during the offset.</em></summary>
 
-**Flipped Attribute Name**
+When enabled, marks points that were flipped during offsetting with a boolean attribute.
 
-_Name of the boolean attribute used to flag flipped points._
+</details>
 
-* Only visible when **Flag Flipped Points** is enabled
-* Default is "IsFlipped"
+<details>
 
-### Notes
+<summary><strong>Flipped Attribute Name</strong><br><em>Name of the 'bool' attribute to flag the points that are flipped.</em></summary>
 
-* The offset operation can introduce self-intersections or flipped segments, especially with tight angles. Use cleanup modes to address these issues.
-* For best results with complex paths, consider using the **Collapse Sections** cleanup mode.
-* Attribute-based offsets allow for dynamic path behaviors, such as varying offset distances based on point properties like color or height.
-* The **Slide** method is generally recommended for smooth, natural-looking offsets, while **Line/Plane** is useful when you need precise control over the offset plane.
+The name of the boolean attribute used to mark flipped points if "Flag Flipped Points" is enabled.
+
+</details>

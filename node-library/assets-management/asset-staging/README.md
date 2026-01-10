@@ -6,266 +6,232 @@ icon: circle
 # Asset Staging
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Data staging from PCGEx Asset Collections.
+> Stages assets from collections onto points, enabling procedural asset placement and data assignment.
 
-### Overview
+#### How It Works
 
-Asset Staging prepares and writes asset data from collections onto points in your procedural graph. It allows you to assign assets from collections to individual points, making them available for spawning or further processing. The node supports multiple output modes and can handle various asset types including meshes, materials, and more.
+This node processes each point in your input data and assigns an asset from a collection based on your configuration. For every point, it selects an entry using either random or weighted selection methods. The selected asset's path is then written to an attribute on the point.
 
-{% hint style="info" %}
-Asset Staging requires a valid collection source. You can either select an asset collection directly or use an attribute set that maps to collections.
-{% endhint %}
+If you choose "Collection Map" as the output mode, instead of writing asset paths directly, it stores references to the collection and the index of the picked entry for later use in other nodes that can interpret this mapping.
+
+When working with mesh collections, it also handles material picking. If enabled, it writes material slot indices or paths to attributes on the point, allowing for per-instance material assignment. The node supports fixed-length material attribute lists by padding missing indices with null values up to a specified maximum.
+
+Additionally, it can scale points to fit the bounds of their staged assets and apply justification settings to align the asset within the point's space. It also supports writing weight data and entry type information for advanced filtering or procedural behaviors.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Collection Source</strong><br><em>Defines how the collection is sourced.</em></summary>
 
-* Points: Input points to stage assets on
-* Optional filters: Point filters to determine which points get staged
+Controls whether the collection is directly referenced or read from an attribute on the input points.
+
+**Values**:
+
+* **Asset**: Use a direct asset reference.
+* **Attribute**: Read the collection path from an attribute on the input points.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Asset Collection</strong><br><em>Reference to the asset collection to use.</em></summary>
 
-* Points: Modified points with asset data written to attributes or collection references
+The asset collection to draw assets from when using "Asset" as the collection source.
 
 </details>
 
-### Properties Overview
+<details>
 
-Settings for controlling how asset data is staged onto points.
+<summary><strong>Attribute Set Details</strong><br><em>Details for attribute-based collection sourcing.</em></summary>
 
-***
+Configuration for reading collection paths from an attribute on input points when using the "Attribute" collection source.
 
-#### Collection Source
+</details>
 
-Controls where the asset collection comes from.
+<details>
 
-**Collection Source**
+<summary><strong>Collection Path Attribute Name</strong><br><em>The name of the attribute to read collection path from.</em></summary>
 
-_Where the asset collection is sourced from._
+The name of the attribute used to store collection paths when using the "Attribute" collection source.
 
-* Determines whether you're using a direct asset reference or an attribute-based collection mapping
-* When set to **Asset**, you select a specific collection asset directly
-* When set to **Attribute**, you use an attribute that contains collection paths
+</details>
 
-**Values**:
+<details>
 
-* **Asset**: Use a direct asset collection reference
-* **Attribute**: Use an attribute containing collection paths
+<summary><strong>Output Mode</strong><br><em>How the staging data is written to points.</em></summary>
 
-**Asset Collection**
-
-_The collection asset to use for staging._
-
-* Selects the specific asset collection to draw from
-* Only visible when "Collection Source" is set to "Asset"
-
-**AttributeSetDetails**
-
-_Details for building collections from attribute sets._
-
-* When "Collection Source" is set to "Attribute", this defines how to build collections from input attributes
-* Controls type of temporary collection to create from the input attribute set
-
-**Collection Path Attribute Name**
-
-_The name of the attribute containing collection paths._
-
-* Only visible when "Collection Source" is set to "Attribute"
-* Defines which attribute contains collection path data for each point
-
-***
-
-#### Output Mode
-
-Controls how asset data is written to points.
-
-**Output Mode**
-
-_How asset data is written to points._
-
-* Determines whether asset data is written directly as attributes or stored as collection references
-* When set to **Point Attributes**, asset data is written directly onto the point
-* When set to **Collection Map**, a reference to the collection and pick index are stored for later use
+Controls whether asset data is written directly as point attributes or stored as a reference for later use.
 
 **Values**:
 
-* **Point Attributes**: Write asset data on the point
-* **Collection Map**: Write collection reference & pick for later use
+* **Point Attributes**: Write asset path directly to an attribute on the point.
+* **Collection Map**: Store collection reference and pick index for later interpretation.
 
-**Asset Path Attribute Name**
+</details>
 
-_The name of the attribute to write asset paths to._
+<details>
 
-* Only visible when "Output Mode" is set to "Point Attributes"
-* Controls the name of the attribute that will contain asset path data
+<summary><strong>Asset Path Attribute Name</strong><br><em>The name of the attribute to write asset path to.</em></summary>
 
-***
+The name of the attribute where the asset path will be written when using "Point Attributes" output mode.
 
-#### Distribution Settings
+</details>
 
-Controls how assets are distributed across points.
+<details>
 
-**Distribution Settings**
+<summary><strong>Distribution Settings</strong><br><em>Distribution details for selecting assets from the collection.</em></summary>
 
-_How assets are selected from the collection._
+Settings that control how assets are selected from the collection, such as random or weighted selection.
 
-* Defines how entries are picked from the collection for each point
-* Supports various distribution methods like random, weighted, or sequential picking
-* Controls how multiple entries from a single collection are handled
+</details>
 
-**Entry Distribution Settings**
+<details>
 
-_Distribution settings specific to individual entries._
+<summary><strong>Scale To Fit</strong><br><em>Controls how points scale to fit staged assets.</em></summary>
 
-* Controls how entries within collections are distributed
-* Particularly relevant for mesh collections where material picking is involved
-* Allows fine-tuning of how materials are selected from meshes
+Settings for scaling points so that their bounds accommodate the size of the staged asset.
 
-***
+</details>
 
-#### Fitting and Transform Settings
+<details>
 
-Controls how staged assets are scaled and positioned.
+<summary><strong>Justification</strong><br><em>How to align the staged asset within the point.</em></summary>
 
-**Scale To Fit**
+Controls how the staged asset is positioned relative to the point's origin.
 
-_How to scale the asset to fit its bounds._
+</details>
 
-* Controls whether and how the point's scale should be adjusted to fit the asset
-* Supports different fitting modes like Fill, Min, Max, or Average
-* Can be useful for ensuring assets fit within their designated space
+<details>
 
-**Justification**
+<summary><strong>Variations</strong><br><em>Settings for handling variations in asset selection.</em></summary>
 
-_How to position the asset within its bounds._
+Configuration for applying variations to asset selection, such as randomization or grouping.
 
-* Controls alignment of the asset within its point bounds
-* Supports Min, Center, and Max justification options
-* Helps with proper positioning when scaling assets
+</details>
 
-**Variations**
+<details>
 
-_Variation settings for staged assets._
+<summary><strong>Prune Empty Points</strong><br><em>If enabled, filter output based on whether a staging has been applied or not (empty entry).</em></summary>
 
-* Controls how variations are applied to staged assets
-* Includes options for randomization and distribution of variation parameters
-* Useful for creating visual diversity in spawned assets
+When enabled, points that did not get a valid asset assigned are removed from the output. Note: This is currently slow.
 
-***
+</details>
 
-#### Pruning and Filtering
+<details>
 
-Controls which points get processed.
+<summary><strong>Write Entry Type</strong><br><em>If enabled, writes the type of entry selected.</em></summary>
 
-**Prune Empty Points**
+When enabled, writes additional information about the type of entry (e.g., mesh, static mesh) to an attribute on the point.
 
-_Whether to remove points that couldn't be staged._
+</details>
 
-* When enabled, points that don't have valid asset data will be filtered out
-* Can help clean up results by removing empty or invalid staging entries
-* May impact performance due to additional filtering steps
+<details>
 
-***
+<summary><strong>Entry Type</strong><br><em>Details for writing entry type data.</em></summary>
 
-#### Additional Outputs
+Configuration for how and where entry type information is written.
 
-Controls extra attributes and data written during staging.
+</details>
 
-**Write Entry Type**
+<details>
 
-_Whether to output the type of entry being staged._
+<summary><strong>Tagging Details</strong><br><em>Tagging details for the staged assets.</em></summary>
 
-* When enabled, writes an attribute indicating what type of collection entry was used
-* Useful for downstream processing that needs to know entry types
+Settings for applying tags to staged assets, useful for filtering or categorization.
 
-**Entry Type**
+</details>
 
-_Details for writing entry type information._
+<details>
 
-* Controls how entry type data is written to points
-* Defines the attribute name and other settings for entry type output
+<summary><strong>Weight To Attribute</strong><br><em>Update point scale so staged asset fits within its bounds.</em></summary>
 
-**Tagging Details**
+Controls whether to write weight information as an attribute on the point. Weight is based on how often an asset was selected from a collection.
 
-_Settings for tagging staged assets._
+**Values**:
 
-* Allows adding tags to staged assets for filtering or categorization
-* Supports various tagging methods and attribute names
+* **No Output**: Do not output weight.
+* **Raw**: Write raw integer weight.
+* **Normalized**: Write normalized weight value (Weight / WeightSum).
+* **Normalized (Inverted)**: Write one minus normalized weight (1 - (Weight / WeightSum)).
+* **Normalized to Density**: Same as Normalized.
+* **Normalized (Inverted) to Density**: Same as Normalized (Inverted).
 
-**Weight To Attribute**
+</details>
 
-_Controls writing asset weights to attributes._
+<details>
 
-* When enabled, writes asset weight data to an attribute
-* Supports different weight output modes like raw, normalized, or inverted
-* Useful for downstream processing that needs weight information
+<summary><strong>Weight Attribute Name</strong><br><em>The name of the attribute to write asset weight to.</em></summary>
 
-**Weight Attribute Name**
+The name of the attribute where weight data is written when enabled.
 
-_The name of the attribute to write asset weights to._
+</details>
 
-* Only visible when "Weight To Attribute" is enabled
-* Controls the name of the attribute that will contain weight data
+<details>
 
-**Output Material Picks**
+<summary><strong>Output Material Picks</strong><br><em>If enabled, will output mesh material picks.</em></summary>
 
-_Whether to output material picks from mesh collections._
+When enabled, writes material slot indices or paths to attributes for mesh collections.
 
-* When enabled, writes material pick information for mesh collections
-* Particularly useful for mesh spawners that need material overrides
-* Only available when "Output Mode" is set to "Point Attributes"
+</details>
 
-**Max Material Picks**
+<details>
 
-_Maximum number of material picks to output._
+<summary><strong>Max Material Picks</strong><br><em>If > 0 will create dummy attributes for missing material indices up to a maximum.</em></summary>
 
-* When > 0, creates dummy attributes for missing material indices
-* Useful for creating fixed-length lists of material attributes
-* Only visible when "Output Material Picks" is enabled
+If greater than zero, creates fixed-length material attribute lists by padding with null values up to the specified index. Otherwise, only creates attributes for valid indices.
 
-**Material Attribute Prefix**
+</details>
 
-_Prefix used for material attribute names._
+<details>
 
-* Controls the naming convention for material pick attributes
-* Only visible when "Output Material Picks" is enabled
-* Helps organize material-related attributes in the output
+<summary><strong>Material Attribute Prefix</strong><br><em>Prefix to be used for material slot picks.</em></summary>
 
-**Do Output Sockets**
+The prefix used when naming material pick attributes (e.g., "Mat0", "Mat1").
 
-_Whether to output socket information from staged assets._
+</details>
 
-* When enabled, writes socket data from assets to points
-* Useful for connecting spawned assets or creating attachment points
-* Requires additional setup for socket handling
+<details>
 
-**Output Socket Details**
+<summary><strong>Do Output Sockets</strong><br><em>If enabled, outputs socket information from the staged assets.</em></summary>
 
-_Settings for writing socket data._
+When enabled, creates additional output sockets for each point based on the asset's socket data.
 
-* Controls how socket information is written to points
-* Defines which sockets are output and their attribute naming
-* Only visible when "Do Output Sockets" is enabled
+</details>
 
-***
+<details>
 
-#### Warnings and Errors
+<summary><strong>Output Socket Details</strong><br><em>Details for creating output sockets.</em></summary>
 
-Controls error reporting behavior.
+Configuration for how and where socket information is written to the output.
 
-**Quiet Empty Collection Error**
+</details>
 
-_Suppresses errors when collections are empty._
+<details>
 
-* When enabled, prevents error messages for empty collections
-* Useful for graphs that may legitimately have empty collections
-* Helps reduce noise in the log output
+<summary><strong>Quiet Empty Collection Error</strong><br><em>If enabled, suppresses errors when a collection is empty.</em></summary>
+
+When enabled, prevents error messages from appearing if an asset collection is empty or invalid.
+
+</details>
+
+#### Usage Example
+
+1. Create a point set representing locations where you want to place assets.
+2. Add an Asset Staging node and connect it to the points.
+3. Set the Collection Source to "Asset" and select your asset collection.
+4. Choose "Point Attributes" as Output Mode and name the attribute for asset paths (e.g., "AssetPath").
+5. Configure distribution settings to control how assets are selected from the collection.
+6. Optionally, enable "Output Material Picks" if working with mesh collections and you need material data.
+7. Connect the output of this node to a spawner or instancer to generate your assets.
+
+#### Notes
+
+* The node supports both static and dynamic asset collections.
+* When using "Collection Map" output mode, it's best to use this node in combination with other nodes that can interpret the collection map.
+* Material picking is only supported for mesh collections.
+* Enabling "Prune Empty Points" can slow down processing due to filtering overhead.
+* The node supports multi-threaded processing for better performance on large datasets.

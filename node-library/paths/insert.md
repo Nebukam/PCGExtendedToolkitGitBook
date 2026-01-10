@@ -5,108 +5,78 @@ icon: circle
 
 # Insert
 
-{% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+{% hint style="warning" %}
+This node is currently hidden (WIP)
 {% endhint %}
 
-> Insert nearest points into the path using different methods.
-
-### Overview
-
-This node allows you to insert points from your input data along existing paths. It's useful when you want to add detail or modify a path by incorporating nearby points, such as adding waypoints, terrain features, or other procedural elements directly onto a path.
-
-The node works by finding the closest points in your input data to each segment of the path and inserting them at specific locations. You can control how many points are inserted, whether they're snapped to the path, and what attributes are carried over from the original points.
-
 {% hint style="info" %}
-This node modifies paths by adding new points. It does not change the original input points directly.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
+
+> Insert nearest points into paths using different methods.
+
+#### How It Works
+
+This node takes existing paths and adds new points along them by finding the closest locations on each path to input points. For every point that falls within a specified distance from a path, it calculates where that point would best fit along the path. If snapping is enabled, the new point is placed exactly on the path at that location. Otherwise, the point keeps its original position but is still added to the path. The node supports filtering based on distance, so only points near enough to be useful are considered for insertion.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Snap To Path</strong><br><em>If enabled, inserted points will be snapped to the path. Otherwise, they retain their original location.</em></summary>
 
-* **Main Input** (Required): Path data to modify
-* **Points Input** (Optional): Points to insert into the path
+When enabled, the new points are placed exactly on the path at the closest point along the path to where they were originally located. When disabled, the points keep their original positions.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Within Range</strong><br><em>Only insert points that are within a certain distance from the path.</em></summary>
 
-* **Main Output**: Modified paths with inserted points
+When enabled, only points within a specified range of the path are considered for insertion. This helps limit how many new points are added and avoids inserting distant points.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how points are inserted into paths.
+<summary><strong>Range Input</strong><br><em>How to determine the maximum distance for insertion.</em></summary>
 
-***
+* **Constant**: Use a fixed value for the range.
+* **Attribute**: Read the range from an attribute on the input points.
 
-#### Insertion Settings
+</details>
 
-Controls how and where points are inserted along the path.
+<details>
 
-**Snap To Path**
+<summary><strong>Range (Attr)</strong><br><em>Attribute name to read the insertion range from.</em></summary>
 
-_When enabled, inserted points will be snapped to the closest location on the path. Otherwise, they retain their original position._
+The name of the attribute that contains the range value when "Range Input" is set to "Attribute".
 
-* This ensures that inserted points lie exactly on the path geometry
-* Useful for creating precise waypoints or terrain features aligned with paths
+</details>
 
-**Within Range**
+<details>
 
-_When enabled, only insert points within a specified distance from the path._
+<summary><strong>Range</strong><br><em>Maximum distance for insertion.</em></summary>
 
-* Limits insertion to nearby points only
-* Helps avoid inserting distant or irrelevant points
+The fixed maximum distance from the path within which points are considered for insertion. Only used when "Range Input" is set to "Constant".
 
-**Range Input Type**
+</details>
 
-_Determines whether the range is defined as a constant value or read from an attribute._
+<details>
 
-**Values**:
+<summary><strong>Carry Over Settings</strong><br><em>Meta filter settings.</em></summary>
 
-* **Constant**: Use a fixed numerical value for the range
-* **Attribute**: Read the range value from a point attribute
+Controls how attributes and metadata from the original points are carried over or blended into the new path points.
 
-**Range Attribute**
+</details>
 
-_The name of the attribute to use for the insertion range when using "Attribute" mode._
+#### Usage Example
 
-* Only visible when "Range Input Type" is set to "Attribute"
-* Defines how far from the path points can be inserted
+You have a set of paths representing roads and a collection of points representing landmarks. You want to add these landmarks as new waypoints on the roads, but only if they are within 50 units of any road. Enable "Within Range", set the range to 50, and optionally enable "Snap To Path" so that the landmarks align exactly with the road geometry.
 
-**Range Value**
+#### Notes
 
-_The maximum distance from the path within which points will be inserted._
-
-* Only visible when "Range Input Type" is set to "Constant"
-* Higher values allow more distant points to be inserted
-* Example: A value of 50 means only points within 50 units of the path will be considered
-
-***
-
-#### Carry Over Settings
-
-Controls which attributes from the original points are transferred to the inserted points.
-
-**Carry Over Settings**
-
-_Controls how point attributes are carried over when inserting points into paths._
-
-* Defines which attributes from the source points are copied or blended onto the new path points
-* Supports various blending modes for smooth transitions between original and inserted data
-
-### Notes
-
-* This node is computationally expensive due to distance calculations for each path segment
-* For best performance, limit the number of input points or use a small range value
-* Consider using filters to reduce the number of points being processed
-* Inserted points maintain their original attributes unless overridden by blending settings
-* When "Snap To Path" is enabled, inserted points will always lie exactly on the path geometry
-* The node works best when there are relatively few input points compared to the complexity of the paths
-* Use "Within Range" to prevent inserting distant points that might disrupt path continuity
+* Insertion is performed per-path and may result in multiple new points being added.
+* If snapping is disabled, the inserted point's position will not change, but it will still be added to the path.
+* The node does not modify the original input points; it only affects the output paths.
+* Performance can degrade with many points or long paths due to distance calculations.

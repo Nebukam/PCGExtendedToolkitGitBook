@@ -6,119 +6,128 @@ icon: circle
 # Break Cluster to Paths
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Create individual paths from continuous edge chains.
+> Create individual paths from continuous edge chains within clusters.
 
-### Overview
+#### How It Works
 
-This node breaks clusters of connected edges into individual paths, allowing you to process or visualize each continuous chain separately. It's particularly useful for creating roads, rivers, or any linear feature that follows a network of connected segments. You can control how the node handles leaf nodes (nodes with only one connection) and define the order in which points are sequenced within each path.
+This node analyzes the edges within each cluster and identifies continuous chains of connected edges. It then breaks these chains into individual paths, starting from a specified direction or node.
 
-{% hint style="info" %}
-This node operates on clusters, so it requires input data that has been processed through a clustering operation first.
-{% endhint %}
+1. It traverses through the edges in each cluster to form continuous chains.
+2. The traversal respects the **Direction Settings** to determine how points are ordered along each path.
+3. If **Winding** is enabled, it enforces a consistent winding order on closed loops by projecting the points onto a 2D plane.
+4. Chains that do not meet the minimum or maximum point count thresholds are filtered out.
+5. The final paths are output as separate data entries.
+
+The node supports operating either on full **Paths** (chains of edges with no crossings) or individual **Edges**, depending on your needs.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Leaves Handling</strong><br><em>How to handle leaves.</em></summary>
 
-* **Main Input** (Point): Points representing nodes in the graph
-* **Edges Input** (Edge): Edges connecting the points
-* **Filters** (Point, optional): Filters to identify break points
+Controls whether leaf nodes (nodes with only one neighbor) are included in path chains.
+
+* **Include Leaves**: Leaf nodes are included.
+* **Exclude Leaves**: Leaf nodes are excluded from paths.
+* **Only Leaves**: Only leaf nodes are processed.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Operate On</strong><br><em>Operation target mode.</em></summary>
 
-* **Paths Output** (Path): Individual paths created from continuous edge chains
-* **Edges Output** (Edge): Original edges, optionally filtered or reorganized
+Determines whether to process full edge chains or individual edges.
+
+* **Paths**: Process continuous edge chains that form paths with no crossings.
+* **Edges**: Operate on each edge individually (more computationally expensive).
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the node processes clusters and creates paths.
+<summary><strong>Direction Settings</strong><br><em>Defines the direction in which points will be ordered to form the final paths.</em></summary>
 
-***
+Controls how the order of points is determined when forming paths.
 
-#### General Settings
+* **Forward**: Points are ordered from start to end.
+* **Backward**: Points are ordered from end to start.
+* **Bidirectional**: Points can be ordered both ways, based on edge direction.
 
-Controls the core behavior of path creation.
+</details>
 
-**Leaves Handling**
+<details>
 
-_Controls how leaf nodes are treated in path creation._
+<summary><strong>Winding</strong><br><em>Enforce a winding order for paths.</em></summary>
 
-* Leaf nodes are nodes with only one connection
-* **Include**: Include leaf nodes in paths (default)
-* **Exclude**: Exclude leaf nodes from paths
-* **Only**: Only process leaf nodes as individual paths
+Applies a consistent winding order (clockwise or counter-clockwise) to closed loops.
 
-**Operation Target**
+* **Unchanged**: No winding is applied.
+* **Clockwise**: Paths are ordered clockwise.
+* **CounterClockwise**: Paths are ordered counter-clockwise.
 
-_Determines whether to work on entire edge chains or individual edges._
+</details>
 
-* **Paths**: Operate on continuous edge chains that form paths with no crossings (e.g., nodes with only two neighbors)
-* **Edges**: Operate on each edge individually (very expensive)
+<details>
 
-**Direction Settings**
+<summary><strong>Wind Only Closed Loops</strong><br><em>Whether to apply winding on closed loops only or all paths.</em></summary>
 
-_Defines the direction in which points will be ordered to form the final paths._
+When enabled, winding is applied only to closed loops (paths that start and end at the same point). Otherwise, it applies to all paths.
 
-* Controls how the node traverses connected edges to build paths
-* Can be used to ensure consistent path orientation
+</details>
 
-**Winding**
+<details>
 
-_Enforce a winding order for paths._
+<summary><strong>Projection Details</strong><br><em>Projection settings. Winding is computed on a 2D plane.</em></summary>
 
-* **Unchanged**: No change to original winding
-* **Clockwise**: Force all paths to have clockwise winding
-* **CounterClockwise**: Force all paths to have counter-clockwise winding
+Settings for projecting points onto a 2D plane before computing winding order. Only used when **Winding** is not set to **Unchanged**.
 
-**Wind Only Closed Loops**
+</details>
 
-_Whether to apply winding on closed loops only or all paths._
+<details>
 
-* When enabled, winding is applied only to closed loops (paths that start and end at the same node)
-* When disabled, winding is applied to all paths regardless of closure
+<summary><strong>Min Point Count</strong><br><em>Do not output paths that have less points than this value.</em></summary>
 
-**Projection Details**
+Filters out paths with fewer points than the specified number.
 
-_Projection settings. Winding is computed on a 2D plane._
+</details>
 
-* Defines how to project 3D points onto a 2D plane for winding calculations
-* Only relevant when winding is not set to "Unchanged"
+<details>
 
-**Min Point Count**
+<summary><strong>Omit Above Point Count</strong><br></summary>
 
-_Do not output paths that have less points than this value._
+When enabled, filters out paths that exceed the **Max Point Count**.
 
-* Paths with fewer points than this threshold are discarded
-* Default is 2, meaning only paths with at least 2 points are output
+</details>
 
-**Omit Above Point Count**
+<details>
 
-_Enable limiting maximum point count for output paths._
+<summary><strong>Max Point Count</strong><br><em>Do not output paths that have more points than this value.</em></summary>
 
-* When enabled, paths exceeding the Max Point Count are omitted from output
+Filters out paths with more points than the specified number. Only active when **Omit Above Point Count** is enabled.
 
-**Max Point Count**
+</details>
 
-_Do not output paths that have more points than this value._
+#### Usage Example
 
-* Only used when "Omit Above Point Count" is enabled
-* Default is 500, meaning paths with more than 500 points are discarded
+You have a cluster of nodes representing a road network. You want to extract individual roads (paths) from the network, ensuring that each road has at least 3 points and no more than 100 points. You also want to enforce a counter-clockwise winding for closed loops like roundabouts.
 
-### Notes
+1. Connect your clustered data to the **Cluster Input**.
+2. Set **Min Point Count** to `3`.
+3. Set **Max Point Count** to `100`.
+4. Enable **Wind Only Closed Loops** and set **Winding** to **CounterClockwise**.
+5. Set **Operate On** to **Paths**.
+6. Optionally, use a point filter subnode to define break points in the network.
 
-* This node works best on clustered data where edges form continuous chains
-* For complex networks, consider using "Include Leaves" to ensure all nodes are processed
-* When working with closed loops (like circular roads), enabling "Wind Only Closed Loops" can help maintain consistent winding
-* Use the Min/Max Point Count settings to filter out very short or extremely long paths that might not be useful for your use case
-* The Direction Settings allow you to control how paths are ordered, which is helpful when you need consistent orientation across multiple clusters
+This will output clean, valid paths representing roads or routes from your cluster data.
+
+#### Notes
+
+* This node is optimized for graph-based data where edges form continuous chains.
+* Winding enforcement requires 2D projection, so ensure your data supports it.
+* Setting **Operate On** to **Edges** can be very expensive with large datasets.
+* Paths are output as separate point IO entries, which can be further processed or visualized.

@@ -9,142 +9,156 @@ icon: circle-dashed
 This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> A % B != C
+> &#x20;A % B != C
 
 #### Overview
 
-This subnode filters points based on a modulo comparison operation. It evaluates whether the remainder of Operand A divided by Operand B is not equal to Operand C, or another comparison type. This allows for complex filtering logic using mathematical operations.
+The Modulo Compare filter evaluates whether the result of a modulo operation between two values meets a specified comparison condition against a third value. It's useful for creating patterns or conditions based on remainders, such as selecting every Nth point or filtering based on divisibility rules.
 
-It's useful when you want to select points that meet specific modulo-based criteria — such as selecting every Nth point, or filtering based on periodic patterns in data attributes.
+This subnode connects to Filter pins on processing nodes and determines which points pass or fail the defined modulo comparison. You can use it to create procedural effects like grid-based selection, periodic spacing, or conditional point filtering using mathematical relationships.
 
-This subnode connects to **Filter** pins on processing nodes and can be combined with other filters to create more complex selection rules.
+{% hint style="info" %}
+Connects to **Filter** pins on processing nodes.
+{% endhint %}
 
 #### How It Works
 
-This filter evaluates a mathematical expression of the form `Operand A % Operand B` and compares it against `Operand C` using the selected comparison operator.
+This filter performs a modulo operation (A % B) and then compares the result against a third value (C) using a specified comparison operator. The logic evaluates whether the modulo result meets the comparison criteria.
 
-The process works as follows:
+The process involves:
 
-1. For each point, it retrieves values for Operand A, Operand B, and Operand C.
-2. If any operand is an attribute, it reads that value from the input data at the point's index.
-3. It calculates the modulo of Operand A divided by Operand B.
-4. It compares the result using the selected comparison operator (e.g., `!=`, `==`, `>=`, etc.) against Operand C.
-5. If the comparison evaluates to true, the point passes the filter.
+1. Reading Operand A from input data or constant
+2. Calculating Operand A modulo Operand B
+3. Comparing the result to Operand C using the selected comparison operator
+4. Returning true if the condition is met, false otherwise
 
-The logic supports both constant and attribute-based operands for all three values, enabling flexible filtering based on static or dynamic data.
+For example, with `A = 7`, `B = 3`, and `C = 1`, the filter computes `7 % 3 = 1`, then checks if `1 != 1`. Since this is false, the point fails the filter.
 
-<details>
+#### Inputs
 
-<summary>Inputs</summary>
+This subnode expects point data as input. It reads values from attributes or constants based on configuration settings.
 
-Expects a point-based data input containing attributes used in Operand A, Operand B, and Operand C if those are set to read from attributes.
+#### Outputs
 
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-Filters the input points based on whether they meet the modulo comparison condition. Points that pass the test are included in the output; those that fail are excluded.
-
-</details>
+This subnode does not produce new data but defines a filtering condition that determines whether points pass or fail.
 
 #### Configuration
 
-***
+<details>
 
-**Operand A**
+<summary><strong>Operand A</strong><br><em>Operand A for testing -- Will be translated to `double` under the hood.</em></summary>
 
-_The dividend in the modulo operation._
+The first operand in the modulo operation. Can be read from an attribute or set as a constant value.
 
-This value is used as the numerator in the modulo calculation. It can be a constant or read from an attribute on the input data.
+</details>
 
-**Operand B Source**
+<details>
 
-_Type of OperandB_
+<summary><strong>Operand B Source</strong><br><em>Type of OperandB</em></summary>
 
-Controls whether Operand B is a constant value or read from an attribute.
-
-**Values**:
-
-* **Constant**: Use a fixed value for Operand B.
-* **Attribute**: Read Operand B from an attribute in the input data.
-
-**Operand B (Constant)**
-
-_The divisor in the modulo operation._
-
-Used when Operand B Source is set to Constant. This sets the fixed value for Operand B.
-
-**Operand B (Attribute)**
-
-_The divisor in the modulo operation._
-
-Used when Operand B Source is set to Attribute. This selects an attribute from the input data to use as Operand B.
-
-**Comparison**
-
-_The comparison operator used to evaluate the modulo result against Operand C._
+Determines whether Operand B is read from an attribute or set as a constant.
 
 **Values**:
 
-* **==**: Strictly equal
-* **!=**: Strictly not equal
-* **>=**: Equal or greater
-* **<=**: Equal or smaller
-* **>**: Strictly greater
-* **<**: Strictly smaller
-* **\~=**: Nearly equal
-* **!\~=**: Nearly not equal
+* **Constant**: Use a fixed numeric value
+* **Attribute**: Read the value from an input attribute
 
-**Compare Against**
+</details>
 
-_Type of OperandC_
+<details>
 
-Controls whether Operand C is a constant value or read from an attribute.
+<summary><strong>Operand B (Constant)</strong><br><em>Operand B for testing</em></summary>
+
+The second operand in the modulo operation when set to constant mode. Must be a positive number.
+
+</details>
+
+<details>
+
+<summary><strong>Operand B (Attribute)</strong><br><em>Operand B for testing</em></summary>
+
+The second operand in the modulo operation when set to attribute mode. Reads from an attribute on input points.
+
+</details>
+
+<details>
+
+<summary><strong>Comparison</strong><br><em>Comparison</em></summary>
+
+The comparison operator used to evaluate the modulo result against Operand C.
 
 **Values**:
 
-* **Constant**: Use a fixed value for Operand C.
-* **Attribute**: Read Operand C from an attribute in the input data.
+* **==**: Strictly Equal
+* **!=**: Strictly Not Equal
+* **>=**: Equal or Greater
+* **<=**: Equal or Smaller
+* **>**: Strictly Greater
+* **<**: Strictly Smaller
+* **\~=**: Nearly Equal
+* **!\~=**: Nearly Not Equal
 
-**Operand C (Constant)**
+</details>
 
-_The target value to compare the modulo result against._
+<details>
 
-Used when Compare Against is set to Constant. This sets the fixed value for Operand C.
+<summary><strong>Compare Against Source</strong><br><em>Type of OperandC</em></summary>
 
-**Operand C (Attribute)**
+Determines whether Operand C is read from an attribute or set as a constant.
 
-_The target value to compare the modulo result against._
+**Values**:
 
-Used when Compare Against is set to Attribute. This selects an attribute from the input data to use as Operand C.
+* **Constant**: Use a fixed numeric value
+* **Attribute**: Read the value from an input attribute
 
-**Tolerance**
+</details>
 
-_Near-equality tolerance_
+<details>
 
-Only used when the comparison is set to Nearly Equal or Nearly Not Equal. Defines how close two floating-point values must be to be considered equal.
+<summary><strong>Operand C (Constant)</strong><br><em>Operand C for testing</em></summary>
 
-**Zero Result**
+The third operand in the comparison when set to constant mode. Can be any numeric value.
 
-_Which value to return when dealing with zero-values_
+</details>
 
-When Operand B is zero, this setting determines whether the filter should pass (true) or fail (false) for that point.
+<details>
+
+<summary><strong>Operand C (Attribute)</strong><br><em>Operand C for testing</em></summary>
+
+The third operand in the comparison when set to attribute mode. Reads from an attribute on input points.
+
+</details>
+
+<details>
+
+<summary><strong>Tolerance</strong><br><em>Near-equality tolerance</em></summary>
+
+Used only with "Nearly Equal" or "Nearly Not Equal" comparisons. Defines how close two values must be to be considered equal.
+
+</details>
+
+<details>
+
+<summary><strong>Zero Result</strong><br><em>Which value to return when dealing with zero-values</em></summary>
+
+When the modulo operation results in zero, this setting determines whether the point passes (true) or fails (false) the filter.
+
+</details>
 
 #### Usage Example
 
-Suppose you want to select points where the X position modulo 3 does not equal 0. You would:
+Use this filter to select every third point in a grid by setting:
 
-1. Set Operand A to read from the `X` attribute.
-2. Set Operand B Source to Constant and Operand B to 3.
-3. Set Compare Against to Constant and Operand C to 0.
-4. Set Comparison to `!=`.
+* Operand A = Point index
+* Operand B = 3
+* Comparison = !=
+* Operand C = 0
 
-This will keep all points where the X coordinate, when divided by 3, leaves a remainder other than 0.
+This will pass points whose index modulo 3 is not equal to 0, effectively selecting all points except those at indices divisible by 3.
 
 #### Notes
 
-* Be cautious with zero values in Operand B, as they can cause division-by-zero errors or unexpected behavior depending on the Zero Result setting.
-* The filter supports both integer and floating-point comparisons. Floating-point comparisons use tolerance for near-equality checks.
-* Combining this subnode with other filters allows for complex conditional logic based on mathematical relationships between attributes.
+* The filter handles negative numbers correctly using standard modulo behavior.
+* When using attribute-based operands, ensure the attributes exist and are properly typed.
+* For performance, prefer constant values over attribute lookups when possible.
+* This filter is particularly useful for creating periodic or grid-based patterns in procedural generation workflows.

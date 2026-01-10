@@ -6,156 +6,124 @@ icon: circle
 # Write Tangents
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Computes and writes tangent vectors to points along paths.
+> Computes and writes tangents to points along paths.
 
-### Overview
+#### How It Works
 
-This node calculates tangents for each point in a path and writes them as attributes. It's commonly used to define the direction of movement or orientation along curves, such as for vehicle paths, camera animations, or particle systems that follow a trajectory.
+This node calculates direction vectors for each point in a path, known as tangents. These tangents define the orientation and direction of the path at each location. The calculation considers the positions of neighboring points to determine smooth transitions between them.
 
-The node supports different tangent computation methods via instanced factories, allowing you to define custom behaviors for how tangents are calculated. You can also apply scaling factors to control the magnitude of the tangents, and override start and end points with specific tangent settings.
+For the first and last points in a path, you can specify special behavior using override subnodes. For all other points, a general tangent computation method is applied. You can also scale these tangents to adjust their influence on orientation or curve shape.
 
-{% hint style="info" %}
-Tangents are written as vector attributes named "ArriveTangent" and "LeaveTangent" by default. These can be renamed in the node's settings.
-{% endhint %}
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Arrive Name</strong><br><em>Name of the arrive tangent attribute.</em></summary>
 
-* **Main Input** (Default): Points that define paths
-* **Point Filters** (Optional): Filter which points to process
+Controls the name of the attribute where the arrive tangent will be written. The arrive tangent defines the direction into a point from its predecessor.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Leave Name</strong><br><em>Name of the leave tangent attribute.</em></summary>
 
-* **Main Output** (Default): Modified points with tangent attributes written
+Controls the name of the attribute where the leave tangent will be written. The leave tangent defines the direction out of a point to its successor.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how tangents are computed and written.
+<summary><strong>Tangents</strong><br><em>Optional module for the start point specifically.</em></summary>
 
-***
+A subnode that defines how tangents are computed for all points in the path, except for the first and last.
 
-#### Tangent Settings
+</details>
 
-Defines the method used to compute tangents for each point in the path.
+<details>
 
-**Tangents Factory**
+<summary><strong>Start Override</strong><br><em>Optional module for the start point specifically.</em></summary>
 
-_The main tangent computation factory to use._
+A subnode that defines how tangents are computed specifically for the first point of a path. Overrides the general Tangents setting.
 
-* Controls how tangents are calculated for points along the path
-* Supports various algorithms like linear interpolation, Catmull-Rom splines, etc.
-* Can be overridden per-point using Start and End overrides
+</details>
 
-**Values**:
+<details>
 
-* **Linear**: Simple linear interpolation between points
-* **CatmullRom**: Smooth curve interpolation with tension control
-* **Custom**: Use a custom tangent computation module
+<summary><strong>End Override</strong><br><em>Optional module for the end point specifically.</em></summary>
 
-**Start Tangents Override**
+A subnode that defines how tangents are computed specifically for the last point of a path. Overrides the general Tangents setting.
 
-_Override for the first point in each path._
+</details>
 
-* Applies specific tangent settings to the start of paths
-* Useful for defining how paths begin, e.g., with a sharp turn or gradual entry
-* Inherits from main Tangents factory when not set
+<details>
 
-**End Tangents Override**
+<summary><strong>Arrive Scale Input</strong><br><em>How to read arrive scale values.</em></summary>
 
-_Override for the last point in each path._
+Determines whether the arrive tangent scale is constant or read from an attribute.
 
-* Applies specific tangent settings to the end of paths
-* Useful for defining how paths terminate, e.g., with a smooth exit or abrupt stop
-* Inherits from main Tangents factory when not set
+* **Constant**: Use a fixed value defined in Arrive Scale.
+* **Attribute**: Read the scale from an input attribute.
 
-***
+</details>
 
-#### Attribute Names
+<details>
 
-Controls the names of the output tangent attributes.
+<summary><strong>Arrive Scale (Attr)</strong><br><em>Attribute to read arrive scale from.</em></summary>
 
-**Arrive Name**
+When Arrive Scale Input is set to Attribute, this specifies which attribute to use for scaling the arrive tangent.
 
-_Name of the arrive tangent attribute._
+</details>
 
-* Sets the name of the attribute that stores incoming tangents
-* Default is "ArriveTangent"
-* Used for defining direction into a point from previous points
+<details>
 
-**Leave Name**
+<summary><strong>Arrive Scale</strong><br><em>Constant value for arrive scale.</em></summary>
 
-_Name of the leave tangent attribute._
+When Arrive Scale Input is set to Constant, this defines the fixed scalar applied to the arrive tangent.
 
-* Sets the name of the attribute that stores outgoing tangents
-* Default is "LeaveTangent"
-* Used for defining direction out of a point to next points
+</details>
 
-***
+<details>
 
-#### Scaling
+<summary><strong>Leave Scale Input</strong><br><em>How to read leave scale values.</em></summary>
 
-Controls how the magnitude of computed tangents is scaled.
+Determines whether the leave tangent scale is constant or read from an attribute.
 
-**Arrive Scale Input**
+* **Constant**: Use a fixed value defined in Leave Scale.
+* **Attribute**: Read the scale from an input attribute.
 
-_How to determine the arrive scale factor._
+</details>
 
-* **Constant**: Use a fixed scalar value
-* **Attribute**: Read the scale from an existing attribute on input points
+<details>
 
-**Arrive Scale (Attribute)**
+<summary><strong>Leave Scale (Attr)</strong><br><em>Attribute to read leave scale from.</em></summary>
 
-_The attribute to read arrive scale from._
+When Leave Scale Input is set to Attribute, this specifies which attribute to use for scaling the leave tangent.
 
-* Only visible when "Arrive Scale Input" is set to "Attribute"
-* Specifies which attribute contains the scaling factor for arrive tangents
+</details>
 
-**Arrive Scale (Constant)**
+<details>
 
-_The constant value to use for arrive scale._
+<summary><strong>Leave Scale</strong><br><em>Constant value for leave scale.</em></summary>
 
-* Only visible when "Arrive Scale Input" is set to "Constant"
-* Multiplies the computed tangent vector by this scalar before writing
+When Leave Scale Input is set to Constant, this defines the fixed scalar applied to the leave tangent.
 
-**Leave Scale Input**
+</details>
 
-_How to determine the leave scale factor._
+#### Usage Example
 
-* **Constant**: Use a fixed scalar value
-* **Attribute**: Read the scale from an existing attribute on input points
+1. Create a path using a `Path : Generate` node.
+2. Connect it to a `Path : Write Tangents` node.
+3. Set the Arrive Name and Leave Name to custom attribute names (e.g., "TangentArrive" and "TangentLeave").
+4. Assign a tangent subnode like `Tangents : Default` or `Tangents : Catmull-Rom`.
+5. Optionally, set different tangent behaviors for start and end points using Start Override and End Override.
+6. Use the resulting paths in downstream nodes that require tangent data, such as `Points : Transform` or `Points : Orient`.
 
-**Leave Scale (Attribute)**
+#### Notes
 
-_The attribute to read leave scale from._
-
-* Only visible when "Leave Scale Input" is set to "Attribute"
-* Specifies which attribute contains the scaling factor for leave tangents
-
-**Leave Scale (Constant)**
-
-_The constant value to use for leave scale._
-
-* Only visible when "Leave Scale Input" is set to "Constant"
-* Multiplies the computed tangent vector by this scalar before writing
-
-### Notes
-
-* Tangent attributes are written as vectors, so they can define both direction and magnitude
-* Use with path-based data like roads, paths, or trajectories
-* Combine with other nodes like "Path : Sample" to create dynamic movement along paths
-* The "ArriveTangent" is the tangent pointing into a point from previous points in the path
-* The "LeaveTangent" is the tangent pointing out of a point toward next points in the path
-* When using Catmull-Rom splines, consider setting the "Closed Loop" option if your paths form continuous loops
-* Scaling can be used to adjust how sharp or gradual curves appear in visualizations or animations
+* Tangent computation is based on neighboring points; ensure your paths have sufficient resolution for smooth results.
+* Using attribute-based scaling allows for dynamic adjustments of tangent influence per point.
+* The Start Override and End Override subnodes let you define special behavior at path endpoints, such as fixed or mirrored tangents.

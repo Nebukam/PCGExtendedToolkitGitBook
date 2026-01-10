@@ -6,29 +6,42 @@ icon: circle
 # Bounds Axis To Points
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Generate a two-point from a bound axis.
+> Generate two points along a selected axis of a bound.
 
-### Overview
+#### Overview
 
-This node creates two points along a selected axis of each input point's bounds. It's useful for visualizing or working with the dimensions of objects, such as creating axis-aligned bounding boxes, generating alignment guides, or extracting dimension data for further processing.
+This node creates two points that define a line segment along one of the axes of a bounding box. The axis is chosen based on criteria such as shortest, longest, or median length, and can be adjusted using constraints like direction or size thresholds. It's useful for visualizing or working with the dimensions of bounds in procedural content generation.
 
-The node allows you to select which axis (shortest, longest, or median) to use and apply constraints based on direction or size to refine the selection. You can then control where these points are placed along that axis and set their properties like extent and scale.
+It accepts point data as input and outputs two points per input point that lie along a selected axis of its bounding box. This is helpful when you want to represent the extent or orientation of an object's bounds using simple geometric primitives.
 
 {% hint style="info" %}
-This node works with point data that has bounds information, such as from mesh instances or other spatial data sources.
+Connects to **Point** processing nodes.
 {% endhint %}
+
+#### How It Works
+
+This node calculates the bounding box of each input point and selects one of its axes based on priority settings. It then generates two points along that axis, positioned at a specified extent factor (U) from the center of the bound. The selection process can be refined using optional constraints such as direction or size thresholds.
+
+1. For each input point, compute its bounding box using the selected bounds reference.
+2. Determine which axis to use based on the **Priority** setting:
+   * Shortest: Select the shortest axis
+   * Longest: Select the longest axis
+   * Median: Select the remaining axis (not shortest or longest)
+3. Apply optional constraints if enabled:
+   * If **DirectionConstraint** is set, adjust the selected axis to either avoid or favor a static direction.
+   * If **SizeConstraint** is set, further refine the axis selection based on its size relative to the threshold.
+4. Sort constraint application using **ConstraintsOrder** if both are active.
+5. Create two output points along the selected axis at a distance defined by the **U** factor from the center of the bound.
+6. Optionally set the extents and scale of the output points.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **Main Input**: Point data with bounds (scaled, density, or regular bounds)
-* **Optional Filters**: Point filters can be applied to limit which points are processed
+Expects point data as input, with each point representing an object or region whose bounds are used to determine the axis.
 
 </details>
 
@@ -36,155 +49,150 @@ This node works with point data that has bounds information, such as from mesh i
 
 <summary>Outputs</summary>
 
-* **Main Output**: Generated two-point pairs per input point
-* **Per-Point Data** (when enabled): Additional output with per-point data, such as axis information or extent values
+Produces two points per input point along a selected axis of its bounding box. These points define a line segment that represents the extent of the bound along that axis.
 
 </details>
 
-### Properties Overview
+#### Configuration
 
-Controls how the axis is selected and where the points are generated.
+<details>
 
-***
+<summary><strong>bGeneratePerPointData</strong><br><em>Generates a point collections per generated point.</em></summary>
 
-#### Axis Selection
+When enabled, each output point will be wrapped in its own collection, useful for further processing or filtering.
 
-Controls which axis of the bounds is used for generating the two points.
+</details>
 
-**Bounds Reference**
+<details>
 
-_The type of bounds to use when calculating axes._
+<summary><strong>BoundsReference</strong><br></summary>
 
-* Uses either scaled, density, regular, or center bounds
-* Scaled bounds are typically used for better representation of object dimensions
+Determines how the bounds of the input points are calculated:
 
-**Values**:
+* **Scaled Bounds**: Uses scaled bounds (default)
+* **Density Bounds**: Uses density-scaled bounds
+* **Bounds**: Uses raw bounds
+* **Center**: Uses a tiny size 1 box centered on the point
 
-* **Scaled Bounds**: Use scaled bounds (default)
-* **Density Bounds**: Use density-scaled bounds
-* **Bounds**: Use raw bounds
-* **Center**: Use a tiny size 1 box centered on the point
+</details>
 
-**Priority**
+<details>
 
-_Which axis to prioritize when selecting from the three axes._
+<summary><strong>Priority</strong><br><em>Which initial direction should initially picked.</em></summary>
 
-* Selects the shortest, longest, or median axis based on length
-* Useful for focusing on specific dimensions (e.g., height vs. width)
+Sets the primary axis selection rule:
 
-**Values**:
+* **Shortest**: Selects the shortest axis of the bound
+* **Longest**: Selects the longest axis of the bound
+* **Median**: Selects the remaining axis (not shortest or longest)
 
-* **Shortest**: Use the shortest axis
-* **Longest**: Use the longest axis
-* **Median**: Use the middle-length axis
+</details>
 
-**Direction Constraint**
+<details>
 
-_Whether to prefer or avoid a specific direction when selecting the axis._
+<summary><strong>DirectionConstraint</strong><br><em>Shifts the axis selection based on whether the selected axis points toward or away from a static direction.</em></summary>
 
-* Helps align the generated points with a desired orientation
-* Useful for ensuring axes point toward or away from a reference point
+Adjusts the axis selection based on a fixed direction:
 
-**Values**:
+* **None**: No adjustment
+* **Avoid**: Chooses an axis that avoids pointing toward the specified direction
+* **Favor**: Chooses an axis that favors pointing toward the specified direction
 
-* **None**: No directional constraint
-* **Avoid**: Avoid selecting an axis that points toward the specified direction
-* **Favor**: Prefer selecting an axis that points toward the specified direction
+</details>
 
-**Direction**
+<details>
 
-_The reference direction used when applying the Direction Constraint._
+<summary><strong>Direction</strong><br></summary>
 
-* Only used when Direction Constraint is set to Avoid or Favor
-* Affects which axis is selected based on its alignment with this vector
+The fixed direction used when **DirectionConstraint** is not set to None.
 
-**Size Constraint**
+</details>
 
-_Whether to prefer axes that are greater or smaller than a threshold size._
+<details>
 
-* Helps filter out very small or large dimensions
-* Useful for ignoring noise or focusing on dominant features
+<summary><strong>SizeConstraint</strong><br><em>Shifts the axis selection based on whether its size is greater or smaller than a given threshold.</em></summary>
 
-**Values**:
+Refines the axis selection based on the axis' size:
 
-* **None**: No size constraint
-* **Greater**: Prefer axes larger than the threshold
-* **Smaller**: Prefer axes smaller than the threshold
+* **None**: No adjustment
+* **Greater**: Selects an axis that is larger than the threshold
+* **Smaller**: Selects an axis that is smaller than the threshold
 
-**Size Threshold**
+</details>
 
-_The minimum or maximum axis length to consider when applying Size Constraint._
+<details>
 
-* Only used when Size Constraint is set to Greater or Smaller
-* Affects which axis is selected based on its size relative to this value
+<summary><strong>SizeThreshold</strong><br></summary>
 
-**Constraints Order**
+The size threshold used when **SizeConstraint** is not set to None.
 
-_Determines the priority of Direction and Size constraints when both are active._
+</details>
 
-* Controls whether direction or size takes precedence in axis selection
-* Useful for fine-tuning how constraints interact
+<details>
 
-**Values**:
+<summary><strong>ConstraintsOrder</strong><br><em>In which order shifting should be processed, as one is likely to override the other.</em></summary>
 
-* **Size matters more**: Size constraint overrides direction
-* **Direction matters more**: Direction constraint overrides size
+Determines which constraint takes precedence if both are active:
 
-***
+* **Size matters more**: Size-based constraint is applied first
+* **Direction matters more**: Direction-based constraint is applied first
 
-#### Point Placement
+</details>
 
-Controls where along the selected axis the two points are placed.
+<details>
 
-**U**
+<summary><strong>U</strong><br><em>Extent factor at which the points will be created on the selected world-align axis</em></summary>
 
-_Position of the first point along the selected axis._
+Controls how far along the selected axis the output points are placed from the center of the bound. A value of 1 places the points at the full extent of the axis.
 
-* Value is a multiplier for the axis extent (e.g., 1.0 = full extent, 0.5 = half extent)
-* Controls how far along the axis the first point is positioned
+</details>
 
-**Set Extents**
+<details>
 
-_Whether to set the output points' extents._
+<summary><strong>bSetExtents</strong><br></summary>
 
-* When enabled, sets the extent of each generated point
+When enabled, sets the extents of each output point to a fixed value.
 
-**Extents**
+</details>
 
-_The extent value applied to the output points when enabled._
+<details>
 
-* Affects the size of the generated points in world space
-* Default is 0.5 for both points
+<summary><strong>Extents</strong><br><em>Set the output point' extent to this value</em></summary>
 
-**Set Scale**
+The extent values applied to each output point when **bSetExtents** is enabled.
 
-_Whether to set the output points' scale._
+</details>
 
-* When enabled, sets the scale of each generated point
+<details>
 
-**Scale**
+<summary><strong>bSetScale</strong><br></summary>
 
-_The scale value applied to the output points when enabled._
+When enabled, sets the scale of each output point to a fixed value.
 
-* Affects how large or small the generated points appear
-* Default is 1.0 for both points
+</details>
 
-***
+<details>
 
-#### Output Options
+<summary><strong>Scale</strong><br><em>Set the output point' scale to this value</em></summary>
 
-Controls how the results are structured and what data is included.
+The scale values applied to each output point when **bSetScale** is enabled.
 
-**Generate Per Point Data**
+</details>
 
-_Whether to generate a separate output with per-point data._
+<details>
 
-* When enabled, creates additional data containing information about the selected axis and constraints applied
-* Useful for debugging or further processing of axis selection logic
+<summary><strong>PointAttributesToOutputTags</strong><br><em>TBD</em></summary>
 
-**Point Attributes To Output Tags**
+Defines how to map point attributes to tags in the output data. (TBD)
 
-_Which point attributes to copy to tags in the per-point output._
+</details>
 
-* Allows you to preserve specific attribute values in the generated output
-* Only used when Generate Per Point Data is enabled
+#### Usage Example
+
+Use this node to visualize the dimensions of bounds in a scene. For example, you could use it to generate lines that represent the width, height, and depth of objects, helping with layout or alignment tasks.
+
+#### Notes
+
+* The **U** parameter controls how far along the axis the points are placed; values between 0 and 1 place them within the bounds.
+* Combining constraints can provide more nuanced control over which axis is selected.
+* Output points are useful for creating visualizations, guides, or further procedural operations based on object dimensions.

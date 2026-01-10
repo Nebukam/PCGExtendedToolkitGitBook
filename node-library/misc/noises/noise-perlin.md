@@ -5,89 +5,74 @@ icon: circle-dashed
 # Noise : Perlin
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates classic 3D Perlin gradient noise, a smooth, natural-looking noise pattern commonly used for terrain generation, displacement effects, and organic variations.
+> Generates classic Perlin gradient noise for procedural content.
 
-### Overview
+#### How It Works
 
-This factory generates smooth, continuous noise values using the classic Perlin noise algorithm. It's ideal for creating natural-looking variations in procedural content such as terrain heightmaps, surface displacement, or organic patterns.
+This subnode creates smooth, natural-looking variations by using a modified version of Ken Perlin's classic algorithm. It works by:
 
-{% hint style="info" %}
-Connects to **Noise** input pins on nodes that require procedural noise sampling
-{% endhint %}
+1. Dividing 3D space into a grid of cubes
+2. Assigning random gradient vectors to each corner of the cube containing a point
+3. Calculating dot products between vectors from each corner to the sample point and the assigned gradients
+4. Interpolating these values using smoothstep curves for seamless transitions
+5. Combining multiple layers of noise with varying frequencies and amplitudes
 
-### How It Works
+The result is a continuous function that produces smooth, organic variations across space. This makes it perfect for creating natural-looking patterns in terrain, vegetation, or any effect requiring subtle variation.
 
-Perlin noise creates smooth transitions between random values by interpolating gradients at grid points. This produces natural-looking, organic patterns that are repeatable and deterministic based on position.
+#### Configuration
 
-The noise is generated through:
+<details>
 
-1. Dividing 3D space into a grid of unit cubes
-2. Assigning random gradient vectors to each corner of the cube
-3. Computing dot products between gradient vectors and displacement vectors
-4. Interpolating results using smoothstep curves for seamless transitions
+<summary><strong>Octaves</strong><br><em>Number of noise layers to combine.</em></summary>
 
-### Inputs
+Controls how many times the noise function is applied at different frequencies and amplitudes. Higher values create more detailed patterns but increase computation cost.
 
-* **Noise** (optional): Input noise to blend with this noise source
-* **Seed** (optional): Random seed value for deterministic noise generation
+**Values**:
 
-### Outputs
+* **1**: Single octave (smoothest)
+* **4**: Four octaves (more complex)
+* **8**: Eight octaves (high detail)
 
-* **Noise**: The generated noise value at the specified position
+</details>
 
-### Configuration
+<details>
 
-***
+<summary><strong>Lacunarity</strong><br><em>Frequency multiplier between octaves.</em></summary>
 
-#### General
+Determines how quickly the frequency increases with each octave. Higher values create more intricate patterns but may introduce artifacts if too high.
 
-**Octaves**
+**Values**:
 
-_Controls how many layers of noise are combined._
+* **1.0**: No change in frequency
+* **2.0**: Doubling of frequency per octave (standard)
+* **4.0**: Quadrupling of frequency per octave
 
-Each octave adds finer detail to the noise pattern. Higher values create more complex, rougher textures.
+</details>
 
-* **1** (default): Single layer, smoothest result
-* **4**: Adds significant detail and variation
-* **8**: Very detailed, noisy appearance
+<details>
 
-**Lacunarity**
+<summary><strong>Persistence</strong><br><em>Amplitude multiplier between octaves.</em></summary>
 
-_Determines how quickly frequency increases between octaves._
+Controls how much each octave contributes to the final result. Lower values make higher octaves less influential, resulting in smoother noise.
 
-Higher values increase the frequency of detail in each octave more rapidly.
+**Values**:
 
-* **2.0** (default): Standard progression
-* **3.0**: Faster frequency increase, more high-frequency detail
-* **1.5**: Slower frequency increase, smoother transitions
+* **0.0**: No contribution from higher octaves
+* **0.5**: Standard persistence (default)
+* **1.0**: Full amplitude for all octaves
 
-**Persistence**
+</details>
 
-_Control how much each octave contributes to the final result._
+#### Usage Example
 
-Controls amplitude decay between octaves. Lower values make higher octaves contribute less.
+Use this subnode to add natural variation to point placement or scalar attributes. For example, connect it to a "Noise" input pin on a "Point Scatter" node to vary the density of scattered points across space, or use it with a "Scalar Operation" node to modulate point scale based on noise values.
 
-* **0.5** (default): Balanced contribution from all octaves
-* **0.25**: Higher octaves contribute very little, smoother result
-* **0.75**: Higher octaves contribute significantly, more texture detail
+#### Notes
 
-### Usage Example
-
-Use this factory to create terrain height variation:
-
-1. Connect to a **Noise** pin on a **Point Noise** node
-2. Set Octaves to 4 for detailed terrain features
-3. Set Lacunarity to 2.0 and Persistence to 0.5 for natural-looking hills
-4. Use the output to drive point elevation or displacement
-
-### Notes
-
-* Perlin noise is deterministic; identical positions always produce identical values
-* Higher octave counts increase computational cost
-* Combine multiple noise factories using blend modes for complex patterns
-* Commonly used with **Point Noise**, **Mesh Noise**, and **Attribute Noise** nodes
+* Perlin noise is deterministic; identical inputs will always produce identical outputs
+* Multi-octave settings can significantly impact performance
+* Values outside the typical range (0-1) may be clamped depending on downstream usage
+* Combine with other noise subnodes using blend modes for complex procedural effects

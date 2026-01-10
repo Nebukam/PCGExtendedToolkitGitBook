@@ -6,107 +6,49 @@ icon: circle-dashed
 # Tensor : Spline Pole
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
 > Creates a tensor that represents a vector/flow field along a spline.
 
-### Overview
+#### How It Works
 
-This node generates a tensor field that guides points along the shape of a spline. It's useful for creating flowing, directional effects like rivers, roads, or wind patterns that follow curved paths. The tensor applies forces that pull or push points toward the spline's centerline, with strength decreasing as distance from the spline increases.
+This node builds a directional flow field that follows the shape of a spline. For each point in space, it calculates how strongly that point should be influenced by the spline's path. The influence is strongest when a point is close to the spline and decreases as the distance increases. The direction of the influence always aligns with the spline's tangent at the closest point on the curve.
+
+The node evaluates input points against a set of splines to determine their proximity. For each point, it finds the nearest location on the spline and computes how much influence that point should have based on its distance from the spline. Points within the defined radius are affected, with the strength of the effect decreasing as they move further away.
+
+#### Configuration
+
+<details>
+
+<summary><strong>Sample Inputs</strong><br><em>Controls which splines are sampled.</em></summary>
+
+Determines whether all input splines are used or only closed loops or open lines.
+
+**Values**:
+
+* **All**: Sample all inputs.
+* **Closed loops only**: Sample only closed loops.
+* **Open lines only**: Sample only open lines.
+
+</details>
+
+<details>
+
+<summary><strong>Radius</strong><br><em>Base radius of the spline. Will be scaled by control points' scale length.</em></summary>
+
+Controls how far from the spline the tensor's influence extends. The actual radius is scaled by the control point's scale factor.
+
+</details>
+
+#### Usage Example
+
+Use this node to create a flow field that guides particles along a winding path, such as a river or road. Connect a set of points (like particles or agents) to the tensor field, and they will be influenced to move along the shape of the spline. Adjust the radius to control how tightly the influence follows the spline.
+
+#### Notes
+
+The tensor's direction is always aligned with the spline's tangent at the closest point. This makes it ideal for creating smooth, continuous directional flows along curves.
 
 {% hint style="info" %}
-The resulting tensor field is best used in conjunction with other tensor nodes to create complex flow behaviors.
+Connects to **Tensor Subnode** nodes as a subnode.
 {% endhint %}
-
-<details>
-
-<summary>Inputs</summary>
-
-* **Main Input**: Points or splines to be processed
-* **Secondary Input (Optional)**: Additional data for tensor configuration
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Output**: Modified points with tensor field applied
-
-</details>
-
-### Properties Overview
-
-Controls how the tensor field is generated and applied along the spline.
-
-***
-
-#### General Settings
-
-Configures basic behavior of the tensor field.
-
-**Sample Inputs**
-
-_Controls which input splines are sampled._
-
-* Only closed loops, open lines, or all splines can be used
-* When set to "Closed loops only", only closed splines will be processed
-* When set to "Open lines only", only open splines will be processed
-
-**Values**:
-
-* **All**: Sample all inputs
-* **Closed loops only**: Sample only closed loops
-* **Open lines only**: Sample only open lines
-
-**Radius**
-
-_Base radius of the spline. Will be scaled by control points' scale length._
-
-* Controls how far from the spline's centerline the tensor field has influence
-* Larger values create a wider area of influence
-* Example: A value of 200 means the tensor field affects points within 200 units from the spline
-
-***
-
-#### Tensor Settings
-
-Controls how the tensor field behaves in relation to the spline.
-
-**Falloff Mode**
-
-_Controls how the tensor strength decreases with distance._
-
-* Determines whether the effect tapers off gradually or drops off sharply
-* Affects the smoothness of transitions between different tensor regions
-
-**Values**:
-
-* **Linear**: Strength decreases linearly with distance
-* **Quadratic**: Strength decreases quadratically with distance
-* **Cubic**: Strength decreases cubically with distance
-
-**Potency Falloff**
-
-_Controls how potency decreases with distance from the spline._
-
-* Affects how strong the tensor's pull or push is at different distances
-* Higher values mean stronger effects closer to the spline and weaker effects further away
-
-**Weight Falloff**
-
-_Controls how weight decreases with distance from the spline._
-
-* Determines how much influence each point has in the tensor field
-* Influences how the tensor combines with other tensors when multiple are present
-
-### Notes
-
-* This node works best when used with splines that have a defined path, such as those created by the "Path : Create Spline" node.
-* Combine with other tensor nodes to create complex flow fields.
-* The tensor field is computed per point and can be used for particle systems or procedural mesh generation.
-* Adjust the radius value to control how wide the influence of the spline extends.
-* For best results, ensure your input splines are properly aligned and spaced to avoid overlapping effects.

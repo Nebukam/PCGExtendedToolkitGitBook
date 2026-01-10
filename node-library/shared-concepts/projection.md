@@ -4,83 +4,79 @@ icon: chart-scatter-3d
 
 # Projection
 
-## Geo2DProjection## AI-generated page -- to be reviewed
+{% hint style="info" %}
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
+{% endhint %}
 
-While not 100% accurate, it should properly capture what this configuration does.> Controls how 3D spatial data is projected into a 2D plane for processing.
+> Controls how 3D points are projected onto a 2D plane for processing.
 
 #### Overview
 
-This configuration defines how your procedural content's 3D positions are flattened into 2D space. It's essential when working with 2D algorithms or visualizations that need to ignore the Z-axis. You can choose between fixed and dynamic projection methods, allowing you to project all points onto a specific plane or use local data to determine each point's projection direction.
+This configuration block defines how to project 3D spatial data into a 2D coordinate system. It's commonly used in geometric operations like clustering, pathfinding, and polygon clipping where working in 2D simplifies calculations. You can choose between different projection methods, such as using a fixed normal vector or deriving it from point attributes. When working with point data that has varying orientations, you might want to enable local normal support to adapt the projection per point.
 
 {% hint style="info" %}
-This configuration appears in nodes like: Clipper2 Boolean, Clipper2 Offset, Convex Hull 2D, Delaunay Graph 2D, Voronoi Graph 2D
+This configuration appears in nodes like: Clipper2 Boolean, Clipper2 Offset, Build Convex Hull 2D, Build Delaunay Graph 2D, Build Voronoi Graph 2D, Break Clusters To Paths, Connect Clusters, Pathfinding Find All Cells, Pathfinding Find Cluster Hull, Pathfinding Find Contours
 {% endhint %}
 
 #### Settings
 
-***
-
 <details>
 
-<summary>bSupportLocalNormal _Enables or disables the use of local attributes for projection normal._</summary>
+<summary><strong>bSupportLocalNormal</strong><br><em>When enabled, allows the projection normal to be fetched from a local attribute.</em></summary>
 
-When enabled, allows the projection normal to be fetched from a point attribute instead of using a fixed vector.
+When enabled, this option lets you use a point attribute to define the normal vector for each individual point's 2D projection. This is useful when your data has varying orientations or needs custom projections per point.
 
 </details>
 
-***
-
 <details>
 
-<summary>Method _Determines how the 2D projection plane is defined._</summary>
+<summary><strong>Method</strong><br><em>Determines how the 2D projection plane is defined.</em></summary>
 
-Controls whether the projection uses a fixed normal or one derived from local data.
+Controls the method used to define the 2D projection plane. This setting affects which other options are available.
 
 **Values**:
 
-* **Normal**: Uses a fixed normal vector defined in the ProjectionNormal setting.
-* **Local Normal**: Uses a normal vector from a point attribute, if enabled via bSupportLocalNormal.
+* **Normal**: Uses a fixed or local normal vector to define the projection plane.
+* **XY**: Projects onto the XY plane (Z values are ignored).
+* **XZ**: Projects onto the XZ plane (Y values are ignored).
+* **YZ**: Projects onto the YZ plane (X values are ignored).
 
 </details>
 
-***
-
 <details>
 
-<summary>ProjectionNormal _The fixed vector used to define the 2D projection plane._</summary>
+<summary><strong>ProjectionNormal</strong><br><em>The fixed normal vector used for projection when Method is set to Normal.</em></summary>
 
-This is the direction that the 2D plane will face. For example, setting this to `(0, 0, 1)` projects all points onto the XY plane.
+Defines the direction of the 2D projection plane. This is only used when the Method is set to "Normal". It defaults to pointing upward (Up vector) for an XY projection.
 
 </details>
 
-***
-
 <details>
 
-<summary>bLocalProjectionNormal _Controls whether to use a local attribute for the projection normal._</summary>
+<summary><strong>bLocalProjectionNormal</strong><br><em>When enabled, fetches the projection normal from a local attribute.</em></summary>
 
-When enabled and Method is set to "Local Normal", this setting allows you to specify an attribute that contains the normal vector for each point's projection.
+When enabled and Method is set to Normal, this setting allows you to specify a point attribute that contains the normal vector for each point's projection. This overrides the fixed ProjectionNormal.
 
 </details>
 
-***
-
 <details>
 
-<summary>LocalNormal _The attribute containing the normal vector used for projection._</summary>
+<summary><strong>LocalNormal</strong><br><em>The name of the attribute containing the local normal vector used for projection.</em></summary>
 
-Specifies which point attribute to read the normal vector from when using local normal projection. This is only active when both Method is set to "Local Normal" and bLocalProjectionNormal is enabled.
+Specifies which attribute to use when bLocalProjectionNormal is enabled. This attribute should contain a vector that defines the orientation of the 2D projection plane for each point.
 
 </details>
 
 #### Common Use Cases
 
-* **Planar Terrain Generation**: Project 3D terrain points onto a fixed XY plane for 2D heightmap generation.
-* **Cluster Analysis**: Flatten clusters of points into 2D space to perform 2D geometric operations like convex hulls or Voronoi diagrams.
-* **Local Normal Projection**: Use point attributes to project each point onto its own local surface normal, useful for terrain flattening or alignment.
+* **Clustering operations**: Projecting 3D points onto a 2D plane before building convex hulls or Voronoi diagrams.
+* **Pathfinding**: Simplifying navigation mesh generation by projecting complex 3D terrain into 2D space.
+* **Polygon clipping**: Converting 3D polygons to 2D for easier intersection and boolean operations.
+* **Terrain analysis**: Working with elevation data in a 2D representation to simplify calculations.
 
 #### Notes
 
-* The default projection normal is `(0, 0, 1)`, which corresponds to the XY plane.
-* When using "Local Normal" method, ensure that your input data contains valid normal vectors in the specified attribute.
-* Projection settings affect all downstream processing in nodes where this configuration is used.
+* The projection method affects how point positions are interpreted during processing. For example, using XY projection ignores Z coordinates.
+* When using local normals, ensure the attribute exists and contains valid vector data for each point.
+* The default normal is set to UpVector (0, 0, 1), which corresponds to an XY projection plane.
+* If you're unsure about the orientation of your data, start with the XY or XZ method to see how it affects your results.

@@ -6,121 +6,130 @@ icon: scrubber
 # Pathfinding : Navmesh
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Extract paths from navmesh using seed and goal points.
+> Extracts paths between seed and goal points using navmesh data.
 
-### Overview
+#### How It Works
 
-This node generates paths between seed and goal points using Unreal's navigation mesh system. It's designed for creating navigational paths that follow the game world's walkable surfaces, such as ground terrain or platforms. The node supports both regular pathfinding and hierarchical (cell-based) approaches, making it suitable for various procedural generation needs.
+This node finds routes between pairs of seed and goal points by using a navigation mesh (navmesh). It starts by pairing up each seed point with a corresponding goal point, either based on a predefined list or by randomly selecting goals from the goal set for each seed.
 
-{% hint style="info" %}
-This node requires a valid navmesh to be present in your level. Without one, no paths will be generated.
-{% endhint %}
+Next, it calculates valid paths through the navmesh system. You can choose whether to include the original seed and goal points in the resulting path. Intermediate points along the path are optionally blended using a blending subnode, which controls how smoothly the path transitions between the start and end positions.
+
+Finally, nearby points in the path are merged together to reduce clutter and improve visual smoothness. The node supports two different methods for finding paths: regular pathfinding that uses the navmesh directly, and hierarchical pathfinding that works better in complex environments with many obstacles.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>GoalPicker</strong><br><em>Controls how goals are picked.</em></summary>
 
-* **Main Input** (Point): Seed points that define the starting locations for pathfinding
-* **Goal Input** (Point): Goal points that define where paths should lead
-* **Optional Goal Picker**: Allows custom logic to determine which goal point to use for each seed
+A subnode that defines how to select goals for each seed. For example, it can pick the closest goal or a random goal.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>bAddSeedToPath</strong><br><em>Add seed point at the beginning of the path</em></summary>
 
-* **Output Paths**: Generated paths connecting seed and goal points, represented as point collections
+When enabled, the seed point is included as the first point in the resulting path.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how paths are generated and what data is attached to them.
+<summary><strong>bAddGoalToPath</strong><br><em>Add goal point at the end of the path</em></summary>
 
-***
+When enabled, the goal point is included as the last point in the resulting path.
 
-#### General
+</details>
 
-Controls basic path generation behavior.
+<details>
 
-**Add Seed To Path**
+<summary><strong>bRequireNavigableEndLocation</strong><br><em>Whether the pathfinding requires a navigable end location.</em></summary>
 
-_When enabled, the seed point is included at the beginning of each generated path._
+When enabled, the system ensures that both seed and goal points are navigable. If not, the path is discarded.
 
-* The seed point becomes the first point in the path
-* Useful for maintaining connection to the original starting location
+</details>
 
-**Add Goal To Path**
+<details>
 
-_When enabled, the goal point is included at the end of each generated path._
+<summary><strong>FuseDistance</strong><br><em>Fuse sub points by distance.</em></summary>
 
-* The goal point becomes the last point in the path
-* Ensures the final destination is preserved in the path data
+The minimum distance between points in a path to consider them separate. Points closer than this value are merged into one.
 
-**Require Navigable End Location**
+</details>
 
-_When enabled, paths are only generated if both seed and goal points are on navigable surfaces._
+<details>
 
-* If either point is not on a navmesh, no path will be created for that pair
-* Useful for ensuring paths lead to valid locations in your game world
+<summary><strong>Blending</strong><br><em>Controls how path points blend from seed to goal.</em></summary>
 
-***
+A subnode that defines how intermediate points in the path are interpolated or blended between the seed and goal positions.
 
-#### Tagging & Forwarding
+</details>
 
-Controls how attributes from seed and goal points are transferred to the resulting paths.
+<details>
 
-**Seed Attributes To Path Tags**
+<summary><strong>SeedAttributesToPathTags</strong><br><em>TBD</em></summary>
 
-_Controls which seed point attributes are converted into tags on the output path._
+Placeholder for tagging attributes from seeds onto paths.
 
-* Tags can be used later to filter or process paths based on their source point properties
-* Useful for categorizing paths by seed characteristics (e.g., "High Ground", "Low Ground")
+</details>
 
-**Seed Forwarding**
+<details>
 
-_Controls which seed point attributes are copied to the output path points._
+<summary><strong>SeedForwarding</strong><br><em>Which Seed attributes to forward on paths.</em></summary>
 
-* Enables passing through data like height, material type, or other properties from seeds
-* Can be used to maintain context about where paths originate
+Defines which attributes from the seed points are copied to the resulting paths.
 
-**Goal Attributes To Path Tags**
+</details>
 
-_Controls which goal point attributes are converted into tags on the output path._
+<details>
 
-* Helps identify characteristics of destination points in generated paths
-* Useful for grouping paths by their destinations (e.g., "Water", "Building")
+<summary><strong>GoalAttributesToPathTags</strong><br><em>TBD</em></summary>
 
-**Goal Forwarding**
+Placeholder for tagging attributes from goals onto paths.
 
-_Controls which goal point attributes are copied to the output path points._
+</details>
 
-* Allows transferring properties from goal points to the resulting path data
-* Enables downstream processing based on destination characteristics
+<details>
 
-***
+<summary><strong>GoalForwarding</strong><br><em>Which Goal attributes to forward on paths.</em></summary>
 
-#### Advanced
+Defines which attributes from the goal points are copied to the resulting paths.
 
-Controls technical aspects of pathfinding and path generation.
+</details>
 
-**Pathfinding Mode**
+<details>
 
-_Selects the algorithm used for pathfinding._
+<summary><strong>PathfindingMode</strong><br><em>Pathfinding mode</em></summary>
 
-* **Regular**: Standard pathfinding using the navmesh system
-* **Hierarchical**: Cell-based approach that may be faster for large datasets but less precise
+* **Regular**: Standard pathfinding using the navmesh.
+* **Hierarchical**: Cell-based pathfinding for more complex environments.
 
-**Nav Agent Properties**
+</details>
 
-_Configures the navigation agent properties used during pathfinding._
+<details>
 
-* Determines how the pathfinder interprets the environment (e.g., height, radius)
-* Affects whether paths are generated for specific character types or sizes
-* Example: Set radius to 50 for a small character, 100 for a large one
+<summary><strong>NavAgentProperties</strong><br><em>Nav agent to be used by the nav system.</em></summary>
+
+Defines the properties of the navigation agent, such as height and radius, that affect how paths are calculated.
+
+</details>
+
+#### Usage Example
+
+1. Create a set of seed points (e.g., spawn locations for AI).
+2. Create a set of goal points (e.g., destinations or waypoints).
+3. Connect both sets to this node.
+4. Configure the GoalPicker subnode to select goals based on proximity.
+5. Enable `bAddSeedToPath` and `bAddGoalToPath` to include start/end points in paths.
+6. Use a blending subnode like "Interpolate" to smooth transitions between seed and goal.
+7. Output the resulting paths for use in other nodes, such as path visualization or AI movement.
+
+#### Notes
+
+* The node requires a valid navmesh in the level for proper pathfinding.
+* Performance can be affected by the number of queries and complexity of the navmesh.
+* Use `FuseDistance` to reduce clutter in dense paths.

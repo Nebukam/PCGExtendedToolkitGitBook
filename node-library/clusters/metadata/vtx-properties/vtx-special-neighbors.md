@@ -6,72 +6,49 @@ icon: circle-dashed
 # Vtx : Special Neighbors
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Fetch data from neighbors based on edge length.
+> Fetches and stores information about the largest and smallest neighbors of each vertex in a cluster.
 
-### Overview
+#### How It Works
 
-This node analyzes the edges connected to each vertex in a cluster and extracts information about the longest and shortest neighboring vertices. It's particularly useful for identifying extreme relationships within graph structures, such as finding the most distant or closest neighbors of each point. The results are stored as new attributes on the vertex data, making them available for downstream processing.
+This node analyzes the connections between vertices within clusters to identify which neighboring vertices are closest and farthest away. For each vertex, it looks at all adjacent edges to calculate distances to neighboring points. It then determines the neighbor with the shortest edge (closest) and the one with the longest edge (farthest). These relationships are saved as vertex properties so they can be used in later steps of your procedural workflow.
 
-{% hint style="info" %}
-This node requires a valid cluster with edge data to function. It operates on vertex data and uses adjacency information from edges.
-{% endhint %}
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Largest Neighbor</strong><br><em>Shortest edge.</em></summary>
 
-* **Cluster** (Required): Input cluster containing vertices and edges.
-* **Edge Data** (Optional, Multiple): Additional edge data that can be used for neighbor analysis.
+Controls how the closest neighbor is determined and stored.
+
+**Values**:
+
+* **Output Property Name**: The name of the vertex property where the index of the closest neighbor will be stored.
+* **Output Distance Property Name**: The name of the vertex property where the distance to the closest neighbor will be stored.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Smallest Neighbor</strong><br><em>Longest edge.</em></summary>
 
-* **Property** (Required): Modified vertex data with new attributes for largest and smallest neighbors.
+Controls how the farthest neighbor is determined and stored.
+
+**Values**:
+
+* **Output Property Name**: The name of the vertex property where the index of the farthest neighbor will be stored.
+* **Output Distance Property Name**: The name of the vertex property where the distance to the farthest neighbor will be stored.
 
 </details>
 
-### Properties Overview
+#### Usage Example
 
-Controls how the node identifies and stores information about special neighbors.
+You have a cluster of points that form a mesh. You want to identify which point is closest and farthest from each vertex in the mesh for use in a custom shader or procedural effect. Connect this node to your cluster input, configure the output property names, and then connect it to a downstream node that uses these properties to modify point behavior.
 
-***
+#### Notes
 
-#### Edge Configuration
-
-Settings for defining which neighbors are considered "largest" and "smallest".
-
-**Largest Neighbor**
-
-_Controls how the longest edge neighbor is stored._
-
-* Stores the index of the vertex connected by the longest edge.
-* The attribute name is configurable, defaulting to "Largest".
-* When enabled, this will store the index of the vertex with the largest edge length.
-
-**Values**:
-
-* **None**: No data is stored for the largest neighbor.
-* **Index**: Stores the index of the vertex connected by the longest edge.
-* **Value**: Stores the actual edge length value of the longest edge.
-
-**Smallest Neighbor**
-
-_Controls how the shortest edge neighbor is stored._
-
-* Stores the index of the vertex connected by the shortest edge.
-* The attribute name is configurable, defaulting to "Smallest".
-* When enabled, this will store the index of the vertex with the shortest edge length.
-
-**Values**:
-
-* **None**: No data is stored for the smallest neighbor.
-* **Index**: Stores the index of the vertex connected by the shortest edge.
-* **Value**: Stores the actual edge length value of the shortest edge.
+* This node requires valid edge data to function properly.
+* The results are stored as vertex properties, so they can be used in subsequent processing steps or visualized directly.
+* Performance may vary depending on the number of vertices and edges in each cluster.

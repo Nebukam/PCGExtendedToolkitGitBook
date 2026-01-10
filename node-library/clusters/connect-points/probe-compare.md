@@ -5,107 +5,115 @@ icon: circle-dashed
 # Probe : Compare
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates a probe that connects points based on numeric attribute comparisons between the probing point and candidate points.
+> Connect points that pass the value comparison between the probing point and the candidate point.
 
-### Overview
+#### Overview
 
-This factory defines a comparison-based connection rule for probing operations. It evaluates whether a candidate point's attribute value meets a specified condition relative to the probing point's attribute value, and creates connections accordingly.
+This subnode defines a filtering behavior for connecting points based on numeric attribute comparisons. It evaluates whether a candidate point meets a specified condition relative to the probe's own attribute value. This is useful when you want to create connections only under specific numeric criteria, such as distance thresholds or value ranges.
+
+It connects to Filter pins on processing nodes that support probing, allowing you to control which points are considered for connection based on their attribute values.
 
 {% hint style="info" %}
-Connects to **Probe** pins on processing nodes like "Connect Points" or "Cluster Points"
+Connects to **Filter** pins on processing nodes.
 {% endhint %}
 
-### How It Works
+#### How It Works
 
-This probe compares numeric values from two points:
+This subnode compares an attribute value from the probe point with the same attribute value from candidate points. It evaluates the comparison using a specified operator (e.g., greater than, equal to, etc.) and only allows connections where the condition is met.
 
-1. The **probing point** (the source of the connection)
-2. Each **candidate point** being evaluated for connection
+It first reads the numeric value of the selected attribute from the probe point. Then, for each candidate point, it retrieves the corresponding attribute value and compares it against the probe's value using the configured comparison operator. If the comparison passes, the candidate is considered a valid connection target.
 
-It tests if the candidate's attribute value meets a comparison condition against the probing point's attribute value. If the condition is met, a connection is created between them.
+If the **Prevent Coincidence** option is enabled, it also checks whether the direction vector from the probe to the candidate is too similar to other connections already made, helping avoid overlapping or redundant links.
 
-### Inputs and Outputs
+#### Configuration
 
-#### Inputs
+<details>
 
-* **Probe**: Accepts probe configuration data
-* **Points**: Input point data to be processed
-* **Attributes**: Optional attribute data for comparison
+<summary><strong>Max Connections Input</strong><br><em>How to define the maximum number of connections.</em></summary>
 
-#### Outputs
-
-* **Connections**: Generated connections between points
-* **Probe Result**: Status of the probe operation
-
-### Configuration
-
-***
-
-#### General
-
-**Max Connections Input**
-
-_Controls how many connections this probe can make per point._
-
-When set to **Constant**, use the "Max Connections" value. When set to **Attribute**, read the maximum number of connections from an attribute on the input points.
+Controls whether the maximum number of connections is defined by a constant value or an attribute.
 
 **Values**:
 
-* **Constant**: Use a fixed number of connections per point
-* **Attribute**: Read the connection limit from a point attribute
+* **Constant**: Use a fixed number for all probes.
+* **Attribute**: Read the max connection count from an attribute on the input points.
 
-**Max Connections (Attr)**
+</details>
 
-_The attribute name to read the maximum connections from._
+<details>
 
-Only visible when "Max Connections Input" is set to **Attribute**.
+<summary><strong>Max Connections</strong><br><em>Maximum number of connections to make.</em></summary>
 
-**Max Connections**
+The maximum number of valid candidates to connect to, when using a constant value for Max Connections Input.
 
-_The maximum number of connections this probe can make per point._
+</details>
 
-Only visible when "Max Connections Input" is set to **Constant**.
+<details>
 
-**Attribute**
+<summary><strong>Attribute</strong><br><em>Attribute to compare.</em></summary>
 
-_The numeric attribute to compare between points._
+The numeric attribute used in the comparison. This attribute must exist on both probe and candidate points.
 
-This defines which values are compared. For example, if you're comparing distances, use a distance attribute.
+</details>
 
-**Comparison**
+<details>
 
-_The comparison condition used to evaluate the attribute values._
+<summary><strong>Comparison</strong><br><em>Comparison check.</em></summary>
+
+The logical operator used to evaluate the comparison between probe and candidate values.
 
 **Values**:
 
-* **==**: Strictly Equal
-* **!=**: Strictly Not Equal
-* **>=**: Equal or Greater
-* **<=**: Equal or Smaller
-* **>**: Strictly Greater
-* **<**: Strictly Smaller
-* **\~=**: Nearly Equal (within tolerance)
-* \*\*!\~=: Nearly Not Equal (outside tolerance)
+* **==**: Strictly equal
+* **!=**: Strictly not equal
+* **>=**: Equal or greater
+* **<=**: Equal or smaller
+* **>**: Strictly greater
+* **<**: Strictly smaller
+* **\~=**: Nearly equal (with tolerance)
+* **!\~=**: Nearly not equal (with tolerance)
 
-**Tolerance**
+</details>
 
-_The tolerance used for approximate comparisons._
+<details>
 
-Only visible when using **Nearly Equal** or **Nearly Not Equal** comparisons. Controls how close values need to be to be considered equal.
+<summary><strong>Tolerance</strong><br><em>Rounding mode for approx. comparison modes.</em></summary>
 
-**Prevent Coincidence**
+Used when the comparison is set to nearly equal or nearly not equal. Defines how close values must be to be considered equal.
 
-_When enabled, prevents connections that are roughly in the same direction._
+</details>
 
-This helps avoid creating multiple connections between points that are very close in direction, which can lead to visual clutter or unwanted patterns.
+<details>
 
-**Coincidence Prevention Tolerance**
+<summary><strong>Prevent Coincidence</strong><br><em>Attempts to prevent connections that are roughly in the same direction.</em></summary>
 
-_Controls how close connections need to be to be considered coincidental._
+When enabled, prevents connections that are in a similar direction to already established connections.
 
-Only visible when "Prevent Coincidence" is enabled. Smaller values mean stricter coincidence detection.
+</details>
+
+<details>
+
+<summary><strong>Coincidence Prevention Tolerance</strong><br><em>Attempts to prevent connections that are roughly in the same direction.</em></summary>
+
+Controls how similar two directions must be to be considered coincidental. Lower values mean stricter prevention.
+
+</details>
+
+#### Usage Example
+
+You have a set of points representing terrain elevations and want to connect each point to nearby points with higher elevation. You would use this subnode with:
+
+* **Attribute**: "Elevation"
+* **Comparison**: "Strictly Greater"
+* **Max Connections**: 3
+
+This creates connections only to points that are strictly higher in elevation, up to a maximum of three per point.
+
+#### Notes
+
+* The attribute must be numeric for comparisons to work.
+* When using "Nearly Equal" or "Nearly Not Equal", make sure the tolerance is appropriate for your data scale.
+* Enabling coincidence prevention helps avoid visual clutter from overlapping connections but may reduce the number of valid candidates.

@@ -6,153 +6,151 @@ icon: circle
 # Shrink
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Shrink path from its beginning and end.
+> Shrinks paths from their beginning and end by a specified amount.
 
-### Overview
+#### How It Works
 
-This node allows you to reduce the length of paths by removing points from their start and/or end. You can specify how many points or how much distance to remove, giving you precise control over path shortening. This is useful for creating shorter routes, trimming unnecessary segments, or adjusting path lengths for gameplay or visual purposes.
+This node adjusts the length of each path by removing points from both the start and end. It determines how many points or how much distance to remove based on your chosen method — either by counting points or measuring physical distance. The process can be applied to one or both ends of each path, depending on your settings.
 
-{% hint style="info" %}
-This node modifies the input paths in place, removing points from the start and/or end depending on your settings.
-{% endhint %}
+When using **Distance** mode, it calculates how much space to cut from each end using a fixed value or data from an attribute. When using **Count** mode, it removes a set number of points from each end. You can also choose how the path is adjusted at the point where it's cut — for example, whether to create a new point or use an existing one.
+
+The node supports different cut types that define how the path behaves at the cut location. It also allows you to preserve metadata from the original first or last points when removing them.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Shrink Endpoint</strong><br><em>Which ends of the path to shrink.</em></summary>
 
-* **Main Input**: Paths (point collections representing paths)
-* **Point Filter** (optional): Filters to apply to the points in the path
+Controls whether the node shrinks from both ends, only the start, or only the end of each path.
+
+**Values**:
+
+* **Start and End**: Shrink from both ends.
+* **Start**: Shrink only from the beginning.
+* **End**: Shrink only from the end.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Settings Mode</strong><br><em>How to handle values for start and end when shrinking both.</em></summary>
 
-* **Main Output**: Modified paths with points removed from start and/or end
+When shrinking both ends, this setting controls whether the same value is used or separate values are applied.
+
+**Values**:
+
+* **Shared**: Both start and end use the primary value.
+* **Separate**: Start uses the primary value, end uses the secondary value.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the node shrinks paths.
+<summary><strong>Shrink Mode</strong><br><em>Whether to shrink by count or distance.</em></summary>
 
-***
+Determines how the amount of shrinkage is defined — either as a number of points or a physical distance.
 
-#### General Settings
+**Values**:
 
-Determines which ends of the path to shrink and how to interpret the shrink amount.
+* **Count**: Shrink by a number of points.
+* **Distance**: Shrink by a physical distance.
 
-**Shrink Endpoint**
+</details>
 
-_Controls whether to shrink the start, end, or both ends of the path._
+<details>
 
-* Shrinks from the beginning, end, or both ends depending on your selection
-* **Values**:
-  * **Start and End**: Both start and end points are removed
-  * **Start**: Only the first point is removed
-  * **End**: Only the last point is removed
+<summary><strong>Primary Distance Details</strong><br><em>Settings for the amount to shrink from each end when using distance mode.</em></summary>
 
-**Settings Mode**
+Controls how much distance is removed from each end. Can use a constant or an attribute.
 
-_Controls whether the same shrink amount applies to both ends or different amounts._
+**Values**:
 
-* When set to **Shared**, both ends use the primary value
-* When set to **Separate**, start uses the primary value, and end uses the secondary value
-* Only visible when shrinking both endpoints
+* **Amount Input**: Choose between constant or attribute-based value.
+* **Distance Attribute**: If using attribute, specify which attribute to read the distance from.
+* **Distance**: If using constant, set the distance to remove.
+* **Cut Type**: How to handle the point at the cut location — whether to create a new point, use the previous, next, or closest existing point.
 
-**Shrink Mode**
+</details>
 
-_Selects whether to shrink by point count or distance._
+<details>
 
-* **Distance**: Removes points based on a physical distance from the path start/end
-* **Count**: Removes a specific number of points from each end
+<summary><strong>Secondary Distance Details</strong><br><em>Settings for the amount to shrink from the end when using distance mode and separate settings.</em></summary>
 
-***
+Controls how much distance is removed from the end when shrinking both ends with separate values. Only visible if Settings Mode is set to Separate.
 
-#### Distance Settings
+**Values**:
 
-Controls how distance-based shrinking is applied.
+* **Amount Input**: Choose between constant or attribute-based value.
+* **Distance Attribute**: If using attribute, specify which attribute to read the distance from.
+* **Distance**: If using constant, set the distance to remove.
+* **Cut Type**: How to handle the point at the cut location — whether to create a new point, use the previous, next, or closest existing point.
 
-**Primary Distance Details**
+</details>
 
-_Configures the amount of distance to remove from the selected endpoints._
+<details>
 
-* When **Distance** mode is selected, this defines how much distance to remove
-* Can be set as a constant value or read from an attribute on input points
-* **Cut Type**: Determines how the cut point is calculated when shrinking by distance
-  * **New Point**: Creates a new point at the exact shrink distance
-  * **Previous (Ceil)**: Uses the previous point, rounding up to ensure full distance removal
-  * **Next (Floor)**: Uses the next point, rounding down to ensure full distance removal
-  * **Closest (Round)**: Uses the closest point, rounding to nearest
+<summary><strong>Primary Count Details</strong><br><em>Settings for the number of points to shrink from each end when using count mode.</em></summary>
 
-**Secondary Distance Details**
+Controls how many points are removed from each end. Can use a constant or an attribute.
 
-_Configures the amount of distance to remove from the opposite endpoint when using separate settings._
+**Values**:
 
-* Only visible when both endpoints are shrunk and settings mode is set to **Separate**
-* Same as primary but for the second endpoint
+* **Value Source**: Choose between constant or attribute-based value.
+* **Count Attribute**: If using attribute, specify which attribute to read the point count from.
+* **Count**: If using constant, set the number of points to remove.
+* **Cut Type**: How to handle the point at the cut location — whether to create a new point, use the previous, next, or closest existing point.
 
-***
+</details>
 
-#### Count Settings
+<details>
 
-Controls how count-based shrinking is applied.
+<summary><strong>Secondary Count Details</strong><br><em>Settings for the number of points to shrink from the end when using count mode and separate settings.</em></summary>
 
-**Primary Count Details**
+Controls how many points are removed from the end when shrinking both ends with separate values. Only visible if Settings Mode is set to Separate.
 
-_Configures the number of points to remove from the selected endpoints._
+**Values**:
 
-* When **Count** mode is selected, this defines how many points to remove
-* Can be set as a constant value or read from an attribute on input points
-* Minimum value is 1
+* **Value Source**: Choose between constant or attribute-based value.
+* **Count Attribute**: If using attribute, specify which attribute to read the point count from.
+* **Count**: If using constant, set the number of points to remove.
+* **Cut Type**: How to handle the point at the cut location — whether to create a new point, use the previous, next, or closest existing point.
 
-**Secondary Count Details**
+</details>
 
-_Configures the number of points to remove from the opposite endpoint when using separate settings._
+<details>
 
-* Only visible when both endpoints are shrunk and settings mode is set to **Separate**
-* Same as primary but for the second endpoint
+<summary><strong>Endpoints Ignore Stop Conditions</strong><br><em>Whether to ignore stop conditions when shrinking endpoints.</em></summary>
 
-***
+When enabled, the node will not respect stop conditions at the start or end of paths when cutting points.
 
-#### Metadata Preservation
+</details>
 
-Controls whether to preserve metadata from original points.
+<details>
 
-**Preserve First Metadata**
+<summary><strong>Preserve First Metadata</strong><br><em>If enabled, the point cut from the start will inherit metadata from the original first point.</em></summary>
 
-_When enabled, the point removed from the start inherits metadata from the original first point._
+When enabled, the point that is removed from the beginning of the path will keep the metadata from the original first point in the path.
 
-* Useful when you want to maintain properties like height, color, or other attributes from the original path start
+</details>
 
-**Preserve Last Metadata**
+<details>
 
-_When enabled, the point removed from the end inherits metadata from the original last point._
+<summary><strong>Preserve Last Metadata</strong><br><em>If enabled, the point cut from the end will inherit metadata from the original last point.</em></summary>
 
-* Useful when you want to maintain properties like height, color, or other attributes from the original path end
+When enabled, the point that is removed from the end of the path will keep the metadata from the original last point in the path.
 
-***
+</details>
 
-#### Warnings and Errors
+#### Usage Example
 
-Controls how warnings are handled.
+You have a path representing a road and want to remove 5 meters from both ends to avoid overlap with other elements. Set **Shrink Mode** to **Distance**, **Primary Distance Details** to a constant value of 5, and **Shrink Endpoint** to **Start and End**. This will shorten the road by 5 meters at each end.
 
-**Quiet Closed Loop Warning**
+#### Notes
 
-_When enabled, suppresses warnings about closed loops._
-
-* Prevents warning messages if paths are closed loops (start and end points are the same)
-
-### Notes
-
-* This node works on point collections that represent paths.
-* When using **Distance** mode, the actual distance is calculated along the path, not as straight-line distance.
-* If you're using **Count** mode with a large number of points, ensure it doesn't reduce the path to fewer than 2 points.
-* For closed loops, consider enabling **Quiet Closed Loop Warning** if you expect this behavior and don't want noisy warnings.
-* You can use attributes to dynamically control how much to shrink paths based on point properties.
+* The node works on individual paths; it does not merge or split paths.
+* If a path is too short to shrink by the specified amount, it may result in an empty or invalid path.
+* When using **Count** mode, ensure that the count is less than the total number of points in the path to avoid errors.

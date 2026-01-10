@@ -6,155 +6,132 @@ icon: circle
 # Cut Clusters
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Cut clusters nodes & edges using paths.
+> Cut clusters nodes and edges using paths.
 
-### Overview
+#### Overview
 
-This node removes or preserves parts of clusters based on their overlap with path data. It's useful for creating holes in cluster networks, cutting through connected components, or selectively removing elements that intersect with specific paths. You can choose to cut nodes, edges, or both, and control whether the operation keeps or removes overlapping elements.
+The **Cluster : Cut** node modifies existing clusters by removing or preserving parts of their structure based on intersections with paths. It allows you to selectively remove nodes or edges from clusters depending on whether they intersect with one or more input paths. This is useful for creating dynamic cluster topologies that respond to environmental features like roads, rivers, or other geometric constraints.
+
+This node operates on clusters and their associated edges and points, using path data to determine which elements should be cut out or preserved. You can configure how intersections are detected and what happens to the remaining parts of the cluster after cutting.
 
 {% hint style="info" %}
-The node works by checking if cluster elements (nodes or edges) overlap with path data using intersection tests. It supports various distance modes for checking proximity.
+Connects to **Clusters** input pin and outputs modified **Points** and **Edges**.
 {% endhint %}
 
+#### How It Works
+
+The node evaluates each cluster against a set of paths. For each path, it checks for intersections with nodes or edges in the cluster based on the selected mode.
+
+* If **Nodes** mode is selected, it checks if any node points intersect with the path.
+* If **Edges** mode is selected, it checks if any edge segments intersect with the path.
+* If **Edges & Nodes** mode is selected, it checks both nodes and edges for intersections.
+
+It then determines which elements to remove or keep based on whether the intersection occurs and whether invert mode is enabled. Invert mode keeps only the parts that intersect rather than removing them.
+
+For each cluster:
+
+1. It processes all paths.
+2. For each path, it identifies intersecting nodes/edges.
+3. Based on settings like `NodeExpansion` and `NodeDistanceSettings`, it expands node bounds to detect overlaps.
+4. If invert mode is enabled, it keeps only the elements that intersect; otherwise, it removes them.
+5. It updates the cluster's structure accordingly, potentially removing edges or nodes, and adjusts connected components.
+
+The final output contains modified clusters with nodes and/or edges removed based on path intersections.
+
+#### Configuration
+
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Intersection Details</strong><br><em>Settings for how intersections are calculated.</em></summary>
 
-* **Cluster Points** (Main Input): Cluster nodes to be processed
-* **Cluster Edges**: Cluster edges connecting the nodes
-* **Paths** (Optional): Path data used as cutting tools
+Controls the precision and method used to detect path intersections with nodes or edges.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Invert</strong><br><em>Keep intersections/proximity instead of removing.</em></summary>
 
-* **Cluster Points** (Main Output): Cluster nodes, modified based on the cut operation
-* **Cluster Edges**: Cluster edges, modified based on the cut operation
+When enabled, this keeps only the parts that intersect with paths rather than removing them. Useful for creating holes or gaps in clusters.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the cutting operation is performed.
+<summary><strong>Mode</strong><br><em>Whether to check path overlap with nodes, edges, or both.</em></summary>
 
-***
+* **Nodes**: Only checks node points.
+* **Edges**: Only checks edge segments.
+* **Edges & Nodes**: Checks both nodes and edges.
 
-#### Cut Settings
+</details>
 
-Controls what elements are checked for overlap and how the operation behaves.
+<details>
 
-**Mode**
+<summary><strong>Node Expansion</strong><br><em>Expansion factor of node points to check for initial overlap.</em></summary>
 
-_Controls which cluster elements are checked against paths._
+Expands the bounds of each node point by a scaling factor to determine if it overlaps with paths. A value of 1 means no expansion, while higher values increase the detection area.
 
-* When set to **Nodes**, only node positions are checked for overlap.
-* When set to **Edges**, only edge segments are checked for overlap.
-* When set to **Edges & Nodes**, both nodes and edges are checked for overlap.
+</details>
 
-**Values**:
+<details>
 
-* **Nodes**: Check for path overlap with nodes
-* **Edges**: Check for path overlap with edges
-* **Edges & Nodes**: Check for overlap with both nodes and edges
+<summary><strong>Node Distance Settings</strong><br><em>How distance is calculated for node-point overlap checks.</em></summary>
 
-**Invert**
+Controls how the distance between a node and path is measured:
 
-_When enabled, the operation keeps elements that overlap with paths instead of removing them._
+* **Center**: Uses the center point of the node.
+* **Sphere Bounds**: Uses the sphere radius based on the node's scaled bounds.
+* **Box Bounds**: Uses the box extents of the node's bounds.
 
-* When disabled (default), elements overlapping with paths are removed.
-* When enabled, elements overlapping with paths are preserved.
+</details>
 
-**Node Expansion**
+<details>
 
-_Controls how much to expand node bounds when checking for overlap._
+<summary><strong>Affected Nodes Affect Connected Edges</strong><br><em>When enabled, removing a node also removes connected edges.</em></summary>
 
-* Expands node points by a factor of their scaled bounds.
-* Use this to make nodes more likely to be considered overlapping with paths.
-* Only affects **Nodes** and **Edges & Nodes** modes.
+If enabled, when a node is removed due to intersection, all edges connected to that node are also removed from the cluster.
 
-**Node Distance Settings**
+</details>
 
-_Selects the method used to measure distance from node to path._
+<details>
 
-* **Center**: Uses the node's center point.
-* **Sphere Bounds**: Uses a sphere around the node based on its bounds radius.
-* **Box Bounds**: Uses the node's full bounding box.
+<summary><strong>Affected Edges Affect Endpoints</strong><br><em>When enabled, removing an edge also removes its endpoints if they are not connected to other valid edges.</em></summary>
 
-**Affected Nodes Affect Connected Edges**
+If enabled, when an edge is removed due to intersection, the nodes at both ends of that edge are also removed if they are no longer connected to any valid edges.
 
-_When enabled, nodes that are cut also remove their connected edges._
+</details>
 
-* If a node is removed due to overlap with a path, all edges connected to it are also removed.
+<details>
 
-**Affected Edges Affect Endpoints**
+<summary><strong>Keep Edges That Connect Valid Nodes</strong><br><em>When enabled, keeps edges connecting two preserved nodes even if they don't intersect with the path.</em></summary>
 
-_When enabled, edges that are cut also remove their endpoints if they're not connected to other valid edges._
+If enabled and in invert mode, this preserves edges that connect two valid (non-cut) nodes, even if those edges do not directly intersect with a path.
 
-* If an edge is removed due to overlap with a path, its start and end nodes are also removed if they have no other valid connections.
+</details>
 
-**Keep Edges That Connect Valid Nodes**
+<details>
 
-_When enabled, edges connecting two preserved nodes are kept even if they don't intersect with paths._
+<summary><strong>Cluster Output Settings</strong><br><em>Graph &#x26; Edges output properties.</em></summary>
 
-* This ensures that valid node pairs remain connected even when the edge itself doesn't overlap with a path.
+Controls how the final cluster graph and edge data are structured in the output.
 
-***
+</details>
 
-#### Path Settings
+#### Usage Example
 
-Controls how paths are used for intersection detection.
+1. Create a set of clusters using a clustering node.
+2. Add a path (e.g., a road or river) that you want to cut through those clusters.
+3. Connect both the clusters and paths into the **Cluster : Cut** node.
+4. Set the mode to **Edges & Nodes** to ensure both are considered for cutting.
+5. Optionally, enable invert mode if you want to keep only the parts intersecting with the path.
+6. The output will contain modified clusters where nodes or edges that intersect with the path have been removed.
 
-**Tolerance**
+#### Notes
 
-_Distance tolerance used to determine if an edge overlaps with a path._
-
-* If an edge is closer than this distance to any part of a path, it's considered overlapping.
-* Default value is usually sufficient for most use cases.
-
-**Enable Self Intersection**
-
-_When enabled, paths can intersect with themselves when checking for overlaps._
-
-* Allows paths to be cut by their own segments.
-
-**Min Angle**
-
-_Minimum angle between two edges to be considered as separate intersections._
-
-* Helps avoid false positives when edges are nearly parallel.
-* Only active if **Use Min Angle** is enabled.
-
-**Use Min Angle**
-
-_When enabled, minimum angle threshold is applied to intersection detection._
-
-**Max Angle**
-
-_Maximum angle between two edges to be considered as separate intersections._
-
-* Helps avoid false positives when edges are nearly parallel.
-* Only active if **Use Max Angle** is enabled.
-
-**Use Max Angle**
-
-_When enabled, maximum angle threshold is applied to intersection detection._
-
-***
-
-#### Graph Settings
-
-Controls how the output graph is built and structured.
-
-**Cluster Output Settings**
-
-_Configures the structure of the output cluster data._
-
-* Controls how nodes and edges are organized in the output.
-* Affects how downstream nodes process the results.
+* This node is useful for creating realistic terrain features like roads cutting through forests or rivers splitting islands.
+* Performance can be improved by limiting the number of input paths and using appropriate expansion settings.
+* When using invert mode, consider enabling **Keep Edges That Connect Valid Nodes** to maintain structural integrity in clusters.

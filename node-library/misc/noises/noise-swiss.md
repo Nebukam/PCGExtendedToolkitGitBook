@@ -5,95 +5,83 @@ icon: circle-dashed
 # Noise : Swiss
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Creates procedural terrain-like noise with natural erosion patterns using derivative-based algorithms.
+> Generates terrain-like noise with natural erosion patterns using derivative-based erosion.
 
-### Overview
+#### How It Works
 
-This factory generates Swiss noise, a specialized form of fractal noise that simulates natural erosion features like river channels and canyon walls. It's ideal for creating realistic terrain variations, surface displacement, or organic-looking procedural patterns.
+This subnode creates realistic terrain features by combining multiple layers of noise and applying erosion effects based on how quickly the noise values change in different directions. It starts with a base 3D noise function and calculates gradients at each point to determine where erosion should occur. Areas with steeper gradients (rapid changes in noise value) are eroded more intensely, forming valleys and channels that mimic natural weathering processes.
 
-{% hint style="info" %}
-Connects to **Noise** input pins on nodes that sample procedural values (e.g., **PCGEx Noise3D**, **PCGEx Displace Points**).
-{% endhint %}
+The process works in several steps:
 
-### How It Works
+1. Multiple layers of noise are stacked together to build complexity
+2. For each point in space, the subnode calculates how quickly the noise value changes in all directions (the gradient)
+3. These gradients guide where erosion occurs - steeper areas erode more
+4. The amount of erosion is controlled by a strength parameter
+5. A warping factor can subtly shift sampling points to add extra variation
 
-This noise factory uses a fractal algorithm enhanced with analytical derivatives to simulate erosion. It builds terrain-like features by:
+This approach creates natural-looking terrain features like river channels, smooth slopes, and organic shapes that would be difficult to achieve manually.
 
-1. Combining multiple noise octaves
-2. Using derivative information to create natural-looking channels and ridges
-3. Applying erosion strength to control how much the derivatives influence the final shape
-4. Optionally warping the input space based on derivative directions
+#### Configuration
 
-The result is a smooth, organic pattern that mimics real-world erosion processes.
+<details>
 
-### Configuration
+<summary><strong>Octaves</strong><br><em>Number of noise layers to combine.</em></summary>
 
-***
+Controls how many layers of noise are combined to produce the final result. More octaves add more detail and complexity but also increase computation cost.
 
-#### General Settings
+**Values**:
 
-**Octaves**
+* **1 to 16**: Number of noise layers
 
-_Controls the number of noise layers combined to create the final pattern._
+</details>
 
-More octaves add finer detail but increase computation cost. Typical values range from 4-8 for natural-looking terrain.
+<details>
 
-**Lacunarity**
+<summary><strong>Lacunarity</strong><br><em>Frequency multiplier between octaves.</em></summary>
 
-_Determines how quickly frequency increases between octaves._
+Determines how much the frequency increases with each octave. Higher values create more detailed, fine-grained patterns.
 
-Higher values (2.0-4.0) create more angular, jagged features. Lower values (1.0-2.0) produce smoother transitions.
+**Values**:
 
-**Persistence**
+* **1.0 to 4.0**: Frequency multiplier per octave
 
-_Control the amplitude decay between octaves._
+</details>
 
-Values near 0.5 create balanced detail across all frequencies. Lower values emphasize large-scale features, higher values add more fine detail.
+<details>
 
-**Erosion Strength**
+<summary><strong>Persistence</strong><br><em>Amplitude multiplier between octaves.</em></summary>
 
-_Controls how much derivative information affects the erosion pattern._
+Controls how much each successive octave contributes to the final result. Lower values make higher octaves less influential.
 
-* **0.0**: Standard fractal noise (no erosion)
-* **0.5**: Moderate erosion with natural-looking channels
-* **1.0**: Strong erosion effects with deep channels
+**Values**:
 
-**Warp Factor**
+* **0.0 to 1.0**: Amplitude multiplier per octave
 
-_Adjusts how much the input space is warped based on derivatives._
+</details>
 
-* **0.0**: No warping (standard noise)
-* **0.15**: Subtle warping for natural-looking variation
-* **0.5**: Strong warping that distorts the pattern significantly
+<details>
 
-### Usage Example
+<summary><strong>ErosionStrength</strong><br><em>How much derivatives affect erosion (0 = standard fBm).</em></summary>
 
-Use this factory to create realistic terrain displacement for a mountainous landscape:
+Controls the intensity of the erosion effect. When set to 0, it behaves like standard fBm without erosion.
 
-1. Connect the Swiss noise factory to a **PCGEx Noise3D** node
-2. Set Octaves to 6, Lacunarity to 2.0, and Persistence to 0.5
-3. Adjust Erosion Strength to 0.8 for natural-looking erosion channels
-4. Use the output to displace points in a **PCGEx Displace Points** node
-5. The result will be terrain with realistic river-like valleys and ridge formations
+**Values**:
 
-### Notes
+* **0.0 to 2.0**: Strength of the erosion effect
 
-* This noise is computationally more expensive than standard fractal noise due to derivative calculations
-* Erosion effects are most visible at medium to high octave counts (6+)
-* Combine multiple Swiss noise instances with different settings for complex terrain features
-* The Warp Factor can be used to add subtle variation to otherwise smooth erosion patterns
+</details>
 
-### Inputs and Outputs
+<details>
 
-#### Inputs
+<summary><strong>WarpFactor</strong><br><em>Warp factor for derivative warping.</em></summary>
 
-* **Noise** (Optional): Input noise to modify with erosion effects
+Controls how much the analytical derivatives influence the sampling position, adding subtle warping or distortion to the noise field.
 
-#### Outputs
+**Values**:
 
-* **Noise**: Generated Swiss noise with erosion patterns applied
+* **0.0 to 1.0**: Amount of warping applied
+
+</details>

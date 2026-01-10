@@ -9,96 +9,58 @@ icon: circle-dashed
 This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> A Picker that has a single value.
-
-#### Overview
-
-The Picker : Constant subnode selects a specific point or index from a dataset using a fixed value. It's useful when you want to consistently pick one item, such as the first, last, or a specific numbered point in a sequence.
-
-This node is typically used as a subnode for other processing nodes that need to select specific data points, like cherry-picking or sampling operations.
-
-{% hint style="info" %}
-Connects to **Picker** pins on nodes that support index-based selection.
-{% endhint %}
+> A Picker subnode that selects a single index from a set of data.
 
 #### How It Works
 
-This Picker selects one or more indices from an input set of data using a constant value. It supports both discrete (integer) and relative (floating-point) indexing.
+This Picker subnode chooses one specific item from a collection of points, edges, or other data. It uses either a direct position number (discrete mode) or a fraction between 0 and 1 (relative mode) to determine which item to select. The selected item is then passed on as the output.
 
-* If **DiscreteIndex** is used, it directly picks the point at that position in the dataset.
-  * Positive values select from the start (0 = first point)
-  * Negative values select from the end (-1 = last point)
-* If **RelativeIndex** is used, it treats the value as a normalized percentage of the dataset size.
-  * 0.0 = first point
-  * 1.0 = last point
-  * 0.5 = middle point
+In discrete mode, each number directly maps to an item in the list. For example, index 2 selects the third item (starting from zero). Negative numbers count backwards from the end of the list — so -1 picks the last item.
 
-The node supports different handling strategies for out-of-bounds indices, which can be configured in the picker settings.
-
-<details>
-
-<summary>Inputs</summary>
-
-* **Points**: The dataset of points to pick from.
-* **Picker**: Optional input for additional picker configuration or override behavior.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Picker**: A set of indices that were selected based on the constant value.
-
-</details>
+In relative mode, values are treated as percentages. A value of 0.5 means "the middle item," while 0 is the first and 1 is the last. The system also supports negative values in this mode to select items from the end of the list.
 
 #### Configuration
 
-***
+<details>
 
-**DiscreteIndex**
+<summary><strong>DiscreteIndex</strong><br><em>Use negative values to select from the end.</em></summary>
 
-_The index of the point to select, using discrete (integer) values._
+Sets the position of the item to pick using a direct index. Index 0 is the first item, and negative numbers count backwards from the end. For example, an index of -1 picks the last item in the set.
 
-Use positive numbers to count from the start of the dataset and negative numbers to count from the end. For example:
+</details>
 
-* `0` selects the first point.
-* `-1` selects the last point.
+<details>
 
-When enabled, this setting overrides **RelativeIndex** if both are configured.
+<summary><strong>RelativeIndex</strong><br><em>Use negative values to select from the end.</em></summary>
 
-**RelativeIndex**
+Sets the position of the item to pick as a value between 0 and 1. A value of 0 selects the first item, 1 selects the last, and 0.5 selects the middle. Negative values are also supported for selecting items from the end.
 
-_The index of the point to select, using relative (floating-point) values._
+</details>
 
-This value is interpreted as a percentage of the dataset size:
+<details>
 
-* `0.0` = first point
-* `0.5` = middle point
-* `1.0` = last point
+<summary><strong>Config</strong><br><em>Picker properties</em></summary>
 
-When enabled, this setting overrides **DiscreteIndex** if both are configured.
+The picker configuration settings that define how the index is interpreted and applied.
 
-**Config**
-
-_Picker properties_
-
-This section allows you to configure how the picker behaves when selecting indices, including handling of out-of-bounds values and index normalization.
+</details>
 
 #### Usage Example
 
-To always select the third point in a dataset:
+To select the third point in a point set:
 
-1. Set **DiscreteIndex** to `2` (zero-based indexing).
-2. Connect this Picker subnode to a cherry-pick or sampling node that needs a fixed selection.
+1. Set **DiscreteIndex** to 2 (0-based indexing)
+2. Connect this subnode to a Cherry Pick Points node
+3. The node will return the third point from the input data
 
-To always select the middle point of a dataset:
+To select the middle point of a path:
 
-1. Set **RelativeIndex** to `0.5`.
-2. Connect this Picker subnode to a node that requires a central selection.
+1. Set **RelativeIndex** to 0.5
+2. Connect this subnode to a Cherry Pick Points node
+3. The node will return the point at the center of the path
 
 #### Notes
 
-* The picker supports both positive and negative indices for discrete selection.
-* Relative indexing is useful when you want to pick a point based on percentage rather than absolute position.
-* Out-of-bounds handling can be configured in the parent picker settings to control behavior when an index exceeds dataset bounds.
+* When using relative indexing, fractional values are rounded to the nearest index.
+* Negative indices count from the end of the dataset (e.g., -1 is the last item).
+* This subnode works best when the input data set has a consistent size or when you know the expected range of indices.

@@ -6,189 +6,124 @@ icon: circle
 # Attribute Remap
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Remap a single property or attribute by transforming its values using customizable input and output ranges, with optional clamping and curve-based remapping.
+> Remap a single property or attribute.
 
-### Overview
+#### How It Works
 
-This node transforms the values of a selected attribute using mathematical remapping operations. It's useful for scaling, normalizing, or applying non-linear transformations to numeric data such as weights, intensities, or any other scalar properties. You can define different remapping rules for each component of multi-component attributes (X, Y, Z, W).
+The Attribute Remap node adjusts the values of a selected point attribute by applying mathematical transformations. It takes input values and maps them to a new range using configurable rules. The node can work with both single-value attributes (like scalars) and multi-component attributes (like vectors or colors).
 
-{% hint style="info" %}
-The node supports both single-component and multi-component attributes. If you don't specify individual rules for components 2-4, the default rule will be applied to all components.
-{% endhint %}
+For each component of an attribute, you define how it should be remapped:
+
+* First, input values are clamped to a specified range
+* Then, they are transformed using either a linear or curve-based function
+* Finally, output values are clamped to another specified range
+
+When working with multi-component attributes, you can set different rules for each component (X, Y, Z, W). The first rule applies to the first component, and additional rules can override it for other components.
+
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Source Attribute</strong><br><em>The name of the input attribute to remap.</em></summary>
 
-* **Main Input** (Point Data): Accepts point data with the attribute to be remapped.
+Selects which attribute from the input points will be used as the source for remapping. This can be a scalar, vector, or color-type attribute.
 
 </details>
 
 <details>
 
-<summary>Outputs</summary>
+<summary><strong>Target Attribute</strong><br><em>The name of the output attribute to write the remapped values into.</em></summary>
 
-* **Main Output** (Point Data): The input point data with the remapped attribute values written back to it.
+Selects which attribute to write the remapped values into. If it doesn't exist, a new one will be created with the same type as the source.
 
 </details>
 
-### Properties Overview
+<details>
 
-Controls how the attribute values are read, transformed, and written back to your data.
+<summary><strong>Remap (Default)</strong><br><em>Remapping rule for single-component values or first component.</em></summary>
 
-***
+Defines how to remap values for scalar attributes or the first component of multi-component attributes. Includes settings for input clamping, remapping function, and output clamping.
 
-#### General Settings
+</details>
 
-Controls the source and target attributes for the remapping operation.
+<details>
 
-**Attribute Source**
+<summary><strong>Clamp Input</strong><br><em>Input range clamping for the default remap rule.</em></summary>
 
-_The attribute whose values will be remapped._
+Sets a minimum and maximum value to which all input values are clamped before remapping. Any value below the minimum is set to the minimum, and any above the maximum is set to the maximum.
 
-* How it affects results: This defines which input attribute's values will be processed.
-* Value ranges: Any valid attribute name in the input data.
+</details>
 
-**Attribute Target**
+<details>
 
-_The attribute where the remapped values will be written._
+<summary><strong>Remap Function</strong><br><em>The mathematical function used for remapping.</em></summary>
 
-* How it affects results: This defines where the transformed values are stored.
-* Value ranges: Any valid attribute name in the output data.
+Defines how input values are transformed into output values:
 
-**Auto-Cast Integer to Double**
+* **Linear**: Simple linear mapping between input and output ranges.
+* **Curve**: Uses a custom curve to define the transformation.
 
-_When enabled, automatically converts integer attributes to double precision before remapping._
+</details>
 
-* How it affects results: Ensures that integer values are treated as floating-point numbers for more precise calculations.
-* Value ranges: Boolean toggle.
+<details>
 
-***
+<summary><strong>Output Clamp</strong><br><em>Output range clamping for the default remap rule.</em></summary>
 
-#### Base Remap Settings
+Sets a minimum and maximum value to which all output values are clamped after remapping. Any value below the minimum is set to the minimum, and any above the maximum is set to the maximum.
 
-The default remapping rule applied to all components unless overridden.
+</details>
 
-**Use Absolute Range**
+<details>
 
-_When enabled, uses absolute values to compute the input range._
+<summary><strong>Remap (2nd Component)</strong><br><em>Remapping rule for second component (Y) of multi-component attributes.</em></summary>
 
-* How it affects results: If disabled, negative values are considered when determining min/max. When enabled, only positive values are used for range calculation.
-* Value ranges: Boolean toggle.
+Overrides the default remap rule for the Y component of vector or color attributes. When enabled, this rule is used instead of the default one for that specific component.
 
-**Preserve Sign**
+</details>
 
-_When enabled, preserves the original sign of values when using absolute range._
+<details>
 
-* How it affects results: Only applies when "Use Absolute Range" is enabled. If disabled, negative values become positive during range computation but retain their original signs in final results.
-* Value ranges: Boolean toggle.
+<summary><strong>Remap (3rd Component)</strong><br><em>Remapping rule for third component (Z) of multi-component attributes.</em></summary>
 
-**Use Fixed In Min**
+Overrides the default remap rule for the Z component of vector or color attributes. When enabled, this rule is used instead of the default one for that specific component.
 
-_When enabled, uses a fixed minimum value for the input range._
+</details>
 
-* How it affects results: Overrides automatic calculation of the minimum input value with a user-defined one.
-* Value ranges: Boolean toggle.
+<details>
 
-**In Min**
+<summary><strong>Remap (4th Component)</strong><br><em>Remapping rule for fourth component (W) of multi-component attributes.</em></summary>
 
-_The fixed minimum value used for input range when "Use Fixed In Min" is enabled._
+Overrides the default remap rule for the W component of vector or color attributes. When enabled, this rule is used instead of the default one for that specific component.
 
-* How it affects results: Defines the lower bound of the input range for remapping.
-* Value ranges: Double (any number)
+</details>
 
-**Use Fixed In Max**
+<details>
 
-_When enabled, uses a fixed maximum value for the input range._
+<summary><strong>Auto-Cast Integer to Double</strong><br><em>When enabled, integer values are converted to double before processing.</em></summary>
 
-* How it affects results: Overrides automatic calculation of the maximum input value with a user-defined one.
-* Value ranges: Boolean toggle.
+When enabled, ensures that integer-valued attributes are treated as double-precision floating-point numbers during remapping for more accurate results.
 
-**In Max**
+</details>
 
-_The fixed maximum value used for input range when "Use Fixed In Max" is enabled._
+#### Usage Example
 
-* How it affects results: Defines the upper bound of the input range for remapping.
-* Value ranges: Double (any number)
+You have a point cloud with a scalar attribute named "NoiseValue" ranging from 0.0 to 1.0 and want to map it to a color intensity range of 0.0 to 255.0:
 
-**Use Curve Remap**
+1. Set the **Source Attribute** to `NoiseValue`.
+2. Set the **Target Attribute** to `ColorIntensity`.
+3. In the **Remap (Default)** settings:
+   * Set **Input Clamp Min** to 0.0 and **Max** to 1.0.
+   * Choose **Remap Function** as Linear.
+   * Set **Output Clamp Min** to 0.0 and **Max** to 255.0.
 
-_When enabled, applies a curve to the remapped values before final output._
+This will scale the noise values linearly from 0–1 to 0–255, which can then be used for color mapping or other intensity-based effects.
 
-* How it affects results: Allows non-linear transformations using a custom curve.
-* Value ranges: Boolean toggle.
+#### Notes
 
-**Curve Mode**
-
-_Controls how the curve is used for remapping._
-
-* How it affects results: Determines whether the curve is applied directly or via lookup table.
-* **Direct**: The curve is evaluated directly.
-* **Lookup**: A precomputed lookup table is used for performance.
-
-**Curve Samples**
-
-_Number of samples in the lookup table when using "Lookup" mode._
-
-* How it affects results: Higher values provide more accurate curves but use more memory and processing time.
-* Value ranges: Integer (typically 64 to 1024)
-
-***
-
-#### Component Overrides
-
-Allows defining specific remapping rules for individual components of multi-component attributes.
-
-**Override Component 2**
-
-_When enabled, applies a custom rule to the second component (Y)._
-
-* How it affects results: If disabled, component 2 uses the base remap settings.
-* Value ranges: Boolean toggle.
-
-**Remap (2nd Component)**
-
-_Custom remapping settings for the second component._
-
-* How it affects results: Defines how Y values are remapped independently from other components.
-* Value ranges: Same as Base Remap Settings
-
-**Override Component 3**
-
-_When enabled, applies a custom rule to the third component (Z)._
-
-* How it affects results: If disabled, component 3 uses the base remap settings.
-* Value ranges: Boolean toggle.
-
-**Remap (3rd Component)**
-
-_Custom remapping settings for the third component._
-
-* How it affects results: Defines how Z values are remapped independently from other components.
-* Value ranges: Same as Base Remap Settings
-
-**Override Component 4**
-
-_When enabled, applies a custom rule to the fourth component (W)._
-
-* How it affects results: If disabled, component 4 uses the base remap settings.
-* Value ranges: Boolean toggle.
-
-**Remap (4th Component)**
-
-_Custom remapping settings for the fourth component._
-
-* How it affects results: Defines how W values are remapped independently from other components.
-* Value ranges: Same as Base Remap Settings
-
-### Notes
-
-* This node is particularly useful for normalizing data to a \[0,1] range or scaling values to fit within specific bounds.
-* For multi-component attributes like FVector or FColor, you can apply different transformations to each component.
-* The curve remapping feature allows for creative effects like exponential growth, logarithmic decay, or custom easing functions.
-* When using "Use Absolute Range", negative values are treated as positive for range calculation but their signs are preserved in the final result unless "Preserve Sign" is disabled.
+* The node supports all standard PCG metadata types including scalars, vectors, and colors.
+* Multi-component attributes are processed component-wise using either default rules or per-component overrides.
+* Remapping is applied in parallel across points for performance.
+* If you're working with color data, consider using the **Color** type attribute to preserve color space integrity.

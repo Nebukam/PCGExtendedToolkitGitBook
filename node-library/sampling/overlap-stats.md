@@ -6,30 +6,42 @@ icon: circle
 # Overlap Stats
 
 {% hint style="info" %}
-### AI-generated page -- to be reviewed
-
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
+This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> Sample & write per-point overlap stats between entire point data.
+> Sample and write per-point overlap statistics between entire point datasets.
 
-### Overview
+#### Overview
 
-This node analyzes how points from different datasets overlap with each other and writes statistics about these overlaps directly to the input points. It helps identify areas where multiple datasets intersect, which is useful for creating varied or constrained layouts, avoiding collisions, or understanding spatial relationships in procedural content.
+This node analyzes how much overlap exists between different point datasets in your PCG graph. It calculates unique and total overlap counts for each point based on spatial relationships, which can be useful for generating variation, avoiding collisions, or understanding spatial distribution.
 
-It works by testing bounds between all point data sets and recording how many times each point overlaps with others. The results are written as attributes on each point, allowing downstream nodes to react based on overlap counts.
+It's particularly helpful when you want to know how many other datasets a point overlaps with, or how much overlap occurs overall. You can use this information to drive visual variations, influence placement logic, or tag points based on their overlap characteristics.
 
 {% hint style="info" %}
-This node is computationally expensive for large datasets due to the pairwise overlap checks. Consider using a smaller number of input datasets or limiting the point count per dataset.
+Connects to **Point Filters** subnode for filtering which points are considered for overlap analysis.
 {% endhint %}
+
+#### How It Works
+
+This node performs a multi-step spatial analysis between all input point datasets:
+
+1. For each dataset, it computes bounds (either scaled, density-based, or raw) for every point, optionally expanding them by a margin to account for transformations.
+2. It then compares these bounds across all pairs of datasets using the selected overlap test mode:
+   * **Fast**: Only compares overall bounding boxes of datasets.
+   * **Box**: Tests each point's bounds as transformed boxes (may miss some overlaps).
+   * **Sphere**: Tests each point's bounds as spheres (may produce false positives).
+3. When an overlap is detected, it records the intersection volume and updates statistics for both points involved.
+4. It calculates unique overlap count (how many different datasets overlapped each point) and total overlap sub-count (total number of overlaps per point).
+5. If enabled, it also computes relative values by normalizing these counts against the maximum values found across all datasets.
+
+The results are written to attributes on each point, allowing downstream nodes to use this data for further processing or visualization.
 
 <details>
 
 <summary>Inputs</summary>
 
-* **In** (Main Input): Point data to be analyzed for overlaps
-* **Target**: Additional point data sets that will be tested against the main input
-* **Point Filters**: Optional filters to determine which points should be considered in overlap tests
+* Point data from multiple input pins (at least one required).
+* Optional point filter subnode to define which points participate in overlap checks.
 
 </details>
 
@@ -37,161 +49,174 @@ This node is computationally expensive for large datasets due to the pairwise ov
 
 <summary>Outputs</summary>
 
-* **Out** (Main Output): The original point data with new attributes added based on overlap statistics
+* Modified point data with new attributes added based on configuration.
+* Optionally tags points based on whether they have any or no overlaps.
 
 </details>
 
-### Properties Overview
+#### Configuration
 
-Controls how overlap detection is performed and what information is written.
+<details>
 
-***
+<summary><strong>Test Mode</strong><br><em>Overlap test mode.</em></summary>
 
-#### Settings
-
-Controls the core overlap detection behavior.
-
-**Overlap Test Mode**
-
-_What method to use when checking for overlaps between points._
-
-* How it affects results: Different modes trade off accuracy for performance
-* Value ranges: None
+Controls how overlap is detected between points.
 
 **Values**:
 
-* **Fast**: Only test using datasets' overall bounds (fastest)
-* **Box**: Test every point's bounds as transformed box (more accurate than Fast, but may miss some overlaps)
-* **Sphere**: Test every point's bounds as spheres (most accurate, but can have false positives)
+* **Fast**: Only compares overall bounds of datasets.
+* **Box**: Tests each point's bounds as transformed boxes.
+* **Sphere**: Tests each point's bounds as spheres.
 
-**Point Bounds Source**
+</details>
 
-_What type of bounds to use when computing overlaps._
+<details>
 
-* How it affects results: Different bounds types change how overlap is interpreted
-* Value ranges: None
+<summary><strong>Bounds Source</strong><br><em>Point bounds to be used to compute overlaps.</em></summary>
 
-**Values**:
-
-* **Scaled Bounds**: Uses scaled bounds for each point (default)
-* **Density Bounds**: Scaled bounds with steepness factor applied
-* **Bounds**: Unscaled bounds (not recommended for most cases)
-* **Center**: Tiny size 1 box at point center
-
-**Expansion**
-
-_Expand bounds by this amount to account for transformation errors._
-
-* How it affects results: Larger values increase overlap detection tolerance
-* Value ranges: Any non-negative number
-
-**Minimum Threshold**
-
-_The minimum amount two sub-points must overlap to be counted._
-
-* How it affects results: Higher values require more overlap before counting
-* Value ranges: 0 or greater
-
-**Threshold Measure**
-
-_How to interpret the minimum threshold value._
-
-* How it affects results: Determines if threshold is a world distance or percentage
-* Value ranges: None
+Determines how the spatial extent of each point is calculated for overlap testing.
 
 **Values**:
 
-* **Relative**: Input value is normalized between 0..1, used as a factor of average radius
-* **Discrete**: Raw value is used as absolute distance in world units
+* **Scaled Bounds**: Uses bounds scaled by point size.
+* **Density Bounds**: Uses bounds scaled with density and steepness factors.
+* **Bounds**: Raw, unscaled bounds.
+* **Center**: Treats each point as a tiny box centered on itself.
 
-***
+</details>
 
-#### Outputs
+<details>
 
-Controls which overlap statistics are written to attributes.
+<summary><strong>Expansion</strong><br><em>Expand bounds by that amount to account for a margin of error due to multiple layers of transformation and lack of OBB.</em></summary>
 
-**Write Overlap Count**
+Adds a margin around each point's bounds to account for transformations or inaccuracies in bounding box calculations.
 
-_When enabled, writes the unique overlap count per point._
+</details>
 
-* How it affects results: Adds an integer attribute with how many different datasets overlapped this point
+<details>
 
-**Overlap Count Attribute Name**
+<summary><strong>Min Threshold</strong><br><em>The minimum amount two sub-points must overlap to be added to the comparison. The higher, the more "overlap" there must be.</em></summary>
 
-_Name of the 'int32' attribute to write unique overlap count to._
+Sets the minimum required overlap for a pair of points to be considered overlapping.
 
-* How it affects results: Sets the name of the output attribute for unique overlap count
+</details>
 
-**Write Overlap Sub Count**
+<details>
 
-_When enabled, writes the total number of overlaps per point._
+<summary><strong>Threshold Measure</strong><br><em>How to interpret the min overlap value. Discrete means distance in world space Relative means uses percentage (0-1) of the averaged radius.</em></summary>
 
-* How it affects results: Adds an integer attribute with how many times other points overlapped this point
+Defines how the minimum threshold is interpreted.
 
-**Overlap Sub Count Attribute Name**
+**Values**:
 
-_Name of the 'int32' attribute to write total overlap sub-count to._
+* **Relative**: Treats the threshold as a percentage of the average point radius.
+* **Discrete**: Treats the threshold as an absolute distance in world units.
 
-* How it affects results: Sets the name of the output attribute for total overlap count
+</details>
 
-**Write Relative Overlap Count**
+<details>
 
-_When enabled, writes the relative unique overlap count per point._
+<summary><strong>Write Overlap Count</strong><br><em>Write the unique overlap count to an int32 attribute.</em></summary>
 
-* How it affects results: Adds a double attribute with normalized overlap count (0-1)
+When enabled, writes how many different datasets overlapped each point.
 
-**Relative Overlap Count Attribute Name**
+</details>
 
-_Name of the 'int32' attribute to write relative unique overlap count to._
+<details>
 
-* How it affects results: Sets the name of the output attribute for relative overlap count
+<summary><strong>Overlap Count Attribute Name</strong><br><em>Name of the 'int32' attribute to write unique overlap count to. Unique overlap count is the number of time a different point data set overlapped this point.</em></summary>
 
-**Write Relative Overlap Sub Count**
+Name of the attribute that stores the unique overlap count.
 
-_When enabled, writes the relative total number of overlaps per point._
+</details>
 
-* How it affects results: Adds a double attribute with normalized total overlap count (0-1)
+<details>
 
-**Relative Overlap Sub Count Attribute Name**
+<summary><strong>Write Overlap Sub Count</strong><br><em>Write the total number of overlaps.</em></summary>
 
-_Name of the 'int32' attribute to write relative total overlap sub-count to._
+When enabled, writes the total number of overlaps for each point (including multiple overlaps with the same dataset).
 
-* How it affects results: Sets the name of the output attribute for relative total overlap count
+</details>
 
-***
+<details>
 
-#### Tagging
+<summary><strong>Overlap Sub Count Attribute Name</strong><br><em>Name of the 'int32' attribute to write total overlap sub-count to. Total overlap count is the number of time another point overlapped this point. This count can get really high, really fast.</em></summary>
 
-Controls whether points are tagged based on their overlap status.
+Name of the attribute that stores the total overlap sub-count.
 
-**Tag If Has Any Overlap**
+</details>
 
-_When enabled, adds a tag to points that have at least one overlap._
+<details>
 
-* How it affects results: Adds a boolean tag to points with any overlap detected
+<summary><strong>Write Relative Overlap Count</strong><br><em>Write the relative unique overlap count to an int32 attribute.</em></summary>
 
-**Has Any Overlap Tag**
+When enabled, writes a normalized version of the unique overlap count based on the maximum found across all datasets.
 
-_Name of the tag to add to points that have any overlap._
+</details>
 
-* How it affects results: Sets the name of the tag added to points with overlaps
+<details>
 
-**Tag If Has No Overlap**
+<summary><strong>Relative Overlap Count Attribute Name</strong><br><em>Name of the 'int32' attribute to write relative unique overlap count to. Relative Unique overlap count is this collection' OverlapSubCount divided by the max of all collections combined.</em></summary>
 
-_When enabled, adds a tag to points that have no overlap._
+Name of the attribute that stores the relative unique overlap count.
 
-* How it affects results: Adds a boolean tag to points with no overlaps detected
+</details>
 
-**Has No Overlap Tag**
+<details>
 
-_Name of the tag to add to points that have no overlap._
+<summary><strong>Write Relative Overlap Sub Count</strong><br><em>Write the total number of overlaps.</em></summary>
 
-* How it affects results: Sets the name of the tag added to points without overlaps
+When enabled, writes a normalized version of the total overlap sub-count based on the maximum found across all datasets.
 
-### Notes
+</details>
 
-* This node is designed for comparing multiple point datasets against each other, not for self-overlap detection within a single dataset
-* For performance reasons, avoid using "Sphere" mode with large datasets
-* The overlap counts are normalized relative to all datasets combined, making it easy to compare overlap intensity across different scenarios
-* Consider using point filters to limit which points are analyzed for overlaps if performance is an issue
-* When using the "Fast" test mode, overlapping bounds may not reflect actual point intersections, especially with complex transformations
+<details>
+
+<summary><strong>Relative Overlap Sub Count Attribute Name</strong><br><em>Name of the 'int32' attribute to write relative total overlap sub-count to. Relative Total overlap count is is this collection' OverlapCount divided by the max of all collections combined.</em></summary>
+
+Name of the attribute that stores the relative total overlap sub-count.
+
+</details>
+
+<details>
+
+<summary><strong>Tag If Has Any Overlap</strong><br><em>...</em></summary>
+
+When enabled, tags points that have at least one overlap with a custom tag.
+
+</details>
+
+<details>
+
+<summary><strong>Has Any Overlap Tag</strong><br><em>...</em></summary>
+
+The tag name to apply to points that have any overlap.
+
+</details>
+
+<details>
+
+<summary><strong>Tag If Has No Overlap</strong><br><em>...</em></summary>
+
+When enabled, tags points that have no overlaps with a custom tag.
+
+</details>
+
+<details>
+
+<summary><strong>Has No Overlap Tag</strong><br><em>...</em></summary>
+
+The tag name to apply to points that have no overlap.
+
+</details>
+
+#### Usage Example
+
+Use this node in a graph where you're generating multiple point distributions (e.g., trees, rocks, and flowers). Connect each distribution to the input pins. Configure the overlap test mode to "Sphere" for accurate overlap detection. Enable writing of both overlap count and overlap sub-count attributes. Then use these attributes downstream to adjust point scale or color based on how much they overlap with other distributions.
+
+#### Notes
+
+* This node is computationally expensive, especially with many points or datasets.
+* The "Fast" test mode is the quickest but least accurate for complex overlaps.
+* Relative values are normalized using the maximum overlap count found across all datasets, so results may vary between different data configurations.
+* Consider filtering input points to reduce processing time if you only need overlap stats for a subset of your data.

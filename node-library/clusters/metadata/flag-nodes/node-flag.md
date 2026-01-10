@@ -9,77 +9,50 @@ icon: circle-dashed
 This page was generated from the source code. It should properly capture what the node does, but still needs to be proofread by a human.
 {% endhint %}
 
-> A single, filter-driven vertex state for clusters.
-
-#### Overview
-
-This subnode defines a behavior that assigns a flag or state to cluster vertices based on a filter condition. It allows you to tag or mark specific points within a cluster using a logical test, such as position, attribute values, or other criteria. This is useful when you want to apply conditional logic to vertex data during procedural generation.
-
-It connects to the **Filter** input pin of processing nodes that handle cluster-based operations. You can use multiple instances of this subnode to define various states for different conditions.
-
-{% hint style="info" %}
-Connects to Filter pins on processing nodes.
-{% endhint %}
+> Defines a filter-driven cluster state that can be used to flag or mark clusters based on specific conditions.
 
 #### How It Works
 
-This subnode evaluates a filter condition against each vertex in a cluster. If the condition passes, it assigns a flag or state to that vertex. The evaluation is based on the settings defined in the **Config** section.
+This subnode evaluates clusters and assigns flags or states based on defined criteria. It works by:
 
-The logic works as follows:
+1. Checking each cluster against a set of conditions you define.
+2. If a cluster meets the specified requirements, it gets flagged or tagged with a state.
+3. These flags can then be used later in your graph to sort, route, or process clusters differently based on their assigned states.
 
-1. For each vertex in the cluster, the filter condition is tested.
-2. If the test returns true, the vertex is marked with a specific flag.
-3. If the test returns false, the vertex is not flagged.
-4. The resulting flags are stored and can be used by downstream nodes to make further decisions or modify behavior.
-
-This subnode does not directly process data — it defines a condition that other nodes use to determine whether a vertex should be considered part of a certain state.
-
-<details>
-
-<summary>Inputs</summary>
-
-* **Cluster**: The input cluster containing vertices to evaluate.
-* **Filter Condition**: A set of rules or criteria used to test each vertex in the cluster.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Flags**: A set of flags assigned to vertices based on whether they pass the filter condition.
-
-</details>
+The evaluation happens at the cluster level, meaning it looks at properties of the entire cluster rather than individual points or edges within it. You configure which conditions must be met for a cluster to receive a flag, allowing you to categorize and manage your data effectively.
 
 #### Configuration
 
-***
+<details>
 
-**Config**
+<summary><strong>Name</strong><br><em>The name of this state definition.</em></summary>
 
-_The configuration settings for defining the behavior of this state._
+Assigns a unique identifier for this state. This helps in organizing and referencing multiple states within a graph.
 
-This section allows you to define how the filter is applied. It includes settings such as:
+</details>
 
-* The name of the flag or state.
-* Priority level, which determines how multiple states interact.
-* Whether output should be enabled.
+<details>
 
-The **Overridable** toggle allows these settings to be modified at runtime when used in a graph that supports overrides.
+<summary><strong>Priority</strong><br><em>Determines the order in which filters are applied.</em></summary>
+
+Controls the execution order when multiple filter subnodes are used together. Lower numbers execute first.
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong><br><em>Filter configuration settings for this cluster state.</em></summary>
+
+Defines how the cluster is evaluated. This includes parameters that control which clusters pass or fail the test, such as thresholds or conditions based on cluster properties.
+
+</details>
 
 #### Usage Example
 
-Suppose you want to mark all vertices in a cluster that are located above a certain height as "High Ground". You would:
-
-1. Create a **State : Cluster** subnode.
-2. Set the filter condition to test if the vertex Z position is greater than 100.
-3. Assign a flag name like "HighGround".
-4. Connect this subnode to a processing node that supports cluster flags.
-
-This allows downstream nodes to identify and act on vertices marked as "HighGround".
+You want to flag all clusters with more than 50 points as "Large". You would use this subnode and configure it to check the point count of each cluster. If a cluster has more than 50 points, it gets flagged with the "Large" state. Later in your graph, you can route these flagged clusters to a different processing branch for special handling.
 
 #### Notes
 
-* Multiple **State : Cluster** subnodes can be used in sequence to define complex vertex states.
-* Flags assigned by this subnode can be used for further filtering, sorting, or procedural operations.
-* The priority setting determines the order in which flags are applied when multiple states exist.
+* This subnode is designed for use at the cluster level.
+* It works best when combined with other filter subnodes to create complex conditional logic.
+* The performance impact depends on the complexity of the filters used within the Config settings.
