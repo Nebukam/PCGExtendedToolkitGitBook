@@ -7,8 +7,6 @@ icon: circle
 
 Find crossing points between & inside paths.
 
-⚙️ **Behavior** — Instanced point filter condition.
-
 **How It Works**
 
 > AI-Generated, needs proofreading

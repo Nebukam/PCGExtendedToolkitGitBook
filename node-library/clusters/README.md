@@ -12,8 +12,8 @@ icon: grid-round-2
 [common-settings](common-settings/)
 {% endcontent-ref %}
 
-{% content-ref url="common-settings/output-settings.md" %}
-[output-settings.md](common-settings/output-settings.md)
+{% content-ref url="../shared-concepts/clusters-settings/output-settings.md" %}
+[output-settings.md](../shared-concepts/clusters-settings/output-settings.md)
 {% endcontent-ref %}
 
 {% content-ref url="common-settings/edge-direction.md" %}

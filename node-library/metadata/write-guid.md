@@ -111,7 +111,7 @@ Whether the created attribute allows interpolation or not.
 
 Config
 
-📦 See: [GUID configuration](guid-config.md)
+📦 See: [GUID configuration](write-guid/guid-config.md)
 
 ⚡ PCG Overridable
 
