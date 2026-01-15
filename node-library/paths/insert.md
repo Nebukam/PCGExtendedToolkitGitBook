@@ -5,10 +5,6 @@ icon: circle
 
 # Insert
 
-{% hint style="warning" %}
-This node is currently hidden (WIP)
-{% endhint %}
-
 Insert nearest points into the path using different methods.
 
 **How It Works**

@@ -5,7 +5,7 @@ icon: share-nodes
 # Edge Direction
 
 {% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
+This page was generated from the source code. It captures what the node does, but still needs some serious proofreading.
 {% endhint %}
 
 > Controls how edge directions are determined in procedural graphs, allowing for consistent orientation of connections between points.
