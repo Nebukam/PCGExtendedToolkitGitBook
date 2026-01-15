@@ -273,6 +273,8 @@
     * [HX : Least Nodes](node-library/pathfinding/heuristics/hx-least-nodes.md)
     * [HX : Steepness](node-library/pathfinding/heuristics/hx-steepness.md)
     * [HX : Tensor](node-library/pathfinding/heuristics/hx-tensor.md)
+    * [HX : Turn Penalty](node-library/pathfinding/heuristics/hx-turn-penalty.md)
+    * [HX : Gradient](node-library/pathfinding/heuristics/hx-gradient.md)
   * [Pathfinding : Edges](node-library/pathfinding/pathfinding-edges/README.md)
     * [Goal Picker (Default)](node-library/pathfinding/pathfinding-edges/goal-picker-default.md)
     * [Goal Picker : All](node-library/pathfinding/pathfinding-edges/goal-picker-all.md)
