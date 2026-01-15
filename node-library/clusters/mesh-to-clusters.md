@@ -113,7 +113,7 @@ Skip invalid meshes & do not throw warning about them.
 
 Graph & Edges output properties. Only available if bPruneOutsideBounds as it otherwise generates a complete graph.
 
-📦 See: GraphBuilder configuration
+📦 See: [Cluster Output Settings](https://pcgex.gitbook.io/pcgex/node-library/clusters/common-settings/output-settings)
 
 ⚡ PCG Overridable
 

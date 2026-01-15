@@ -7,8 +7,6 @@ icon: circle
 
 Find intersection with target input points.
 
-⚙️ **Behavior** — Instanced value blender.
-
 **How It Works**
 
 > AI-Generated, needs proofreading

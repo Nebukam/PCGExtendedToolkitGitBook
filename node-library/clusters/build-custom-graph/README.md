@@ -76,7 +76,7 @@ Builder instance.
 
 Graph & Edges output properties
 
-📦 See: GraphBuilder configuration
+📦 See: [Cluster Output Settings](https://pcgex.gitbook.io/pcgex/node-library/clusters/common-settings/output-settings)
 
 ⚡ PCG Overridable
 

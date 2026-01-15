@@ -31,7 +31,7 @@ Ensure the input set of vertex and edges outputs clean, interconnected clusters.
 
 Graph & Edges output properties. Note that pruning isolated points is ignored.
 
-📦 See: GraphBuilder configuration
+📦 See: [Cluster Output Settings](https://pcgex.gitbook.io/pcgex/node-library/clusters/common-settings/output-settings)
 
 ⚡ PCG Overridable
 

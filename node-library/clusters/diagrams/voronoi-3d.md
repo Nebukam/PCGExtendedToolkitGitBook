@@ -84,7 +84,7 @@ When true, edges that have at least a point on the Hull as marked as being on th
 
 Graph & Edges output properties. Only available if bPruneOutsideBounds as it otherwise generates a complete graph.
 
-📦 See: GraphBuilder configuration
+📦 See: [Cluster Output Settings](https://pcgex.gitbook.io/pcgex/node-library/clusters/common-settings/output-settings)
 
 ⚡ PCG Overridable
 

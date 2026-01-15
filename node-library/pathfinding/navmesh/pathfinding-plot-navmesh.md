@@ -7,8 +7,6 @@ icon: scrubber
 
 Extract a single paths from navmesh, going through each seed points in order.
 
-⚙️ **Behavior** — Instanced value blender.
-
 **How It Works**
 
 > AI-Generated, needs proofreading

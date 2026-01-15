@@ -11,8 +11,6 @@ Grow Paths has been deprecated in favor of [flood-fill](../clusters/flood-fill/ 
 
 Grow paths from seeds.
 
-⚙️ **Behavior** — Instanced pathfinding search.
-
 **How It Works**
 
 > AI-Generated, needs proofreading

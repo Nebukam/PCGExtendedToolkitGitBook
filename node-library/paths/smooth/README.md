@@ -7,8 +7,6 @@ icon: circle
 
 Smooth paths points.
 
-⚙️ **Behavior** — Instanced path smoothing.
-
 **How It Works**
 
 > AI-Generated, needs proofreading

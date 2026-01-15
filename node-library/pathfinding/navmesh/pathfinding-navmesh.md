@@ -7,8 +7,6 @@ icon: scrubber
 
 Extract paths from navmesh.
 
-⚙️ **Behavior** — Instanced value blender.
-
 **How It Works**
 
 > AI-Generated, needs proofreading

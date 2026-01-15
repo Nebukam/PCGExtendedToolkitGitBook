@@ -6,9 +6,7 @@ icon: scrubber
 # Pathfinding : Plot Edges
 
 Extract a single path from edges clusters, going through every seed points in order.
-
-⚙️ **Behavior** — Instanced pathfinding search.
-
+ß
 **How It Works**
 
 > AI-Generated, needs proofreading

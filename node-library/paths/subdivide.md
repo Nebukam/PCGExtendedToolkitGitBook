@@ -7,8 +7,6 @@ icon: circle
 
 Subdivide paths segments.
 
-⚙️ **Behavior** — Instanced value blender.
-
 **How It Works**
 
 > AI-Generated, needs proofreading
