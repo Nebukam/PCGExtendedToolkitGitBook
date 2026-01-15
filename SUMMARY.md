@@ -494,6 +494,7 @@
     * [Justification](node-library/transform/common-settings/justification.md)
     * [Axis Deform](node-library/transform/common-settings/axis-deform.md)
     * [Influence](node-library/transform/common-settings/influence.md)
+    * [Scale to Fit](node-library/transform/common-settings/scale-to-fit.md)
   * [Flat Projection](node-library/transform/flat-projection.md)
   * [Lloyd Relax 2D](node-library/transform/lloyd-relax-2d.md)
   * [Lloyd Relax 3D](node-library/transform/lloyd-relax-3d.md)
