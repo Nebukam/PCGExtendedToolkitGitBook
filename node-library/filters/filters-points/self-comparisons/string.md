@@ -5,128 +5,213 @@ icon: circle-dashed
 
 # String
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Creates a filter definition that compares an attribute value against itself at another index.
 
-> Creates a filter definition that compares an attribute value against itself at another index.
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode evaluates each point in your data and compares its string attribute value with the same attribute from another point in the dataset. The comparison is based on a defined index mode and operand, which determines how the target point is selected.
+> AI-Generated, needs proofreading
 
-1. For each point, it retrieves the value of the specified string attribute (Operand A).
-2. It calculates the index of the point to compare against using the Index Mode and Compare Against settings.
-3. Depending on the index mode:
-   * If **Pick**, it uses the index directly.
-   * If **Offset**, it adds an offset to the current point's index.
-4. The index is adjusted according to the Index Safety setting if it goes out of bounds:
-   * **Ignore**: Invalid indices are skipped.
-   * **Tile**: Wraps around to valid indices.
-   * **Clamp**: Uses the closest valid index.
-   * **Yoyo**: Mirrors back from the boundary.
-5. If the target point's attribute value is accessible, it compares the two string values using the specified comparison method.
-6. If the comparison passes, the original point is included in the filtered output.
+* The node receives an attribute value and translates Operand A to `double` for comparison purposes.
+* It uses the specified Comparison setting to define how the current attribute value is compared against another instance of itself at a different index.
+* Index Mode determines how the alternative index (specified by Index (Attr) and translated to `int32`) is used to fetch the second operand for comparison.
+* The Compare Against setting specifies whether Operand B should be directly from an attribute or derived in some way, though specifics depend on implementation details not provided here.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Operand A</strong><br><em>String attribute to test.</em></summary>
+<summary><strong>Operand A</strong> <code>Name</code></summary>
 
-The name of the string attribute whose value will be compared against another instance of itself.
+Operand A for testing -- Will be translated to `double` under the hood.
 
-</details>
-
-<details>
-
-<summary><strong>Comparison</strong><br><em>Comparison method for string values.</em></summary>
-
-How the two string values are compared.
-
-* **StrictlyEqual**: Values must match exactly.
-* **Contains**: First value contains second as a substring.
-* **StartsWith**: First value starts with second.
-* **EndsWith**: First value ends with second.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Index Mode</strong><br><em>How the comparison index is calculated.</em></summary>
+<summary><strong>Comparison</strong> <code>PCGExStringComparison</code></summary>
 
-Whether to pick a specific index or calculate an offset from the current point's index.
+Comparison
 
-* **Pick**: Use a fixed index directly.
-* **Offset**: Add an offset value to the current index.
-
-</details>
-
-<details>
-
-<summary><strong>Compare Against</strong><br><em>Source of operand B.</em></summary>
-
-Determines whether Operand B is a constant or comes from an attribute.
-
-* **Constant**: Use a fixed integer value.
-* **Attribute**: Read the index value from an input attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Index (Attr)</strong><br><em>Attribute to read comparison index from.</em></summary>
+<summary><strong>Index Mode</strong> <code>PCGExIndexMode</code></summary>
 
-When Compare Against is set to Attribute, this defines which attribute to use for the index value.
+Index mode
 
-</details>
-
-<details>
-
-<summary><strong>Index</strong><br><em>Fixed index value for comparison.</em></summary>
-
-When Compare Against is set to Constant, this defines the fixed integer index to compare against.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Index Safety</strong><br><em>How out-of-bounds indices are handled.</em></summary>
+<summary><strong>Compare Against</strong> <code>PCGExInputValueType</code></summary>
 
-What to do when the calculated index exceeds data bounds.
+Type of OperandB
 
-* **Ignore**: Skip invalid comparisons.
-* **Tile**: Wrap around to valid indices.
-* **Clamp**: Use the nearest valid index.
-* **Yoyo**: Mirror back from boundary.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Invalid Index Fallback</strong><br><em>How to treat points with invalid indices.</em></summary>
+<summary><strong>Index (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-Whether points with invalid indices should pass or fail the filter.
+Operand B for testing -- Will be translated to `int32` under the hood.
 
-* **Pass**: Points are included in output.
-* **Fail**: Points are excluded from output.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Swap Operands</strong><br><em>Invert comparison direction for contains checks.</em></summary>
+<summary><strong>Index</strong> <code>int32</code></summary>
 
-When enabled, swaps the operands so that the comparison becomes "B contains A" instead of "A contains B". Useful for inverting substring checks.
+Operand B for testing
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-You have a sequence of points representing a path and want to filter out points where the point's name matches the name of another point at an offset of 2. Set Operand A to your point's name attribute, Index Mode to Offset, Compare Against to Constant, Index to 2, and Comparison to StrictlyEqual.
+<summary><strong>Index Safety</strong> <code>PCGExIndexSafety</code></summary>
 
-#### Notes
+Index safety
 
-* This subnode is useful for creating self-referential filters.
-* Be cautious with large offsets or index safety settings that may cause unexpected behavior in small datasets.
-* The comparison logic supports case-sensitive operations by default; consider using string conversion utilities if needed.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invalid Index Fallback</strong> <code>PCGExFilterFallback</code></summary>
+
+How to deal with invalid indices
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Swap Operands</strong> <code>bool</code></summary>
+
+Swap operands. Useful to invert "contains" checks
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExStringSelfCompareFilterConfig</code></summary>
+
+Filter Config.
+
+📦 See: StringSelfCompareFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Operand A</strong> <code>Name</code></summary>
+
+Operand A for testing -- Will be translated to `double` under the hood.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Comparison</strong> <code>PCGExStringComparison</code></summary>
+
+Comparison
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Index Mode</strong> <code>PCGExIndexMode</code></summary>
+
+Index mode
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Compare Against</strong> <code>PCGExInputValueType</code></summary>
+
+Type of OperandB
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Index (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Operand B for testing -- Will be translated to `int32` under the hood.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Index</strong> <code>int32</code></summary>
+
+Operand B for testing
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Index Safety</strong> <code>PCGExIndexSafety</code></summary>
+
+Index safety
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invalid Index Fallback</strong> <code>PCGExFilterFallback</code></summary>
+
+How to deal with invalid indices
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Swap Operands</strong> <code>bool</code></summary>
+
+Swap operands. Useful to invert "contains" checks
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExFilters\Public\Filters\Points\PCGExStringSelfCompareFilter.h`

@@ -5,107 +5,103 @@ icon: circle
 
 # Resample
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Resample path to enforce equally spaced points.
 
-> Resample path to enforce equally spaced points.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node adjusts the distribution of points along a path so that they are evenly spaced. It processes each path individually and can either place new points at regular intervals or redistribute existing points more evenly. The method used depends on the selected mode:
-
-* **Sweep**: The node walks along the path and places new points at fixed intervals, determined by the resolution setting. If the path is closed (like a loop), the last point connects back to the first.
-* **Redistribute**: The node redistributes existing points more evenly along the path, without adding or removing points.
-
-The resolution controls how frequently points are placed:
-
-* In **Distance** mode, it defines spacing in world units (e.g., 10 units apart).
-* In **Count** mode, it defines a fixed number of points to place along the path.
-
-If enabled, blending settings smooth attribute values between resampled points using interpolation or other methods. The node also supports truncation modes to control how fractional point counts are handled.
+* The node resamples a given path to ensure that all points along the path are equally spaced according to the specified resolution.
+* It uses the `Mode` setting from `PCGExResampleMode` and the `Resolution Mode` to determine how to distribute the points.
+* If `Redistribute Evenly` is set to true, the node redistributes the points evenly across the path while respecting the given resolution.
+* The `Preserve Last Point` option ensures that the last point of an open loop remains unchanged; this setting is ignored for closed loops.
+* The final number and placement of points are determined by the specified `Resolution`, which defines the distance between each resampled point.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Mode</strong><br><em>Resampling approach to use.</em></summary>
+<summary><strong>Mode</strong> <code>PCGExResampleMode</code></summary>
 
-Controls how the resampling is performed.
+Controls mode.
 
-**Values**:
+**Values:**
 
-* **Sweep**: Walks along the path and places points at fixed intervals.
-* **Redistribute**: Redistributes existing points more evenly without changing point count.
+* **Sweep**: ...
+* **Redistribute**: ...
 
-</details>
-
-<details>
-
-<summary><strong>Resolution Mode</strong><br><em>Resolution mode.</em></summary>
-
-Defines how resolution is interpreted.
-
-**Values**:
-
-* **Distance**: Points are placed at a fixed distance apart (in world units).
-* **Count**: A fixed number of points are placed along the path.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Redistribute Evenly</strong><br><em>When enabled, redistribute points evenly.</em></summary>
+<summary><strong>Resolution Mode</strong> <code>PCGExResolutionMode</code></summary>
 
-When enabled, the node redistributes existing points more evenly along the path. When disabled, it uses a sweep-based approach.
-
-</details>
-
-<details>
-
-<summary><strong>Preserve Last Point</strong><br><em>(ignored for closed loops)</em></summary>
-
-When enabled, ensures that the last point of an open path is preserved in the resampled output, even if it doesn't align with the resolution interval.
+Resolution mode
 
 </details>
 
 <details>
 
-<summary><strong>Resolution</strong><br><em>Resolution.</em></summary>
+<summary><strong>Redistribute Evenly</strong> <code>bool</code></summary>
 
-Controls how many points are placed along the path or at what distance they are spaced, depending on the resolution mode.
+Controls redistribute evenly.
 
-</details>
-
-<details>
-
-<summary><strong>Truncate</strong><br><em>How to handle fractional point counts.</em></summary>
-
-Determines how to round the number of points when the calculated count is not a whole number.
-
-**Values**:
-
-* **None**: No truncation.
-* **Round**: Rounds to the nearest integer.
-* **Ceil**: Rounds up to the next integer.
-* **Floor**: Rounds down to the previous integer.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Blending Settings</strong><br><em>Blending settings used to smooth attributes.</em></summary>
+<summary><strong>Preserve Last Point</strong> <code>bool</code></summary>
 
-Controls how attribute values are interpolated or blended between resampled points.
+(ignored for closed loops)
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-You have a path that represents a winding river, but the points along it are unevenly spaced. You want to create a set of evenly distributed waypoints for AI navigation. Set the mode to **Sweep**, resolution mode to **Distance**, and resolution to 5 units. This will place waypoints every 5 world units along the river, ensuring consistent spacing.
+<summary><strong>Resolution</strong> <code>PCGExInputShorthandNameDoubleAbs</code></summary>
 
-#### Notes
+Resolution
 
-* The node works on individual paths; it does not merge or split them.
-* For closed loops, the last point is automatically connected to the first, so preserving the last point has no effect.
-* Blending settings are only applied when resampling using the **Sweep** mode.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Truncate</strong> <code>PCGExTruncateMode</code></summary>
+
+Controls truncate.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Blending Settings</strong> <code>PCGExBlendingDetails</code></summary>
+
+Blending settings used to smooth attributes.
+
+📦 See: Blending configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Ensure Unique Seeds</strong> <code>bool</code></summary>
+
+Controls ensure unique seeds.
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsPaths\Public\Elements\PCGExPathResample.h`

@@ -5,96 +5,176 @@ icon: circle-dashed
 
 # HX : Attribute
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Read a vtx or edge attribute as an heuristic value.
 
-> Reads vertex or edge attributes and uses them as heuristic values for pathfinding.
+📌 **Subnode** — Connects to **Heuristics** pins.
 
-#### How It Works
+**How It Works**
 
-This node evaluates attribute values from either points or edges in your data and converts them into scores that influence how pathfinding algorithms make decisions. It can automatically determine the range of values in the attribute, or you can define your own range for consistent results. The final score is then passed to pathfinding nodes so they can use it when calculating the best route.
+> AI-Generated, needs proofreading
+
+* Reads an attribute value from either vertices or edges based on the setting specified in "Source".
+* Uses the selected attribute as a heuristic value for further processing.
+* Optionally remaps the input values using "In Min" and "In Max" if these settings are enabled, overriding the default min and max values found on the attribute.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Mode</strong><br><em>Specify how to deal with the attribute value.</em></summary>
+<summary><strong>Mode</strong> <code>PCGExAttributeHeuristicInputMode</code></summary>
 
-Controls how the attribute value is interpreted and converted into a heuristic score.
+Specify how to deal with the attribute value
 
-**Values**:
+**Values:**
 
-* **Auto Curve**: Automatically normalize using the actual minimum and maximum values found in the attribute.
-* **Manual Curve**: Normalize using custom minimum and maximum values you provide.
-* **Raw**: Use the raw attribute value directly as the score. Use with caution.
-
-</details>
-
-<details>
-
-<summary><strong>Source</strong><br><em>Read the data from either vertices or edges.</em></summary>
-
-Determines whether to read the attribute from point (vertex) data or edge data.
-
-**Values**:
-
-* **Point**: Read attribute from the point being evaluated.
-* **Edge**: Read attribute from the edge connecting to the point being evaluated.
+* **Auto Curve**: Automatically sample the curve using normalized value from existing min/max input.
+* **Manual Curve**: Sample the curve using normalized value from manual min/max values.
+* **Raw**: Use raw attribute as score. Use at your own risks!
 
 </details>
 
 <details>
 
-<summary><strong>Attribute</strong><br><em>Attribute to read modifier value from.</em></summary>
+<summary><strong>Source</strong> <code>PCGExClusterElement</code></summary>
 
-The name of the attribute to use for heuristic calculation. This should be a numeric attribute present in your data.
+Read the data from either vertices or edges
 
-</details>
-
-<details>
-
-<summary><strong>InMin</strong><br><em>If enabled, will use this value as input min remap reference instead of the one found on the attribute.</em></summary>
-
-The minimum value used for normalization when **Mode** is set to **Manual Curve**. Only active if **Mode** is **Manual Curve**.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>InMax</strong><br><em>If enabled, will use this value as input max remap reference instead of the one found on the attribute.</em></summary>
+<summary><strong>Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-The maximum value used for normalization when **Mode** is set to **Manual Curve**. Only active if **Mode** is **Manual Curve**.
+Attribute to read modifier value from.
 
-</details>
-
-<details>
-
-<summary><strong>bUseCustomFallback</strong><br><em>Enable custom fallback value for normalization edge cases.</em></summary>
-
-When enabled, a custom fallback value is used when the attribute's min and max are equal (e.g., all values are identical), preventing invalid normalization.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>FallbackValue</strong><br><em>Default weight when no valid internal normalization can be made.</em></summary>
+<summary><strong>In Min</strong> <code>double</code></summary>
 
-The value to use as a fallback when normalization fails due to equal min/max values. Only active if **bUseCustomFallback** is enabled. Value clamped between 0 and 1.
+If enabled, will use this value as input min remap reference instead of the one found on the attribute.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-You have a graph representing a terrain with an attribute `Cost` on each edge that indicates how difficult it is to traverse that edge. You want to use this cost as a heuristic in pathfinding, where lower values mean easier traversal.
+<summary><strong>In Max</strong> <code>double</code></summary>
 
-1. Set **Source** to **Edge**.
-2. Set **Attribute** to `Cost`.
-3. Set **Mode** to **Auto Curve** to automatically normalize the attribute values.
-4. Connect this node to a pathfinding node to use it as a heuristic definition.
+If enabled, will use this value as input max remap reference instead of the one found on the attribute.
 
-#### Notes
+⚡ PCG Overridable
 
-* When using **Raw** mode, ensure your attribute values are already in a suitable range for pathfinding (e.g., 0–1).
-* If you're unsure about the min/max values of your attribute, use **Auto Curve** mode to let the system determine them.
-* For consistent behavior, always validate that your attribute contains valid numeric data before using this node.
+</details>
+
+<details>
+
+<summary><strong>Use Custom Fallback</strong> <code>bool</code></summary>
+
+Controls use custom fallback.
+
+</details>
+
+<details>
+
+<summary><strong>Fallback Value</strong> <code>double</code></summary>
+
+Default weight when no valid internal normalization can be made (e.g, all points have the same values so min == max). If left unset, will use min/max clamped between 0 & 1.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExHeuristicAttributeConfig</code></summary>
+
+Modifier properties
+
+📦 See: HeuristicAttribute configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Mode</strong> <code>PCGExAttributeHeuristicInputMode</code></summary>
+
+Specify how to deal with the attribute value
+
+**Values:**
+
+* **Auto Curve**: Automatically sample the curve using normalized value from existing min/max input.
+* **Manual Curve**: Sample the curve using normalized value from manual min/max values.
+* **Raw**: Use raw attribute as score. Use at your own risks!
+
+</details>
+
+<details>
+
+<summary><strong>Source</strong> <code>PCGExClusterElement</code></summary>
+
+Read the data from either vertices or edges
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Attribute to read modifier value from.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>In Min</strong> <code>double</code></summary>
+
+If enabled, will use this value as input min remap reference instead of the one found on the attribute.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>In Max</strong> <code>double</code></summary>
+
+If enabled, will use this value as input max remap reference instead of the one found on the attribute.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Use Custom Fallback</strong> <code>bool</code></summary>
+
+Controls use custom fallback.
+
+</details>
+
+<details>
+
+<summary><strong>Fallback Value</strong> <code>double</code></summary>
+
+Default weight when no valid internal normalization can be made (e.g, all points have the same values so min == max). If left unset, will use min/max clamped between 0 & 1.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExHeuristics\Public\Heuristics\PCGExHeuristicAttribute.h`

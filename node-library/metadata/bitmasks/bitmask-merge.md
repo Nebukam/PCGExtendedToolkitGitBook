@@ -5,60 +5,26 @@ icon: circle
 
 # Bitmask Merge
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+A Simple bitmask merge node.
 
-> Merges bitmask data using bitwise operations.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-The Bitmask Merge node combines multiple sets of flags into one unified set. Each flag represents a specific condition or property, such as terrain type, object behavior, or metadata state. The node applies a chosen operation to merge these flags together, allowing you to create more complex conditional logic in your procedural content.
-
-The process starts with an initial value, typically zero or the first input's flags. Then, for each additional input, it performs the selected bitwise operation:
-
-* **OR** sets any flag that is active in either input
-* **AND** only activates a flag if it's active in both inputs
-* **XOR** activates a flag if it differs between inputs
-* **NOT** inverts flags where the mask has active bits
-* **SET** replaces all flags with the new value
-
-This sequential application means the order of inputs affects the final result, especially when using operations like AND or NOT.
+* The Bitmask Merge node combines two input bitmasks using the specified bitwise operation defined by PCGExBitOp.
+* It processes each corresponding pair of bits from the two inputs according to the selected bitwise operation (e.g., AND, OR, XOR).
+* Outputs a new bitmask that represents the result of applying the chosen bitwise operation across all pairs of input bits.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Operation</strong><br><em>The bitwise operation to apply when merging bitmasks.</em></summary>
+<summary><strong>Operation</strong> <code>PCGExBitOp</code></summary>
 
-Controls how input bitmasks are combined into a single output.
-
-**Values**:
-
-* **= (SET)**: Assigns the mask value directly to the flags.
-* **AND**: Sets a bit only if it's set in both operands.
-* **OR**: Sets any bit that is set in either operand.
-* **NOT**: Inverts bits where the mask has 1s.
-*
-  * **XOR**: Sets a bit if it differs between operands.
+Controls operation.
 
 </details>
 
-#### Usage Example
+***
 
-Suppose you have two bitmask inputs:
-
-* Input A: `0b1010` (binary)
-* Input B: `0b1100` (binary)
-
-Using the OR operation, the result would be:
-
-* Output: `0b1110`
-
-This is useful when combining flags like "isWater", "isForest", or "isMountain" to create a combined terrain type.
-
-#### Notes
-
-* The node works with any number of inputs.
-* Bit positions are treated as independent flags, so ensure consistent bit usage across all inputs.
-* For performance, avoid using many inputs with complex operations if possible.
+Source: `Source\PCGExFoundations\Public\Elements\Bitmasks\PCGExBitmaskMerge.h`

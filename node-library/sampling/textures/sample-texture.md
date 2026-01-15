@@ -5,80 +5,86 @@ icon: circle
 
 # Sample Texture
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Sample texture data using UV coordinates.
 
-> Sample texture data using UV coordinates.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node retrieves color or scalar values from textures at specific UV coordinates and assigns them as attributes to points. For each point, it uses the UV coordinates stored in an attribute to look up corresponding texture values. It can sample multiple textures simultaneously, mapping the results into different output attributes based on channel settings.
-
-The node supports tagging points that successfully or unsuccessfully sampled from textures. If enabled, it can also remove points that failed to sample any data from the output.
+* The node samples texture data based on UV coordinates provided by the selected attribute property input selector (UVSource).
+* It checks if the sampling operation is successful and applies a tag specified in "Has Successes Tag" to elements that succeed if "Tag If Has Successes" is enabled.
+* For elements where the sampling does not succeed, it applies a different tag specified in "Has No Successes Tag", provided that "Tag If Has No Successes" is enabled.
 
 #### Configuration
 
 <details>
 
-<summary><strong>UVSource</strong><br><em>Attribute used to retrieve UV coordinates for sampling.</em></summary>
+<summary><strong>Process Filtered Out As Fails</strong> <code>bool</code></summary>
 
-Specifies the attribute that contains the UV coordinates (typically a Vector2D) from which texture samples are taken.
-
-</details>
-
-<details>
-
-<summary><strong>bTagIfHasSuccesses</strong><br><em>When enabled, tag points that successfully sampled at least once.</em></summary>
-
-When enabled, adds a boolean tag to points that had at least one successful sample. The tag name is defined by `HasSuccessesTag`.
+If enabled, mark filtered out points as "failed". Otherwise, just skip the processing altogether. Only uncheck this if you want to ensure existing attribute values are preserved.
 
 </details>
 
 <details>
 
-<summary><strong>HasSuccessesTag</strong><br><em>Name of the tag added to points with at least one successful sample.</em></summary>
+<summary><strong>Prune Failed Samples</strong> <code>bool</code></summary>
 
-The name of the boolean attribute that gets set to true for points that successfully sampled from at least one texture.
-
-</details>
-
-<details>
-
-<summary><strong>bTagIfHasNoSuccesses</strong><br><em>When enabled, tag points that failed to sample from all textures.</em></summary>
-
-When enabled, adds a boolean tag to points that did not successfully sample from any texture. The tag name is defined by `HasNoSuccessesTag`.
+If enabled, points that failed to sample anything will be pruned.
 
 </details>
 
 <details>
 
-<summary><strong>HasNoSuccessesTag</strong><br><em>Name of the tag added to points with no successful samples.</em></summary>
+<summary><strong>Quiet Duplicate Sample Names Warning</strong> <code>bool</code></summary>
 
-The name of the boolean attribute that gets set to true for points that failed to sample from any texture.
+Controls quiet duplicate sample names warning.
+
+</details>
+
+**Tagging**
+
+<details>
+
+<summary><strong>UVSource</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Controls uvsource.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bProcessFilteredOutAsFails</strong><br><em>If enabled, mark filtered out points as "failed". Otherwise, skip the processing altogether.</em></summary>
+<summary><strong>Tag If Has Successes</strong> <code>bool</code></summary>
 
-Controls whether points that are filtered out by point filters are treated as failed samples. If disabled, existing attribute values are preserved for those points.
-
-</details>
-
-<details>
-
-<summary><strong>bPruneFailedSamples</strong><br><em>If enabled, points that failed to sample anything will be pruned.</em></summary>
-
-When enabled, removes points from the output if they did not successfully sample any texture data.
+Controls tag if has successes.
 
 </details>
 
 <details>
 
-<summary><strong>bQuietDuplicateSampleNamesWarning</strong><br><em>Suppress warnings about duplicate sample attribute names.</em></summary>
+<summary><strong>Has Successes Tag</strong> <code>String</code></summary>
 
-If enabled, suppresses warnings that appear when multiple samplers try to write to attributes with the same name.
+Controls has successes tag.
 
 </details>
+
+<details>
+
+<summary><strong>Tag If Has No Successes</strong> <code>bool</code></summary>
+
+Controls tag if has no successes.
+
+</details>
+
+<details>
+
+<summary><strong>Has No Successes Tag</strong> <code>String</code></summary>
+
+Controls has no successes tag.
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsSampling\Public\Elements\PCGExSampleTexture.h`

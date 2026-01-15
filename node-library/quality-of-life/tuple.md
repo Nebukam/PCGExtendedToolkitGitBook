@@ -5,52 +5,164 @@ icon: circle
 
 # Tuple
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+A Simple Tuple attribute.
 
-> Creates a structured data attribute by combining multiple typed values into a single tuple that can be used for storage or further processing.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-The Tuple node organizes related data by grouping multiple typed values into a single structured attribute. Each tuple contains named fields, each with its own data type and default value. The node assigns these values to each point or element in the input data, creating a consistent structure that can be used throughout your procedural workflow.
-
-When processing input data:
-
-1. The node reads the defined structure from the Composition settings
-2. It creates a new metadata attribute for each tuple row
-3. For every point or element, it assigns values from the Values array to the corresponding fields
-4. The result is a structured tuple that maintains all field relationships
-
-This approach keeps related information together, making it easier to manage complex data sets and pass them between different processing steps.
+* The Tuple node aggregates multiple input attributes into a single tuple object.
+* It accepts various types of values including bool, float, double, int32, and Vector2D as individual components.
+* Each specified value type (bool, float, etc.) contributes to the formation of the tuple in the order they are defined.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Composition</strong><br><em>Defines the structure of each tuple row with named fields and their data types.</em></summary>
+<summary><strong>Value</strong> <code>bool</code></summary>
 
-Sets up the format for your tuple data. Each entry defines one row containing multiple fields, each with a name and type.
-
-* **Name**: The label used to identify this row in the tuple
-* **DefaultData**: The data type and default value for this field (such as float, vector, or color)
+Controls value.
 
 </details>
 
 <details>
 
-<summary><strong>Values</strong><br><em>Provides the actual data values for each tuple row.</em></summary>
+<summary><strong>Value</strong> <code>float</code></summary>
 
-Contains the real data that will be stored in your tuples. Each entry corresponds to a row defined in Composition.
-
-* **Row**: An array of typed values matching the structure defined in Composition. These are the actual values assigned to each field
+Controls value.
 
 </details>
 
 <details>
 
-<summary><strong>CommaSeparatedTags</strong><br><em>A list of tags separated by commas, for easy filtering and organization.</em></summary>
+<summary><strong>Value</strong> <code>double</code></summary>
 
-A string of comma-separated labels used to categorize or filter this node's behavior in certain contexts. Useful for organizing and managing multiple nodes.
+Controls value.
 
 </details>
+
+<details>
+
+<summary><strong>Value</strong> <code>int32</code></summary>
+
+Controls value.
+
+</details>
+
+<details>
+
+<summary><strong>Value</strong> <code>Vector2D</code></summary>
+
+Controls value.
+
+</details>
+
+<details>
+
+<summary><strong>Value</strong> <code>Vector</code></summary>
+
+Controls value.
+
+</details>
+
+<details>
+
+<summary><strong>Value</strong> <code>Vector4</code></summary>
+
+Controls value.
+
+</details>
+
+<details>
+
+<summary><strong>Value</strong> <code>LinearColor</code></summary>
+
+Controls value.
+
+</details>
+
+<details>
+
+<summary><strong>Value</strong> <code>Transform</code></summary>
+
+Controls value.
+
+</details>
+
+<details>
+
+<summary><strong>Value</strong> <code>Rotator</code></summary>
+
+Controls value.
+
+</details>
+
+<details>
+
+<summary><strong>Value</strong> <code>String</code></summary>
+
+Controls value.
+
+</details>
+
+<details>
+
+<summary><strong>Value</strong> <code>Name</code></summary>
+
+Controls value.
+
+</details>
+
+<details>
+
+<summary><strong>Value</strong> <code>SoftObjectPath</code></summary>
+
+Controls value.
+
+</details>
+
+<details>
+
+<summary><strong>Value</strong> <code>SoftClassPath</code></summary>
+
+Controls value.
+
+</details>
+
+<details>
+
+<summary><strong>Enum</strong> <code>EnumSelector</code></summary>
+
+Controls enum.
+
+</details>
+
+<details>
+
+<summary><strong>Name</strong> <code>Name</code></summary>
+
+Controls name.
+
+</details>
+
+<details>
+
+<summary><strong>Composition</strong> <code>Array of FPCGExTupleValueHeader</code></summary>
+
+Tuple composition
+
+</details>
+
+<details>
+
+<summary><strong>Comma Separated Tags</strong> <code>String</code></summary>
+
+A list of tags separated by a comma, for easy overrides.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExFoundations\Public\Elements\Constants\PCGExTuple.h`

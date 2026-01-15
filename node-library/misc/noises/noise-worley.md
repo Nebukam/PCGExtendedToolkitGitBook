@@ -4,80 +4,128 @@ icon: circle-dashed
 
 # Noise : Worley
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Worley/Cellular noise - cell-like patterns.
 
-> Generates cell-like patterns using Worley/Cellular noise.
+📌 **Subnode** — Connects to **Noise** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode creates cell-like patterns by placing feature points in a 3D grid and calculating the distance from any given point to its nearest neighbors. For each input position, it finds the closest and second-closest feature points, then applies a mathematical operation based on the selected return type.
+> AI-Generated, needs proofreading
 
-The process works as follows:
-
-1. A 3x3x3 neighborhood of cells around the input position is sampled.
-2. Feature points are generated within these cells using a hash-based method.
-3. The distance from the input position to each feature point is calculated using the chosen distance function.
-4. The closest and second-closest distances are tracked.
-5. Based on the return type setting, either one of the distances or their combination is returned.
-
-This produces visually distinct patterns that mimic natural cellular structures like honeycombs, cracked terrain, or mineral veins.
+* Computes cellular noise patterns based on the Worley algorithm to generate cell-like structures.
+* Utilizes a specified distance function to determine the influence of nearest feature points in the pattern generation process.
+* Adjusts the randomness of cell placement through the jitter setting, where 0 represents a regular grid and 1 indicates maximum randomness.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Distance Function</strong><br><em>Distance function to use.</em></summary>
+<summary><strong>Distance Function</strong> <code>PCGExWorleyDistanceFunc</code></summary>
 
-Controls how distances are calculated between points.
+Distance function to use
 
-**Values**:
+**Values:**
 
-* **Euclidean**: Standard straight-line distance.
-* **Euclidean Squared**: Squared Euclidean distance (faster, no square root).
-* **Manhattan**: Sum of absolute differences along each axis.
-* **Chebyshev**: Maximum difference along any axis.
+* **Euclidean**
+* **Euclidean Squared**
+* **Manhattan**
+* **Chebyshev**
 
-</details>
-
-<details>
-
-<summary><strong>Return Type</strong><br><em>What to return.</em></summary>
-
-Determines the output value based on distances to nearest feature points.
-
-**Values**:
-
-* **F1 (Closest)**: Distance to the closest feature point.
-* **F2 (Second Closest)**: Distance to the second closest feature point.
-* **F2 - F1 (Edge Detection)**: Difference between the two distances, useful for detecting edges.
-* **F1 + F2**: Sum of both distances.
-* **F1 \* F2**: Product of both distances.
-* **Cell Value**: A scalar value derived from the cell's hash, independent of distance.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Jitter</strong><br><em>Jitter amount (0 = regular grid, 1 = maximum randomness).</em></summary>
+<summary><strong>Return Type</strong> <code>PCGExWorleyReturnType</code></summary>
 
-Controls how much feature points deviate from a regular grid layout. At 0, points align in perfect grid cells; at 1, they are fully randomized.
+What to return
 
-Range: 0.0 to 1.0
+**Values:**
+
+* **F1**
+* **F2**
+* **F2Minus F1**
+* **F1 + F2**
+* **F1 \* F2**
+* **Cell Value**
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this subnode to generate terrain textures that mimic cracked earth or cellular growth patterns. For example:
+<summary><strong>Jitter</strong> <code>double</code></summary>
 
-* Set **Jitter** to 0.8 for organic-looking cracks.
-* Choose **Return Type** as **F2 - F1** to emphasize boundaries between cells.
-* Use a **Manhattan** distance function for more angular, grid-like cell shapes.
+Jitter amount (0 = regular grid, 1 = maximum randomness)
 
-#### Notes
+_Range: min: 0.0, max: 1.0_
 
-* Higher jitter values create more natural, less structured patterns.
-* The **F2 - F1** return type is particularly effective for edge detection and creating sharp transitions.
-* This noise is computationally intensive due to the neighborhood search; consider using lower resolution or caching for performance.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExNoiseConfigWorley</code></summary>
+
+Controls config.
+
+📦 See: NoiseConfigWorley configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Distance Function</strong> <code>PCGExWorleyDistanceFunc</code></summary>
+
+Distance function to use
+
+**Values:**
+
+* **Euclidean**
+* **Euclidean Squared**
+* **Manhattan**
+* **Chebyshev**
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Return Type</strong> <code>PCGExWorleyReturnType</code></summary>
+
+What to return
+
+**Values:**
+
+* **F1**
+* **F2**
+* **F2Minus F1**
+* **F1 + F2**
+* **F1 \* F2**
+* **Cell Value**
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Jitter</strong> <code>double</code></summary>
+
+Jitter amount (0 = regular grid, 1 = maximum randomness)
+
+_Range: min: 0.0, max: 1.0_
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExNoise3D\Public\Noises\PCGExNoiseWorley.h`

@@ -5,107 +5,214 @@ icon: circle-dashed
 
 # Direction
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Dot product comparison of the edge direction against a local attribute or constant.
 
-> Filters edges based on the dot product comparison of their direction against a local attribute or constant.
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode evaluates whether edges in a graph align with a specified reference direction. It calculates the dot product between each edge's direction and the reference vector to determine how closely they match. If the result meets the configured criteria, the edge passes through the filter. The process can use either precise dot product calculations or a faster hash-based method for performance.
+> AI-Generated, needs proofreading
 
-The subnode first determines the reference direction from either a fixed vector or an attribute on points. It then compares this direction against each edge's orientation using a mathematical operation called the dot product. Based on the comparison result and configured thresholds, edges are either included or excluded from further processing.
+* The Edge Filter node computes the dot product between the edge direction and a specified direction (either from an attribute or a constant).
+* Based on the comparison type set in "Comparison Quality", the node evaluates whether to retain or filter out edges according to their computed dot product value.
+* If "Compare Against" is set to use an attribute, the node reads this attribute's value for each edge and converts it to a `double` for the comparison operation.
+* The "Invert" setting reverses the outcome of the comparison, meaning edges that would otherwise be filtered out are retained, and vice versa.
+* When using "Fast" comparison mode, adjacency consolidation is ignored in the filtering process.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Comparison Quality</strong><br><em>Type of check; Note that Fast comparison ignores adjacency consolidation.</em></summary>
+<summary><strong>Direction Settings</strong> <code>PCGExEdgeDirectionSettings</code></summary>
 
-Determines whether to use a precise dot product comparison or a faster hash-based comparison.
+Defines the direction in which points will be ordered to form the final paths.
 
-**Values**:
-
-* **Dot (Precise)**: Uses full dot product calculations for accurate directional checks.
-* **Hash (Fast)**: Uses simplified hash comparisons, which are faster but less precise.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Compare Against</strong><br><em>Where to read the compared direction from.</em></summary>
+<summary><strong>Comparison Quality</strong> <code>PCGExDirectionCheckMode</code></summary>
 
-Defines whether the reference direction is a constant value or comes from an attribute on the input points.
-
-**Values**:
-
-* **Constant**: Uses a fixed vector defined in the node.
-* **Attribute**: Reads the direction from a point attribute.
+Type of check; Note that Fast comparison ignores adjacency consolidation.
 
 </details>
 
 <details>
 
-<summary><strong>Direction (Attr)</strong><br><em>Operand B for testing -- Will be translated to `double` under the hood.</em></summary>
+<summary><strong>Compare Against</strong> <code>PCGExInputValueType</code></summary>
 
-The name of the attribute to read the reference direction from, when "Compare Against" is set to "Attribute".
-
-</details>
-
-<details>
-
-<summary><strong>Invert</strong><br><em>└─ Invert</em></summary>
-
-When enabled, inverts the reference direction before comparison.
+Where to read the compared direction from.
 
 </details>
 
 <details>
 
-<summary><strong>Direction</strong><br><em>Direction for computing the dot product against the edge's.</em></summary>
+<summary><strong>Direction (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-The constant vector used as the reference direction when "Compare Against" is set to "Constant".
+Operand B for testing -- Will be translated to `double` under the hood.
 
-</details>
-
-<details>
-
-<summary><strong>Transform Direction</strong><br><em>Transform the reference direction with the local point' transform</em></summary>
-
-When enabled, applies the point's local transform to the reference direction before comparison.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Dot Comparison Details</strong><br><em>Dot comparison settings</em></summary>
+<summary><strong>└─ Invert</strong> <code>bool</code></summary>
 
-Settings for how the dot product is evaluated, including thresholds and tolerance values.
+Controls └─ invert.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Hash Comparison Details</strong><br><em>Hash comparison settings</em></summary>
+<summary><strong>Direction</strong> <code>Vector</code></summary>
 
-Settings for how the hash-based comparison evaluates directional alignment, including tolerance levels.
+Direction for computing the dot product against the edge's.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-A common use case is filtering edges in a terrain graph to only include those flowing uphill. You could:
+<summary><strong>Transform Direction</strong> <code>bool</code></summary>
 
-1. Set "Compare Against" to "Attribute".
-2. Use a point attribute like `Normal` or `Slope`.
-3. Enable "Invert Direction" if you want to filter against the opposite of the normal.
-4. Adjust dot comparison thresholds to define what constitutes "uphill".
+Transform the reference direction with the local point' transform
 
-This ensures that only edges aligned with your desired direction (e.g., uphill) are processed further.
+⚡ PCG Overridable
 
-#### Notes
+</details>
 
-* The "Dot" mode is more accurate but slower, while "Hash" is faster but less precise.
-* When using attribute-based directions, ensure the attribute contains valid normalized vectors for consistent results.
-* This filter works best when edge directions are well-defined and aligned with your intended use case.
+<details>
+
+<summary><strong>Dot Comparison Details</strong> <code>PCGExDotComparisonDetails</code></summary>
+
+Dot comparison settings
+
+📦 See: DotComparison configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Hash Comparison Details</strong> <code>PCGExVectorHashComparisonDetails</code></summary>
+
+Hash comparison settings
+
+📦 See: VectorHashComparison configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExIsoEdgeDirectionFilterConfig</code></summary>
+
+Test Config.
+
+📦 See: IsoEdgeDirectionFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Direction Settings</strong> <code>PCGExEdgeDirectionSettings</code></summary>
+
+Defines the direction in which points will be ordered to form the final paths.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Comparison Quality</strong> <code>PCGExDirectionCheckMode</code></summary>
+
+Type of check; Note that Fast comparison ignores adjacency consolidation.
+
+</details>
+
+<details>
+
+<summary><strong>Compare Against</strong> <code>PCGExInputValueType</code></summary>
+
+Where to read the compared direction from.
+
+</details>
+
+<details>
+
+<summary><strong>Direction (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Operand B for testing -- Will be translated to `double` under the hood.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Invert</strong> <code>bool</code></summary>
+
+Controls └─ invert.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Direction</strong> <code>Vector</code></summary>
+
+Direction for computing the dot product against the edge's.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Transform Direction</strong> <code>bool</code></summary>
+
+Transform the reference direction with the local point' transform
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Dot Comparison Details</strong> <code>PCGExDotComparisonDetails</code></summary>
+
+Dot comparison settings
+
+📦 See: DotComparison configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Hash Comparison Details</strong> <code>PCGExVectorHashComparisonDetails</code></summary>
+
+Hash comparison settings
+
+📦 See: VectorHashComparison configuration
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsClusters\Public\Filters\Edges\PCGExIsoEdgeDirectionFilter.h`

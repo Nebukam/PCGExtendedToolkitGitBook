@@ -5,171 +5,121 @@ icon: circle
 
 # Find point on Bounds
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Find the closest vtx or edge on each cluster' bounds.
 
-> Find the closest point or edge on each cluster's bounds.
+**How It Works**
 
-#### Overview
+> AI-Generated, needs proofreading
 
-This node identifies the closest vertex or edge on the boundary of each cluster and outputs a new set of points at that location. It is useful for placing objects along cluster boundaries, generating constraints, or sampling spatial data from cluster edges.
-
-It operates on clusters and can output either merged or individual datasets depending on configuration. The search mode allows choosing between vertex and edge proximity, and the UVW position defines where along the bounds to sample.
-
-{% hint style="info" %}
-Connects to **Cluster** processing pins.
-{% endhint %}
-
-#### How It Works
-
-This node evaluates each cluster in the input data and calculates the closest point or edge on its boundary. The process involves:
-
-1. For each cluster, it computes the bounding box or best-fit bounds (if enabled).
-2. Based on the **SearchMode**, it determines whether to look for the closest vertex or edge.
-3. Using the **UVW** value, it selects a position along the bounds:
-   * If **UVWInput** is set to **Constant**, it uses the provided UVW vector directly.
-   * If **UVWInput** is set to **Attribute**, it reads the UVW from an attribute on the input points.
-4. The resulting point is offset by the **Offset** value away from the cluster's center.
-5. The output mode determines whether all results are merged into one dataset or split per cluster.
-
-The algorithm iterates through each cluster, performs proximity calculations, and outputs new points at the calculated locations.
-
-<details>
-
-<summary>Inputs</summary>
-
-* **Cluster Input**: Expects a set of clusters defined in the graph.
-* **Optional Edge Data**: If edge data is connected, it can be used for edge-based proximity searches.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Output Points**: A collection of points placed at the closest vertex or edge on each cluster's bounds.
-* **Edge Output (Optional)**: If enabled, outputs edges connecting the original points to their closest bounds locations.
-
-</details>
+* The node identifies the closest vertex or edge on the boundary of each cluster based on the specified Search Mode setting.
+* It outputs data according to the selected Output Mode setting, which determines the format and type of information provided about the identified points.
+* When Best Fit Bounds is enabled, the node uses a best fit plane for determining boundaries; the Use Best Fit bounds axis setting specifies the axis ordering for this process.
+* The UVWInput setting dictates the source of UVW values used in the proximity calculations.
 
 #### Configuration
 
 <details>
 
-<summary><strong>SearchMode</strong><br><em>What type of proximity to look for.</em></summary>
+<summary><strong>Search Mode</strong> <code>PCGExClusterClosestSearchMode</code></summary>
 
-Controls whether to search for the closest vertex or edge on the cluster's bounds.
-
-**Values**:
-
-* **Vtx**: Finds the closest point (vertex) on the cluster's bounds.
-* **Edge**: Finds the closest edge on the cluster's bounds.
+What type of proximity to look for
 
 </details>
 
 <details>
 
-<summary><strong>OutputMode</strong><br><em>Data output mode.</em></summary>
+<summary><strong>Output Mode</strong> <code>PCGExPointOnBoundsOutputMode</code></summary>
 
-Determines how the resulting points are structured in the output.
+Data output mode
 
-**Values**:
-
-* **Merged**: All points are combined into a single dataset.
-* **Individual**: Each cluster's points are placed in separate datasets.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bBestFitBounds</strong><br><em>Whether to use best fit plane bounds.</em></summary>
+<summary><strong>Best Fit Bounds</strong> <code>bool</code></summary>
 
-When enabled, the node uses best-fit bounds instead of axis-aligned bounding boxes for more accurate proximity calculations.
-
-</details>
-
-<details>
-
-<summary><strong>AxisOrder</strong><br><em>Which axis ordering should be used for best fit bounds.</em></summary>
-
-Defines how the axes are ordered when computing best-fit bounds. This affects orientation and shape of the bounds used in proximity searches.
-
-**Values**:
-
-* **XYZ**: X > Y > Z
-* **YZX**: Y > Z > X
-* **ZXY**: Z > X > Y
-* **YXZ**: Y > X > Z
-* **ZYX**: Z > Y > X
-* **XZY**: X > Z > Y
+Controls best fit bounds.
 
 </details>
 
 <details>
 
-<summary><strong>UVWInput</strong><br><em>Type of UVW value source.</em></summary>
+<summary><strong>Use Best Fit bounds axis</strong> <code>PCGExAxisOrder</code></summary>
 
-Controls whether to use a constant or attribute-based UVW value for sampling the bounds.
-
-**Values**:
-
-* **Constant**: Use the fixed UVW vector provided in the settings.
-* **Attribute**: Read UVW from an attribute on the input points.
+Whether to use best fit plane bounds, and which axis ordering should be used.
 
 </details>
 
 <details>
 
-<summary><strong>ClusterElement</strong><br><em>Cluster element source.</em></summary>
+<summary><strong>UVWInput</strong> <code>PCGExInputValueType</code></summary>
 
-When using attribute-based UVW, this specifies whether to read the value from a point or edge in the cluster.
+Type of UVW value source
 
-**Values**:
-
-* **Point**: Fetch the UVW value from the point being evaluated.
-* **Edge**: Fetch the UVW value from the edge connecting to the point being evaluated.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>UVW</strong><br><em>Fetch the UVW value from a @Data attribute.</em></summary>
+<summary><strong>UVW (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-The fixed UVW vector used when **UVWInput** is set to **Constant**. This defines where along the bounds to sample (e.g., \[0.5, 0.5, 0] = center of the bounds).
+Fetch the UVW value from a @Data attribute.
 
-</details>
-
-<details>
-
-<summary><strong>Offset</strong><br><em>Offset to apply to the closest point.</em></summary>
-
-A distance value added to the resulting point to move it away from the cluster's center along the vector from the center to the point.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>CarryOverDetails</strong><br><em>Meta filter settings.</em></summary>
+<summary><strong>└─ Element</strong> <code>PCGExClusterElement</code></summary>
 
-Controls how attributes and metadata are carried over from input points to output points.
+Cluster element source
 
 </details>
 
 <details>
 
-<summary><strong>bQuietAttributeMismatchWarning</strong><br><em>Suppresses warnings about attribute mismatches.</em></summary>
+<summary><strong>UVW</strong> <code>Vector</code></summary>
 
-When enabled, prevents warning messages when the UVW attribute is not found or mismatched in the input data.
+UVW position of the target within bounds.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-A designer wants to place trees along the edges of clusters representing forests. They connect a cluster input to this node and set **SearchMode** to **Edge**, **UVWInput** to **Constant**, and **UVW** to (0.5, 0.5, 0). This places points at the center of each cluster's edge. They then use an offset to push these points outward from the cluster center for better tree placement.
+<summary><strong>Offset</strong> <code>double</code></summary>
 
-#### Notes
+Offset to apply to the closest point, away from the bounds center.
 
-* The node is optimized for performance when using merged output mode.
-* Best-fit bounds are more accurate but computationally heavier.
-* UVW values should be within \[0,1] range for meaningful sampling along bounds.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Carry Over Settings</strong> <code>PCGExCarryOverDetails</code></summary>
+
+Meta filter settings.
+
+📦 See: CarryOver configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Quiet Attribute Mismatch Warning</strong> <code>bool</code></summary>
+
+Controls quiet attribute mismatch warning.
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsClusters\Public\Elements\PCGExFindPointOnBoundsClusters.h`

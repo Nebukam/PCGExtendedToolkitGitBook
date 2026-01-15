@@ -5,185 +5,365 @@ icon: circle-dashed
 
 # Inclusion (Path/Splines)
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Creates a filter definition that checks points inclusion against path-like data (paths, splines, polygons).
 
-> Creates a filter definition that checks points inclusion against path-like data (paths, splines, polygons).
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode evaluates whether points fall inside, outside, or on the edge of path-like shapes such as splines, paths, or polygons. It projects 3D points into 2D space and performs inclusion tests based on the shape's geometry.
+> AI-Generated, needs proofreading
 
-For each point:
-
-1. If a single path is used, it determines if the point lies within that path.
-2. When multiple paths are present, it evaluates all paths and combines results according to the **Pick** setting.
-3. The result can be inverted using the **Invert** toggle.
-4. Optional tolerance and offset settings allow for fine-tuning of inclusion boundaries.
-5. For collections, it can optionally use bounds instead of individual point testing.
-
-The subnode supports both polygonal and spline-based inclusion checks, with options to control how paths are projected and evaluated.
+* The node evaluates whether given points are included within path-like data structures such as paths, splines, or polygons using specified inclusion checks.
+* It utilizes projection settings to determine the method of projecting points onto the path-like structures for accurate inclusion testing.
+* The node applies a tolerance value to decide if a point is considered part of the spline, allowing for some degree of error in the inclusion check.
+* In cases where a point may be both inside and outside multiple splines, the "Pick" setting determines which condition takes precedence in the final output.
 
 #### Configuration
 
 <details>
 
-<summary><strong>ProjectionDetails</strong><br><em>Projection settings (used for inclusion checks).</em></summary>
+<summary><strong>Projection Details</strong> <code>PCGExGeo2DProjectionDetails</code></summary>
 
-Controls how the 3D point data is projected into 2D space for inclusion testing. This affects the accuracy of the check when working with non-planar geometry.
+Projection settings (used for inclusion checks).
 
-</details>
+📦 See: Geo2DProjection configuration
 
-<details>
-
-<summary><strong>SampleInputs</strong><br><em>Sample inputs.</em></summary>
-
-Determines how input splines are sampled during inclusion testing:
-
-* **All**: Tests against all points along the spline.
-* **Closest**: Only tests against the closest point on the spline.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>CheckType</strong><br><em>Type of inclusion test to perform.</em></summary>
+<summary><strong>Sample Inputs</strong> <code>PCGExSplineSamplingIncludeMode</code></summary>
 
-Defines the type of inclusion test to perform:
+Sample inputs.
 
-* **IsInside**: Point is inside the shape.
-* **IsOutside**: Point is outside the shape.
-* **IsOnEdge**: Point is on the edge of the shape.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Pick</strong><br><em>If a point is both inside and outside a spline (if there are multiple ones), decide what value to favor.</em></summary>
+<summary><strong>Check Type</strong> <code>PCGExSplineCheckType</code></summary>
 
-Controls behavior when a point's inclusion status conflicts across multiple paths:
+Controls check type.
 
-* **Closest**: Uses the result from the closest path.
-* **All**: Requires all paths to agree for a pass.
-
-</details>
-
-<details>
-
-<summary><strong>Tolerance</strong><br><em>Tolerance value used to determine whether a point is considered on the spline or not.</em></summary>
-
-A distance threshold used to determine if a point lies on or near the spline. Larger values make inclusion checks more lenient.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bSplineScalesTolerance</strong><br><em>Scale the tolerance with spline' "thickness" (Scale' length).</em></summary>
+<summary><strong>Pick</strong> <code>PCGExSplineFilterPick</code></summary>
 
-When enabled, scales the tolerance value based on the spline's thickness to account for varying scale in inclusion checks.
+If a point is both inside and outside a spline (if there are multiple ones), decide what value to favor.
 
-</details>
-
-<details>
-
-<summary><strong>InclusionOffset</strong><br><em>If non-zero, will apply an offset (inset) to the data used for inclusion testing.</em></summary>
-
-Applies a uniform offset to the shape used for inclusion testing. Positive values inset the shape, negative values outset it.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bUseMinInclusionCount</strong><br><em>Require a minimum number of paths to include a point.</em></summary>
+<summary><strong>Tolerance</strong> <code>double</code></summary>
 
-When enabled, requires a minimum number of paths to include a point.
+Tolerance value used to determine whether a point is considered on the spline or not
 
-</details>
-
-<details>
-
-<summary><strong>MinInclusionCount</strong><br><em>Minimum number of paths that must include a point for it to pass the filter.</em></summary>
-
-The minimum number of paths that must include a point for it to pass the filter. Only used when **bUseMinInclusionCount** is enabled.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bUseMaxInclusionCount</strong><br><em>Set a maximum number of paths that can include a point.</em></summary>
+<summary><strong>Spline Scales Tolerance</strong> <code>bool</code></summary>
 
-When enabled, sets a maximum number of paths that can include a point.
+Scale the tolerance with spline' "thickness" (Scale' length)
 
-</details>
-
-<details>
-
-<summary><strong>MaxInclusionCount</strong><br><em>Maximum number of paths that can include a point for it to pass the filter.</em></summary>
-
-The maximum number of paths that can include a point for it to pass the filter. Only used when **bUseMaxInclusionCount** is enabled.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bInvert</strong><br><em>If enabled, invert the result of the test.</em></summary>
+<summary><strong>Inclusion Offset</strong> <code>double</code></summary>
 
-When enabled, reverses the inclusion logic. Points that would normally pass now fail and vice versa.
+If non-zero, will apply an offset (inset) to the data used for inclusion testing.
 
-</details>
-
-<details>
-
-<summary><strong>ExpandZAxis</strong><br><em>Controls how Z-axis values are handled during projection (advanced setting).</em></summary>
-
-Controls how Z-axis values are handled during projection (advanced setting).
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>WindingMutation</strong><br><em>Lets you enforce a path winding for testing.</em></summary>
+<summary><strong>Use Min Inclusion Count</strong> <code>bool</code></summary>
 
-Forces the winding direction of paths to ensure consistent inclusion results:
+Controls use min inclusion count.
 
-* **Unchanged**: Uses original winding.
-* **Clockwise**: Forces clockwise winding.
-* **CounterClockwise**: Forces counter-clockwise winding.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Fidelity</strong><br><em>When projecting, defines the resolution of the polygon created from the spline. Lower values means higher fidelity, but slower execution.</em></summary>
+<summary><strong>Min Inclusion Count</strong> <code>int32</code></summary>
 
-Controls how many points are used to approximate a spline when converting it into a polygon for inclusion testing. Lower values mean more accurate but slower tests.
+Controls min inclusion count.
 
-</details>
-
-<details>
-
-<summary><strong>bCheckAgainstDataBounds</strong><br><em>If enabled, when used with a collection filter, will use collection bounds as a proxy point instead of per-point testing.</em></summary>
-
-When enabled, uses the bounding box of each data source for inclusion testing instead of individual points. Improves performance for large collections.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bIgnoreSelf</strong><br><em>If enabled, a collection will never be tested against itself.</em></summary>
+<summary><strong>Use Max Inclusion Count</strong> <code>bool</code></summary>
 
-When enabled, prevents a collection from being tested against its own data, avoiding self-inclusion issues.
+Controls use max inclusion count.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-A game designer wants to place trees only within a defined forest area. They create a polygonal path representing the forest boundary and use this filter subnode to ensure that any point placed outside the boundary is discarded. The designer sets **CheckType** to "IsInside", and **Invert** to false, so only points inside the polygon pass the test.
+<summary><strong>Max Inclusion Count</strong> <code>int32</code></summary>
 
-#### Notes
+Controls max inclusion count.
 
-* This subnode works best with closed paths or polygons.
-* Performance can be improved by using **bCheckAgainstDataBounds** for large collections.
-* Tolerance settings are important when dealing with splines that have sharp turns or small details.
-* The **Pick** setting is useful when multiple overlapping shapes are used to define inclusion zones.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invert</strong> <code>bool</code></summary>
+
+If enabled, invert the result of the test
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Expand ZAxis</strong> <code>double</code></summary>
+
+Controls expand zaxis.
+
+</details>
+
+<details>
+
+<summary><strong>Winding Mutation</strong> <code>PCGExWindingMutation</code></summary>
+
+Lets you enforce a path winding for testing
+
+</details>
+
+<details>
+
+<summary><strong>Fidelity</strong> <code>double</code></summary>
+
+When projecting, defines the resolution of the polygon created from the spline. Lower values means higher fidelity, but slower execution.
+
+</details>
+
+<details>
+
+<summary><strong>Check Against Data Bounds</strong> <code>bool</code></summary>
+
+If enabled, when used with a collection filter, will use collection bounds as a proxy point instead of per-point testing
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Ignore Self</strong> <code>bool</code></summary>
+
+If enabled, a collection will never be tested against itself
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExInclusionFilterConfig</code></summary>
+
+Filter Config.
+
+📦 See: InclusionFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Projection Details</strong> <code>PCGExGeo2DProjectionDetails</code></summary>
+
+Projection settings (used for inclusion checks).
+
+📦 See: Geo2DProjection configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Sample Inputs</strong> <code>PCGExSplineSamplingIncludeMode</code></summary>
+
+Sample inputs.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Check Type</strong> <code>PCGExSplineCheckType</code></summary>
+
+Controls check type.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Pick</strong> <code>PCGExSplineFilterPick</code></summary>
+
+If a point is both inside and outside a spline (if there are multiple ones), decide what value to favor.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Tolerance</strong> <code>double</code></summary>
+
+Tolerance value used to determine whether a point is considered on the spline or not
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Spline Scales Tolerance</strong> <code>bool</code></summary>
+
+Scale the tolerance with spline' "thickness" (Scale' length)
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Inclusion Offset</strong> <code>double</code></summary>
+
+If non-zero, will apply an offset (inset) to the data used for inclusion testing.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Use Min Inclusion Count</strong> <code>bool</code></summary>
+
+Controls use min inclusion count.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Min Inclusion Count</strong> <code>int32</code></summary>
+
+Controls min inclusion count.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Use Max Inclusion Count</strong> <code>bool</code></summary>
+
+Controls use max inclusion count.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Max Inclusion Count</strong> <code>int32</code></summary>
+
+Controls max inclusion count.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invert</strong> <code>bool</code></summary>
+
+If enabled, invert the result of the test
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Expand ZAxis</strong> <code>double</code></summary>
+
+Controls expand zaxis.
+
+</details>
+
+<details>
+
+<summary><strong>Winding Mutation</strong> <code>PCGExWindingMutation</code></summary>
+
+Lets you enforce a path winding for testing
+
+</details>
+
+<details>
+
+<summary><strong>Fidelity</strong> <code>double</code></summary>
+
+When projecting, defines the resolution of the polygon created from the spline. Lower values means higher fidelity, but slower execution.
+
+</details>
+
+<details>
+
+<summary><strong>Check Against Data Bounds</strong> <code>bool</code></summary>
+
+If enabled, when used with a collection filter, will use collection bounds as a proxy point instead of per-point testing
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Ignore Self</strong> <code>bool</code></summary>
+
+If enabled, a collection will never be tested against itself
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExFilters\Public\Filters\Points\PCGExInclusionFilter.h`

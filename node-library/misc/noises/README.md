@@ -4,132 +4,146 @@ icon: grid-round-2
 
 # Noises
 
-{% hint style="info" %}
-### AI-generated page -- to be reviewed
+Creates a single Noise3D computational node, to be used with nodes that support it.
 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
-{% endhint %}
+📌 **Subnode** — Connects to **Noise** pins.
 
-> Creates a single Noise3D computational node, to be used with nodes that support it.
+**How It Works**
 
-### Overview
+> AI-Generated, needs proofreading
 
-This factory generates a 3D noise pattern that can be sampled by other nodes in the PCG graph. It defines the parameters and behavior of a noise source, such as frequency, seed, and blending settings.
+* Computes a three-dimensional noise pattern based on input coordinates.
+* Applies a weight factor to the computed noise value for blending purposes when combined with other noise sources.
+* Utilizes the specified blend mode to integrate this Noise3D node's output with outputs from other noise nodes if they are stacked together.
+* Inverts the noise output if the "Invert" option is enabled, effectively flipping the range of values produced by the noise function.
+* Remaps the noise value using a predefined curve (Remap Curve) and its corresponding lookup details (Remap Curve Lookup), altering the distribution or intensity of the noise pattern.
 
-{% hint style="info" %}
-Connects to **Noise** input pins on nodes that support 3D noise sampling.
-{% endhint %}
+#### Configuration
 
-### How It Works
+<details>
 
-The Noise3D Definition creates a procedural noise pattern in three-dimensional space. This pattern can be used to generate terrain features, texture variations, or any other procedural content that benefits from noise-based randomness. The noise is generated using mathematical algorithms that produce smooth, natural-looking variations.
+<summary><strong>Seed</strong> <code>int32</code></summary>
 
-### Inputs
+Controls seed.
 
-* **Noise** - Input pin for connecting to nodes that support 3D noise sampling
+⚡ PCG Overridable
 
-### Outputs
+</details>
 
-* **Noise** - Output pin that provides the noise pattern for downstream processing
+<details>
 
-### Configuration
+<summary><strong>Apply Transform</strong> <code>bool</code></summary>
+
+Controls apply transform.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Transform</strong> <code>Transform</code></summary>
+
+Controls transform.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Frequency</strong> <code>double</code></summary>
+
+Controls frequency.
+
+_Range: min: 0.000001_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Priority</strong> <code>int32</code></summary>
+
+Noise priority, matters for blending and weighting.
+
+⚡ PCG Overridable
+
+</details>
+
+**Constrast**
+
+<details>
+
+<summary><strong>Contrast</strong> <code>double</code></summary>
+
+Contrast adjustment (1.0 = no change, >1 = more contrast, <1 = less)
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Contrast Curve</strong> <code>PCGExContrastCurve</code></summary>
+
+Contrast curve type
+
+⚡ PCG Overridable
+
+</details>
+
+**Weighting**
+
+<details>
+
+<summary><strong>Weight Factor</strong> <code>double</code></summary>
+
+The weight factor for this Noise3D (used when combining multiple noise sources).
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Blend Mode</strong> <code>PCGExNoiseBlendMode</code></summary>
+
+Blend mode when stacked against other noises
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invert</strong> <code>bool</code></summary>
+
+Invert the noise output.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Remap Curve</strong> <code>RuntimeFloatCurve</code></summary>
+
+Curve the value will be remapped over.
+
+</details>
+
+<details>
+
+<summary><strong>Remap Curve Lookup</strong> <code>PCGExCurveLookupDetails</code></summary>
+
+Controls remap curve lookup.
+
+📦 See: CurveLookup configuration
+
+</details>
 
 ***
 
-#### Settings
-
-**Frequency**
-
-_Sets how detailed the noise pattern is._
-
-Higher values create more fine-grained patterns with more variation per unit of space. Lower values create smoother, larger-scale features. For example, a frequency of 0.01 creates large-scale terrain features, while 0.1 creates smaller details.
-
-**Seed**
-
-_Determines the starting point for the noise pattern._
-
-All noise patterns with the same seed will produce identical results. This is useful for creating reproducible procedural content. Changing this value will create a completely different noise pattern.
-
-**Blend Mode**
-
-_Selects how this noise blends with others when combined._
-
-* **Blend**: Standard blending where noise values are averaged or combined based on weights.
-* **Multiply**: Multiplies noise values together, which can create more dramatic effects.
-* **Add**: Adds noise values together, useful for layering multiple noise sources.
-
-**Weight Factor**
-
-_Scales the influence of this noise source._
-
-This value multiplies the final noise output. A weight factor of 2 will double the noise intensity, while 0.5 will halve it. Useful when combining multiple noise sources to control their relative contributions.
-
-**Invert**
-
-_When enabled, flips the noise values from positive to negative and vice versa._
-
-This can be used to create contrasting patterns or to invert the effect of other noise operations.
-
-***
-
-#### Weighting
-
-**Use Local Curve**
-
-_When enabled, uses the local remap curve instead of an external asset._
-
-Controls whether to use a built-in curve editor or reference an external curve asset.
-
-**Remap Curve**
-
-_Selects the curve used to remap noise values._
-
-This curve modifies how noise values are distributed. For example, using a steep S-curve can create more dramatic contrast in the output.
-
-**Apply Transform**
-
-_When enabled, applies a transformation to the input coordinates before sampling._
-
-This allows you to scale, rotate, or translate the noise pattern in space.
-
-**Transform**
-
-_Configures the transformation applied to input coordinates._
-
-Controls how the noise is transformed in 3D space. This can be used to create directional patterns or to stretch/rotate noise features.
-
-***
-
-#### Contrast
-
-**Contrast**
-
-_Adjusts the contrast of the noise output._
-
-A value of 1.0 means no change. Values greater than 1 increase contrast (making peaks and valleys more extreme), while values less than 1 decrease contrast (smoothing out variations).
-
-**Contrast Curve**
-
-_Selects the curve type used for applying contrast adjustments._
-
-* **Power**: Simple power-based curve that's predictable and easy to control.
-* **S-Curve (Sigmoid)**: Smooth S-curve using tanh that never clips and provides natural-looking transitions.
-* **Gain**: Attempt function S-curve that's symmetrical and subtle, good for fine-tuning contrast.
-
-### Usage Example
-
-To create a terrain with varied height:
-
-1. Add a "Noise3D Definition" node to your graph
-2. Set Frequency to 0.01 for large-scale terrain features
-3. Set Seed to 42 for reproducible results
-4. Connect this node to a "Noise3D Sample" node that will use the noise to drive point heights
-5. Adjust Weight Factor and Blend Mode to combine with other noise sources for more complex terrain
-
-### Notes
-
-* Noise patterns are deterministic, meaning identical seed and frequency values will always produce the same result
-* The Priority setting affects how multiple noise sources are ordered when blended together
-* Use the Remap Curve to shape how noise values are distributed across the output range
-* Contrast adjustments can dramatically change the appearance of noise without changing its fundamental pattern
-* For best performance, keep the number of active noise definitions low in complex graphs
+Source: `Source\PCGExNoise3D\Public\Core\PCGExNoise3DFactoryProvider.h`

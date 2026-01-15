@@ -1,0 +1,6 @@
+---
+icon: info
+---
+
+# Common Settings
+

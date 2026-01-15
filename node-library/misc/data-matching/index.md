@@ -5,73 +5,103 @@ icon: circle-dashed
 
 # Index
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Match by index
 
-> Matches data points based on index values between target and candidate data.
+📌 **Subnode** — Connects to **Match Rules** pins.
 
-#### How It Works
+**How It Works**
 
-This node pairs up data points from two sets — a target set and a candidate set — by comparing their index values. It checks whether the index of each point in one set matches an index in the other set, depending on how you configure the matching behavior.
+> AI-Generated, needs proofreading
 
-The process works like this:
-
-1. The node reads an index value from either the **Target** or **Candidate** data, based on your selection.
-2. For every point in the target data:
-   * If the source is **Target**, it compares that point’s index with the candidate data's indices.
-   * If the source is **Candidate**, it compares the candidate’s index with the target data's indices.
-3. When a match is found, the corresponding points are considered matched.
-4. If an index is out of range (like a negative number or one higher than the available data), the node uses a safety mode to decide what to do:
-   * **Ignore**: Skips invalid indices.
-   * **Tile**: Wraps around so that a negative index becomes a valid one at the end.
-   * **Clamp**: Forces invalid indices into the nearest valid range.
-   * **Yoyo**: Bounces back and forth between valid indices.
+* The node reads an attribute specified by "Source" from candidates within the @Data domain.
+* It uses the value of the "Index Attribute" to determine which index in the source data to match against.
+* The "Index Safety" setting determines how the node handles cases where the index might be out of bounds or invalid.
+* Configuration settings under "Config" define additional rules that govern the matching process.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Source</strong><br><em>Which data source to read the index from.</em></summary>
+<summary><strong>Source</strong> <code>PCGExMatchByIndexSource</code></summary>
 
-Controls whether the node reads the index value from the target or candidate data for comparison.
+The attribute to read on the candidates (the data that's not used as target). Only support @Data domain, and will only try to read from there.
 
-**Values**:
+**Values:**
 
-* **Target**: The index value is taken from the target data and compared against the candidate's indices.
-* **Candidate**: The index value is taken from the candidate data and compared against the target's indices.
+* **Target**: Reads the specific index value on the target and compares it against the index of the input candidate
+* **Candidate**: Reads the specific index value on the input candidate and compares it against the index of the target
 
-</details>
-
-<details>
-
-<summary><strong>IndexAttribute</strong><br><em>The attribute to read on the candidates (the data that's not used as target).</em></summary>
-
-Defines which attribute contains the index values for matching. Only attributes in the `@Data` domain are supported.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>IndexSafety</strong><br><em>How to handle out-of-bounds indices.</em></summary>
+<summary><strong>Index Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-Controls how the node behaves when an index is outside the valid range of available data.
+The attribute to read on the candidates (the data that's not used as target). Only support @Data domain, and will only try to read from there.
 
-**Values**:
-
-* **Ignore**: Out-of-bounds indices are skipped.
-* **Tile**: Out-of-bounds indices wrap around to valid indices.
-* **Clamp**: Out-of-bounds indices are clamped to the nearest valid index.
-* **Yoyo**: Out-of-bounds indices are mirrored back and forth.
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Imagine you have two sets of points: one representing a mesh’s vertices (target) and another representing particles (candidate). You want to connect each particle to its corresponding vertex based on their position in the list. By setting `Source` to **Target**, reading an index attribute from the target, and using `IndexSafety` as **Tile**, you can match particles to vertices even if there are more particles than vertices.
+<summary><strong>Index Safety</strong> <code>PCGExIndexSafety</code></summary>
 
-#### Notes
+Controls index safety.
 
-* Ensure that the index attributes are properly defined and populated on both target and candidate data.
-* The `IndexAttribute` must be in the `@Data` domain.
-* Out-of-bounds indices are handled according to the selected `IndexSafety` mode, which can significantly affect matching behavior.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExMatchByIndexConfig</code></summary>
+
+Rules properties
+
+📦 See: MatchByIndex configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Source</strong> <code>PCGExMatchByIndexSource</code></summary>
+
+The attribute to read on the candidates (the data that's not used as target). Only support @Data domain, and will only try to read from there.
+
+**Values:**
+
+* **Target**: Reads the specific index value on the target and compares it against the index of the input candidate
+* **Candidate**: Reads the specific index value on the input candidate and compares it against the index of the target
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Index Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+The attribute to read on the candidates (the data that's not used as target). Only support @Data domain, and will only try to read from there.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Index Safety</strong> <code>PCGExIndexSafety</code></summary>
+
+Controls index safety.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExMatching\Public\Matching\PCGExMatchByIndex.h`

@@ -5,640 +5,770 @@ icon: circle
 
 # Nearest Path
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Sample the nearest(s) paths.
 
-> Sample the nearest paths and extract various metrics like distance, transform, angle, and more.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-The **Sample : Nearest Path** node finds the closest paths to each input point and samples them based on configurable settings. It's useful for aligning points with nearby curves or splines, such as placing objects along roads, rivers, or other linear features in a procedural world.
-
-For each input point, the node first projects it onto a 2D plane using specified projection settings. Then it filters target paths based on whether they are open lines or closed loops. It checks if the projected point is within the defined minimum and maximum range from each path's edge. If inclusion testing is enabled, it also verifies whether the point lies inside the path.
-
-Depending on the sampling method selected, the node either samples all paths within range or picks just the closest one. It then samples the selected path(s) at a specific alpha value, handling closed loops with optional wrapping of alpha values. The results are blended together using weighting methods, and the final data is written to attributes or applied directly to the points.
+* The node samples paths based on proximity to determine which path is nearest.
+* If "Data Matching" is enabled, the node filters targets for sampling according to specified data criteria.
+* The node uses settings defined in "Projection Details" and "Sample Inputs" to configure how it processes and selects paths.
+* Depending on the selected "Sample Method", the node applies a specific algorithm to determine the nearest path(s).
+* If applicable, the "Sort direction" setting influences the order in which sampled paths are sorted or processed.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Data Matching</strong><br><em>If enabled, allows you to filter out which targets get sampled by which data.</em></summary>
+<summary><strong>Data Matching</strong> <code>PCGExMatchingDetails</code></summary>
 
-When enabled, you can define how input points map to target paths for sampling. This is useful when you have multiple sets of paths and want to control which point set samples from which path set.
+If enabled, allows you to filter out which targets get sampled by which data
 
+📦 See: Matching configuration
+
 </details>
 
 <details>
 
-<summary><strong>Projection Details</strong><br><em>Projection settings.</em></summary>
+<summary><strong>Projection Details</strong> <code>PCGExGeo2DProjectionDetails</code></summary>
 
-Settings to project the 3D points onto a 2D plane for distance calculations. This is important for accurate nearest-path finding in planar space.
+Projection settings.
 
-**Values**:
+📦 See: Geo2DProjection configuration
 
-* **XY Plane**: Project onto the XY plane.
-* **XZ Plane**: Project onto the XZ plane.
-* **YZ Plane**: Project onto the YZ plane.
-* **Custom Normal**: Use a custom normal vector for projection.
+⚡ PCG Overridable
 
 </details>
 
 <details>
+
+<summary><strong>Process Filtered Out As Fails</strong> <code>bool</code></summary>
+
+If enabled, mark filtered out points as "failed". Otherwise, just skip the processing altogether. Only uncheck this if you want to ensure existing attribute values are preserved.
 
-<summary><strong>Sample Inputs</strong><br><em>Sample inputs.</em></summary>
+</details>
 
-Controls which types of paths are considered for sampling.
+<details>
 
-**Values**:
+<summary><strong>Prune Failed Samples</strong> <code>bool</code></summary>
 
-* **All**: Sample all input paths.
-* **Closed loops only**: Only sample closed-loop paths (e.g., circles).
-* **Open lines only**: Only sample open-line paths (e.g., straight lines).
+If enabled, points that failed to sample anything will be pruned.
 
 </details>
 
 <details>
+
+<summary><strong>Ignore Self</strong> <code>bool</code></summary>
 
-<summary><strong>Sample Method</strong><br><em>Sampling method.</em></summary>
+Controls ignore self.
 
-Determines how many paths to sample per point and how to select them.
+</details>
+
+**Additional Outputs**
+
+<details>
+
+<summary><strong>Write Num Inside</strong> <code>bool</code></summary>
 
-**Values**:
+Write the inside/outside status of the point toward any sampled spline.
 
-* **Within Range**: Sample all paths within the specified range.
-* **Best Candidate**: Sample only the closest path within range, sorted by distance.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Sort Direction</strong><br><em>Sort direction</em></summary>
+<summary><strong>NumInside</strong> <code>Name</code></summary>
 
-When `SampleMethod` is set to `Best Candidate`, this controls whether the closest or farthest path (within range) is selected.
+Name of the 'int32' attribute to write the number of spline this point lies inside
 
-**Values**:
+⚡ PCG Overridable
 
-* **Ascending**: Selects the closest path.
-* **Descending**: Selects the farthest path.
-
 </details>
 
 <details>
+
+<summary><strong>└─ Only if Closed Spline</strong> <code>bool</code></summary>
 
-<summary><strong>Always Sample When Inside</strong><br><em>If enabled, will always sample paths if the point lies inside, even if further away from the edges than the specified max range.</em></summary>
+Only increment num inside count when comes from a bClosedLoop spline.
 
-When enabled, points that are inside a path (based on inclusion testing) will be sampled even if they exceed the `RangeMax` distance to the path's edge.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Only Sample When Inside</strong><br><em>If enabled, will only sample paths if the point lies inside</em></summary>
+<summary><strong>Write Num Samples</strong> <code>bool</code></summary>
 
-When enabled, only points that pass the inclusion test (inside a path) are sampled. This overrides the range settings.
+Write the sampled distance.
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
 
-<summary><strong>Inclusion Offset</strong><br><em>If non-zero, will apply an offset (inset) to the data used for inclusion testing.</em></summary>
+<summary><strong>NumSamples</strong> <code>Name</code></summary>
 
-A value added or subtracted from the path boundaries during inclusion testing. Positive values inset the path, negative values outset it.
+Name of the 'int32' attribute to write the number of sampled neighbors to.
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
-
-<summary><strong>Range Min Input</strong><br><em>Type of Range Min</em></summary>
 
-Controls how the minimum sampling range is defined.
+<summary><strong>Write Closed Loop</strong> <code>bool</code></summary>
 
-**Values**:
+Write the whether the sampled spline is closed or not.
 
-* **Constant**: Use a fixed value.
-* **Attribute**: Read from an attribute on the input points.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Range Min</strong><br><em>Minimum target range to sample targets.</em></summary>
+<summary><strong>ClosedLoop</strong> <code>Name</code></summary>
 
-The minimum distance from a path's edge for a point to be considered for sampling. Only used when `RangeMinInput` is set to `Constant`.
+Name of the 'bool' attribute to write whether a closed spline was sampled or not.
 
+⚡ PCG Overridable
+
 </details>
 
-<details>
+**Outputs**
 
-<summary><strong>Range Max Input</strong><br><em>Type of Range Min</em></summary>
+<details>
 
-Controls how the maximum sampling range is defined.
+<summary><strong>Write Success</strong> <code>bool</code></summary>
 
-**Values**:
+Write whether the sampling was sucessful or not to a boolean attribute.
 
-* **Constant**: Use a fixed value.
-* **Attribute**: Read from an attribute on the input points.
+⚡ PCG Overridable
 
 </details>
 
 <details>
+
+<summary><strong>Success</strong> <code>Name</code></summary>
 
-<summary><strong>Range Max</strong><br><em>Maximum target range to sample targets.</em></summary>
+Name of the 'boolean' attribute to write sampling success to.
 
-The maximum distance from a path's edge for a point to be considered for sampling. Only used when `RangeMaxInput` is set to `Constant`.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Height Inclusion</strong><br><em>If the value is greater than 0, will do a rough vertical check as part of the projected inclusion. 0 is infinite.</em></summary>
+<summary><strong>Write Transform</strong> <code>bool</code></summary>
 
-A vertical tolerance for inclusion testing. If set to a positive value, points must also be within this vertical distance from the path's plane to be considered inside.
+Write the sampled transform.
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
 
-<summary><strong>Sample Specific Alpha</strong><br><em>Whether spline should be sampled at a specific alpha</em></summary>
+<summary><strong>Transform</strong> <code>Name</code></summary>
 
-When enabled, allows you to specify a custom alpha value for sampling instead of using the default (e.g., closest point on path).
+Name of the 'transform' attribute to write sampled Transform to.
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
+
+<summary><strong>Write Look At Transform</strong> <code>bool</code></summary>
+
+Write the sampled transform.
+
+⚡ PCG Overridable
+
+</details>
 
-<summary><strong>Sample Alpha Input</strong><br><em>Where to read the sampling alpha from.</em></summary>
+<details>
 
-Controls how the alpha value is determined for sampling.
+<summary><strong>LookAt</strong> <code>Name</code></summary>
 
-**Values**:
+Name of the 'transform' attribute to write sampled Transform to.
 
-* **Constant**: Use a fixed constant value.
-* **Attribute**: Read from an attribute on the input points.
+⚡ PCG Overridable
 
 </details>
 
 <details>
+
+<summary><strong>├─ Align</strong> <code>PCGExAxisAlign</code></summary>
+
+The axis to align transform the look at vector to.
 
-<summary><strong>Sample Alpha Mode</strong><br><em>How to interpret the sample alpha value.</em></summary>
+⚡ PCG Overridable
+
+</details>
+
+<details>
 
-Defines how the alpha value is interpreted when sampling.
+<summary><strong>├─ Use Up from...</strong> <code>PCGExSampleSource</code></summary>
 
-**Values**:
+Up vector source.
 
-* **Alpha**: Value between 0 and 1.
-* **Time**: Value representing time along the path (0 to number of segments).
-* **Distance**: Distance along the path in world units.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Wrap Closed Loops</strong><br><em>Whether to wrap out of bounds value on closed loops.</em></summary>
+<summary><strong>└─ Up Vector (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-When sampling a closed loop with an alpha outside \[0,1], this setting determines if the value wraps around (e.g., 1.5 becomes 0.5).
+The attribute or property on selected source to use as Up vector for the look at transform.
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
 
-<summary><strong>Sample Alpha Constant</strong><br><em>Constant sample alpha.</em></summary>
+<summary><strong>└─ Up Vector (Axis)</strong> <code>PCGExAxis</code></summary>
 
-The fixed alpha value used for sampling when `SampleAlphaInput` is set to `Constant`.
+The axis on the target to use as Up vector for the look at transform.
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
+
+<summary><strong>└─ Up Vector</strong> <code>Vector</code></summary>
 
-<summary><strong>Apply Sampling</strong><br><em>Whether and how to apply sampled result directly (not mutually exclusive with output)</em></summary>
+The constant to use as Up vector for the look at transform.
 
-Controls whether the sampled transform is applied directly to the input point's location, rotation, or scale.
+⚡ PCG Overridable
 
 </details>
 
 <details>
+
+<summary><strong>Write Distance</strong> <code>bool</code></summary>
+
+Write the sampled distance.
+
+⚡ PCG Overridable
+
+</details>
 
-<summary><strong>Distance Settings</strong><br><em>Distance method to be used for source points.</em></summary>
+<details>
 
-How distance is calculated between points and paths for inclusion and weighting.
+<summary><strong>Distance</strong> <code>Name</code></summary>
 
-**Values**:
+Name of the 'double' attribute to write sampled distance to.
 
-* **Center**: Distance from the point's center.
-* **Closest Point**: Distance to the closest point on the path.
-* **Edge**: Distance to the edge of the path (if applicable).
+⚡ PCG Overridable
 
 </details>
 
 <details>
+
+<summary><strong>├─ Normalized</strong> <code>bool</code></summary>
+
+Whether to output normalized distance or not
+
+⚡ PCG Overridable
+
+</details>
 
-<summary><strong>Weight Method</strong><br><em>Weight method used for blending</em></summary>
+<details>
 
-How weights are calculated for blending multiple samples.
+<summary><strong>│ └─ OneMinus</strong> <code>bool</code></summary>
 
-**Values**:
+Whether to do a OneMinus on the normalized distance value
 
-* **Full Range**: Uniform weight across all samples.
-* **Inverse Distance**: Higher weight to closer samples.
-* **Custom Curve**: Use a custom curve defined in `Weight Over Distance`.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Weight From Original Transform</strong><br><em>If enabled, will preserve the original point transform as base for weighting. Otherwise, use transform identity.</em></summary>
+<summary><strong>└─ Scale</strong> <code>double</code></summary>
 
-When enabled, uses the original point's location/rotation for distance calculations in weighting. Otherwise, assumes an identity transform.
+Scale factor applied to the distance output; allows to easily invert it using -1
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
+
+<summary><strong>Write Signed Distance</strong> <code>bool</code></summary>
 
-<summary><strong>Use Local Curve</strong><br><em>Whether to use in-editor curve or an external asset.</em></summary>
+Write the sampled Signed distance.
 
-Controls whether to define the weight curve directly in the node (`Local`) or load it from a file (`External`).
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Weight Over Distance</strong><br><em>Curve that balances weight over distance</em></summary>
+<summary><strong>SignedDistance</strong> <code>Name</code></summary>
 
-A curve defining how much weight each sample contributes based on its distance. Only used when `Use Local Curve` is enabled.
+Name of the 'double' attribute to write sampled Signed distance to.
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
+
+<summary><strong>├─ Axis</strong> <code>PCGExAxis</code></summary>
 
-<summary><strong>Write Success</strong><br><em>Write whether the sampling was sucessful or not to a boolean attribute.</em></summary>
+Axis to use to calculate the distance' sign
 
-When enabled, writes a boolean attribute indicating if the point successfully sampled at least one path.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Success Attribute Name</strong><br><em>Name of the 'boolean' attribute to write sampling success to.</em></summary>
+<summary><strong>├─ Only if Closed Path</strong> <code>bool</code></summary>
 
-The name of the boolean attribute that stores the success status.
+Only sign the distance if at least one sampled spline is a bClosedLoop spline.
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
+
+<summary><strong>└─ Scale</strong> <code>double</code></summary>
 
-<summary><strong>Write Transform</strong><br><em>Write the sampled transform.</em></summary>
+Scale factor applied to the signed distance output; allows to easily invert it using -1
 
-When enabled, writes the blended or first sampled transform to an attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Transform Attribute Name</strong><br><em>Name of the 'transform' attribute to write sampled Transform to.</em></summary>
+<summary><strong>Write Component Wise Distance</strong> <code>bool</code></summary>
 
-The name of the transform attribute that stores the sampled result.
+Write the sampled component-wise distance.
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
 
-<summary><strong>Write LookAt Transform</strong><br><em>Write the sampled transform.</em></summary>
+<summary><strong>Component Wise Distance</strong> <code>Name</code></summary>
 
-When enabled, calculates and writes a look-at transform based on the sampled path direction.
+Name of the 'FVector' attribute to write component-wise distance to.
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
+
+<summary><strong>└─ Absolute</strong> <code>bool</code></summary>
 
-<summary><strong>LookAt Attribute Name</strong><br><em>Name of the 'transform' attribute to write sampled Transform to.</em></summary>
+Whether to output absolute or signed component wise distances
 
-The name of the transform attribute that stores the look-at result.
+⚡ PCG Overridable
 
 </details>
 
 <details>
+
+<summary><strong>Write Angle</strong> <code>bool</code></summary>
+
+Write the sampled angle.
+
+⚡ PCG Overridable
+
+</details>
 
-<summary><strong>Align Axis</strong><br><em>The axis to align transform the look at vector to.</em></summary>
+<details>
 
-Which axis of the look-at transform should point along the sampled path direction.
+<summary><strong>Angle</strong> <code>Name</code></summary>
 
-**Values**:
+Name of the 'double' attribute to write sampled Signed distance to.
 
-* **Forward**: Align the forward axis.
-* **Backward**: Align the backward axis.
-* **Right**: Align the right axis.
-* **Left**: Align the left axis.
-* **Up**: Align the up axis.
-* **Down**: Align the down axis.
+⚡ PCG Overridable
 
 </details>
 
 <details>
+
+<summary><strong>├─ Axis</strong> <code>PCGExAxis</code></summary>
+
+Axis to use to calculate the angle
+
+⚡ PCG Overridable
+
+</details>
 
-<summary><strong>Use Up From</strong><br><em>Up vector source.</em></summary>
+<details>
 
-Controls how the up vector is determined for the look-at transform.
+<summary><strong>└─ Range</strong> <code>PCGExAngleRange</code></summary>
 
-**Values**:
+Unit/range to output the angle to.
 
-* **Constant**: Use a fixed constant vector.
-* **Source**: Use an attribute from the input points.
-* **Target**: Use a specific axis of the sampled path.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Up Vector Constant</strong><br><em>The constant to use as Up vector for the look at transform.</em></summary>
+<summary><strong>Write Time</strong> <code>bool</code></summary>
 
-The fixed vector used as the up direction when `Use Up From` is set to `Constant`.
+Write the sampled time (spline space).
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
+
+<summary><strong>Time</strong> <code>Name</code></summary>
 
-<summary><strong>Write Distance</strong><br><em>Write the sampled distance.</em></summary>
+Name of the 'double' attribute to write sampled spline Time to.
 
-When enabled, writes the sampled distance to an attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Distance Attribute Name</strong><br><em>Name of the 'double' attribute to write sampled distance to.</em></summary>
+<summary><strong>Write Segment Time</strong> <code>bool</code></summary>
 
-The name of the double attribute that stores the distance.
+Write the sampled time (spline space).
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
+
+<summary><strong>Segment Time</strong> <code>Name</code></summary>
 
-<summary><strong>Normalized Distance</strong><br><em>Whether to output normalized distance or not</em></summary>
+Name of the 'double' attribute to write sampled spline Time to.
 
-When enabled, normalizes the distance between 0 and 1 based on the range settings.
+⚡ PCG Overridable
 
 </details>
 
+**Sampling**
+
 <details>
+
+<summary><strong>Sample Inputs</strong> <code>PCGExPathSamplingIncludeMode</code></summary>
 
-<summary><strong>OneMinus Distance</strong><br><em>Whether to do a OneMinus on the normalized distance value</em></summary>
+Sample inputs.
 
-When enabled, subtracts the normalized distance from 1 (inverts it).
+**Values:**
 
+* **All**: Sample all inputs
+* **Closed loops only**: Sample only closed loops
+* **Open lines only**: Sample only open lines
+
+⚡ PCG Overridable
+
 </details>
 
 <details>
+
+<summary><strong>Sample Method</strong> <code>PCGExSampleMethod</code></summary>
 
-<summary><strong>Distance Scale</strong><br><em>Scale factor applied to the distance output; allows to invert it using -1</em></summary>
+Sampling method.
 
-A multiplier applied to the final distance value. Use -1 to invert the direction.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Write Signed Distance</strong><br><em>Write the sampled Signed distance.</em></summary>
+<summary><strong>└─ Sort direction</strong> <code>PCGExSortDirection</code></summary>
 
-When enabled, writes a signed distance indicating whether the point is inside or outside the path.
+Sort direction
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
 
-<summary><strong>Signed Distance Attribute Name</strong><br><em>Name of the 'double' attribute to write sampled Signed distance to.</em></summary>
+<summary><strong>Always Sample When Inside</strong> <code>bool</code></summary>
 
-The name of the double attribute that stores the signed distance.
+If enabled, will always sample paths if the point lies inside, even if further away from the edges than the specified max range.
 
 </details>
 
 <details>
+
+<summary><strong>Only Sample When Inside</strong> <code>bool</code></summary>
+
+If enabled, will only sample paths if the point lies inside
+
+</details>
 
-<summary><strong>Sign Axis</strong><br><em>Axis to use to calculate the distance' sign</em></summary>
+<details>
 
-Which axis is used to determine the sign of the distance (positive if pointing in the same direction as the axis).
+<summary><strong>Inclusion Offset</strong> <code>double</code></summary>
 
-**Values**:
+If non-zero, will apply an offset (inset) to the data used for inclusion testing.
 
-* **Forward**: Use X-axis.
-* **Backward**: Use -X-axis.
-* **Right**: Use Y-axis.
-* **Left**: Use -Y-axis.
-* **Up**: Use Z-axis.
-* **Down**: Use -Z-axis.
+⚡ PCG Overridable
 
 </details>
 
 <details>
+
+<summary><strong>Range Min Input</strong> <code>PCGExInputValueType</code></summary>
 
-<summary><strong>Only If Closed Path</strong><br><em>Only sign the distance if at least one sampled spline is a bClosedLoop spline.</em></summary>
+Type of Range Min
 
-When enabled, only calculates a signed distance if at least one of the sampled paths is closed.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Signed Distance Scale</strong><br><em>Scale factor applied to the signed distance output; allows to invert it using -1</em></summary>
+<summary><strong>Range Min (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-A multiplier applied to the final signed distance value. Use -1 to invert the direction.
+Minimum target range to sample targets.
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
+
+<summary><strong>Range Min</strong> <code>double</code></summary>
 
-<summary><strong>Write Component Wise Distance</strong><br><em>Write the sampled component-wise distance.</em></summary>
+Minimum target range to sample targets.
 
-When enabled, writes the distance broken down into X, Y, Z components.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Component Wise Distance Attribute Name</strong><br><em>Name of the 'FVector' attribute to write component-wise distance to.</em></summary>
+<summary><strong>Range Max Input</strong> <code>PCGExInputValueType</code></summary>
 
-The name of the FVector attribute that stores the component-wise distance.
+Type of Range Min
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
+
+<summary><strong>Range Max (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-<summary><strong>Absolute Component Wise Distance</strong><br><em>Whether to output absolute or signed component wise distances</em></summary>
+Maximum target range to sample targets.
 
-When enabled, outputs only the magnitude of each component. Otherwise, includes sign information.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Write Angle</strong><br><em>Write the sampled angle.</em></summary>
+<summary><strong>Range Max</strong> <code>double</code></summary>
 
-When enabled, writes the angle between the point and the path's direction at the sample point.
+Maximum target range to sample targets.
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
 
-<summary><strong>Angle Attribute Name</strong><br><em>Name of the 'double' attribute to write sampled Signed distance to.</em></summary>
+<summary><strong>Height Inclusion</strong> <code>double</code></summary>
 
-The name of the double attribute that stores the angle.
+If the value is greater than 0, will do a rough vertical check as part of the projected inclusion. 0 is infinite.
 
 </details>
 
 <details>
+
+<summary><strong>Sample Specific Alpha</strong> <code>bool</code></summary>
+
+Whether spline should be sampled at a specific alpha
 
-<summary><strong>Angle Axis</strong><br><em>Axis to use to calculate the angle</em></summary>
+⚡ PCG Overridable
+
+</details>
+
+<details>
 
-Which axis is used as a reference for calculating the angle.
+<summary><strong>Sample Alpha Input</strong> <code>PCGExInputValueType</code></summary>
 
-**Values**:
+Where to read the sampling alpha from.
 
-* **Forward**: Use X-axis.
-* **Backward**: Use -X-axis.
-* **Right**: Use Y-axis.
-* **Left**: Use -Y-axis.
-* **Up**: Use Z-axis.
-* **Down**: Use -Z-axis.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Angle Range</strong><br><em>Unit/range to output the angle to.</em></summary>
+<summary><strong>├─ Mode</strong> <code>PCGExPathSampleAlphaMode</code></summary>
 
-The unit used for the angle output.
+How to interpret the sample alpha value.
 
-**Values**:
+**Values:**
 
-* **Radians (0..+PI)**: 0 to PI radians.
-* **Radians (-PI..+PI)**: -PI to +PI radians.
-* **Radians (0..+TAU)**: 0 to 2\*PI radians.
-* **Degrees (0..+180)**: 0 to 180 degrees.
-* **Degrees (-180..+180)**: -180 to +180 degrees.
-* **Degrees (0..+360)**: 0 to 360 degrees.
-* **Normalized Half (0..180 -> 0..1)**: Normalized from 0 to 180 degrees to 0 to 1.
-* **Normalized (0..+360 -> 0..1)**: Normalized from 0 to 360 degrees to 0 to 1.
-* **Inv. Normalized Half (0..180 -> 1..0)**: Inverted normalized from 0 to 180 degrees to 1 to 0.
-* **Inv. Normalized (0..+360 -> 1..0)**: Inverted normalized from 0 to 360 degrees to 1 to 0.
+* **Alpha**: 0 - 1 value
+* **Time**: 0 - N value, where N is the number of segments
+* **Distance**: Distance on the path to sample value at
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
 
-<summary><strong>Write Time</strong><br><em>Write the sampled time (spline space).</em></summary>
+<summary><strong>├─ Wrap Closed Loops</strong> <code>bool</code></summary>
 
-When enabled, writes the time along the path where the sample occurred.
+Whether to wrap out of bounds value on closed loops.
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
+
+<summary><strong>└─ Sample Alpha (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-<summary><strong>Time Attribute Name</strong><br><em>Name of the 'double' attribute to write sampled spline Time to.</em></summary>
+Per-point sample alpha -- Will be translated to `double` under the hood.
 
-The name of the double attribute that stores the time value.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Write Segment Time</strong><br><em>Write the sampled time (spline space).</em></summary>
+<summary><strong>└─ Sample Alpha</strong> <code>double</code></summary>
 
-When enabled, writes the time within the specific segment of the path where the sample occurred.
+Constant sample alpha.
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
+
+<summary><strong>Apply Sampling</strong> <code>PCGExApplySamplingDetails</code></summary>
 
-<summary><strong>Segment Time Attribute Name</strong><br><em>Name of the 'double' attribute to write sampled spline Time to.</em></summary>
+Whether and how to apply sampled result directly (not mutually exclusive with output)
 
-The name of the double attribute that stores the segment time value.
+📦 See: ApplySampling configuration
 
 </details>
 
+**Tagging**
+
 <details>
 
-<summary><strong>Write Num Inside</strong><br><em>Write the inside/outside status of the point toward any sampled spline.</em></summary>
+<summary><strong>Tag If Has Successes</strong> <code>bool</code></summary>
 
-When enabled, writes a count of how many paths the point lies inside.
+Controls tag if has successes.
 
 </details>
 
 <details>
 
-<summary><strong>Num Inside Attribute Name</strong><br><em>Name of the 'int32' attribute to write the number of spline this point lies inside</em></summary>
+<summary><strong>Has Successes Tag</strong> <code>String</code></summary>
 
-The name of the int32 attribute that stores the count of inside paths.
+If enabled, add the specified tag to the output data if at least a single spline has been sampled.
 
 </details>
 
 <details>
 
-<summary><strong>Only If Closed Spline</strong><br><em>Only increment num inside count when comes from a bClosedLoop spline.</em></summary>
+<summary><strong>Tag If Has No Successes</strong> <code>bool</code></summary>
 
-When enabled, only counts paths that are closed loops (e.g., circles) toward the inside count.
+Controls tag if has no successes.
 
 </details>
 
 <details>
 
-<summary><strong>Write Num Samples</strong><br><em>Write the sampled distance.</em></summary>
+<summary><strong>Has No Successes Tag</strong> <code>String</code></summary>
 
-When enabled, writes how many paths were successfully sampled for each point.
+If enabled, add the specified tag to the output data if no spline was found within range.
 
 </details>
+
+**Weighting**
 
 <details>
 
-<summary><strong>Num Samples Attribute Name</strong><br><em>Name of the 'int32' attribute to write the number of sampled neighbors to.</em></summary>
+<summary><strong>Distance Settings</strong> <code>PCGExDistance</code></summary>
 
-The name of the int32 attribute that stores the count of samples.
+Distance method to be used for source points.
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
 
-<summary><strong>Write Closed Loop</strong><br><em>Write the whether the sampled spline is closed or not.</em></summary>
+<summary><strong>Weight Method</strong> <code>PCGExRangeType</code></summary>
 
-When enabled, writes a boolean indicating if the sampled path was closed (looped).
+Weight method used for blending
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
+
+<summary><strong>Weight From Original Transform</strong> <code>bool</code></summary>
 
-<summary><strong>Closed Loop Attribute Name</strong><br><em>Name of the 'bool' attribute to write whether a closed spline was sampled or not.</em></summary>
+If enabled, will preserve the original point transform as base for weighting. Otherwise, use transform identity.
 
-The name of the bool attribute that stores the closed loop status.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Tag If Has Successes</strong><br><em>If enabled, add the specified tag to the output data if at least a single spline has been sampled.</em></summary>
+<summary><strong>Use Local Curve</strong> <code>bool</code></summary>
 
-When enabled, adds a tag to the output points if they successfully sampled any paths.
+Whether to use in-editor curve or an external asset.
 
 </details>
 
 <details>
 
-<summary><strong>Has Successes Tag</strong><br><em>If enabled, add the specified tag to the output data if at least a single spline has been sampled.</em></summary>
+<summary><strong>Weight Over Distance</strong> <code>RuntimeFloatCurve</code></summary>
 
-The name of the tag added when successful samples are found.
+Curve that balances weight over distance
 
 </details>
 
 <details>
 
-<summary><strong>Tag If Has No Successes</strong><br><em>If enabled, add the specified tag to the output data if no spline was found within range.</em></summary>
+<summary><strong>Weight Over Distance</strong> <code>CurveFloat</code></summary>
 
-When enabled, adds a tag to the output points if they failed to sample any paths.
+Curve that balances weight over distance
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
+
+<summary><strong>Weight Curve Lookup</strong> <code>PCGExCurveLookupDetails</code></summary>
 
-<summary><strong>Has No Successes Tag</strong><br><em>If enabled, add the specified tag to the output data if no spline was found within range.</em></summary>
+Controls weight curve lookup.
 
-The name of the tag added when no samples are found.
+📦 See: CurveLookup configuration
 
 </details>
+
+***
+
+Source: `Source\PCGExElementsSampling\Public\Elements\PCGExSampleNearestPath.h`

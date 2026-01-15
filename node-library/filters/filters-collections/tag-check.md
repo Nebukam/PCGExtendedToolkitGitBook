@@ -5,63 +5,102 @@ icon: circle-dashed
 
 # Tag Check
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Simple tag check on the input collection.
 
-> Filters points based on whether they contain a specific tag that matches a given condition.
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode examines each point in a collection and checks if it contains a particular tag that meets your specified matching criteria. It evaluates the tags assigned to each point and determines whether they match the tag name you've defined using one of several comparison methods. You can choose to match the entire tag name, or just parts of it like the beginning or end. The subnode also supports a strict mode that ignores any value portion of tags formatted as `Tag:Value`, allowing you to focus only on the tag prefix. Optionally, you can reverse the filtering logic so that points that would normally pass are excluded and vice versa.
+> AI-Generated, needs proofreading
+
+* The Data Filter : Tag Check node evaluates each item in an input collection based on a specified tag name and match mode.
+* It compares the tag associated with each item against a constant tag name value using the selected PCGExStringMatchMode to determine if there is a match.
+* In strict mode, the node checks only the prefix of the tag (ignoring any values following a colon), otherwise it considers the entire tag string including potential values.
+* If the "Invert" option is enabled, the node outputs items that do not meet the specified criteria; otherwise, it outputs those that do match.
+* The filtering process adheres to additional configurations defined in the Filter Config setting.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Tag Name</strong><br><em>Constant tag name value.</em></summary>
+<summary><strong>Tag Name</strong> <code>String</code></summary>
 
-The tag name to search for within each point's tags. For example, setting this to `"Terrain"` will look for points tagged with `Terrain`.
+Constant tag name value.
 
-</details>
-
-<details>
-
-<summary><strong>Match</strong><br><em>How to match the tag name.</em></summary>
-
-Defines how to compare the tag name against the point's tags.
-
-**Values**:
-
-* **Equals**: The tag must exactly match the provided tag name.
-* **Contains**: The tag name must be a substring of the point's tag.
-* **Starts with**: The point's tag must begin with the provided tag name.
-* **Ends with**: The point's tag must end with the provided tag name.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Strict Mode</strong><br><em>In strict mode, only check tag prefix and ignore values for tags formatted as `Tag:Value`.</em></summary>
+<summary><strong>Match</strong> <code>PCGExStringMatchMode</code></summary>
 
-When enabled, this subnode ignores any value part of a tag formatted like `Tag:Value` and only compares the prefix. For example, if set to `"Terrain"` and a point has the tag `"Terrain:Grass"`, it will match in strict mode.
+Controls match.
 
 </details>
 
 <details>
 
-<summary><strong>Invert Result</strong><br><em>Invert the result of this filter.</em></summary>
+<summary><strong>Strict</strong> <code>bool</code></summary>
 
-When enabled, points that would normally pass the filter are excluded, and those that fail are included. This allows you to create exclusion filters.
+In strict mode, only check tag prefix and ignore values for tags formatted as `Tag:Value`.
 
 </details>
 
-#### Usage Example
+<details>
 
-You have a point collection tagged with various terrain types like `"Terrain:Grass"`, `"Terrain:Water"`, and `"Terrain:Rock"`. To keep only points tagged as grass, set the **Tag Name** to `"Terrain:Grass"` and **Match** to **Equals**. If you want to include all points tagged with `"Terrain"` regardless of their specific type, enable **Strict Mode** and set **Tag Name** to `"Terrain"`.
+<summary><strong>Invert</strong> <code>bool</code></summary>
 
-#### Notes
+Invert the result of this filter.
 
-* Tags are case-sensitive.
-* This subnode works on point collections that have been tagged using the Tag Data node or similar.
-* Combine multiple tag check subnodes for complex filtering logic.
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExTagCheckFilterConfig</code></summary>
+
+Filter Config.
+
+📦 See: TagCheckFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Tag Name</strong> <code>String</code></summary>
+
+Constant tag name value.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Match</strong> <code>PCGExStringMatchMode</code></summary>
+
+Controls match.
+
+</details>
+
+<details>
+
+<summary><strong>Strict</strong> <code>bool</code></summary>
+
+In strict mode, only check tag prefix and ignore values for tags formatted as `Tag:Value`.
+
+</details>
+
+<details>
+
+<summary><strong>Invert</strong> <code>bool</code></summary>
+
+Invert the result of this filter.
+
+</details>
+
+***
+
+Source: `Source\PCGExFilters\Public\Filters\Collections\PCGExTagCheckFilter.h`

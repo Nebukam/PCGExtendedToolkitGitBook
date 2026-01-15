@@ -5,49 +5,53 @@ icon: circle-dashed
 
 # Picker
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Creates a filter definition that check if the point or collection index is picked, using pickers.
 
-> Creates a filter definition that checks if the point or collection index is picked, using picker subnodes.
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### How It Works
+**How It Works**
 
-The Picker Filter Subnode evaluates whether a point or collection index is included in a set of selected indices. It acts as a conditional gate that allows or rejects data based on predefined selections. This is useful when you want to selectively process only certain points or collections from a larger dataset.
+> AI-Generated, needs proofreading
 
-It operates by using picker subnodes to define which indices should be considered "picked". These picks are then used to determine if a point or collection passes the filter.
-
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes.
-{% endhint %}
+* The node evaluates whether to include or exclude elements based on their index using specified pickers.
+* When "Force Per Point Evaluation" is enabled, the node ensures individual evaluation for each point within collections.
+* If "Invert" is selected, the filter's inclusion criteria are inverted, meaning picked indices will be excluded and vice versa.
+* The "Config" setting allows customization of the filter definition to specify how picking occurs.
 
 #### Configuration
 
 <details>
 
-<summary><strong>bForcePerPointEvaluation</strong><br><em>If enabled, will force per-point evaluation when used in collections only.</em></summary>
+<summary><strong>Force Per Point Evaluation</strong> <code>bool</code></summary>
 
-When enabled, ensures that the filter evaluates each point individually, even when processing collections. This is useful if you want consistent behavior between single points and collections.
+If enabled, will force per-point evaluation when used in collections only.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bInvert</strong><br><em>Invert the filter</em></summary>
+<summary><strong>Invert</strong> <code>bool</code></summary>
 
-When enabled, reverses the filter result. Points that would normally pass now fail, and those that fail now pass.
+Invert the filter
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-1. Create a Picker Subnode (e.g., a Random Picker or Index Picker) to define which indices are picked.
-2. Connect this picker to the Filter : Picker Subnode.
-3. Use the Filter : Picker Subnode in a processing node like "Filter Points" or "Process Collections".
-4. The filter will now only pass points or collections whose indices match those defined by the picker.
+<summary><strong>Config</strong> <code>PCGExPickerFilterConfig</code></summary>
 
-#### Notes
+Filter Config.
 
-* Multiple picker subnodes can be connected to define complex pick sets.
-* This filter works with both individual points and collections.
-* Be cautious when using with large datasets — picking logic should be efficient to avoid performance bottlenecks.
+📦 See: PickerFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExFilters\Public\Filters\Points\PCGExPickerFilter.h`

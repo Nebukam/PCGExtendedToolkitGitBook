@@ -1,6 +1,0 @@
----
-icon: xmark-large
----
-
-# Intersections
-

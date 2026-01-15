@@ -5,82 +5,101 @@ icon: circle
 
 # Fuse Collinear
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+FuseCollinear paths points.
 
-> Fuse collinear points along paths to reduce complexity and smooth geometry.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node simplifies paths by identifying and merging points that are nearly aligned with their neighboring points. It evaluates the angle formed between three consecutive points in a path. If that angle is below a set threshold, the middle point is considered collinear and can be removed or merged with others.
-
-When enabled, it also merges points that exist at exactly the same location. The node supports combining attributes from merged points into the first point of a group using different blending methods like averaging or weighted interpolation.
-
-If a point is merged, it's removed from the path, and its properties are combined with those of the remaining point based on the selected blending settings. Paths that become invalid after merging (for example, having fewer than two points) can be excluded from the output.
+* The FuseCollinear node processes paths by evaluating points based on an angular threshold to determine collinearity.
+* If the Invert Threshold setting is enabled, the node fuses points that do not meet the collinearity criteria, effectively smoothing the path.
+* When Fuse Collocated is enabled, the node treats points that are within a specified Fuse Distance as collinear, allowing for merging of overlapping points.
+* The Do Blend parameter, when set to true, likely influences how the fused points are blended or averaged in the final output.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Threshold</strong><br><em>Angular threshold for collinearity.</em></summary>
+<summary><strong>Threshold</strong> <code>double</code></summary>
 
-Controls how strict the collinearity check is. A lower value means more points will be considered collinear and removed. For example, a value of 5 degrees allows very tight angles to be fused, while 45 degrees lets much wider angles pass through.
+Angular threshold for collinearity.
 
-</details>
-
-<details>
-
-<summary><strong>bInvertThreshold</strong><br><em>Fuse points that are not collinear (Smooth-like).</em></summary>
-
-When enabled, the node fuses points that are **not** collinear instead of those that are. This creates a smoothing effect by removing sharp turns and keeping only the most significant directional changes.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bFuseCollocated</strong><br><em>If enabled, will consider collocated points as collinear.</em></summary>
+<summary><strong>Invert Threshold</strong> <code>bool</code></summary>
 
-When enabled, points that are located at the exact same position (within a small tolerance) are treated as collinear and merged into one point.
+Fuse points that are not collinear (Smooth-like).
 
-</details>
-
-<details>
-
-<summary><strong>FuseDistance</strong><br><em>Distance used to consider point to be overlapping.</em></summary>
-
-Defines how close two points must be to be considered overlapping when `bFuseCollocated` is enabled. Smaller values mean stricter matching, while larger values allow more tolerance.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bDoBlend</strong><br><em>Enable blending of fused point properties.</em></summary>
+<summary><strong>Fuse Collocated</strong> <code>bool</code></summary>
 
-When enabled, the node blends attributes from fused points into the first point of a chain using settings defined in **BlendingDetails** and **UnionDetails**.
+If enabled, will consider collocated points as collinear
 
-</details>
-
-<details>
-
-<summary><strong>BlendingDetails</strong><br><em>Defines how fused point properties and attributes are merged together into the first point of a collinear chain.</em></summary>
-
-Controls how values from multiple points are combined when they are fused. Options include averaging, summing, or using weighted interpolation.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>UnionDetails</strong><br><em>Metadata union settings for fused points.</em></summary>
+<summary><strong>Fuse Distance</strong> <code>double</code></summary>
 
-Defines how metadata from fused points is merged into the first point of a chain. This includes which attributes are preserved and how they are combined.
+Distance used to consider point to be overlapping.
 
 </details>
 
 <details>
 
-<summary><strong>bOmitInvalidPathsFromOutput</strong><br><em>Omits paths that become invalid after fusion.</em></summary>
+<summary><strong>Do Blend</strong> <code>bool</code></summary>
 
-When enabled, paths that become invalid (for example, have fewer than two points after fusion) are excluded from the output entirely.
+Controls do blend.
+
+⚡ PCG Overridable
 
 </details>
+
+<details>
+
+<summary><strong>Blending Details</strong> <code>PCGExBlendingDetails</code></summary>
+
+Defines how fused point properties and attributes are merged together into the first point of a collinear chain.
+
+📦 See: Blending configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Union Details</strong> <code>PCGExUnionMetadataDetails</code></summary>
+
+Controls union details.
+
+📦 See: UnionMetadata configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Omit Invalid Paths From Output</strong> <code>bool</code></summary>
+
+Distance used to consider point to be overlapping.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsPaths\Public\Elements\PCGExFuseCollinear.h`

@@ -4,179 +4,190 @@ icon: circle
 
 # Self Pruning
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+A slower, more precise self pruning node.
 
-> A slower, more precise self pruning node.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node identifies and removes overlapping points within a dataset based on spatial proximity. Unlike faster methods that use approximate hashing, this node performs precise spatial tests for higher accuracy. It can either remove overlapping points or write the count of overlaps to an attribute, allowing for further processing or visual feedback.
-
-The process begins by calculating spatial bounds for each point, which may be expanded based on settings. Then, for every point, it determines how many other points fall within its defined bounds. This count is either used to remove overlapping points or written to an attribute.
+* The Self Pruning node processes point data by either pruning points based on overlap criteria or writing the number of overlaps to an attribute specified in "Output to".
+* Depending on the "Mode" setting, the node either removes overlapping points or records overlap counts without modification.
+* If sorting is enabled via "Sort Direction", the node sorts hash components; if "Randomize" is selected, it introduces randomness into this sort process using a per-point value within the specified "Range".
+* The pruning or counting operation occurs based on the configured settings, but the exact algorithm for determining overlaps and applying the prune or count action remains unspecified.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Mode</strong><br><em>Whether to prune points or write the number of overlaps.</em></summary>
+<summary><strong>Mode</strong> <code>PCGExSelfPruningMode</code></summary>
 
-Controls whether overlapping points are removed from the output or if the number of overlaps is written to an attribute.
+Whether to prune points or write the number of overlaps
 
-**Values**:
+**Values:**
 
-* **Prune**: Removes overlapping points.
-* **Write Result**: Writes overlap counts to an attribute.
-
-</details>
-
-<details>
-
-<summary><strong>Sort Direction</strong><br><em>Whether to sort hash components or not.</em></summary>
-
-Determines the order in which points are processed. Sorting can affect which points are retained when overlaps occur.
-
-**Values**:
-
-* **Ascending**: Points are sorted from low to high.
-* **Descending**: Points are sorted from high to low.
+* **Prune**: Prune points
+* **Write Result**: Write the number of overlaps
 
 </details>
 
 <details>
 
-<summary><strong>Randomize</strong><br><em>Sort over a random per-point value.</em></summary>
+<summary><strong>├─ Sort Direction</strong> <code>PCGExSortDirection</code></summary>
 
-When enabled, points are shuffled before processing using a random value. This ensures varied pruning results when overlaps are evenly distributed.
+Whether to sort hash components or not.
 
-</details>
-
-<details>
-
-<summary><strong>Range</strong><br><em>Sort over a random per-point value.</em></summary>
-
-Controls the range of randomness applied to point sorting. A higher value increases variation in processing order.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Output to</strong><br><em>Name of the attribute to write the number of overlap to.</em></summary>
+<summary><strong>└─ Randomize</strong> <code>bool</code></summary>
 
-The name of the attribute where overlap counts are written when mode is set to "Write Result".
+Sort over a random per-point value
 
-</details>
-
-<details>
-
-<summary><strong>Units</strong><br><em>Discrete mode write the number as-is, relative will normalize against the highest number of overlaps found.</em></summary>
-
-Controls how overlap counts are stored in the output attribute.
-
-**Values**:
-
-* **Discrete**: Stores raw overlap count.
-* **Relative**: Normalizes overlap counts to a 0–1 range based on the maximum overlap found.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>OneMinus</strong><br><em>Whether to do a OneMinus on the normalized overlap count value.</em></summary>
+<summary><strong>─└─ Range</strong> <code>double</code></summary>
 
-When enabled and using relative units, the overlap count is inverted (1 - overlap). This can be useful for creating visual effects where higher density areas appear less prominent.
+Sort over a random per-point value
 
-</details>
-
-<details>
-
-<summary><strong>Precise Test</strong><br><em>If enabled, does very precise and EXPENSIVE spatial tests. Only supported for pruning.</em></summary>
-
-When enabled, uses more accurate but computationally expensive methods to determine overlaps. This is only available in Prune mode.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Primary Mode</strong><br><em>If and how to expand the primary bounds (bounds used for the main point being evaluated).</em></summary>
+<summary><strong>├─ Output to</strong> <code>Name</code></summary>
 
-Controls whether and how to expand the bounds of the main point being evaluated.
+Name of the attribute to write the number of overlap to.
 
-**Values**:
-
-* **None**: No expansion.
-* **Before Transform**: Expands bounds before world transformation.
-* **After Transform**: Expands bounds after world transformation.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Primary Expansion Input</strong><br><em>Type of primary expansion.</em></summary>
+<summary><strong>└─ Units</strong> <code>PCGExMeanMeasure</code></summary>
 
-Defines whether the primary expansion value is a constant or read from an attribute.
+Discrete mode write the number as-is, relative will normalize against the highest number of overlaps found.
 
-**Values**:
-
-* **Constant**: Use a fixed value.
-* **Attribute**: Read the expansion value from an input attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Primary Expansion</strong><br><em>Primary Expansion value. Uniform, discrete offset applied to bounds.</em></summary>
+<summary><strong>└─ OneMinus</strong> <code>bool</code></summary>
 
-The amount by which to expand the primary bounds, either as a constant or read from an attribute depending on the input type.
+Whether to do a OneMinus on the normalized overlap count value
+
+⚡ PCG Overridable
+
+</details>
+
+**Expansion**
+
+<details>
+
+<summary><strong>Precise Test</strong> <code>bool</code></summary>
+
+If enabled, does very precise and EXPENSIVE spatial tests. Only supported for pruning.
 
 </details>
 
 <details>
 
-<summary><strong>Secondary Mode</strong><br><em>If and how to expand the secondary bounds (bounds used for neighbors points against the main point being evaluated).</em></summary>
+<summary><strong>Primary Mode</strong> <code>PCGExSelfPruningExpandOrder</code></summary>
 
-Controls whether and how to expand the bounds of neighbor points during overlap testing.
+If and how to expand the primary bounds (bounds used for the main point being evaluated)
 
-**Values**:
+**Values:**
 
-* **None**: No expansion.
-* **Before Transform**: Expands bounds before world transformation.
-* **After Transform**: Expands bounds after world transformation.
-
-</details>
-
-<details>
-
-<summary><strong>Secondary Expansion Input</strong><br><em>Type of secondary expansion.</em></summary>
-
-Defines whether the secondary expansion value is a constant or read from an attribute.
-
-**Values**:
-
-* **Constant**: Use a fixed value.
-* **Attribute**: Read the expansion value from an input attribute.
+* **None**: Do not expand bounds
+* **Before Transform**: Expand bounds before world transform
+* **After Transform**: Expand bounds after world transform
 
 </details>
 
 <details>
 
-<summary><strong>Secondary Expansion</strong><br><em>Secondary Expansion value. Uniform, discrete offset applied to bounds.</em></summary>
+<summary><strong>├─ Input</strong> <code>PCGExInputValueType</code></summary>
 
-The amount by which to expand the secondary bounds, either as a constant or read from an attribute depending on the input type.
+Type of primary expansion
+
+⚡ PCG Overridable
 
 </details>
 
-{% hint style="info" %}
-Connects to \*\*Point Filters\*\* subnode for filtering which points can be processed.
-{% endhint %}
+<details>
 
-#### Usage Example
+<summary><strong>└─ Primary Expansion (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-You have a point cloud representing potential object placements and want to ensure no two objects are placed too close together. Set the mode to "Prune", enable randomization for varied results, and adjust expansion values to define how far apart points must be. This prevents overlapping placements while maintaining visual variety.
+Primary Expansion value. Uniform, discrete offset applied to bounds.
 
-#### Notes
+⚡ PCG Overridable
 
-* The node is slower than standard pruning methods due to its precise spatial tests.
-* Expansion settings allow fine-tuning of overlap detection sensitivity.
-* When using "Write Result", the output attribute can be used for further filtering or visualization.
+</details>
+
+<details>
+
+<summary><strong>└─ Primary Expansion</strong> <code>double</code></summary>
+
+Primary Expansion value. Uniform, discrete offset applied to bounds.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Secondary Mode</strong> <code>PCGExSelfPruningExpandOrder</code></summary>
+
+If and how to expand the primary bounds (bounds used for neighbors points against the main point being evaluated)
+
+**Values:**
+
+* **None**: Do not expand bounds
+* **Before Transform**: Expand bounds before world transform
+* **After Transform**: Expand bounds after world transform
+
+</details>
+
+<details>
+
+<summary><strong>├─ Input</strong> <code>PCGExInputValueType</code></summary>
+
+Type of secondary expansion
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Secondary Expansion (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Secondary Expansion value. Uniform, discrete offset applied to bounds.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Secondary Expansion</strong> <code>double</code></summary>
+
+Secondary Expansion value. Uniform, discrete offset applied to bounds.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsSampling\Public\Elements\PCGExSelfPruning.h`

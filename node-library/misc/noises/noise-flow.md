@@ -4,84 +4,149 @@ icon: circle-dashed
 
 # Noise : Flow
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Flow noise - time-coherent animated patterns.
 
-> Flow noise generates time-coherent animated patterns using smoothly rotating gradients.
+📌 **Subnode** — Connects to **Noise** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode creates animated noise patterns by rotating gradients over time. Instead of using random noise values, it uses a system where each point has its own unique rotation rate. These rates are determined by the point's position and then scaled by the Rotation Speed setting. As time passes, these gradients rotate in the XY plane, creating smooth, flowing motion. The result is a continuous pattern that feels natural and organic, like water flowing or clouds drifting across the sky.
+> AI-Generated, needs proofreading
+
+* The Noise : Flow node generates time-coherent animated noise patterns based on input parameters such as Octaves, Lacunarity, and Persistence.
+* It uses the specified number of Octaves to layer multiple noise functions, creating more complex patterns by combining them with varying frequencies and amplitudes defined by Lacunarity and Persistence.
+* The Time parameter animates the noise pattern over time, allowing for dynamic changes in the output texture that remain coherent between frames.
+* Rotation Speed modifies the gradients used in generating the noise, causing the animated patterns to rotate at a specified rate.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Octaves</strong><br><em>Number of noise layers to combine.</em></summary>
+<summary><strong>Octaves</strong> <code>int32</code></summary>
 
-Controls how many layers of noise are combined. Each octave adds more detail and complexity to the pattern. Higher values create more intricate, noisy results.
+Controls octaves.
 
-**Values**:
+_Range: min: 1, max: 16_
 
-* **1**: Single layer noise
-* **4**: Four-layer noise with increased complexity
-* **8**: Eight-layer noise for highly detailed patterns
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Lacunarity</strong><br><em>Spacing between noise frequencies.</em></summary>
+<summary><strong>Lacunarity</strong> <code>double</code></summary>
 
-Controls how quickly the frequency of noise increases with each octave. Higher values create more rapid changes in pattern detail.
+Controls lacunarity.
 
-**Values**:
+_Range: min: 1.0, max: 4.0_
 
-* **1.0**: Minimal spacing between octaves
-* **2.0**: Standard spacing (default)
-* **4.0**: Fast spacing for sharp transitions
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Persistence</strong><br><em>Amplitude of each noise octave.</em></summary>
+<summary><strong>Persistence</strong> <code>double</code></summary>
 
-Controls how much each successive octave contributes to the final pattern. Lower values reduce the influence of higher-frequency details.
+Controls persistence.
 
-**Values**:
+_Range: min: 0.0, max: 1.0_
 
-* **0.0**: No contribution from higher octaves
-* **0.5**: Balanced contribution (default)
-* **1.0**: Full contribution from all octaves
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Time</strong><br><em>Time parameter for animation.</em></summary>
+<summary><strong>Time</strong> <code>double</code></summary>
 
-Controls the time value used to animate the noise pattern. Increasing this value moves the animation forward through time.
+Time parameter for animation
 
-**Values**:
-
-* **0.0**: Start of animation
-* **1.0**: One unit of time forward
-* **Any number**: Custom time progression
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>RotationSpeed</strong><br><em>Rotation speed of gradients.</em></summary>
+<summary><strong>Rotation Speed</strong> <code>double</code></summary>
 
-Controls how fast the noise gradients rotate over time, affecting the motion and flow of the pattern.
+Rotation speed of gradients
 
-**Values**:
+_Range: min: 0.0, max: 10.0_
 
-* **0.0**: No rotation (static pattern)
-* **1.0**: Standard rotation speed (default)
-* **10.0**: Very fast rotation for dramatic motion
+⚡ PCG Overridable
 
 </details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExNoiseConfigFlow</code></summary>
+
+Controls config.
+
+📦 See: NoiseConfigFlow configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Octaves</strong> <code>int32</code></summary>
+
+Controls octaves.
+
+_Range: min: 1, max: 16_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Lacunarity</strong> <code>double</code></summary>
+
+Controls lacunarity.
+
+_Range: min: 1.0, max: 4.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Persistence</strong> <code>double</code></summary>
+
+Controls persistence.
+
+_Range: min: 0.0, max: 1.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Time</strong> <code>double</code></summary>
+
+Time parameter for animation
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Rotation Speed</strong> <code>double</code></summary>
+
+Rotation speed of gradients
+
+_Range: min: 0.0, max: 10.0_
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExNoise3D\Public\Noises\PCGExNoiseFlow.h`

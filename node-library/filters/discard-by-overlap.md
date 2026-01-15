@@ -5,126 +5,243 @@ icon: circle
 
 # Discard by Overlap
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Discard entire datasets based on how they overlap with each other.
 
-> Discard entire datasets based on how they overlap with each other.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node evaluates multiple input datasets to identify overlapping regions and removes entire datasets that exceed a defined overlap threshold. It helps eliminate redundant or conflicting content in procedural generation, such as preventing duplicate geometry or overlapping placements in terrain or asset distribution.
-
-The process begins by calculating the spatial bounds of each dataset using a selected method (scaled, density, or raw bounds). These bounds may be expanded to account for transformations. Next, the node compares each dataset's bounds against all others using one of three overlap detection modes:
-
-* **Fast**: Only checks overall bounding boxes.
-* **Box**: Tests individual point bounds as transformed boxes.
-* **Sphere**: Treats point bounds as spheres for overlap detection.
-
-For each pair of overlapping datasets, it calculates metrics such as the number of overlapping points, total volume of overlap, and density. These values are then combined into a weighted score using configurable weights for different metrics. Finally, based on the chosen pruning logic (Low to High or High to Low), datasets are ranked by their scores and removed accordingly.
+* Computes the degree of overlap between datasets based on specified weights for dynamic and static balances.
+* Evaluates overlap count, sub-count, volume, and volume density according to configured settings, where each sub point's intersection volume is accounted individually regardless of spatial occupation.
+* Discards entire datasets if their computed overlap metrics exceed predefined thresholds set by the user through the node’s configuration parameters.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Test Mode</strong><br><em>Overlap test mode.</em></summary>
+<summary><strong>Test Mode</strong> <code>PCGExOverlapTestMode</code></summary>
 
-Controls how overlap is detected between datasets.
+Overlap test mode
 
-**Values**:
+**Values:**
 
-* **Fast**: Only test using datasets' overall bounds.
+* **Fast**: Only test using datasets' overall bounds
 * **Box**: Test every points' bounds as transformed box. May not detect some overlaps.
-* **Sphere**: Test every points' bounds as spheres. Will have some false positive.
+* **Sphere**: Test every points' bounds as spheres. Will have some false positve.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Bounds Source</strong><br><em>Point bounds to be used to compute overlaps.</em></summary>
+<summary><strong>Bounds Source</strong> <code>PCGExPointBoundsSource</code></summary>
 
-Determines how point bounds are calculated for overlap testing.
+Point bounds to be used to compute overlaps
 
-**Values**:
-
-* **Scaled Bounds**: Use scaled bounds.
-* **Density Bounds**: Use density bounds (scaled + steepness).
-* **Bounds**: Use unscaled bounds.
-* **Center**: Use a tiny size 1 box centered on the point.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Expansion</strong><br><em>Expand bounds by that amount to account for a margin of error due to multiple layers of transformation and lack of OBB.</em></summary>
+<summary><strong>Expansion</strong> <code>double</code></summary>
 
-Adds a margin around each dataset's bounds to account for transformations or inaccuracies in bounding box calculations.
+Expand bounds by that amount to account for a margin of error due to multiple layers of transformation and lack of OBB
 
-</details>
-
-<details>
-
-<summary><strong>Weighting</strong><br><em>Scores weighting.</em></summary>
-
-Controls how different metrics contribute to the overall score used for pruning.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Logic</strong><br><em>Pruning order &#x26; prioritization.</em></summary>
+<summary><strong>Weighting</strong> <code>PCGExOverlapScoresWeighting</code></summary>
 
-Determines which datasets are pruned first based on their scores.
+Scores weighting
 
-**Values**:
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Logic</strong> <code>PCGExOverlapPruningLogic</code></summary>
+
+Pruning order & prioritization
+
+**Values:**
 
 * **Low to High**: Lower weights are pruned first.
 * **High to Low**: Higher weights are pruned first.
 
-</details>
-
-<details>
-
-<summary><strong>Min Threshold</strong><br><em>The minimum amount two sub-points must overlap to be added to the comparison. The higher, the more "overlap" there must be.</em></summary>
-
-Sets a minimum overlap threshold for datasets to be considered for pruning.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Threshold Measure</strong><br><em>How to interpret the min overlap value. Discrete means distance in world space Relative means uses percentage (0-1) of the averaged radius.</em></summary>
+<summary><strong>Min Threshold</strong> <code>double</code></summary>
 
-Defines how the minimum overlap threshold is interpreted:
+The minimum amount two sub-points must overlap to be added to the comparison. The higher, the more "overlap" there must be.
 
-* **Discrete**: Raw distance in world units.
-* **Relative**: Percentage (0-1) of the average point radius.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Include Filtered In Metrics</strong><br><em>If enabled, points that are filtered out from overlap detection are still accounted for in static metrics/maths.</em></summary>
+<summary><strong>Threshold Measure</strong> <code>PCGExMeanMeasure</code></summary>
 
-When enabled, points filtered out by the point filter subnode still contribute to overall bounds and volume calculations.
+How to interpret the min overlap value. Discrete means distance in world space Relative means uses percentage (0-1) of the averaged radius.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Inputs
+<details>
 
-* Point data inputs (multiple datasets)
-* Optional point filter subnode for selecting which points to consider
+<summary><strong>Include Filtered In Metrics</strong> <code>bool</code></summary>
 
-#### Outputs
+If enabled, points that are filtered out from overlap detection are still accounted for in static metrics/maths. i.e they still participate to the overall bounds shape etc instead of being thoroughly ignored.
 
-* Point data outputs with overlapping datasets removed
+⚡ PCG Overridable
 
-#### Usage Example
+</details>
 
-You have multiple procedural terrain datasets representing different biomes. You want to avoid overlapping biome regions that would cause visual artifacts or performance issues. By connecting these datasets to Discard By Overlap and setting a relative overlap threshold of 0.2, the node will remove datasets whose boundaries significantly overlap with others, keeping only those that are spatially distinct.
+**Dynamic Weights**
 
-#### Notes
+<details>
 
-* The node uses an octree structure for efficient overlap detection.
-* Scores can be fine-tuned using weights to prioritize certain overlap metrics.
-* The Fast test mode is fastest but least accurate; Sphere mode is more accurate but may produce false positives.
+<summary><strong>Dynamic Balance</strong> <code>double</code></summary>
+
+How much of the dynamic weights to account for vs. static ones
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Overlap Count</strong> <code>double</code></summary>
+
+Overlap count weight (how many sets overlap)
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Overlap Sub Count</strong> <code>double</code></summary>
+
+Overlap Sub-Count weight (how many points overlap)
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Overlap Volume</strong> <code>double</code></summary>
+
+Overlap volume weight (cumulative volume overlap) Note that each sub point adds its own intersection volume whether or not it occupies an already computed volume in space.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Overlap Volume Density</strong> <code>double</code></summary>
+
+Overlap volume density weight (cumulative volume overlap / number of overlapping points)
+
+⚡ PCG Overridable
+
+</details>
+
+**Static Weights**
+
+<details>
+
+<summary><strong>Static Balance</strong> <code>double</code></summary>
+
+How much of the static weights to account for vs. dynamic ones
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Num Points</strong> <code>double</code></summary>
+
+Number of points weight (points in a given set)
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Volume</strong> <code>double</code></summary>
+
+Volume weight Note that each sub point adds its own intersection volume whether or not it occupies an already computed volume in space.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Volume Density</strong> <code>double</code></summary>
+
+Volume density.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Custom Tag Weight</strong> <code>double</code></summary>
+
+Weight of custom tags scores, if any.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Tag Scores</strong> <code>Map of FString, double</code></summary>
+
+Lets you add custom 'score' by tags. If the tag is found on the collection, its score will be added to the computation, letting you have more granular control.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Data Score Weight</strong> <code>double</code></summary>
+
+Weight of custom tags scores, if any.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Data Scores</strong> <code>Array of FName</code></summary>
+
+Lets you add extra custom 'score' using @Data attributes.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsSampling\Public\Elements\PCGExDiscardByOverlap.h`

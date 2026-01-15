@@ -4,99 +4,145 @@ icon: circle-dashed
 
 # Probe : Index
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Connects to a specific index, ignoring search radius.
 
-> Connects to a specific index, ignoring search radius.
+📌 **Subnode** — Connects to **Probes** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode creates connections between points based on a fixed index rather than their spatial proximity. For each point in the data set, it determines which other point to connect to using the configured index value and mode settings.
+> AI-Generated, needs proofreading
 
-The process works as follows:
-
-1. It reads an index value — either a constant number or a value from a point attribute.
-2. Depending on the selected **Mode**, it interprets this index:
-   * In **Target** mode, it connects directly to the point at that index.
-   * In **One-way Offset** mode, it adds the index value to the current point’s position to find the target.
-   * In **Two-way Offset** mode, it creates two connections: one using the positive offset and another using the negative offset from the current point's index.
-3. If the resulting index is outside the valid range of points, it applies the chosen **IndexSafety** method:
-   * **Ignore**: No connection is made for invalid indices.
-   * **Tile**: Wraps the index around using modulo arithmetic.
-   * **Clamp**: Uses the first or last point in the data set.
-   * **Yoyo**: Bounces the index back and forth like a ball.
-
-This approach allows you to define predictable, structured connections without needing to consider spatial relationships between points.
+* The Probe : Index node connects to a specific index within its data structure, bypassing any search radius considerations.
+* It accepts an input of type PCGExInputValueType for the index value and uses this to directly access the specified position in the array or list.
+* The node employs an attribute selection mechanism defined by PCGAttributePropertyInputSelector to determine which attribute's index it should target.
+* An integer (int32) specifies the exact index location from where data is retrieved, ensuring direct and precise data extraction based on the given index value.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Mode</strong><br><em>How the index value is interpreted.</em></summary>
+<summary><strong>Mode</strong> <code>PCGExProbeTargetMode</code></summary>
 
-Controls how the target index is used to determine which point to connect to.
+TBD
 
-**Values**:
+**Values:**
 
-* **Target**: The index is used directly.
-* **One-way Offset**: The index is added to the current point's index.
-* **Two-way Offset**: The index is used as both a positive and negative offset from the current point's index.
+* **Target**: Target index is used as-is to create a connection
+* **One-way Offset**: Target index is used as an offset value from the current point' index
+* **Two-way Offset**: Target index is used as both a positive and negative offset value from the current point' index
 
-</details>
-
-<details>
-
-<summary><strong>IndexSafety</strong><br><em>How out-of-bounds indices are handled.</em></summary>
-
-Determines what happens when a calculated index exceeds the valid range of point indices.
-
-**Values**:
-
-* **Ignore**: Invalid indices result in no connection.
-* **Tile**: Wraps the index around using modulo arithmetic.
-* **Clamp**: Clamps the index to the first or last valid index.
-* **Yoyo**: Mirrors the index back and forth like a bouncing ball.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>IndexInput</strong><br><em>Whether the index is constant or read from an attribute.</em></summary>
+<summary><strong>Index Safety</strong> <code>PCGExIndexSafety</code></summary>
 
-Controls whether the target index is fixed or varies per point.
+TBD
 
-**Values**:
-
-* **Constant**: Uses the value in **IndexConstant**.
-* **Attribute**: Reads the index from a point attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Index (Attr)</strong><br><em>Point attribute to read the index from.</em></summary>
+<summary><strong>Index Input</strong> <code>PCGExInputValueType</code></summary>
 
-Only visible when **IndexInput** is set to **Attribute**. Specifies which attribute to use for the index value.
+Controls index input.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Index</strong><br><em>Fixed index value to connect to.</em></summary>
+<summary><strong>Index (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-Only visible when **IndexInput** is set to **Constant**. Defines the fixed index used for connection targets.
+Controls index (attr).
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-In a graph where you want to form a loop by connecting each point to the next one in sequence, use **Mode** = **One-way Offset** with an **Index** of 1. This creates edges from point 0→1, 1→2, 2→3, etc.
+<summary><strong>Index</strong> <code>int32</code></summary>
 
-Alternatively, for a bidirectional chain (e.g., connecting each point to both its predecessor and successor), set **Mode** = **Two-way Offset** with an **Index** of 1. This will create both forward and backward edges from each point.
+Controls index.
 
-#### Notes
+⚡ PCG Overridable
 
-* The index is zero-based and must be within the valid range of points.
-* Using **Two-way Offset** doubles the number of connections for each point, which can significantly increase output edge count.
-* Out-of-bounds handling ensures robustness when indices might exceed data bounds.
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExProbeConfigIndex</code></summary>
+
+Filter Config.
+
+📦 See: ProbeConfigIndex configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Mode</strong> <code>PCGExProbeTargetMode</code></summary>
+
+TBD
+
+**Values:**
+
+* **Target**: Target index is used as-is to create a connection
+* **One-way Offset**: Target index is used as an offset value from the current point' index
+* **Two-way Offset**: Target index is used as both a positive and negative offset value from the current point' index
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Index Safety</strong> <code>PCGExIndexSafety</code></summary>
+
+TBD
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Index Input</strong> <code>PCGExInputValueType</code></summary>
+
+Controls index input.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Index (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Controls index (attr).
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Index</strong> <code>int32</code></summary>
+
+Controls index.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsProbing\Public\Probes\PCGExProbeIndex.h`

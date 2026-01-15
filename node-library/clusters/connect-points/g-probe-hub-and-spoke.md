@@ -4,91 +4,175 @@ icon: circle-dashed
 
 # G-Probe : Hub & Spoke
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Creates hierarchical hub-and-spoke network topology
 
-> Creates hierarchical hub-and-spoke network topology by defining how points connect to hubs and spokes.
+📌 **Subnode** — Connects to **Probes** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode builds a structured network where points are organized into a hub-and-spoke pattern. It first identifies central points called "hubs" based on a chosen method, then connects other points ("spokes") to these hubs. Each spoke can connect to just the nearest hub or to all hubs within a certain distance, depending on settings.
+> AI-Generated, needs proofreading
 
-The selection of hubs depends on the chosen method:
-
-* **By Local Density**: Areas with many points become hubs.
-* **By Attribute**: Points with high values of a specific attribute are selected as hubs.
-* **By Centrality**: Points near the center of local groups become hubs.
-* **K-Means Centroids**: The system groups points into clusters and uses cluster centers as hubs.
-
-Once hubs are chosen, the subnode connects spokes to them. If "Nearest Hub Only" is enabled, each spoke links only to its closest hub. Otherwise, spokes connect to all hubs within a defined radius. Optionally, it can also link hubs together if that setting is enabled.
+* The G-Probe : Hub & Spoke node generates a hierarchical network where nodes are organized into clusters around central hubs based on specified parameters.
+* Depending on the selected hub selection mode (PCGExHubSelectionMode), the node determines the number of hubs to create, either through predefined settings or clustering algorithms like KMeans for which Num Hubs specifies the value of K.
+* Each non-hub node (spoke) connects to one or more hubs based on the Nearest Hub Only setting; if true, each spoke connects only to its nearest hub, otherwise it connects to all hubs within a defined radius.
+* If Connect Hubs is set to true, the node also establishes connections between the identified hubs themselves, forming an interconnected network of hubs.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Hub Selection Mode</strong><br><em>How hubs are selected from the point cloud.</em></summary>
+<summary><strong>Hub Selection Mode</strong> <code>PCGExHubSelectionMode</code></summary>
 
-Controls how the system identifies which points become hubs.
+Controls hub selection mode.
 
-**Values**:
+**Values:**
 
-* **By Local Density**: Points in dense regions become hubs.
-* **By Attribute**: Points with highest attribute values become hubs.
-* **By Centrality**: Points closest to centroid of local region become hubs.
-* **K-Means Centroids**: Run k-means and use cluster centers as hubs.
+* **By Local Density**: Points in dense regions become hubs
+* **By Attribute**: Points with highest attribute values become hubs
+* **By Centrality**: Points closest to centroid of local region become hubs
+* **K-Means Centroids**: Run k-means and use cluster centers as hubs
 
-</details>
-
-<details>
-
-<summary><strong>Number of Hubs</strong><br><em>How many hubs to create (for KMeans mode, this is K).</em></summary>
-
-Determines how many hub points will be selected. In K-Means mode, this sets the number of clusters.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Hub Attribute</strong><br><em>Attribute for hub selection (for ByAttribute mode).</em></summary>
+<summary><strong>Num Hubs</strong> <code>int32</code></summary>
 
-The attribute used to rank and select hubs when "By Attribute" is chosen as the selection mode.
+Number of hubs to create (for KMeans mode, this is K)
 
-</details>
+_Range: min: 1_
 
-<details>
-
-<summary><strong>Connect Hubs</strong><br><em>If true, also connect hubs to each other.</em></summary>
-
-When enabled, creates connections between hubs themselves, forming a network of hub-to-hub links in addition to spoke-to-hub links.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Nearest Hub Only</strong><br><em>If true, each spoke connects only to nearest hub. If false, connects to all hubs within radius.</em></summary>
+<summary><strong>Hub Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-Controls how spokes connect to hubs:
+Attribute for hub selection (for ByAttribute mode)
 
-* When enabled: Each spoke connects to only its closest hub.
-* When disabled: Each spoke connects to all hubs within a specified radius.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>K-Means Iterations</strong><br><em>K-Means iterations (for KMeansCentroids mode).</em></summary>
+<summary><strong>Connect Hubs</strong> <code>bool</code></summary>
 
-The number of iterations used in the k-means clustering algorithm when "K-Means Centroids" is selected as the hub selection mode.
+If true, also connect hubs to each other
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Create a point cloud representing a city layout. Use this subnode to define hubs as the most densely populated areas (By Local Density). Configure it so that each spoke connects only to its nearest hub ("Nearest Hub Only" enabled) and that hubs are also connected to each other ("Connect Hubs" enabled). This results in a network where neighborhoods connect to nearby city centers, and city centers are linked together.
+<summary><strong>Nearest Hub Only</strong> <code>bool</code></summary>
 
-#### Notes
+If true, each spoke connects only to nearest hub. If false, connects to all hubs within radius.
 
-* The "By Attribute" mode requires an attribute to be specified.
-* K-Means mode is computationally more expensive but can create more evenly distributed hubs.
-* Enabling "Connect Hubs" increases the number of connections in the output graph.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>KMeans Iterations</strong> <code>int32</code></summary>
+
+K-Means iterations (for KMeansCentroids mode)
+
+_Range: min: 1, max: 100_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExProbeConfigHubSpoke</code></summary>
+
+Controls config.
+
+📦 See: ProbeConfigHubSpoke configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Hub Selection Mode</strong> <code>PCGExHubSelectionMode</code></summary>
+
+Controls hub selection mode.
+
+**Values:**
+
+* **By Local Density**: Points in dense regions become hubs
+* **By Attribute**: Points with highest attribute values become hubs
+* **By Centrality**: Points closest to centroid of local region become hubs
+* **K-Means Centroids**: Run k-means and use cluster centers as hubs
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Num Hubs</strong> <code>int32</code></summary>
+
+Number of hubs to create (for KMeans mode, this is K)
+
+_Range: min: 1_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Hub Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Attribute for hub selection (for ByAttribute mode)
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Connect Hubs</strong> <code>bool</code></summary>
+
+If true, also connect hubs to each other
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Nearest Hub Only</strong> <code>bool</code></summary>
+
+If true, each spoke connects only to nearest hub. If false, connects to all hubs within radius.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>KMeans Iterations</strong> <code>int32</code></summary>
+
+K-Means iterations (for KMeansCentroids mode)
+
+_Range: min: 1, max: 100_
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsProbing\Public\Probes\PCGExGlobalProbeHubSpoke.h`

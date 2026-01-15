@@ -4,99 +4,171 @@ icon: circle-dashed
 
 # Shape : 3D Grid
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Create points in a 3D grid shape.
 
-> Create points in a 3D grid shape.
+📌 **Subnode** — Connects to **Shape Builders** pins.
 
-#### How It Works
+**How It Works**
 
-This node generates a structured set of points arranged in a regular 3D grid pattern. It calculates how many points fit along each axis (X, Y, Z) based on the selected resolution mode and spacing settings. The grid is built by placing points at regular intervals within the defined bounds.
+> AI-Generated, needs proofreading
 
-When the **Adjust Fit** option is enabled, the node modifies the grid's dimensions so that it fills the selected axis completely. For example, if you set the X-axis to fill the space, the grid will stretch along X to match the specified dimension while adjusting Y and Z accordingly.
-
-The resolution settings control how many points are placed per unit distance or as a fixed count per axis. Truncation options (Round, Ceil, Floor) determine how fractional point counts are handled when using distance-based resolution.
+* The node generates points arranged in a three-dimensional grid structure.
+* It adjusts the extents of the grid to fit along selected axes based on the "Adjust Fit" setting.
+* For the X-axis, the node applies rounding according to the specified mode and clamps the count using the provided details.
+* On the Y-axis, it truncates values as defined by the given mode and also clamps the count with specific details.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Adjust Fit</strong><br><em>Adjust extents so they fill the selected axis.</em></summary>
+<summary><strong>Config</strong> <code>PCGExShapeGridConfig</code></summary>
 
-When enabled, this setting modifies the grid's dimensions so that it fills the selected axis completely. For example, if you select X, the grid will stretch along the X-axis to match the specified extent while adjusting Y and Z accordingly.
+Shape properties
+
+📦 See: ShapeGrid configuration
+
+⚡ PCG Overridable
+
+</details>
+
+**Resolution**
+
+<details>
+
+<summary><strong>Adjust Fit</strong> <code>uint8</code></summary>
+
+Adjust extents so they fill the selected axis.
 
 </details>
 
 <details>
 
-<summary><strong>X - Round</strong><br><em>How points are rounded along the X-axis.</em></summary>
+<summary><strong>X - Round</strong> <code>PCGExTruncateMode</code></summary>
 
-Controls how fractional point counts along the X-axis are handled when using distance-based resolution. Options include:
-
-* **None**: No rounding.
-* **Round**: Rounds to the nearest integer.
-* **Ceil**: Rounds up to the next integer.
-* **Floor**: Rounds down to the previous integer.
+How
 
 </details>
 
 <details>
 
-<summary><strong>X - Clamp Count</strong><br><em>Clamp the number of points along the X-axis.</em></summary>
+<summary><strong>X - Clamp Count</strong> <code>PCGExClampDetails</code></summary>
 
-Limits the maximum number of points generated along the X-axis. This is useful for preventing overly dense grids in large areas.
+Controls x - clamp count.
 
-</details>
+📦 See: Clamp configuration
 
-<details>
-
-<summary><strong>Y - Round</strong><br><em>How points are rounded along the Y-axis.</em></summary>
-
-Controls how fractional point counts along the Y-axis are handled when using distance-based resolution. Options include:
-
-* **None**: No rounding.
-* **Round**: Rounds to the nearest integer.
-* **Ceil**: Rounds up to the next integer.
-* **Floor**: Rounds down to the previous integer.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Y - Clamp Count</strong><br><em>Clamp the number of points along the Y-axis.</em></summary>
+<summary><strong>Y - Round</strong> <code>PCGExTruncateMode</code></summary>
 
-Limits the maximum number of points generated along the Y-axis. This is useful for preventing overly dense grids in large areas.
-
-</details>
-
-<details>
-
-<summary><strong>Z - Round</strong><br><em>How points are rounded along the Z-axis.</em></summary>
-
-Controls how fractional point counts along the Z-axis are handled when using distance-based resolution. Options include:
-
-* **None**: No rounding.
-* **Round**: Rounds to the nearest integer.
-* **Ceil**: Rounds up to the next integer.
-* **Floor**: Rounds down to the previous integer.
+Controls y - round.
 
 </details>
 
 <details>
 
-<summary><strong>Z - Clamp Count</strong><br><em>Clamp the number of points along the Z-axis.</em></summary>
+<summary><strong>Y - Clamp Count</strong> <code>PCGExClampDetails</code></summary>
 
-Limits the maximum number of points generated along the Z-axis. This is useful for preventing overly dense grids in large areas.
+Controls y - clamp count.
+
+📦 See: Clamp configuration
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this node to generate a grid of points that can be used as a base for placing objects like trees or buildings. For instance, you could define a 10x10x5 grid with 2 units spacing per axis, resulting in 1000 points forming a cube-like structure. You might then use these points to spawn assets or apply transformations.
+<summary><strong>Z - Round</strong> <code>PCGExTruncateMode</code></summary>
 
-#### Notes
+Controls z - round.
 
-* The node supports both fixed point count and distance-based resolution modes.
-* Adjusting fit can be useful when you want the grid to completely fill a space along one axis.
-* Clamp settings help manage performance by limiting the number of generated points.
+</details>
+
+<details>
+
+<summary><strong>Z - Clamp Count</strong> <code>PCGExClampDetails</code></summary>
+
+Controls z - clamp count.
+
+📦 See: Clamp configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Adjust Fit</strong> <code>uint8</code></summary>
+
+Adjust extents so they fill the selected axis.
+
+</details>
+
+<details>
+
+<summary><strong>X - Round</strong> <code>PCGExTruncateMode</code></summary>
+
+How
+
+</details>
+
+<details>
+
+<summary><strong>X - Clamp Count</strong> <code>PCGExClampDetails</code></summary>
+
+Controls x - clamp count.
+
+📦 See: Clamp configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Y - Round</strong> <code>PCGExTruncateMode</code></summary>
+
+Controls y - round.
+
+</details>
+
+<details>
+
+<summary><strong>Y - Clamp Count</strong> <code>PCGExClampDetails</code></summary>
+
+Controls y - clamp count.
+
+📦 See: Clamp configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Z - Round</strong> <code>PCGExTruncateMode</code></summary>
+
+Controls z - round.
+
+</details>
+
+<details>
+
+<summary><strong>Z - Clamp Count</strong> <code>PCGExClampDetails</code></summary>
+
+Controls z - clamp count.
+
+📦 See: Clamp configuration
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsShapes\Public\Shapes\PCGExShapeGrid.h`

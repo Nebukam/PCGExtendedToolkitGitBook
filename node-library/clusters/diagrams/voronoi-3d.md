@@ -5,98 +5,91 @@ icon: circle
 
 # Voronoi 3D
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Create a 3D Voronoi graph for each input dataset.
 
-> Create a 3D Voronoi graph for each input dataset.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node builds a 3D Voronoi diagram by first calculating the Delaunay triangulation of the input points in three-dimensional space. From this triangulation, it derives the Voronoi cells.
-
-Each Voronoi cell represents the area closest to its seed point compared to all other seed points. The node calculates the center of each cell using one of three methods:
-
-* **Balanced**: Uses the circumcenter if it's within bounds; otherwise uses the centroid.
-* **Canon (Circumcenter)**: Uses the circumcenter of the Delaunay tetrahedron.
-* **Centroid**: Uses the average position of all vertices in the Voronoi cell.
-
-If enabled, points outside the specified bounds are removed from the computation. The hull marking feature identifies and marks points and edges that lie on the outer boundary of the diagram, which can be useful for creating edge effects or defining perimeters.
+* The Cluster : Voronoi 3D node generates a 3D Voronoi diagram for each input dataset by computing regions around points where every point in a given region is closer to its associated seed point than to any other.
+* It uses the specified method setting to determine the location of Voronoi cells, adjusting based on the selected algorithm or technique.
+* The node expands bounds as configured under "Expand Bounds" for pruning points and achieving balanced centroids, then prunes points outside these bounds if "Prune Out Of Bounds" is enabled.
+* If "Mark Hull" is activated, the node identifies and marks points and edges that lie on the convex hull of the Voronoi diagram, assigning a boolean attribute named according to "Hull Attribute Name", where true indicates the point or edge lies on the hull.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Method</strong><br><em>Method used to find Voronoi cell location.</em></summary>
+<summary><strong>Method</strong> <code>PCGExCellCenter</code></summary>
 
-Controls how the center of each Voronoi cell is calculated.
+Method used to find Voronoi cell location
 
-**Values**:
-
-* **Balanced**: Pick centroid if circumcenter is out of bounds, otherwise uses circumcenter.
-* **Canon (Circumcenter)**: Uses Delaunay cells' circumcenter.
-* **Centroid**: Uses Delaunay cells' averaged vertice positions.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>ExpandBounds</strong><br><em>Bounds used for point pruning &#x26; balanced centroid.</em></summary>
+<summary><strong>Expand Bounds</strong> <code>double</code></summary>
 
-Sets the size of the bounding volume used to contain the Voronoi diagram. Points outside this volume may be pruned if enabled, and the "Balanced" method uses it to determine whether to use the circumcenter or centroid.
+Bounds used for point pruning & balanced centroid.
 
-</details>
-
-<details>
-
-<summary><strong>bPruneOutOfBounds</strong><br><em>Prune points outside bounds.</em></summary>
-
-When enabled, points that fall outside the defined bounding volume are removed from the Voronoi computation. This helps reduce unnecessary calculations and keeps the diagram within a controlled area.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bMarkHull</strong><br><em>Mark points &#x26; edges that lie on the hull.</em></summary>
+<summary><strong>Prune Out Of Bounds</strong> <code>bool</code></summary>
 
-When enabled, points and edges that form the outer boundary of the Voronoi diagram are marked. This is useful for creating edge effects or identifying perimeter elements.
+Prune points outside bounds
 
-</details>
-
-<details>
-
-<summary><strong>HullAttributeName</strong><br><em>Name of the attribute to output the Hull boolean to. True if point is on the hull, otherwise false.</em></summary>
-
-The name of the boolean attribute that will be added to points to indicate whether they are on the hull.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bMarkEdgeOnTouch</strong><br><em>When true, edges that have at least a point on the Hull as marked as being on the hull.</em></summary>
+<summary><strong>Mark Hull</strong> <code>bool</code></summary>
 
-When enabled, edges connected to any hull point are also marked as part of the hull.
+Mark points & edges that lie on the hull
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>GraphBuilderDetails</strong><br><em>Cluster Output Settings</em></summary>
+<summary><strong>Hull Attribute Name</strong> <code>Name</code></summary>
 
-Controls how the graph and its edges are built. Only available when `bPruneOutOfBounds` is enabled, as it otherwise generates a complete graph.
+Name of the attribute to output the Hull boolean to. True if point is on the hull, otherwise false.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-1. Place several points in your scene.
-2. Connect them to this node.
-3. Set the **Method** to "Centroid" for smoother cell shapes.
-4. Enable **bMarkHull** if you want to identify outer boundary points.
-5. Use the output points and edges to drive further procedural content, like terrain features or object placement.
+<summary><strong>Mark Edge On Touch</strong> <code>bool</code></summary>
 
-#### Notes
+When true, edges that have at least a point on the Hull as marked as being on the hull.
 
-* Voronoi diagrams are sensitive to input point distribution; clustering points can lead to irregular cell shapes.
-* The "Balanced" method is recommended for better stability when dealing with edge cases.
-* Hull marking is most effective when the input dataset forms a coherent cluster.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Cluster Output Settings</strong> <code>PCGExGraphBuilderDetails</code></summary>
+
+Graph & Edges output properties. Only available if bPruneOutsideBounds as it otherwise generates a complete graph.
+
+📦 See: GraphBuilder configuration
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsClusters\Public\Elements\Diagrams\PCGExBuildVoronoiGraph.h`

@@ -5,110 +5,197 @@ icon: circle-dashed
 
 # Compare Nearest (Numeric)
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Creates a filter definition that compares two numeric attribute values.
 
-> Creates a filter definition that compares two numeric attribute values.
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode evaluates each point in your data by comparing a numeric value from the point (Operand A) with a value from its nearest neighbor or a constant (Operand B). The comparison uses a specified operator, such as greater than, equal to, or nearly equal.
+> AI-Generated, needs proofreading
 
-The process works as follows:
-
-1. For each point, it reads the value of Operand A.
-2. It finds the nearest point based on the configured distance method.
-3. It reads the value of Operand B from the nearest point (or uses a constant if specified).
-4. It performs the comparison using the selected operator.
-5. If the comparison evaluates to true, the point passes the filter.
-
-The subnode supports both strict and near-equality comparisons, with an optional tolerance for floating-point comparisons. It also allows ignoring self-comparisons when comparing against the same point.
+* The node compares two numeric attribute values by translating both operands to `double` data type under the hood.
+* It uses the specified comparison operator (set in "Comparison") to evaluate the relationship between Operand A and Operand B.
+* Operand A is sourced from target points, while Operand B can be defined as either a specific attribute or a constant value based on the setting of "Compare Against".
+* The node applies a distance method, selected via "Distance Details", for source & target points to determine proximity or similarity in their numeric values.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Distance Details</strong><br><em>Distance method to be used for source &#x26; target points.</em></summary>
+<summary><strong>Distance Details</strong> <code>PCGExDistanceDetails</code></summary>
 
-Defines how distances are calculated when finding the nearest point. Options include Euclidean, Manhattan, etc.
+Distance method to be used for source & target points.
 
-</details>
+📦 See: Distance configuration
 
-<details>
-
-<summary><strong>Operand A</strong><br><em>Operand A for testing -- Will be translated to `double` under the hood; read from the target points.</em></summary>
-
-The numeric attribute to read from each point in the input data. This value is compared against Operand B.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Comparison</strong><br><em>Comparison</em></summary>
+<summary><strong>Operand A</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-The operator used to compare Operand A and Operand B. **Values**:
+Operand A for testing -- Will be translated to `double` under the hood; read from the target points.
 
-* **Strictly Equal**: `==`
-* **Strictly Not Equal**: `!=`
-* **Equal or Greater**: `>=`
-* **Equal or Smaller**: `<=`
-* **Strictly Greater**: `>`
-* **Strictly Smaller**: `<`
-* **Nearly Equal**: `~=` (with tolerance)
-* **Nearly Not Equal**: `!~=` (with tolerance)
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Compare Against</strong><br><em>Type of OperandB</em></summary>
+<summary><strong>Comparison</strong> <code>PCGExComparison</code></summary>
 
-Determines whether Operand B is read from an attribute or set as a constant. **Values**:
+Comparison
 
-* **Constant**: Use the value specified in Operand B Constant
-* **Attribute**: Read Operand B from an attribute on the nearest point
-
-</details>
-
-<details>
-
-<summary><strong>Operand B (Attr)</strong><br><em>Operand B for testing</em></summary>
-
-The numeric attribute to read from the nearest point when Compare Against is set to Attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Operand B</strong><br><em>Operand B for testing</em></summary>
+<summary><strong>Compare Against</strong> <code>PCGExInputValueType</code></summary>
 
-The constant value used for Operand B when Compare Against is set to Constant.
+Type of OperandB
 
-</details>
-
-<details>
-
-<summary><strong>Tolerance</strong><br><em>Near-equality tolerance</em></summary>
-
-Used when the comparison is Nearly Equal or Nearly Not Equal. Defines how close values must be to be considered equal.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Ignore Self</strong><br><em>When enabled, the point itself is excluded from the nearest neighbor search.</em></summary>
+<summary><strong>Operand B (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-When enabled, ensures that a point does not compare against itself when finding the nearest neighbor.
+Operand B for testing -- Will be translated to `double` under the hood.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Filter points where the value of the attribute "Height" is greater than or equal to the height of the nearest point. Use "Equal or Greater" as the comparison operator, set Operand A to "Height", and set Compare Against to Attribute, with Operand B pointing to the "Height" attribute on the nearest point.
+<summary><strong>Operand B</strong> <code>double</code></summary>
 
-#### Notes
+Operand B for testing
 
-* This filter works best when used with numeric attributes.
-* The tolerance setting is crucial for floating-point comparisons to avoid false negatives due to precision issues.
-* Consider performance implications when using large datasets or complex distance calculations.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Tolerance</strong> <code>double</code></summary>
+
+Near-equality tolerance
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Ignore Self</strong> <code>bool</code></summary>
+
+Controls ignore self.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExNumericCompareNearestFilterConfig</code></summary>
+
+Filter Config.
+
+📦 See: NumericCompareNearestFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Distance Details</strong> <code>PCGExDistanceDetails</code></summary>
+
+Distance method to be used for source & target points.
+
+📦 See: Distance configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Operand A</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Operand A for testing -- Will be translated to `double` under the hood; read from the target points.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Comparison</strong> <code>PCGExComparison</code></summary>
+
+Comparison
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Compare Against</strong> <code>PCGExInputValueType</code></summary>
+
+Type of OperandB
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Operand B (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Operand B for testing -- Will be translated to `double` under the hood.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Operand B</strong> <code>double</code></summary>
+
+Operand B for testing
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Tolerance</strong> <code>double</code></summary>
+
+Near-equality tolerance
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Ignore Self</strong> <code>bool</code></summary>
+
+Controls ignore self.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExFilters\Public\Filters\Points\PCGExNumericCompareNearestFilter.h`

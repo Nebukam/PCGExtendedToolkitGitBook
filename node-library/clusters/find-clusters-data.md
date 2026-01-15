@@ -5,60 +5,55 @@ icon: circle
 
 # Find Clusters
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Find vtx/edge pairs inside a soup of data collections
 
-> Identifies connected vertex and edge data within input collections to help organize procedural content into meaningful groups.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-The Find Clusters node examines all input data to locate relationships between points (vertices) and connections (edges). Based on the selected search mode, it determines how these elements relate to each other:
-
-* In **All** mode, it looks for both vertex-to-edge and edge-to-vertex connections across all inputs.
-* In **Vtx from Edges** mode, it identifies which vertices are connected to each edge in the input data.
-* In **Edges from Vtx** mode, it finds which edges connect to specific vertices.
-
-The node creates a mapping or lookup table without changing the original data. It also checks for consistency between inputs and can show warnings about mismatches if enabled.
+* The Find Clusters node processes a collection of data to identify vertex and edge pairs within that dataset.
+* It operates based on the specified Search Mode setting, which determines how the search for clusters is conducted.
+* If Skip Trivial Warnings is enabled, the node omits warnings related to minor input mismatches during the clustering process.
+* When Skip Important Warnings is activated, the node suppresses significant warning messages that would otherwise alert about potential issues with the inputs.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Search Mode</strong><br><em>Defines how the node searches for connections between vertices and edges.</em></summary>
+<summary><strong>Search Mode</strong> <code>PCGExClusterDataSearchMode</code></summary>
 
-Controls the type of search performed across input data.
+Search mode.
 
-**Values**:
+**Values:**
 
-* **All**: Searches for both vertex-to-edge and edge-to-vertex relationships.
-* **Vtx from Edges**: Focuses on finding which vertices are associated with each edge.
-* **Edges from Vtx**: Identifies which edges connect to specific vertices.
+* **All**
+* **Vtx from Edges**
+* **Edges from Vtx**
 
-</details>
-
-<details>
-
-<summary><strong>Skip Trivial Warnings</strong><br><em>Suppresses warnings about input mismatches and triage issues.</em></summary>
-
-When enabled, prevents display of minor warnings related to data inconsistencies or mismatched inputs.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Skip Important Warnings</strong><br><em>Suppresses warnings that would normally appear when using incompatible inputs in a cluster node.</em></summary>
+<summary><strong>Skip Trivial Warnings</strong> <code>bool</code></summary>
 
-When enabled, suppresses critical warnings about input compatibility that are otherwise shown during execution.
+Warning about inputs mismatch and triage
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this node to prepare data for a cluster processing workflow. For instance, if you have multiple point clouds and edge networks representing different parts of a structure, you can use Find Clusters in **Edges from Vtx** mode to determine which edges connect to each vertex. Then, feed that output into a node that groups connected components together.
+<summary><strong>Skip Important Warnings</strong> <code>bool</code></summary>
 
-#### Notes
+Warning that you'll get anyway if you try these inputs in a cluster node
 
-* This node is typically used as part of a larger graph where the results are consumed by other cluster or connectivity-related nodes.
-* The search behavior changes based on the selected mode, so it's important to choose the correct one for your use case.
-* Warnings can be suppressed if you're confident about input consistency and want cleaner logs.
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsClusters\Public\Elements\PCGExFindClustersData.h`

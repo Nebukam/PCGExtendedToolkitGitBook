@@ -5,167 +5,177 @@ icon: circle
 
 # Spline to Path
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Turns splines to paths.
 
-> Converts spline data into path data for use in procedural graphs.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node takes input splines and transforms them into path structures that can be used for further processing. For each spline, it calculates key attributes like tangent vectors, cumulative length, and normalized position along the path. These attributes help maintain the shape and characteristics of the original spline while making it compatible with path-based operations.
-
-The node supports different sampling options to control which splines are processed:
-
-* All input splines
-* Only closed-loop splines (like circles or loops)
-* Only open-line splines (like straight paths or curves)
-
-It also allows you to write additional information about each point into attributes, such as arrive and leave tangents, cumulative length, normalized position (alpha), and point type identifiers. These extra details are useful for downstream processing like object placement, animation, or visualization.
-
-Tags from the original splines can be carried over to help maintain metadata during conversion.
-
-{% hint style="info" %}
-This node connects to **Points** processing nodes and works well with other path-based nodes in your procedural graph.
-{% endhint %}
+* Converts input spline data into path representations by transforming control points along the spline.
+* Samples inputs at specified intervals to ensure accurate conversion from splines to paths.
+* Optionally writes an 'Arrive Tangent' attribute as an FVector to the output if the Write Arrive Tangent setting is enabled, specifying the tangent vector at arrival points on the path.
+* Similarly, optionally writes a 'Leave Tangent' attribute as an FVector to the output if the Write Leave Tangent setting is enabled, indicating the tangent vector at departure points from the path.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Transform Details</strong><br><em>Point transform settings</em></summary>
+<summary><strong>Transform Details</strong> <code>PCGExLeanTransformDetails</code></summary>
 
-Controls how the spline points are transformed into the output path space.
+Point transform
 
-</details>
+📦 See: LeanTransform configuration
 
-<details>
-
-<summary><strong>Sample Inputs</strong><br><em>Which splines to sample</em></summary>
-
-Determines which input splines are converted:
-
-* **All**: Convert all input splines.
-* **Closed loops only**: Only convert closed-loop splines.
-* **Open lines only**: Only convert open-line splines.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Write Arrive Tangent</strong><br><em>Writes arrive tangents to a vector attribute</em></summary>
+<summary><strong>Write Arrive Tangent</strong> <code>bool</code></summary>
 
-When enabled, the node writes tangent vectors at the start of each path point into an attribute named in **Arrive Tangent**.
+Controls write arrive tangent.
 
-</details>
-
-<details>
-
-<summary><strong>Arrive Tangent</strong><br><em>Name of the 'FVector' attribute to write arrive tangents to</em></summary>
-
-The name of the vector attribute where arrive tangents are written if **Write Arrive Tangent** is enabled.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Write Leave Tangent</strong><br><em>Writes leave tangents to a vector attribute</em></summary>
+<summary><strong>Arrive Tangent</strong> <code>Name</code></summary>
 
-When enabled, the node writes tangent vectors at the end of each path point into an attribute named in **Leave Tangent**.
+Name of the 'FVector' attribute to write Arrive tangent to.
 
-</details>
-
-<details>
-
-<summary><strong>Leave Tangent</strong><br><em>Name of the 'FVector' attribute to write leave tangents to</em></summary>
-
-The name of the vector attribute where leave tangents are written if **Write Leave Tangent** is enabled.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Tags To Data</strong><br><em>Tag handling options</em></summary>
+<summary><strong>Write Leave Tangent</strong> <code>bool</code></summary>
 
-Controls how tags from source splines are handled:
+Controls write leave tangent.
 
-* **Do Nothing**: Ignore tags.
-* **To @Data**: Copy tag:value to @Data domain attributes.
-* **Attribute**: Copy tag:value to element domain attributes.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Write Length At Point</strong><br><em>Writes cumulative length at each point</em></summary>
+<summary><strong>Leave Tangent</strong> <code>Name</code></summary>
 
-When enabled, the node writes the total path length up to each point into an attribute named in **Length at Point**.
+Name of the 'FVector' attribute to write Leave tangent to.
 
-</details>
-
-<details>
-
-<summary><strong>Length At Point</strong><br><em>Name of the 'double' attribute to write length at point to</em></summary>
-
-The name of the double attribute where cumulative lengths are written if **Write Length At Point** is enabled.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Write Alpha</strong><br><em>Writes normalized alpha values for each point</em></summary>
+<summary><strong>Tags To Data</strong> <code>PCGExTagsToDataAction</code></summary>
 
-When enabled, the node writes a normalized position value (0 to 1) along the path into an attribute named in **Alpha**.
-
-</details>
-
-<details>
-
-<summary><strong>Alpha</strong><br><em>Name of the 'double' attribute to write alpha values to</em></summary>
-
-The name of the double attribute where alpha values are written if **Write Alpha** is enabled.
+Tag handling
 
 </details>
 
 <details>
 
-<summary><strong>Write Point Type</strong><br><em>Writes a point type identifier</em></summary>
+<summary><strong>Write Length At Point</strong> <code>bool</code></summary>
 
-When enabled, the node writes an integer identifier for each point into an attribute named in **Point Type**.
+Controls write length at point.
 
-</details>
-
-<details>
-
-<summary><strong>Point Type</strong><br><em>Name of the 'int32' attribute to store point types</em></summary>
-
-The name of the int32 attribute where point types are written if **Write Point Type** is enabled.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Tag Forwarding</strong><br><em>Tags to forward from source splines</em></summary>
+<summary><strong>Length at Point</strong> <code>Name</code></summary>
 
-Filters which tags from the input splines should be carried over to the output paths.
+Name of the 'double' attribute to write the length at point to.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Carry Over Settings</strong><br><em>Meta filter settings</em></summary>
+<summary><strong>Write Alpha</strong> <code>bool</code></summary>
 
-Controls how metadata and attributes are passed through from the source splines to the output paths.
+Controls write alpha.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this node when you have a set of splines that represent routes or paths in your scene, such as roads, rivers, or character movement paths. After converting them into paths, you can apply path filters, sample points along them, or use them for procedural generation like placing objects or generating navmeshes.
+<summary><strong>Alpha</strong> <code>Name</code></summary>
 
-#### Notes
+Name of the 'double' attribute to write the length at point to.
 
-* The node supports both open and closed splines.
-* Tangent attributes are useful for smooth interpolation in downstream nodes.
-* Alpha values allow for normalized sampling along the path.
-* Tag forwarding can be used to carry over metadata such as road types or terrain tags.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Point Type</strong> <code>bool</code></summary>
+
+Controls write point type.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Point Type</strong> <code>Name</code></summary>
+
+Name of the 'int32' attribute that store the point type.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Carry Over Settings</strong> <code>PCGExCarryOverDetails</code></summary>
+
+Meta filter settings.
+
+📦 See: CarryOver configuration
+
+⚡ PCG Overridable
+
+</details>
+
+**Sampling**
+
+<details>
+
+<summary><strong>Sample Inputs</strong> <code>PCGExSplineSamplingIncludeMode</code></summary>
+
+Sample inputs.
+
+⚡ PCG Overridable
+
+</details>
+
+**Tagging**
+
+<details>
+
+<summary><strong>Tag Forwarding</strong> <code>PCGExNameFiltersDetails</code></summary>
+
+Tags to be forwarded from source splines
+
+📦 See: NameFilters configuration
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsPaths\Public\Elements\PCGExSplineToPath.h`

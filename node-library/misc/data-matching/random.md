@@ -5,102 +5,133 @@ icon: circle-dashed
 
 # Random
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Randomly pass or fail match
 
-> Randomly determines whether matching operations succeed or fail based on a probability threshold.
+📌 **Subnode** — Connects to **Match Rules** pins.
 
-#### Overview
+**How It Works**
 
-The Match : Random subnode adds randomness to data matching workflows. Instead of making fixed decisions about which matches should pass or fail, it uses a probability-based system to determine outcomes. This is useful for creating varied and unpredictable results in procedural content generation, such as randomly selecting which points or edges participate in a match.
+> AI-Generated, needs proofreading
 
-This subnode connects to matching processing nodes that support data matching operations. It defines the logic for how matches are evaluated based on a random threshold value.
-
-{% hint style="info" %}
-Connects to **Match** processing nodes (e.g., Match Points, Match Edges) via its output pin.
-{% endhint %}
-
-#### How It Works
-
-This subnode evaluates each potential match against a randomly generated value. For each candidate being considered for a match:
-
-1. A random number is generated between 0 and 1 using the configured seed.
-2. The match passes if this random number is less than or equal to the threshold value.
-3. If `bInvertThreshold` is enabled, the match passes when the random number is **greater** than the threshold.
-4. The threshold can be a fixed value or read from an attribute on the input data.
-
-This creates a probabilistic matching system where some matches succeed and others fail based on chance, enabling varied procedural outputs.
-
-<details>
-
-<summary>Inputs</summary>
-
-Expects data that supports matching operations (points, edges, etc.), typically connected via pins on matching processing nodes.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-Produces a match rule definition that can be consumed by matching processing nodes to determine which candidates pass or fail based on the random threshold logic.
-
-</details>
+* The node evaluates whether to pass or fail a match based on a randomly generated value and a specified threshold.
+* A random number is generated using the provided seed (TBD), which determines if the match passes or fails.
+* The node compares this random number against the threshold, either from an attribute input or directly set, within the 0-1 range to decide the outcome.
+* If the Invert Threshold setting is enabled, the logic inverts such that values below the threshold pass and those above fail.
 
 #### Configuration
 
 <details>
 
-<summary><strong>RandomSeed</strong><br><em>TBD</em></summary>
+<summary><strong>Random Seed</strong> <code>int32</code></summary>
 
-Controls the seed used for generating random numbers. Changing this value will change the sequence of random decisions made by this subnode.
+TBD
 
-</details>
-
-<details>
-
-<summary><strong>ThresholdInput</strong><br><em>Type of Threshold value source.</em></summary>
-
-Determines whether the threshold is a constant value or read from an attribute.
-
-**Values**:
-
-* **Constant**: Use the fixed `Threshold` value.
-* **Attribute**: Read the threshold from an attribute on the input data.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>ThresholdAttribute</strong><br><em>Pass threshold -- Value is expected to fit within a 0-1 range.</em></summary>
+<summary><strong>Threshold Input</strong> <code>PCGExInputValueType</code></summary>
 
-The attribute from which to read the threshold value, when `ThresholdInput` is set to **Attribute**.
+Type of Threshold value source
 
-</details>
-
-<details>
-
-<summary><strong>Threshold</strong><br><em>Pass threshold</em></summary>
-
-The fixed threshold value used for matching decisions when `ThresholdInput` is set to **Constant**. Must be between 0 and 1.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bInvertThreshold</strong><br></summary>
+<summary><strong>Threshold (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-When enabled, the match passes if the random number is greater than the threshold, rather than less than or equal to it.
+Pass threshold -- Value is expected to fit within a 0-1 range.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this subnode in a graph where you want to randomly include or exclude certain matches. For example, when matching points to form connections, you could use this to only connect 30% of possible pairs. Set `Threshold` to 0.3 and `bInvertThreshold` to false. This will cause about 30% of potential matches to pass through.
+<summary><strong>Threshold</strong> <code>double</code></summary>
 
-#### Notes
+Pass threshold
 
-* The random seed ensures reproducible results when the same seed is used.
-* When using attribute-based thresholds, ensure the attribute values are within the 0–1 range for consistent behavior.
-* This subnode works best in scenarios where you want to introduce variability into deterministic matching systems.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invert Threshold</strong> <code>bool</code></summary>
+
+Controls invert threshold.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExMatchRandomConfig</code></summary>
+
+Rules properties
+
+📦 See: MatchRandom configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Random Seed</strong> <code>int32</code></summary>
+
+TBD
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Threshold Input</strong> <code>PCGExInputValueType</code></summary>
+
+Type of Threshold value source
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Threshold (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Pass threshold -- Value is expected to fit within a 0-1 range.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Threshold</strong> <code>double</code></summary>
+
+Pass threshold
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invert Threshold</strong> <code>bool</code></summary>
+
+Controls invert threshold.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExMatching\Public\Matching\PCGExMatchRandom.h`

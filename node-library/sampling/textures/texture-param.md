@@ -5,116 +5,134 @@ icon: circle-dashed
 
 # Texture Param
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+A simple texture parameter definition.
 
-> Defines a texture parameter for sampling in procedural content generation.
+📌 **Subnode** — Connects to **Texture Params** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode sets up a configuration for reading texture data from a material. It determines which texture parameter to sample, where to store the resulting values, and how to interpret the texture's color channels. When connected to a sampler node, it tells that node which texture to read from and how to process the sampled data.
+> AI-Generated, needs proofreading
 
-The subnode works by defining a sampling setup that includes:
-
-1. The name of the material parameter that references the texture
-2. Which attribute will receive the sampled values
-3. Which color channels (red, green, blue, alpha) to extract
-4. How to format the output data (as a single value or vector)
-5. Any scaling to apply to the final result
-
-This configuration can be reused across multiple sampler nodes in your graph, making it easy to maintain consistent texture sampling behavior throughout your procedural setup.
+* The Texture Param node defines a texture parameter by using the specified Material Parameter Name to identify the texture within materials that require this information.
+* It outputs the path of the texture to an attribute named according to the Texture IDAttribute Name setting.
+* The node samples the texture and outputs the sampled value to an attribute named as per the Sample Attribute Name, with the data type defined by Output Type.
+* Depending on the Selected Output Type, the output will be truncated or sparse based on the components specified in Sampled Channels.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Material Parameter Name</strong><br><em>Name of the texture parameter to look for, when used in nodes that are set up to require this info.</em></summary>
+<summary><strong>Material Parameter Name</strong> <code>Name</code></summary>
 
-The name of the material parameter that references the texture to be sampled. This should match a parameter defined in your material.
+Name of the texture parameter to look for, when used in node that are set up to require this info.
 
-</details>
-
-<details>
-
-<summary><strong>Texture ID Attribute Name</strong><br><em>Name of the attribute to output the path to</em></summary>
-
-The name of the attribute where the texture identifier or path will be stored. This is typically used for tracking which texture was sampled.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Sample Attribute Name</strong><br><em>Name of the attribute to output the sampled value to</em></summary>
+<summary><strong>Texture IDAttribute Name</strong> <code>Name</code></summary>
 
-The name of the attribute that will contain the result of the texture sampling operation.
+Name of the attribute to output the path to
 
-</details>
-
-<details>
-
-<summary><strong>Output Type</strong><br><em>Type of the attribute to output the sampled value to</em></summary>
-
-Controls how the sampled data is formatted in the output attribute:
-
-* **Auto**: Automatically selects the appropriate type based on the number of channels selected.
-* **Float**: Single scalar value (e.g., average of selected channels).
-* **Double**: Double precision scalar value.
-* **Integer**: Integer value.
-* **Vector4**: Full RGBA vector.
-* **Vector**: RGB vector (no alpha).
-* **Vector2**: XY vector.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Sampled Channels</strong><br><em>What components will be sampled. Note that output will be truncated or sparse depending on the selected output type.</em></summary>
+<summary><strong>Config</strong> <code>PCGExTextureParamConfig</code></summary>
 
-Select which color channels to sample from the texture:
+Controls config.
 
-* **R**: Red channel
-* **G**: Green channel
-* **B**: Blue channel
-* **A**: Alpha channel
-* **RGB**: All RGB channels (excludes alpha)
-* **RGBA**: All four channels
+📦 See: TextureParam configuration
 
-The output type will determine how many channels are actually used in the final attribute.
+⚡ PCG Overridable
+
+</details>
+
+**Sampling**
+
+<details>
+
+<summary><strong>Sample Attribute Name</strong> <code>Name</code></summary>
+
+Name of the attribute to output the sampled value to
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Scale</strong><br><em>Apply a scale factor to the output value</em></summary>
+<summary><strong>Output Type</strong> <code>PCGExTexSampleAttributeType</code></summary>
 
-A multiplier applied to the sampled texture values before they're written to the output attribute. This allows you to adjust the intensity or magnitude of the sampled data.
+Type of the attribute to output the sampled value to
 
-</details>
+**Values:**
 
-<details>
+* **Auto**: Output type will be driven by selected channels.
+* **Float**: Output sample attribute type will be Float
+* **Double**: Output sample attribute type will be Double
+* **Double**: Output sample attribute type will be Integer
+* **Vector4**: Output sample attribute type will be Vector4
+* **Vector**: Output sample attribute type will be Vector
+* **Vector2**: Output sample attribute type will be Vector2
+* **Invalid**
 
-<summary><strong>Texture Index Input</strong><br><em>Resolution input type</em></summary>
-
-Controls how the index of the texture in an array is determined:
-
-* **Constant**: Use a fixed integer value.
-* **Attribute**: Read the index from an attribute on the input data.
-
-</details>
-
-<details>
-
-<summary><strong>Texture Index (Attr)</strong><br><em>Texture Index Attribute.</em></summary>
-
-When "Texture Index Input" is set to "Attribute", this specifies which attribute contains the texture index value.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Texture Index</strong><br><em>Texture Index Constant.</em></summary>
+<summary><strong>Sampled Channels</strong> <code>uint8</code></summary>
 
-When "Texture Index Input" is set to "Constant", this specifies the fixed index of the texture to sample from an array.
+What components will be sampled. Note that output will be truncated or sparse depending on the selected output type.
 
 </details>
+
+<details>
+
+<summary><strong>Scale</strong> <code>double</code></summary>
+
+Apply a scale factor to the output value
+
+⚡ PCG Overridable
+
+</details>
+
+**Texture Array**
+
+<details>
+
+<summary><strong>Texture Index Input</strong> <code>PCGExInputValueType</code></summary>
+
+Resolution input type
+
+</details>
+
+<details>
+
+<summary><strong>Texture Index (Attr)</strong> <code>Name</code></summary>
+
+Texture Index Attribute.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Texture Index</strong> <code>int32</code></summary>
+
+Texture Index Constant.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsSampling\Public\Core\PCGExTexParamFactoryProvider.h`

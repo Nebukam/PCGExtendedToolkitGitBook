@@ -5,100 +5,132 @@ icon: circle
 
 # Delaunay 2D
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Create a 2D delaunay triangulation for each input dataset.
 
-> Create a 2D Delaunay triangulation for each input dataset.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node creates a Delaunay triangulation by connecting input points into triangles. The resulting mesh ensures that no point lies inside the circle formed by any triangle's three corners. This produces a natural-looking mesh that's commonly used for terrain generation, spatial partitioning, or creating Voronoi diagrams.
-
-The process begins by projecting input points onto a 2D plane using specified axis settings (X, Y, or Z). Then, it calculates the triangulation for each group of points. Optionally, it can generate an Urquhart graph by removing the longest edge from each triangle, which creates a sparser but still valid mesh. It can also identify and mark boundary points and edges to help define the outer shape of your data.
+* Computes a 2D Delaunay triangulation for each input dataset, ensuring no input points are inside the circumcircle of any triangle in the triangulation.
+* Optionally outputs the Urquhart graph by removing the longest edge from each Delaunay cell if the "Urquhart" setting is enabled.
+* Outputs the original sites (points) used to generate the Delaunay triangulation when "Output Sites" is selected.
+* Marks points and edges that lie on the convex hull of the triangulation, assigning a boolean attribute named by "Site Hull Attribute Name", where `True` indicates the point or edge is part of the hull.
+* Optionally merges adjacent sites into single points if "Urquhart Sites Merge" is enabled.
 
 #### Configuration
 
 <details>
 
-<summary><strong>bUrquhart</strong><br><em>Output the Urquhart graph of the Delaunay triangulation (removes the longest edge of each Delaunay cell)</em></summary>
+<summary><strong>Urquhart</strong> <code>bool</code></summary>
 
-When enabled, this removes the longest edge from each triangle in the Delaunay triangulation. This results in a sparser graph that still maintains the Delaunay property but with fewer edges.
+Output the Urquhart graph of the Delaunay triangulation (removes the longest edge of each Delaunay cell)
 
-</details>
-
-<details>
-
-<summary><strong>bMarkHull</strong><br><em>Mark points &#x26; edges that lie on the hull</em></summary>
-
-When enabled, points and edges that form the convex hull of the input point set are marked with a boolean attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>HullAttributeName</strong><br><em>Name of the attribute to output the Hull boolean to. True if point is on the hull, otherwise false.</em></summary>
+<summary><strong>Mark Hull</strong> <code>bool</code></summary>
 
-The name of the boolean attribute that will be added to points and edges to indicate whether they lie on the hull.
+Mark points & edges that lie on the hull
 
-</details>
-
-<details>
-
-<summary><strong>bMarkEdgeOnTouch</strong><br><em>When true, edges that have at least a point on the Hull as marked as being on the hull.</em></summary>
-
-When enabled, edges are marked as being on the hull if they connect to at least one hull point.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>ProjectionDetails</strong><br><em>Projection settings.</em></summary>
+<summary><strong>Hull Attribute Name</strong> <code>Name</code></summary>
 
-Controls how input points are projected onto a 2D plane for triangulation. You can specify which axis to use (X, Y, or Z) for the projection.
+Name of the attribute to output the Hull boolean to. True if point is on the hull, otherwise false.
 
-</details>
-
-<details>
-
-<summary><strong>GraphBuilderDetails</strong><br><em>Cluster Output Settings</em></summary>
-
-Controls how the output graph is built, including edge properties and solidification settings.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bOutputSites</strong><br><em>Output delaunay sites</em></summary>
+<summary><strong>Mark Edge On Touch</strong> <code>bool</code></summary>
 
-When enabled, the triangulation sites (input points) are output as a separate point set.
+When true, edges that have at least a point on the Hull as marked as being on the hull.
 
-</details>
-
-<details>
-
-<summary><strong>bMarkSiteHull</strong><br><em>Mark points &#x26; edges that lie on the hull</em></summary>
-
-When enabled, points and edges that form the convex hull of the input point set are marked with a boolean attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>SiteHullAttributeName</strong><br><em>Name of the attribute to output the Hull boolean to. True if point is on the hull, otherwise false.</em></summary>
+<summary><strong>Projection Details</strong> <code>PCGExGeo2DProjectionDetails</code></summary>
 
-The name of the boolean attribute that will be added to sites (points) to indicate whether they lie on the hull.
+Projection settings.
+
+📦 See: Geo2DProjection configuration
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>UrquhartSitesMerge</strong><br><em>Merge adjacent sites into a single point</em></summary>
+<summary><strong>Cluster Output Settings</strong> <code>PCGExGraphBuilderDetails</code></summary>
 
-Controls how sites are merged when using the Urquhart graph mode:
+Graph & Edges output properties
 
-* **None**: No merging occurs.
-* **Merge Sites**: Merged site is the average of the two original sites.
-* **Merge Edges**: Merged site is the average of the removed edges.
+📦 See: GraphBuilder configuration
+
+⚡ PCG Overridable
 
 </details>
+
+**Output**
+
+<details>
+
+<summary><strong>Output Sites</strong> <code>bool</code></summary>
+
+Output delaunay sites
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Mark Site Hull</strong> <code>bool</code></summary>
+
+Mark points & edges that lie on the hull
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Site Hull Attribute Name</strong> <code>Name</code></summary>
+
+Name of the attribute to output the Hull boolean to. True if point is on the hull, otherwise false.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Urquhart Sites Merge</strong> <code>PCGExUrquhartSiteMergeMode</code></summary>
+
+Merge adjacent sites into a single point
+
+**Values:**
+
+* **None**: Do not merge sites.
+* **Merge Sites**: Merge site is the average of the merge.
+* **Merge Edges**: Merge site is the averge of the removed edges.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsClusters\Public\Elements\Diagrams\PCGExBuildDelaunayGraph2D.h`

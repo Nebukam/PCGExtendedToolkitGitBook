@@ -5,43 +5,28 @@ icon: circle
 
 # Merge Points by Tag
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Merge points based on shared tags.
 
-> Merge points that share common tags into unified outputs.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node organizes point data based on shared tags and then combines points that belong to the same tag group. It supports different merging strategies depending on how you want overlapping or duplicate data handled.
-
-First, it sorts input points into groups based on their assigned tags. Each unique tag becomes a category, and all points with that tag are placed together.
-
-Next, it applies the selected merge mode:
-
-* In **Strict** mode, higher-priority tags remove overlapping data from lower-priority ones.
-* With **Overlap** mode, all data within the same tag group is merged together.
-* Using **Flatten** mode combines all tags into one identifier and merges points based on that.
-
-Points that don't match any filters are managed according to the fallback behavior:
-
-* **Omit**: Excludes unmatched points from output.
-* **Merge**: Groups unmatched points into a single combined output.
-* **Forward**: Passes unmatched points through without merging them.
-
-Finally, the merged results are sent out via the output pins in the specified order.
+* The Merge Points by Tag node processes points that share common tags as defined in the Tag Filters setting.
+* Depending on the Resolution Priorities setting, the node determines which point's data takes precedence when merging points with overlapping tags.
+* The Sort Direction setting influences how merged points are ordered after processing.
+* If a scenario arises where no tag has authority over another and there is no clear way to merge based on the provided settings, the Fallback Behavior dictates how the node handles this situation.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Mode</strong><br><em>How overlapping tags are resolved during merging.</em></summary>
+<summary><strong>Mode</strong> <code>PCGExMergeByTagOverlapResolutionMode</code></summary>
 
-Controls how to handle data when multiple tags overlap or conflict.
+TBD
 
-**Values**:
+**Values:**
 
-* **Strict**: Merge happens per-tag, and higher priority tags remove overlapping lower-priority data.
+* **Strict**: Merge happens per-tag, and higher priority tags are removed from lower priority overlaps.
 * **Overlap**: Merge happens per-tag, overlapping data is merged entirely.
 * **Flatten**: Flatten all tags into a unique identifier and match-merge based on that identifier.
 
@@ -49,61 +34,60 @@ Controls how to handle data when multiple tags overlap or conflict.
 
 <details>
 
-<summary><strong>SortDirection</strong><br><em>Sorting direction</em></summary>
+<summary><strong>Sort Direction</strong> <code>PCGExSortDirection</code></summary>
 
-Determines the order in which points are sorted within each tag bucket before merging. Only used when Mode is not "Flatten".
-
-**Values**:
-
-* **Ascending**: Sorts from lowest to highest.
-* **Descending**: Sorts from highest to lowest.
+Sorting direction
 
 </details>
 
 <details>
 
-<summary><strong>FallbackBehavior</strong><br><em>How unmatched points are handled in Flatten mode.</em></summary>
+<summary><strong>Fallback Behavior</strong> <code>PCGExMergeByTagFallbackBehavior</code></summary>
 
-Defines what happens to points that don't match any tag filters when using the "Flatten" merge mode.
+Fallback behavior
 
-**Values**:
+**Values:**
 
-* **Omit**: Do not output data that didn't pass filters.
-* **Merge**: Merge all data that didn't pass filter in a single blob.
-* **Forward**: Forward data that didn't pass filter without merging them.
-
-</details>
-
-<details>
-
-<summary><strong>TagFilters</strong><br><em>Tags to be processed or ignored.</em></summary>
-
-Defines which tags are included, excluded, or all considered for merging. Tags not matching the filter are skipped.
+* **Omit**: Do not output data that didn't pass filters
+* **Merge**: Merge all data that didn't pass filter in a single blob
+* **Forward**: Forward data that didn't pass filter without merging them
 
 </details>
 
 <details>
 
-<summary><strong>ResolutionPriorities</strong><br><em>Which tag has merging authority over another.</em></summary>
+<summary><strong>Tag Filters</strong> <code>PCGExNameFiltersDetails</code></summary>
 
-Sets the priority order of tags when resolving overlaps in "Strict" mode. Tags listed earlier take precedence over later ones.
+Tags to be processed or ignored.
+
+📦 See: NameFilters configuration
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>CarryOverDetails</strong><br><em>Meta filter settings.</em></summary>
+<summary><strong>Resolution Priorities</strong> <code>Array of FString</code></summary>
 
-Controls how attributes and metadata are carried over during merging, including filtering rules for which data to include or exclude.
+Which tag has merging authority over another.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-You have a point cloud representing different terrain types (e.g., "Grass", "Water", "Rock") and want to merge all points with the same type into single outputs. Use this node to group points by tag and merge them, ensuring that higher-priority tags (like "Water" over "Grass") are respected when overlaps occur.
+<summary><strong>Carry Over Settings</strong> <code>PCGExCarryOverDetails</code></summary>
 
-#### Notes
+Meta filter settings.
 
-* The node works best when point data has consistent tag naming.
-* For large datasets, consider using "Flatten" mode for better performance.
-* When using "Strict" mode, ensure your priority list is well-defined to avoid unexpected merges.
+📦 See: CarryOver configuration
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExFoundations\Public\Elements\Utils\PCGExMergePointsByTag.h`

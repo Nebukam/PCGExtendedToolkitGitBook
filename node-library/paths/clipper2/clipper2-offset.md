@@ -5,184 +5,189 @@ icon: circle
 
 # Clipper2 : Offset
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Does a Clipper2 offset operation with optional dual (inward+outward) offset.
 
-> Applies a geometric offset to paths in your PCG graph, useful for creating outlines, expanding or contracting shapes, and generating buffer zones.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node takes input paths and applies a geometric offset using Clipper2's offsetting algorithm. The process involves:
-
-1. Projecting the path onto a 2D plane based on the specified projection settings (normal or best-fit).
-2. Applying an offset amount to each path segment, either inward or outward.
-3. Handling corner joins according to the selected join type (round, square, miter, etc.).
-4. Managing path ends with specific end types for open and closed paths.
-5. Optionally applying multiple iterations of the offset operation, with a consolidation method to determine how many iterations to apply when sources have different values.
-6. Writing iteration data to attributes or tags if enabled.
-
-The node supports both single and dual (inward + outward) offsets, allowing you to create shapes that are simultaneously expanded and contracted from the original path.
+* The Clipper2 : Offset node performs an offset operation using Clipper2 library settings specified under Projection Details.
+* It applies the offset for a number of iterations defined by the user, with a minimum guaranteed by the Min Iterations setting.
+* If multiple sources have different iteration attributes, the Consolidation setting determines how to finalize the iteration count.
+* The Offset amount specifies the distance by which shapes are expanded outward or contracted inward, or both.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Projection Details</strong><br><em>Projection settings.</em></summary>
+<summary><strong>Projection Details</strong> <code>PCGExGeo2DProjectionDetails</code></summary>
 
-Controls how the input paths are projected onto a 2D plane for offsetting. This affects the orientation of the offset operation.
+Projection settings.
 
-</details>
+📦 See: Geo2DProjection configuration
 
-<details>
-
-<summary><strong>Iterations</strong><br><em>Number of iterations to apply</em></summary>
-
-The number of times the offset operation is applied to each path. For example, setting this to 3 will apply the offset three times in sequence.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Iteration Consolidation</strong><br><em>How to determine final iteration count when iteration attribute from multiple source differ</em></summary>
+<summary><strong>Offset</strong> <code>PCGExInputShorthandSelectorDouble</code></summary>
 
-Determines how to resolve differences in iteration counts if multiple input paths have different values. Options are:
+Offset amount
 
-* **First**: Use the first path's value.
-* **Last**: Use the last path's value.
-* **Average**: Take the average of all values.
-* **Min**: Use the minimum value.
-* **Max**: Use the maximum value.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Min Iterations</strong><br><em>Minimum guaranteed iterations</em></summary>
+<summary><strong>└─ Scale</strong> <code>double</code></summary>
 
-Sets a minimum number of iterations to apply, even if the input iteration count is lower. This ensures at least this many offset operations are performed.
+Offset Scale (mostly useful when using attributes)
 
-</details>
-
-<details>
-
-<summary><strong>Offset</strong><br><em>Offset amount</em></summary>
-
-The distance by which to offset the paths. Positive values expand the shape outward; negative values contract it inward.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Offset Scale</strong><br><em>Offset Scale (mostly useful when using attributes)</em></summary>
+<summary><strong>Join Type</strong> <code>PCGExClipper2JoinType</code></summary>
 
-A multiplier applied to the base offset value, useful when the offset is driven by an attribute.
+Join type for corners
 
-</details>
-
-<details>
-
-<summary><strong>Join Type</strong><br><em>Join type for corners</em></summary>
-
-Controls how sharp corners are handled during offsetting. Options include:
-
-* **Round**: Corners are rounded.
-* **Square**: Corners are squared.
-* **Miter**: Corners are extended to meet at a point (with a limit).
-* **Bevel**: Corners are cut off.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Miter Limit</strong><br><em>Miter limit (only used with Miter join type)</em></summary>
+<summary><strong>└─ Miter limit</strong> <code>double</code></summary>
 
-When using the Miter join type, this controls how far the corner can extend before being clipped. A value of 2.0 means that if the miter length exceeds twice the offset distance, it will be clipped to a square end.
+Miter limit (only used with Miter join type)
 
-</details>
-
-<details>
-
-<summary><strong>End Type Closed</strong><br><em>End type for closed paths</em></summary>
-
-Controls how closed paths are treated at their endpoints. Options include:
-
-* **Polygon**: Treats as a closed polygon.
-* **Joined**: Joins the ends (creates thin paths with double-sided offsets).
-* **Butt**: Ends are cut off square.
-* **Square**: Ends are extended square.
-* **Round**: Ends are rounded.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>End Type Open</strong><br><em>End type for open paths</em></summary>
+<summary><strong>End Type Closed</strong> <code>PCGExClipper2EndType</code></summary>
 
-Controls how open paths are treated at their endpoints. Options include:
+End type for closed paths
 
-* **Polygon**: Treats as a closed polygon.
-* **Joined**: Joins the ends (creates thin paths with double-sided offsets).
-* **Butt**: Ends are cut off square.
-* **Square**: Ends are extended square.
-* **Round**: Ends are rounded.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Write Iteration</strong><br></summary>
+<summary><strong>End Type Open</strong> <code>PCGExClipper2EndType</code></summary>
 
-When enabled, writes the iteration index to a data attribute.
+End type for open paths
+
+⚡ PCG Overridable
+
+</details>
+
+**Iterations**
+
+<details>
+
+<summary><strong>Iterations</strong> <code>PCGExInputShorthandNameInteger32Abs</code></summary>
+
+Number of iterations to apply
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Iteration Attribute Name</strong><br><em>Write the iteration index to a data attribute</em></summary>
+<summary><strong>├─ Consolidation</strong> <code>PCGExClipper2OffsetIterationCount</code></summary>
 
-The name of the data attribute where the iteration index will be written.
+How to determine final iteration count when iteration attribute from multiple source differ
 
-</details>
+**Values:**
 
-<details>
+* **First**
+* **Last**
+* **Average**
+* **Min**
+* **Max**
 
-<summary><strong>Tag Iteration</strong><br></summary>
-
-When enabled, writes the iteration index to a tag.
-
-</details>
-
-<details>
-
-<summary><strong>Iteration Tag</strong><br><em>Write the iteration index to a tag</em></summary>
-
-The name of the tag where the iteration index will be written.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Tag Dual</strong><br></summary>
+<summary><strong>└─ Min Iterations</strong> <code>int32</code></summary>
 
-When enabled, writes a tag to indicate dual (negative) offsets.
+Minimum guaranteed iterations
+
+⚡ PCG Overridable
+
+</details>
+
+**Output**
+
+<details>
+
+<summary><strong>Write Iteration</strong> <code>bool</code></summary>
+
+Controls write iteration.
 
 </details>
 
 <details>
 
-<summary><strong>Dual Tag</strong><br><em>Write this tag on the dual (negative) offsets</em></summary>
+<summary><strong>Iteration Attribute Name</strong> <code>String</code></summary>
 
-The name of the tag to apply to negative offset paths when using dual mode.
+Write the iteration index to a data attribute
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+**Output > Tagging**
 
-Create a set of open and closed paths, then use this node to generate an offset version of each. Set the offset amount to 50 units, and choose "Round" for join type and "Butt" for end type. This will create clean, rounded outlines around your original paths with square ends.
+<details>
 
-#### Notes
+<summary><strong>Tag Iteration</strong> <code>bool</code></summary>
 
-* The offset operation is performed in 2D space, projected using the specified projection settings.
-* Iteration consolidation can be used to ensure consistent results when combining paths with different iteration counts.
-* Dual offset mode allows you to generate both inward and outward offsets from a single path, useful for creating shapes like borders or outlines.
+Controls tag iteration.
+
+</details>
+
+<details>
+
+<summary><strong>Iteration Tag</strong> <code>String</code></summary>
+
+Write the iteration index to a tag
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Tag Dual</strong> <code>bool</code></summary>
+
+Controls tag dual.
+
+</details>
+
+<details>
+
+<summary><strong>Dual Tag</strong> <code>String</code></summary>
+
+Write this tag on the dual (negative) offsets
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsClipper2\Public\Elements\PCGExClipper2Offset.h`

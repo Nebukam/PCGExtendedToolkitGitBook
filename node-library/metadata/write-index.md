@@ -5,148 +5,160 @@ icon: circle
 
 # Write Index
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Write the current point index to an attribute.
 
-> Writes point or collection indices to attributes or tags.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-The Write Index node assigns sequential numbers to points based on their order within collections. For each point, it can write:
-
-* The point's position within its collection (starting from zero)
-* The total number of points in the collection
-* A unique identifier for the collection itself (when multiple collections are present)
-
-These values can be stored as attributes or tags and optionally normalized to a 0–1 range. If your data includes multiple collections, each one gets its own index and entry count.
-
-The node also supports interpolation for attribute outputs, which helps ensure smooth transitions when using the data in other nodes that require continuous values.
+* The node writes the current point index to an attribute specified by the user in the Output Attribute Name setting.
+* If Output Point Index is enabled, the node writes the index of each individual point to the designated attribute.
+* When Normalized is selected, the node outputs the point index as a normalized value relative to the total number of points.
+* The One Minus option, if enabled, modifies the output by subtracting it from one, though its exact application depends on other settings.
+* If Output Collection Index is enabled, the node also writes the collection index to the attribute alongside or instead of the point index, depending on configuration.
 
 #### Configuration
 
 <details>
 
-<summary><strong>bOutputPointIndex</strong><br><em>Whether to write the index of the point on the point.</em></summary>
+<summary><strong>Output Point Index</strong> <code>bool</code></summary>
 
-When enabled, writes the current point's index within its collection to an attribute or tag.
+Whether to write the index of the point on the point.
 
-</details>
-
-<details>
-
-<summary><strong>OutputAttributeName</strong><br><em>The name of the attribute to write its index to.</em></summary>
-
-Defines the name of the attribute where the point index will be stored. Defaults to "CurrentIndex".
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bOneMinus</strong><br><em>Whether to subtract the index from 1.</em></summary>
+<summary><strong>Output Attribute Name</strong> <code>Name</code></summary>
 
-When enabled, outputs `1 - Index` instead of the raw index.
+The name of the attribute to write its index to.
 
-</details>
-
-<details>
-
-<summary><strong>bNormalizedEntryIndex</strong><br><em>Whether to write the index as a normalized output value.</em></summary>
-
-When enabled, normalizes the point index between 0 and 1 using the total number of entries in the collection.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bOutputCollectionIndex</strong><br><em>Whether to output the collection index.</em></summary>
+<summary><strong>├─ One Minus</strong> <code>bool</code></summary>
 
-When enabled, writes a unique index for each collection to an attribute or tag.
+Controls ├─ one minus.
 
-</details>
-
-<details>
-
-<summary><strong>CollectionIndexAttributeName</strong><br><em>The name of the attribute/tag to write the collection index to.</em></summary>
-
-Defines the name of the attribute or tag where the collection index will be stored. Defaults to "@Data.CollectionIndex".
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>CollectionIndexOutputType</strong><br><em>Type of output for collection index.</em></summary>
+<summary><strong>└─ Normalized</strong> <code>bool</code></summary>
 
-Specifies whether the collection index is written as a **Double**, **Float**, **Int32**, or **Int64**.
+Whether to write the index as a normalized output value
 
-</details>
-
-<details>
-
-<summary><strong>bOutputCollectionIndexToTags</strong><br><em>If enabled, output the collection index as a tag.</em></summary>
-
-When enabled, writes the collection index to a tag instead of an attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bOutputCollectionNumEntries</strong><br><em>Whether to output the collection number of entries.</em></summary>
+<summary><strong>Output Collection Index</strong> <code>bool</code></summary>
 
-When enabled, writes the total number of points in each collection to an attribute or tag.
+Whether to output the collection index. .
 
-</details>
-
-<details>
-
-<summary><strong>NumEntriesAttributeName</strong><br><em>The name of the attribute/tag to write the collection num entries to.</em></summary>
-
-Defines the name of the attribute or tag where the entry count will be stored. Defaults to "@Data.NumEntries".
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>NumEntriesOutputType</strong><br><em>Type of output for number of entries.</em></summary>
+<summary><strong>Collection Index</strong> <code>Name</code></summary>
 
-Specifies whether the entry count is written as a **Double**, **Float**, **Int32**, or **Int64**.
+The name of the attribute/tag to write the collection index to.
 
-</details>
-
-<details>
-
-<summary><strong>bNormalizeNumEntries</strong><br><em>If enabled, output the normalized collection num entries to the points.</em></summary>
-
-When enabled, normalizes the entry count between 0 and 1.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bOutputNumEntriesToTags</strong><br><em>If enabled, output the collection num entries as a tag.</em></summary>
+<summary><strong>├─ Type</strong> <code>PCGExNumericOutput</code></summary>
 
-When enabled, writes the entry count to a tag instead of an attribute.
+Controls ├─ type.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bAllowInterpolation</strong><br><em>Whether the created attributes allows interpolation or not.</em></summary>
+<summary><strong>└─ Output to tags</strong> <code>bool</code></summary>
 
-When enabled, marks the output attributes to allow interpolation in downstream nodes.
+If enabled, output the collection index as a tag
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this node to track point order within collections. For example:
+<summary><strong>Output Collection Num Entries</strong> <code>bool</code></summary>
 
-* Assign a unique index to each point in a procedural forest.
-* Tag points with their collection index to group them later.
-* Normalize indices for use in shaders or animations that require 0–1 values.
+Whether to output the collection number of entries .
 
-#### Notes
+⚡ PCG Overridable
 
-* The node works on both single and multiple collection inputs.
-* Normalized outputs are useful when you want consistent ranges across different data sizes.
-* Interpolation is helpful for smooth transitions in visual effects or procedural animations.
+</details>
+
+<details>
+
+<summary><strong>Num Entries</strong> <code>Name</code></summary>
+
+The name of the attribute/tag to write the collection num entries to.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>├─ Type</strong> <code>PCGExNumericOutput</code></summary>
+
+Controls ├─ type.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>├─ Normalized</strong> <code>bool</code></summary>
+
+If enabled, output the normalized collection num entries to the points
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Output to tags</strong> <code>bool</code></summary>
+
+If enabled, output the collection num entries as a tag
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Allow Interpolation</strong> <code>bool</code></summary>
+
+Whether the created attributes allows interpolation or not.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsMeta\Public\Elements\PCGExWriteIndex.h`

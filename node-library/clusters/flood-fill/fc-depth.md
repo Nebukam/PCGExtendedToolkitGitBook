@@ -5,61 +5,89 @@ icon: circle-dashed
 
 # FC : Depth
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Control fill based on diffusion depth.
 
-> Control flood fill behavior based on how far a point has diffused from its origin.
+📌 **Subnode** — Connects to **Fill Controls** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode controls how far points can spread during a flood fill operation by tracking their depth. Depth is measured as the number of steps taken from the original starting point. When a new point is considered for inclusion in the fill, this subnode checks whether that point has exceeded the maximum allowed depth. If it has, the point is rejected and won't be included in the diffusion.
+> AI-Generated, needs proofreading
 
-The behavior applies to three key stages of the flood fill process:
-
-1. **Capture**: Determines if a point can be used as a seed.
-2. **Probe**: Evaluates whether a candidate point can be added to the diffusion.
-3. **Candidate**: Checks if a point can be included in the current diffusion step.
-
-Each stage uses the same depth-checking logic, ensuring consistent behavior throughout the operation.
+* The Fill Control : Depth node adjusts fill levels based on diffusion depth by utilizing input parameters to define maximum depth limits.
+* It accepts configuration settings through the Config parameter and can receive the Max Depth value either from an attribute (Max Depth (Attr)) or a constant value (Max Depth).
+* The node uses the Max Depth Input setting, of type PCGExInputValueType, to determine whether the max depth is sourced from an attribute or set as a constant.
+* Processing involves comparing the current diffusion depth against the defined maximum depth to control how areas are filled according to the specified configuration settings.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Max Depth Input</strong><br><em>Whether to use a constant or attribute value for Max Depth.</em></summary>
+<summary><strong>Max Depth Input</strong> <code>PCGExInputValueType</code></summary>
 
-Controls whether the maximum depth is defined by a fixed number or read from an attribute on the input data.
-
-**Values**:
-
-* **Constant**: Use the value set in the "Max Depth" field.
-* **Attribute**: Read the maximum depth from an attribute named in the "Max Depth (Attr)" field.
+Controls max depth input.
 
 </details>
 
 <details>
 
-<summary><strong>Max Depth (Attr)</strong><br><em>Max depth Attribute.</em></summary>
+<summary><strong>Max Depth (Attr)</strong> <code>Name</code></summary>
 
-The name of the attribute to read the maximum diffusion depth from when "Max Depth Input" is set to "Attribute". This allows for per-point variation in how far a diffusion can spread.
+Max depth Attribute
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Max Depth</strong><br><em>Max depth Constant.</em></summary>
+<summary><strong>Max Depth</strong> <code>int32</code></summary>
 
-The fixed maximum number of steps a point can diffuse from its original seed before being rejected. Must be at least 1.
+Max depth Constant
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this subnode in a flood fill setup where you want to limit how far the fill spreads from each starting point. For example, when generating a cave system, you might use a max depth of 5 to ensure that caves don't extend too far from their entrances, creating more realistic and contained spaces.
+<summary><strong>Config</strong> <code>PCGExFillControlConfigDepth</code></summary>
 
-#### Notes
+Control Config.
 
-* The depth is measured in steps, not distance.
-* Using an attribute for Max Depth allows for dynamic control over diffusion limits based on input data.
-* This subnode works best with graph-building nodes that support probe-based diffusion logic.
+📦 See: FillControlConfigDepth configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Max Depth Input</strong> <code>PCGExInputValueType</code></summary>
+
+Controls max depth input.
+
+</details>
+
+<details>
+
+<summary><strong>Max Depth (Attr)</strong> <code>Name</code></summary>
+
+Max depth Attribute
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Max Depth</strong> <code>int32</code></summary>
+
+Max depth Constant
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsClusters\Public\Elements\FloodFill\FillControls\PCGExFillControlDepth.h`

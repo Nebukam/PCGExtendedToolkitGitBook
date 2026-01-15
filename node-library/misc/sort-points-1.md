@@ -5,65 +5,28 @@ icon: scrubber
 
 # Sort Collections
 
-{% hint style="info" %}
-### AI-generated page -- to be reviewed
+Sort collection using @Data domain attributes.
 
-While not 100% accurate, it should properly capture what the node/factory does. It stills needs to be proofread by a human.
-{% endhint %}
+**How It Works**
 
-> Sort collection using @Data domain attributes.
+> AI-Generated, needs proofreading
 
-### Overview
+* The Sort Collections node organizes items within a collection based on attributes defined in the @Data domain.
+* It uses the specified Sort Direction setting to determine whether the sorting order is ascending or descending.
+* The node processes each item in the collection by comparing their attribute values according to the sort criteria.
 
-This node reorders collections of data points based on a specified attribute value, allowing you to organize your procedural content in a predictable way. It's particularly useful when you need to sort data by properties like distance, height, or any other numeric attribute before further processing.
-
-The sorting operation works across all input collections and applies the same sorting criteria to each one. You can control whether the sorting is ascending or descending, making it flexible for different use cases such as layering objects from front to back or organizing data for downstream operations that depend on order.
-
-{% hint style="info" %}
-This node does not modify the original point positions; it only changes how the collections are ordered internally.
-{% endhint %}
+#### Configuration
 
 <details>
 
-<summary>Inputs</summary>
+<summary><strong>Sort Direction</strong> <code>PCGExSortDirection</code></summary>
 
-* **Default Input (Required)**: Accepts multiple collections of points via the main input pin. Each collection will be sorted independently based on the specified attribute.
+Controls the order in which data will be sorted
 
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Default Output**: Returns the sorted collections in the same structure as the input, with each collection ordered according to the selected sorting criteria.
+⚡ PCG Overridable
 
 </details>
-
-### Properties Overview
-
-Controls how the collections are sorted and what determines their order.
 
 ***
 
-#### Sorting Settings
-
-Determines the direction of the sort operation.
-
-**Sort Direction**
-
-_Controls whether the data is sorted in ascending or descending order._
-
-* When set to **Ascending**, lower values appear first in the collection.
-* When set to **Descending**, higher values appear first in the collection.
-
-**Values**:
-
-* **Ascending**: Sorts from lowest to highest value
-* **Descending**: Sorts from highest to lowest value
-
-### Notes
-
-* Sorting is performed on all input collections simultaneously, maintaining their relative structure.
-* The sorting attribute must be defined in the @Data domain of your input points.
-* This node works best when used with numeric attributes such as height, distance, or custom float values.
-* Consider using this node before operations that require ordered data, like creating layered terrain effects or organizing objects by depth.
+Source: `Source\PCGExElementsMeta\Public\Elements\Sorting\PCGExSortCollections.h`

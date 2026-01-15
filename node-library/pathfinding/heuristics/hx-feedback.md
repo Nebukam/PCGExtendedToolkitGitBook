@@ -5,93 +5,134 @@ icon: circle-dashed
 
 # HX : Feedback
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Heuristics based on visited score feedback.
 
-> Heuristics based on visited score feedback.
+📌 **Subnode** — Connects to **Heuristics** pins.
 
-#### Overview
+**How It Works**
 
-This subnode modifies pathfinding heuristics by incorporating feedback from previously visited points and edges. It encourages or discourages revisiting elements of a path based on how often they've been used, which can help avoid redundant paths or promote exploration in certain scenarios. This is especially useful in procedural generation where you want to influence the flow of paths through a graph without completely constraining them.
+> AI-Generated, needs proofreading
 
-It connects to Filter pins on pathfinding nodes to define how visited elements affect scoring during path computation.
-
-{% hint style="info" %}
-Connects to **Filter** pins on pathfinding nodes.
-{% endhint %}
-
-#### How It Works
-
-This subnode tracks how many times each point and edge has been part of a path. When computing scores for potential next steps, it adjusts the weight based on this history:
-
-1. If a point or edge has already been visited in prior paths, its score is modified.
-2. The modification depends on whether `bBinary` is enabled:
-   * When **enabled**, the score is either fully penalized (0) or left unchanged (1).
-   * When **disabled**, the score is scaled by a factor based on how often it's been visited.
-3. If `bGlobalFeedback` is enabled, feedback persists across multiple path queries within the same node, affecting all future paths.
-4. The `VisitedPointsWeightFactor` and `VisitedEdgesWeightFactor` control how strongly this feedback influences point and edge scores respectively.
-
-This creates a dynamic weighting system that adapts to the exploration history of the graph, making paths more varied or avoiding repetition depending on configuration.
+* The node evaluates scores based on visited points and edges in a plotted path using heuristics influenced by feedback settings.
+* If Binary is enabled, the weight for overlap remains either 0 or 1 without scaling; otherwise, weights scale according to overlap.
+* Visited Points Weight Factor and Visited Edges Weight Factor adjust the score of already included elements in the path based on their contribution to the overall weight curve.
+* When Global Feedback is set to true, the node applies feedback globally across all evaluated paths.
+* If Affect All Connected Edges is enabled, the node modifies weights for all edges connected to visited points or edges.
 
 #### Configuration
 
 <details>
 
-<summary><strong>bBinary</strong><br><em>If enabled, weight doesn't scale with overlap; the base score is either 0 or 1.</em></summary>
+<summary><strong>Binary</strong> <code>bool</code></summary>
 
-When enabled, visited elements are given a fixed weight of either 0 (penalized) or 1 (unchanged), regardless of how many times they were visited.
+If enabled, weight doesn't scale with overlap; the base score is either 0 or 1.
 
-</details>
-
-<details>
-
-<summary><strong>VisitedPointsWeightFactor</strong><br><em>Weight to add to points that are already part of the plotted path.</em></summary>
-
-Controls how much weight is added to point scores based on their visitation count. Only used when `bBinary` is disabled.
-
-**Values**:
-
-* **0**: No effect from visited points
-* **1**: Full effect from visited points
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>VisitedEdgesWeightFactor</strong><br><em>Weight to add to edges that are already part of the plotted path.</em></summary>
+<summary><strong>Visited Points Weight Factor</strong> <code>double</code></summary>
 
-Controls how much weight is added to edge scores based on their visitation count. Only used when `bBinary` is disabled.
+Weight to add to points that are already part of the plotted path. This is used to sample the weight curve.
 
-**Values**:
-
-* **0**: No effect from visited edges
-* **1**: Full effect from visited edges
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bGlobalFeedback</strong><br><em>Global feedback weight persist between path query in a single pathfinding node.</em></summary>
+<summary><strong>Visited Edges Weight Factor</strong> <code>double</code></summary>
 
-When enabled, the feedback history persists across multiple path queries within the same node. This can slow performance due to reduced parallelism.
+Weight to add to edges that are already part of the plotted path. This is used to sample the weight curve.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bAffectAllConnectedEdges</strong><br><em>Whether to apply feedback to all edges connected to a visited point.</em></summary>
+<summary><strong>Global Feedback</strong> <code>bool</code></summary>
 
-When enabled, feedback is applied not to the specific edge used but also to all edges connected to the visited point.
+Controls global feedback.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this subnode in a pathfinding setup where you want to avoid creating identical or very similar paths repeatedly. For example, when generating multiple routes through a dungeon, applying feedback can encourage exploration of different corridors instead of looping back to previously used ones.
+<summary><strong>Affect All Connected Edges</strong> <code>bool</code></summary>
 
-#### Notes
+Controls affect all connected edges.
 
-* Enabling `bGlobalFeedback` disables parallel execution for better consistency.
-* The feedback mechanism works best with a sufficient number of path queries to build meaningful statistics.
-* This subnode is ideal for creating dynamic and varied procedural paths in games or simulations.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExHeuristicConfigFeedback</code></summary>
+
+Filter Config.
+
+📦 See: HeuristicConfigFeedback configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Binary</strong> <code>bool</code></summary>
+
+If enabled, weight doesn't scale with overlap; the base score is either 0 or 1.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Visited Points Weight Factor</strong> <code>double</code></summary>
+
+Weight to add to points that are already part of the plotted path. This is used to sample the weight curve.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Visited Edges Weight Factor</strong> <code>double</code></summary>
+
+Weight to add to edges that are already part of the plotted path. This is used to sample the weight curve.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Global Feedback</strong> <code>bool</code></summary>
+
+Controls global feedback.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Affect All Connected Edges</strong> <code>bool</code></summary>
+
+Controls affect all connected edges.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExHeuristics\Public\Heuristics\PCGExHeuristicFeedback.h`

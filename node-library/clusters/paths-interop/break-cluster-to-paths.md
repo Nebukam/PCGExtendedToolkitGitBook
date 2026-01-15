@@ -5,129 +5,123 @@ icon: circle
 
 # Break Cluster to Paths
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Create individual paths from continuous edge chains.
 
-> Create individual paths from continuous edge chains within clusters.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node analyzes the edges within each cluster and identifies continuous chains of connected edges. It then breaks these chains into individual paths, starting from a specified direction or node.
-
-1. It traverses through the edges in each cluster to form continuous chains.
-2. The traversal respects the **Direction Settings** to determine how points are ordered along each path.
-3. If **Winding** is enabled, it enforces a consistent winding order on closed loops by projecting the points onto a 2D plane.
-4. Chains that do not meet the minimum or maximum point count thresholds are filtered out.
-5. The final paths are output as separate data entries.
-
-The node supports operating either on full **Paths** (chains of edges with no crossings) or individual **Edges**, depending on your needs.
+* The Cluster : Break to Paths node processes continuous edge chains by segmenting them into individual paths based on specified settings.
+* It handles leaves according to the selected "Leaves Handling" option, which influences how endpoints or isolated points are treated in the path creation process.
+* Points within each path are ordered following the defined direction settings, ensuring that the sequence of points forms coherent and directed paths.
+* The node enforces a winding order for paths if enabled through the "Winding" setting, with an option to apply this only to closed loops via "Wind Only Closed Loops".
+* Operation targets can be specified by the user through the "Operate On" setting, allowing control over which parts of the edge chains are processed into individual paths.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Leaves Handling</strong><br><em>How to handle leaves.</em></summary>
+<summary><strong>Leaves Handling</strong> <code>PCGExBreakClusterLeavesHandling</code></summary>
 
-Controls whether leaf nodes (nodes with only one neighbor) are included in path chains.
+How to handle leaves
 
-* **Include Leaves**: Leaf nodes are included.
-* **Exclude Leaves**: Leaf nodes are excluded from paths.
-* **Only Leaves**: Only leaf nodes are processed.
+**Values:**
 
-</details>
+* **Include Leaves**: Include leaves.
+* **Exclude Leaves**: Exclude leaves.
+* **Only Leaves**: Only process leaves.
 
-<details>
-
-<summary><strong>Operate On</strong><br><em>Operation target mode.</em></summary>
-
-Determines whether to process full edge chains or individual edges.
-
-* **Paths**: Process continuous edge chains that form paths with no crossings.
-* **Edges**: Operate on each edge individually (more computationally expensive).
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Direction Settings</strong><br><em>Defines the direction in which points will be ordered to form the final paths.</em></summary>
+<summary><strong>Operate On</strong> <code>PCGExBreakClusterOperationTarget</code></summary>
 
-Controls how the order of points is determined when forming paths.
+Operation target mode
 
-* **Forward**: Points are ordered from start to end.
-* **Backward**: Points are ordered from end to start.
-* **Bidirectional**: Points can be ordered both ways, based on edge direction.
+**Values:**
 
-</details>
+* **Paths**: Operate on edge chains which form paths with no crossings. e.g, nodes with only two neighbors.
+* **Edges**
 
-<details>
-
-<summary><strong>Winding</strong><br><em>Enforce a winding order for paths.</em></summary>
-
-Applies a consistent winding order (clockwise or counter-clockwise) to closed loops.
-
-* **Unchanged**: No winding is applied.
-* **Clockwise**: Paths are ordered clockwise.
-* **CounterClockwise**: Paths are ordered counter-clockwise.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Wind Only Closed Loops</strong><br><em>Whether to apply winding on closed loops only or all paths.</em></summary>
+<summary><strong>Direction Settings</strong> <code>PCGExEdgeDirectionSettings</code></summary>
 
-When enabled, winding is applied only to closed loops (paths that start and end at the same point). Otherwise, it applies to all paths.
+Defines the direction in which points will be ordered to form the final paths.
 
-</details>
-
-<details>
-
-<summary><strong>Projection Details</strong><br><em>Projection settings. Winding is computed on a 2D plane.</em></summary>
-
-Settings for projecting points onto a 2D plane before computing winding order. Only used when **Winding** is not set to **Unchanged**.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Min Point Count</strong><br><em>Do not output paths that have less points than this value.</em></summary>
+<summary><strong>Winding</strong> <code>PCGExWindingMutation</code></summary>
 
-Filters out paths with fewer points than the specified number.
+Enforce a winding order for paths.
 
-</details>
-
-<details>
-
-<summary><strong>Omit Above Point Count</strong><br></summary>
-
-When enabled, filters out paths that exceed the **Max Point Count**.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Max Point Count</strong><br><em>Do not output paths that have more points than this value.</em></summary>
+<summary><strong>Wind Only Closed Loops</strong> <code>bool</code></summary>
 
-Filters out paths with more points than the specified number. Only active when **Omit Above Point Count** is enabled.
+Whether to apply winding on closed loops only or all paths.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-You have a cluster of nodes representing a road network. You want to extract individual roads (paths) from the network, ensuring that each road has at least 3 points and no more than 100 points. You also want to enforce a counter-clockwise winding for closed loops like roundabouts.
+<summary><strong>Projection Details</strong> <code>PCGExGeo2DProjectionDetails</code></summary>
 
-1. Connect your clustered data to the **Cluster Input**.
-2. Set **Min Point Count** to `3`.
-3. Set **Max Point Count** to `100`.
-4. Enable **Wind Only Closed Loops** and set **Winding** to **CounterClockwise**.
-5. Set **Operate On** to **Paths**.
-6. Optionally, use a point filter subnode to define break points in the network.
+Projection settings. Winding is computed on a 2D plane.
 
-This will output clean, valid paths representing roads or routes from your cluster data.
+📦 See: Geo2DProjection configuration
 
-#### Notes
+⚡ PCG Overridable
 
-* This node is optimized for graph-based data where edges form continuous chains.
-* Winding enforcement requires 2D projection, so ensure your data supports it.
-* Setting **Operate On** to **Edges** can be very expensive with large datasets.
-* Paths are output as separate point IO entries, which can be further processed or visualized.
+</details>
+
+<details>
+
+<summary><strong>Min Point Count</strong> <code>int32</code></summary>
+
+Do not output paths that have less points that this value
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Omit Above Point Count</strong> <code>bool</code></summary>
+
+Controls omit above point count.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Max Point Count</strong> <code>int32</code></summary>
+
+Do not output paths that have more points that this value
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsClusters\Public\Elements\Paths\PCGExBreakClustersToPaths.h`

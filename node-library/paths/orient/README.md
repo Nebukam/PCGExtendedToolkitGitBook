@@ -5,131 +5,105 @@ icon: circle
 
 # Orient
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Orient paths points
 
-> Orient path points along their direction.
+**How It Works**
 
-#### Overview
+> AI-Generated, needs proofreading
 
-The Path : Orient node adjusts the orientation of each point along a path so that it aligns with the path's direction. This is useful for ensuring that objects placed along a path (like trees on a road or buildings along a street) are properly aligned with the path’s flow, rather than facing a fixed direction.
-
-It can either apply the calculated orientation directly to the point's transform or output the orientation as an attribute for further use in downstream nodes. This node is especially helpful when working with procedural paths that need to maintain consistent alignment with their geometry.
-
-{% hint style="info" %}
-Connects to **Path** input pins.
-{% endhint %}
-
-#### How It Works
-
-This node calculates a rotation for each point along the path based on its position relative to neighboring points. It determines the direction from one point to the next and uses that to compute an orientation vector.
-
-For each point:
-
-1. It identifies the previous and next points in the path.
-2. It computes a forward vector using the difference between the next and current point positions.
-3. It calculates an up vector based on the selected UpAxis setting (e.g., Up = Z+).
-4. Using these vectors, it constructs a rotation that aligns the OrientAxis with the path direction.
-5. If enabled, it also computes the dot product of the previous and next directions to capture how sharply the path turns at this point.
-
-The resulting orientation can be applied directly to the point's transform or stored as an attribute for later use.
+* The node processes paths by orienting their points based on specified axes and orientation settings.
+* Uses the Orient Axis and Up Axis from PCGExAxis to define the direction and vertical reference for each point's orientation.
+* Applies an instance-specific orientation defined in PCGExOrientInstancedFactory, which influences how individual instances of path points are oriented.
+* Allows for flipping the direction of orientation per-point through filters, overriding the default value set by Flip Direction setting.
+* Outputs the oriented paths according to the configuration specified in PCGExOrientUsage.
 
 #### Configuration
 
 <details>
 
-<summary><strong>OrientAxis</strong><br><em>Which axis of the point should be aligned with the path direction.</em></summary>
+<summary><strong>Orient Axis</strong> <code>PCGExAxis</code></summary>
 
-Controls which local axis of each point (Forward, Backward, Right, Left, Up, Down) will align with the path’s direction.
+Controls orient axis.
 
-**Values**:
-
-* **Forward**: X+ axis
-* **Backward**: X- axis
-* **Right**: Y+ axis
-* **Left**: Y- axis
-* **Up**: Z+ axis
-* **Down**: Z- axis
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>UpAxis</strong><br><em>Which axis should be considered as up for the orientation calculation.</em></summary>
+<summary><strong>Up Axis</strong> <code>PCGExAxis</code></summary>
 
-Defines which direction is considered "up" when computing the orientation. This helps determine the roll and pitch of the point's transform.
+Controls up axis.
 
-**Values**:
-
-* **Forward**: X+ axis
-* **Backward**: X- axis
-* **Right**: Y+ axis
-* **Left**: Y- axis
-* **Up**: Z+ axis
-* **Down**: Z- axis
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Orientation</strong><br><em>Subnode defining the orientation behavior.</em></summary>
+<summary><strong>Orientation</strong> <code>PCGExOrientInstancedFactory</code> ⚙️</summary>
 
-A subnode that defines how the orientation is calculated. This allows for custom transformations or overrides to be applied per point.
+Instanced pcgexorientinstancedfactory behavior.
 
-</details>
-
-<details>
-
-<summary><strong>bFlipDirection</strong><br><em>Whether to flip the orientation direction by default.</em></summary>
-
-When enabled, the orientation will be flipped relative to the path direction. This can be overridden per-point using filters.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Output</strong><br><em>How the calculated orientation is applied or stored.</em></summary>
+<summary><strong>Flip Direction</strong> <code>bool</code></summary>
 
-Controls whether the orientation is applied directly to the point or output as an attribute.
+Default value, can be overriden per-point through filters.
 
-**Values**:
-
-* **Apply to point**: Applies the transform to the point's rotation.
-* **Output to attribute**: Stores the transform in a new attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>OutputAttribute</strong><br><em>Name of the attribute where the orientation is stored.</em></summary>
+<summary><strong>Output</strong> <code>PCGExOrientUsage</code></summary>
 
-The name of the attribute that will store the calculated orientation when "Output to attribute" is selected.
+Controls output.
+
+**Values:**
+
+* **Apply to point**: Applies the orientation transform to the point
+* **Output to attribute**: Output the orientation transform to an attribute
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bOutputDot</strong><br><em>Whether to output the dot product between previous and next points.</em></summary>
+<summary><strong>Output Attribute</strong> <code>Name</code></summary>
 
-When enabled, a dot product value representing how sharply the path turns at each point will be stored as an attribute.
+Controls output attribute.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>DotAttribute</strong><br><em>Name of the attribute where the dot product is stored.</em></summary>
+<summary><strong>Output Dot</strong> <code>bool</code></summary>
 
-The name of the attribute that will store the computed dot product when enabled.
+Controls output dot.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-A path represents a winding mountain road. You want to place trees along the road such that they face the direction of the road. Connect your path data to this node, set OrientAxis to Forward and UpAxis to Up. Then, set Output to Apply to point so that each tree point is rotated to match the road's direction.
+<summary><strong>Dot Attribute</strong> <code>Name</code></summary>
 
-#### Notes
+Whether to output the dot product between prev/next points.
 
-* The node works best on paths with smooth transitions between points.
-* Using "Output to attribute" allows for more complex downstream processing or animation.
-* Dot product output can be used to detect sharp turns in a path, which may be useful for terrain or lighting effects.
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsPaths\Public\Elements\PCGExOrient.h`

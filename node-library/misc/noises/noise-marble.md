@@ -4,69 +4,163 @@ icon: circle-dashed
 
 # Noise : Marble
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Marble noise - veined patterns with turbulence.
 
-> Generates marble-like veined patterns with turbulence distortion.
+📌 **Subnode** — Connects to **Noise** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode creates natural-looking veining by combining a base sine wave pattern with turbulent noise distortion. The process begins with a sine wave aligned to a chosen axis (X, Y, Z, or radial), which defines the basic direction and spacing of the veins. This base pattern is then distorted using multi-octave turbulence to simulate organic flow and variation found in real marble. The sharpness parameter controls how defined the vein edges appear, allowing for soft transitions or crisp, well-defined lines. The result is a procedural noise value that represents the marble pattern, where higher values indicate vein areas.
+> AI-Generated, needs proofreading
+
+* Computes base noise patterns to form the foundational texture for marble veining.
+* Applies a sine wave pattern according to the Vein Frequency setting to create the veined structure in the specified Direction.
+* Introduces turbulence distortion based on Turbulence Strength and Turbulence Octaves settings, adding complexity and natural variation to the vein patterns.
+* Adjusts the sharpness of the vein edges using the Vein Sharpness parameter, where higher values result in more defined and sharper edges.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Direction</strong><br><em>Direction of marble veins.</em></summary>
+<summary><strong>Direction</strong> <code>PCGExMarbleDirection</code></summary>
 
-Controls which axis the base sine wave is aligned to.
+Direction of marble veins
 
-**Values**:
+**Values:**
 
-* **X**: Veins run along the X-axis
-* **Y**: Veins run along the Y-axis
-* **Z**: Veins run along the Z-axis
-* **Radial**: Veins radiate from a central point
+* **X Axis**
+* **Y Axis**
+* **Z Axis**
+* **Radial**
 
-</details>
-
-<details>
-
-<summary><strong>VeinFrequency</strong><br><em>Frequency of the sine wave creating veins.</em></summary>
-
-Controls how closely spaced the veins are. Higher values create more frequent, finer veining.
-
-Range: 0.1 to 20.0 Default: 5.0
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>TurbulenceStrength</strong><br><em>Strength of turbulence distortion.</em></summary>
+<summary><strong>Vein Frequency</strong> <code>double</code></summary>
 
-Controls how much the veins are distorted by turbulent noise. Higher values create more organic, flowing patterns.
+Frequency of the sine wave creating veins
 
-Range: 0.0 to 5.0 Default: 1.0
+_Range: min: 0.1, max: 20.0_
 
-</details>
-
-<details>
-
-<summary><strong>TurbulenceOctaves</strong><br><em>Number of turbulence octaves.</em></summary>
-
-Controls the complexity of the turbulence distortion. More octaves create more detailed, rougher patterns.
-
-Range: 1 to 8 Default: 4
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>VeinSharpness</strong><br><em>Sharpness of vein edges (1 = soft, higher = sharper).</em></summary>
+<summary><strong>Turbulence Strength</strong> <code>double</code></summary>
 
-Controls how defined the vein edges appear. Lower values create softer transitions between veins and background, while higher values create crisp, well-defined veins.
+Strength of turbulence distortion
 
-Range: 1.0 to 8.0 Default: 1.0
+_Range: min: 0.0, max: 5.0_
+
+⚡ PCG Overridable
 
 </details>
+
+<details>
+
+<summary><strong>Turbulence Octaves</strong> <code>int32</code></summary>
+
+Number of turbulence octaves
+
+_Range: min: 1, max: 8_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Vein Sharpness</strong> <code>double</code></summary>
+
+Sharpness of vein edges (1 = soft, higher = sharper)
+
+_Range: min: 1.0, max: 8.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExNoiseConfigMarble</code></summary>
+
+Controls config.
+
+📦 See: NoiseConfigMarble configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Direction</strong> <code>PCGExMarbleDirection</code></summary>
+
+Direction of marble veins
+
+**Values:**
+
+* **X Axis**
+* **Y Axis**
+* **Z Axis**
+* **Radial**
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Vein Frequency</strong> <code>double</code></summary>
+
+Frequency of the sine wave creating veins
+
+_Range: min: 0.1, max: 20.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Turbulence Strength</strong> <code>double</code></summary>
+
+Strength of turbulence distortion
+
+_Range: min: 0.0, max: 5.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Turbulence Octaves</strong> <code>int32</code></summary>
+
+Number of turbulence octaves
+
+_Range: min: 1, max: 8_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Vein Sharpness</strong> <code>double</code></summary>
+
+Sharpness of vein edges (1 = soft, higher = sharper)
+
+_Range: min: 1.0, max: 8.0_
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExNoise3D\Public\Noises\PCGExNoiseMarble.h`

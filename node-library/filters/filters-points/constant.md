@@ -5,40 +5,73 @@ icon: circle-dashed
 
 # Constant
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Filter that return a constant value.
 
-> Filter that returns a constant value.
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### How It Works
+**How It Works**
 
-The Constant filter subnode applies a fixed rule to all input points, determining whether they pass or fail a condition. It evaluates every point using a single, unchanging boolean value. When configured to return `true`, all points will pass the filter; when set to `false`, all points will fail. An invert option flips this behavior so that `true` becomes `false` and vice versa.
+> AI-Generated, needs proofreading
 
-This filter does not consider individual point properties or data — it applies the same rule uniformly across all input points.
+* The Filter : Constant node processes input by returning a predefined constant value regardless of the input data.
+* The "Value" setting determines the specific constant output by the node.
+* An "Invert" setting exists but its effect is unspecified without additional context or documentation.
+* The node operates under a configuration defined as "Filter Config.", though specifics about this configuration are not provided.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Value</strong><br><em>When enabled, the filter will always return true. When disabled, it returns false.</em></summary>
+<summary><strong>Value</strong> <code>bool</code></summary>
 
-Controls the base result of the filter. If enabled, all points pass; if disabled, all points fail.
+TBD
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bInvert</strong><br><em>When enabled, the result of the filter is inverted.</em></summary>
+<summary><strong>Invert</strong> <code>bool</code></summary>
 
-If Value is true and bInvert is true, the filter will return false for all points. This allows you to reverse the behavior of the filter.
+TBD
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this subnode when you want to force all points to pass or fail a condition in a processing node. For example, if you're using a "Filter Points" node and want to temporarily disable filtering, you can connect this constant filter with `Value` set to `true` and `bInvert` set to `false`. This will make all points pass through the filter.
+<summary><strong>Config</strong> <code>PCGExConstantFilterConfig</code></summary>
 
-#### Notes
+Filter Config.
 
-This subnode is ideal for testing or applying global rules. It's particularly useful in combination with other filters where you want one filter to always pass or fail, regardless of point data.
+📦 See: ConstantFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Value</strong> <code>bool</code></summary>
+
+TBD
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invert</strong> <code>bool</code></summary>
+
+TBD
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExFilters\Public\Filters\Points\PCGExConstantFilter.h`

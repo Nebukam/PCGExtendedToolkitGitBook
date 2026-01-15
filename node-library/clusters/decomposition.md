@@ -5,43 +5,90 @@ icon: circle
 
 # Decomposition
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Compute convex/k decomposition of clusters and write partition as an ID on the nodes.
 
-> Compute convex/k decomposition of clusters and write partition as an ID on the nodes.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node takes groups of points that have been organized into clusters and breaks each cluster down into smaller, convex shapes. Each point within a cluster gets assigned a unique number that identifies which part of the decomposition it belongs to. This allows you to treat different sections of a cluster separately, such as applying different materials or behaviors to each section.
+* Computes convex/k decomposition of clusters within the input geometry.
+* Assigns an ID to each partition resulting from the decomposition and writes this ID as an attribute named "Name" on the nodes.
+* Writes the normal vectors derived from edges onto the vertices of the decomposed partitions.
 
-The process analyzes the shape of each cluster and determines how to split it into convex components. These components are then numbered, and the numbers are stored in an attribute on each point so that other nodes can use this information for further processing.
+#### Settings
+
+<details>
+
+<summary><strong>Max Concavity Ratio</strong> <code>double</code></summary>
+
+Maximum allowed "concavity" - ratio of points inside hull vs on hull. 0 = all must be on hull
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Min Nodes Per Cell</strong> <code>int32</code></summary>
+
+Minimum nodes per cell
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Max Cells</strong> <code>int32</code></summary>
+
+Maximum cells to produce
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Max Depth</strong> <code>int32</code></summary>
+
+Maximum recursion depth
+
+⚡ PCG Overridable
+
+</details>
+
+#### Used In
+
+* ClusterDecomposition
+
+***
+
+Defined in: `Source\PCGExElementsClusters\Public\Elements\Decomposition\PCGExSimpleConvexDecomposer.h`
 
 #### Configuration
 
 <details>
 
-<summary><strong>DecompositionSettings</strong><br><em>Controls how the convex decomposition is performed.</em></summary>
+<summary><strong>Decomposition Settings</strong> <code>PCGExConvexDecompositionDetails</code></summary>
 
-Determines the method used to split clusters into convex parts. Options include:
+Write normal from edges on vertices.
 
-* **Convex**: Splits each cluster into only convex shapes.
-* **K-Decomposition**: Allows for a specified maximum number of partitions per cluster.
+📦 See: ConvexDecomposition configuration
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>CellIDAttributeName</strong><br><em>Name of the attribute storing decomposition IDs.</em></summary>
+<summary><strong>Cell IDAttribute Name</strong> <code>Name</code></summary>
 
-Specifies the name of the attribute where the decomposition IDs will be saved. This attribute is added to the point data so that downstream operations can access it.
+Controls cell idattribute name.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+***
 
-Use this node after organizing points into clusters to separate each cluster into convex sections. For example, if you have scattered points forming irregular shapes, this node helps identify and label each convex part within those shapes. You can then use these labels to apply different materials or effects to each section.
-
-{% hint style="info" %}
-Connects to **Cluster** processing nodes.
-{% endhint %}
+Source: `Source\PCGExElementsClusters\Public\Elements\Decomposition\PCGExClusterDecomposition.h`

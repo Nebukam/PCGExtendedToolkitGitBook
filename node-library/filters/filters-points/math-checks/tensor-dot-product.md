@@ -5,65 +5,117 @@ icon: circle-dashed
 
 # Tensor Dot Product
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Creates a filter definition that compares dot value of a vector and tensors.
 
-> Creates a filter definition that compares dot value of a vector and tensors.
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode evaluates whether points meet specific directional criteria based on tensor field data. For each point, it:
+> AI-Generated, needs proofreading
 
-1. Reads a vector from the point's attributes.
-2. Optionally transforms this vector using the point's local rotation and scale.
-3. Samples a tensor field at the point's location.
-4. Computes the dot product between the vector and the sampled tensor direction.
-5. Compares the resulting dot product value against a threshold using a configurable comparison operation.
-6. Determines if the point should pass the filter based on this comparison.
-
-The outcome is used to include or exclude points from downstream processing, depending on how their orientation relates to the tensor field's direction.
+* The node computes the dot product between a vector (Operand A) and tensors after optionally applying transformations to Operand A using the local point's transform.
+* It then uses predefined Dot Comparison Details settings to compare the computed dot values against specified criteria.
+* Tensor Sampling Settings are applied to sample from the tensor data, with these settings affecting the flattened version of the sampled tensors post any individual mutations.
+* Based on the comparison outcomes and configured Filter Config parameters, the node generates a filter definition that determines which elements meet the specified conditions.
 
 #### Configuration
 
 <details>
 
-<summary><strong>OperandA</strong><br><em>Vector operand A.</em></summary>
+<summary><strong>Operand A</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-Specifies the attribute containing the vector to compare against the tensor field. This vector is used as one operand in the dot product calculation.
-
-</details>
-
-<details>
-
-<summary><strong>bTransformOperandA</strong><br><em>Transform OperandA with the local point' transform.</em></summary>
-
-When enabled, the vector from **OperandA** is transformed using the point's local transform (rotation and scale) before being used in the dot product calculation.
+Vector operand A
 
 </details>
 
 <details>
 
-<summary><strong>DotComparisonDetails</strong><br><em>Dot comparison settings.</em></summary>
+<summary><strong>Transform Operand A</strong> <code>bool</code></summary>
 
-Defines how the computed dot product value is compared against a threshold. Includes options for strict equality, greater than, less than, and more.
+Transform OperandA with the local point' transform
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>TensorHandlerDetails</strong><br><em>Tensor Sampling Settings.</em></summary>
+<summary><strong>Dot Comparison Details</strong> <code>PCGExDotComparisonDetails</code></summary>
 
-Controls how the tensor field is sampled at each point. This includes settings like sampling radius, step size, and how to combine multiple tensors if present.
+Dot comparison settings
+
+📦 See: DotComparison configuration
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this subnode to filter points that are aligned with a specific direction defined by a tensor field. For example, you could use it to select only points where the surface normal (from a tensor field) aligns closely with an upward vector, effectively filtering for "upward-facing" surfaces.
+<summary><strong>Tensor Sampling Settings</strong> <code>PCGExTensorHandlerDetails</code></summary>
 
-#### Notes
+Tensor sampling settings. Note that these are applied on the flattened sample, e.g after & on top of individual tensors' mutations.
 
-* The **OperandA** vector should ideally be normalized for consistent dot product results.
-* The **Tensor Sampling Settings** affect how the tensor data is interpreted and sampled. Adjusting these can change the sensitivity of the filter.
-* This subnode is particularly useful in terrain or surface-based filtering where you want to select points based on their orientation relative to a tensor field like normals or tangents.
+📦 See: TensorHandler configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExTensorDotFilterConfig</code></summary>
+
+Filter Config.
+
+📦 See: TensorDotFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Operand A</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Vector operand A
+
+</details>
+
+<details>
+
+<summary><strong>Transform Operand A</strong> <code>bool</code></summary>
+
+Transform OperandA with the local point' transform
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Dot Comparison Details</strong> <code>PCGExDotComparisonDetails</code></summary>
+
+Dot comparison settings
+
+📦 See: DotComparison configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Tensor Sampling Settings</strong> <code>PCGExTensorHandlerDetails</code></summary>
+
+Tensor sampling settings. Note that these are applied on the flattened sample, e.g after & on top of individual tensors' mutations.
+
+📦 See: TensorHandler configuration
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsTensors\Public\Filters\Points\PCGExTensorDotFilter.h`

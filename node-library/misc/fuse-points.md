@@ -5,86 +5,74 @@ icon: circle
 
 # Fuse Points
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Fuse points based on distance.
 
-> Combines nearby points into single entities based on distance thresholds.
+**How It Works**
 
-#### Overview
+> AI-Generated, needs proofreading
 
-The Fuse Points node merges points that are located close together into one representative point. This helps reduce visual clutter or duplicate elements in procedural content. You can choose to blend the properties of merged points or keep only one point from each group.
-
-This node is commonly used when you want to simplify a point cloud or ensure that features like trees, buildings, or other assets don't overlap too closely in your procedural generation setup.
-
-{% hint style="info" %}
-Connects to **Point Input** and outputs to **Point Output** pins. Subnode: Point/Point Settings (Fuse Settings) Subnode: Carry Over Settings (Meta Filter Details)
-{% endhint %}
-
-#### How It Works
-
-The node starts by analyzing all input points to identify which ones are within a certain distance of each other. Points that fall within this threshold are grouped together.
-
-Once groups are formed, the node applies a method based on your selection:
-
-* **Blend**: All properties from the grouped points are combined using blending operations (like averaging or weighted sum) to create a new point.
-* **Keep Most Central**: The node selects one existing point from the group — specifically the one that is most central to the group's geometric center.
-
-The result maintains the original number of output points, but reduces the actual distinct locations by merging overlapping ones. It uses spatial distance as the main criterion for grouping and can optionally maintain the input order during fusion.
+* The Fuse Points node computes distances between all pairs of input points and fuses those that are closer to each other than a specified threshold defined in the Fuse Settings.
+* When fusing points, the node merges their properties and attributes according to the Blending Details settings provided.
+* If Preserve Order is enabled, the node maintains the original order of the input points as much as possible after fusion.
+* The Carry Over Settings allow for specific meta filters to be applied, determining which point's metadata is retained in case of a fuse operation.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Mode</strong><br><em>How to handle fused points.</em></summary>
+<summary><strong>Mode</strong> <code>PCGExFusedPointOutput</code></summary>
 
-Controls whether to blend properties from fused points or keep only one representative point.
+Mode
 
-**Values**:
+**Values:**
 
-* **Blend**: Blend all properties from the fused points using the blending settings.
-* **Keep Most Central**: Keep the existing point that is most central to the group of fused points.
-
-</details>
-
-<details>
-
-<summary><strong>Point/Point Settings</strong><br><em>Fuse Settings.</em></summary>
-
-Defines the distance threshold and method for determining which points are considered "nearby" and should be fused.
+* **Blend**: Blend all points within a radius
+* **Keep Most Central**: Keep the existing point that's most central to the sample group
 
 </details>
 
 <details>
 
-<summary><strong>Preserve Order</strong><br><em>Preserve the order of input points.</em></summary>
+<summary><strong>Point/Point Settings</strong> <code>PCGExPointPointIntersectionDetails</code></summary>
 
-When enabled, ensures that the output point order matches the input point order as closely as possible during fusion.
+Fuse Settings
 
-</details>
+📦 See: PointPointIntersection configuration
 
-<details>
-
-<summary><strong>Blending Details</strong><br><em>Defines how fused point properties and attributes are merged together.</em></summary>
-
-Controls how property values from multiple points are combined when using the Blend mode. This includes choosing the blending operation (e.g., average, weighted sum) for each attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Carry Over Settings</strong><br><em>Meta filter settings.</em></summary>
+<summary><strong>Preserve Order</strong> <code>bool</code></summary>
 
-Configures which attributes or metadata from the input points are carried over to the fused output point when using the Blend mode.
+Preserve the order of input points
 
 </details>
 
-#### Usage Example
+<details>
 
-You have a set of points representing tree placements in a forest. Some trees are placed too close together, causing visual clutter. By connecting this node with a distance threshold of 2 units, it fuses overlapping points into single locations, effectively removing duplicate or near-duplicate trees while preserving the overall distribution.
+<summary><strong>Blending Details</strong> <code>PCGExBlendingDetails</code></summary>
 
-#### Notes
+Defines how fused point properties and attributes are merged together.
 
-* The node is optimized for performance when processing large point sets.
-* When using "Keep Most Central", only one point from each fused group will be retained; other points are discarded.
-* Blending mode allows fine-grained control over how properties like scale, rotation, or custom data are merged.
+📦 See: Blending configuration
+
+</details>
+
+<details>
+
+<summary><strong>Carry Over Settings</strong> <code>PCGExCarryOverDetails</code></summary>
+
+Meta filter settings.
+
+📦 See: CarryOver configuration
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsSpatial\Public\Elements\PCGExFusePoints.h`

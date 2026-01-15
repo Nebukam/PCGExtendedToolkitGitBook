@@ -5,40 +5,92 @@ icon: circle-dashed
 
 # Vtx : Special Edges
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Edge' edge cases (pun not intended)
 
-> Computes and stores special edge metrics (shortest, longest, average) for each vertex in a cluster.
+📌 **Subnode** — Connects to **Vtx Properties** pins.
 
-#### How It Works
+**How It Works**
 
-This node analyzes the connections around each vertex in a cluster to calculate three important measurements: the length of the shortest connection, the longest connection, and the average connection length. For every vertex, it examines all edges attached to it and determines these values. The results are saved as new properties on each vertex, which can then be used for filtering, visualization, or further analysis in your graph.
+> AI-Generated, needs proofreading
+
+* The node identifies and processes specific edges of a geometric shape based on predefined criteria: shortest edge, longest edge, and average edge length.
+* Users can configure direction settings through the "Config" option to influence how these special edges are determined or manipulated.
+* The node offers repeated emphasis on identifying the shortest edge, indicating it may have particular significance in its processing logic.
 
 #### Configuration
 
-This node has three main outputs that control how the computed metrics are stored:
+<details>
 
-* **Shortest Edge**: Stores the length of the shortest connection for each vertex.
-* **Longest Edge**: Stores the length of the longest connection for each vertex.
-* **Average Edge**: Stores the average length of all connections for each vertex.
+<summary><strong>Shortest Edge</strong> <code>PCGExEdgeOutputWithIndexSettings</code></summary>
 
-Each output can be configured independently to define how the data is named and stored. These settings allow you to control whether the values are indexed or not, making it easier to use them in downstream nodes.
+Shortest edge.
 
-{% hint style="info" %}
-Connects to **Vtx Property Provider** nodes and expects a **Cluster** input.
-{% endhint %}
+⚡ PCG Overridable
 
-#### Usage Example
+</details>
 
-1. Create a cluster from a mesh or point cloud.
-2. Add the "Vtx : Special Edges" node to your graph.
-3. Connect the cluster input to the node.
-4. Configure the output names for shortest, longest, and average edges.
-5. Use the resulting vertex properties in downstream nodes like filters or visualizers to highlight vertices with extreme edge lengths.
+<details>
 
-#### Notes
+<summary><strong>Longest Edge</strong> <code>PCGExEdgeOutputWithIndexSettings</code></summary>
 
-* This node is computationally light as it only processes adjacency data.
-* The computed values are stored per-vertex, so performance scales with the number of vertices.
-* Useful for identifying outliers in mesh topology or graph structure.
+Longest edge.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Average Edge</strong> <code>PCGExSimpleEdgeOutputSettings</code></summary>
+
+Average edge.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExSpecialEdgesConfig</code></summary>
+
+Direction Settings.
+
+📦 See: SpecialEdges configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Shortest Edge</strong> <code>PCGExEdgeOutputWithIndexSettings</code></summary>
+
+Shortest edge.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Longest Edge</strong> <code>PCGExEdgeOutputWithIndexSettings</code></summary>
+
+Longest edge.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Average Edge</strong> <code>PCGExSimpleEdgeOutputSettings</code></summary>
+
+Average edge.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsClusters\Public\Elements\Meta\VtxProperties\PCGExVtxPropertySpecialEdges.h`

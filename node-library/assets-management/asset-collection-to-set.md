@@ -5,211 +5,211 @@ icon: circle
 
 # Asset Collection to Set
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Converts an asset collection to an attribute set.
 
-> Converts an asset collection into an attribute set for use in procedural generation workflows.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node processes an asset collection and turns it into a structured set of data attributes. It goes through each item in the collection and extracts useful information like the asset path, weight, category, bounding box dimensions (min, max, extents), and how deeply nested the item is within sub-collections.
-
-If the collection includes smaller groups or folders (sub-collections), you can choose how to handle them:
-
-* **Ignore**: Skip those groups entirely.
-* **Expand**: Include all items from each group.
-* **Random**: Pick one item at random from each group.
-* **Random weighted**: Pick one item based on its assigned weight.
-* **First item**: Use only the first item in each group.
-* **Last item**: Use only the last item in each group.
-
-The node then stores this information as attributes that can be used by other nodes in your procedural graph. You can also decide whether to allow duplicate entries or remove invalid items from the output.
+* The node takes an asset collection as input and converts it into an attribute set.
+* Depending on the "Sub Collection Handling" setting, the node assigns attribute names to sub-collections within the asset collection.
+* If "Allow Duplicates" is enabled, the node includes duplicate entries based on object path and category in the output; otherwise, duplicates are not included.
+* When "Omit Invalid And Empty" is enabled, any invalid or empty entries from the input asset collection are excluded from the resulting attribute set.
+* The node outputs a boolean value for "Write Asset Path", indicating whether to include the asset paths in the attribute set.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Asset Collection</strong><br><em>The asset collection to convert to an attribute set.</em></summary>
+<summary><strong>Asset Collection</strong> <code>PCGExAssetCollection</code></summary>
 
-The source asset collection from which the node extracts data. This can include assets, categories, and nested sub-collections.
+The asset collection to convert to an attribute set
 
-</details>
-
-<details>
-
-<summary><strong>SubCollection Handling</strong><br><em>How to process sub-collections within the main collection.</em></summary>
-
-Controls how entries from sub-collections are handled when processing the main collection:
-
-* **Ignore**: Skip sub-collections entirely.
-* **Expand**: Add all items in each sub-collection.
-* **Random**: Select one item at random from each sub-collection.
-* **Random weighted**: Select one item based on its weight.
-* **First item**: Use the first item in each sub-collection.
-* **Last item**: Use the last item in each sub-collection.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Allow Duplicates</strong><br><em>If enabled, allows duplicate entries (duplicate is same object path &#x26; category).</em></summary>
+<summary><strong>Sub Collection Handling</strong> <code>PCGExSubCollectionToSet</code></summary>
 
-When enabled, duplicate asset entries (based on path and category) are preserved. When disabled, duplicates are removed from the output.
+Attribute names
 
-</details>
+**Values:**
 
-<details>
+* **Ignore**: Ignore sub-collections
+* **Expand**: Expand the entire sub-collection
+* **Random**: Pick one at random
+* **Random weighted**: Pick one at random, weighted
+* **First item**: Pick the first item
+* **Last item**: Pick the last item
 
-<summary><strong>Omit Invalid and Empty</strong><br><em>If enabled, invalid or empty entries are removed from the output.</em></summary>
-
-When enabled, any entry that is invalid (e.g., missing asset path) or empty is excluded from the final attribute set.
-
-</details>
-
-<details>
-
-<summary><strong>Write Asset Path</strong><br><em>If enabled, writes the asset path to an attribute.</em></summary>
-
-When enabled, the node adds a new attribute containing the full path of each asset.
-
-**Values**:
-
-* **True**: Writes the asset path.
-* **False**: Skips writing this attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Asset Path Attribute Name</strong><br><em>Name of the attribute on the AttributeSet that contains the asset path to be staged.</em></summary>
+<summary><strong>Allow Duplicates</strong> <code>bool</code></summary>
 
-The name of the attribute that stores the asset path. Defaults to "AssetPath".
+If enabled, allows duplicate entries (duplicate is same object path & category)
 
-</details>
-
-<details>
-
-<summary><strong>Write Weight</strong><br><em>If enabled, writes the asset weight to an attribute.</em></summary>
-
-When enabled, the node adds a new attribute containing the weight of each asset.
-
-**Values**:
-
-* **True**: Writes the asset weight.
-* **False**: Skips writing this attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Weight Attribute Name</strong><br><em>Name of the attribute on the AttributeSet that contains the asset weight, if any.</em></summary>
+<summary><strong>Omit Invalid And Empty</strong> <code>bool</code></summary>
 
-The name of the attribute that stores the asset weight. Defaults to "Weight".
+If enabled, invalid or empty entries are removed from the output
+
+⚡ PCG Overridable
+
+</details>
+
+**Outputs**
+
+<details>
+
+<summary><strong>Write Asset Path</strong> <code>bool</code></summary>
+
+Controls write asset path.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Write Category</strong><br><em>If enabled, writes the asset category to an attribute.</em></summary>
+<summary><strong>Asset Path</strong> <code>Name</code></summary>
 
-When enabled, the node adds a new attribute containing the category of each asset.
+Name of the attribute on the AttributeSet that contains the asset path to be staged
 
-**Values**:
-
-* **True**: Writes the asset category.
-* **False**: Skips writing this attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Category Attribute Name</strong><br><em>Name of the attribute on the AttributeSet that contains the asset category, if any.</em></summary>
+<summary><strong>Write Weight</strong> <code>bool</code></summary>
 
-The name of the attribute that stores the asset category. Defaults to "Category".
+Controls write weight.
 
-</details>
-
-<details>
-
-<summary><strong>Write Extents</strong><br><em>If enabled, writes the asset bounds' Extents to an attribute.</em></summary>
-
-When enabled, the node adds a new attribute containing the bounding box extents of each asset.
-
-**Values**:
-
-* **True**: Writes the asset extents.
-* **False**: Skips writing this attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Extents Attribute Name</strong><br><em>Name of the attribute on the AttributeSet that contains the asset bounds' Extents, if any. Otherwise 0.</em></summary>
+<summary><strong>Weight</strong> <code>Name</code></summary>
 
-The name of the attribute that stores the asset extents. Defaults to "Extents".
+Name of the attribute on the AttributeSet that contains the asset weight, if any.
 
-</details>
-
-<details>
-
-<summary><strong>Write Bounds Min</strong><br><em>If enabled, writes the asset BoundsMin to an attribute.</em></summary>
-
-When enabled, the node adds a new attribute containing the minimum bounds of each asset.
-
-**Values**:
-
-* **True**: Writes the asset bounds min.
-* **False**: Skips writing this attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Bounds Min Attribute Name</strong><br><em>Name of the attribute on the AttributeSet that contains the asset BoundsMin, if any. Otherwise 0.</em></summary>
+<summary><strong>Write Category</strong> <code>bool</code></summary>
 
-The name of the attribute that stores the asset bounds min. Defaults to "BoundsMin".
+Controls write category.
 
-</details>
-
-<details>
-
-<summary><strong>Write Bounds Max</strong><br><em>If enabled, writes the asset BoundsMax to an attribute.</em></summary>
-
-When enabled, the node adds a new attribute containing the maximum bounds of each asset.
-
-**Values**:
-
-* **True**: Writes the asset bounds max.
-* **False**: Skips writing this attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Bounds Max Attribute Name</strong><br><em>Name of the attribute on the AttributeSet that contains the asset BoundsMax, if any. Otherwise 0.</em></summary>
+<summary><strong>Category</strong> <code>Name</code></summary>
 
-The name of the attribute that stores the asset bounds max. Defaults to "BoundsMax".
+Name of the attribute on the AttributeSet that contains the asset category, if any.
 
-</details>
-
-<details>
-
-<summary><strong>Write Nesting Depth</strong><br><em>If enabled, writes the nesting depth of the asset to an attribute.</em></summary>
-
-When enabled, the node adds a new attribute containing the nesting level (depth) of each asset in the collection hierarchy.
-
-**Values**:
-
-* **True**: Writes the nesting depth.
-* **False**: Skips writing this attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Nesting Depth Attribute Name</strong><br><em>Name of the attribute on the AttributeSet that contains the asset depth, if any. Otherwise -1.</em></summary>
+<summary><strong>Write Extents</strong> <code>bool</code></summary>
 
-The name of the attribute that stores the nesting depth. Defaults to "NestingDepth".
+Controls write extents.
+
+⚡ PCG Overridable
 
 </details>
+
+<details>
+
+<summary><strong>Extents</strong> <code>Name</code></summary>
+
+Name of the attribute on the AttributeSet that contains the asset bounds' Extents, if any. Otherwise 0
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Bounds Min</strong> <code>bool</code></summary>
+
+Controls write bounds min.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>BoundsMin</strong> <code>Name</code></summary>
+
+Name of the attribute on the AttributeSet that contains the asset BoundsMin, if any. Otherwise 0
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Bounds Max</strong> <code>bool</code></summary>
+
+Controls write bounds max.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>BoundsMax</strong> <code>Name</code></summary>
+
+Name of the attribute on the AttributeSet that contains the asset BoundsMax, if any. Otherwise 0
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Nesting Depth</strong> <code>bool</code></summary>
+
+Controls write nesting depth.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Nesting Depth</strong> <code>Name</code></summary>
+
+Name of the attribute on the AttributeSet that contains the asset depth, if any. Otherwise -1
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExCollections\Public\Elements\PCGExAssetCollectionToSet.h`

@@ -5,63 +5,112 @@ icon: circle-dashed
 
 # FC : Keep Direction
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Stop fill after a certain number of vtx have been captured.
 
-> Stop fill after a certain number of vtx have been captured.
+📌 **Subnode** — Connects to **Fill Controls** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode controls flood fill operations by setting a limit on how many points can be added in each direction before stopping. It tracks the number of captured points within a defined window size for each directional axis. When that limit is reached, the fill stops exploring in that direction.
+> AI-Generated, needs proofreading
 
-The system uses a hash-based method to group points into directional windows. This ensures that only a specific number of points are accepted per direction, creating a controlled spread that prevents overfilling in any one area.
+* The node evaluates vertices during a fill operation and stops once a specified number of vertices have been captured.
+* The "Window Size" setting determines the threshold for the number of vertices that triggers the stop condition; this can be set via an input attribute or a constant value.
+* Hash comparison settings are used to ensure consistency in how vertices are evaluated against the window size criteria.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Window Size Input</strong><br><em>How to define the window size.</em></summary>
+<summary><strong>Window Size Input</strong> <code>PCGExInputValueType</code></summary>
 
-Controls whether the window size is defined as a constant or read from an attribute.
-
-**Values**:
-
-* **Constant**: Use a fixed, user-defined value.
-* **Attribute**: Read the window size from an input point attribute.
+Controls window size input.
 
 </details>
 
 <details>
 
-<summary><strong>Window Size (Attr)</strong><br><em>Window Size Attribute.</em></summary>
+<summary><strong>Window Size (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-The attribute to read the window size from when using attribute-based input.
+Window Size Attribute
 
-</details>
-
-<details>
-
-<summary><strong>Window Size</strong><br><em>Window Size Constant.</em></summary>
-
-The fixed value for the window size when using constant input. Must be at least 1.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Hash Comparison Details</strong><br><em>Hash comparison settings.</em></summary>
+<summary><strong>Window Size</strong> <code>int32</code></summary>
 
-Settings that define how point positions are hashed and compared to determine if they fall within the same directional window.
+Window Size Constant
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this subnode in a flood fill setup where you want to control how far the fill spreads in any given direction. For example, when creating a terrain fill that should not extend too far from a central point in one direction, you can set a window size of 5 to limit how many points are captured in each direction before stopping.
+<summary><strong>Hash Comparison Details</strong> <code>PCGExVectorHashComparisonDetails</code></summary>
 
-#### Notes
+Hash comparison settings
 
-* The window size acts as a directional limit, not a total point count.
-* This subnode is particularly useful for creating structured or constrained fills that maintain shape.
-* Performance is affected by the hash comparison settings; finer precision may slow down processing.
+📦 See: VectorHashComparison configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExFillControlConfigKeepDirection</code></summary>
+
+Control Config.
+
+📦 See: FillControlConfigKeepDirection configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Window Size Input</strong> <code>PCGExInputValueType</code></summary>
+
+Controls window size input.
+
+</details>
+
+<details>
+
+<summary><strong>Window Size (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Window Size Attribute
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Window Size</strong> <code>int32</code></summary>
+
+Window Size Constant
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Hash Comparison Details</strong> <code>PCGExVectorHashComparisonDetails</code></summary>
+
+Hash comparison settings
+
+📦 See: VectorHashComparison configuration
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsClusters\Public\Elements\FloodFill\FillControls\PCGExFillControlKeepDirection.h`

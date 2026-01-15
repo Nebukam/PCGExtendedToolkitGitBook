@@ -5,116 +5,285 @@ icon: circle-dashed
 
 # Random
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Filter using a random value.
 
-> Filter points using a random value based on a threshold and optional weight.
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### How It Works
+**How It Works**
 
-This Subnode evaluates each point in a dataset by generating a pseudo-random value and comparing it against a defined threshold. The outcome determines whether the point passes or fails the filter.
+> AI-Generated, needs proofreading
 
-The process works as follows:
-
-1. For each point, a random number is generated based on a seed value.
-2. If using per-point attributes, the Subnode reads threshold and/or weight values from the input data.
-3. These values are normalized to a 0-1 range if enabled.
-4. A curve transformation can be applied to the weight value before comparison.
-5. The resulting value is compared against the threshold.
-6. The point either passes or fails based on this comparison, with an option to invert the result.
-
-This approach allows for stochastic filtering that can be controlled through various settings like seed, threshold, and weight attributes.
+* The Filter : Random node evaluates each point based on a random value generated using a specified seed (TBD).
+* It compares this random value against a threshold that can be sourced from an external input or set directly within the node.
+* If the "Remap to 0..1" option is enabled, the threshold value gets normalized into a range between 0 and 1 before comparison.
+* Points where the random value meets or exceeds the threshold are passed through; otherwise, they are filtered out.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Random Seed</strong><br><em>Sets the seed for the pseudo-random number generator.</em></summary>
+<summary><strong>Random Seed</strong> <code>int32</code></summary>
 
-Using the same seed will produce consistent results across runs. This is useful when you need reproducible outcomes in procedural generation.
+TBD
 
-</details>
-
-<details>
-
-<summary><strong>Threshold Input</strong><br><em>Controls whether the threshold is a constant or read from an attribute.</em></summary>
-
-* **Constant**: Uses the fixed value defined in the Threshold setting.
-* **Attribute**: Reads the threshold value from a point attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Remap to 0..1 (Threshold)</strong><br><em>Whether to normalize the threshold internally or not.</em></summary>
+<summary><strong>Threshold Input</strong> <code>PCGExInputValueType</code></summary>
 
-When enabled, normalizes the threshold value to a 0-1 range. This is useful when your input threshold values are outside that range.
+Type of Threshold value source
 
-</details>
-
-<details>
-
-<summary><strong>Threshold</strong><br><em>Pass threshold.</em></summary>
-
-The fixed threshold value used for comparison when Threshold Input is set to Constant. Must be between 0 and 1.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Per-Point Weight</strong><br><em>Whether to use a per-point weight attribute.</em></summary>
+<summary><strong>Threshold (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-When enabled, reads a weight value from a point attribute to influence the random filter outcome.
+Pass threshold -- Value is expected to fit within a 0-1 range.
 
-</details>
-
-<details>
-
-<summary><strong>Weight</strong><br><em>Per-point weight.</em></summary>
-
-The name of the point attribute used for weights when Per-Point Weight is enabled.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Remap to 0..1 (Weight)</strong><br><em>Whether to normalize the weights internally or not.</em></summary>
+<summary><strong>└─ Remap to 0..1</strong> <code>bool</code></summary>
 
-When enabled, normalizes the weight values to a 0-1 range. Useful when input weights are outside that range.
+Whether to normalize the threshold internally or not. Enable this if your per-point threshold does not fit within a 0-1 range.
 
-</details>
-
-<details>
-
-<summary><strong>Use Local Curve</strong><br><em>Whether to use in-editor curve or an external asset.</em></summary>
-
-When enabled, uses the in-editor curve defined in Weight Curve. When disabled, uses an external curve asset.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Weight Curve</strong><br><em>Curve the value will be remapped over.</em></summary>
+<summary><strong>Threshold</strong> <code>double</code></summary>
 
-The curve used to transform weight values before comparison. Either a local editor curve or an external asset depending on Use Local Curve setting.
+Pass threshold
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Invert Result</strong><br><em>Reverses the filter result.</em></summary>
+<summary><strong>Per Point Weight</strong> <code>bool</code></summary>
 
-When enabled, reverses the filter result — points that would pass now fail and vice versa.
+Controls per point weight.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this Subnode to randomly select 30% of points from a dataset. Set Threshold to 0.3, enable Per-Point Weight, and use a constant weight attribute with value 1.0 for all points. This will result in approximately 30% of the points passing the filter.
+<summary><strong>Weight</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-#### Notes
+Per-point weight
 
-* The Random Seed ensures reproducible results if needed.
-* Use Remap settings when your input data does not naturally fit within a 0-1 range.
-* Combining this with other filters allows for complex probabilistic selection logic.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Remap to 0..1</strong> <code>bool</code></summary>
+
+Whether to normalize the weights internally or not. Enable this if your per-point weight does not fit within a 0-1 range.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Use Local Curve</strong> <code>bool</code></summary>
+
+Whether to use in-editor curve or an external asset.
+
+</details>
+
+<details>
+
+<summary><strong>Weight Curve</strong> <code>RuntimeFloatCurve</code></summary>
+
+Curve the value will be remapped over.
+
+</details>
+
+<details>
+
+<summary><strong>Weight Curve</strong> <code>CurveFloat</code></summary>
+
+Curve the value will be remapped over.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Weight Curve Lookup</strong> <code>PCGExCurveLookupDetails</code></summary>
+
+Controls weight curve lookup.
+
+📦 See: CurveLookup configuration
+
+</details>
+
+<details>
+
+<summary><strong>Invert Result</strong> <code>bool</code></summary>
+
+TBD
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExRandomFilterConfig</code></summary>
+
+Filter Config.
+
+📦 See: RandomFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Random Seed</strong> <code>int32</code></summary>
+
+TBD
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Threshold Input</strong> <code>PCGExInputValueType</code></summary>
+
+Type of Threshold value source
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Threshold (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Pass threshold -- Value is expected to fit within a 0-1 range.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Remap to 0..1</strong> <code>bool</code></summary>
+
+Whether to normalize the threshold internally or not. Enable this if your per-point threshold does not fit within a 0-1 range.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Threshold</strong> <code>double</code></summary>
+
+Pass threshold
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Per Point Weight</strong> <code>bool</code></summary>
+
+Controls per point weight.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Weight</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Per-point weight
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Remap to 0..1</strong> <code>bool</code></summary>
+
+Whether to normalize the weights internally or not. Enable this if your per-point weight does not fit within a 0-1 range.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Use Local Curve</strong> <code>bool</code></summary>
+
+Whether to use in-editor curve or an external asset.
+
+</details>
+
+<details>
+
+<summary><strong>Weight Curve</strong> <code>RuntimeFloatCurve</code></summary>
+
+Curve the value will be remapped over.
+
+</details>
+
+<details>
+
+<summary><strong>Weight Curve</strong> <code>CurveFloat</code></summary>
+
+Curve the value will be remapped over.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Weight Curve Lookup</strong> <code>PCGExCurveLookupDetails</code></summary>
+
+Controls weight curve lookup.
+
+📦 See: CurveLookup configuration
+
+</details>
+
+<details>
+
+<summary><strong>Invert Result</strong> <code>bool</code></summary>
+
+TBD
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExFilters\Public\Filters\Points\PCGExRandomFilter.h`

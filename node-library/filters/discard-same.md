@@ -5,146 +5,152 @@ icon: circle
 
 # Discard Same
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Discard entire datasets based on a selection of parameters
 
-> Discard entire datasets based on a selection of parameters.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-The Discard Same node compares incoming collections of point data to identify and remove duplicates. It evaluates each collection against others using configurable criteria such as bounding box size, number of points, point positions, or attribute values. When two or more collections are considered the same according to these rules, the node applies a discard mode to determine which ones to keep.
-
-The process works by comparing every collection in a batch with all others. If a match is found based on the selected criteria and tolerance settings, the duplicate collections are removed according to the chosen mode:
-
-* **FIFO** keeps the first collection encountered and discards subsequent duplicates.
-* **LIFO** keeps the last collection encountered and discards earlier duplicates.
-* **All** discards all collections that have duplicates.
-
-This helps clean up procedural workflows by removing redundant or overlapping datasets, ensuring only unique collections remain in the output.
+* The node evaluates datasets based on specified parameters such as bounds equality and point count.
+* It uses the `Mode` setting to determine how to discard datasets that match certain criteria defined by the parameters.
+* With `Test Bounds` enabled, the node checks if the bounds of the dataset are equal within a specified tolerance level (`Test Bounds Tolerance`).
+* When `Test Point Count` is set to true, the node compares the number of points in each dataset and discards those that match the criteria defined by other settings.
+* The `Test Mode` setting influences how groups of datasets are filtered or tested against the discard criteria.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Mode</strong><br><em>How to handle duplicate collections.</em></summary>
+<summary><strong>Mode</strong> <code>PCGExDiscardSameMode</code></summary>
 
-Controls which collection is kept when duplicates are found.
+Controls mode.
 
-* **FIFO**: Keeps the first collection and discards subsequent duplicates.
-* **LIFO**: Keeps the last collection and discards earlier duplicates.
-* **All**: Discards all collections that have duplicates.
+**Values:**
 
-</details>
+* **FIFO**: First in, first out
+* **LIFO**: Last in, first out
+* **All**
 
-<details>
-
-<summary><strong>TestMode</strong><br><em>How to combine multiple tests.</em></summary>
-
-Determines how multiple comparison criteria are combined.
-
-* **AND**: All selected tests must pass for a collection to be discarded.
-* **OR**: Only one of the selected tests needs to pass for a collection to be discarded.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bTestBounds</strong><br><em>Enable bounds comparison.</em></summary>
+<summary><strong>Test Mode</strong> <code>PCGExFilterGroupMode</code></summary>
 
-When enabled, compares the bounding boxes of collections to determine if they are duplicates.
+Controls test mode.
 
-</details>
-
-<details>
-
-<summary><strong>TestBoundsTolerance</strong><br><em>Tolerance for bounds equality.</em></summary>
-
-Defines how close two bounds must be to be considered equal. Must be greater than 0.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bTestPointCount</strong><br><em>Enable point count comparison.</em></summary>
+<summary><strong>Test Bounds</strong> <code>bool</code></summary>
 
-When enabled, compares the number of points in each collection to determine if they are duplicates.
+Controls test bounds.
 
-</details>
-
-<details>
-
-<summary><strong>TestPointCountTolerance</strong><br><em>Tolerance for point count equality.</em></summary>
-
-Defines how different two point counts can be and still be considered equal. Must be greater than or equal to 0.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bTestPositions</strong><br><em>Enable position comparison.</em></summary>
+<summary><strong>Test Bounds Tolerance</strong> <code>double</code></summary>
 
-When enabled, compares the actual positions of points in collections to determine if they are duplicates.
+Test collection bounds equality, within tolerance
 
-</details>
-
-<details>
-
-<summary><strong>TestPositionTolerance</strong><br><em>Tolerance for position equality.</em></summary>
-
-Defines how close two point positions must be to be considered equal. Must be greater than 0.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>TestAttributesHash</strong><br><em>How to use attribute hashes in comparison.</em></summary>
+<summary><strong>Test Point Count</strong> <code>bool</code></summary>
 
-Controls whether attributes are used to determine duplicates.
+Controls test point count.
 
-* **None**: Do not use attributes.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Test Point Count Tolerance</strong> <code>int32</code></summary>
+
+Test collection point count equality, within tolerance
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Test Positions</strong> <code>bool</code></summary>
+
+Controls test positions.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Test Position Tolerance</strong> <code>double</code></summary>
+
+Test point positions equality, within tolerance. Note that it computes space occupation, and does not account for point count.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Test Attributes Hash</strong> <code>PCGExDiscardAttributeHashMode</code></summary>
+
+Controls test attributes hash.
+
+**Values:**
+
+* **None**: Do not use attributes to check sameness
 * **Single**: Use a single, overridable attribute.
-* **List**: Use a list of attributes.
+* **List**: Use a list of attributes. Arrays are not overridable
 
 </details>
 
 <details>
 
-<summary><strong>AttributeHashConfigs</strong><br><em>List of attributes to hash for comparison.</em></summary>
+<summary><strong>Attribute Hash Configs</strong> <code>Array of FPCGExAttributeHashConfig</code></summary>
 
-Defines which attributes are used when "TestAttributesHash" is set to "List". Arrays are not supported.
+Build a hash from a single attribute and test it against the others.
 
-</details>
-
-<details>
-
-<summary><strong>bIncludeSingleAttribute</strong><br><em>Whether to include a single attribute in the hash test.</em></summary>
-
-When enabled, includes an additional single attribute in the comparison if "TestAttributesHash" is set to "List".
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>AttributeHashConfig</strong><br><em>Single attribute to hash for comparison.</em></summary>
+<summary><strong>└─ Append Overridable</strong> <code>bool</code></summary>
 
-Defines a single attribute to be used when "TestAttributesHash" is set to "Single", or when "bIncludeSingleAttribute" is enabled in "List" mode.
+Controls └─ append overridable.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-A common use case is generating multiple terrain patches that are nearly identical. You can use this node to discard all but one patch that has the same bounds, point count, and positions. For example:
+<summary><strong>Attribute Hash Config</strong> <code>PCGExAttributeHashConfig</code></summary>
 
-1. Generate 5 terrain patches using a noise-based system.
-2. Connect them to the Discard Same node.
-3. Enable "bTestBounds", "bTestPointCount", and "bTestPositions".
-4. Set tolerances to 0.1 for bounds and positions, and 0 for point count.
-5. Set Mode to "FIFO" to keep the first patch and discard duplicates.
+Build a hash from a single attribute and test it against the others.
 
-#### Notes
+📦 See: AttributeHash configuration
 
-* The node is optimized for batch processing of multiple collections.
-* Tolerances are important for handling floating-point inaccuracies in comparisons.
-* Attribute hashing can be computationally expensive if many attributes are involved.
-* This node works best when used with a consistent data structure across inputs.
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExFoundations\Public\Elements\Filtering\PCGExDiscardSame.h`

@@ -4,121 +4,260 @@ icon: circle-dashed
 
 # Probe : Direction
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Probe in a given direction.
 
-> Defines a probe that searches for nearby connections in a specified direction.
+📌 **Subnode** — Connects to **Probes** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode evaluates nearby points or edges and filters them based on how well their orientation aligns with a given direction. It calculates the angle between each candidate's direction and the probe's direction to determine relevance. The probe can be configured to favor either alignment (how closely the directions match) or proximity (distance from the source), allowing for flexible directional searches.
+> AI-Generated, needs proofreading
 
-The process works as follows:
-
-1. First, it determines the search direction, which can come from a fixed vector or an attribute on the input points.
-2. Then it evaluates all nearby candidates using an angle constraint that defines how closely their directions must match the probe's direction.
-3. Candidates are scored based on their directional alignment and optionally filtered by distance.
-4. Finally, it selects the best candidate according to the prioritization setting.
+* The node evaluates input direction based on settings provided.
+* If "Use Component Wise Angle" is enabled, it processes angles component-wise; otherwise, it uses standard angle calculations.
+* It limits the search to directions within the specified "Max Angle".
+* When "Unsigned Check" is true, the node performs unsigned angle checks between vectors.
+* The node accepts a direction input of type PCGExInputValueType for its operations.
 
 #### Configuration
 
 <details>
 
-<summary><strong>bUseComponentWiseAngle</strong><br><em>Use separate angles for each axis.</em></summary>
+<summary><strong>Use Component Wise Angle</strong> <code>bool</code></summary>
 
-When enabled, allows defining different maximum angles per X, Y, and Z axis instead of a single angle.
+Controls use component wise angle.
 
-</details>
-
-<details>
-
-<summary><strong>MaxAngle</strong><br><em>Max angle to search within.</em></summary>
-
-The maximum angle (in degrees) allowed between the probe direction and candidate directions. Only applies when `bUseComponentWiseAngle` is disabled.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>MaxAngles</strong><br><em>Max angle to search within.</em></summary>
+<summary><strong>Max Angle</strong> <code>double</code></summary>
 
-Separate maximum angles for each axis when `bUseComponentWiseAngle` is enabled.
+Max angle to search within.
 
-</details>
-
-<details>
-
-<summary><strong>bUnsignedCheck</strong><br><em>Allow both positive and negative directions.</em></summary>
-
-When enabled, the probe considers both forward and reverse directions for alignment checks.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>DirectionInput</strong><br><em>Constant direction</em></summary>
+<summary><strong>Max Angles</strong> <code>Rotator</code></summary>
 
-Controls whether the probe direction is defined by a constant value or read from an attribute on the input points.
+Max angle to search within.
 
-**Values**:
-
-* **Constant**: Use the `DirectionConstant` setting.
-* **Attribute**: Read direction from the specified attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bInvertDirection</strong><br><em>└─ Invert</em></summary>
+<summary><strong>Unsigned Check</strong> <code>bool</code></summary>
 
-When enabled, reverses the direction read from an attribute before using it for probing.
+Controls unsigned check.
 
-</details>
-
-<details>
-
-<summary><strong>DirectionConstant</strong><br><em>Constant direction</em></summary>
-
-The fixed direction vector used when `DirectionInput` is set to "Constant".
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bTransformDirection</strong><br><em>Transform the direction with the point's</em></summary>
+<summary><strong>Direction Input</strong> <code>PCGExInputValueType</code></summary>
 
-When enabled, applies the point’s rotation or transform to the probe direction before comparison.
+Controls direction input.
 
-</details>
-
-<details>
-
-<summary><strong>Favor</strong><br><em>What matters more?</em></summary>
-
-Determines whether to prioritize candidates that best align with the probe direction (`Dot`) or those closest in position (`Dist`).
-
-**Values**:
-
-* **Best alignment**: Prioritizes candidates with the highest directional match.
-* **Closest position**: Prioritizes candidates that are nearest, even if they have lower alignment.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bDoChainedProcessing</strong><br><em>This probe will sample candidates after the other. Can yield different results.</em></summary>
+<summary><strong>Direction (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-When enabled, this probe performs additional processing steps after other probes, potentially yielding different outcomes depending on earlier filtering.
+Attribute to read the direction from
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this subnode when you want to connect points that are aligned in a specific direction, such as placing roads or pipes along a consistent orientation. For example, you could define a probe that searches for nearby points within 30 degrees of the forward vector and prioritizes alignment over distance.
+<summary><strong>└─ Invert</strong> <code>bool</code></summary>
 
-#### Notes
+Controls └─ invert.
 
-* The probe works best with point data where each point has a defined orientation.
-* Combining multiple probes can help refine connection logic in complex scenarios.
-* Directional probing is especially effective when used alongside other filters like distance or angle constraints.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Direction</strong> <code>Vector</code></summary>
+
+Constant direction
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Transform Direction</strong> <code>bool</code></summary>
+
+Transform the direction with the point's
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Favor</strong> <code>PCGExProbeDirectionPriorization</code></summary>
+
+What matters more?
+
+**Values:**
+
+* **Best alignment**: Favor the candidates that best align with the direction, as opposed to closest ones.
+* **Closest position**: Favor the candidates that are the closest, even if they were not the best aligned.
+
+</details>
+
+<details>
+
+<summary><strong>Do Chained Processing</strong> <code>bool</code></summary>
+
+This probe will sample candidates after the other. Can yield different results.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExProbeConfigDirection</code></summary>
+
+Filter Config.
+
+📦 See: ProbeConfigDirection configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Use Component Wise Angle</strong> <code>bool</code></summary>
+
+Controls use component wise angle.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Max Angle</strong> <code>double</code></summary>
+
+Max angle to search within.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Max Angles</strong> <code>Rotator</code></summary>
+
+Max angle to search within.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Unsigned Check</strong> <code>bool</code></summary>
+
+Controls unsigned check.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Direction Input</strong> <code>PCGExInputValueType</code></summary>
+
+Controls direction input.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Direction (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Attribute to read the direction from
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Invert</strong> <code>bool</code></summary>
+
+Controls └─ invert.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Direction</strong> <code>Vector</code></summary>
+
+Constant direction
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Transform Direction</strong> <code>bool</code></summary>
+
+Transform the direction with the point's
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Favor</strong> <code>PCGExProbeDirectionPriorization</code></summary>
+
+What matters more?
+
+**Values:**
+
+* **Best alignment**: Favor the candidates that best align with the direction, as opposed to closest ones.
+* **Closest position**: Favor the candidates that are the closest, even if they were not the best aligned.
+
+</details>
+
+<details>
+
+<summary><strong>Do Chained Processing</strong> <code>bool</code></summary>
+
+This probe will sample candidates after the other. Can yield different results.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsProbing\Public\Probes\PCGExProbeDirection.h`

@@ -1,6 +1,0 @@
----
-icon: comment-dots
----
-
-# Misc
-

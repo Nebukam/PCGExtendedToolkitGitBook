@@ -4,76 +4,125 @@ icon: circle-dashed
 
 # Noise : Gabor
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Gabor noise - directional/anisotropic patterns.
 
-> Gabor noise creates directional and anisotropic patterns useful for simulating materials like wood grain, fabric weaves, or brushed metal.
+📌 **Subnode** — Connects to **Noise** pins.
 
-#### How It Works
+**How It Works**
 
-Gabor noise generates patterns by combining a wave-like structure with a localized envelope. Each point in space is influenced by small, directional elements that create repeating patterns with a specific orientation. The system uses a grid-based approach where each cell contains random impulses. These impulses are combined using mathematical functions to produce the final noise pattern.
+> AI-Generated, needs proofreading
 
-The direction of the pattern is controlled by a vector that defines the primary orientation. A bandwidth parameter controls how sharp or diffuse the pattern appears — lower values create more defined, directional features, while higher values produce softer, more isotropic results.
+* Computes directional/anisotropic patterns using a Gabor kernel, oriented according to the specified Direction setting.
+* Adjusts the directionality of the pattern based on the Bandwidth value; lower values result in more directional patterns.
+* Generates noise with a density defined by Impulses Per Cell within each cell of the noise grid.
+* Utilizes a Kernel Radius to define the extent of influence for each kernel, affecting the scale and smoothness of the generated patterns.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Direction</strong><br><em>Direction of the Gabor kernel (will be normalized)</em></summary>
+<summary><strong>Direction</strong> <code>Vector</code></summary>
 
-Controls the primary orientation of the noise pattern. For example:
+Direction of the gabor kernel (will be normalized)
 
-* `(1,0,0)` creates horizontal stripes
-* `(0,1,0)` creates vertical stripes
-* `(0.707,0.707,0)` creates diagonal stripes at 45 degrees
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Bandwidth</strong><br><em>Bandwidth - controls how directional (lower = more directional)</em></summary>
+<summary><strong>Bandwidth</strong> <code>double</code></summary>
 
-Controls the sharpness of the pattern:
+Bandwidth - controls how directional (lower = more directional)
 
-* Lower values (e.g., 0.1) create very directional, narrow-band patterns
-* Higher values (e.g., 5.0) produce more isotropic, wide-band patterns
+_Range: min: 0.1, max: 10.0_
 
-</details>
-
-<details>
-
-<summary><strong>ImpulsesPerCell</strong><br><em>Number of impulses per cell</em></summary>
-
-Determines how many random impulses are generated per grid cell:
-
-* Higher values increase pattern complexity and visual density
-* Lower values (e.g., 1) produce sparse, single-directional patterns
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>KernelRadius</strong><br><em>Kernel radius</em></summary>
+<summary><strong>Impulses Per Cell</strong> <code>int32</code></summary>
 
-Controls the spatial extent of each Gabor kernel:
+Number of impulses per cell
 
-* Larger values increase the influence area of each impulse
-* Smaller values create more localized, sharp features
+_Range: min: 1, max: 32_
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-To simulate wood grain:
+<summary><strong>Kernel Radius</strong> <code>double</code></summary>
 
-1. Create a Gabor noise subnode with `Direction` set to `(1,0,0)` for horizontal stripes.
-2. Set `Bandwidth` to 0.5 for directional control.
-3. Use the output to drive point scale or rotation in a mesh generator.
-4. Combine multiple Gabor noise subnodes with different directions and weights to add complexity.
+Kernel radius
 
-#### Notes
+_Range: min: 0.5, max: 4.0_
 
-* Gabor noise is computationally more expensive than simple Perlin noise due to its kernel-based approach.
-* For performance-critical graphs, consider reducing `ImpulsesPerCell` or `KernelRadius`.
-* The pattern can be made more complex by stacking multiple Gabor noise subnodes with different directions and bandwidths.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExNoiseConfigGabor</code></summary>
+
+Controls config.
+
+📦 See: NoiseConfigGabor configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Direction</strong> <code>Vector</code></summary>
+
+Direction of the gabor kernel (will be normalized)
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Bandwidth</strong> <code>double</code></summary>
+
+Bandwidth - controls how directional (lower = more directional)
+
+_Range: min: 0.1, max: 10.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Impulses Per Cell</strong> <code>int32</code></summary>
+
+Number of impulses per cell
+
+_Range: min: 1, max: 32_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Kernel Radius</strong> <code>double</code></summary>
+
+Kernel radius
+
+_Range: min: 0.5, max: 4.0_
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExNoise3D\Public\Noises\PCGExNoiseGabor.h`

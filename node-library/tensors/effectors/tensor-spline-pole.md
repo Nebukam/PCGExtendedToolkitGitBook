@@ -5,50 +5,73 @@ icon: circle-dashed
 
 # Tensor : Spline Pole
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+A tensor that represent a vector/flow field along a spline
 
-> Creates a tensor that represents a vector/flow field along a spline.
+📌 **Subnode** — Connects to **Tensors** pins.
 
-#### How It Works
+**How It Works**
 
-This node builds a directional flow field that follows the shape of a spline. For each point in space, it calculates how strongly that point should be influenced by the spline's path. The influence is strongest when a point is close to the spline and decreases as the distance increases. The direction of the influence always aligns with the spline's tangent at the closest point on the curve.
+> AI-Generated, needs proofreading
 
-The node evaluates input points against a set of splines to determine their proximity. For each point, it finds the nearest location on the spline and computes how much influence that point should have based on its distance from the spline. Points within the defined radius are affected, with the strength of the effect decreasing as they move further away.
+* The Tensor : Spline Pole node generates a tensor that represents a vector/flow field along a defined spline.
+* It uses the specified base radius for the spline, which gets scaled according to the scale length of the control points.
+* Configuration settings for the tensor properties are applied as defined in the Config setting.
+* Sample inputs are processed to determine specific characteristics or values at various points along the spline.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Sample Inputs</strong><br><em>Controls which splines are sampled.</em></summary>
+<summary><strong>Sample Inputs</strong> <code>PCGExSplineSamplingIncludeMode</code></summary>
 
-Determines whether all input splines are used or only closed loops or open lines.
+Sample inputs.
 
-**Values**:
-
-* **All**: Sample all inputs.
-* **Closed loops only**: Sample only closed loops.
-* **Open lines only**: Sample only open lines.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Radius</strong><br><em>Base radius of the spline. Will be scaled by control points' scale length.</em></summary>
+<summary><strong>Radius</strong> <code>double</code></summary>
 
-Controls how far from the spline the tensor's influence extends. The actual radius is scaled by the control point's scale factor.
+Base radius of the spline. Will be scaled by control points' scale length
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this node to create a flow field that guides particles along a winding path, such as a river or road. Connect a set of points (like particles or agents) to the tensor field, and they will be influenced to move along the shape of the spline. Adjust the radius to control how tightly the influence follows the spline.
+<summary><strong>Config</strong> <code>PCGExTensorSplinePoleConfig</code></summary>
 
-#### Notes
+Tensor properties
 
-The tensor's direction is always aligned with the spline's tangent at the closest point. This makes it ideal for creating smooth, continuous directional flows along curves.
+📦 See: TensorSplinePole configuration
 
-{% hint style="info" %}
-Connects to **Tensor Subnode** nodes as a subnode.
-{% endhint %}
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Sample Inputs</strong> <code>PCGExSplineSamplingIncludeMode</code></summary>
+
+Sample inputs.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Radius</strong> <code>double</code></summary>
+
+Base radius of the spline. Will be scaled by control points' scale length
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsTensors\Public\Tensors\PCGExTensorSplinePole.h`

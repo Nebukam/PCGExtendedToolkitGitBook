@@ -5,90 +5,96 @@ icon: circle-dashed
 
 # Bitmask
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Filter using bitflag comparison.
 
-> Filter points using bitwise flag comparisons.
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### How It Works
+**How It Works**
 
-The Bitmask filter subnode checks if a point's flags match a specified bitmask based on a comparison rule. It reads a flag value from each point and compares it with a mask using one of several logic options:
+> AI-Generated, needs proofreading
 
-1. **Operand A** is the flags value from the point (read from an attribute or constant).
-2. **Operand B** is the mask, which can be a fixed value or read from an attribute.
-3. The comparison logic determines how these two values are evaluated:
-   * **Match (any)**: At least one flag in the mask is set in the operand.
-   * **Match (all)**: All flags in the mask are set in the operand.
-   * **Match (strict)**: The operand exactly matches the mask.
-   * **No match (any)**: No flags from the mask are set in the operand.
-   * **No match (all)**: Not all flags from the mask are set in the operand.
-
-Optional external operations can be applied to Operand B to modify the mask before comparison. If invert result is enabled, the outcome of the comparison is flipped.
+* The node compares an attribute value from the "Flags Attribute" setting (Operand A) against a bitmask provided in the "Bitmask (Attr)" setting (Operand B).
+* Based on the selected "Comparison" type, the node evaluates whether Operand A meets the specified condition relative to Operand B.
+* The output consists of elements where the comparison between the attribute value and the bitmask satisfies the chosen flag comparison criteria.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Flags Attribute</strong><br><em>Source value. (Operand A)</em></summary>
+<summary><strong>Flags Attribute</strong> <code>Name</code></summary>
 
-The name of the attribute from which the flags value is read for comparison.
+Source value. (Operand A)
 
-</details>
-
-<details>
-
-<summary><strong>Comparison</strong><br><em>Type of flag comparison</em></summary>
-
-How the flags and mask are compared:
-
-* **Match (any)**: At least some flags in the mask are set.
-* **Match (all)**: All flags in the mask are set.
-* **Match (strict)**: The flags exactly match the mask.
-* **No match (any)**: No flags from the mask are set.
-* **No match (all)**: Not all flags from the mask are set.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Mask Input</strong><br><em>Type of Mask</em></summary>
+<summary><strong>Comparison</strong> <code>PCGExBitflagComparison</code></summary>
 
-Whether the mask value is a constant or read from an attribute:
-
-* **Constant**: Use the fixed value in the Bitmask field.
-* **Attribute**: Read the mask value from the specified attribute.
+Type of flag comparison
 
 </details>
 
 <details>
 
-<summary><strong>Bitmask (Attr)</strong><br><em>Mask for testing -- Must be int64. (Operand B)</em></summary>
+<summary><strong>Mask Input</strong> <code>PCGExInputValueType</code></summary>
 
-The name of the attribute containing the mask value, used when `MaskInput` is set to "Attribute".
-
-</details>
-
-<details>
-
-<summary><strong>Bitmask</strong><br><em>Mask for testing -- Must be int64. (Operand B)</em></summary>
-
-The fixed bitmask value used when `MaskInput` is set to "Constant".
+Type of Mask
 
 </details>
 
 <details>
 
-<summary><strong>Compositions</strong><br><em>External compositions applied to Operand B (whether it's a constant or not)</em></summary>
+<summary><strong>Bitmask (Attr)</strong> <code>Name</code></summary>
 
-Optional operations that modify the mask before comparison, such as shifting or combining with other values.
+Mask for testing -- Must be int64. (Operand B)
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Invert Result</strong><br><em>TBD</em></summary>
+<summary><strong>Bitmask</strong> <code>int64</code></summary>
 
-When enabled, the result of the comparison is inverted. Points that would pass now fail, and vice versa.
+(Operand B)
+
+⚡ PCG Overridable
 
 </details>
+
+<details>
+
+<summary><strong>Compositions</strong> <code>Array of FPCGExBitmaskRef</code></summary>
+
+External compositions applied to Operand B (whether it's a constant or not)
+
+</details>
+
+<details>
+
+<summary><strong>Invert Result</strong> <code>bool</code></summary>
+
+TBD
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExBitmaskFilterConfig</code></summary>
+
+Filter Config.
+
+📦 See: BitmaskFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExFilters\Public\Filters\Points\PCGExBitmaskFilter.h`

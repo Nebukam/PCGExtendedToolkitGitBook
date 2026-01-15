@@ -5,28 +5,44 @@ icon: circle-dashed
 
 # Write Attributes
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Forward attributes based on the match result.
 
-> Forward attributes based on the match result.
+📌 **Subnode** — Connects to **Actions** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode controls which attributes are passed through to output points depending on whether a matching condition is met or not. When a condition matches successfully, it forwards attributes defined in the Success Attributes Filter. When the condition fails, it forwards attributes from the Fail Attributes Filter.
+> AI-Generated, needs proofreading
 
-The filtering process uses different modes like "All", "Include", or "Exclude" to determine which attributes are selected. Each filter works independently, allowing you to specify exactly what data should be written based on the outcome of a match.
+* The node evaluates conditions to determine if an action is successful or not.
+* If the action succeeds, it applies filters from the Success Attributes Filter setting (PCGExAttributeGatherDetails) to forward relevant attributes.
+* If the action fails, it uses filters from the Fail Attributes Filter setting (also PCGExAttributeGatherDetails) to process and forward attributes accordingly.
 
 #### Configuration
 
-**SuccessAttributesFilter**
+<details>
 
-Defines which attributes to forward when a match succeeds. You can choose to include all attributes, only specific ones, or exclude certain ones using the available filtering modes.
+<summary><strong>Success Attributes Filter</strong> <code>PCGExAttributeGatherDetails</code></summary>
 
-**FailAttributesFilter**
+Controls success attributes filter.
 
-Defines which attributes to forward when a match fails. Like the success filter, this supports "All", "Include", or "Exclude" modes for flexible attribute selection.
+📦 See: AttributeGather configuration
 
-#### Usage Example
+⚡ PCG Overridable
 
-Use this subnode in workflows where you want to apply different attribute values based on matching conditions. For example, if you're sorting points by distance from a center point and want to color them red when close and blue when far, you would set up two attribute filters: one for success (red) and one for failure (blue).
+</details>
+
+<details>
+
+<summary><strong>Fail Attributes Filter</strong> <code>PCGExAttributeGatherDetails</code></summary>
+
+Controls fail attributes filter.
+
+📦 See: AttributeGather configuration
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsActions\Public\Actions\PCGExActionWriteValues.h`

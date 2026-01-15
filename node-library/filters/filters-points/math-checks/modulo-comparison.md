@@ -5,160 +5,232 @@ icon: circle-dashed
 
 # Modulo Comparison
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+A % B != C
 
-> &#x20;A % B != C
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### Overview
+**How It Works**
 
-The Modulo Compare filter evaluates whether the result of a modulo operation between two values meets a specified comparison condition against a third value. It's useful for creating patterns or conditions based on remainders, such as selecting every Nth point or filtering based on divisibility rules.
+> AI-Generated, needs proofreading
 
-This subnode connects to Filter pins on processing nodes and determines which points pass or fail the defined modulo comparison. You can use it to create procedural effects like grid-based selection, periodic spacing, or conditional point filtering using mathematical relationships.
-
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes.
-{% endhint %}
-
-#### How It Works
-
-This filter performs a modulo operation (A % B) and then compares the result against a third value (C) using a specified comparison operator. The logic evaluates whether the modulo result meets the comparison criteria.
-
-The process involves:
-
-1. Reading Operand A from input data or constant
-2. Calculating Operand A modulo Operand B
-3. Comparing the result to Operand C using the selected comparison operator
-4. Returning true if the condition is met, false otherwise
-
-For example, with `A = 7`, `B = 3`, and `C = 1`, the filter computes `7 % 3 = 1`, then checks if `1 != 1`. Since this is false, the point fails the filter.
-
-#### Inputs
-
-This subnode expects point data as input. It reads values from attributes or constants based on configuration settings.
-
-#### Outputs
-
-This subnode does not produce new data but defines a filtering condition that determines whether points pass or fail.
+* The node computes the modulo operation between `Operand A` and `Operand B`, where both operands are converted to `double`.
+* It then compares the result of this modulo operation against `C` using the specified comparison operator.
+* If the comparison evaluates to true, the input data associated with `Operand A` passes through the filter; otherwise, it does not.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Operand A</strong><br><em>Operand A for testing -- Will be translated to `double` under the hood.</em></summary>
+<summary><strong>Operand A</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-The first operand in the modulo operation. Can be read from an attribute or set as a constant value.
+Operand A for testing -- Will be translated to `double` under the hood.
 
-</details>
-
-<details>
-
-<summary><strong>Operand B Source</strong><br><em>Type of OperandB</em></summary>
-
-Determines whether Operand B is read from an attribute or set as a constant.
-
-**Values**:
-
-* **Constant**: Use a fixed numeric value
-* **Attribute**: Read the value from an input attribute
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Operand B (Constant)</strong><br><em>Operand B for testing</em></summary>
+<summary><strong>Operand BSource</strong> <code>PCGExInputValueType</code></summary>
 
-The second operand in the modulo operation when set to constant mode. Must be a positive number.
+Type of OperandB
 
-</details>
-
-<details>
-
-<summary><strong>Operand B (Attribute)</strong><br><em>Operand B for testing</em></summary>
-
-The second operand in the modulo operation when set to attribute mode. Reads from an attribute on input points.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Comparison</strong><br><em>Comparison</em></summary>
+<summary><strong>Operand B (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-The comparison operator used to evaluate the modulo result against Operand C.
+Operand B for testing (Modulo base) -- Will be translated to `double` under the hood.
 
-**Values**:
-
-* **==**: Strictly Equal
-* **!=**: Strictly Not Equal
-* **>=**: Equal or Greater
-* **<=**: Equal or Smaller
-* **>**: Strictly Greater
-* **<**: Strictly Smaller
-* **\~=**: Nearly Equal
-* **!\~=**: Nearly Not Equal
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Compare Against Source</strong><br><em>Type of OperandC</em></summary>
+<summary><strong>Operand B</strong> <code>double</code></summary>
 
-Determines whether Operand C is read from an attribute or set as a constant.
+Operand B for testing
 
-**Values**:
-
-* **Constant**: Use a fixed numeric value
-* **Attribute**: Read the value from an input attribute
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Operand C (Constant)</strong><br><em>Operand C for testing</em></summary>
+<summary><strong>Comparison</strong> <code>PCGExComparison</code></summary>
 
-The third operand in the comparison when set to constant mode. Can be any numeric value.
+Comparison
 
-</details>
-
-<details>
-
-<summary><strong>Operand C (Attribute)</strong><br><em>Operand C for testing</em></summary>
-
-The third operand in the comparison when set to attribute mode. Reads from an attribute on input points.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Tolerance</strong><br><em>Near-equality tolerance</em></summary>
+<summary><strong>Compare Against</strong> <code>PCGExInputValueType</code></summary>
 
-Used only with "Nearly Equal" or "Nearly Not Equal" comparisons. Defines how close two values must be to be considered equal.
+Type of OperandC
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Zero Result</strong><br><em>Which value to return when dealing with zero-values</em></summary>
+<summary><strong>Operand C</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-When the modulo operation results in zero, this setting determines whether the point passes (true) or fails (false) the filter.
+Operand C for testing -- Will be translated to `double` under the hood.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this filter to select every third point in a grid by setting:
+<summary><strong>Operand C</strong> <code>double</code></summary>
 
-* Operand A = Point index
-* Operand B = 3
-* Comparison = !=
-* Operand C = 0
+Operand C for testing
 
-This will pass points whose index modulo 3 is not equal to 0, effectively selecting all points except those at indices divisible by 3.
+⚡ PCG Overridable
 
-#### Notes
+</details>
 
-* The filter handles negative numbers correctly using standard modulo behavior.
-* When using attribute-based operands, ensure the attributes exist and are properly typed.
-* For performance, prefer constant values over attribute lookups when possible.
-* This filter is particularly useful for creating periodic or grid-based patterns in procedural generation workflows.
+<details>
+
+<summary><strong>Tolerance</strong> <code>double</code></summary>
+
+Near-equality tolerance
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Zero Result</strong> <code>bool</code></summary>
+
+Which value to return when dealing with zero-values
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExModuloCompareFilterConfig</code></summary>
+
+Filter Config.
+
+📦 See: ModuloCompareFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Operand A</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Operand A for testing -- Will be translated to `double` under the hood.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Operand BSource</strong> <code>PCGExInputValueType</code></summary>
+
+Type of OperandB
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Operand B (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Operand B for testing (Modulo base) -- Will be translated to `double` under the hood.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Operand B</strong> <code>double</code></summary>
+
+Operand B for testing
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Comparison</strong> <code>PCGExComparison</code></summary>
+
+Comparison
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Compare Against</strong> <code>PCGExInputValueType</code></summary>
+
+Type of OperandC
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Operand C</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Operand C for testing -- Will be translated to `double` under the hood.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Operand C</strong> <code>double</code></summary>
+
+Operand C for testing
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Tolerance</strong> <code>double</code></summary>
+
+Near-equality tolerance
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Zero Result</strong> <code>bool</code></summary>
+
+Which value to return when dealing with zero-values
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExFilters\Public\Filters\Points\PCGExModuloCompareFilter.h`

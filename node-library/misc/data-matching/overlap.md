@@ -4,101 +4,85 @@ icon: circle-dashed
 
 # Overlap
 
-{% hint style="warning" %}
-This node is currently hidden (WIP)
-{% endhint %}
+Check if there is an overlap with the data bounds (AABB)
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+📌 **Subnode** — Connects to **Match Rules** pins.
 
-> Check if there is an overlap with the data bounds (AABB).
+**How It Works**
 
-#### Overview
+> AI-Generated, needs proofreading
 
-This node determines whether the bounding box (AABB) of one set of data overlaps with that of another. It's useful for spatial matching in procedural content generation, such as identifying which points or objects are within a certain area.
-
-It operates by comparing the axis-aligned bounding boxes of input data sets to detect intersections. You can adjust how the bounds are calculated using expansion settings to include padding or shrinkage.
-
-{% hint style="info" %}
-This node is a **Subnode** that connects to matching processing nodes like **Match Points**, **Match Edges**, or **Match Paths**.
-{% endhint %}
-
-#### How It Works
-
-The node calculates axis-aligned bounding boxes (AABBs) for each data set involved in the match operation. These bounds define the minimum and maximum extents along each axis.
-
-It then checks if these AABBs intersect with one another:
-
-* If they do, the match is considered successful.
-* If not, it's a mismatch.
-
-The expansion mode allows you to modify how the bounds are calculated:
-
-* **None**: Uses the raw data bounds as-is.
-* **Add**: Adds a fixed value to each extent of the bounds (positive or negative).
-* **Scale**: Scales the bounds by a factor relative to their original size.
-
-This logic is applied before performing the overlap check, allowing for fine-tuned control over matching behavior.
-
-<details>
-
-<summary>Inputs</summary>
-
-Expects two sets of data:
-
-1. The target data (used as reference for the AABB).
-2. Candidate data (compared against the target's AABB).
-
-Each set must contain valid point or mesh data with associated bounds.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-Returns a boolean result indicating whether the AABBs of the two data sets overlap. This result can be used to filter or route points in downstream processing nodes.
-
-</details>
+* The node checks for an overlap between given data bounds using Axis-Aligned Bounding Box (AABB) calculations.
+* It adjusts the AABB based on the Expansion Mode setting, which specifies how much to shrink the bounds by a specified amount.
+* The Expansion parameter, defined as PCGExInputShorthandNameVector, determines the vector values used for shrinking or expanding the AABB.
+* Configuration settings are applied according to the Config rules properties, influencing how the overlap check and expansion/shrinkage operations are performed.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Expansion Mode</strong><br><em>Amount by which the bounds should be shrunk.</em></summary>
+<summary><strong>Expansion Mode</strong> <code>PCGExMatchOverlapExpansionMode</code></summary>
 
-Controls how the calculated bounds are adjusted before performing the overlap test.
+Amount but which the bounds should be shrinked
 
-**Values**:
+**Values:**
 
-* **None**: Don't alter extents.
-* **Add**: Add the value to the extents.
-* **Scale**: Scale the data bounds.
+* **None**: Don't alter extents
+* **Add**: Add the value to the extents
+* **Scale**: Scale the data bounds
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Expansion</strong><br><em>Amount by which the bounds should be shrunk.</em></summary>
+<summary><strong>Expansion</strong> <code>PCGExInputShorthandNameVector</code></summary>
 
-The amount by which to adjust the bounds when using **Add** or **Scale** modes. This is a vector value that applies per axis.
+Controls expansion.
 
-When **Expansion Mode** is set to **None**, this setting has no effect.
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this node in a matching graph where you want to find points that are spatially close to each other based on their bounding boxes. For example, you could use it to:
+<summary><strong>Config</strong> <code>PCGExMatchOverlapConfig</code></summary>
 
-* Identify which terrain patches overlap with a given area.
-* Find objects within a certain radius of another object's bounds.
+Rules properties
 
-Set the **Expansion Mode** to **Scale** and use a value like (0.5, 0.5, 0.5) to make the bounds slightly larger, allowing for more inclusive matching.
+📦 See: MatchOverlap configuration
 
-#### Notes
+⚡ PCG Overridable
 
-* The overlap check is performed using axis-aligned bounding boxes (AABBs), which are fast to compute but less precise than other shapes.
-* Expansion settings can be used to fine-tune how strict or loose the match should be.
-* This node works best when used with data that has meaningful spatial extents, such as meshes or point clouds.
+</details>
+
+<details>
+
+<summary><strong>Expansion Mode</strong> <code>PCGExMatchOverlapExpansionMode</code></summary>
+
+Amount but which the bounds should be shrinked
+
+**Values:**
+
+* **None**: Don't alter extents
+* **Add**: Add the value to the extents
+* **Scale**: Scale the data bounds
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Expansion</strong> <code>PCGExInputShorthandNameVector</code></summary>
+
+Controls expansion.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExMatching\Public\Matching\PCGExMatchOverlap.h`

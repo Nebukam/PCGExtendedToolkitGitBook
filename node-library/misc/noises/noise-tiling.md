@@ -4,117 +4,176 @@ icon: circle-dashed
 
 # Noise : Tiling
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Tiling noise - seamlessly tileable patterns.
 
-> Generates seamless, tileable noise patterns using periodic hashing and fractal techniques.
+📌 **Subnode** — Connects to **Noise** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode creates repeatable noise patterns that seamlessly connect at their edges. It uses a combination of fractal noise and periodic wrapping techniques to ensure that when the pattern is repeated, there are no visible seams or discontinuities.
+> AI-Generated, needs proofreading
 
-The process begins with a base noise function, typically gradient noise, which produces smooth variations in values. To make this noise tileable, the subnode wraps the input coordinates using modulo arithmetic based on specified tile periods for each axis. This wrapping ensures that the noise values at the edges of a tile match exactly with the values at the corresponding edges of adjacent tiles.
-
-For multi-octave noise, multiple layers are combined with different frequencies and amplitudes. Each octave uses its own periodic wrapping to maintain consistency across all noise layers, resulting in a complex but seamless pattern.
-
-{% hint style="info" %}
-Connects to **Noise** pins on processing nodes that accept procedural noise data.
-{% endhint %}
+* The Noise : Tiling node generates seamless noise patterns that repeat according to specified periods on the X and Y axes.
+* It uses the number of octaves, lacunarity, and persistence settings to control the complexity and variation in the generated noise pattern.
+* Period X and Period Y define the dimensions over which the noise pattern repeats seamlessly, ensuring continuity at the edges.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Octaves</strong><br><em>Number of noise layers to combine.</em></summary>
+<summary><strong>Octaves</strong> <code>int32</code></summary>
 
-Controls how many layers of noise are combined to create the final output. More octaves add more detail and complexity, but also increase computation cost.
+Controls octaves.
 
-**Values**:
+_Range: min: 1, max: 16_
 
-* **1**: Single layer noise
-* **4**: Standard fractal noise with good detail
-* **8**: High-detail fractal noise
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Lacunarity</strong><br><em>Frequency multiplier between octaves.</em></summary>
+<summary><strong>Lacunarity</strong> <code>double</code></summary>
 
-Controls how quickly the frequency increases with each octave. Higher values create more rapid changes in pattern, while lower values produce smoother transitions.
+Controls lacunarity.
 
-**Values**:
+_Range: min: 1.0, max: 4.0_
 
-* **1.0**: No change in frequency
-* **2.0**: Doubling of frequency per octave (standard)
-* **4.0**: Quadrupling of frequency per octave
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Persistence</strong><br><em>Amplitude multiplier between octaves.</em></summary>
+<summary><strong>Persistence</strong> <code>double</code></summary>
 
-Controls how much each octave contributes to the final result. Lower values make higher-frequency layers less influential, resulting in smoother patterns.
+Controls persistence.
 
-**Values**:
+_Range: min: 0.0, max: 1.0_
 
-* **0.0**: No contribution from higher octaves
-* **0.5**: Standard persistence (halved amplitude per octave)
-* **1.0**: Full amplitude (no attenuation)
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>PeriodX</strong><br><em>Tile period on X axis.</em></summary>
+<summary><strong>Period X</strong> <code>int32</code></summary>
 
-Defines how many units along the X-axis before the pattern repeats. Smaller values create more frequent tiling, while larger values extend the tile size.
+Tile period on X axis
 
-**Values**:
+_Range: min: 1, max: 256_
 
-* **1**: Minimum tile size
-* **4**: Standard tile size
-* **256**: Very large tile
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>PeriodY</strong><br><em>Tile period on Y axis.</em></summary>
+<summary><strong>Period Y</strong> <code>int32</code></summary>
 
-Defines how many units along the Y-axis before the pattern repeats. Controls horizontal tiling behavior.
+Tile period on Y axis
 
-**Values**:
+_Range: min: 1, max: 256_
 
-* **1**: Minimum tile size
-* **4**: Standard tile size
-* **256**: Very large tile
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>PeriodZ</strong><br><em>Tile period on Z axis.</em></summary>
+<summary><strong>Period Z</strong> <code>int32</code></summary>
 
-Defines how many units along the Z-axis before the pattern repeats. Controls vertical tiling behavior.
+Tile period on Z axis
 
-**Values**:
+_Range: min: 1, max: 256_
 
-* **1**: Minimum tile size
-* **4**: Standard tile size
-* **256**: Very large tile
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Create a seamless terrain texture by using this subnode to generate height values for a landscape. Set PeriodX and PeriodY to 8 to create an 8x8 unit tile pattern, then use the output to drive a material's height map. This ensures that when multiple tiles are placed next to each other, there are no visible seams at the edges.
+<summary><strong>Config</strong> <code>PCGExNoiseConfigTiling</code></summary>
 
-#### Notes
+Controls config.
 
-* The noise is designed to be perfectly seamless along all three axes
-* Higher octaves increase computation time significantly
-* Use larger period values for less frequent tiling patterns
-* Combine with other noise subnodes using blend modes for complex effects
+📦 See: NoiseConfigTiling configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Octaves</strong> <code>int32</code></summary>
+
+Controls octaves.
+
+_Range: min: 1, max: 16_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Lacunarity</strong> <code>double</code></summary>
+
+Controls lacunarity.
+
+_Range: min: 1.0, max: 4.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Persistence</strong> <code>double</code></summary>
+
+Controls persistence.
+
+_Range: min: 0.0, max: 1.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Period X</strong> <code>int32</code></summary>
+
+Tile period on X axis
+
+_Range: min: 1, max: 256_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Period Y</strong> <code>int32</code></summary>
+
+Tile period on Y axis
+
+_Range: min: 1, max: 256_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Period Z</strong> <code>int32</code></summary>
+
+Tile period on Z axis
+
+_Range: min: 1, max: 256_
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExNoise3D\Public\Noises\PCGExNoiseTiling.h`

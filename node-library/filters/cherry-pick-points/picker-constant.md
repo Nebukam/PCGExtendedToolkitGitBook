@@ -5,62 +5,70 @@ icon: circle-dashed
 
 # Picker : Constant
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+A Picker that has a single value.
 
-> A Picker subnode that selects a single index from a set of data.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This Picker subnode chooses one specific item from a collection of points, edges, or other data. It uses either a direct position number (discrete mode) or a fraction between 0 and 1 (relative mode) to determine which item to select. The selected item is then passed on as the output.
-
-In discrete mode, each number directly maps to an item in the list. For example, index 2 selects the third item (starting from zero). Negative numbers count backwards from the end of the list — so -1 picks the last item.
-
-In relative mode, values are treated as percentages. A value of 0.5 means "the middle item," while 0 is the first and 1 is the last. The system also supports negative values in this mode to select items from the end of the list.
+* The Picker : Constant node outputs a single predefined value.
+* It allows configuration through settings such as Discrete Index and Relative Index to select from an end position using negative values.
+* Config settings define the properties of the Picker, influencing how the constant value is selected or interpreted.
 
 #### Configuration
 
 <details>
 
-<summary><strong>DiscreteIndex</strong><br><em>Use negative values to select from the end.</em></summary>
+<summary><strong>Discrete Index</strong> <code>int32</code></summary>
 
-Sets the position of the item to pick using a direct index. Index 0 is the first item, and negative numbers count backwards from the end. For example, an index of -1 picks the last item in the set.
+Use negative values to select from the end.
 
-</details>
-
-<details>
-
-<summary><strong>RelativeIndex</strong><br><em>Use negative values to select from the end.</em></summary>
-
-Sets the position of the item to pick as a value between 0 and 1. A value of 0 selects the first item, 1 selects the last, and 0.5 selects the middle. Negative values are also supported for selecting items from the end.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Config</strong><br><em>Picker properties</em></summary>
+<summary><strong>Relative Index</strong> <code>double</code></summary>
 
-The picker configuration settings that define how the index is interpreted and applied.
+Use negative values to select from the end.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-To select the third point in a point set:
+<summary><strong>Config</strong> <code>PCGExPickerConstantConfig</code></summary>
 
-1. Set **DiscreteIndex** to 2 (0-based indexing)
-2. Connect this subnode to a Cherry Pick Points node
-3. The node will return the third point from the input data
+Picker properties
 
-To select the middle point of a path:
+📦 See: PickerConstant configuration
 
-1. Set **RelativeIndex** to 0.5
-2. Connect this subnode to a Cherry Pick Points node
-3. The node will return the point at the center of the path
+⚡ PCG Overridable
 
-#### Notes
+</details>
 
-* When using relative indexing, fractional values are rounded to the nearest index.
-* Negative indices count from the end of the dataset (e.g., -1 is the last item).
-* This subnode works best when the input data set has a consistent size or when you know the expected range of indices.
+<details>
+
+<summary><strong>Discrete Index</strong> <code>int32</code></summary>
+
+Use negative values to select from the end.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Relative Index</strong> <code>double</code></summary>
+
+Use negative values to select from the end.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExPickers\Public\Pickers\PCGExPickerConstant.h`

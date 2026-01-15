@@ -5,137 +5,213 @@ icon: circle-dashed
 
 # Numeric
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Creates a filter definition that compares an attribute numeric value against itself at another index.
 
-> Creates a filter definition that compares an attribute numeric value against itself at another index.
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode evaluates whether a point's numeric attribute meets a comparison condition against the same attribute from another point in the data set. For each input point, it reads a value from Operand A and compares it to a value from Operand B, which is taken from a different point based on an index calculation.
+> AI-Generated, needs proofreading
 
-The process works like this:
-
-1. It reads the numeric value of Operand A from the current point.
-2. It calculates which other point to compare against using the Index Mode and either a fixed index or an attribute-based index.
-3. If the calculated index is valid, it reads the value of Operand B from that point.
-4. It checks if the comparison between Operand A and Operand B passes the defined condition.
-5. If the comparison passes, the point is included in the output; otherwise, it's excluded.
-
-The index calculation can be either:
-
-* **Pick**: Uses a specific fixed index.
-* **Offset**: Adds an offset value to the current point's index.
-
-Index safety modes determine how invalid indices are handled:
-
-* **Ignore**: Invalid indices are skipped.
-* **Tile**: Wraps around to valid indices.
-* **Clamp**: Clamps invalid indices to the nearest valid one.
-* **Yoyo**: Mirrors invalid indices back and forth.
+* The node receives an attribute's numeric value and translates Operand A to a `double` for comparison purposes.
+* Utilizes the specified Comparison setting to evaluate the relationship between the current numeric value and another value from the same attribute at a different index defined by Index Mode.
+* Applies the Tolerance setting to determine near-equality, if applicable, when performing the comparison operation.
+* The Compare Against setting determines how Operand B is derived for the comparison against Operand A.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Operand A</strong><br><em>Operand A for testing -- Will be translated to `double` under the hood.</em></summary>
+<summary><strong>Operand A</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-The numeric attribute from the current point that will be used as the left-hand side of the comparison.
+Operand A for testing -- Will be translated to `double` under the hood.
 
-</details>
-
-<details>
-
-<summary><strong>Comparison</strong><br><em>Comparison</em></summary>
-
-The comparison operator to use. Options include:
-
-* **Equal**: Values must be exactly equal.
-* **Not Equal**: Values must not be equal.
-* **Nearly Equal**: Values must be within tolerance.
-* **Nearly Not Equal**: Values must differ by more than tolerance.
-* **Greater Than**: Operand A must be greater than Operand B.
-* **Greater Than or Equal**: Operand A must be greater than or equal to Operand B.
-* **Less Than**: Operand A must be less than Operand B.
-* **Less Than or Equal**: Operand A must be less than or equal to Operand B.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Tolerance</strong><br><em>Near-equality tolerance</em></summary>
+<summary><strong>Comparison</strong> <code>PCGExComparison</code></summary>
 
-The tolerance used when comparing values for "Nearly Equal" and "Nearly Not Equal". Only applies if the comparison is set to those options.
+Comparison
 
-</details>
-
-<details>
-
-<summary><strong>Index Mode</strong><br><em>Index mode</em></summary>
-
-How the index of the point to compare against is calculated:
-
-* **Pick**: Uses a fixed index.
-* **Offset**: Adds an offset value to the current point's index.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Compare Against</strong><br><em>Type of OperandB</em></summary>
+<summary><strong>Tolerance</strong> <code>double</code></summary>
 
-Whether to use a constant or attribute value for the comparison:
+Near-equality tolerance
 
-* **Constant**: Use Index Constant.
-* **Attribute**: Use Index Attribute.
-
-</details>
-
-<details>
-
-<summary><strong>Index (Attr)</strong><br><em>Const Index value to use according to the selected Index Mode</em></summary>
-
-The attribute used as the index when Compare Against is set to "Attribute".
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Index</strong><br><em>Const Index value to use according to the selected Index Mode</em></summary>
+<summary><strong>Index Mode</strong> <code>PCGExIndexMode</code></summary>
 
-The fixed index value used when Compare Against is set to "Constant".
+Index mode
 
-</details>
-
-<details>
-
-<summary><strong>Index Safety</strong><br><em>Index safety</em></summary>
-
-How invalid indices are handled:
-
-* **Ignore**: Invalid indices are ignored.
-* **Tile**: Wraps around to valid indices.
-* **Clamp**: Clamps invalid indices to the nearest valid one.
-* **Yoyo**: Mirrors invalid indices back and forth.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Invalid Index Fallback</strong><br><em>How to deal with invalid indices</em></summary>
+<summary><strong>Compare Against</strong> <code>PCGExInputValueType</code></summary>
 
-What happens when an index is invalid:
+Type of OperandB
 
-* **Pass**: Invalid indices are treated as passing the filter.
-* **Fail**: Invalid indices are treated as failing the filter.
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-You want to filter points so that only those whose height attribute is greater than the height of the point at index 5. Set Operand A to a height attribute, Comparison to "Greater Than", Index Mode to "Pick", and Index Constant to 5. This will keep only points where their own height exceeds that of the point at index 5.
+<summary><strong>Index (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-#### Notes
+Index value to use according to the selected Index Mode -- Will be translated to `int32` under the hood.
 
-This filter is useful for creating spatial or sequential dependencies in procedural generation. Be careful with index safety settings when using offsets, as they can lead to unexpected behavior if not properly constrained.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Index</strong> <code>int32</code></summary>
+
+Const Index value to use according to the selected Index Mode
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Index Safety</strong> <code>PCGExIndexSafety</code></summary>
+
+Index safety
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invalid Index Fallback</strong> <code>PCGExFilterFallback</code></summary>
+
+How to deal with invalid indices
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExNumericSelfCompareFilterConfig</code></summary>
+
+Filter Config.
+
+📦 See: NumericSelfCompareFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Operand A</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Operand A for testing -- Will be translated to `double` under the hood.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Comparison</strong> <code>PCGExComparison</code></summary>
+
+Comparison
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Tolerance</strong> <code>double</code></summary>
+
+Near-equality tolerance
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Index Mode</strong> <code>PCGExIndexMode</code></summary>
+
+Index mode
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Compare Against</strong> <code>PCGExInputValueType</code></summary>
+
+Type of OperandB
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Index (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Index value to use according to the selected Index Mode -- Will be translated to `int32` under the hood.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Index</strong> <code>int32</code></summary>
+
+Const Index value to use according to the selected Index Mode
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Index Safety</strong> <code>PCGExIndexSafety</code></summary>
+
+Index safety
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invalid Index Fallback</strong> <code>PCGExFilterFallback</code></summary>
+
+How to deal with invalid indices
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExFilters\Public\Filters\Points\PCGExNumericSelfCompareFilter.h`

@@ -5,73 +5,73 @@ icon: circle
 
 # Merge Points
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+An alternative to the native Merge Points node with additional controls.
 
-> Merges multiple point collections into a single output, with advanced sorting and attribute handling options.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-The Merge Points node combines several input point collections into one unified dataset. It processes each collection in order, merging all points together before applying any sorting rules. The node then evaluates which attributes or metadata should be carried over based on your specified settings. If enabled, it can also convert point tags into attributes using a defined list of tag names.
-
-The sorting step ensures that the final merged collection is organized according to your preferences — such as by position, index, or custom properties. This allows you to control how the data flows through your procedural pipeline and makes downstream processing more predictable and efficient.
+* The Merge Points node combines multiple point sets into one by utilizing settings from the Collection Sorting section to organize and prioritize points during merging.
+* Using Carry Over Settings, the node applies meta filters to determine which attributes are carried over from individual points to the merged set.
+* If Tag To Attributes is enabled, the node converts specified tags into corresponding attributes for each point; simple tags become boolean values while others can be converted into int32, double, FString, or FVector types with dimensions 2 through 4.
+* The Quiet Tag Overlap Warning setting suppresses warning messages when there are overlapping tags during the conversion process if set to true.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Collection Sorting</strong><br><em>Sorting settings for the merged collection.</em></summary>
+<summary><strong>Collection Sorting</strong> <code>PCGExCollectionSortingDetails</code></summary>
 
-Controls how the final merged point set is ordered. You can sort by various criteria such as position, index, or custom attributes.
+Sorting settings.
 
-</details>
+📦 See: CollectionSorting configuration
 
-<details>
-
-<summary><strong>Carry Over Settings</strong><br><em>Meta filter settings for which data to keep during merge.</em></summary>
-
-Determines which metadata or attributes from the input collections are preserved in the output. You can choose to include, exclude, or keep all attributes.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Convert Tags to Attributes</strong><br><em>If enabled, will convert tags into attributes.</em></summary>
+<summary><strong>Carry Over Settings</strong> <code>PCGExCarryOverDetails</code></summary>
 
-When enabled, point tags are converted into attributes in the output. Simple tags become boolean values; other formats like int32, double, FString, and FVector (2-4 components) are also supported.
+Meta filter settings.
 
-</details>
+📦 See: CarryOver configuration
 
-<details>
-
-<summary><strong>Tags to Attributes</strong><br><em>Tags that will be converted to attributes.</em></summary>
-
-Lists the specific tags to convert into attributes. Only tags listed here will be processed if "Convert Tags to Attributes" is enabled.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Quiet Tag Overlap Warning</strong><br><em>Suppresses warnings when overlapping tags are encountered.</em></summary>
+<summary><strong>Tag To Attributes</strong> <code>bool</code></summary>
 
-When enabled, suppresses warning messages that would otherwise appear if multiple input collections have overlapping tag names during the conversion process.
+If enabled, will convert tags into attributes.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Suppose you're generating a terrain with multiple noise layers and want to merge them into one point cloud. You could use this node to:
+<summary><strong>Tags To Attributes</strong> <code>PCGExNameFiltersDetails</code></summary>
 
-1. Merge all the point collections from your different noise generators.
-2. Sort the points by their Y position (height).
-3. Carry over specific attributes like "Elevation" and "Material ID".
-4. Convert tags like "IsWater" or "IsMountain" into boolean attributes for downstream filtering.
+Tags that will be converted to attributes. Simple tags will be converted to boolean values, other supported formats are int32, double, FString, and FVector 2-3-4.
 
-This setup gives you full control over how your point data is combined, sorted, and structured for further use in your procedural pipeline.
+📦 See: NameFilters configuration
 
-#### Notes
+⚡ PCG Overridable
 
-* The node supports multiple input collections, making it ideal for combining complex procedural datasets.
-* Sorting can significantly impact performance if dealing with large numbers of points.
-* When converting tags to attributes, be mindful of potential name conflicts between different input collections.
+</details>
+
+<details>
+
+<summary><strong>Quiet Tag Overlap Warning</strong> <code>bool</code></summary>
+
+Controls quiet tag overlap warning.
+
+</details>
+
+***
+
+Source: `Source\PCGExFoundations\Public\Elements\Utils\PCGExMergePoints.h`

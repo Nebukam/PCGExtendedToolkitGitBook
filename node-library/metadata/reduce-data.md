@@ -5,117 +5,81 @@ icon: circle
 
 # Reduce Data
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Reduce @Data domain attribute.
 
-> Reduces metadata attributes from multiple input points into a single output value using various aggregation methods.
+**How It Works**
 
-#### Overview
+> AI-Generated, needs proofreading
 
-This node allows you to combine data from multiple input points and reduce it down to a single value per point. It's useful when you have grouped or clustered data that needs to be summarized, such as averaging values from several points in a cluster or finding the maximum value among them.
-
-It operates on metadata attributes and supports different reduction methods like minimum, maximum, sum, average, joining strings, or hashing values. You can specify which attribute to process and how to combine its values.
-
-{% hint style="info" %}
-Connects to **Points** processing nodes (e.g., Cluster, Group) via the main input pin.
-{% endhint %}
-
-#### How It Works
-
-This node takes multiple points as input and processes a specified metadata attribute from each point. It applies an aggregation method to combine these values into a single output value per point.
-
-The process works in steps:
-
-1. It reads the selected metadata attribute from all input points.
-2. Based on the chosen **Method**, it performs an operation across those values:
-   * For **Min**, **Max**, **Sum**, and **Average**, it computes the respective mathematical result.
-   * For **Join**, it concatenates string values using a delimiter.
-   * For **Hash** or **UnsignedHash**, it combines values into a hash, with sorted order for UnsignedHash.
-3. The resulting value is written to the output point's metadata attribute.
-
-The node supports both numeric and string types depending on the method used. For methods like Join, only string-based attributes are valid.
-
-<details>
-
-<summary>Inputs</summary>
-
-* **Main Input**: Points with metadata attributes to be reduced.
-* **Optional Filters**: Point filters can be applied before processing.
-
-</details>
-
-<details>
-
-<summary>Outputs</summary>
-
-* **Main Output**: Points with the same structure as input, but with the specified attribute replaced by a single computed value per point.
-
-</details>
+* The node processes a domain attribute from the input data using settings defined in `PCGExAttributeSourceToTargetDetails`.
+* It applies a reduction method specified by `PCGExReduceDataDomainMethod` to modify or condense the selected attribute.
+* Outputs the processed result with a type of `bool`, as determined by the Custom Output Type setting, and this output is categorized under `PCGMetadataTypes`.
+* If multiple outputs are generated, they are concatenated using the string defined in Join Delimiter.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Attributes</strong><br><em>Selects which metadata attributes to process.</em></summary>
+<summary><strong>Attributes</strong> <code>PCGExAttributeSourceToTargetDetails</code></summary>
 
-Choose the source and target attributes. The node will read from the source and write the result to the target.
+Controls attributes.
 
-</details>
+📦 See: AttributeSourceToTarget configuration
 
-<details>
-
-<summary><strong>Method</strong><br><em>Determines how values are combined.</em></summary>
-
-Controls the logic used to reduce multiple values into one.
-
-**Values**:
-
-* **Min**: Selects the smallest value.
-* **Max**: Selects the largest value.
-* **Sum**: Adds all values together.
-* **Average**: Computes the arithmetic mean.
-* **Join**: Concatenates string values with a delimiter.
-* **Hash**: Combines values into a hash (in order of inputs).
-* **Hash (Sorted)**: Sorts values first, then combines them into a hash.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bCustomOutputType</strong><br><em>When enabled, allows specifying the output data type.</em></summary>
+<summary><strong>Method</strong> <code>PCGExReduceDataDomainMethod</code></summary>
 
-When enabled, you can override the default output type for numeric results. This is not supported for string-based methods like Join or Hash.
+Controls method.
+
+**Values:**
+
+* **Min**
+* **Max**
+* **Sum**
+* **Average**
+* **Join**
+* **Hash**: Hashed in order of inputs
+* **Unsigned Hash**
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>OutputType</strong><br><em>Specifies the data type of the reduced output.</em></summary>
+<summary><strong>Custom Output Type</strong> <code>bool</code></summary>
 
-Only used when **bCustomOutputType** is enabled. Determines how numeric values are stored in the output attribute.
+Controls custom output type.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>JoinDelimiter</strong><br><em>Defines the separator used when joining strings.</em></summary>
+<summary><strong>Output Type</strong> <code>PCGMetadataTypes</code></summary>
 
-Used only when the **Method** is set to Join. Controls what separates each joined value in the final string.
+Controls output type.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-You have a cluster of points, each with a "Health" attribute. You want to find the average health of all points within each cluster and store that as a new attribute on the cluster's representative point.
+<summary><strong>Join Delimiter</strong> <code>String</code></summary>
 
-1. Connect your clustering node to this node.
-2. Set **Method** to Average.
-3. Select "Health" as the input attribute.
-4. The output will contain a single averaged value per cluster point.
+Controls join delimiter.
 
-#### Notes
+⚡ PCG Overridable
 
-* For methods like Join or Hash, only string-type attributes are valid.
-* When using **Hash (Sorted)**, values are sorted before hashing for consistent results.
-* Performance can be impacted by large numbers of input points due to sorting and hash computation.
+</details>
+
+***
+
+Source: `Source\PCGExElementsMeta\Public\Elements\PCGExReduceDataAttribute.h`

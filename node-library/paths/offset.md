@@ -9,193 +9,228 @@ icon: circle
 Consider the more robust [clipper2-offset.md](clipper2/clipper2-offset.md "mention")
 {% endhint %}
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Offset paths points.
 
-> Shifts path points along their normal or binormal direction to create parallel paths or modify existing shapes.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node moves each point in a path along a specific direction—either its normal, binormal, or a custom vector. The amount of movement is determined by a fixed value or an attribute that varies per point. For each point, the system calculates where it should be moved based on its neighbors to keep the path smooth and consistent.
-
-When paths have sharp turns, special adjustments are made:
-
-* **Auto Smooth**: Automatically softens tight angles.
-* **Custom Smooth**: Lets you define how much smoothing to apply.
-* **Mitre**: Prevents overlapping or excessive extension at acute angles.
-
-If cleanup is enabled, it can detect when points have flipped direction during offsetting and optionally collapse sections that self-intersect due to the offset.
+* The node adjusts path points based on the selected Offset Method from PCGExOffsetMethod.
+* It uses the specified Offset Input type to determine how offsets are applied to each point.
+* The offset size can be fetched from a local attribute and scaled by the Size parameter, or directly set via the Offset setting.
+* If Apply Point Scale To Offset is enabled, it scales both the direction and distance of the offset according to the point scale.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Offset Method</strong><br><em>How to compute the offset direction.</em></summary>
+<summary><strong>Offset Method</strong> <code>PCGExOffsetMethod</code></summary>
 
-Controls how the offset direction is calculated.
+Controls offset method.
 
-**Values**:
+**Values:**
 
-* **Slide**: Offset along a normal or binormal vector.
-* **Line/Plane**: Uses line-plane intersection for more complex offset behaviors.
+* **Slide**: ...
+* **Line/Plane**: ...
 
-</details>
-
-<details>
-
-<summary><strong>Offset Input</strong><br><em>Whether to use a constant or attribute value for the offset.</em></summary>
-
-Controls whether the offset is defined by a fixed number or read from an attribute.
-
-**Values**:
-
-* **Constant**: Use the value in the "Offset" setting.
-* **Attribute**: Read the offset size from a point attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Offset</strong><br><em>Distance to offset points.</em></summary>
+<summary><strong>Offset Input</strong> <code>PCGExInputValueType</code></summary>
 
-The amount by which to shift each point. If using an attribute, this acts as a multiplier.
+Offset type.
 
-</details>
-
-<details>
-
-<summary><strong>Apply Point Scale To Offset</strong><br><em>Scales offset direction &#x26; distance using point scale.</em></summary>
-
-When enabled, the offset is scaled based on the point's scale property, allowing for dynamic adjustments based on size.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Up Vector</strong><br><em>Up vector used to calculate Offset direction.</em></summary>
+<summary><strong>Offset (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-Defines the world-space up vector used in calculations when computing normal or binormal directions.
+Fetch the offset size from a local attribute. The regular Size parameter then act as a scale.
 
-</details>
-
-<details>
-
-<summary><strong>Direction Type</strong><br><em>Type of arithmetic path point offset direction.</em></summary>
-
-Controls whether the direction is constant or read from an attribute.
-
-**Values**:
-
-* **Constant**: Use the "Direction" setting.
-* **Attribute**: Read the direction vector from a point attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Direction</strong><br><em>Type of arithmetic path point offset direction.</em></summary>
+<summary><strong>Offset</strong> <code>double</code></summary>
 
-The type of normal or binormal to use when calculating the offset direction. Only used if "Offset Method" is "Slide".
+Offset size.
 
-**Values**:
-
-* **Normal**: Use the path's normal vector.
-* **Binormal**: Use the path's binormal vector.
-* **Average Normal**: Use an averaged normal from neighboring points.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Invert Direction</strong><br><em>Inverts offset direction.</em></summary>
+<summary><strong>Apply Point Scale To Offset</strong> <code>bool</code></summary>
 
-When enabled, reverses the direction of the offset. This is useful for consistent behavior regardless of sign in the offset value.
+Scale offset direction & distance using point scale.
 
-</details>
-
-<details>
-
-<summary><strong>Adjustment</strong><br><em>Adjust aspect in tight angles.</em></summary>
-
-Controls how to handle sharp turns or tight angles during offsetting.
-
-**Values**:
-
-* **Raw**: No adjustment.
-* **Custom Smooth**: Apply a custom smoothing factor.
-* **Auto Smooth**: Automatically smooth based on angle.
-* **Mitre**: Adjust for acute angles to prevent overlapping.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Adjustment Scale</strong><br><em>Adjust aspect in tight angles.</em></summary>
+<summary><strong>Up Vector Constant</strong> <code>Vector</code></summary>
 
-Used when "Adjustment" is set to "Custom Smooth". Controls the strength of the smoothing effect.
+Up vector used to calculate Offset direction.
 
-</details>
-
-<details>
-
-<summary><strong>Mitre Limit</strong><br><em>Offset size.</em></summary>
-
-Used when "Adjustment" is set to "Mitre". Defines how far the offset extends at acute angles.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Cleanup Mode</strong><br><em>Whether to flag points that have been flipped during the offset.</em></summary>
+<summary><strong>Direction Type</strong> <code>PCGExInputValueType</code></summary>
 
-Controls post-processing cleanup behavior after offsetting.
+Direction Vector type.
 
-**Values**:
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Direction (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Fetch the direction vector from a local point attribute.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Direction</strong> <code>PCGExPathNormalDirection</code></summary>
+
+Type of arithmetic path point offset direction.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invert Direction</strong> <code>bool</code></summary>
+
+Inverts offset direction. Can also be achieved by using negative offset values, but this enable consistent inversion no matter the input.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Adjustment</strong> <code>PCGExOffsetAdjustment</code></summary>
+
+Adjust aspect in tight angles
+
+**Values:**
+
+* **Raw**: ...
+* **Custom Smooth**: ...
+* **Auto Smooth**: ...
+* **Mitre**: ...
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Adjustment Scale</strong> <code>double</code></summary>
+
+Adjust aspect in tight angles
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Mitre Limit</strong> <code>double</code></summary>
+
+Offset size.
+
+⚡ PCG Overridable
+
+</details>
+
+**Cleanup**
+
+<details>
+
+<summary><strong>Cleanup Mode</strong> <code>PCGExOffsetCleanupMode</code></summary>
+
+Controls cleanup mode.
+
+**Values:**
 
 * **None**: No cleanup.
-* **Collapse Flipped Segments**: Collapse segments where points were flipped.
-* **Collapse Sections (Flipped)**: Remove sections of paths that self-intersect and contain flipped segments.
-* **Collapse Sections**: Remove sections of paths that self-intersect.
+* **Collapse Flipped Segments**: Collapse flipped segments.
+* **Sections Flipped**
+* **Collapse Sections**: Remove sections of the paths that are between self-intersections.
 
 </details>
 
 <details>
 
-<summary><strong>Intersection Tolerance</strong><br><em>Tolerance to consider valid path segments as overlapping.</em></summary>
+<summary><strong>Intersection Tolerance</strong> <code>double</code></summary>
 
-Used during cleanup to determine how close two segments must be to be considered overlapping.
+During cleanup, used as a tolerance to consider valid path segments as overlapping or not.
 
-</details>
-
-<details>
-
-<summary><strong>Flag Mutated Points</strong><br><em>Attempt to adjust offset on mutated edges.</em></summary>
-
-When enabled, attempts to flag points that were modified due to offsetting behavior.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Mutated Attribute Name</strong><br><em>Name of the 'bool' attribute to flag the nodes that are the result of a mutation.</em></summary>
+<summary><strong>Flag Mutated Points</strong> <code>bool</code></summary>
 
-The name of the boolean attribute used to mark mutated points if "Flag Mutated Points" is enabled.
+Attempt to adjust offset on mutated edges .
 
-</details>
-
-<details>
-
-<summary><strong>Flag Flipped Points</strong><br><em>Whether to flag points that have been flipped during the offset.</em></summary>
-
-When enabled, marks points that were flipped during offsetting with a boolean attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Flipped Attribute Name</strong><br><em>Name of the 'bool' attribute to flag the points that are flipped.</em></summary>
+<summary><strong>Mutated Attribute Name</strong> <code>Name</code></summary>
 
-The name of the boolean attribute used to mark flipped points if "Flag Flipped Points" is enabled.
+Name of the 'bool' attribute to flag the nodes that are the result of a mutation.
+
+⚡ PCG Overridable
 
 </details>
+
+<details>
+
+<summary><strong>Flag Flipped Points</strong> <code>bool</code></summary>
+
+Whether to flag points that have been flipped during the offset.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Flipped Attribute Name</strong> <code>Name</code></summary>
+
+Name of the 'bool' attribute to flag the points that are flipped.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsPaths\Public\Elements\PCGExOffsetPath.h`

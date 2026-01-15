@@ -5,46 +5,32 @@ icon: circle-dashed
 
 # Tensor : Null
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+A tensor that represent a Null field
 
-> Creates a tensor that represents a null field, effectively doing nothing.
+📌 **Subnode** — Connects to **Tensors** pins.
 
-#### How It Works
+**How It Works**
 
-This tensor performs no actual computation. When sampled, it returns a zero-weighted result that effectively cancels out any influence from this tensor component. It does not modify point positions or attributes in any way.
+> AI-Generated, needs proofreading
 
-The node defines an empty tensor configuration that can be used as part of a larger tensor system. It acts as a placeholder or neutral element within a tensor operation chain, allowing for flexible composition where some effectors may intentionally do nothing.
-
-#### Overview
-
-This node generates a tensor that has no effect on point positions or attributes. It's useful when you want to define a tensor component that contributes nothing to the overall transformation or influence of points in your procedural generation setup. This can be helpful for conditional logic, placeholder tensors, or when you need to disable certain tensor behaviors without removing them from the graph.
-
-This node is typically used as part of a tensor configuration where multiple effectors are combined, and one or more may be intentionally set to null to avoid applying any transformation.
-
-{% hint style="info" %}
-Connects to **Tensor Subnode Provider** nodes (e.g., `Create Tensor Null`) via the **Subnode** pin.
-{% endhint %}
+* The node initializes a tensor object that specifically represents a Null field.
+* Configuration settings for this tensor are defined through the "Config: Tensor properties" section, which likely includes dimensions and data type specifications relevant to representing null values.
+* The node outputs a tensor filled with null or zero values, depending on the configuration, maintaining the shape and type as specified in the settings.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Config</strong><br><em>Tensor properties</em></summary>
+<summary><strong>Config</strong> <code>PCGExTensorNullConfig</code></summary>
 
-Controls the settings that define how this null tensor behaves within a tensor system.
+Tensor properties
 
-This configuration is intentionally minimal, as the node represents a null field with no actual behavior or influence.
+📦 See: TensorNull configuration
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+***
 
-Use this node in a tensor setup where you want to conditionally apply or skip certain tensor effectors. For example, you might have a graph that applies different types of tensor forces (e.g., attraction, repulsion, noise) based on some criteria. If a particular condition is not met, you can route the output through this null tensor node to effectively disable that effector without breaking the flow.
-
-#### Notes
-
-* This node is primarily used for composition and conditional logic within tensor systems.
-* It does not produce any data or modify points directly; it only defines a neutral tensor component.
-* Useful in combination with other tensor nodes to create flexible, conditional procedural behaviors.
+Source: `Source\PCGExElementsTensors\Public\Tensors\PCGExTensorNull.h`

@@ -5,79 +5,111 @@ icon: circle-dashed
 
 # Endpoints Check
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Uses filters applied to the edge endpoints' in order to determine whether this filter result'.
 
-> Filters edges based on whether their start and end points pass or fail specified criteria.
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### How It Works
+**How It Works**
 
-This filter evaluates each endpoint of an edge independently using point-based subnodes. It then combines the results according to the selected mode logic to determine if the edge should be included in the output. The process works as follows:
+> AI-Generated, needs proofreading
 
-1. Each endpoint (start and end) is tested against its assigned point filters
-2. The results for both endpoints are combined based on the selected mode
-3. If the final result matches the expected comparison (pass or fail), the edge is kept
-
-The mode controls how the two endpoint results are combined:
-
-* **None**: Neither endpoint needs to match the expected result
-* **Both**: Both endpoints must match the expected result
-* **Any Pass**: At least one endpoint must match the expected result
-* **Start**: Only the start endpoint must match the expected result
-* **End**: Only the end endpoint must match the expected result
-* **SeeSaw**: One endpoint must pass while the other must fail
-
-When the invert option is enabled, the final result is flipped - edges that would normally pass are excluded, and those that fail are included.
+* The Edge Filter node evaluates edge endpoints based on specified filters defined in the "Config" setting.
+* Depending on the selected "Mode", the node checks if the filter results for each endpoint meet the criteria set by "Comparison". For example, if "Mode" is set to "Both" and "Comparison" expects a pass, both endpoints must individually pass their respective filters.
+* The "Invert" boolean setting reverses the outcome of the comparison; if enabled, the node inverts whether the filter results are considered passing or failing according to the "Comparison".
+* The final output is a determination of whether the edge passes the overall filter check based on the combined evaluation of its endpoints and the settings provided.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Mode</strong><br><em>How to combine results from both endpoints.</em></summary>
+<summary><strong>Mode</strong> <code>PCGExEdgeEndpointsCheckMode</code></summary>
 
-Controls how the filter evaluates the two endpoints.
+Mode
 
-**Values**:
+**Values:**
 
-* **None**: Neither endpoint must have the expected result.
+* **None**: None of the endpoint must has the expected result.
 * **Both**: Both endpoints must have the expected result.
 * **Any Pass**: At least one endpoint must have the expected result.
-* **Start**: Only the start endpoint must have the expected result.
-* **End**: Only the end endpoint must have the expected result.
-* **SeeSaw**: One endpoint must pass and the other must fail.
+* **Start**: Start must have the expected result.
+* **End**: End must have the expected result.
+* **SeeSaw**: One must pass and the other must fail
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Comparison</strong><br><em>The expected result of the filter, in regard to the selected mode.</em></summary>
+<summary><strong>Comparison</strong> <code>PCGExFilterResult</code></summary>
 
-Specifies whether both endpoints should pass or fail the filters.
+The expected result of the filter, in regard to the selected mode. i.e, if mode = "Both" and Expects = "Pass", both edge' endpoints must pass the filters for the check to pass, otherwise it fails.
 
-**Values**:
-
-* **Pass**: The endpoints must pass the filters.
-* **Fail**: The endpoints must fail the filters.
-
-This setting is only available when Mode is not "SeeSaw".
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Invert</strong><br><em>When enabled, flips the result of the filter.</em></summary>
+<summary><strong>Invert</strong> <code>bool</code></summary>
 
-When enabled, edges that would normally pass the filter will be excluded, and those that fail will be included.
+Controls invert.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-You're building a terrain mesh where you want to only connect points that are both above a certain elevation. You use this subnode with "Both" mode and "Pass" comparison, connecting it to point filters that check if a point's Z value is greater than 100. Only edges whose start and end points both exceed this elevation will be included in the final mesh.
+<summary><strong>Config</strong> <code>PCGExEdgeEndpointsCheckFilterConfig</code></summary>
 
-#### Notes
+Test Config.
 
-* The filter evaluates each endpoint independently before combining results according to the selected mode.
-* Using "SeeSaw" mode allows for creating alternating patterns or constraints where one endpoint must pass while the other fails.
-* When using multiple filters, ensure they are compatible with the expected comparison type (e.g., all should be checking similar attributes).
+📦 See: EdgeEndpointsCheckFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Mode</strong> <code>PCGExEdgeEndpointsCheckMode</code></summary>
+
+Mode
+
+**Values:**
+
+* **None**: None of the endpoint must has the expected result.
+* **Both**: Both endpoints must have the expected result.
+* **Any Pass**: At least one endpoint must have the expected result.
+* **Start**: Start must have the expected result.
+* **End**: End must have the expected result.
+* **SeeSaw**: One must pass and the other must fail
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Comparison</strong> <code>PCGExFilterResult</code></summary>
+
+The expected result of the filter, in regard to the selected mode. i.e, if mode = "Both" and Expects = "Pass", both edge' endpoints must pass the filters for the check to pass, otherwise it fails.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invert</strong> <code>bool</code></summary>
+
+Controls invert.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsClusters\Public\Filters\Edges\PCGExEdgeEndpointsCheckFilter.h`

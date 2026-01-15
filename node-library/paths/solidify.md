@@ -5,235 +5,282 @@ icon: circle
 
 # Solidify
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Solidify a path.
 
-> Solidify a path by expanding it into a 3D shape using axis-aligned offsets.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-The Path : Solidify node takes a path and transforms it into a solid 3D volume by applying offset distances along three perpendicular axes. For each point in the path, it calculates the local orientation using the segment direction and normal, then applies specified offsets to generate new points that define an expanded shape around the original path.
-
-The process works as follows:
-
-1. The node determines the local orientation at each point based on the path's direction and normal.
-2. It applies offset distances along three axes (Primary, Secondary, Tertiary) which are defined by the selected axis order.
-3. New points are generated using these offsets to create a solid shape around the original path.
-4. If the path is not closed, the final point is optionally removed to prevent invalid solidification at the end.
-
-The node supports both fixed values and attribute-driven settings for all offset parameters, allowing dynamic control over how the solidification is applied along the path.
+* The Solidify node processes a path by adding depth to it, effectively turning it into a three-dimensional object.
+* It uses the Radius setting to determine the thickness of the solidified object; if Radius Input is specified, it adjusts the radius based on that input value type.
+* The Flip settings (Flip and Flip (Attr)) allow for inverting the direction along an axis, with Flip Input defining how this inversion is applied based on its input value type.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Remove Last Point</strong><br><em>If the path is not closed, the last point cannot be solidified, thus it's usually preferable to remove it.</em></summary>
+<summary><strong>Flip Input</strong> <code>PCGExInputValueToggle</code></summary>
 
-When enabled, removes the final point of open paths to avoid invalid solidification at the end of the path.
-
-</details>
-
-<details>
-
-<summary><strong>Solidification Order</strong><br><em>Axis order. First axis will use the segment direction, second is the path normal. These are Primary > Secondary > Tertiary.</em></summary>
-
-Defines the sequence in which axes are applied to calculate the offset shape.
-
-* **XYZ**: Primary = Segment Direction, Secondary = Path Normal, Tertiary = Cross Product
-* **XZY**: Primary = Segment Direction, Secondary = Cross Product, Tertiary = Path Normal
-* **YXZ**: Primary = Path Normal, Secondary = Segment Direction, Tertiary = Cross Product
-* **YZX**: Primary = Path Normal, Secondary = Cross Product, Tertiary = Segment Direction
-* **ZXY**: Primary = Cross Product, Secondary = Segment Direction, Tertiary = Path Normal
-* **ZYX**: Primary = Cross Product, Secondary = Path Normal, Tertiary = Segment Direction
+Input value type for flip
 
 </details>
 
 <details>
 
-<summary><strong>Read Order From Attribute</strong><br><em>.</em></summary>
+<summary><strong>Flip</strong> <code>bool</code></summary>
 
-When enabled, reads the axis order from a point attribute instead of using the constant value.
+Whether to flip this axis or not
 
-</details>
-
-<details>
-
-<summary><strong>Order Attribute</strong><br><em>Solidification Order attribute.</em></summary>
-
-The name of the attribute to read the axis order from. Requires integer values that map to EPCGExAxisOrder.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Order Safety</strong><br><em>How to "sanitize" the input value.</em></summary>
+<summary><strong>Flip (Attr)</strong> <code>Name</code></summary>
 
-Controls how invalid or out-of-bounds values from the attribute are handled.
+Whether to flip this axis or not
 
-* **Ignore**: Uses default order if the attribute value is invalid
-* **Tile**: Wraps around valid indices (0,1,2,0,1,2...)
-* **Clamp**: Clamps to nearest valid index (0,1,2,2,2,2...)
-* **Yoyo**: Mirrors and back (0,1,2,1,0,1...)
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Use Construction Mapping</strong><br><em>.</em></summary>
+<summary><strong>Radius Input</strong> <code>PCGExInputValueToggle</code></summary>
 
-When enabled, allows mapping of rotation construction based on the selected axis order.
-
-</details>
-
-<details>
-
-<summary><strong>Rotation Mapping</strong><br><em>Map of rotation construction orders based on selected mapping.</em></summary>
-
-Defines how rotations are constructed for each axis order. Maps EPCGExAxisOrder to EPCGExMakeRotAxis.
+Input value type for Radius
 
 </details>
 
 <details>
 
-<summary><strong>Rotation Construction</strong><br><em>Defines how the selected axis will be used to construct the point' rotation.</em></summary>
+<summary><strong>Radius</strong> <code>double</code></summary>
 
-Controls how the rotation is calculated when not using mapping.
+Constant Radius for this axis
 
-* **X**: Use Primary Axis
-* **Y**: Use Secondary Axis
-* **Z**: Use Tertiary Axis
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Read Construction From Attribute</strong><br><em>.</em></summary>
+<summary><strong>Radius (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-When enabled, reads the rotation construction from a point attribute instead of using the constant value.
+Attribute-driven radius for this axis
 
-</details>
-
-<details>
-
-<summary><strong>Construction Attribute</strong><br><em>Rotation Construction attribute.</em></summary>
-
-The name of the attribute to read the rotation construction from. Requires integer values that map to EPCGExMakeRotAxis.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Construction Safety</strong><br><em>How to "sanitize" the input value.</em></summary>
+<summary><strong>Remove Last Point</strong> <code>bool</code></summary>
 
-Controls how invalid or out-of-bounds values from the attribute are handled.
+If the path is not closed, the last point cannot be solidified, thus it's usually preferable to remove it.
 
-* **Ignore**: Uses default construction if the attribute value is invalid
-* **Tile**: Wraps around valid indices (0,1,2,0,1,2...)
-* **Clamp**: Clamps to nearest valid index (0,1,2,2,2,2...)
-* **Yoyo**: Mirrors and back (0,1,2,1,0,1...)
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Primary Axis</strong><br><em>Primary axis settings (direction aligned to the segment)</em></summary>
+<summary><strong>Solidification Order</strong> <code>PCGExAxisOrder</code></summary>
 
-Settings for the primary offset axis, aligned with the path's segment direction.
+Axis order. First axis will use the segment direction, second is the path normal. These are Primary > Secondary > Tertiary.
 
-* **Flip Input**: Toggle between constant or attribute-driven flip
-* **Flip**: Whether to invert the offset direction along this axis
-* **Flip (Attr)**: Attribute name for flip value
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Secondary Axis</strong><br><em>Secondary axis settings, relative to the selected order</em></summary>
+<summary><strong>Read Order From Attribute</strong> <code>bool</code></summary>
 
-Settings for the secondary offset axis, typically aligned with the path normal.
-
-* **Radius Input**: Toggle between constant or attribute-driven radius
-* **Radius**: Constant offset distance along this axis
-* **Radius (Attr)**: Attribute name for radius value
-* **Flip Input**: Toggle between constant or attribute-driven flip
-* **Flip**: Whether to invert the offset direction along this axis
-* **Flip (Attr)**: Attribute name for flip value
+.
 
 </details>
 
 <details>
 
-<summary><strong>Tertiary Axis</strong><br><em>Tertiary axis settings, relative to the selected order</em></summary>
+<summary><strong>Order Attribute</strong> <code>Name</code></summary>
 
-Settings for the tertiary offset axis, typically perpendicular to the path.
+Solidification Order attribute.
 
-* **Radius Input**: Toggle between constant or attribute-driven radius
-* **Radius**: Constant offset distance along this axis
-* **Radius (Attr)**: Attribute name for radius value
-* **Flip Input**: Toggle between constant or attribute-driven flip
-* **Flip**: Whether to invert the offset direction along this axis
-* **Flip (Attr)**: Attribute name for flip value
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Normal Type</strong><br><em>How should the cross direction (Cross) be computed.</em></summary>
+<summary><strong>└─ Order Safety</strong> <code>PCGExIndexSafety</code></summary>
 
-Controls how the path normal is determined.
+Controls └─ order safety.
 
-* **Constant**: Use the constant Normal setting
-* **Attribute**: Read normal from a point attribute
-
-</details>
-
-<details>
-
-<summary><strong>Normal</strong><br><em>Type of arithmetic path point cross direction.</em></summary>
-
-Defines how to compute the cross direction when using constant mode.
-
-* **Normal**: Standard path normal
-* **Binormal**: Alternate normal based on binormal vector
-* **Average Normal**: Averaged normal from adjacent segments
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Invert Direction</strong><br><em>Inverts normal direction.</em></summary>
+<summary><strong>Use Construction Mapping</strong> <code>bool</code></summary>
 
-When enabled, flips the computed normal direction.
-
-</details>
-
-<details>
-
-<summary><strong>Solidification Lerp Input</strong><br><em>Solidification Lerp attribute .</em></summary>
-
-Controls how to interpolate between solidification settings.
-
-* **Constant**: Use a fixed value
-* **Attribute**: Read from a point attribute
+.
 
 </details>
 
 <details>
 
-<summary><strong>Solidification Lerp</strong><br><em>Solidification Lerp constant.</em></summary>
+<summary><strong>Rotation Mapping</strong> <code>Map of EPCGExAxisOrder, EPCGExMakeRotAxis</code></summary>
 
-The fixed interpolation value when using constant mode. Ranges from 0 (no solidification) to 1 (full solidification).
+Map of rotation construction orders based on selected mapping.
 
 </details>
 
-#### Usage Example
+<details>
 
-Create a path representing a winding road, then use Path : Solidify to extrude it into a 3D road shape. Set the Secondary and Tertiary axes to have a radius of 5 units each, and enable "Remove Last Point" for open paths. This will generate a solid road volume that can be used as a base for textures or collision geometry.
+<summary><strong>Rotation Construction</strong> <code>PCGExMakeRotAxis</code></summary>
 
-#### Notes
+Defines how the selected axis will be used to construct the point' rotation. This will be using remapped axis from the selected order. X = Primary, Y = Secondary, Z = Tertiary
 
-* The node works best with closed paths but can handle open paths by removing the last point.
-* Axis order affects how the offset shape is calculated; experiment with different orders to achieve desired results.
-* Attribute-driven settings allow dynamic control over solidification based on point properties.
-* Performance may be impacted when using attribute-driven values for large datasets.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Read Construction From Attribute</strong> <code>bool</code></summary>
+
+.
+
+</details>
+
+<details>
+
+<summary><strong>Construction Attribute</strong> <code>Name</code></summary>
+
+Rotation Construction attribute.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Construction Safety</strong> <code>PCGExIndexSafety</code></summary>
+
+Controls └─ construction safety.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Primary</strong> <code>PCGExPathSolidificationAxisDetails</code></summary>
+
+Primary axis settings (direction aligned to the segment)
+
+📦 See: PathSolidificationAxis configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Secondary</strong> <code>PCGExPathSolidificationRadiusDetails</code></summary>
+
+Secondary axis settings, relative to the selected order
+
+📦 See: PathSolidificationRadius configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Tertiary</strong> <code>PCGExPathSolidificationRadiusDetails</code></summary>
+
+Tertiary axis settings, relative to the selected order
+
+📦 See: PathSolidificationRadius configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Normal Type</strong> <code>PCGExInputValueType</code></summary>
+
+How should the cross direction (Cross) be computed.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Normal (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Fetch the cross direction vector from a local point attribute.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Normal</strong> <code>PCGExPathNormalDirection</code></summary>
+
+Type of arithmetic path point cross direction.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Invert Direction</strong> <code>bool</code></summary>
+
+Inverts normal direction.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Solidification Lerp Input</strong> <code>PCGExInputValueType</code></summary>
+
+Controls solidification lerp input.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Solidification Lerp (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Solidification Lerp attribute .
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Solidification Lerp</strong> <code>double</code></summary>
+
+Solidification Lerp constant.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsPaths\Public\Elements\PCGExPathSolidify.h`

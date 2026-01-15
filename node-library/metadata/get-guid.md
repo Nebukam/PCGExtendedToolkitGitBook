@@ -5,68 +5,51 @@ icon: circle
 
 # Get GUID
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Get a single GUID from a specific point index, same as GetGUID would compute it given the same set of parameters.
 
-> Retrieves a unique identifier (GUID) for a specific point in a point cloud, based on the point's index and configuration settings.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node fetches a GUID for a single point by:
-
-1. Taking the specified point index
-2. Applying the configured safety mode if the index is out of bounds (e.g., clamping or wrapping around)
-3. Using the provided configuration to determine how the GUID should be generated and formatted
-4. Returning the resulting GUID for that specific point
-
-The GUID generation process uses a combination of point properties like position, seed, index, and grid data based on the settings in the Config subnode. This ensures deterministic results when given the same inputs.
+* The node retrieves a single Globally Unique Identifier (GUID) based on the specified point index.
+* It uses the provided "Index" setting to determine which specific point's GUID to retrieve.
+* The "Index Safety" setting, defined by PCGExIndexSafety, ensures that the operation handles invalid or out-of-range indices according to predefined safety rules.
+* The node operates with a configuration ("Config") that may influence how the GUID is generated or retrieved, though specifics of this configuration are not detailed here.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Index</strong><br><em>Point Index</em></summary>
+<summary><strong>Index</strong> <code>int32</code></summary>
 
-Specifies which point's GUID to retrieve. For example, setting this to `5` will return the GUID for the 6th point in the input data (0-based indexing).
+Point Index
 
-</details>
-
-<details>
-
-<summary><strong>IndexSafety</strong><br><em>How to handle out-of-bounds indices.</em></summary>
-
-Controls what happens when the specified index is outside the valid range of points.
-
-* **Ignore**: Invalid indices are skipped.
-* **Tile**: Wraps around to valid indices (e.g., index 7 with 5 points becomes index 2).
-* **Clamp**: Clamps invalid indices to the nearest valid value (e.g., index -1 becomes 0, index 7 becomes 4).
-* **Yoyo**: Mirrors indices back and forth (e.g., index 6 with 5 points becomes index 3).
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Config</strong><br><em>Config</em></summary>
+<summary><strong>Index Safety</strong> <code>PCGExIndexSafety</code></summary>
 
-Defines how the GUID is generated and formatted. This includes:
+Controls index safety.
 
-* Uniqueness flags to determine which point properties contribute to the GUID (Index, Position, Seed, Grid)
-* Output type (Integer or String)
-* Format style (Digits, Digits (Lowercase), Digits (Hyphens), etc.)
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-1. Create a point distribution using a Scatter node.
-2. Connect it to a Get GUID node.
-3. Set the Index to `0` to retrieve the GUID of the first point.
-4. Configure the Config subnode to use Position and Seed for uniqueness.
-5. The output will contain the original points with an additional attribute holding the computed GUID for the first point.
+<summary><strong>Config</strong> <code>PCGExGUIDDetails</code></summary>
 
-#### Notes
+Config
 
-* This node is deterministic: given the same input data and configuration, it will always return the same GUID for a given index.
-* If you're using multiple indices or need to compute GUIDs for all points, consider using the full GetGUID node instead.
-* The IndexSafety setting helps prevent errors in cases where your point count might change dynamically.
+📦 See: GUID configuration
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExFoundations\Public\Elements\Utils\PCGExGetGUID.h`

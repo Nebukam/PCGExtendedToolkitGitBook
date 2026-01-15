@@ -5,31 +5,50 @@ icon: circle-dashed
 
 # Picker : Ranges from Set
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+A Picker that accept lists of ranges in the form of FVector2, read from one of more attribute. Note that if no attribute is set in the details, it will use the first available one.
 
-> A Picker that reads lists of ranges in the form of FVector2 from one or more attributes and uses them to define which indices to pick.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node processes attribute data containing pairs of numbers (FVector2 values) to define index ranges. Each pair represents a starting point and an ending point for a range of indices. The node then selects all indices that fall within these ranges, including both the start and end points.
-
-For example, if you have a range defined as \[2, 5], it will select indices 2, 3, 4, and 5. Negative numbers can be used to count from the end of your data set — for instance, -1 refers to the last point in the dataset.
-
-The node supports multiple attributes, each defining its own set of ranges. If no specific attribute is selected, it will automatically use the first available one from your input data.
+* The Picker node reads lists of ranges specified as FVector2 from one or more attributes provided in its settings.
+* If no specific attribute is designated for reading ranges, the node defaults to using the first available attribute.
+* Negative values within the FVector2 are interpreted to select indices from the end of the list.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Attributes</strong><br><em>List of attributes to read ranges of indices from FVector2. Use negative values to select from the end.</em></summary>
+<summary><strong>Attributes</strong> <code>Array of FPCGAttributePropertyInputSelector</code></summary>
 
-Specifies which attributes contain the range data. Each attribute should store FVector2 values, where:
+List of attributes to read ranges of indices from FVector2. Use negative values to select from the end.
 
-* X component = start index
-* Y component = end index
-
-If no attribute is specified, the node will use the first available attribute on the input data.
+⚡ PCG Overridable
 
 </details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExPickerAttributeSetRangesConfig</code></summary>
+
+Picker properties
+
+📦 See: PickerAttributeSetRanges configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Attributes</strong> <code>Array of FPCGAttributePropertyInputSelector</code></summary>
+
+List of attributes to read ranges of indices from FVector2. Use negative values to select from the end.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExPickers\Public\Pickers\PCGExPickerAttributeSetRanges.h`

@@ -5,39 +5,139 @@ icon: circle-dashed
 
 # Partition Rule
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Creates an single partition rule to be used with the Partition by Values node.
 
-> Creates a single partition rule to be used with the Partition by Values node.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-The Partition Rule subnode defines how points are grouped when using the Partition by Values node. It evaluates each point's attribute value and assigns it to a specific partition bucket based on that value.
-
-When processing points, the system reads the specified attribute from each point and checks if its value matches the rule's conditions. Points that match the rule are grouped together into the same output dataset. Each unique attribute value gets its own partition bucket, allowing you to separate data based on specific criteria like tags, IDs, or custom values.
-
-This subnode acts as a configuration template that defines one way to split data, which can be combined with other rules in the Partition by Values node to create complex partitioning behaviors.
+* The Partition Rule node generates a single partition rule based on the configuration settings provided in the "Rule Config".
+* This generated rule is designed for compatibility and usage with the Partition by Values node to define how data should be divided.
+* Configuration details within "Rule Config" dictate the specifics of the partitioning criteria, which the node then formalizes into a rule.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Rule Config</strong><br><em>Rule Config</em></summary>
+<summary><strong>Config</strong> <code>PCGExPartitonRuleConfig</code></summary>
 
-This setting controls how the rule evaluates point attributes to determine partition membership. It defines which attribute is used for grouping, whether to use exact matching or range-based matching, and how to handle missing or invalid values.
+Rule Config
+
+📦 See: PartitonRule configuration
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+***
 
-1. Create a Partition Rule subnode and configure it to use an attribute like "MaterialType"
-2. Connect the Partition Rule to a Partition by Values node
-3. The Partition by Values node will create separate output datasets for each unique value in the "MaterialType" attribute
-4. Points with MaterialType="Wood" go into one bucket, "Metal" into another, etc.
+Source: `Source\PCGExElementsMeta\Public\Elements\Partition\PCGExModularPartitionByValues.h`
 
-#### Notes
+#### Settings
 
-* Multiple Partition Rule subnodes can be connected to a single Partition by Values node to define multiple grouping criteria.
-* The rule's configuration affects how points are matched and grouped.
-* This node works best when used with attributes that have discrete values rather than continuous data.
+<details>
+
+<summary><strong>Enabled</strong> <code>bool</code></summary>
+
+Enable or disable this partition.
+
+</details>
+
+<details>
+
+<summary><strong>Filter Size</strong> <code>double</code></summary>
+
+Filter Size. Higher values means fewer, larger groups.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Upscale</strong> <code>double</code></summary>
+
+Upscale multiplier, applied before filtering. Handy to deal with floating point values.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Offset</strong> <code>double</code></summary>
+
+Offset input value. Applied after upscaling the raw value.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Key</strong> <code>bool</code></summary>
+
+Controls write key.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Key Attribute Name</strong> <code>FName</code></summary>
+
+Name of the int64 attribute to write the partition Key to.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Use Partition Index As Key</strong> <code>bool</code></summary>
+
+Output the partition index instead of the value used for partitioning.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Tag</strong> <code>bool</code></summary>
+
+Whether to write the partition Key to a tag. Will write tags as 'Prefix::Key'
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Tag Prefix Name</strong> <code>FName</code></summary>
+
+Name of the tag prefix used for this partition.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Tag Use Partition Index As Key</strong> <code>bool</code></summary>
+
+Output the partition index to the tag instead of the value used for partitioning.
+
+⚡ PCG Overridable
+
+</details>
+
+#### Used In
+
+* ModularPartitionByValues
+* PartitionByValues
+
+***
+
+Defined in: `Source\PCGExElementsMeta\Public\Elements\Partition\PCGExPartition.h`

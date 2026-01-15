@@ -5,568 +5,501 @@ icon: scrubber
 
 # Extrude Tensors
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Extrude input points into paths along tensors.
 
-> Extrude input points into paths along tensor directions.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node takes each input point and uses tensor data to determine a direction for extrusion. Starting from each point, it moves step-by-step along that direction, building a path one point at a time. Each step involves sampling the tensor at the current position, applying rotation if needed, and advancing the path.
-
-The process continues until one of several stopping conditions is met:
-
-* The path reaches its maximum length
-* The path contains too many points
-* A filter condition stops the extrusion
-* The path intersects with another path (if intersection detection is enabled)
-* The path closes back onto itself to form a loop
-
-If intersection detection is enabled, the node checks for collisions with other paths or ongoing extrusions. Depending on settings, it can either cut off the path at an intersection, merge paths together, or detect when a path loops back on itself.
+* The node takes input points and extrudes them into paths along tensors based on specified settings.
+* It applies transformations to rotate the extruded paths according to the `Rotation` setting if `Transform Rotation` is enabled.
+* If `Use Per Point Max Iterations` is true, it uses the value from `Per-point Iterations` to limit the number of iterations for each point individually during the extrusion process.
+* The node aligns the axis of the extruded paths based on the `Align Axis` setting.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Transform Rotation</strong><br><em>Whether to apply rotation transformations based on tensor data.</em></summary>
+<summary><strong>Use Per Point Max Iterations</strong> <code>bool</code></summary>
 
-When enabled, each point along the path is rotated according to the tensor's orientation.
-
-**Values**:
-
-* **True**: Apply rotation.
-* **False**: Do not modify rotation.
+Controls use per point max iterations.
 
 </details>
 
 <details>
 
-<summary><strong>Rotation Mode</strong><br><em>How to apply rotation during extrusion.</em></summary>
+<summary><strong>Per-point Iterations</strong> <code>Name</code></summary>
 
-Controls how the rotation is applied based on the tensor data.
+Per-point Max Iterations.
 
-**Values**:
-
-* **Absolute**: Use the tensor's absolute rotation.
-* **Relative**: Apply the tensor's rotation relative to the current orientation.
-* **Align**: Align the rotation with the movement direction along the tensor.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Align Axis</strong><br><em>The axis to align when using the "Align" rotation mode.</em></summary>
+<summary><strong>Max Iterations</strong> <code>int32</code></summary>
 
-Defines which axis should be aligned with the extrusion direction.
+Max Iterations. If using per-point max, this will act as a clamping mechanism.
 
-**Values**:
-
-* **Forward**: Align with X+.
-* **Backward**: Align with X-.
-* **Right**: Align with Y+.
-* **Left**: Align with Y-.
-* **Up**: Align with Z+.
-* **Down**: Align with Z-.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Use Per-point Iterations</strong><br><em>Whether to use a per-point attribute for max iterations.</em></summary>
+<summary><strong>Use Max from Points</strong> <code>bool</code></summary>
 
-When enabled, each point uses an attribute value to determine how many steps to take during extrusion.
+Whether to adjust max iteration based on max value found on points. Use at your own risks!
 
-**Values**:
-
-* **True**: Use a point attribute.
-* **False**: Use a global value.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Per-point Iterations</strong><br><em>Attribute name for per-point max iterations.</em></summary>
+<summary><strong>Tensor Sampling Settings</strong> <code>PCGExTensorHandlerDetails</code></summary>
 
-The name of the attribute that stores the number of steps to take for each seed point.
+Tensor sampling settings. Note that these are applied on the flattened sample, e.g after & on top of individual tensors' mutations.
+
+📦 See: TensorHandler configuration
+
+⚡ PCG Overridable
+
+</details>
+
+**Intersections (Ext)**
+
+<details>
+
+<summary><strong>Do External Path Intersections</strong> <code>bool</code></summary>
+
+Controls do external path intersections.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Max Iterations</strong><br><em>Global maximum number of steps for extrusion.</em></summary>
+<summary><strong>Ignore Intersection On Origin</strong> <code>bool</code></summary>
 
-Sets a global limit on how many steps each extrusion can take. If per-point iterations are used, this acts as a cap.
+If enabled, if the origin location of the extrusion is detected as an intersection, it is not considered an intersection. This allows to have seeds perfectly located on paths used for intersections.
 
-</details>
-
-<details>
-
-<summary><strong>Use Max from Points</strong><br><em>Whether to adjust max iteration based on values found on points.</em></summary>
-
-When enabled, the node uses the highest value found among all points as the maximum number of iterations. Use with caution.
-
-**Values**:
-
-* **True**: Adjust based on point data.
-* **False**: Use global setting.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Tensor Sampling Settings</strong><br><em>Settings for how tensor sampling is applied.</em></summary>
+<summary><strong>External Path Intersections</strong> <code>PCGExPathIntersectionDetails</code></summary>
 
-Controls how the tensor data is sampled and applied to each step in the extrusion process.
+Intersection settings
+
+📦 See: PathIntersection configuration
+
+⚡ PCG Overridable
+
+</details>
+
+**Intersections (Self)**
+
+<details>
+
+<summary><strong>Do Self Path Intersections</strong> <code>bool</code></summary>
+
+Whether to test for intersection between actively extruding paths
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Use Max Length</strong><br><em>Whether to limit the total length of generated paths.</em></summary>
+<summary><strong>Self Intersection Mode</strong> <code>PCGExSelfIntersectionMode</code></summary>
 
-When enabled, paths are cut off once they exceed a certain length.
+How to order intersection checks. Sorting is using seeds input attributes.
 
-**Values**:
+**Values:**
 
-* **True**: Enforce maximum length.
-* **False**: No length limit.
+* **Path Length**: Sort extrusion by length, and resort to sorting rules in case of equality.
+* **Sorting only**: Only use sorting rules to sort paths.
 
-</details>
-
-<details>
-
-<summary><strong>Max Length Input</strong><br><em>How to define the max path length.</em></summary>
-
-Controls whether the max length is constant or taken from a point attribute.
-
-**Values**:
-
-* **Constant**: Use a fixed value.
-* **Attribute**: Use an attribute on points.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Max Length (Attr)</strong><br><em>Point attribute for maximum path length.</em></summary>
+<summary><strong>Sort Direction</strong> <code>PCGExSortDirection</code></summary>
 
-The name of the attribute used to define the max path length when using an attribute input.
+Controls the order in which paths extrusion will be stopped when intersecting, if shortest/longest path fails.
 
-</details>
-
-<details>
-
-<summary><strong>Max Length</strong><br><em>Fixed maximum path length.</em></summary>
-
-A constant value that limits how far each path can extend.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Use Max Points Count</strong><br><em>Whether to limit the number of points in a generated path.</em></summary>
+<summary><strong>Self Path Intersections</strong> <code>PCGExPathIntersectionDetails</code></summary>
 
-When enabled, paths are cut off once they exceed a certain number of points.
+Intersection settings for extruding path intersections
 
-**Values**:
+📦 See: PathIntersection configuration
 
-* **True**: Enforce maximum point count.
-* **False**: No point count limit.
-
-</details>
-
-<details>
-
-<summary><strong>Max Points Count Input</strong><br><em>How to define the max point count.</em></summary>
-
-Controls whether the max point count is constant or taken from a point attribute.
-
-**Values**:
-
-* **Constant**: Use a fixed value.
-* **Attribute**: Use an attribute on points.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Max Points Count (Attr)</strong><br><em>Point attribute for maximum point count.</em></summary>
+<summary><strong>Merge On Proximity</strong> <code>bool</code></summary>
 
-The name of the attribute used to define the max point count when using an attribute input.
+Whether to test for intersection between actively extruding paths
 
-</details>
-
-<details>
-
-<summary><strong>Max Points Count</strong><br><em>Fixed maximum number of points in a path.</em></summary>
-
-A constant value that limits how many points each path can contain.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Fuse Distance</strong><br><em>Minimum distance between points before adding to path.</em></summary>
+<summary><strong>├─ Priority</strong> <code>PCGExSelfIntersectionPriority</code></summary>
 
-Controls how close points must be before they are added to the path. Lower values create denser paths.
+Controls ├─ priority.
 
-</details>
+**Values:**
 
-<details>
+* **Favor Crossing**: Resolve crossing detection first, then merge.
+* **Favor Merge**: Resolve merge first, then crossing
 
-<summary><strong>Stop Condition Handling</strong><br><em>How to deal with points that are stopped.</em></summary>
-
-Defines whether to include or exclude a point when it is stopped by a filter.
-
-**Values**:
-
-* **Exclude**: Ignore the stopping sample and don't add it.
-* **Include**: Include the stopping sample in the path.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Allow Child Extrusions</strong><br><em>Whether to allow new extrusions to start from stopped points.</em></summary>
+<summary><strong>├─ Balance</strong> <code>double</code></summary>
 
-When enabled, a point that stops due to filters can still begin a new extrusion if it later meets conditions again.
+Which end of the extruded segment should be favored. 0 = start, 1 = end.
 
-**Values**:
-
-* **True**: Allow child extrusions.
-* **False**: Stop all extrusions once stopped.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Ignore Stopped Seeds</strong><br><em>If enabled, seeds that start stopped won't be extruded at all.</em></summary>
+<summary><strong>└─ Settings</strong> <code>PCGExPathIntersectionDetails</code></summary>
 
-When enabled, points that are already stopped by filters at the start will not begin any extrusion.
+Whether to test for intersection between actively extruding paths
 
-**Values**:
+📦 See: PathIntersection configuration
 
-* **True**: Ignore stopped seeds.
-* **False**: Transform them until they start extruding.
+⚡ PCG Overridable
+
+</details>
+
+**Intersections (Self) > Closing Loops**
+
+<details>
+
+<summary><strong>Detect Closed Loops</strong> <code>bool</code></summary>
+
+Whether the node should attempt to close loops based on angle and proximity
 
 </details>
 
 <details>
 
-<summary><strong>Do External Path Intersections</strong><br><em>Whether to check for intersections with external paths.</em></summary>
+<summary><strong>├─ Search Distance</strong> <code>double</code></summary>
 
-When enabled, the node checks if a path intersects with other paths provided as input.
+Range at which the first point must be located to check angle
 
-**Values**:
-
-* **True**: Enable intersection detection.
-* **False**: Disable intersection detection.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Ignore Intersection On Origin</strong><br><em>If enabled, if the origin location of the extrusion is detected as an intersection, it is not considered an intersection.</em></summary>
+<summary><strong>└─ Search Angle</strong> <code>double</code></summary>
 
-When enabled, paths that start exactly on an external path are not treated as intersecting.
+Angle at which the loop will be closed, if within range
 
-**Values**:
+⚡ PCG Overridable
 
-* **True**: Ignore intersections at origin.
-* **False**: Treat all intersections as such.
+</details>
+
+**Limits**
+
+<details>
+
+<summary><strong>Use Max Length</strong> <code>bool</code></summary>
+
+Whether to limit the length of the generated path
 
 </details>
 
 <details>
 
-<summary><strong>External Path Intersections</strong><br><em>Settings for detecting intersections with external paths.</em></summary>
+<summary><strong>Max Length Input</strong> <code>PCGExInputValueType</code></summary>
 
-Controls how intersection detection is performed against external paths.
-
-</details>
-
-<details>
-
-<summary><strong>Do Self Path Intersections</strong><br><em>Whether to test for intersection between actively extruding paths.</em></summary>
-
-When enabled, the node checks if new extrusions intersect with already active paths.
-
-**Values**:
-
-* **True**: Enable self-intersection detection.
-* **False**: Disable self-intersection detection.
+Controls max length input.
 
 </details>
 
 <details>
 
-<summary><strong>Self Intersection Mode</strong><br><em>How to order intersection checks.</em></summary>
+<summary><strong>Max Length (Attr)</strong> <code>Name</code></summary>
 
-Controls how paths are sorted when resolving intersections.
+Max length Attribute
 
-**Values**:
-
-* **Path Length**: Sort by path length, then by sorting rules.
-* **Sorting only**: Only use sorting rules.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Sort Direction</strong><br><em>Controls the order in which paths extrusion will be stopped when intersecting.</em></summary>
+<summary><strong>Max Length</strong> <code>double</code></summary>
 
-Determines whether to prioritize shorter or longer paths during intersection resolution.
+Max length Constant
 
-**Values**:
-
-* **Ascending**: Prioritize shorter paths.
-* **Descending**: Prioritize longer paths.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Self Path Intersections</strong><br><em>Settings for detecting intersections between extruding paths.</em></summary>
+<summary><strong>Use Max Points Count</strong> <code>bool</code></summary>
 
-Controls how self-intersection detection is performed.
-
-</details>
-
-<details>
-
-<summary><strong>Merge On Proximity</strong><br><em>Whether to merge paths when they get close to each other.</em></summary>
-
-When enabled, paths that come near each other are merged instead of intersecting.
-
-**Values**:
-
-* **True**: Enable merging.
-* **False**: Disable merging.
+Whether to limit the number of points in a generated path
 
 </details>
 
 <details>
 
-<summary><strong>├─ Priority</strong><br><em>Whether to resolve crossing or merge first.</em></summary>
+<summary><strong>Max Points Count Input</strong> <code>PCGExInputValueType</code></summary>
 
-Controls the priority when both crossing and merging are possible.
-
-**Values**:
-
-* **Favor Crossing**: Resolve crossings before merges.
-* **Favor Merge**: Resolve merges before crossings.
+Controls max points count input.
 
 </details>
 
 <details>
 
-<summary><strong>├─ Balance</strong><br><em>Which end of the extruded segment should be favored for merging.</em></summary>
+<summary><strong>Max Points Count (Attr)</strong> <code>Name</code></summary>
 
-Controls which side of a segment is used when merging paths.
+Max length Attribute
 
-**Values**: 0 to 1, where 0 = start and 1 = end.
-
-</details>
-
-<details>
-
-<summary><strong>└─ Settings</strong><br><em>Settings for path merging behavior.</em></summary>
-
-Controls how merging is performed when paths are close.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Detect Closed Loops</strong><br><em>Whether the node should attempt to close loops based on angle and proximity.</em></summary>
+<summary><strong>Max Points Count</strong> <code>int32</code></summary>
 
-When enabled, paths that return near their starting point are closed into loops.
+Max length Constant
 
-**Values**:
-
-* **True**: Attempt to close loops.
-* **False**: Do not close loops.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>├─ Search Distance</strong><br><em>Range at which the first point must be located to check angle.</em></summary>
+<summary><strong>Fuse Distance</strong> <code>double</code></summary>
 
-The distance within which a path can be considered for loop closure.
+Whether to limit path length or not
 
-</details>
-
-<details>
-
-<summary><strong>└─ Search Angle</strong><br><em>Angle at which the loop will be closed, if within range.</em></summary>
-
-The maximum angle allowed for a path to be considered a loop.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Attributes To Path Tags</strong><br><em>TBD</em></summary>
+<summary><strong>Stop Condition Handling</strong> <code>PCGExTensorStopConditionHandling</code></summary>
 
-Controls how attributes are converted into tags on paths.
+How to deal with points that are stopped
 
-</details>
-
-<details>
-
-<summary><strong>Tag If Child Extrusion</strong><br><em>Whether to tag paths that are started from stopped points.</em></summary>
-
-When enabled, paths that begin after a stop condition is met are tagged.
-
-**Values**:
-
-* **True**: Tag child extrusions.
-* **False**: Do not tag.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Is Child Extrusion Tag</strong><br><em>Tag name for child extrusions.</em></summary>
+<summary><strong>Allow Child Extrusions</strong> <code>bool</code></summary>
 
-The tag to apply to paths that are started from stopped points.
+Whether to stop sampling when extrusion is stopped. While path will be cut, there's a chance that the head of the search comes back into non-stopping conditions, which would start a new extrusion. With this option disabled, new paths won't be permitted to exist.
 
-</details>
-
-<details>
-
-<summary><strong>Tag If Is Stopped By Filters</strong><br><em>Whether to tag paths that are stopped by filters.</em></summary>
-
-When enabled, paths that stop due to filter conditions are tagged.
-
-**Values**:
-
-* **True**: Tag stopped-by-filters paths.
-* **False**: Do not tag.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Is Stopped By Filters Tag</strong><br><em>Tag name for paths stopped by filters.</em></summary>
+<summary><strong>Ignore Stopped Seeds</strong> <code>bool</code></summary>
 
-The tag to apply to paths that stop due to filter conditions.
+If enabled, seeds that start stopped won't be extruded at all. Otherwise, they are transformed until they eventually reach a point that's outside stopping conditions and start an extrusion.
+
+</details>
+
+**Output**
+
+<details>
+
+<summary><strong>Refresh Seed</strong> <code>bool</code></summary>
+
+Whether to give a new seed to the points. If disabled, they will inherit the original one.
 
 </details>
 
 <details>
 
-<summary><strong>Tag If Is Stopped By Intersection</strong><br><em>Whether to tag paths that are stopped by external intersections.</em></summary>
+<summary><strong>Paths Output Settings</strong> <code>PCGExPathOutputDetails</code></summary>
 
-When enabled, paths that stop due to intersecting with external paths are tagged.
+...
 
-**Values**:
+📦 See: PathOutput configuration
 
-* **True**: Tag intersection-stopped paths.
-* **False**: Do not tag.
+</details>
+
+**Tagging & Forwarding**
+
+<details>
+
+<summary><strong>Attributes To Path Tags</strong> <code>PCGExAttributeToTagDetails</code></summary>
+
+TBD
+
+📦 See: AttributeToTag configuration
 
 </details>
 
 <details>
 
-<summary><strong>Is Stopped By Intersection Tag</strong><br><em>Tag name for paths stopped by intersections.</em></summary>
+<summary><strong>Tag If Child Extrusion</strong> <code>bool</code></summary>
 
-The tag to apply to paths that stop due to external intersections.
-
-</details>
-
-<details>
-
-<summary><strong>Tag If Is Stopped By Self Intersection</strong><br><em>Whether to tag paths that are stopped by self-intersections.</em></summary>
-
-When enabled, paths that stop due to intersecting with themselves are tagged.
-
-**Values**:
-
-* **True**: Tag self-intersection-stopped paths.
-* **False**: Do not tag.
+Controls tag if child extrusion.
 
 </details>
 
 <details>
 
-<summary><strong>Is Stopped By Self Intersection Tag</strong><br><em>Tag name for paths stopped by self-intersections.</em></summary>
+<summary><strong>Is Child Extrusion Tag</strong> <code>String</code></summary>
 
-The tag to apply to paths that stop due to self-intersections.
-
-</details>
-
-<details>
-
-<summary><strong>Tag If Self Merged</strong><br><em>Whether to tag paths that are merged with others.</em></summary>
-
-When enabled, paths that were merged with others are tagged.
-
-**Values**:
-
-* **True**: Tag merged paths.
-* **False**: Do not tag.
+...
 
 </details>
 
 <details>
 
-<summary><strong>Is Self Merged Tag</strong><br><em>Tag name for merged paths.</em></summary>
+<summary><strong>Tag If Is Stopped By Filters</strong> <code>bool</code></summary>
 
-The tag to apply to paths that were merged with others.
-
-</details>
-
-<details>
-
-<summary><strong>Tag If Is Follow Up</strong><br><em>Whether to tag paths that are follow-ups of other paths.</em></summary>
-
-When enabled, paths that continue from another path are tagged.
-
-**Values**:
-
-* **True**: Tag follow-up paths.
-* **False**: Do not tag.
+Controls tag if is stopped by filters.
 
 </details>
 
 <details>
 
-<summary><strong>Is Follow Up Tag</strong><br><em>Tag name for follow-up paths.</em></summary>
+<summary><strong>Is Stopped By Filters Tag</strong> <code>String</code></summary>
 
-The tag to apply to paths that continue from another path.
-
-</details>
-
-<details>
-
-<summary><strong>Refresh Seed</strong><br><em>Whether to give a new seed to the points. If disabled, they will inherit the original one.</em></summary>
-
-When enabled, each extruded point gets a new seed; otherwise, it inherits the original seed.
-
-**Values**:
-
-* **True**: Assign new seeds.
-* **False**: Inherit original seeds.
+...
 
 </details>
 
 <details>
 
-<summary><strong>Paths Output Settings</strong><br><em>Settings for how output paths are structured.</em></summary>
+<summary><strong>Tag If Is Stopped By Intersection</strong> <code>bool</code></summary>
 
-Controls how the resulting paths are organized and outputted.
+Controls tag if is stopped by intersection.
 
 </details>
 
-#### Usage Example
+<details>
 
-You have a set of points representing locations where rivers start. Each point has a tensor that defines the direction of water flow. Use this node to extrude each point along its tensor direction, creating river paths. Enable intersection detection to prevent rivers from crossing each other or merging into one another.
+<summary><strong>Is Stopped By Intersection Tag</strong> <code>String</code></summary>
 
-#### Notes
+...
 
-* The node can generate complex branching patterns when using filters and child extrusions.
-* Intersection handling is computationally expensive; use with care on large datasets.
-* Closed loop detection works best with low-angle paths that return near their starting point.
+</details>
+
+<details>
+
+<summary><strong>Tag If Is Stopped By Self Intersection</strong> <code>bool</code></summary>
+
+Controls tag if is stopped by self intersection.
+
+</details>
+
+<details>
+
+<summary><strong>Is Stopped By Self Intersection Tag</strong> <code>String</code></summary>
+
+...
+
+</details>
+
+<details>
+
+<summary><strong>Tag If Self Merged</strong> <code>bool</code></summary>
+
+Controls tag if self merged.
+
+</details>
+
+<details>
+
+<summary><strong>Is Self Merged Tag</strong> <code>String</code></summary>
+
+...
+
+</details>
+
+<details>
+
+<summary><strong>Tag If Is Follow Up</strong> <code>bool</code></summary>
+
+Controls tag if is follow up.
+
+</details>
+
+<details>
+
+<summary><strong>Is Follow Up Tag</strong> <code>String</code></summary>
+
+...
+
+</details>
+
+**Transforms**
+
+<details>
+
+<summary><strong>Transform Rotation</strong> <code>bool</code></summary>
+
+Controls transform rotation.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Rotation</strong> <code>PCGExTensorTransformMode</code></summary>
+
+Controls rotation.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Align Axis</strong> <code>PCGExAxis</code></summary>
+
+Controls align axis.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsTensors\Public\Elements\PCGExExtrudeTensors.h`

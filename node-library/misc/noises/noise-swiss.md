@@ -4,84 +4,153 @@ icon: circle-dashed
 
 # Noise : Swiss
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Swiss noise - terrain with natural erosion patterns.
 
-> Generates terrain-like noise with natural erosion patterns using derivative-based erosion.
+📌 **Subnode** — Connects to **Noise** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode creates realistic terrain features by combining multiple layers of noise and applying erosion effects based on how quickly the noise values change in different directions. It starts with a base 3D noise function and calculates gradients at each point to determine where erosion should occur. Areas with steeper gradients (rapid changes in noise value) are eroded more intensely, forming valleys and channels that mimic natural weathering processes.
+> AI-Generated, needs proofreading
 
-The process works in several steps:
-
-1. Multiple layers of noise are stacked together to build complexity
-2. For each point in space, the subnode calculates how quickly the noise value changes in all directions (the gradient)
-3. These gradients guide where erosion occurs - steeper areas erode more
-4. The amount of erosion is controlled by a strength parameter
-5. A warping factor can subtly shift sampling points to add extra variation
-
-This approach creates natural-looking terrain features like river channels, smooth slopes, and organic shapes that would be difficult to achieve manually.
+* The node generates Swiss noise, which creates terrain patterns that simulate natural erosion.
+* It uses settings such as Octaves (an integer), Lacunarity (a double precision floating point number), and Persistence (another double) to control the noise generation process.
+* Erosion Strength determines the extent to which derivatives influence the erosion effect on the generated terrain, with a value of 0 indicating standard fBm behavior without additional erosion effects.
+* The Warp Factor setting applies a warping effect based on derivatives, altering the terrain's appearance according to specified parameters.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Octaves</strong><br><em>Number of noise layers to combine.</em></summary>
+<summary><strong>Octaves</strong> <code>int32</code></summary>
 
-Controls how many layers of noise are combined to produce the final result. More octaves add more detail and complexity but also increase computation cost.
+Controls octaves.
 
-**Values**:
+_Range: min: 1, max: 16_
 
-* **1 to 16**: Number of noise layers
-
-</details>
-
-<details>
-
-<summary><strong>Lacunarity</strong><br><em>Frequency multiplier between octaves.</em></summary>
-
-Determines how much the frequency increases with each octave. Higher values create more detailed, fine-grained patterns.
-
-**Values**:
-
-* **1.0 to 4.0**: Frequency multiplier per octave
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Persistence</strong><br><em>Amplitude multiplier between octaves.</em></summary>
+<summary><strong>Lacunarity</strong> <code>double</code></summary>
 
-Controls how much each successive octave contributes to the final result. Lower values make higher octaves less influential.
+Controls lacunarity.
 
-**Values**:
+_Range: min: 1.0, max: 4.0_
 
-* **0.0 to 1.0**: Amplitude multiplier per octave
-
-</details>
-
-<details>
-
-<summary><strong>ErosionStrength</strong><br><em>How much derivatives affect erosion (0 = standard fBm).</em></summary>
-
-Controls the intensity of the erosion effect. When set to 0, it behaves like standard fBm without erosion.
-
-**Values**:
-
-* **0.0 to 2.0**: Strength of the erosion effect
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>WarpFactor</strong><br><em>Warp factor for derivative warping.</em></summary>
+<summary><strong>Persistence</strong> <code>double</code></summary>
 
-Controls how much the analytical derivatives influence the sampling position, adding subtle warping or distortion to the noise field.
+Controls persistence.
 
-**Values**:
+_Range: min: 0.0, max: 1.0_
 
-* **0.0 to 1.0**: Amount of warping applied
+⚡ PCG Overridable
 
 </details>
+
+<details>
+
+<summary><strong>Erosion Strength</strong> <code>double</code></summary>
+
+How much derivatives affect erosion (0 = standard fBm)
+
+_Range: min: 0.0, max: 2.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Warp Factor</strong> <code>double</code></summary>
+
+Warp factor for derivative warping
+
+_Range: min: 0.0, max: 1.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExNoiseConfigSwiss</code></summary>
+
+Controls config.
+
+📦 See: NoiseConfigSwiss configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Octaves</strong> <code>int32</code></summary>
+
+Controls octaves.
+
+_Range: min: 1, max: 16_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Lacunarity</strong> <code>double</code></summary>
+
+Controls lacunarity.
+
+_Range: min: 1.0, max: 4.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Persistence</strong> <code>double</code></summary>
+
+Controls persistence.
+
+_Range: min: 0.0, max: 1.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Erosion Strength</strong> <code>double</code></summary>
+
+How much derivatives affect erosion (0 = standard fBm)
+
+_Range: min: 0.0, max: 2.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Warp Factor</strong> <code>double</code></summary>
+
+Warp factor for derivative warping
+
+_Range: min: 0.0, max: 1.0_
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExNoise3D\Public\Noises\PCGExNoiseSwiss.h`

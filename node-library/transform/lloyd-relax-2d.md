@@ -5,60 +5,52 @@ icon: circle
 
 # Lloyd Relax 2D
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Applies Lloyd relaxation to the input points.
 
-> Applies Lloyd relaxation to input points to improve their distribution.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-Lloyd relaxation is a technique that helps spread points out more evenly in 2D space. The process works by first dividing the area into regions around each point, called Voronoi cells. Then, each point moves to the center (centroid) of its own cell. This movement is repeated multiple times, gradually making the points distribute more uniformly across the area.
-
-This method is especially useful for creating natural-looking layouts where you want to avoid clumps or gaps, such as placing trees, rocks, or buildings in a way that looks both random and balanced.
+* The Lloyd Relax 2D node applies Lloyd relaxation to the input points, redistributing them to achieve more uniform spacing.
+* Iterations: int32 specifies the number of times the relaxation process is applied to the set of points.
+* Influence Settings and Projection settings are parameters that can modify how the relaxation affects the distribution of points, though specific details on their impact are not provided.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Iterations</strong><br><em>Number of relaxation iterations to perform.</em></summary>
+<summary><strong>Iterations</strong> <code>int32</code></summary>
 
-Controls how many times the Lloyd relaxation process is repeated. More iterations lead to a more uniform distribution but take longer to compute.
+Controls iterations.
 
-**Values**: Integer, minimum 1
-
-</details>
-
-<details>
-
-<summary><strong>InfluenceDetails</strong><br><em>Influence Settings</em></summary>
-
-Settings that control how influence is applied during the relaxation process. This affects how points move based on their neighbors.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>ProjectionDetails</strong><br><em>Projection settings.</em></summary>
+<summary><strong>Influence Details</strong> <code>PCGExInfluenceDetails</code></summary>
 
-Settings for projecting points onto a surface or plane, affecting how the relaxation is calculated in 2D space.
+Influence Settings
+
+📦 See: Influence configuration
+
+⚡ PCG Overridable
 
 </details>
 
-#### Inputs
+<details>
 
-* **Points**: Input points to be relaxed
+<summary><strong>Projection Details</strong> <code>PCGExGeo2DProjectionDetails</code></summary>
 
-#### Outputs
+Projection settings.
 
-* **Points**: Output points after Lloyd relaxation has been applied
+📦 See: Geo2DProjection configuration
 
-#### Usage Example
+⚡ PCG Overridable
 
-Use this node to distribute points more evenly across a terrain. For example, after placing random trees on a map, connect them to this node with 5 iterations to create a more natural and uniform forest layout.
+</details>
 
-#### Notes
+***
 
-* The number of iterations should be chosen based on desired balance between quality and performance.
-* This node modifies the input point positions directly.
-* It works best when the initial point distribution is reasonably spread out.
+Source: `Source\PCGExElementsSpatial\Public\Elements\PCGExLloydRelax2D.h`

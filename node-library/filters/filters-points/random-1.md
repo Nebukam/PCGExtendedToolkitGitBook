@@ -5,56 +5,167 @@ icon: circle-dashed
 
 # Random (Ratio)
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Filter using a random value.
 
-> Filter points using a random ratio.
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### Overview
+**How It Works**
 
-This filter subnode randomly includes or excludes points based on a configurable probability ratio. It's useful for introducing stochastic variation into procedural generation workflows, such as randomly selecting a percentage of points for further processing or applying effects to a subset of data. You can use it to create varied, non-uniform distributions or to simulate randomness in your content.
+> AI-Generated, needs proofreading
 
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes.
-{% endhint %}
+* The node evaluates input data using a random ratio determined by `PCGExRandomRatioDetails`.
+* It applies the filter configuration specified in `Filter Config.` to decide which inputs pass through based on the random value.
+* An optional inversion of the filtering result can be toggled, though the specific behavior for "TBD" (To Be Determined) is not defined.
 
-#### How It Works
+#### Settings
 
-This filter evaluates each point individually and decides whether to include or exclude it based on a random value compared against a configured ratio. For each point, a random number is generated using the specified seed and noise parameters. If this random number falls below the defined ratio (between 0 and 1), the point passes the filter. Optionally, the result can be inverted so that points pass when the random value is _above_ the ratio.
+<details>
 
-The randomness is seeded per-point to ensure consistent results across runs when using the same seed values, but still allows for variation within a single execution.
+<summary><strong>Base Seed</strong> <code>FPCGExInputShorthandSelectorInteger32</code></summary>
+
+Type of seed input
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Units</strong> <code>EPCGExMeanMeasure</code></summary>
+
+Controls units.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Amount (Relative)</strong> <code>FPCGExInputShorthandSelectorDouble01</code></summary>
+
+Amount (relative)
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Amount (Fixed)</strong> <code>FPCGExInputShorthandSelectorInteger32Abs</code></summary>
+
+Amount (fixed)
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Do Clamp Min</strong> <code>bool</code></summary>
+
+Controls do clamp min.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Clamp Min</strong> <code>FPCGExInputShorthandSelectorInteger32Abs</code></summary>
+
+Min Amount (fixed)
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Do Clamp Max</strong> <code>bool</code></summary>
+
+Controls do clamp max.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Clamp Max</strong> <code>FPCGExInputShorthandSelectorInteger32Abs</code></summary>
+
+Max Amount (fixed)
+
+⚡ PCG Overridable
+
+</details>
+
+#### Used In
+
+* ClusterCentrality
+* RandomRatioFilter
+
+***
+
+Defined in: `Source\PCGExCore\Public\Details\PCGExDetailsNoise.h`
 
 #### Configuration
 
 <details>
 
-<summary><strong>Random</strong><br><em>Type of seed input and noise parameters for randomness.</em></summary>
+<summary><strong>Random</strong> <code>PCGExRandomRatioDetails</code></summary>
 
-Controls how random values are generated per point. This includes settings like the base seed, noise type, and scale.
+Controls random.
 
-**Values**:
+📦 See: RandomRatio configuration
 
-* **BaseSeed**: The seed used to initialize the random number generator for each point.
-* **NoiseMode**: Type of spatial noise used to vary randomness across space (e.g., Perlin, Voronoi).
-* **Scale**: Controls how much variation is introduced by the noise function.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bInvertResult</strong><br><em>When enabled, points pass when their random value is greater than the ratio.</em></summary>
+<summary><strong>Invert Result</strong> <code>bool</code></summary>
 
-When enabled, the filter logic is inverted. Instead of including points where the random value is less than or equal to the ratio, it includes points where the random value is greater than the ratio.
+TBD
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this subnode in a point filtering node to randomly select 30% of points for further processing. Set the ratio to 0.3 and leave invert disabled. This will include approximately one-third of all input points, with the selection being consistent across runs when using the same seed.
+<summary><strong>Config</strong> <code>PCGExRandomRatioFilterConfig</code></summary>
 
-#### Notes
+Filter Config.
 
-* The random behavior is deterministic based on the point's position or index and the provided seed.
-* When using noise modes like Voronoi or Perlin, the ratio will vary spatially across the point cloud.
-* Inverting the result can be useful for creating exclusion zones or selecting the complement of a random subset.
+📦 See: RandomRatioFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Random</strong> <code>PCGExRandomRatioDetails</code></summary>
+
+Controls random.
+
+📦 See: RandomRatio configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invert Result</strong> <code>bool</code></summary>
+
+TBD
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExFilters\Public\Filters\Points\PCGExRandomRatioFilter.h`

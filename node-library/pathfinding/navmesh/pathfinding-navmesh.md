@@ -5,131 +5,135 @@ icon: scrubber
 
 # Pathfinding : Navmesh
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Extract paths from navmesh.
 
-> Extracts paths between seed and goal points using navmesh data.
+⚙️ **Behavior** — Instanced value blender.
 
-#### How It Works
+**How It Works**
 
-This node finds routes between pairs of seed and goal points by using a navigation mesh (navmesh). It starts by pairing up each seed point with a corresponding goal point, either based on a predefined list or by randomly selecting goals from the goal set for each seed.
+> AI-Generated, needs proofreading
 
-Next, it calculates valid paths through the navmesh system. You can choose whether to include the original seed and goal points in the resulting path. Intermediate points along the path are optionally blended using a blending subnode, which controls how smoothly the path transitions between the start and end positions.
-
-Finally, nearby points in the path are merged together to reduce clutter and improve visual smoothness. The node supports two different methods for finding paths: regular pathfinding that uses the navmesh directly, and hierarchical pathfinding that works better in complex environments with many obstacles.
+* Extracts paths from a predefined navigation mesh (navmesh).
+* Utilizes settings to control goal selection and path composition, including whether to add a seed point at the beginning of the path and whether to include the goal point.
+* Ensures that the end location of the generated path is navigable if the "Require Navigable End Location" setting is enabled.
+* Fuses sub points in the path based on a specified distance threshold defined by the "Fuse Distance" parameter.
 
 #### Configuration
 
 <details>
 
-<summary><strong>GoalPicker</strong><br><em>Controls how goals are picked.</em></summary>
+<summary><strong>Goal Picker</strong> <code>PCGExGoalPicker</code> ⚙️</summary>
 
-A subnode that defines how to select goals for each seed. For example, it can pick the closest goal or a random goal.
+Controls how goals are picked.
 
-</details>
-
-<details>
-
-<summary><strong>bAddSeedToPath</strong><br><em>Add seed point at the beginning of the path</em></summary>
-
-When enabled, the seed point is included as the first point in the resulting path.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bAddGoalToPath</strong><br><em>Add goal point at the end of the path</em></summary>
+<summary><strong>Add Seed To Path</strong> <code>bool</code></summary>
 
-When enabled, the goal point is included as the last point in the resulting path.
-
-</details>
-
-<details>
-
-<summary><strong>bRequireNavigableEndLocation</strong><br><em>Whether the pathfinding requires a navigable end location.</em></summary>
-
-When enabled, the system ensures that both seed and goal points are navigable. If not, the path is discarded.
+Add seed point at the beginning of the path
 
 </details>
 
 <details>
 
-<summary><strong>FuseDistance</strong><br><em>Fuse sub points by distance.</em></summary>
+<summary><strong>Add Goal To Path</strong> <code>bool</code></summary>
 
-The minimum distance between points in a path to consider them separate. Points closer than this value are merged into one.
-
-</details>
-
-<details>
-
-<summary><strong>Blending</strong><br><em>Controls how path points blend from seed to goal.</em></summary>
-
-A subnode that defines how intermediate points in the path are interpolated or blended between the seed and goal positions.
+Add goal point at the beginning of the path
 
 </details>
 
 <details>
 
-<summary><strong>SeedAttributesToPathTags</strong><br><em>TBD</em></summary>
+<summary><strong>Require Navigable End Location</strong> <code>bool</code></summary>
 
-Placeholder for tagging attributes from seeds onto paths.
-
-</details>
-
-<details>
-
-<summary><strong>SeedForwarding</strong><br><em>Which Seed attributes to forward on paths.</em></summary>
-
-Defines which attributes from the seed points are copied to the resulting paths.
+Whether the pathfinding requires a naviguable end location.
 
 </details>
 
 <details>
 
-<summary><strong>GoalAttributesToPathTags</strong><br><em>TBD</em></summary>
+<summary><strong>Fuse Distance</strong> <code>double</code></summary>
 
-Placeholder for tagging attributes from goals onto paths.
+Fuse sub points by distance.
+
+</details>
+
+**Advanced**
+
+<details>
+
+<summary><strong>Pathfinding Mode</strong> <code>PCGExPathfindingNavmeshMode</code></summary>
+
+Pathfinding mode
 
 </details>
 
 <details>
 
-<summary><strong>GoalForwarding</strong><br><em>Which Goal attributes to forward on paths.</em></summary>
+<summary><strong>Nav Agent Properties</strong> <code>NavAgentProperties</code></summary>
 
-Defines which attributes from the goal points are copied to the resulting paths.
+Nav agent to be used by the nav system.
+
+</details>
+
+**Blending**
+
+<details>
+
+<summary><strong>Blending</strong> <code>PCGExSubPointsBlendInstancedFactory</code> ⚙️</summary>
+
+Controls how path points blend from seed to goal.
+
+⚡ PCG Overridable
+
+</details>
+
+**Tagging & Forwarding**
+
+<details>
+
+<summary><strong>Seed Attributes To Path Tags</strong> <code>PCGExAttributeToTagDetails</code></summary>
+
+TBD
+
+📦 See: AttributeToTag configuration
 
 </details>
 
 <details>
 
-<summary><strong>PathfindingMode</strong><br><em>Pathfinding mode</em></summary>
+<summary><strong>Seed Forwarding</strong> <code>PCGExForwardDetails</code></summary>
 
-* **Regular**: Standard pathfinding using the navmesh.
-* **Hierarchical**: Cell-based pathfinding for more complex environments.
+Which Seed attributes to forward on paths.
+
+📦 See: Forward configuration
 
 </details>
 
 <details>
 
-<summary><strong>NavAgentProperties</strong><br><em>Nav agent to be used by the nav system.</em></summary>
+<summary><strong>Goal Attributes To Path Tags</strong> <code>PCGExAttributeToTagDetails</code></summary>
 
-Defines the properties of the navigation agent, such as height and radius, that affect how paths are calculated.
+TBD
+
+📦 See: AttributeToTag configuration
 
 </details>
 
-#### Usage Example
+<details>
 
-1. Create a set of seed points (e.g., spawn locations for AI).
-2. Create a set of goal points (e.g., destinations or waypoints).
-3. Connect both sets to this node.
-4. Configure the GoalPicker subnode to select goals based on proximity.
-5. Enable `bAddSeedToPath` and `bAddGoalToPath` to include start/end points in paths.
-6. Use a blending subnode like "Interpolate" to smooth transitions between seed and goal.
-7. Output the resulting paths for use in other nodes, such as path visualization or AI movement.
+<summary><strong>Goal Forwarding</strong> <code>PCGExForwardDetails</code></summary>
 
-#### Notes
+Which Goal attributes to forward on paths.
 
-* The node requires a valid navmesh in the level for proper pathfinding.
-* Performance can be affected by the number of queries and complexity of the navmesh.
-* Use `FuseDistance` to reduce clutter in dense paths.
+📦 See: Forward configuration
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsPathfindingNavmesh\Public\Elements\PCGExPathfindingNavmesh.h`

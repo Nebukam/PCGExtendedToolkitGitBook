@@ -5,62 +5,73 @@ icon: circle-dashed
 
 # Tensor : Constant
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+A tensor that has a constant value in the field. Note that this tensor will prevent sampling from failing.
 
-> Creates a tensor with a constant value across its field.
+📌 **Subnode** — Connects to **Tensors** pins.
 
-#### How It Works
+**How It Works**
 
-This node generates a tensor that applies the same directional force or influence consistently throughout its area of effect. Every point within the tensor's range receives the exact same vector value, ensuring uniform behavior regardless of position. The direction and strength of this influence are defined by two key parameters: Direction and Potency.
+> AI-Generated, needs proofreading
 
-When multiple tensors are used together, their combined effect depends on how they're configured to interact. The Sampling Mutations setting controls whether these interactions happen in a weighted average, sequentially without changing input positions, or sequentially with updated sampling positions after each step.
+* The node generates a tensor with a constant value that remains unchanged throughout its usage in the field.
+* It allows configuration of the tensor's direction as a vector and assigns a weight to the tensor as a double precision floating-point number.
+* Users can specify the potency of the tensor, also as a double precision floating-point number, influencing the strength or impact of the tensor value.
+* The node includes settings for sampling mutations related to the tensor, though specific mutation details are not provided.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Tensor Weight</strong><br><em>Controls how strongly this tensor influences the final result.</em></summary>
+<summary><strong>Direction</strong> <code>Vector</code></summary>
 
-Determines the relative strength of this tensor when combined with others. Higher values mean a stronger influence on the output.
+Controls direction.
 
-</details>
-
-<details>
-
-<summary><strong>Direction</strong><br><em>The direction in which the tensor applies its force.</em></summary>
-
-Sets the fixed vector direction for the tensor's influence. For example, setting it to `(0, 0, 1)` will apply a constant upward force.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Potency</strong><br><em>Controls the intensity of the tensor's effect.</em></summary>
+<summary><strong>Tensor Weight</strong> <code>double</code></summary>
 
-Defines how powerful the tensor's influence is. A value of 1 means full potency; values below 1 reduce the strength, and above 1 amplifies it.
+Controls tensor weight.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Sampling Mutations</strong><br><em>Tensor mutations settings.</em></summary>
+<summary><strong>Direction</strong> <code>Vector</code></summary>
 
-Controls how sampling behaves when multiple tensors are present. Options include:
+Controls direction.
 
-* **Weighted**: Combines all tensor effects using a weighted average.
-* **Ordered (in place)**: Applies tensors sequentially without modifying the input position.
-* **Ordered (mutated)**: Applies tensors sequentially and updates the sampling position after each application.
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this node to simulate a constant wind direction across a terrain. Set the Direction to `(1, 0, 0)` for eastward wind, and adjust Potency to control how strongly it pushes objects. Connect this tensor subnode to an "Apply Tensors" node to influence point positions or velocities.
+<summary><strong>Potency</strong> <code>double</code></summary>
 
-#### Notes
+Controls potency.
 
-* This tensor prevents sampling failures by ensuring a valid result is always returned.
-* It's ideal for creating predictable, uniform influences in procedural generation workflows.
-* The Direction vector can be animated or driven by other data to create dynamic effects.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Sampling Mutations</strong> <code>PCGExTensorSamplingMutationsDetails</code></summary>
+
+Tensor mutations settings.
+
+📦 See: TensorSamplingMutations configuration
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsTensors\Public\Tensors\PCGExTensorConstant.h`

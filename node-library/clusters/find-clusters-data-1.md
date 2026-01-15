@@ -5,106 +5,153 @@ icon: scrubber
 
 # Filter Vtx
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Filter out vtx from clusters.
 
-> Filter out vertices from clusters based on specified conditions.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node evaluates each vertex within a cluster using a set of configured filters. It determines whether each vertex should be kept or removed based on the results of those filters.
-
-* For each vertex in a cluster, it applies the configured **vertex filter subnode**.
-* If enabled, it also applies an optional **edge filter subnode** to evaluate edges connected to the vertex.
-* The node then decides how to handle the filtered data based on the selected output mode:
-  * In **Clusters** mode, it outputs modified clusters with filtered vertices removed.
-  * In **Points** mode, it separates points into inside and outside groups based on filter results.
-  * In **Attribute** mode, it writes a boolean attribute indicating whether each vertex passed the filters.
-
-The node supports inverting the filter results using the "Invert" toggle, which flips the pass/fail logic. It also allows swapping the inside and outside content when outputting points, and can tag clusters based on whether any/all/no vertices passed the filter.
+* The Cluster : Filter Vtx node processes vertex clusters and filters out vertices based on specified criteria.
+* It outputs details of the filtering process as defined by the Result setting, which is set to PCGExFilterResultDetails.
+* The Invert setting, when enabled, inverts the filter result, meaning vertices that would normally be included are excluded, and vice versa.
+* If Node Invalidate Edges is enabled, invalidating a node also results in the invalidation of its connected edges.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Mode</strong><br><em>Type of output.</em></summary>
+<summary><strong>Mode</strong> <code>PCGExVtxFilterOutput</code></summary>
 
-Determines how the filtered data is structured in the output.
+Type of output
 
-**Values**:
+**Values:**
 
-* **Clusters**: Outputs clusters with vertices filtered out.
-* **Points**: Outputs points grouped into inside and outside based on filter results.
-* **Attribute**: Writes a boolean attribute to each vertex indicating pass/fail.
-
-</details>
-
-<details>
-
-<summary><strong>ResultOutputVtx</strong><br><em>└─ Result</em></summary>
-
-When mode is set to "Attribute", this setting controls how the result of the filter is written as an attribute on the points.
+* **Clusters**: Outputs clusters.
+* **Points**: Outputs regular points
+* **Attribute**: Writes the result of the filters to a boolean attribute.
 
 </details>
 
 <details>
 
-<summary><strong>bNodeInvalidateEdges</strong><br><em>If enabled, invalidating a node invalidate connected edges.</em></summary>
+<summary><strong>└─ Result</strong> <code>PCGExFilterResultDetails</code></summary>
 
-When enabled, changes in this node will propagate to connected edge data, ensuring consistency in downstream processing.
+Controls └─ result.
 
-</details>
+📦 See: FilterResult configuration
 
-<details>
-
-<summary><strong>bInvert</strong><br><em>Invert the filter result</em></summary>
-
-When enabled, vertices that would normally pass the filter are excluded, and those that fail are included.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bInvertEdgeFilters</strong><br><em>Invert the edge filters result</em></summary>
+<summary><strong>Node Invalidate Edges</strong> <code>bool</code></summary>
 
-When enabled, the results of the edge filters are inverted. Only applicable when mode is "Clusters".
+If enabled, invalidating a node invalidate connected edges.
 
-</details>
-
-<details>
-
-<summary><strong>bSplitOutputsByConnectivity</strong><br><em>If enabled, inside/outside groups will be partitioned by initial edge connectivity.</em></summary>
-
-When enabled, points that pass or fail the filter are grouped based on their original edge connectivity in the cluster.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bSwap</strong><br><em>Swap Inside &#x26; Outside content</em></summary>
+<summary><strong>Invert</strong> <code>bool</code></summary>
 
-When enabled, the inside and outside point groups are swapped in the output when mode is "Points".
+Invert the filter result
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>GraphBuilderDetails</strong><br><em>Cluster Output Settings</em></summary>
+<summary><strong>Invert Edge Filters</strong> <code>bool</code></summary>
 
-Controls how clusters are built and output when mode is set to "Clusters". Includes settings for edge creation, radius calculation, and solidification.
+Invert the edge filters result
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-1. Connect a cluster input to the node.
-2. Add a vertex filter subnode to define which vertices should be removed from the cluster.
-3. Set the mode to **Clusters** to output modified clusters with filtered vertices.
-4. Optionally connect an edge filter subnode to refine filtering based on edge properties.
+<summary><strong>Split Outputs By Connectivity</strong> <code>bool</code></summary>
 
-#### Notes
+If enabled, inside/outside groups will be partitioned by initial edge connectivity.
 
-* This node is useful for cleaning up clusters by removing outliers or unwanted points.
-* The "Attribute" mode can be used to tag points for further processing in downstream nodes.
-* When using the "Points" output mode, consider enabling **bSplitOutputsByConnectivity** to maintain logical groupings of filtered points.
+</details>
+
+<details>
+
+<summary><strong>Swap</strong> <code>bool</code></summary>
+
+Swap Inside & Outside content
+
+</details>
+
+<details>
+
+<summary><strong>Cluster Output Settings</strong> <code>PCGExGraphBuilderDetails</code></summary>
+
+Graph & Edges output properties
+
+📦 See: GraphBuilder configuration
+
+⚡ PCG Overridable
+
+</details>
+
+**Tagging**
+
+<details>
+
+<summary><strong>Tag If Any Point Passed</strong> <code>bool</code></summary>
+
+Controls tag if any point passed.
+
+</details>
+
+<details>
+
+<summary><strong>Has Any Point Passed Tag</strong> <code>String</code></summary>
+
+...
+
+</details>
+
+<details>
+
+<summary><strong>Tag If All Points Passed</strong> <code>bool</code></summary>
+
+Controls tag if all points passed.
+
+</details>
+
+<details>
+
+<summary><strong>All Points Passed Tag</strong> <code>String</code></summary>
+
+...
+
+</details>
+
+<details>
+
+<summary><strong>Tag If No Point Passed</strong> <code>bool</code></summary>
+
+Controls tag if no point passed.
+
+</details>
+
+<details>
+
+<summary><strong>No Point Passed Tag</strong> <code>String</code></summary>
+
+...
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsClusters\Public\Elements\PCGExFilterVtx.h`

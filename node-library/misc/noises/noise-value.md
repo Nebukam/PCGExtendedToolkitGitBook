@@ -4,70 +4,105 @@ icon: circle-dashed
 
 # Noise : Value
 
-{% hint style="info" %}
-This page was generated from the source code. It should properly capture what the subnode does, but still needs to be proofread by a human.
-{% endhint %}
+Value noise - fast, interpolated random values.
 
-> Generates procedural noise using interpolated random values at grid points.
+📌 **Subnode** — Connects to **Noise** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode creates noise by assigning random scalar values to points on a 3D grid. For any given position in space, it identifies the surrounding grid points and interpolates between their assigned values to produce a smooth output.
+> AI-Generated, needs proofreading
 
-The process works as follows:
-
-1. It determines which grid cell the input position falls into.
-2. It retrieves the random values at the 8 corners of that cell.
-3. It interpolates these values using a smoothstep function to generate a continuous value.
-4. For multi-octave noise, it combines multiple layers of noise at different frequencies and amplitudes.
-
-The resulting noise pattern is smooth but retains a "blocky" character due to the interpolation between discrete values, making it distinct from gradient noise which uses vector gradients for smoother transitions.
+* The Noise : Value node generates value noise by interpolating random values across a space.
+* It uses an integer number of octaves to layer multiple frequencies of noise for complexity.
+* Lacunarity and persistence parameters control the spacing and amplitude reduction between successive octaves, respectively.
+* A PCGExNoiseConfigValue configuration object is utilized to set additional parameters that influence the noise generation process.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Octaves</strong><br><em>Number of noise layers to combine.</em></summary>
+<summary><strong>Octaves</strong> <code>int32</code></summary>
 
-Controls how many layers of noise are combined to create the final output. Each octave adds finer detail and complexity.
+Controls octaves.
 
-* **Range**: 1 to 16
-* **Default**: 1
+_Range: min: 1, max: 16_
 
-Higher values produce more detailed patterns but increase computation cost.
-
-</details>
-
-<details>
-
-<summary><strong>Lacunarity</strong><br><em>Frequency multiplier between octaves.</em></summary>
-
-Determines how quickly the frequency increases with each octave. A higher lacunarity creates more rapid changes in detail.
-
-* **Range**: 1.0 to 4.0
-* **Default**: 2.0
-
-Typical values range from 1.5 to 3.0 for natural-looking results.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Persistence</strong><br><em>Amplitude multiplier between octaves.</em></summary>
+<summary><strong>Lacunarity</strong> <code>double</code></summary>
 
-Controls how much each octave contributes to the final result. Lower persistence values reduce the influence of higher-frequency layers.
+Controls lacunarity.
 
-* **Range**: 0.0 to 1.0
-* **Default**: 0.5
+_Range: min: 1.0, max: 4.0_
 
-Values near 0.5 are common for balanced multi-octave noise.
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this subnode to create terrain heightmaps where you want smooth but not overly refined noise. For example, set Octaves to 4, Lacunarity to 2.0, and Persistence to 0.5 to generate a natural-looking elevation pattern with both large-scale features and fine details.
+<summary><strong>Persistence</strong> <code>double</code></summary>
 
-#### Notes
+Controls persistence.
 
-Value noise is computationally efficient compared to gradient noise, making it suitable for real-time applications or when performance is a concern. However, its blocky nature may not be ideal for smooth surfaces like water or clouds where gradient noise would produce better results.
+_Range: min: 0.0, max: 1.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExNoiseConfigValue</code></summary>
+
+Controls config.
+
+📦 See: NoiseConfigValue configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Octaves</strong> <code>int32</code></summary>
+
+Controls octaves.
+
+_Range: min: 1, max: 16_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Lacunarity</strong> <code>double</code></summary>
+
+Controls lacunarity.
+
+_Range: min: 1.0, max: 4.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Persistence</strong> <code>double</code></summary>
+
+Controls persistence.
+
+_Range: min: 0.0, max: 1.0_
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExNoise3D\Public\Noises\PCGExNoiseValue.h`

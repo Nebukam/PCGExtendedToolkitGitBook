@@ -4,51 +4,82 @@ icon: circle-dashed
 
 # G-Probe : KNN
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+K-Nearest Neighbors
 
-> Finds K nearest neighbors for each point and creates connections based on proximity.
+📌 **Subnode** — Connects to **Probes** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode searches through all points in your data set to identify the K closest points to each individual point. It then establishes connections between each point and its selected neighbors based on spatial distance.
+> AI-Generated, needs proofreading
 
-For every point, the system calculates how far it is from every other point in the set. These distances are sorted, and the K nearest points are chosen as neighbors. Connections are created between each point and its K closest neighbors.
-
-If the mode is set to **Mutual**, both points in a connection will have an edge pointing to each other. If set to **Default**, only one direction of the connection is created, typically from the point to its neighbor.
+* The G-Probe : KNN node computes the K-Nearest Neighbors using an input value for K provided by PCGExInputShorthandSelectorInteger32Abs, which ensures K is an absolute 32-bit integer.
+* The node operates in a mode specified as TBD (To Be Determined), indicating that the specific operational mode has not been defined or selected.
+* A filter configuration is applied to process the data before determining the nearest neighbors, though specifics of this configuration are not detailed here.
 
 #### Configuration
 
 <details>
 
-<summary><strong>K</strong><br><em>Number of neighbors to find.</em></summary>
+<summary><strong>K</strong> <code>PCGExInputShorthandSelectorInteger32Abs</code></summary>
 
-Defines how many nearest neighbors each point will connect to. A higher value creates denser networks with more connections per point.
+Controls k.
 
-**Values**: Any positive integer
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Mode</strong><br><em>Connection direction behavior.</em></summary>
+<summary><strong>Mode</strong> <code>PCGExProbeKNNMode</code></summary>
 
-Controls whether connections are mutual or unidirectional.
+TBD
 
-**Values**:
+**Values:**
 
-* **Default**: Creates a one-way connection from each point to its neighbor.
-* **Mutual**: Creates bidirectional connections between points and their neighbors.
+* **Default**
+* **Mutual**
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this subnode in a graph where you want to create a network of nearby points. For example, connect points representing cities to their 5 closest neighbors to form a transportation network or social graph.
+<summary><strong>Config</strong> <code>PCGExProbeConfigKNN</code></summary>
 
-#### Notes
+Filter Config.
 
-* This is a global probe, so it processes all points and creates connections across the entire data set.
-* Performance may degrade with large datasets due to the O(n²) distance calculations.
-* The K value affects how dense your resulting network will be.
+📦 See: ProbeConfigKNN configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>K</strong> <code>PCGExInputShorthandSelectorInteger32Abs</code></summary>
+
+Controls k.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Mode</strong> <code>PCGExProbeKNNMode</code></summary>
+
+TBD
+
+**Values:**
+
+* **Default**
+* **Mutual**
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsProbing\Public\Probes\PCGExGlobalProbeKNN.h`

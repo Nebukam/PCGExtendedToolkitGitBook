@@ -4,75 +4,106 @@ icon: circle-dashed
 
 # Noise : Perlin
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Classic Perlin gradient noise.
 
-> Generates classic Perlin gradient noise for procedural content.
+📌 **Subnode** — Connects to **Noise** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode creates smooth, natural-looking variations by using a modified version of Ken Perlin's classic algorithm. It works by:
+> AI-Generated, needs proofreading
 
-1. Dividing 3D space into a grid of cubes
-2. Assigning random gradient vectors to each corner of the cube containing a point
-3. Calculating dot products between vectors from each corner to the sample point and the assigned gradients
-4. Interpolating these values using smoothstep curves for seamless transitions
-5. Combining multiple layers of noise with varying frequencies and amplitudes
-
-The result is a continuous function that produces smooth, organic variations across space. This makes it perfect for creating natural-looking patterns in terrain, vegetation, or any effect requiring subtle variation.
+* The Noise : Perlin node generates classic Perlin gradient noise based on input coordinates.
+* It uses an integer value for Octaves to determine the number of noise layers that contribute to the final output.
+* A double value for Lacunarity specifies the frequency increase between successive octaves, affecting the scale at which each layer contributes.
+* The Persistence setting, also a double, controls the amplitude decrease between successive octaves, influencing how much each layer affects the overall noise pattern.
+* The node accepts a configuration object of type PCGExNoiseConfigPerlin to customize additional parameters not covered by Octaves, Lacunarity, and Persistence.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Octaves</strong><br><em>Number of noise layers to combine.</em></summary>
+<summary><strong>Octaves</strong> <code>int32</code></summary>
 
-Controls how many times the noise function is applied at different frequencies and amplitudes. Higher values create more detailed patterns but increase computation cost.
+Controls octaves.
 
-**Values**:
+_Range: min: 1, max: 16_
 
-* **1**: Single octave (smoothest)
-* **4**: Four octaves (more complex)
-* **8**: Eight octaves (high detail)
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Lacunarity</strong><br><em>Frequency multiplier between octaves.</em></summary>
+<summary><strong>Lacunarity</strong> <code>double</code></summary>
 
-Determines how quickly the frequency increases with each octave. Higher values create more intricate patterns but may introduce artifacts if too high.
+Controls lacunarity.
 
-**Values**:
+_Range: min: 1.0, max: 4.0_
 
-* **1.0**: No change in frequency
-* **2.0**: Doubling of frequency per octave (standard)
-* **4.0**: Quadrupling of frequency per octave
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Persistence</strong><br><em>Amplitude multiplier between octaves.</em></summary>
+<summary><strong>Persistence</strong> <code>double</code></summary>
 
-Controls how much each octave contributes to the final result. Lower values make higher octaves less influential, resulting in smoother noise.
+Controls persistence.
 
-**Values**:
+_Range: min: 0.0, max: 1.0_
 
-* **0.0**: No contribution from higher octaves
-* **0.5**: Standard persistence (default)
-* **1.0**: Full amplitude for all octaves
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this subnode to add natural variation to point placement or scalar attributes. For example, connect it to a "Noise" input pin on a "Point Scatter" node to vary the density of scattered points across space, or use it with a "Scalar Operation" node to modulate point scale based on noise values.
+<summary><strong>Config</strong> <code>PCGExNoiseConfigPerlin</code></summary>
 
-#### Notes
+Controls config.
 
-* Perlin noise is deterministic; identical inputs will always produce identical outputs
-* Multi-octave settings can significantly impact performance
-* Values outside the typical range (0-1) may be clamped depending on downstream usage
-* Combine with other noise subnodes using blend modes for complex procedural effects
+📦 See: NoiseConfigPerlin configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Octaves</strong> <code>int32</code></summary>
+
+Controls octaves.
+
+_Range: min: 1, max: 16_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Lacunarity</strong> <code>double</code></summary>
+
+Controls lacunarity.
+
+_Range: min: 1.0, max: 4.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Persistence</strong> <code>double</code></summary>
+
+Controls persistence.
+
+_Range: min: 0.0, max: 1.0_
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExNoise3D\Public\Noises\PCGExNoisePerlin.h`

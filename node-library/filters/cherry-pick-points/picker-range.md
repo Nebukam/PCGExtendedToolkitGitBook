@@ -5,79 +5,70 @@ icon: circle-dashed
 
 # Picker : Range
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+A Picker that selects a range of values.
 
-> A Picker that selects a range of values.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-The Picker : Range subnode defines a continuous segment of data to extract from a dataset. It calculates which items to select based on a starting point and an ending point, either as absolute positions or as percentages of the total dataset size. You can choose to select from the beginning or end of your data using negative numbers.
-
-When you define a range, it first determines whether your start and end points are given as exact indices (like "the 10th item") or as proportions (like "halfway through"). If you use negative values, they count backwards from the end of the list. For example, -1 means the last item, while -5 means the fifth-to-last item.
-
-Once it figures out where the range begins and ends, it generates a list of valid indices within that span. These indices are then passed to the processing node that uses this subnode for selection. The system also handles cases where indices might go beyond the dataset boundaries by using settings like clamping or tiling.
+* The Picker : Range node selects a range of values based on specified start and end indices.
+* It uses discrete and relative start/end index settings to determine the range; negative values in these settings indicate selection from the end of the value list.
+* Configuration properties for the picker can be adjusted through the Config setting, which affects how the range is selected.
 
 #### Configuration
 
 <details>
 
-<summary><strong>DiscreteStartIndex</strong><br><em>Use negative values to select from the end.</em></summary>
+<summary><strong>Discrete Start Index</strong> <code>int32</code></summary>
 
-Defines the starting index of the range as an absolute position in the dataset. Negative values count from the end (e.g., -1 is the last item).
+Use negative values to select from the end.
 
-</details>
-
-<details>
-
-<summary><strong>RelativeStartIndex</strong><br><em>Use negative values to select from the end.</em></summary>
-
-Defines the starting index of the range as a percentage of the dataset size. For example, 0.5 means half-way through the list. Negative values count from the end (e.g., -0.2 means 20% from the end).
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>DiscreteEndIndex</strong><br><em>Use negative values to select from the end.</em></summary>
+<summary><strong>Relative Start Index</strong> <code>double</code></summary>
 
-Defines the ending index of the range as an absolute position in the dataset. Negative values count from the end (e.g., -1 is the last item).
+Use negative values to select from the end.
 
-</details>
-
-<details>
-
-<summary><strong>RelativeEndIndex</strong><br><em>Use negative values to select from the end.</em></summary>
-
-Defines the ending index of the range as a percentage of the dataset size. For example, 0.8 means 80% through the list. Negative values count from the end (e.g., -0.3 means 30% from the end).
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Config</strong><br><em>Picker properties</em></summary>
+<summary><strong>Discrete End Index</strong> <code>int32</code></summary>
 
-The main configuration block for the picker settings.
+Use negative values to select from the end.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Suppose you have a point cloud of 100 points and want to select the middle 20 points (indices 40 to 59). You would set:
+<summary><strong>Relative End Index</strong> <code>double</code></summary>
 
-* **DiscreteStartIndex**: 40
-* **DiscreteEndIndex**: 59
+Use negative values to select from the end.
 
-Alternatively, if you want to select the last 10 points of that cloud, you could use:
+⚡ PCG Overridable
 
-* **DiscreteStartIndex**: -10
-* **DiscreteEndIndex**: -1
+</details>
 
-This would select indices 90 through 99.
+<details>
 
-#### Notes
+<summary><strong>Config</strong> <code>PCGExPickerConstantRangeConfig</code></summary>
 
-* The range is inclusive at both ends.
-* Negative indices are interpreted as positions from the end of the dataset.
-* Relative indices are normalized between 0 and 1, where 0 is the start and 1 is the end.
-* This subnode works best when used with processing nodes that support index-based selection.
+Picker properties
+
+📦 See: PickerConstantRange configuration
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExPickers\Public\Pickers\PCGExPickerConstantRange.h`

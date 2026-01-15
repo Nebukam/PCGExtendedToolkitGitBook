@@ -4,103 +4,173 @@ icon: circle-dashed
 
 # Probe : Tensor
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Sample a tensor at point location and probe in that direction.
 
-> Sample a tensor at point location and probe in that direction.
+📌 **Subnode** — Connects to **Probes** pins.
 
-#### Overview
+**How It Works**
 
-This subnode defines a directional probe that samples tensor data at each point's location to determine a preferred direction. It then evaluates nearby candidates based on how well their directions align with the sampled tensor direction, making it ideal for creating connections or paths that follow natural flow patterns defined by tensor fields.
+> AI-Generated, needs proofreading
 
-It is used in scenarios where you want to guide procedural connections along directional data like velocity fields, magnetic fields, or other vector-based tensor data. This subnode connects specifically to Filter pins on processing nodes that support directional probing.
-
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes.
-{% endhint %}
-
-#### How It Works
-
-This probe samples a tensor field at each point's location and extracts a direction vector from the tensor. It then evaluates nearby candidates based on how closely their directions align with the sampled tensor direction.
-
-The evaluation considers:
-
-1. The tensor's sampled direction at the point
-2. The angle between candidate directions and the tensor direction
-3. Whether to favor alignment or proximity when selecting candidates
-
-It can optionally invert the sampled direction, use component-wise angle thresholds, and perform chained processing for more complex candidate selection logic.
+* The node samples a tensor at a specified point location and uses that sampled direction for further operations.
+* If "Invert Tensor Direction" is enabled, the sampled direction from the tensors gets mirrored by multiplying with -1.
+* The setting "Use Component Wise Angle" determines whether angles are considered component-wise in calculations involving "Max Angle".
+* Both "Max Angle" and "Max Angles" settings define the maximum angle within which to search for directions, though their exact distinction or application is not specified.
 
 #### Configuration
 
 <details>
 
-<summary><strong>bInvertTensorDirection</strong><br><em>Mirror (*-1) the direction sampled from the tensors.</em></summary>
+<summary><strong>Invert Tensor Direction</strong> <code>bool</code></summary>
 
-When enabled, the direction sampled from the tensor is inverted (multiplied by -1) before being used for candidate evaluation.
+Mirror (\*-1) the direction sampled from the tensors.
 
-</details>
-
-<details>
-
-<summary><strong>Favor</strong><br><em>What matters more?</em></summary>
-
-Determines whether to prioritize candidates that align best with the tensor direction (**Dot**) or those that are closest in position (**Dist**).
-
-**Values**:
-
-* **Best alignment**: Favor candidates that best align with the tensor direction.
-* **Closest position**: Favor candidates that are closest, even if they don't align well.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bUseComponentWiseAngle</strong><br><em>Enable component-wise angle thresholds.</em></summary>
+<summary><strong>Favor</strong> <code>PCGExProbeDirectionPriorization</code></summary>
 
-When enabled, uses separate maximum angles for each axis (X, Y, Z) instead of a single scalar angle. This allows for more precise directional constraints.
-
-</details>
-
-<details>
-
-<summary><strong>MaxAngle</strong><br><em>Max angle to search within.</em></summary>
-
-Maximum angle in degrees to consider candidates within when `bUseComponentWiseAngle` is disabled. Candidates outside this angle are filtered out.
+What matters more?
 
 </details>
 
 <details>
 
-<summary><strong>MaxAngles</strong><br><em>Max angle to search within.</em></summary>
+<summary><strong>Use Component Wise Angle</strong> <code>bool</code></summary>
 
-Separate maximum angles for each axis (X, Y, Z) when `bUseComponentWiseAngle` is enabled. Each component defines the angular threshold in that direction.
+Controls use component wise angle.
 
-</details>
-
-<details>
-
-<summary><strong>bDoChainedProcessing</strong><br><em>This probe will sample candidates after the other. Can yield different results.</em></summary>
-
-When enabled, this probe performs additional processing on candidate points after initial evaluation. This can lead to different results compared to standard processing.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>TensorHandlerDetails</strong><br><em>Tensor sampling settings.</em></summary>
+<summary><strong>Max Angle</strong> <code>double</code></summary>
 
-Settings that control how the tensor field is sampled at each point. These settings are applied after any individual tensor mutations and affect the final direction extracted from the tensor.
+Max angle to search within.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this subnode in a "Connect Points" graph to create paths that follow magnetic or velocity field directions. For instance, connect it to a "Cluster Connections" node where you want edges to align with a magnetic field's orientation rather than being the closest points.
+<summary><strong>Max Angles</strong> <code>Rotator</code></summary>
 
-#### Notes
+Max angle to search within.
 
-* The tensor sampling settings are applied on flattened samples, meaning they work after any individual tensor mutations.
-* This subnode is particularly effective when used with tensor fields that define meaningful directional flow.
-* Chained processing can be useful for refining results in complex scenarios where multiple passes improve alignment.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Do Chained Processing</strong> <code>bool</code></summary>
+
+This probe will sample candidates after the other. Can yield different results.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Tensor Sampling Settings</strong> <code>PCGExTensorHandlerDetails</code></summary>
+
+Tensor sampling settings. Note that these are applied on the flattened sample, e.g after & on top of individual tensors' mutations.
+
+📦 See: TensorHandler configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExProbeConfigTensor</code></summary>
+
+Filter Config.
+
+📦 See: ProbeConfigTensor configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invert Tensor Direction</strong> <code>bool</code></summary>
+
+Mirror (\*-1) the direction sampled from the tensors.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Favor</strong> <code>PCGExProbeDirectionPriorization</code></summary>
+
+What matters more?
+
+</details>
+
+<details>
+
+<summary><strong>Use Component Wise Angle</strong> <code>bool</code></summary>
+
+Controls use component wise angle.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Max Angle</strong> <code>double</code></summary>
+
+Max angle to search within.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Max Angles</strong> <code>Rotator</code></summary>
+
+Max angle to search within.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Do Chained Processing</strong> <code>bool</code></summary>
+
+This probe will sample candidates after the other. Can yield different results.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Tensor Sampling Settings</strong> <code>PCGExTensorHandlerDetails</code></summary>
+
+Tensor sampling settings. Note that these are applied on the flattened sample, e.g after & on top of individual tensors' mutations.
+
+📦 See: TensorHandler configuration
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsTensors\Public\Probes\PCGExProbeTensor.h`

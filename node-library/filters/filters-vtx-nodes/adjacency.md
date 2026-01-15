@@ -5,150 +5,176 @@ icon: circle-dashed
 
 # Adjacency
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Numeric comparison of adjacent values, testing either adjacent nodes or connected edges.
 
-> Tests points based on numeric comparisons against adjacent node or edge values.
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode evaluates each point in relation to its neighboring elements — either connected points or edges — using a comparison operation. It first identifies which adjacent elements to use based on the **Operand B Source** setting. Then, it retrieves values from both the point itself (Operand A) and the adjacent element (Operand B), performs the specified comparison, and determines whether the point should pass through the filter.
+> AI-Generated, needs proofreading
 
-The process follows these steps:
-
-1. For each point, collect its neighboring nodes or connected edges.
-2. Based on **Test Config**, decide how to handle the adjacency data (e.g., test against all neighbors, average them, etc.).
-3. Get Operand A value from either a constant or an attribute of the point.
-4. Get Operand B value from the neighbor node or edge using the selected source.
-5. Apply the comparison operation between Operand A and Operand B.
-6.  If the result matches the filter criteria, the point is allowed to pass.
-
-    <div data-gb-custom-block data-tag="hint" data-style="info" class="hint hint-info"><p>Connects to <strong>Filter</strong> pins on processing nodes.</p></div>
-
-#### Inputs
-
-* **Point Data**: Points to be filtered
-* **Edge Data**: Edges connecting points (used when Operand B Source is Edge)
-
-#### Outputs
-
-* **Filtered Points**: Points that pass the comparison test
+* The Vtx Filter : Adjacency node evaluates numeric values of adjacent vertices or connected edges based on specified settings.
+* It translates Operand A to a `double` type for comparison purposes and uses the selected Comparison operator to test against either adjacent nodes or connected edges.
+* Users can specify whether Operand A is an attribute value (Operand A (Attr)) or a constant value, which then gets compared with the numeric values of the adjacency as defined by the Adjacency Settings.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Adjacency</strong><br><em>Adjacency Settings.</em></summary>
+<summary><strong>Adjacency</strong> <code>PCGExAdjacencySettings</code></summary>
 
-Controls how adjacency data is gathered and processed.
-
-**Values**:
-
-* **All**: Test against all adjacent nodes.
-* **Some**: Test against some adjacent nodes only (based on threshold).
+Adjacency Settings
 
 </details>
 
 <details>
 
-<summary><strong>CompareAgainst</strong><br><em>Type of Operand A.</em></summary>
+<summary><strong>Compare Against</strong> <code>PCGExInputValueType</code></summary>
 
-Determines whether Operand A is a constant or fetched from an attribute.
+Type of OperandA
 
-**Values**:
-
-* **Constant**: Use the value specified in Operand A Constant.
-* **Attribute**: Read Operand A from an attribute on the input point.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>OperandAConstant</strong><br><em>Constant Operand A for testing.</em></summary>
+<summary><strong>Operand A (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-The constant value used when Compare Against is set to Constant.
+Operand A for testing -- Will be translated to `double` under the hood.
 
-</details>
-
-<details>
-
-<summary><strong>Comparison</strong><br><em>Comparison operation to perform.</em></summary>
-
-The comparison logic used to evaluate the operands.
-
-**Values**:
-
-* **==**: Strictly equal
-* **!=**: Strictly not equal
-* **>=**: Equal or greater
-* **<=**: Equal or smaller
-* **>**: Strictly greater
-* **<**: Strictly smaller
-* **\~=**: Nearly equal (within tolerance)
-* **!\~=**: Nearly not equal (outside tolerance)
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>OperandBSource</strong><br><em>Source of the Operand B value.</em></summary>
+<summary><strong>Operand A</strong> <code>double</code></summary>
 
-Specifies whether Operand B is fetched from adjacent nodes or edges.
+Constant Operand A for testing.
 
-**Values**:
-
-* **Point**: Fetch value from the neighboring point.
-* **Edge**: Fetch value from the edge connecting to the point.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>OperandB</strong><br><em>Operand B attribute selector.</em></summary>
+<summary><strong>Comparison</strong> <code>PCGExComparison</code></summary>
 
-Attribute used to fetch Operand B when Operand B Source is set to Point or Edge.
-
-</details>
-
-<details>
-
-<summary><strong>Tolerance</strong><br><em>Rounding mode for near measures.</em></summary>
-
-Used only when the comparison is Nearly Equal or Nearly Not Equal. Defines how close values must be to be considered equal.
+Comparison
 
 </details>
 
 <details>
 
-<summary><strong>Config</strong><br><em>Test Config.</em></summary>
+<summary><strong>Operand BSource</strong> <code>PCGExClusterElement</code></summary>
 
-Defines how adjacency data is processed (e.g., test against all neighbors, average them, etc.).
-
-**Values**:
-
-* **Individual**: Test each neighbor individually.
-* **Average**: Test against the average of all neighbors.
-* **Min**: Test against the minimum value of neighbors.
-* **Max**: Test against the maximum value of neighbors.
-* **Sum**: Test against the sum of all neighbors.
+Source of the Operand B value -- either the neighboring point, or the edge connecting to that point.
 
 </details>
 
-#### Usage Example
+<details>
 
-Create a filter that only passes points where the point's height is nearly equal to the average height of its adjacent points. Set:
+<summary><strong>Operand B (Neighbor)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-* Compare Against = Attribute
-* Operand A = Height attribute
-* Operand B Source = Vtx
-* Comparison = \~= (nearly equal)
-* Config = Average
+Operand B for testing -- Will be translated to `double` under the hood.
 
-This ensures terrain features like flat areas or ridges are preserved in your procedural generation.
+</details>
 
-#### Notes
+<details>
 
-* The filter works on point data and requires edge data for edge-based comparisons.
-* When using "Some" adjacency mode, the threshold determines how many neighbors must meet the condition.
-* For performance, avoid complex attribute lookups or large adjacency sets.
+<summary><strong>Tolerance</strong> <code>double</code></summary>
+
+Rounding mode for near measures
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExNodeAdjacencyFilterConfig</code></summary>
+
+Test Config.
+
+📦 See: NodeAdjacencyFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Adjacency</strong> <code>PCGExAdjacencySettings</code></summary>
+
+Adjacency Settings
+
+</details>
+
+<details>
+
+<summary><strong>Compare Against</strong> <code>PCGExInputValueType</code></summary>
+
+Type of OperandA
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Operand A (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Operand A for testing -- Will be translated to `double` under the hood.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Operand A</strong> <code>double</code></summary>
+
+Constant Operand A for testing.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Comparison</strong> <code>PCGExComparison</code></summary>
+
+Comparison
+
+</details>
+
+<details>
+
+<summary><strong>Operand BSource</strong> <code>PCGExClusterElement</code></summary>
+
+Source of the Operand B value -- either the neighboring point, or the edge connecting to that point.
+
+</details>
+
+<details>
+
+<summary><strong>Operand B (Neighbor)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Operand B for testing -- Will be translated to `double` under the hood.
+
+</details>
+
+<details>
+
+<summary><strong>Tolerance</strong> <code>double</code></summary>
+
+Rounding mode for near measures
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsClusters\Public\Filters\Nodes\PCGExNodeAdjacencyFilter.h`

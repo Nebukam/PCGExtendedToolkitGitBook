@@ -4,65 +4,97 @@ icon: circle-dashed
 
 # G-Probe : DBSCAN
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Density-based connectivity/reachability (DBSCAN-style)
 
-> Defines density-based connectivity between points using a DBSCAN-style algorithm.
+📌 **Subnode** — Connects to **Probes** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode creates connections between points based on how densely they are grouped together in space. It mimics the behavior of the DBSCAN clustering algorithm by identifying points that have enough nearby neighbors to be considered part of a dense region, and then linking those points together.
+> AI-Generated, needs proofreading
 
-The process works in two main steps:
-
-1. **Identifying Dense Regions**: For each point, it counts how many other points fall within a certain distance (the search radius). If this number meets or exceeds the minimum required count (`MinPoints`), that point is marked as a core point — meaning it's part of a dense cluster.
-2. **Connecting Points**: Core points are connected to other core points nearby. Border points — those that aren't core but are close to one — can be connected in different ways depending on settings:
-   * If enabled, border points connect only to the nearest core point.
-   * If disabled, border points connect to all core points reachable through a chain of connections from other core points.
-
-This method produces natural-looking clusters and networks that reflect real-world density patterns rather than simple distance thresholds.
+* The G-Probe : DBSCAN node processes data using density-based clustering to identify clusters of points based on their proximity and density.
+* It identifies core points as those having at least the specified "Min Points" within a given radius (Epsilon).
+* If "Core To Cor Only" is set to true, the node ensures connections only between identified core points; otherwise, it allows for broader connectivity.
+* When "Border To Nearest Core Only" is enabled, border points connect exclusively to their nearest core point; if disabled, they can connect to all reachable core points within Epsilon.
 
 #### Configuration
 
 <details>
 
-<summary><strong>MinPoints</strong><br><em>Minimum number of neighbors within the search radius for a point to be considered a core point.</em></summary>
+<summary><strong>Min Points</strong> <code>int32</code></summary>
 
-Controls how many nearby points must exist for a point to be treated as part of a dense cluster. A higher value means fewer, more tightly packed clusters.
+Minimum points within Epsilon to be considered a core point
 
-**Values**: Integer, minimum 1
+_Range: min: 1_
 
-</details>
-
-<details>
-
-<summary><strong>bCoreToCoreOnly</strong><br><em>If true, only connects core points to each other.</em></summary>
-
-When enabled, core points are only linked to other core points. When disabled, core points may also connect to border points that are near them.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bBorderToNearestCoreOnly</strong><br><em>If true, connects border points to their nearest core point only. If false, connects to all reachable core points.</em></summary>
+<summary><strong>Core To Cor Only</strong> <code>bool</code></summary>
 
-When enabled, border points link directly to the closest core point. When disabled, they connect to all core points that can be reached through a series of connections from other core points.
+If true, only connects core points to each other
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this subnode in graph-building nodes like **Create Graph** or **Build Graph** to define how points should connect based on density. For example:
+<summary><strong>Border To Nearest Core Only</strong> <code>bool</code></summary>
 
-* Set `MinPoints` to 5 to require at least 5 neighbors for a point to be considered part of a dense cluster.
-* Enable `bCoreToCoreOnly` to only connect core points to each other, forming a skeleton of dense regions.
-* Enable `bBorderToNearestCoreOnly` to ensure border points link directly to the nearest core point, creating a star-like structure around clusters.
+If true, connects border points to their nearest core point only. If false, connects to all reachable core points.
 
-This is ideal for generating natural-looking networks such as road systems, foliage clustering, or terrain connectivity where density determines spatial relationships.
+⚡ PCG Overridable
 
-#### Notes
+</details>
 
-* This subnode uses an octree structure for fast neighbor lookups, making it efficient even with large datasets.
-* The `MinPoints` setting directly affects how tightly clustered the resulting connections are. Lower values create more sparse connections, while higher values lead to denser clusters.
-* Consider using this with a **Search Radius** attribute or similar to control the spatial extent of the density check.
+<details>
+
+<summary><strong>Config</strong> <code>PCGExProbeConfigDBSCAN</code></summary>
+
+Controls config.
+
+📦 See: ProbeConfigDBSCAN configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Min Points</strong> <code>int32</code></summary>
+
+Minimum points within Epsilon to be considered a core point
+
+_Range: min: 1_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Core To Cor Only</strong> <code>bool</code></summary>
+
+If true, only connects core points to each other
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Border To Nearest Core Only</strong> <code>bool</code></summary>
+
+If true, connects border points to their nearest core point only. If false, connects to all reachable core points.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsProbing\Public\Probes\PCGExGlobalProbeDBSCAN.h`

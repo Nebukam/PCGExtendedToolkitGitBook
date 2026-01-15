@@ -4,60 +4,128 @@ icon: circle-dashed
 
 # G-Probe : Chain
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Creates sequential chain connections based on sorting criteria
 
-> Creates sequential chain connections based on sorting criteria.
+📌 **Subnode** — Connects to **Probes** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode organizes points into a logical sequence by sorting them according to a chosen method. Once sorted, each point connects to the next one in line, forming a chain. The sorting approach determines how the order is established:
+> AI-Generated, needs proofreading
 
-* **By Attribute**: Points are arranged using a numeric value from an attribute (like density or height). You can choose whether to sort from low to high or high to low values.
-* **By Axis Projection**: Points are aligned along a specific direction (X, Y, or Z axis) and sorted by their position on that axis. This is useful for creating linear arrangements.
-* **By Spatial Curve (TSP)**: Uses an approximation of the Traveling Salesman Problem to sort points so they follow the shortest possible path. This results in a more efficient spatial route.
-* **By Hilbert Curve**: Sorts points based on their location along a space-filling curve, which helps keep nearby points close together in the sequence.
-
-After sorting, each point connects to the next one in order. If "Closed Loop" is enabled, the final point links back to the first, forming a continuous cycle.
+* The G-Probe : Chain/Path node creates sequential connections between elements in a chain based on specified sorting criteria defined by the Sort Mode setting.
+* When using the ByAttribute mode, the node sorts elements according to the value of the specified Sort Attribute before creating connections.
+* In ByAxisProjection mode, the node projects elements onto the chosen Projection Axis and then sorts them along that axis to establish the sequence for chain connections.
+* If Closed Loop is set to true, the node connects the last element in the sorted sequence back to the first, forming a closed loop.
+* The Config setting (PCGExProbeConfigChain) likely contains additional parameters that configure how the chaining process operates, though specific details are not provided.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Sort Mode</strong><br><em>How to sort the points when creating the chain.</em></summary>
+<summary><strong>Sort Mode</strong> <code>PCGExProbeChainSortMode</code></summary>
 
-Controls how the points are ordered before connecting them.
+Controls sort mode.
 
-**Values**:
+**Values:**
 
-* **By Attribute**: Sort by a scalar attribute value.
-* **By Axis Projection**: Sort by projection onto a specific axis.
-* **By Spatial Curve (TSP)**: Use a greedy TSP approximation for spatially efficient ordering.
-* **By Hilbert Curve**: Sort using a Hilbert curve index to maintain spatial locality.
+* **By Attribute**: Sort by a scalar attribute
+* **By Axis Projection**: Sort by projection onto an axis
+* **By Spatial Curve**
+* **By Hilbert Curve**: Sort by Hilbert curve index for spatial locality
 
-</details>
-
-<details>
-
-<summary><strong>Sort Attribute</strong><br><em>Attribute to sort by (for ByAttribute mode).</em></summary>
-
-The scalar attribute used when sorting points in "By Attribute" mode. For example, you could sort by a "Density" or "Height" attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Projection Axis</strong><br><em>Axis to project onto (for ByAxisProjection mode).</em></summary>
+<summary><strong>Sort Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-The axis along which points are projected and sorted when using "By Axis Projection" mode. For example, setting this to `ForwardVector` (X-axis) will sort points from left to right.
+Attribute to sort by (for ByAttribute mode)
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Closed Loop</strong><br><em>If true, creates a closed loop connecting last to first.</em></summary>
+<summary><strong>Projection Axis</strong> <code>Vector</code></summary>
 
-When enabled, the last point in the sorted sequence connects back to the first point, forming a continuous cycle. Useful for creating rings or loops in your data.
+Axis to project onto (for ByAxisProjection mode)
+
+⚡ PCG Overridable
 
 </details>
+
+<details>
+
+<summary><strong>Closed Loop</strong> <code>bool</code></summary>
+
+If true, creates a closed loop connecting last to first
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExProbeConfigChain</code></summary>
+
+Controls config.
+
+📦 See: ProbeConfigChain configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Sort Mode</strong> <code>PCGExProbeChainSortMode</code></summary>
+
+Controls sort mode.
+
+**Values:**
+
+* **By Attribute**: Sort by a scalar attribute
+* **By Axis Projection**: Sort by projection onto an axis
+* **By Spatial Curve**
+* **By Hilbert Curve**: Sort by Hilbert curve index for spatial locality
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Sort Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Attribute to sort by (for ByAttribute mode)
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Projection Axis</strong> <code>Vector</code></summary>
+
+Axis to project onto (for ByAxisProjection mode)
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Closed Loop</strong> <code>bool</code></summary>
+
+If true, creates a closed loop connecting last to first
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsProbing\Public\Probes\PCGExGlobalProbeChain.h`

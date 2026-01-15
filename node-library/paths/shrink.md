@@ -5,152 +5,224 @@ icon: circle
 
 # Shrink
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Shrink path from its beginning and end.
 
-> Shrinks paths from their beginning and end by a specified amount.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node adjusts the length of each path by removing points from both the start and end. It determines how many points or how much distance to remove based on your chosen method — either by counting points or measuring physical distance. The process can be applied to one or both ends of each path, depending on your settings.
-
-When using **Distance** mode, it calculates how much space to cut from each end using a fixed value or data from an attribute. When using **Count** mode, it removes a set number of points from each end. You can also choose how the path is adjusted at the point where it's cut — for example, whether to create a new point or use an existing one.
-
-The node supports different cut types that define how the path behaves at the cut location. It also allows you to preserve metadata from the original first or last points when removing them.
+* The node processes a path by removing segments from both the beginning and end of the path based on specified parameters.
+* The extent of removal is determined by the "Amount Input" setting, which specifies how much to shrink the path.
+* Removal can be defined either as a distance or a count, depending on the "Distance (Attr)" setting.
+* Specific details about "Cut Type" and "Value Source" are unspecified ("TBD"), so their exact influence on processing remains undefined.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Shrink Endpoint</strong><br><em>Which ends of the path to shrink.</em></summary>
+<summary><strong>Amount Input</strong> <code>PCGExInputValueType</code></summary>
 
-Controls whether the node shrinks from both ends, only the start, or only the end of each path.
+TBD
 
-**Values**:
-
-* **Start and End**: Shrink from both ends.
-* **Start**: Shrink only from the beginning.
-* **End**: Shrink only from the end.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Settings Mode</strong><br><em>How to handle values for start and end when shrinking both.</em></summary>
+<summary><strong>Distance (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-When shrinking both ends, this setting controls whether the same value is used or separate values are applied.
+Distance or count
 
-**Values**:
-
-* **Shared**: Both start and end use the primary value.
-* **Separate**: Start uses the primary value, end uses the secondary value.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Shrink Mode</strong><br><em>Whether to shrink by count or distance.</em></summary>
+<summary><strong>Distance</strong> <code>double</code></summary>
 
-Determines how the amount of shrinkage is defined — either as a number of points or a physical distance.
+TBD
 
-**Values**:
-
-* **Count**: Shrink by a number of points.
-* **Distance**: Shrink by a physical distance.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Primary Distance Details</strong><br><em>Settings for the amount to shrink from each end when using distance mode.</em></summary>
+<summary><strong>Cut Type</strong> <code>PCGExPathShrinkDistanceCutType</code></summary>
 
-Controls how much distance is removed from each end. Can use a constant or an attribute.
+TBD
 
-**Values**:
+**Values:**
 
-* **Amount Input**: Choose between constant or attribute-based value.
-* **Distance Attribute**: If using attribute, specify which attribute to read the distance from.
-* **Distance**: If using constant, set the distance to remove.
-* **Cut Type**: How to handle the point at the cut location — whether to create a new point, use the previous, next, or closest existing point.
+* **New Point**: TBD
+* **Previous**
+* **Next**
+* **Closest**
 
-</details>
-
-<details>
-
-<summary><strong>Secondary Distance Details</strong><br><em>Settings for the amount to shrink from the end when using distance mode and separate settings.</em></summary>
-
-Controls how much distance is removed from the end when shrinking both ends with separate values. Only visible if Settings Mode is set to Separate.
-
-**Values**:
-
-* **Amount Input**: Choose between constant or attribute-based value.
-* **Distance Attribute**: If using attribute, specify which attribute to read the distance from.
-* **Distance**: If using constant, set the distance to remove.
-* **Cut Type**: How to handle the point at the cut location — whether to create a new point, use the previous, next, or closest existing point.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Primary Count Details</strong><br><em>Settings for the number of points to shrink from each end when using count mode.</em></summary>
+<summary><strong>Value Source</strong> <code>PCGExInputValueType</code></summary>
 
-Controls how many points are removed from each end. Can use a constant or an attribute.
+TBD
 
-**Values**:
-
-* **Value Source**: Choose between constant or attribute-based value.
-* **Count Attribute**: If using attribute, specify which attribute to read the point count from.
-* **Count**: If using constant, set the number of points to remove.
-* **Cut Type**: How to handle the point at the cut location — whether to create a new point, use the previous, next, or closest existing point.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Secondary Count Details</strong><br><em>Settings for the number of points to shrink from the end when using count mode and separate settings.</em></summary>
+<summary><strong>Count (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-Controls how many points are removed from the end when shrinking both ends with separate values. Only visible if Settings Mode is set to Separate.
+Distance or count
 
-**Values**:
-
-* **Value Source**: Choose between constant or attribute-based value.
-* **Count Attribute**: If using attribute, specify which attribute to read the point count from.
-* **Count**: If using constant, set the number of points to remove.
-* **Cut Type**: How to handle the point at the cut location — whether to create a new point, use the previous, next, or closest existing point.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Endpoints Ignore Stop Conditions</strong><br><em>Whether to ignore stop conditions when shrinking endpoints.</em></summary>
+<summary><strong>Count</strong> <code>int32</code></summary>
 
-When enabled, the node will not respect stop conditions at the start or end of paths when cutting points.
+TBD
 
-</details>
-
-<details>
-
-<summary><strong>Preserve First Metadata</strong><br><em>If enabled, the point cut from the start will inherit metadata from the original first point.</em></summary>
-
-When enabled, the point that is removed from the beginning of the path will keep the metadata from the original first point in the path.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Preserve Last Metadata</strong><br><em>If enabled, the point cut from the end will inherit metadata from the original last point.</em></summary>
+<summary><strong>Shrink Endpoint</strong> <code>PCGExShrinkEndpoint</code></summary>
 
-When enabled, the point that is removed from the end of the path will keep the metadata from the original last point in the path.
+TBD
+
+**Values:**
+
+* **Start and End**: TBD
+* **Start**: TBD.
+* **End**: TBD.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-You have a path representing a road and want to remove 5 meters from both ends to avoid overlap with other elements. Set **Shrink Mode** to **Distance**, **Primary Distance Details** to a constant value of 5, and **Shrink Endpoint** to **Start and End**. This will shorten the road by 5 meters at each end.
+<summary><strong>Settings Mode</strong> <code>PCGExShrinkConstantMode</code></summary>
 
-#### Notes
+TBD
 
-* The node works on individual paths; it does not merge or split paths.
-* If a path is too short to shrink by the specified amount, it may result in an empty or invalid path.
-* When using **Count** mode, ensure that the count is less than the total number of points in the path to avoid errors.
+**Values:**
+
+* **Shared**: Both start & end distance use the primary value.
+* **Separate**: Start will use the primary value, end will use the secondary value..
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Shrink Mode</strong> <code>PCGExPathShrinkMode</code></summary>
+
+TBD
+
+**Values:**
+
+* **Count**: TBD
+* **Distance**: TBD.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Primary Distance Details</strong> <code>PCGExShrinkPathEndpointDistanceDetails</code></summary>
+
+TBD
+
+📦 See: ShrinkPathEndpointDistance configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Secondary Distance Details</strong> <code>PCGExShrinkPathEndpointDistanceDetails</code></summary>
+
+TBD
+
+📦 See: ShrinkPathEndpointDistance configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Primary Count Details</strong> <code>PCGExShrinkPathEndpointCountDetails</code></summary>
+
+TBD
+
+📦 See: ShrinkPathEndpointCount configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Secondary Count Details</strong> <code>PCGExShrinkPathEndpointCountDetails</code></summary>
+
+TBD
+
+📦 See: ShrinkPathEndpointCount configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Endpoints Ignore Stop Conditions</strong> <code>bool</code></summary>
+
+TBD
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Preserve First Metadata</strong> <code>bool</code></summary>
+
+If enabled, the point cut from the start will inherit from the original first point
+
+</details>
+
+<details>
+
+<summary><strong>Preserve Last Metadata</strong> <code>bool</code></summary>
+
+If enabled, the point cut from the start will inherit from the original last point
+
+</details>
+
+<details>
+
+<summary><strong>Quiet Closed Loop Warning</strong> <code>bool</code></summary>
+
+Controls quiet closed loop warning.
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsPaths\Public\Elements\PCGExPathShrink.h`

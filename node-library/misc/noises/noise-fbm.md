@@ -4,100 +4,190 @@ icon: circle-dashed
 
 # Noise : FBM
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Fractal Brownian Motion with variants (ridged, billow, warped).
 
-> Generates fractal Brownian motion noise with multiple variants including ridged, billow, and warped.
+📌 **Subnode** — Connects to **Noise** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode creates procedural noise by layering multiple noise samples at increasing frequencies and decreasing amplitudes. Each layer is called an octave, and the combination of these octaves produces a complex, natural-looking pattern.
+> AI-Generated, needs proofreading
 
-The process starts with a base noise function (typically Perlin or Simplex) and then iteratively adds higher-frequency, lower-amplitude variations to create the fractal effect. The parameters control how many layers are combined, how quickly the frequency increases, and how much each layer contributes.
-
-Different variants modify how these octaves are combined:
-
-* **Standard**: Basic additive combination of noise values.
-* **Ridged**: Inverts the noise values and applies a ridge offset to create sharp peaks.
-* **Billow**: Takes absolute values of noise, creating smoother, cloud-like patterns.
-* **Hybrid**: Combines standard and billow methods for mixed results.
-* **Warped**: Distorts the input coordinates before sampling noise, creating spatial warping effects.
+* The Noise : FBM node generates noise using Fractal Brownian Motion (FBM) algorithm, which combines multiple layers of noise at different frequencies and amplitudes to create complex patterns.
+* It uses the specified number of `Octaves` to determine how many layers of noise are combined. Each octave has a frequency defined by multiplying the previous layer's frequency by `Lacunarity`.
+* The amplitude of each successive octave is reduced by a factor of `Persistence`, contributing less to the overall noise value, which controls the roughness or smoothness of the generated pattern.
+* Depending on the selected `Variant` (such as ridged or billow), the node applies specific transformations to the base FBM noise. For instance, with the ridged variant, it uses a ridge function that inverts and scales the noise based on `Ridge Offset`.
+* The output is a noise texture influenced by these parameters, providing variations like more pronounced peaks (ridged) or smoother transitions (billow), without altering the fundamental process of combining multiple octaves.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Octaves</strong><br><em>Number of noise layers to combine.</em></summary>
+<summary><strong>Octaves</strong> <code>int32</code></summary>
 
-Controls how many times the noise is sampled at different frequencies. More octaves create more detailed patterns but may increase computation cost.
+Controls octaves.
 
-**Values**:
+_Range: min: 1, max: 16_
 
-* **1 to 16**: Number of noise layers. Higher values produce more complex patterns.
-
-</details>
-
-<details>
-
-<summary><strong>Lacunarity</strong><br><em>Frequency multiplier between octaves.</em></summary>
-
-Determines how quickly the frequency increases with each octave. A value of 2 means each octave has twice the frequency of the previous one.
-
-**Values**:
-
-* **1.0 to 4.0**: Frequency growth factor per octave. Higher values create more fine details.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Persistence</strong><br><em>Amplitude multiplier between octaves.</em></summary>
+<summary><strong>Lacunarity</strong> <code>double</code></summary>
 
-Controls how much each octave contributes to the final result. Lower values make higher-frequency layers less influential.
+Controls lacunarity.
 
-**Values**:
+_Range: min: 1.0, max: 4.0_
 
-* **0.0 to 1.0**: Amplitude decay factor per octave. Lower values produce smoother results.
-
-</details>
-
-<details>
-
-<summary><strong>Variant</strong><br><em>FBM variant.</em></summary>
-
-Selects the method used to combine noise layers and modify their behavior.
-
-**Values**:
-
-* **Standard fBm**: Basic additive combination.
-* **Ridged Multifractal**: Sharp ridges in the pattern.
-* **Billow (Turbulence)**: Smooth, cloud-like appearance.
-* **Hybrid Multifractal**: Mix of standard and billow.
-* **Domain Warped**: Applies spatial distortion before noise sampling.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>RidgeOffset</strong><br><em>Ridge offset for ridged variant.</em></summary>
+<summary><strong>Persistence</strong> <code>double</code></summary>
 
-Adjusts the shape of ridges when using the Ridged variant. Affects how sharp or smooth the peaks appear.
+Controls persistence.
 
-**Values**:
+_Range: min: 0.0, max: 1.0_
 
-* **0.0 to 2.0**: Ridge offset value. Higher values create sharper ridges.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>WarpStrength</strong><br><em>Warp strength for warped variant.</em></summary>
+<summary><strong>Variant</strong> <code>PCGExFBMVariant</code></summary>
 
-Controls how much the input coordinates are distorted when using the Warped variant. Affects the spatial warping effect.
+FBM variant
 
-**Values**:
+**Values:**
 
-* **0.0 to 2.0**: Strength of coordinate distortion. Higher values create more dramatic warping.
+* **Standard fBm**
+* **Ridged Multifractal**
+* **Billow**
+* **Hybrid Multifractal**
+* **Domain Warped**
+
+⚡ PCG Overridable
 
 </details>
+
+<details>
+
+<summary><strong>Ridge Offset</strong> <code>double</code></summary>
+
+Ridge offset for ridged variant
+
+_Range: min: 0.0, max: 2.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Warp Strength</strong> <code>double</code></summary>
+
+Warp strength for warped variant
+
+_Range: min: 0.0, max: 2.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExNoiseConfigFBM</code></summary>
+
+Controls config.
+
+📦 See: NoiseConfigFBM configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Octaves</strong> <code>int32</code></summary>
+
+Controls octaves.
+
+_Range: min: 1, max: 16_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Lacunarity</strong> <code>double</code></summary>
+
+Controls lacunarity.
+
+_Range: min: 1.0, max: 4.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Persistence</strong> <code>double</code></summary>
+
+Controls persistence.
+
+_Range: min: 0.0, max: 1.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Variant</strong> <code>PCGExFBMVariant</code></summary>
+
+FBM variant
+
+**Values:**
+
+* **Standard fBm**
+* **Ridged Multifractal**
+* **Billow**
+* **Hybrid Multifractal**
+* **Domain Warped**
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Ridge Offset</strong> <code>double</code></summary>
+
+Ridge offset for ridged variant
+
+_Range: min: 0.0, max: 2.0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Warp Strength</strong> <code>double</code></summary>
+
+Warp strength for warped variant
+
+_Range: min: 0.0, max: 2.0_
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExNoise3D\Public\Noises\PCGExNoiseFBM.h`

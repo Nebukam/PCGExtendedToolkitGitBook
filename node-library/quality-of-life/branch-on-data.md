@@ -5,94 +5,149 @@ icon: circle
 
 # Branch on Data
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Branch on @Data domain attribute.
 
-> Route points to different output branches based on the value of a specified attribute.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-The Branch on Data node evaluates each point in the input data using a selected attribute. For every point, it checks the attribute's value against a list of defined conditions. If a match is found, the point is sent to the corresponding output pin. If no match is found, the point is routed to a default output pin.
-
-The comparison logic depends on the type of data being checked (numeric or string). For numeric comparisons, you can use operators like equal, greater than, or nearly equal with a tolerance value. For strings, you can compare exact matches or lengths. The node supports multiple branches and allows for flexible routing logic.
+* The Branch on Data node evaluates an attribute from the @Data domain based on specified settings.
+* It compares the selected data attribute against a predefined value using the comparison operator defined in the "Comparison" setting.
+* Depending on whether the comparison condition is met (true or false), the node routes the data to one of its output pins, which are labeled according to the "Label" setting.
+* The "Tolerance" setting influences how closely the attribute must match the value for the comparison to succeed, particularly affecting comparisons involving floating-point numbers.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Branch Source</strong><br><em>The attribute to check.</em></summary>
+<summary><strong>Label</strong> <code>Name</code></summary>
 
-Specifies which attribute in the input data is used for branching. For example, if set to `@Data.Type`, it will use the value of that attribute to determine the output branch.
+Name of the output pin
 
-</details>
-
-<details>
-
-<summary><strong>Selection Mode</strong><br><em>Determines the type of value to be used to select an output.</em></summary>
-
-Controls how branches are defined:
-
-* **UserDefined**: Manually define each branch with custom values and comparisons.
-* **EnumInteger**: Use an enum's integer values for branching.
-* **EnumName**: Use an enum's name strings for branching.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Branches</strong><br><em>List of conditions to evaluate.</em></summary>
+<summary><strong>Check</strong> <code>PCGExComparisonDataType</code></summary>
 
-A list of branch definitions. Each branch specifies a value and comparison operator to match against the attribute value. Only visible when Selection Mode is set to UserDefined.
+How should the data be compared.
 
-</details>
-
-<details>
-
-<summary><strong>Enum Source</strong><br><em>Determines which Enum be used.</em></summary>
-
-Selects whether to use an enum from Blueprint or C++. Only active when Selection Mode is not UserDefined.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Enum Class</strong><br><em>Determines which Enum be used.</em></summary>
+<summary><strong>Comparison</strong> <code>PCGExComparison</code></summary>
 
-Blueprint enum selection. Only visible when Enum Source is Picker.
+Comparison
 
-</details>
-
-<details>
-
-<summary><strong>Enum Picker</strong><br><em>Determines which Enum be used. Enum selection is ignored here, it's only using the class value internally.</em></summary>
-
-C++ enum selection. Only visible when Enum Source is Selector.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Default Pin Name</strong><br><em>Name of the default/fallback output pin.</em></summary>
+<summary><strong>Value</strong> <code>int64</code></summary>
 
-Defines the name of the output pin where unmatched points are sent. This helps avoid confusion when "default" might be a valid branch value.
+Value
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-1. Set up a point source with an attribute like `@Data.Type` containing values such as "A", "B", or "C".
-2. Configure Branch on Data to use this attribute.
-3. Define three branches:
-   * Branch 1: Value = "A", Comparison = Strictly Equal → Output pin named "BranchA"
-   * Branch 2: Value = "B", Comparison = Strictly Equal → Output pin named "BranchB"
-   * Branch 3: Value = "C", Comparison = Strictly Equal → Output pin named "BranchC"
-4. Set the default pin name to "Default".
-5. Connect downstream nodes to each output pin to process points in different ways.
+<summary><strong>Tolerance</strong> <code>double</code></summary>
 
-#### Notes
+Rounding mode for near measures
 
-* The node dynamically creates output pins based on branch definitions.
-* When using string comparisons, consider case sensitivity and length-based checks.
-* If a point's attribute value doesn't match any defined branch, it goes to the default pin.
-* For numeric comparisons with floating-point values, use "Nearly Equal" with an appropriate tolerance.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Comparison</strong> <code>PCGExStringComparison</code></summary>
+
+Comparison
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Value</strong> <code>String</code></summary>
+
+Value
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Branch Source</strong> <code>Name</code></summary>
+
+The @Data domain attribute to check
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Selection Mode</strong> <code>PCGExControlFlowSelectionMode</code></summary>
+
+Determines the type of value to be used to select an output.
+
+</details>
+
+<details>
+
+<summary><strong>Branches</strong> <code>Array of FPCGExBranchOnDataPin</code></summary>
+
+Controls branches.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Enum Source</strong> <code>PCGExEnumConstantSourceType</code></summary>
+
+Controls enum source.
+
+</details>
+
+<details>
+
+<summary><strong>Enum Class</strong> <code>Enum</code></summary>
+
+Determines which Enum be used.
+
+</details>
+
+<details>
+
+<summary><strong>Enum Picker</strong> <code>EnumSelector</code></summary>
+
+Determines which Enum be used. Enum selection is ignored here, it's only using the class value internally.
+
+</details>
+
+<details>
+
+<summary><strong>Default Pin Name</strong> <code>Name</code></summary>
+
+Name of the default/fallback output pin. This is exposed because to allow easy disambiguation when 'default' is a valid switch.
+
+</details>
+
+***
+
+Source: `Source\PCGExFoundations\Public\Elements\ControlFlow\PCGExBranchOnDataAttribute.h`

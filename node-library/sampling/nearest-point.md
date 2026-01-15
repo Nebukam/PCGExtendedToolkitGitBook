@@ -5,560 +5,605 @@ icon: circle
 
 # Nearest Point
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Sample nearest target points.
 
-> Sample data from the nearest target points within a specified range.
+**How It Works**
 
-#### Overview
+> AI-Generated, needs proofreading
 
-This node finds and samples data from the closest target points within a defined distance range for each input point. It's useful for creating effects that depend on nearby geometry, such as terrain influence, object placement based on proximity, or procedural behaviors that react to local density.
-
-It supports multiple sampling methods, including sampling within a range or selecting the best candidate based on distance or other criteria. You can blend data from multiple targets using various blending modes like average, weighted by distance, or copy from the closest point.
-
-The node also allows you to write sampled results directly into attributes on the input points, such as transform, distance, angle, or custom data, making it easy to pass this information downstream in your graph.
-
-{% hint style="info" %}
-Connects to **Point Filters** subnode (for filtering input points), and **Target Data** subnode (to define the target points to sample from).
-{% endhint %}
-
-#### How It Works
-
-This node performs a nearest neighbor search for each input point against a set of target points. It first determines which targets are within the specified distance range, then applies optional filtering or matching rules if enabled.
-
-For each valid target, it calculates weights based on distance or an attribute value and blends data from multiple targets using a selected blending method. The results can be written directly to attributes on the input points, such as transform, distance, angle, or custom data.
-
-If multiple samples are taken, the node can apply a blending operation across them, or use the closest point's data. It also supports writing metadata like whether sampling succeeded, how many targets were sampled, and which index was selected.
-
-#### Inputs
-
-* **Input Points**: The points that will be sampled.
-* **Target Points**: The set of points to sample from.
-* **Point Filters** (optional): Subnode used to filter input points.
-* **Target Data** (optional): Subnode used to define or filter target points.
-
-#### Outputs
-
-* **Output Points**: The input points with added attributes based on the sampling results.
+* The node identifies and samples the nearest target points based on specified criteria.
+* If Data Matching is enabled, the node filters which targets are sampled according to associated data.
+* The Sample Method setting determines how sampling occurs, with an option to specify the sort direction for this method.
+* Range Min Input and Range Min (Attr) define the minimum range or attribute value from which target points can be sampled.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Data Matching</strong><br><em>If enabled, allows you to filter out which targets get sampled by which data.</em></summary>
+<summary><strong>Data Matching</strong> <code>PCGExMatchingDetails</code></summary>
 
-When enabled, this lets you define rules for matching source points to target points. For example, you might want to sample only from targets that are in the same cluster or have a specific tag.
+If enabled, allows you to filter out which targets get sampled by which data
 
-</details>
-
-<details>
-
-<summary><strong>Sample Method</strong><br><em>Sampling method.</em></summary>
-
-* **WithinRange**: Sample all targets within the specified range.
-* **BestCandidate**: Select the single closest target within the range.
+📦 See: Matching configuration
 
 </details>
 
 <details>
 
-<summary><strong>Sort Direction</strong><br><em>Sort direction</em></summary>
+<summary><strong>Process Filtered Out As Fails</strong> <code>bool</code></summary>
 
-Only used when "Sample Method" is set to "BestCandidate". Controls whether the closest or furthest point is selected.
-
-**Values**:
-
-* **Ascending**: Selects the nearest point.
-* **Descending**: Selects the furthest point.
+If enabled, mark filtered out points as "failed". Otherwise, just skip the processing altogether. Only uncheck this if you want to ensure existing attribute values are preserved.
 
 </details>
 
 <details>
 
-<summary><strong>Range Min Input</strong><br><em>Type of Range Min</em></summary>
+<summary><strong>Prune Failed Samples</strong> <code>bool</code></summary>
 
-Controls whether the minimum range is a constant value or taken from an attribute on the input points.
-
-**Values**:
-
-* **Constant**: Use the fixed value in "Range Min".
-* **Attribute**: Use a double attribute from the input points.
+If enabled, points that failed to sample anything will be pruned.
 
 </details>
 
 <details>
 
-<summary><strong>Range Min</strong><br><em>Minimum target range to sample targets.</em></summary>
+<summary><strong>Ignore Self</strong> <code>bool</code></summary>
 
-The minimum distance from each input point to consider for sampling. Only used when "Range Min Input" is set to "Constant".
+Controls ignore self.
+
+</details>
+
+**Blending**
+
+<details>
+
+<summary><strong>Blending Interface</strong> <code>PCGExBlendingInterface</code></summary>
+
+How to blend data from sampled points
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Range Max Input</strong><br><em>Type of Range Min</em></summary>
+<summary><strong>Target Attributes</strong> <code>Map of FName, EPCGExBlendingType</code></summary>
 
-Controls whether the maximum range is a constant value or taken from an attribute on the input points.
+Attributes to sample from the targets
 
-**Values**:
-
-* **Constant**: Use the fixed value in "Range Max".
-* **Attribute**: Use a double attribute from the input points.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Range Max</strong><br><em>Maximum target range to sample targets.</em></summary>
+<summary><strong>Blend Point Properties</strong> <code>bool</code></summary>
 
-The maximum distance from each input point to consider for sampling. Only used when "Range Max Input" is set to "Constant".
+Write the sampled distance.
 
-</details>
-
-<details>
-
-<summary><strong>Distance Details</strong><br><em>Distance method to be used for source &#x26; target points.</em></summary>
-
-Defines how distances are calculated between points.
-
-**Values**:
-
-* **Euclidean**: Standard straight-line distance.
-* **Manhattan**: Distance along axes only.
-* **Chebyshev**: Maximum of axis differences.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Weight Mode</strong><br><em>Which mode to use to compute weights.</em></summary>
+<summary><strong>Point Properties Blending Settings</strong> <code>PCGExPropertiesBlendingDetails</code></summary>
 
-Controls how the weight for each target point is calculated when blending results.
+The constant to use as Up vector for the look at transform.
 
-**Values**:
+📦 See: PropertiesBlending configuration
 
-* **Distance**: Use inverse distance as weight.
-* **Attribute**: Read weight from a point attribute on targets.
-* **Constant**: Use a fixed constant value.
+⚡ PCG Overridable
+
+</details>
+
+**Outputs**
+
+<details>
+
+<summary><strong>Write Success</strong> <code>bool</code></summary>
+
+Write whether the sampling was sucessful or not to a boolean attribute.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Weight Attribute</strong><br><em>Weight attribute to read on targets.</em></summary>
+<summary><strong>Success</strong> <code>Name</code></summary>
 
-The name of the attribute on target points to use as weight when "Weight Mode" is set to "Attribute".
+Name of the 'boolean' attribute to write sampling success to.
 
-</details>
-
-<details>
-
-<summary><strong>Weight Method</strong><br><em>Weight method used for blending</em></summary>
-
-Controls how weights are applied during blending.
-
-**Values**:
-
-* **FullRange**: Use the full range of weights.
-* **Normalized**: Normalize weights so they sum to 1.
-* **Clamped**: Clamp weights between 0 and 1.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Use Local Curve</strong><br><em>Whether to use in-editor curve or an external asset.</em></summary>
+<summary><strong>Write Transform</strong> <code>bool</code></summary>
 
-When enabled, uses the in-editor curve defined in "Weight Over Distance". Otherwise, it uses an external asset.
+Write the sampled transform.
 
-</details>
-
-<details>
-
-<summary><strong>Weight Over Distance</strong><br><em>Curve that balances weight over distance</em></summary>
-
-A curve used to define how weight changes with distance. Only used when "Use Local Curve" is enabled and "Weight Mode" is not "Attribute".
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Blending Interface</strong><br><em>How to blend data from sampled points</em></summary>
+<summary><strong>Transform</strong> <code>Name</code></summary>
 
-Controls how the node blends attributes from multiple targets.
+Name of the 'transform' attribute to write sampled Transform to.
 
-**Values**:
-
-* **Individual**: Blend each attribute separately.
-* **Monolithic**: Blend all attributes together as one operation.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Target Attributes</strong><br><em>Attributes to sample from the targets</em></summary>
+<summary><strong>Write Look At Transform</strong> <code>bool</code></summary>
 
-List of attributes to sample when "Blending Interface" is set to "Monolithic". Each attribute will be blended using the selected blending type.
+Write the sampled transform.
 
-</details>
-
-<details>
-
-<summary><strong>Blend Point Properties</strong><br><em>Write the sampled distance.</em></summary>
-
-When enabled, blends point properties like transform or rotation from the targets.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Point Properties Blending Settings</strong><br><em>The constant to use as Up vector for the look at transform.</em></summary>
+<summary><strong>LookAt</strong> <code>Name</code></summary>
 
-Settings for blending point properties when "Blend Point Properties" is enabled. Used to define how transforms are blended.
+Name of the 'transform' attribute to write sampled Transform to.
 
-</details>
-
-<details>
-
-<summary><strong>Write Success</strong><br><em>Write whether the sampling was successful or not to a boolean attribute.</em></summary>
-
-When enabled, writes a boolean attribute indicating if sampling succeeded for each input point.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Success Attribute Name</strong><br><em>Name of the 'boolean' attribute to write sampling success to.</em></summary>
+<summary><strong>├─ Align</strong> <code>PCGExAxisAlign</code></summary>
 
-The name of the boolean attribute that will store whether sampling was successful.
+The axis to align transform the look at vector to.
 
-</details>
-
-<details>
-
-<summary><strong>Write Transform</strong><br><em>Write the sampled transform.</em></summary>
-
-When enabled, writes a transform attribute with the blended transform from the targets.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Transform Attribute Name</strong><br><em>Name of the 'transform' attribute to write sampled Transform to.</em></summary>
+<summary><strong>├─ Use Up from...</strong> <code>PCGExSampleSource</code></summary>
 
-The name of the transform attribute that will store the blended transform.
+Up vector source.
 
-</details>
-
-<details>
-
-<summary><strong>Write LookAt Transform</strong><br><em>Write the sampled transform.</em></summary>
-
-When enabled, writes a transform attribute with a look-at transform from the targets.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>LookAt Transform Attribute Name</strong><br><em>Name of the 'transform' attribute to write sampled Transform to.</em></summary>
+<summary><strong>└─ Up Vector (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-The name of the transform attribute that will store the look-at transform.
+The attribute or property on selected source to use as Up vector for the look at transform.
 
-</details>
-
-<details>
-
-<summary><strong>LookAt Axis Align</strong><br><em>The axis to align transform the look at vector to.</em></summary>
-
-Controls which axis of the look-at transform is aligned with the direction from the source point to the target.
-
-**Values**:
-
-* **Forward**: Align forward axis.
-* **Backward**: Align backward axis.
-* **Right**: Align right axis.
-* **Left**: Align left axis.
-* **Up**: Align up axis.
-* **Down**: Align down axis.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>LookAt Up Selection</strong><br><em>Up vector source.</em></summary>
+<summary><strong>└─ Up Vector</strong> <code>Vector</code></summary>
 
-Controls whether to use a constant vector or an attribute from the input points as the up vector for the look-at transform.
+The constant to use as Up vector for the look at transform.
 
-**Values**:
-
-* **Constant**: Use the "LookAt Up Constant" value.
-* **Attribute**: Use an attribute from the input points.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>LookAt Up Constant</strong><br><em>The constant to use as Up vector for the look at transform.</em></summary>
+<summary><strong>Write Distance</strong> <code>bool</code></summary>
 
-The up vector used when "LookAt Up Selection" is set to "Constant".
+Write the sampled distance.
 
-</details>
-
-<details>
-
-<summary><strong>Write Distance</strong><br><em>Write the sampled distance.</em></summary>
-
-When enabled, writes a double attribute with the blended distance from the targets.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Distance Attribute Name</strong><br><em>Name of the 'double' attribute to write sampled distance to.</em></summary>
+<summary><strong>Distance</strong> <code>Name</code></summary>
 
-The name of the double attribute that will store the sampled distance.
+Name of the 'double' attribute to write sampled distance to.
 
-</details>
-
-<details>
-
-<summary><strong>Output Normalized Distance</strong><br><em>Whether to output normalized distance or not</em></summary>
-
-When enabled, outputs a normalized distance between 0 and 1 based on the range.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Output OneMinus Distance</strong><br><em>Whether to do a OneMinus on the normalized distance value</em></summary>
+<summary><strong>├─ Normalized</strong> <code>bool</code></summary>
 
-When enabled, inverts the normalized distance (1 - normalized).
+Whether to output normalized distance or not
 
-</details>
-
-<details>
-
-<summary><strong>Distance Scale</strong><br><em>Scale factor applied to the distance output; allows to invert it using -1</em></summary>
-
-A scale factor applied to the distance output. Can be used to invert the value by setting to -1.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Write Signed Distance</strong><br><em>Write the sampled Signed distance.</em></summary>
+<summary><strong>│ └─ OneMinus</strong> <code>bool</code></summary>
 
-When enabled, writes a double attribute with the signed distance from the targets.
+Whether to do a OneMinus on the normalized distance value
 
-</details>
-
-<details>
-
-<summary><strong>Signed Distance Attribute Name</strong><br><em>Name of the 'double' attribute to write sampled Signed distance to.</em></summary>
-
-The name of the double attribute that will store the signed distance.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Sign Axis</strong><br><em>Axis to use to calculate the distance' sign</em></summary>
+<summary><strong>└─ Scale</strong> <code>double</code></summary>
 
-Controls which axis is used to determine the sign of the distance.
+Scale factor applied to the distance output; allows to easily invert it using -1
 
-**Values**:
-
-* **Forward**: Use X-axis.
-* **Backward**: Use -X-axis.
-* **Right**: Use Y-axis.
-* **Left**: Use -Y-axis.
-* **Up**: Use Z-axis.
-* **Down**: Use -Z-axis.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Signed Distance Scale</strong><br><em>Scale factor applied to the signed distance output; allows to invert it using -1</em></summary>
+<summary><strong>Write Signed Distance</strong> <code>bool</code></summary>
 
-A scale factor applied to the signed distance output. Can be used to invert the value by setting to -1.
+Write the sampled Signed distance.
 
-</details>
-
-<details>
-
-<summary><strong>Write Component Wise Distance</strong><br><em>Write the sampled component-wise distance.</em></summary>
-
-When enabled, writes a FVector attribute with the component-wise distance from the targets.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Component Wise Distance Attribute Name</strong><br><em>Name of the 'FVector' attribute to write component-wise distance to.</em></summary>
+<summary><strong>SignedDistance</strong> <code>Name</code></summary>
 
-The name of the FVector attribute that will store the component-wise distance.
+Name of the 'double' attribute to write sampled Signed distance to.
 
-</details>
-
-<details>
-
-<summary><strong>Absolute Component Wise Distance</strong><br><em>Whether to output absolute or signed component wise distances</em></summary>
-
-When enabled, outputs absolute values for the component-wise distance. Otherwise, outputs signed values.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Write Angle</strong><br><em>Write the sampled angle.</em></summary>
+<summary><strong>├─ Axis</strong> <code>PCGExAxis</code></summary>
 
-When enabled, writes a double attribute with the angle between points.
+Axis to use to calculate the distance' sign
 
-</details>
-
-<details>
-
-<summary><strong>Angle Attribute Name</strong><br><em>Name of the 'double' attribute to write sampled Signed distance to.</em></summary>
-
-The name of the double attribute that will store the angle.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Angle Axis</strong><br><em>Axis to use to calculate the angle</em></summary>
+<summary><strong>└─ Scale</strong> <code>double</code></summary>
 
-Controls which axis is used to calculate the angle.
+Scale factor applied to the signed distance output; allows to easily invert it using -1
 
-**Values**:
-
-* **Forward**: Use X-axis.
-* **Backward**: Use -X-axis.
-* **Right**: Use Y-axis.
-* **Left**: Use -Y-axis.
-* **Up**: Use Z-axis.
-* **Down**: Use -Z-axis.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Angle Range</strong><br><em>Unit/range to output the angle to.</em></summary>
+<summary><strong>Write Component Wise Distance</strong> <code>bool</code></summary>
 
-Controls how the angle is represented in the output.
+Write the sampled component-wise distance.
 
-**Values**:
-
-* **Radians (0..+PI)**: Output in radians from 0 to π.
-* **Radians (-PI..+PI)**: Output in radians from -π to π.
-* **Radians (0..+TAU)**: Output in radians from 0 to 2π.
-* **Degrees (0..+180)**: Output in degrees from 0 to 180.
-* **Degrees (-180..+180)**: Output in degrees from -180 to 180.
-* **Degrees (0..+360)**: Output in degrees from 0 to 360.
-* **Normalized Half (0..180 -> 0..1)**: Normalize 0 to 180 into 0 to 1.
-* **Normalized (0..+360 -> 0..1)**: Normalize 0 to 360 into 0 to 1.
-* **Inv. Normalized Half (0..180 -> 1..0)**: Invert normalized 0 to 180 into 1 to 0.
-* **Inv. Normalized (0..+360 -> 1..0)**: Invert normalized 0 to 360 into 1 to 0.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Write Num Samples</strong><br><em>Write the sampled distance.</em></summary>
+<summary><strong>Component Wise Distance</strong> <code>Name</code></summary>
 
-When enabled, writes an int32 attribute with the number of targets that were sampled.
+Name of the 'FVector' attribute to write component-wise distance to.
 
-</details>
-
-<details>
-
-<summary><strong>Num Samples Attribute Name</strong><br><em>Name of the 'int32' attribute to write the number of sampled neighbors to.</em></summary>
-
-The name of the int32 attribute that will store the number of samples.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Write Sampled Index</strong><br></summary>
+<summary><strong>└─ Absolute</strong> <code>bool</code></summary>
 
-When enabled, writes an int32 attribute with the index of the sampled target point.
+Whether to output absolute or signed component wise distances
 
-</details>
-
-<details>
-
-<summary><strong>Sampled Index Attribute Name</strong><br><em>Name of the 'int32' attribute to write the sampled index to. Will use the closest index when sampling multiple points.</em></summary>
-
-The name of the int32 attribute that will store the index of the sampled point.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Tag If Has Successes</strong><br></summary>
+<summary><strong>Write Angle</strong> <code>bool</code></summary>
 
-When enabled, adds a tag to the output data if at least one point was successfully sampled.
+Write the sampled angle.
 
-</details>
-
-<details>
-
-<summary><strong>Has Successes Tag</strong><br><em>If enabled, add the specified tag to the output data if at least a single point has been sampled.</em></summary>
-
-The tag name to apply when sampling succeeds for at least one point.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Tag If Has No Successes</strong><br></summary>
+<summary><strong>Angle</strong> <code>Name</code></summary>
 
-When enabled, adds a tag to the output data if no points were successfully sampled.
+Name of the 'double' attribute to write sampled Signed distance to.
 
-</details>
-
-<details>
-
-<summary><strong>Has No Successes Tag</strong><br><em>If enabled, add the specified tag to the output data if no points were sampled.</em></summary>
-
-The tag name to apply when sampling fails for all points.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Process Filtered Out As Fails</strong><br><em>If enabled, mark filtered out points as "failed". Otherwise, skip the processing altogether. Only uncheck this if you want to ensure existing attribute values are preserved.</em></summary>
+<summary><strong>├─ Axis</strong> <code>PCGExAxis</code></summary>
 
-When enabled, points that are filtered out by point filters will be marked as failed samples. If disabled, they are skipped entirely.
+Axis to use to calculate the angle
 
-</details>
-
-<details>
-
-<summary><strong>Prune Failed Samples</strong><br><em>If enabled, points that failed to sample anything will be pruned.</em></summary>
-
-When enabled, input points that fail to sample any targets are removed from the output.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Ignore Self</strong><br></summary>
+<summary><strong>└─ Range</strong> <code>PCGExAngleRange</code></summary>
 
-When enabled, prevents sampling from the same point as the source point.
+Unit/range to output the angle to.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-You have a set of trees and want to sample terrain height data for each tree. Connect your tree points to the input and terrain points to the target data. Set the range to 10 units, enable "Write Distance" and "Write Transform", and select "Average" blending mode. This will give each tree point a blended transform and distance based on nearby terrain.
+<summary><strong>Write Num Samples</strong> <code>bool</code></summary>
 
-#### Notes
+Write the sampled distance.
 
-* The node supports both constant and attribute-based range values.
-* Blending modes can significantly affect performance; use "None" or "Copy" for faster processing.
-* When using "BestCandidate", the node selects only one target, even if multiple are within range.
-* For large datasets, consider using point filters to reduce unnecessary computations.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>NumSamples</strong> <code>Name</code></summary>
+
+Name of the 'int32' attribute to write the number of sampled neighbors to.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Sampled Index</strong> <code>bool</code></summary>
+
+Controls write sampled index.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>SampledIndex</strong> <code>Name</code></summary>
+
+Name of the 'int32' attribute to write the sampled index to. Will use the closest index when sampling multiple points.
+
+⚡ PCG Overridable
+
+</details>
+
+**Sampling**
+
+<details>
+
+<summary><strong>Sample Method</strong> <code>PCGExSampleMethod</code></summary>
+
+Sampling method.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Sort direction</strong> <code>PCGExSortDirection</code></summary>
+
+Sort direction
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Range Min Input</strong> <code>PCGExInputValueType</code></summary>
+
+Type of Range Min
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Range Min (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Minimum target range to sample targets.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Range Min</strong> <code>double</code></summary>
+
+Minimum target range to sample targets.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Range Max Input</strong> <code>PCGExInputValueType</code></summary>
+
+Type of Range Min
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Range Max (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Maximum target range to sample targets.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Range Max</strong> <code>double</code></summary>
+
+Maximum target range to sample targets.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Apply Sampling</strong> <code>PCGExApplySamplingDetails</code></summary>
+
+Whether and how to apply sampled result directly (not mutually exclusive with output)
+
+📦 See: ApplySampling configuration
+
+</details>
+
+**Tagging**
+
+<details>
+
+<summary><strong>Tag If Has Successes</strong> <code>bool</code></summary>
+
+Controls tag if has successes.
+
+</details>
+
+<details>
+
+<summary><strong>Has Successes Tag</strong> <code>String</code></summary>
+
+If enabled, add the specified tag to the output data if at least a single point has been sampled.
+
+</details>
+
+<details>
+
+<summary><strong>Tag If Has No Successes</strong> <code>bool</code></summary>
+
+Controls tag if has no successes.
+
+</details>
+
+<details>
+
+<summary><strong>Has No Successes Tag</strong> <code>String</code></summary>
+
+If enabled, add the specified tag to the output data if no points were sampled.
+
+</details>
+
+**Weighting**
+
+<details>
+
+<summary><strong>Distance Details</strong> <code>PCGExDistanceDetails</code></summary>
+
+Distance method to be used for source & target points.
+
+📦 See: Distance configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Weight Mode</strong> <code>PCGExSampleWeightMode</code></summary>
+
+Which mode to use to compute weights.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Weight Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Weight attribute to read on targets.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Weight Method</strong> <code>PCGExRangeType</code></summary>
+
+Weight method used for blending
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Use Local Curve</strong> <code>bool</code></summary>
+
+Whether to use in-editor curve or an external asset.
+
+</details>
+
+<details>
+
+<summary><strong>Weight Over Distance</strong> <code>RuntimeFloatCurve</code></summary>
+
+Curve that balances weight over distance
+
+</details>
+
+<details>
+
+<summary><strong>Weight Over Distance</strong> <code>CurveFloat</code></summary>
+
+Curve that balances weight over distance
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Weight Curve Lookup</strong> <code>PCGExCurveLookupDetails</code></summary>
+
+Controls weight curve lookup.
+
+📦 See: CurveLookup configuration
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsSampling\Public\Elements\PCGExSampleNearestPoint.h`

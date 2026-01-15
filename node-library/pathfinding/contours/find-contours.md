@@ -5,90 +5,119 @@ icon: circle
 
 # Find Cells
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Attempts to find a closed cell of connected edges around seed points.
 
-> Finds closed polygonal shapes, or "cells," around seed points by tracing connected edges in a graph.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node searches for closed loops formed by connecting edges in a graph around each seed point. It starts at a seed and follows connected edges to trace out a shape. If the resulting shape meets specific criteria defined in the settings, it's considered a valid cell and is output as a path.
-
-The process evaluates whether the traced shape satisfies constraints such as minimum or maximum number of sides, angle thresholds, or other geometric rules. Valid cells are returned as closed polygons, while the original seed points can optionally be filtered based on whether they successfully created a valid cell.
-
-To improve performance with large datasets, the node can use an octree-based search to quickly locate the closest edge to each seed point instead of checking every edge individually.
+* The node initializes by identifying seed points from which to start pathfinding operations.
+* It then attempts to find closed cells of connected edges around each seed point based on specified constraints and seed picking rules.
+* During the process, the node applies any defined seed mutations to modify the behavior or properties of the seeds as they navigate through the graph.
+* If configured, the node outputs a filtered set of points that includes only those seeds which successfully generated valid paths within the defined constraints.
 
 #### Configuration
 
 <details>
 
-<summary><strong>SeedPicking</strong><br><em>Controls how a seed selects which edge or vertex to start tracing from.</em></summary>
+<summary><strong>Seed Picking</strong> <code>PCGExNodeSelectionDetails</code></summary>
 
-Determines where the tracing begins around each seed point. This affects where the contour starts and can influence the shape of the resulting cell.
+Drive how a seed selects a node.
 
-</details>
+📦 See: NodeSelection configuration
 
-<details>
-
-<summary><strong>Constraints</strong><br><em>Rules that define what makes a valid cell.</em></summary>
-
-Sets criteria for evaluating whether a traced shape is considered valid. These include settings like minimum or maximum number of sides, angle thresholds, and other geometric properties.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Artifacts</strong><br><em>Data computed or output for each generated cell.</em></summary>
+<summary><strong>Constraints</strong> <code>PCGExCellConstraintsDetails</code></summary>
 
-Controls how additional information about each cell is calculated or included in the output. This can include properties like convexity, steepness, or color values derived from the cell's structure.
+Controls constraints.
 
-</details>
+📦 See: CellConstraints configuration
 
-<details>
-
-<summary><strong>bOutputFilteredSeeds</strong><br><em>Whether to output a separate set of seeds that successfully created valid cells.</em></summary>
-
-When enabled, this subnode outputs an additional point set containing only those seed points that generated a valid closed cell. This helps identify which seeds worked well and can be useful for debugging or filtering.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>SeedMutations</strong><br><em>Transformations applied to the seed point before generating the cell.</em></summary>
+<summary><strong>Artifacts</strong> <code>PCGExCellArtifactsDetails</code></summary>
 
-Defines modifications made to the seed point before it's used in tracing. For example, shifting its position or adjusting its properties to influence the resulting shape.
+Cell artifacts.
 
-</details>
+📦 See: CellArtifacts configuration
 
-<details>
-
-<summary><strong>ProjectionDetails</strong><br><em>Settings for projecting 3D points onto a 2D plane.</em></summary>
-
-Controls how three-dimensional data is flattened into two dimensions for processing. This is helpful when working with geographic or spatial data that needs to be simplified for contour detection.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>SeedAttributesToPathTags</strong><br><em>Mapping of seed attributes to tags on the resulting path.</em></summary>
+<summary><strong>Output Filtered Seeds</strong> <code>bool</code></summary>
 
-Defines how properties from the original seed point are transferred to tags on the generated cell. This allows associating metadata from the seed with the resulting shape.
+Output a filtered set of points containing only seeds that generated a valid path
 
-</details>
-
-<details>
-
-<summary><strong>SeedForwarding</strong><br><em>Which seed attributes are copied to the output paths.</em></summary>
-
-Specifies which properties from the original seed points should be carried over to the generated cells. This helps retain important information like ID, color, or other attributes.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bUseOctreeSearch</strong><br><em>Whether to use an octree structure for finding the closest edge to a seed.</em></summary>
+<summary><strong>Seed Mutations</strong> <code>PCGExCellSeedMutationDetails</code></summary>
 
-When enabled, this subnode uses an octree to speed up the process of locating nearby edges. This improves performance when working with large datasets but may slow things down in some cases.
+Controls seed mutations.
+
+📦 See: CellSeedMutation configuration
+
+⚡ PCG Overridable
 
 </details>
+
+<details>
+
+<summary><strong>Projection Details</strong> <code>PCGExGeo2DProjectionDetails</code></summary>
+
+Projection settings.
+
+📦 See: Geo2DProjection configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Use Octree Search</strong> <code>bool</code></summary>
+
+Whether or not to search for closest node using an octree. Depending on your dataset, enabling this may be either much faster, or much slower.
+
+</details>
+
+**Forwarding**
+
+<details>
+
+<summary><strong>Seed Attributes To Path Tags</strong> <code>PCGExAttributeToTagDetails</code></summary>
+
+TBD
+
+📦 See: AttributeToTag configuration
+
+</details>
+
+<details>
+
+<summary><strong>Seed Forwarding</strong> <code>PCGExForwardDetails</code></summary>
+
+Which Seed attributes to forward on paths.
+
+📦 See: Forward configuration
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsPathfinding\Public\Elements\PCGExPathfindingFindContours.h`

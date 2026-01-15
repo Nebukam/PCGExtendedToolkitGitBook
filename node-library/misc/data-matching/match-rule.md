@@ -4,39 +4,40 @@ icon: comment-dots
 
 # Match Rule
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Creates a single match rule node, to be used with nodes that support data matching.
 
-> Defines a match rule to be used with nodes that support data matching.
+📌 **Subnode** — Connects to **Match Rules** pins.
 
-#### How It Works
+**How It Works**
 
-A Match Rule Definition subnode establishes the conditions that determine whether two sets of data, such as points or collections, are considered a match. It defines the logic that matching nodes use to compare data elements and decide if they relate to each other based on specific criteria.
+> AI-Generated, needs proofreading
 
-The rule evaluates candidate data against a set of matchable sources using configurable strictness settings. If the match passes all required checks, it's considered successful according to the defined behavior.
-
-Each match rule operates within a scope that includes the data being matched and the context in which the matching occurs. The rule can be configured to require all conditions to pass (Strictness: Required) or allow partial matches (Strictness: Optional).
+* The node generates a match rule based on specified parameters for integration with other data matching nodes.
+* It utilizes the "Strictness" setting to define how closely the match criteria must be met for a successful match.
+* The "Invert" boolean parameter determines whether to invert the logic of the match, effectively changing positive matches to negative and vice versa.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Strictness</strong><br><em>Match Strictness.</em></summary>
+<summary><strong>Strictness</strong> <code>PCGExMatchStrictness</code></summary>
 
-Controls how strictly the matching conditions must be met.
+Match Strictness
 
-**Values**:
-
-* **Required**: All match conditions must pass for a successful match.
-* **Optional**: A match is considered successful if any of the conditions pass, even if others fail.
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this subnode to define custom matching logic in a graph where you want to connect points from one source to another based on specific criteria. For example, you could create a rule that matches points only when their color values are within a certain range, or when they're located near each other in space.
+<summary><strong>Invert</strong> <code>bool</code></summary>
 
-#### Notes
+Controls invert.
 
-Match Rule Definition subnodes are abstract and must be implemented by concrete subclasses to define actual matching logic. They serve as templates for how matching should behave in your procedural workflows.
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExMatching\Public\Core\PCGExMatchRuleFactoryProvider.h`

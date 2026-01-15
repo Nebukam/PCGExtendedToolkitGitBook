@@ -9,262 +9,322 @@ icon: scrubber
 Grow Paths has been deprecated in favor of [flood-fill](../clusters/flood-fill/ "mention").
 {% endhint %}
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Grow paths from seeds.
 
-> Grow paths from seeds using iterative expansion.
+⚙️ **Behavior** — Instanced pathfinding search.
 
-#### How It Works
+**How It Works**
 
-This node starts by selecting seed points and expanding them into paths through a series of steps. Each seed begins a path that grows outward based on configurable rules like how many steps it can take, which direction it moves, and whether it can branch into multiple paths.
+> AI-Generated, needs proofreading
 
-At each step, the node looks at neighboring points in the graph to find valid candidates for growth. If a candidate is allowed (not blocked by limits such as maximum distance or stop conditions), it adds that point to the path and continues. The process repeats until the path reaches its maximum number of steps or no more valid neighbors are found.
-
-If branching is enabled, multiple paths can start from one seed point, up to a defined limit. The node supports both parallel and sequential growth modes, allowing flexibility in how paths expand across the graph.
+* The node initializes path growth from designated seeds within a graph structure.
+* Seed selection follows rules defined by the "Seed Picking" setting to determine starting nodes for path generation.
+* Path growth proceeds iteratively according to the "Growth Mode", with each iteration expanding paths outward from existing nodes until reaching the limit set by either "Num Iterations Constant" or the attribute specified in "Num Iterations Attribute".
+* Each seed can undergo a maximum number of iterations as defined, allowing for controlled expansion and complexity of generated paths.
 
 #### Configuration
 
 <details>
 
-<summary><strong>SeedPicking</strong><br><em>Drive how a seed selects a node.</em></summary>
+<summary><strong>Seed Picking</strong> <code>PCGExNodeSelectionDetails</code></summary>
 
-Controls how seeds are selected from input points to begin path growth. For example, it can select the closest node in the graph to each seed point.
+Drive how a seed selects a node.
 
-</details>
+📦 See: NodeSelection configuration
 
-<details>
-
-<summary><strong>GrowthMode</strong><br><em>Controls how iterative growth is managed.</em></summary>
-
-* **Parallel**: All seeds grow simultaneously, advancing one step at a time.
-* **Sequence**: Each seed grows completely before the next seed begins.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>NumIterations</strong><br><em>The maximum number of growth iterations for a given seed.</em></summary>
+<summary><strong>Growth Mode</strong> <code>PCGExGrowthIterationMode</code></summary>
 
-Controls how many steps each path can take. Can be set as a constant or read from an attribute on the seed point.
+Controls how iterative growth is managed.
 
-**Values**:
+**Values:**
 
-* **Constant**: Use a fixed value.
-* **SeedAttribute**: Read the value from an integer attribute on the seed point.
-* **VtxAttribute**: Read the value from an integer attribute on the graph vertex.
-
-</details>
-
-<details>
-
-<summary><strong>NumIterationsAttribute</strong><br><em>Num iteration attribute name.</em></summary>
-
-Name of the attribute used when `NumIterations` is set to "Seed Attribute" or "Vtx Attribute".
+* **Parallel**: Does one growth iteration on each seed until none remain
+* **Sequence**: Grow a seed to its end, then move to the next seed
 
 </details>
 
 <details>
 
-<summary><strong>NumIterationsConstant</strong><br><em>Num iteration constant</em></summary>
+<summary><strong>Num Iterations</strong> <code>PCGExGrowthValueSource</code></summary>
 
-Fixed number of iterations if `NumIterations` is set to "Constant".
+The maximum number of growth iterations for a given seed.
 
-</details>
+**Values:**
 
-<details>
-
-<summary><strong>NumIterationsUpdateMode</strong><br><em>How to update the number of iteration for each seed.</em></summary>
-
-Controls how the remaining number of iterations is updated during growth.
-
-**Values**:
-
-* **Once**: Read once at the beginning.
-* **SetEachIteration**: Reset the value after each iteration.
-* **AddEachIteration**: Add to the remaining iterations after each step.
+* **Constant**: Use a single constant for all seeds
+* **Seed Attribute**: Attribute read on the seed.
+* **Vtx Attribute**: Attribute read on the vtx.
 
 </details>
 
 <details>
 
-<summary><strong>SeedNumBranches</strong><br><em>The maximum number of growth started by a given seed.</em></summary>
+<summary><strong>Num Iterations Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-Controls how many paths can branch from a single seed. Can be set as a constant or read from an attribute on the seed point.
+Num iteration attribute name. (will be translated to int32)
 
-**Values**:
-
-* **Constant**: Use a fixed value.
-* **SeedAttribute**: Read the value from an integer attribute on the seed point.
-* **VtxAttribute**: Read the value from an integer attribute on the graph vertex.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>SeedNumBranchesMean</strong><br><em>How the NumBranches value is to be interpreted against the actual number of neighbors.</em></summary>
+<summary><strong>Num Iterations Constant</strong> <code>int32</code></summary>
 
-Defines how the branch count is interpreted when it's a relative value (e.g., 0.5 means half the available neighbors).
+Num iteration constant
 
-**Values**:
-
-* **Relative**: Input is normalized between 0..1 and used as a factor.
-* **Discrete**: Raw value is used directly.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>NumBranchesConstant</strong><br><em>Num branches constant</em></summary>
+<summary><strong>Num Iterations Update Mode</strong> <code>PCGExGrowthUpdateMode</code></summary>
 
-Fixed number of branches if `SeedNumBranches` is set to "Constant".
+Controls num iterations update mode.
 
-</details>
+**Values:**
 
-<details>
+* **Once**: Read once at the beginning of the computation.
+* **Set Each Iteration**: Set the remaining number of iteration after each iteration.
+* **Add Each Iteration**: Add to the remaning number of iterations after each iteration.
 
-<summary><strong>NumBranchesAttribute</strong><br><em>Num branches attribute name.</em></summary>
-
-Name of the attribute used when `SeedNumBranches` is set to "Seed Attribute" or "Vtx Attribute".
-
-</details>
-
-<details>
-
-<summary><strong>GrowthDirection</strong><br><em>The maximum number of growth iterations for a given seed.</em></summary>
-
-Controls the direction in which each path grows. Can be a constant vector or read from an attribute.
-
-**Values**:
-
-* **Constant**: Use a fixed vector.
-* **SeedAttribute**: Read the vector from an attribute on the seed point.
-* **VtxAttribute**: Read the vector from an attribute on the graph vertex.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>GrowthDirectionAttribute</strong><br><em>Growth direction attribute name.</em></summary>
+<summary><strong>Seed Num Branches</strong> <code>PCGExGrowthValueSource</code></summary>
 
-Name of the attribute used when `GrowthDirection` is set to "Seed Attribute" or "Vtx Attribute".
+The maximum number of growth started by a given seed.
 
-</details>
+**Values:**
 
-<details>
-
-<summary><strong>GrowthDirectionConstant</strong><br><em>Growth direction constant</em></summary>
-
-Fixed vector direction if `GrowthDirection` is set to "Constant".
+* **Constant**: Use a single constant for all seeds
+* **Seed Attribute**: Attribute read on the seed.
+* **Vtx Attribute**: Attribute read on the vtx.
 
 </details>
 
 <details>
 
-<summary><strong>GrowthMaxDistance</strong><br><em>The maximum growth distance for a given seed.</em></summary>
+<summary><strong>Seed Num Branches Mean</strong> <code>PCGExMeanMeasure</code></summary>
 
-Controls the maximum total distance a path can travel. Can be a constant or read from an attribute.
-
-**Values**:
-
-* **Constant**: Use a fixed value.
-* **SeedAttribute**: Read the value from a double attribute on the seed point.
-* **VtxAttribute**: Read the value from a double attribute on the graph vertex.
+How the NumBranches value is to be interpreted against the actual number of neighbors.
 
 </details>
 
 <details>
 
-<summary><strong>GrowthMaxDistanceAttribute</strong><br><em>Max growth distance attribute name.</em></summary>
+<summary><strong>Num Branches Constant</strong> <code>int32</code></summary>
 
-Name of the attribute used when `GrowthMaxDistance` is set to "Seed Attribute" or "Vtx Attribute".
+Num branches constant
 
-</details>
-
-<details>
-
-<summary><strong>GrowthMaxDistanceConstant</strong><br><em>Max growth distance constant</em></summary>
-
-Fixed maximum distance if `GrowthMaxDistance` is set to "Constant".
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bUseGrowthStop</strong><br><em>Whether or not to stop growth at a vertex.</em></summary>
+<summary><strong>Num Branches Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-When enabled, paths will stop growing if a vertex has a boolean attribute set to true.
+Num branches attribute name. (will be translated to int32)
 
-</details>
-
-<details>
-
-<summary><strong>GrowthStopAttribute</strong><br><em>An attribute read on the Vtx as a boolean. If true and this node is used in a path, the path stops there.</em></summary>
-
-Name of the boolean attribute on graph vertices that stops growth when true.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bInvertGrowthStop</strong><br><em>Inverse Growth Stop behavior</em></summary>
+<summary><strong>Growth Direction</strong> <code>PCGExGrowthValueSource</code></summary>
 
-When enabled, paths stop growing if a vertex has a boolean attribute set to false.
+The maximum number of growth iterations for a given seed.
 
-</details>
+**Values:**
 
-<details>
-
-<summary><strong>bUseNoGrowth</strong><br><em>Whether or not to prevent growth on a vertex.</em></summary>
-
-When enabled, vertices with a true value in the specified attribute will never be used for growth, but can still act as seeds.
+* **Constant**: Use a single constant for all seeds
+* **Seed Attribute**: Attribute read on the seed.
+* **Vtx Attribute**: Attribute read on the vtx.
 
 </details>
 
 <details>
 
-<summary><strong>NoGrowthAttribute</strong><br><em>An attribute read on the Vtx as a boolean. If true, this point will never be grown on, but may be still used as seed.</em></summary>
+<summary><strong>Growth Direction Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-Name of the boolean attribute on graph vertices that prevents growth.
+Growth direction attribute name. (will be translated to a FVector)
 
-</details>
-
-<details>
-
-<summary><strong>bInvertNoGrowth</strong><br><em>Inverse No Growth behavior</em></summary>
-
-When enabled, paths will not grow on vertices with a false value in the specified attribute.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>SeedAttributesToPathTags</strong><br><em>TBD</em></summary>
+<summary><strong>Growth Direction Constant</strong> <code>Vector</code></summary>
 
-Controls how seed attributes are converted into tags for output paths.
+Growth direction constant
 
-</details>
-
-<details>
-
-<summary><strong>SeedForwarding</strong><br><em>Which Seed attributes to forward on paths.</em></summary>
-
-Determines which attributes from the seed points are copied to the resulting path data.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Statistics</strong><br><em>Output various statistics.</em></summary>
+<summary><strong>Growth Direction Update Mode</strong> <code>PCGExGrowthUpdateMode</code></summary>
 
-When enabled, outputs performance and processing statistics for debugging or optimization.
+Controls growth direction update mode.
+
+**Values:**
+
+* **Once**: Read once at the beginning of the computation.
+* **Set Each Iteration**: Set the remaining number of iteration after each iteration.
+* **Add Each Iteration**: Add to the remaning number of iterations after each iteration.
 
 </details>
 
 <details>
 
-<summary><strong>bUseOctreeSearch</strong><br><em>Whether or not to search for closest node using an octree.</em></summary>
+<summary><strong>Growth Max Distance</strong> <code>PCGExGrowthValueSource</code></summary>
 
-When enabled, uses an octree structure for faster neighbor lookups. May improve performance on large datasets.
+The maximum growth distance for a given seed.
+
+**Values:**
+
+* **Constant**: Use a single constant for all seeds
+* **Seed Attribute**: Attribute read on the seed.
+* **Vtx Attribute**: Attribute read on the vtx.
 
 </details>
+
+<details>
+
+<summary><strong>Growth Max Distance Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Max growth distance attribute name. (will be translated to a FVector)
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Growth Max Distance Constant</strong> <code>double</code></summary>
+
+Max growth distance constant
+
+⚡ PCG Overridable
+
+</details>
+
+**Advanced**
+
+<details>
+
+<summary><strong>Statistics</strong> <code>PCGExPathStatistics</code></summary>
+
+Output various statistics.
+
+</details>
+
+<details>
+
+<summary><strong>Use Octree Search</strong> <code>bool</code></summary>
+
+Whether or not to search for closest node using an octree. Depending on your dataset, enabling this may be either much faster, or slightly slower.
+
+</details>
+
+**Limits**
+
+<details>
+
+<summary><strong>Use Growth Stop</strong> <code>bool</code></summary>
+
+Controls use growth stop.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Growth Stop Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+An attribute read on the Vtx as a boolean. If true and this node is used in a path, the path stops there.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invert Growth Stop</strong> <code>bool</code></summary>
+
+Inverse Growth Stop behavior
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Use No Growth</strong> <code>bool</code></summary>
+
+Controls use no growth.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>No Growth Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+An attribute read on the Vtx as a boolean. If true, this point will never be grown on, but may be still used as seed.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invert No Growth</strong> <code>bool</code></summary>
+
+Inverse No Growth behavior
+
+⚡ PCG Overridable
+
+</details>
+
+**Tagging & Forwarding**
+
+<details>
+
+<summary><strong>Seed Attributes To Path Tags</strong> <code>PCGExAttributeToTagDetails</code></summary>
+
+TBD
+
+📦 See: AttributeToTag configuration
+
+</details>
+
+<details>
+
+<summary><strong>Seed Forwarding</strong> <code>PCGExForwardDetails</code></summary>
+
+Which Seed attributes to forward on paths.
+
+📦 See: Forward configuration
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsPathfinding\Public\Elements\PCGExPathfindingGrowPaths.h`

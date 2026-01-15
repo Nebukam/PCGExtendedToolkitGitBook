@@ -5,94 +5,153 @@ icon: circle-dashed
 
 # Length
 
-{% hint style="info" %}
-This page was generated from the source code. It should properly capture what the subnode does, but still needs to be proofread by a human.
-{% endhint %}
+Check against the edge' length.
 
-> Filters edges based on their length using a configurable comparison.
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode evaluates each edge in a graph and determines whether it meets a specific length condition. It calculates the distance between the start and end points of an edge, then compares that distance to a defined threshold using a selected operator. If the comparison is true, the edge passes through; otherwise, it's filtered out.
+> AI-Generated, needs proofreading
 
-The process includes:
-
-1. Measuring the straight-line distance between the two points of each edge.
-2. Comparing this measured length against a set threshold using the chosen operator.
-3. Optionally flipping the result if the invert toggle is enabled.
+* The Edge Filter : Length node evaluates edges based on their length against a specified threshold.
+* Depending on the Threshold Input setting, the node either reads the threshold value from an attribute defined in Threshold (Attr) or uses a constant double value provided in the Threshold setting.
+* The Comparison setting determines how the edge's length is compared to the threshold (e.g., equal to, greater than).
+* Tolerance specifies the rounding mode used for approximate comparison modes, affecting how closely the edge length must match the threshold.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Threshold Input</strong><br><em>Whether to read the threshold from an attribute on the edge or a constant.</em></summary>
+<summary><strong>Threshold Input</strong> <code>PCGExInputValueType</code></summary>
 
-Controls whether the filter uses a fixed value or reads the threshold from an attribute on the edges.
+Whether to read the threshold from an attribute on the edge or a constant.
 
-**Values**:
-
-* **Constant**: Use a fixed user-defined value.
-* **Attribute**: Read the threshold value from an attribute on the input data.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Threshold (Attr)</strong><br><em>Attribute to fetch threshold from.</em></summary>
+<summary><strong>Threshold (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-The name of the edge attribute that contains the threshold values, used when Threshold Input is set to Attribute.
+Attribute to fetch threshold from
 
-</details>
-
-<details>
-
-<summary><strong>Threshold</strong><br><em>Constant value for the length threshold.</em></summary>
-
-The fixed threshold value used when Threshold Input is set to Constant. Must be greater than or equal to 1.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Comparison</strong><br><em>Comparison check.</em></summary>
+<summary><strong>Threshold</strong> <code>double</code></summary>
 
-The logical operation used to compare edge lengths against the threshold.
+Controls threshold.
 
-**Values**:
-
-* **==**: Strictly equal to
-* **!=**: Strictly not equal to
-* **>=**: Equal or greater than
-* **<=**: Equal or smaller than
-* **>**: Strictly greater than
-* **<**: Strictly smaller than
-* **\~=**: Nearly equal to (within tolerance)
-* **!\~=**: Nearly not equal to (outside tolerance)
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Tolerance</strong><br><em>Rounding mode for approx. comparison modes.</em></summary>
+<summary><strong>Comparison</strong> <code>PCGExComparison</code></summary>
 
-A small value used when using approximate comparisons (e.g., Nearly Equal). Defines how close the edge length must be to the threshold to pass.
+Comparison check
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Invert</strong><br><em>When enabled, the result of the comparison is flipped.</em></summary>
+<summary><strong>Tolerance</strong> <code>double</code></summary>
 
-When enabled, edges that would normally pass the filter are excluded, and those that fail are included.
+Rounding mode for approx. comparison modes
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-You're building a procedural city network and want to ensure roads (represented as edges) are at least 50 units long. You set the Threshold to 50, Comparison to "Greater Than or Equal", and leave Invert unchecked. This filters out all edges shorter than 50 units, keeping only the significant road connections.
+<summary><strong>Invert</strong> <code>bool</code></summary>
 
-#### Notes
+Controls invert.
 
-* The length is calculated using the Euclidean distance between the two points of each edge.
-* Using Attribute input allows for dynamic thresholds per edge, useful for varying requirements across a dataset.
-* When using approximate comparisons (e.g., Nearly Equal), ensure tolerance is set appropriately to avoid unintended filtering.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExEdgeLengthFilterConfig</code></summary>
+
+Test Config.
+
+📦 See: EdgeLengthFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Threshold Input</strong> <code>PCGExInputValueType</code></summary>
+
+Whether to read the threshold from an attribute on the edge or a constant.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Threshold (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Attribute to fetch threshold from
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Threshold</strong> <code>double</code></summary>
+
+Controls threshold.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Comparison</strong> <code>PCGExComparison</code></summary>
+
+Comparison check
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Tolerance</strong> <code>double</code></summary>
+
+Rounding mode for approx. comparison modes
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invert</strong> <code>bool</code></summary>
+
+Controls invert.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsClusters\Public\Filters\Edges\PCGExEdgeLengthFilter.h`

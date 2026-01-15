@@ -5,92 +5,152 @@ icon: circle-dashed
 
 # String
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Creates a filter definition that compares two string attribute values.
 
-> Creates a filter definition that compares two string attribute values.
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode sets up a condition that compares two string values. You can choose to compare either constant strings or values taken from point attributes. The comparison logic determines whether the two strings match exactly, differ, or meet specific length requirements. Based on this evaluation, points are either allowed to pass through or filtered out.
+> AI-Generated, needs proofreading
 
-The comparison operation can be customized to check for exact matches, differences in string lengths, or even locale-aware ordering. When the "Swap Operands" option is enabled, the order of the values being compared is reversed, which helps invert certain logical checks like "contains" conditions.
+* The node receives two string attribute values: Operand A and Operand B (Attr), both of which are internally converted to `double` for comparison purposes.
+* Based on the specified Comparison setting, the node performs a comparison between the translated double values of Operand A and Operand B (Attr).
+* The Compare Against setting determines whether Operand B is an attribute value or a direct input value, influencing how Operand B is interpreted in the comparison process.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Operand A</strong><br><em>First operand for comparison</em></summary>
+<summary><strong>Operand A</strong> <code>Name</code></summary>
 
-Specifies the first value in the comparison. This can be an attribute name from your input data, which will be read as a string.
+Operand A for testing -- Will be translated to `double` under the hood.
 
-</details>
-
-<details>
-
-<summary><strong>Comparison</strong><br><em>Type of comparison to perform</em></summary>
-
-Defines how the two values are evaluated. Options include:
-
-* **Strictly Equal**: Checks if Operand A equals Operand B.
-* **Strictly Not Equal**: Checks if Operand A does not equal Operand B.
-* **Length Strictly Equal**: Compares the length of Operand A and Operand B.
-* **Length Strictly Unequal**: Checks if the lengths are different.
-* **Length Equal or Greater**: Checks if Operand A's length is greater than or equal to Operand B's.
-* **Length Equal or Smaller**: Checks if Operand A's length is less than or equal to Operand B's.
-* **Strictly Greater**: Compares the lengths, checking if Operand A's length is strictly greater.
-* **Strictly Smaller**: Checks if Operand A's length is strictly smaller.
-* **Locale Strictly Greater**: Compares strings using locale-aware ordering (e.g., alphabetical).
-* **Locale Strictly Smaller**: Checks if Operand A's string comes before Operand B's in locale order.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Compare Against</strong><br><em>Type of second operand</em></summary>
+<summary><strong>Comparison</strong> <code>PCGExStringComparison</code></summary>
 
-Determines whether the second value is a constant string or an attribute from the input data.
+Comparison
 
-**Values**:
-
-* **Constant**: Second value is a user-defined string.
-* **Attribute**: Second value is read from an attribute in the input data.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Operand B (Attr)</strong><br><em>Attribute to use for second operand</em></summary>
+<summary><strong>Compare Against</strong> <code>PCGExInputValueType</code></summary>
 
-If "Compare Against" is set to "Attribute", this field specifies which attribute to use for Operand B.
+Type of OperandB
 
-</details>
-
-<details>
-
-<summary><strong>Operand B</strong><br><em>Constant string value for second operand</em></summary>
-
-If "Compare Against" is set to "Constant", this field allows you to define the constant string used as Operand B.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Swap Operands</strong><br><em>Reverse the order of operands</em></summary>
+<summary><strong>Operand B (Attr)</strong> <code>Name</code></summary>
 
-When enabled, swaps the order of Operand A and Operand B in the comparison. This can be helpful for inverting certain logical conditions.
+Operand B for testing -- Will be translated to `double` under the hood.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-You want to filter points where a label attribute matches a specific string. Set Operand A to the label attribute name, Operand B to "TargetLabel", and Comparison to "Strictly Equal". This will pass only those points where the label equals "TargetLabel".
+<summary><strong>Operand B</strong> <code>String</code></summary>
 
-Alternatively, you could use this to filter out points with labels shorter than 5 characters by setting Operand A to a label attribute, Operand B to 5, and using the "Length Equal or Greater" comparison.
+Operand B for testing
 
-#### Notes
+⚡ PCG Overridable
 
-* The string comparison is case-sensitive.
-* When comparing lengths, the actual string content does not matter — only the number of characters.
-* For locale-aware comparisons, ensure that your data supports proper localization settings.
+</details>
+
+<details>
+
+<summary><strong>Swap Operands</strong> <code>bool</code></summary>
+
+Swap operands. Useful to invert "contains" checks
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExStringCompareFilterConfig</code></summary>
+
+State name.
+
+📦 See: StringCompareFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Operand A</strong> <code>Name</code></summary>
+
+Operand A for testing -- Will be translated to `double` under the hood.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Comparison</strong> <code>PCGExStringComparison</code></summary>
+
+Comparison
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Compare Against</strong> <code>PCGExInputValueType</code></summary>
+
+Type of OperandB
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Operand B (Attr)</strong> <code>Name</code></summary>
+
+Operand B for testing -- Will be translated to `double` under the hood.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Operand B</strong> <code>String</code></summary>
+
+Operand B for testing
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Swap Operands</strong> <code>bool</code></summary>
+
+Swap operands. Useful to invert "contains" checks
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExFilters\Public\Filters\Points\PCGExStringCompareFilter.h`

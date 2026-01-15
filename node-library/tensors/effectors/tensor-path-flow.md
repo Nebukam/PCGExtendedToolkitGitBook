@@ -5,91 +5,134 @@ icon: circle-dashed
 
 # Tensor : Path Flow
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+A tensor that represent a vector/flow field along a path
 
-> Creates a tensor that represents a vector/flow field along a path.
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### How It Works
+**How It Works**
 
-This node builds a directional flow field that guides points along a path. It calculates how strongly each point is influenced by the path based on its distance and orientation. The influence decreases smoothly as points move away from the path, creating a natural falloff effect. The direction of the tensor's influence aligns with the path's orientation, determined by the selected axis.
+> AI-Generated, needs proofreading
 
-1. For each input point, it checks if the point lies within the tensor's radius.
-2. If inside the radius, it calculates how far along the path the point is.
-3. It then determines the direction and strength of the flow based on that position and the path's orientation.
-4. The resulting vector guides the point along the path, with stronger influence closer to the path.
+* The Tensor : Path Flow node generates a tensor that represents a vector/flow field along a specified path.
+* It uses a selected point type to define how points are interpolated along the path; if "Smooth Linear" is enabled, it interpolates smoothly between points.
+* The node samples inputs to determine the flow characteristics at various points along the path.
+* A base radius for the spline is defined by the Radius setting and can be scaled based on the control points' scale length.
+* The Spline Direction setting specifies which axis of the spline's transformation should be used as the direction for the vector/flow field.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Point Type</strong><br><em>Which point type to use. Shared amongst all points; if you want tight control, create a fully-fledged spline instead.</em></summary>
+<summary><strong>Point Type</strong> <code>PCGExSplinePointTypeRedux</code></summary>
 
-Controls how the path is interpreted when building the tensor.
+Which point type to use. Shared amongst all points; if you want tight control, create a fully-fledged spline instead.
 
-**Values**:
-
-* **Linear**: Interpolates points linearly along the path.
-* **Smooth**: Uses smooth interpolation for a more natural curve.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Smooth Linear</strong><br><em>When enabled, uses smooth interpolation for linear point types.</em></summary>
+<summary><strong>└─ Smooth Linear</strong> <code>bool</code></summary>
 
-When enabled, applies smooth interpolation to the path when using the Linear point type. This creates a more natural curve.
+Controls └─ smooth linear.
 
-</details>
-
-<details>
-
-<summary><strong>Sample Inputs</strong><br><em>Sample inputs.</em></summary>
-
-Controls which points along the path are used for sampling the tensor field.
-
-**Values**:
-
-* **All**: Samples all input points.
-* **Start Only**: Samples only the first point.
-* **End Only**: Samples only the last point.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Radius</strong><br><em>Base radius of the spline. Will be scaled by control points' scale length.</em></summary>
+<summary><strong>Sample Inputs</strong> <code>PCGExSplineSamplingIncludeMode</code></summary>
 
-Defines how far from the path the tensor has an effect. Larger values mean a wider influence area.
+Sample inputs.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Spline Direction</strong><br><em>Which spline transform axis is to be used.</em></summary>
+<summary><strong>Radius</strong> <code>double</code></summary>
 
-Determines which direction along the spline is considered "forward" for the tensor's orientation.
+Base radius of the spline. Will be scaled by control points' scale length
 
-**Values**:
-
-* **Forward**: X+ axis.
-* **Backward**: X- axis.
-* **Right**: Y+ axis.
-* **Left**: Y- axis.
-* **Up**: Z+ axis.
-* **Down**: Z- axis.
+⚡ PCG Overridable
 
 </details>
 
-{% hint style="info" %}
-Connects to \*\*Tensor\*\* processing nodes as a Subnode.
-{% endhint %}
+<details>
 
-#### Usage Example
+<summary><strong>Spline Direction</strong> <code>PCGExAxis</code></summary>
 
-Use this node to create a wind effect that follows the shape of a winding river. Connect a path to the input, set the radius to cover the area around the river, and configure the direction to match the flow of water. Then connect it to a tensor processing node to apply the effect to points in your scene.
+Which spline transform axis is to be used
 
-#### Notes
+⚡ PCG Overridable
 
-The tensor's influence is strongest at the center of the path and decreases with distance. Adjust the radius to control how far the effect extends. The spline direction setting allows you to define which way the flow points along the path.
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExTensorPathFlowConfig</code></summary>
+
+Tensor properties
+
+📦 See: TensorPathFlow configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Point Type</strong> <code>PCGExSplinePointTypeRedux</code></summary>
+
+Which point type to use. Shared amongst all points; if you want tight control, create a fully-fledged spline instead.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Smooth Linear</strong> <code>bool</code></summary>
+
+Controls └─ smooth linear.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Sample Inputs</strong> <code>PCGExSplineSamplingIncludeMode</code></summary>
+
+Sample inputs.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Radius</strong> <code>double</code></summary>
+
+Base radius of the spline. Will be scaled by control points' scale length
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Spline Direction</strong> <code>PCGExAxis</code></summary>
+
+Which spline transform axis is to be used
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsTensors\Public\Tensors\PCGExTensorPathFlow.h`

@@ -5,104 +5,114 @@ icon: circle-dashed
 
 # Endpoints Compare (Numeric)
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Compare the value of an attribute on each of the edge endpoint.
 
-> Compare the value of an attribute on each of the edge endpoint.
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### Overview
+**How It Works**
 
-This subnode filters edges based on a numeric comparison between attribute values at the edge's endpoints. It allows you to define rules that determine whether an edge should be included or excluded from further processing based on how its start and end points relate numerically.
+> AI-Generated, needs proofreading
 
-It is useful when working with graph data where you want to enforce constraints on the relationship between connected nodes, such as ensuring edges only exist between nodes with specific numeric attribute relationships (e.g., a node's height must be greater than its neighbor’s).
-
-{% hint style="info" %}
-Connects to **Filter** pins on processing nodes.
-{% endhint %}
-
-#### How It Works
-
-This subnode evaluates the value of a specified numeric attribute at each edge endpoint and compares them using a defined comparison operator. The comparison can be made between:
-
-* The start point and end point values (AgainstEach)
-* The edge's own value and the start point value (AgainstStart)
-* The edge's own value and the end point value (AgainstEnd)
-* The edge's own value against both endpoints (AgainstSelfBoth)
-
-The result of this comparison determines whether the edge passes the filter. If the condition is met, the edge is included; otherwise, it is excluded. When **Invert** is enabled, the logic is flipped — edges that would normally pass now fail and vice versa.
-
-#### Inputs
-
-* **Edge Data**: Expects a graph with edge data containing the specified attribute.
-* **Point Data**: Requires point data to access endpoint attributes.
-
-#### Outputs
-
-* A filtered set of edges based on the comparison result.
+* The Edge Filter : Endpoints Compare (Numeric) node retrieves the numeric value of a specified attribute from both endpoints of an edge.
+* It then applies a comparison operation defined by the "Comparison" setting to these two values.
+* If the "Tolerance" is set, it rounds or adjusts the comparison according to the tolerance level before performing the check.
+* The node outputs edges where the comparison result meets the criteria; if "Invert" is true, it outputs edges that do not meet the criteria instead.
+* Configuration settings in "Config: Test Config" can be used to further tailor the behavior of the node during testing or specific scenarios.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Attribute</strong><br><em>Attribute to compare.</em></summary>
+<summary><strong>Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-The numeric attribute used for comparison. This can be any scalar attribute present on the edge or point data.
+Attribute to compare
 
-</details>
-
-<details>
-
-<summary><strong>Comparison</strong><br><em>Comparison check.</em></summary>
-
-The type of comparison to perform:
-
-* **==**: Strictly equal
-* **!=**: Strictly not equal
-* **>=**: Equal or greater than
-* **<=**: Equal or smaller than
-* **>**: Strictly greater than
-* **<**: Strictly smaller than
-* **\~=**: Nearly equal (within tolerance)
-* **!\~=**: Nearly not equal (outside tolerance)
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Tolerance</strong><br><em>Rounding mode for approx. comparison modes.</em></summary>
+<summary><strong>Comparison</strong> <code>PCGExComparison</code></summary>
 
-Used only when the comparison is set to "Nearly Equal" or "Nearly Not Equal". Defines how close two values must be to be considered equal.
+Comparison check
 
-</details>
-
-<details>
-
-<summary><strong>bInvert</strong><br><em>When enabled, the filter result is inverted.</em></summary>
-
-When enabled, edges that would normally pass the comparison are filtered out, and those that fail are allowed through.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Config</strong><br><em>Test Config.</em></summary>
+<summary><strong>Tolerance</strong> <code>double</code></summary>
 
-Internal configuration used to define how the comparison is performed between endpoints.
+Rounding mode for approx. comparison modes
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-You have a graph of terrain points with a "Height" attribute. You want to keep only edges where the start point height is strictly greater than the end point height. Set:
+<summary><strong>Invert</strong> <code>bool</code></summary>
 
-* Attribute: Height
-* Comparison: Strictly Greater (>)
+Controls invert.
 
-This will filter out all edges where the start point has a lower or equal height compared to the end point.
+⚡ PCG Overridable
 
-#### Notes
+</details>
 
-* This subnode works with numeric attributes only.
-* The comparison logic can be inverted using the **Invert** toggle for more flexible filtering.
-* When using "Nearly Equal" comparisons, ensure the tolerance is set appropriately for your data precision.
+<details>
+
+<summary><strong>Config</strong> <code>PCGExEdgeEndpointsCompareNumFilterConfig</code></summary>
+
+Test Config.
+
+📦 See: EdgeEndpointsCompareNumFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Attribute to compare
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Comparison</strong> <code>PCGExComparison</code></summary>
+
+Comparison check
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Tolerance</strong> <code>double</code></summary>
+
+Rounding mode for approx. comparison modes
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invert</strong> <code>bool</code></summary>
+
+Controls invert.
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsClusters\Public\Filters\Edges\PCGExEdgeEndpointsCompareNumFilter.h`

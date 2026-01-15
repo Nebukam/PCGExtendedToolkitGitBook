@@ -5,233 +5,285 @@ icon: circle
 
 # Asset Staging
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Data staging from PCGEx Asset Collections.
 
-> Stages assets from collections onto points, enabling procedural asset placement and data assignment.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node processes each point in your input data and assigns an asset from a collection based on your configuration. For every point, it selects an entry using either random or weighted selection methods. The selected asset's path is then written to an attribute on the point.
-
-If you choose "Collection Map" as the output mode, instead of writing asset paths directly, it stores references to the collection and the index of the picked entry for later use in other nodes that can interpret this mapping.
-
-When working with mesh collections, it also handles material picking. If enabled, it writes material slot indices or paths to attributes on the point, allowing for per-instance material assignment. The node supports fixed-length material attribute lists by padding missing indices with null values up to a specified maximum.
-
-Additionally, it can scale points to fit the bounds of their staged assets and apply justification settings to align the asset within the point's space. It also supports writing weight data and entry type information for advanced filtering or procedural behaviors.
+* The Asset Staging node retrieves data from an asset collection specified by the PCGExCollectionSource setting.
+* It processes assets within the designated PCGExAssetCollection using details defined in PCGExRoamingAssetCollectionDetails, focusing on attributes such as Name.
+* The node stages the processed asset data according to the Output Mode set by PCGExStagingOutputMode.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Collection Source</strong><br><em>Defines how the collection is sourced.</em></summary>
+<summary><strong>Collection Source</strong> <code>PCGExCollectionSource</code></summary>
 
-Controls whether the collection is directly referenced or read from an attribute on the input points.
+Controls collection source.
 
-**Values**:
-
-* **Asset**: Use a direct asset reference.
-* **Attribute**: Read the collection path from an attribute on the input points.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Asset Collection</strong><br><em>Reference to the asset collection to use.</em></summary>
+<summary><strong>Asset Collection</strong> <code>PCGExAssetCollection</code></summary>
 
-The asset collection to draw assets from when using "Asset" as the collection source.
+Controls asset collection.
 
-</details>
-
-<details>
-
-<summary><strong>Attribute Set Details</strong><br><em>Details for attribute-based collection sourcing.</em></summary>
-
-Configuration for reading collection paths from an attribute on input points when using the "Attribute" collection source.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Collection Path Attribute Name</strong><br><em>The name of the attribute to read collection path from.</em></summary>
+<summary><strong>Attribute Set Details</strong> <code>PCGExRoamingAssetCollectionDetails</code></summary>
 
-The name of the attribute used to store collection paths when using the "Attribute" collection source.
+Controls attribute set details.
 
-</details>
+📦 See: RoamingAssetCollection configuration
 
-<details>
-
-<summary><strong>Output Mode</strong><br><em>How the staging data is written to points.</em></summary>
-
-Controls whether asset data is written directly as point attributes or stored as a reference for later use.
-
-**Values**:
-
-* **Point Attributes**: Write asset path directly to an attribute on the point.
-* **Collection Map**: Store collection reference and pick index for later interpretation.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Asset Path Attribute Name</strong><br><em>The name of the attribute to write asset path to.</em></summary>
+<summary><strong>└─ Attribute</strong> <code>Name</code></summary>
 
-The name of the attribute where the asset path will be written when using "Point Attributes" output mode.
+Controls └─ attribute.
 
-</details>
-
-<details>
-
-<summary><strong>Distribution Settings</strong><br><em>Distribution details for selecting assets from the collection.</em></summary>
-
-Settings that control how assets are selected from the collection, such as random or weighted selection.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Scale To Fit</strong><br><em>Controls how points scale to fit staged assets.</em></summary>
+<summary><strong>Output Mode</strong> <code>PCGExStagingOutputMode</code></summary>
 
-Settings for scaling points so that their bounds accommodate the size of the staged asset.
+Controls output mode.
 
-</details>
+**Values:**
 
-<details>
+* **Point Attributes**: Write asset data on the point
+* **Collection Map**: Write collection reference & pick for later use
 
-<summary><strong>Justification</strong><br><em>How to align the staged asset within the point.</em></summary>
-
-Controls how the staged asset is positioned relative to the point's origin.
-
-</details>
-
-<details>
-
-<summary><strong>Variations</strong><br><em>Settings for handling variations in asset selection.</em></summary>
-
-Configuration for applying variations to asset selection, such as randomization or grouping.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Prune Empty Points</strong><br><em>If enabled, filter output based on whether a staging has been applied or not (empty entry).</em></summary>
+<summary><strong>Asset Path Attribute Name</strong> <code>Name</code></summary>
 
-When enabled, points that did not get a valid asset assigned are removed from the output. Note: This is currently slow.
+The name of the attribute to write asset path to.
 
-</details>
-
-<details>
-
-<summary><strong>Write Entry Type</strong><br><em>If enabled, writes the type of entry selected.</em></summary>
-
-When enabled, writes additional information about the type of entry (e.g., mesh, static mesh) to an attribute on the point.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Entry Type</strong><br><em>Details for writing entry type data.</em></summary>
+<summary><strong>Distribution</strong> <code>PCGExAssetDistributionDetails</code></summary>
 
-Configuration for how and where entry type information is written.
+Distribution details
 
-</details>
+📦 See: AssetDistribution configuration
 
-<details>
-
-<summary><strong>Tagging Details</strong><br><em>Tagging details for the staged assets.</em></summary>
-
-Settings for applying tags to staged assets, useful for filtering or categorization.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Weight To Attribute</strong><br><em>Update point scale so staged asset fits within its bounds.</em></summary>
+<summary><strong>Distribution (Entry)</strong> <code>PCGExMicroCacheDistributionDetails</code></summary>
 
-Controls whether to write weight information as an attribute on the point. Weight is based on how often an asset was selected from a collection.
+Distribution details that are specific to the picked entry -- what it picks depends on the type of collection being staged. For Mesh Collections, this let you control how materials are picked.
 
-**Values**:
+📦 See: MicroCacheDistribution configuration
 
-* **No Output**: Do not output weight.
-* **Raw**: Write raw integer weight.
-* **Normalized**: Write normalized weight value (Weight / WeightSum).
-* **Normalized (Inverted)**: Write one minus normalized weight (1 - (Weight / WeightSum)).
-* **Normalized to Density**: Same as Normalized.
-* **Normalized (Inverted) to Density**: Same as Normalized (Inverted).
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Weight Attribute Name</strong><br><em>The name of the attribute to write asset weight to.</em></summary>
+<summary><strong>Scale To Fit</strong> <code>PCGExScaleToFitDetails</code></summary>
 
-The name of the attribute where weight data is written when enabled.
+Controls scale to fit.
 
-</details>
+📦 See: ScaleToFit configuration
 
-<details>
-
-<summary><strong>Output Material Picks</strong><br><em>If enabled, will output mesh material picks.</em></summary>
-
-When enabled, writes material slot indices or paths to attributes for mesh collections.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Max Material Picks</strong><br><em>If > 0 will create dummy attributes for missing material indices up to a maximum.</em></summary>
+<summary><strong>Justification</strong> <code>PCGExJustificationDetails</code></summary>
 
-If greater than zero, creates fixed-length material attribute lists by padding with null values up to the specified index. Otherwise, only creates attributes for valid indices.
+Controls justification.
 
-</details>
+📦 See: Justification configuration
 
-<details>
-
-<summary><strong>Material Attribute Prefix</strong><br><em>Prefix to be used for material slot picks.</em></summary>
-
-The prefix used when naming material pick attributes (e.g., "Mat0", "Mat1").
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Do Output Sockets</strong><br><em>If enabled, outputs socket information from the staged assets.</em></summary>
+<summary><strong>Variations</strong> <code>PCGExFittingVariationsDetails</code></summary>
 
-When enabled, creates additional output sockets for each point based on the asset's socket data.
+Controls variations.
 
-</details>
-
-<details>
-
-<summary><strong>Output Socket Details</strong><br><em>Details for creating output sockets.</em></summary>
-
-Configuration for how and where socket information is written to the output.
+📦 See: FittingVariations configuration
 
 </details>
 
 <details>
 
-<summary><strong>Quiet Empty Collection Error</strong><br><em>If enabled, suppresses errors when a collection is empty.</em></summary>
+<summary><strong>Prune Empty Points</strong> <code>bool</code></summary>
 
-When enabled, prevents error messages from appearing if an asset collection is empty or invalid.
+\*\* If enabled, filter output based on whether a staging has been applied or not (empty entry). Current implementation is slow. \*/
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-1. Create a point set representing locations where you want to place assets.
-2. Add an Asset Staging node and connect it to the points.
-3. Set the Collection Source to "Asset" and select your asset collection.
-4. Choose "Point Attributes" as Output Mode and name the attribute for asset paths (e.g., "AssetPath").
-5. Configure distribution settings to control how assets are selected from the collection.
-6. Optionally, enable "Output Material Picks" if working with mesh collections and you need material data.
-7. Connect the output of this node to a spawner or instancer to generate your assets.
+<summary><strong>Do Filter Entry Type</strong> <code>bool</code></summary>
 
-#### Notes
+Controls do filter entry type.
 
-* The node supports both static and dynamic asset collections.
-* When using "Collection Map" output mode, it's best to use this node in combination with other nodes that can interpret the collection map.
-* Material picking is only supported for mesh collections.
-* Enabling "Prune Empty Points" can slow down processing due to filtering overhead.
-* The node supports multi-threaded processing for better performance on large datasets.
+</details>
+
+<details>
+
+<summary><strong>Entry Type Filter</strong> <code>PCGExStagedTypeFilterDetails</code></summary>
+
+Controls entry type filter.
+
+📦 See: StagedTypeFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Quiet Empty Collection Error</strong> <code>bool</code></summary>
+
+Controls quiet empty collection error.
+
+</details>
+
+**Additional Outputs**
+
+<details>
+
+<summary><strong>Write Entry Type</strong> <code>bool</code></summary>
+
+Controls write entry type.
+
+</details>
+
+<details>
+
+<summary><strong>Entry Type Attribute Name</strong> <code>Name</code></summary>
+
+Name of the FName entry type will be written to
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Tagging Details</strong> <code>PCGExAssetTaggingDetails</code></summary>
+
+Tagging details
+
+📦 See: AssetTagging configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Weight To Attribute</strong> <code>PCGExWeightOutputMode</code></summary>
+
+Update point scale so staged asset fits within its bounds
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Weight Attribute Name</strong> <code>Name</code></summary>
+
+The name of the attribute to write asset weight to.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Output Material Picks</strong> <code>bool</code></summary>
+
+\*\* If enabled, will output mesh material picks. \*/
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>├─ Fixed Max Index</strong> <code>int32</code></summary>
+
+\*\* If > 0 will create dummy attributes for missing material indices up to a maximum; in order to create a full, fixed-length list of valid (yet null) attributes for the static mesh spawner material overrides. Otherwise, will only create attribute for valid indices. \*/
+
+_Range: min: 0_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Prefix</strong> <code>Name</code></summary>
+
+Prefix to be used for material slot picks.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Do Output Sockets</strong> <code>bool</code></summary>
+
+Controls do output sockets.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Output Sockets</strong> <code>PCGExSocketOutputDetails</code></summary>
+
+Controls output sockets.
+
+📦 See: SocketOutput configuration
+
+</details>
+
+***
+
+Source: `Source\PCGExCollections\Public\Elements\PCGExAssetStaging.h`

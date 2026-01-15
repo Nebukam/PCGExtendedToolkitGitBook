@@ -5,125 +5,108 @@ icon: circle
 
 # Slide
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Slide points of a path along the path, either toward the next or previous point
 
-> Slides points along a path either toward the next or previous point, optionally storing and restoring their original positions.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-The Path : Slide node adjusts the location of points on a path by moving them along the direction of the path. It can move each point toward the next or previous point in the sequence, using either a percentage of the segment length or an absolute distance for how far to slide.
-
-For each point, the node calculates where it should move based on:
-
-1. The direction you choose (toward the next or previous point)
-2. How far to slide, defined as either a percentage or a fixed distance
-3. Whether to save the original position before moving
-
-If enabled, the node stores the starting position in an attribute so that you can later restore the points to their original locations.
+* The node processes a path by adjusting the position of its points based on specified settings.
+* Depending on the "Mode" setting, the node either slides points along the path towards the next or previous point, or restores their original positions.
+* The direction and amount of sliding are determined by the "Direction", "Amount Measure", "Slide Amount Input", and "Slide Amount (Attr)" parameters, where "Discrete" measures actual distance and "Relative" uses a percentage of segment length.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Mode</strong><br><em>Whether to slide or restore position.</em></summary>
+<summary><strong>Mode</strong> <code>PCGExSlideMode</code></summary>
 
-Controls whether the node moves points along the path or returns them to their original positions.
+Whether to slide or restore position
 
-**Values**:
+**Values:**
 
-* **Slide**: Moves points and optionally stores their original positions.
-* **Restore**: Returns points to their stored positions and removes the stored data.
+* **Slide**: Slide points and optional store the original position to an attribute
+* **Restore**: Restore the original position from an attribute and deletes it.
 
-</details>
-
-<details>
-
-<summary><strong>Direction</strong><br><em>Whether to slide toward the next or previous point.</em></summary>
-
-Determines which direction points move along the path.
-
-**Values**:
-
-* **Next**: Moves points toward the next point in the sequence.
-* **Previous**: Moves points toward the previous point in the sequence.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>AmountMeasure</strong><br><em>Discrete means actual distance, relative means a percentage of the segment length.</em></summary>
+<summary><strong>Direction</strong> <code>PCGExSlideDirection</code></summary>
 
-Defines how the slide amount is interpreted.
+Controls direction.
 
-**Values**:
+**Values:**
 
-* **Relative**: The input value is treated as a percentage (0 to 1) of the segment length.
-* **Discrete**: The input value is treated as an absolute distance in world units.
+* **Next**: Slide toward next point
+* **Previous**: Slide toward previous point
 
-</details>
-
-<details>
-
-<summary><strong>SlideAmountInput</strong><br><em>Whether to use a constant or attribute for slide amount.</em></summary>
-
-Controls whether the slide amount is defined by a fixed number or read from an attribute on the input points.
-
-**Values**:
-
-* **Constant**: Uses the fixed value in **Slide Amount**.
-* **Attribute**: Reads the slide amount from the attribute specified in **Slide Amount (Attr)**.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Slide Amount (Attr)</strong><br><em>Attribute to read slide amount from.</em></summary>
+<summary><strong>Amount Measure</strong> <code>PCGExMeanMeasure</code></summary>
 
-The name of the attribute to read the slide amount from when **SlideAmountInput** is set to **Attribute**.
+Discrete means actual distance, relative means a percentage of the segment length
 
-</details>
-
-<details>
-
-<summary><strong>Slide Amount</strong><br><em>Constant slide amount value.</em></summary>
-
-The fixed value used for sliding when **SlideAmountInput** is set to **Constant**.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bWriteOldPosition</strong><br><em>Whether to store the old position.</em></summary>
+<summary><strong>Slide Amount Input</strong> <code>PCGExInputValueType</code></summary>
 
-When enabled, the node saves the original point positions in an attribute before moving them.
+Controls slide amount input.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>RestorePositionAttributeName</strong><br><em>Attribute to write to or restore from.</em></summary>
+<summary><strong>Slide Amount (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-The name of the attribute used to store and retrieve the original point positions when sliding or restoring.
+Slide amount.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-You have a path with several points and want to gently slide each point toward the next one by 30% of the segment length. You would:
+<summary><strong>Slide Amount</strong> <code>double</code></summary>
 
-1. Set **Mode** to **Slide**
-2. Set **Direction** to **Next**
-3. Set **AmountMeasure** to **Relative**
-4. Set **Slide Amount** to `0.3`
-5. Enable **bWriteOldPosition**
+Slide amount.
 
-This results in each point being moved 30% of the way along its segment toward the next point, with original positions stored for potential later restoration.
+⚡ PCG Overridable
 
-#### Notes
+</details>
 
-* The node works on individual paths within a path collection.
-* When using relative amounts, values outside the 0–1 range may cause unexpected behavior.
-* The **Restore** mode requires that the attribute specified in **RestorePositionAttributeName** exists and contains valid position data.
-* Sliding is applied per point, so overlapping or extreme sliding can result in point clustering or self-intersection.
+<details>
+
+<summary><strong>Write Old Position</strong> <code>bool</code></summary>
+
+Whether to store the old position
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Restore Position Attribute Name</strong> <code>Name</code></summary>
+
+Attribute to write to or restore from
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsPaths\Public\Elements\PCGExPathSlide.h`

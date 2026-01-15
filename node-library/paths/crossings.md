@@ -5,262 +5,276 @@ icon: circle
 
 # Crossings
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Find crossing points between & inside paths.
 
-> Find crossing points between and inside paths.
+⚙️ **Behavior** — Instanced point filter condition.
 
-#### How It Works
+**How It Works**
 
-This node analyzes paths to detect where they intersect or cross each other. It can identify both self-intersections (where a single path crosses itself) and intersections between different paths. The node evaluates each path against others based on filtering settings, calculates the exact location of crossings, and optionally creates new points at those locations.
+> AI-Generated, needs proofreading
 
-When enabled, it applies blending to attributes from nearby points along the path and writes optional output attributes such as alpha values, cross direction vectors, and flags indicating if a point is a crossing. It also supports tagging paths based on whether they have intersections or not.
+* The node identifies crossing points between and inside paths based on specified conditions.
+* It filters paths using "Can Be Cut Tag" and "Can Cut Tag", where paths with these tags are considered cuttable or cutting paths respectively; the "Invert" option reverses this logic for each tag.
+* When "Self Intersection Only" is enabled, the node focuses solely on self-intersections within individual paths rather than intersections between different paths.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Self Intersection Only</strong><br><em>If enabled, crossings are only computed per path, against themselves only.</em></summary>
+<summary><strong>Self Intersection Only</strong> <code>bool</code></summary>
 
-When enabled, the node will only look for self-intersections within a single path. This ignores the "bEnableSelfIntersection" from details below.
+Controls self intersection only.
 
-</details>
-
-<details>
-
-<summary><strong>Can Be Cut Tag</strong><br><em>Filter entire dataset. If any tag is found on these paths, they are considered cut-able.</em></summary>
-
-Paths with this tag are considered cut-able (i.e., they can be intersected by other paths). Empty or None will ignore filtering.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Invert Can Be Cut Tag</strong><br><em>If enabled, the absence of the specified tag considers paths as cut-able.</em></summary>
+<summary><strong>Can Be Cut Tag</strong> <code>Name</code></summary>
 
-When enabled, paths without the specified tag are considered cut-able instead of those with it.
+Filter entire dataset. If any tag is found on these paths, they are considered cut-able. Empty or None will ignore filtering.
 
-</details>
-
-<details>
-
-<summary><strong>Can Cut Tag</strong><br><em>Filter entire dataset. If any tag is found on these paths, they are considered cutters.</em></summary>
-
-Paths with this tag are considered cutters (i.e., they can intersect other paths). Empty or None will ignore filtering.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Invert Can Cut Tag</strong><br><em>If enabled, the absence of the specified tag considers paths as cutters.</em></summary>
+<summary><strong>└─ Invert</strong> <code>bool</code></summary>
 
-When enabled, paths without the specified tag are considered cutters instead of those with it.
-
-</details>
-
-<details>
-
-<summary><strong>Create Point At Crossings</strong><br><em>If enabled, a point will be created at the crossing' location.</em></summary>
-
-When enabled, new points are generated at each intersection location. When disabled, only attribute data is written without creating new points.
+If enabled, the absence of the specified tag considers paths as cut-able.
 
 </details>
 
 <details>
 
-<summary><strong>Intersection Details</strong><br><em>Settings for how intersections are detected and handled.</em></summary>
+<summary><strong>Can Cut Tag</strong> <code>Name</code></summary>
 
-Controls the precision and behavior of intersection detection, such as tolerance thresholds or edge handling.
+Filter entire dataset. If any tag is found on these paths, they are considered cutters. Empty or None will ignore filtering.
 
-</details>
-
-<details>
-
-<summary><strong>Blending</strong><br><em>Blending applied on intersecting points along the path prev and next point.</em></summary>
-
-Defines how to blend properties from adjacent points when computing crossing attributes. This is distinct from external property inheritance.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Do Cross Blending</strong><br><em>If enabled, blend in properties &#x26; attributes from external sources.</em></summary>
+<summary><strong>└─ Invert</strong> <code>bool</code></summary>
 
-When enabled, blending operations are performed using data from other sources (e.g., point attributes) during crossing processing.
-
-</details>
-
-<details>
-
-<summary><strong>Crossing Carry Over</strong><br><em>If enabled, blend in properties &#x26; attributes from external sources.</em></summary>
-
-Controls how external attributes are carried over into the crossing points when blending is active.
+If enabled, the absence of the specified tag considers paths as cutters.
 
 </details>
 
 <details>
 
-<summary><strong>Crossing Blending</strong><br><em>If enabled, blend in properties &#x26; attributes from external sources.</em></summary>
+<summary><strong>Create Point At Crossings</strong> <code>bool</code></summary>
 
-Defines how to blend attributes at crossing points using a specified blending method (e.g., average, lerp).
-
-</details>
-
-<details>
-
-<summary><strong>Write Alpha</strong><br><em>If enabled, an alpha value is written to the output points.</em></summary>
-
-When enabled, an alpha attribute is added to each point indicating its crossing status or blending weight.
+If enabled, a point will be created at the crossing' location.
 
 </details>
 
 <details>
 
-<summary><strong>Crossing Alpha Attribute Name</strong><br><em>Name of the alpha attribute to write.</em></summary>
+<summary><strong>Intersection Details</strong> <code>PCGExPathEdgeIntersectionDetails</code></summary>
 
-The name of the attribute that stores the alpha value for crossing points.
+Controls intersection details.
 
-</details>
+📦 See: PathEdgeIntersection configuration
 
-<details>
-
-<summary><strong>Default Alpha Value</strong><br><em>Default alpha value if none is computed.</em></summary>
-
-The default alpha value used when no specific blending is applied.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Orient Crossing</strong><br><em>If enabled, crossing points are oriented based on the specified axis.</em></summary>
+<summary><strong>Blending</strong> <code>PCGExSubPointsBlendInstancedFactory</code> ⚙️</summary>
 
-When enabled, crossing points are rotated to align with a chosen axis (forward, backward, etc.).
+Blending applied on intersecting points along the path prev and next point. This is different from inheriting from external properties.
 
-</details>
-
-<details>
-
-<summary><strong>Crossing Orient Axis</strong><br><em>Axis used for orienting crossing points.</em></summary>
-
-The axis along which crossing points should be oriented.
-
-**Values**:
-
-* **Forward**: Forward (X+).
-* **Backward**: Backward (X-).
-* **Right**: Right (Y+).
-* **Left**: Left (Y-).
-* **Up**: Up (Z+).
-* **Down**: Down (Z-).
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Write Cross Direction</strong><br><em>If enabled, a cross direction vector is written to the output points.</em></summary>
+<summary><strong>Omit Uncuttable From Output</strong> <code>bool</code></summary>
 
-When enabled, a vector indicating the crossing direction is added to each point.
+If enabled, paths that are only "cutters" (paths that will cut but won't be cut).
+
+</details>
+
+**Cross Blending**
+
+<details>
+
+<summary><strong>Do Cross Blending</strong> <code>bool</code></summary>
+
+Controls do cross blending.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Cross Direction Attribute Name</strong><br><em>Name of the cross direction attribute to write.</em></summary>
+<summary><strong>Crossing Carry Over</strong> <code>PCGExCarryOverDetails</code></summary>
 
-The name of the attribute that stores the cross direction vector.
+If enabled, blend in properties & attributes from external sources.
 
-</details>
+📦 See: CarryOver configuration
 
-<details>
-
-<summary><strong>Default Cross Direction Value</strong><br><em>Default cross direction vector if none is computed.</em></summary>
-
-The default cross direction vector used when no specific direction is determined.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Write Is Point Crossing</strong><br><em>If enabled, a flag indicating whether the point is a crossing is written.</em></summary>
+<summary><strong>Crossing Blending</strong> <code>PCGExBlendingDetails</code></summary>
 
-When enabled, a boolean attribute indicates if a point is located at an intersection.
+If enabled, blend in properties & attributes from external sources.
+
+📦 See: Blending configuration
+
+⚡ PCG Overridable
+
+</details>
+
+**Outputs**
+
+<details>
+
+<summary><strong>Write Alpha</strong> <code>bool</code></summary>
+
+Controls write alpha.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Is Point Crossing Attribute Name</strong><br><em>Name of the attribute to write.</em></summary>
+<summary><strong>Crossing Alpha</strong> <code>Name</code></summary>
 
-The name of the attribute that stores whether a point is a crossing.
+Controls crossing alpha.
 
-</details>
-
-<details>
-
-<summary><strong>Tag If Has Crossing</strong><br><em>If enabled, paths with crossings are tagged.</em></summary>
-
-When enabled, paths that contain intersections are tagged with `HasCrossingsTag`.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Has Crossings Tag</strong><br><em>Name of the tag applied to paths with crossings.</em></summary>
+<summary><strong>└─ Default Value</strong> <code>double</code></summary>
 
-The name of the tag assigned to paths that have intersections.
+Controls └─ default value.
 
-</details>
-
-<details>
-
-<summary><strong>Tag If Has No Crossings</strong><br><em>If enabled, paths without crossings are tagged.</em></summary>
-
-When enabled, paths that do not contain intersections are tagged with `HasNoCrossingsTag`.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Has No Crossings Tag</strong><br><em>Name of the tag applied to paths without crossings.</em></summary>
+<summary><strong>Orient Crossing</strong> <code>bool</code></summary>
 
-The name of the tag assigned to paths that have no intersections.
+Controls orient crossing.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Omit Uncuttable From Output</strong><br><em>If enabled, paths that are only "cutters" (paths that will cut but won't be cut) are excluded.</em></summary>
+<summary><strong>Crossing Orient Axis</strong> <code>PCGExAxis</code></summary>
 
-When enabled, paths that act as cutters but are not cut themselves are removed from the output.
+Controls crossing orient axis.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Inputs
+<details>
 
-* **Main Paths**: Input paths to process for crossings.
-* **Filter Subnodes**:
-  * Optional subnode for filtering paths that can be cut (`CanBeCutTag`).
-  * Optional subnode for filtering paths that are cutters (`CanCutTag`).
+<summary><strong>Write Cross Direction</strong> <code>bool</code></summary>
 
-#### Outputs
+Controls write cross direction.
 
-* **Main Points**: Modified or new points, including crossing points if enabled.
-* **Tags** (if tagging is enabled):
-  * Paths tagged with `HasCrossingsTag` if they have intersections.
-  * Paths tagged with `HasNoCrossingsTag` if they do not.
+⚡ PCG Overridable
 
-#### Usage Example
+</details>
 
-1. Create a set of paths representing roads or tracks.
-2. Connect them to this node's **Main Paths** input.
-3. Optionally, use subnodes to tag some paths as "cutters" and others as "cut-able".
-4. Enable **Create Point At Crossings** to generate junction points.
-5. Enable **Write Alpha** and set a custom attribute name to track intersection weights.
-6. Use the output points to place road junctions or traffic lights.
+<details>
 
-#### Notes
+<summary><strong>Cross Direction</strong> <code>Name</code></summary>
 
-* This node is computationally expensive due to intersection detection across all paths.
-* Consider using filtering tags to reduce the number of comparisons.
-* The blending settings allow for smooth transitions in crossing attributes, useful for visual effects or path interpolation.
+Controls cross direction.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Default Value</strong> <code>Vector</code></summary>
+
+Controls └─ default value.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Is Point Crossing</strong> <code>bool</code></summary>
+
+Controls write is point crossing.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Is Point Crossing</strong> <code>Name</code></summary>
+
+Controls is point crossing.
+
+⚡ PCG Overridable
+
+</details>
+
+**Tagging**
+
+<details>
+
+<summary><strong>Tag If Has Crossing</strong> <code>bool</code></summary>
+
+Controls tag if has crossing.
+
+</details>
+
+<details>
+
+<summary><strong>Has Crossings Tag</strong> <code>String</code></summary>
+
+Controls has crossings tag.
+
+</details>
+
+<details>
+
+<summary><strong>Tag If Has No Crossings</strong> <code>bool</code></summary>
+
+Controls tag if has no crossings.
+
+</details>
+
+<details>
+
+<summary><strong>Has No Crossings Tag</strong> <code>String</code></summary>
+
+Controls has no crossings tag.
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsPaths\Public\Elements\PCGExPathCrossings.h`

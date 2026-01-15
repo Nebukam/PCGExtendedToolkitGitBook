@@ -5,110 +5,93 @@ icon: circle
 
 # Blend
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Blend path individual points between its start and end points.
 
-> Blend path individual points between its start and end points.
+⚙️ **Behavior** — Instanced value blender.
 
-#### How It Works
+**How It Works**
 
-The Path : Blend node modifies point attributes along a path by smoothly transitioning values from the starting point to the ending point. It calculates how much of each point's attribute should come from the start versus the end, based on where that point sits along the path.
+> AI-Generated, needs proofreading
 
-First, it measures the total length of the path and determines how far each point is from the beginning. Then, it assigns a blend factor between 0 (fully start point) and 1 (fully end point) to each point based on its position. Using this factor, it interpolates or blends attribute values using the selected blending method.
-
-The node can optionally apply blending to the first and last points in the path, which helps create smoother transitions when using certain blending modes.
+* The Path : Blend node interpolates individual points along a path between its start and end points based on specified blending settings.
+* It uses the PCGExBlendOver setting to determine how the blend occurs over the path's length.
+* The Lerp Input (PCGExInputValueType) specifies whether the interpolation is based on an attribute or a constant direction defined by Lerp (Attr).
+* Blending Settings are applied to smooth transitions of attributes along the interpolated points.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Blend Over</strong><br><em>Attribute to read the direction from.</em></summary>
+<summary><strong>Blend Over</strong> <code>PCGExBlendOver</code></summary>
 
-Controls how the blend factor is calculated along the path.
+Controls blend over.
 
-**Values**:
-
-* **Distance**: Blend based on distance along the path.
-* **Fixed**: Use a fixed value for blending (see Lerp Constant and Lerp Input settings).
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Lerp Input</strong><br><em>Constant direction.</em></summary>
+<summary><strong>Lerp Input</strong> <code>PCGExInputValueType</code></summary>
 
-Defines how to determine the blend factor when "Blend Over" is set to "Fixed".
+Controls lerp input.
 
-**Values**:
-
-* **Constant**: Use a fixed constant value for blending.
-* **Attribute**: Read the blend factor from an attribute on the input points.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Lerp</strong><br><em>Constant direction.</em></summary>
+<summary><strong>Lerp (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-The fixed blend factor used when "Lerp Input" is set to "Constant". This value should be between 0 and 1, where:
+Attribute to read the direction from
 
-* 0 means only the start point's attributes are used.
-* 1 means only the end point's attributes are used.
-* 0.5 means a 50/50 blend.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Blending Settings</strong><br><em>Blending settings used to smooth attributes.</em></summary>
+<summary><strong>Lerp</strong> <code>double</code></summary>
 
-Defines how attribute values are blended between points. For example, using "Lerp" will interpolate values linearly, while "Weight" uses distance-based weighting.
+Constant direction
 
-**Values**:
-
-* **None**: No blending is applied.
-* **Average**: Average all sampled values.
-* **Weight**: Weights based on distance to blend targets.
-* **Min**: Component-wise minimum operation.
-* **Max**: Component-wise maximum operation.
-* **Copy (Target)**: Copy target data (second value).
-* **Sum**: Sum of all values.
-* **Weighted Sum**: Sum of all values, weighted.
-* **Lerp**: Uses weight as lerp.
-* **Subtract**: Subtract values.
-* **Unsigned Min**: Component-wise minimum on unsigned values.
-* **Unsigned Max**: Component-wise maximum on unsigned values.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Blend First Point</strong><br><em>If enabled, will apply blending to the first point. Can be useful with some blendmodes.</em></summary>
+<summary><strong>Blending Settings</strong> <code>PCGExBlendingDetails</code></summary>
 
-When enabled, the node applies blending to the first point in the path, which can help smooth transitions when using certain blending modes.
+Blending settings used to smooth attributes.
+
+📦 See: Blending configuration
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Blend Last Point</strong><br><em>If enabled, will apply blending to the last point. Can be useful with some blendmodes.</em></summary>
+<summary><strong>Blend First Point</strong> <code>bool</code></summary>
 
-When enabled, the node applies blending to the last point in the path, which can help smooth transitions when using certain blending modes.
+If enabled, will apply blending to othe first point. Can be useful with some blendmodes.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-1. Create a path using a Path : Generate node.
-2. Add a Path : Blend node and connect it to the path output.
-3. Set "Blend Over" to "Distance" to blend based on path length.
-4. Configure "Blending Settings" to use "Lerp" for smooth transitions.
-5. Connect an attribute (e.g., color) to the input of the Path : Blend node.
-6. The resulting points will have interpolated attribute values from start to end.
+<summary><strong>Blend Last Point</strong> <code>bool</code></summary>
 
-#### Notes
+If enabled, will apply blending to the last point. Can be useful with some blendmodes.
 
-* Blending is applied per point, so the effect depends on how many points are in your path.
-* For best results with "Lerp", keep the blend factor between 0 and 1.
-* If you're using a fixed blend factor, ensure that it aligns with your desired blending behavior.
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsPaths\Public\Elements\PCGExBlendPath.h`

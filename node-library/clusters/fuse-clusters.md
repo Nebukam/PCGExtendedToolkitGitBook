@@ -5,92 +5,183 @@ icon: circle
 
 # Fuse Clusters
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Finds Point/Edge and Edge/Edge intersections between all input clusters.
 
-> Finds Point/Edge and Edge/Edge intersections between all input clusters.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-The Cluster : Fuse node identifies where points and edges from different clusters intersect with each other. It processes each pair of clusters and checks for three types of intersections:
-
-1. **Point/Point**: When two points from different clusters are close enough to be considered a single point
-2. **Point/Edge**: When a point from one cluster intersects with an edge from another cluster
-3. **Edge/Edge**: When edges from two different clusters cross each other
-
-For each detected intersection, the node creates new fused geometry at that location. It blends properties and attributes of intersecting elements based on configured blending rules. The result is a collection of new points and edges that represent the merged spatial relationships between input clusters.
+* Computes intersections between all input clusters by identifying Point/Point, Point/Edge, and Edge/Edge interactions based on specified settings.
+* Utilizes Fuse Settings to process Point/Point intersections when enabled through the Find Point Edge Intersections option.
+* Evaluates Point/Edge intersections using Point-Edge intersection settings if the corresponding setting is activated.
+* Identifies Edge/Edge intersections with Edge-Edge intersection settings, provided that the Find Edge Edge Intersections option is selected.
 
 #### Configuration
 
-**Point/Point Settings**
+<details>
 
-Controls how point-to-point intersections are detected and processed. Includes distance thresholds and blending options.
+<summary><strong>Point/Point Settings</strong> <code>PCGExPointPointIntersectionDetails</code></summary>
 
-**Find Point-Edge intersection**
+Fuse Settings
 
-Enable detection of Point-Edge intersections.
+📦 See: PointPointIntersection configuration
 
-[**Point/Edge Settings**](../shared-concepts/intersections/point-edge-intersections.md)
+⚡ PCG Overridable
 
-Controls how point-edge intersections are detected and processed. Includes distance thresholds and blending options.
+</details>
 
-**Find Edge-Edge intersection**
+<details>
 
-Enable detection of Edge-Edge intersections.
+<summary><strong>Find Point Edge Intersections</strong> <code>bool</code></summary>
 
-[**Edge/Edge Settings**](../shared-concepts/intersections/edge-edge-intersections.md)
+Find Point-Edge intersection
 
-Controls how edge-edge intersections are detected and processed. Includes distance thresholds and blending options.
+⚡ PCG Overridable
 
-**Default Points** [**Blending Details**](../shared-concepts/blending/)
+</details>
 
-Defines how fused point properties and attributes are merged together for fused points. This includes position, normal, and custom attributes.
+<details>
 
-**Default Edges** [**Blending Details**](../shared-concepts/blending/)
+<summary><strong>Point/Edge Settings</strong> <code>PCGExPointEdgeIntersectionDetails</code></summary>
 
-Defines how fused point properties and attributes are merged together for fused edges. This includes start/end points, attributes, etc.
+Point-Edge intersection settings
 
-**Use Custom Point-Edge Blending**
+📦 See: PointEdgeIntersection configuration
 
-Enable custom blending rules for Point/Edge intersections.
+⚡ PCG Overridable
 
-**Custom Point-Edge** [**Blending Details**](../shared-concepts/blending/)
+</details>
+
+<details>
+
+<summary><strong>Find Edge Edge Intersections</strong> <code>bool</code></summary>
+
+Find Edge-Edge intersection
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Edge/Edge Settings</strong> <code>PCGExEdgeEdgeIntersectionDetails</code></summary>
+
+Edge-Edge intersection
+
+📦 See: EdgeEdgeIntersection configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Cluster Output Settings</strong> <code>PCGExGraphBuilderDetails</code></summary>
+
+Graph & Edges output properties
+
+📦 See: GraphBuilder configuration
+
+⚡ PCG Overridable
+
+</details>
+
+**Data Blending**
+
+<details>
+
+<summary><strong>Default Points Blending Details</strong> <code>PCGExBlendingDetails</code></summary>
+
+Defines how fused point properties and attributes are merged together for fused points.
+
+📦 See: Blending configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Default Edges Blending Details</strong> <code>PCGExBlendingDetails</code></summary>
+
+Defines how fused point properties and attributes are merged together for fused edges.
+
+📦 See: Blending configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Use Custom Point Edge Blending</strong> <code>bool</code></summary>
+
+Controls use custom point edge blending.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Custom Point Edge Blending Details</strong> <code>PCGExBlendingDetails</code></summary>
 
 Defines how fused point properties and attributes are merged together for Point/Edge intersections.
 
-**Use Custom Edge-Edge Blending**
+📦 See: Blending configuration
 
-Enable custom blending rules for Edge/Edge intersections.
+⚡ PCG Overridable
 
-**Custom Edge-Edge** [**Blending Details**](../shared-concepts/blending/)
+</details>
+
+<details>
+
+<summary><strong>Use Custom Edge Edge Blending</strong> <code>bool</code></summary>
+
+Controls use custom edge edge blending.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Custom Edge Edge Blending Details</strong> <code>PCGExBlendingDetails</code></summary>
 
 Defines how fused point properties and attributes are merged together for Edge/Edge intersections (Crossings).
 
-**Carry Over Settings - Vtx**
+📦 See: Blending configuration
 
-Controls which vertex attributes are carried over from input clusters to the fused output points.
+⚡ PCG Overridable
 
-**Carry Over Settings - Edges**
+</details>
 
-Controls which edge attributes are carried over from input clusters to the fused output edges.
+**Meta Filters**
 
-**Cluster Output Settings**
+<details>
 
-Defines how the resulting graph and edge data are structured in the output. Includes options for edge creation, connectivity handling, and output formatting.
+<summary><strong>Carry Over Settings - Vtx</strong> <code>PCGExCarryOverDetails</code></summary>
 
-#### Usage Example
+Meta filter settings for Vtx.
 
-A common use case is to fuse road networks from multiple clusters to create a unified intersection network. You would:
+📦 See: CarryOver configuration
 
-1. Feed two or more cluster inputs representing different road segments
-2. Enable Point-Edge and Edge-Edge intersections
-3. Set appropriate distance thresholds for detecting intersections
-4. Configure blending rules to preserve important attributes like road type or direction
-5. Use the output points and edges to generate a complete road network with proper connectivity
+⚡ PCG Overridable
 
-#### Notes
+</details>
 
-* Performance can be affected by the number of clusters and their complexity; consider using filters to limit input data.
-* The node works best when cluster boundaries are well-defined and not overly dense.
-* Custom blending settings allow for advanced scenarios like preserving original edge directions or merging attributes in specific ways.
+<details>
+
+<summary><strong>Carry Over Settings - Edges</strong> <code>PCGExCarryOverDetails</code></summary>
+
+Meta filter settings for Edges.
+
+📦 See: CarryOver configuration
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsClusters\Public\Elements\PCGExFuseClusters.h`

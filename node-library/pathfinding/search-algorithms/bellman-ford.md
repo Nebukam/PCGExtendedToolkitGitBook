@@ -4,26 +4,31 @@ icon: sliders
 
 # Bellman-Ford
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Bellman-Ford Search. Handles negative edge weights and detects negative cycles. Slower but more robust.
 
-> Defines a Bellman-Ford pathfinding search operation that handles negative edge weights and detects negative cycles.
+⚙️ **Behavior** — Instanced pathfinding search.
 
-#### How It Works
+**How It Works**
 
-The Bellman-Ford algorithm works by repeatedly relaxing all edges in the graph up to a specific number of times—equal to the number of nodes minus one. During each relaxation, it checks whether moving through a neighboring node results in a shorter path to reach the current node. This process continues until no further improvements can be made.
+> AI-Generated, needs proofreading
 
-After completing these iterations, if the algorithm finds that it can still improve any path, it means there's a negative weight cycle within the graph. A negative cycle is a loop where the total cost decreases as you traverse it repeatedly, which can lead to infinite paths in other algorithms like Dijkstra’s.
-
-When enabled, this subnode will detect such cycles and stop the search if one is found, ensuring that only valid paths are returned.
+* The Bellman-Ford node computes shortest paths from a single source to all other vertices in a weighted graph, accommodating negative edge weights.
+* Iterates over all edges for V-1 times (where V is the number of vertices), updating distances if a shorter path is found through an adjacent vertex.
+* Optionally detects and identifies negative weight cycles during execution; if enabled and such a cycle is detected, the algorithm fails to provide valid shortest paths.
+* Outputs the shortest path distances from the source node to all other nodes in the graph or indicates the presence of a negative cycle.
 
 #### Configuration
 
 <details>
 
-<summary><strong>bDetectNegativeCycles</strong><br><em>If enabled, the search will fail if a negative weight cycle is detected.</em></summary>
+<summary><strong>Detect Negative Cycles</strong> <code>bool</code></summary>
 
-When enabled, the algorithm will check for negative weight cycles after computing paths. If one is found, the search fails and no valid path is returned.
+If enabled, the search will fail if a negative weight cycle is detected
+
+⚡ PCG Overridable
 
 </details>
+
+***
+
+Source: `Source\PCGExElementsPathfinding\Public\Search\PCGExSearchBellmanFord.h`

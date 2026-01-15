@@ -5,155 +5,527 @@ icon: circle
 
 # Line Trace
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Find the collision point on the nearest collidable surface in a given direction.
 
-> Find the collision point on the nearest collidable surface in a given direction.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node casts rays from input points to detect intersections with surfaces in the level. For each point, it calculates where a ray would hit based on an origin and direction vector. The ray's maximum distance can be set as a fixed value or read from an attribute. If the ray hits something, it records information like position, surface normal, and distance. You can choose to apply this data directly to the point's location or rotation, or write it to attributes for further use.
-
-The node supports different modes for determining which surfaces to test against, such as all collidable objects or specific actors referenced by an attribute. It also allows you to define how the ray's direction is inverted and how the rotation of the point should be calculated based on the surface hit.
+* The Sample : Line Trace node computes a line trace from an origin point in a specified direction to find the nearest collision point on a collidable surface within the scene.
+* It uses the actor reference provided by the "Actor Reference" setting to determine the context or specific actors for which to perform the trace operation.
+* The node considers the "Origin" and "Direction" settings to define the path of the line trace, with an option to invert the direction based on the "Invert" boolean flag.
+* Upon executing the trace, it outputs the collision point data from the nearest collidable surface encountered along the traced line.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Surface Source</strong><br><em>Controls which surfaces are tested during the raycast.</em></summary>
+<summary><strong>Rotation Construction</strong> <code>PCGExMakeRotAxis</code></summary>
 
-* **Any surface**: Tests against all collidable surfaces in the level
-* **Actor Reference**: Only tests against surfaces belonging to actors referenced by a point attribute
+How hit transform rotation should be constructed. First value used is the impact normal.
 
-</details>
-
-<details>
-
-<summary><strong>Actor Reference</strong><br><em>Name of the attribute that contains a path to an actor in the level, usually from a GetActorData PCG Node in point mode.</em></summary>
-
-Attribute name used when `SurfaceSource` is set to "Actor Reference". This attribute should contain paths to actors in the level.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Origin</strong><br><em>The origin of the trace</em></summary>
+<summary><strong>└─ Cross Axis</strong> <code>PCGExInputShorthandSelectorDirection</code></summary>
 
-Attribute selector for the starting point of the raycast. This can be a fixed value or an attribute on the input points.
+Second value used for constructing rotation
 
-</details>
-
-<details>
-
-<summary><strong>Direction</strong><br><em>The direction to use for the trace</em></summary>
-
-Attribute selector for the direction vector of the raycast. This can be a fixed value or an attribute on the input points.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Invert Direction</strong><br><em>Whether to invert the direction vector before performing the trace.</em></summary>
+<summary><strong>Collision Settings</strong> <code>PCGExCollisionDetails</code></summary>
 
-When enabled, the direction vector is reversed before performing the trace.
+Controls collision settings.
 
-</details>
+📦 See: Collision configuration
 
-<details>
-
-<summary><strong>Distance Input</strong><br><em>This UV Channel will be selected when retrieving UV Coordinates from a raycast query.</em></summary>
-
-Controls how the maximum distance of the trace is determined:
-
-* **Direction Length**: Uses the length of the direction vector as the max distance
-* **Constant**: Uses a fixed value defined by Max Distance
-* **Attribute**: Reads the max distance from an attribute on each point
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Max Distance</strong><br><em>Trace max distance</em></summary>
+<summary><strong>Process Filtered Out As Fails</strong> <code>bool</code></summary>
 
-Maximum distance for the raycast when `DistanceInput` is set to "Constant".
-
-</details>
-
-<details>
-
-<summary><strong>Local Max Distance</strong><br><em>Attribute or property to read the local size from.</em></summary>
-
-Attribute used to determine the maximum trace distance when `DistanceInput` is set to "Attribute". The value of this attribute is used as the max distance for each point.
+If enabled, mark filtered out points as "failed". Otherwise, just skip the processing altogether. Only uncheck this if you want to ensure existing attribute values are preserved.
 
 </details>
 
 <details>
 
-<summary><strong>Apply Sampling</strong><br><em>Whether and how to apply sampled result directly (not mutually exclusive with output)</em></summary>
+<summary><strong>Prune Failed Samples</strong> <code>bool</code></summary>
 
-Controls whether and how the sampled results are applied directly to the points' transforms. This can be used to position or orient points based on the raycast hit.
-
-</details>
-
-<details>
-
-<summary><strong>Rotation Construction</strong><br><em>How hit transform rotation should be constructed. First value used is the impact normal.</em></summary>
-
-Defines how the rotation of the point is calculated from the raycast hit:
-
-* **X**: Use X axis as forward direction
-* **XY**: Use X axis as forward, Y axis as right
-* **XZ**: Use X axis as forward, Z axis as up
-* **Y**: Use Y axis as forward direction
-* **YX**: Use Y axis as forward, X axis as right
-* **YZ**: Use Y axis as forward, Z axis as up
-* **Z**: Use Z axis as forward direction
-* **ZX**: Use Z axis as forward, X axis as right
-* **ZY**: Use Z axis as forward, Y axis as right
+If enabled, points that failed to sample anything will be pruned.
 
 </details>
 
 <details>
 
-<summary><strong>Cross Axis</strong><br><em>Second value used for constructing rotation</em></summary>
+<summary><strong>Quiet UVSettings Warning</strong> <code>bool</code></summary>
 
-Defines the second axis used to construct the point's rotation when `RotationConstruction` is set to a cross-axis option (e.g., XY, XZ, etc.).
+Controls quiet uvsettings warning.
+
+</details>
+
+**Output (Actor Data)**
+
+<details>
+
+<summary><strong>Write Actor Reference</strong> <code>bool</code></summary>
+
+Write the actor reference hit.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Process Filtered Out As Fails</strong><br><em>If enabled, mark filtered out points as "failed". Otherwise, skip the processing altogether. Only uncheck this if you want to ensure existing attribute values are preserved.</em></summary>
+<summary><strong>ActorReference</strong> <code>Name</code></summary>
 
-When enabled, points that are filtered out by point filters are marked as failed instead of being skipped entirely.
+Name of the 'string' attribute to write actor reference to.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Prune Failed Samples</strong><br><em>If enabled, points that failed to sample anything will be pruned.</em></summary>
+<summary><strong>Write Hit Component Reference</strong> <code>bool</code></summary>
 
-When enabled, points that fail to find a valid surface hit during the raycast are removed from the output.
+Write the actor reference hit.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-You want to place trees on terrain by casting rays downward from each point to find ground level. Set:
+<summary><strong>HitComponent</strong> <code>Name</code></summary>
 
-* **Surface Source** to "Any surface"
-* **Origin** to a vector attribute like `TreeHeight` (point's Y offset)
-* **Direction** to `(0, 0, -1)` for downward ray
-* **Max Distance** to `1000`
-* Enable **bWriteLocation**, **bWriteNormal**, and **bWriteDistance**
-* Set output attributes to `GroundLocation`, `GroundNormal`, and `HeightFromGround`
+Name of the 'string' attribute to write actor reference to.
 
-This will place each point at the surface it hits, with normal and distance information available for further processing.
+⚡ PCG Overridable
 
-#### Notes
+</details>
 
-* The node supports both simple and complex raycasting modes, depending on your collision settings.
-* UV coordinates are only available in complex traces if "Project Settings->Physics->Support UV From Hit Results" is enabled.
-* Texture parameters can be extracted from materials when `bExtractTextureParameters` is enabled.
-* If you're using actor references, ensure that the referenced actors have valid collision shapes.
+<details>
+
+<summary><strong>Write Phys Mat</strong> <code>bool</code></summary>
+
+Write the actor reference hit.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>PhysMat</strong> <code>Name</code></summary>
+
+Name of the 'string' attribute to write actor reference to.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Render Mat</strong> <code>bool</code></summary>
+
+Write the actor reference hit.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>RenderMat</strong> <code>Name</code></summary>
+
+Create an attribute for the render material.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>├─ Material Index</strong> <code>int32</code></summary>
+
+The index of the render material when it is queried from the hit.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Texture Parameters</strong> <code>bool</code></summary>
+
+Whether to extract texture parameters
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Attributes Forwarding</strong> <code>PCGExForwardDetails</code></summary>
+
+Which actor reference points attributes to forward on points.
+
+📦 See: Forward configuration
+
+</details>
+
+**Outputs**
+
+<details>
+
+<summary><strong>Write Success</strong> <code>bool</code></summary>
+
+Write whether the sampling was sucessful or not to a boolean attribute.
+
+</details>
+
+<details>
+
+<summary><strong>Success</strong> <code>Name</code></summary>
+
+Name of the 'boolean' attribute to write sampling success to.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Location</strong> <code>bool</code></summary>
+
+Write the sample location.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Location</strong> <code>Name</code></summary>
+
+Name of the 'vector' attribute to write sampled Location to.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Look At</strong> <code>bool</code></summary>
+
+Write the sample "look at" direction from the point.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>LookAt</strong> <code>Name</code></summary>
+
+Name of the 'vector' attribute to write sampled LookAt to.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Normal</strong> <code>bool</code></summary>
+
+Write the sampled normal.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Normal</strong> <code>Name</code></summary>
+
+Name of the 'vector' attribute to write sampled Normal to.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Distance</strong> <code>bool</code></summary>
+
+Write the sampled distance.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Distance</strong> <code>Name</code></summary>
+
+Name of the 'double' attribute to write sampled distance to.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>├─ Normalized</strong> <code>bool</code></summary>
+
+Whether to output normalized distance or not
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>│ └─ OneMinus</strong> <code>bool</code></summary>
+
+Whether to do a OneMinus on the normalized distance value
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Scale</strong> <code>double</code></summary>
+
+Scale factor applied to the distance output; allows to easily invert it using -1
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Is Inside</strong> <code>bool</code></summary>
+
+Write the inside/outside status of the point.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>IsInside</strong> <code>Name</code></summary>
+
+Name of the 'bool' attribute to write sampled point inside or outside the collision.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write UVCoords</strong> <code>bool</code></summary>
+
+Controls write uvcoords.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>UV Coords</strong> <code>Name</code></summary>
+
+Controls uv coords.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ UV Channel</strong> <code>int32</code></summary>
+
+This UV Channel will be selected when retrieving UV Coordinates from a raycast query.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Face Index</strong> <code>bool</code></summary>
+
+Controls write face index.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Face Index</strong> <code>Name</code></summary>
+
+Controls face index.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Vertex Color</strong> <code>bool</code></summary>
+
+Whether to attempt to compute the vertex color and write it to the point $Color
+
+⚡ PCG Overridable
+
+</details>
+
+**Sampling**
+
+<details>
+
+<summary><strong>Surface Source</strong> <code>PCGExSurfaceSource</code></summary>
+
+Surface source
+
+</details>
+
+<details>
+
+<summary><strong>Actor Reference</strong> <code>Name</code></summary>
+
+Name of the attribute that contains a path to an actor in the level, usually from a GetActorData PCG Node in point mode.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Origin</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+The origin of the trace
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Direction</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+The direction to use for the trace
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Invert</strong> <code>bool</code></summary>
+
+Controls └─ invert.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Distance Input</strong> <code>PCGExTraceSampleDistanceInput</code></summary>
+
+This UV Channel will be selected when retrieving UV Coordinates from a raycast query.
+
+**Values:**
+
+* **Direction Length**: ...
+* **Constant**: Constant
+* **Attribute**: Attribute
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Max Distance</strong> <code>double</code></summary>
+
+Trace max distance
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Local Max Distance</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Attribute or property to read the local size from.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Apply Sampling</strong> <code>PCGExApplySamplingDetails</code></summary>
+
+Whether and how to apply sampled result directly (not mutually exclusive with output)
+
+📦 See: ApplySampling configuration
+
+</details>
+
+**Tagging**
+
+<details>
+
+<summary><strong>Tag If Has Successes</strong> <code>bool</code></summary>
+
+Controls tag if has successes.
+
+</details>
+
+<details>
+
+<summary><strong>Has Successes Tag</strong> <code>String</code></summary>
+
+Controls has successes tag.
+
+</details>
+
+<details>
+
+<summary><strong>Tag If Has No Successes</strong> <code>bool</code></summary>
+
+Controls tag if has no successes.
+
+</details>
+
+<details>
+
+<summary><strong>Has No Successes Tag</strong> <code>String</code></summary>
+
+Controls has no successes tag.
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsSampling\Public\Elements\PCGExSampleSurfaceGuided.h`

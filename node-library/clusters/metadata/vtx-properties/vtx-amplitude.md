@@ -5,203 +5,487 @@ icon: circle-dashed
 
 # Vtx : Amplitude
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Amplitude of a vtx, based on neighboring connections.
 
-> Computes amplitude values for vertices based on their connections and neighboring data.
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### How It Works
+**How It Works**
 
-This node analyzes each vertex in a cluster and evaluates its connections to neighboring vertices. For each vertex, it calculates amplitude values by examining the directions and lengths of edges connecting to neighbors.
+> AI-Generated, needs proofreading
 
-It determines:
-
-1. The **minimum amplitude**, which is the smallest distance or component value among all neighbor connections.
-2. The **maximum amplitude**, which is the largest distance or component value among all neighbor connections.
-3. The **amplitude range**, which is the difference between maximum and minimum amplitudes.
-4. The **amplitude sign**, which indicates whether the vertex's position tends to align with or against a chosen up vector.
-
-These values are computed either as a single scalar (using edge lengths) or component-wise (using individual X/Y/Z components), depending on the mode settings. The sign is determined using dot products between edge vectors and an up vector, which can be derived from average neighbor directions or a custom constant vector.
+* The Vtx : Amplitude node computes the amplitude of a vertex based on its connections to neighboring vertices.
+* It includes settings for writing minimum and maximum amplitudes, which are controlled by boolean flags labeled "Write Min Amplitude" and "Write Max Amplitude".
+* An option named "Absolute" allows specifying an up vector that determines the sign of the amplitude calculation.
+* The node utilizes a setting called "Mode", which is of type PCGExVtxAmplitudeMode, to define how the amplitude is calculated.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Write Min Amplitude</strong><br><em>When enabled, writes the minimum amplitude value to an attribute.</em></summary>
+<summary><strong>Write Min Amplitude</strong> <code>bool</code></summary>
 
-If enabled, this node will compute and store the smallest amplitude value for each vertex in a new attribute.
+Controls write min amplitude.
 
-</details>
-
-<details>
-
-<summary><strong>Min Attribute Name</strong><br><em>Name of the attribute to write the minimum amplitude to.</em></summary>
-
-The name of the attribute where the computed minimum amplitude values are stored. Defaults to "MinAmplitude".
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Min Absolute</strong><br><em>When enabled, uses absolute values for the minimum amplitude calculation.</em></summary>
+<summary><strong>Min</strong> <code>Name</code></summary>
 
-If enabled, the node computes the absolute value of the minimum amplitude before writing it.
+Controls min.
 
-</details>
-
-<details>
-
-<summary><strong>Min Mode</strong><br><em>How to compute the minimum amplitude.</em></summary>
-
-Controls whether the amplitude is computed as a scalar (length) or component-wise.
-
-* **Length**: Uses the length of edge vectors.
-* **Individual**: Computes per-component (X/Y/Z) values.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Write Max Amplitude</strong><br><em>When enabled, writes the maximum amplitude value to an attribute.</em></summary>
+<summary><strong>├─ Absolute</strong> <code>bool</code></summary>
 
-If enabled, this node will compute and store the largest amplitude value for each vertex in a new attribute.
+Up vector to use for amplitude sign
 
-</details>
-
-<details>
-
-<summary><strong>Max Attribute Name</strong><br><em>Name of the attribute to write the maximum amplitude to.</em></summary>
-
-The name of the attribute where the computed maximum amplitude values are stored. Defaults to "MaxAmplitude".
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Max Absolute</strong><br><em>When enabled, uses absolute values for the maximum amplitude calculation.</em></summary>
+<summary><strong>└─ Mode</strong> <code>PCGExVtxAmplitudeMode</code></summary>
 
-If enabled, the node computes the absolute value of the maximum amplitude before writing it.
+Controls └─ mode.
 
-</details>
+**Values:**
 
-<details>
+* **Length**: Uniform fit
+* **Individual**: Component-wise amplitude
 
-<summary><strong>Max Mode</strong><br><em>How to compute the maximum amplitude.</em></summary>
-
-Controls whether the amplitude is computed as a scalar (length) or component-wise.
-
-* **Length**: Uses the length of edge vectors.
-* **Individual**: Computes per-component (X/Y/Z) values.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Write Amplitude Range</strong><br><em>When enabled, writes the amplitude range to an attribute.</em></summary>
+<summary><strong>Write Max Amplitude</strong> <code>bool</code></summary>
 
-If enabled, this node will compute and store the difference between maximum and minimum amplitudes in a new attribute.
+Controls write max amplitude.
 
-</details>
-
-<details>
-
-<summary><strong>Range Attribute Name</strong><br><em>Name of the attribute to write the amplitude range to.</em></summary>
-
-The name of the attribute where the computed amplitude range values are stored. Defaults to "AmplitudeRange".
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Range Absolute</strong><br><em>When enabled, uses absolute values for the amplitude range calculation.</em></summary>
+<summary><strong>Max</strong> <code>Name</code></summary>
 
-If enabled, the node computes the absolute value of the amplitude range before writing it.
+Controls max.
 
-</details>
-
-<details>
-
-<summary><strong>Range Mode</strong><br><em>How to compute the amplitude range.</em></summary>
-
-Controls whether the amplitude is computed as a scalar (length) or component-wise.
-
-* **Length**: Uses the length of edge vectors.
-* **Individual**: Computes per-component (X/Y/Z) values.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Write Amplitude Sign</strong><br><em>When enabled, writes the amplitude sign to an attribute.</em></summary>
+<summary><strong>├─ Absolute</strong> <code>bool</code></summary>
 
-If enabled, this node will compute and store a directional sign value based on the dot product of edge vectors and an up vector.
+Up vector to use for amplitude sign
 
-</details>
-
-<details>
-
-<summary><strong>Sign Attribute Name</strong><br><em>Name of the attribute to write the amplitude sign to.</em></summary>
-
-The name of the attribute where the computed amplitude sign values are stored. Defaults to "AmplitudeSign".
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Sign Output Mode</strong><br><em>How to compute the amplitude sign value.</em></summary>
+<summary><strong>└─ Mode</strong> <code>PCGExVtxAmplitudeMode</code></summary>
 
-Controls how the sign is calculated:
+Controls └─ mode.
 
-* **Raw**: The raw dot product.
-* **Size**: Dot product multiplied by edge size.
-* **Normalized Size**: Dot product multiplied by normalized edge size.
-* **Sign**: Returns 0, 1, or -1 based on the dot product.
+**Values:**
 
-</details>
+* **Length**: Uniform fit
+* **Individual**: Component-wise amplitude
 
-<details>
-
-<summary><strong>Sign Absolute</strong><br><em>When enabled, uses absolute values for the amplitude sign calculation.</em></summary>
-
-If enabled, the node computes the absolute value of the amplitude sign before writing it.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Up Mode</strong><br><em>How to determine the up vector used for amplitude sign calculations.</em></summary>
+<summary><strong>Write Amplitude Range</strong> <code>bool</code></summary>
 
-Controls how the up vector is determined:
+Controls write amplitude range.
 
-* **Average Direction**: Uses the average direction from neighbors.
-* **Custom Up Vector**: Uses a user-defined constant or attribute.
-
-</details>
-
-<details>
-
-<summary><strong>Up Input Type</strong><br><em>Whether to use a constant or attribute for the up vector.</em></summary>
-
-Controls whether the up vector is defined as a constant value or read from an input attribute.
-
-* **Constant**: Use a fixed vector.
-* **Attribute**: Read from an attribute on the vertex data.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Up Vector (Attr)</strong><br><em>The attribute to use for the up vector, if using Attribute mode.</em></summary>
+<summary><strong>Range</strong> <code>Name</code></summary>
 
-The name of the attribute used as the up vector when "Up Input Type" is set to "Attribute".
+Controls range.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Up Vector</strong><br><em>The constant vector to use as the up vector, if using Constant mode.</em></summary>
+<summary><strong>├─ Absolute</strong> <code>bool</code></summary>
 
-The fixed vector used as the up vector when "Up Input Type" is set to "Constant". Defaults to FVector::UpVector.
+Controls ├─ absolute.
+
+⚡ PCG Overridable
 
 </details>
+
+<details>
+
+<summary><strong>└─ Mode</strong> <code>PCGExVtxAmplitudeMode</code></summary>
+
+Controls └─ mode.
+
+**Values:**
+
+* **Length**: Uniform fit
+* **Individual**: Component-wise amplitude
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Amplitude Sign</strong> <code>bool</code></summary>
+
+Controls write amplitude sign.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Sign</strong> <code>Name</code></summary>
+
+Controls sign.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>├─ Absolute</strong> <code>PCGExVtxAmplitudeSignOutput</code></summary>
+
+Controls ├─ absolute.
+
+**Values:**
+
+* **Raw**: Raw dot product
+* **Size**: Dot product \* edge size
+* **Normalized Size**
+* **Sign**
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>├─ Absolute</strong> <code>bool</code></summary>
+
+Controls ├─ absolute.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>├─ Up Mode</strong> <code>PCGExVtxAmplitudeUpMode</code></summary>
+
+Up vector source.
+
+**Values:**
+
+* **Average Direction**: Average direction to neighbors
+* **Custom Up Vector**: Custom Up Vector
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>├─ Up Input Type</strong> <code>PCGExInputValueType</code></summary>
+
+Up vector source.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Up Vector (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Up vector to use for amplitude sign
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Up Vector</strong> <code>Vector</code></summary>
+
+Up vector to use for amplitude sign
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExAmplitudeConfig</code></summary>
+
+Direction Settings.
+
+📦 See: Amplitude configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Min Amplitude</strong> <code>bool</code></summary>
+
+Controls write min amplitude.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Min</strong> <code>Name</code></summary>
+
+Controls min.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>├─ Absolute</strong> <code>bool</code></summary>
+
+Up vector to use for amplitude sign
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Mode</strong> <code>PCGExVtxAmplitudeMode</code></summary>
+
+Controls └─ mode.
+
+**Values:**
+
+* **Length**: Uniform fit
+* **Individual**: Component-wise amplitude
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Max Amplitude</strong> <code>bool</code></summary>
+
+Controls write max amplitude.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Max</strong> <code>Name</code></summary>
+
+Controls max.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>├─ Absolute</strong> <code>bool</code></summary>
+
+Up vector to use for amplitude sign
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Mode</strong> <code>PCGExVtxAmplitudeMode</code></summary>
+
+Controls └─ mode.
+
+**Values:**
+
+* **Length**: Uniform fit
+* **Individual**: Component-wise amplitude
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Amplitude Range</strong> <code>bool</code></summary>
+
+Controls write amplitude range.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Range</strong> <code>Name</code></summary>
+
+Controls range.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>├─ Absolute</strong> <code>bool</code></summary>
+
+Controls ├─ absolute.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Mode</strong> <code>PCGExVtxAmplitudeMode</code></summary>
+
+Controls └─ mode.
+
+**Values:**
+
+* **Length**: Uniform fit
+* **Individual**: Component-wise amplitude
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Amplitude Sign</strong> <code>bool</code></summary>
+
+Controls write amplitude sign.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Sign</strong> <code>Name</code></summary>
+
+Controls sign.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>├─ Absolute</strong> <code>PCGExVtxAmplitudeSignOutput</code></summary>
+
+Controls ├─ absolute.
+
+**Values:**
+
+* **Raw**: Raw dot product
+* **Size**: Dot product \* edge size
+* **Normalized Size**
+* **Sign**
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>├─ Absolute</strong> <code>bool</code></summary>
+
+Controls ├─ absolute.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>├─ Up Mode</strong> <code>PCGExVtxAmplitudeUpMode</code></summary>
+
+Up vector source.
+
+**Values:**
+
+* **Average Direction**: Average direction to neighbors
+* **Custom Up Vector**: Custom Up Vector
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>├─ Up Input Type</strong> <code>PCGExInputValueType</code></summary>
+
+Up vector source.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Up Vector (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Up vector to use for amplitude sign
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>└─ Up Vector</strong> <code>Vector</code></summary>
+
+Up vector to use for amplitude sign
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsClusters\Public\Elements\Meta\VtxProperties\PCGExVtxPropertyAmplitude.h`

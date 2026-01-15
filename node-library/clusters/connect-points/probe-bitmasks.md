@@ -4,67 +4,116 @@ icon: circle-dashed
 
 # Probe : Bitmasks
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Probe using bitmasks references & collections.
 
-> Probe using bitmasks references & collections.
+📌 **Subnode** — Connects to **Probes** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode evaluates nearby points based on bitmask flags and collections to determine which ones are suitable for connection or interaction. It checks each point's bitmask against defined filters and uses prioritization rules to select the best candidate. The selection process considers either how well a point aligns with a direction vector or how close it is to the source point, depending on your settings.
+> AI-Generated, needs proofreading
 
-When multiple filters are configured, all must pass for a point to be considered valid. The subnode calculates alignment scores using dot products and distance metrics, then applies bitmask composition operations to the selected candidate's flags if all conditions are met.
+* The node evaluates input data using bitmask operations to filter and process references & collections based on specified configurations.
+* It applies transformations to direction values by integrating point-related information according to the "Transform Direction" setting.
+* Filters are applied to determine if compositions (operations) should be executed on a flag, with decisions influenced by settings like "Favor" and "Angle".
+* The node uses a shared angle threshold defined in the "Angle" setting to make filtering decisions regarding directional data.
+* Configurations for filters can be customized through the "Config: Filter Config", affecting how input data is probed and processed.
 
 #### Configuration
 
 <details>
 
-<summary><strong>bTransformDirection</strong><br><em>Transform the direction with the point's.</em></summary>
+<summary><strong>Transform Direction</strong> <code>bool</code></summary>
 
-When enabled, the direction used for alignment checks is adjusted according to each point's local orientation. This allows directional probing that respects individual point orientations.
+Transform the direction with the point's
 
-</details>
-
-<details>
-
-<summary><strong>Favor</strong><br><em>What matters more?</em></summary>
-
-Controls how candidates are prioritized when selecting the best match.
-
-* **Best alignment**: Prioritizes candidates that align most closely with the direction vector, even if they're not the closest.
-* **Closest position**: Prioritizes candidates that are nearest to the source point, regardless of alignment.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Angle</strong><br><em>Shared angle threshold</em></summary>
+<summary><strong>Favor</strong> <code>PCGExProbeBitmasksPriorization</code></summary>
 
-The maximum angle (in degrees) allowed between a candidate's direction and the probe direction for it to be considered in the alignment calculation. A lower value means stricter alignment requirements.
+What matters more?
 
-</details>
+**Values:**
 
-<details>
-
-<summary><strong>Compositions</strong><br><em>Operations executed on the flag if all filters pass (or if no filter is set)</em></summary>
-
-A list of bitmask operations that are applied to the selected candidate's flags when all filters pass. These operations define how the final bitmask value is computed from the candidate's original flags.
+* **Best alignment**: Favor the candidates that best align with the direction, as opposed to closest ones.
+* **Closest position**: Favor the candidates that are the closest, even if they were not the best aligned.
 
 </details>
 
 <details>
 
-<summary><strong>Config</strong><br><em>Filter Config.</em></summary>
+<summary><strong>Angle</strong> <code>double</code></summary>
 
-The core configuration for this probe, including filter settings and bitmask operations to apply.
+Shared angle threshold
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this subnode in a graph where you want to connect points based on their bitmask compatibility. For example, if you have points representing different types of terrain (mountain, forest, water) defined by bitmasks, you could use this probe to find nearby points that match specific terrain combinations for generating paths or connections.
+<summary><strong>Compositions</strong> <code>Array of FPCGExBitmaskRef</code></summary>
 
-#### Notes
+Operations executed on the flag if all filters pass (or if no filter is set)
 
-This subnode is designed to work with point data that has been processed through bitmask-related nodes. The performance of the probe can be affected by the number of candidate points and the complexity of the bitmask operations defined in the Compositions list.
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExProbeConfigBitmasks</code></summary>
+
+Filter Config.
+
+📦 See: ProbeConfigBitmasks configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Transform Direction</strong> <code>bool</code></summary>
+
+Transform the direction with the point's
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Favor</strong> <code>PCGExProbeBitmasksPriorization</code></summary>
+
+What matters more?
+
+**Values:**
+
+* **Best alignment**: Favor the candidates that best align with the direction, as opposed to closest ones.
+* **Closest position**: Favor the candidates that are the closest, even if they were not the best aligned.
+
+</details>
+
+<details>
+
+<summary><strong>Angle</strong> <code>double</code></summary>
+
+Shared angle threshold
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Compositions</strong> <code>Array of FPCGExBitmaskRef</code></summary>
+
+Operations executed on the flag if all filters pass (or if no filter is set)
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsProbing\Public\Probes\PCGExProbeBitmasks.h`

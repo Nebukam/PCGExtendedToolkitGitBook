@@ -5,53 +5,89 @@ icon: circle-dashed
 
 # FC : Count
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Stop fill after a certain number of vtx have been captured.
 
-> Stop fill after a certain number of vtx have been captured.
+📌 **Subnode** — Connects to **Fill Controls** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode monitors the number of vertices captured during a flood fill operation and stops the fill when a specified limit is reached. It acts as a gate that prevents further vertex addition once the maximum count has been achieved, even if more valid candidates exist in the dataset.
+> AI-Generated, needs proofreading
 
-The system evaluates each new candidate vertex against the current capture count. If accepting the candidate would exceed the defined maximum, it is rejected and not added to the fill set. This ensures consistent control over how many vertices are processed during diffusion, helping manage performance and visual output.
+* The Fill Control : Count node halts the fill operation once the specified number of vertices (vtx) have been captured.
+* It uses the Max Count setting to determine the threshold for stopping; this can be defined through an attribute (Max Count Attribute), a constant value (Max Count Constant), or another input type (PCGExInputValueType).
+* The node evaluates the current count of captured vertices against the Max Count during each fill operation iteration.
+* Once the number of captured vertices reaches or exceeds the Max Count, the node stops further capture and processing for that fill operation.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Max Count Input</strong><br><em>Whether to use a constant or attribute value for the max count.</em></summary>
+<summary><strong>Max Count Input</strong> <code>PCGExInputValueType</code></summary>
 
-Controls whether the maximum vertex count is fixed or dynamically read from an input attribute.
-
-**Values**:
-
-* **Constant**: Use the fixed value defined in Max Count.
-* **Attribute**: Read the value from the input data using the Max Count Attribute name.
+Controls max count input.
 
 </details>
 
 <details>
 
-<summary><strong>Max Count (Attr)</strong><br><em>Max Count Attribute</em></summary>
+<summary><strong>Max Count (Attr)</strong> <code>Name</code></summary>
 
-The name of the attribute to read the maximum count from when Max Count Input is set to "Attribute".
+Max Count Attribute
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Max Count</strong><br><em>Max Count Constant</em></summary>
+<summary><strong>Max Count</strong> <code>int32</code></summary>
 
-The fixed number of vertices to allow before stopping the fill. Must be at least 1.
+Max Count Constant
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-Use this subnode in a flood fill setup where you want to limit how many points are captured, for example, to prevent overfilling or to control visual density. For instance, set Max Count to 50 to ensure that no more than 50 vertices are added to the fill set, regardless of how many valid candidates exist.
+<summary><strong>Config</strong> <code>PCGExFillControlConfigCount</code></summary>
 
-#### Notes
+Control Config.
 
-This subnode only affects capture behavior and does not influence probe or candidate validation logic. It is designed specifically for limiting vertex accumulation during diffusion.
+📦 See: FillControlConfigCount configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Max Count Input</strong> <code>PCGExInputValueType</code></summary>
+
+Controls max count input.
+
+</details>
+
+<details>
+
+<summary><strong>Max Count (Attr)</strong> <code>Name</code></summary>
+
+Max Count Attribute
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Max Count</strong> <code>int32</code></summary>
+
+Max Count Constant
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsClusters\Public\Elements\FloodFill\FillControls\PCGExFillControlCount.h`

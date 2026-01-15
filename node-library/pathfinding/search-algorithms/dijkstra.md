@@ -4,24 +4,20 @@ icon: sliders
 
 # Dijkstra
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Dijkstra search. Slower than A\* but more respectful of modifiers and weights.
 
-> Performs Dijkstra pathfinding search, ideal for scenarios requiring accurate weight consideration.
+⚙️ **Behavior** — Instanced pathfinding search.
 
-#### How It Works
+**How It Works**
 
-Dijkstra's algorithm systematically explores all possible paths from a starting point, always moving toward the node with the lowest cumulative cost. It uses a priority queue to keep track of which nodes to visit next, ensuring that it never skips a potentially shorter route.
+> AI-Generated, needs proofreading
 
-At each step, the algorithm evaluates the neighboring nodes and updates their tentative costs if a better path is found. This continues until the destination node is reached or all reachable nodes have been fully explored. Because it doesn't use any estimates or guesses about the direction to the goal, Dijkstra guarantees that the shortest path is found — but this thoroughness makes it slower than other methods like A\*.
+* Dijkstra's algorithm computes the shortest path from a starting node to all other nodes in a graph by iteratively exploring outward and updating distances based on edge weights.
+* The algorithm maintains a priority queue of nodes to visit next, ordered by their current known distance from the start node.
+* Upon visiting each node, Dijkstra updates the distances of its neighbors if a shorter path is found through the current node.
 
-#### Configuration
+_No configurable settings._
 
-<details>
+***
 
-<summary><strong>Early Exit</strong><br><em>When enabled, the search stops as soon as the destination is reached.</em></summary>
-
-Controls whether the algorithm continues exploring all nodes or halts once the target node is found. When disabled, it explores the entire graph, which can be useful for computing multiple paths or analyzing connectivity.
-
-</details>
+Source: `Source\PCGExElementsPathfinding\Public\Search\PCGExSearchDijkstra.h`

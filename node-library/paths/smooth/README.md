@@ -5,144 +5,145 @@ icon: circle
 
 # Smooth
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Smooth paths points.
 
-> Applies smoothing to path points using configurable methods and influence.
+⚙️ **Behavior** — Instanced path smoothing.
 
-#### How It Works
+**How It Works**
 
-The Path : Smooth node adjusts the positions of path points to reduce sharp angles and create smoother curves. It works by analyzing each point in relation to its neighbors and applying a mathematical operation based on the selected smoothing method.
+> AI-Generated, needs proofreading
 
-The process starts by iterating through all points in a path, with the first and last points optionally remaining unchanged if the preserve settings are enabled. For each point, the node calculates a new position using influence values that determine how much neighboring points affect it. These influence values can be constant or derived from attributes on the input data.
-
-The smoothing amount controls how aggressively the adjustment is applied. Different methods like Gaussian or Catmull-Rom produce different visual results, with some emphasizing natural curves and others maintaining more defined turns. Additionally, the node supports blending attribute values from neighboring points using various modes such as average or linear interpolation, ensuring that not just positions but other data like color, height, or width are smoothly transitioned along the path.
+* The node processes path points by applying smoothing techniques to them.
+* It optionally preserves the starting and ending points of the path based on the settings for "Preserve Start" and "Preserve End".
+* Smoothing is applied using an instance of `PCGExSmoothingInstancedFactory`, which defines the specific method of smoothing.
+* The node fetches influence values from a local attribute, as specified by the "Influence Input" setting, to modulate the degree of smoothing applied.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Preserve Start</strong><br><em>When enabled, the start point of each path is not affected by smoothing.</em></summary>
+<summary><strong>Preserve Start</strong> <code>bool</code></summary>
 
-If enabled, the first point in each path remains fixed during the smoothing operation.
+Controls preserve start.
 
-</details>
-
-<details>
-
-<summary><strong>Preserve End</strong><br><em>When enabled, the end point of each path is not affected by smoothing.</em></summary>
-
-If enabled, the last point in each path remains fixed during the smoothing operation.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Smoothing Method</strong><br><em>The method used to smooth points.</em></summary>
+<summary><strong>Preserve End</strong> <code>bool</code></summary>
 
-Selects the algorithm used for smoothing. This defines how neighboring points influence the current point's position.
+Controls preserve end.
 
-</details>
-
-<details>
-
-<summary><strong>Influence Input</strong><br><em>Fetch the influence from a local attribute.</em></summary>
-
-Controls whether the influence value is constant or read from an attribute.
-
-**Values**:
-
-* **Constant**: Use a fixed value defined in "Influence (Attr)".
-* **Attribute**: Read influence values from a point attribute specified in "Influence (Attr)".
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Influence (Attr)</strong><br><em>The amount of smoothing applied.</em></summary>
+<summary><strong>Smoothing Method</strong> <code>PCGExSmoothingInstancedFactory</code> ⚙️</summary>
 
-The attribute to read influence values from when "Influence Input" is set to "Attribute". Influence controls how much a point is affected by its neighbors.
+Instanced pcgexsmoothinginstancedfactory behavior.
 
-</details>
-
-<details>
-
-<summary><strong>Influence</strong><br><em>The amount of smoothing applied.</em></summary>
-
-A constant value used for influence when "Influence Input" is set to "Constant". Value range is -1 to 1.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Smoothing Amount Type</strong><br><em>Fetch the smoothing from a local attribute.</em></summary>
+<summary><strong>Influence Input</strong> <code>PCGExInputValueType</code></summary>
 
-Controls whether the smoothing amount is constant or read from an attribute.
+Fetch the influence from a local attribute.
 
-**Values**:
-
-* **Constant**: Use a fixed value defined in "Smoothing (Attr)".
-* **Attribute**: Read smoothing values from a point attribute specified in "Smoothing (Attr)".
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Smoothing (Attr)</strong><br><em>The amount of smoothing applied.</em></summary>
+<summary><strong>Influence (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
 
-The attribute to read smoothing values from when "Smoothing Amount Type" is set to "Attribute". This value determines the strength of the smoothing effect, and its impact depends on the chosen smoothing method.
+Fetch the influence from a local attribute.
 
-</details>
-
-<details>
-
-<summary><strong>Smoothing</strong><br><em>The amount of smoothing applied. Range of this value is highly dependant on the chosen smoothing method.</em></summary>
-
-A constant value used for smoothing when "Smoothing Amount Type" is set to "Constant". Must be greater than or equal to 1.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Scale Smoothing Amount Attribute</strong><br><em>Static multiplier for the local smoothing amount.</em></summary>
+<summary><strong>Influence</strong> <code>double</code></summary>
 
-Multiplies the smoothing value by this factor, allowing fine-tuning of the effect. Minimum value is 0.001.
+The amount of smoothing applied.
 
-</details>
-
-<details>
-
-<summary><strong>Blending Interface</strong><br><em>How to blend data from sampled points.</em></summary>
-
-Controls how attributes are blended during smoothing.
-
-**Values**:
-
-* **Individual**: Blending settings are applied per attribute.
-* **Monolithic**: A single blending configuration is used for all attributes.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Blending Settings</strong><br><em>Blending settings used to smooth attributes.</em></summary>
+<summary><strong>Smoothing Amount Type</strong> <code>PCGExInputValueType</code></summary>
 
-Defines how to blend attribute values from neighboring points. Only visible when "Blending Interface" is set to "Monolithic".
+Fetch the smoothing from a local attribute.
 
-**Values**:
-
-* **None**: No blending applied.
-* **Average**: Average all sampled values.
-* **Weight**: Weights based on distance to blend targets.
-* **Min**: Component-wise minimum operation.
-* **Max**: Component-wise maximum operation.
-* **Copy (Target)**: Copy target data.
-* **Sum**: Sum of all values.
-* **Weighted Sum**: Sum of all values, weighted.
-* **Lerp**: Linear interpolation using weights.
-* **Subtract**: Subtract values.
-* **Unsigned Min**: Component-wise minimum on unsigned values.
-* **Unsigned Max**: Component-wise maximum on unsigned values.
+⚡ PCG Overridable
 
 </details>
+
+<details>
+
+<summary><strong>Smoothing (Attr)</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+
+Fetch the smoothing amount from a local attribute.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Smoothing</strong> <code>double</code></summary>
+
+The amount of smoothing applied. Range of this value is highly dependant on the chosen smoothing method.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Scale Smoothing Amount Attribute</strong> <code>double</code></summary>
+
+Static multiplier for the local smoothing amount.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Blending Settings</strong> <code>PCGExBlendingDetails</code></summary>
+
+Blending settings used to smooth attributes.
+
+📦 See: Blending configuration
+
+⚡ PCG Overridable
+
+</details>
+
+**Blending**
+
+<details>
+
+<summary><strong>Blending Interface</strong> <code>PCGExBlendingInterface</code></summary>
+
+How to blend data from sampled points
+
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsPaths\Public\Elements\PCGExSmooth.h`

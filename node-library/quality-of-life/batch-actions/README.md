@@ -5,52 +5,52 @@ icon: scrubber
 
 # Batch Actions
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Batch various actions together.
 
-> Batch various actions together.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-The Batch Actions node processes point data by applying a series of configured operations in sequence. Each operation is executed one after another, with the results flowing from one to the next. This approach allows you to combine multiple transformations into a single processing step, which improves performance and keeps your graph organized.
-
-The node reads all input points and passes them through each defined action subnode in the order they are listed. After all actions have been applied, it can optionally filter or remove certain attributes to manage data flow efficiently.
+* The Batch Actions node gathers default attributes using the PCGExAttributeGatherDetails filter to determine which attributes are processed.
+* Depending on the boolean setting of "Do Consume Processed Attributes," the node decides whether to consume the processed attributes after performing actions.
+* If "Do Consume Processed Attributes" is enabled, the node consumes specific processed attributes based on the criteria defined in PCGExNameFiltersDetails.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Default Attributes Filter</strong><br><em>Filter for default attributes to be included or excluded from the processing.</em></summary>
+<summary><strong>Default Attributes Filter</strong> <code>PCGExAttributeGatherDetails</code></summary>
 
-Controls which attributes are considered when applying operations. You can define a list of attribute names to include or exclude, based on the selected filter mode.
+Controls default attributes filter.
 
-**Values**:
+📦 See: AttributeGather configuration
 
-* **All**: All attributes are processed.
-* **Exclude**: Listed attributes are discarded; others are kept.
-* **Include**: Only listed attributes are kept; others are discarded.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>bDoConsumeProcessedAttributes</strong><br><em>When enabled, the node consumes processed attributes after applying all actions.</em></summary>
+<summary><strong>Do Consume Processed Attributes</strong> <code>bool</code></summary>
 
-When enabled, this setting causes the node to remove or mark certain attributes for consumption after processing is complete. This helps manage memory and prevents unnecessary attribute retention.
+Controls do consume processed attributes.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>ConsumeProcessedAttributes</strong><br><em>Defines which attributes are consumed when bDoConsumeProcessedAttributes is enabled.</em></summary>
+<summary><strong>Consume Processed Attributes</strong> <code>PCGExNameFiltersDetails</code></summary>
 
-Specifies the names of attributes to be consumed, using a filter mode (Include or Exclude) and a list of attribute names.
+Controls consume processed attributes.
 
-**Values**:
+📦 See: NameFilters configuration
 
-* **All**: All attributes are consumed.
-* **Exclude**: Listed attributes are not consumed; others are.
-* **Include**: Only listed attributes are consumed; others are not.
+⚡ PCG Overridable
 
 </details>
+
+***
+
+Source: `Source\PCGExElementsActions\Public\Elements\PCGExBatchActions.h`

@@ -5,67 +5,60 @@ icon: scrubber
 
 # Partition by Values
 
-{% hint style="warning" %}
-This page was generated from the source code. It captures what the node does, but still needs some serious  proofreading.
-{% endhint %}
+Outputs separate buckets of points based on an attribute' value. Each bucket is named after a unique attribute value. Note that it is recommended to use a Merge before.
 
-> Separates input points into distinct groups based on attribute values, with each group stored in its own output dataset named after the attribute value.
+**How It Works**
 
-#### How It Works
+> AI-Generated, needs proofreading
 
-This node organizes input points into separate datasets according to unique values found in a specified attribute. For every distinct value in that attribute, it creates a new output dataset. The name of each dataset matches the value it represents.
-
-For example, if you have points with a "Material" attribute containing values like "Grass", "Stone", and "Water", this node will create three separate outputs named accordingly. Each output contains only the points that match its corresponding attribute value.
-
-You can also choose to keep all points in one dataset while tagging them with their group identifier instead of splitting into multiple outputs. This is useful when you want to maintain a single data stream but still know which group each point belongs to.
-
-The node supports hierarchical grouping through rules that define how to organize the points into partitions. These rules let you specify conditions for assigning points to different groups, enabling more complex partitioning logic.
-
-Additionally, it can calculate and store the total of attribute values per group in a new attribute. This is helpful for statistical analysis or when you need aggregated data for downstream processing.
+* The node evaluates an attribute's value for each point and groups these points into separate buckets based on unique attribute values.
+* Each bucket is named according to its corresponding unique attribute value.
+* If "Split Output" is set to false, the node writes partition identifier values instead of creating new datasets for each partition.
+* When "Write Key Sum" is enabled, the sum of partition values gets written as an attribute with a specified name defined by "Key Sum Attribute Name".
+* The processing respects predefined "Partition Rules", though specifics of these rules are not detailed here.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Split Output</strong><br><em>If disabled, points are not split into separate datasets but instead tagged with their partition identifier.</em></summary>
+<summary><strong>Split Output</strong> <code>bool</code></summary>
 
-When enabled, each unique value in the attribute creates a new output dataset. When disabled, all points remain in one dataset but are labeled with which group they belong to.
+If false, will only write partition identifier values instead of splitting partitions into new point datasets.
 
-</details>
-
-<details>
-
-<summary><strong>Write Key Sum</strong><br><em>Calculates and stores the total of attribute values for each partition.</em></summary>
-
-When enabled, this feature computes the sum of the attribute values for each group and writes it into a new attribute. This is useful for tracking totals per category.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Key Sum Attribute Name</strong><br><em>The name of the attribute where the sum of each partition's values will be stored.</em></summary>
+<summary><strong>Write Key Sum</strong> <code>bool</code></summary>
 
-Specifies the name of the attribute that holds the calculated sum for each group. By default, this is set to "KeySum".
+Write the sum of partition values to an attribute.
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 
-<summary><strong>Partition Rules</strong><br><em>Defines how points are grouped into partitions using conditions and actions.</em></summary>
+<summary><strong>Key Sum Attribute Name</strong> <code>Name</code></summary>
 
-These rules determine how input points are assigned to different groups. Each rule specifies an attribute and the conditions used to classify points into specific partitions.
+The Attribute name to write key sum to. Note that this value is not guaranteed to be unique.
+
+⚡ PCG Overridable
 
 </details>
 
-#### Usage Example
+<details>
 
-1. Start with a collection of points that have a "Material" attribute.
-2. Apply this node to separate those points based on material type.
-3. The result will be multiple output datasets, one for each material (e.g., "Grass", "Stone").
-4. Optionally enable **Write Key Sum** to track the total area or count per material.
+<summary><strong>Partition Rules</strong> <code>Array of FPCGExPartitonRuleConfig</code></summary>
 
-#### Notes
+Rules
 
-* It's recommended to use a Merge node before this one if you're combining data from multiple sources.
-* The node works best with discrete attribute values such as integers or strings.
-* If using **Split Output**, make sure your graph has enough output pins available.
+⚡ PCG Overridable
+
+</details>
+
+***
+
+Source: `Source\PCGExElementsMeta\Public\Elements\Partition\PCGExPartitionByValues.h`

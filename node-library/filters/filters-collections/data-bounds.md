@@ -5,91 +5,171 @@ icon: circle-dashed
 
 # Data Bounds
 
-{% hint style="info" %}
-This page was generated from the source code. It should properly capture what the subnode does, but still needs to be proofread by a human.
-{% endhint %}
+Test an aspect of the collection' bounds
 
-> Tests whether a collection's bounds meet specific criteria based on various aspects like volume, size, or ratios.
+📌 **Subnode** — Connects to **Filters** pins.
 
-#### How It Works
+**How It Works**
 
-This subnode examines the spatial characteristics of a collection's bounding box and checks if they match your specified conditions. It calculates a measurement from the bounds—such as total volume, size along an axis, or a ratio between two axes—and compares that value to a threshold. If the comparison passes, the subnode returns true; otherwise, it returns false. You can also choose to invert this result so that matching collections are excluded instead of included.
+> AI-Generated, needs proofreading
+
+* The Data Filter : Bounds node evaluates an aspect of the collection's bounds by comparing Operand A and Operand B using the specified Sub Operand operation.
+* It uses the Ratio setting to adjust the comparison between Operand A and Operand B as part of its evaluation process.
+* The PCGExCompareSelectorDouble is used for Operand B, indicating a double-precision floating-point comparison in the filter's logic.
+* If Invert is enabled, the node will invert the result of the comparison, effectively reversing the outcome of the filtering operation.
 
 #### Configuration
 
 <details>
 
-<summary><strong>Operand A</strong><br><em>The aspect of the bounds to measure.</em></summary>
+<summary><strong>Operand A</strong> <code>PCGExDataBoundsAspect</code></summary>
 
-The primary measurement to extract from the collection’s bounding box.
+Operand A
 
-**Values**:
+**Values:**
 
-* **Extents**: The full extent of the bounds in each axis.
-* **Min**: The minimum point of the bounds.
-* **Max**: The maximum point of the bounds.
-* **Size**: The size of the bounds along each axis.
-* **Volume**: The total volume of the bounds.
-* **Ratio**: The ratio between two axes (requires a Sub Operand).
-* **Ratio (Sorted)**: The ratio of the largest to smallest axis (e.g., max / min).
-
-</details>
-
-<details>
-
-<summary><strong>Sub Operand</strong><br><em>The component of the selected aspect to use.</em></summary>
-
-Used when Operand A is set to Extents, Min, Max, or Size. Determines which axis or component to extract.
-
-**Values**:
-
-* **Length**: The total length of the vector.
-* **Length Squared**: The squared length of the vector (faster computation).
-* **X**: The X component.
-* **Y**: The Y component.
-* **Z**: The Z component.
+* **Extents**: Bound's Extents
+* **Min**: Bound's Min
+* **Max**: Bound's Max
+* **Size**: Bound's Size
+* **Volume**: Bound's Volume
+* **Ratio**: Bound's Size Ratio
+* **Sorted Ratio**
 
 </details>
 
 <details>
 
-<summary><strong>Ratio</strong><br><em>The axes to compute the ratio from.</em></summary>
+<summary><strong>Sub Operand</strong> <code>PCGExDataBoundsComponent</code></summary>
 
-Used when Operand A is set to Ratio or Ratio (Sorted). Specifies which two axes to use for computing the ratio.
+Sub Operand
 
-**Values**:
+**Values:**
 
-* **XY**: X divided by Y.
-* **XZ**: X divided by Z.
-* **YZ**: Y divided by Z.
-* **YX**: Y divided by X.
-* **ZX**: Z divided by X.
-* **ZY**: Z divided by Y.
-
-</details>
-
-<details>
-
-<summary><strong>Operand B</strong><br><em>The threshold value to compare against.</em></summary>
-
-The target value used in the comparison. This can be a fixed number or a dynamic input from another node.
+* **Length**
+* **Length Squared**
+* **X**
+* **Y**
+* **Z**
 
 </details>
 
 <details>
 
-<summary><strong>Invert</strong><br><em>Invert the result of this filter.</em></summary>
+<summary><strong>Ratio</strong> <code>PCGExDataBoundsRatio</code></summary>
 
-When enabled, the outcome of the comparison is flipped. If the condition would pass, it fails, and vice versa.
+Ratio
+
+**Values:**
+
+* **XY**
+* **XZ**
+* **YZ**
+* **YX**
+* **ZX**
+* **ZY**
 
 </details>
 
-#### Usage Example
+<details>
 
-You want to filter out collections that are too flat in shape. Set Operand A to "Ratio (Sorted)", Sub Operand to "Length", and Ratio to "XY". Then set Operand B to 0.1. This will include only collections where the ratio of the largest axis to the smallest is greater than 0.1, effectively excluding very flat or elongated shapes.
+<summary><strong>Operand B</strong> <code>PCGExCompareSelectorDouble</code></summary>
 
-#### Notes
+Controls operand b.
 
-* The filter works on the bounding box of the collection.
-* For performance reasons, using "Length Squared" instead of "Length" can be faster when comparing large datasets.
-* When using "Ratio (Sorted)", it computes the maximum axis divided by the minimum axis to avoid negative or zero ratios.
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invert</strong> <code>bool</code></summary>
+
+Invert the result of this filter.
+
+</details>
+
+<details>
+
+<summary><strong>Config</strong> <code>PCGExDataBoundsFilterConfig</code></summary>
+
+Filter Config.
+
+📦 See: DataBoundsFilter configuration
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Operand A</strong> <code>PCGExDataBoundsAspect</code></summary>
+
+Operand A
+
+**Values:**
+
+* **Extents**: Bound's Extents
+* **Min**: Bound's Min
+* **Max**: Bound's Max
+* **Size**: Bound's Size
+* **Volume**: Bound's Volume
+* **Ratio**: Bound's Size Ratio
+* **Sorted Ratio**
+
+</details>
+
+<details>
+
+<summary><strong>Sub Operand</strong> <code>PCGExDataBoundsComponent</code></summary>
+
+Sub Operand
+
+**Values:**
+
+* **Length**
+* **Length Squared**
+* **X**
+* **Y**
+* **Z**
+
+</details>
+
+<details>
+
+<summary><strong>Ratio</strong> <code>PCGExDataBoundsRatio</code></summary>
+
+Ratio
+
+**Values:**
+
+* **XY**
+* **XZ**
+* **YZ**
+* **YX**
+* **ZX**
+* **ZY**
+
+</details>
+
+<details>
+
+<summary><strong>Operand B</strong> <code>PCGExCompareSelectorDouble</code></summary>
+
+Controls operand b.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Invert</strong> <code>bool</code></summary>
+
+Invert the result of this filter.
+
+</details>
+
+***
+
+Source: `Source\PCGExFilters\Public\Filters\Collections\PCGExDataBoundsFilter.h`
