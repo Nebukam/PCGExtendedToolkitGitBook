@@ -8,8 +8,8 @@ icon: grid-round-2
 [clusters](../../working-with-pcgex/clusters/)
 {% endcontent-ref %}
 
-{% content-ref url="common-settings/" %}
-[common-settings](common-settings/)
+{% content-ref url="../assets-management/common-settings/" %}
+[common-settings](../assets-management/common-settings/)
 {% endcontent-ref %}
 
 {% content-ref url="../shared-concepts/clusters-settings/output-settings.md" %}

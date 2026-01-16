@@ -1,5 +1,6 @@
 ---
 description: 'In editor :: PCGEx | Merge Points by Tag'
+hidden: true
 icon: circle
 ---
 

@@ -22,6 +22,7 @@
 * [Editor Settings](editor-settings.md)
 * [Supporters](supporters.md)
 * [Changelogs](changelogs/README.md)
+  * [v0.74](changelogs/v0.74.md)
   * [v0.73](changelogs/v0.73/README.md)
     * [v0.73.1 Feature Patch](changelogs/v0.73/v0.73.1-feature-patch.md)
     * [v0.73.2 Patch](changelogs/v0.73/v0.73.2-patch.md)
