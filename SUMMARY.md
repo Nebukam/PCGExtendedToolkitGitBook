@@ -56,6 +56,7 @@
 * [Paths](working-with-pcgex/paths/README.md)
   * [TBD](working-with-pcgex/paths/tbd.md)
 * [Tensors](working-with-pcgex/tensors.md)
+* [Valency](working-with-pcgex/valency.md)
 * [Asset Staging](working-with-pcgex/asset-staging/README.md)
   * [Technical Note : Asset Collections](working-with-pcgex/asset-staging/technical-note-asset-collections.md)
   * [Distribution](working-with-pcgex/asset-staging/distribution.md)
