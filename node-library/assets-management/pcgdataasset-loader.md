@@ -1,8 +1,8 @@
 ---
-icon: scrubber
+icon: circle-m
 ---
 
-# PCGDataAsset Loader
+# Staging : Load PCGData
 
 Loads and spawns PCGDataAsset contents from staged points.
 

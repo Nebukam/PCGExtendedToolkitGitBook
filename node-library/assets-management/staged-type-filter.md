@@ -1,8 +1,8 @@
 ---
-icon: scrubber
+icon: circle-m
 ---
 
-# Staged Type Filter
+# Staging : Type Filter
 
 Filters staged points by their collection entry type.
 

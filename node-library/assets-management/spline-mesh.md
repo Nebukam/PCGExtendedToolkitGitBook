@@ -1,9 +1,9 @@
 ---
 description: 'In editor :: PCGEx | Path : Spline Mesh'
-icon: circle
+icon: circle-m
 ---
 
-# Spline Mesh
+# Staging : Spline Mesh
 
 Create spline mesh components from paths.
 

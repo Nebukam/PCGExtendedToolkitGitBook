@@ -1,9 +1,9 @@
 ---
 description: 'In editor :: PCGEx | Socket Staging'
-icon: circle
+icon: circle-m
 ---
 
-# Socket Staging
+# Staging : Load Sockets
 
 Socket staging from Asset Staging' Collection Map.
 
