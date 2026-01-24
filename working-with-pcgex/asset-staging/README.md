@@ -85,7 +85,7 @@ _Updating a collection means adding the selected assets to the collection, not r
 
 {% tabs %}
 {% tab title="Assets Tab" %}
-<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 The Asset tab is selected by default and represent the content of the collection.&#x20;
 
@@ -93,7 +93,7 @@ The Asset tab is selected by default and represent the content of the collection
 {% endtab %}
 
 {% tab title="Collection Settings" %}
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 The Collection Settings contains global settings.&#x20;
 
@@ -113,7 +113,7 @@ _This will make sure precomputed data is properly updated before saving._
 
 > _We'll be using a Mesh Collection for the example, Actor Collection have a slightly different model but same rules apply._
 
-<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1).png" alt=""><figcaption><p>Entries can be either an asset, or another collection!</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1).png" alt=""><figcaption><p>Entries can be either an asset, or another collection!</p></figcaption></figure>
 
 **Entries are a list of potential things that can be associated (**_**or matched**_**) with a point** when that collection is used with the [asset-staging](../../node-library/assets-management/asset-staging/ "mention") node.
 
@@ -127,7 +127,7 @@ What matters the most is the `Static Mesh,` `Weight` and `Category`.            
 There is no need to set the mesh in the available descriptors; that value will be overwritten with the main Static Mesh.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (6) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -215,7 +215,7 @@ By default, this will write the path of the mesh to a new point attribute named 
 
 _The staging node offer a lot of options and tweaks, which we won't cover here._
 
-<figure><img src="../../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (8) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 This will distribute entries on the points, writing the asset path to an attribute and optionally modifying the output points so they match the bounds of the mesh when spawned.
 
