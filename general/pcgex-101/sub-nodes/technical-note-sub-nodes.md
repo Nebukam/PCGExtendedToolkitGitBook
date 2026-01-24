@@ -10,7 +10,7 @@ icon: microchip
 Sub-nodes are just factories. **Generally speaking, each sub-node will generate a single sub-processor per input of the node that request them** — it's more lightweight than it sounds, as these objects are regular CPP objects, not `UObject` s. They don't need to be garbage collected, and like `FPCGContext`, they're deleted as soon as they're not needed anymore.
 
 {% hint style="info" %}
-Since the context that request an instance of the "sub-processor" owns the data, it also becomes very easy to leverage PCGEx' internal [data sharing wrapper](../../../working-with-pcgex/tips-and-tricks/technical-note-pcgex-framework.md).
+Since the context that request an instance of the "sub-processor" owns the data, it also becomes very easy to leverage PCGEx' internal [data sharing wrapper](/broken/pages/UfG2xGK0i2vFyRZt7Tgu).
 {% endhint %}
 
 ### Inversion of control, sort-of

@@ -1,5 +1,4 @@
 ---
-hidden: true
 icon: atom-simple
 ---
 
@@ -101,7 +100,7 @@ Explicitly define boundary conditions (edges), required connections (wildcards),
 
 **Perfect fit:**
 
-* You're desperate to get run WFC in PCG
+* You're desperate to run WFC in PCG
 * You need more than 4/8/26 grid directions
 * Neighbor rules are complex but visual (easier to connect cages than write rules)
 * You want pattern-based replacements after solving

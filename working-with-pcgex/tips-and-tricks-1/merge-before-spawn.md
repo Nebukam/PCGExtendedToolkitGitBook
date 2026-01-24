@@ -5,7 +5,7 @@ icon: merge
 
 # Merge before Spawn
 
-As you may know by now if you checked the [PCGEx technical note](../tips-and-tricks/technical-note-pcgex-framework.md), vanilla PCG nodes process the input data one after the other — that's a strong design choice and it's good for your memory; but it also makes processing lots of smaller dataset _very slow_.
+As you may know by now if you checked the [PCGEx technical note](/broken/pages/UfG2xGK0i2vFyRZt7Tgu), vanilla PCG nodes process the input data one after the other — that's a strong design choice and it's good for your memory; but it also makes processing lots of smaller dataset _very slow_.
 
 Most of the time, **there is a significant speed gain to be had by merging point data right before you feed them into a static mesh spawner** — the same applies to debug nodes.
 

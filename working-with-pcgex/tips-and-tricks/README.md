@@ -16,14 +16,14 @@ For example, [Performance](../../node-library/shared-concepts/#performance) and 
 
 ### Technical notes & Inner workings of PCGEx
 
-If you're into that, there's a dedicated technical note that covers some things in the [Framework technical note](technical-note-pcgex-framework.md).
+If you're into that, there's a dedicated technical note that covers some things in the [Framework technical note](/broken/pages/UfG2xGK0i2vFyRZt7Tgu).
 
-{% content-ref url="technical-note-pcgex-framework.md" %}
-[technical-note-pcgex-framework.md](technical-note-pcgex-framework.md)
+{% content-ref url="/broken/spaces/OlikRK7aov5rqpXg9pfX/pages/UfG2xGK0i2vFyRZt7Tgu" %}
+[Broken link](/broken/spaces/OlikRK7aov5rqpXg9pfX/pages/UfG2xGK0i2vFyRZt7Tgu)
 {% endcontent-ref %}
 
-{% content-ref url="pcgex-module-cherry-picking-guide.md" %}
-[pcgex-module-cherry-picking-guide.md](pcgex-module-cherry-picking-guide.md)
+{% content-ref url="pcgex-modules.md" %}
+[pcgex-modules.md](pcgex-modules.md)
 {% endcontent-ref %}
 
 ### Atypical Behaviors
