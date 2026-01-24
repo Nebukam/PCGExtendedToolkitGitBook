@@ -2,9 +2,7 @@
 icon: code-branch
 ---
 
-# PCGEx Modules
-
-## PCGEx Module Cherry-Picking Guide
+# PCGEx Module Cherry-Picking Guide
 
 ### Overview
 

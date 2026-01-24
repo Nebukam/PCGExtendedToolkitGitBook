@@ -22,6 +22,10 @@ If you're into that, there's a dedicated technical note that covers some things 
 [technical-note-pcgex-framework.md](technical-note-pcgex-framework.md)
 {% endcontent-ref %}
 
+{% content-ref url="pcgex-module-cherry-picking-guide.md" %}
+[pcgex-module-cherry-picking-guide.md](pcgex-module-cherry-picking-guide.md)
+{% endcontent-ref %}
+
 ### Atypical Behaviors
 
 {% hint style="warning" %}

@@ -113,8 +113,8 @@ The best way is to clone the repository to a submodule (if you're using git); th
 _Note that the .gitmodules file is located at the root of the git repo of your project, which may not be the root of the project itself depending on your setup._
 {% endhint %}
 
-{% content-ref url="../../working-with-pcgex/tips-and-tricks/pcgex-modules.md" %}
-[pcgex-modules.md](../../working-with-pcgex/tips-and-tricks/pcgex-modules.md)
+{% content-ref url="../../working-with-pcgex/tips-and-tricks/pcgex-module-cherry-picking-guide.md" %}
+[pcgex-module-cherry-picking-guide.md](../../working-with-pcgex/tips-and-tricks/pcgex-module-cherry-picking-guide.md)
 {% endcontent-ref %}
 
 ***

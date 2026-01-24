@@ -42,7 +42,7 @@
 
 * [README.txt](working-with-pcgex/tips-and-tricks/README.md)
   * [Technical Note : PCGEx Framework](working-with-pcgex/tips-and-tricks/technical-note-pcgex-framework.md)
-  * [PCGEx Modules](working-with-pcgex/tips-and-tricks/pcgex-modules.md)
+  * [PCGEx Module Cherry-Picking Guide](working-with-pcgex/tips-and-tricks/pcgex-module-cherry-picking-guide.md)
 * [Clusters](working-with-pcgex/clusters/README.md)
   * [Technical Note : Clusters](working-with-pcgex/clusters/technical-note-clusters.md)
   * [Hello Cluster](working-with-pcgex/clusters/hello-cluster/README.md)
