@@ -166,7 +166,7 @@ This cover the preferred way of working with the asset collection. If you're aft
 
 Drop the PCGEx' Asset Staging node and select which collection to use and change the `Output Mode` to **Collection Map**.
 
-<figure><img src="../../.gitbook/assets/image (10) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (10) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 This will reveal a new <mark style="color:$warning;">**Map**</mark> pin, and add a non-human readable value to the points data.
 
@@ -227,7 +227,7 @@ This will distribute entries on the points, writing the asset path to an attribu
 
 Drop a stock `Static Mesh Spawner`, select the `Mesh Selector by Attribute` and use the attribute your wrote to in the previous step.
 
-<figure><img src="../../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (9) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <mark style="color:$success;">That's it.</mark>
 
