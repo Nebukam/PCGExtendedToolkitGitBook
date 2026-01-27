@@ -57,7 +57,7 @@ There's two ways of creating a new collection; either a fresh new data asset, or
 
 Simply create a new asset of type **Data Asset** and select either `[PCGEx] Mesh Collection` or `[PCGEx] Actor Collection`, depending on the type of asset you want to work with.
 
-<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -71,7 +71,7 @@ Select a bunch of either static mesh or actors in the content browser, right cli
 
 This will create a fresh new asset collection with an entry for each item&#x20;
 
-<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="warning" %}
 Note that if an asset collection asset is part of the content browser selection, **that collection will be updated with the selected items** **instead of creating a new asset**.
@@ -85,7 +85,7 @@ _Updating a collection means adding the selected assets to the collection, not r
 
 {% tabs %}
 {% tab title="Assets Tab" %}
-<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 The Asset tab is selected by default and represent the content of the collection.&#x20;
 
@@ -93,7 +93,7 @@ The Asset tab is selected by default and represent the content of the collection
 {% endtab %}
 
 {% tab title="Collection Settings" %}
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 The Collection Settings contains global settings.&#x20;
 
@@ -113,7 +113,7 @@ _This will make sure precomputed data is properly updated before saving._
 
 > _We'll be using a Mesh Collection for the example, Actor Collection have a slightly different model but same rules apply._
 
-<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1).png" alt=""><figcaption><p>Entries can be either an asset, or another collection!</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>Entries can be either an asset, or another collection!</p></figcaption></figure>
 
 **Entries are a list of potential things that can be associated (**_**or matched**_**) with a point** when that collection is used with the [asset-staging](../../node-library/assets-management/asset-staging/ "mention") node.
 

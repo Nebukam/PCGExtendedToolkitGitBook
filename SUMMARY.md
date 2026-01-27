@@ -182,6 +182,7 @@
     * [Delaunay 3D](node-library/clusters/diagrams/delaunay-3d.md)
     * [Voronoi 2D](node-library/clusters/diagrams/voronoi-2d.md)
     * [Voronoi 3D](node-library/clusters/diagrams/voronoi-3d.md)
+    * [Cell Diagram](node-library/clusters/diagrams/cell-diagram.md)
   * [Connect Points](node-library/clusters/connect-points/README.md)
     * [Probe : Anisotropic](node-library/clusters/connect-points/probe-anisotropic.md)
     * [Probe : Closest](node-library/clusters/connect-points/probe-closest.md)
