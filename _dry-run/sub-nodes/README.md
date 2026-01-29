@@ -38,12 +38,14 @@ Sub-nodes are **modular components** that plug into specialized input pins on PC
 |----------|-----------|---------|
 | [Pickers](pickers/) | `Pickers` | Select points by index or range |
 | [Filters](../node-library/filters/) | `Filters` | Test points/edges/collections |
-| Heuristics | `Heuristics` | Score paths for pathfinding |
-| Noises | `Noise` | Generate procedural noise values |
-| Tensors | `Tensors` | Define directional vector fields |
-| Probes | `Probes` | Establish point connectivity |
-| Match Rules | `Match Rules` | Define data matching criteria |
-| Shape Builders | `Shapes` | Generate geometric shapes |
+| [Heuristics](heuristics/) | `Heuristics` | Score paths for pathfinding |
+| [Noises](noises/) | `Noise` | Generate procedural noise values |
+| [Tensors](tensors/) | `Tensors` | Define directional vector fields |
+| [Probes](probes/) | `Probes` | Establish point connectivity |
+| [Match Rules](match-rules/) | `Match Rules` | Define data matching criteria |
+| [Shapes](shapes/) | `Shape Builder` | Generate geometric point patterns |
+| [Actions](actions/) | `Action` | Conditional batch operations |
+| [Fill Controls](fill-controls/) | `Fill Control` | Control flood fill propagation |
 | Tangents | `Tangents` | Calculate spline tangent vectors |
 | Sorting Rules | `Sort Rules` | Define sort order criteria |
 
@@ -76,3 +78,19 @@ Sub-nodes are "factory providers"—they create factory data that the consuming 
 
 ### PCG Overridable
 Most sub-node settings are **PCG Overridable** (⚡), meaning they can be driven by upstream attributes at runtime.
+
+---
+
+## Quick Reference
+
+### By Consuming Node
+
+| Node | Accepts |
+|------|---------|
+| **Pathfinding nodes** | Heuristics |
+| **Connect Points** | Probes |
+| **Create Shapes** | Shapes |
+| **Cluster : Flood Fill** | Fill Controls, Heuristics |
+| **Batch Actions** | Actions, Filters |
+| **Build Tensor Field** | Tensors |
+| **Most processing nodes** | Filters |
