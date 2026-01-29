@@ -23,6 +23,58 @@ For each node:
 
 ## Settings
 
+### Comparison Quality
+
+<details>
+<summary><strong>Comparison Quality</strong> <code>EPCGExDirectionCheckMode</code></summary>
+
+How to compare directions. Note that Hash comparison ignores adjacency consolidation.
+
+| Option | Meaning |
+|--------|---------|
+| **Dot** | Angular comparison using dot product |
+| **Hash** | Discretized comparison using vector quantization |
+
+Default: `Dot`
+
+</details>
+
+### Adjacency Settings
+
+<details>
+<summary><strong>Mode</strong> <code>EPCGExAdjacencyTestMode</code></summary>
+
+How many connected edges should be tested.
+
+| Option | Meaning |
+|--------|---------|
+| **All** | Test all connected edges |
+| **Some** | Test some connected edges only |
+
+Default: `Some`
+
+⚡ PCG Overridable
+
+</details>
+
+*See [Node Adjacency](./node-adjacency.md) for full adjacency settings documentation.*
+
+### Edge Direction
+
+<details>
+<summary><strong>Direction Order</strong> <code>EPCGExAdjacencyDirectionOrigin</code></summary>
+
+Which direction to read from each edge.
+
+| Option | Meaning |
+|--------|---------|
+| **From Node** | Direction pointing away from the tested node |
+| **To Node** | Direction pointing toward the tested node |
+
+Default: `From Node`
+
+</details>
+
 ### Direction Reference
 
 <details>
@@ -35,20 +87,39 @@ Default: `Constant`
 </details>
 
 <details>
-<summary><strong>Direction</strong> <code>FVector | Attribute Selector</code></summary>
+<summary><strong>Direction</strong> <code>FVector</code></summary>
 
 The reference direction to compare against.
+
+*Visible when Compare Against = Constant*
+
+Default: `(0, 0, 1)` (Up)
 
 ⚡ PCG Overridable
 
 </details>
 
 <details>
-<summary><strong>Direction Invert</strong> <code>bool</code></summary>
+<summary><strong>Direction (Attr)</strong> <code>Attribute Selector</code></summary>
+
+Attribute to read the reference direction from.
+
+*Visible when Compare Against = Attribute*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Invert</strong> <code>bool</code></summary>
 
 Flip the reference direction before comparison.
 
-Default: Disabled
+*Visible when Compare Against = Attribute*
+
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
 
@@ -57,98 +128,44 @@ Default: Disabled
 
 Apply the node's local transform to the reference direction. Useful when comparing against local "forward" or "up" directions.
 
-Default: Disabled
-
-</details>
-
-### Edge Direction
-
-<details>
-<summary><strong>Direction Order</strong> <code>From Node | To Node</code></summary>
-
-Which direction to read from each edge.
-
-- **From Node** - Direction pointing away from the tested node
-- **To Node** - Direction pointing toward the tested node
-
-Default: `From Node`
-
-</details>
-
-### Comparison Method
-
-<details>
-<summary><strong>Comparison Quality</strong> <code>Dot | Hash</code></summary>
-
-How to compare directions.
-
-- **Dot** - Angular comparison using dot product
-- **Hash** - Discretized comparison using vector quantization
-
-Default: `Dot`
-
-</details>
-
-#### Dot Comparison Settings
-
-<details>
-<summary><strong>Dot Tolerance</strong> <code>double</code></summary>
-
-Angular tolerance for dot product comparison. Higher values allow more deviation from the reference direction.
-
-Default: Very small
-
-</details>
-
-#### Hash Comparison Settings
-
-<details>
-<summary><strong>Grid Size</strong> <code>int32</code></summary>
-
-Resolution of the vector quantization grid. Higher values create finer direction buckets.
-
-Default: `8`
-
-</details>
-
-### Adjacency Mode
-
-<details>
-<summary><strong>Test Mode</strong> <code>All | Some</code></summary>
-
-How to evaluate multiple connected edges.
-
-- **All** - All edges must match the direction
-- **Some** - A threshold number of edges must match
-
-Default: `All`
-
-</details>
-
-<details>
-<summary><strong>Consolidation</strong> <code>Average | Min | Max | Sum</code></summary>
-
-When testing all edges, how to combine their direction comparisons. Only visible when Test Mode is `All`.
-
-Default: `Average`
-
-</details>
-
-<details>
-<summary><strong>Threshold</strong> <code>int32 | double</code></summary>
-
-Number of edges that must match. Only visible when Test Mode is `Some`.
+Default: `false`
 
 ⚡ PCG Overridable
 
 </details>
 
+### Dot Comparison Settings
+
+*Visible when Comparison Quality = Dot*
+
 <details>
-<summary><strong>Threshold Type</strong> <code>Discrete | Relative</code></summary>
+<summary><strong>Dot Comparison Details</strong> <code>FPCGExDotComparisonDetails</code></summary>
 
-Whether threshold is absolute count or percentage.
+Dot product comparison settings including:
 
-Default: `Discrete`
+- **Domain**: `Scalar` (-1 to 1) or `Degrees` (0-180)
+- **Comparison**: The comparison operator (default: `>=`)
+- **Unsigned Comparison**: Use absolute value of dot product
+- **Threshold Input**: `Constant` or `Attribute`
+- **Threshold**: The comparison threshold
+
+⚡ PCG Overridable
+
+</details>
+
+### Hash Comparison Settings
+
+*Visible when Comparison Quality = Hash*
+
+<details>
+<summary><strong>Hash Comparison Details</strong> <code>FPCGExVectorHashComparisonDetails</code></summary>
+
+Hash comparison settings including:
+
+- **Hash Tolerance Input**: `Constant` or `Attribute`
+- **Hash Tolerance**: Resolution of vector quantization (default: `0.001`)
+
+⚡ PCG Overridable
 
 </details>
 
@@ -159,20 +176,20 @@ Default: `Discrete`
 - Direction: `(0, 0, 1)`
 - Direction Order: `From Node`
 - Comparison Quality: `Dot`
-- Test Mode: `Some`
+- Mode: `Some`
 - Threshold: `1`
 
 **Find nodes aligned with local forward**:
 - Compare Against: `Constant`
 - Direction: `(1, 0, 0)`
-- Transform Direction: Enabled
-- Test Mode: `All`
+- Transform Direction: `true`
+- Mode: `All`
 
 **Find boundary nodes** (edges pointing outward from center):
 - Compare Against: `Attribute`
-- Direction: `$Position` (normalized from origin)
+- Direction (Attr): `$Position` (normalized from origin)
 - Direction Order: `From Node`
-- Test Mode: `All`
+- Mode: `All`
 
 ## Related
 
@@ -185,4 +202,4 @@ Default: `Discrete`
 
 ---
 
-:package: **Module**: `PCGExElementsClusters` | :page_facing_up: [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Private/Filters/Nodes/PCGExNodeEdgeDirectionFilter.cpp)
+📦 **Module**: `PCGExElementsClusters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Private/Filters/Nodes/PCGExNodeEdgeDirectionFilter.cpp)

@@ -14,7 +14,7 @@ Path × Bounds Intersection detects where path segments pass through the oriente
 ## How It Works
 
 1. **Build OBB collection** from target points' bounds
-2. **Test each path segment** against all relevant bounds
+2. **Test each path segment** against relevant bounds (filtered by data matching)
 3. **Calculate intersection points** where segments enter/exit boxes
 4. **Insert new points** at intersection locations
 5. **Blend attributes** for new points from segment endpoints
@@ -34,7 +34,7 @@ Bounds:       ┌───┼───────┼───┐
 ### Data Matching
 
 <details>
-<summary><strong>Data Matching</strong> <code>Matching Details</code></summary>
+<summary><strong>Data Matching</strong> <code>FPCGExMatchingDetails</code></summary>
 
 Filter which target bounds are tested against which paths. Useful when you have multiple categories of bounds and want selective intersection testing.
 
@@ -43,29 +43,30 @@ Filter which target bounds are tested against which paths. Useful when you have 
 ### Blending
 
 <details>
-<summary><strong>Blending</strong> <code>Sub-Point Blending Operation</code></summary>
+<summary><strong>Blending</strong> <code>UPCGExSubPointsBlendInstancedFactory</code></summary>
 
 How to interpolate attributes for intersection points. New points are created along path segments, so they need blended attribute values.
 
 Available operations:
-- [Interpolate](./sub-point-blending/interpolate.md) - Blend based on position along segment (default)
-- [Inherit First](./sub-point-blending/inherit-first.md) - Copy from segment start
-- [Inherit Last](./sub-point-blending/inherit-last.md) - Copy from segment end
-- [No Blending](./sub-point-blending/none.md) - Skip attribute blending
+- Interpolate - Blend based on position along segment
+- Inherit First - Copy from segment start
+- Inherit Last - Copy from segment end
 
-See [Sub-Point Blending](./sub-point-blending/) for details.
+See [Sub-Point Blending](./sub-ops/blending/) for details.
 
 </details>
 
 ### Output
 
 <details>
-<summary><strong>Output Settings</strong> <code>Box Intersection Details</code></summary>
+<summary><strong>Output</strong> <code>FPCGExBoxIntersectionDetails</code></summary>
 
 Configure what attributes are written to intersection points:
 - Intersection normal
 - Which bounds were hit
 - Entry vs exit classification
+
+⚡ PCG Overridable
 
 </details>
 
@@ -76,7 +77,7 @@ Configure what attributes are written to intersection points:
 
 Add a tag to paths that have intersection cuts.
 
-Default: Enabled
+Default: `true`
 
 </details>
 
@@ -84,6 +85,8 @@ Default: Enabled
 <summary><strong>Has Cuts Tag</strong> <code>string</code></summary>
 
 Tag applied to paths with intersections.
+
+*Visible when Tag If Has Cuts is enabled*
 
 Default: `HasCuts`
 
@@ -94,7 +97,7 @@ Default: `HasCuts`
 
 Add a tag to paths that have no intersections.
 
-Default: Disabled
+Default: `false`
 
 </details>
 
@@ -102,6 +105,8 @@ Default: Disabled
 <summary><strong>Uncut Tag</strong> <code>string</code></summary>
 
 Tag applied to paths without intersections.
+
+*Visible when Tag If Uncut is enabled*
 
 Default: `Uncut`
 
@@ -111,14 +116,14 @@ Default: `Uncut`
 
 | Pin | Type | Description |
 |-----|------|-------------|
-| **Paths** | Points | Paths to test for intersection |
+| **In** | Points | Paths to test for intersection |
 | **Bounds** | Points | Target points whose bounds define intersection volumes |
 
 ## Outputs
 
 | Pin | Type | Description |
 |-----|------|-------------|
-| **Paths** | Points | Paths with intersection points inserted |
+| **Out** | Points | Paths with intersection points inserted |
 
 ## Examples
 
@@ -152,7 +157,7 @@ Default: `Uncut`
 - [Split](./split.md) - Divide paths at marked points
 
 ### Sub-Point Operations
-- [Sub-Point Blending](./sub-point-blending/) - How intersection point attributes are computed
+- [Sub-Point Blending](./sub-ops/blending/) - How intersection point attributes are computed
 
 ---
 

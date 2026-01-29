@@ -1,6 +1,6 @@
 ---
 icon: tag
-description: 'In editor :: PCGEx | Collection Filter : Tag Value'
+description: 'In editor :: PCGEx | Data Filter : Tag Value'
 ---
 
 # Tag Value
@@ -26,16 +26,18 @@ For each collection:
 ### Tag Selection
 
 <details>
-<summary><strong>Tag</strong> <code>string</code></summary>
+<summary><strong>Tag Name</strong> <code>string</code></summary>
 
 The tag name pattern to search for. This matches the portion before the colon in `Tag:Value` format.
 
-Default: `Tag`
+Default: `"Tag"`
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
-<summary><strong>Match</strong> <code>Equals | Contains | Starts With | Ends With</code></summary>
+<summary><strong>Match</strong> <code>EPCGExStringMatchMode</code></summary>
 
 How to match tag names.
 
@@ -53,9 +55,14 @@ Default: `Equals`
 ### Value Comparison
 
 <details>
-<summary><strong>Value Type</strong> <code>Numeric | String</code></summary>
+<summary><strong>Value Type</strong> <code>EPCGExComparisonDataType</code></summary>
 
 How to interpret and compare the tag value.
+
+| Option | Meaning |
+|--------|---------|
+| **Numeric** | Parse and compare as number |
+| **String** | Compare as text |
 
 Default: `Numeric`
 
@@ -64,56 +71,72 @@ Default: `Numeric`
 #### Numeric Settings
 
 <details>
-<summary><strong>Numeric Comparison</strong> <code>Comparison Operator</code></summary>
+<summary><strong>Comparison</strong> <code>EPCGExComparison</code></summary>
 
-How to compare numeric tag values. Only visible when Value Type is `Numeric`.
+How to compare numeric tag values.
+
+*Visible when Value Type = Numeric*
 
 Default: `~=` (Nearly Equal)
 
 </details>
 
 <details>
-<summary><strong>Numeric Operand B</strong> <code>double</code></summary>
+<summary><strong>Operand B (Numeric)</strong> <code>double</code></summary>
 
-The numeric threshold to compare against. Only visible when Value Type is `Numeric`.
+The numeric threshold to compare against.
+
+*Visible when Value Type = Numeric*
 
 Default: `0`
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 <summary><strong>Tolerance</strong> <code>double</code></summary>
 
-Epsilon for near-equality comparisons. Only visible when using `~=` or `!~=` operators.
+Tolerance for near-equality comparisons.
 
-Default: Very small
+*Visible when Value Type = Numeric and Comparison = ~= or !~=*
+
+Default: `DBL_COMPARE_TOLERANCE`
+
+⚡ PCG Overridable
 
 </details>
 
 #### String Settings
 
 <details>
-<summary><strong>String Comparison</strong> <code>String Comparison Operator</code></summary>
+<summary><strong>Comparison</strong> <code>EPCGExStringComparison</code></summary>
 
-How to compare string tag values. Only visible when Value Type is `String`.
+How to compare string tag values.
+
+*Visible when Value Type = String*
 
 Default: `Contains`
 
 </details>
 
 <details>
-<summary><strong>String Operand B</strong> <code>string</code></summary>
+<summary><strong>Operand B (String)</strong> <code>string</code></summary>
 
-The string to compare against. Only visible when Value Type is `String`.
+The string to compare against.
 
-Default: `Tag`
+*Visible when Value Type = String*
+
+Default: `"Tag"`
+
+⚡ PCG Overridable
 
 </details>
 
 ### Multi-Match Behavior
 
 <details>
-<summary><strong>Multi Match</strong> <code>AND | OR</code></summary>
+<summary><strong>Multi Match</strong> <code>EPCGExFilterGroupMode</code></summary>
 
 How to combine results when multiple tags match the name pattern.
 
@@ -133,7 +156,7 @@ Default: `AND`
 
 Flip the filter result.
 
-Default: Disabled
+Default: `false`
 
 </details>
 
@@ -147,25 +170,25 @@ PCG data can have tags in `Name:Value` format:
 ## Examples
 
 **Keep collections with Priority > 3**:
-- Tag: `Priority`
+- Tag Name: `Priority`
 - Match: `Equals`
 - Value Type: `Numeric`
-- Numeric Comparison: `>`
-- Numeric Operand B: `3`
+- Comparison: `>`
+- Operand B (Numeric): `3`
 
 **Keep collections with Category containing "Spawn"**:
-- Tag: `Category`
+- Tag Name: `Category`
 - Match: `Equals`
 - Value Type: `String`
-- String Comparison: `Contains`
-- String Operand B: `Spawn`
+- Comparison: `Contains`
+- Operand B (String): `Spawn`
 
 **Keep collections where all Level tags equal "Hard"**:
-- Tag: `Level`
+- Tag Name: `Level`
 - Match: `Equals`
 - Value Type: `String`
-- String Comparison: `==`
-- String Operand B: `Hard`
+- Comparison: `Equals`
+- Operand B (String): `Hard`
 - Multi Match: `AND`
 
 ## Related
@@ -174,9 +197,6 @@ PCG data can have tags in `Name:Value` format:
 - [Tag Check](./tag-check.md) - Test for tag presence (ignores value)
 - [Entry Count](./entry-count.md) - Filter by point count
 
-### See Also
-- [Comparison Operators](../../shared-concepts/comparison-operators.md) - Comparison behavior
-
 ---
 
-:package: **Module**: `PCGExFilters` | :page_facing_up: [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Collections/PCGExTagValueFilter.cpp)
+📦 **Module**: `PCGExFilters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Collections/PCGExTagValueFilter.cpp)

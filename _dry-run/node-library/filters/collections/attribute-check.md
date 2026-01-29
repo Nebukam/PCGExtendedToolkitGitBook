@@ -1,6 +1,6 @@
 ---
 icon: list-check
-description: 'In editor :: PCGEx | Collection Filter : Attribute Check'
+description: 'In editor :: PCGEx | Data Filter : Attribute Check'
 ---
 
 # Attribute Check
@@ -29,30 +29,14 @@ For each collection:
 
 The attribute name or pattern to search for.
 
-Default: `Name`
+Default: `"Name"`
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
-<summary><strong>Match</strong> <code>Equals | Contains | Starts With | Ends With</code></summary>
-
-How to match attribute names.
-
-| Option | Meaning |
-|--------|---------|
-| **Equals** | Exact attribute name match |
-| **Contains** | Attribute name contains the pattern |
-| **Starts With** | Attribute name begins with the pattern |
-| **Ends With** | Attribute name ends with the pattern |
-
-Default: `Equals`
-
-</details>
-
-### Domain Filter
-
-<details>
-<summary><strong>Domain</strong> <code>Any | Data | Elements | Match</code></summary>
+<summary><strong>Domain</strong> <code>EPCGExAttribtueDomainCheck</code></summary>
 
 Filter by attribute domain (where the attribute is stored).
 
@@ -67,21 +51,39 @@ Default: `Any`
 
 </details>
 
+<details>
+<summary><strong>Match</strong> <code>EPCGExStringMatchMode</code></summary>
+
+How to match attribute names.
+
+| Option | Meaning |
+|--------|---------|
+| **Equals** | Exact attribute name match |
+| **Contains** | Attribute name contains the pattern |
+| **Starts With** | Attribute name begins with the pattern |
+| **Ends With** | Attribute name ends with the pattern |
+
+Default: `Equals`
+
+</details>
+
 ### Type Validation
 
 <details>
 <summary><strong>Check Type</strong> <code>bool</code></summary>
 
-Enable type validation for matched attributes.
+Enable type validation for matched attributes. Uses inline toggle.
 
-Default: Disabled
+Default: `false`
 
 </details>
 
 <details>
-<summary><strong>Type</strong> <code>PCG Metadata Type</code></summary>
+<summary><strong>Type</strong> <code>EPCGMetadataTypes</code></summary>
 
-The expected attribute type. Only visible when Check Type is enabled.
+The expected attribute type.
+
+*Visible when Check Type is enabled*
 
 Common types:
 - `Float` / `Double`
@@ -103,7 +105,7 @@ Default: `Unknown`
 
 Flip the filter result.
 
-Default: Disabled
+Default: `false`
 
 </details>
 
@@ -112,24 +114,23 @@ Default: Disabled
 **Keep collections that have a "Health" attribute**:
 - Attribute Name: `Health`
 - Match: `Equals`
-- Check Type: Disabled
+- Check Type: `false`
 
 **Keep collections with a float "Weight" attribute**:
 - Attribute Name: `Weight`
 - Match: `Equals`
-- Check Type: Enabled
+- Check Type: `true`
 - Type: `Float`
 
 **Filter out collections missing required attributes**:
 - Attribute Name: `RequiredData`
 - Match: `Equals`
-- Invert: Enabled (fails if attribute exists → keeps collections without it)
-- Then use Invert: Disabled to keep collections WITH the attribute
+- Invert: `true` (passes collections WITHOUT the attribute)
 
 **Find collections with any "Team" prefixed attribute**:
 - Attribute Name: `Team`
 - Match: `Starts With`
-- Check Type: Disabled
+- Check Type: `false`
 
 ## Use Cases
 
@@ -144,9 +145,6 @@ Default: Disabled
 - [Tag Check](./tag-check.md) - Check for tags instead of attributes
 - [Data Bounds](./data-bounds.md) - Check spatial properties
 
-### See Also
-- [Attribute Mapping](../../shared-concepts/attribute-mapping.md) - Understanding attributes
-
 ---
 
-:package: **Module**: `PCGExFilters` | :page_facing_up: [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Collections/PCGExAttributeCheckFilter.cpp)
+📦 **Module**: `PCGExFilters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Collections/PCGExAttributeCheckFilter.cpp)

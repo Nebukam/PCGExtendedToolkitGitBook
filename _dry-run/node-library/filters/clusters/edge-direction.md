@@ -1,6 +1,6 @@
 ---
 icon: arrow-right
-description: 'In editor :: PCGEx | Edge Filter : Direction'
+description: 'In editor :: PCGEx | Edge Filter : Edge Direction'
 ---
 
 # Edge Direction
@@ -22,6 +22,69 @@ For each edge:
 
 ## Settings
 
+### Direction Settings
+
+<details>
+<summary><strong>Direction Method</strong> <code>EPCGExEdgeDirectionMethod</code></summary>
+
+Method to pick the edge direction amongst various possibilities.
+
+| Option | Meaning |
+|--------|---------|
+| **Endpoints Order** | Uses the edge's Start & End properties |
+| **Endpoints Indices** | Uses the edge's Start & End indices |
+| **Endpoints Sort** | Uses sorting rules to determine Start/End |
+| **Edge Dot Attribute** | Chooses based on dot product against a vector attribute on the edge |
+
+Default: `Endpoints Order`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Dir Source Attribute</strong> <code>Attribute Selector</code></summary>
+
+Attribute picker for direction when using Edge Dot Attribute method.
+
+*Visible when Direction Method = Edge Dot Attribute*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Direction Choice</strong> <code>EPCGExEdgeDirectionChoice</code></summary>
+
+Further refine the direction method.
+
+| Option | Meaning |
+|--------|---------|
+| **Smallest to Greatest** | Direct from smaller to larger value |
+| **Greatest to Smallest** | Direct from larger to smaller value |
+
+Default: `Smallest to Greatest`
+
+⚡ PCG Overridable
+
+</details>
+
+### Comparison Quality
+
+<details>
+<summary><strong>Comparison Quality</strong> <code>EPCGExDirectionCheckMode</code></summary>
+
+How to compare directions. Note that Hash comparison ignores adjacency consolidation.
+
+| Option | Meaning |
+|--------|---------|
+| **Dot** | Angular comparison using dot product (continuous) |
+| **Hash** | Discretized comparison using vector quantization (discrete buckets) |
+
+Default: `Dot`
+
+</details>
+
 ### Direction Reference
 
 <details>
@@ -34,9 +97,11 @@ Default: `Constant`
 </details>
 
 <details>
-<summary><strong>Direction</strong> <code>FVector | Attribute Selector</code></summary>
+<summary><strong>Direction</strong> <code>FVector</code></summary>
 
 The reference direction to compare against.
+
+*Visible when Compare Against = Constant*
 
 Default: `(0, 0, 1)` (Up)
 
@@ -45,80 +110,72 @@ Default: `(0, 0, 1)` (Up)
 </details>
 
 <details>
-<summary><strong>Direction Invert</strong> <code>bool</code></summary>
+<summary><strong>Direction (Attr)</strong> <code>Attribute Selector</code></summary>
+
+Attribute to read the reference direction from.
+
+*Visible when Compare Against = Attribute*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Invert</strong> <code>bool</code></summary>
 
 Flip the reference direction before comparison.
 
-Default: Disabled
+*Visible when Compare Against = Attribute*
+
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 <summary><strong>Transform Direction</strong> <code>bool</code></summary>
 
-Apply the edge's transform to the reference direction.
+Apply the local point's transform to the reference direction.
 
-Default: Disabled
+Default: `false`
 
-</details>
-
-### Edge Direction Settings
-
-<details>
-<summary><strong>Direction Method</strong> <code>Endpoint Order | Attribute Sort | Custom</code></summary>
-
-How to determine which way the edge "points."
-
-- **Endpoint Order** - Use the natural start→end order
-- **Attribute Sort** - Sort endpoints by attribute value
-- **Custom** - Use custom direction logic
-
-Default: `Endpoint Order`
+⚡ PCG Overridable
 
 </details>
 
+### Dot Comparison Settings
+
+*Visible when Comparison Quality = Dot*
+
 <details>
-<summary><strong>Direction Choice</strong> <code>Smallest to Greatest | Greatest to Smallest</code></summary>
+<summary><strong>Dot Comparison Details</strong> <code>FPCGExDotComparisonDetails</code></summary>
 
-When using attribute sorting, which direction to assign.
+Dot product comparison settings including:
 
-Default: `Smallest to Greatest`
+- **Domain**: `Scalar` (-1 to 1) or `Degrees` (0-180)
+- **Comparison**: The comparison operator (default: `>=`)
+- **Unsigned Comparison**: Use absolute value of dot product
+- **Threshold Input**: `Constant` or `Attribute`
+- **Threshold**: The comparison threshold
+
+⚡ PCG Overridable
 
 </details>
 
-### Comparison Method
+### Hash Comparison Settings
+
+*Visible when Comparison Quality = Hash*
 
 <details>
-<summary><strong>Comparison Quality</strong> <code>Dot | Hash</code></summary>
+<summary><strong>Hash Comparison Details</strong> <code>FPCGExVectorHashComparisonDetails</code></summary>
 
-How to compare directions.
+Hash comparison settings including:
 
-- **Dot** - Angular comparison using dot product (continuous)
-- **Hash** - Discretized comparison using vector quantization (discrete buckets)
+- **Hash Tolerance Input**: `Constant` or `Attribute`
+- **Hash Tolerance**: Resolution of vector quantization (default: `0.001`)
 
-Default: `Dot`
-
-</details>
-
-#### Dot Comparison Settings
-
-<details>
-<summary><strong>Dot Tolerance</strong> <code>double</code></summary>
-
-Angular tolerance for dot product comparison. Higher values allow more deviation.
-
-Default: Very small
-
-</details>
-
-#### Hash Comparison Settings
-
-<details>
-<summary><strong>Grid Size</strong> <code>int32</code></summary>
-
-Resolution of the vector quantization grid.
-
-Default: `8`
+⚡ PCG Overridable
 
 </details>
 
@@ -135,21 +192,23 @@ The dot product comparison returns:
 - Compare Against: `Constant`
 - Direction: `(0, 0, 1)`
 - Comparison Quality: `Dot`
-- Dot Tolerance: `0.1`
+- Dot Threshold: `0.9`
 
 **Find horizontal edges**:
 - Compare Against: `Constant`
 - Direction: `(0, 0, 1)`
-- Then test for dot ≈ 0 (perpendicular to up)
+- Comparison: `~=`
+- Threshold: `0` (perpendicular to up)
 
 **Find edges pointing toward a direction attribute**:
 - Compare Against: `Attribute`
-- Direction: `FlowDirection`
+- Direction (Attr): `FlowDirection`
 
 **Find edges aligned with X axis** (either direction):
 - Compare Against: `Constant`
 - Direction: `(1, 0, 0)`
-- Test for dot ≈ 1.0 OR dot ≈ -1.0
+- Unsigned Comparison: `true`
+- Threshold: `0.9`
 
 ## Related
 
@@ -162,4 +221,4 @@ The dot product comparison returns:
 
 ---
 
-:package: **Module**: `PCGExElementsClusters` | :page_facing_up: [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Private/Filters/Edges/PCGExIsoEdgeDirectionFilter.cpp)
+📦 **Module**: `PCGExElementsClusters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Private/Filters/Edges/PCGExIsoEdgeDirectionFilter.cpp)

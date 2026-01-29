@@ -15,7 +15,7 @@ The Node Adjacency filter evaluates cluster nodes by reading an attribute from t
 
 For each node:
 
-1. **Read Operand A** from the node being tested
+1. **Read Operand A** from the node being tested (constant or attribute)
 2. **Gather neighbor values** from adjacent nodes or connecting edges
 3. **Apply adjacency mode** (test all or test some neighbors)
 4. **Compare values** using the selected operator
@@ -23,166 +23,243 @@ For each node:
 
 ## Settings
 
-### Operands
+### Adjacency Settings
 
 <details>
-<summary><strong>Operand A Source</strong> <code>Constant | Attribute</code></summary>
+<summary><strong>Mode</strong> <code>EPCGExAdjacencyTestMode</code></summary>
 
-Whether the first operand comes from a fixed value or node attribute.
-
-Default: `Attribute`
-
-</details>
-
-<details>
-<summary><strong>Operand A</strong> <code>double | Attribute Selector</code></summary>
-
-The value to compare. When using Attribute mode, reads from the node being tested.
-
-⚡ PCG Overridable
-
-</details>
-
-<details>
-<summary><strong>Operand B Source</strong> <code>Adjacent Node | Connected Edge</code></summary>
-
-Where to read the comparison values from.
-
-- **Adjacent Node** - Read from neighboring nodes
-- **Connected Edge** - Read from the edges connecting to neighbors
-
-Default: `Adjacent Node`
-
-</details>
-
-<details>
-<summary><strong>Operand B</strong> <code>Attribute Selector</code></summary>
-
-The attribute to read from neighbors or edges for comparison.
-
-⚡ PCG Overridable
-
-</details>
-
-### Comparison
-
-<details>
-<summary><strong>Comparison</strong> <code>Comparison Operator</code></summary>
-
-How to compare the values.
+How many adjacent items should be tested.
 
 | Option | Meaning |
 |--------|---------|
-| **==** | Strictly equal |
-| **!=** | Strictly not equal |
-| **>=** | Equal or greater |
-| **<=** | Equal or smaller |
-| **>** | Strictly greater |
-| **<** | Strictly smaller |
-| **~=** | Nearly equal (within tolerance) |
-| **!~=** | Nearly not equal (outside tolerance) |
+| **All** | Test a condition using all adjacent nodes |
+| **Some** | Test a condition using some adjacent nodes only |
 
-Default: `~=` (Nearly Equal)
-
-See [Comparison Operators](../../shared-concepts/comparison-operators.md) for detailed behavior.
+Default: `Some`
 
 </details>
 
 <details>
-<summary><strong>Tolerance</strong> <code>double</code></summary>
+<summary><strong>Consolidation</strong> <code>EPCGExAdjacencyGatherMode</code></summary>
 
-Epsilon for near-equality comparisons.
+When testing all neighbors, how to combine their values into a single operand B.
 
-Default: Very small
-
-</details>
-
-### Adjacency Mode
-
-<details>
-<summary><strong>Test Mode</strong> <code>All | Some</code></summary>
-
-How to evaluate multiple neighbors.
-
-- **All** - All neighbors must satisfy the comparison
-- **Some** - A threshold number of neighbors must satisfy
-
-Default: `All`
-
-</details>
-
-<details>
-<summary><strong>Consolidation</strong> <code>Average | Min | Max | Sum</code></summary>
-
-When testing all neighbors, how to combine their values into a single operand B. Only visible when Test Mode is `All`.
+*Visible when Mode = All*
 
 | Option | Meaning |
 |--------|---------|
-| **Average** | Use the mean of all neighbor values |
-| **Min** | Use the smallest neighbor value |
-| **Max** | Use the largest neighbor value |
-| **Sum** | Use the total of all neighbor values |
+| **Individual** | Test neighbors one by one |
+| **Average** | Test against mean of all neighbor values |
+| **Min** | Test against smallest neighbor value |
+| **Max** | Test against largest neighbor value |
+| **Sum** | Test against total of all neighbor values |
 
 Default: `Average`
 
 </details>
 
 <details>
-<summary><strong>Threshold</strong> <code>int32 | double</code></summary>
+<summary><strong>Threshold Comparison</strong> <code>EPCGExComparison</code></summary>
 
-Number of neighbors that must pass the comparison. Only visible when Test Mode is `Some`.
+How to compare against the threshold when using Some mode.
 
-⚡ PCG Overridable
+*Visible when Mode = Some*
+
+Default: `~=` (Nearly Equal)
 
 </details>
 
 <details>
 <summary><strong>Threshold Type</strong> <code>Discrete | Relative</code></summary>
 
-Whether the threshold is an absolute count or percentage. Only visible when Test Mode is `Some`.
+Whether threshold is an absolute count or percentage.
 
-- **Discrete** - Exact number of neighbors
-- **Relative** - Percentage of total neighbors (0.0 to 1.0)
+*Visible when Mode = Some*
+
+| Option | Meaning |
+|--------|---------|
+| **Discrete** | Exact number of neighbors |
+| **Relative** | Percentage of total neighbors (0.0 to 1.0) |
 
 Default: `Discrete`
 
 </details>
 
 <details>
-<summary><strong>Rounding</strong> <code>Round | Floor | Ceil</code></summary>
+<summary><strong>Threshold Input</strong> <code>Constant | Attribute</code></summary>
 
-How to round when using relative threshold. Only visible when Threshold Type is `Relative`.
+Whether threshold value comes from a constant or attribute.
+
+*Visible when Mode = Some*
+
+Default: `Constant`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Threshold (Discrete)</strong> <code>int32</code></summary>
+
+Number of neighbors that must pass the comparison.
+
+*Visible when Mode = Some, Threshold Input = Constant, and Threshold Type = Discrete*
+
+Default: `1`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Threshold (Relative)</strong> <code>double</code></summary>
+
+Percentage of neighbors that must pass (0.0 to 1.0).
+
+*Visible when Mode = Some, Threshold Input = Constant, and Threshold Type = Relative*
+
+Default: `0.5`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Rounding</strong> <code>EPCGExRelativeThresholdRoundingMode</code></summary>
+
+How to round when using relative threshold.
+
+*Visible when Mode = Some and Threshold Type = Relative*
+
+| Option | Meaning |
+|--------|---------|
+| **Round** | Rounds to closest integer |
+| **Floor** | Rounds down |
+| **Ceil** | Rounds up |
 
 Default: `Round`
+
+</details>
+
+<details>
+<summary><strong>Threshold Tolerance</strong> <code>int32</code></summary>
+
+Tolerance for threshold near-equality comparisons.
+
+*Visible when Mode = Some and Threshold Comparison = ~= or !~=*
+
+Default: `0`
+
+⚡ PCG Overridable
+
+</details>
+
+### Operands
+
+<details>
+<summary><strong>Compare Against</strong> <code>Constant | Attribute</code></summary>
+
+Whether Operand A comes from a fixed value or node attribute.
+
+Default: `Constant`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Operand A</strong> <code>double</code></summary>
+
+Constant value for Operand A.
+
+*Visible when Compare Against = Constant*
+
+Default: `0`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Operand A (Attr)</strong> <code>Attribute Selector</code></summary>
+
+Attribute to read for Operand A. Will be converted to double.
+
+*Visible when Compare Against = Attribute*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Comparison</strong> <code>EPCGExComparison</code></summary>
+
+How to compare the values.
+
+Default: `~=` (Nearly Equal)
+
+</details>
+
+<details>
+<summary><strong>Operand B Source</strong> <code>EPCGExClusterElement</code></summary>
+
+Where to read the comparison values from.
+
+| Option | Meaning |
+|--------|---------|
+| **Vtx** | Read from neighboring nodes |
+| **Edge** | Read from the edges connecting to neighbors |
+
+Default: `Vtx`
+
+</details>
+
+<details>
+<summary><strong>Operand B (Neighbor)</strong> <code>Attribute Selector</code></summary>
+
+Attribute to read from neighbors or edges for comparison. Will be converted to double.
+
+</details>
+
+<details>
+<summary><strong>Tolerance</strong> <code>double</code></summary>
+
+Tolerance for near-equality comparisons.
+
+*Visible when Comparison = ~= or !~=*
+
+Default: `DBL_COMPARE_TOLERANCE`
+
+⚡ PCG Overridable
 
 </details>
 
 ## Examples
 
 **Find nodes with higher values than all neighbors**:
-- Operand A: `Height`
-- Operand B Source: `Adjacent Node`
+- Operand A: `Height` attribute
+- Operand B Source: `Vtx`
 - Operand B: `Height`
 - Comparison: `>`
-- Test Mode: `All`
+- Mode: `All`
 - Consolidation: `Max`
 
 **Find nodes where at least half of neighbors share the same value**:
-- Operand A: `GroupID`
-- Operand B Source: `Adjacent Node`
+- Operand A: `GroupID` attribute
+- Operand B Source: `Vtx`
 - Operand B: `GroupID`
 - Comparison: `==`
-- Test Mode: `Some`
+- Mode: `Some`
 - Threshold Type: `Relative`
-- Threshold: `0.5`
+- Threshold (Relative): `0.5`
 
 **Find nodes connected by expensive edges**:
-- Operand A Source: `Constant`
+- Compare Against: `Constant`
 - Operand A: `100`
-- Operand B Source: `Connected Edge`
+- Operand B Source: `Edge`
 - Operand B: `Cost`
 - Comparison: `<`
-- Test Mode: `All`
+- Mode: `All`
 - Consolidation: `Average`
 
 ## Related
@@ -191,10 +268,6 @@ Default: `Round`
 - [Neighbors Count](./node-neighbors-count.md) - Filter by connection count (degree)
 - [Edge Direction](./node-edge-direction.md) - Compare connected edge directions
 
-### See Also
-- [Comparison Operators](../../shared-concepts/comparison-operators.md) - Understanding comparison behavior
-- [Input Value Sources](../../shared-concepts/input-value-sources.md) - Constant vs Attribute pattern
-
 ---
 
-:package: **Module**: `PCGExElementsClusters` | :page_facing_up: [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Private/Filters/Nodes/PCGExNodeAdjacencyFilter.cpp)
+📦 **Module**: `PCGExElementsClusters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Private/Filters/Nodes/PCGExNodeAdjacencyFilter.cpp)

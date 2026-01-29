@@ -1,6 +1,6 @@
 ---
 icon: cube
-description: 'In editor :: PCGEx | Collection Filter : Data Bounds'
+description: 'In editor :: PCGEx | Data Filter : Bounds'
 ---
 
 # Data Bounds
@@ -25,7 +25,7 @@ For each collection:
 ### Bounds Property
 
 <details>
-<summary><strong>Operand A</strong> <code>Bounds Aspect</code></summary>
+<summary><strong>Operand A</strong> <code>EPCGExDataBoundsAspect</code></summary>
 
 Which property of the bounding box to test.
 
@@ -36,15 +36,15 @@ Which property of the bounding box to test.
 | **Max** | Maximum corner position |
 | **Size** | Full dimensions (width, depth, height) |
 | **Volume** | Total volume (X × Y × Z) |
-| **Aspect Ratio** | Ratio between two specified axes |
-| **Sorted Ratio** | Ratio of largest to smallest axis |
+| **Ratio** | Ratio between two specified axes |
+| **Ratio (Sorted)** | Ratio of largest to smallest axis |
 
 Default: `Volume`
 
 </details>
 
 <details>
-<summary><strong>Sub Operand</strong> <code>Length | Length Squared | X | Y | Z</code></summary>
+<summary><strong>Sub Operand</strong> <code>EPCGExDataBoundsComponent</code></summary>
 
 For vector-based aspects (Extents, Min, Max, Size), which component to extract.
 
@@ -56,18 +56,27 @@ For vector-based aspects (Extents, Min, Max, Size), which component to extract.
 | **Y** | Y-axis component |
 | **Z** | Z-axis component |
 
-Only visible when Operand A is Extents, Min, Max, or Size.
+*Visible when Operand A is Extents, Min, Max, or Size*
 
 Default: `Length`
 
 </details>
 
 <details>
-<summary><strong>Ratio</strong> <code>XY | XZ | YZ | YX | ZX | ZY</code></summary>
+<summary><strong>Ratio</strong> <code>EPCGExDataBoundsRatio</code></summary>
 
 Which axes to compare for aspect ratio. The first axis is divided by the second.
 
-Only visible when Operand A is `Aspect Ratio`.
+| Option |
+|--------|
+| `XY` |
+| `XZ` |
+| `YZ` |
+| `YX` |
+| `ZX` |
+| `ZY` |
+
+*Visible when Operand A = Ratio*
 
 Default: `XY`
 
@@ -76,20 +85,17 @@ Default: `XY`
 ### Comparison
 
 <details>
-<summary><strong>Operand B</strong> <code>Comparison Selector</code></summary>
+<summary><strong>Operand B</strong> <code>FPCGExCompareSelectorDouble</code></summary>
 
-The threshold value to compare against. Supports constant values or attribute-based comparison.
+The threshold value to compare against. This is a compound setting containing:
+
+- **Comparison**: The comparison operator (`~=` by default)
+- **Input**: `Constant` or `Attribute`
+- **Constant**: The constant threshold value (default: `0`)
+- **Attribute**: Attribute to read threshold from (when Input = Attribute)
+- **Tolerance**: For near-equality comparisons
 
 ⚡ PCG Overridable
-
-</details>
-
-<details>
-<summary><strong>Comparison</strong> <code>Comparison Operator</code></summary>
-
-How to compare the bounds property against the threshold.
-
-Default: `>=`
 
 </details>
 
@@ -100,7 +106,7 @@ Default: `>=`
 
 Flip the filter result.
 
-Default: Disabled
+Default: `false`
 
 </details>
 
@@ -108,28 +114,28 @@ Default: Disabled
 
 **Keep collections with volume over 1000**:
 - Operand A: `Volume`
-- Comparison: `>`
-- Operand B: `1000`
+- Operand B Comparison: `>`
+- Operand B Constant: `1000`
 
 **Filter out very tall collections** (Z > 500):
 - Operand A: `Size`
 - Sub Operand: `Z`
-- Comparison: `>`
-- Operand B: `500`
-- Invert: Enabled
+- Operand B Comparison: `>`
+- Operand B Constant: `500`
+- Invert: `true`
 
 **Keep roughly square collections** (aspect ratio near 1):
-- Operand A: `Aspect Ratio`
+- Operand A: `Ratio`
 - Ratio: `XY`
-- Comparison: `~=`
-- Operand B: `1.0`
+- Operand B Comparison: `~=`
+- Operand B Constant: `1.0`
 - Tolerance: `0.2`
 
 **Keep collections with reasonable extents**:
 - Operand A: `Extents`
 - Sub Operand: `Length`
-- Comparison: `<=`
-- Operand B: `1000`
+- Operand B Comparison: `<=`
+- Operand B Constant: `1000`
 
 ## Related
 
@@ -142,4 +148,4 @@ Default: Disabled
 
 ---
 
-:package: **Module**: `PCGExFilters` | :page_facing_up: [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Collections/PCGExDataBoundsFilter.cpp)
+📦 **Module**: `PCGExFilters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Collections/PCGExDataBoundsFilter.cpp)

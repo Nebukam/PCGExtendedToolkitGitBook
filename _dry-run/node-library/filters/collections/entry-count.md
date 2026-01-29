@@ -22,13 +22,24 @@ For each collection:
 ## Settings
 
 <details>
-<summary><strong>Comparison</strong> <code>Comparison Operator</code></summary>
+<summary><strong>Comparison</strong> <code>EPCGExComparison</code></summary>
 
 How to compare the point count against the threshold.
 
+| Operator | Meaning |
+|----------|---------|
+| `>` | Strictly greater than |
+| `>=` | Greater than or equal |
+| `<` | Strictly less than |
+| `<=` | Less than or equal |
+| `==` | Exactly equal |
+| `!=` | Not equal |
+| `~=` | Nearly equal (within tolerance) |
+| `!~=` | Nearly not equal |
+
 Default: `~=` (Nearly Equal)
 
-See [Comparison Operators](../../shared-concepts/comparison-operators.md).
+⚡ PCG Overridable
 
 </details>
 
@@ -39,12 +50,16 @@ Whether threshold comes from a fixed value or collection attribute.
 
 Default: `Constant`
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
 <summary><strong>Operand B</strong> <code>int32</code></summary>
 
 The count threshold when using Constant mode.
+
+*Visible when Compare Against = Constant*
 
 Default: `0`
 
@@ -53,11 +68,26 @@ Default: `0`
 </details>
 
 <details>
+<summary><strong>Operand B (Attr)</strong> <code>Attribute Selector</code></summary>
+
+Attribute to read the threshold from. Will be converted to int32.
+
+*Visible when Compare Against = Attribute*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
 <summary><strong>Tolerance</strong> <code>double</code></summary>
 
-Tolerance for near-equality comparisons.
+Tolerance for near-equality comparisons (`~=` and `!~=`).
 
-Default: Very small
+*Visible when Comparison = Nearly Equal or Nearly Not Equal*
+
+Default: `DBL_COMPARE_TOLERANCE`
+
+⚡ PCG Overridable
 
 </details>
 
@@ -83,4 +113,4 @@ Default: Very small
 
 ---
 
-:package: **Module**: `PCGExFilters` | :page_facing_up: [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Collections/PCGExEntryCountFilter.cpp)
+📦 **Module**: `PCGExFilters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Collections/PCGExEntryCountFilter.cpp)
