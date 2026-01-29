@@ -4,82 +4,174 @@ icon: vector-square
 
 # Clusters
 
-{% hint style="info" %}
-Make sure to read [Clusters 101](../../general/pcgex-101/clusters.md) first.
-{% endhint %}
+**Clusters are just two collections of regular points that describe relationships between positions in space.**
 
-Building clusters is very straightforward — all you need are points that you want to connect.&#x20;
+No special data types. No magic geometry. Just **two point datasets working together:**
+1. **Vtx (Vertices)** - The positions/nodes you care about
+2. **Edges** - Connections between those positions
 
-There are many tool available to create these connections, combine them, refine them, etc. You'll also want to see what these connections look like; and ultimately leverage all that data you just created.
+That's it. The "magic" is that these connections are **explicit** rather than assumed (like distance-based queries), giving you precise control over relationships.
 
-> The most important thing to understand is that a cluster is hardly something usable "as-is". It's a structure on top of which you can build more intricate things.
+[[image placeholder: Split view showing Vtx points as spheres on left, Edge points as connecting lines on right, then combined view showing how they work together to form a graph structure]]
 
-## Building Clusters
+## The Core Insight
 
-There's a handful of nodes to create graph from scratch, depending on what your initial data looks like, as well as what you want to achieve. Different ways to build clusters are covered in the [Hello Cluster](hello-cluster/) section. You can also create [branching structures](branching-structures.md) from paths — and the best thing, **you can combine and merge cluster together to create more complex, interconnected clusters**.
+In standard PCG, if you want to know "which points are neighbors," you typically ask: _"What's within distance X?"_ This is **implicit** - you don't store the relationships, you compute them on demand.
 
-<figure><img src="../../.gitbook/assets/image (27).png" alt=""><figcaption></figcaption></figure>
+In clusters, you **explicitly define** which points are neighbors. Point A connects to Point B because you said so, not because they're close. This fundamental difference unlocks:
+- **Pathfinding** on custom network topologies
+- **Flood fill** operations through connections
+- **Zoning** based on connectivity
+- **Layouts** that respect explicit relationships
+- **Analysis** of graph properties (centrality, flow, etc.)
 
-{% hint style="info" %}
-You can even turn static mesh topology into clusters!
-{% endhint %}
+## Why Two Point Collections?
 
-### Combining and refining clusters
+Think of it like a contacts list:
 
-Combining and refining cluster is an important part of the cluster workflow.
+**Vtx = People** (your friends, their locations)
+**Edges = Phone Numbers** (how to reach one person from another)
 
-Each approach has its strengths and weaknesses, and while most of the time basic diagrams gives good results, it's not enough. On the other end, more precise tools like connect points may lack some of the more organic output of other approaches — and it's fine! One node can't do it all, PCGEx is complex enough as it is.
+[[image placeholder: Diagram showing Vtx points labeled as "Person A", "Person B", "Person C", and Edge points labeled with "A→B", "B→C", showing the connection data]]
 
-### Display edges
+You can have the same people (Vtx) with different phone networks (Edges). For example:
+- Family connections (one Edge collection)
+- Work connections (different Edge collection)
+- Friend connections (yet another Edge collection)
 
-PCGEx comes with a subgraph that helps visualizing edges. It's what is used everywhere in this doc whenever the image of a cluster in editor shows up.
+**Same Vtx, different Edges = different relationship networks.**
 
-<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption></figcaption></figure>
+## What Makes Clusters Different from Paths?
 
-## Important technicalities
+| Paths | Clusters |
+|-------|----------|
+| Points connect in order (0→1→2→3) | Points connect arbitrarily (0 connects to 2, 5, and 7) |
+| Linear/sequential | Graph/network |
+| Each point has 1-2 neighbors | Each point can have any number of neighbors |
+| Order matters | Connectivity matters |
 
-{% hint style="info" %}
-Most cluster node have some shared settings, you can read more about these in the [Cluster](../../node-library/clusters/) node library page.
-{% endhint %}
+[[image placeholder: Side-by-side comparison. Left: ordered path with sequential connections. Right: cluster with non-sequential, branching connections forming a network]]
 
-When it comes to cluster, there are a few important things to know; most importantly :&#x20;
+Paths are a **special case** of clusters (linear chains), but clusters are much more flexible.
 
-1. **An edge dataset represents a group of connected edges, while a vtx dataset can be associated with multiple edge groups**. You can dive into the specifics about this [here](technical-note-clusters.md).
-2. Vtx ordering can drastically change when there are additions & deletion; **they are sorted based on spatial positioning, in X, Y then Z order.**
+## The Mental Model
+
+Think of clusters like **a city map**:
+- **Vtx** = Intersections, landmarks, places
+- **Edges** = Roads connecting them
+
+You don't measure "as the crow flies" - you follow the roads. The roads tell you which places connect, regardless of distance.
+
+[[image placeholder: City map showing intersections as Vtx points and roads as Edge connections, with an example showing how pathfinding follows edges not straight lines]]
+
+## Key Rules to Remember
 
 {% hint style="success" %}
-If you need to, you can break down the vtx in such a way that each edge group is associated to a vtx dataset that only contains the points it connects using [Partition Vtx](../../node-library/clusters/packing/partition-vtx.md).
+**Rule #1: Vtx and Edges are both "just points"**\
+They use standard PCG point data. You can read/write attributes with vanilla nodes. The relationships are stored in regular attributes (`PCGEx/` prefixed).
 {% endhint %}
 
-While this seems a bit odd at first, it's very handy once you wrapped you head around it. It also makes things such as [looping over clusters](looping-over-clusters.md) easier to achieve.
+{% hint style="info" %}
+**Rule #2: One Edge collection = One connected graph**\
+Each Edge dataset represents a single interconnected network. Multiple networks = multiple Edge collections.
+{% endhint %}
 
-### Removing Vtx or Edges points with vanilla nodes
+{% hint style="info" %}
+**Rule #3: Edges need at least 2 Vtx to exist**\
+No points = no connections.
+{% endhint %}
 
-You can work on Vtx and Edges points the same way you would any other point data in your PCG graph. However, there is one important edge case : **if your remove any points from any of these datasets, you will need to sanitize the clusters before they can be use again by PCGEx nodes**.
+{% hint style="warning" %}
+**Rule #4: Don't manually remove points without sanitizing**\
+If you use vanilla PCG nodes to delete Vtx or Edge points, run **Sanitize Clusters** before using them in other PCGEx nodes.
+{% endhint %}
 
-> Cluster operations rely on the assumption that **a single Edge dataset only contains interconnected data.** If you remove edges or vtx "manually" (_e.g without PCGEx knowing about it first-hand_) this assumption is not guaranteed to be true anymore.
->
-> Sanitizing a Cluster ensures that the interconnectivity is valid, and that edge data is properly partitioned to reflect that.
->
-> As a result, sanitizing clusters may create new, smaller edges datasets.
+{% hint style="warning" %}
+**Rule #5: Don't touch PCGEx/ attributes directly**\
+These attributes store the connection data. Modifying them manually will break clusters. Let PCGEx nodes manage them.
+{% endhint %}
+
+## What Can You Do With Clusters?
+
+Clusters enable graph-based operations:
+
+**Generation:**
+- Build graphs from point clouds (Delaunay, Voronoi, Connect Points, etc.)
+- Create grid-based connectivity
+- Extract topology from meshes
+
+**Transformation:**
+- Relax vertex positions based on neighbors
+- Refine edges (remove, subdivide, filter)
+- Merge multiple cluster networks
+
+**Analysis:**
+- Compute centrality measures
+- Find shortest paths (pathfinding)
+- Detect components and branches
+- Measure graph properties
+
+**Data Flow:**
+- Flood fill attributes through connections
+- Sample neighbor properties
+- Propagate values along edges
+
+**Output:**
+- Convert clusters to paths (via pathfinding or edge extraction)
+- Generate geometry based on connectivity
+- Create splines following graph structure
+
+## From Clusters to Everything Else
+
+Clusters are the **foundation** for complex procedural systems:
+- **Clusters → Paths:** Use pathfinding or edge-following to extract linear paths
+- **Paths → Clusters:** Connect path endpoints to build networks
+- **Clusters → Geometry:** Place meshes at Vtx, spawn along Edges
+- **Clusters → Zoning:** Use flood fill to create connected regions
+
+## Dive Deeper
+
+Ready to understand how clusters really work?
+
+{% content-ref url="clusters-fundamentals.md" %}
+[clusters-fundamentals.md](clusters-fundamentals.md)
+{% endcontent-ref %}
+
+{% content-ref url="working-with-vtx-and-edges.md" %}
+[working-with-vtx-and-edges.md](working-with-vtx-and-edges.md)
+{% endcontent-ref %}
+
+{% content-ref url="common-pitfalls.md" %}
+[common-pitfalls.md](common-pitfalls.md)
+{% endcontent-ref %}
+
+## Visual Debugging
+
+PCGEx includes subgraphs to visualize clusters in the editor. This is essential for understanding connectivity.
+
+[[image placeholder: Editor viewport showing Vtx as colored spheres and Edges as lines connecting them, demonstrating a complex graph structure]]
 
 {% hint style="success" %}
-**Changing points properties and attributes can be done safely,** **and does not require cluster sanitization.**
+**Pro Tip:** Always visualize clusters when debugging. Network topology is impossible to understand from numbers alone.
 {% endhint %}
 
-{% hint style="success" %}
-Unless specified otherwise, PCGEx nodes that deal will clusters will always output working data, so **you should never have to sanitize the output of a PCGEx node**.
+## Important Technicalities
+
+{% hint style="info" %}
+Most cluster nodes share common settings. Read more in the [Clusters node library page](../../node-library/clusters/).
 {% endhint %}
 
-### Don't mess with PCGEx/
-
-What makes PCGEx points _peeceegeeayksey_ are special attributes & tags — all of which are conveniently prefixed with `PCGEx/`.
-
-{% hint style="danger" %}
-**PCGEx rely on these to work, serialize internal data, and maintain vtx/edge relationships.**\
-If you're curious, you can read more about the how's and why's in the dedicated technical note.
-{% endhint %}
+When working with clusters, remember:
+1. **One Edge dataset = one connected graph.** Vtx can be shared across multiple Edge collections.
+2. **Vtx are spatially sorted** (X, Y, Z order) when additions/deletions occur. Don't rely on index stability.
+3. **You can modify attributes safely** without sanitization - only point addition/removal needs sanitization.
 
 {% content-ref url="technical-note-clusters.md" %}
 [technical-note-clusters.md](technical-note-clusters.md)
+{% endcontent-ref %}
+
+Ready to build your first cluster? Check out the Hello Cluster guides:
+
+{% content-ref url="hello-cluster/" %}
+[hello-cluster](hello-cluster/)
 {% endcontent-ref %}
