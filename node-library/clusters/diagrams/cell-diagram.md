@@ -1,6 +1,0 @@
----
-icon: circle
----
-
-# Cell Diagram
-

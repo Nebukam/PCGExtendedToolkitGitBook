@@ -1,6 +1,0 @@
----
-icon: not-equal
----
-
-# Comparisons
-
