@@ -1,143 +1,212 @@
 ---
-icon: grip-lines
+icon: diagram-project
 description: 'In editor :: PCGEx | Path : Subdivide'
 ---
 
 # Subdivide
 
-Adds points between existing points along the path.
-
-## Overview
-
-Subdivision increases path density by inserting new points along each segment. This is useful when you need finer control over path geometry—more points mean smoother curves after smoothing, more precise placement for instancing, or better resolution for deformation.
+Subdivides path segments by adding intermediate points.
 
 ## How It Works
 
-For each segment (pair of consecutive points):
+For each segment:
 
-1. **Determine subdivision count** based on distance or fixed count
-2. **Interpolate positions** along the segment
-3. **Blend attributes** from the segment's endpoints
-4. **Insert new points** into the path
+1. Calculate **number of subdivisions** based on method
+2. Create **new points** along the segment
+3. **Blend** properties and attributes between endpoints
+
+## Inputs
+
+| Pin | Type | Description |
+|-----|------|-------------|
+| **In** | Points | Path points to subdivide |
+| **Point Filters** | Filters | Optional filters to control which segments are subdivided |
+| **Blending** | Sub-point Blending Factory | Blending configuration |
 
 ## Settings
 
-### Subdivision Mode
+### Subdivision Method
 
 <details>
-<summary><strong>Mode</strong> <code>Distance | Count</code></summary>
+<summary><strong>Subdivide Method</strong> <code>EPCGExSubdivideMode</code></summary>
 
-How to determine the number of subdivisions:
+How subdivisions are calculated.
 
-| Option | Behavior |
-|--------|----------|
-| **Distance** | Insert points every N units along the segment |
-| **Count** | Insert exactly N points per segment |
+| Option | Description |
+|--------|-------------|
+| Distance | Add points at fixed distance intervals |
+| Count | Add a fixed number of points per segment |
+| Manhattan | Subdivide along each axis separately |
 
 Default: `Distance`
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
-<summary><strong>Distance</strong> <code>double</code></summary>
+<summary><strong>Amount Input</strong> <code>Constant | Attribute</code></summary>
 
-Target spacing between points (when Mode is Distance). Actual spacing may vary slightly to fit segments evenly.
+Whether the amount is a constant or per-point attribute.
 
-Default: `100`
+Default: `Constant`
+
+*Visible when Method != Manhattan*
+
+</details>
+
+<details>
+<summary><strong>Amount (Distance)</strong> <code>double</code></summary>
+
+Distance between subdivision points.
+
+Default: `10`
+
+*Visible when Method = Distance and Input = Constant*
 
 ⚡ PCG Overridable
 
 </details>
 
 <details>
-<summary><strong>Count</strong> <code>int32</code></summary>
+<summary><strong>Amount (Count)</strong> <code>int32</code></summary>
 
-Number of points to insert per segment (when Mode is Count).
+Number of subdivision points per segment.
+
+Default: `10`
+
+*Visible when Method = Count and Input = Constant*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Amount (Attr)</strong> <code>Attribute Selector</code></summary>
+
+Attribute to read subdivision amount from.
+
+*Visible when Input = Attribute*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Redistribute Evenly</strong> <code>bool</code></summary>
+
+Ensure even spacing of subdivision points.
+
+Default: `false`
+
+*Visible when Method = Distance*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Manhattan Details</strong> <code>FPCGExManhattanDetails</code></summary>
+
+Configuration for Manhattan-style subdivision.
+
+*Visible when Method = Manhattan*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Blending</strong> <code>UPCGExSubPointsBlendInstancedFactory</code></summary>
+
+How to blend properties/attributes for new points.
+
+⚡ PCG Overridable
+
+</details>
+
+### Additional Outputs
+
+<details>
+<summary><strong>Flag Sub Points</strong> <code>bool</code></summary>
+
+Write a boolean flag marking subdivision points.
+
+Default: `false`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Sub Point Flag Name</strong> <code>FName</code></summary>
+
+Name of the subdivision flag attribute.
+
+Default: `IsSubPoint`
+
+*Visible when Flag Sub Points = true*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Write Alpha</strong> <code>bool</code></summary>
+
+Write the interpolation alpha (0-1) for each point.
+
+Default: `false`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Alpha Attribute Name</strong> <code>FName</code></summary>
+
+Name of the alpha attribute.
+
+Default: `Alpha`
+
+*Visible when Write Alpha = true*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Default Alpha</strong> <code>double</code></summary>
+
+Alpha value for original (non-subdivided) points.
 
 Default: `1`
 
+*Visible when Write Alpha = true*
+
 ⚡ PCG Overridable
-
-</details>
-
-### Attribute Handling
-
-<details>
-<summary><strong>Blending</strong> <code>Sub-Point Blending Operation</code></summary>
-
-How to interpolate attributes for new points. New points receive blended values from the two endpoints of their segment.
-
-Available operations:
-- [Interpolate](./sub-point-blending/interpolate.md) - Blend based on position along segment (default)
-- [Inherit First](./sub-point-blending/inherit-first.md) - Copy from segment start
-- [Inherit Last](./sub-point-blending/inherit-last.md) - Copy from segment end
-- [No Blending](./sub-point-blending/none.md) - Skip attribute blending
-
-See [Sub-Point Blending](./sub-point-blending/) for details.
-
-</details>
-
-### Behavior
-
-<details>
-<summary><strong>Flag Subdivisions</strong> <code>bool</code></summary>
-
-Write a boolean attribute marking which points were created by subdivision (vs original points).
-
-Default: Disabled
-
-</details>
-
-<details>
-<summary><strong>Subdivision Attribute</strong> <code>Attribute Name</code></summary>
-
-Name of the boolean attribute to write when Flag Subdivisions is enabled.
-
-Default: `IsSubdivision`
 
 </details>
 
 ## Examples
 
-**Uniform high density**:
-- Mode: `Distance`
-- Distance: `50` (point every 50 units)
+**Add points every 50 units**:
+- Subdivide Method: `Distance`
+- Amount (Distance): `50`
 
-**Fixed segments per edge**:
-- Mode: `Count`
-- Count: `3` (triple the point count)
+**Add 5 points per segment**:
+- Subdivide Method: `Count`
+- Amount (Count): `5`
 
-**Mark original vs new points**:
-- Flag Subdivisions: Enabled
-- Subdivision Attribute: `WasSubdivided`
-
-## Before / After
-
-```
-Before:  ●─────────────────●─────────────────●
-         A                 B                 C
-
-After:   ●────●────●────●────●────●────●────●
-         A    .    .    B    .    .    .    C
-         (. = interpolated points)
-```
-
-## Use Cases
-
-- **Pre-smoothing**: Add points before smoothing for finer curves
-- **Instance spacing**: Ensure minimum density for spawning objects
-- **Deformation prep**: More points = smoother bends when deforming
+**Mark new points for later filtering**:
+- Flag Sub Points: Enabled
+- Sub Point Flag Name: `IsSubdivision`
 
 ## Related
 
-### Often Used Together
-- [Smooth](./smooth.md) - Apply after subdivision for smoother curves
-- [Resample](./resample.md) - Alternative: uniform spacing in one step
-
-### Path Shaping
-- [Reduce](./reduce.md) - Opposite operation: remove points
-- [Fuse Collinear](./fuse-collinear.md) - Remove unnecessary points
+- [Fuse Collinear](./fuse-collinear.md) - Remove points (opposite operation)
+- [Resample](./resample.md) - Complete path resampling
 
 ---
 
-📦 **Module**: `PCGExElementsPaths` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Private/Elements/PCGExSubdividePath.cpp)
+📦 **Module**: `PCGExElementsPaths` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Private/Elements/PCGExSubdivide.cpp)

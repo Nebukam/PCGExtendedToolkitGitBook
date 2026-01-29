@@ -5,63 +5,61 @@ description: 'In editor :: PCGEx | Edge Filter : Length'
 
 # Edge Length
 
-Compares an edge's length against a threshold value.
-
-## Overview
-
-The Edge Length filter evaluates cluster edges by measuring the 3D distance between their endpoints and comparing against a threshold. This is one of the most commonly used edge filters for removing overly long or short connections.
+Filters edges based on their length.
 
 ## How It Works
 
 For each edge:
 
-1. **Calculate length** as 3D Euclidean distance between endpoints
-2. **Compare against threshold** using selected operator
-3. **Return result**: pass if comparison is true
+1. Calculate the **distance** between the edge's start and end points
+2. Compare against **threshold** using the selected comparison operator
+3. Return result: pass if comparison is true
 
 ## Settings
-
-### Threshold
 
 <details>
 <summary><strong>Threshold Input</strong> <code>Constant | Attribute</code></summary>
 
-Whether the threshold comes from a fixed value or edge attribute.
+Whether the threshold comes from a fixed value or an attribute on the edge.
 
 Default: `Constant`
-
-</details>
-
-<details>
-<summary><strong>Threshold</strong> <code>double | Attribute Selector</code></summary>
-
-The distance threshold to compare against.
-
-Default: `100`
 
 ⚡ PCG Overridable
 
 </details>
 
-### Comparison
+<details>
+<summary><strong>Threshold (Attr)</strong> <code>Attribute Selector</code></summary>
+
+Attribute to read threshold from when using Attribute mode.
+
+*Visible when Threshold Input = Attribute*
+
+⚡ PCG Overridable
+
+</details>
 
 <details>
-<summary><strong>Comparison</strong> <code>Comparison Operator</code></summary>
+<summary><strong>Threshold</strong> <code>double</code></summary>
+
+The length threshold when using Constant mode.
+
+Default: `100`
+
+*Visible when Threshold Input = Constant*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Comparison</strong> <code>EPCGExComparison</code></summary>
 
 How to compare the edge length against the threshold.
 
-| Option | Meaning |
-|--------|---------|
-| **==** | Strictly equal |
-| **!=** | Strictly not equal |
-| **>=** | Equal or greater |
-| **<=** | Equal or smaller |
-| **>** | Strictly greater |
-| **<** | Strictly smaller |
-| **~=** | Nearly equal (within tolerance) |
-| **!~=** | Nearly not equal (outside tolerance) |
+Default: `>` (Strictly Greater)
 
-Default: `<=` (Equal or smaller)
+⚡ PCG Overridable
 
 </details>
 
@@ -70,52 +68,46 @@ Default: `<=` (Equal or smaller)
 
 Epsilon for near-equality comparisons.
 
-Default: Very small
+Default: `0`
+
+*Visible when Comparison = Nearly Equal or Nearly Not Equal*
+
+⚡ PCG Overridable
 
 </details>
-
-### Behavior
 
 <details>
 <summary><strong>Invert</strong> <code>bool</code></summary>
 
 Flip the filter result.
 
-Default: Disabled
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
 
 ## Examples
 
-**Keep only short edges** (under 200 units):
-- Threshold: `200`
-- Comparison: `<`
-
-**Remove very long edges** (over 500 units):
-- Threshold: `500`
+**Keep long edges** (> 200 units):
 - Comparison: `>`
-- Use with edge removal/pruning operation
+- Threshold: `200`
 
-**Keep edges within a range** (100-300 units):
-- Use two Edge Length filters in an AND group:
-  - First: Threshold `100`, Comparison `>=`
-  - Second: Threshold `300`, Comparison `<=`
+**Keep short edges** (< 50 units):
+- Comparison: `<`
+- Threshold: `50`
 
-**Variable threshold based on edge attribute**:
-- Threshold Input: `Attribute`
-- Threshold: `MaxAllowedLength`
-- Comparison: `<=`
+**Remove edges of specific length**:
+- Comparison: `~=`
+- Threshold: `100`
+- Tolerance: `5`
+- Invert: `true`
 
 ## Related
 
-### Edge Filters
+- [Edge Neighbors Count](./edge-neighbors-count.md) - Filter by endpoint connectivity
 - [Edge Direction](./edge-direction.md) - Filter by edge orientation
-- [Neighbors Count](./edge-neighbors-count.md) - Filter by endpoint connectivity
-
-### See Also
-- [Distance & Proximity](../../shared-concepts/distance-and-proximity.md) - Understanding distance measurements
-- [Comparison Operators](../../shared-concepts/comparison-operators.md) - Comparison behavior
 
 ---
 
-:package: **Module**: `PCGExElementsClusters` | :page_facing_up: [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Private/Filters/Edges/PCGExEdgeLengthFilter.cpp)
+📦 **Module**: `PCGExElementsClusters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Private/Filters/Edges/PCGExEdgeLengthFilter.cpp)

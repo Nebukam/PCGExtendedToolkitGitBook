@@ -7,42 +7,49 @@ description: 'In editor :: PCGEx | Filter : Within Range'
 
 Tests whether a numeric value falls within a min/max range.
 
-## Overview
-
-The Within Range filter evaluates each point by checking if an attribute value falls between minimum and maximum bounds. This is more convenient than chaining two Numeric Compare filters for range checks.
-
 ## How It Works
 
 For each point:
 
-1. **Read the value** from the specified attribute
-2. **Compare against range** (min ≤ value ≤ max, or exclusive)
-3. **Return result**: pass if within range (or outside, if inverted)
+1. Read **Operand A** from the specified attribute
+2. Compare against range (min ≤ value ≤ max, or exclusive)
+3. Return result: pass if within range (or outside, if inverted)
 
 ## Settings
-
-### Value
 
 <details>
 <summary><strong>Operand A</strong> <code>Attribute Selector</code></summary>
 
-The numeric attribute to test.
+The numeric attribute to test. Converted to double internally.
 
 ⚡ PCG Overridable
 
 </details>
 
-### Range
-
 <details>
-<summary><strong>Source</strong> <code>Constant | Attribute Set</code></summary>
+<summary><strong>Source</strong> <code>EPCGExRangeSource</code></summary>
 
 Where the range bounds come from.
 
-- **Constant** - Use fixed Min/Max values
-- **Attribute Set** - Read range from FVector2 attributes (X=min, Y=max)
+| Option | Description |
+|--------|-------------|
+| Constant | Use fixed Min/Max values |
+| Attribute Set | Read ranges from FVector2 attributes (X=min, Y=max) |
 
 Default: `Constant`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Attributes</strong> <code>Attribute Selector Array</code></summary>
+
+List of FVector2 attributes to read ranges from. A point passes if its value falls within **any** of the specified ranges.
+
+*Visible when Source = Attribute Set*
+
+⚡ PCG Overridable
 
 </details>
 
@@ -52,6 +59,8 @@ Default: `Constant`
 Minimum bound (inclusive or exclusive based on setting).
 
 Default: `-100`
+
+*Visible when Source = Constant*
 
 ⚡ PCG Overridable
 
@@ -64,11 +73,11 @@ Maximum bound (inclusive or exclusive based on setting).
 
 Default: `100`
 
+*Visible when Source = Constant*
+
 ⚡ PCG Overridable
 
 </details>
-
-### Behavior
 
 <details>
 <summary><strong>Inclusive</strong> <code>bool</code></summary>
@@ -78,7 +87,9 @@ Whether boundary values pass the test.
 - **Enabled**: min ≤ value ≤ max
 - **Disabled**: min < value < max
 
-Default: Disabled (exclusive)
+Default: `false` (exclusive)
+
+⚡ PCG Overridable
 
 </details>
 
@@ -87,9 +98,17 @@ Default: Disabled (exclusive)
 
 Flip to test for values **outside** the range instead.
 
-Default: Disabled
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
+
+## Inputs
+
+| Pin | Type | Description |
+|-----|------|-------------|
+| **Ranges** | Attribute Set | Optional ranges from external attribute set (when Source = Attribute Set) |
 
 ## Examples
 
@@ -107,10 +126,9 @@ Default: Disabled
 
 ## Related
 
-### Filters
 - [Numeric Compare](./numeric-compare.md) - Single threshold comparison
 - [Mean](./mean.md) - Compare against statistical mean
 
 ---
 
-:package: **Module**: `PCGExFilters` | :page_facing_up: [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Points/PCGExWithinRangeFilter.cpp)
+📦 **Module**: `PCGExFilters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Points/PCGExWithinRangeFilter.cpp)

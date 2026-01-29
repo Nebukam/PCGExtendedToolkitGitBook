@@ -1,57 +1,40 @@
 ---
-icon: not-equal
+icon: code-compare
 description: 'In editor :: PCGEx | Edge Filter : Endpoints Compare (Numeric)'
 ---
 
 # Edge Endpoints Compare (Numeric)
 
-Compares numeric attribute values between an edge's endpoints.
-
-## Overview
-
-The Edge Endpoints Compare (Numeric) filter evaluates cluster edges by reading a numeric attribute from both endpoints and comparing them against each other. This identifies edges connecting nodes with matching values, edges where one endpoint exceeds the other, or edges with specific value relationships.
+Compares a numeric attribute between an edge's start and end nodes.
 
 ## How It Works
 
 For each edge:
 
-1. **Read attribute** from start endpoint
-2. **Read attribute** from end endpoint
-3. **Compare values** using selected operator
-4. **Return result**: pass if comparison is true
+1. Read the **attribute value** from the start node
+2. Read the **attribute value** from the end node
+3. Compare the two values using the selected comparison operator
+4. Return result: pass if comparison is true
 
 ## Settings
-
-### Attribute
 
 <details>
 <summary><strong>Attribute</strong> <code>Attribute Selector</code></summary>
 
-The numeric attribute to read from both endpoints. The same attribute name is used for both start and end nodes.
+The numeric attribute to compare between endpoints. Read from vertex data.
 
 ⚡ PCG Overridable
 
 </details>
 
-### Comparison
-
 <details>
-<summary><strong>Comparison</strong> <code>Comparison Operator</code></summary>
+<summary><strong>Comparison</strong> <code>EPCGExComparison</code></summary>
 
-How to compare start endpoint value against end endpoint value.
+How to compare start vs end values.
 
-| Option | Meaning |
-|--------|---------|
-| **==** | Values are strictly equal |
-| **!=** | Values are strictly not equal |
-| **>=** | Start is equal or greater than end |
-| **<=** | Start is equal or smaller than end |
-| **>** | Start is strictly greater than end |
-| **<** | Start is strictly smaller than end |
-| **~=** | Values are nearly equal (within tolerance) |
-| **!~=** | Values are nearly not equal (outside tolerance) |
+Default: `>` (Strictly Greater)
 
-Default: `~=` (Nearly Equal)
+⚡ PCG Overridable
 
 </details>
 
@@ -60,49 +43,46 @@ Default: `~=` (Nearly Equal)
 
 Epsilon for near-equality comparisons.
 
-Default: Very small
+Default: `DBL_COMPARE_TOLERANCE`
+
+*Visible when Comparison = Nearly Equal or Nearly Not Equal*
+
+⚡ PCG Overridable
 
 </details>
-
-### Behavior
 
 <details>
 <summary><strong>Invert</strong> <code>bool</code></summary>
 
 Flip the filter result.
 
-Default: Disabled
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
 
 ## Examples
 
-**Find edges where endpoints have the same group ID**:
-- Attribute: `GroupID`
-- Comparison: `==`
-
-**Find edges crossing elevation changes** (end higher than start):
-- Attribute: `Height`
-- Comparison: `<`
-
-**Find edges between nodes with similar values**:
-- Attribute: `Value`
-- Comparison: `~=`
-- Tolerance: `10`
-
-**Find edges where start has more health than end**:
-- Attribute: `Health`
+**Keep edges going uphill** (end higher than start):
+- Attribute: `$Position.Z`
 - Comparison: `>`
+
+**Keep edges between similar priority nodes**:
+- Attribute: `Priority`
+- Comparison: `~=`
+- Tolerance: `0.1`
+
+**Keep edges where start has higher value**:
+- Attribute: `Value`
+- Comparison: `<`
+- Invert: `true` (or just use `>`)
 
 ## Related
 
-### Edge Filters
-- [Endpoints Compare (String)](./edge-endpoints-compare-string.md) - Compare string attributes
-- [Endpoints Check](./edge-endpoints-check.md) - Apply vertex filters to endpoints
-
-### See Also
-- [Comparison Operators](../../shared-concepts/comparison-operators.md) - Understanding comparison behavior
+- [Edge Direction](./edge-direction.md) - Filter by spatial direction
+- [Node Adjacency](./node-adjacency.md) - Filter nodes by neighbor attributes
 
 ---
 
-:package: **Module**: `PCGExElementsClusters` | :page_facing_up: [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Private/Filters/Edges/PCGExEdgeEndpointsCompareNumFilter.cpp)
+📦 **Module**: `PCGExElementsClusters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Private/Filters/Edges/PCGExEdgeEndpointsCompareNumFilter.cpp)

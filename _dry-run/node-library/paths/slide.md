@@ -1,134 +1,168 @@
 ---
-icon: arrows-alt-h
+icon: arrows-up-down
 description: 'In editor :: PCGEx | Path : Slide'
 ---
 
 # Slide
 
-Moves points along the path toward the next or previous point.
-
-## Overview
-
-Slide repositions points along their path segments without changing the path shape. Points move toward their neighbors while staying on the line between them—useful for adjusting spacing, creating overlap, or preparing for operations that need specific point positions.
+Slides points along the path toward the next or previous point.
 
 ## How It Works
 
-For each point:
+For each point on the path:
 
-1. **Determine slide direction** (toward next or previous point)
-2. **Calculate slide distance** from settings or attribute
-3. **Move point** along the segment by that distance
-4. **Optionally store** original position for later restoration
+1. Get the **direction** to the next or previous point
+2. Move the point by **slide amount** along that direction
+3. Optionally **store** the original position for later restoration
+
+## Inputs
+
+| Pin | Type | Description |
+|-----|------|-------------|
+| **In** | Points | Path points to slide |
+| **Filters** | Filters | Optional filters to control which points are processed |
 
 ## Settings
 
-### Slide Amount
-
 <details>
-<summary><strong>Distance</strong> <code>double</code></summary>
+<summary><strong>Mode</strong> <code>EPCGExSlideMode</code></summary>
 
-How far to slide each point.
+Whether to slide points or restore from a previous slide.
 
-- Positive values slide toward next point
-- Negative values slide toward previous point
+| Option | Description |
+|--------|-------------|
+| Slide | Move points and optionally store original position |
+| Restore | Restore points from stored position and delete the attribute |
 
-Default: `10`
+Default: `Slide`
 
 ⚡ PCG Overridable
 
 </details>
 
 <details>
-<summary><strong>Distance Mode</strong> <code>Absolute | Relative</code></summary>
+<summary><strong>Direction</strong> <code>EPCGExSlideDirection</code></summary>
 
-How to interpret the distance:
+Which way to slide along the path.
 
-| Option | Behavior |
-|--------|----------|
-| **Absolute** | World units |
-| **Relative** | Fraction of segment length (0.0 - 1.0) |
+| Option | Description |
+|--------|-------------|
+| Next | Slide toward the next point |
+| Previous | Slide toward the previous point |
 
-Default: `Absolute`
+Default: `Next`
+
+*Visible when Mode = Slide*
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
-<summary><strong>Distance Source</strong> <code>Constant | Attribute</code></summary>
+<summary><strong>Amount Measure</strong> <code>EPCGExMeanMeasure</code></summary>
 
-Where to read slide distance:
+How to interpret the slide amount.
 
-| Option | Behavior |
-|--------|----------|
-| **Constant** | Use fixed Distance value |
-| **Attribute** | Read per-point distance from attribute |
+| Option | Description |
+|--------|-------------|
+| Discrete | Actual distance in world units |
+| Relative | Percentage of segment length (0-1) |
+
+Default: `Relative`
+
+*Visible when Mode = Slide*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Slide Amount Input</strong> <code>Constant | Attribute</code></summary>
+
+Whether the slide amount is a constant or per-point attribute.
 
 Default: `Constant`
 
-</details>
+*Visible when Mode = Slide*
 
-### Position Storage
-
-<details>
-<summary><strong>Store Original Position</strong> <code>bool</code></summary>
-
-Write the original (pre-slide) position to an attribute. Useful if you need to restore or reference original positions later.
-
-Default: Disabled
+⚡ PCG Overridable
 
 </details>
 
 <details>
-<summary><strong>Original Position Attribute</strong> <code>Attribute Name</code></summary>
+<summary><strong>Slide Amount (Attr)</strong> <code>Attribute Selector</code></summary>
 
-Name of attribute for original positions.
+Attribute to read slide amount from.
 
-Default: `OriginalPosition`
+*Visible when Slide Amount Input = Attribute and Mode = Slide*
+
+⚡ PCG Overridable
 
 </details>
 
-### Clamping
+<details>
+<summary><strong>Slide Amount</strong> <code>double</code></summary>
+
+The slide amount (distance or ratio based on measure).
+
+Default: `0.5`
+
+*Visible when Slide Amount Input = Constant and Mode = Slide*
+
+⚡ PCG Overridable
+
+</details>
 
 <details>
-<summary><strong>Clamp to Segment</strong> <code>bool</code></summary>
+<summary><strong>Write Old Position</strong> <code>bool</code></summary>
 
-Prevent points from sliding past their segment endpoints.
+Store the original position before sliding to an attribute.
 
-Default: Enabled
+Default: `true`
+
+*Visible when Mode = Slide*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Restore Position Attribute Name</strong> <code>FName</code></summary>
+
+Name of the attribute storing/restoring the original position.
+
+Default: `PreSlidePosition`
+
+*Visible when Write Old Position = true or Mode = Restore*
+
+⚡ PCG Overridable
 
 </details>
 
 ## Examples
 
-**Small slide toward next point**:
-- Distance: `20`
-- Direction: Positive (toward next)
+**Slide all points 50% toward next point**:
+- Mode: `Slide`
+- Direction: `Next`
+- Amount Measure: `Relative`
+- Slide Amount: `0.5`
 
-**Relative slide** (25% along each segment):
-- Distance: `0.25`
-- Distance Mode: `Relative`
+**Slide filtered points 10 units backward**:
+- Connect filter to select points
+- Mode: `Slide`
+- Direction: `Previous`
+- Amount Measure: `Discrete`
+- Slide Amount: `10`
 
-**Variable slide by attribute**:
-- Distance Source: `Attribute`
-- Distance Attribute: `SlideAmount`
-
-**Store originals for later**:
-- Store Original Position: Enabled
-- Can use stored positions for effects or restoration
-
-## Use Cases
-
-- **Spacing adjustment**: Fine-tune point positions along path
-- **Overlap creation**: Slide points to create segment overlap
-- **Animation prep**: Offset points for movement effects
-- **Corner adjustment**: Move points before/after bevel operations
+**Restore previously slid points**:
+- Mode: `Restore`
+- Restore Position Attribute Name: `PreSlidePosition`
 
 ## Related
 
-### Path Transformation
-- [Shift](./shift.md) - Rotate point indices (circular)
-- [Shrink](./shrink.md) - Remove points from ends
-- [Offset](./offset.md) - Move perpendicular to path
+- [Shift](./shift.md) - Rotate the entire path order
+- [Subdivide](./subdivide.md) - Add intermediate points
 
 ---
 
-📦 **Module**: `PCGExElementsPaths` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Private/Elements/PCGExSlidePath.cpp)
+📦 **Module**: `PCGExElementsPaths` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Private/Elements/PCGExPathSlide.cpp)

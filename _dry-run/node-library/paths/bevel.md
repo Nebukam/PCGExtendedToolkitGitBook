@@ -1,56 +1,57 @@
 ---
-icon: vector-square
+icon: turn-down
 description: 'In editor :: PCGEx | Path : Bevel'
 ---
 
 # Bevel
 
-Creates beveled corners at path points.
-
-## Overview
-
-Bevel replaces sharp corners with line cuts or arc curves by adding geometry around selected points. The original corner point is replaced with bevel profile points. This node accepts filters to control which corners get beveled.
+Bevels path corners by replacing corner points with arcs or line segments.
 
 ## How It Works
 
-For each corner point (matching filters):
+For each corner point:
 
-1. **Calculate incoming and outgoing directions**
-2. **Compute bevel width** along each segment
-3. **Generate profile** (line or arc) between bevel endpoints
-4. **Optionally subdivide** the profile for smoother curves
-5. **Replace corner** with bevel points
+1. Calculate **bevel width** based on mode (radius or distance)
+2. Find **arrive/leave positions** along neighboring segments
+3. Generate **profile** (line, arc, or custom)
+4. Optionally **subdivide** the profile
+
+## Inputs
+
+| Pin | Type | Description |
+|-----|------|-------------|
+| **In** | Points | Path points to bevel |
+| **Bevel Conditions** | Filters | Optional filters to control which points are beveled |
+| **Profile** | Points | Custom profile shape (when Type = Custom) |
 
 ## Settings
 
-### Bevel Mode
+### Bevel Configuration
 
 <details>
-<summary><strong>Mode</strong> <code>Radius | Distance</code></summary>
+<summary><strong>Mode</strong> <code>EPCGExBevelMode</code></summary>
 
-How to interpret the width value:
+How bevel width is interpreted.
 
-| Option | Behavior |
-|--------|----------|
-| **Radius** | Width is used as a radius to compute distance along each neighboring segment |
-| **Distance** | Width is used directly as distance along each neighboring segment |
+| Option | Description |
+|--------|-------------|
+| Radius | Width as radius for computing distance along segments |
+| Distance | Width as direct distance along segments |
 
 Default: `Radius`
 
 </details>
 
-### Profile Type
-
 <details>
-<summary><strong>Type</strong> <code>Line | Arc | Custom</code></summary>
+<summary><strong>Type</strong> <code>EPCGExBevelProfileType</code></summary>
 
-Shape of the bevel profile:
+Shape of the bevel profile.
 
-| Option | Result |
-|--------|--------|
-| **Line** | Straight chamfer between endpoints |
-| **Arc** | Curved arc following the corner angle |
-| **Custom** | Use external point data as profile shape |
+| Option | Description |
+|--------|-------------|
+| Line | Straight cut between points |
+| Arc | Curved arc between points |
+| Custom | Use input profile shape |
 
 Default: `Line`
 
@@ -59,23 +60,27 @@ Default: `Line`
 <details>
 <summary><strong>Keep Corner Point</strong> <code>bool</code></summary>
 
-When using **Line** profile, optionally keep the original corner point. If enabled, subdivision is ignored.
+Preserve the original corner point in the output.
 
-Default: Disabled
+Default: `false`
+
+*Visible when Type = Line*
+
+⚡ PCG Overridable
 
 </details>
 
 ### Width
 
 <details>
-<summary><strong>Width Measure</strong> <code>Relative | Discrete</code></summary>
+<summary><strong>Width Measure</strong> <code>EPCGExMeanMeasure</code></summary>
 
-How the width value is interpreted:
+How to interpret the width value.
 
-| Option | Behavior |
-|--------|----------|
-| **Relative** | Width as fraction of segment length (0-1) |
-| **Discrete** | Width as absolute distance |
+| Option | Description |
+|--------|-------------|
+| Discrete | Actual distance in world units |
+| Relative | Percentage of segment length (0-1) |
 
 Default: `Relative`
 
@@ -84,46 +89,63 @@ Default: `Relative`
 <details>
 <summary><strong>Width Input</strong> <code>Constant | Attribute</code></summary>
 
-Where to read bevel width from.
+Whether width is constant or per-point.
 
 Default: `Constant`
 
 </details>
 
 <details>
-<summary><strong>Width</strong> <code>double</code></summary>
+<summary><strong>Width (Attr)</strong> <code>Attribute Selector</code></summary>
 
-Bevel width value (constant or attribute name).
+Attribute to read width from.
 
-Default: `0.1`
+*Visible when Width Input = Attribute*
 
 ⚡ PCG Overridable
 
 </details>
 
-### Limits
+<details>
+<summary><strong>Width</strong> <code>double</code></summary>
+
+Bevel width constant.
+
+Default: `0.1`
+
+*Visible when Width Input = Constant*
+
+⚡ PCG Overridable
+
+</details>
 
 <details>
-<summary><strong>Limit</strong> <code>None | Closest Neighbor | Balanced</code></summary>
+<summary><strong>Limit</strong> <code>EPCGExBevelLimit</code></summary>
 
-How to constrain bevel size when corners are close together:
+How to limit bevel extent.
 
-| Option | Behavior |
-|--------|----------|
-| **None** | No limit - bevels can overlap |
-| **Closest Neighbor** | Limit by closest neighbor position |
-| **Balanced** | Weighted balance against opposite bevel, falling back to closest neighbor |
+| Option | Description |
+|--------|-------------|
+| None | No limit |
+| Closest Neighbor | Limited by closest neighbor position |
+| Balanced | Balance against opposite bevel |
 
 Default: `Balanced`
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 <summary><strong>Slide Along Path</strong> <code>bool</code></summary>
 
-When enabled, bevels can extend past non-beveled points, limited only by neighboring bevels or path endpoints. Intermediate non-beveled points will be removed.
+Allow bevels to extend past non-beveled points.
 
-Default: Disabled
+Default: `false`
+
+*Visible when Limit != None*
+
+⚡ PCG Overridable
 
 </details>
 
@@ -132,150 +154,99 @@ Default: Disabled
 <details>
 <summary><strong>Subdivide</strong> <code>bool</code></summary>
 
-Whether to add subdivision points to the profile. Not available for Custom profiles.
+Add subdivision points along the bevel profile.
 
-Default: Disabled
+Default: `false`
 
-</details>
-
-<details>
-<summary><strong>Subdivide Method</strong> <code>Count | Distance | Manhattan</code></summary>
-
-How to determine subdivision:
-
-| Option | Behavior |
-|--------|----------|
-| **Count** | Fixed number of subdivision points |
-| **Distance** | Points at regular distance intervals |
-| **Manhattan** | Axis-aligned step pattern |
-
-Default: `Count`
-
-</details>
-
-<details>
-<summary><strong>Subdivision Count/Distance</strong> <code>int32 / double</code></summary>
-
-Amount of subdivision based on method.
-
-Count Default: `10`
-Distance Default: `10`
+*Visible when Type != Custom*
 
 ⚡ PCG Overridable
 
 </details>
 
-### Custom Profile Scaling
-
-When using **Custom** profile type:
-
 <details>
-<summary><strong>Main Axis Scaling</strong> <code>Uniform | Scale | Distance</code></summary>
+<summary><strong>Subdivide Method</strong> <code>EPCGExSubdivideMode</code></summary>
 
-How to scale the custom profile on the main axis (along bevel direction).
+How to calculate subdivision count.
+
+Default: `Count`
+
+*Visible when Subdivide = true*
+
+⚡ PCG Overridable
 
 </details>
 
-<details>
-<summary><strong>Cross Axis Scaling</strong> <code>Uniform | Scale | Distance</code></summary>
-
-How to scale the custom profile perpendicular to the bevel direction.
-
-</details>
-
-### Output Flags
+### Flags
 
 <details>
 <summary><strong>Flag Poles</strong> <code>bool</code></summary>
 
-Write boolean attribute marking bevel endpoint positions (start or end).
+Write boolean marking bevel start/end points.
 
-Attribute: `IsBevelPole`
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 <summary><strong>Flag Start Point</strong> <code>bool</code></summary>
 
-Write boolean attribute marking bevel start points.
+Write boolean marking bevel start points.
 
-Attribute: `IsBevelStart`
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 <summary><strong>Flag End Point</strong> <code>bool</code></summary>
 
-Write boolean attribute marking bevel end points.
+Write boolean marking bevel end points.
 
-Attribute: `IsBevelEnd`
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
 <summary><strong>Flag Subdivision</strong> <code>bool</code></summary>
 
-Write boolean attribute marking subdivision points.
+Write boolean marking subdivision points.
 
-Attribute: `IsSubdivision`
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
 
-## Inputs
-
-| Pin | Type | Description |
-|-----|------|-------------|
-| **In** | Points | Path points to bevel |
-| **Bevel Conditions** | Filters | Point filters controlling which corners get beveled |
-| **Profile** | Points | Custom profile shape (when Type is Custom) |
-
 ## Examples
 
-**Simple chamfer**:
+**Simple corner chamfer**:
+- Mode: `Distance`
 - Type: `Line`
-- Width: `0.15` (relative)
-- Subdivide: Disabled
+- Width: `10`
 
 **Rounded corners**:
+- Mode: `Radius`
 - Type: `Arc`
+- Width: `20`
 - Subdivide: Enabled
+- Subdivide Method: `Count`
 - Subdivision Count: `8`
 
-**Variable width bevels**:
-- Width Input: `Attribute`
-- Width Attribute: `CornerRadius`
-
-## Before / After
-
-```
-Before:       ●
-             / \
-            /   \
-           ●     ●
-
-After:        ●─●      (Line profile)
-             /   \
-            /     \
-           ●       ●
-
-After:       ●╮ ╭●     (Arc profile with subdivisions)
-             │╰─╯│
-            /     \
-           ●       ●
-```
-
-## Use Cases
-
-- **Road corners**: Smooth turns instead of sharp angles
-- **Building outlines**: Chamfered or rounded corners
-- **Collision-friendly geometry**: Remove sharp angles
-- **Decorative paths**: Stylized corner treatments
+**Proportional bevels (10% of segment)**:
+- Mode: `Distance`
+- Width Measure: `Relative`
+- Width: `0.1`
 
 ## Related
 
-### Path Shaping
-- [Smooth](./smooth/) - Global smoothing (affects all points)
-- [Subdivide](./subdivide.md) - Add points along segments
+- [Subdivide](./subdivide.md) - Add intermediate points
+- [Fuse Collinear](./fuse-collinear.md) - Remove collinear points
 
 ---
 

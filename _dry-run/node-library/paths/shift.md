@@ -1,130 +1,172 @@
 ---
-icon: sync-alt
+icon: arrow-right-arrow-left
 description: 'In editor :: PCGEx | Path : Shift'
 ---
 
 # Shift
 
-Circularly rotates point indices within a path.
-
-## Overview
-
-Shift changes which point is considered the "first" point by rotating the point order. The path's shape remains identical, but the starting point changes. For closed loops, this effectively rotates where the loop begins; for open paths, it moves points from one end to the other.
+Shifts (rotates) path points by reordering their indices, metadata, or properties.
 
 ## How It Works
 
-1. **Calculate shift amount** in points or distance
-2. **Rotate point indices** by that amount
-3. **Optionally shift attributes/properties** along with indices
+1. Determine the **pivot index** (where the shift starts)
+2. **Rotate** point data so the pivot becomes the new first point
+3. Maintain path connectivity while changing order
+
+## Inputs
+
+| Pin | Type | Description |
+|-----|------|-------------|
+| **In** | Points | Path points to shift |
+| **Shift Filters** | Filters | Optional filters to find pivot (when Input Mode = Filter) |
 
 ## Settings
 
-### Shift Amount
-
 <details>
-<summary><strong>Shift</strong> <code>int32</code></summary>
+<summary><strong>Shift Type</strong> <code>EPCGExShiftType</code></summary>
 
-Number of positions to shift. Positive values shift forward (first points move to end), negative values shift backward.
+What data is shifted along with the points.
 
-Default: `1`
+| Option | Description |
+|--------|-------------|
+| Index | Shift point order only |
+| Metadata | Shift metadata/attributes |
+| Properties | Shift point properties (transform, etc.) |
+| Metadata and Properties | Shift both |
+| CherryPick | Select specific properties/attributes to shift |
+
+Default: `Metadata and Properties`
 
 ⚡ PCG Overridable
 
 </details>
 
 <details>
-<summary><strong>Shift Mode</strong> <code>Count | Relative | Discrete</code></summary>
+<summary><strong>Input Mode</strong> <code>EPCGExShiftPathMode</code></summary>
 
-How to interpret the shift amount:
+How the shift amount is determined.
 
-| Option | Behavior |
-|--------|----------|
-| **Count** | Exact number of points to shift |
-| **Relative** | Fraction of total points (0.0 - 1.0) |
-| **Discrete** | Distance-based shift (shifts to nearest point at distance) |
+| Option | Description |
+|--------|-------------|
+| Discrete | Shift by a fixed number of indices |
+| Relative | Shift by a fraction of path length (0-1) |
+| Filter | Use the first point passing filters as pivot |
 
-Default: `Count`
+Default: `Relative`
 
-</details>
-
-### What to Shift
-
-<details>
-<summary><strong>Shift Positions</strong> <code>bool</code></summary>
-
-Rotate point positions along with indices.
-
-Default: Enabled
+⚡ PCG Overridable
 
 </details>
 
 <details>
-<summary><strong>Shift Attributes</strong> <code>bool</code></summary>
+<summary><strong>Relative Constant</strong> <code>double</code></summary>
 
-Rotate attribute values along with indices.
+Relative shift amount as a fraction of path length.
 
-Default: Enabled
+Default: `0.5`
+
+*Visible when Input Mode = Relative*
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
-<summary><strong>Shift Properties</strong> <code>bool</code></summary>
+<summary><strong>Truncate</strong> <code>EPCGExTruncateMode</code></summary>
 
-Rotate transform properties (rotation, scale) along with indices.
+How to round the computed index from relative mode.
 
-Default: Enabled
+Default: `Round`
+
+*Visible when Input Mode = Relative*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Discrete Constant</strong> <code>int32</code></summary>
+
+Number of positions to shift by.
+
+Default: `0`
+
+*Visible when Input Mode = Discrete*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Index Safety</strong> <code>EPCGExIndexSafety</code></summary>
+
+How to handle out-of-range indices.
+
+Default: `Tile` (wrap around)
+
+*Visible when Input Mode != Filter*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Reverse Shift</strong> <code>bool</code></summary>
+
+Shift in the opposite direction.
+
+Default: `false`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Cherry Picked Properties</strong> <code>bitmask</code></summary>
+
+Specific point properties to shift.
+
+*Visible when Shift Type = CherryPick*
+
+</details>
+
+<details>
+<summary><strong>Cherry Picked Attributes</strong> <code>TArray&lt;FName&gt;</code></summary>
+
+Specific attributes to shift.
+
+*Visible when Shift Type = CherryPick*
+
+</details>
+
+<details>
+<summary><strong>Quiet Double Shift Warning</strong> <code>bool</code></summary>
+
+Suppress warning when shifting already-shifted data.
+
+Default: `false`
 
 </details>
 
 ## Examples
 
-**Shift by 5 points**:
-- Shift: `5`
-- Shift Mode: `Count`
-- Points 0-4 move to the end
+**Shift path to start at midpoint**:
+- Input Mode: `Relative`
+- Relative Constant: `0.5`
 
-**Shift to midpoint** (50%):
-- Shift: `0.5`
-- Shift Mode: `Relative`
-- Halfway through the path becomes the new start
+**Shift by 3 indices**:
+- Input Mode: `Discrete`
+- Discrete Constant: `3`
 
-**Shift positions only** (attributes stay fixed):
-- Shift Positions: Enabled
-- Shift Attributes: Disabled
-- Useful for certain animation effects
-
-## Visual Example
-
-```
-Before:  [0]─1─2─3─4─5     (point 0 is first)
-
-Shift by 2:
-
-After:   2─3─4─5─[0]─1     (point 2 is now first)
-         (for closed loop, same shape, different start)
-```
-
-## Use Cases
-
-- **Loop start adjustment**: Change where a closed loop begins
-- **Alignment**: Align path start with a specific feature
-- **Animation timing**: Change which point leads during playback
-- **Matching paths**: Align multiple paths to start at corresponding positions
-
-## Shift vs Reverse
-
-| Shift | Reverse |
-|-------|---------|
-| Rotates order circularly | Flips order completely |
-| Path direction unchanged | Path direction reversed |
-| Good for closed loops | Good for direction correction |
+**Start path at first tagged point**:
+- Input Mode: `Filter`
+- Connect filter checking for tag
 
 ## Related
 
-### Path Transformation
-- [Reverse Order](./reverse-order.md) - Flip path direction
-- [Slide](./slide.md) - Move points along segments
+- [Slide](./slide.md) - Move points along path without reordering
+- [Reverse](./reverse.md) - Reverse path direction
 
 ---
 
-📦 **Module**: `PCGExElementsPaths` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Private/Elements/PCGExShiftPath.cpp)
+📦 **Module**: `PCGExElementsPaths` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Private/Elements/PCGExPathShift.cpp)

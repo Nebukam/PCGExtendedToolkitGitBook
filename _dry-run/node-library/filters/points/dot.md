@@ -7,30 +7,24 @@ description: 'In editor :: PCGEx | Filter : Dot'
 
 Compares the dot product of two vectors against a threshold.
 
-## Overview
-
-The Dot filter evaluates each point by computing the dot product between two direction vectors and comparing the result against a threshold. Dot products measure alignment: 1 means same direction, 0 means perpendicular, -1 means opposite.
-
 ## How It Works
 
 For each point:
 
-1. **Get Operand A** from attribute or constant (optionally transformed by point)
-2. **Get Operand B** from attribute or constant (optionally transformed by point)
-3. **Compute dot product** of the two vectors
-4. **Compare against threshold** using the configured comparison
-5. **Return result**: pass if comparison is true
+1. Get **Operand A** from attribute (optionally transformed by point)
+2. Get **Operand B** from attribute or constant (optionally transformed by point)
+3. Compute dot product of the two vectors
+4. Compare against threshold using dot comparison settings
+5. Return result: pass if comparison is true
 
 ## Settings
 
-### Operands
+### Operand A
 
 <details>
-<summary><strong>Operand A</strong> <code>Vector</code></summary>
+<summary><strong>Operand A</strong> <code>Attribute Selector</code></summary>
 
-First vector for dot product. Can be constant or read from attribute.
-
-⚡ PCG Overridable
+First vector for dot product.
 
 </details>
 
@@ -39,7 +33,9 @@ First vector for dot product. Can be constant or read from attribute.
 
 Apply the point's local transform to this vector before comparison.
 
-Default: Disabled
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
 
@@ -48,9 +44,13 @@ Default: Disabled
 
 Negate the vector before computing dot product.
 
-Default: Disabled
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
+
+### Operand B
 
 <details>
 <summary><strong>Compare Against</strong> <code>Constant | Attribute</code></summary>
@@ -59,14 +59,42 @@ Whether Operand B comes from a fixed value or an attribute.
 
 Default: `Constant`
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
-<summary><strong>Operand B</strong> <code>Vector</code></summary>
+<summary><strong>Operand B (Attr)</strong> <code>Attribute Selector</code></summary>
 
-Second vector for dot product.
+Attribute for second vector when using Attribute mode.
+
+*Visible when Compare Against = Attribute*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Invert Operand B</strong> <code>bool</code></summary>
+
+Negate the vector before computing dot product.
+
+*Visible when Compare Against = Attribute*
+
+Default: `false`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Operand B</strong> <code>FVector</code></summary>
+
+Constant vector for second operand.
 
 Default: `(0, 0, 1)` (Up vector)
+
+*Visible when Compare Against = Constant*
 
 ⚡ PCG Overridable
 
@@ -77,25 +105,91 @@ Default: `(0, 0, 1)` (Up vector)
 
 Apply the point's local transform to this vector.
 
-Default: Disabled
+Default: `false`
+
+⚡ PCG Overridable
+
+</details>
+
+### Dot Comparison Details
+
+<details>
+<summary><strong>Domain</strong> <code>EPCGExAngularDomain</code></summary>
+
+How threshold values are interpreted.
+
+| Option | Description |
+|--------|-------------|
+| Scalar | Raw dot product (-1 to 1) |
+| Degrees | Angular (0-180°) |
+
+Default: `Scalar`
 
 </details>
 
 <details>
-<summary><strong>Invert Operand B</strong> <code>bool</code></summary>
+<summary><strong>Comparison</strong> <code>EPCGExComparison</code></summary>
 
-Negate the vector before computing dot product.
+The comparison operator to use.
 
-Default: Disabled
+Default: `>=` (Equal or Greater)
 
 </details>
 
-### Comparison
+<details>
+<summary><strong>Unsigned Comparison</strong> <code>bool</code></summary>
+
+Use absolute value of dot product before comparing. Treats opposite directions as equivalent.
+
+Default: `false`
+
+</details>
 
 <details>
-<summary><strong>Dot Comparison Details</strong></summary>
+<summary><strong>Threshold Input</strong> <code>Constant | Attribute</code></summary>
 
-Configuration for how to compare the dot product result. Includes threshold value and comparison operator. Can work in scalar (-1 to 1) or degree (0° to 180°) domain.
+Whether threshold comes from a constant or per-point attribute.
+
+Default: `Constant`
+
+</details>
+
+<details>
+<summary><strong>Scalar</strong> <code>double</code></summary>
+
+Threshold in scalar domain. -1 = opposite, 0 = perpendicular, 1 = same direction.
+
+Default: `0.5`
+
+*Visible when Domain = Scalar and Threshold Input = Constant*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Degrees</strong> <code>double</code></summary>
+
+Threshold in degrees. 0 = same direction, 90 = perpendicular, 180 = opposite.
+
+Default: `90`
+
+*Visible when Domain = Degrees and Threshold Input = Constant*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Tolerance</strong> <code>double</code></summary>
+
+Tolerance for ~= and !~= comparisons.
+
+Default: `0.1`
+
+*Visible when Comparison = Nearly Equal or Nearly Not Equal*
+
+⚡ PCG Overridable
 
 </details>
 
@@ -112,25 +206,23 @@ Configuration for how to compare the dot product result. Includes threshold valu
 ## Examples
 
 **Keep points facing upward** (within 45°):
-- Operand A: Point's forward direction attribute
+- Operand A: Point's forward direction
 - Operand B: `(0, 0, 1)`
+- Domain: `Scalar`
 - Threshold: `0.707` (cos 45°)
 - Comparison: `>=`
 
 **Keep points perpendicular to a direction**:
+- Domain: `Scalar`
 - Threshold: `0`
-- Comparison: `~=` (nearly equal)
+- Comparison: `~=`
 - Tolerance: `0.1`
 
 ## Related
 
-### Filters
 - [Angle](./angle.md) - Compare angle between consecutive points
-- [Node Edge Direction](../clusters/node-edge-direction.md) - Dot filter for cluster nodes
-
-### See Also
-- [Comparison Operators](../../shared-concepts/comparison-operators.md) - Comparison behavior
+- [Tensor Dot](./tensor-dot.md) - Dot against tensor fields
 
 ---
 
-:package: **Module**: `PCGExFilters` | :page_facing_up: [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Points/PCGExDotFilter.cpp)
+📦 **Module**: `PCGExFilters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Points/PCGExDotFilter.cpp)

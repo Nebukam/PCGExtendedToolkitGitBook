@@ -5,107 +5,101 @@ description: 'In editor :: PCGEx | Vtx Filter : Edge Angle'
 
 # Node Edge Angle
 
-Compares the angle between a node's connected edges.
-
-## Overview
-
-The Node Edge Angle filter evaluates cluster nodes by measuring the angle between their connected edges. This is designed primarily for **binary nodes** (nodes with exactly 2 connections) and identifies sharp corners, gentle curves, or straight-through connections in path-like structures.
+Filters nodes based on the angle between their connected edges.
 
 ## How It Works
 
 For each node:
 
-1. **Check edge count** to determine node type
-2. **For binary nodes (2 edges)**: Calculate angle between them using dot product
-3. **For leaf nodes (1 edge)**: Return the fallback value
-4. **For complex nodes (3+ edges)**: Return the fallback value
-5. **Compare angle** against threshold
-6. **Return result**: pass if angle comparison succeeds
+1. Check if node is **binary** (exactly 2 edges)
+2. If not binary, apply **fallback** result
+3. If binary, compute **dot product** between the two edge directions
+4. Compare against **threshold** using dot comparison settings
+5. Return result: pass if comparison is true
+
+This filter is primarily designed for binary nodes (nodes with exactly 2 edges) where measuring the angle between edges is meaningful.
 
 ## Settings
-
-### Comparison
-
-<details>
-<summary><strong>Dot Tolerance</strong> <code>double</code></summary>
-
-Angular tolerance for the comparison. The filter compares edge directions using dot product—values near 1.0 indicate parallel edges (straight path), values near -1.0 indicate opposite directions (sharp turn), and values near 0 indicate perpendicular edges.
-
-Default: Very small
-
-</details>
 
 ### Fallback Behavior
 
 <details>
 <summary><strong>Leaves Fallback</strong> <code>Pass | Fail</code></summary>
 
-What to return for leaf nodes (nodes with only 1 connection). Leaf nodes have no angle to measure.
+Result for leaf nodes (nodes with only 1 edge).
 
 Default: `Fail`
 
 </details>
 
 <details>
-<summary><strong>Non-Binary Fallback</strong> <code>Pass | Fail</code></summary>
+<summary><strong>Non Binary Fallback</strong> <code>Pass | Fail</code></summary>
 
-What to return for complex nodes (nodes with 3 or more connections). These nodes have multiple angles between edges, making a single angle comparison ambiguous.
+Result for nodes with more than 2 edges.
 
 Default: `Fail`
 
 </details>
 
-### Behavior
+### Dot Comparison
+
+<details>
+<summary><strong>Dot Comparison Details</strong> <code>FPCGExDotComparisonDetails</code></summary>
+
+Dot product comparison configuration.
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| Domain | Scalar \| Degrees | `Scalar` | How to interpret threshold values |
+| Comparison | EPCGExComparison | `>=` | Comparison operator |
+| Unsigned Comparison | bool | `false` | Use absolute value of dot product |
+| Threshold Input | Constant \| Attribute | `Constant` | Source for threshold |
+| Scalar | double | `0.5` | Threshold in scalar domain (-1 to 1) |
+| Degrees | double | `90` | Threshold in degrees (0 to 180) |
+| Tolerance | double | `0.1` | Epsilon for near-equality comparisons |
+
+⚡ PCG Overridable
+
+</details>
 
 <details>
 <summary><strong>Invert</strong> <code>bool</code></summary>
 
-Flip the filter result. Note: This also inverts the fallback results.
+Flip the filter result. Also inverts fallback results.
 
-Default: Disabled
+Default: `false`
 
 </details>
 
-## Understanding Dot Product Angles
+## Understanding Dot Product for Edges
 
-The filter uses dot product to compare edge directions:
-
-| Dot Value | Angle | Meaning |
-|-----------|-------|---------|
-| 1.0 | 0° | Edges point same direction (straight through) |
-| 0.0 | 90° | Edges are perpendicular |
-| -1.0 | 180° | Edges point opposite directions (U-turn) |
+For binary nodes, the dot product measures alignment:
+- **1.0** = Edges point in same direction (straight through)
+- **0.0** = Edges are perpendicular (90° corner)
+- **-1.0** = Edges point toward each other (180° turn)
 
 ## Examples
 
-**Find sharp corners** (edges nearly opposite):
-- Dot Tolerance: `0.2` (allows ~78° to 180° turns)
-- Leaves Fallback: `Fail`
-- Non-Binary Fallback: `Fail`
+**Keep sharp corners** (angle < 90°):
+- Domain: `Degrees`
+- Comparison: `<`
+- Degrees: `90`
 
-**Find straight-through nodes** (minimal turning):
-- Dot Tolerance: `0.1`
-- Configure comparison to test for dot ≈ 1.0
+**Keep straight-through nodes** (near 180°):
+- Domain: `Scalar`
+- Comparison: `>=`
+- Scalar: `0.9`
 
-**Include all endpoints in results**:
-- Leaves Fallback: `Pass`
-- Non-Binary Fallback: `Fail`
-
-## Use Cases
-
-- **Path simplification**: Identify nodes that can be removed without affecting path shape
-- **Corner detection**: Find sharp turns in path networks
-- **Curve analysis**: Distinguish smooth curves from angular paths
+**Keep all corners** (any angle):
+- Domain: `Scalar`
+- Comparison: `<`
+- Scalar: `0.95`
 
 ## Related
 
-### Node Filters
-- [Edge Direction](./node-edge-direction.md) - Compare edge directions against reference
-- [Neighbors Count](./node-neighbors-count.md) - Filter by connection count
-
-### Path Operations
-- Simplify Path - Often uses angle-based criteria for point removal
+- [Node Edge Direction](./node-edge-direction.md) - Filter by edge direction matching criteria
+- [Edge Direction](./edge-direction.md) - Filter edges by direction
 
 ---
 
-:package: **Module**: `PCGExElementsClusters` | :page_facing_up: [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Private/Filters/Nodes/PCGExNodeEdgeAngleFilter.cpp)
+📦 **Module**: `PCGExElementsClusters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Private/Filters/Nodes/PCGExNodeEdgeAngleFilter.cpp)

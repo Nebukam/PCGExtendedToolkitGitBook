@@ -7,28 +7,92 @@ description: 'In editor :: PCGEx | Filter : Random (Ratio)'
 
 Randomly selects a specified ratio or count of points.
 
-## Overview
-
-The Random Ratio filter probabilistically selects points based on a target ratio or count. Unlike the Random filter which evaluates each point independently, this filter ensures the final selection matches the requested proportion—useful when you need exactly N points or a specific percentage of the total.
-
 ## How It Works
 
-1. **Calculate target count** based on ratio and total points
-2. **Randomly select** exactly that many points using the seed
-3. **Return result**: pass for selected points, fail for others
+1. Calculate target count based on ratio and total points
+2. Randomly select exactly that many points using the seed
+3. Return result: pass for selected points, fail for others
 
 ## Settings
 
-### Selection
+### Random Settings
 
 <details>
-<summary><strong>Random Settings</strong> <code>Random Ratio Details</code></summary>
+<summary><strong>Base Seed</strong> <code>FPCGExInputShorthandSelectorInteger32</code></summary>
 
-Configuration for random selection:
+Random seed for reproducible results. Can come from attribute (e.g., `@Data.Seed`) or constant.
 
-- **Seed** - Random seed for reproducible results
-- **Ratio** - Target proportion (0.0 to 1.0) or absolute count
-- **Mode** - How to interpret the ratio value
+Default: Uses `@Data.Seed` attribute or `42`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Units</strong> <code>EPCGExMeanMeasure</code></summary>
+
+How the amount is interpreted.
+
+| Option | Description |
+|--------|-------------|
+| Relative | 0-1 percentage of items |
+| Discrete | Fixed count of items |
+
+Default: `Relative`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Amount (Relative)</strong> <code>FPCGExInputShorthandSelectorDouble01</code></summary>
+
+Percentage of items to pick (0 = none, 1 = all).
+
+Default: Uses `@Data.Amount` attribute or `0.5`
+
+*Visible when Units = Relative*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Amount (Fixed)</strong> <code>FPCGExInputShorthandSelectorInteger32Abs</code></summary>
+
+Exact number of items to pick.
+
+Default: Uses `@Data.Amount` attribute or `42`
+
+*Visible when Units = Discrete*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Clamp Min</strong> <code>int32</code></summary>
+
+Minimum number of items to pick regardless of relative amount.
+
+Default: `1` (when enabled)
+
+*Enabled via toggle*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Clamp Max</strong> <code>int32</code></summary>
+
+Maximum number of items to pick regardless of relative amount.
+
+Default: `500` (when enabled)
+
+*Enabled via toggle*
+
+⚡ PCG Overridable
 
 </details>
 
@@ -39,53 +103,36 @@ Configuration for random selection:
 
 Flip the selection—selected points fail, unselected points pass.
 
-Default: Disabled
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
-
-## Selection Modes
-
-The Random Settings support different modes for specifying the selection:
-
-| Mode | Meaning |
-|------|---------|
-| **Ratio** | Select this proportion of total points (0.5 = 50%) |
-| **Count** | Select exactly this many points |
-| **Per Collection** | Apply ratio/count per collection separately |
-| **Global** | Apply ratio/count across all collections combined |
 
 ## Examples
 
 **Select 25% of points**:
-- Ratio: `0.25`
-- Mode: `Ratio`
+- Units: `Relative`
+- Amount (Relative): `0.25`
 
 **Select exactly 100 points**:
-- Ratio: `100`
-- Mode: `Count`
+- Units: `Discrete`
+- Amount (Fixed): `100`
 
 **Keep 80% of points** (remove 20%):
-- Ratio: `0.2`
+- Units: `Relative`
+- Amount (Relative): `0.2`
 - Invert Result: Enabled
 
 **Reproducible random selection**:
-- Seed: `12345`
-- Ratio: `0.5`
-
-## Seed Behavior
-
-The seed ensures reproducible results:
+- Base Seed: Set specific constant value
 - Same seed + same data = same selection
-- Different seeds = different selections
-- Seed of 0 typically uses a random seed
 
 ## Related
 
-### Filters
 - [Random](./random.md) - Per-point probability (may not hit exact ratio)
-- [Modulo Compare](./modulo-compare.md) - Pattern-based selection
 - [Picker](./picker.md) - Index-based selection
 
 ---
 
-:package: **Module**: `PCGExFilters` | :page_facing_up: [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Points/PCGExRandomRatioFilter.cpp)
+📦 **Module**: `PCGExFilters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Points/PCGExRandomRatioFilter.cpp)

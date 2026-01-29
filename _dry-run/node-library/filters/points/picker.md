@@ -7,56 +7,52 @@ description: 'In editor :: PCGEx | Filter : Picker'
 
 Uses index picker factories to select specific points by index.
 
-## Overview
-
-The Picker filter evaluates points using one or more picker factories that specify which indices to select. This provides a flexible, composable way to select specific points—first N, last N, every Nth, random selection, or custom index patterns.
-
 ## How It Works
 
-1. **Gather all picker factories** connected to the filter
-2. **Aggregate selected indices** from all pickers
-3. **For each point**: Pass if index is in the selection set
+1. Gather all **picker factories** connected to the filter
+2. Aggregate **selected indices** from all pickers
+3. For each point: pass if index is in the selection set
+
+## Inputs
+
+| Pin | Type | Description |
+|-----|------|-------------|
+| **Pickers** | Picker Factories | Index selection definitions |
 
 ## Settings
-
-### Evaluation Mode
 
 <details>
 <summary><strong>Force Per Point Evaluation</strong> <code>bool</code></summary>
 
 Force evaluation for each point individually, even when operating on collections.
 
-Default: Disabled
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
-
-### Behavior
 
 <details>
 <summary><strong>Invert</strong> <code>bool</code></summary>
 
 Flip the filter result—pass for non-selected indices, fail for selected.
 
-Default: Disabled
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
 
-### Pickers
+## Picker Types
 
-<details>
-<summary><strong>Picker Factories</strong> <code>Picker Factory List</code></summary>
+Connect picker factory nodes to define the selection. Multiple pickers are combined (union of their selections):
 
-Connect picker factory nodes to define the selection. Multiple pickers are combined (union of their selections).
-
-Common picker types:
 - **First N** - Select first N points
 - **Last N** - Select last N points
 - **Range** - Select indices within a range
 - **Step** - Select every Nth point
 - **Random** - Randomly select points
 - **Explicit** - Select specific listed indices
-
-</details>
 
 ## Examples
 
@@ -87,11 +83,9 @@ The final selection is the **union** of all picker selections.
 
 ## Related
 
-### Filters
 - [Random Ratio](./random-ratio.md) - Random percentage selection
 - [Modulo Compare](./modulo-compare.md) - Pattern-based selection using modulo
-- [Numeric Compare](./numeric-compare.md) - Attribute-based selection
 
 ---
 
-:package: **Module**: `PCGExFilters` | :page_facing_up: [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Points/PCGExPickerFilter.cpp)
+📦 **Module**: `PCGExFilters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Points/PCGExPickerFilter.cpp)

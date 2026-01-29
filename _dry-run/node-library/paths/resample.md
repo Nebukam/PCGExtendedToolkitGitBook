@@ -7,9 +7,12 @@ description: 'In editor :: PCGEx | Path : Resample'
 
 Redistributes path points at uniform intervals.
 
-## Overview
+## How It Works
 
-Resample replaces a path's points with new points spaced evenly along the path. Unlike Subdivide (which adds points between existing ones), Resample creates an entirely new point distribution—guaranteeing consistent spacing regardless of the original point arrangement.
+1. Calculate **total path length**
+2. Determine **sample positions** based on mode
+3. Create **new points** at sample locations
+4. **Blend** properties from neighboring original points
 
 ## Settings
 

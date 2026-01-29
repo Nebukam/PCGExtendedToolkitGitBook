@@ -7,15 +7,11 @@ description: 'In editor :: PCGEx | Filter : Constant'
 
 A filter that always returns the same result.
 
-## Overview
-
-The Constant filter returns a fixed pass or fail result for all points. While seemingly trivial, it's useful for testing, debugging, and as a fallback in complex filter setups.
-
 ## How It Works
 
 For each point:
 
-1. **Return the configured value** (pass or fail)
+1. Return the configured value (pass or fail)
 
 That's it. No conditions, no attributes, just a constant result.
 
@@ -31,6 +27,8 @@ The constant result to return.
 
 Default: `true`
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
@@ -38,7 +36,9 @@ Default: `true`
 
 Flip the result.
 
-Default: Disabled
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
 
@@ -60,9 +60,8 @@ Default: Disabled
 
 ## Related
 
-### Filters
 - [Filter Group](./filter-group.md) - Combine filters with AND/OR logic
 
 ---
 
-:package: **Module**: `PCGExFilters` | :page_facing_up: [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Points/PCGExConstantFilter.cpp)
+📦 **Module**: `PCGExFilters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Points/PCGExConstantFilter.cpp)

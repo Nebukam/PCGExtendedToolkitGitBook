@@ -1,121 +1,133 @@
 ---
-icon: grip-lines-vertical
+icon: compress
 description: 'In editor :: PCGEx | Path : Fuse Collinear'
 ---
 
 # Fuse Collinear
 
-Merges points that lie on straight line segments.
-
-## Overview
-
-Fuse Collinear removes redundant points from straight sections of a path. When multiple consecutive points lie on (or near) a straight line, only the endpoints of that line are kept—the intermediate points are removed. This is different from Reduce, which uses tangent analysis; Fuse Collinear strictly tests for collinearity.
+Removes collinear points from a path, simplifying it while preserving shape.
 
 ## How It Works
 
-For sequences of consecutive points:
+For each point:
 
-1. **Test collinearity** of each point with its neighbors
-2. **Mark collinear points** for removal
-3. **Keep segment endpoints** (start/end of straight sections)
-4. **Optionally blend** attributes from removed points
+1. Calculate the **angle** between incoming and outgoing segments
+2. If angle is below **threshold** (points are nearly collinear), remove the point
+3. Optionally **blend** properties from removed points into remaining ones
+
+## Inputs
+
+| Pin | Type | Description |
+|-----|------|-------------|
+| **In** | Points | Path points to simplify |
+| **Keep Conditions** | Filters | Optional filters to force-keep specific points |
 
 ## Settings
-
-### Collinearity Detection
 
 <details>
 <summary><strong>Threshold</strong> <code>double</code></summary>
 
-Maximum perpendicular distance from the line for a point to be considered collinear. Points farther than this from the line connecting their neighbors are kept.
+Angular threshold in degrees. Points with segment angles below this are considered collinear and removed.
 
-Default: `0.1`
+Default: `10`
 
 ⚡ PCG Overridable
 
 </details>
 
-### Attribute Handling
-
 <details>
-<summary><strong>Blend Fused Points</strong> <code>bool</code></summary>
+<summary><strong>Invert Threshold</strong> <code>bool</code></summary>
 
-When removing collinear points, blend their attribute values into the remaining endpoints.
+Fuse points that are NOT collinear instead (smooth-like behavior).
 
-Default: Disabled
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
-<summary><strong>Blending</strong> <code>Blending Settings</code></summary>
+<summary><strong>Fuse Collocated</strong> <code>bool</code></summary>
 
-How to blend attributes when Blend Fused Points is enabled.
+Also fuse points that are at the same location (distance < threshold).
+
+Default: `true`
+
+⚡ PCG Overridable
 
 </details>
 
-### Endpoints
+<details>
+<summary><strong>Fuse Distance</strong> <code>double</code></summary>
+
+Distance below which points are considered collocated.
+
+Default: `0.001`
+
+*Visible when Fuse Collocated = true*
+
+</details>
 
 <details>
-<summary><strong>Preserve Path Endpoints</strong> <code>bool</code></summary>
+<summary><strong>Do Blend</strong> <code>bool</code></summary>
 
-Never remove the first and last points of the path, regardless of collinearity.
+Enable property/attribute blending for fused points.
 
-Default: Enabled
+Default: `false`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Blending Details</strong> <code>FPCGExBlendingDetails</code></summary>
+
+How fused point properties and attributes are merged.
+
+Default: Properties = `Average`, Attributes = `None`
+
+*Visible when Do Blend = true*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Union Details</strong> <code>FPCGExUnionMetadataDetails</code></summary>
+
+Metadata settings for union operations.
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Omit Invalid Paths From Output</strong> <code>bool</code></summary>
+
+Exclude paths that become invalid (too few points) from output.
+
+Default: `true`
+
+⚡ PCG Overridable
 
 </details>
 
 ## Examples
 
-**Strict collinearity** (nearly perfect lines only):
-- Threshold: `0.01`
-- Only points very close to the line are removed
+**Remove near-straight segments** (< 5° deviation):
+- Threshold: `5`
 
-**Lenient collinearity** (approximate lines):
-- Threshold: `5.0`
-- Points within 5 units of the line are removed
+**Aggressive simplification** (< 20° deviation):
+- Threshold: `20`
 
-**Preserve attribute averages**:
-- Blend Fused Points: Enabled
-- Removed point values contribute to remaining points
-
-## Before / After
-
-```
-Before:  ●─●─●─●─●─●─●          ●
-         (many points on line)  │
-                                ●
-                                │
-                                ●
-
-After:   ●─────────────●        ●
-         (just endpoints)       │
-                                ●
-                                │
-                                ●
-         (straight sections simplified, corners preserved)
-```
-
-## Fuse Collinear vs Reduce
-
-| Fuse Collinear | Reduce |
-|----------------|--------|
-| Tests geometric collinearity | Analyzes tangent deviation |
-| Removes points on exact lines | Considers curve flow |
-| Strict distance threshold | Flexible tolerance |
-| Best for CAD-like cleanup | Best for general simplification |
-
-## Use Cases
-
-- **Clean imported data**: Remove redundant points from CAD imports
-- **Post-subdivision cleanup**: Remove unnecessary midpoints
-- **Optimize straight sections**: Keep only essential points on lines
-- **Pre-processing**: Prepare paths for operations that don't need collinear density
+**Smooth by removing sharp corners**:
+- Threshold: `90`
+- Invert Threshold: `true`
 
 ## Related
 
-### Path Shaping
-- [Reduce](./reduce.md) - Tangent-based simplification
-- [Resample](./resample.md) - Replace with uniform density
+- [Subdivide](./subdivide.md) - Add points (opposite operation)
+- [Resample](./resample.md) - Redistribute points evenly
 
 ---
 

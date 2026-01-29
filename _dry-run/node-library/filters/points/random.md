@@ -7,18 +7,14 @@ description: 'In editor :: PCGEx | Filter : Random'
 
 Probabilistic filtering based on random values.
 
-## Overview
-
-The Random filter evaluates each point using a random number generator, passing points that roll below a threshold. This creates randomized selection without requiring pre-computed random attributes.
-
 ## How It Works
 
 For each point:
 
-1. **Generate random value** (0-1) using seed and point index
-2. **Apply optional weight** from attribute or curve
-3. **Compare against threshold**
-4. **Return result**: pass if random value < threshold
+1. Generate random value (0-1) using seed and point index
+2. Apply optional weight from attribute or curve
+3. Compare against threshold
+4. Return result: pass if random value < threshold
 
 ## Settings
 
@@ -42,14 +38,42 @@ Whether threshold comes from a fixed value or per-point attribute.
 
 Default: `Constant`
 
+⚡ PCG Overridable
+
 </details>
 
 <details>
-<summary><strong>Threshold</strong> <code>double (0-1)</code></summary>
+<summary><strong>Threshold (Attr)</strong> <code>Attribute Selector</code></summary>
+
+Per-point threshold attribute. Value expected in 0-1 range.
+
+*Visible when Threshold Input = Attribute*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Remap Threshold to 0..1</strong> <code>bool</code></summary>
+
+Normalize threshold values internally. Enable if per-point threshold doesn't fit 0-1 range.
+
+*Visible when Threshold Input = Attribute*
+
+Default: `false`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Threshold</strong> <code>double</code></summary>
 
 Probability of passing (0 = none pass, 1 = all pass).
 
 Default: `0.5` (50% pass rate)
+
+*Visible when Threshold Input = Constant*
 
 ⚡ PCG Overridable
 
@@ -62,7 +86,9 @@ Default: `0.5` (50% pass rate)
 
 Enable per-point weighting from an attribute.
 
-Default: Disabled
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
 
@@ -71,14 +97,22 @@ Default: Disabled
 
 Attribute containing weight values. Higher weights increase pass probability.
 
+*Visible when Per Point Weight = Enabled*
+
+⚡ PCG Overridable
+
 </details>
 
 <details>
-<summary><strong>Remap Weight Internally</strong> <code>bool</code></summary>
+<summary><strong>Remap Weight to 0..1</strong> <code>bool</code></summary>
 
 Normalize weight values to 0-1 range based on min/max in dataset.
 
-Default: Disabled
+*Visible when Per Point Weight = Enabled*
+
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
 
@@ -87,16 +121,18 @@ Default: Disabled
 <details>
 <summary><strong>Use Local Curve</strong> <code>bool</code></summary>
 
-Apply a curve to modify the random distribution.
+Use in-editor curve or external asset for weight remapping.
 
-Default: Disabled
+Default: `false`
 
 </details>
 
 <details>
-<summary><strong>Local Weight Curve</strong> <code>Curve</code></summary>
+<summary><strong>Local Weight Curve</strong> <code>RuntimeFloatCurve</code></summary>
 
 In-editor curve for remapping random values.
+
+*Visible when Use Local Curve = Enabled*
 
 </details>
 
@@ -104,6 +140,17 @@ In-editor curve for remapping random values.
 <summary><strong>Weight Curve</strong> <code>Curve Asset</code></summary>
 
 External curve asset for remapping.
+
+*Visible when Use Local Curve = Disabled*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Weight Curve Lookup</strong> <code>FPCGExCurveLookupDetails</code></summary>
+
+Curve sampling configuration.
 
 </details>
 
@@ -114,7 +161,9 @@ External curve asset for remapping.
 
 Flip pass/fail results.
 
-Default: Disabled
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
 
@@ -134,10 +183,9 @@ Default: Disabled
 
 ## Related
 
-### Filters
 - [Random Ratio](./random-ratio.md) - Select exact count/percentage
 - [Picker](./picker.md) - Index-based selection
 
 ---
 
-:package: **Module**: `PCGExFilters` | :page_facing_up: [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Points/PCGExRandomFilter.cpp)
+📦 **Module**: `PCGExFilters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Points/PCGExRandomFilter.cpp)

@@ -7,27 +7,23 @@ description: 'In editor :: PCGEx | Filter : Bitmask'
 
 Filters points based on bit flag comparisons.
 
-## Overview
-
-The Bitmask filter evaluates each point by reading a flags attribute and comparing it against a bitmask using various matching modes. This enables efficient multi-state filtering using bitwise operations.
-
 ## How It Works
 
 For each point:
 
-1. **Read flags** from the specified attribute
-2. **Get mask** from constant, attribute, or composed references
-3. **Apply comparison** using selected match mode
-4. **Return result**: pass if comparison succeeds
+1. Read **flags** from the specified attribute
+2. Get **mask** from constant, attribute, or composed references
+3. Apply comparison using selected match mode
+4. Return result: pass if comparison succeeds
 
 ## Settings
 
 ### Flags
 
 <details>
-<summary><strong>Flags Attribute</strong> <code>Attribute Name</code></summary>
+<summary><strong>Flags Attribute</strong> <code>FName</code></summary>
 
-The attribute containing the bit flags to test.
+The attribute containing the bit flags to test. Must be int64.
 
 Default: `"Flags"`
 
@@ -36,6 +32,23 @@ Default: `"Flags"`
 </details>
 
 ### Mask
+
+<details>
+<summary><strong>Comparison</strong> <code>EPCGExBitflagComparison</code></summary>
+
+How to compare flags against the mask.
+
+| Mode | Meaning |
+|------|---------|
+| Match Partial | At least one flag in mask is set |
+| Match All | All flags in mask are set |
+| Match Strict | Flags exactly equal mask |
+| No Match Any | None of the mask flags are set |
+| No Match All | Not all mask flags are set |
+
+Default: `Match Partial`
+
+</details>
 
 <details>
 <summary><strong>Mask Input</strong> <code>Constant | Attribute</code></summary>
@@ -47,59 +60,48 @@ Default: `Constant`
 </details>
 
 <details>
-<summary><strong>Bitmask</strong> <code>int64</code></summary>
+<summary><strong>Bitmask (Attr)</strong> <code>FName</code></summary>
 
-The constant bitmask value when using Constant mode.
+Attribute containing per-point mask values. Must be int64.
 
-Default: `0`
+Default: `"Mask"`
+
+*Visible when Mask Input = Attribute*
 
 ⚡ PCG Overridable
 
 </details>
 
 <details>
-<summary><strong>Bitmask Attribute</strong> <code>Attribute Name</code></summary>
+<summary><strong>Bitmask</strong> <code>int64</code></summary>
 
-Attribute containing per-point mask values.
+The constant bitmask value when using Constant mode.
 
-Default: `"Mask"`
+Default: `0`
+
+*Visible when Mask Input = Constant*
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
-<summary><strong>Compositions</strong> <code>Bitmask References</code></summary>
+<summary><strong>Compositions</strong> <code>Bitmask Reference Array</code></summary>
 
-Additional bitmask references from collections to compose into the final mask.
-
-</details>
-
-### Comparison
-
-<details>
-<summary><strong>Comparison</strong> <code>Match Mode</code></summary>
-
-How to compare flags against the mask.
-
-| Mode | Meaning |
-|------|---------|
-| **Match (any)** | At least one flag in mask is set |
-| **Match (all)** | All flags in mask are set |
-| **Match (strict)** | Flags exactly equal mask |
-| **No Match (any)** | None of the mask flags are set |
-| **No Match (all)** | Not all mask flags are set |
-
-Default: `Match (any)`
-
-See [Bitmask Operations](../../shared-concepts/bitmask-operations.md) for detailed explanation.
+External bitmask references to compose into the final mask (applied to Operand B).
 
 </details>
+
+### Output
 
 <details>
 <summary><strong>Invert Result</strong> <code>bool</code></summary>
 
 Flip pass/fail results.
 
-Default: Disabled
+Default: `false`
+
+⚡ PCG Overridable
 
 </details>
 
@@ -107,24 +109,20 @@ Default: Disabled
 
 **Points with flag 0 OR flag 1 set** (mask = 3 = 0b11):
 - Bitmask: `3`
-- Comparison: `Match (any)`
+- Comparison: `Match Partial`
 
 **Points with exactly flags 0 and 2 set** (mask = 5 = 0b101):
 - Bitmask: `5`
-- Comparison: `Match (strict)`
+- Comparison: `Match Strict`
 
 **Points without any "excluded" flags**:
 - Bitmask: (your exclusion flags)
-- Comparison: `No Match (any)`
+- Comparison: `No Match Any`
 
 ## Related
 
-### Filters
 - [Boolean Compare](./boolean-compare.md) - Single flag comparison
-
-### See Also
-- [Bitmask Operations](../../shared-concepts/bitmask-operations.md) - Understanding bitmasks
 
 ---
 
-:package: **Module**: `PCGExFilters` | :page_facing_up: [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Points/PCGExBitmaskFilter.cpp)
+📦 **Module**: `PCGExFilters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Points/PCGExBitmaskFilter.cpp)

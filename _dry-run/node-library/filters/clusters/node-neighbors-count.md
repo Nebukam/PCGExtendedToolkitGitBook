@@ -5,24 +5,20 @@ description: 'In editor :: PCGEx | Vtx Filter : Num Edges'
 
 # Node Neighbors Count
 
-Compares a node's connection count (degree) against a threshold.
-
-## Overview
-
-The Node Neighbors Count filter evaluates cluster nodes by comparing how many edges connect to them. This identifies leaves (degree 1), simple chain nodes (degree 2), junctions (degree 3+), or nodes with specific connectivity.
+Filters nodes based on the number of connected edges.
 
 ## How It Works
 
-For each node:
+For each node (vertex):
 
-1. **Count connected edges** (the node's degree)
-2. **Compare against threshold** using selected operator
-3. **Return result**: node passes if comparison is true
+1. Count the **number of edges** connected to this node
+2. Compare against **threshold** using the selected comparison operator
+3. Return result: pass if comparison is true
 
 ## Settings
 
 <details>
-<summary><strong>Comparison</strong> <code>Comparison Operator</code></summary>
+<summary><strong>Comparison</strong> <code>EPCGExComparison</code></summary>
 
 How to compare the edge count against the threshold.
 
@@ -33,18 +29,33 @@ Default: `~=` (Nearly Equal)
 <details>
 <summary><strong>Compare Against</strong> <code>Constant | Attribute</code></summary>
 
-Whether threshold comes from a fixed value or node attribute.
+Whether the threshold comes from a fixed value or an attribute.
 
 Default: `Constant`
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
-<summary><strong>Count</strong> <code>int32</code></summary>
+<summary><strong>Operand A (Attr)</strong> <code>Attribute Selector</code></summary>
+
+Attribute to read threshold from when using Attribute mode.
+
+*Visible when Compare Against = Attribute*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Operand A</strong> <code>int32</code></summary>
 
 The edge count threshold when using Constant mode.
 
 Default: `0`
+
+*Visible when Compare Against = Constant*
 
 ⚡ PCG Overridable
 
@@ -53,44 +64,35 @@ Default: `0`
 <details>
 <summary><strong>Tolerance</strong> <code>double</code></summary>
 
-Tolerance for near-equality comparisons.
+Epsilon for near-equality comparisons.
 
-Default: Very small
+Default: `DBL_COMPARE_TOLERANCE`
+
+*Visible when Comparison = Nearly Equal or Nearly Not Equal*
+
+⚡ PCG Overridable
 
 </details>
 
-## Common Degree Values
-
-| Degree | Name | Meaning |
-|--------|------|---------|
-| 0 | Isolated | No connections (unusual in valid clusters) |
-| 1 | Leaf | End of a chain, single connection |
-| 2 | Chain | Part of a simple path |
-| 3+ | Junction | Branch point, multiple paths meet |
-
 ## Examples
 
-**Find leaf nodes** (endpoints):
+**Keep leaf nodes** (only one connection):
 - Comparison: `==`
-- Count: `1`
+- Operand A: `1`
 
-**Find junctions** (3+ connections):
+**Keep hub nodes** (3+ connections):
 - Comparison: `>=`
-- Count: `3`
+- Operand A: `3`
 
-**Find chain nodes** (exactly 2 connections):
+**Keep binary nodes** (exactly 2 connections):
 - Comparison: `==`
-- Count: `2`
+- Operand A: `2`
 
 ## Related
 
-### Node Filters
-- [Adjacency](./node-adjacency.md) - Compare with neighbor attributes
-- [Edge Angle](./node-edge-angle.md) - Angle between connected edges
-
-### Edge Filters
-- [Num Vtx](./edge-neighbors-count.md) - Compare endpoint degrees
+- [Edge Neighbors Count](./edge-neighbors-count.md) - Filter edges by endpoint connection counts
+- [Node Adjacency](./node-adjacency.md) - Filter by neighbor attributes
 
 ---
 
-:package: **Module**: `PCGExElementsClusters` | :page_facing_up: [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Private/Filters/Nodes/PCGExNodeNeighborsCountFilter.cpp)
+📦 **Module**: `PCGExElementsClusters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Private/Filters/Nodes/PCGExNodeNeighborsCountFilter.cpp)

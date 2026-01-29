@@ -7,9 +7,12 @@ description: 'In editor :: PCGEx | Path : Stitch'
 
 Connects multiple paths together at their endpoints.
 
-## Overview
+## How It Works
 
-Stitch joins separate paths into longer continuous paths by connecting endpoints that are close together. This is the inverse of Split—where Split breaks paths apart, Stitch welds them back together.
+1. Find path **endpoints** within tolerance distance
+2. **Connect** or **fuse** endpoints based on method
+3. Optionally require **alignment** between segments
+4. Output as merged path data
 
 ## Settings
 

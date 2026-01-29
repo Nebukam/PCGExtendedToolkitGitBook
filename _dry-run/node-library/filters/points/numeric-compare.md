@@ -34,23 +34,33 @@ The first value to compare. Select any numeric attribute—it will be converted 
 </details>
 
 <details>
-<summary><strong>Compare Against</strong> <code>Constant | Attribute</code></summary>
+<summary><strong>Comparison</strong> <code>EPCGExComparison</code></summary>
 
-Whether Operand B comes from a fixed value or another attribute.
+How to compare the two values.
 
-- **Constant** - Use a fixed value for all points
-- **Attribute** - Read per-point from another attribute
+| Option | Symbol |
+|--------|--------|
+| Strictly Equal | `==` |
+| Strictly Not Equal | `!=` |
+| Equal or Greater | `>=` |
+| Equal or Smaller | `<=` |
+| Strictly Greater | `>` |
+| Strictly Smaller | `<` |
+| Nearly Equal | `~=` |
+| Nearly Not Equal | `!~=` |
 
-Default: `Constant`
+Default: `~=` (Nearly Equal)
+
+⚡ PCG Overridable
 
 </details>
 
 <details>
-<summary><strong>Operand B</strong> <code>double</code></summary>
+<summary><strong>Compare Against</strong> <code>Constant | Attribute</code></summary>
 
-The threshold value when using Constant mode.
+Whether Operand B comes from a fixed value or another attribute.
 
-Default: `0`
+Default: `Constant`
 
 ⚡ PCG Overridable
 
@@ -61,42 +71,33 @@ Default: `0`
 
 The attribute to compare against when using Attribute mode.
 
+*Visible when Compare Against = Attribute*
+
 ⚡ PCG Overridable
 
 </details>
 
-### Comparison
-
 <details>
-<summary><strong>Comparison</strong> <code>Comparison Operator</code></summary>
+<summary><strong>Operand B</strong> <code>double</code></summary>
 
-How to compare the two values.
+The threshold value when using Constant mode.
 
-| Option | Meaning |
-|--------|---------|
-| **==** | Strictly equal |
-| **!=** | Strictly not equal |
-| **>=** | Equal or greater |
-| **<=** | Equal or smaller |
-| **>** | Strictly greater |
-| **<** | Strictly smaller |
-| **~=** | Nearly equal (within tolerance) |
-| **!~=** | Nearly not equal (outside tolerance) |
+Default: `0`
 
-Default: `~=` (Nearly Equal)
+*Visible when Compare Against = Constant*
 
-See [Comparison Operators](../../shared-concepts/comparison-operators.md) for detailed behavior.
+⚡ PCG Overridable
 
 </details>
 
 <details>
 <summary><strong>Tolerance</strong> <code>double</code></summary>
 
-Epsilon for near-equality comparisons. Only visible when using `~=` or `!~=`.
+Epsilon for near-equality comparisons.
 
-Two values are "nearly equal" when their difference is less than or equal to this tolerance.
+Default: `DBL_COMPARE_TOLERANCE` (≈0.00001)
 
-Default: Very small (approximately 0.00000001)
+*Visible when Comparison = Nearly Equal or Nearly Not Equal*
 
 ⚡ PCG Overridable
 

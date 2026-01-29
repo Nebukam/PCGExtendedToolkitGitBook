@@ -10,17 +10,17 @@
 | Category | Total | Verified | Errors | Rewrote |
 |----------|-------|----------|--------|---------|
 | Shared Concepts | 7 | 7 | 0 | 0 |
-| Filters - Points | 26 | 0 | 19 | 7 |
-| Filters - Collections | 5 | 0 | 0 | 5 |
-| Filters - Clusters | 10 | 2 | 5 | 3 |
-| Paths - Main | 24 | 8 | 13 | 3 |
-| Paths - Sub-ops | 18 | 14 | 1 | 3 |
+| Filters - Points | 26 | 26 | 0 | 26 |
+| Filters - Collections | 5 | 5 | 0 | 5 |
+| Filters - Clusters | 10 | 10 | 0 | 8 |
+| Paths - Main | 24 | 24 | 0 | 14 |
+| Paths - Sub-ops | 18 | 14 | 3 | 3 |
 
 ---
 
 ## Completed Rewrites
 
-### Point Filters (7) ✓
+### Point Filters (26) ✓
 - string-compare.md - FName type fix, EPCGExStringComparison enum
 - modulo-compare.md - ZeroResult bool not double
 - mean.md - ExcludeBelow/Above=0.2, ModeTolerance=5
@@ -28,6 +28,25 @@
 - time.md - OperandB=0, bIgnoreSelf=true
 - inclusion.md - bIgnoreSelf=true, ExpandZAxis=-1, WindingMutation
 - bounds.md - Removed non-UPROPERTY bIgnoreSelf
+- numeric-compare.md - PCG_Overridable markers, EPCGExComparison type
+- boolean-compare.md - EPCGExEquality type, Operand B (Attr) added
+- within-range.md - Attributes setting, visibility conditions
+- dot.md - Full FPCGExDotComparisonDetails struct documented
+- angle.md - FPCGExDotComparisonDetails, fallback modes
+- random.md - Threshold/Weight/Curve settings fully documented
+- bitmask.md - EPCGExBitflagComparison, FName types
+- distance.md - FPCGExDistanceDetails nested, bIgnoreSelf=false default
+- numeric-self-compare.md - EPCGExIndexMode, Index (Attr) setting
+- string-self-compare.md - EPCGExIndexMode, SwapOperands
+- random-ratio.md - FPCGExRandomRatioDetails struct fully documented
+- segment-cross.md - EPCGExSegmentCrossWinding, bIgnoreSelf=true default
+- numeric-compare-nearest.md - bIgnoreSelf=true default, Distance Details
+- value-hash.md - EPCGExValueHashMode, FName types
+- gameplay-tags.md - PCG_Overridable markers, defaults
+- tensor-dot.md - FPCGExDotComparisonDetails, FPCGExTensorHandlerDetails
+- noise.md - FPCGExCompareSelectorDouble pattern
+- constant.md - PCG_Overridable markers
+- picker.md - bForcePerPointEvaluation setting
 
 ### Collection Filters (5) ✓
 - attribute-check.md - FString AttributeName, EPCGExAttribtueDomainCheck
@@ -36,33 +55,34 @@
 - data-bounds.md - EPCGExBoundsAspect, FPCGExCompareSelectorDouble
 - tag-value.md - Numeric/String modes
 
-### Cluster Filters (3) ✓
+### Cluster Filters (8) ✓
 - node-adjacency.md - FPCGExAdjacencySettings struct documented
 - node-edge-direction.md - FPCGExEdgeDirectionSettings, FPCGExAdjacencySettings
 - edge-direction.md - FPCGExEdgeDirectionSettings, dot/hash comparison
+- node-neighbors-count.md - EPCGExComparison, CompareAgainst/LocalCount pattern
+- node-edge-angle.md - FPCGExDotComparisonDetails, fallbacks, bInvert
+- edge-length.md - ThresholdInput pattern, Comparison=StrictlyGreater, Tolerance=0
+- edge-neighbors-count.md - EPCGExRefineEdgeThresholdMode (Sum/Any/Both), int32 types
+- edge-endpoints-compare-numeric.md - Attribute selector on vtx, Comparison default `>`
 
-### Path Nodes (3) ✓
+### Path Nodes (14) ✓
 - solidify.md - Correct node architecture
 - path-bounds-intersection.md - FPCGExPathIntersectionDetails
 - spline-to-path.md - No sample mode, tangent/alpha/length outputs
+- slide.md - EPCGExSlideMode/Direction, AmountMeasure, WriteOldPosition
+- shift.md - EPCGExShiftType, InputMode (Discrete/Relative/Filter), CherryPick
+- fuse-collinear.md - Threshold=10deg, InvertThreshold, FuseCollocated, BlendingDetails
+- subdivide.md - EPCGExSubdivideMode (Distance/Count/Manhattan), FlagSubPoints, WriteAlpha
+- create-spline.md - EPCGCreateSplineMode, DefaultPointType, Tangents
+- path-crossings.md - SelfIntersectionOnly, CanCut/CanBeCut tags, CrossBlending, IntersectionDetails
+- bevel.md - EPCGExBevelMode/ProfileType/Limit, Width measure, Subdivision, Flags
+- resample.md - EPCGExResampleMode, ResolutionMode, RedistributeEvenly
+- stitch.md - EPCGExStitchMethod/FuseMethod/FuseOperation, OnlyMatchStartAndEnds, Alignment
+- attribute-rolling.md - EPCGExRollingRangeControl/ValueControl, InitialValueMode, Range outputs
 
 ---
 
 ## Pending Fixes
-
-### Point Filters with Errors (19)
-numeric-compare, boolean-compare, within-range, dot, angle, random, bitmask,
-distance, numeric-self-compare, string-self-compare, random-ratio,
-segment-cross, numeric-compare-nearest, value-hash, gameplay-tags,
-tensor-dot, noise, constant, picker
-
-### Cluster Filters with Errors (5)
-node-neighbors-count, node-edge-angle, edge-length, edge-neighbors-count,
-edge-endpoints-compare-numeric
-
-### Path Nodes with Errors (13)
-slide, shift, fuse-collinear, insert, subdivide, create-spline,
-spline-mesh-simple, path-crossings, bevel, resample, stitch, attribute-rolling
 
 ### Path Sub-ops with Errors (3)
 smooth/README, orient/README, orient/weighted
@@ -79,6 +99,7 @@ Many filters use nested USTRUCT that weren't documented:
 - FPCGExDistanceDetails
 - FPCGExCompareSelectorDouble
 - FPCGExEdgeDirectionSettings
+- FPCGExRandomRatioDetails
 
 ### 2. FName vs Selector
 FName = simple string lookup
@@ -101,33 +122,25 @@ Docs said "Disabled" (wrong)
 ## Session State
 
 ### Current Position
-- Completed: All 18 complete rewrites
-- Next: 19 point filter error fixes
-- User reviewing rewrites
+- Completed: 53 total rewrites (26 point filters, 5 collection, 8 cluster, 14 paths)
+- Next: 3 path sub-op error fixes (smooth/README, orient/README, orient/weighted)
 
 ### Key Source Files Read
-- PCGExStringCompareFilter.h
-- PCGExModuloCompareFilter.h
-- PCGExMeanFilter.h
-- PCGExSegmentLengthFilter.h
-- PCGExTimeFilter.h
-- PCGExInclusionFilter.h
-- PCGExBoundsFilter.h
-- PCGExEntryCountFilter.h
-- PCGExTagCheckFilter.h
-- PCGExDataBoundsFilter.h
-- PCGExTagValueFilter.h
-- PCGExAttributeCheckFilter.h
-- PCGExNodeAdjacencyFilter.h
-- PCGExNodeEdgeDirectionFilter.h
-- PCGExIsoEdgeDirectionFilter.h
-- PCGExPathSolidify.h
-- PCGExPathBoundsIntersection.h
-- PCGExSplineToPath.h
-- PCGExAdjacency.h
-- PCGExCompare.h
-- PCGExEdgeDirectionDetails.h
-- PCGExCompareShorthandsDetails.h
+- All point filter headers
+- All collection filter headers
+- All cluster filter headers
+- PCGExPathSlide.h
+- PCGExPathShift.h
+- PCGExFuseCollinear.h
+- PCGExPathInsert.h
+- PCGExSubdivide.h
+- PCGExCreateSpline.h
+- PCGExPathSplineMeshSimple.h
+- PCGExPathCrossings.h
+- PCGExBevelPath.h
+- PCGExPathResample.h
+- PCGExPathStitch.h
+- PCGExAttributeRolling.h
 
 ### Patterns Established
 - Settings block: `<details><summary><strong>Name</strong> <code>Type</code></summary>`

@@ -7,53 +7,53 @@ description: 'In editor :: PCGEx | Filter : Gameplay Tags'
 
 Evaluates gameplay tag queries on actors referenced by points.
 
-## Overview
-
-The Gameplay Tags filter evaluates each point by resolving an actor reference stored in an attribute, navigating to a gameplay tag container on that actor, and evaluating a tag query. This bridges PCG data with Unreal's gameplay tag system—filtering points based on the tags of their associated actors.
-
 ## How It Works
 
 For each point:
 
-1. **Read actor reference** from the specified attribute
-2. **Resolve the actor** in the world
-3. **Navigate property path** to find the tag container
-4. **Evaluate tag query** against the container
-5. **Return result**: pass if query matches
+1. Read **actor reference** from the specified attribute
+2. Resolve the actor in the world
+3. Navigate **property path** to find the tag container
+4. Evaluate **tag query** against the container
+5. Return result: pass if query matches
 
 ## Settings
 
 ### Actor Reference
 
 <details>
-<summary><strong>Actor Reference</strong> <code>Attribute Name</code></summary>
+<summary><strong>Actor Reference</strong> <code>FName</code></summary>
 
 The attribute containing the actor reference (soft object path or actor pointer).
 
-Default: `ActorReference`
+Default: `"ActorReference"`
+
+⚡ PCG Overridable
 
 </details>
 
 ### Tag Container
 
 <details>
-<summary><strong>Property Path</strong> <code>string</code></summary>
+<summary><strong>Property Path</strong> <code>FString</code></summary>
 
 Path to the gameplay tag container property on the actor. Use dot notation to navigate nested properties.
 
 Examples:
 - `Tags` - Direct property on actor
-- `MyComponent.TagContainer` - Property on a component
+- `Component.TagContainer` - Property on a component
 - `CharacterData.AbilityTags` - Nested struct property
 
-Default: Empty (uses actor's root tag container if available)
+Default: `"Component.TagContainer"`
+
+⚡ PCG Overridable
 
 </details>
 
 ### Tag Query
 
 <details>
-<summary><strong>Tag Query</strong> <code>Gameplay Tag Query</code></summary>
+<summary><strong>Tag Query</strong> <code>FGameplayTagQuery</code></summary>
 
 The gameplay tag query to evaluate. Supports standard Unreal tag query syntax:
 
@@ -89,7 +89,7 @@ Default: `false` (fail)
 
 Suppress warning messages when property path resolution fails.
 
-Default: Disabled
+Default: `false`
 
 </details>
 
@@ -112,21 +112,11 @@ For this filter to work:
 - Property Path: `AbilityComponent.OwnedTags`
 - Tag Query: All tags match `Ability.Attack`, `Ability.Defend`
 
-**Exclude points for disabled actors**:
-- Actor Reference: `ActorRef`
-- Property Path: `StatusTags`
-- Tag Query: Any tags match `Status.Disabled`
-- Then invert the result (or use "No Tags Match")
-
 ## Related
 
-### Filters
-- [Boolean Compare](./boolean-compare.md) - For simple true/false attributes
-- [String Compare](./string-compare.md) - For string-based classification
-
-### See Also
-- Unreal Engine Gameplay Tags documentation
+- [Boolean Compare](./boolean-compare.md) - Simple true/false attributes
+- [String Compare](./string-compare.md) - String-based classification
 
 ---
 
-:package: **Module**: `PCGExFilters` | :page_facing_up: [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Points/PCGExGameplayTagsFilter.cpp)
+📦 **Module**: `PCGExFilters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Private/Filters/Points/PCGExGameplayTagsFilter.cpp)
