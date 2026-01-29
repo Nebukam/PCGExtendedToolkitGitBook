@@ -81,7 +81,18 @@ Where to read the smoothing amount. Interpretation depends on the selected metho
 
 The smoothing amount. Range and meaning depends on the selected method.
 
-Default: `1.0`
+Default: `5`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Scale Smoothing Amount Attribute</strong> <code>double</code></summary>
+
+Static multiplier for the local smoothing amount when reading from an attribute.
+
+Default: `1`
 
 ⚡ PCG Overridable
 
@@ -94,7 +105,7 @@ Default: `1.0`
 
 Keep the first point at its original position.
 
-Default: Enabled
+Default: `false`
 
 ⚡ PCG Overridable
 
@@ -105,7 +116,7 @@ Default: Enabled
 
 Keep the last point at its original position.
 
-Default: Enabled
+Default: `false`
 
 ⚡ PCG Overridable
 
@@ -114,11 +125,31 @@ Default: Enabled
 ### Attribute Blending
 
 <details>
-<summary><strong>Blending Settings</strong> <code>Blending Details</code></summary>
+<summary><strong>Blending Interface</strong> <code>EPCGExBlendingInterface</code></summary>
 
-Controls how attributes are blended during smoothing. Applies the same neighbor weighting to attribute values.
+How to configure attribute blending.
 
-See [Attribute Mapping](../../shared-concepts/attribute-mapping.md) for blending options.
+| Option | Behavior |
+|--------|----------|
+| **Individual** | Use blend operation factories from input pins |
+| **Monolithic** | Use the Blending Settings below |
+
+Default: `Individual`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Blending Settings</strong> <code>FPCGExBlendingDetails</code></summary>
+
+Controls how attributes are blended during smoothing.
+
+Default: Properties = `Average`, Attributes = `None`
+
+*Visible when Blending Interface = Monolithic*
+
+⚡ PCG Overridable
 
 </details>
 

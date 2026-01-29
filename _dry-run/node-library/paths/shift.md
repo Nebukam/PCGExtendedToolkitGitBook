@@ -7,6 +7,23 @@ description: 'In editor :: PCGEx | Path : Shift'
 
 Shifts (rotates) path points by reordering their indices, metadata, or properties.
 
+## Overview
+
+Shift rotates the logical order of points in a path, making a different point become the "first" point. The pivot can be specified by index, relative position, or filter condition. Shift can rotate indices only, or also shift metadata and properties.
+
+## Before / After
+
+```
+Before:  ●────●────●────●────●
+         0    1    2    3    4  (indices)
+
+After (Shift by 2):
+         ●────●────●────●────●
+         2    3    4    0    1  (new indices)
+         ↑
+         New start point
+```
+
 ## How It Works
 
 1. Determine the **pivot index** (where the shift starts)
@@ -164,6 +181,7 @@ Default: `false`
 
 ## Related
 
+### Path Order
 - [Slide](./slide.md) - Move points along path without reordering
 - [Reverse](./reverse.md) - Reverse path direction
 

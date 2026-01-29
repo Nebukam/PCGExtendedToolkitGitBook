@@ -7,6 +7,26 @@ description: 'In editor :: PCGEx | Path : Stitch'
 
 Connects multiple paths together at their endpoints.
 
+## Overview
+
+Stitch joins separate paths by connecting or fusing their endpoints within a tolerance distance. Endpoints can be linked with new segments (Connect) or merged into single points (Fuse). Optional alignment requirements ensure paths are directionally compatible before stitching.
+
+## Before / After
+
+```
+Before:  ●────●────●    ●────●────●    ●────●
+         Path A         Path B          Path C
+         (separate paths within tolerance)
+
+After (Connect):
+         ●────●────●────●────●────●────●────●
+         (paths connected with new segments)
+
+After (Fuse):
+         ●────●────●────●────●────●────●
+         (overlapping endpoints merged)
+```
+
 ## How It Works
 
 1. Find path **endpoints** within tolerance distance
@@ -141,12 +161,6 @@ Meta filter settings for attribute and tag carry-over during stitching.
 - Only Match Start and Ends: Enabled
 - Requires Alignment: Enabled
 - Tolerance: `10`
-
-## Use Cases
-
-- **Path repair**: Reconnect paths broken by other operations
-- **Route assembly**: Build longer routes from segments
-- **Network building**: Combine path fragments into connected networks
 
 ## Related
 

@@ -37,12 +37,6 @@ Default: Disabled
 
 </details>
 
-## Use Cases
-
-- **Tight corner emphasis**: Orientation responds more to shorter segments
-- **Inverse for smooth curves**: Use inverse weight to favor longer segments
-- **Variable density paths**: Naturally adapts to non-uniform point spacing
-
 ## Related
 
 - [Average](./average.md) - Equal 50/50 blend

@@ -14,7 +14,7 @@
 | Filters - Collections | 5 | 5 | 0 | 5 |
 | Filters - Clusters | 10 | 10 | 0 | 8 |
 | Paths - Main | 24 | 24 | 0 | 14 |
-| Paths - Sub-ops | 18 | 14 | 3 | 3 |
+| Paths - Sub-ops | 18 | 18 | 0 | 6 |
 
 ---
 
@@ -80,12 +80,10 @@
 - stitch.md - EPCGExStitchMethod/FuseMethod/FuseOperation, OnlyMatchStartAndEnds, Alignment
 - attribute-rolling.md - EPCGExRollingRangeControl/ValueControl, InitialValueMode, Range outputs
 
----
-
-## Pending Fixes
-
-### Path Sub-ops with Errors (3)
-smooth/README, orient/README, orient/weighted
+### Path Sub-ops (6) ✓
+- smooth/README.md - bPreserveStart/End=false, SmoothingAmountConstant=5, BlendingInterface, ScaleSmoothingAmountAttribute
+- orient/README.md - EPCGExAxis enum, bOutputDot inline toggle, removed Use Cases
+- orient/weighted.md - Verified bInverseWeight=false, removed Use Cases
 
 ---
 
@@ -122,8 +120,8 @@ Docs said "Disabled" (wrong)
 ## Session State
 
 ### Current Position
-- Completed: 53 total rewrites (26 point filters, 5 collection, 8 cluster, 14 paths)
-- Next: 3 path sub-op error fixes (smooth/README, orient/README, orient/weighted)
+- Completed: 56 total rewrites (26 point filters, 5 collection, 8 cluster, 14 paths, 3 sub-ops)
+- All error fixes complete ✓
 
 ### Key Source Files Read
 - All point filter headers
@@ -149,3 +147,15 @@ Docs said "Disabled" (wrong)
 - Default format: `Default: \`value\``
 - Overridable marker: `⚡ PCG Overridable`
 - Visibility note: `*Visible when Condition*`
+
+### Template Improvements (added)
+- **Overview section**: Brief context before "How It Works"
+- **ASCII diagrams**: Before/After or Concept diagrams for abstract operations
+- **Use Cases section**: Bulleted practical applications
+- **Related section**: Organized by subcategory
+
+### Files Updated with Overview/ASCII Art
+- slide.md, shift.md, fuse-collinear.md, subdivide.md
+- create-spline.md, path-crossings.md, bevel.md
+- attribute-rolling.md, stitch.md
+- (resample.md already had good format)

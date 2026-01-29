@@ -7,6 +7,35 @@ description: 'In editor :: PCGEx | Path : Bevel'
 
 Bevels path corners by replacing corner points with arcs or line segments.
 
+## Overview
+
+Bevel replaces corner points with chamfers (straight cuts) or arcs (rounded corners). The bevel width can be specified as a radius or direct distance, and profiles can be subdivided for smoother curves.
+
+## Before / After
+
+```
+Before:        ●
+              ╱ ╲
+             ●   ●
+             │   │
+             ●   ●
+             (sharp corners)
+
+After (Line): ●
+             ╱ ╲
+            ●───●
+            │   │
+            ●───●
+            (chamfered)
+
+After (Arc):  ●
+             ╭─╮
+            ●   ●
+            │   │
+            ●   ●
+            (rounded)
+```
+
 ## How It Works
 
 For each corner point:
@@ -245,6 +274,10 @@ Default: `false`
 
 ## Related
 
+### Corner Treatment
+- [Smooth](./smooth/) - Continuous curve smoothing
+
+### Path Shaping
 - [Subdivide](./subdivide.md) - Add intermediate points
 - [Fuse Collinear](./fuse-collinear.md) - Remove collinear points
 

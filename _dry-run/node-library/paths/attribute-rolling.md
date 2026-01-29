@@ -7,6 +7,20 @@ description: 'In editor :: PCGEx | Path : Attribute Rolling'
 
 Performs rolling blending of attributes along a path based on range control.
 
+## Overview
+
+Attribute Rolling propagates or accumulates attribute values along a path within defined ranges. Ranges are determined by filter conditions (start/stop or toggle), and values can be sourced from pinned points, previous points, or range starts.
+
+## Concept
+
+```
+Path:    ●────●────●────●────●────●────●────●
+Range:        [START]───────────[STOP]
+              ▼                       ▼
+Values:  A    B────B────B────B────B   C    D
+              └── Value rolled through range ──┘
+```
+
 ## How It Works
 
 1. Identify **range boundaries** using filters (start/stop or toggle)
@@ -213,6 +227,7 @@ Default: `false`
 
 ## Related
 
+### Path Processing
 - [Subdivide](./subdivide.md) - Add intermediate points
 - [Resample](./resample.md) - Redistribute points evenly
 

@@ -7,6 +7,10 @@ description: 'In editor :: PCGEx | Create Spline'
 
 Creates spline data or actor components from path points.
 
+## Overview
+
+Create Spline converts path point data into Unreal spline format. The node can create spline data for further PCG processing or spawn actual spline components on target actors. Supports multiple interpolation types including linear, curved, and custom tangent control.
+
 ## How It Works
 
 1. Read path **points** and their properties
@@ -133,6 +137,7 @@ How spline components attach to the target actor.
 
 ## Related
 
+### Spline Operations
 - [Spline Mesh Simple](./spline-mesh/spline-mesh-simple.md) - Create spline mesh components
 - [Spline to Path](./spline-to-path.md) - Convert splines back to paths
 

@@ -9,18 +9,25 @@ Computes orientation transforms for points along a path based on travel directio
 
 ## Overview
 
-Orient calculates rotation values for each point so they face along (or perpendicular to) the path direction. This is essential for placing objects that need to align with the path—fences that follow curves, arrows pointing forward, or rails that bank into turns.
-
-The node uses an **instanced operation** to determine how orientation is calculated. Different operations provide different strategies for computing the look direction.
+Orient calculates rotation values for each point based on the path direction. The resulting transform can be applied directly to points or written to an attribute. Different orientation operations (Average, Look At, Weighted) determine how the direction is computed from neighboring points.
 
 ## Settings
 
 ### Axis Configuration
 
 <details>
-<summary><strong>Orient Axis</strong> <code>Forward | Backward | Right | Left | Up | Down</code></summary>
+<summary><strong>Orient Axis</strong> <code>EPCGExAxis</code></summary>
 
 Which local axis should point along the computed direction.
+
+| Option | Description |
+|--------|-------------|
+| Forward | +X axis |
+| Backward | -X axis |
+| Right | +Y axis |
+| Left | -Y axis |
+| Up | +Z axis |
+| Down | -Z axis |
 
 Default: `Forward`
 
@@ -29,7 +36,7 @@ Default: `Forward`
 </details>
 
 <details>
-<summary><strong>Up Axis</strong> <code>Forward | Backward | Right | Left | Up | Down</code></summary>
+<summary><strong>Up Axis</strong> <code>EPCGExAxis</code></summary>
 
 Which local axis should point "up" after orientation.
 
@@ -97,22 +104,13 @@ Default: `Orient`
 </details>
 
 <details>
-<summary><strong>Output Dot</strong> <code>bool</code></summary>
+<summary><strong>Output Dot</strong> <code>bool</code> + <strong>Dot Attribute</strong> <code>FName</code></summary>
 
 Write the dot product between prev/next directions to an attribute.
 
+When enabled, specify the attribute name (default: `Dot`).
+
 Default: Disabled
-
-⚡ PCG Overridable
-
-</details>
-
-<details>
-<summary><strong>Dot Attribute</strong> <code>FName</code></summary>
-
-Name of attribute to write dot product to.
-
-Default: `Dot`
 
 ⚡ PCG Overridable
 
@@ -145,13 +143,6 @@ Default: `Dot`
 - Operation: `Look At`
 - Look At: `Direction`
 - Look At Attribute: `$CustomDirection`
-
-## Use Cases
-
-- **Fence placement**: Posts face along the path
-- **Vehicle paths**: Cars orient to road direction
-- **Rail tracks**: Rails bank into curves
-- **Directional spawning**: Arrows, signs, or markers
 
 ## Related
 

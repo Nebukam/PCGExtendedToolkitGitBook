@@ -7,6 +7,22 @@ description: 'In editor :: PCGEx | Path : Slide'
 
 Slides points along the path toward the next or previous point.
 
+## Overview
+
+Slide moves individual points along the path direction without changing the overall path structure. Unlike **Shift** (which rotates point order), Slide physically repositions points. The original positions can optionally be stored and later restored.
+
+## Before / After
+
+```
+Before:  ●────●────●────●────●
+         A    B    C    D    E
+
+After (Slide Next 50%):
+         ●──●──●──●──●──●
+         A  AB BC CD DE  E
+            ↑  Points moved toward next
+```
+
 ## How It Works
 
 For each point on the path:
@@ -160,8 +176,12 @@ Default: `PreSlidePosition`
 
 ## Related
 
-- [Shift](./shift.md) - Rotate the entire path order
+### Point Movement
+- [Shift](./shift.md) - Rotate the entire path order (reindex, not reposition)
+
+### Path Shaping
 - [Subdivide](./subdivide.md) - Add intermediate points
+- [Resample](./resample.md) - Redistribute points evenly
 
 ---
 

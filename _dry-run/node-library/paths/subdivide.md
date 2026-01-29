@@ -7,6 +7,22 @@ description: 'In editor :: PCGEx | Path : Subdivide'
 
 Subdivides path segments by adding intermediate points.
 
+## Overview
+
+Subdivide increases path density by inserting new points between existing ones. Unlike **Resample** (which replaces all points), Subdivide preserves original points and adds new ones in between. Subdivision can be based on distance, count, or Manhattan-style axis separation.
+
+## Before / After
+
+```
+Before:  ●─────────────●─────────────●
+         (sparse, 3 points)
+
+After:   ●───●───●───●───●───●───●───●
+         (dense, original points + subdivisions)
+         ↑               ↑               ↑
+         Original points preserved
+```
+
 ## How It Works
 
 For each segment:
@@ -202,8 +218,18 @@ Default: `1`
 - Flag Sub Points: Enabled
 - Sub Point Flag Name: `IsSubdivision`
 
+## Subdivide vs Resample
+
+| Subdivide | Resample |
+|-----------|----------|
+| Keeps original points | Replaces all points |
+| Adds points between | Creates entirely new point set |
+| Spacing varies by segment | Guarantees uniform spacing |
+| Better for refinement | Better for normalization |
+
 ## Related
 
+### Path Density
 - [Fuse Collinear](./fuse-collinear.md) - Remove points (opposite operation)
 - [Resample](./resample.md) - Complete path resampling
 

@@ -7,6 +7,24 @@ description: 'In editor :: PCGEx | Path : Fuse Collinear'
 
 Removes collinear points from a path, simplifying it while preserving shape.
 
+## Overview
+
+Fuse Collinear identifies and removes points that lie on a nearly-straight line between their neighbors. Points are removed when the angle between their incoming and outgoing segments is below a threshold. Optionally blends properties from removed points into remaining ones.
+
+## Before / After
+
+```
+Before:  ●──●──●──●──●
+                      ╲
+                       ●──●──●
+         (8 points, some collinear)
+
+After:   ●─────────●
+                    ╲
+                     ●─────●
+         (4 points, corners preserved)
+```
+
 ## How It Works
 
 For each point:
@@ -126,8 +144,10 @@ Default: `true`
 
 ## Related
 
+### Path Simplification
 - [Subdivide](./subdivide.md) - Add points (opposite operation)
 - [Resample](./resample.md) - Redistribute points evenly
+- [Reduce](./reduce.md) - Remove points while preserving shape
 
 ---
 

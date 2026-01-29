@@ -7,6 +7,28 @@ description: 'In editor :: PCGEx | Path × Path Crossings'
 
 Finds and inserts crossing points where paths intersect.
 
+## Overview
+
+Path Crossings detects where path edges intersect and optionally inserts new points at those locations. Supports self-intersection detection, cross-path intersection, and tag-based filtering of which paths can cut or be cut.
+
+## Before / After
+
+```
+Before:       ●───────●
+                  ╲
+               ●───╲──●
+                    ╲
+                     ●
+
+After:        ●───✕───●    (crossing point inserted)
+                   ╲
+               ●─── ✕──●
+                     ╲
+                      ●
+
+              ✕ = crossing point
+```
+
 ## How It Works
 
 1. Build spatial **octree** for efficient edge lookups
@@ -268,8 +290,13 @@ Default: `false`
 
 ## Related
 
+### Path Intersection
 - [Bounds Intersection](./path-bounds-intersection.md) - Intersect with bounds
+- [Stitch](./stitch.md) - Connect path endpoints
+
+### Path Shaping
 - [Subdivide](./subdivide.md) - Add points along path
+- [Split](./split.md) - Divide paths at marked points
 
 ---
 

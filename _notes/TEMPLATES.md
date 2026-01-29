@@ -20,10 +20,25 @@ One-line description of what this node does.
 
 ## Overview
 
-2-3 paragraphs explaining:
-- What problem this solves
-- When you would use it
-- Key behavior characteristics
+2-3 sentences explaining:
+- What this node does at a high level
+- Key behavior or approach (how it differs from similar nodes)
+
+> Keep use-case agnostic. Describe *what* it does, not *why* someone would use it.
+
+## Before / After (optional)
+
+For nodes that transform data in ways that benefit from visualization:
+
+```
+Before:  ●────●────●────●────●
+         (description of input state)
+
+After:   ●──●──●──●──●──●──●──●
+         (description of output state)
+```
+
+> Use ASCII diagrams for abstract operations. Skip for nodes with obvious behavior.
 
 ## How It Works
 
@@ -94,11 +109,14 @@ Default: `false`
 
 ## Related
 
-### Similar Nodes
-- [Related Node](./related-node.md) - When to use instead
+Organize by relationship type. Use subcategories when helpful:
 
-### Useful Filters/Factories
-- [Filter Name](../filters/filter.md) - Why it's useful with this node
+### Similar Nodes
+- [Related Node](./related-node.md) - Brief note on relationship
+
+### Path Shaping (example subcategory)
+- [Subdivide](./subdivide.md) - Add intermediate points
+- [Resample](./resample.md) - Redistribute points evenly
 
 ### See Also
 - [Shared Concept](../../shared-concepts/concept.md) - For deeper understanding
@@ -126,10 +144,12 @@ One-line description of what this filter evaluates.
 
 ## Overview
 
-Explain:
+2-3 sentences explaining:
 - What condition this filter tests
 - When points pass vs fail
-- Common use cases (use-case agnostic)
+- Key characteristics (tolerance, self-comparison, etc.)
+
+> Keep use-case agnostic. Describe *what* it evaluates, not *why* someone would use it.
 
 ## How It Works
 
@@ -484,6 +504,36 @@ Default: `value`
 
 ---
 
+## Writing Guidelines
+
+### Use-Case Agnostic Language
+
+Documentation should describe **what** a node does, not **why** someone would use it. Avoid assumptions about user intent.
+
+**Avoid:**
+> "Use this for creating roads, rivers, or cable routing..."
+
+**Prefer:**
+> "Replaces corner points with arcs or chamfers, creating smooth transitions at path corners."
+
+The Examples section can show concrete configurations, but let users determine their own applications.
+
+### ASCII Diagrams
+
+Add Before/After diagrams for nodes that:
+- Transform spatial data in abstract ways (Shift, Slide, Subdivide)
+- Have behavior that's hard to visualize from description alone (Attribute Rolling)
+- Compare two approaches (Subdivide vs Resample)
+
+Skip diagrams for nodes with obvious behavior (Create Spline, Write Attribute).
+
+### Overview vs How It Works
+
+- **Overview**: High-level "what" (1-3 sentences, conceptual)
+- **How It Works**: Step-by-step "how" (numbered list, procedural)
+
+---
+
 ## Checklist Before Submitting
 
 - [ ] Frontmatter has correct icon and description
@@ -496,3 +546,5 @@ Default: `value`
 - [ ] Footer source link points to correct file
 - [ ] All internal links use relative paths
 - [ ] No invented settings (verified against source)
+- [ ] Overview is use-case agnostic
+- [ ] ASCII diagram included if operation is abstract
