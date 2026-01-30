@@ -36,7 +36,7 @@ claude --model sonnet
 3. **Tell Claude what to do**:
    ```
    Read D:\GIT\PCGExtendedToolkitGitBook\_automation\CLAUDE.md
-   and document the next 10 nodes in the queue.
+   and document the next 5 nodes in the queue.
    ```
 
 4. **Claude autonomously**:
@@ -60,13 +60,29 @@ claude --model sonnet
 | `context <search>` | Get full documentation context for a class |
 | `output <search>` | Get staging output path for a class |
 | `list <type>` | List classes (providers\|consumers\|instanced\|factories\|nodes) |
-| `queue add <search>` | Add all matching classes to queue |
+| `queue add <search>` | Add matching classes to queue (skips if doc exists) |
+| `queue add-type <type>` | Add all classes of a type (providers\|consumers\|etc.) |
+| `queue add-dir <path>` | Add all classes from an index directory |
 | `queue list` | Show queue status |
 | `queue next` | Start next item and output context |
 | `queue done [class]` | Mark item as documented |
 | `queue skip [class]` | Skip item |
+| `queue prune` | Remove items from queue if doc file already exists |
 | `queue clear` | Clear the queue |
 | `reindex` | Rebuild the source index |
+
+### Directory Paths for `queue add-dir`
+
+The index folder mirrors the source structure. You can use shorthand paths:
+
+```bash
+# These are equivalent:
+node scripts/pcgex-doc.js queue add-dir PCGExHeuristics/Heuristics
+node scripts/pcgex-doc.js queue add-dir PCGExHeuristics/Public/Heuristics
+
+# Add entire module:
+node scripts/pcgex-doc.js queue add-dir PCGExPickers
+```
 
 ## Output Path Convention
 
@@ -97,6 +113,32 @@ The `context` command outputs:
 - **Own Properties**: Table format
 - **Nested Types**: Expanded structs/enums with inheritance
 - **Full Source**: Header and cpp files
+
+## Rebuilding the Index
+
+The index must be rebuilt whenever the PCGEx source code changes (new nodes, renamed properties, etc.).
+
+```bash
+cd D:\GIT\PCGExtendedToolkitGitBook\_automation
+
+# Rebuild the index
+node scripts/pcgex-doc.js reindex
+```
+
+This runs `index-generator.js` which:
+1. Scans all `.h` files in the PCGEx Source folder
+2. Parses classes, structs, enums, UPROPERTYs, and macros
+3. Generates per-file JSON mirrors in `_automation/index/`
+4. Builds aggregate indexes (`_class-index.json`, `_struct-index.json`, etc.)
+5. Classifies nodes (providers, consumers, instanced factories, etc.)
+6. Maps inheritance chains
+
+**When to rebuild:**
+- After pulling new PCGEx source changes
+- After adding/removing/renaming nodes
+- If `context` output seems stale or missing data
+
+**Source path** (configured in scripts): `D:\GIT\PCGExWorkbench\Plugins\PCGExtendedToolkit\Source`
 
 ## Index Statistics
 

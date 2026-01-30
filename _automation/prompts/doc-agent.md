@@ -44,6 +44,7 @@ One-line description from PCGEX_NODE_INFOS.
 - Be USE-CASE AGNOSTIC - describe WHAT it does, not WHY you'd use it
 - Don't suggest specific applications (games, simulations, etc.)
 - Focus on the transformation/computation performed
+- CLARIFY MATH/TECHNICAL TERMS in context (see "Accessible Technical Writing" below)
 
 ## How It Works
 
@@ -122,6 +123,50 @@ The context output shows:
 - `## Own Properties` - Document these in detail
 - `### FPCGEx*Config* (struct - CONFIG)` with `Inherits from:` - Properties above the inheritance line are node-specific
 
+## Accessible Technical Writing
+
+Many users are artists or designers, not programmers or mathematicians. When documenting technical concepts, **clarify what they mean in context** - not with condescending definitions, but with practical framing.
+
+### The Pattern
+
+Instead of just stating the technical operation, add what it **means for the result**:
+
+❌ **Too technical**: "Uses absolute value of the dot product"
+❌ **Too dumbed-down**: "Absolute value means we ignore negative numbers"
+✅ **Contextual**: "Uses absolute value, so it measures steepness regardless of whether the slope goes up or down"
+
+❌ **Too technical**: "Normalizes the vector before comparison"
+✅ **Contextual**: "Normalizes vectors so only direction matters, not length"
+
+❌ **Too technical**: "Applies a cubic falloff curve"
+✅ **Contextual**: "Applies a cubic falloff, creating a smooth transition that starts fast and slows near the edges"
+
+### Common Terms to Clarify
+
+| Term | Clarify as... |
+|------|---------------|
+| Dot product | "measures how aligned two directions are" |
+| Absolute value | "ignores whether the value is positive or negative" |
+| Normalize | "scales to unit length, so only direction matters" |
+| Lerp/interpolate | "blends smoothly between two values" |
+| Clamp | "restricts to a min/max range" |
+| Remap | "converts from one range to another" |
+| Threshold | "the cutoff point where behavior changes" |
+| Falloff | "how quickly the effect fades with distance" |
+| Signed vs unsigned | "whether negative values are meaningful or ignored" |
+
+### Where to Apply
+
+- **Overview**: Brief contextual clarifications inline
+- **How It Works**: Explain what each step achieves, not just what it computes
+- **Settings descriptions**: Clarify what changing the value actually does to the output
+
+### Tone
+
+- Assume intelligence, not expertise
+- Frame as "what this means for your result" not "let me explain math to you"
+- One clarifying phrase is enough - don't over-explain
+
 ## Critical Rules
 
 1. **USE-CASE AGNOSTIC**: Don't suggest specific applications in Overview
@@ -131,6 +176,7 @@ The context output shows:
 5. **EXACT TYPES**: Use the C++ type names
 6. **VISIBILITY RULES**: Document EditCondition as `📋 *Visible when...*`
 7. **OVERRIDABLE MARKERS**: Mark with `⚡ PCG Overridable` if `PCG_Overridable` meta present
+8. **ACCESSIBLE LANGUAGE**: Clarify technical terms in context (see above)
 
 ## Common Patterns
 

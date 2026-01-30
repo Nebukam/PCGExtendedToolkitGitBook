@@ -1,77 +1,71 @@
 ---
-icon: mountain
-description: 'Steepness - Scores edges based on vertical angle relative to an up vector'
+icon: puzzle-piece
+description: 'Heuristics : Steepness - Heuristics based on steepness.'
 ---
 
-# Steepness
+# Heuristics : Steepness
 
 Heuristics based on steepness.
 
 ## Overview
 
-Scores edges based on the angle between the edge direction and a configurable up vector. The dot product is calculated, optionally using absolute value, then remapped through a score curve.
+This heuristic scores edges based on their steepness relative to a defined "up" direction (typically vertical). It measures how much an edge climbs or descends by calculating the alignment between the edge direction and the up vector. This enables terrain-aware pathfinding that can favor flat paths, avoid steep climbs, or seek dramatic elevation changes.
 
 ## How It Works
 
-1. **Edge Evaluation**: For each edge, calculates the dot product between the edge direction and the up vector
-2. **Score Calculation**: Converts the dot product to a score using the configured curve
-3. **Accumulation** (optional): Can accumulate scores over multiple previous edges for smoother evaluation
-
-**Category**: Goal Dependent (or Travel Dependent when accumulation is enabled)
+1. **Edge Direction Caching**: Pre-computes and caches normalized direction vectors for all edges in the cluster
+2. **Steepness Calculation**: For each edge, calculates the dot product between the edge direction and the up vector, which measures how aligned the edge is with the vertical axis
+3. **Absolute vs Signed**:
+   - **Absolute Steepness**: Uses the magnitude only (0 = horizontal, 1 = vertical), so climbing up and going down are treated the same
+   - **Signed Steepness**: Preserves direction (-1 = down, 0 = horizontal, +1 = up)
+4. **Optional Accumulation**: If enabled, adds steepness from previous edges in the path to emphasize cumulative elevation change
+5. **Curve Application**: The steepness value is passed through the inherited Score Curve to produce the final heuristic weight
 
 ## Behavior
 
 ```
-Up Vector: ↑ (0, 0, 1)
-Absolute Steepness: true
+Up Vector: (0, 0, 1) - pointing upward
 
-    ↗ Medium score (45° slope)
-    → Zero score (flat)
-    ↘ Medium score (45° slope)
-    ↓ High score (vertical)
+Edge A→B: Horizontal (→)       Dot = 0.0  (flat)
+Edge C→D: 45° upward (↗)       Dot = 0.7  (moderate climb)
+Edge E→F: Vertical upward (↑)  Dot = 1.0  (steep climb)
+Edge G→H: 45° downward (↘)     Dot = -0.7 (moderate descent)
+
+Absolute Steepness = true:
+  A→B: 0.0 (flat)
+  C→D: 0.7 (steep)
+  E→F: 1.0 (steepest)
+  G→H: 0.7 (steep, same as C→D)
+
+Absolute Steepness = false:
+  A→B: 0.5 (remapped from 0.0)
+  C→D: 0.85 (remapped from 0.7, going up)
+  E→F: 1.0 (remapped from 1.0, going up)
+  G→H: 0.15 (remapped from -0.7, going down)
 ```
 
+With **Accumulation**:
 ```
-Up Vector: ↑ (0, 0, 1)
-Absolute Steepness: false
+Path: A→B→C (each edge has steepness 0.3)
+Without accumulation: Edge C→D scores 0.5
+With accumulation (2 samples): Edge C→D scores 0.5 + 0.3 + 0.3 = 1.1
+(Exacerbates cumulative elevation changes)
+```
 
-    ↗ High score (uphill)      → dot = +1
-    → Medium score (flat)      → dot = 0
-    ↘ Low score (downhill)     → dot = -1
-```
+This heuristic is **Goal-Dependent** by default, or **Travel-Dependent** when accumulation is enabled.
 
 ## Settings
 
-### Steepness Settings
-
-<details>
-<summary><strong>Up Vector</strong> <code>FVector</code></summary>
-
-Vector pointing in the "up" direction. The steepness is calculated relative to this vector. Mirrored when Absolute Steepness is enabled.
-
-Default: `(0, 0, 1)`
-
-⚡ PCG Overridable
-
-</details>
-
-<details>
-<summary><strong>Absolute Steepness</strong> <code>bool</code></summary>
-
-When enabled, uses the absolute value of the dot product - both uphill and downhill contribute equally to the score.
-
-When disabled, the full dot product range (-1 to 1) is remapped to (0 to 1), allowing differentiation between directions.
-
-Default: `true`
-
-⚡ PCG Overridable
-
-</details>
+### Node-Specific Settings
 
 <details>
 <summary><strong>Accumulate Score</strong> <code>bool</code></summary>
 
-Accumulates steepness over multiple previous edges for smoother evaluation. Changes the heuristic category from Goal Dependent to Travel Dependent.
+When enabled, adds steepness from previous edges in the path to the current edge's score. This exacerbates cumulative elevation changes, making the heuristic more sensitive to sustained climbs or descents.
+
+Useful for terrain with gradual slopes where individual edge steepness may be low but cumulative change is significant.
+
+**Note**: Enabling this changes the heuristic category from Goal-Dependent to Travel-Dependent, which may impact performance.
 
 Default: `false`
 
@@ -82,11 +76,46 @@ Default: `false`
 <details>
 <summary><strong>Accumulation Samples</strong> <code>int32</code></summary>
 
-How many previous edges to add to the current score.
+Number of previous edges to include when accumulating steepness. Higher values create stronger emphasis on sustained elevation changes.
+
+- **1**: Add only the immediate previous edge
+- **2-3**: Consider recent climbing/descending trend
+- **4+**: Strong sensitivity to cumulative elevation patterns
 
 Default: `1`
 
-📋 *Visible when Accumulate Score = true*
+Minimum: `1`
+
+📋 *Visible when Accumulate Score is enabled*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Up Vector</strong> <code>FVector</code></summary>
+
+The direction considered "up" for steepness calculations. Typically the world's vertical axis, but can be customized for non-standard gravity or angled terrain references.
+
+The dot product measures how aligned each edge is with this vector. The vector is automatically mirrored internally.
+
+Default: `FVector::UpVector` (0, 0, 1)
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Absolute Steepness</strong> <code>bool</code></summary>
+
+Determines whether steepness direction matters.
+
+- **True** (default): Uses absolute value, so steepness measures how vertical an edge is regardless of whether it goes up or down. A 45° climb and a 45° descent both score as 0.7 steepness.
+- **False**: Preserves direction, where -1 = straight down, 0 = horizontal, +1 = straight up. The full range (-1 to +1) is remapped to (0 to 1) for curve sampling.
+
+Use absolute for "avoid steep terrain regardless of direction." Use signed to "favor uphill" or "favor downhill" paths.
+
+Default: `true`
 
 ⚡ PCG Overridable
 
@@ -94,9 +123,11 @@ Default: `1`
 
 ### Inherited Settings
 
-This node inherits common heuristic settings.
+This heuristic inherits common settings from its base class.
 
-→ See [Heuristic Settings](../HeuristicSettings.md) for: Weight Factor, Invert, Score Curve, Local Weight Multiplier, Roaming Settings
+→ See [Heuristics Overview](../README.md#common-heuristic-settings) for: Weight Factor, Score Curve, Invert, and other shared heuristic properties.
+
+**Tip**: Combine with Distance or Azimuth to create paths that balance progress toward a goal with terrain steepness constraints.
 
 ---
 
@@ -104,8 +135,10 @@ This node inherits common heuristic settings.
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 4 documented (bAccumulateScore, AccumulationSamples, UpVector, bAbsoluteSteepness)
-Inherited Properties: Referenced to FPCGExHeuristicConfigBase
-Inputs: None (provider node)
-Outputs: Heuristics factory
+Inherited Properties: Referenced to Heuristics Overview
+Inputs: N/A (Factory/Provider pattern)
+Outputs: N/A (Factory/Provider pattern)
 Nested Types: FPCGExHeuristicConfigSteepness
+Heuristic Category: GoalDependent (default) or TravelDependent (when accumulation enabled)
+Implementation Notes: Uses dot product with up vector; supports both absolute and signed steepness; optional accumulation
 -->

@@ -475,18 +475,33 @@ const commands = {
                 }
 
                 let added = 0;
+                let skippedExisting = 0;
                 for (const match of matches) {
-                    if (!queue.pending.includes(match.name) &&
-                        !queue.completed.includes(match.name) &&
-                        queue.in_progress !== match.name) {
-                        queue.pending.push(match.name);
-                        added++;
-                        console.log(`Added: ${match.name} (${match.display_name || ''})`);
+                    // Skip if already in queue or completed
+                    if (queue.pending.includes(match.name) ||
+                        queue.completed.includes(match.name) ||
+                        queue.in_progress === match.name) {
+                        continue;
                     }
+
+                    // Skip if output file already exists
+                    const outputPath = getStagingPath(match.name);
+                    if (outputPath && fs.existsSync(outputPath)) {
+                        skippedExisting++;
+                        console.log(`Skipped (doc exists): ${match.name}`);
+                        continue;
+                    }
+
+                    queue.pending.push(match.name);
+                    added++;
+                    console.log(`Added: ${match.name} (${match.display_name || ''})`);
                 }
 
                 saveQueue(queue);
                 console.log(`\nAdded ${added} items. Queue: ${queue.pending.length} pending`);
+                if (skippedExisting > 0) {
+                    console.log(`Skipped ${skippedExisting} items (docs already exist)`);
+                }
                 break;
             }
 
@@ -586,8 +601,178 @@ const commands = {
                 break;
             }
 
+            case 'prune': {
+                if (!loadIndexes()) return;
+                const before = queue.pending.length;
+                let pruned = 0;
+
+                queue.pending = queue.pending.filter(className => {
+                    const outputPath = getStagingPath(className);
+                    if (outputPath && fs.existsSync(outputPath)) {
+                        const info = classIndex[className];
+                        console.log(`Pruned (doc exists): ${className}${info?.display_name ? ` (${info.display_name})` : ''}`);
+                        pruned++;
+                        return false;
+                    }
+                    return true;
+                });
+
+                saveQueue(queue);
+                console.log(`\nPruned ${pruned} items. Queue: ${queue.pending.length} pending (was ${before})`);
+                break;
+            }
+
+            case 'add-type': {
+                if (!loadIndexes()) return;
+                const type = args[1];
+
+                let list = [];
+                switch (type) {
+                    case 'providers': list = classification.providers; break;
+                    case 'consumers': list = classification.consumers; break;
+                    case 'instanced': list = classification.instanced_factories; break;
+                    case 'factories': list = classification.factory_data; break;
+                    case 'nodes': list = classification.node_settings; break;
+                    default:
+                        console.log('Unknown type. Available: providers, consumers, instanced, factories, nodes');
+                        return;
+                }
+
+                let added = 0;
+                let skippedExisting = 0;
+                for (const className of list) {
+                    // Skip if already in queue or completed
+                    if (queue.pending.includes(className) ||
+                        queue.completed.includes(className) ||
+                        queue.in_progress === className) {
+                        continue;
+                    }
+
+                    // Skip if output file already exists
+                    const outputPath = getStagingPath(className);
+                    if (outputPath && fs.existsSync(outputPath)) {
+                        skippedExisting++;
+                        continue;
+                    }
+
+                    queue.pending.push(className);
+                    added++;
+                    const info = classIndex[className];
+                    console.log(`Added: ${className}${info?.display_name ? ` (${info.display_name})` : ''}`);
+                }
+
+                saveQueue(queue);
+                console.log(`\nAdded ${added} ${type}. Queue: ${queue.pending.length} pending`);
+                if (skippedExisting > 0) {
+                    console.log(`Skipped ${skippedExisting} items (docs already exist)`);
+                }
+                break;
+            }
+
+            case 'add-dir': {
+                if (!loadIndexes()) return;
+                let dirPath = args.slice(1).join(' ');
+
+                if (!dirPath) {
+                    console.log('Usage: queue add-dir <path>');
+                    console.log('Examples:');
+                    console.log('  queue add-dir PCGExHeuristics/Heuristics');
+                    console.log('  queue add-dir PCGExPickers');
+                    return;
+                }
+
+                // Normalize path separators
+                dirPath = dirPath.replace(/\\/g, '/');
+
+                // Try multiple path resolutions
+                let fullPath = null;
+                const tryPaths = [
+                    path.join(INDEX_PATH, dirPath),
+                    path.join(INDEX_PATH, dirPath, 'Public'),
+                    path.join(INDEX_PATH, dirPath.split('/')[0], 'Public', dirPath.split('/').slice(1).join('/'))
+                ];
+
+                for (const tryPath of tryPaths) {
+                    if (fs.existsSync(tryPath) && fs.statSync(tryPath).isDirectory()) {
+                        fullPath = tryPath;
+                        break;
+                    }
+                }
+
+                if (!fullPath) {
+                    console.log(`Directory not found: ${dirPath}`);
+                    console.log('Available modules:');
+                    const modules = fs.readdirSync(INDEX_PATH)
+                        .filter(f => !f.startsWith('_') && fs.statSync(path.join(INDEX_PATH, f)).isDirectory());
+                    for (const mod of modules) {
+                        console.log(`  ${mod}/`);
+                    }
+                    return;
+                }
+
+                // Recursively find all .json files
+                function findJsonFiles(dir) {
+                    const files = [];
+                    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+                        const entryPath = path.join(dir, entry.name);
+                        if (entry.isDirectory()) {
+                            files.push(...findJsonFiles(entryPath));
+                        } else if (entry.name.endsWith('.json')) {
+                            files.push(entryPath);
+                        }
+                    }
+                    return files;
+                }
+
+                const jsonFiles = findJsonFiles(fullPath);
+                if (jsonFiles.length === 0) {
+                    console.log(`No index files found in: ${dirPath}`);
+                    return;
+                }
+
+                // Extract classes from each json file
+                let added = 0;
+                let skippedExisting = 0;
+                for (const jsonFile of jsonFiles) {
+                    try {
+                        const fileData = JSON.parse(fs.readFileSync(jsonFile, 'utf8'));
+                        for (const cls of (fileData.classes || [])) {
+                            const className = cls.name;
+
+                            // Skip if already in queue or completed
+                            if (queue.pending.includes(className) ||
+                                queue.completed.includes(className) ||
+                                queue.in_progress === className) {
+                                continue;
+                            }
+
+                            // Skip if output file already exists
+                            const outputPath = getStagingPath(className);
+                            if (outputPath && fs.existsSync(outputPath)) {
+                                skippedExisting++;
+                                console.log(`Skipped (doc exists): ${className}`);
+                                continue;
+                            }
+
+                            queue.pending.push(className);
+                            added++;
+                            console.log(`Added: ${className} (${cls.display_name || ''})`);
+                        }
+                    } catch (e) {
+                        // Skip invalid json files
+                    }
+                }
+
+                saveQueue(queue);
+                console.log(`\nAdded ${added} items from ${dirPath}. Queue: ${queue.pending.length} pending`);
+                if (skippedExisting > 0) {
+                    console.log(`Skipped ${skippedExisting} items (docs already exist)`);
+                }
+                break;
+            }
+
             default:
-                console.log('Queue commands: add, list, next, done, skip, clear');
+                console.log('Queue commands: add, list, next, done, skip, clear, prune, add-type, add-dir');
         }
     },
 
@@ -608,16 +793,19 @@ const commands = {
 PCGEx Documentation CLI
 
 Commands:
-  context <search>      Get full documentation context for a class
-  output <search>       Get staging output path for a class
-  list <type>           List classes (providers|consumers|instanced|factories|nodes)
-  queue add <search>    Add matching classes to documentation queue
-  queue list            Show queue status
-  queue next            Start next item and show context
-  queue done [class]    Mark item as documented
-  queue skip [class]    Skip item
-  queue clear           Clear the queue
-  reindex               Rebuild the source index
+  context <search>        Get full documentation context for a class
+  output <search>         Get staging output path for a class
+  list <type>             List classes (providers|consumers|instanced|factories|nodes)
+  queue add <search>      Add matching classes to queue (skips if doc exists)
+  queue add-type <type>   Add all classes of a type (providers|consumers|etc.)
+  queue add-dir <path>    Add all classes from an index directory
+  queue list              Show queue status
+  queue next              Start next item and show context
+  queue done [class]      Mark item as documented
+  queue skip [class]      Skip item
+  queue prune             Remove items from queue if doc file already exists
+  queue clear             Clear the queue
+  reindex                 Rebuild the source index
 
 Output Path Convention:
   Source: PCGExModule/Public/Category/File.h
@@ -628,6 +816,10 @@ Examples:
   node pcgex-doc.js output "Pathfinding : Edges"
   node pcgex-doc.js list providers
   node pcgex-doc.js queue add Heuristic
+  node pcgex-doc.js queue add-type providers
+  node pcgex-doc.js queue add-dir PCGExHeuristics/Heuristics
+  node pcgex-doc.js queue add-dir PCGExPickers
+  node pcgex-doc.js queue prune
   node pcgex-doc.js queue next
   node pcgex-doc.js queue done
 `);
