@@ -1,0 +1,280 @@
+{
+  "path": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskDetails.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExClampedBit",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "BitIndex",
+          "display_name": "BitIndex",
+          "type": "uint8",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bValue",
+          "display_name": "bValue",
+          "type": "bool",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExClampedBitOp",
+      "base_class": "FPCGExClampedBit",
+      "uproperties": [
+        {
+          "name": "Op",
+          "display_name": "Op",
+          "type": "EPCGExBitOp",
+          "default": "EPCGExBitOp::OR",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExSimpleBitmask",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Bitmask",
+          "display_name": "Bitmask",
+          "type": "int64",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Op",
+          "display_name": "Op",
+          "type": "EPCGExBitOp",
+          "default": "EPCGExBitOp::OR",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExBitmaskRef",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Source",
+          "display_name": "Source",
+          "type": "TObjectPtr<UPCGExBitmaskCollection>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Identifier",
+          "display_name": "Identifier",
+          "type": "FName",
+          "default": "NAME_None",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Op",
+          "display_name": "Op",
+          "type": "EPCGExBitOp",
+          "default": "EPCGExBitOp::OR",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExBitmask",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Mode",
+          "display_name": "Mode",
+          "type": "EPCGExBitmaskMode",
+          "default": "EPCGExBitmaskMode::Individual",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Bitmask",
+          "display_name": "Bitmask",
+          "type": "int64",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Mutations",
+          "display_name": "Mutations",
+          "type": "TArray<FPCGExClampedBitOp>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExBitmaskMode::Individual",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Compositions",
+          "display_name": "Compositions",
+          "type": "TArray<FPCGExBitmaskRef>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExBitmaskWithOperation",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Mode",
+          "display_name": "Mode",
+          "type": "EPCGExBitmaskMode",
+          "default": "EPCGExBitmaskMode::Direct",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Bitmask",
+          "display_name": "Bitmask",
+          "type": "int64",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Op",
+          "display_name": "Op",
+          "type": "EPCGExBitOp",
+          "default": "EPCGExBitOp::OR",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Mutations",
+          "display_name": "Mutations",
+          "type": "TArray<FPCGExClampedBitOp>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExBitmaskMode::Individual",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Compositions",
+          "display_name": "Compositions",
+          "type": "TArray<FPCGExBitmaskRef>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

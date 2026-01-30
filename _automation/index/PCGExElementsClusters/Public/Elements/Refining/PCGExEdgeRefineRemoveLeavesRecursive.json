@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsClusters/Public/Elements/Refining/PCGExEdgeRefineRemoveLeavesRecursive.h",
+  "module": "PCGExElementsClusters",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExEdgeRemoveLeavesRecursive",
+      "base_class": "FPCGExEdgeRefineOperation"
+    }
+  ],
+  "namespaces": {}
+}

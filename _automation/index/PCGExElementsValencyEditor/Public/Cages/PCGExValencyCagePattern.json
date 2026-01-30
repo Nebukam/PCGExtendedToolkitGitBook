@@ -1,0 +1,149 @@
+{
+  "path": "PCGExElementsValencyEditor/Public/Cages/PCGExValencyCagePattern.h",
+  "module": "PCGExElementsValencyEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExValencyPatternSettings",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "PatternName",
+          "display_name": "PatternName",
+          "type": "FName",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Pattern",
+          "advanced": false
+        },
+        {
+          "name": "Weight",
+          "display_name": "Weight",
+          "type": "float",
+          "default": "1.0f",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Pattern",
+          "advanced": false
+        },
+        {
+          "name": "MinMatches",
+          "display_name": "MinMatches",
+          "type": "int32",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Pattern",
+          "advanced": false
+        },
+        {
+          "name": "MaxMatches",
+          "display_name": "MaxMatches",
+          "type": "int32",
+          "default": "-1",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Pattern",
+          "advanced": false
+        },
+        {
+          "name": "bExclusive",
+          "display_name": "bExclusive",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Pattern",
+          "advanced": false
+        },
+        {
+          "name": "OutputStrategy",
+          "display_name": "OutputStrategy",
+          "type": "EPCGExPatternOutputStrategy",
+          "default": "EPCGExPatternOutputStrategy::Remove",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Pattern|Output",
+          "advanced": false
+        },
+        {
+          "name": "TransformMode",
+          "display_name": "TransformMode",
+          "type": "EPCGExPatternTransformMode",
+          "default": "EPCGExPatternTransformMode::Centroid",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "OutputStrategy == EPCGExPatternOutputStrategy::Collapse",
+          "edit_condition_hides": true,
+          "category": "Pattern|Output",
+          "advanced": false
+        },
+        {
+          "name": "ReplacementAsset",
+          "display_name": "ReplacementAsset",
+          "type": "TSoftObjectPtr<UObject>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "OutputStrategy == EPCGExPatternOutputStrategy::Collapse",
+          "edit_condition_hides": true,
+          "category": "Pattern|Output",
+          "advanced": false
+        },
+        {
+          "name": "SwapToModuleName",
+          "display_name": "SwapToModuleName",
+          "type": "FName",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "OutputStrategy == EPCGExPatternOutputStrategy::Swap",
+          "edit_condition_hides": true,
+          "category": "Pattern|Output",
+          "advanced": false
+        },
+        {
+          "name": "CustomDataExporter",
+          "display_name": "CustomDataExporter",
+          "type": "TObjectPtr<UObject>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Pattern|Advanced",
+          "advanced": true
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

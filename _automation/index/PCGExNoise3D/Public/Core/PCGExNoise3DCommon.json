@@ -1,0 +1,305 @@
+{
+  "path": "PCGExNoise3D/Public/Core/PCGExNoise3DCommon.h",
+  "module": "PCGExNoise3D",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExNoiseBlendMode",
+      "values": [
+        {
+          "name": "Blend",
+          "display_name": "Blend"
+        },
+        {
+          "name": "UMETA",
+          "display_name": "UMETA"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Add",
+          "display_name": "Add"
+        },
+        {
+          "name": "UMETA",
+          "display_name": "UMETA"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Multiply",
+          "display_name": "Multiply"
+        },
+        {
+          "name": "UMETA",
+          "display_name": "UMETA"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Min",
+          "display_name": "Min"
+        },
+        {
+          "name": "UMETA",
+          "display_name": "UMETA"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Max",
+          "display_name": "Max"
+        },
+        {
+          "name": "UMETA",
+          "display_name": "UMETA"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Subtract",
+          "display_name": "Subtract"
+        },
+        {
+          "name": "UMETA",
+          "display_name": "UMETA"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Screen",
+          "display_name": "Screen"
+        },
+        {
+          "name": "UMETA",
+          "display_name": "UMETA"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Overlay",
+          "display_name": "Overlay"
+        },
+        {
+          "name": "UMETA",
+          "display_name": "UMETA"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "SoftLight",
+          "display_name": "SoftLight"
+        },
+        {
+          "name": "UMETA",
+          "display_name": "UMETA"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "First",
+          "display_name": "First"
+        },
+        {
+          "name": "UMETA",
+          "display_name": "UMETA"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExNoiseInPlaceMode",
+      "values": [
+        {
+          "name": "Composite",
+          "display_name": "Composite"
+        },
+        {
+          "name": "UMETA",
+          "display_name": "UMETA"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "BlendResult",
+          "display_name": "BlendResult"
+        },
+        {
+          "name": "UMETA",
+          "display_name": "UMETA"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Additive",
+          "display_name": "Additive"
+        },
+        {
+          "name": "UMETA",
+          "display_name": "UMETA"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Multiplicative",
+          "display_name": "Multiplicative"
+        },
+        {
+          "name": "UMETA",
+          "display_name": "UMETA"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExContrastCurve",
+      "values": [
+        {
+          "name": "Power",
+          "display_name": "Power"
+        },
+        {
+          "name": "UMETA",
+          "display_name": "UMETA"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "SCurve",
+          "display_name": "SCurve"
+        },
+        {
+          "name": "UMETA",
+          "display_name": "UMETA"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Gain",
+          "display_name": "Gain"
+        },
+        {
+          "name": "UMETA",
+          "display_name": "UMETA"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "subtle",
+          "display_name": "subtle"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

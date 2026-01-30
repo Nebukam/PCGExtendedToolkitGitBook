@@ -1,0 +1,76 @@
+{
+  "path": "PCGExElementsProbing/Public/Core/PCGExProbeOperation.h",
+  "module": "PCGExElementsProbing",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExProbeConfigBase",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bSupportRadius",
+          "display_name": "bSupportRadius",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SearchRadiusInput",
+          "display_name": "SearchRadiusInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSupportRadius",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SearchRadiusConstant",
+          "display_name": "Search Radius",
+          "type": "double",
+          "default": "100",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSupportRadius && SearchRadiusInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SearchRadiusOffset",
+          "display_name": " └─ Offset",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSupportRadius && SearchRadiusInput != EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": true,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExProbeOperation",
+      "base_class": "FPCGExOperation"
+    }
+  ],
+  "namespaces": {}
+}

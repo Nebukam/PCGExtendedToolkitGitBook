@@ -1,0 +1,15 @@
+{
+  "path": "PCGExCore/Public/Factories/PCGExOperation.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExOperation",
+      "base_class": "TSharedFromThis"
+    }
+  ],
+  "namespaces": {}
+}

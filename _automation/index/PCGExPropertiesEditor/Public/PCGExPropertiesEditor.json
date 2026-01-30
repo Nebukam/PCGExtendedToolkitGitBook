@@ -1,0 +1,15 @@
+{
+  "path": "PCGExPropertiesEditor/Public/PCGExPropertiesEditor.h",
+  "module": "PCGExPropertiesEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExPropertiesEditorModule",
+      "base_class": "IPCGExEditorModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

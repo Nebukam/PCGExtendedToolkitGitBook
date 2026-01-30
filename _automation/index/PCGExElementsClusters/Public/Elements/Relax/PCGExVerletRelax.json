@@ -1,0 +1,41 @@
+{
+  "path": "PCGExElementsClusters/Public/Elements/Relax/PCGExVerletRelax.h",
+  "module": "PCGExElementsClusters",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExRelaxEdgeRestLength",
+      "values": [
+        {
+          "name": "Fixed",
+          "display_name": "Fixed"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Existing",
+          "display_name": "Existing"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Attribute",
+          "display_name": "Attribute"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

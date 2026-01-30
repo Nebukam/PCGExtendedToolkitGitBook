@@ -1,0 +1,359 @@
+{
+  "path": "PCGExCore/Public/Fitting/PCGExFittingCommon.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExVariationSnapping",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "SnapOffset",
+          "display_name": "SnapOffset"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "not",
+          "display_name": "not"
+        },
+        {
+          "name": "the",
+          "display_name": "the"
+        },
+        {
+          "name": "result",
+          "display_name": "result"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "SnapResult",
+          "display_name": "SnapResult"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExFitMode",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Uniform",
+          "display_name": "Uniform"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Individual",
+          "display_name": "Individual"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExScaleToFit",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Fill",
+          "display_name": "Fill"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Min",
+          "display_name": "Min"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Max",
+          "display_name": "Max"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Avg",
+          "display_name": "Avg"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExJustifyFrom",
+      "values": [
+        {
+          "name": "Min",
+          "display_name": "Min"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Center",
+          "display_name": "Center"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Max",
+          "display_name": "Max"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Pivot",
+          "display_name": "Pivot"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Custom",
+          "display_name": "Custom"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExJustifyTo",
+      "values": [
+        {
+          "name": "Min",
+          "display_name": "Min"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Center",
+          "display_name": "Center"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Max",
+          "display_name": "Max"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Pivot",
+          "display_name": "Pivot"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Custom",
+          "display_name": "Custom"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Same",
+          "display_name": "Same"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExVariationMode",
+      "values": [
+        {
+          "name": "Disabled",
+          "display_name": "Disabled"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Before",
+          "display_name": "Before"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "After",
+          "display_name": "After"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

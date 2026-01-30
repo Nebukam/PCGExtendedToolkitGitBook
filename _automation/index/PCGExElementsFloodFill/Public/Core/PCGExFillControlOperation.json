@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsFloodFill/Public/Core/PCGExFillControlOperation.h",
+  "module": "PCGExElementsFloodFill",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExFillControlOperation",
+      "base_class": "FPCGExOperation"
+    }
+  ],
+  "namespaces": {}
+}

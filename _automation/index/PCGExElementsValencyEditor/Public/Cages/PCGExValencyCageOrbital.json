@@ -1,0 +1,84 @@
+{
+  "path": "PCGExElementsValencyEditor/Public/Cages/PCGExValencyCageOrbital.h",
+  "module": "PCGExElementsValencyEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExValencyCageOrbital",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "OrbitalIndex",
+          "display_name": "OrbitalIndex",
+          "type": "int32",
+          "default": "-1",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Orbital",
+          "advanced": false
+        },
+        {
+          "name": "OrbitalName",
+          "display_name": "OrbitalName",
+          "type": "FName",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Orbital",
+          "advanced": false
+        },
+        {
+          "name": "ManualConnections",
+          "display_name": "ManualConnections",
+          "type": "TArray<TObjectPtr<APCGExValencyCageBase>>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Orbital|Manual",
+          "advanced": false
+        },
+        {
+          "name": "AutoConnectedCage",
+          "display_name": "AutoConnectedCage",
+          "type": "TWeakObjectPtr<APCGExValencyCageBase>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Orbital|Auto",
+          "advanced": false
+        },
+        {
+          "name": "bEnabled",
+          "display_name": "bEnabled",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Orbital",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

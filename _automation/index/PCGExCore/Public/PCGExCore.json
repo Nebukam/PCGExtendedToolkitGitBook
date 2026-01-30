@@ -1,0 +1,15 @@
+{
+  "path": "PCGExCore/Public/PCGExCore.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExCoreModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

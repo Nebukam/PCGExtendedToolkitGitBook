@@ -18,7 +18,7 @@ Targets (Source=Target)          Candidates
 │ Point 0 (idx=0)    │◄────────►│ Candidate 0  │
 │ Point 1 (idx=1)    │◄────────►│ Candidate 1  │
 │ Point 2 (idx=2)    │◄────────►│ Candidate 2  │
-│ Point 3 (idx=0) ───┼──────────►│ Candidate 0  │  (uses attribute)
+│ Point 3 (idx=0) ───┼─────────►│ Candidate 0  │  (uses attribute)
 └────────────────────┘          └──────────────┘
 ```
 

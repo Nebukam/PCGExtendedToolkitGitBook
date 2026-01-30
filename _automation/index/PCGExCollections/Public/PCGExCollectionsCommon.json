@@ -1,0 +1,265 @@
+{
+  "path": "PCGExCollections/Public/PCGExCollectionsCommon.h",
+  "module": "PCGExCollections",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExCollectionSource",
+      "values": [
+        {
+          "name": "Asset",
+          "display_name": "Asset"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "AttributeSet",
+          "display_name": "AttributeSet"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "Attribute",
+          "display_name": "Attribute"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExIndexPickMode",
+      "values": [
+        {
+          "name": "Ascending",
+          "display_name": "Ascending"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "Descending",
+          "display_name": "Descending"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "WeightAscending",
+          "display_name": "WeightAscending"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "WeightDescending",
+          "display_name": "WeightDescending"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExDistribution",
+      "values": [
+        {
+          "name": "Index",
+          "display_name": "Index"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Random",
+          "display_name": "Random"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "WeightedRandom",
+          "display_name": "WeightedRandom"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExWeightOutputMode",
+      "values": [
+        {
+          "name": "NoOutput",
+          "display_name": "NoOutput"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Raw",
+          "display_name": "Raw"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Normalized",
+          "display_name": "Normalized"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "NormalizedInverted",
+          "display_name": "NormalizedInverted"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "NormalizedToDensity",
+          "display_name": "NormalizedToDensity"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "NormalizedInvertedToDensity",
+          "display_name": "NormalizedInvertedToDensity"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExAssetTagInheritance",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "Asset",
+          "display_name": "Asset"
+        },
+        {
+          "name": "Hierarchy",
+          "display_name": "Hierarchy"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "Collection",
+          "display_name": "Collection"
+        },
+        {
+          "name": "RootCollection",
+          "display_name": "RootCollection"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "RootAsset",
+          "display_name": "RootAsset"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExEntryVariationMode",
+      "values": [
+        {
+          "name": "Local",
+          "display_name": "Local"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Global",
+          "display_name": "Global"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExGlobalVariationRule",
+      "values": [
+        {
+          "name": "PerEntry",
+          "display_name": "PerEntry"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Overrule",
+          "display_name": "Overrule"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

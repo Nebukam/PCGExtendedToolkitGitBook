@@ -1,0 +1,228 @@
+{
+  "path": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+  "module": "PCGExProperties",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExPropertyRegistryEntry",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "PropertyName",
+          "display_name": "PropertyName",
+          "type": "FName",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Property",
+          "advanced": false
+        },
+        {
+          "name": "TypeName",
+          "display_name": "TypeName",
+          "type": "FName",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Property",
+          "advanced": false
+        },
+        {
+          "name": "OutputType",
+          "display_name": "OutputType",
+          "type": "EPCGMetadataTypes",
+          "default": "EPCGMetadataTypes::Unknown",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Property",
+          "advanced": false
+        },
+        {
+          "name": "bSupportsOutput",
+          "display_name": "bSupportsOutput",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Property",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExPropertyCompiled",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "PropertyName",
+          "display_name": "PropertyName",
+          "type": "FName",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "HeaderId",
+          "display_name": "HeaderId",
+          "type": "int32",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExPropertyOverrideEntry",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bEnabled",
+          "display_name": "bEnabled",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Value",
+          "display_name": "Value",
+          "type": "FInstancedStruct",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bEnabled",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExPropertyOverrides",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Overrides",
+          "display_name": "Overrides",
+          "type": "TArray<FPCGExPropertyOverrideEntry>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExPropertySchema",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "HeaderId",
+          "display_name": "HeaderId",
+          "type": "int32",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Name",
+          "display_name": "Name",
+          "type": "FName",
+          "default": "NAME_None",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Property",
+          "display_name": "Property",
+          "type": "FInstancedStruct",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": true,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExPropertySchemaCollection",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Schemas",
+          "display_name": "Schemas",
+          "type": "TArray<FPCGExPropertySchema>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

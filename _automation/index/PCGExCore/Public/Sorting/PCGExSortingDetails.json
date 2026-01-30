@@ -1,0 +1,58 @@
+{
+  "path": "PCGExCore/Public/Sorting/PCGExSortingDetails.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExSortRuleConfig",
+      "base_class": "FPCGExInputConfig",
+      "uproperties": [
+        {
+          "name": "bReadDataTag",
+          "display_name": "bReadDataTag",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Tolerance",
+          "display_name": "Tolerance",
+          "type": "double",
+          "default": "DBL_COMPARE_TOLERANCE",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bInvertRule",
+          "display_name": "bInvertRule",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": true,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

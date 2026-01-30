@@ -1,0 +1,15 @@
+{
+  "path": "PCGExtendedToolkit/Public/PCGExtendedToolkit.h",
+  "module": "PCGExtendedToolkit",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExtendedToolkitModule",
+      "base_class": "IModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

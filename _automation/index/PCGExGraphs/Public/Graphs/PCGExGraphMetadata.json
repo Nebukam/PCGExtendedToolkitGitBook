@@ -1,0 +1,49 @@
+{
+  "path": "PCGExGraphs/Public/Graphs/PCGExGraphMetadata.h",
+  "module": "PCGExGraphs",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExIntersectionType",
+      "values": [
+        {
+          "name": "Unknown",
+          "display_name": "Unknown"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "PointEdge",
+          "display_name": "PointEdge"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "EdgeEdge",
+          "display_name": "EdgeEdge"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "FusedEdge",
+          "display_name": "FusedEdge"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

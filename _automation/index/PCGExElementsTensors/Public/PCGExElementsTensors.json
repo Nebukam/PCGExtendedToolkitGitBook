@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsTensors/Public/PCGExElementsTensors.h",
+  "module": "PCGExElementsTensors",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsTensorsModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

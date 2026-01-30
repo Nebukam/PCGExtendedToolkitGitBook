@@ -1,0 +1,15 @@
+{
+  "path": "PCGExGraphs/Public/PCGExGraphs.h",
+  "module": "PCGExGraphs",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExGraphsModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

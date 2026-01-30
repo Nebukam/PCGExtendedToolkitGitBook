@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsValencyEditor/Public/Details/PCGExPropertyOutputConfigCustomization.h",
+  "module": "PCGExElementsValencyEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExPropertyOutputConfigCustomization",
+      "base_class": "IPropertyTypeCustomization"
+    }
+  ],
+  "namespaces": {}
+}

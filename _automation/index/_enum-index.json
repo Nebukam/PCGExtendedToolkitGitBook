@@ -1,0 +1,1346 @@
+{
+  "EPCGExBlendingType": {
+    "file": "PCGExBlending/Public/PCGExBlendingCommon.h",
+    "value_count": 65
+  },
+  "EPCGExABBlendingType": {
+    "file": "PCGExBlending/Public/PCGExBlendingCommon.h",
+    "value_count": 123
+  },
+  "EPCGExBlendOver": {
+    "file": "PCGExBlending/Public/PCGExBlendingCommon.h",
+    "value_count": 6
+  },
+  "EPCGExBlendingInterface": {
+    "file": "PCGExBlending/Public/PCGExBlendingCommon.h",
+    "value_count": 11
+  },
+  "EPCGExOperandSource": {
+    "file": "PCGExBlending/Public/PCGExBlendingCommon.h",
+    "value_count": 9
+  },
+  "EPCGExOperandAuthority": {
+    "file": "PCGExBlending/Public/PCGExBlendingCommon.h",
+    "value_count": 34
+  },
+  "EPCGExBlendOpOutputMode": {
+    "file": "PCGExBlending/Public/PCGExBlendingCommon.h",
+    "value_count": 16
+  },
+  "EPCGExBlendingTypeDefault": {
+    "file": "PCGExBlending/Public/PCGExBlendingSettingsCache.h",
+    "value_count": 78
+  },
+  "EPCGExFuseMethod": {
+    "file": "PCGExBlending/Public/PCGExUnionCommon.h",
+    "value_count": 4
+  },
+  "EPCGExRangeType": {
+    "file": "PCGExBlending/Public/Sampling/PCGExSamplingCommon.h",
+    "value_count": 4
+  },
+  "EPCGExSurfaceSource": {
+    "file": "PCGExBlending/Public/Sampling/PCGExSamplingCommon.h",
+    "value_count": 4
+  },
+  "EPCGExSampleMethod": {
+    "file": "PCGExBlending/Public/Sampling/PCGExSamplingCommon.h",
+    "value_count": 8
+  },
+  "EPCGExSampleSource": {
+    "file": "PCGExBlending/Public/Sampling/PCGExSamplingCommon.h",
+    "value_count": 7
+  },
+  "EPCGExAngleRange": {
+    "file": "PCGExBlending/Public/Sampling/PCGExSamplingCommon.h",
+    "value_count": 20
+  },
+  "EPCGExSampleWeightMode": {
+    "file": "PCGExBlending/Public/Sampling/PCGExSamplingCommon.h",
+    "value_count": 6
+  },
+  "EPCGExMaterialVariantsMode": {
+    "file": "PCGExCollections/Public/Collections/PCGExMeshCollection.h",
+    "value_count": 31
+  },
+  "EPCGExGrammarScaleMode": {
+    "file": "PCGExCollections/Public/Core/PCGExAssetGrammar.h",
+    "value_count": 6
+  },
+  "EPCGExGrammarSizeReference": {
+    "file": "PCGExCollections/Public/Core/PCGExAssetGrammar.h",
+    "value_count": 18
+  },
+  "EPCGExGrammarSubCollectionMode": {
+    "file": "PCGExCollections/Public/Core/PCGExAssetGrammar.h",
+    "value_count": 6
+  },
+  "EPCGExCollectionGrammarSize": {
+    "file": "PCGExCollections/Public/Core/PCGExAssetGrammar.h",
+    "value_count": 12
+  },
+  "EPCGExSubCollectionToSet": {
+    "file": "PCGExCollections/Public/Elements/PCGExAssetCollectionToSet.h",
+    "value_count": 13
+  },
+  "EPCGExStagingOutputMode": {
+    "file": "PCGExCollections/Public/Elements/PCGExAssetStaging.h",
+    "value_count": 4
+  },
+  "EPCGExStagedTypeFilterMode": {
+    "file": "PCGExCollections/Public/Elements/PCGExStagingTypeFilter.h",
+    "value_count": 4
+  },
+  "EPCGExCollectionSource": {
+    "file": "PCGExCollections/Public/PCGExCollectionsCommon.h",
+    "value_count": 6
+  },
+  "EPCGExIndexPickMode": {
+    "file": "PCGExCollections/Public/PCGExCollectionsCommon.h",
+    "value_count": 8
+  },
+  "EPCGExDistribution": {
+    "file": "PCGExCollections/Public/PCGExCollectionsCommon.h",
+    "value_count": 6
+  },
+  "EPCGExWeightOutputMode": {
+    "file": "PCGExCollections/Public/PCGExCollectionsCommon.h",
+    "value_count": 12
+  },
+  "EPCGExAssetTagInheritance": {
+    "file": "PCGExCollections/Public/PCGExCollectionsCommon.h",
+    "value_count": 9
+  },
+  "EPCGExEntryVariationMode": {
+    "file": "PCGExCollections/Public/PCGExCollectionsCommon.h",
+    "value_count": 6
+  },
+  "EPCGExGlobalVariationRule": {
+    "file": "PCGExCollections/Public/PCGExCollectionsCommon.h",
+    "value_count": 6
+  },
+  "EClusterCacheType": {
+    "file": "PCGExCore/Public/Clusters/PCGExClusterCache.h",
+    "value_count": 16
+  },
+  "EPCGExClusterClosestSearchMode": {
+    "file": "PCGExCore/Public/Clusters/PCGExClusterCommon.h",
+    "value_count": 6
+  },
+  "EPCGExClusterElement": {
+    "file": "PCGExCore/Public/Clusters/PCGExClusterCommon.h",
+    "value_count": 6
+  },
+  "EPCGExAdjacencyDirectionOrigin": {
+    "file": "PCGExCore/Public/Clusters/PCGExClusterCommon.h",
+    "value_count": 4
+  },
+  "EPCGExEdgeDirectionMethod": {
+    "file": "PCGExCore/Public/Clusters/PCGExEdge.h",
+    "value_count": 8
+  },
+  "EPCGExEdgeDirectionChoice": {
+    "file": "PCGExCore/Public/Clusters/PCGExEdge.h",
+    "value_count": 4
+  },
+  "EPCGExBitOp": {
+    "file": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskCommon.h",
+    "value_count": 18
+  },
+  "EPCGExBitOp_OR": {
+    "file": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskCommon.h",
+    "value_count": 18
+  },
+  "EPCGExBitmaskMode": {
+    "file": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskCommon.h",
+    "value_count": 7
+  },
+  "EPCGExBitflagComparison": {
+    "file": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskCommon.h",
+    "value_count": 10
+  },
+  "EPCGExTriangulationType": {
+    "file": "PCGExCore/Public/Data/External/PCGExMeshCommon.h",
+    "value_count": 9
+  },
+  "EPCGExInputValueType": {
+    "file": "PCGExCore/Public/Data/PCGExDataCommon.h",
+    "value_count": 9
+  },
+  "EPCGExInputValueToggle": {
+    "file": "PCGExCore/Public/Data/PCGExDataCommon.h",
+    "value_count": 12
+  },
+  "EPCGExDataInputValueType": {
+    "file": "PCGExCore/Public/Data/PCGExDataCommon.h",
+    "value_count": 6
+  },
+  "EPCGExNumericOutput": {
+    "file": "PCGExCore/Public/Data/PCGExDataCommon.h",
+    "value_count": 4
+  },
+  "EPCGExSupportedTagValue": {
+    "file": "PCGExCore/Public/Data/PCGExDataTags.h",
+    "value_count": 12
+  },
+  "EPCGExDataHashScope": {
+    "file": "PCGExCore/Public/Data/Utils/PCGExAttributeHasher.h",
+    "value_count": 12
+  },
+  "EPCGExAttributeFilter": {
+    "file": "PCGExCore/Public/Data/Utils/PCGExDataFilterDetails.h",
+    "value_count": 15
+  },
+  "PCGExSpatialNoiseMode": {
+    "file": "PCGExCore/Public/Details/PCGExDetailsNoise.h",
+    "value_count": 42
+  },
+  "PCGExSpatialNoiseMask2DMode": {
+    "file": "PCGExCore/Public/Details/PCGExDetailsNoise.h",
+    "value_count": 21
+  },
+  "EPCGExVariationSnapping": {
+    "file": "PCGExCore/Public/Fitting/PCGExFittingCommon.h",
+    "value_count": 12
+  },
+  "EPCGExFitMode": {
+    "file": "PCGExCore/Public/Fitting/PCGExFittingCommon.h",
+    "value_count": 9
+  },
+  "EPCGExScaleToFit": {
+    "file": "PCGExCore/Public/Fitting/PCGExFittingCommon.h",
+    "value_count": 15
+  },
+  "EPCGExJustifyFrom": {
+    "file": "PCGExCore/Public/Fitting/PCGExFittingCommon.h",
+    "value_count": 15
+  },
+  "EPCGExJustifyTo": {
+    "file": "PCGExCore/Public/Fitting/PCGExFittingCommon.h",
+    "value_count": 18
+  },
+  "EPCGExVariationMode": {
+    "file": "PCGExCore/Public/Fitting/PCGExFittingCommon.h",
+    "value_count": 9
+  },
+  "EPCGExCellCenter": {
+    "file": "PCGExCore/Public/Math/Geo/PCGExGeo.h",
+    "value_count": 9
+  },
+  "EPCGExVoronoiMetric": {
+    "file": "PCGExCore/Public/Math/Geo/PCGExGeo.h",
+    "value_count": 6
+  },
+  "EPCGExCutType": {
+    "file": "PCGExCore/Public/Math/OBB/PCGExOBBIntersections.h",
+    "value_count": 5
+  },
+  "EPCGExIndexSafety": {
+    "file": "PCGExCore/Public/Math/PCGExMath.h",
+    "value_count": 28
+  },
+  "EPCGExTruncateMode": {
+    "file": "PCGExCore/Public/Math/PCGExMath.h",
+    "value_count": 12
+  },
+  "EPCGExMinimalAxis": {
+    "file": "PCGExCore/Public/Math/PCGExMathAxis.h",
+    "value_count": 12
+  },
+  "EPCGExAxis": {
+    "file": "PCGExCore/Public/Math/PCGExMathAxis.h",
+    "value_count": 12
+  },
+  "EPCGExAxisOrder": {
+    "file": "PCGExCore/Public/Math/PCGExMathAxis.h",
+    "value_count": 18
+  },
+  "EPCGExAxisAlign": {
+    "file": "PCGExCore/Public/Math/PCGExMathAxis.h",
+    "value_count": 12
+  },
+  "EPCGExMakeRotAxis": {
+    "file": "PCGExCore/Public/Math/PCGExMathAxis.h",
+    "value_count": 57
+  },
+  "EPCGExBoxCheckMode": {
+    "file": "PCGExCore/Public/Math/PCGExMathBounds.h",
+    "value_count": 12
+  },
+  "EPCGExMeanMeasure": {
+    "file": "PCGExCore/Public/Math/PCGExMathMean.h",
+    "value_count": 35
+  },
+  "EPCGExMeanMethod": {
+    "file": "PCGExCore/Public/Math/PCGExMathMean.h",
+    "value_count": 12
+  },
+  "EPCGExProjectionMethod": {
+    "file": "PCGExCore/Public/Math/PCGExProjectionDetails.h",
+    "value_count": 4
+  },
+  "EPCGExWinding": {
+    "file": "PCGExCore/Public/Math/PCGExWinding.h",
+    "value_count": 6
+  },
+  "EPCGExWindingMutation": {
+    "file": "PCGExCore/Public/Math/PCGExWinding.h",
+    "value_count": 9
+  },
+  "EPCGExSplinePointTypeRedux": {
+    "file": "PCGExCore/Public/Paths/PCGExPathsCommon.h",
+    "value_count": 8
+  },
+  "EPCGExInlinePathProcessingOrder": {
+    "file": "PCGExCore/Public/Paths/PCGExPathsCommon.h",
+    "value_count": 25
+  },
+  "EPCGExInputScope": {
+    "file": "PCGExCore/Public/Paths/PCGExPathsCommon.h",
+    "value_count": 17
+  },
+  "EPCGExPathNormalDirection": {
+    "file": "PCGExCore/Public/Paths/PCGExPathsCommon.h",
+    "value_count": 6
+  },
+  "EPCGExSplineMeshUpMode": {
+    "file": "PCGExCore/Public/Paths/PCGExPathsCommon.h",
+    "value_count": 6
+  },
+  "EPCGExSplineMeshAxis": {
+    "file": "PCGExCore/Public/Paths/PCGExPathsCommon.h",
+    "value_count": 7
+  },
+  "EPCGExSplinePointType": {
+    "file": "PCGExCore/Public/Paths/PCGExPathsCommon.h",
+    "value_count": 10
+  },
+  "EPCGExOptionState": {
+    "file": "PCGExCore/Public/PCGExCommon.h",
+    "value_count": 13
+  },
+  "EPCGExExecutionPolicy": {
+    "file": "PCGExCore/Public/PCGExCommon.h",
+    "value_count": 9
+  },
+  "EPCGExPointBoundsSource": {
+    "file": "PCGExCore/Public/PCGExCommon.h",
+    "value_count": 12
+  },
+  "EPCGExDistance": {
+    "file": "PCGExCore/Public/PCGExCommon.h",
+    "value_count": 12
+  },
+  "EPCGExDistanceType": {
+    "file": "PCGExCore/Public/PCGExCommon.h",
+    "value_count": 6
+  },
+  "EPCGExTransformMode": {
+    "file": "PCGExCore/Public/PCGExCommon.h",
+    "value_count": 7
+  },
+  "EPCGExResolutionMode": {
+    "file": "PCGExCore/Public/PCGExCommon.h",
+    "value_count": 4
+  },
+  "EPCGExSubsystemEventType": {
+    "file": "PCGExCore/Public/PCGExSubSystem.h",
+    "value_count": 5
+  },
+  "EPCGExSortDirection": {
+    "file": "PCGExCore/Public/Sorting/PCGExSortingCommon.h",
+    "value_count": 6
+  },
+  "EPCGExIndexMode": {
+    "file": "PCGExCore/Public/Utils/PCGExCompare.h",
+    "value_count": 4
+  },
+  "EPCGExAngularDomain": {
+    "file": "PCGExCore/Public/Utils/PCGExCompare.h",
+    "value_count": 4
+  },
+  "EPCGExComparison": {
+    "file": "PCGExCore/Public/Utils/PCGExCompare.h",
+    "value_count": 16
+  },
+  "EPCGExEquality": {
+    "file": "PCGExCore/Public/Utils/PCGExCompare.h",
+    "value_count": 4
+  },
+  "EPCGExStringComparison": {
+    "file": "PCGExCore/Public/Utils/PCGExCompare.h",
+    "value_count": 26
+  },
+  "EPCGExStringMatchMode": {
+    "file": "PCGExCore/Public/Utils/PCGExCompare.h",
+    "value_count": 8
+  },
+  "EPCGExComparisonDataType": {
+    "file": "PCGExCore/Public/Utils/PCGExCompare.h",
+    "value_count": 6
+  },
+  "EPCGExDirectionCheckMode": {
+    "file": "PCGExCore/Public/Utils/PCGExCompare.h",
+    "value_count": 4
+  },
+  "EPCGExCurveLUTMode": {
+    "file": "PCGExCore/Public/Utils/PCGExCurveLookup.h",
+    "value_count": 2
+  },
+  "EPCGExGenerationTriggerAction": {
+    "file": "PCGExElementsBridges/Public/Elements/PCGExWaitForPCGData.h",
+    "value_count": 14
+  },
+  "EPCGExRuntimeGenerationTriggerAction": {
+    "file": "PCGExElementsBridges/Public/Elements/PCGExWaitForPCGData.h",
+    "value_count": 6
+  },
+  "EPCGExClipper2JoinType": {
+    "file": "PCGExElementsClipper2/Public/Core/PCGExClipper2Processor.h",
+    "value_count": 8
+  },
+  "EPCGExClipper2EndType": {
+    "file": "PCGExElementsClipper2/Public/Core/PCGExClipper2Processor.h",
+    "value_count": 10
+  },
+  "EPCGExClipper2FillRule": {
+    "file": "PCGExElementsClipper2/Public/Core/PCGExClipper2Processor.h",
+    "value_count": 8
+  },
+  "EPCGExGroupingPolicy": {
+    "file": "PCGExElementsClipper2/Public/Core/PCGExClipper2Processor.h",
+    "value_count": 4
+  },
+  "EPCGExClipper2OpenPathOutput": {
+    "file": "PCGExElementsClipper2/Public/Core/PCGExClipper2Processor.h",
+    "value_count": 6
+  },
+  "EPCGExClipper2BooleanOp": {
+    "file": "PCGExElementsClipper2/Public/Elements/PCGExClipper2Boolean.h",
+    "value_count": 12
+  },
+  "EPCGExClipper2OffsetIterationCount": {
+    "file": "PCGExElementsClipper2/Public/Elements/PCGExClipper2Offset.h",
+    "value_count": 5
+  },
+  "EPCGExRectClipBoundsSource": {
+    "file": "PCGExElementsClipper2/Public/Elements/PCGExClipper2RectClip.h",
+    "value_count": 4
+  },
+  "EPCGExUrquhartSiteMergeMode": {
+    "file": "PCGExElementsClusters/Public/Elements/Diagrams/PCGExBuildDelaunayGraph2D.h",
+    "value_count": 6
+  },
+  "EPCGExHeuristicsWriteMode": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/PCGExWriteEdgeProperties.h",
+    "value_count": 6
+  },
+  "EPCGExVtxAmplitudeMode": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertyAmplitude.h",
+    "value_count": 4
+  },
+  "EPCGExVtxAmplitudeUpMode": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertyAmplitude.h",
+    "value_count": 4
+  },
+  "EPCGExVtxAmplitudeSignOutput": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertyAmplitude.h",
+    "value_count": 10
+  },
+  "EPCGExBreakClusterOperationTarget": {
+    "file": "PCGExElementsClusters/Public/Elements/Paths/PCGExBreakClustersToPaths.h",
+    "value_count": 9
+  },
+  "EPCGExBreakClusterLeavesHandling": {
+    "file": "PCGExElementsClusters/Public/Elements/Paths/PCGExBreakClustersToPaths.h",
+    "value_count": 6
+  },
+  "EPCGExCutEdgesMode": {
+    "file": "PCGExElementsClusters/Public/Elements/Paths/PCGExCutClusters.h",
+    "value_count": 6
+  },
+  "EPCGExCustomGraphActorSourceMode": {
+    "file": "PCGExElementsClusters/Public/Elements/PCGExBuildCustomGraph.h",
+    "value_count": 4
+  },
+  "EPCGExCentralityDownsampling": {
+    "file": "PCGExElementsClusters/Public/Elements/PCGExClusterCentrality.h",
+    "value_count": 6
+  },
+  "EPCGExBridgeClusterMethod": {
+    "file": "PCGExElementsClusters/Public/Elements/PCGExConnectClusters.h",
+    "value_count": 11
+  },
+  "EPCGExVtxFilterOutput": {
+    "file": "PCGExElementsClusters/Public/Elements/PCGExFilterVtx.h",
+    "value_count": 6
+  },
+  "EPCGExClusterDataSearchMode": {
+    "file": "PCGExElementsClusters/Public/Elements/PCGExFindClustersData.h",
+    "value_count": 3
+  },
+  "EPCGExMeshAttributeHandling": {
+    "file": "PCGExElementsClusters/Public/Elements/PCGExMeshToClusters.h",
+    "value_count": 4
+  },
+  "EPCGExClusterClosestPickMode": {
+    "file": "PCGExElementsClusters/Public/Elements/PCGExPickClosestClusters.h",
+    "value_count": 9
+  },
+  "EPCGExRefineSanitization": {
+    "file": "PCGExElementsClusters/Public/Elements/PCGExRefineEdges.h",
+    "value_count": 16
+  },
+  "EPCGExRefineEdgesOutput": {
+    "file": "PCGExElementsClusters/Public/Elements/PCGExRefineEdges.h",
+    "value_count": 6
+  },
+  "EPCGExSimplifyClusterEdgeFilterRole": {
+    "file": "PCGExElementsClusters/Public/Elements/PCGExSimplifyClusters.h",
+    "value_count": 4
+  },
+  "EPCGExEdgeOverlapPick": {
+    "file": "PCGExElementsClusters/Public/Elements/Refining/PCGExEdgeRefineRemoveOverlap.h",
+    "value_count": 4
+  },
+  "EPCGExBoxFittingSeparation": {
+    "file": "PCGExElementsClusters/Public/Elements/Relax/PCGExBoxFittingRelax2.h",
+    "value_count": 6
+  },
+  "EPCGExRelaxEdgeFitting": {
+    "file": "PCGExElementsClusters/Public/Elements/Relax/PCGExFittingRelaxBase.h",
+    "value_count": 8
+  },
+  "EPCGExRelaxEdgeRestLength": {
+    "file": "PCGExElementsClusters/Public/Elements/Relax/PCGExVerletRelax.h",
+    "value_count": 6
+  },
+  "EPCGExEdgeEndpointsCheckMode": {
+    "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeEndpointsCheckFilter.h",
+    "value_count": 12
+  },
+  "EPCGExEdgeEndpointCompareAgainstMode": {
+    "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeEndpointsCompareNumFilter.h",
+    "value_count": 9
+  },
+  "EPCGExRefineEdgeThresholdMode": {
+    "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeNeighborsCountFilter.h",
+    "value_count": 6
+  },
+  "EPCGExAdjacencyTestMode": {
+    "file": "PCGExElementsClusters/Public/Filters/PCGExAdjacency.h",
+    "value_count": 4
+  },
+  "EPCGExAdjacencyGatherMode": {
+    "file": "PCGExElementsClusters/Public/Filters/PCGExAdjacency.h",
+    "value_count": 10
+  },
+  "EPCGExAdjacencyThreshold": {
+    "file": "PCGExElementsClusters/Public/Filters/PCGExAdjacency.h",
+    "value_count": 15
+  },
+  "EPCGExRelativeThresholdRoundingMode": {
+    "file": "PCGExElementsClusters/Public/Filters/PCGExAdjacency.h",
+    "value_count": 12
+  },
+  "EPCGExFloodFillSettingSource": {
+    "file": "PCGExElementsFloodFill/Public/Core/PCGExFloodFill.h",
+    "value_count": 4
+  },
+  "EPCGExFloodFillPrioritization": {
+    "file": "PCGExElementsFloodFill/Public/Core/PCGExFloodFill.h",
+    "value_count": 8
+  },
+  "EPCGExFloodFillOrder": {
+    "file": "PCGExElementsFloodFill/Public/Elements/PCGExFloodFillClusters.h",
+    "value_count": 4
+  },
+  "EPCGExFloodFillProcessing": {
+    "file": "PCGExElementsFloodFill/Public/Elements/PCGExFloodFillClusters.h",
+    "value_count": 7
+  },
+  "EPCGExFloodFillPathOutput": {
+    "file": "PCGExElementsFloodFill/Public/Elements/PCGExFloodFillClusters.h",
+    "value_count": 20
+  },
+  "EPCGExFloodFillPathPartitions": {
+    "file": "PCGExElementsFloodFill/Public/Elements/PCGExFloodFillClusters.h",
+    "value_count": 6
+  },
+  "EPCGExAccumulationMode": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlAttributeAccumulation.h",
+    "value_count": 16
+  },
+  "EPCGExFloodFillBudgetSource": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlHxBudget.h",
+    "value_count": 12
+  },
+  "EPCGExFloodFillThresholdSource": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlHxThreshold.h",
+    "value_count": 12
+  },
+  "EPCGExPartitionFilterMode": {
+    "file": "PCGExElementsMeta/Public/Elements/Partition/PCGExPartition.h",
+    "value_count": 8
+  },
+  "EPCGExStatsOutputToPoints": {
+    "file": "PCGExElementsMeta/Public/Elements/PCGExAttributeStats.h",
+    "value_count": 6
+  },
+  "EPCGExAttributeToTagsAction": {
+    "file": "PCGExElementsMeta/Public/Elements/PCGExAttributesToTags.h",
+    "value_count": 6
+  },
+  "EPCGExAttributeToTagsResolution": {
+    "file": "PCGExElementsMeta/Public/Elements/PCGExAttributesToTags.h",
+    "value_count": 8
+  },
+  "EPCGExCollectionEntrySelection": {
+    "file": "PCGExElementsMeta/Public/Elements/PCGExAttributesToTags.h",
+    "value_count": 12
+  },
+  "EPCGExReduceDataDomainMethod": {
+    "file": "PCGExElementsMeta/Public/Elements/PCGExReduceDataAttribute.h",
+    "value_count": 19
+  },
+  "EPCGExUberNoiseMode": {
+    "file": "PCGExElementsMeta/Public/Elements/PCGExUberNoise.h",
+    "value_count": 4
+  },
+  "EPCGExPathComposition": {
+    "file": "PCGExElementsPathfinding/Public/Core/PCGExPathfinding.h",
+    "value_count": 7
+  },
+  "EPCGExContourShapeTypeOutput": {
+    "file": "PCGExElementsPathfinding/Public/Elements/PCGExPathfindingFindCells.h",
+    "value_count": 6
+  },
+  "EPCGExGrowthIterationMode": {
+    "file": "PCGExElementsPathfinding/Public/Elements/PCGExPathfindingGrowPaths.h",
+    "value_count": 10
+  },
+  "EPCGExGrowthValueSource": {
+    "file": "PCGExElementsPathfinding/Public/Elements/PCGExPathfindingGrowPaths.h",
+    "value_count": 6
+  },
+  "EPCGExGrowthUpdateMode": {
+    "file": "PCGExElementsPathfinding/Public/Elements/PCGExPathfindingGrowPaths.h",
+    "value_count": 6
+  },
+  "EPCGExGoalPickAttributeAmount": {
+    "file": "PCGExElementsPathfinding/Public/GoalPickers/PCGExGoalPickerAttribute.h",
+    "value_count": 4
+  },
+  "EPCGExGoalPickRandomAmount": {
+    "file": "PCGExElementsPathfinding/Public/GoalPickers/PCGExGoalPickerRandom.h",
+    "value_count": 6
+  },
+  "EPCGExPathfindingNavmeshMode": {
+    "file": "PCGExElementsPathfindingNavmesh/Public/Core/PCGExNavmesh.h",
+    "value_count": 4
+  },
+  "EPCGExOrientLookAtMode": {
+    "file": "PCGExElementsPaths/Public/Elements/Orient/PCGExOrientLookAt.h",
+    "value_count": 8
+  },
+  "EPCGExRollingRangeControl": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExAttributeRolling.h",
+    "value_count": 4
+  },
+  "EPCGExRollingToggleInitialValue": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExAttributeRolling.h",
+    "value_count": 17
+  },
+  "EPCGExRollingValueControl": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExAttributeRolling.h",
+    "value_count": 6
+  },
+  "EPCGExBevelMode": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExBevelPath.h",
+    "value_count": 4
+  },
+  "EPCGExBevelProfileType": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExBevelPath.h",
+    "value_count": 6
+  },
+  "EPCGExBevelLimit": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExBevelPath.h",
+    "value_count": 11
+  },
+  "EPCGExBevelCustomProfileScaling": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExBevelPath.h",
+    "value_count": 6
+  },
+  "EPCGExPathBlendMode": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExBlendPath.h",
+    "value_count": 4
+  },
+  "EPCGExCopyToPathsUnit": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExCopyToPaths.h",
+    "value_count": 4
+  },
+  "EPCGExOffsetAdjustment": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExOffsetPath.h",
+    "value_count": 8
+  },
+  "EPCGExOffsetMethod": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExOffsetPath.h",
+    "value_count": 4
+  },
+  "EPCGExOrientUsage": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExOrient.h",
+    "value_count": 4
+  },
+  "EPCGExPathReduceFilterMode": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathReduce.h",
+    "value_count": 4
+  },
+  "EPCGExResampleMode": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathResample.h",
+    "value_count": 4
+  },
+  "EPCGExShiftType": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathShift.h",
+    "value_count": 10
+  },
+  "EPCGExShiftPathMode": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathShift.h",
+    "value_count": 6
+  },
+  "EPCGExPathShrinkMode": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathShrink.h",
+    "value_count": 4
+  },
+  "EPCGExPathShrinkDistanceCutType": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathShrink.h",
+    "value_count": 8
+  },
+  "EPCGExShrinkEndpoint": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathShrink.h",
+    "value_count": 6
+  },
+  "EPCGExShrinkConstantMode": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathShrink.h",
+    "value_count": 10
+  },
+  "EPCGExSlideMode": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathSlide.h",
+    "value_count": 4
+  },
+  "EPCGExSlideDirection": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathSlide.h",
+    "value_count": 4
+  },
+  "EPCGExSolidificationSpace": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathSolidify.h",
+    "value_count": 10
+  },
+  "EPCGExStitchMethod": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathStitch.h",
+    "value_count": 9
+  },
+  "EPCGExStitchFuseMethod": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathStitch.h",
+    "value_count": 4
+  },
+  "EPCGExStitchFuseOperation": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathStitch.h",
+    "value_count": 6
+  },
+  "EPCGExPointReverseMethod": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExReversePointOrder.h",
+    "value_count": 6
+  },
+  "EPCGExPathSplitAction": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExSplitPath.h",
+    "value_count": 30
+  },
+  "EPCGExPathSplitInitialValue": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExSplitPath.h",
+    "value_count": 23
+  },
+  "EPCGExAttributeSetPackingMode": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExWritePathProperties.h",
+    "value_count": 4
+  },
+  "EPCGExTangentSmoothing": {
+    "file": "PCGExElementsPaths/Public/Helpers/PCGExPathSimplifier.h",
+    "value_count": 15
+  },
+  "EPCGExProbeChainSortMode": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeChain.h",
+    "value_count": 8
+  },
+  "EPCGExProbeGradientFlowMode": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeGradientFlow.h",
+    "value_count": 4
+  },
+  "EPCGExHubSelectionMode": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeHubSpoke.h",
+    "value_count": 8
+  },
+  "EPCGExProbeKNNMode": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeKNN.h",
+    "value_count": 4
+  },
+  "EPCGExProbeBitmasksPriorization": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExProbeBitmasks.h",
+    "value_count": 17
+  },
+  "EPCGExProbeDirectionPriorization": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExProbeDirection.h",
+    "value_count": 17
+  },
+  "EPCGExProbeTargetMode": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExProbeIndex.h",
+    "value_count": 6
+  },
+  "EPCGExTexSampleAttributeType": {
+    "file": "PCGExElementsSampling/Public/Core/PCGExTexParamFactoryProvider.h",
+    "value_count": 17
+  },
+  "EPCGExOverlapTestMode": {
+    "file": "PCGExElementsSampling/Public/Elements/PCGExDiscardByOverlap.h",
+    "value_count": 6
+  },
+  "EPCGExOverlapPruningLogic": {
+    "file": "PCGExElementsSampling/Public/Elements/PCGExDiscardByOverlap.h",
+    "value_count": 4
+  },
+  "EPCGExGetTexturePathType": {
+    "file": "PCGExElementsSampling/Public/Elements/PCGExGetTextureData.h",
+    "value_count": 4
+  },
+  "EPCGExTextureFilter": {
+    "file": "PCGExElementsSampling/Public/Elements/PCGExGetTextureData.h",
+    "value_count": 6
+  },
+  "EPCGExSampleInsidePathOutput": {
+    "file": "PCGExElementsSampling/Public/Elements/PCGExSampleInsidePath.h",
+    "value_count": 14
+  },
+  "EPCGExBoundsSampleMethod": {
+    "file": "PCGExElementsSampling/Public/Elements/PCGExSampleNearestBounds.h",
+    "value_count": 12
+  },
+  "EPCGExPathSamplingIncludeMode": {
+    "file": "PCGExElementsSampling/Public/Elements/PCGExSampleNearestPath.h",
+    "value_count": 6
+  },
+  "EPCGExPathSampleAlphaMode": {
+    "file": "PCGExElementsSampling/Public/Elements/PCGExSampleNearestPath.h",
+    "value_count": 13
+  },
+  "EPCGExSplineDepthMode": {
+    "file": "PCGExElementsSampling/Public/Elements/PCGExSampleNearestSpline.h",
+    "value_count": 6
+  },
+  "EPCGExSplineSampleAlphaMode": {
+    "file": "PCGExElementsSampling/Public/Elements/PCGExSampleNearestSpline.h",
+    "value_count": 13
+  },
+  "EPCGExTraceSampleDistanceInput": {
+    "file": "PCGExElementsSampling/Public/Elements/PCGExSampleSurfaceGuided.h",
+    "value_count": 6
+  },
+  "EPCGExSelfPruningMode": {
+    "file": "PCGExElementsSampling/Public/Elements/PCGExSelfPruning.h",
+    "value_count": 4
+  },
+  "EPCGExSelfPruningExpandOrder": {
+    "file": "PCGExElementsSampling/Public/Elements/PCGExSelfPruning.h",
+    "value_count": 6
+  },
+  "EPCGExShapeOutputMode": {
+    "file": "PCGExElementsShapes/Public/Core/PCGExShapesCommon.h",
+    "value_count": 6
+  },
+  "EPCGExShapeResolutionMode": {
+    "file": "PCGExElementsShapes/Public/Core/PCGExShapesCommon.h",
+    "value_count": 4
+  },
+  "EPCGExShapePointLookAt": {
+    "file": "PCGExElementsShapes/Public/Core/PCGExShapesCommon.h",
+    "value_count": 4
+  },
+  "EPCGExFibPhiConstant": {
+    "file": "PCGExElementsShapes/Public/Shapes/PCGExShapeFiblat.h",
+    "value_count": 6
+  },
+  "EPCGExPolygonShapeType": {
+    "file": "PCGExElementsShapes/Public/Shapes/PCGExShapePolygon.h",
+    "value_count": 2
+  },
+  "EPCGExPolygonSkeletonConnectionType": {
+    "file": "PCGExElementsShapes/Public/Shapes/PCGExShapePolygon.h",
+    "value_count": 3
+  },
+  "EPCGExPolygonFittingMethod": {
+    "file": "PCGExElementsShapes/Public/Shapes/PCGExShapePolygon.h",
+    "value_count": 6
+  },
+  "EPCGExBestMatchAxisTargetMode": {
+    "file": "PCGExElementsSpatial/Public/Elements/Bounds/PCGExBestMatchAxis.h",
+    "value_count": 8
+  },
+  "EPCGExBoundAxisPriority": {
+    "file": "PCGExElementsSpatial/Public/Elements/Bounds/PCGExBoundsAxisToPoints.h",
+    "value_count": 14
+  },
+  "EPCGExAxisDirectionConstraint": {
+    "file": "PCGExElementsSpatial/Public/Elements/Bounds/PCGExBoundsAxisToPoints.h",
+    "value_count": 6
+  },
+  "EPCGExAxisSizeConstraint": {
+    "file": "PCGExElementsSpatial/Public/Elements/Bounds/PCGExBoundsAxisToPoints.h",
+    "value_count": 6
+  },
+  "EPCGExAxisConstraintSorting": {
+    "file": "PCGExElementsSpatial/Public/Elements/Bounds/PCGExBoundsAxisToPoints.h",
+    "value_count": 4
+  },
+  "EPCGExBestFitRotationMode": {
+    "file": "PCGExElementsSpatial/Public/Elements/Layout/PCGExBestFitPacking.h",
+    "value_count": 6
+  },
+  "EPCGExBestFitScoreMode": {
+    "file": "PCGExElementsSpatial/Public/Elements/Layout/PCGExBestFitPacking.h",
+    "value_count": 8
+  },
+  "EPCGExBestFitPlacementAnchor": {
+    "file": "PCGExElementsSpatial/Public/Elements/Layout/PCGExBestFitPacking.h",
+    "value_count": 6
+  },
+  "EPCGExBinFreeSpacePartitionMode": {
+    "file": "PCGExElementsSpatial/Public/Elements/Layout/PCGExBinPacking.h",
+    "value_count": 8
+  },
+  "EPCGExPlacementFavor": {
+    "file": "PCGExElementsSpatial/Public/Elements/Layout/PCGExBinPacking.h",
+    "value_count": 4
+  },
+  "EPCGExBinSeedMode": {
+    "file": "PCGExElementsSpatial/Public/Elements/Layout/PCGExLayout.h",
+    "value_count": 8
+  },
+  "EPCGExSpaceSplitMode": {
+    "file": "PCGExElementsSpatial/Public/Elements/Layout/PCGExLayout.h",
+    "value_count": 12
+  },
+  "EPCGExFusedPointOutput": {
+    "file": "PCGExElementsSpatial/Public/Elements/PCGExFusePoints.h",
+    "value_count": 4
+  },
+  "EPCGExPointsToBoundsOutputMode": {
+    "file": "PCGExElementsSpatial/Public/Elements/PCGExPointsToBounds.h",
+    "value_count": 4
+  },
+  "EPCGExTensorSamplingMode": {
+    "file": "PCGExElementsTensors/Public/Core/PCGExTensor.h",
+    "value_count": 11
+  },
+  "EPCGExEffectorFlattenMode": {
+    "file": "PCGExElementsTensors/Public/Core/PCGExTensor.h",
+    "value_count": 8
+  },
+  "EPCGExEffectorInfluenceShape": {
+    "file": "PCGExElementsTensors/Public/Core/PCGExTensor.h",
+    "value_count": 4
+  },
+  "EPCGExTensorStopConditionHandling": {
+    "file": "PCGExElementsTensors/Public/Core/PCGExTensor.h",
+    "value_count": 4
+  },
+  "EPCGExSelfIntersectionMode": {
+    "file": "PCGExElementsTensors/Public/Elements/PCGExExtrudeTensors.h",
+    "value_count": 13
+  },
+  "EPCGExSelfIntersectionPriority": {
+    "file": "PCGExElementsTensors/Public/Elements/PCGExExtrudeTensors.h",
+    "value_count": 8
+  },
+  "EPCGExTensorTransformMode": {
+    "file": "PCGExElementsTensors/Public/Elements/PCGExTensorsTransform.h",
+    "value_count": 9
+  },
+  "EPCGExSurfaceTensorMode": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorSurface.h",
+    "value_count": 10
+  },
+  "EPCGExTopologyOutputMode": {
+    "file": "PCGExElementsTopology/Public/Core/PCGExTopologyClustersProcessor.h",
+    "value_count": 4
+  },
+  "EPCGExTopologyOutputType": {
+    "file": "PCGExElementsTopology/Public/PCGExTopology.h",
+    "value_count": 4
+  },
+  "EPCGExPatternOverlapResolution": {
+    "file": "PCGExElementsValency/Public/Core/PCGExPatternMatcherOperation.h",
+    "value_count": 12
+  },
+  "EPCGExValencyAssetType": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
+    "value_count": 25
+  },
+  "EPCGExPlaceholderMode": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
+    "value_count": 9
+  },
+  "EPCGExMissingConnectionBehavior": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
+    "value_count": 9
+  },
+  "EPCGExValencyLogCategory": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyLog.h",
+    "value_count": 47
+  },
+  "EPCGExValencyLogVerbosity": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyLog.h",
+    "value_count": 20
+  },
+  "EPCGExPatternOutputStrategy": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyPattern.h",
+    "value_count": 21
+  },
+  "EPCGExPatternTransformMode": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyPattern.h",
+    "value_count": 9
+  },
+  "EPCGExFixedPickSelectionMode": {
+    "file": "PCGExElementsValency/Public/Elements/PCGExValencyStaging.h",
+    "value_count": 9
+  },
+  "EPCGExFixedPickIncompatibleBehavior": {
+    "file": "PCGExElementsValency/Public/Elements/PCGExValencyStaging.h",
+    "value_count": 12
+  },
+  "EPCGExOrbitalAssignmentMode": {
+    "file": "PCGExElementsValency/Public/Elements/PCGExWriteValencyOrbitals.h",
+    "value_count": 6
+  },
+  "EPCGExProbeValencyPriorization": {
+    "file": "PCGExElementsValency/Public/Probes/PCGExProbeValency.h",
+    "value_count": 17
+  },
+  "EValencyRebuildReason": {
+    "file": "PCGExElementsValencyEditor/Public/Cages/PCGExValencyCageBase.h",
+    "value_count": 29
+  },
+  "EPCGExValencyCageShape": {
+    "file": "PCGExElementsValencyEditor/Public/Cages/PCGExValencyCageSimple.h",
+    "value_count": 9
+  },
+  "EPCGExFilterDataAction": {
+    "file": "PCGExFilters/Public/Details/PCGExFilterDetails.h",
+    "value_count": 6
+  },
+  "EPCGExTagsToDataAction": {
+    "file": "PCGExFilters/Public/Details/PCGExFilterDetails.h",
+    "value_count": 6
+  },
+  "EPCGExResultWriteAction": {
+    "file": "PCGExFilters/Public/Details/PCGExFilterDetails.h",
+    "value_count": 14
+  },
+  "EPCGExAttribtueDomainCheck": {
+    "file": "PCGExFilters/Public/Filters/Collections/PCGExAttributeCheckFilter.h",
+    "value_count": 8
+  },
+  "EPCGExDataBoundsAspect": {
+    "file": "PCGExFilters/Public/Filters/Collections/PCGExDataBoundsFilter.h",
+    "value_count": 21
+  },
+  "EPCGExDataBoundsComponent": {
+    "file": "PCGExFilters/Public/Filters/Collections/PCGExDataBoundsFilter.h",
+    "value_count": 5
+  },
+  "EPCGExDataBoundsRatio": {
+    "file": "PCGExFilters/Public/Filters/Collections/PCGExDataBoundsFilter.h",
+    "value_count": 6
+  },
+  "EPCGExAngleFilterMode": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExAngleFilter.h",
+    "value_count": 4
+  },
+  "EPCGExBoundsCheckType": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExBoundsFilter.h",
+    "value_count": 16
+  },
+  "EPCGExBoundsFilterCompareMode": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExBoundsFilter.h",
+    "value_count": 4
+  },
+  "EPCGExSplineSamplingIncludeMode": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExPolyPathFilterFactory.h",
+    "value_count": 6
+  },
+  "EPCGExSplineCheckType": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExPolyPathFilterFactory.h",
+    "value_count": 32
+  },
+  "EPCGExSplineFilterPick": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExPolyPathFilterFactory.h",
+    "value_count": 4
+  },
+  "EPCGExSegmentCrossWinding": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExSegmentCrossFilter.h",
+    "value_count": 4
+  },
+  "EPCGExSplineTimeConsolidation": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExTimeFilter.h",
+    "value_count": 6
+  },
+  "EPCGExValueHashMode": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExValueHashFilter.h",
+    "value_count": 7
+  },
+  "EPCGExValueHashSetInclusionMode": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExValueHashFilter.h",
+    "value_count": 4
+  },
+  "EPCGExRangeSource": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExWithinRangeFilter.h",
+    "value_count": 4
+  },
+  "EPCGExFilterFallback": {
+    "file": "PCGExFilters/Public/PCGExFilterCommon.h",
+    "value_count": 6
+  },
+  "EPCGExFilterResult": {
+    "file": "PCGExFilters/Public/PCGExFilterCommon.h",
+    "value_count": 4
+  },
+  "EPCGExFilterNoDataFallback": {
+    "file": "PCGExFilters/Public/PCGExFilterCommon.h",
+    "value_count": 9
+  },
+  "EPCGExFilterGroupMode": {
+    "file": "PCGExFilters/Public/PCGExFilterCommon.h",
+    "value_count": 8
+  },
+  "EPCGExTransformAlphaUsage": {
+    "file": "PCGExFoundations/Public/Details/PCGExAxisDeformDetails.h",
+    "value_count": 42
+  },
+  "EPCGExPointOnBoundsOutputMode": {
+    "file": "PCGExFoundations/Public/Details/PCGExBoundsCommon.h",
+    "value_count": 4
+  },
+  "EPCGExCollisionFilterType": {
+    "file": "PCGExFoundations/Public/Details/PCGExCollisionDetails.h",
+    "value_count": 6
+  },
+  "EPCGExEnumConstantSourceType": {
+    "file": "PCGExFoundations/Public/Details/PCGExEnumCommon.h",
+    "value_count": 4
+  },
+  "EPCGExSubdivideMode": {
+    "file": "PCGExFoundations/Public/Details/PCGExSubdivisionDetails.h",
+    "value_count": 23
+  },
+  "EPCGExManhattanMethod": {
+    "file": "PCGExFoundations/Public/Details/PCGExSubdivisionDetails.h",
+    "value_count": 27
+  },
+  "EPCGExManhattanAlign": {
+    "file": "PCGExFoundations/Public/Details/PCGExSubdivisionDetails.h",
+    "value_count": 10
+  },
+  "EPCGExEnumConstantOutputType": {
+    "file": "PCGExFoundations/Public/Elements/Constants/PCGExConstantEnum.h",
+    "value_count": 18
+  },
+  "EPCGExEnumOutputMode": {
+    "file": "PCGExFoundations/Public/Elements/Constants/PCGExConstantEnum.h",
+    "value_count": 10
+  },
+  "EPCGExConstantListID": {
+    "file": "PCGExFoundations/Public/Elements/Constants/PCGExConstantsDefinitions.h",
+    "value_count": 52
+  },
+  "EPCGExConstantType": {
+    "file": "PCGExFoundations/Public/Elements/Constants/PCGExConstantsDefinitions.h",
+    "value_count": 3
+  },
+  "EPCGExControlFlowSelectionMode": {
+    "file": "PCGExFoundations/Public/Elements/ControlFlow/PCGExBranchOnDataAttribute.h",
+    "value_count": 3
+  },
+  "EPCGExRecursionTrackerType": {
+    "file": "PCGExFoundations/Public/Elements/ControlFlow/PCGExRecursionTracker.h",
+    "value_count": 7
+  },
+  "EPCGExRecursionTrackerMode": {
+    "file": "PCGExFoundations/Public/Elements/ControlFlow/PCGExRecursionTracker.h",
+    "value_count": 19
+  },
+  "EPCGExUberBranchMode": {
+    "file": "PCGExFoundations/Public/Elements/ControlFlow/PCGExUberBranch.h",
+    "value_count": 6
+  },
+  "EPCGExDebugExpression": {
+    "file": "PCGExFoundations/Public/Elements/Debug/PCGExDrawAttributes.h",
+    "value_count": 10
+  },
+  "EPCGExCherryPickSource": {
+    "file": "PCGExFoundations/Public/Elements/Filtering/PCGExCherryPickPoints.h",
+    "value_count": 4
+  },
+  "EPCGExDiscardSameMode": {
+    "file": "PCGExFoundations/Public/Elements/Filtering/PCGExDiscardSame.h",
+    "value_count": 10
+  },
+  "EPCGExDiscardAttributeHashMode": {
+    "file": "PCGExFoundations/Public/Elements/Filtering/PCGExDiscardSame.h",
+    "value_count": 8
+  },
+  "EPCGExUberFilterMode": {
+    "file": "PCGExFoundations/Public/Elements/Filtering/PCGExUberFilter.h",
+    "value_count": 4
+  },
+  "EPCGExUberFilterCollectionsMode": {
+    "file": "PCGExFoundations/Public/Elements/Filtering/PCGExUberFilterCollections.h",
+    "value_count": 6
+  },
+  "EPCGExIterationDataType": {
+    "file": "PCGExFoundations/Public/Elements/Utils/PCGExIterations.h",
+    "value_count": 14
+  },
+  "EPCGExMergeByTagOverlapResolutionMode": {
+    "file": "PCGExFoundations/Public/Elements/Utils/PCGExMergePointsByTag.h",
+    "value_count": 21
+  },
+  "EPCGExMergeByTagFallbackBehavior": {
+    "file": "PCGExFoundations/Public/Elements/Utils/PCGExMergePointsByTag.h",
+    "value_count": 6
+  },
+  "EPCGExGUIDOutputType": {
+    "file": "PCGExFoundations/Public/Elements/Utils/PCGExWriteGUID.h",
+    "value_count": 4
+  },
+  "EPCGExGUIDFormat": {
+    "file": "PCGExFoundations/Public/Elements/Utils/PCGExWriteGUID.h",
+    "value_count": 23
+  },
+  "EPCGExTangentSource": {
+    "file": "PCGExFoundations/Public/Tangents/PCGExTangentsInstancedFactory.h",
+    "value_count": 6
+  },
+  "EPCGExCellTriageOutput": {
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "value_count": 4
+  },
+  "EPCGExCellTriageResult": {
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "value_count": 3
+  },
+  "EPCGExPointPropertyOutput": {
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "value_count": 14
+  },
+  "EPCGExCellRotationMethod": {
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "value_count": 37
+  },
+  "EPCGExCellOutputOrientation": {
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "value_count": 4
+  },
+  "EPCGExCellShapeTypeOutput": {
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "value_count": 6
+  },
+  "EPCGExCellSeedLocation": {
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "value_count": 10
+  },
+  "EPCGExCellSeedBounds": {
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "value_count": 10
+  },
+  "EPCGExCellSeedOwnership": {
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "value_count": 8
+  },
+  "EPCGExBasicEdgeRadius": {
+    "file": "PCGExGraphs/Public/Graphs/PCGExGraphDetails.h",
+    "value_count": 10
+  },
+  "EPCGExIntersectionType": {
+    "file": "PCGExGraphs/Public/Graphs/PCGExGraphMetadata.h",
+    "value_count": 8
+  },
+  "EPCGExAttributeHeuristicInputMode": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicAttribute.h",
+    "value_count": 6
+  },
+  "EPCGExGradientMode": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicGradient.h",
+    "value_count": 8
+  },
+  "EPCGExMatchByIndexSource": {
+    "file": "PCGExMatching/Public/Matching/PCGExMatchByIndex.h",
+    "value_count": 4
+  },
+  "EPCGExMatchOverlapExpansionMode": {
+    "file": "PCGExMatching/Public/Matching/PCGExMatchOverlap.h",
+    "value_count": 6
+  },
+  "EPCGExTagMatchMode": {
+    "file": "PCGExMatching/Public/Matching/PCGExMatchSharedTag.h",
+    "value_count": 6
+  },
+  "EPCGExMapMatchMode": {
+    "file": "PCGExMatching/Public/PCGExMatchingCommon.h",
+    "value_count": 6
+  },
+  "EPCGExMatchStrictness": {
+    "file": "PCGExMatching/Public/PCGExMatchingCommon.h",
+    "value_count": 15
+  },
+  "EPCGExClusterComponentTagMatchMode": {
+    "file": "PCGExMatching/Public/PCGExMatchingCommon.h",
+    "value_count": 15
+  },
+  "EPCGExMatchingDetailsUsage": {
+    "file": "PCGExMatching/Public/PCGExMatchingCommon.h",
+    "value_count": 3
+  },
+  "EPCGExNoiseBlendMode": {
+    "file": "PCGExNoise3D/Public/Core/PCGExNoise3DCommon.h",
+    "value_count": 40
+  },
+  "EPCGExNoiseInPlaceMode": {
+    "file": "PCGExNoise3D/Public/Core/PCGExNoise3DCommon.h",
+    "value_count": 16
+  },
+  "EPCGExContrastCurve": {
+    "file": "PCGExNoise3D/Public/Core/PCGExNoise3DCommon.h",
+    "value_count": 13
+  },
+  "EPCGExFBMVariant": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseFBM.h",
+    "value_count": 15
+  },
+  "EPCGExMarbleDirection": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseMarble.h",
+    "value_count": 12
+  },
+  "EPCGExSpotsShape": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseSpots.h",
+    "value_count": 15
+  },
+  "EPCGExVoronoiOutput": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseVoronoi.h",
+    "value_count": 12
+  },
+  "EPCGExWorleyDistanceFunc": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseWorley.h",
+    "value_count": 12
+  },
+  "EPCGExWorleyReturnType": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseWorley.h",
+    "value_count": 18
+  }
+}

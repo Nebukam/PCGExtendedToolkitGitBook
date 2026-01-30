@@ -1,0 +1,465 @@
+{
+  "path": "PCGExFoundations/Public/Elements/Utils/PCGExMergePointsByTag.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExMergeByTagOverlapResolutionMode",
+      "values": [
+        {
+          "name": "Strict",
+          "display_name": "Strict"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "and",
+          "display_name": "and"
+        },
+        {
+          "name": "higher",
+          "display_name": "higher"
+        },
+        {
+          "name": "priority",
+          "display_name": "priority"
+        },
+        {
+          "name": "tags",
+          "display_name": "tags"
+        },
+        {
+          "name": "are",
+          "display_name": "are"
+        },
+        {
+          "name": "removed",
+          "display_name": "removed"
+        },
+        {
+          "name": "from",
+          "display_name": "from"
+        },
+        {
+          "name": "lower",
+          "display_name": "lower"
+        },
+        {
+          "name": "priority",
+          "display_name": "priority"
+        },
+        {
+          "name": "overlaps",
+          "display_name": "overlaps"
+        },
+        {
+          "name": "ImmediateOverlap",
+          "display_name": "ImmediateOverlap"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "overlapping",
+          "display_name": "overlapping"
+        },
+        {
+          "name": "data",
+          "display_name": "data"
+        },
+        {
+          "name": "is",
+          "display_name": "is"
+        },
+        {
+          "name": "merged",
+          "display_name": "merged"
+        },
+        {
+          "name": "entirely",
+          "display_name": "entirely"
+        },
+        {
+          "name": "Flatten",
+          "display_name": "Flatten"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExMergeByTagFallbackBehavior",
+      "values": [
+        {
+          "name": "Omit",
+          "display_name": "Omit"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Merge",
+          "display_name": "Merge"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Forward",
+          "display_name": "Forward"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExMergePointsByTagSettings",
+      "display_name": "Merge Points by Tag",
+      "description": "Merge points based on shared tags.",
+      "base_class": "UPCGExPointsProcessorSettings",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", Hidden, meta=(PCGExNodeLibraryDoc=\"misc/merge-points-by-tag\")",
+      "uproperties": [
+        {
+          "name": "Mode",
+          "display_name": "Mode",
+          "type": "EPCGExMergeByTagOverlapResolutionMode",
+          "default": "EPCGExMergeByTagOverlapResolutionMode::Strict",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SortDirection",
+          "display_name": "SortDirection",
+          "type": "EPCGExSortDirection",
+          "default": "EPCGExSortDirection::Descending",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExMergeByTagOverlapResolutionMode::Flatten",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "FallbackBehavior",
+          "display_name": "FallbackBehavior",
+          "type": "EPCGExMergeByTagFallbackBehavior",
+          "default": "EPCGExMergeByTagFallbackBehavior::Omit",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExMergeByTagOverlapResolutionMode::Flatten",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "TagFilters",
+          "display_name": "TagFilters",
+          "type": "FPCGExNameFiltersDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ResolutionPriorities",
+          "display_name": "ResolutionPriorities",
+          "type": "TArray<FString>",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CarryOverDetails",
+          "display_name": "Carry Over Settings",
+          "type": "FPCGExCarryOverDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "node_settings",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "BulkInitData",
+          "display_name": "BulkInitData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CacheData",
+          "display_name": "CacheData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScopedAttributeGet",
+          "display_name": "ScopedAttributeGet",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bFlattenOutput",
+          "display_name": "bFlattenOutput",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bCleanupConsumableAttributes",
+          "display_name": "bCleanupConsumableAttributes",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedProtectedAttributesName",
+          "display_name": "Protected Attributes",
+          "type": "FString",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "ProtectedAttributes",
+          "display_name": "Protected Attributes",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bPropagateAbortedExecution",
+          "display_name": "bPropagateAbortedExecution",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietInvalidInputWarning",
+          "display_name": "bQuietInvalidInputWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietMissingInputError",
+          "display_name": "bQuietMissingInputError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietCancellationError",
+          "display_name": "bQuietCancellationError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "Mode",
+          "display_name": "Mode",
+          "type": "EPCGExMergeByTagOverlapResolutionMode",
+          "default": "EPCGExMergeByTagOverlapResolutionMode::Strict",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SortDirection",
+          "display_name": "SortDirection",
+          "type": "EPCGExSortDirection",
+          "default": "EPCGExSortDirection::Descending",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExMergeByTagOverlapResolutionMode::Flatten",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "FallbackBehavior",
+          "display_name": "FallbackBehavior",
+          "type": "EPCGExMergeByTagFallbackBehavior",
+          "default": "EPCGExMergeByTagFallbackBehavior::Omit",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExMergeByTagOverlapResolutionMode::Flatten",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "TagFilters",
+          "display_name": "TagFilters",
+          "type": "FPCGExNameFiltersDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ResolutionPriorities",
+          "display_name": "ResolutionPriorities",
+          "type": "TArray<FString>",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CarryOverDetails",
+          "display_name": "Carry Over Settings",
+          "type": "FPCGExCarryOverDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExMergePointsByTagElement",
+      "base_class": "FPCGExPointsProcessorElement"
+    }
+  ],
+  "namespaces": {}
+}

@@ -1,0 +1,15 @@
+{
+  "path": "PCGExCollections/Public/PCGExCollections.h",
+  "module": "PCGExCollections",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExCollectionsModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

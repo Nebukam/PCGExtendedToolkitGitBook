@@ -1,0 +1,83 @@
+{
+  "path": "PCGExCore/Public/Math/PCGExWinding.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExWinding",
+      "values": [
+        {
+          "name": "Clockwise",
+          "display_name": "Clockwise"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "CounterClockwise",
+          "display_name": "CounterClockwise"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExWindingMutation",
+      "values": [
+        {
+          "name": "Unchanged",
+          "display_name": "Unchanged"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Clockwise",
+          "display_name": "Clockwise"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "CounterClockwise",
+          "display_name": "CounterClockwise"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

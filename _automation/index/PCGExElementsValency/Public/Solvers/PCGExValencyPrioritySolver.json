@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsValency/Public/Solvers/PCGExValencyPrioritySolver.h",
+  "module": "PCGExElementsValency",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExValencyPrioritySolver",
+      "base_class": "FPCGExValencySolverOperation"
+    }
+  ],
+  "namespaces": {}
+}

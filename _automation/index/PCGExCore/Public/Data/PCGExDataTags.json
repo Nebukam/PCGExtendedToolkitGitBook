@@ -1,0 +1,65 @@
+{
+  "path": "PCGExCore/Public/Data/PCGExDataTags.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExSupportedTagValue",
+      "values": [
+        {
+          "name": "Integer",
+          "display_name": "Integer"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "FloatingPoint",
+          "display_name": "FloatingPoint"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "String",
+          "display_name": "String"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Vector2",
+          "display_name": "Vector2"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Vector",
+          "display_name": "Vector"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Vector4",
+          "display_name": "Vector4"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

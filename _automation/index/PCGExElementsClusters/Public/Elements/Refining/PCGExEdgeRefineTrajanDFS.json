@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsClusters/Public/Elements/Refining/PCGExEdgeRefineTrajanDFS.h",
+  "module": "PCGExElementsClusters",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExEdgeRefineTrajanDFS",
+      "base_class": "FPCGExEdgeRefineOperation"
+    }
+  ],
+  "namespaces": {}
+}

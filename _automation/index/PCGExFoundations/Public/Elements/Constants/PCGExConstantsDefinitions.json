@@ -1,0 +1,243 @@
+{
+  "path": "PCGExFoundations/Public/Elements/Constants/PCGExConstantsDefinitions.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExConstantListID",
+      "values": [
+        {
+          "name": "Numeric",
+          "display_name": "Numeric"
+        },
+        {
+          "name": "constants",
+          "display_name": "constants"
+        },
+        {
+          "name": "These",
+          "display_name": "These"
+        },
+        {
+          "name": "go",
+          "display_name": "go"
+        },
+        {
+          "name": "before",
+          "display_name": "before"
+        },
+        {
+          "name": "the",
+          "display_name": "the"
+        },
+        {
+          "name": "others",
+          "display_name": "others"
+        },
+        {
+          "name": "as",
+          "display_name": "as"
+        },
+        {
+          "name": "there",
+          "display_name": "there"
+        },
+        {
+          "name": "s",
+          "display_name": "s"
+        },
+        {
+          "name": "more",
+          "display_name": "more"
+        },
+        {
+          "name": "of",
+          "display_name": "of"
+        },
+        {
+          "name": "them",
+          "display_name": "them"
+        },
+        {
+          "name": "and",
+          "display_name": "and"
+        },
+        {
+          "name": "that",
+          "display_name": "that"
+        },
+        {
+          "name": "way",
+          "display_name": "way"
+        },
+        {
+          "name": "we",
+          "display_name": "we"
+        },
+        {
+          "name": "can",
+          "display_name": "can"
+        },
+        {
+          "name": "just",
+          "display_name": "just"
+        },
+        {
+          "name": "access",
+          "display_name": "access"
+        },
+        {
+          "name": "them",
+          "display_name": "them"
+        },
+        {
+          "name": "by",
+          "display_name": "by"
+        },
+        {
+          "name": "index",
+          "display_name": "index"
+        },
+        {
+          "name": "ZeroAndOne",
+          "display_name": "ZeroAndOne"
+        },
+        {
+          "name": "MinusOne",
+          "display_name": "MinusOne"
+        },
+        {
+          "name": "Twos",
+          "display_name": "Twos"
+        },
+        {
+          "name": "Tens",
+          "display_name": "Tens"
+        },
+        {
+          "name": "Irrationals",
+          "display_name": "Irrationals"
+        },
+        {
+          "name": "Angles",
+          "display_name": "Angles"
+        },
+        {
+          "name": "Zero",
+          "display_name": "Zero"
+        },
+        {
+          "name": "One",
+          "display_name": "One"
+        },
+        {
+          "name": "Vectors",
+          "display_name": "Vectors"
+        },
+        {
+          "name": "Vectors",
+          "display_name": "Vectors"
+        },
+        {
+          "name": "Booleans",
+          "display_name": "Booleans"
+        },
+        {
+          "name": "Booleans",
+          "display_name": "Booleans"
+        },
+        {
+          "name": "TrueBool",
+          "display_name": "TrueBool"
+        },
+        {
+          "name": "FalseBool",
+          "display_name": "FalseBool"
+        },
+        {
+          "name": "MAX_BOOL",
+          "display_name": "MAX_BOOL"
+        },
+        {
+          "name": "Additional",
+          "display_name": "Additional"
+        },
+        {
+          "name": "vectors",
+          "display_name": "vectors"
+        },
+        {
+          "name": "ADDITIONAL_VECTORS",
+          "display_name": "ADDITIONAL_VECTORS"
+        },
+        {
+          "name": "OneVector",
+          "display_name": "OneVector"
+        },
+        {
+          "name": "ZeroVector",
+          "display_name": "ZeroVector"
+        },
+        {
+          "name": "HalfVector",
+          "display_name": "HalfVector"
+        },
+        {
+          "name": "UpVector",
+          "display_name": "UpVector"
+        },
+        {
+          "name": "RightVector",
+          "display_name": "RightVector"
+        },
+        {
+          "name": "ForwardVector",
+          "display_name": "ForwardVector"
+        },
+        {
+          "name": "Additional",
+          "display_name": "Additional"
+        },
+        {
+          "name": "numerics",
+          "display_name": "numerics"
+        },
+        {
+          "name": "ADDITIONAL_NUMERICS",
+          "display_name": "ADDITIONAL_NUMERICS"
+        },
+        {
+          "name": "Two",
+          "display_name": "Two"
+        },
+        {
+          "name": "Half",
+          "display_name": "Half"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExConstantType",
+      "values": [
+        {
+          "name": "Number",
+          "display_name": "Number"
+        },
+        {
+          "name": "Vector",
+          "display_name": "Vector"
+        },
+        {
+          "name": "Bool",
+          "display_name": "Bool"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

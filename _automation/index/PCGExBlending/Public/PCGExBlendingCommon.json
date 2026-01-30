@@ -1,0 +1,1115 @@
+{
+  "path": "PCGExBlending/Public/PCGExBlendingCommon.h",
+  "module": "PCGExBlending",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExBlendingType",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "keep",
+          "display_name": "keep"
+        },
+        {
+          "name": "the",
+          "display_name": "the"
+        },
+        {
+          "name": "original",
+          "display_name": "original"
+        },
+        {
+          "name": "value",
+          "display_name": "value"
+        },
+        {
+          "name": "Average",
+          "display_name": "Average"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Weight",
+          "display_name": "Weight"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "try",
+          "display_name": "try"
+        },
+        {
+          "name": "Lerp",
+          "display_name": "Lerp"
+        },
+        {
+          "name": "instead",
+          "display_name": "instead"
+        },
+        {
+          "name": "Min",
+          "display_name": "Min"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Max",
+          "display_name": "Max"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Copy",
+          "display_name": "Copy"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Sum",
+          "display_name": "Sum"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "WeightedSum",
+          "display_name": "WeightedSum"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "weighted",
+          "display_name": "weighted"
+        },
+        {
+          "name": "Lerp",
+          "display_name": "Lerp"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "try",
+          "display_name": "try"
+        },
+        {
+          "name": "Weight",
+          "display_name": "Weight"
+        },
+        {
+          "name": "instead",
+          "display_name": "instead"
+        },
+        {
+          "name": "Subtract",
+          "display_name": "Subtract"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "UnsignedMin",
+          "display_name": "UnsignedMin"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "but",
+          "display_name": "but"
+        },
+        {
+          "name": "keeps",
+          "display_name": "keeps"
+        },
+        {
+          "name": "the",
+          "display_name": "the"
+        },
+        {
+          "name": "sign",
+          "display_name": "sign"
+        },
+        {
+          "name": "on",
+          "display_name": "on"
+        },
+        {
+          "name": "written",
+          "display_name": "written"
+        },
+        {
+          "name": "data",
+          "display_name": "data"
+        },
+        {
+          "name": "UnsignedMax",
+          "display_name": "UnsignedMax"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "but",
+          "display_name": "but"
+        },
+        {
+          "name": "keeps",
+          "display_name": "keeps"
+        },
+        {
+          "name": "the",
+          "display_name": "the"
+        },
+        {
+          "name": "sign",
+          "display_name": "sign"
+        },
+        {
+          "name": "on",
+          "display_name": "on"
+        },
+        {
+          "name": "written",
+          "display_name": "written"
+        },
+        {
+          "name": "data",
+          "display_name": "data"
+        },
+        {
+          "name": "AbsoluteMin",
+          "display_name": "AbsoluteMin"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "AbsoluteMax",
+          "display_name": "AbsoluteMax"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "WeightedSubtract",
+          "display_name": "WeightedSubtract"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "weighted",
+          "display_name": "weighted"
+        },
+        {
+          "name": "CopyOther",
+          "display_name": "CopyOther"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Hash",
+          "display_name": "Hash"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "UnsignedHash",
+          "display_name": "UnsignedHash"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "WeightNormalize",
+          "display_name": "WeightNormalize"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Unset",
+          "display_name": "Unset"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExABBlendingType",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "keep",
+          "display_name": "keep"
+        },
+        {
+          "name": "the",
+          "display_name": "the"
+        },
+        {
+          "name": "original",
+          "display_name": "original"
+        },
+        {
+          "name": "value",
+          "display_name": "value"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Average",
+          "display_name": "Average"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "SearchHints",
+          "display_name": "SearchHints"
+        },
+        {
+          "name": "Weight",
+          "display_name": "Weight"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "SearchHints",
+          "display_name": "SearchHints"
+        },
+        {
+          "name": "Multiply",
+          "display_name": "Multiply"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "SearchHints",
+          "display_name": "SearchHints"
+        },
+        {
+          "name": "Divide",
+          "display_name": "Divide"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "SearchHints",
+          "display_name": "SearchHints"
+        },
+        {
+          "name": "Min",
+          "display_name": "Min"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "B",
+          "display_name": "B"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Max",
+          "display_name": "Max"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "B",
+          "display_name": "B"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "CopyTarget",
+          "display_name": "CopyTarget"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "CopySource",
+          "display_name": "CopySource"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Add",
+          "display_name": "Add"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "SearchHints",
+          "display_name": "SearchHints"
+        },
+        {
+          "name": "Subtract",
+          "display_name": "Subtract"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "SearchHints",
+          "display_name": "SearchHints"
+        },
+        {
+          "name": "WeightedAdd",
+          "display_name": "WeightedAdd"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "WeightedSubtract",
+          "display_name": "WeightedSubtract"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Lerp",
+          "display_name": "Lerp"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "B",
+          "display_name": "B"
+        },
+        {
+          "name": "Weight",
+          "display_name": "Weight"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "UnsignedMin",
+          "display_name": "UnsignedMin"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "B",
+          "display_name": "B"
+        },
+        {
+          "name": "Sign",
+          "display_name": "Sign"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "UnsignedMax",
+          "display_name": "UnsignedMax"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "B",
+          "display_name": "B"
+        },
+        {
+          "name": "Sign",
+          "display_name": "Sign"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "AbsoluteMin",
+          "display_name": "AbsoluteMin"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "B",
+          "display_name": "B"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "AbsoluteMax",
+          "display_name": "AbsoluteMax"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "B",
+          "display_name": "B"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Hash",
+          "display_name": "Hash"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "B",
+          "display_name": "B"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "UnsignedHash",
+          "display_name": "UnsignedHash"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "B",
+          "display_name": "B"
+        },
+        {
+          "name": "Max",
+          "display_name": "Max"
+        },
+        {
+          "name": "A",
+          "display_name": "A"
+        },
+        {
+          "name": "B",
+          "display_name": "B"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Mod",
+          "display_name": "Mod"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "cast",
+          "display_name": "cast"
+        },
+        {
+          "name": "B",
+          "display_name": "B"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "SearchHints",
+          "display_name": "SearchHints"
+        },
+        {
+          "name": "ModCW",
+          "display_name": "ModCW"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "B",
+          "display_name": "B"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "SearchHints",
+          "display_name": "SearchHints"
+        },
+        {
+          "name": "WeightNormalize",
+          "display_name": "WeightNormalize"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "SearchHints",
+          "display_name": "SearchHints"
+        },
+        {
+          "name": "GeometricMean",
+          "display_name": "GeometricMean"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "1",
+          "display_name": "1"
+        },
+        {
+          "name": "Count",
+          "display_name": "Count"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "SearchHints",
+          "display_name": "SearchHints"
+        },
+        {
+          "name": "HarmonicMean",
+          "display_name": "HarmonicMean"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "SearchHints",
+          "display_name": "SearchHints"
+        },
+        {
+          "name": "RMS",
+          "display_name": "RMS"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "SearchHints",
+          "display_name": "SearchHints"
+        },
+        {
+          "name": "Step",
+          "display_name": "Step"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "SearchHints",
+          "display_name": "SearchHints"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExBlendOver",
+      "values": [
+        {
+          "name": "Distance",
+          "display_name": "Distance"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Index",
+          "display_name": "Index"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Fixed",
+          "display_name": "Fixed"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExBlendingInterface",
+      "values": [
+        {
+          "name": "Individual",
+          "display_name": "Individual"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Monolithic",
+          "display_name": "Monolithic"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "or",
+          "display_name": "or"
+        },
+        {
+          "name": "only",
+          "display_name": "only"
+        },
+        {
+          "name": "select",
+          "display_name": "select"
+        },
+        {
+          "name": "things",
+          "display_name": "things"
+        },
+        {
+          "name": "to",
+          "display_name": "to"
+        },
+        {
+          "name": "leave",
+          "display_name": "leave"
+        },
+        {
+          "name": "out",
+          "display_name": "out"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExOperandSource",
+      "values": [
+        {
+          "name": "Constant",
+          "display_name": "Constant"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "user",
+          "display_name": "user"
+        },
+        {
+          "name": "defined",
+          "display_name": "defined"
+        },
+        {
+          "name": "value",
+          "display_name": "value"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Attribute",
+          "display_name": "Attribute"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExOperandAuthority",
+      "values": [
+        {
+          "name": "A",
+          "display_name": "A"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "thus",
+          "display_name": "thus"
+        },
+        {
+          "name": "converting",
+          "display_name": "converting"
+        },
+        {
+          "name": "operand",
+          "display_name": "operand"
+        },
+        {
+          "name": "B",
+          "display_name": "B"
+        },
+        {
+          "name": "to",
+          "display_name": "to"
+        },
+        {
+          "name": "the",
+          "display_name": "the"
+        },
+        {
+          "name": "same",
+          "display_name": "same"
+        },
+        {
+          "name": "type",
+          "display_name": "type"
+        },
+        {
+          "name": "for",
+          "display_name": "for"
+        },
+        {
+          "name": "the",
+          "display_name": "the"
+        },
+        {
+          "name": "operation",
+          "display_name": "operation"
+        },
+        {
+          "name": "B",
+          "display_name": "B"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "thus",
+          "display_name": "thus"
+        },
+        {
+          "name": "converting",
+          "display_name": "converting"
+        },
+        {
+          "name": "operand",
+          "display_name": "operand"
+        },
+        {
+          "name": "A",
+          "display_name": "A"
+        },
+        {
+          "name": "to",
+          "display_name": "to"
+        },
+        {
+          "name": "the",
+          "display_name": "the"
+        },
+        {
+          "name": "same",
+          "display_name": "same"
+        },
+        {
+          "name": "type",
+          "display_name": "type"
+        },
+        {
+          "name": "for",
+          "display_name": "for"
+        },
+        {
+          "name": "the",
+          "display_name": "the"
+        },
+        {
+          "name": "operation",
+          "display_name": "operation"
+        },
+        {
+          "name": "Custom",
+          "display_name": "Custom"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Auto",
+          "display_name": "Auto"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "but",
+          "display_name": "but"
+        },
+        {
+          "name": "not",
+          "display_name": "not"
+        },
+        {
+          "name": "fool",
+          "display_name": "fool"
+        },
+        {
+          "name": "proof",
+          "display_name": "proof"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExBlendOpOutputMode",
+      "values": [
+        {
+          "name": "SameAsA",
+          "display_name": "SameAsA"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "SameAsB",
+          "display_name": "SameAsB"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "New",
+          "display_name": "New"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Transient",
+          "display_name": "Transient"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "but",
+          "display_name": "but"
+        },
+        {
+          "name": "can",
+          "display_name": "can"
+        },
+        {
+          "name": "be",
+          "display_name": "be"
+        },
+        {
+          "name": "referenced",
+          "display_name": "referenced"
+        },
+        {
+          "name": "by",
+          "display_name": "by"
+        },
+        {
+          "name": "other",
+          "display_name": "other"
+        },
+        {
+          "name": "blend",
+          "display_name": "blend"
+        },
+        {
+          "name": "ops",
+          "display_name": "ops"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {
+    "PCGExBlending": {
+      "SourceOverridesBlendingOps": "Overrides : Blending",
+      "SourceBlendingLabel": "Blend Ops",
+      "OutputBlendingLabel": "Blend Op"
+    }
+  }
+}

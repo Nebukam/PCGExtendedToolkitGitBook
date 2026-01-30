@@ -1,0 +1,15 @@
+{
+  "path": "PCGExCollectionsEditor/Public/Details/Collections/PCGExFittingVariationsCustomization.h",
+  "module": "PCGExCollectionsEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExFittingVariationsCustomization",
+      "base_class": "IPropertyTypeCustomization"
+    }
+  ],
+  "namespaces": {}
+}

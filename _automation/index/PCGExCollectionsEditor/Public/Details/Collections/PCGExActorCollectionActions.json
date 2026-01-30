@@ -1,0 +1,15 @@
+{
+  "path": "PCGExCollectionsEditor/Public/Details/Collections/PCGExActorCollectionActions.h",
+  "module": "PCGExCollectionsEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExActorCollectionActions",
+      "base_class": "FAssetTypeActions_Base"
+    }
+  ],
+  "namespaces": {}
+}

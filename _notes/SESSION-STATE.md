@@ -13,37 +13,36 @@ DOCUMENTATION - Node Library modules (Clusters in progress)
 - SAMPLING: 13/13 nodes + texture-sampling subfolder (3 nodes + tex-param sub-node) + README
 
 ## In Progress
-- CLUSTERS: 14/22 nodes + README + intersection-details + refine-edges subfolder + relax-clusters subfolder
-  - README.md (category overview)
-  - Shared: intersection-details.md (Point/Point, Point/Edge, Edge/Edge intersection structs)
-  - Diagrams: delaunay-3d, delaunay-2d, voronoi-3d, voronoi-2d, convex-hull-3d (5 nodes)
-  - Operations: fuse-clusters, sanitize-clusters (2 nodes)
-  - Path Conversion: break-to-paths, path-to-clusters (2 nodes)
-  - Utility: mesh-to-clusters (1 node)
-  - Refine Edges subfolder (1 parent node + 10 sub-operation pages):
-    - README.md (parent Cluster : Refine node)
-    - mst-prim.md, gabriel.md, skeleton.md (spatial tests)
-    - line-trace.md, overlap.md (collision-based)
-    - edge-length.md (4 length operations combined)
-    - edge-score.md (4 score operations combined)
-    - remove-leaves.md (2 leaf removal operations combined)
-    - dfs-tarjan.md (bridge edge detection)
-    - filter.md (edge filter-based)
-  - Relax Clusters subfolder (1 parent node + 5 sub-operation pages):
-    - README.md (parent Cluster : Relax node)
-    - laplacian.md (Laplacian/Poisson smoothing)
-    - force-directed.md (spring-charge system)
-    - verlet.md (physics with gravity/friction)
-    - box-fitting.md (Box Fitting v1 and v2)
-    - radius-fitting.md (spherical collision)
+- CLUSTERS: Reorganized into category folders
+  - diagrams/ - 5 nodes documented (delaunay-3d, delaunay-2d, voronoi-3d, voronoi-2d, convex-hull-3d)
+  - operations/ - 2 nodes documented (fuse-clusters, sanitize-clusters), 7 pending
+  - refine-edges/ - 1 parent node + 10 sub-operation pages
+  - relax-clusters/ - 1 parent node + 5 sub-operation pages
+  - path-conversion/ - 2 nodes documented (break-to-paths, path-to-clusters), 1 pending
+  - properties/ - 3 nodes pending (vtx-properties, edge-properties, sample-neighbors)
+  - selection/ - 4 nodes pending
+  - utility/ - 1 node documented (mesh-to-clusters), 4 pending
+  - shared-settings/ - intersection-details.md documented
 
-## Remaining Clusters Nodes (8 nodes)
+## Remaining Clusters Nodes (~18 nodes)
+### Operations (7 pending)
 - connect-clusters, merge-vertices, simplify-clusters, subdivide-edges
 - make-unique, pack-clusters, unpack-clusters
-- sample-neighbors
+
+### Properties (3 pending)
+- vtx-properties, edge-properties, sample-neighbors
+
+### Selection (4 pending)
+- filter-vtx, pick-closest, find-clusters, find-on-bounds
+
+### Utility (4 pending)
+- build-custom-graph, copy-to-points, partition-vtx, centrality
+
+### Path Conversion (1 pending)
+- cut-clusters
 
 ## Pending Modules (Node Library)
-- Clusters (8 remaining nodes)
+- Clusters (18 remaining nodes)
 - Meta (12 nodes)
 - Spatial (8 nodes)
 - Topology (5 nodes)
@@ -65,6 +64,8 @@ DOCUMENTATION - Node Library modules (Clusters in progress)
 5. Sub-node factories get their own documentation (e.g., tex-param.md)
 6. Complex shared structs get their own pages (e.g., intersection-details.md)
 7. Sub-operations in parent nodes become subfolders with individual pages (e.g., refine-edges/, relax-clusters/)
+8. Category folders get README.md files explaining the category
+9. Misc/hard-to-categorize nodes stay in the root folder
 
 ## Paths
 SRC=D:\GIT\PCGExWorkbench\Plugins\PCGExtendedToolkit\Source
@@ -97,21 +98,21 @@ sampling/
     └── get-texture-data.md
 ```
 
-## Clusters Module Structure (In Progress)
+## Clusters Module Structure (Reorganized)
 ```
 clusters/
-├── README.md
-├── intersection-details.md (shared structs for fusion nodes)
-├── delaunay-3d.md
-├── delaunay-2d.md
-├── voronoi-3d.md
-├── voronoi-2d.md
-├── convex-hull-3d.md
-├── fuse-clusters.md
-├── sanitize-clusters.md
-├── break-to-paths.md
-├── path-to-clusters.md
-├── mesh-to-clusters.md
+├── README.md (category overview with links to subfolders)
+├── diagrams/
+│   ├── README.md
+│   ├── delaunay-3d.md
+│   ├── delaunay-2d.md
+│   ├── voronoi-3d.md
+│   ├── voronoi-2d.md
+│   └── convex-hull-3d.md
+├── operations/
+│   ├── README.md
+│   ├── fuse-clusters.md
+│   └── sanitize-clusters.md
 ├── refine-edges/
 │   ├── README.md (parent Cluster : Refine node)
 │   ├── mst-prim.md
@@ -119,16 +120,30 @@ clusters/
 │   ├── skeleton.md
 │   ├── line-trace.md
 │   ├── overlap.md
-│   ├── edge-length.md (Keep/Remove Shortest/Longest)
-│   ├── edge-score.md (Keep/Remove Highest/Lowest Score)
-│   ├── remove-leaves.md (Remove Leaves + Recursive)
+│   ├── edge-length.md
+│   ├── edge-score.md
+│   ├── remove-leaves.md
 │   ├── dfs-tarjan.md
 │   └── filter.md
-└── relax-clusters/
-    ├── README.md (parent Cluster : Relax node)
-    ├── laplacian.md
-    ├── force-directed.md
-    ├── verlet.md
-    ├── box-fitting.md (v1 and v2)
-    └── radius-fitting.md
+├── relax-clusters/
+│   ├── README.md (parent Cluster : Relax node)
+│   ├── laplacian.md
+│   ├── force-directed.md
+│   ├── verlet.md
+│   ├── box-fitting.md
+│   └── radius-fitting.md
+├── path-conversion/
+│   ├── README.md
+│   ├── path-to-clusters.md
+│   └── break-to-paths.md
+├── properties/
+│   └── README.md (placeholder)
+├── selection/
+│   └── README.md (placeholder)
+├── utility/
+│   ├── README.md
+│   └── mesh-to-clusters.md
+└── shared-settings/
+    ├── README.md
+    └── intersection-details.md
 ```

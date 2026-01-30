@@ -1,0 +1,84 @@
+{
+  "path": "PCGExCore/Public/Data/External/PCGExMeshImportDetails.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExGeoMeshImportDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bImportVertexColor",
+          "display_name": "bImportVertexColor",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bImportUVs",
+          "display_name": "bImportUVs",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "UVChannels",
+          "display_name": " ├─ UV Channels Mapping",
+          "type": "TMap<FName, int32>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bImportUVs",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bCreatePlaceholders",
+          "display_name": " ├─ Create placeholders",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bImportUVs",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Placeholder",
+          "display_name": " └─ Placeholder Value",
+          "type": "FVector2D",
+          "default": "FVector2D(0, 0)",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bImportUVs && bCreatePlaceholders",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

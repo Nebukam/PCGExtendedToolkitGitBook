@@ -1,0 +1,23 @@
+{
+  "path": "PCGExFoundationsEditor/Public/Details/Bitmask/PCGExBitmaskCustomization.h",
+  "module": "PCGExFoundationsEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExBitmaskCustomization",
+      "base_class": "IPropertyTypeCustomization"
+    },
+    {
+      "name": "FPCGExBitmaskWithOperationCustomization",
+      "base_class": "FPCGExBitmaskCustomization"
+    },
+    {
+      "name": "FPCGExBitmaskFilterConfigCustomization",
+      "base_class": "FPCGExBitmaskCustomization"
+    }
+  ],
+  "namespaces": {}
+}

@@ -1,0 +1,71 @@
+{
+  "path": "PCGExCore/Public/Details/PCGExAttachmentRules.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExAttachmentRules",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "LocationRule",
+          "display_name": "LocationRule",
+          "type": "EAttachmentRule",
+          "default": "EAttachmentRule::KeepWorld",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "RotationRule",
+          "display_name": "RotationRule",
+          "type": "EAttachmentRule",
+          "default": "EAttachmentRule::KeepWorld",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScaleRule",
+          "display_name": "ScaleRule",
+          "type": "EAttachmentRule",
+          "default": "EAttachmentRule::KeepWorld",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWeldSimulatedBodies",
+          "display_name": "bWeldSimulatedBodies",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

@@ -1,0 +1,18 @@
+{
+  "path": "PCGExCore/Public/Utils/PCGExDefaultValueContainer.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExDefaultValueContainer",
+      "base_class": null,
+      "uproperties": [],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

@@ -1,0 +1,85 @@
+{
+  "path": "PCGExElementsShapes/Public/Core/PCGExShapesCommon.h",
+  "module": "PCGExElementsShapes",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExShapeOutputMode",
+      "values": [
+        {
+          "name": "PerDataset",
+          "display_name": "PerDataset"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "PerSeed",
+          "display_name": "PerSeed"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "PerShape",
+          "display_name": "PerShape"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExShapeResolutionMode",
+      "values": [
+        {
+          "name": "Absolute",
+          "display_name": "Absolute"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Scaled",
+          "display_name": "Scaled"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExShapePointLookAt",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Seed",
+          "display_name": "Seed"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

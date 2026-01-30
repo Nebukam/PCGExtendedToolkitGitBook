@@ -1,0 +1,23 @@
+{
+  "path": "PCGExFoundationsEditor/Public/Details/InputSettings/PCGExCompareShorthandsCustomization.h",
+  "module": "PCGExFoundationsEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExCompareShorthandCustomization",
+      "base_class": "IPropertyTypeCustomization"
+    },
+    {
+      "name": "FPCGExCompareShorthandVectorCustomization",
+      "base_class": "FPCGExCompareShorthandCustomization"
+    },
+    {
+      "name": "FPCGExCompareShorthandRotatorCustomization",
+      "base_class": "FPCGExCompareShorthandCustomization"
+    }
+  ],
+  "namespaces": {}
+}

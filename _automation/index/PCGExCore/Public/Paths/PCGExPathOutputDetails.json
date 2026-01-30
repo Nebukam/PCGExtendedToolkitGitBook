@@ -1,0 +1,71 @@
+{
+  "path": "PCGExCore/Public/Paths/PCGExPathOutputDetails.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExPathOutputDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bRemoveSmallPaths",
+          "display_name": "bRemoveSmallPaths",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinPointCount",
+          "display_name": "MinPointCount",
+          "type": "int32",
+          "default": "3",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bRemoveSmallPaths",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bRemoveLargePaths",
+          "display_name": "bRemoveLargePaths",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxPointCount",
+          "display_name": "MaxPointCount",
+          "type": "int32",
+          "default": "500",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bRemoveLargePaths",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

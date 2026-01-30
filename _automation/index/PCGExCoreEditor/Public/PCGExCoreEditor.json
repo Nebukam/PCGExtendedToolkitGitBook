@@ -1,0 +1,15 @@
+{
+  "path": "PCGExCoreEditor/Public/PCGExCoreEditor.h",
+  "module": "PCGExCoreEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExCoreEditorModule",
+      "base_class": "IPCGExEditorModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

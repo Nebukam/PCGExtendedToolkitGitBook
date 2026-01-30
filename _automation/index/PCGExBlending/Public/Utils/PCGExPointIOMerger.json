@@ -1,0 +1,15 @@
+{
+  "path": "PCGExBlending/Public/Utils/PCGExPointIOMerger.h",
+  "module": "PCGExBlending",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExPointIOMerger",
+      "base_class": "TSharedFromThis"
+    }
+  ],
+  "namespaces": {}
+}

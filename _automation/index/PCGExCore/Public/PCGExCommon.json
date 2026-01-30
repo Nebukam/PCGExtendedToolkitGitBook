@@ -1,0 +1,314 @@
+{
+  "path": "PCGExCore/Public/PCGExCommon.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExOptionState",
+      "values": [
+        {
+          "name": "Default",
+          "display_name": "Default"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Enabled",
+          "display_name": "Enabled"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "if",
+          "display_name": "if"
+        },
+        {
+          "name": "supported",
+          "display_name": "supported"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Disabled",
+          "display_name": "Disabled"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "if",
+          "display_name": "if"
+        },
+        {
+          "name": "supported",
+          "display_name": "supported"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExExecutionPolicy",
+      "values": [
+        {
+          "name": "Default",
+          "display_name": "Default"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "NoPause",
+          "display_name": "NoPause"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "NoPauseButLoop",
+          "display_name": "NoPauseButLoop"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "NoPauseButTopLoop",
+          "display_name": "NoPauseButTopLoop"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "Ignored",
+          "display_name": "Ignored"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExPointBoundsSource",
+      "values": [
+        {
+          "name": "ScaledBounds",
+          "display_name": "ScaledBounds"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "DensityBounds",
+          "display_name": "DensityBounds"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Bounds",
+          "display_name": "Bounds"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Center",
+          "display_name": "Center"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExDistance",
+      "values": [
+        {
+          "name": "Center",
+          "display_name": "Center"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "SphereBounds",
+          "display_name": "SphereBounds"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "BoxBounds",
+          "display_name": "BoxBounds"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExDistanceType",
+      "values": [
+        {
+          "name": "Euclidian",
+          "display_name": "Euclidian"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Manhattan",
+          "display_name": "Manhattan"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Chebyshev",
+          "display_name": "Chebyshev"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExTransformMode",
+      "values": [
+        {
+          "name": "Absolute",
+          "display_name": "Absolute"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ignores",
+          "display_name": "ignores"
+        },
+        {
+          "name": "source",
+          "display_name": "source"
+        },
+        {
+          "name": "transform",
+          "display_name": "transform"
+        },
+        {
+          "name": "Relative",
+          "display_name": "Relative"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExResolutionMode",
+      "values": [
+        {
+          "name": "Distance",
+          "display_name": "Distance"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Fixed",
+          "display_name": "Fixed"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {
+    "Labels": {
+      "SourceSeedsLabel": "Seeds",
+      "SourceTargetsLabel": "Targets",
+      "SourceSourcesLabel": "Sources",
+      "SourceBoundsLabel": "Bounds",
+      "SourceDeformersLabel": "Deformers",
+      "OutputDiscardedLabel": "Discarded"
+    }
+  }
+}

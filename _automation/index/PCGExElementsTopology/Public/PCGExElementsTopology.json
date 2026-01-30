@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsTopology/Public/PCGExElementsTopology.h",
+  "module": "PCGExElementsTopology",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsTopologyModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

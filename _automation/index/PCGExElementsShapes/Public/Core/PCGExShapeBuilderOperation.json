@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsShapes/Public/Core/PCGExShapeBuilderOperation.h",
+  "module": "PCGExElementsShapes",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExShapeBuilderOperation",
+      "base_class": "FPCGExOperation"
+    }
+  ],
+  "namespaces": {}
+}

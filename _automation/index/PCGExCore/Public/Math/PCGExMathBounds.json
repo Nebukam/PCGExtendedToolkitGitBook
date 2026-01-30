@@ -1,0 +1,65 @@
+{
+  "path": "PCGExCore/Public/Math/PCGExMathBounds.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExBoxCheckMode",
+      "values": [
+        {
+          "name": "Box",
+          "display_name": "Box"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ExpandedBox",
+          "display_name": "ExpandedBox"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "Sphere",
+          "display_name": "Sphere"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ExpandedSphere",
+          "display_name": "ExpandedSphere"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "expanded",
+          "display_name": "expanded"
+        },
+        {
+          "name": "by",
+          "display_name": "by"
+        },
+        {
+          "name": "an",
+          "display_name": "an"
+        },
+        {
+          "name": "amount",
+          "display_name": "amount"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

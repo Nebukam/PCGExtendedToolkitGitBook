@@ -1,0 +1,18 @@
+{
+  "path": "PCGExCollections/Public/Core/PCGExAssetCollectionTypes.h",
+  "module": "PCGExCollections",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExCollectionTypeSet",
+      "base_class": null,
+      "uproperties": [],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

@@ -1,0 +1,638 @@
+{
+  "path": "PCGExElementsPaths/Public/Elements/PCGExSplitPath.h",
+  "module": "PCGExElementsPaths",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExPathSplitAction",
+      "values": [
+        {
+          "name": "Split",
+          "display_name": "Split"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "and",
+          "display_name": "and"
+        },
+        {
+          "name": "the",
+          "display_name": "the"
+        },
+        {
+          "name": "copy",
+          "display_name": "copy"
+        },
+        {
+          "name": "a",
+          "display_name": "a"
+        },
+        {
+          "name": "new",
+          "display_name": "new"
+        },
+        {
+          "name": "start",
+          "display_name": "start"
+        },
+        {
+          "name": "Remove",
+          "display_name": "Remove"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "shrinking",
+          "display_name": "shrinking"
+        },
+        {
+          "name": "both",
+          "display_name": "both"
+        },
+        {
+          "name": "the",
+          "display_name": "the"
+        },
+        {
+          "name": "previous",
+          "display_name": "previous"
+        },
+        {
+          "name": "and",
+          "display_name": "and"
+        },
+        {
+          "name": "next",
+          "display_name": "next"
+        },
+        {
+          "name": "paths",
+          "display_name": "paths"
+        },
+        {
+          "name": "Disconnect",
+          "display_name": "Disconnect"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "starting",
+          "display_name": "starting"
+        },
+        {
+          "name": "a",
+          "display_name": "a"
+        },
+        {
+          "name": "new",
+          "display_name": "new"
+        },
+        {
+          "name": "path",
+          "display_name": "path"
+        },
+        {
+          "name": "from",
+          "display_name": "from"
+        },
+        {
+          "name": "the",
+          "display_name": "the"
+        },
+        {
+          "name": "next",
+          "display_name": "next"
+        },
+        {
+          "name": "Partition",
+          "display_name": "Partition"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Switch",
+          "display_name": "Switch"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExPathSplitInitialValue",
+      "values": [
+        {
+          "name": "Constant",
+          "display_name": "Constant"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "ConstantPreserve",
+          "display_name": "ConstantPreserve"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "but",
+          "display_name": "but"
+        },
+        {
+          "name": "does",
+          "display_name": "does"
+        },
+        {
+          "name": "not",
+          "display_name": "not"
+        },
+        {
+          "name": "switch",
+          "display_name": "switch"
+        },
+        {
+          "name": "if",
+          "display_name": "if"
+        },
+        {
+          "name": "the",
+          "display_name": "the"
+        },
+        {
+          "name": "first",
+          "display_name": "first"
+        },
+        {
+          "name": "value",
+          "display_name": "value"
+        },
+        {
+          "name": "is",
+          "display_name": "is"
+        },
+        {
+          "name": "the",
+          "display_name": "the"
+        },
+        {
+          "name": "same",
+          "display_name": "same"
+        },
+        {
+          "name": "FromPoint",
+          "display_name": "FromPoint"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "FromPointPreserve",
+          "display_name": "FromPointPreserve"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "but",
+          "display_name": "but"
+        },
+        {
+          "name": "preserve",
+          "display_name": "preserve"
+        },
+        {
+          "name": "its",
+          "display_name": "its"
+        },
+        {
+          "name": "behavior",
+          "display_name": "behavior"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExSplitPathSettings",
+      "display_name": "Path : Split",
+      "description": "Split existing paths into multiple new paths.",
+      "base_class": "UPCGExPathProcessorSettings",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/split\")",
+      "uproperties": [
+        {
+          "name": "SplitAction",
+          "display_name": "SplitAction",
+          "type": "EPCGExPathSplitAction",
+          "default": "EPCGExPathSplitAction::Split",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "InitialBehavior",
+          "display_name": "InitialBehavior",
+          "type": "EPCGExPathSplitInitialValue",
+          "default": "EPCGExPathSplitInitialValue::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SplitAction == EPCGExPathSplitAction::Switch || SplitAction == EPCGExPathSplitAction::Partition",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bInclusive",
+          "display_name": "bInclusive",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SplitAction == EPCGExPathSplitAction::Switch || SplitAction == EPCGExPathSplitAction::Partition",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOmitSinglePointOutputs",
+          "display_name": "bOmitSinglePointOutputs",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bTagIfEvenSplit",
+          "display_name": "bTagIfEvenSplit",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Tagging",
+          "advanced": false
+        },
+        {
+          "name": "IsEvenTag",
+          "display_name": "IsEvenTag",
+          "type": "FString",
+          "default": "TEXT(\"EvenSplit\")",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bTagIfEvenSplit",
+          "edit_condition_hides": false,
+          "category": "Settings|Tagging",
+          "advanced": false
+        },
+        {
+          "name": "bTagIfOddSplit",
+          "display_name": "bTagIfOddSplit",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Tagging",
+          "advanced": false
+        },
+        {
+          "name": "IsOddTag",
+          "display_name": "IsOddTag",
+          "type": "FString",
+          "default": "TEXT(\"OddSplit\")",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bTagIfOddSplit",
+          "edit_condition_hides": false,
+          "category": "Settings|Tagging",
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "node_settings",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": true,
+      "point_filter_label": "PCGExSplitPath::SourceSplitFilters",
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "BulkInitData",
+          "display_name": "BulkInitData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CacheData",
+          "display_name": "CacheData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScopedAttributeGet",
+          "display_name": "ScopedAttributeGet",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bFlattenOutput",
+          "display_name": "bFlattenOutput",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bCleanupConsumableAttributes",
+          "display_name": "bCleanupConsumableAttributes",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedProtectedAttributesName",
+          "display_name": "Protected Attributes",
+          "type": "FString",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "ProtectedAttributes",
+          "display_name": "Protected Attributes",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bPropagateAbortedExecution",
+          "display_name": "bPropagateAbortedExecution",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietInvalidInputWarning",
+          "display_name": "bQuietInvalidInputWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietMissingInputError",
+          "display_name": "bQuietMissingInputError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietCancellationError",
+          "display_name": "bQuietCancellationError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bOmitInvalidPathsOutputs",
+          "display_name": "bOmitInvalidPathsOutputs",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "SplitAction",
+          "display_name": "SplitAction",
+          "type": "EPCGExPathSplitAction",
+          "default": "EPCGExPathSplitAction::Split",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "InitialBehavior",
+          "display_name": "InitialBehavior",
+          "type": "EPCGExPathSplitInitialValue",
+          "default": "EPCGExPathSplitInitialValue::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SplitAction == EPCGExPathSplitAction::Switch || SplitAction == EPCGExPathSplitAction::Partition",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bInclusive",
+          "display_name": "bInclusive",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SplitAction == EPCGExPathSplitAction::Switch || SplitAction == EPCGExPathSplitAction::Partition",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOmitSinglePointOutputs",
+          "display_name": "bOmitSinglePointOutputs",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bTagIfEvenSplit",
+          "display_name": "bTagIfEvenSplit",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Tagging",
+          "advanced": false
+        },
+        {
+          "name": "IsEvenTag",
+          "display_name": "IsEvenTag",
+          "type": "FString",
+          "default": "TEXT(\"EvenSplit\")",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bTagIfEvenSplit",
+          "edit_condition_hides": false,
+          "category": "Settings|Tagging",
+          "advanced": false
+        },
+        {
+          "name": "bTagIfOddSplit",
+          "display_name": "bTagIfOddSplit",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Tagging",
+          "advanced": false
+        },
+        {
+          "name": "IsOddTag",
+          "display_name": "IsOddTag",
+          "type": "FString",
+          "default": "TEXT(\"OddSplit\")",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bTagIfOddSplit",
+          "edit_condition_hides": false,
+          "category": "Settings|Tagging",
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExSplitPathElement",
+      "base_class": "FPCGExPathProcessorElement"
+    }
+  ],
+  "namespaces": {
+    "PCGExSplitPath": {
+      "SourceSplitFilters": "Split Conditions"
+    }
+  }
+}

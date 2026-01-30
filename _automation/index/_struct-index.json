@@ -1,0 +1,1757 @@
+{
+  "FPCGExAttributeBlendWeight": {
+    "file": "PCGExBlending/Public/Core/PCGExBlendOpFactory.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExAttributeBlendConfig": {
+    "file": "PCGExBlending/Public/Core/PCGExBlendOpFactory.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExAttributeBlendToTargetDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExBlendingDetails.h",
+    "base_class": "FPCGExAttributeSourceToTargetDetails",
+    "is_config": false
+  },
+  "FPCGExPointPropertyBlendingOverrides": {
+    "file": "PCGExBlending/Public/Details/PCGExBlendingDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExPropertiesBlendingDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExBlendingDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExBlendingDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExBlendingDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExFuseDetailsBase": {
+    "file": "PCGExBlending/Public/Details/PCGExFuseDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExSourceFuseDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExFuseDetails.h",
+    "base_class": "FPCGExFuseDetailsBase",
+    "is_config": false
+  },
+  "FPCGExFuseDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExFuseDetails.h",
+    "base_class": "FPCGExSourceFuseDetails",
+    "is_config": false
+  },
+  "FPCGExInclusionDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExIntersectionDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExUnionMetadataDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExIntersectionDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExPointUnionMetadataDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExIntersectionDetails.h",
+    "base_class": "FPCGExUnionMetadataDetails",
+    "is_config": false
+  },
+  "FPCGExEdgeUnionMetadataDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExIntersectionDetails.h",
+    "base_class": "FPCGExUnionMetadataDetails",
+    "is_config": false
+  },
+  "FPCGExPointPointIntersectionDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExIntersectionDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExPointEdgeIntersectionDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExIntersectionDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExEdgeEdgeIntersectionDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExIntersectionDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExApplySamplingDetails": {
+    "file": "PCGExBlending/Public/Sampling/PCGExApplySamplingDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExActorCollectionEntry": {
+    "file": "PCGExCollections/Public/Collections/PCGExActorCollection.h",
+    "base_class": "FPCGExAssetCollectionEntry",
+    "is_config": false
+  },
+  "FPCGExPropertyCompiled_AssetCollection": {
+    "file": "PCGExCollections/Public/Collections/PCGExCollectionPropertyTypes.h",
+    "base_class": "FPCGExPropertyCompiled",
+    "is_config": false
+  },
+  "FPCGExMaterialOverrideEntry": {
+    "file": "PCGExCollections/Public/Collections/PCGExMeshCollection.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExMaterialOverrideCollection": {
+    "file": "PCGExCollections/Public/Collections/PCGExMeshCollection.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExMaterialOverrideSingleEntry": {
+    "file": "PCGExCollections/Public/Collections/PCGExMeshCollection.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExMeshCollectionEntry": {
+    "file": "PCGExCollections/Public/Collections/PCGExMeshCollection.h",
+    "base_class": "FPCGExAssetCollectionEntry",
+    "is_config": false
+  },
+  "FPCGExPCGDataAssetCollectionEntry": {
+    "file": "PCGExCollections/Public/Collections/PCGExPCGDataAssetCollection.h",
+    "base_class": "FPCGExAssetCollectionEntry",
+    "is_config": false
+  },
+  "FPCGExAssetStagingData": {
+    "file": "PCGExCollections/Public/Core/PCGExAssetCollection.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExAssetCollectionEntry": {
+    "file": "PCGExCollections/Public/Core/PCGExAssetCollection.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExCollectionTypeSet": {
+    "file": "PCGExCollections/Public/Core/PCGExAssetCollectionTypes.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExAssetGrammarDetails": {
+    "file": "PCGExCollections/Public/Core/PCGExAssetGrammar.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExCollectionGrammarDetails": {
+    "file": "PCGExCollections/Public/Core/PCGExAssetGrammar.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExRoamingAssetCollectionDetails": {
+    "file": "PCGExCollections/Public/Details/PCGExRoamingAssetCollectionDetails.h",
+    "base_class": "FPCGExAssetAttributeSetDetails",
+    "is_config": false
+  },
+  "FPCGExStagedTypeFilterDetails": {
+    "file": "PCGExCollections/Public/Details/PCGExStagedTypeFilterDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExAssetDistributionIndexDetails": {
+    "file": "PCGExCollections/Public/Details/PCGExStagingDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExComponentTaggingDetails": {
+    "file": "PCGExCollections/Public/Details/PCGExStagingDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExAssetTaggingDetails": {
+    "file": "PCGExCollections/Public/Details/PCGExStagingDetails.h",
+    "base_class": "FPCGExComponentTaggingDetails",
+    "is_config": false
+  },
+  "FPCGExAssetDistributionDetails": {
+    "file": "PCGExCollections/Public/Details/PCGExStagingDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExMicroCacheDistributionDetails": {
+    "file": "PCGExCollections/Public/Details/PCGExStagingDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExAssetAttributeSetDetails": {
+    "file": "PCGExCollections/Public/Details/PCGExStagingDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExNodeSelectionDetails": {
+    "file": "PCGExCore/Public/Clusters/PCGExClusterCommon.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExEdgeDirectionSettings": {
+    "file": "PCGExCore/Public/Clusters/PCGExEdgeDirectionDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExBitmaskCollectionEntry": {
+    "file": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskCollection.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExClampedBit": {
+    "file": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExClampedBitOp": {
+    "file": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskDetails.h",
+    "base_class": "FPCGExClampedBit",
+    "is_config": false
+  },
+  "FPCGExSimpleBitmask": {
+    "file": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExBitmaskRef": {
+    "file": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExBitmask": {
+    "file": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExBitmaskWithOperation": {
+    "file": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExPrimitiveComponentDescriptor": {
+    "file": "PCGExCore/Public/Data/Descriptors/PCGExComponentDescriptors.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExMeshComponentDescriptor": {
+    "file": "PCGExCore/Public/Data/Descriptors/PCGExComponentDescriptors.h",
+    "base_class": "FPCGExPrimitiveComponentDescriptor",
+    "is_config": false
+  },
+  "FPCGExStaticMeshComponentDescriptor": {
+    "file": "PCGExCore/Public/Data/Descriptors/PCGExComponentDescriptors.h",
+    "base_class": "FPCGExMeshComponentDescriptor",
+    "is_config": false
+  },
+  "FPCGExGeoMeshImportDetails": {
+    "file": "PCGExCore/Public/Data/External/PCGExMeshImportDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExAttributeHashConfig": {
+    "file": "PCGExCore/Public/Data/Utils/PCGExAttributeHasher.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExNameFiltersDetails": {
+    "file": "PCGExCore/Public/Data/Utils/PCGExDataFilterDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExAttributeGatherDetails": {
+    "file": "PCGExCore/Public/Data/Utils/PCGExDataFilterDetails.h",
+    "base_class": "FPCGExNameFiltersDetails",
+    "is_config": false
+  },
+  "FPCGExCarryOverDetails": {
+    "file": "PCGExCore/Public/Data/Utils/PCGExDataFilterDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExForwardDetails": {
+    "file": "PCGExCore/Public/Data/Utils/PCGExDataForwardDetails.h",
+    "base_class": "FPCGExNameFiltersDetails",
+    "is_config": false
+  },
+  "FPCGExAttributeToTagDetails": {
+    "file": "PCGExCore/Public/Data/Utils/PCGExDataForwardDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExAttachmentRules": {
+    "file": "PCGExCore/Public/Details/PCGExAttachmentRules.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExInputConfig": {
+    "file": "PCGExCore/Public/Details/PCGExAttributesDetails.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExAttributeSourceToTargetDetails": {
+    "file": "PCGExCore/Public/Details/PCGExAttributesDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExAttributeSourceToTargetList": {
+    "file": "PCGExCore/Public/Details/PCGExAttributesDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExCompareSelectorDouble": {
+    "file": "PCGExCore/Public/Details/PCGExCompareShorthandsDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExRandomRatioDetails": {
+    "file": "PCGExCore/Public/Details/PCGExDetailsNoise.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExDistanceDetails": {
+    "file": "PCGExCore/Public/Details/PCGExDistancesDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExInputShorthandBase": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExInputShorthandNameBase": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandNameBoolean": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandNameFloat": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandNameDouble": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandNameDoubleAbs": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandNameDouble01": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandNameInteger32": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandNameInteger32Abs": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandNameInteger3201": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandNameVector2": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandNameVector": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandNameDirection": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameVector",
+    "is_config": false
+  },
+  "FPCGExInputShorthandNameVector4": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandNameRotator": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandNameTransform": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandNameString": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandNameName": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandSelectorBase": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandSelectorBoolean": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandSelectorFloat": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandSelectorDouble": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandSelectorDoubleAbs": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandSelectorDouble01": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandSelectorInteger32": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandSelectorInteger32Abs": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandSelectorInteger3201": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandSelectorVector2": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandSelectorVector": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandSelectorDirection": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandSelectorVector4": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandSelectorRotator": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandSelectorTransform": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandSelectorString": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false
+  },
+  "FPCGExInputShorthandSelectorName": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false
+  },
+  "FPCGExScaleToFitDetails": {
+    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExSingleJustifyDetails": {
+    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExJustificationDetails": {
+    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExFittingVariationsDetails": {
+    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExFittingDetailsHandler": {
+    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExTransformDetails": {
+    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
+    "base_class": "FPCGExFittingDetailsHandler",
+    "is_config": false
+  },
+  "FPCGExLeanTransformDetails": {
+    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExFittingVariations": {
+    "file": "PCGExCore/Public/Fitting/PCGExFittingVariations.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExGeo2DProjectionDetails": {
+    "file": "PCGExCore/Public/Math/PCGExProjectionDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExUVW": {
+    "file": "PCGExCore/Public/Math/PCGExUVW.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExPathEdgeIntersectionDetails": {
+    "file": "PCGExCore/Public/Paths/PCGExPathIntersectionDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExPathFilterSettings": {
+    "file": "PCGExCore/Public/Paths/PCGExPathIntersectionDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExPathIntersectionDetails": {
+    "file": "PCGExCore/Public/Paths/PCGExPathIntersectionDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExPathOutputDetails": {
+    "file": "PCGExCore/Public/Paths/PCGExPathOutputDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExSortRuleConfig": {
+    "file": "PCGExCore/Public/Sorting/PCGExSortingDetails.h",
+    "base_class": "FPCGExInputConfig",
+    "is_config": true
+  },
+  "FPCGExVectorHashComparisonDetails": {
+    "file": "PCGExCore/Public/Utils/PCGExCompare.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExStaticDotComparisonDetails": {
+    "file": "PCGExCore/Public/Utils/PCGExCompare.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExDotComparisonDetails": {
+    "file": "PCGExCore/Public/Utils/PCGExCompare.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExCurveLookupDetails": {
+    "file": "PCGExCore/Public/Utils/PCGExCurveLookup.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExDefaultValueContainer": {
+    "file": "PCGExCore/Public/Utils/PCGExDefaultValueContainer.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExConvexDecompositionDetails": {
+    "file": "PCGExElementsClusters/Public/Elements/Decomposition/PCGExSimpleConvexDecomposer.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExVoronoiSitesOutputDetails": {
+    "file": "PCGExElementsClusters/Public/Elements/Diagrams/PCGExBuildVoronoiGraph2D.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExSamplingConfig": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/NeighborSamplers/PCGExNeighborSampleFactoryProvider.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExSamplerFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/NeighborSamplers/PCGExNeighborSampleFilters.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExAmplitudeConfig": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertyAmplitude.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExEdgeMatchConfig": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertyEdgeMatch.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExSimpleEdgeOutputSettings": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertyFactoryProvider.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExEdgeOutputWithIndexSettings": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertyFactoryProvider.h",
+    "base_class": "FPCGExSimpleEdgeOutputSettings",
+    "is_config": false
+  },
+  "FPCGExSpecialEdgesConfig": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertySpecialEdges.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExSpecialNeighborsConfig": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertySpecialNeighbors.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FNewGraphSettingsResult": {
+    "file": "PCGExElementsClusters/Public/Elements/PCGExBuildCustomGraph.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExAdjacencyStateConfigBase": {
+    "file": "PCGExElementsClusters/Public/Elements/States/PCGExAdjacencyStates.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExEdgeEndpointsCheckFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeEndpointsCheckFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExEdgeEndpointsCompareNumFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeEndpointsCompareNumFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExEdgeEndpointsCompareStrFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeEndpointsCompareStrFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExEdgeLengthFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeLengthFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExEdgeNeighborsCountFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeNeighborsCountFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExIsoEdgeDirectionFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExIsoEdgeDirectionFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExNodeAdjacencyFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeAdjacencyFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExNodeEdgeAngleFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeEdgeAngleFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExNodeEdgeDirectionFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeEdgeDirectionFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExNodeNeighborsCountFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeNeighborsCountFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExAdjacencySettings": {
+    "file": "PCGExElementsClusters/Public/Filters/PCGExAdjacency.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExFillControlConfigBase": {
+    "file": "PCGExElementsFloodFill/Public/Core/PCGExFillControlsFactoryProvider.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExFloodFillFlowDetails": {
+    "file": "PCGExElementsFloodFill/Public/Core/PCGExFloodFill.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExFloodFillSeedPickingDetails": {
+    "file": "PCGExElementsFloodFill/Public/Elements/PCGExFloodFillClusters.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExFillControlConfigAttributeAccumulation": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlAttributeAccumulation.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true
+  },
+  "FPCGExFillControlConfigAttributeThreshold": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlAttributeThreshold.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true
+  },
+  "FPCGExFillControlConfigCount": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlCount.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true
+  },
+  "FPCGExFillControlConfigDepth": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlDepth.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true
+  },
+  "FPCGExFillControlConfigEdgeFilters": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlEdgeFilters.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true
+  },
+  "FPCGExFillControlConfigHeuristicsBudget": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlHxBudget.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true
+  },
+  "FPCGExFillControlConfigHeuristicsScoring": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlHxScoring.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true
+  },
+  "FPCGExFillControlConfigHeuristicsThreshold": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlHxThreshold.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true
+  },
+  "FPCGExFillControlConfigKeepDirection": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlKeepDirection.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true
+  },
+  "FPCGExFillControlConfigLength": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlLength.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true
+  },
+  "FPCGExFillControlConfigRunningAverage": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlRunningAverage.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true
+  },
+  "FPCGExFillControlConfigVtxFilters": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlVtxFilters.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true
+  },
+  "FPCGExPartitonRuleConfig": {
+    "file": "PCGExElementsMeta/Public/Elements/Partition/PCGExPartition.h",
+    "base_class": "FPCGExInputConfig",
+    "is_config": true
+  },
+  "FPCGExComponentRemapRule": {
+    "file": "PCGExElementsMeta/Public/Elements/PCGExAttributeRemap.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExNoiseFilterConfig": {
+    "file": "PCGExElementsMeta/Public/Filters/Points/PCGExNoiseFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExPathStatistics": {
+    "file": "PCGExElementsPathfinding/Public/Core/PCGExPathfinding.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExBoxIntersectionDetails": {
+    "file": "PCGExElementsPaths/Public/Details/PCGExBoxIntersectionDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExShrinkPathEndpointDistanceDetails": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathShrink.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExShrinkPathEndpointCountDetails": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathShrink.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExPathSolidificationAxisDetails": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathSolidify.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExPathSolidificationRadiusDetails": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathSolidify.h",
+    "base_class": "FPCGExPathSolidificationAxisDetails",
+    "is_config": false
+  },
+  "FPCGExSwapAttributePairDetails": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExReversePointOrder.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExProbeConfigBase": {
+    "file": "PCGExElementsProbing/Public/Core/PCGExProbeOperation.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExProbeConfigGlobalAnisotropic": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeAnisotropic.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true
+  },
+  "FPCGExProbeConfigChain": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeChain.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true
+  },
+  "FPCGExProbeConfigDBSCAN": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeDBSCAN.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true
+  },
+  "FPCGExProbeConfigGradientFlow": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeGradientFlow.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true
+  },
+  "FPCGExProbeConfigHubSpoke": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeHubSpoke.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true
+  },
+  "FPCGExProbeConfigKNN": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeKNN.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true
+  },
+  "FPCGExProbeConfigLevelSet": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeLevelSet.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true
+  },
+  "FPCGExProbeConfigSpanner": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeSpanner.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true
+  },
+  "FPCGExProbeConfigTheta": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeTheta.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true
+  },
+  "FPCGExProbeConfigAnisotropic": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExProbeAnisotropic.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true
+  },
+  "FPCGExProbeConfigBitmasks": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExProbeBitmasks.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true
+  },
+  "FPCGExProbeConfigClosest": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExProbeClosest.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true
+  },
+  "FPCGExProbeConfigDirection": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExProbeDirection.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true
+  },
+  "FPCGExProbeConfigIndex": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExProbeIndex.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true
+  },
+  "FPCGExProbeConfigNumericCompare": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExProbeNumericCompare.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true
+  },
+  "FPCGExTextureParamConfig": {
+    "file": "PCGExElementsSampling/Public/Core/PCGExTexParamFactoryProvider.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExOverlapScoresWeighting": {
+    "file": "PCGExElementsSampling/Public/Elements/PCGExDiscardByOverlap.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExShapeConfigBase": {
+    "file": "PCGExElementsShapes/Public/Core/PCGExShapeConfigBase.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExShapeCircleConfig": {
+    "file": "PCGExElementsShapes/Public/Shapes/PCGExShapeCircle.h",
+    "base_class": "FPCGExShapeConfigBase",
+    "is_config": true
+  },
+  "FPCGExShapeFiblatConfig": {
+    "file": "PCGExElementsShapes/Public/Shapes/PCGExShapeFiblat.h",
+    "base_class": "FPCGExShapeConfigBase",
+    "is_config": true
+  },
+  "FPCGExShapeGridConfig": {
+    "file": "PCGExElementsShapes/Public/Shapes/PCGExShapeGrid.h",
+    "base_class": "FPCGExShapeConfigBase",
+    "is_config": true
+  },
+  "FPCGExShapePolygonConfig": {
+    "file": "PCGExElementsShapes/Public/Shapes/PCGExShapePolygon.h",
+    "base_class": "FPCGExShapeConfigBase",
+    "is_config": true
+  },
+  "FPCGExPointsToBoundsDataDetails": {
+    "file": "PCGExElementsSpatial/Public/Elements/PCGExPointsToBounds.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExTensorSamplingMutationsDetails": {
+    "file": "PCGExElementsTensors/Public/Core/PCGExTensor.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExTensorConfigBase": {
+    "file": "PCGExElementsTensors/Public/Core/PCGExTensor.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExTensorSamplerDetails": {
+    "file": "PCGExElementsTensors/Public/Core/PCGExTensorHandler.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExTensorHandlerDetails": {
+    "file": "PCGExElementsTensors/Public/Core/PCGExTensorHandler.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExTensorDotFilterConfig": {
+    "file": "PCGExElementsTensors/Public/Filters/Points/PCGExTensorDotFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExHeuristicConfigTensor": {
+    "file": "PCGExElementsTensors/Public/Heuristics/PCGExHeuristicTensor.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true
+  },
+  "FPCGExProbeConfigTensor": {
+    "file": "PCGExElementsTensors/Public/Probes/PCGExProbeTensor.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true
+  },
+  "FPCGExTensorConstantConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorConstant.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true
+  },
+  "FPCGExTensorFlowConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorFlow.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true
+  },
+  "FPCGExTensorInertiaConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorInertia.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true
+  },
+  "FPCGExTensorInertiaConstantConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorInertiaConstant.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true
+  },
+  "FPCGExTensorNoiseConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorNoise.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true
+  },
+  "FPCGExTensorNoiseBoundedConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorNoiseBounded.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true
+  },
+  "FPCGExTensorNullConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorNull.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true
+  },
+  "FPCGExTensorPathFlowConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorPathFlow.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true
+  },
+  "FPCGExTensorPathPoleConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorPathPole.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true
+  },
+  "FPCGExTensorPoleConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorPole.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true
+  },
+  "FPCGExTensorSpinConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorSpin.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true
+  },
+  "FPCGExTensorSplineFlowConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorSplineFlow.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true
+  },
+  "FPCGExTensorSplinePoleConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorSplinePole.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true
+  },
+  "FPCGExTensorSurfaceConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorSurface.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true
+  },
+  "FPCGExDynamicMeshDescriptor": {
+    "file": "PCGExElementsTopology/Public/Data/Descriptors/PCGExDynamicMeshDescriptor.h",
+    "base_class": "FPCGExMeshComponentDescriptor",
+    "is_config": false
+  },
+  "FPCGExUVInputDetails": {
+    "file": "PCGExElementsTopology/Public/PCGExTopology.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExTopologyUVDetails": {
+    "file": "PCGExElementsTopology/Public/PCGExTopology.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExTopologyDetails": {
+    "file": "PCGExElementsTopology/Public/PCGExTopology.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExValencyLayerCompiled": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyBondingRules.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExValencyModuleTags": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyBondingRules.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExValencyBondingRulesCompiled": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyBondingRules.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExValencyModuleSettings": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExValencyMaterialOverride": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExValencyMaterialVariant": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExValencyAssetEntry": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExValencyNeighborIndices": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExValencyModuleLayerConfig": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExValencyModuleDefinition": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExValencyOrbitalEntry": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyOrbitalSet.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExValencyPatternEntryCompiled": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyPattern.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExValencyPatternSettingsCompiled": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyPattern.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExValencyPatternCompiled": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyPattern.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExValencyPatternSetCompiled": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyPattern.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExValencyPropertyOutputConfig": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyPropertyWriter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExValencyPropertyOutputSettings": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyPropertyWriter.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExValencySocketDefinition": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencySocketRules.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExValencyModuleSocket": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencySocketRules.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExProbeConfigValency": {
+    "file": "PCGExElementsValency/Public/Probes/PCGExProbeValency.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true
+  },
+  "FPCGExValencyBuildResult": {
+    "file": "PCGExElementsValencyEditor/Public/Builder/PCGExValencyBondingRulesBuilder.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExValencyCageOrbital": {
+    "file": "PCGExElementsValencyEditor/Public/Cages/PCGExValencyCageOrbital.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExValencyPatternSettings": {
+    "file": "PCGExElementsValencyEditor/Public/Cages/PCGExValencyCagePattern.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExClusterStateConfigBase": {
+    "file": "PCGExFilters/Public/Core/PCGExClusterStates.h",
+    "base_class": "FPCGExStateConfigBase",
+    "is_config": true
+  },
+  "FPCGExStateConfigBase": {
+    "file": "PCGExFilters/Public/Core/PCGExPointStates.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExFilterResultDetails": {
+    "file": "PCGExFilters/Public/Details/PCGExFilterDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExAttributeCheckFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Collections/PCGExAttributeCheckFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExDataBoundsFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Collections/PCGExDataBoundsFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExEntryCountFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Collections/PCGExEntryCountFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExTagCheckFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Collections/PCGExTagCheckFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExTagValueFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Collections/PCGExTagValueFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExAngleFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExAngleFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExBitmaskFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExBitmaskFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExBooleanCompareFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExBooleanCompareFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExBoundsFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExBoundsFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExConstantFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExConstantFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExDistanceFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExDistanceFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExDotFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExDotFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExGameplayTagsFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExGameplayTagsFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExInclusionFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExInclusionFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExMeanFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExMeanFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExModuloCompareFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExModuloCompareFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExNumericCompareFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExNumericCompareFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExNumericCompareNearestFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExNumericCompareNearestFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExNumericSelfCompareFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExNumericSelfCompareFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExPickerFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExPickerFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExRandomFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExRandomFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExRandomRatioFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExRandomRatioFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExSegmentCrossFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExSegmentCrossFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExSegmentLengthFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExSegmentLengthFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExStringCompareFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExStringCompareFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExStringSelfCompareFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExStringSelfCompareFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExTimeFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExTimeFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExValueHashFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExValueHashFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExWithinRangeFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExWithinRangeFilter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExAxisDeformDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExAxisDeformDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExAxisTwistDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExAxisDeformDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExClampDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExClampDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExCollisionDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExCollisionDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExInfluenceDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExInfluenceDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExRemapDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExRemapDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExSocket": {
+    "file": "PCGExFoundations/Public/Details/PCGExSocket.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExSocketFitDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExSocketFitDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExSocketOutputDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExSocketOutputDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExSplineMeshMutationDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExSplineMeshDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExManhattanDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExSubdivisionDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExBranchOnDataPin": {
+    "file": "PCGExFoundations/Public/Elements/ControlFlow/PCGExBranchOnDataAttribute.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExAttributeDebugDrawConfig": {
+    "file": "PCGExFoundations/Public/Elements/Debug/PCGExDrawAttributes.h",
+    "base_class": "FPCGExInputConfig",
+    "is_config": true
+  },
+  "FPCGExAttributeDebugDraw": {
+    "file": "PCGExFoundations/Public/Elements/Debug/PCGExDrawAttributes.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExGUIDDetails": {
+    "file": "PCGExFoundations/Public/Elements/Utils/PCGExWriteGUID.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExTangentsScalingDetails": {
+    "file": "PCGExFoundations/Public/Tangents/PCGExTangentsInstancedFactory.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExTangentsDetails": {
+    "file": "PCGExFoundations/Public/Tangents/PCGExTangentsInstancedFactory.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExCellConstraintsDetails": {
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExCellSeedMutationDetails": {
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExCellOBBAttributesDetails": {
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExCellArtifactsDetails": {
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExCellGrowthDetails": {
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExBasicEdgeSolidificationDetails": {
+    "file": "PCGExGraphs/Public/Graphs/PCGExGraphDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExGraphBuilderDetails": {
+    "file": "PCGExGraphs/Public/Graphs/PCGExGraphDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExHeuristicConfigBase": {
+    "file": "PCGExHeuristics/Public/Core/PCGExHeuristicsFactoryProvider.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExHeuristicAttributeConfig": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicAttribute.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true
+  },
+  "FPCGExHeuristicConfigAzimuth": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicAzimuth.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true
+  },
+  "FPCGExHeuristicConfigShortestDistance": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicDistance.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true
+  },
+  "FPCGExHeuristicConfigFeedback": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicFeedback.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true
+  },
+  "FPCGExHeuristicGradientConfig": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicGradient.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true
+  },
+  "FPCGExHeuristicConfigInertia": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicInertia.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true
+  },
+  "FPCGExHeuristicConfigLeastNodes": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicNodeCount.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true
+  },
+  "FPCGExHeuristicConfigSteepness": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicSteepness.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true
+  },
+  "FPCGExHeuristicConfigTurnPenalty": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicTurnPenalty.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true
+  },
+  "FPCGExMatchRuleConfigBase": {
+    "file": "PCGExMatching/Public/Core/PCGExMatchRuleFactoryProvider.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExMatchingDetails": {
+    "file": "PCGExMatching/Public/Details/PCGExMatchingDetails.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExMatchAttrToAttrConfig": {
+    "file": "PCGExMatching/Public/Matching/PCGExMatchAttrToAttr.h",
+    "base_class": "FPCGExMatchRuleConfigBase",
+    "is_config": true
+  },
+  "FPCGExMatchByIndexConfig": {
+    "file": "PCGExMatching/Public/Matching/PCGExMatchByIndex.h",
+    "base_class": "FPCGExMatchRuleConfigBase",
+    "is_config": true
+  },
+  "FPCGExMatchCopyTagsConfig": {
+    "file": "PCGExMatching/Public/Matching/PCGExMatchCopyTags.h",
+    "base_class": "FPCGExMatchRuleConfigBase",
+    "is_config": true
+  },
+  "FPCGExMatchOverlapConfig": {
+    "file": "PCGExMatching/Public/Matching/PCGExMatchOverlap.h",
+    "base_class": "FPCGExMatchRuleConfigBase",
+    "is_config": true
+  },
+  "FPCGExMatchRandomConfig": {
+    "file": "PCGExMatching/Public/Matching/PCGExMatchRandom.h",
+    "base_class": "FPCGExMatchRuleConfigBase",
+    "is_config": true
+  },
+  "FPCGExMatchSharedTagConfig": {
+    "file": "PCGExMatching/Public/Matching/PCGExMatchSharedTag.h",
+    "base_class": "FPCGExMatchRuleConfigBase",
+    "is_config": true
+  },
+  "FPCGExMatchTagToAttrConfig": {
+    "file": "PCGExMatching/Public/Matching/PCGExMatchTagToAttr.h",
+    "base_class": "FPCGExMatchRuleConfigBase",
+    "is_config": true
+  },
+  "FPCGExNoise3DConfigBase": {
+    "file": "PCGExNoise3D/Public/Core/PCGExNoise3DFactoryProvider.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExNoiseConfigCaustic": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseCaustic.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true
+  },
+  "FPCGExNoiseConfigCurl": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseCurl.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true
+  },
+  "FPCGExNoiseConfigFBM": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseFBM.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true
+  },
+  "FPCGExNoiseConfigFlow": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseFlow.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true
+  },
+  "FPCGExNoiseConfigGabor": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseGabor.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true
+  },
+  "FPCGExNoiseConfigMarble": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseMarble.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true
+  },
+  "FPCGExNoiseConfigOpenSimplex2": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseOpenSimplex2.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true
+  },
+  "FPCGExNoiseConfigPerlin": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoisePerlin.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true
+  },
+  "FPCGExNoiseConfigSimplex": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseSimplex.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true
+  },
+  "FPCGExNoiseConfigSpots": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseSpots.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true
+  },
+  "FPCGExNoiseConfigSwiss": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseSwiss.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true
+  },
+  "FPCGExNoiseConfigTiling": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseTiling.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true
+  },
+  "FPCGExNoiseConfigValue": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseValue.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true
+  },
+  "FPCGExNoiseConfigVoronoi": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseVoronoi.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true
+  },
+  "FPCGExNoiseConfigWhite": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseWhite.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true
+  },
+  "FPCGExNoiseConfigWorley": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseWorley.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true
+  },
+  "FPCGExPickerConfigBase": {
+    "file": "PCGExPickers/Public/Core/PCGExPickerFactoryProvider.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExPickerAttributeSetConfig": {
+    "file": "PCGExPickers/Public/Pickers/PCGExPickerAttributeSet.h",
+    "base_class": "FPCGExPickerConfigBase",
+    "is_config": true
+  },
+  "FPCGExPickerAttributeSetRangesConfig": {
+    "file": "PCGExPickers/Public/Pickers/PCGExPickerAttributeSetRanges.h",
+    "base_class": "FPCGExPickerConfigBase",
+    "is_config": true
+  },
+  "FPCGExPickerConstantConfig": {
+    "file": "PCGExPickers/Public/Pickers/PCGExPickerConstant.h",
+    "base_class": "FPCGExPickerConfigBase",
+    "is_config": true
+  },
+  "FPCGExPickerConstantRangeConfig": {
+    "file": "PCGExPickers/Public/Pickers/PCGExPickerConstantRange.h",
+    "base_class": "FPCGExPickerConfigBase",
+    "is_config": true
+  },
+  "FPCGExPropertyRegistryEntry": {
+    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExPropertyCompiled": {
+    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExPropertyOverrideEntry": {
+    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExPropertyOverrides": {
+    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExPropertySchema": {
+    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExPropertySchemaCollection": {
+    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+    "base_class": null,
+    "is_config": false
+  },
+  "FPCGExPropertyCompiled_Vector": {
+    "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
+    "base_class": "FPCGExPropertyCompiled",
+    "is_config": false
+  },
+  "FPCGExPropertyCompiled_Vector2": {
+    "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
+    "base_class": "FPCGExPropertyCompiled",
+    "is_config": false
+  },
+  "FPCGExPropertyCompiled_Vector4": {
+    "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
+    "base_class": "FPCGExPropertyCompiled",
+    "is_config": false
+  },
+  "FPCGExPropertyCompiled_Color": {
+    "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
+    "base_class": "FPCGExPropertyCompiled",
+    "is_config": false
+  },
+  "FPCGExPropertyCompiled_Rotator": {
+    "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
+    "base_class": "FPCGExPropertyCompiled",
+    "is_config": false
+  },
+  "FPCGExPropertyCompiled_Quat": {
+    "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
+    "base_class": "FPCGExPropertyCompiled",
+    "is_config": false
+  },
+  "FPCGExPropertyCompiled_Transform": {
+    "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
+    "base_class": "FPCGExPropertyCompiled",
+    "is_config": false
+  },
+  "FPCGExPropertyCompiled_Enum": {
+    "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
+    "base_class": "FPCGExPropertyCompiled",
+    "is_config": false
+  },
+  "FPCGExPropertyOutputConfig": {
+    "file": "PCGExProperties/Public/PCGExPropertyWriter.h",
+    "base_class": null,
+    "is_config": true
+  },
+  "FPCGExPropertyOutputSettings": {
+    "file": "PCGExProperties/Public/PCGExPropertyWriter.h",
+    "base_class": null,
+    "is_config": false
+  }
+}

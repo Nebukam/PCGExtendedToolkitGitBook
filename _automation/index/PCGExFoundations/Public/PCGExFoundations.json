@@ -1,0 +1,15 @@
+{
+  "path": "PCGExFoundations/Public/PCGExFoundations.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExFoundationsModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

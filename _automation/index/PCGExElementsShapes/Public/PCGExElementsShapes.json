@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsShapes/Public/PCGExElementsShapes.h",
+  "module": "PCGExElementsShapes",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsShapesModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

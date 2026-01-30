@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(ls -la \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\_dry-run\\\\node-library\\\\clusters\"\" 2>/dev/null || dir \"D:GITPCGExtendedToolkitGitBook_dry-runnode-libraryclusters\"\")",
+      "Bash(powershell:*)",
+      "Bash(node:*)"
     ]
   }
 }

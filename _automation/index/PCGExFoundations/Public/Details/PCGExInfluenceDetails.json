@@ -1,0 +1,58 @@
+{
+  "path": "PCGExFoundations/Public/Details/PCGExInfluenceDetails.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExInfluenceDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "InfluenceInput",
+          "display_name": "InfluenceInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Influence",
+          "display_name": "Influence",
+          "type": "double",
+          "default": "1.0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "InfluenceInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bProgressiveInfluence",
+          "display_name": "bProgressiveInfluence",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

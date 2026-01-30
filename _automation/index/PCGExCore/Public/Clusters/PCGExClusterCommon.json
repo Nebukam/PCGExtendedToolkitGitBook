@@ -1,0 +1,141 @@
+{
+  "path": "PCGExCore/Public/Clusters/PCGExClusterCommon.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExClusterClosestSearchMode",
+      "values": [
+        {
+          "name": "Vtx",
+          "display_name": "Vtx"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Edge",
+          "display_name": "Edge"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "then",
+          "display_name": "then"
+        },
+        {
+          "name": "endpoint",
+          "display_name": "endpoint"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExClusterElement",
+      "values": [
+        {
+          "name": "Vtx",
+          "display_name": "Vtx"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Edge",
+          "display_name": "Edge"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExAdjacencyDirectionOrigin",
+      "values": [
+        {
+          "name": "FromNode",
+          "display_name": "FromNode"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "FromNeighbor",
+          "display_name": "FromNeighbor"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExNodeSelectionDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "PickingMethod",
+          "display_name": "PickingMethod",
+          "type": "EPCGExClusterClosestSearchMode",
+          "default": "EPCGExClusterClosestSearchMode::Edge",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxDistance",
+          "display_name": "MaxDistance",
+          "type": "double",
+          "default": "-1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {
+    "Labels": {
+      "SourceEdgesLabel": "Edges",
+      "OutputEdgesLabel": "Edges",
+      "SourceVerticesLabel": "Vtx",
+      "OutputVerticesLabel": "Vtx",
+      "OutputKeptEdgesLabel": "Kept Edges",
+      "OutputRemovedEdgesLabel": "Removed Edges",
+      "OutputSitesLabel": "Sites",
+      "SourcePackedClustersLabel": "Packed Clusters",
+      "OutputPackedClustersLabel": "Packed Clusters",
+      "SourceEdgeSortingRules": "Direction Sorting"
+    }
+  }
+}

@@ -1,0 +1,470 @@
+{
+  "path": "PCGExCore/Public/Fitting/PCGExFitting.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExScaleToFitDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "ScaleToFitMode",
+          "display_name": "ScaleToFitMode",
+          "type": "EPCGExFitMode",
+          "default": "EPCGExFitMode::Uniform",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScaleToFit",
+          "display_name": "ScaleToFit",
+          "type": "EPCGExScaleToFit",
+          "default": "EPCGExScaleToFit::Min",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ScaleToFitMode == EPCGExFitMode::Uniform",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScaleToFitX",
+          "display_name": "ScaleToFitX",
+          "type": "EPCGExScaleToFit",
+          "default": "EPCGExScaleToFit::None",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ScaleToFitMode == EPCGExFitMode::Individual",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScaleToFitY",
+          "display_name": "ScaleToFitY",
+          "type": "EPCGExScaleToFit",
+          "default": "EPCGExScaleToFit::None",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ScaleToFitMode == EPCGExFitMode::Individual",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScaleToFitZ",
+          "display_name": "ScaleToFitZ",
+          "type": "EPCGExScaleToFit",
+          "default": "EPCGExScaleToFit::None",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ScaleToFitMode == EPCGExFitMode::Individual",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExSingleJustifyDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "From",
+          "display_name": "From",
+          "type": "EPCGExJustifyFrom",
+          "default": "EPCGExJustifyFrom::Center",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "FromInput",
+          "display_name": " ├─ Input",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "From == EPCGExJustifyFrom::Custom",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "FromConstant",
+          "display_name": " └─ From",
+          "type": "double",
+          "default": "0.5",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "From == EPCGExJustifyFrom::Custom && FromInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "To",
+          "display_name": "To",
+          "type": "EPCGExJustifyTo",
+          "default": "EPCGExJustifyTo::Same",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ToInput",
+          "display_name": " ├─ Input",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "To == EPCGExJustifyTo::Custom",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ToConstant",
+          "display_name": " └─ To",
+          "type": "double",
+          "default": "0.5",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "To == EPCGExJustifyTo::Custom && ToInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExJustificationDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bDoJustifyX",
+          "display_name": "bDoJustifyX",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "JustifyX",
+          "display_name": "JustifyX",
+          "type": "FPCGExSingleJustifyDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bDoJustifyX",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bDoJustifyY",
+          "display_name": "bDoJustifyY",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "JustifyY",
+          "display_name": "JustifyY",
+          "type": "FPCGExSingleJustifyDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bDoJustifyY",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bDoJustifyZ",
+          "display_name": "bDoJustifyZ",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "JustifyZ",
+          "display_name": "JustifyZ",
+          "type": "FPCGExSingleJustifyDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bDoJustifyZ",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bSharedCustomFromAttribute",
+          "display_name": "bSharedCustomFromAttribute",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CustomFromVectorAttribute",
+          "display_name": "CustomFromVectorAttribute",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSharedCustomFromAttribute",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bSharedCustomToAttribute",
+          "display_name": "bSharedCustomToAttribute",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CustomToVectorAttribute",
+          "display_name": "CustomToVectorAttribute",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSharedCustomToAttribute",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExFittingVariationsDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Offset",
+          "display_name": "Offset",
+          "type": "EPCGExVariationMode",
+          "default": "EPCGExVariationMode::Disabled",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Rotation",
+          "display_name": "Rotation",
+          "type": "EPCGExVariationMode",
+          "default": "EPCGExVariationMode::Disabled",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Scale",
+          "display_name": "Scale",
+          "type": "EPCGExVariationMode",
+          "default": "EPCGExVariationMode::Disabled",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExFittingDetailsHandler",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "ScaleToFit",
+          "display_name": "ScaleToFit",
+          "type": "FPCGExScaleToFitDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Justification",
+          "display_name": "Justification",
+          "type": "FPCGExJustificationDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExTransformDetails",
+      "base_class": "FPCGExFittingDetailsHandler",
+      "uproperties": [
+        {
+          "name": "bInheritScale",
+          "display_name": "bInheritScale",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bInheritRotation",
+          "display_name": "bInheritRotation",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bIgnoreBounds",
+          "display_name": "bIgnoreBounds",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExLeanTransformDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bInheritScale",
+          "display_name": "bInheritScale",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bInheritRotation",
+          "display_name": "bInheritRotation",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

@@ -1,0 +1,15 @@
+{
+  "path": "PCGExPropertiesEditor/Public/Details/PCGExPropertySchemaCollectionCustomization.h",
+  "module": "PCGExPropertiesEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExPropertySchemaCollectionCustomization",
+      "base_class": "IPropertyTypeCustomization"
+    }
+  ],
+  "namespaces": {}
+}

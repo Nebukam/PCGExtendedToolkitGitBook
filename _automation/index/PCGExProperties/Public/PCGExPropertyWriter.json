@@ -1,0 +1,79 @@
+{
+  "path": "PCGExProperties/Public/PCGExPropertyWriter.h",
+  "module": "PCGExProperties",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExPropertyOutputConfig",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bEnabled",
+          "display_name": "bEnabled",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Output",
+          "advanced": false
+        },
+        {
+          "name": "PropertyName",
+          "display_name": "PropertyName",
+          "type": "FName",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bEnabled",
+          "edit_condition_hides": false,
+          "category": "Output",
+          "advanced": false
+        },
+        {
+          "name": "OutputAttributeName",
+          "display_name": "OutputAttributeName",
+          "type": "FName",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bEnabled",
+          "edit_condition_hides": false,
+          "category": "Output",
+          "advanced": false
+        }
+      ],
+      "is_config": true,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExPropertyOutputSettings",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Configs",
+          "display_name": "Configs",
+          "type": "TArray<FPCGExPropertyOutputConfig>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

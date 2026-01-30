@@ -1,0 +1,15 @@
+{
+  "path": "PCGExCollectionsEditor/Public/Details/Collections/PCGExCollectionGrammarCustomization.h",
+  "module": "PCGExCollectionsEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExCollectionGrammarCustomization",
+      "base_class": "IPropertyTypeCustomization"
+    }
+  ],
+  "namespaces": {}
+}

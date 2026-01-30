@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsActions/Public/PCGExElementsActions.h",
+  "module": "PCGExElementsActions",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsActionsModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

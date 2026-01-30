@@ -1,0 +1,191 @@
+{
+  "path": "PCGExMatching/Public/PCGExMatchingCommon.h",
+  "module": "PCGExMatching",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExMapMatchMode",
+      "values": [
+        {
+          "name": "Disabled",
+          "display_name": "Disabled"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "All",
+          "display_name": "All"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Any",
+          "display_name": "Any"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExMatchStrictness",
+      "values": [
+        {
+          "name": "Required",
+          "display_name": "Required"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "the",
+          "display_name": "the"
+        },
+        {
+          "name": "match",
+          "display_name": "match"
+        },
+        {
+          "name": "will",
+          "display_name": "will"
+        },
+        {
+          "name": "be",
+          "display_name": "be"
+        },
+        {
+          "name": "a",
+          "display_name": "a"
+        },
+        {
+          "name": "fail",
+          "display_name": "fail"
+        },
+        {
+          "name": "Any",
+          "display_name": "Any"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "it",
+          "display_name": "it"
+        },
+        {
+          "name": "s",
+          "display_name": "s"
+        },
+        {
+          "name": "still",
+          "display_name": "still"
+        },
+        {
+          "name": "a",
+          "display_name": "a"
+        },
+        {
+          "name": "success",
+          "display_name": "success"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExClusterComponentTagMatchMode",
+      "values": [
+        {
+          "name": "Vtx",
+          "display_name": "Vtx"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Edges",
+          "display_name": "Edges"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Any",
+          "display_name": "Any"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Both",
+          "display_name": "Both"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Separated",
+          "display_name": "Separated"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "the",
+          "display_name": "the"
+        },
+        {
+          "name": "extra",
+          "display_name": "extra"
+        },
+        {
+          "name": "one",
+          "display_name": "one"
+        },
+        {
+          "name": "for",
+          "display_name": "for"
+        },
+        {
+          "name": "Edges",
+          "display_name": "Edges"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExMatchingDetailsUsage",
+      "values": [
+        {
+          "name": "Default",
+          "display_name": "Default"
+        },
+        {
+          "name": "Cluster",
+          "display_name": "Cluster"
+        },
+        {
+          "name": "Sampling",
+          "display_name": "Sampling"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

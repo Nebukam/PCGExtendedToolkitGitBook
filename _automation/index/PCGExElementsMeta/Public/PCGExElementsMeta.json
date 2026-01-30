@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsMeta/Public/PCGExElementsMeta.h",
+  "module": "PCGExElementsMeta",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsMetaModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

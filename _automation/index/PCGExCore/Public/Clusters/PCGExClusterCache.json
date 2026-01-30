@@ -1,0 +1,81 @@
+{
+  "path": "PCGExCore/Public/Clusters/PCGExClusterCache.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EClusterCacheType",
+      "values": [
+        {
+          "name": "PreBuild",
+          "display_name": "PreBuild"
+        },
+        {
+          "name": "Configured",
+          "display_name": "Configured"
+        },
+        {
+          "name": "in",
+          "display_name": "in"
+        },
+        {
+          "name": "GraphBuilderDetails",
+          "display_name": "GraphBuilderDetails"
+        },
+        {
+          "name": "built",
+          "display_name": "built"
+        },
+        {
+          "name": "at",
+          "display_name": "at"
+        },
+        {
+          "name": "compile",
+          "display_name": "compile"
+        },
+        {
+          "name": "time",
+          "display_name": "time"
+        },
+        {
+          "name": "Opportunistic",
+          "display_name": "Opportunistic"
+        },
+        {
+          "name": "Computed",
+          "display_name": "Computed"
+        },
+        {
+          "name": "by",
+          "display_name": "by"
+        },
+        {
+          "name": "processors",
+          "display_name": "processors"
+        },
+        {
+          "name": "cached",
+          "display_name": "cached"
+        },
+        {
+          "name": "for",
+          "display_name": "for"
+        },
+        {
+          "name": "downstream",
+          "display_name": "downstream"
+        },
+        {
+          "name": "reuse",
+          "display_name": "reuse"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

@@ -1,0 +1,71 @@
+{
+  "path": "PCGExCore/Public/Clusters/PCGExEdge.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExEdgeDirectionMethod",
+      "values": [
+        {
+          "name": "EndpointsOrder",
+          "display_name": "EndpointsOrder"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "EndpointsIndices",
+          "display_name": "EndpointsIndices"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "EndpointsSort",
+          "display_name": "EndpointsSort"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "EdgeDotAttribute",
+          "display_name": "EdgeDotAttribute"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExEdgeDirectionChoice",
+      "values": [
+        {
+          "name": "SmallestToGreatest",
+          "display_name": "SmallestToGreatest"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "GreatestToSmallest",
+          "display_name": "GreatestToSmallest"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

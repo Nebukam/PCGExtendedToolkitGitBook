@@ -1,0 +1,33 @@
+{
+  "path": "PCGExFoundations/Public/Details/PCGExBoundsCommon.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExPointOnBoundsOutputMode",
+      "values": [
+        {
+          "name": "Merged",
+          "display_name": "Merged"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "Individual",
+          "display_name": "Individual"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

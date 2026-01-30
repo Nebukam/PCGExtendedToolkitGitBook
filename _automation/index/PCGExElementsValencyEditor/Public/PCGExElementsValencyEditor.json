@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsValencyEditor/Public/PCGExElementsValencyEditor.h",
+  "module": "PCGExElementsValencyEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsValencyEditorModule",
+      "base_class": "IPCGExEditorModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

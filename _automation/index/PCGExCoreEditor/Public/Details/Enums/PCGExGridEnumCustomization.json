@@ -1,0 +1,15 @@
+{
+  "path": "PCGExCoreEditor/Public/Details/Enums/PCGExGridEnumCustomization.h",
+  "module": "PCGExCoreEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExGridEnumCustomization",
+      "base_class": "IPropertyTypeCustomization"
+    }
+  ],
+  "namespaces": {}
+}

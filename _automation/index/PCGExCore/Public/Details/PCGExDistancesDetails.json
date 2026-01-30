@@ -1,0 +1,71 @@
+{
+  "path": "PCGExCore/Public/Details/PCGExDistancesDetails.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExDistanceDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Source",
+          "display_name": "Source",
+          "type": "EPCGExDistance",
+          "default": "EPCGExDistance::Center",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Target",
+          "display_name": "Target",
+          "type": "EPCGExDistance",
+          "default": "EPCGExDistance::Center",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Type",
+          "display_name": "Type",
+          "type": "EPCGExDistanceType",
+          "default": "EPCGExDistanceType::Euclidian",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOverlapIsZero",
+          "display_name": "bOverlapIsZero",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

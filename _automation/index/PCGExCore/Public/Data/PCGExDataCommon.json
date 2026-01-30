@@ -1,0 +1,159 @@
+{
+  "path": "PCGExCore/Public/Data/PCGExDataCommon.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExInputValueType",
+      "values": [
+        {
+          "name": "Constant",
+          "display_name": "Constant"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "user",
+          "display_name": "user"
+        },
+        {
+          "name": "defined",
+          "display_name": "defined"
+        },
+        {
+          "name": "value",
+          "display_name": "value"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Attribute",
+          "display_name": "Attribute"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExInputValueToggle",
+      "values": [
+        {
+          "name": "Constant",
+          "display_name": "Constant"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "user",
+          "display_name": "user"
+        },
+        {
+          "name": "defined",
+          "display_name": "defined"
+        },
+        {
+          "name": "value",
+          "display_name": "value"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Attribute",
+          "display_name": "Attribute"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Disabled",
+          "display_name": "Disabled"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExDataInputValueType",
+      "values": [
+        {
+          "name": "Constant",
+          "display_name": "Constant"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Attribute",
+          "display_name": "Attribute"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExNumericOutput",
+      "values": [
+        {
+          "name": "Double",
+          "display_name": "Double"
+        },
+        {
+          "name": "Float",
+          "display_name": "Float"
+        },
+        {
+          "name": "Int32",
+          "display_name": "Int32"
+        },
+        {
+          "name": "Int64",
+          "display_name": "Int64"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

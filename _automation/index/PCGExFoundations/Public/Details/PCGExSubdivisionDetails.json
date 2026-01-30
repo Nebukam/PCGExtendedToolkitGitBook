@@ -1,0 +1,343 @@
+{
+  "path": "PCGExFoundations/Public/Details/PCGExSubdivisionDetails.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExSubdivideMode",
+      "values": [
+        {
+          "name": "Distance",
+          "display_name": "Distance"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Count",
+          "display_name": "Count"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Manhattan",
+          "display_name": "Manhattan"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "number",
+          "display_name": "number"
+        },
+        {
+          "name": "of",
+          "display_name": "of"
+        },
+        {
+          "name": "subdivisions",
+          "display_name": "subdivisions"
+        },
+        {
+          "name": "depends",
+          "display_name": "depends"
+        },
+        {
+          "name": "on",
+          "display_name": "on"
+        },
+        {
+          "name": "spatial",
+          "display_name": "spatial"
+        },
+        {
+          "name": "relationship",
+          "display_name": "relationship"
+        },
+        {
+          "name": "between",
+          "display_name": "between"
+        },
+        {
+          "name": "the",
+          "display_name": "the"
+        },
+        {
+          "name": "points",
+          "display_name": "points"
+        },
+        {
+          "name": "will",
+          "display_name": "will"
+        },
+        {
+          "name": "be",
+          "display_name": "be"
+        },
+        {
+          "name": "in",
+          "display_name": "in"
+        },
+        {
+          "name": "the",
+          "display_name": "the"
+        },
+        {
+          "name": "0",
+          "display_name": "0"
+        },
+        {
+          "name": "2",
+          "display_name": "2"
+        },
+        {
+          "name": "range",
+          "display_name": "range"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExManhattanMethod",
+      "values": [
+        {
+          "name": "Simple",
+          "display_name": "Simple"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "will",
+          "display_name": "will"
+        },
+        {
+          "name": "generate",
+          "display_name": "generate"
+        },
+        {
+          "name": "0",
+          "display_name": "0"
+        },
+        {
+          "name": "2",
+          "display_name": "2"
+        },
+        {
+          "name": "points",
+          "display_name": "points"
+        },
+        {
+          "name": "GridDistance",
+          "display_name": "GridDistance"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "will",
+          "display_name": "will"
+        },
+        {
+          "name": "subdivide",
+          "display_name": "subdivide"
+        },
+        {
+          "name": "space",
+          "display_name": "space"
+        },
+        {
+          "name": "according",
+          "display_name": "according"
+        },
+        {
+          "name": "to",
+          "display_name": "to"
+        },
+        {
+          "name": "a",
+          "display_name": "a"
+        },
+        {
+          "name": "grid",
+          "display_name": "grid"
+        },
+        {
+          "name": "size",
+          "display_name": "size"
+        },
+        {
+          "name": "GridCount",
+          "display_name": "GridCount"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "will",
+          "display_name": "will"
+        },
+        {
+          "name": "subdivide",
+          "display_name": "subdivide"
+        },
+        {
+          "name": "space",
+          "display_name": "space"
+        },
+        {
+          "name": "according",
+          "display_name": "according"
+        },
+        {
+          "name": "to",
+          "display_name": "to"
+        },
+        {
+          "name": "a",
+          "display_name": "a"
+        },
+        {
+          "name": "grid",
+          "display_name": "grid"
+        },
+        {
+          "name": "size",
+          "display_name": "size"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExManhattanAlign",
+      "values": [
+        {
+          "name": "World",
+          "display_name": "World"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "Custom",
+          "display_name": "Custom"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "SegmentX",
+          "display_name": "SegmentX"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "SegmentY",
+          "display_name": "SegmentY"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        },
+        {
+          "name": "SegmentZ",
+          "display_name": "SegmentZ"
+        },
+        {
+          "name": "ToolTip",
+          "display_name": "ToolTip"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExManhattanDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Method",
+          "display_name": "Method",
+          "type": "EPCGExManhattanMethod",
+          "default": "EPCGExManhattanMethod::Simple",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Order",
+          "display_name": "Order",
+          "type": "EPCGExAxisOrder",
+          "default": "EPCGExAxisOrder::XYZ",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "GridSizeInput",
+          "display_name": "GridSizeInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSupportAttribute",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SpaceAlign",
+          "display_name": "SpaceAlign",
+          "type": "EPCGExManhattanAlign",
+          "default": "EPCGExManhattanAlign::World",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "OrientInput",
+          "display_name": "OrientInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSupportAttribute && SpaceAlign == EPCGExManhattanAlign::Custom",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

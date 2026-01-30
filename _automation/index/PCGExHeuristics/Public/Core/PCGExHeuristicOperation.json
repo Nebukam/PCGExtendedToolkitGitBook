@@ -1,0 +1,15 @@
+{
+  "path": "PCGExHeuristics/Public/Core/PCGExHeuristicOperation.h",
+  "module": "PCGExHeuristics",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExHeuristicOperation",
+      "base_class": "FPCGExOperation"
+    }
+  ],
+  "namespaces": {}
+}

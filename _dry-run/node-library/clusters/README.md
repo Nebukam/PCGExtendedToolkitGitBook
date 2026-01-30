@@ -24,105 +24,30 @@ Edge Points:    Each ─ and │ is a separate point
 
 Most cluster nodes take **paired Vtx/Edges inputs** and produce **paired Vtx/Edges outputs**.
 
-## Node Categories
+## Categories
 
-### Diagram Generation
+| Category | Description |
+|----------|-------------|
+| [Diagrams](./diagrams/) | Generate clusters from points (Delaunay, Voronoi, Convex Hull) |
+| [Operations](./operations/) | Manipulate, combine, and transform clusters |
+| [Refine Edges](./refine-edges/) | Remove or keep edges based on various criteria |
+| [Relax Clusters](./relax-clusters/) | Iteratively adjust vertex positions |
+| [Path Conversion](./path-conversion/) | Convert between paths and clusters |
+| [Properties](./properties/) | Write computed properties to vertices and edges |
+| [Selection](./selection/) | Filter and select clusters or vertices |
+| [Utility](./utility/) | Specialized cluster operations |
 
-Create clusters from point distributions using spatial algorithms.
+## Shared Reference
 
-| Node | Description |
+| Page | Description |
 |------|-------------|
-| [Delaunay 3D](./delaunay-3d.md) | 3D Delaunay tetrahedralization with optional Urquhart graph |
-| [Delaunay 2D](./delaunay-2d.md) | 2D Delaunay triangulation with projection settings |
-| [Voronoi 3D](./voronoi-3d.md) | 3D Voronoi graph from cell adjacencies |
-| [Voronoi 2D](./voronoi-2d.md) | 2D Voronoi graph with multiple distance metrics |
-| [Convex Hull 3D](./convex-hull-3d.md) | 3D convex hull triangulation |
-| [Convex Hull 2D](./convex-hull-2d.md) | 2D convex hull (deprecated) |
-
-### Cluster Operations
-
-Manipulate, combine, and transform clusters.
-
-| Node | Description |
-|------|-------------|
-| [Fuse Clusters](./fuse-clusters.md) | Find point/edge and edge/edge intersections |
-| [Connect Clusters](./connect-clusters.md) | Connect isolated clusters by closest vertices |
-| [Merge Vertices](./merge-vertices.md) | Merge vertices so all edges share the same collection |
-| [Sanitize Clusters](./sanitize-clusters.md) | Ensure clean, interconnected clusters |
-| [Simplify Clusters](./simplify-clusters.md) | Simplify by operating on isolated chains |
-| [Subdivide Edges](./subdivide-edges.md) | Add intermediate points along edges |
-| [Make Unique](./make-unique.md) | Output unique data pointers for input clusters |
-| [Pack Clusters](./pack-clusters.md) | Pack each cluster into a single point data object |
-| [Unpack Clusters](./unpack-clusters.md) | Restore vtx/edge clusters from packed dataset |
-
-### Edge Refinement
-
-Remove or keep edges based on various criteria. Uses sub-node factories for flexible refinement rules.
-
-| Node | Description |
-|------|-------------|
-| [Refine Edges](./refine-edges/) | Parent node accepting refinement sub-operations |
-
-See [Edge Refinement Operations](./refine-edges/#available-operations) for the full list of refinement algorithms (MST, Gabriel, Length-based, Score-based, etc.).
-
-### Relaxation
-
-Iteratively adjust vertex positions to improve cluster quality. Uses sub-node factories for different relaxation algorithms.
-
-| Node | Description |
-|------|-------------|
-| [Relax Clusters](./relax-clusters/) | Parent node accepting relaxation sub-operations |
-
-See [Relaxation Operations](./relax-clusters/#available-operations) for available algorithms (Laplacian, Force Directed, Verlet, Box/Radius Fitting).
-
-### Path Conversion
-
-Convert between paths and clusters.
-
-| Node | Description |
-|------|-------------|
-| [Path to Clusters](./path-to-clusters.md) | Merge paths into edge clusters |
-| [Break to Paths](./break-to-paths.md) | Extract continuous edge chains as paths |
-| [Cut Clusters](./cut-clusters.md) | Cut cluster nodes and edges using paths |
-
-### Vertex & Edge Properties
-
-Write computed properties to vertices and edges.
-
-| Node | Description |
-|------|-------------|
-| [Vtx Properties](./vtx-properties.md) | Extract edge information to vertex attributes |
-| [Edge Properties](./edge-properties.md) | Extract endpoint information to edge attributes |
-| [Sample Neighbors](./sample-neighbors.md) | Sample attributes from connected vertices |
-
-### Selection & Filtering
-
-Filter and pick clusters or vertices.
-
-| Node | Description |
-|------|-------------|
-| [Filter Vtx](./filter-vtx.md) | Filter vertices from clusters |
-| [Pick Closest](./pick-closest.md) | Pick clusters closest to target points |
-| [Find Clusters](./find-clusters.md) | Find vtx/edge pairs in data collections |
-| [Find on Bounds](./find-on-bounds.md) | Find closest vtx or edge on cluster bounds |
-
-### Utility
-
-Specialized cluster operations.
-
-| Node | Description |
-|------|-------------|
-| [Build Custom Graph](./build-custom-graph.md) | Create clusters using blueprint objects |
-| [Mesh to Clusters](./mesh-to-clusters.md) | Create clusters from mesh topology |
-| [Copy to Points](./copy-to-points.md) | Create cluster copies at target points |
-| [Partition Vtx](./partition-vtx.md) | Split vertices into per-cluster groups |
-| [Centrality](./centrality.md) | Compute betweenness centrality |
+| [Intersection Details](./shared-settings/intersection-details.md) | Shared settings for Point/Point, Point/Edge, Edge/Edge intersection detection |
 
 ## Common Concepts
 
 ### Cluster Output Settings
 
-Most diagram generation nodes share these output settings:
+Most diagram generation nodes share these output settings (`FPCGExGraphBuilderDetails`):
 
 | Setting | Description |
 |---------|-------------|
@@ -158,7 +83,7 @@ Several filter nodes work specifically with cluster data:
 ## Workflow Example
 
 ```
-Points ──► Delaunay 2D ──► Refine (Remove Longest) ──► Relax (Laplacian) ──► Out
+Points ──► Delaunay 2D ──► Refine (MST) ──► Relax (Laplacian) ──► Out
                 │
                 └──► Sites Output (optional)
 ```

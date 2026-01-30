@@ -1,0 +1,337 @@
+{
+  "path": "PCGExCollections/Public/Core/PCGExAssetGrammar.h",
+  "module": "PCGExCollections",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExGrammarScaleMode",
+      "values": [
+        {
+          "name": "Fixed",
+          "display_name": "Fixed"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Flex",
+          "display_name": "Flex"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExGrammarSizeReference",
+      "values": [
+        {
+          "name": "X",
+          "display_name": "X"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Y",
+          "display_name": "Y"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Z",
+          "display_name": "Z"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Min",
+          "display_name": "Min"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Max",
+          "display_name": "Max"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Average",
+          "display_name": "Average"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExGrammarSubCollectionMode",
+      "values": [
+        {
+          "name": "Inherit",
+          "display_name": "Inherit"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "Override",
+          "display_name": "Override"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "Flatten",
+          "display_name": "Flatten"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExCollectionGrammarSize",
+      "values": [
+        {
+          "name": "Fixed",
+          "display_name": "Fixed"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Min",
+          "display_name": "Min"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Max",
+          "display_name": "Max"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        },
+        {
+          "name": "Average",
+          "display_name": "Average"
+        },
+        {
+          "name": "Tooltip",
+          "display_name": "Tooltip"
+        },
+        {
+          "name": "ActionIcon",
+          "display_name": "ActionIcon"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExAssetGrammarDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Symbol",
+          "display_name": "Symbol",
+          "type": "FName",
+          "default": "NAME_None",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScaleMode",
+          "display_name": "ScaleMode",
+          "type": "EPCGExGrammarScaleMode",
+          "default": "EPCGExGrammarScaleMode::Fixed",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Size",
+          "display_name": "Size",
+          "type": "EPCGExGrammarSizeReference",
+          "default": "EPCGExGrammarSizeReference::X",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DebugColor",
+          "display_name": "DebugColor",
+          "type": "FLinearColor",
+          "default": "FLinearColor::White",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExCollectionGrammarDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Symbol",
+          "display_name": "Symbol",
+          "type": "FName",
+          "default": "NAME_None",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScaleMode",
+          "display_name": "ScaleMode",
+          "type": "EPCGExGrammarScaleMode",
+          "default": "EPCGExGrammarScaleMode::Fixed",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SizeMode",
+          "display_name": "SizeMode",
+          "type": "EPCGExCollectionGrammarSize",
+          "default": "EPCGExCollectionGrammarSize::Min",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Size",
+          "display_name": "Size",
+          "type": "double",
+          "default": "100",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SizeMode == EPCGExCollectionGrammarSize::Fixed",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DebugColor",
+          "display_name": "DebugColor",
+          "type": "FLinearColor",
+          "default": "FLinearColor::White",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}
