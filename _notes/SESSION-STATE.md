@@ -3,45 +3,68 @@
 > Quick restoration for session continuity. Machine-readable.
 
 ## Last Update
-2026-01-29T??:??:??
+2026-01-29
 
 ## Active Task
-FIX_ERRORS
+DOCUMENTATION - Node Library modules (Clusters in progress)
 
-## Completed
-- REWRITE:point-filters:7/7
-- REWRITE:collection-filters:5/5
-- REWRITE:cluster-filters:3/3
-- REWRITE:path-nodes:3/3
+## Completed Modules
+- PATHFINDING: 8/8 nodes + README
+- SAMPLING: 13/13 nodes + texture-sampling subfolder (3 nodes + tex-param sub-node) + README
 
-## Pending
-- FIX:point-filters:0/19
-- FIX:cluster-filters:0/5
-- FIX:path-nodes:0/13
-- FIX:path-subops:0/3
+## In Progress
+- CLUSTERS: 14/22 nodes + README + intersection-details + refine-edges subfolder + relax-clusters subfolder
+  - README.md (category overview)
+  - Shared: intersection-details.md (Point/Point, Point/Edge, Edge/Edge intersection structs)
+  - Diagrams: delaunay-3d, delaunay-2d, voronoi-3d, voronoi-2d, convex-hull-3d (5 nodes)
+  - Operations: fuse-clusters, sanitize-clusters (2 nodes)
+  - Path Conversion: break-to-paths, path-to-clusters (2 nodes)
+  - Utility: mesh-to-clusters (1 node)
+  - Refine Edges subfolder (1 parent node + 10 sub-operation pages):
+    - README.md (parent Cluster : Refine node)
+    - mst-prim.md, gabriel.md, skeleton.md (spatial tests)
+    - line-trace.md, overlap.md (collision-based)
+    - edge-length.md (4 length operations combined)
+    - edge-score.md (4 score operations combined)
+    - remove-leaves.md (2 leaf removal operations combined)
+    - dfs-tarjan.md (bridge edge detection)
+    - filter.md (edge filter-based)
+  - Relax Clusters subfolder (1 parent node + 5 sub-operation pages):
+    - README.md (parent Cluster : Relax node)
+    - laplacian.md (Laplacian/Poisson smoothing)
+    - force-directed.md (spring-charge system)
+    - verlet.md (physics with gravity/friction)
+    - box-fitting.md (Box Fitting v1 and v2)
+    - radius-fitting.md (spherical collision)
 
-## Error Files List
+## Remaining Clusters Nodes (8 nodes)
+- connect-clusters, merge-vertices, simplify-clusters, subdivide-edges
+- make-unique, pack-clusters, unpack-clusters
+- sample-neighbors
 
-### Point Filters (19)
-numeric-compare|boolean-compare|within-range|dot|angle|random|bitmask|distance|numeric-self-compare|string-self-compare|random-ratio|segment-cross|numeric-compare-nearest|value-hash|gameplay-tags|tensor-dot|noise|constant|picker
+## Pending Modules (Node Library)
+- Clusters (8 remaining nodes)
+- Meta (12 nodes)
+- Spatial (8 nodes)
+- Topology (5 nodes)
+- Valency (4 nodes)
+- Clipper2 (3 nodes)
+- Actions (3 nodes)
+- Tensors (2 nodes)
+- PathfindingNavmesh (2 nodes)
+- FloodFill (1 node)
+- Bridges (1 node)
+- Probing (1 node)
+- Shapes (1 node)
 
-### Cluster Filters (5)
-node-neighbors-count|node-edge-angle|edge-length|edge-neighbors-count|edge-endpoints-compare-numeric
-
-### Path Nodes (13)
-slide|shift|fuse-collinear|insert|subdivide|create-spline|spline-mesh-simple|path-crossings|bevel|resample|stitch|attribute-rolling
-
-### Path Sub-ops (3)
-smooth/README|orient/README|orient/weighted
-
-## Key Structs Documented
-FPCGExAdjacencySettings|FPCGExEdgeDirectionSettings|FPCGExDotComparisonDetails|FPCGExVectorHashComparisonDetails|FPCGExCompareSelectorDouble
-
-## Common Error Patterns
-1. bIgnoreSelf:src=true,doc=false
-2. FName≠FPCGAttributePropertyInputSelector
-3. Nested structs undocumented
-4. EditCondition visibility not noted
+## Documentation Conventions Established
+1. Only mark ⚡ PCG Overridable (ignore PCG_NotOverridable)
+2. Behavior-focused with ASCII diagrams
+3. Read source code before documenting
+4. Validate against UPROPERTY declarations
+5. Sub-node factories get their own documentation (e.g., tex-param.md)
+6. Complex shared structs get their own pages (e.g., intersection-details.md)
+7. Sub-operations in parent nodes become subfolders with individual pages (e.g., refine-edges/, relax-clusters/)
 
 ## Paths
 SRC=D:\GIT\PCGExWorkbench\Plugins\PCGExtendedToolkit\Source
@@ -52,7 +75,60 @@ REF=D:\GIT\PCGExtendedToolkitGitBook\_notes
 WRONG_PATH=C:\Users\Admin\.claude-worktrees\... (DO NOT USE)
 CORRECT_PATH=D:\GIT\PCGExtendedToolkitGitBook\_dry-run (USE THIS)
 
-## User Preference
-- Reduce attribute selector verbosity (glorified input fields)
-- Definitive before adding more
-- Reviewing rewrites currently
+## Sampling Module Structure
+```
+sampling/
+├── README.md
+├── sample-nearest-point.md
+├── sample-nearest-bounds.md
+├── sample-nearest-path.md
+├── sample-nearest-spline.md
+├── sample-nearest-surface.md
+├── sample-surface-guided.md (Sample Line Trace)
+├── sample-inside-path.md
+├── sample-overlap-stats.md
+├── sample-sockets.md
+├── self-pruning.md
+├── discard-by-overlap.md
+└── texture-sampling/
+    ├── README.md
+    ├── tex-param.md (sub-node factory)
+    ├── sample-texture.md
+    └── get-texture-data.md
+```
+
+## Clusters Module Structure (In Progress)
+```
+clusters/
+├── README.md
+├── intersection-details.md (shared structs for fusion nodes)
+├── delaunay-3d.md
+├── delaunay-2d.md
+├── voronoi-3d.md
+├── voronoi-2d.md
+├── convex-hull-3d.md
+├── fuse-clusters.md
+├── sanitize-clusters.md
+├── break-to-paths.md
+├── path-to-clusters.md
+├── mesh-to-clusters.md
+├── refine-edges/
+│   ├── README.md (parent Cluster : Refine node)
+│   ├── mst-prim.md
+│   ├── gabriel.md
+│   ├── skeleton.md
+│   ├── line-trace.md
+│   ├── overlap.md
+│   ├── edge-length.md (Keep/Remove Shortest/Longest)
+│   ├── edge-score.md (Keep/Remove Highest/Lowest Score)
+│   ├── remove-leaves.md (Remove Leaves + Recursive)
+│   ├── dfs-tarjan.md
+│   └── filter.md
+└── relax-clusters/
+    ├── README.md (parent Cluster : Relax node)
+    ├── laplacian.md
+    ├── force-directed.md
+    ├── verlet.md
+    ├── box-fitting.md (v1 and v2)
+    └── radius-fitting.md
+```
