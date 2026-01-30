@@ -11,60 +11,12 @@
           "display_name": "All"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "Exclude",
           "display_name": "Exclude"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "keep",
-          "display_name": "keep"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "others",
-          "display_name": "others"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "Include",
           "display_name": "Include"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "discard",
-          "display_name": "discard"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "others",
-          "display_name": "others"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
         }
       ],
       "used_by": []

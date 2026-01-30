@@ -8,19 +8,11 @@
       "values": [
         {
           "name": "ApplyToPoint",
-          "display_name": "ApplyToPoint"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Apply to point"
         },
         {
           "name": "OutputToAttribute",
-          "display_name": "OutputToAttribute"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Output to attribute"
         }
       ],
       "used_by": []
@@ -30,8 +22,8 @@
   "classes": [
     {
       "name": "UPCGExOrientSettings",
-      "display_name": "UPCGExOrientSettings",
-      "description": "",
+      "display_name": "Path : Orient",
+      "description": "Orient paths points",
       "base_class": "UPCGExPathProcessorSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/orient\")",
       "uproperties": [

@@ -11,36 +11,12 @@
           "display_name": "WeightedRandom"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "FirstMatch",
           "display_name": "FirstMatch"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "BestFit",
           "display_name": "BestFit"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -53,48 +29,8 @@
           "display_name": "Skip"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "let",
-          "display_name": "let"
-        },
-        {
-          "name": "solver",
-          "display_name": "solver"
-        },
-        {
-          "name": "decide",
-          "display_name": "decide"
-        },
-        {
-          "name": "with",
-          "display_name": "with"
-        },
-        {
-          "name": "optional",
-          "display_name": "optional"
-        },
-        {
-          "name": "warning",
-          "display_name": "warning"
-        },
-        {
           "name": "Force",
           "display_name": "Force"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

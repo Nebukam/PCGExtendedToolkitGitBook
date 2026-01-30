@@ -11,32 +11,16 @@
           "display_name": "Any"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Data",
           "display_name": "Data"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         },
         {
           "name": "Elements",
           "display_name": "Elements"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Match",
           "display_name": "Match"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         }
       ],
       "used_by": []
@@ -160,8 +144,8 @@
     },
     {
       "name": "UPCGExAttributeCheckFilterProviderSettings",
-      "display_name": "UPCGExAttributeCheckFilterProviderSettings",
-      "description": "",
+      "display_name": "Data Filter : Attribute Check",
+      "description": "Simple attribute existence check.",
       "base_class": "UPCGExFilterCollectionProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\"",
       "uproperties": [

@@ -11,16 +11,8 @@
           "display_name": "Curvature"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Spread",
           "display_name": "Spread"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         }
       ],
       "used_by": []

@@ -11,24 +11,12 @@
           "display_name": "Sum"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Any",
-          "display_name": "Any"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Any Endpoint"
         },
         {
           "name": "Both",
-          "display_name": "Both"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Both Endpoints"
         }
       ],
       "used_by": []
@@ -152,8 +140,8 @@
     },
     {
       "name": "UPCGExEdgeNeighborsCountFilterProviderSettings",
-      "display_name": "UPCGExEdgeNeighborsCountFilterProviderSettings",
-      "description": "",
+      "display_name": "Edge Filter : Num Vtx",
+      "description": "Check against the edge' endpoints neighbor count.",
       "base_class": "UPCGExEdgeFilterProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"filters/filters-edges/neighbors-count\")",
       "uproperties": [

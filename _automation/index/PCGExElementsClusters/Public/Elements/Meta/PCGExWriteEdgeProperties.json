@@ -8,27 +8,15 @@
       "values": [
         {
           "name": "EndpointsOrder",
-          "display_name": "EndpointsOrder"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Endpoints Order"
         },
         {
           "name": "Smallest",
-          "display_name": "Smallest"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Smallest Score"
         },
         {
           "name": "Highest",
-          "display_name": "Highest"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Highest Score"
         }
       ],
       "used_by": []

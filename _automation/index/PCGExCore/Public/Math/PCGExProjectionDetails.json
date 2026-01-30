@@ -11,16 +11,8 @@
           "display_name": "Normal"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "BestFit",
-          "display_name": "BestFit"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Best Fit"
         }
       ],
       "used_by": []

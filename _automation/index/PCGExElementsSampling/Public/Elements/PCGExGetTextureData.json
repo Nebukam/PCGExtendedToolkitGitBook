@@ -8,19 +8,11 @@
       "values": [
         {
           "name": "TexturePath",
-          "display_name": "TexturePath"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Texture Path"
         },
         {
           "name": "MaterialPath",
-          "display_name": "MaterialPath"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Material Path"
         }
       ],
       "used_by": []
@@ -33,24 +25,8 @@
           "display_name": "Point"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Bilinear",
           "display_name": "Bilinear"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         }
       ],
       "used_by": []

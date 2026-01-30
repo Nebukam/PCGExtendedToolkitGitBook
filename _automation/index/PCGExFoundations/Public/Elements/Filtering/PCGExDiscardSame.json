@@ -11,40 +11,12 @@
           "display_name": "FIFO"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "first",
-          "display_name": "first"
-        },
-        {
-          "name": "out",
-          "display_name": "out"
-        },
-        {
           "name": "LIFO",
           "display_name": "LIFO"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "first",
-          "display_name": "first"
-        },
-        {
-          "name": "out",
-          "display_name": "out"
-        },
-        {
           "name": "All",
           "display_name": "All"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -57,32 +29,12 @@
           "display_name": "None"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Single",
           "display_name": "Single"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "overridable",
-          "display_name": "overridable"
-        },
-        {
-          "name": "attribute",
-          "display_name": "attribute"
-        },
-        {
           "name": "List",
           "display_name": "List"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

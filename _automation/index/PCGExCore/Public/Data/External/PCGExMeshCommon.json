@@ -8,35 +8,19 @@
       "values": [
         {
           "name": "Raw",
-          "display_name": "Raw"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Raw Triangles"
         },
         {
           "name": "Dual",
-          "display_name": "Dual"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Dual Graph"
         },
         {
           "name": "Hollow",
-          "display_name": "Hollow"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Hollow Graph"
         },
         {
           "name": "Boundaries",
           "display_name": "Boundaries"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "NoTriangulation",

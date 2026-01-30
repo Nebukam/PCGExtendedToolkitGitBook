@@ -7,8 +7,8 @@
   "classes": [
     {
       "name": "UPCGExBitmaskSettings",
-      "display_name": "UPCGExBitmaskSettings",
-      "description": "",
+      "display_name": "Bitmask",
+      "description": "A Simple bitmask attribute.",
       "base_class": "UPCGExSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), meta=(PCGExNodeLibraryDoc=\"TBD\")",
       "uproperties": [

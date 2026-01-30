@@ -11,24 +11,12 @@
           "display_name": "Nodes"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Edges",
           "display_name": "Edges"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "NodesAndEdges",
-          "display_name": "NodesAndEdges"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Edges & Nodes"
         }
       ],
       "used_by": []

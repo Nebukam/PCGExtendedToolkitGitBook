@@ -11,24 +11,12 @@
           "display_name": "All"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Any",
           "display_name": "Any"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Partial",
           "display_name": "Partial"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

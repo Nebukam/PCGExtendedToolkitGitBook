@@ -8,19 +8,11 @@
       "values": [
         {
           "name": "Separate",
-          "display_name": "Separate"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Separate Pins"
         },
         {
           "name": "Combined",
           "display_name": "Combined"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -51,56 +43,28 @@
           "display_name": "None"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Density",
           "display_name": "Density"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         },
         {
           "name": "Steepness",
           "display_name": "Steepness"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "ColorR",
-          "display_name": "ColorR"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "R Channel"
         },
         {
           "name": "ColorG",
-          "display_name": "ColorG"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "G Channel"
         },
         {
           "name": "ColorB",
-          "display_name": "ColorB"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "B Channel"
         },
         {
           "name": "ColorA",
-          "display_name": "ColorA"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "A Channel"
         }
       ],
       "used_by": []
@@ -110,151 +74,15 @@
       "values": [
         {
           "name": "Projection2D",
-          "display_name": "Projection2D"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "sort",
-          "display_name": "sort"
-        },
-        {
-          "name": "edges",
-          "display_name": "edges"
-        },
-        {
-          "name": "by",
-          "display_name": "by"
-        },
-        {
-          "name": "angle",
-          "display_name": "angle"
-        },
-        {
-          "name": "around",
-          "display_name": "around"
-        },
-        {
-          "name": "each",
-          "display_name": "each"
-        },
-        {
-          "name": "vertex",
-          "display_name": "vertex"
-        },
-        {
-          "name": "Works",
-          "display_name": "Works"
-        },
-        {
-          "name": "well",
-          "display_name": "well"
-        },
-        {
-          "name": "for",
-          "display_name": "for"
-        },
-        {
-          "name": "planar",
-          "display_name": "planar"
-        },
-        {
-          "name": "or",
-          "display_name": "or"
-        },
-        {
-          "name": "near",
-          "display_name": "near"
-        },
-        {
-          "name": "planar",
-          "display_name": "planar"
-        },
-        {
-          "name": "graphs",
-          "display_name": "graphs"
+          "display_name": "Projection 2D"
         },
         {
           "name": "TopologicalHints",
-          "display_name": "TopologicalHints"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "useful",
-          "display_name": "useful"
-        },
-        {
-          "name": "for",
-          "display_name": "for"
-        },
-        {
-          "name": "Voronoi",
-          "display_name": "Voronoi"
-        },
-        {
-          "name": "like",
-          "display_name": "like"
-        },
-        {
-          "name": "graphs",
-          "display_name": "graphs"
-        },
-        {
-          "name": "with",
-          "display_name": "with"
-        },
-        {
-          "name": "many",
-          "display_name": "many"
-        },
-        {
-          "name": "degree",
-          "display_name": "degree"
-        },
-        {
-          "name": "2",
-          "display_name": "2"
-        },
-        {
-          "name": "vertices",
-          "display_name": "vertices"
+          "display_name": "Topological Hints"
         },
         {
           "name": "LocalTangent3D",
-          "display_name": "LocalTangent3D"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Local Tangent 3D"
         }
       ],
       "used_by": []
@@ -264,19 +92,11 @@
       "values": [
         {
           "name": "CCW",
-          "display_name": "CCW"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Clockwise"
         },
         {
           "name": "CW",
-          "display_name": "CW"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Counter Clockwise"
         }
       ],
       "used_by": []
@@ -286,27 +106,15 @@
       "values": [
         {
           "name": "Both",
-          "display_name": "Both"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Convex & Concave"
         },
         {
           "name": "ConvexOnly",
-          "display_name": "ConvexOnly"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Convex Only"
         },
         {
           "name": "ConcaveOnly",
-          "display_name": "ConcaveOnly"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Concave Only"
         }
       ],
       "used_by": []
@@ -319,40 +127,20 @@
           "display_name": "Original"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Centroid",
           "display_name": "Centroid"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "PathBoundsCenter",
-          "display_name": "PathBoundsCenter"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Path bounds center"
         },
         {
           "name": "FirstNode",
-          "display_name": "FirstNode"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "First Node"
         },
         {
           "name": "LastNode",
-          "display_name": "LastNode"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Last Node"
         }
       ],
       "used_by": []
@@ -365,40 +153,12 @@
           "display_name": "Original"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "MatchCell",
-          "display_name": "MatchCell"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Match Cell"
         },
         {
           "name": "MatchPathResetQuat",
           "display_name": "MatchPathResetQuat"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "and",
-          "display_name": "and"
-        },
-        {
-          "name": "rotation",
-          "display_name": "rotation"
-        },
-        {
-          "name": "is",
-          "display_name": "is"
-        },
-        {
-          "name": "reset",
-          "display_name": "reset"
         }
       ],
       "used_by": []
@@ -408,35 +168,19 @@
       "values": [
         {
           "name": "SeedOrder",
-          "display_name": "SeedOrder"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Seed Order"
         },
         {
           "name": "Closest",
           "display_name": "Closest"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "ClosestProjected",
           "display_name": "ClosestProjected"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "BestCandidate",
-          "display_name": "BestCandidate"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Best Candidate"
         }
       ],
       "used_by": []

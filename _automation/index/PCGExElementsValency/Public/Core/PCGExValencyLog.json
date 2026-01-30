@@ -7,32 +7,8 @@
       "name": "EPCGExValencyLogCategory",
       "values": [
         {
-          "name": "Rule",
-          "display_name": "Rule"
-        },
-        {
-          "name": "building",
-          "display_name": "building"
-        },
-        {
-          "name": "from",
-          "display_name": "from"
-        },
-        {
-          "name": "cages",
-          "display_name": "cages"
-        },
-        {
           "name": "Building",
           "display_name": "Building"
-        },
-        {
-          "name": "BondingRules",
-          "display_name": "BondingRules"
-        },
-        {
-          "name": "compilation",
-          "display_name": "compilation"
         },
         {
           "name": "Compilation",
@@ -43,84 +19,12 @@
           "display_name": "Solver"
         },
         {
-          "name": "operations",
-          "display_name": "operations"
-        },
-        {
-          "name": "candidate",
-          "display_name": "candidate"
-        },
-        {
-          "name": "selection",
-          "display_name": "selection"
-        },
-        {
-          "name": "constraints",
-          "display_name": "constraints"
-        },
-        {
-          "name": "Solver",
-          "display_name": "Solver"
-        },
-        {
           "name": "Staging",
           "display_name": "Staging"
-        },
-        {
-          "name": "node",
-          "display_name": "node"
-        },
-        {
-          "name": "state",
-          "display_name": "state"
-        },
-        {
-          "name": "building",
-          "display_name": "building"
-        },
-        {
-          "name": "output",
-          "display_name": "output"
-        },
-        {
-          "name": "writing",
-          "display_name": "writing"
-        },
-        {
-          "name": "Staging",
-          "display_name": "Staging"
-        },
-        {
-          "name": "Editor",
-          "display_name": "Editor"
-        },
-        {
-          "name": "mode",
-          "display_name": "mode"
-        },
-        {
-          "name": "operations",
-          "display_name": "operations"
         },
         {
           "name": "EditorMode",
           "display_name": "EditorMode"
-        },
-        {
-          "name": "Cage",
-          "display_name": "Cage"
-        },
-        {
-          "name": "detection",
-          "display_name": "detection"
-        },
-        {
-          "name": "and",
-          "display_name": "and"
-        },
-        {
-          "name": "connections",
-          "display_name": "connections"
         },
         {
           "name": "Cages",
@@ -131,68 +35,12 @@
           "display_name": "Mirror"
         },
         {
-          "name": "source",
-          "display_name": "source"
-        },
-        {
-          "name": "resolution",
-          "display_name": "resolution"
-        },
-        {
-          "name": "and",
-          "display_name": "and"
-        },
-        {
-          "name": "asset",
-          "display_name": "asset"
-        },
-        {
-          "name": "inheritance",
-          "display_name": "inheritance"
-        },
-        {
-          "name": "Mirror",
-          "display_name": "Mirror"
-        },
-        {
-          "name": "Rebuild",
-          "display_name": "Rebuild"
-        },
-        {
-          "name": "flow",
-          "display_name": "flow"
-        },
-        {
-          "name": "and",
-          "display_name": "and"
-        },
-        {
-          "name": "dirty",
-          "display_name": "dirty"
-        },
-        {
-          "name": "state",
-          "display_name": "state"
-        },
-        {
-          "name": "cascade",
-          "display_name": "cascade"
-        },
-        {
           "name": "Rebuild",
           "display_name": "Rebuild"
         },
         {
           "name": "MAX",
           "display_name": "MAX"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "Hidden",
-          "display_name": "Hidden"
         }
       ],
       "used_by": []
@@ -201,80 +49,20 @@
       "name": "EPCGExValencyLogVerbosity",
       "values": [
         {
-          "name": "No",
-          "display_name": "No"
-        },
-        {
-          "name": "logging",
-          "display_name": "logging"
-        },
-        {
           "name": "Off",
           "display_name": "Off"
-        },
-        {
-          "name": "Errors",
-          "display_name": "Errors"
-        },
-        {
-          "name": "only",
-          "display_name": "only"
         },
         {
           "name": "Error",
           "display_name": "Error"
         },
         {
-          "name": "Errors",
-          "display_name": "Errors"
-        },
-        {
-          "name": "warnings",
-          "display_name": "warnings"
-        },
-        {
           "name": "Warning",
           "display_name": "Warning"
         },
         {
-          "name": "Errors",
-          "display_name": "Errors"
-        },
-        {
-          "name": "warnings",
-          "display_name": "warnings"
-        },
-        {
-          "name": "general",
-          "display_name": "general"
-        },
-        {
-          "name": "info",
-          "display_name": "info"
-        },
-        {
           "name": "Info",
           "display_name": "Info"
-        },
-        {
-          "name": "Everything",
-          "display_name": "Everything"
-        },
-        {
-          "name": "including",
-          "display_name": "including"
-        },
-        {
-          "name": "detailed",
-          "display_name": "detailed"
-        },
-        {
-          "name": "debug",
-          "display_name": "debug"
-        },
-        {
-          "name": "info",
-          "display_name": "info"
         },
         {
           "name": "Verbose",

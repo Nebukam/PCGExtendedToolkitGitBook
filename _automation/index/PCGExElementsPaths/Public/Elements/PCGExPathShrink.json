@@ -11,16 +11,8 @@
           "display_name": "Count"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Distance",
           "display_name": "Distance"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -30,35 +22,19 @@
       "values": [
         {
           "name": "NewPoint",
-          "display_name": "NewPoint"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "New Point"
         },
         {
           "name": "Previous",
           "display_name": "Previous"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Next",
           "display_name": "Next"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Closest",
           "display_name": "Closest"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -68,27 +44,15 @@
       "values": [
         {
           "name": "Both",
-          "display_name": "Both"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Start and End"
         },
         {
           "name": "Start",
           "display_name": "Start"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "End",
           "display_name": "End"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -101,40 +65,8 @@
           "display_name": "Shared"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Separate",
           "display_name": "Separate"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "end",
-          "display_name": "end"
-        },
-        {
-          "name": "will",
-          "display_name": "will"
-        },
-        {
-          "name": "use",
-          "display_name": "use"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "secondary",
-          "display_name": "secondary"
-        },
-        {
-          "name": "value",
-          "display_name": "value"
         }
       ],
       "used_by": []

@@ -11,56 +11,12 @@
           "display_name": "Shortest"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Longest",
           "display_name": "Longest"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Median",
           "display_name": "Median"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "that",
-          "display_name": "that"
-        },
-        {
-          "name": "is",
-          "display_name": "is"
-        },
-        {
-          "name": "neither",
-          "display_name": "neither"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "shortest",
-          "display_name": "shortest"
-        },
-        {
-          "name": "nor",
-          "display_name": "nor"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "longest",
-          "display_name": "longest"
         }
       ],
       "used_by": []
@@ -73,24 +29,12 @@
           "display_name": "None"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Avoid",
           "display_name": "Avoid"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Favor",
           "display_name": "Favor"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -103,24 +47,12 @@
           "display_name": "None"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Greater",
           "display_name": "Greater"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Smaller",
           "display_name": "Smaller"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -130,19 +62,11 @@
       "values": [
         {
           "name": "SizeMatters",
-          "display_name": "SizeMatters"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Size matters more"
         },
         {
           "name": "DirectionMatters",
-          "display_name": "DirectionMatters"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Direction matters more"
         }
       ],
       "used_by": []

@@ -11,32 +11,16 @@
           "display_name": "Square"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Round",
           "display_name": "Round"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "Bevel",
           "display_name": "Bevel"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Miter",
           "display_name": "Miter"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -49,40 +33,20 @@
           "display_name": "Polygon"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Joined",
           "display_name": "Joined"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "Butt",
           "display_name": "Butt"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Square",
           "display_name": "Square"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Round",
           "display_name": "Round"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -92,35 +56,19 @@
       "values": [
         {
           "name": "EvenOdd",
-          "display_name": "EvenOdd"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Even Odd"
         },
         {
           "name": "NonZero",
-          "display_name": "NonZero"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Non Zero"
         },
         {
           "name": "Positive",
           "display_name": "Positive"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Negative",
           "display_name": "Negative"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -133,16 +81,8 @@
           "display_name": "Split"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Consolidate",
           "display_name": "Consolidate"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -155,24 +95,12 @@
           "display_name": "Ignore"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Output",
           "display_name": "Output"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "OutputPin",
           "display_name": "OutputPin"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

@@ -11,16 +11,8 @@
           "display_name": "Owner"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "ActorReferences",
-          "display_name": "ActorReferences"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Actor References"
         }
       ],
       "used_by": []
@@ -227,8 +219,8 @@
     },
     {
       "name": "UPCGExBuildCustomGraphSettings",
-      "display_name": "UPCGExBuildCustomGraphSettings",
-      "description": "",
+      "display_name": "Cluster : Build Custom Graph",
+      "description": "Create clusters using custom blueprint objects",
       "base_class": "UPCGExPointsProcessorSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\"",
       "uproperties": [

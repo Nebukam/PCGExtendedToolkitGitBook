@@ -11,16 +11,8 @@
           "display_name": "Prune"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "WriteResult",
-          "display_name": "WriteResult"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Write Result"
         }
       ],
       "used_by": []
@@ -33,24 +25,12 @@
           "display_name": "None"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Before",
-          "display_name": "Before"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Before Transform"
         },
         {
           "name": "After",
-          "display_name": "After"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "After Transform"
         }
       ],
       "used_by": []

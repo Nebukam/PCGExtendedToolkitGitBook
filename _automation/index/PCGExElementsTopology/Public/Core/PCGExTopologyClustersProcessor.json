@@ -11,16 +11,8 @@
           "display_name": "Legacy"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "PCGDynamicMesh",
-          "display_name": "PCGDynamicMesh"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "PCG Dynamic Mesh"
         }
       ],
       "used_by": []

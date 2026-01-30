@@ -8,51 +8,19 @@
       "values": [
         {
           "name": "X",
-          "display_name": "X"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
+          "display_name": "X Axis"
         },
         {
           "name": "Y",
-          "display_name": "Y"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
+          "display_name": "Y Axis"
         },
         {
           "name": "Z",
-          "display_name": "Z"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
+          "display_name": "Z Axis"
         },
         {
           "name": "Radial",
           "display_name": "Radial"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
         }
       ],
       "used_by": []

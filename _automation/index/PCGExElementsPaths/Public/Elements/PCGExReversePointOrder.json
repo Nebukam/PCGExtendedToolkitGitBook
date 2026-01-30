@@ -8,27 +8,15 @@
       "values": [
         {
           "name": "None",
-          "display_name": "None"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Unconditional"
         },
         {
           "name": "SortingRules",
-          "display_name": "SortingRules"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Sorting Rules"
         },
         {
           "name": "Winding",
           "display_name": "Winding"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

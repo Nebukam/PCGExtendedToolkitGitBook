@@ -11,36 +11,8 @@
           "display_name": "Paths"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "nodes",
-          "display_name": "nodes"
-        },
-        {
-          "name": "with",
-          "display_name": "with"
-        },
-        {
-          "name": "only",
-          "display_name": "only"
-        },
-        {
-          "name": "two",
-          "display_name": "two"
-        },
-        {
-          "name": "neighbors",
-          "display_name": "neighbors"
-        },
-        {
           "name": "Edges",
           "display_name": "Edges"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -50,27 +22,15 @@
       "values": [
         {
           "name": "Include",
-          "display_name": "Include"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Include Leaves"
         },
         {
           "name": "Exclude",
-          "display_name": "Exclude"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Exclude Leaves"
         },
         {
           "name": "Only",
-          "display_name": "Only"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Only Leaves"
         }
       ],
       "used_by": []

@@ -11,60 +11,12 @@
           "display_name": "None"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "DirectionOnly",
           "display_name": "DirectionOnly"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "re",
-          "display_name": "re"
-        },
-        {
-          "name": "optimize",
-          "display_name": "optimize"
-        },
-        {
-          "name": "magnitudes",
-          "display_name": "magnitudes"
-        },
-        {
           "name": "Full",
           "display_name": "Full"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

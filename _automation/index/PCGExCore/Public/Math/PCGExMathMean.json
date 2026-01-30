@@ -11,140 +11,8 @@
           "display_name": "Relative"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "or",
-          "display_name": "or"
-        },
-        {
-          "name": "used",
-          "display_name": "used"
-        },
-        {
-          "name": "as",
-          "display_name": "as"
-        },
-        {
-          "name": "a",
-          "display_name": "a"
-        },
-        {
-          "name": "factor",
-          "display_name": "factor"
-        },
-        {
-          "name": "what",
-          "display_name": "what"
-        },
-        {
-          "name": "it",
-          "display_name": "it"
-        },
-        {
-          "name": "means",
-          "display_name": "means"
-        },
-        {
-          "name": "exactly",
-          "display_name": "exactly"
-        },
-        {
-          "name": "depends",
-          "display_name": "depends"
-        },
-        {
-          "name": "on",
-          "display_name": "on"
-        },
-        {
-          "name": "context",
-          "display_name": "context"
-        },
-        {
-          "name": "See",
-          "display_name": "See"
-        },
-        {
-          "name": "node",
-          "display_name": "node"
-        },
-        {
-          "name": "specific",
-          "display_name": "specific"
-        },
-        {
-          "name": "documentation",
-          "display_name": "documentation"
-        },
-        {
           "name": "Discrete",
           "display_name": "Discrete"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "or",
-          "display_name": "or"
-        },
-        {
-          "name": "used",
-          "display_name": "used"
-        },
-        {
-          "name": "as",
-          "display_name": "as"
-        },
-        {
-          "name": "absolute",
-          "display_name": "absolute"
-        },
-        {
-          "name": "what",
-          "display_name": "what"
-        },
-        {
-          "name": "it",
-          "display_name": "it"
-        },
-        {
-          "name": "means",
-          "display_name": "means"
-        },
-        {
-          "name": "exactly",
-          "display_name": "exactly"
-        },
-        {
-          "name": "depends",
-          "display_name": "depends"
-        },
-        {
-          "name": "on",
-          "display_name": "on"
-        },
-        {
-          "name": "context",
-          "display_name": "context"
-        },
-        {
-          "name": "See",
-          "display_name": "See"
-        },
-        {
-          "name": "node",
-          "display_name": "node"
-        },
-        {
-          "name": "specific",
-          "display_name": "specific"
-        },
-        {
-          "name": "documentation",
-          "display_name": "documentation"
         }
       ],
       "used_by": []
@@ -157,48 +25,24 @@
           "display_name": "Average"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Median",
           "display_name": "Median"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "ModeMin",
           "display_name": "ModeMin"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "ModeMax",
           "display_name": "ModeMax"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "Central",
           "display_name": "Central"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Fixed",
           "display_name": "Fixed"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

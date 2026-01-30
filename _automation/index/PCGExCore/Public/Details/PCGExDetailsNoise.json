@@ -7,60 +7,8 @@
       "name": "PCGExSpatialNoiseMode",
       "values": [
         {
-          "name": "Your",
-          "display_name": "Your"
-        },
-        {
-          "name": "classic",
-          "display_name": "classic"
-        },
-        {
-          "name": "perlin",
-          "display_name": "perlin"
-        },
-        {
-          "name": "noise",
-          "display_name": "noise"
-        },
-        {
           "name": "Perlin",
           "display_name": "Perlin"
-        },
-        {
-          "name": "Based",
-          "display_name": "Based"
-        },
-        {
-          "name": "on",
-          "display_name": "on"
-        },
-        {
-          "name": "underwater",
-          "display_name": "underwater"
-        },
-        {
-          "name": "fake",
-          "display_name": "fake"
-        },
-        {
-          "name": "caustic",
-          "display_name": "caustic"
-        },
-        {
-          "name": "rendering",
-          "display_name": "rendering"
-        },
-        {
-          "name": "gives",
-          "display_name": "gives"
-        },
-        {
-          "name": "swirly",
-          "display_name": "swirly"
-        },
-        {
-          "name": "look",
-          "display_name": "look"
         },
         {
           "name": "Caustic",
@@ -71,104 +19,8 @@
           "display_name": "Voronoi"
         },
         {
-          "name": "noise",
-          "display_name": "noise"
-        },
-        {
-          "name": "result",
-          "display_name": "result"
-        },
-        {
-          "name": "a",
-          "display_name": "a"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "distance",
-          "display_name": "distance"
-        },
-        {
-          "name": "to",
-          "display_name": "to"
-        },
-        {
-          "name": "edge",
-          "display_name": "edge"
-        },
-        {
-          "name": "and",
-          "display_name": "and"
-        },
-        {
-          "name": "cell",
-          "display_name": "cell"
-        },
-        {
-          "name": "ID",
-          "display_name": "ID"
-        },
-        {
-          "name": "Voronoi",
-          "display_name": "Voronoi"
-        },
-        {
-          "name": "Based",
-          "display_name": "Based"
-        },
-        {
-          "name": "on",
-          "display_name": "on"
-        },
-        {
-          "name": "fractional",
-          "display_name": "fractional"
-        },
-        {
-          "name": "brownian",
-          "display_name": "brownian"
-        },
-        {
-          "name": "motion",
-          "display_name": "motion"
-        },
-        {
           "name": "FractionalBrownian",
           "display_name": "FractionalBrownian"
-        },
-        {
-          "name": "Used",
-          "display_name": "Used"
-        },
-        {
-          "name": "to",
-          "display_name": "to"
-        },
-        {
-          "name": "create",
-          "display_name": "create"
-        },
-        {
-          "name": "masks",
-          "display_name": "masks"
-        },
-        {
-          "name": "to",
-          "display_name": "to"
-        },
-        {
-          "name": "blend",
-          "display_name": "blend"
-        },
-        {
-          "name": "out",
-          "display_name": "out"
-        },
-        {
-          "name": "edges",
-          "display_name": "edges"
         },
         {
           "name": "EdgeMask",
@@ -181,84 +33,12 @@
       "name": "PCGExSpatialNoiseMask2DMode",
       "values": [
         {
-          "name": "Your",
-          "display_name": "Your"
-        },
-        {
-          "name": "classic",
-          "display_name": "classic"
-        },
-        {
-          "name": "perlin",
-          "display_name": "perlin"
-        },
-        {
-          "name": "noise",
-          "display_name": "noise"
-        },
-        {
           "name": "Perlin",
           "display_name": "Perlin"
         },
         {
-          "name": "Based",
-          "display_name": "Based"
-        },
-        {
-          "name": "on",
-          "display_name": "on"
-        },
-        {
-          "name": "underwater",
-          "display_name": "underwater"
-        },
-        {
-          "name": "fake",
-          "display_name": "fake"
-        },
-        {
-          "name": "caustic",
-          "display_name": "caustic"
-        },
-        {
-          "name": "rendering",
-          "display_name": "rendering"
-        },
-        {
-          "name": "gives",
-          "display_name": "gives"
-        },
-        {
-          "name": "swirly",
-          "display_name": "swirly"
-        },
-        {
-          "name": "look",
-          "display_name": "look"
-        },
-        {
           "name": "Caustic",
           "display_name": "Caustic"
-        },
-        {
-          "name": "Based",
-          "display_name": "Based"
-        },
-        {
-          "name": "on",
-          "display_name": "on"
-        },
-        {
-          "name": "fractional",
-          "display_name": "fractional"
-        },
-        {
-          "name": "brownian",
-          "display_name": "brownian"
-        },
-        {
-          "name": "motion",
-          "display_name": "motion"
         },
         {
           "name": "FractionalBrownian",

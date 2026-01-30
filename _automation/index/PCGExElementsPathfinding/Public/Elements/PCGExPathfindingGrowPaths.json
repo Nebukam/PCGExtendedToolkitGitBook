@@ -11,40 +11,8 @@
           "display_name": "Parallel"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Sequence",
           "display_name": "Sequence"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "then",
-          "display_name": "then"
-        },
-        {
-          "name": "move",
-          "display_name": "move"
-        },
-        {
-          "name": "to",
-          "display_name": "to"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "next",
-          "display_name": "next"
-        },
-        {
-          "name": "seed",
-          "display_name": "seed"
         }
       ],
       "used_by": []
@@ -57,24 +25,12 @@
           "display_name": "Constant"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "SeedAttribute",
-          "display_name": "SeedAttribute"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Seed Attribute"
         },
         {
           "name": "VtxAttribute",
-          "display_name": "VtxAttribute"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Vtx Attribute"
         }
       ],
       "used_by": []
@@ -87,24 +43,12 @@
           "display_name": "Once"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "SetEachIteration",
-          "display_name": "SetEachIteration"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Set Each Iteration"
         },
         {
           "name": "AddEachIteration",
-          "display_name": "AddEachIteration"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Add Each Iteration"
         }
       ],
       "used_by": []

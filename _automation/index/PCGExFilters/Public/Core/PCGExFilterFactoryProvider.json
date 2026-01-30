@@ -7,8 +7,8 @@
   "classes": [
     {
       "name": "UPCGExFilterProviderSettings",
-      "display_name": "UPCGExFilterProviderSettings",
-      "description": "",
+      "display_name": "Filter : Abstract",
+      "description": "Creates an abstract filter definition.",
       "base_class": "UPCGExFactoryProviderSettings",
       "uclass_meta": "Abstract, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\"",
       "uproperties": [

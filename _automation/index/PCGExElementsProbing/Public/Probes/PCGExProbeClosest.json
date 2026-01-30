@@ -95,8 +95,8 @@
     },
     {
       "name": "UPCGExProbeClosestProviderSettings",
-      "display_name": "UPCGExProbeClosestProviderSettings",
-      "description": "",
+      "display_name": "Probe : Closests",
+      "description": "Probe in a given Closest.",
       "base_class": "UPCGExProbeFactoryProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"clusters/connect-points/probe-closest\")",
       "uproperties": [

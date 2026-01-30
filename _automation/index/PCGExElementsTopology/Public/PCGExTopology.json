@@ -8,19 +8,11 @@
       "values": [
         {
           "name": "PerItem",
-          "display_name": "PerItem"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Per-item Geometry"
         },
         {
           "name": "Merged",
-          "display_name": "Merged"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Merged Geometry"
         }
       ],
       "used_by": []

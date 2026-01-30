@@ -8,27 +8,15 @@
       "values": [
         {
           "name": "DirectionLength",
-          "display_name": "DirectionLength"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Direction Length"
         },
         {
           "name": "Constant",
           "display_name": "Constant"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Attribute",
           "display_name": "Attribute"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

@@ -95,8 +95,8 @@
     },
     {
       "name": "UPCGExPickerConstantRangeSettings",
-      "display_name": "UPCGExPickerConstantRangeSettings",
-      "description": "",
+      "display_name": "Picker : Range",
+      "description": "A Picker that selects a range of values.",
       "base_class": "UPCGExPickerFactoryProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Pickers|Params\"",
       "uproperties": [

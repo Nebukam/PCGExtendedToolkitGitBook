@@ -11,52 +11,24 @@
           "display_name": "Ignore"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Expand",
           "display_name": "Expand"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "PickRandom",
-          "display_name": "PickRandom"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Random"
         },
         {
           "name": "PickRandomWeighted",
-          "display_name": "PickRandomWeighted"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "weighted",
-          "display_name": "weighted"
+          "display_name": "Random weighted"
         },
         {
           "name": "PickFirstItem",
-          "display_name": "PickFirstItem"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "First item"
         },
         {
           "name": "PickLastItem",
-          "display_name": "PickLastItem"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Last item"
         }
       ],
       "used_by": []

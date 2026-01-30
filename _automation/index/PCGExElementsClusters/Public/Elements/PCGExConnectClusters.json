@@ -8,47 +8,23 @@
       "values": [
         {
           "name": "Delaunay3D",
-          "display_name": "Delaunay3D"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Delaunay 3D"
         },
         {
           "name": "Delaunay2D",
-          "display_name": "Delaunay2D"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Delaunay 2D"
         },
         {
           "name": "LeastEdges",
-          "display_name": "LeastEdges"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Least Edges"
         },
         {
           "name": "MostEdges",
-          "display_name": "MostEdges"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Most Edges"
         },
         {
           "name": "Filters",
-          "display_name": "Filters"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "Hidden",
-          "display_name": "Hidden"
+          "display_name": "Node Filters"
         }
       ],
       "used_by": []

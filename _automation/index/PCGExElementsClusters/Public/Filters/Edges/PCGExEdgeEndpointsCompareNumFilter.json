@@ -8,39 +8,19 @@
       "values": [
         {
           "name": "AgainstEach",
-          "display_name": "AgainstEach"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Start <-> End"
         },
         {
           "name": "AgainstStart",
-          "display_name": "AgainstStart"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Edge <-> Start"
         },
         {
           "name": "AgainstEnd",
-          "display_name": "AgainstEnd"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Edge <-> End"
         },
         {
           "name": "AgainstSelfBoth",
-          "display_name": "AgainstSelfBoth"
-        },
-        {
-          "name": "End",
-          "display_name": "End"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Edge <-> Start, End"
         }
       ],
       "used_by": []
@@ -138,8 +118,8 @@
     },
     {
       "name": "UPCGExEdgeEndpointsCompareNumFilterProviderSettings",
-      "display_name": "UPCGExEdgeEndpointsCompareNumFilterProviderSettings",
-      "description": "",
+      "display_name": "Edge Filter : Endpoints Compare (Numeric)",
+      "description": "Compare the value of an attribute on each of the edge endpoint.",
       "base_class": "UPCGExEdgeFilterProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"filters/filters-edges/endpoints-compare-numeric\")",
       "uproperties": [

@@ -11,56 +11,16 @@
           "display_name": "Ignore"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "AsIs",
-          "display_name": "AsIs"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "As-is"
         },
         {
           "name": "Generate",
           "display_name": "Generate"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "this",
-          "display_name": "this"
-        },
-        {
-          "name": "should",
-          "display_name": "should"
-        },
-        {
-          "name": "not",
-          "display_name": "not"
-        },
-        {
-          "name": "trigger",
-          "display_name": "trigger"
-        },
-        {
-          "name": "a",
-          "display_name": "a"
-        },
-        {
-          "name": "regeneration",
-          "display_name": "regeneration"
-        },
-        {
           "name": "ForceGenerate",
           "display_name": "ForceGenerate"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -73,24 +33,12 @@
           "display_name": "Ignore"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "AsIs",
-          "display_name": "AsIs"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "As-is"
         },
         {
           "name": "RefreshFirst",
-          "display_name": "RefreshFirst"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Refresh"
         }
       ],
       "used_by": []

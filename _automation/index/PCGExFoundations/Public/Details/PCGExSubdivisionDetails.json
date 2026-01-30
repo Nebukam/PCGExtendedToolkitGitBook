@@ -11,92 +11,12 @@
           "display_name": "Distance"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Count",
           "display_name": "Count"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Manhattan",
           "display_name": "Manhattan"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "number",
-          "display_name": "number"
-        },
-        {
-          "name": "of",
-          "display_name": "of"
-        },
-        {
-          "name": "subdivisions",
-          "display_name": "subdivisions"
-        },
-        {
-          "name": "depends",
-          "display_name": "depends"
-        },
-        {
-          "name": "on",
-          "display_name": "on"
-        },
-        {
-          "name": "spatial",
-          "display_name": "spatial"
-        },
-        {
-          "name": "relationship",
-          "display_name": "relationship"
-        },
-        {
-          "name": "between",
-          "display_name": "between"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "points",
-          "display_name": "points"
-        },
-        {
-          "name": "will",
-          "display_name": "will"
-        },
-        {
-          "name": "be",
-          "display_name": "be"
-        },
-        {
-          "name": "in",
-          "display_name": "in"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "0",
-          "display_name": "0"
-        },
-        {
-          "name": "2",
-          "display_name": "2"
-        },
-        {
-          "name": "range",
-          "display_name": "range"
         }
       ],
       "used_by": []
@@ -109,108 +29,12 @@
           "display_name": "Simple"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "will",
-          "display_name": "will"
-        },
-        {
-          "name": "generate",
-          "display_name": "generate"
-        },
-        {
-          "name": "0",
-          "display_name": "0"
-        },
-        {
-          "name": "2",
-          "display_name": "2"
-        },
-        {
-          "name": "points",
-          "display_name": "points"
-        },
-        {
           "name": "GridDistance",
           "display_name": "GridDistance"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "will",
-          "display_name": "will"
-        },
-        {
-          "name": "subdivide",
-          "display_name": "subdivide"
-        },
-        {
-          "name": "space",
-          "display_name": "space"
-        },
-        {
-          "name": "according",
-          "display_name": "according"
-        },
-        {
-          "name": "to",
-          "display_name": "to"
-        },
-        {
-          "name": "a",
-          "display_name": "a"
-        },
-        {
-          "name": "grid",
-          "display_name": "grid"
-        },
-        {
-          "name": "size",
-          "display_name": "size"
-        },
-        {
           "name": "GridCount",
           "display_name": "GridCount"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "will",
-          "display_name": "will"
-        },
-        {
-          "name": "subdivide",
-          "display_name": "subdivide"
-        },
-        {
-          "name": "space",
-          "display_name": "space"
-        },
-        {
-          "name": "according",
-          "display_name": "according"
-        },
-        {
-          "name": "to",
-          "display_name": "to"
-        },
-        {
-          "name": "a",
-          "display_name": "a"
-        },
-        {
-          "name": "grid",
-          "display_name": "grid"
-        },
-        {
-          "name": "size",
-          "display_name": "size"
         }
       ],
       "used_by": []
@@ -223,40 +47,20 @@
           "display_name": "World"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Custom",
           "display_name": "Custom"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "SegmentX",
-          "display_name": "SegmentX"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Segment X"
         },
         {
           "name": "SegmentY",
-          "display_name": "SegmentY"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Segment Y"
         },
         {
           "name": "SegmentZ",
-          "display_name": "SegmentZ"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Segment Z"
         }
       ],
       "used_by": []

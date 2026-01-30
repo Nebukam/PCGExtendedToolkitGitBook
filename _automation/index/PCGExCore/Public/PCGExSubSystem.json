@@ -15,16 +15,8 @@
           "display_name": "Regenerate"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "DataUpdate",
-          "display_name": "DataUpdate"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Data Update"
         }
       ],
       "used_by": []

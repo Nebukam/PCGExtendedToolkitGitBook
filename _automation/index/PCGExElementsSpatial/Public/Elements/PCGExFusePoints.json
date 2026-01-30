@@ -11,16 +11,8 @@
           "display_name": "Blend"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "MostCentral",
-          "display_name": "MostCentral"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Keep Most Central"
         }
       ],
       "used_by": []

@@ -11,48 +11,16 @@
           "display_name": "Euclidean"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
           "name": "EuclideanSq",
-          "display_name": "EuclideanSq"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
+          "display_name": "Euclidean Squared"
         },
         {
           "name": "Manhattan",
           "display_name": "Manhattan"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
           "name": "Chebyshev",
           "display_name": "Chebyshev"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
         }
       ],
       "used_by": []
@@ -65,72 +33,24 @@
           "display_name": "F1"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
           "name": "F2",
           "display_name": "F2"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
         },
         {
           "name": "F2MinusF1",
           "display_name": "F2MinusF1"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
           "name": "F1PlusF2",
-          "display_name": "F1PlusF2"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
+          "display_name": "F1 + F2"
         },
         {
           "name": "F1TimesF2",
-          "display_name": "F1TimesF2"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
+          "display_name": "F1 * F2"
         },
         {
           "name": "CellValue",
-          "display_name": "CellValue"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
+          "display_name": "Cell Value"
         }
       ],
       "used_by": []

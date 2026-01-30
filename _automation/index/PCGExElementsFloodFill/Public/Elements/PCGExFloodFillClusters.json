@@ -11,16 +11,8 @@
           "display_name": "Index"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Sorting",
           "display_name": "Sorting"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -33,28 +25,8 @@
           "display_name": "Parallel"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Sequence",
-          "display_name": "Sequence"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "and",
-          "display_name": "and"
-        },
-        {
-          "name": "so",
-          "display_name": "so"
-        },
-        {
-          "name": "on",
-          "display_name": "on"
+          "display_name": "Sequential"
         }
       ],
       "used_by": []
@@ -67,80 +39,12 @@
           "display_name": "None"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Full",
           "display_name": "Full"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "from",
-          "display_name": "from"
-        },
-        {
-          "name": "seed",
-          "display_name": "seed"
-        },
-        {
-          "name": "to",
-          "display_name": "to"
-        },
-        {
-          "name": "end",
-          "display_name": "end"
-        },
-        {
-          "name": "point",
-          "display_name": "point"
-        },
-        {
-          "name": "generate",
-          "display_name": "generate"
-        },
-        {
-          "name": "a",
-          "display_name": "a"
-        },
-        {
-          "name": "lot",
-          "display_name": "lot"
-        },
-        {
-          "name": "of",
-          "display_name": "of"
-        },
-        {
-          "name": "overlap",
-          "display_name": "overlap"
-        },
-        {
           "name": "Partitions",
           "display_name": "Partitions"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "only",
-          "display_name": "only"
-        },
-        {
-          "name": "endpoints",
-          "display_name": "endpoints"
-        },
-        {
-          "name": "will",
-          "display_name": "will"
-        },
-        {
-          "name": "overlap",
-          "display_name": "overlap"
         }
       ],
       "used_by": []
@@ -153,24 +57,12 @@
           "display_name": "Length"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Score",
           "display_name": "Score"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Depth",
           "display_name": "Depth"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

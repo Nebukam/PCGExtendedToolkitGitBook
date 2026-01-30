@@ -8,27 +8,15 @@
       "values": [
         {
           "name": "Specific",
-          "display_name": "Specific"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Specific Tag"
         },
         {
           "name": "AnyShared",
-          "display_name": "AnyShared"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Any Shared"
         },
         {
           "name": "AllShared",
-          "display_name": "AllShared"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "All Shared"
         }
       ],
       "used_by": []
@@ -139,8 +127,8 @@
     },
     {
       "name": "UPCGExCreateMatchSharedTagSettings",
-      "display_name": "UPCGExCreateMatchSharedTagSettings",
-      "description": "",
+      "display_name": "Match : Shared Tag",
+      "description": "Match data that share common tags",
       "base_class": "UPCGExMatchRuleFactoryProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"DataMatch\", meta=(PCGExNodeLibraryDoc=\"misc/data-matching/tags-attributes\")",
       "uproperties": [

@@ -8,55 +8,11 @@
       "values": [
         {
           "name": "PathLength",
-          "display_name": "PathLength"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "and",
-          "display_name": "and"
-        },
-        {
-          "name": "resort",
-          "display_name": "resort"
-        },
-        {
-          "name": "to",
-          "display_name": "to"
-        },
-        {
-          "name": "sorting",
-          "display_name": "sorting"
-        },
-        {
-          "name": "rules",
-          "display_name": "rules"
-        },
-        {
-          "name": "in",
-          "display_name": "in"
-        },
-        {
-          "name": "case",
-          "display_name": "case"
-        },
-        {
-          "name": "of",
-          "display_name": "of"
-        },
-        {
-          "name": "equality",
-          "display_name": "equality"
+          "display_name": "Path Length"
         },
         {
           "name": "SortingOnly",
-          "display_name": "SortingOnly"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Sorting only"
         }
       ],
       "used_by": []
@@ -66,35 +22,11 @@
       "values": [
         {
           "name": "Crossing",
-          "display_name": "Crossing"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "then",
-          "display_name": "then"
-        },
-        {
-          "name": "merge",
-          "display_name": "merge"
+          "display_name": "Favor Crossing"
         },
         {
           "name": "Merge",
-          "display_name": "Merge"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "then",
-          "display_name": "then"
-        },
-        {
-          "name": "crossing",
-          "display_name": "crossing"
+          "display_name": "Favor Merge"
         }
       ],
       "used_by": []

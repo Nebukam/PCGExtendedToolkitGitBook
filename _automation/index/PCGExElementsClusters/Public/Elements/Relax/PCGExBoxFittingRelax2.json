@@ -8,27 +8,15 @@
       "values": [
         {
           "name": "MinimumPenetration",
-          "display_name": "MinimumPenetration"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Minimum Penetration"
         },
         {
           "name": "EdgeDirection",
-          "display_name": "EdgeDirection"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Edge Direction"
         },
         {
           "name": "Centroid",
           "display_name": "Centroid"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

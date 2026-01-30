@@ -11,24 +11,12 @@
           "display_name": "None"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "MergeSites",
-          "display_name": "MergeSites"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Merge Sites"
         },
         {
           "name": "MergeEdges",
-          "display_name": "MergeEdges"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Merge Edges"
         }
       ],
       "used_by": []

@@ -218,14 +218,28 @@ function parseHeaderFile(filePath, relativePath) {
         const enumBody = match[2];
         const values = [];
 
-        const valueRegex = /(\w+)\s*(?:=\s*[^,\n]+)?(?:\s+UMETA\s*\([^)]*(?:DisplayName\s*=\s*"([^"]+)")?[^)]*\))?/g;
-        let valMatch;
-        while ((valMatch = valueRegex.exec(enumBody)) !== null) {
-            const valueName = valMatch[1].trim();
-            if (valueName && !valueName.match(/^\s*$/)) {
+        // Split by lines and parse each enum value line
+        const lines = enumBody.split('\n');
+        for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed || trimmed.startsWith('//')) continue;
+
+            // Match: ValueName = number UMETA(...) or just ValueName UMETA(...)
+            const lineMatch = trimmed.match(/^(\w+)\s*(?:=\s*\d+)?\s*(?:UMETA\s*\(([^)]*)\))?/);
+            if (lineMatch && lineMatch[1]) {
+                const valueName = lineMatch[1];
+                // Skip if it looks like a keyword or garbage
+                if (['GENERATED_BODY', 'UPROPERTY', 'UFUNCTION'].includes(valueName)) continue;
+
+                let displayName = valueName;
+                if (lineMatch[2]) {
+                    const displayMatch = lineMatch[2].match(/DisplayName\s*=\s*"([^"]+)"/);
+                    if (displayMatch) displayName = displayMatch[1];
+                }
+
                 values.push({
                     name: valueName,
-                    display_name: valMatch[2] || valueName
+                    display_name: displayName
                 });
             }
         }
@@ -286,10 +300,10 @@ function parseHeaderFile(filePath, relativePath) {
         const body = extractBalancedBraces(content, startPos);
         if (!body) continue;
 
-        // Get display name
+        // Get display name (handles PCGEX_NODE_INFOS and PCGEX_NODE_INFOS_CUSTOM_SUBTITLE)
         let displayName = className;
         let description = '';
-        const infoMatch = body.match(/PCGEX_NODE_INFOS\s*\(\s*\w+\s*,\s*"([^"]+)"\s*,\s*"([^"]+)"/);
+        const infoMatch = body.match(/PCGEX_NODE_INFOS(?:_CUSTOM_SUBTITLE)?\s*\(\s*\w+\s*,\s*"([^"]+)"\s*,\s*"([^"]+)"/);
         if (infoMatch) {
             displayName = infoMatch[1];
             description = infoMatch[2];

@@ -11,60 +11,20 @@
           "display_name": "Circle"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
           "name": "SoftCircle",
           "display_name": "SoftCircle"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
         },
         {
           "name": "Square",
           "display_name": "Square"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
           "name": "Diamond",
           "display_name": "Diamond"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
           "name": "Star",
           "display_name": "Star"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
         }
       ],
       "used_by": []

@@ -11,56 +11,20 @@
           "display_name": "Any"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "using",
-          "display_name": "using"
-        },
-        {
-          "name": "an",
-          "display_name": "an"
-        },
-        {
-          "name": "untyped",
-          "display_name": "untyped"
-        },
-        {
-          "name": "pin",
-          "display_name": "pin"
-        },
-        {
           "name": "Params",
-          "display_name": "Params"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Attribute Set"
         },
         {
           "name": "Points",
           "display_name": "Points"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Spline",
           "display_name": "Spline"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Texture",
           "display_name": "Texture"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         }
       ],
       "used_by": []

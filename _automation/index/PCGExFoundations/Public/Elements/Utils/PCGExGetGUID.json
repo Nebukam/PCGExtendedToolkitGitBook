@@ -7,8 +7,8 @@
   "classes": [
     {
       "name": "UPCGExGetGUIDSettings",
-      "display_name": "UPCGExGetGUIDSettings",
-      "description": "",
+      "display_name": "Get GUID",
+      "description": "Get a single GUID from a specific point index, same as GetGUID would compute it given the same set of parameters.",
       "base_class": "UPCGExPointsProcessorSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"metadata/get-guid\")",
       "uproperties": [

@@ -8,35 +8,19 @@
       "values": [
         {
           "name": "EndpointsOrder",
-          "display_name": "EndpointsOrder"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Endpoints Order"
         },
         {
           "name": "EndpointsIndices",
-          "display_name": "EndpointsIndices"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Endpoints Indices"
         },
         {
           "name": "EndpointsSort",
-          "display_name": "EndpointsSort"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Endpoints Sort"
         },
         {
           "name": "EdgeDotAttribute",
-          "display_name": "EdgeDotAttribute"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Edge Dot Attribute"
         }
       ],
       "used_by": []
@@ -46,19 +30,11 @@
       "values": [
         {
           "name": "SmallestToGreatest",
-          "display_name": "SmallestToGreatest"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Smallest to Greatest"
         },
         {
           "name": "GreatestToSmallest",
-          "display_name": "GreatestToSmallest"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Greatest to Smallest"
         }
       ],
       "used_by": []

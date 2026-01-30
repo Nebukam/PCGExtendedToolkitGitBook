@@ -11,32 +11,16 @@
           "display_name": "UVWConstant"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "UVWAttribute",
-          "display_name": "UVWAttribute"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "UVW"
         },
         {
           "name": "PositionConstant",
           "display_name": "PositionConstant"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "PositionAttribute",
           "display_name": "PositionAttribute"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -46,19 +30,11 @@
       "values": [
         {
           "name": "SeedProximity",
-          "display_name": "SeedProximity"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Seed Proximity"
         },
         {
           "name": "Space",
-          "display_name": "Space"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Space Conservation"
         }
       ],
       "used_by": []

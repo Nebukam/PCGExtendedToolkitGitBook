@@ -238,8 +238,8 @@
     },
     {
       "name": "UPCGExPointStateFactoryProviderSettings",
-      "display_name": "UPCGExPointStateFactoryProviderSettings",
-      "description": "",
+      "display_name": "State : Point",
+      "description": "A single, filter-driven point state.",
       "base_class": "UPCGExStateFactoryProviderSettings",
       "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Params\", meta=(PCGExNodeLibraryDoc=\"clusters/metadata/flag-nodes/node-flag\")",
       "uproperties": [

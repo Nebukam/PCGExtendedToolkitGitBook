@@ -11,32 +11,16 @@
           "display_name": "Floor"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Ceil",
           "display_name": "Ceil"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         },
         {
           "name": "Round",
           "display_name": "Round"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Modulo",
           "display_name": "Modulo"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         }
       ],
       "used_by": []

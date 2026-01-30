@@ -8,19 +8,11 @@
       "values": [
         {
           "name": "Operand",
-          "display_name": "Operand"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Operand Bounds"
         },
         {
           "name": "Manual",
           "display_name": "Manual"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

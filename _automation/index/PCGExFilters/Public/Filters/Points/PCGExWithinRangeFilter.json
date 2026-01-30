@@ -11,16 +11,8 @@
           "display_name": "Constant"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "AttributeSet",
-          "display_name": "AttributeSet"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Attribute Set"
         }
       ],
       "used_by": []
@@ -157,8 +149,8 @@
     },
     {
       "name": "UPCGExWithinRangeFilterProviderSettings",
-      "display_name": "UPCGExWithinRangeFilterProviderSettings",
-      "description": "",
+      "display_name": "Filter : Within Range",
+      "description": "Creates a filter definition check if a value is within a given range.",
       "base_class": "UPCGExFilterProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/simple-comparisons/within-range\")",
       "uproperties": [

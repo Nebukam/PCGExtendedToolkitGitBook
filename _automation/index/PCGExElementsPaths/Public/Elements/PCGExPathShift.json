@@ -11,40 +11,20 @@
           "display_name": "Index"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Metadata",
           "display_name": "Metadata"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "Properties",
           "display_name": "Properties"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "MetadataAndProperties",
-          "display_name": "MetadataAndProperties"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Metadata and Properties"
         },
         {
           "name": "CherryPick",
           "display_name": "CherryPick"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -57,24 +37,12 @@
           "display_name": "Discrete"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Relative",
           "display_name": "Relative"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Filter",
           "display_name": "Filter"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

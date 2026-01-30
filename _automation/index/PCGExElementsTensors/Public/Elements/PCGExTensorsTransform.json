@@ -11,36 +11,12 @@
           "display_name": "Absolute"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ignores",
-          "display_name": "ignores"
-        },
-        {
-          "name": "source",
-          "display_name": "source"
-        },
-        {
-          "name": "transform",
-          "display_name": "transform"
-        },
-        {
           "name": "Relative",
           "display_name": "Relative"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Align",
           "display_name": "Align"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

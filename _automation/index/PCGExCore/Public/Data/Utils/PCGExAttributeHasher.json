@@ -11,48 +11,20 @@
           "display_name": "All"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Uniques",
           "display_name": "Uniques"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ignoring",
-          "display_name": "ignoring"
-        },
-        {
-          "name": "duplicates",
-          "display_name": "duplicates"
-        },
-        {
           "name": "FirstAndLast",
-          "display_name": "FirstAndLast"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "First and Last"
         },
         {
           "name": "First",
-          "display_name": "First"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "First only"
         },
         {
           "name": "Last",
-          "display_name": "Last"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Last only"
         }
       ],
       "used_by": []

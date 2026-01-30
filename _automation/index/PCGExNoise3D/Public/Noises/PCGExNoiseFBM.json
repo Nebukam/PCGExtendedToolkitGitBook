@@ -8,63 +8,23 @@
       "values": [
         {
           "name": "Standard",
-          "display_name": "Standard"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
+          "display_name": "Standard fBm"
         },
         {
           "name": "Ridged",
-          "display_name": "Ridged"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
+          "display_name": "Ridged Multifractal"
         },
         {
           "name": "Billow",
           "display_name": "Billow"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
           "name": "Hybrid",
-          "display_name": "Hybrid"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
+          "display_name": "Hybrid Multifractal"
         },
         {
           "name": "Warped",
-          "display_name": "Warped"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
+          "display_name": "Domain Warped"
         }
       ],
       "used_by": []

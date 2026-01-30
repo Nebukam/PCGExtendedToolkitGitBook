@@ -8,27 +8,15 @@
       "values": [
         {
           "name": "PerDataset",
-          "display_name": "PerDataset"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Per Dataset"
         },
         {
           "name": "PerSeed",
-          "display_name": "PerSeed"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Per Seed"
         },
         {
           "name": "PerShape",
-          "display_name": "PerShape"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Per Shape"
         }
       ],
       "used_by": []
@@ -41,16 +29,8 @@
           "display_name": "Absolute"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Scaled",
           "display_name": "Scaled"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -63,16 +43,8 @@
           "display_name": "None"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Seed",
           "display_name": "Seed"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

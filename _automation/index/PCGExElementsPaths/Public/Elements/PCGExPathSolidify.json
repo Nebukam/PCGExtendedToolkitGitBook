@@ -11,40 +11,12 @@
           "display_name": "Local"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Scaled",
           "display_name": "Scaled"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Unscale",
-          "display_name": "Unscale"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "resets",
-          "display_name": "resets"
-        },
-        {
-          "name": "scale",
-          "display_name": "scale"
-        },
-        {
-          "name": "to",
-          "display_name": "to"
-        },
-        {
-          "name": "1",
-          "display_name": "1"
+          "display_name": "Unscaled"
         }
       ],
       "used_by": []

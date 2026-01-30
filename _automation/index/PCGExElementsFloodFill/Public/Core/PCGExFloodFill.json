@@ -11,16 +11,8 @@
           "display_name": "Seed"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Vtx",
           "display_name": "Vtx"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -33,32 +25,8 @@
           "display_name": "Heuristics"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "then",
-          "display_name": "then"
-        },
-        {
-          "name": "depth",
-          "display_name": "depth"
-        },
-        {
           "name": "Depth",
           "display_name": "Depth"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "then",
-          "display_name": "then"
-        },
-        {
-          "name": "FillControls",
-          "display_name": "FillControls"
         }
       ],
       "used_by": []

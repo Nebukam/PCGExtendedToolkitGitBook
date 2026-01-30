@@ -11,48 +11,24 @@
           "display_name": "Integer"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "FloatingPoint",
-          "display_name": "FloatingPoint"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Floating Point"
         },
         {
           "name": "String",
           "display_name": "String"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Vector2",
-          "display_name": "Vector2"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Vector 2D"
         },
         {
           "name": "Vector",
           "display_name": "Vector"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Vector4",
-          "display_name": "Vector4"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Vector 4"
         }
       ],
       "used_by": []

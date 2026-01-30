@@ -11,84 +11,28 @@
           "display_name": "Extents"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "Min",
           "display_name": "Min"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
         },
         {
           "name": "Max",
           "display_name": "Max"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "Size",
           "display_name": "Size"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
         },
         {
           "name": "Volume",
           "display_name": "Volume"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "AspectRatio",
-          "display_name": "AspectRatio"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
+          "display_name": "Ratio"
         },
         {
           "name": "SortedRatio",
           "display_name": "SortedRatio"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
         }
       ],
       "used_by": []
@@ -102,7 +46,7 @@
         },
         {
           "name": "LengthSquared",
-          "display_name": "LengthSquared"
+          "display_name": "Length Squared"
         },
         {
           "name": "X",
@@ -255,8 +199,8 @@
     },
     {
       "name": "UPCGExDataBoundsFilterProviderSettings",
-      "display_name": "UPCGExDataBoundsFilterProviderSettings",
-      "description": "",
+      "display_name": "Data Filter : Bounds",
+      "description": "Test an aspect of the collection' bounds",
       "base_class": "UPCGExFilterCollectionProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-collections/tag-value\")",
       "uproperties": [

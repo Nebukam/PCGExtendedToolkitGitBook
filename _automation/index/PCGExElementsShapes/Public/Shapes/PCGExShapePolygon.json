@@ -8,7 +8,7 @@
       "values": [
         {
           "name": "Convex",
-          "display_name": "Convex"
+          "display_name": "Polygon"
         },
         {
           "name": "Star",
@@ -40,27 +40,15 @@
       "values": [
         {
           "name": "VertexForward",
-          "display_name": "VertexForward"
-        },
-        {
-          "name": "Description",
-          "display_name": "Description"
+          "display_name": "Vertex Forward"
         },
         {
           "name": "EdgeForward",
-          "display_name": "EdgeForward"
-        },
-        {
-          "name": "Description",
-          "display_name": "Description"
+          "display_name": "Edge Forward"
         },
         {
           "name": "Custom",
           "display_name": "Custom"
-        },
-        {
-          "name": "Description",
-          "display_name": "Description"
         }
       ],
       "used_by": []
@@ -327,8 +315,8 @@
     },
     {
       "name": "UPCGExCreateShapePolygonSettings",
-      "display_name": "UPCGExCreateShapePolygonSettings",
-      "description": "",
+      "display_name": "Shape : Polygon",
+      "description": "Create points as a regular polygon or star.",
       "base_class": "UPCGExShapeBuilderFactoryProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Builder|Params\", meta=(PCGExNodeLibraryDoc=\"misc/shapes/shape-polygon\")",
       "uproperties": [

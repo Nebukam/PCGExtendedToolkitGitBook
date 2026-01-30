@@ -11,24 +11,12 @@
           "display_name": "None"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Add",
           "display_name": "Add"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Scale",
           "display_name": "Scale"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         }
       ],
       "used_by": []
@@ -152,8 +140,8 @@
     },
     {
       "name": "UPCGExCreateMatchOverlapSettings",
-      "display_name": "UPCGExCreateMatchOverlapSettings",
-      "description": "",
+      "display_name": "Match : Overlap",
+      "description": "Check if there is an overlap with the data bounds (AABB)",
       "base_class": "UPCGExMatchRuleFactoryProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"DataMatch\", meta=(PCGExNodeLibraryDoc=\"misc/data-matching/overlap\")",
       "uproperties": [

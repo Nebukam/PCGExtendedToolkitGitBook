@@ -11,56 +11,12 @@
           "display_name": "All"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "whether",
-          "display_name": "whether"
-        },
-        {
-          "name": "they",
-          "display_name": "they"
-        },
-        {
-          "name": "successfully",
-          "display_name": "successfully"
-        },
-        {
-          "name": "sampled",
-          "display_name": "sampled"
-        },
-        {
-          "name": "a",
-          "display_name": "a"
-        },
-        {
-          "name": "target",
-          "display_name": "target"
-        },
-        {
-          "name": "or",
-          "display_name": "or"
-        },
-        {
-          "name": "not",
-          "display_name": "not"
-        },
-        {
           "name": "SuccessOnly",
-          "display_name": "SuccessOnly"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Success only"
         },
         {
           "name": "Split",
           "display_name": "Split"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         }
       ],
       "used_by": []

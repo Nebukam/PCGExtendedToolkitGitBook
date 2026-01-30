@@ -11,36 +11,8 @@
           "display_name": "Constant"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "user",
-          "display_name": "user"
-        },
-        {
-          "name": "defined",
-          "display_name": "defined"
-        },
-        {
-          "name": "value",
-          "display_name": "value"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "Attribute",
           "display_name": "Attribute"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
         }
       ],
       "used_by": []
@@ -53,48 +25,12 @@
           "display_name": "Constant"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "user",
-          "display_name": "user"
-        },
-        {
-          "name": "defined",
-          "display_name": "defined"
-        },
-        {
-          "name": "value",
-          "display_name": "value"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "Attribute",
           "display_name": "Attribute"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "Disabled",
           "display_name": "Disabled"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
         }
       ],
       "used_by": []
@@ -107,24 +43,8 @@
           "display_name": "Constant"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "Attribute",
-          "display_name": "Attribute"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
+          "display_name": "@Data"
         }
       ],
       "used_by": []

@@ -11,16 +11,8 @@
           "display_name": "Pick"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Offset",
           "display_name": "Offset"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -33,16 +25,8 @@
           "display_name": "Scalar"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Degrees",
           "display_name": "Degrees"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         }
       ],
       "used_by": []
@@ -52,67 +36,35 @@
       "values": [
         {
           "name": "StrictlyEqual",
-          "display_name": "StrictlyEqual"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": " == "
         },
         {
           "name": "StrictlyNotEqual",
-          "display_name": "StrictlyNotEqual"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": " != "
         },
         {
           "name": "EqualOrGreater",
-          "display_name": "EqualOrGreater"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": " >= "
         },
         {
           "name": "EqualOrSmaller",
-          "display_name": "EqualOrSmaller"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": " <= "
         },
         {
           "name": "StrictlyGreater",
-          "display_name": "StrictlyGreater"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": " > "
         },
         {
           "name": "StrictlySmaller",
-          "display_name": "StrictlySmaller"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": " < "
         },
         {
           "name": "NearlyEqual",
-          "display_name": "NearlyEqual"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": " ~= "
         },
         {
           "name": "NearlyNotEqual",
-          "display_name": "NearlyNotEqual"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": " !~= "
         }
       ],
       "used_by": []
@@ -122,19 +74,11 @@
       "values": [
         {
           "name": "Equal",
-          "display_name": "Equal"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": " == "
         },
         {
           "name": "NotEqual",
-          "display_name": "NotEqual"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": " != "
         }
       ],
       "used_by": []
@@ -144,107 +88,55 @@
       "values": [
         {
           "name": "StrictlyEqual",
-          "display_name": "StrictlyEqual"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": " == "
         },
         {
           "name": "StrictlyNotEqual",
-          "display_name": "StrictlyNotEqual"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": " != "
         },
         {
           "name": "LengthStrictlyEqual",
           "display_name": "LengthStrictlyEqual"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "LengthStrictlyUnequal",
           "display_name": "LengthStrictlyUnequal"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         },
         {
           "name": "LengthEqualOrGreater",
           "display_name": "LengthEqualOrGreater"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "LengthEqualOrSmaller",
           "display_name": "LengthEqualOrSmaller"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         },
         {
           "name": "StrictlyGreater",
           "display_name": "StrictlyGreater"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "StrictlySmaller",
           "display_name": "StrictlySmaller"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         },
         {
           "name": "LocaleStrictlyGreater",
           "display_name": "LocaleStrictlyGreater"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "LocaleStrictlySmaller",
           "display_name": "LocaleStrictlySmaller"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Contains",
-          "display_name": "Contains"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": " Contains "
         },
         {
           "name": "StartsWith",
-          "display_name": "StartsWith"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": " Starts With "
         },
         {
           "name": "EndsWith",
-          "display_name": "EndsWith"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": " Ends With "
         }
       ],
       "used_by": []
@@ -257,32 +149,16 @@
           "display_name": "Equals"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Contains",
           "display_name": "Contains"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "StartsWith",
-          "display_name": "StartsWith"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Starts with"
         },
         {
           "name": "EndsWith",
-          "display_name": "EndsWith"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Ends with"
         }
       ],
       "used_by": []
@@ -295,24 +171,8 @@
           "display_name": "Numeric"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "String",
           "display_name": "String"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
         }
       ],
       "used_by": []
@@ -325,16 +185,8 @@
           "display_name": "Dot"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Hash",
           "display_name": "Hash"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         }
       ],
       "used_by": []

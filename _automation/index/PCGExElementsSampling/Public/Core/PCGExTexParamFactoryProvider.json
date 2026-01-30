@@ -11,64 +11,28 @@
           "display_name": "Auto"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Float",
           "display_name": "Float"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "Double",
           "display_name": "Double"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Integer",
-          "display_name": "Integer"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Double"
         },
         {
           "name": "Vector4",
           "display_name": "Vector4"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Vector",
           "display_name": "Vector"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Vector2",
           "display_name": "Vector2"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "Invalid",
@@ -222,8 +186,8 @@
     },
     {
       "name": "UPCGExTexParamProviderSettings",
-      "display_name": "UPCGExTexParamProviderSettings",
-      "description": "",
+      "display_name": "Texture Param",
+      "description": "A simple texture parameter definition.",
       "base_class": "UPCGExFactoryProviderSettings",
       "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Sampling\"",
       "uproperties": [

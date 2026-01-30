@@ -8,27 +8,15 @@
       "values": [
         {
           "name": "AutoCurve",
-          "display_name": "AutoCurve"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Auto Curve"
         },
         {
           "name": "ManualCurve",
-          "display_name": "ManualCurve"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Manual Curve"
         },
         {
           "name": "Raw",
           "display_name": "Raw"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -165,8 +153,8 @@
     },
     {
       "name": "UPCGExCreateHeuristicAttributeSettings",
-      "display_name": "UPCGExCreateHeuristicAttributeSettings",
-      "description": "",
+      "display_name": "Heuristics : Attribute",
+      "description": "Read a vtx or edge attribute as an heuristic value.",
       "base_class": "UPCGExHeuristicsFactoryProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"pathfinding/heuristics/hx-attribute\")",
       "uproperties": [

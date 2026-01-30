@@ -11,24 +11,12 @@
           "display_name": "All"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "ClosedLoopOnly",
-          "display_name": "ClosedLoopOnly"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Closed loops only"
         },
         {
           "name": "OpenSplineOnly",
-          "display_name": "OpenSplineOnly"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Open lines only"
         }
       ],
       "used_by": []
@@ -38,131 +26,35 @@
       "values": [
         {
           "name": "IsInside",
-          "display_name": "IsInside"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
-          "name": "SearchHints",
-          "display_name": "SearchHints"
+          "display_name": "Is Inside"
         },
         {
           "name": "IsInsideOrOn",
-          "display_name": "IsInsideOrOn"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
-          "name": "SearchHints",
-          "display_name": "SearchHints"
+          "display_name": "Is Inside or On"
         },
         {
           "name": "IsInsideAndOn",
-          "display_name": "IsInsideAndOn"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
-          "name": "SearchHints",
-          "display_name": "SearchHints"
+          "display_name": "Is Inside and On"
         },
         {
           "name": "IsOutside",
-          "display_name": "IsOutside"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
-          "name": "SearchHints",
-          "display_name": "SearchHints"
+          "display_name": "Is Outside"
         },
         {
           "name": "IsOutsideOrOn",
-          "display_name": "IsOutsideOrOn"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
-          "name": "SearchHints",
-          "display_name": "SearchHints"
+          "display_name": "Is Outside or On"
         },
         {
           "name": "IsOutsideAndOn",
-          "display_name": "IsOutsideAndOn"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
-          "name": "SearchHints",
-          "display_name": "SearchHints"
+          "display_name": "Is Outside and On"
         },
         {
           "name": "IsOn",
-          "display_name": "IsOn"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
-          "name": "SearchHints",
-          "display_name": "SearchHints"
+          "display_name": "Is On"
         },
         {
           "name": "IsNotOn",
-          "display_name": "IsNotOn"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
-          "name": "SearchHints",
-          "display_name": "SearchHints"
+          "display_name": "Is not On"
         }
       ],
       "used_by": []
@@ -175,16 +67,8 @@
           "display_name": "Closest"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "All",
           "display_name": "All"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         }
       ],
       "used_by": []

@@ -11,16 +11,8 @@
           "display_name": "Collapse"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "WriteData",
-          "display_name": "WriteData"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Write Data"
         }
       ],
       "used_by": []

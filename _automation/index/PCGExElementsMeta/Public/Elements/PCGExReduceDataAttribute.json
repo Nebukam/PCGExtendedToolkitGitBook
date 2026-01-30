@@ -11,76 +11,28 @@
           "display_name": "Min"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Max",
           "display_name": "Max"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "Sum",
           "display_name": "Sum"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Average",
           "display_name": "Average"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "Join",
           "display_name": "Join"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Hash",
           "display_name": "Hash"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "UnsignedHash",
           "display_name": "UnsignedHash"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "then",
-          "display_name": "then"
-        },
-        {
-          "name": "hashed",
-          "display_name": "hashed"
-        },
-        {
-          "name": "in",
-          "display_name": "in"
-        },
-        {
-          "name": "sorted",
-          "display_name": "sorted"
-        },
-        {
-          "name": "order",
-          "display_name": "order"
         }
       ],
       "used_by": []
@@ -90,8 +42,8 @@
   "classes": [
     {
       "name": "UPCGExReduceDataAttributeSettings",
-      "display_name": "UPCGExReduceDataAttributeSettings",
-      "description": "",
+      "display_name": "Reduce Data",
+      "description": "Reduce @Data domain attribute.",
       "base_class": "UPCGExPointsProcessorSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"metadata/reduce-data\")",
       "uproperties": [

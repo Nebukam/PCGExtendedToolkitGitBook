@@ -7,48 +7,8 @@
       "name": "EPCGExValencyAssetType",
       "values": [
         {
-          "name": "Type",
-          "display_name": "Type"
-        },
-        {
-          "name": "not",
-          "display_name": "not"
-        },
-        {
-          "name": "yet",
-          "display_name": "yet"
-        },
-        {
-          "name": "determined",
-          "display_name": "determined"
-        },
-        {
-          "name": "or",
-          "display_name": "or"
-        },
-        {
-          "name": "unknown",
-          "display_name": "unknown"
-        },
-        {
           "name": "Unknown",
           "display_name": "Unknown"
-        },
-        {
-          "name": "Static",
-          "display_name": "Static"
-        },
-        {
-          "name": "mesh",
-          "display_name": "mesh"
-        },
-        {
-          "name": "asset",
-          "display_name": "asset"
-        },
-        {
-          "name": "UStaticMesh",
-          "display_name": "UStaticMesh"
         },
         {
           "name": "Mesh",
@@ -57,50 +17,6 @@
         {
           "name": "Actor",
           "display_name": "Actor"
-        },
-        {
-          "name": "class",
-          "display_name": "class"
-        },
-        {
-          "name": "or",
-          "display_name": "or"
-        },
-        {
-          "name": "Blueprint",
-          "display_name": "Blueprint"
-        },
-        {
-          "name": "spawned",
-          "display_name": "spawned"
-        },
-        {
-          "name": "as",
-          "display_name": "as"
-        },
-        {
-          "name": "actor",
-          "display_name": "actor"
-        },
-        {
-          "name": "Actor",
-          "display_name": "Actor"
-        },
-        {
-          "name": "PCG",
-          "display_name": "PCG"
-        },
-        {
-          "name": "Data",
-          "display_name": "Data"
-        },
-        {
-          "name": "Asset",
-          "display_name": "Asset"
-        },
-        {
-          "name": "UPCGDataAsset",
-          "display_name": "UPCGDataAsset"
         },
         {
           "name": "DataAsset",
@@ -117,36 +33,12 @@
           "display_name": "Boundary"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Wildcard",
           "display_name": "Wildcard"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Any",
           "display_name": "Any"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -159,36 +51,12 @@
           "display_name": "Unconstrained"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Boundary",
           "display_name": "Boundary"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Wildcard",
           "display_name": "Wildcard"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

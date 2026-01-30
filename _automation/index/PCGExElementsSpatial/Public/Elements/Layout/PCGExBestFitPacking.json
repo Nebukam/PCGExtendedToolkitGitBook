@@ -11,24 +11,12 @@
           "display_name": "None"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "CardinalOnly",
           "display_name": "CardinalOnly"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "AllOrthogonal",
-          "display_name": "AllOrthogonal"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "All Orthogonal"
         }
       ],
       "used_by": []
@@ -38,35 +26,19 @@
       "values": [
         {
           "name": "TightestFit",
-          "display_name": "TightestFit"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Tightest Fit"
         },
         {
           "name": "SmallestSpace",
-          "display_name": "SmallestSpace"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Smallest Space"
         },
         {
           "name": "LeastWaste",
-          "display_name": "LeastWaste"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Least Waste"
         },
         {
           "name": "Balanced",
           "display_name": "Balanced"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -79,24 +51,12 @@
           "display_name": "Corner"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Center",
           "display_name": "Center"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "SeedProximity",
-          "display_name": "SeedProximity"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Seed Proximity"
         }
       ],
       "used_by": []

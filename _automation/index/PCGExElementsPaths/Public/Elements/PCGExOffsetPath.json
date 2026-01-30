@@ -8,35 +8,19 @@
       "values": [
         {
           "name": "None",
-          "display_name": "None"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Raw"
         },
         {
           "name": "SmoothCustom",
-          "display_name": "SmoothCustom"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Custom Smooth"
         },
         {
           "name": "SmoothAuto",
-          "display_name": "SmoothAuto"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Auto Smooth"
         },
         {
           "name": "Mitre",
           "display_name": "Mitre"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -49,16 +33,8 @@
           "display_name": "Slide"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "LinePlane",
-          "display_name": "LinePlane"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Line/Plane"
         }
       ],
       "used_by": []

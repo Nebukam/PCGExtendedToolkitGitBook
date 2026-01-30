@@ -11,120 +11,20 @@
           "display_name": "Split"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "and",
-          "display_name": "and"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "copy",
-          "display_name": "copy"
-        },
-        {
-          "name": "a",
-          "display_name": "a"
-        },
-        {
-          "name": "new",
-          "display_name": "new"
-        },
-        {
-          "name": "start",
-          "display_name": "start"
-        },
-        {
           "name": "Remove",
           "display_name": "Remove"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "shrinking",
-          "display_name": "shrinking"
-        },
-        {
-          "name": "both",
-          "display_name": "both"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "previous",
-          "display_name": "previous"
-        },
-        {
-          "name": "and",
-          "display_name": "and"
-        },
-        {
-          "name": "next",
-          "display_name": "next"
-        },
-        {
-          "name": "paths",
-          "display_name": "paths"
         },
         {
           "name": "Disconnect",
           "display_name": "Disconnect"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "starting",
-          "display_name": "starting"
-        },
-        {
-          "name": "a",
-          "display_name": "a"
-        },
-        {
-          "name": "new",
-          "display_name": "new"
-        },
-        {
-          "name": "path",
-          "display_name": "path"
-        },
-        {
-          "name": "from",
-          "display_name": "from"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "next",
-          "display_name": "next"
-        },
-        {
           "name": "Partition",
           "display_name": "Partition"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Switch",
           "display_name": "Switch"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -137,92 +37,16 @@
           "display_name": "Constant"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "ConstantPreserve",
           "display_name": "ConstantPreserve"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "but",
-          "display_name": "but"
-        },
-        {
-          "name": "does",
-          "display_name": "does"
-        },
-        {
-          "name": "not",
-          "display_name": "not"
-        },
-        {
-          "name": "switch",
-          "display_name": "switch"
-        },
-        {
-          "name": "if",
-          "display_name": "if"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "first",
-          "display_name": "first"
-        },
-        {
-          "name": "value",
-          "display_name": "value"
-        },
-        {
-          "name": "is",
-          "display_name": "is"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "same",
-          "display_name": "same"
-        },
-        {
           "name": "FromPoint",
-          "display_name": "FromPoint"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "From Point"
         },
         {
           "name": "FromPointPreserve",
           "display_name": "FromPointPreserve"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "but",
-          "display_name": "but"
-        },
-        {
-          "name": "preserve",
-          "display_name": "preserve"
-        },
-        {
-          "name": "its",
-          "display_name": "its"
-        },
-        {
-          "name": "behavior",
-          "display_name": "behavior"
         }
       ],
       "used_by": []

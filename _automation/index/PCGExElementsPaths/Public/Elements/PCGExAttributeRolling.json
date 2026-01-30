@@ -8,19 +8,11 @@
       "values": [
         {
           "name": "StartStop",
-          "display_name": "StartStop"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Start/Stop"
         },
         {
           "name": "Toggle",
           "display_name": "Toggle"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -33,68 +25,12 @@
           "display_name": "Constant"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "ConstantPreserve",
           "display_name": "ConstantPreserve"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "but",
-          "display_name": "but"
-        },
-        {
-          "name": "does",
-          "display_name": "does"
-        },
-        {
-          "name": "not",
-          "display_name": "not"
-        },
-        {
-          "name": "switch",
-          "display_name": "switch"
-        },
-        {
-          "name": "if",
-          "display_name": "if"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "first",
-          "display_name": "first"
-        },
-        {
-          "name": "value",
-          "display_name": "value"
-        },
-        {
-          "name": "is",
-          "display_name": "is"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "same",
-          "display_name": "same"
-        },
-        {
           "name": "FromPoint",
-          "display_name": "FromPoint"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "From Point"
         }
       ],
       "used_by": []
@@ -107,24 +43,12 @@
           "display_name": "Pin"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Previous",
           "display_name": "Previous"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "RangeStart",
-          "display_name": "RangeStart"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Range Start"
         }
       ],
       "used_by": []

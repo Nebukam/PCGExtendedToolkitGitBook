@@ -134,8 +134,8 @@
     },
     {
       "name": "UPCGExCreateShapeGridSettings",
-      "display_name": "UPCGExCreateShapeGridSettings",
-      "description": "",
+      "display_name": "Shape : 3D Grid",
+      "description": "Create points in a 3D grid shape.",
       "base_class": "UPCGExShapeBuilderFactoryProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Builder|Params\", meta=(PCGExNodeLibraryDoc=\"misc/shapes/shape-grid\")",
       "uproperties": [

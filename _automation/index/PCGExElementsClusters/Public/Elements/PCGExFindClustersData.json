@@ -12,11 +12,11 @@
         },
         {
           "name": "VtxFromEdges",
-          "display_name": "VtxFromEdges"
+          "display_name": "Vtx from Edges"
         },
         {
           "name": "EdgesFromVtx",
-          "display_name": "EdgesFromVtx"
+          "display_name": "Edges from Vtx"
         }
       ],
       "used_by": []

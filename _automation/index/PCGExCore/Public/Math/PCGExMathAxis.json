@@ -11,48 +11,16 @@
           "display_name": "None"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "X",
           "display_name": "X"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
         },
         {
           "name": "Y",
           "display_name": "Y"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "Z",
           "display_name": "Z"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
         }
       ],
       "used_by": []
@@ -65,48 +33,24 @@
           "display_name": "Forward"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Backward",
           "display_name": "Backward"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "Right",
           "display_name": "Right"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Left",
           "display_name": "Left"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "Up",
           "display_name": "Up"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Down",
           "display_name": "Down"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -116,75 +60,27 @@
       "values": [
         {
           "name": "XYZ",
-          "display_name": "XYZ"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
+          "display_name": "X > Y > Z"
         },
         {
           "name": "YZX",
-          "display_name": "YZX"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
+          "display_name": "Y > Z > X"
         },
         {
           "name": "ZXY",
-          "display_name": "ZXY"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
+          "display_name": "Z > X > Y"
         },
         {
           "name": "YXZ",
-          "display_name": "YXZ"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
+          "display_name": "Y > X > Z"
         },
         {
           "name": "ZYX",
-          "display_name": "ZYX"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
+          "display_name": "Z > Y > X"
         },
         {
           "name": "XZY",
-          "display_name": "XZY"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
+          "display_name": "X > Z > Y"
         }
       ],
       "used_by": []
@@ -197,48 +93,24 @@
           "display_name": "Forward"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Backward",
           "display_name": "Backward"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "Right",
           "display_name": "Right"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Left",
           "display_name": "Left"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "Up",
           "display_name": "Up"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Down",
           "display_name": "Down"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -251,228 +123,36 @@
           "display_name": "X"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "XY",
-          "display_name": "XY"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "second",
-          "display_name": "second"
-        },
-        {
-          "name": "axis",
-          "display_name": "axis"
-        },
-        {
-          "name": "for",
-          "display_name": "for"
-        },
-        {
-          "name": "Y",
-          "display_name": "Y"
-        },
-        {
-          "name": "Right",
-          "display_name": "Right"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
+          "display_name": "X > Y"
         },
         {
           "name": "XZ",
-          "display_name": "XZ"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "second",
-          "display_name": "second"
-        },
-        {
-          "name": "axis",
-          "display_name": "axis"
-        },
-        {
-          "name": "for",
-          "display_name": "for"
-        },
-        {
-          "name": "Z",
-          "display_name": "Z"
-        },
-        {
-          "name": "Up",
-          "display_name": "Up"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
+          "display_name": "X > Z"
         },
         {
           "name": "Y",
           "display_name": "Y"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
         },
         {
           "name": "YX",
-          "display_name": "YX"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "second",
-          "display_name": "second"
-        },
-        {
-          "name": "axis",
-          "display_name": "axis"
-        },
-        {
-          "name": "for",
-          "display_name": "for"
-        },
-        {
-          "name": "X",
-          "display_name": "X"
-        },
-        {
-          "name": "Forward",
-          "display_name": "Forward"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
+          "display_name": "Y > X"
         },
         {
           "name": "YZ",
-          "display_name": "YZ"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "second",
-          "display_name": "second"
-        },
-        {
-          "name": "axis",
-          "display_name": "axis"
-        },
-        {
-          "name": "for",
-          "display_name": "for"
+          "display_name": "Y > Z"
         },
         {
           "name": "Z",
           "display_name": "Z"
-        },
-        {
-          "name": "Up",
-          "display_name": "Up"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
-          "name": "Z",
-          "display_name": "Z"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
         },
         {
           "name": "ZX",
-          "display_name": "ZX"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "second",
-          "display_name": "second"
-        },
-        {
-          "name": "axis",
-          "display_name": "axis"
-        },
-        {
-          "name": "for",
-          "display_name": "for"
-        },
-        {
-          "name": "X",
-          "display_name": "X"
-        },
-        {
-          "name": "Forward",
-          "display_name": "Forward"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
+          "display_name": "Z > X"
         },
         {
           "name": "ZY",
-          "display_name": "ZY"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "second",
-          "display_name": "second"
-        },
-        {
-          "name": "axis",
-          "display_name": "axis"
-        },
-        {
-          "name": "for",
-          "display_name": "for"
-        },
-        {
-          "name": "Y",
-          "display_name": "Y"
-        },
-        {
-          "name": "Right",
-          "display_name": "Right"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
+          "display_name": "Z > Y"
         }
       ],
       "used_by": []

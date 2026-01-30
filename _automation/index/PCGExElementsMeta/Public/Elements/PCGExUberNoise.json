@@ -8,19 +8,11 @@
       "values": [
         {
           "name": "New",
-          "display_name": "New"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "New Attribute"
         },
         {
           "name": "Mutate",
-          "display_name": "Mutate"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Mutate Attribute"
         }
       ],
       "used_by": []
@@ -30,8 +22,8 @@
   "classes": [
     {
       "name": "UPCGExUberNoiseSettings",
-      "display_name": "UPCGExUberNoiseSettings",
-      "description": "",
+      "display_name": "Uber Noise",
+      "description": "Generate noise or mutate existing attribute using noises.",
       "base_class": "UPCGExPointsProcessorSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"metadata/uber-noise\")",
       "uproperties": [

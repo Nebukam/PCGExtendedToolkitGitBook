@@ -11,16 +11,8 @@
           "display_name": "Regular"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Hierarchical",
-          "display_name": "Hierarchical"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "HIerarchical"
         }
       ],
       "used_by": []

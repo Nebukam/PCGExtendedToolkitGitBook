@@ -11,84 +11,12 @@
           "display_name": "Strict"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "and",
-          "display_name": "and"
-        },
-        {
-          "name": "higher",
-          "display_name": "higher"
-        },
-        {
-          "name": "priority",
-          "display_name": "priority"
-        },
-        {
-          "name": "tags",
-          "display_name": "tags"
-        },
-        {
-          "name": "are",
-          "display_name": "are"
-        },
-        {
-          "name": "removed",
-          "display_name": "removed"
-        },
-        {
-          "name": "from",
-          "display_name": "from"
-        },
-        {
-          "name": "lower",
-          "display_name": "lower"
-        },
-        {
-          "name": "priority",
-          "display_name": "priority"
-        },
-        {
-          "name": "overlaps",
-          "display_name": "overlaps"
-        },
-        {
           "name": "ImmediateOverlap",
-          "display_name": "ImmediateOverlap"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "overlapping",
-          "display_name": "overlapping"
-        },
-        {
-          "name": "data",
-          "display_name": "data"
-        },
-        {
-          "name": "is",
-          "display_name": "is"
-        },
-        {
-          "name": "merged",
-          "display_name": "merged"
-        },
-        {
-          "name": "entirely",
-          "display_name": "entirely"
+          "display_name": "Overlap"
         },
         {
           "name": "Flatten",
           "display_name": "Flatten"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -101,24 +29,12 @@
           "display_name": "Omit"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Merge",
           "display_name": "Merge"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Forward",
           "display_name": "Forward"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

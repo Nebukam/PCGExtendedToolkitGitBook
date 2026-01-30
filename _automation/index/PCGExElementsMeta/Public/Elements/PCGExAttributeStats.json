@@ -8,27 +8,15 @@
       "values": [
         {
           "name": "None",
-          "display_name": "None"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "No output"
         },
         {
           "name": "Prefix",
           "display_name": "Prefix"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Suffix",
           "display_name": "Suffix"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

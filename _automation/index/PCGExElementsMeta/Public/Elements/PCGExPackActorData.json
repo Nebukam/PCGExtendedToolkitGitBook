@@ -88,8 +88,8 @@
     },
     {
       "name": "UPCGExPackActorDataSettings",
-      "display_name": "UPCGExPackActorDataSettings",
-      "description": "",
+      "display_name": "Pack Actor Data",
+      "description": "Use custom blueprint to read data from actor references.",
       "base_class": "UPCGExPointsProcessorSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Sampling\", meta=(PCGExNodeLibraryDoc=\"quality-of-life/pack-actor-data\")",
       "uproperties": [

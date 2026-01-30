@@ -11,16 +11,8 @@
           "display_name": "Integer"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "String",
           "display_name": "String"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -33,88 +25,16 @@
           "display_name": "Digits"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "DigitsLower",
           "display_name": "DigitsLower"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "DigitsWithHyphens",
           "display_name": "DigitsWithHyphens"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "DigitsWithHyphensLower",
           "display_name": "DigitsWithHyphensLower"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "in",
-          "display_name": "in"
-        },
-        {
-          "name": "lowercase",
-          "display_name": "lowercase"
-        },
-        {
-          "name": "as",
-          "display_name": "as"
-        },
-        {
-          "name": "described",
-          "display_name": "described"
-        },
-        {
-          "name": "by",
-          "display_name": "by"
-        },
-        {
-          "name": "RFC",
-          "display_name": "RFC"
-        },
-        {
-          "name": "4122",
-          "display_name": "4122"
-        },
-        {
-          "name": "For",
-          "display_name": "For"
-        },
-        {
-          "name": "example",
-          "display_name": "example"
-        },
-        {
-          "name": "bd048ce3",
-          "display_name": "bd048ce3"
-        },
-        {
-          "name": "358b",
-          "display_name": "358b"
-        },
-        {
-          "name": "46c5",
-          "display_name": "46c5"
-        },
-        {
-          "name": "8cee",
-          "display_name": "8cee"
-        },
-        {
-          "name": "627c719418f8",
-          "display_name": "627c719418f8"
         },
         {
           "name": "DigitsWithHyphensInBraces",
@@ -267,8 +187,8 @@
   "classes": [
     {
       "name": "UPCGExWriteGUIDSettings",
-      "display_name": "UPCGExWriteGUIDSettings",
-      "description": "",
+      "display_name": "Write GUID",
+      "description": "Write a GUID on the point.",
       "base_class": "UPCGExPointsProcessorSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"metadata/write-guid\")",
       "uproperties": [

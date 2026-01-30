@@ -8,39 +8,11 @@
       "values": [
         {
           "name": "OnlyBest",
-          "display_name": "OnlyBest"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Only Best"
         },
         {
           "name": "NextBest",
-          "display_name": "NextBest"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "pick",
-          "display_name": "pick"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "nest",
-          "display_name": "nest"
-        },
-        {
-          "name": "best",
-          "display_name": "best"
-        },
-        {
-          "name": "candidate",
-          "display_name": "candidate"
+          "display_name": "Next Best"
         }
       ],
       "used_by": []

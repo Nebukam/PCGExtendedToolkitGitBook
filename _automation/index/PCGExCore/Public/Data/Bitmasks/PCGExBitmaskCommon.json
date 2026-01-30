@@ -8,75 +8,23 @@
       "values": [
         {
           "name": "Set",
-          "display_name": "Set"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "="
         },
         {
           "name": "AND",
           "display_name": "AND"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "otherwise",
-          "display_name": "otherwise"
-        },
-        {
-          "name": "false",
-          "display_name": "false"
-        },
-        {
           "name": "OR",
           "display_name": "OR"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "otherwise",
-          "display_name": "otherwise"
-        },
-        {
-          "name": "false",
-          "display_name": "false"
         },
         {
           "name": "NOT",
           "display_name": "NOT"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "but",
-          "display_name": "but"
-        },
-        {
-          "name": "inverts",
-          "display_name": "inverts"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "masks",
-          "display_name": "masks"
-        },
-        {
           "name": "XOR",
           "display_name": "XOR"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -89,72 +37,20 @@
           "display_name": "OR"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "otherwise",
-          "display_name": "otherwise"
-        },
-        {
-          "name": "false",
-          "display_name": "false"
-        },
-        {
           "name": "Set",
-          "display_name": "Set"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "SET"
         },
         {
           "name": "AND",
           "display_name": "AND"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "otherwise",
-          "display_name": "otherwise"
-        },
-        {
-          "name": "false",
-          "display_name": "false"
-        },
-        {
           "name": "NOT",
           "display_name": "NOT"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "but",
-          "display_name": "but"
-        },
-        {
-          "name": "inverts",
-          "display_name": "inverts"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "masks",
-          "display_name": "masks"
-        },
-        {
           "name": "XOR",
           "display_name": "XOR"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -167,24 +63,8 @@
           "display_name": "Direct"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "Individual",
-          "display_name": "Individual"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
+          "display_name": "Mutations"
         },
         {
           "name": "Composite",
@@ -201,40 +81,20 @@
           "display_name": "MatchPartial"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "MatchFull",
           "display_name": "MatchFull"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         },
         {
           "name": "MatchStrict",
           "display_name": "MatchStrict"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "NoMatchPartial",
           "display_name": "NoMatchPartial"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "NoMatchFull",
           "display_name": "NoMatchFull"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         }
       ],
       "used_by": []

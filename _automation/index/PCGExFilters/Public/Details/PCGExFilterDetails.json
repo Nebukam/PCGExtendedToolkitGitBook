@@ -11,24 +11,12 @@
           "display_name": "Keep"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Omit",
           "display_name": "Omit"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Tag",
           "display_name": "Tag"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -38,27 +26,15 @@
       "values": [
         {
           "name": "Ignore",
-          "display_name": "Ignore"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Do Nothing"
         },
         {
           "name": "ToData",
-          "display_name": "ToData"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "To @Data"
         },
         {
           "name": "ToElements",
-          "display_name": "ToElements"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Attribute"
         }
       ],
       "used_by": []
@@ -68,59 +44,15 @@
       "values": [
         {
           "name": "Bool",
-          "display_name": "Bool"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "False",
-          "display_name": "False"
-        },
-        {
-          "name": "if",
-          "display_name": "if"
-        },
-        {
-          "name": "they",
-          "display_name": "they"
-        },
-        {
-          "name": "don",
-          "display_name": "don"
-        },
-        {
-          "name": "t",
-          "display_name": "t"
+          "display_name": "Boolean"
         },
         {
           "name": "Counter",
           "display_name": "Counter"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "2",
-          "display_name": "2"
-        },
-        {
-          "name": "on",
-          "display_name": "on"
-        },
-        {
-          "name": "fail",
-          "display_name": "fail"
-        },
-        {
           "name": "Bitmask",
           "display_name": "Bitmask"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         }
       ],
       "used_by": []

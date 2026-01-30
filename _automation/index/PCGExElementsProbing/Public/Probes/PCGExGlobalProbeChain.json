@@ -8,35 +8,19 @@
       "values": [
         {
           "name": "ByAttribute",
-          "display_name": "ByAttribute"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "By Attribute"
         },
         {
           "name": "ByAxisProjection",
-          "display_name": "ByAxisProjection"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "By Axis Projection"
         },
         {
           "name": "BySpatialCurve",
           "display_name": "BySpatialCurve"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "ByHilbertCurve",
-          "display_name": "ByHilbertCurve"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "By Hilbert Curve"
         }
       ],
       "used_by": []

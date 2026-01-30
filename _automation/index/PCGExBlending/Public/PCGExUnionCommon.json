@@ -8,19 +8,11 @@
       "values": [
         {
           "name": "Voxel",
-          "display_name": "Voxel"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Spatial Hash"
         },
         {
           "name": "Octree",
           "display_name": "Octree"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         }
       ],
       "used_by": []

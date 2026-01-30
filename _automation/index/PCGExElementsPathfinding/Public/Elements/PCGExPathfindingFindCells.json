@@ -8,27 +8,15 @@
       "values": [
         {
           "name": "Both",
-          "display_name": "Both"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Convex & Concave"
         },
         {
           "name": "ConvexOnly",
-          "display_name": "ConvexOnly"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Convex Only"
         },
         {
           "name": "ConcaveOnly",
-          "display_name": "ConcaveOnly"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Concave Only"
         }
       ],
       "used_by": []

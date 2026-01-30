@@ -11,44 +11,12 @@
           "display_name": "Weighted"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "OrderedInPlace",
           "display_name": "OrderedInPlace"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "using",
-          "display_name": "using"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "same",
-          "display_name": "same"
-        },
-        {
-          "name": "original",
-          "display_name": "original"
-        },
-        {
-          "name": "position",
-          "display_name": "position"
-        },
-        {
           "name": "OrderedMutated",
           "display_name": "OrderedMutated"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -61,32 +29,16 @@
           "display_name": "Weighted"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Closest",
           "display_name": "Closest"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "StrongestWeight",
           "display_name": "StrongestWeight"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "StrongestPotency",
           "display_name": "StrongestPotency"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -99,16 +51,8 @@
           "display_name": "Box"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Sphere",
           "display_name": "Sphere"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         }
       ],
       "used_by": []
@@ -121,16 +65,8 @@
           "display_name": "Exclude"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Include",
           "display_name": "Include"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         }
       ],
       "used_by": []

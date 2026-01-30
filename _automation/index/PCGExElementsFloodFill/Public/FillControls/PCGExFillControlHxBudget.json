@@ -8,51 +8,15 @@
       "values": [
         {
           "name": "PathScore",
-          "display_name": "PathScore"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Path Score"
         },
         {
           "name": "CompositeScore",
-          "display_name": "CompositeScore"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Composite Score"
         },
         {
           "name": "PathDistance",
-          "display_name": "PathDistance"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Path Distance"
         }
       ],
       "used_by": []
@@ -150,8 +114,8 @@
     },
     {
       "name": "UPCGExFillControlsHeuristicsBudgetProviderSettings",
-      "display_name": "UPCGExFillControlsHeuristicsBudgetProviderSettings",
-      "description": "",
+      "display_name": "Fill Control : Heuristics Budget",
+      "description": "Stop diffusion when accumulated heuristic cost exceeds a budget.",
       "base_class": "UPCGExFillControlsFactoryProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"clusters/flood-fill/fc-heuristics-budget\")",
       "uproperties": [

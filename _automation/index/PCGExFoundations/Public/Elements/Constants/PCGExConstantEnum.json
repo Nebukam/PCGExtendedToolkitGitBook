@@ -8,71 +8,11 @@
       "values": [
         {
           "name": "EECOT_Attribute",
-          "display_name": "EECOT_Attribute"
+          "display_name": "Attribute Set"
         },
         {
           "name": "EECOT_String",
           "display_name": "EECOT_String"
-        },
-        {
-          "name": "Unsure",
-          "display_name": "Unsure"
-        },
-        {
-          "name": "if",
-          "display_name": "if"
-        },
-        {
-          "name": "this",
-          "display_name": "this"
-        },
-        {
-          "name": "is",
-          "display_name": "is"
-        },
-        {
-          "name": "needed",
-          "display_name": "needed"
-        },
-        {
-          "name": "since",
-          "display_name": "since"
-        },
-        {
-          "name": "there",
-          "display_name": "there"
-        },
-        {
-          "name": "s",
-          "display_name": "s"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "option",
-          "display_name": "option"
-        },
-        {
-          "name": "to",
-          "display_name": "to"
-        },
-        {
-          "name": "output",
-          "display_name": "output"
-        },
-        {
-          "name": "name",
-          "display_name": "name"
-        },
-        {
-          "name": "and",
-          "display_name": "and"
-        },
-        {
-          "name": "description",
-          "display_name": "description"
         },
         {
           "name": "EECOT_Tag",
@@ -86,43 +26,23 @@
       "values": [
         {
           "name": "EEOM_Single",
-          "display_name": "EEOM_Single"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Single"
         },
         {
           "name": "EEOM_All",
-          "display_name": "EEOM_All"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "All"
         },
         {
           "name": "EEOM_AllToMultiplePins",
-          "display_name": "EEOM_AllToMultiplePins"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "All to Separate Outputs"
         },
         {
           "name": "EEOM_Selection",
-          "display_name": "EEOM_Selection"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Selection"
         },
         {
           "name": "EEOM_SelectionToMultiplePins",
-          "display_name": "EEOM_SelectionToMultiplePins"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Selection to Separate Outputs"
         }
       ],
       "used_by": []
@@ -132,8 +52,8 @@
   "classes": [
     {
       "name": "UPCGExConstantEnumSettings",
-      "display_name": "UPCGExConstantEnumSettings",
-      "description": "",
+      "display_name": "Enum Constant",
+      "description": "Break an enum into handy constant values.",
       "base_class": "UPCGExSettings",
       "uclass_meta": "BlueprintType, ClassGroup=(Procedural), meta=(AutoExpandCategories=\"Settings|Output Attributes\", PCGExNodeLibraryDoc=\"quality-of-life/enum\")",
       "uproperties": [

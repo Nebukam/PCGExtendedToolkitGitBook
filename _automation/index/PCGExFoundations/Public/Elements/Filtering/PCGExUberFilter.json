@@ -8,19 +8,11 @@
       "values": [
         {
           "name": "Partition",
-          "display_name": "Partition"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Partition points"
         },
         {
           "name": "Write",
-          "display_name": "Write"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Write result"
         }
       ],
       "used_by": []

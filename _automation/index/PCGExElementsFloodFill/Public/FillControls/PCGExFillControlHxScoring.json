@@ -82,8 +82,8 @@
     },
     {
       "name": "UPCGExFillControlsHeuristicsScoringProviderSettings",
-      "display_name": "UPCGExFillControlsHeuristicsScoringProviderSettings",
-      "description": "",
+      "display_name": "Fill Control : Heuristics Scoring",
+      "description": "Compute and accumulate heuristic scores for diffusion candidates.",
       "base_class": "UPCGExFillControlsFactoryProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"clusters/flood-fill/fc-heuristics-scoring\")",
       "uproperties": [

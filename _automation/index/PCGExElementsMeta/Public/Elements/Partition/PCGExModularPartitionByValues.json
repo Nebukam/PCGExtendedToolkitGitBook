@@ -34,8 +34,8 @@
     },
     {
       "name": "UPCGExPartitionRuleProviderSettings",
-      "display_name": "UPCGExPartitionRuleProviderSettings",
-      "description": "",
+      "display_name": "Partition Rule",
+      "description": "Creates an single partition rule to be used with the Partition by Values node.",
       "base_class": "UPCGExFactoryProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"misc/partition-by-values\")",
       "uproperties": [

@@ -8,19 +8,11 @@
       "values": [
         {
           "name": "PerInput",
-          "display_name": "PerInput"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Per Input"
         },
         {
           "name": "Merged",
           "display_name": "Merged"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

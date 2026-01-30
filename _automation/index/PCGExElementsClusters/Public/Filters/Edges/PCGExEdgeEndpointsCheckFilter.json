@@ -11,48 +11,24 @@
           "display_name": "None"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Both",
           "display_name": "Both"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Any",
-          "display_name": "Any"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Any Pass"
         },
         {
           "name": "Start",
           "display_name": "Start"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "End",
           "display_name": "End"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "SeeSaw",
           "display_name": "SeeSaw"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         }
       ],
       "used_by": []
@@ -137,8 +113,8 @@
     },
     {
       "name": "UPCGExEdgeEndpointsCheckFilterProviderSettings",
-      "display_name": "UPCGExEdgeEndpointsCheckFilterProviderSettings",
-      "description": "",
+      "display_name": "Edge Filter : Endpoints Check",
+      "description": "Uses filters applied to the edge endpoints' in order to determine whether this filter result'.",
       "base_class": "UPCGExEdgeFilterProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"filters/filters-edges/endpoints-check\")",
       "uproperties": [

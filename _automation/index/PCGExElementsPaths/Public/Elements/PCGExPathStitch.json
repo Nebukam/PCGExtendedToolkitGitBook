@@ -11,36 +11,8 @@
           "display_name": "Connect"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Fuse",
           "display_name": "Fuse"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "only",
-          "display_name": "only"
-        },
-        {
-          "name": "leaving",
-          "display_name": "leaving"
-        },
-        {
-          "name": "a",
-          "display_name": "a"
-        },
-        {
-          "name": "single",
-          "display_name": "single"
-        },
-        {
-          "name": "one",
-          "display_name": "one"
         }
       ],
       "used_by": []
@@ -50,19 +22,11 @@
       "values": [
         {
           "name": "KeepStart",
-          "display_name": "KeepStart"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Keep Start"
         },
         {
           "name": "KeepEnd",
-          "display_name": "KeepEnd"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Keep End"
         }
       ],
       "used_by": []
@@ -75,24 +39,12 @@
           "display_name": "None"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Average",
           "display_name": "Average"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "LineIntersection",
-          "display_name": "LineIntersection"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Line Intersection"
         }
       ],
       "used_by": []

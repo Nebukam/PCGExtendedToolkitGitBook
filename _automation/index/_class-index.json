@@ -9,7 +9,7 @@
     "file": "PCGExBlending/Public/Core/PCGExBlendOpFactoryProvider.h",
     "type": "provider",
     "base_class": "UPCGExFactoryProviderSettings",
-    "display_name": "UPCGExBlendOpFactoryProviderSettings"
+    "display_name": "BlendOp"
   },
   "UPCGExSubPointsBlendInheritEnd": {
     "file": "PCGExBlending/Public/SubPoints/DataBlending/PCGExSubPointsBlendInheritEnd.h",
@@ -81,7 +81,7 @@
     "file": "PCGExCollections/Public/Elements/PCGExAssetStaging.h",
     "type": "node_settings",
     "base_class": "UPCGExPointsProcessorSettings",
-    "display_name": "UPCGExAssetStagingSettings"
+    "display_name": "Staging : Distribute"
   },
   "UPCGExCollectionToModuleInfosSettings": {
     "file": "PCGExCollections/Public/Elements/PCGExCollectionToModuleInfos.h",
@@ -189,7 +189,7 @@
     "file": "PCGExCore/Public/Factories/PCGExFactoryProvider.h",
     "type": "provider",
     "base_class": "UPCGExSettings",
-    "display_name": "UPCGExFactoryProviderSettings"
+    "display_name": "Factory : Provider"
   },
   "UPCGExInstancedFactory": {
     "file": "PCGExCore/Public/Factories/PCGExInstancedFactory.h",
@@ -219,7 +219,7 @@
     "file": "PCGExCore/Public/Sorting/PCGExSortingRuleProvider.h",
     "type": "provider",
     "base_class": "UPCGExFactoryProviderSettings",
-    "display_name": "UPCGExSortingRuleProviderSettings"
+    "display_name": "Sorting Rule"
   },
   "UPCGExActionWriteValuesFactory": {
     "file": "PCGExElementsActions/Public/Actions/PCGExActionWriteValues.h",
@@ -267,7 +267,7 @@
     "file": "PCGExElementsClipper2/Public/Elements/PCGExClipper2Boolean.h",
     "type": "node_settings",
     "base_class": "UPCGExClipper2ProcessorSettings",
-    "display_name": "UPCGExClipper2BooleanSettings"
+    "display_name": "Clipper2 : Boolean"
   },
   "UPCGExClipper2OffsetSettings": {
     "file": "PCGExElementsClipper2/Public/Elements/PCGExClipper2Offset.h",
@@ -345,7 +345,7 @@
     "file": "PCGExElementsClusters/Public/Elements/Meta/NeighborSamplers/PCGExNeighborSampleAttribute.h",
     "type": "node_settings",
     "base_class": "UPCGExNeighborSampleProviderSettings",
-    "display_name": "UPCGExNeighborSampleAttributeSettings"
+    "display_name": "Sampler : Vtx Attributes"
   },
   "UPCGExNeighborSamplerFactoryBlend": {
     "file": "PCGExElementsClusters/Public/Elements/Meta/NeighborSamplers/PCGExNeighborSampleBlend.h",
@@ -369,7 +369,7 @@
     "file": "PCGExElementsClusters/Public/Elements/Meta/NeighborSamplers/PCGExNeighborSampleFactoryProvider.h",
     "type": "provider",
     "base_class": "UPCGExFactoryProviderSettings",
-    "display_name": "UPCGExNeighborSampleProviderSettings"
+    "display_name": "Sampler : Abstract"
   },
   "UPCGExNeighborSamplerFactoryFilters": {
     "file": "PCGExElementsClusters/Public/Elements/Meta/NeighborSamplers/PCGExNeighborSampleFilters.h",
@@ -393,7 +393,7 @@
     "file": "PCGExElementsClusters/Public/Elements/Meta/NeighborSamplers/PCGExNeighborSampleProperties.h",
     "type": "node_settings",
     "base_class": "UPCGExNeighborSampleProviderSettings",
-    "display_name": "UPCGExNeighborSamplePropertiesSettings"
+    "display_name": "Sampler : Vtx Properties"
   },
   "UPCGExSampleNeighborsSettings": {
     "file": "PCGExElementsClusters/Public/Elements/Meta/PCGExSampleNeighbors.h",
@@ -423,7 +423,7 @@
     "file": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertyAmplitude.h",
     "type": "node_settings",
     "base_class": "UPCGExVtxPropertyProviderSettings",
-    "display_name": "UPCGExVtxPropertyAmplitudeSettings"
+    "display_name": "Vtx : Amplitude"
   },
   "UPCGExVtxPropertyEdgeMatchFactory": {
     "file": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertyEdgeMatch.h",
@@ -435,7 +435,7 @@
     "file": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertyEdgeMatch.h",
     "type": "node_settings",
     "base_class": "UPCGExVtxPropertyProviderSettings",
-    "display_name": "UPCGExVtxPropertyEdgeMatchSettings"
+    "display_name": "Vtx : Edge Match"
   },
   "UPCGExVtxPropertyFactoryData": {
     "file": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertyFactoryProvider.h",
@@ -507,7 +507,7 @@
     "file": "PCGExElementsClusters/Public/Elements/PCGExBuildCustomGraph.h",
     "type": "node_settings",
     "base_class": "UPCGExPointsProcessorSettings",
-    "display_name": "UPCGExBuildCustomGraphSettings"
+    "display_name": "Cluster : Build Custom Graph"
   },
   "UPCGExClusterCentralitySettings": {
     "file": "PCGExElementsClusters/Public/Elements/PCGExClusterCentrality.h",
@@ -597,13 +597,13 @@
     "file": "PCGExElementsClusters/Public/Elements/PCGExRefineEdges.h",
     "type": "node_settings",
     "base_class": "UPCGExClustersProcessorSettings",
-    "display_name": "UPCGExRefineEdgesSettings"
+    "display_name": "Cluster : Refine"
   },
   "UPCGExRelaxClustersSettings": {
     "file": "PCGExElementsClusters/Public/Elements/PCGExRelaxClusters.h",
     "type": "node_settings",
     "base_class": "UPCGExClustersProcessorSettings",
-    "display_name": "UPCGExRelaxClustersSettings"
+    "display_name": "Cluster : Relax"
   },
   "UPCGExSampleVtxByIDSettings": {
     "file": "PCGExElementsClusters/Public/Elements/PCGExSampleVtxByID.h",
@@ -771,7 +771,7 @@
     "file": "PCGExElementsClusters/Public/Elements/States/PCGExAdjacencyStates.h",
     "type": "provider",
     "base_class": "UPCGExStateFactoryProviderSettings",
-    "display_name": "UPCGExAdjacencyStateFactoryProviderSettings"
+    "display_name": "State : Bitmask Adjacency"
   },
   "UPCGExFlagNodesSettings": {
     "file": "PCGExElementsClusters/Public/Elements/States/PCGExClusterWriteStates.h",
@@ -789,7 +789,7 @@
     "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeEndpointsCheckFilter.h",
     "type": "provider",
     "base_class": "UPCGExEdgeFilterProviderSettings",
-    "display_name": "UPCGExEdgeEndpointsCheckFilterProviderSettings"
+    "display_name": "Edge Filter : Endpoints Check"
   },
   "UPCGExEdgeEndpointsCompareNumFilterFactory": {
     "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeEndpointsCompareNumFilter.h",
@@ -801,7 +801,7 @@
     "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeEndpointsCompareNumFilter.h",
     "type": "provider",
     "base_class": "UPCGExEdgeFilterProviderSettings",
-    "display_name": "UPCGExEdgeEndpointsCompareNumFilterProviderSettings"
+    "display_name": "Edge Filter : Endpoints Compare (Numeric)"
   },
   "UPCGExEdgeEndpointsCompareStrFilterFactory": {
     "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeEndpointsCompareStrFilter.h",
@@ -813,7 +813,7 @@
     "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeEndpointsCompareStrFilter.h",
     "type": "provider",
     "base_class": "UPCGExEdgeFilterProviderSettings",
-    "display_name": "UPCGExEdgeEndpointsCompareStrFilterProviderSettings"
+    "display_name": "Edge Filter : Endpoints Compare (String)"
   },
   "UPCGExEdgeLengthFilterFactory": {
     "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeLengthFilter.h",
@@ -825,7 +825,7 @@
     "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeLengthFilter.h",
     "type": "provider",
     "base_class": "UPCGExEdgeFilterProviderSettings",
-    "display_name": "UPCGExEdgeLengthFilterProviderSettings"
+    "display_name": "Edge Filter : Length"
   },
   "UPCGExEdgeNeighborsCountFilterFactory": {
     "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeNeighborsCountFilter.h",
@@ -837,7 +837,7 @@
     "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeNeighborsCountFilter.h",
     "type": "provider",
     "base_class": "UPCGExEdgeFilterProviderSettings",
-    "display_name": "UPCGExEdgeNeighborsCountFilterProviderSettings"
+    "display_name": "Edge Filter : Num Vtx"
   },
   "UPCGExIsoEdgeDirectionFilterFactory": {
     "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExIsoEdgeDirectionFilter.h",
@@ -849,7 +849,7 @@
     "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExIsoEdgeDirectionFilter.h",
     "type": "provider",
     "base_class": "UPCGExEdgeFilterProviderSettings",
-    "display_name": "UPCGExIsoEdgeDirectionFilterProviderSettings"
+    "display_name": "Edge Filter : Edge Direction"
   },
   "UPCGExNodeAdjacencyFilterFactory": {
     "file": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeAdjacencyFilter.h",
@@ -861,7 +861,7 @@
     "file": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeAdjacencyFilter.h",
     "type": "provider",
     "base_class": "UPCGExVtxFilterProviderSettings",
-    "display_name": "UPCGExNodeAdjacencyFilterProviderSettings"
+    "display_name": "Vtx Filter : Adjacency"
   },
   "UPCGExNodeEdgeAngleFilterFactory": {
     "file": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeEdgeAngleFilter.h",
@@ -873,7 +873,7 @@
     "file": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeEdgeAngleFilter.h",
     "type": "provider",
     "base_class": "UPCGExVtxFilterProviderSettings",
-    "display_name": "UPCGExNodeEdgeAngleFilterProviderSettings"
+    "display_name": "Vtx Filter : Edge Angle"
   },
   "UPCGExNodeEdgeDirectionFilterFactory": {
     "file": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeEdgeDirectionFilter.h",
@@ -885,7 +885,7 @@
     "file": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeEdgeDirectionFilter.h",
     "type": "provider",
     "base_class": "UPCGExVtxFilterProviderSettings",
-    "display_name": "UPCGExNodeEdgeDirectionFilterProviderSettings"
+    "display_name": "Vtx Filter : Edge Direction"
   },
   "UPCGExNodeNeighborsCountFilterFactory": {
     "file": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeNeighborsCountFilter.h",
@@ -897,7 +897,7 @@
     "file": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeNeighborsCountFilter.h",
     "type": "provider",
     "base_class": "UPCGExVtxFilterProviderSettings",
-    "display_name": "UPCGExNodeNeighborsCountFilterProviderSettings"
+    "display_name": "Vtx Filter : Num Edges"
   },
   "UPCGExFillControlsFactoryData": {
     "file": "PCGExElementsFloodFill/Public/Core/PCGExFillControlsFactoryProvider.h",
@@ -927,7 +927,7 @@
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlAttributeAccumulation.h",
     "type": "provider",
     "base_class": "UPCGExFillControlsFactoryProviderSettings",
-    "display_name": "UPCGExFillControlsAttributeAccumulationProviderSettings"
+    "display_name": "Fill Control : Attribute Accumulation"
   },
   "UPCGExFillControlsFactoryAttributeThreshold": {
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlAttributeThreshold.h",
@@ -939,7 +939,7 @@
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlAttributeThreshold.h",
     "type": "provider",
     "base_class": "UPCGExFillControlsFactoryProviderSettings",
-    "display_name": "UPCGExFillControlsAttributeThresholdProviderSettings"
+    "display_name": "Fill Control : Attribute Threshold"
   },
   "UPCGExFillControlsFactoryCount": {
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlCount.h",
@@ -951,7 +951,7 @@
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlCount.h",
     "type": "provider",
     "base_class": "UPCGExFillControlsFactoryProviderSettings",
-    "display_name": "UPCGExFillControlsCountProviderSettings"
+    "display_name": "Fill Control : Count"
   },
   "UPCGExFillControlsFactoryDepth": {
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlDepth.h",
@@ -963,7 +963,7 @@
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlDepth.h",
     "type": "provider",
     "base_class": "UPCGExFillControlsFactoryProviderSettings",
-    "display_name": "UPCGExFillControlsDepthProviderSettings"
+    "display_name": "Fill Control : Depth"
   },
   "UPCGExFillControlsFactoryEdgeFilters": {
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlEdgeFilters.h",
@@ -975,7 +975,7 @@
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlEdgeFilters.h",
     "type": "provider",
     "base_class": "UPCGExFillControlsFactoryProviderSettings",
-    "display_name": "UPCGExFillControlsEdgeFiltersProviderSettings"
+    "display_name": "Fill Control : Edge Filters"
   },
   "UPCGExFillControlsFactoryHxBudget": {
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlHxBudget.h",
@@ -987,7 +987,7 @@
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlHxBudget.h",
     "type": "provider",
     "base_class": "UPCGExFillControlsFactoryProviderSettings",
-    "display_name": "UPCGExFillControlsHeuristicsBudgetProviderSettings"
+    "display_name": "Fill Control : Heuristics Budget"
   },
   "UPCGExFillControlsFactoryHxScoring": {
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlHxScoring.h",
@@ -999,7 +999,7 @@
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlHxScoring.h",
     "type": "provider",
     "base_class": "UPCGExFillControlsFactoryProviderSettings",
-    "display_name": "UPCGExFillControlsHeuristicsScoringProviderSettings"
+    "display_name": "Fill Control : Heuristics Scoring"
   },
   "UPCGExFillControlsFactoryHxThreshold": {
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlHxThreshold.h",
@@ -1011,7 +1011,7 @@
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlHxThreshold.h",
     "type": "provider",
     "base_class": "UPCGExFillControlsFactoryProviderSettings",
-    "display_name": "UPCGExFillControlsHeuristicsThresholdProviderSettings"
+    "display_name": "Fill Control : Heuristics Threshold"
   },
   "UPCGExFillControlsFactoryKeepDirection": {
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlKeepDirection.h",
@@ -1023,7 +1023,7 @@
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlKeepDirection.h",
     "type": "provider",
     "base_class": "UPCGExFillControlsFactoryProviderSettings",
-    "display_name": "UPCGExFillControlsKeepDirectionProviderSettings"
+    "display_name": "Fill Control : Keep Direction"
   },
   "UPCGExFillControlsFactoryLength": {
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlLength.h",
@@ -1035,7 +1035,7 @@
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlLength.h",
     "type": "provider",
     "base_class": "UPCGExFillControlsFactoryProviderSettings",
-    "display_name": "UPCGExFillControlsLengthProviderSettings"
+    "display_name": "Fill Control : Length"
   },
   "UPCGExFillControlsFactoryRunningAverage": {
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlRunningAverage.h",
@@ -1047,7 +1047,7 @@
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlRunningAverage.h",
     "type": "provider",
     "base_class": "UPCGExFillControlsFactoryProviderSettings",
-    "display_name": "UPCGExFillControlsRunningAverageProviderSettings"
+    "display_name": "Fill Control : Running Average"
   },
   "UPCGExFillControlsFactoryVtxFilters": {
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlVtxFilters.h",
@@ -1059,7 +1059,7 @@
     "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlVtxFilters.h",
     "type": "provider",
     "base_class": "UPCGExFillControlsFactoryProviderSettings",
-    "display_name": "UPCGExFillControlsVtxFiltersProviderSettings"
+    "display_name": "Fill Control : Vtx Filters"
   },
   "UPCGExPartitionRule": {
     "file": "PCGExElementsMeta/Public/Elements/Partition/PCGExModularPartitionByValues.h",
@@ -1071,7 +1071,7 @@
     "file": "PCGExElementsMeta/Public/Elements/Partition/PCGExModularPartitionByValues.h",
     "type": "provider",
     "base_class": "UPCGExFactoryProviderSettings",
-    "display_name": "UPCGExPartitionRuleProviderSettings"
+    "display_name": "Partition Rule"
   },
   "UPCGExModularPartitionByValuesSettings": {
     "file": "PCGExElementsMeta/Public/Elements/Partition/PCGExModularPartitionByValues.h",
@@ -1095,13 +1095,13 @@
     "file": "PCGExElementsMeta/Public/Elements/PCGExAttributeHash.h",
     "type": "node_settings",
     "base_class": "UPCGExPointsProcessorSettings",
-    "display_name": "UPCGExAttributeHashSettings"
+    "display_name": "Attribute Hash"
   },
   "UPCGExAttributeRemapSettings": {
     "file": "PCGExElementsMeta/Public/Elements/PCGExAttributeRemap.h",
     "type": "node_settings",
     "base_class": "UPCGExPointsProcessorSettings",
-    "display_name": "UPCGExAttributeRemapSettings"
+    "display_name": "Attribute Remap"
   },
   "UPCGExAttributeStatsSettings": {
     "file": "PCGExElementsMeta/Public/Elements/PCGExAttributeStats.h",
@@ -1137,13 +1137,13 @@
     "file": "PCGExElementsMeta/Public/Elements/PCGExPackActorData.h",
     "type": "node_settings",
     "base_class": "UPCGExPointsProcessorSettings",
-    "display_name": "UPCGExPackActorDataSettings"
+    "display_name": "Pack Actor Data"
   },
   "UPCGExReduceDataAttributeSettings": {
     "file": "PCGExElementsMeta/Public/Elements/PCGExReduceDataAttribute.h",
     "type": "node_settings",
     "base_class": "UPCGExPointsProcessorSettings",
-    "display_name": "UPCGExReduceDataAttributeSettings"
+    "display_name": "Reduce Data"
   },
   "UPCGExRefreshSeedSettings": {
     "file": "PCGExElementsMeta/Public/Elements/PCGExRefreshSeed.h",
@@ -1155,13 +1155,13 @@
     "file": "PCGExElementsMeta/Public/Elements/PCGExUberNoise.h",
     "type": "node_settings",
     "base_class": "UPCGExPointsProcessorSettings",
-    "display_name": "UPCGExUberNoiseSettings"
+    "display_name": "Uber Noise"
   },
   "UPCGExWriteIndexSettings": {
     "file": "PCGExElementsMeta/Public/Elements/PCGExWriteIndex.h",
     "type": "node_settings",
     "base_class": "UPCGExPointsProcessorSettings",
-    "display_name": "UPCGExWriteIndexSettings"
+    "display_name": "Write Index"
   },
   "UPCGExWriteStatesSettings": {
     "file": "PCGExElementsMeta/Public/Elements/PCGExWriteStates.h",
@@ -1173,7 +1173,7 @@
     "file": "PCGExElementsMeta/Public/Elements/PCGExWriteStates.h",
     "type": "provider",
     "base_class": "UPCGExStateFactoryProviderSettings",
-    "display_name": "UPCGExPointStateFactoryProviderSettings"
+    "display_name": "State : Point"
   },
   "UPCGExModularSortPointsSettings": {
     "file": "PCGExElementsMeta/Public/Elements/Sorting/PCGExModularSortPoints.h",
@@ -1209,7 +1209,7 @@
     "file": "PCGExElementsMeta/Public/Filters/Points/PCGExNoiseFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExNoiseFilterProviderSettings"
+    "display_name": "Filter : Noise"
   },
   "UPCGExPathfindingEdgesSettings": {
     "file": "PCGExElementsPathfinding/Public/Elements/PCGExPathfindingEdges.h",
@@ -1401,7 +1401,7 @@
     "file": "PCGExElementsPaths/Public/Elements/PCGExOrient.h",
     "type": "node_settings",
     "base_class": "UPCGExPathProcessorSettings",
-    "display_name": "UPCGExOrientSettings"
+    "display_name": "Path : Orient"
   },
   "UPCGExPathCrossingsSettings": {
     "file": "PCGExElementsPaths/Public/Elements/PCGExPathCrossings.h",
@@ -1659,7 +1659,7 @@
     "file": "PCGExElementsProbing/Public/Probes/PCGExProbeAnisotropic.h",
     "type": "provider",
     "base_class": "UPCGExProbeFactoryProviderSettings",
-    "display_name": "UPCGExProbeAnisotropicProviderSettings"
+    "display_name": "Probe : Anisotropic"
   },
   "UPCGExProbeFactoryBitmasks": {
     "file": "PCGExElementsProbing/Public/Probes/PCGExProbeBitmasks.h",
@@ -1671,7 +1671,7 @@
     "file": "PCGExElementsProbing/Public/Probes/PCGExProbeBitmasks.h",
     "type": "provider",
     "base_class": "UPCGExProbeFactoryProviderSettings",
-    "display_name": "UPCGExProbeBitmasksProviderSettings"
+    "display_name": "Probe : Bitmasks"
   },
   "UPCGExProbeFactoryClosest": {
     "file": "PCGExElementsProbing/Public/Probes/PCGExProbeClosest.h",
@@ -1683,7 +1683,7 @@
     "file": "PCGExElementsProbing/Public/Probes/PCGExProbeClosest.h",
     "type": "provider",
     "base_class": "UPCGExProbeFactoryProviderSettings",
-    "display_name": "UPCGExProbeClosestProviderSettings"
+    "display_name": "Probe : Closests"
   },
   "UPCGExProbeFactoryDirection": {
     "file": "PCGExElementsProbing/Public/Probes/PCGExProbeDirection.h",
@@ -1695,7 +1695,7 @@
     "file": "PCGExElementsProbing/Public/Probes/PCGExProbeDirection.h",
     "type": "provider",
     "base_class": "UPCGExProbeFactoryProviderSettings",
-    "display_name": "UPCGExProbeDirectionProviderSettings"
+    "display_name": "Probe : Direction"
   },
   "UPCGExProbeFactoryIndex": {
     "file": "PCGExElementsProbing/Public/Probes/PCGExProbeIndex.h",
@@ -1707,7 +1707,7 @@
     "file": "PCGExElementsProbing/Public/Probes/PCGExProbeIndex.h",
     "type": "provider",
     "base_class": "UPCGExProbeFactoryProviderSettings",
-    "display_name": "UPCGExProbeIndexProviderSettings"
+    "display_name": "Probe : Index"
   },
   "UPCGExProbeFactoryNumericCompare": {
     "file": "PCGExElementsProbing/Public/Probes/PCGExProbeNumericCompare.h",
@@ -1719,7 +1719,7 @@
     "file": "PCGExElementsProbing/Public/Probes/PCGExProbeNumericCompare.h",
     "type": "provider",
     "base_class": "UPCGExProbeFactoryProviderSettings",
-    "display_name": "UPCGExProbeNumericCompareProviderSettings"
+    "display_name": "Probe : Numeric Compare"
   },
   "UPCGExTexParamFactoryData": {
     "file": "PCGExElementsSampling/Public/Core/PCGExTexParamFactoryProvider.h",
@@ -1731,7 +1731,7 @@
     "file": "PCGExElementsSampling/Public/Core/PCGExTexParamFactoryProvider.h",
     "type": "provider",
     "base_class": "UPCGExFactoryProviderSettings",
-    "display_name": "UPCGExTexParamProviderSettings"
+    "display_name": "Texture Param"
   },
   "UPCGExDiscardByOverlapSettings": {
     "file": "PCGExElementsSampling/Public/Elements/PCGExDiscardByOverlap.h",
@@ -1845,7 +1845,7 @@
     "file": "PCGExElementsShapes/Public/Shapes/PCGExShapeCircle.h",
     "type": "node_settings",
     "base_class": "UPCGExShapeBuilderFactoryProviderSettings",
-    "display_name": "UPCGExCreateShapeCircleSettings"
+    "display_name": "Shape : Circle"
   },
   "UPCGExShapeFiblatFactory": {
     "file": "PCGExElementsShapes/Public/Shapes/PCGExShapeFiblat.h",
@@ -1857,7 +1857,7 @@
     "file": "PCGExElementsShapes/Public/Shapes/PCGExShapeFiblat.h",
     "type": "node_settings",
     "base_class": "UPCGExShapeBuilderFactoryProviderSettings",
-    "display_name": "UPCGExCreateShapeFiblatSettings"
+    "display_name": "Shape : φ Sphere"
   },
   "UPCGExShapeGridFactory": {
     "file": "PCGExElementsShapes/Public/Shapes/PCGExShapeGrid.h",
@@ -1869,7 +1869,7 @@
     "file": "PCGExElementsShapes/Public/Shapes/PCGExShapeGrid.h",
     "type": "node_settings",
     "base_class": "UPCGExShapeBuilderFactoryProviderSettings",
-    "display_name": "UPCGExCreateShapeGridSettings"
+    "display_name": "Shape : 3D Grid"
   },
   "UPCGExShapePolygonFactory": {
     "file": "PCGExElementsShapes/Public/Shapes/PCGExShapePolygon.h",
@@ -1881,7 +1881,7 @@
     "file": "PCGExElementsShapes/Public/Shapes/PCGExShapePolygon.h",
     "type": "node_settings",
     "base_class": "UPCGExShapeBuilderFactoryProviderSettings",
-    "display_name": "UPCGExCreateShapePolygonSettings"
+    "display_name": "Shape : Polygon"
   },
   "UPCGExBestMatchAxisSettings": {
     "file": "PCGExElementsSpatial/Public/Elements/Bounds/PCGExBestMatchAxis.h",
@@ -1923,7 +1923,7 @@
     "file": "PCGExElementsSpatial/Public/Elements/PCGExCollocationCount.h",
     "type": "node_settings",
     "base_class": "UPCGExPointsProcessorSettings",
-    "display_name": "UPCGExCollocationCountSettings"
+    "display_name": "Collocation Count"
   },
   "UPCGExFlatProjectionSettings": {
     "file": "PCGExElementsSpatial/Public/Elements/PCGExFlatProjection.h",
@@ -2031,7 +2031,7 @@
     "file": "PCGExElementsTensors/Public/Filters/Points/PCGExTensorDotFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExTensorDotFilterProviderSettings"
+    "display_name": "Filter : Tensor Dot"
   },
   "UPCGExHeuristicsFactoryTensor": {
     "file": "PCGExElementsTensors/Public/Heuristics/PCGExHeuristicTensor.h",
@@ -2043,7 +2043,7 @@
     "file": "PCGExElementsTensors/Public/Heuristics/PCGExHeuristicTensor.h",
     "type": "provider",
     "base_class": "UPCGExHeuristicsFactoryProviderSettings",
-    "display_name": "UPCGExHeuristicsTensorProviderSettings"
+    "display_name": "Heuristics : Tensor"
   },
   "UPCGExProbeFactoryTensor": {
     "file": "PCGExElementsTensors/Public/Probes/PCGExProbeTensor.h",
@@ -2055,7 +2055,7 @@
     "file": "PCGExElementsTensors/Public/Probes/PCGExProbeTensor.h",
     "type": "provider",
     "base_class": "UPCGExProbeFactoryProviderSettings",
-    "display_name": "UPCGExProbeTensorProviderSettings"
+    "display_name": "Probe : Tensor"
   },
   "UPCGExTensorSamplerAdaptive": {
     "file": "PCGExElementsTensors/Public/Samplers/PCGExTensorSamplerAdaptive.h",
@@ -2361,7 +2361,7 @@
     "file": "PCGExElementsValency/Public/Probes/PCGExProbeValency.h",
     "type": "provider",
     "base_class": "UPCGExProbeFactoryProviderSettings",
-    "display_name": "UPCGExProbeValencyProviderSettings"
+    "display_name": "Probe : Orbital (Valency)"
   },
   "UPCGExValencyConstraintSolverFactory": {
     "file": "PCGExElementsValency/Public/Solvers/PCGExValencyConstraintSolver.h",
@@ -2463,13 +2463,13 @@
     "file": "PCGExFilters/Public/Core/PCGExClusterStates.h",
     "type": "provider",
     "base_class": "UPCGExStateFactoryProviderSettings",
-    "display_name": "UPCGExClusterStateFactoryProviderSettings"
+    "display_name": "State : Cluster"
   },
   "UPCGExFilterProviderSettings": {
     "file": "PCGExFilters/Public/Core/PCGExFilterFactoryProvider.h",
     "type": "provider",
     "base_class": "UPCGExFactoryProviderSettings",
-    "display_name": "UPCGExFilterProviderSettings"
+    "display_name": "Filter : Abstract"
   },
   "UPCGExFilterCollectionProviderSettings": {
     "file": "PCGExFilters/Public/Core/PCGExFilterFactoryProvider.h",
@@ -2517,7 +2517,7 @@
     "file": "PCGExFilters/Public/Filters/Collections/PCGExAttributeCheckFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterCollectionProviderSettings",
-    "display_name": "UPCGExAttributeCheckFilterProviderSettings"
+    "display_name": "Data Filter : Attribute Check"
   },
   "UPCGExDataBoundsFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Collections/PCGExDataBoundsFilter.h",
@@ -2529,7 +2529,7 @@
     "file": "PCGExFilters/Public/Filters/Collections/PCGExDataBoundsFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterCollectionProviderSettings",
-    "display_name": "UPCGExDataBoundsFilterProviderSettings"
+    "display_name": "Data Filter : Bounds"
   },
   "UPCGExEntryCountFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Collections/PCGExEntryCountFilter.h",
@@ -2541,7 +2541,7 @@
     "file": "PCGExFilters/Public/Filters/Collections/PCGExEntryCountFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterCollectionProviderSettings",
-    "display_name": "UPCGExEntryCountFilterProviderSettings"
+    "display_name": "Data Filter : Entry Count"
   },
   "UPCGExTagCheckFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Collections/PCGExTagCheckFilter.h",
@@ -2553,7 +2553,7 @@
     "file": "PCGExFilters/Public/Filters/Collections/PCGExTagCheckFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterCollectionProviderSettings",
-    "display_name": "UPCGExTagCheckFilterProviderSettings"
+    "display_name": "Data Filter : Tag Check"
   },
   "UPCGExTagValueFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Collections/PCGExTagValueFilter.h",
@@ -2565,7 +2565,7 @@
     "file": "PCGExFilters/Public/Filters/Collections/PCGExTagValueFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterCollectionProviderSettings",
-    "display_name": "UPCGExTagValueFilterProviderSettings"
+    "display_name": "Data Filter : Tag Value"
   },
   "UPCGExAngleFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExAngleFilter.h",
@@ -2589,7 +2589,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExBitmaskFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExBitmaskFilterProviderSettings"
+    "display_name": "Filter : Bitmask"
   },
   "UPCGExBooleanCompareFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExBooleanCompareFilter.h",
@@ -2601,7 +2601,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExBooleanCompareFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExBooleanCompareFilterProviderSettings"
+    "display_name": "Filter : Bool Compare"
   },
   "UPCGExBoundsFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExBoundsFilter.h",
@@ -2613,7 +2613,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExBoundsFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExBoundsFilterProviderSettings"
+    "display_name": "Filter : Inclusion (Bounds)"
   },
   "UPCGExConstantFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExConstantFilter.h",
@@ -2625,7 +2625,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExConstantFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExConstantFilterProviderSettings"
+    "display_name": "Filter : Constant"
   },
   "UPCGExDistanceFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExDistanceFilter.h",
@@ -2637,7 +2637,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExDistanceFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExDistanceFilterProviderSettings"
+    "display_name": "Filter : Distance"
   },
   "UPCGExDotFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExDotFilter.h",
@@ -2649,7 +2649,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExDotFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExDotFilterProviderSettings"
+    "display_name": "Filter : Dot"
   },
   "UPCGExFilterGroupFactoryData": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExFilterGroup.h",
@@ -2673,7 +2673,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExFilterGroup.h",
     "type": "provider",
     "base_class": "UPCGExFactoryProviderSettings",
-    "display_name": "UPCGExFilterGroupProviderSettings"
+    "display_name": "Filter Group"
   },
   "UPCGExGameplayTagsFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExGameplayTagsFilter.h",
@@ -2685,7 +2685,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExGameplayTagsFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExGameplayTagsFilterProviderSettings"
+    "display_name": "Filter : GameplayTags"
   },
   "UPCGExInclusionFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExInclusionFilter.h",
@@ -2697,7 +2697,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExInclusionFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExInclusionFilterProviderSettings"
+    "display_name": "Filter : Inclusion (Path/Splines)"
   },
   "UPCGExMeanFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExMeanFilter.h",
@@ -2709,7 +2709,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExMeanFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExMeanFilterProviderSettings"
+    "display_name": "Filter : Mean"
   },
   "UPCGExModuloCompareFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExModuloCompareFilter.h",
@@ -2721,7 +2721,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExModuloCompareFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExModuloCompareFilterProviderSettings"
+    "display_name": "Filter : Modulo Compare"
   },
   "UPCGExNumericCompareFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExNumericCompareFilter.h",
@@ -2733,7 +2733,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExNumericCompareFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExNumericCompareFilterProviderSettings"
+    "display_name": "Filter : Compare (Numeric)"
   },
   "UPCGExNumericCompareNearestFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExNumericCompareNearestFilter.h",
@@ -2745,7 +2745,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExNumericCompareNearestFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExNumericCompareNearestFilterProviderSettings"
+    "display_name": "Filter : Compare Nearest (Numeric)"
   },
   "UPCGExNumericSelfCompareFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExNumericSelfCompareFilter.h",
@@ -2757,7 +2757,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExNumericSelfCompareFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExNumericSelfCompareFilterProviderSettings"
+    "display_name": "Filter : Self Compare (Numeric)"
   },
   "UPCGExPickerFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExPickerFilter.h",
@@ -2769,7 +2769,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExPickerFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExPickerFilterProviderSettings"
+    "display_name": "Filter : Picker"
   },
   "UPCGExPolyPathFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExPolyPathFilterFactory.h",
@@ -2787,7 +2787,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExRandomFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExRandomFilterProviderSettings"
+    "display_name": "Filter : Random"
   },
   "UPCGExRandomRatioFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExRandomRatioFilter.h",
@@ -2799,7 +2799,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExRandomRatioFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExRandomRatioFilterProviderSettings"
+    "display_name": "Filter : Random (Ratio)"
   },
   "UPCGExSegmentCrossFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExSegmentCrossFilter.h",
@@ -2811,7 +2811,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExSegmentCrossFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExSegmentCrossFilterProviderSettings"
+    "display_name": "Filter : Segment Cross"
   },
   "UPCGExSegmentLengthFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExSegmentLengthFilter.h",
@@ -2835,7 +2835,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExStringCompareFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExStringCompareFilterProviderSettings"
+    "display_name": "Filter : Compare (String)"
   },
   "UPCGExStringSelfCompareFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExStringSelfCompareFilter.h",
@@ -2847,7 +2847,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExStringSelfCompareFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExStringSelfCompareFilterProviderSettings"
+    "display_name": "Filter : Self Compare (String)"
   },
   "UPCGExTimeFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExTimeFilter.h",
@@ -2859,7 +2859,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExTimeFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExTimeFilterProviderSettings"
+    "display_name": "Filter : Time"
   },
   "UPCGExValueHashFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExValueHashFilter.h",
@@ -2871,7 +2871,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExValueHashFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExValueHashFilterProviderSettings"
+    "display_name": "Filter : Contains (Hash)"
   },
   "UPCGExWithinRangeFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExWithinRangeFilter.h",
@@ -2883,7 +2883,7 @@
     "file": "PCGExFilters/Public/Filters/Points/PCGExWithinRangeFilter.h",
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
-    "display_name": "UPCGExWithinRangeFilterProviderSettings"
+    "display_name": "Filter : Within Range"
   },
   "UPCGExFiltersSubSystem": {
     "file": "PCGExFilters/Public/PCGExFiltersSubSystem.h",
@@ -2907,7 +2907,7 @@
     "file": "PCGExFoundations/Public/Elements/Bitmasks/PCGExBitmask.h",
     "type": "node_settings",
     "base_class": "UPCGExSettings",
-    "display_name": "UPCGExBitmaskSettings"
+    "display_name": "Bitmask"
   },
   "UPCGExBitmaskMergeSettings": {
     "file": "PCGExFoundations/Public/Elements/Bitmasks/PCGExBitmaskMerge.h",
@@ -2925,19 +2925,19 @@
     "file": "PCGExFoundations/Public/Elements/Constants/PCGExConstantEnum.h",
     "type": "node_settings",
     "base_class": "UPCGExSettings",
-    "display_name": "UPCGExConstantEnumSettings"
+    "display_name": "Enum Constant"
   },
   "UPCGExConstantsSettings": {
     "file": "PCGExFoundations/Public/Elements/Constants/PCGExConstants.h",
     "type": "node_settings",
     "base_class": "UPCGExSettings",
-    "display_name": "UPCGExConstantsSettings"
+    "display_name": "Constant"
   },
   "UPCGExBranchOnDataAttributeSettings": {
     "file": "PCGExFoundations/Public/Elements/ControlFlow/PCGExBranchOnDataAttribute.h",
     "type": "node_settings",
     "base_class": "UPCGExPointsProcessorSettings",
-    "display_name": "UPCGExBranchOnDataAttributeSettings"
+    "display_name": "Branch on Data"
   },
   "UPCGExRecursionTrackerSettings": {
     "file": "PCGExFoundations/Public/Elements/ControlFlow/PCGExRecursionTracker.h",
@@ -3021,7 +3021,7 @@
     "file": "PCGExFoundations/Public/Elements/Utils/PCGExGetGUID.h",
     "type": "node_settings",
     "base_class": "UPCGExPointsProcessorSettings",
-    "display_name": "UPCGExGetGUIDSettings"
+    "display_name": "Get GUID"
   },
   "UPCGExIterationsSettings": {
     "file": "PCGExFoundations/Public/Elements/Utils/PCGExIterations.h",
@@ -3045,7 +3045,7 @@
     "file": "PCGExFoundations/Public/Elements/Utils/PCGExWriteGUID.h",
     "type": "node_settings",
     "base_class": "UPCGExPointsProcessorSettings",
-    "display_name": "UPCGExWriteGUIDSettings"
+    "display_name": "Write GUID"
   },
   "UPCGExAutoTangents": {
     "file": "PCGExFoundations/Public/Tangents/PCGExTangentsAuto.h",
@@ -3111,7 +3111,7 @@
     "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicAttribute.h",
     "type": "node_settings",
     "base_class": "UPCGExHeuristicsFactoryProviderSettings",
-    "display_name": "UPCGExCreateHeuristicAttributeSettings"
+    "display_name": "Heuristics : Attribute"
   },
   "UPCGExHeuristicsFactoryAzimuth": {
     "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicAzimuth.h",
@@ -3123,7 +3123,7 @@
     "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicAzimuth.h",
     "type": "provider",
     "base_class": "UPCGExHeuristicsFactoryProviderSettings",
-    "display_name": "UPCGExHeuristicsAzimuthProviderSettings"
+    "display_name": "Heuristics : Azimuth"
   },
   "UPCGExHeuristicsFactoryShortestDistance": {
     "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicDistance.h",
@@ -3135,7 +3135,7 @@
     "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicDistance.h",
     "type": "provider",
     "base_class": "UPCGExHeuristicsFactoryProviderSettings",
-    "display_name": "UPCGExHeuristicsShortestDistanceProviderSettings"
+    "display_name": "Heuristics : Shortest Distance"
   },
   "UPCGExHeuristicsFactoryFeedback": {
     "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicFeedback.h",
@@ -3147,7 +3147,7 @@
     "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicFeedback.h",
     "type": "provider",
     "base_class": "UPCGExHeuristicsFactoryProviderSettings",
-    "display_name": "UPCGExHeuristicFeedbackProviderSettings"
+    "display_name": "Heuristics : Feedback"
   },
   "UPCGExHeuristicsFactoryGradient": {
     "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicGradient.h",
@@ -3159,7 +3159,7 @@
     "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicGradient.h",
     "type": "provider",
     "base_class": "UPCGExHeuristicsFactoryProviderSettings",
-    "display_name": "UPCGExHeuristicsGradientProviderSettings"
+    "display_name": "Heuristics : Gradient"
   },
   "UPCGExHeuristicsFactoryInertia": {
     "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicInertia.h",
@@ -3171,7 +3171,7 @@
     "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicInertia.h",
     "type": "provider",
     "base_class": "UPCGExHeuristicsFactoryProviderSettings",
-    "display_name": "UPCGExHeuristicsInertiaProviderSettings"
+    "display_name": "Heuristics : Inertia"
   },
   "UPCGExHeuristicsFactoryLeastNodes": {
     "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicNodeCount.h",
@@ -3183,7 +3183,7 @@
     "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicNodeCount.h",
     "type": "provider",
     "base_class": "UPCGExHeuristicsFactoryProviderSettings",
-    "display_name": "UPCGExHeuristicsLeastNodesProviderSettings"
+    "display_name": "Heuristics : Least Nodes"
   },
   "UPCGExHeuristicsFactorySteepness": {
     "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicSteepness.h",
@@ -3195,7 +3195,7 @@
     "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicSteepness.h",
     "type": "provider",
     "base_class": "UPCGExHeuristicsFactoryProviderSettings",
-    "display_name": "UPCGExHeuristicsSteepnessProviderSettings"
+    "display_name": "Heuristics : Steepness"
   },
   "UPCGExHeuristicsFactoryTurnPenalty": {
     "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicTurnPenalty.h",
@@ -3207,7 +3207,7 @@
     "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicTurnPenalty.h",
     "type": "provider",
     "base_class": "UPCGExHeuristicsFactoryProviderSettings",
-    "display_name": "UPCGExHeuristicsTurnPenaltyProviderSettings"
+    "display_name": "Heuristics : Turn Penalty"
   },
   "UPCGExMatchRuleFactoryData": {
     "file": "PCGExMatching/Public/Core/PCGExMatchRuleFactoryProvider.h",
@@ -3231,7 +3231,7 @@
     "file": "PCGExMatching/Public/Matching/PCGExMatchAttrToAttr.h",
     "type": "node_settings",
     "base_class": "UPCGExMatchRuleFactoryProviderSettings",
-    "display_name": "UPCGExCreateMatchAttrToAttrSettings"
+    "display_name": "Match : Attributes"
   },
   "UPCGExMatchByIndexFactory": {
     "file": "PCGExMatching/Public/Matching/PCGExMatchByIndex.h",
@@ -3243,7 +3243,7 @@
     "file": "PCGExMatching/Public/Matching/PCGExMatchByIndex.h",
     "type": "node_settings",
     "base_class": "UPCGExMatchRuleFactoryProviderSettings",
-    "display_name": "UPCGExCreateMatchByIndexSettings"
+    "display_name": "Match : By Index"
   },
   "UPCGExMatchCopyTagsFactory": {
     "file": "PCGExMatching/Public/Matching/PCGExMatchCopyTags.h",
@@ -3255,7 +3255,7 @@
     "file": "PCGExMatching/Public/Matching/PCGExMatchCopyTags.h",
     "type": "node_settings",
     "base_class": "UPCGExMatchRuleFactoryProviderSettings",
-    "display_name": "UPCGExCreateMatchCopyTagsSettings"
+    "display_name": "Match : Copy Tags"
   },
   "UPCGExMatchOverlapFactory": {
     "file": "PCGExMatching/Public/Matching/PCGExMatchOverlap.h",
@@ -3267,7 +3267,7 @@
     "file": "PCGExMatching/Public/Matching/PCGExMatchOverlap.h",
     "type": "node_settings",
     "base_class": "UPCGExMatchRuleFactoryProviderSettings",
-    "display_name": "UPCGExCreateMatchOverlapSettings"
+    "display_name": "Match : Overlap"
   },
   "UPCGExMatchRandomFactory": {
     "file": "PCGExMatching/Public/Matching/PCGExMatchRandom.h",
@@ -3279,7 +3279,7 @@
     "file": "PCGExMatching/Public/Matching/PCGExMatchRandom.h",
     "type": "node_settings",
     "base_class": "UPCGExMatchRuleFactoryProviderSettings",
-    "display_name": "UPCGExCreateMatchRandomSettings"
+    "display_name": "Match : Random"
   },
   "UPCGExMatchSharedTagFactory": {
     "file": "PCGExMatching/Public/Matching/PCGExMatchSharedTag.h",
@@ -3291,7 +3291,7 @@
     "file": "PCGExMatching/Public/Matching/PCGExMatchSharedTag.h",
     "type": "node_settings",
     "base_class": "UPCGExMatchRuleFactoryProviderSettings",
-    "display_name": "UPCGExCreateMatchSharedTagSettings"
+    "display_name": "Match : Shared Tag"
   },
   "UPCGExMatchTagToAttrFactory": {
     "file": "PCGExMatching/Public/Matching/PCGExMatchTagToAttr.h",
@@ -3303,7 +3303,7 @@
     "file": "PCGExMatching/Public/Matching/PCGExMatchTagToAttr.h",
     "type": "node_settings",
     "base_class": "UPCGExMatchRuleFactoryProviderSettings",
-    "display_name": "UPCGExCreateMatchTagToAttrSettings"
+    "display_name": "Match : Tags × Attributes"
   },
   "UPCGExNoise3DFactoryData": {
     "file": "PCGExNoise3D/Public/Core/PCGExNoise3DFactoryProvider.h",
@@ -3555,7 +3555,7 @@
     "file": "PCGExPickers/Public/Pickers/PCGExPickerConstant.h",
     "type": "node_settings",
     "base_class": "UPCGExPickerFactoryProviderSettings",
-    "display_name": "UPCGExPickerConstantSettings"
+    "display_name": "Picker : Constant"
   },
   "UPCGExPickerConstantRangeFactory": {
     "file": "PCGExPickers/Public/Pickers/PCGExPickerConstantRange.h",
@@ -3567,7 +3567,7 @@
     "file": "PCGExPickers/Public/Pickers/PCGExPickerConstantRange.h",
     "type": "node_settings",
     "base_class": "UPCGExPickerFactoryProviderSettings",
-    "display_name": "UPCGExPickerConstantRangeSettings"
+    "display_name": "Picker : Range"
   },
   "UPCGExTupleSettings": {
     "file": "PCGExProperties/Public/Elements/PCGExTuple.h",

@@ -7,8 +7,8 @@
   "classes": [
     {
       "name": "UPCGExRelaxClustersSettings",
-      "display_name": "UPCGExRelaxClustersSettings",
-      "description": "",
+      "display_name": "Cluster : Relax",
+      "description": "Relax point positions using edges connecting them.",
       "base_class": "UPCGExClustersProcessorSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/relax-cluster\")",
       "uproperties": [

@@ -8,27 +8,11 @@
       "values": [
         {
           "name": "Vtx",
-          "display_name": "Vtx"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Closest vtx"
         },
         {
           "name": "Edge",
-          "display_name": "Edge"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "then",
-          "display_name": "then"
-        },
-        {
-          "name": "endpoint",
-          "display_name": "endpoint"
+          "display_name": "Closest edge"
         }
       ],
       "used_by": []
@@ -38,27 +22,11 @@
       "values": [
         {
           "name": "Vtx",
-          "display_name": "Vtx"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
+          "display_name": "Point"
         },
         {
           "name": "Edge",
           "display_name": "Edge"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
         }
       ],
       "used_by": []
@@ -68,19 +36,11 @@
       "values": [
         {
           "name": "FromNode",
-          "display_name": "FromNode"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "From Node to Neighbor"
         },
         {
           "name": "FromNeighbor",
-          "display_name": "FromNeighbor"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "From Neighbor to Node"
         }
       ],
       "used_by": []

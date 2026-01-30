@@ -11,24 +11,12 @@
           "display_name": "Fast"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Box",
           "display_name": "Box"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Sphere",
           "display_name": "Sphere"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -38,19 +26,11 @@
       "values": [
         {
           "name": "LowFirst",
-          "display_name": "LowFirst"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Low to High"
         },
         {
           "name": "HighFirst",
-          "display_name": "HighFirst"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "High to Low"
         }
       ],
       "used_by": []

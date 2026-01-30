@@ -8,19 +8,11 @@
       "values": [
         {
           "name": "FullRange",
-          "display_name": "FullRange"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Full Range"
         },
         {
           "name": "EffectiveRange",
-          "display_name": "EffectiveRange"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Effective Range"
         }
       ],
       "used_by": []
@@ -30,19 +22,11 @@
       "values": [
         {
           "name": "All",
-          "display_name": "All"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Any surface"
         },
         {
           "name": "ActorReferences",
-          "display_name": "ActorReferences"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Actor Reference"
         }
       ],
       "used_by": []
@@ -55,32 +39,16 @@
           "display_name": "WithinRange"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "ClosestTarget",
-          "display_name": "ClosestTarget"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Closest Target"
         },
         {
           "name": "FarthestTarget",
-          "display_name": "FarthestTarget"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Farthest Target"
         },
         {
           "name": "BestCandidate",
-          "display_name": "BestCandidate"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Best Candidate"
         }
       ],
       "used_by": []
@@ -90,31 +58,15 @@
       "values": [
         {
           "name": "Source",
-          "display_name": "Source"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "In"
         },
         {
           "name": "Target",
           "display_name": "Target"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Constant",
           "display_name": "Constant"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
         }
       ],
       "used_by": []
@@ -127,80 +79,40 @@
           "display_name": "URadians"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "PIRadians",
           "display_name": "PIRadians"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "TAURadians",
           "display_name": "TAURadians"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "UDegrees",
           "display_name": "UDegrees"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "PIDegrees",
           "display_name": "PIDegrees"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "TAUDegrees",
           "display_name": "TAUDegrees"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "NormalizedHalf",
           "display_name": "NormalizedHalf"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Normalized",
           "display_name": "Normalized"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "InvertedNormalizedHalf",
           "display_name": "InvertedNormalizedHalf"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "InvertedNormalized",
           "display_name": "InvertedNormalized"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -213,24 +125,12 @@
           "display_name": "Distance"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Attribute",
           "display_name": "Attribute"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "AttributeMult",
-          "display_name": "AttributeMult"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Att x Dist"
         }
       ],
       "used_by": []

@@ -8,51 +8,27 @@
       "values": [
         {
           "name": "WithinRange",
-          "display_name": "WithinRange"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "All"
         },
         {
           "name": "ClosestBounds",
-          "display_name": "ClosestBounds"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Closest Bounds"
         },
         {
           "name": "FarthestBounds",
-          "display_name": "FarthestBounds"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Farthest Bounds"
         },
         {
           "name": "LargestBounds",
-          "display_name": "LargestBounds"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Largest Bounds"
         },
         {
           "name": "SmallestBounds",
-          "display_name": "SmallestBounds"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Smallest Bounds"
         },
         {
           "name": "BestCandidate",
-          "display_name": "BestCandidate"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Best Candidate"
         }
       ],
       "used_by": []

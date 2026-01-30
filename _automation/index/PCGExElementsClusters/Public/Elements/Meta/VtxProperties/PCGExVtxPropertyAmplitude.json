@@ -11,16 +11,8 @@
           "display_name": "Length"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Individual",
           "display_name": "Individual"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -30,19 +22,11 @@
       "values": [
         {
           "name": "Average",
-          "display_name": "Average"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Average Direction"
         },
         {
           "name": "UpVector",
-          "display_name": "UpVector"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Custom Up Vector"
         }
       ],
       "used_by": []
@@ -55,40 +39,16 @@
           "display_name": "Raw"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Size",
           "display_name": "Size"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "NormalizedSize",
           "display_name": "NormalizedSize"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Sign",
           "display_name": "Sign"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "1",
-          "display_name": "1"
-        },
-        {
-          "name": "1",
-          "display_name": "1"
         }
       ],
       "used_by": []
@@ -381,8 +341,8 @@
     },
     {
       "name": "UPCGExVtxPropertyAmplitudeSettings",
-      "display_name": "UPCGExVtxPropertyAmplitudeSettings",
-      "description": "",
+      "display_name": "Vtx : Amplitude",
+      "description": "Amplitude of a vtx, based on neighboring connections.",
       "base_class": "UPCGExVtxPropertyProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|VtxProperty\", meta=(PCGExNodeLibraryDoc=\"clusters/metadata/vtx-properties/vtx-amplitude\")",
       "uproperties": [

@@ -11,32 +11,16 @@
           "display_name": "Direction"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "LookAtWorldPosition",
           "display_name": "LookAtWorldPosition"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "LookAtRelativePosition",
           "display_name": "LookAtRelativePosition"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "ClosestTarget",
-          "display_name": "ClosestTarget"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Look at Closest Target"
         }
       ],
       "used_by": []

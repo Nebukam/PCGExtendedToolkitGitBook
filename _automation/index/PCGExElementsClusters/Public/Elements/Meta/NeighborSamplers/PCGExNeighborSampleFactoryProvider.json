@@ -186,8 +186,8 @@
     },
     {
       "name": "UPCGExNeighborSampleProviderSettings",
-      "display_name": "UPCGExNeighborSampleProviderSettings",
-      "description": "",
+      "display_name": "Sampler : Abstract",
+      "description": "Abstract sampler settings.",
       "base_class": "UPCGExFactoryProviderSettings",
       "uclass_meta": "Abstract, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|NeighborSample\"",
       "uproperties": [

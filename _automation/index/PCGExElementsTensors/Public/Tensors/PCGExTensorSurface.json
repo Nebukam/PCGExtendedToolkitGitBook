@@ -8,43 +8,23 @@
       "values": [
         {
           "name": "AlongSurface",
-          "display_name": "AlongSurface"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Along Surface"
         },
         {
           "name": "TowardSurface",
-          "display_name": "TowardSurface"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Toward Surface"
         },
         {
           "name": "AwayFromSurface",
-          "display_name": "AwayFromSurface"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Away From Surface"
         },
         {
           "name": "SurfaceNormal",
-          "display_name": "SurfaceNormal"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Surface Normal"
         },
         {
           "name": "Orbit",
           "display_name": "Orbit"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

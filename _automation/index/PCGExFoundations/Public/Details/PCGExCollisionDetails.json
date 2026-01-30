@@ -11,24 +11,12 @@
           "display_name": "Channel"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "ObjectType",
-          "display_name": "ObjectType"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Object Type"
         },
         {
           "name": "Profile",
           "display_name": "Profile"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

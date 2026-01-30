@@ -8,11 +8,11 @@
       "values": [
         {
           "name": "GoldenRatio",
-          "display_name": "GoldenRatio"
+          "display_name": "Golden Ratio"
         },
         {
           "name": "SqRootOfTwo",
-          "display_name": "SqRootOfTwo"
+          "display_name": "Sqrt 2"
         },
         {
           "name": "Irrational",
@@ -20,7 +20,7 @@
         },
         {
           "name": "SqRootOfTthree",
-          "display_name": "SqRootOfTthree"
+          "display_name": "Sqrt 3"
         },
         {
           "name": "Ln2",
@@ -113,8 +113,8 @@
     },
     {
       "name": "UPCGExCreateShapeFiblatSettings",
-      "display_name": "UPCGExCreateShapeFiblatSettings",
-      "description": "",
+      "display_name": "Shape : φ Sphere",
+      "description": "Create a Fibonacci Lattice sphere.",
       "base_class": "UPCGExShapeBuilderFactoryProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Builder|Params\", meta=(PCGExNodeLibraryDoc=\"misc/shapes/shape-sphere\")",
       "uproperties": [

@@ -34,8 +34,8 @@
     },
     {
       "name": "UPCGExNeighborSampleAttributeSettings",
-      "display_name": "UPCGExNeighborSampleAttributeSettings",
-      "description": "",
+      "display_name": "Sampler : Vtx Attributes",
+      "description": "Create a single neighbor attribute sampler, to be used by a Sample Neighbors node.",
       "base_class": "UPCGExNeighborSampleProviderSettings",
       "uclass_meta": "Hidden, MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|NeighborSample\"",
       "uproperties": [

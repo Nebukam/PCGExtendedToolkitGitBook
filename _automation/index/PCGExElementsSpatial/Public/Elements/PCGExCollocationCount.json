@@ -7,8 +7,8 @@
   "classes": [
     {
       "name": "UPCGExCollocationCountSettings",
-      "display_name": "UPCGExCollocationCountSettings",
-      "description": "",
+      "display_name": "Collocation Count",
+      "description": "Write the number of time a point shares its location with another.",
       "base_class": "UPCGExPointsProcessorSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"misc/collocation-count\")",
       "uproperties": [

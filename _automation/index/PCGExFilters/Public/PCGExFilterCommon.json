@@ -11,24 +11,8 @@
           "display_name": "Pass"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "Fail",
           "display_name": "Fail"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
         }
       ],
       "used_by": []
@@ -41,16 +25,8 @@
           "display_name": "Pass"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Fail",
           "display_name": "Fail"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -60,39 +36,15 @@
       "values": [
         {
           "name": "Error",
-          "display_name": "Error"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
+          "display_name": "Throw Error"
         },
         {
           "name": "Pass",
           "display_name": "Pass"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "Fail",
           "display_name": "Fail"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
         }
       ],
       "used_by": []
@@ -102,35 +54,11 @@
       "values": [
         {
           "name": "AND",
-          "display_name": "AND"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
-          "name": "SearchHints",
-          "display_name": "SearchHints"
+          "display_name": "And"
         },
         {
           "name": "OR",
-          "display_name": "OR"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
-          "name": "SearchHints",
-          "display_name": "SearchHints"
+          "display_name": "Or"
         }
       ],
       "used_by": []

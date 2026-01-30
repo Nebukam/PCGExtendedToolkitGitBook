@@ -56,8 +56,8 @@
     },
     {
       "name": "UPCGExNoiseFilterProviderSettings",
-      "display_name": "UPCGExNoiseFilterProviderSettings",
-      "description": "",
+      "display_name": "Filter : Noise",
+      "description": "Compare a value against spatial noise.",
       "base_class": "UPCGExFilterProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/simple-comparisons/numeric\")",
       "uproperties": [

@@ -11,28 +11,12 @@
           "display_name": "Vtx"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Edges",
-          "display_name": "Edges"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Edge"
         },
         {
           "name": "VtxAndEdges",
-          "display_name": "VtxAndEdges"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Vtx & Edges"
         }
       ],
       "used_by": []

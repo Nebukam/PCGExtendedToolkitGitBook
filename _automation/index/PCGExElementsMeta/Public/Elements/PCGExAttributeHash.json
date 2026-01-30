@@ -7,8 +7,8 @@
   "classes": [
     {
       "name": "UPCGExAttributeHashSettings",
-      "display_name": "UPCGExAttributeHashSettings",
-      "description": "",
+      "display_name": "Attribute Hash",
+      "description": "Generates a hash from the input data, based on a attribute or property.",
       "base_class": "UPCGExPointsProcessorSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"metadata/attribute-hash\")",
       "uproperties": [

@@ -8,19 +8,11 @@
       "values": [
         {
           "name": "Attributes",
-          "display_name": "Attributes"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Point Attributes"
         },
         {
           "name": "CollectionMap",
-          "display_name": "CollectionMap"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Collection Map"
         }
       ],
       "used_by": []
@@ -30,8 +22,8 @@
   "classes": [
     {
       "name": "UPCGExAssetStagingSettings",
-      "display_name": "UPCGExAssetStagingSettings",
-      "description": "",
+      "display_name": "Staging : Distribute",
+      "description": "Distribute PCGEx Asset Collection entries to points.",
       "base_class": "UPCGExPointsProcessorSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(Keywords = \"stage prepare spawn proxy\", PCGExNodeLibraryDoc=\"assets-management/asset-staging\")",
       "uproperties": [

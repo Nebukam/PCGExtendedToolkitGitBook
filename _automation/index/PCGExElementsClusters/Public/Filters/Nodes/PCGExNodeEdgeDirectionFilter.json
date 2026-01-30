@@ -160,8 +160,8 @@
     },
     {
       "name": "UPCGExNodeEdgeDirectionFilterProviderSettings",
-      "display_name": "UPCGExNodeEdgeDirectionFilterProviderSettings",
-      "description": "",
+      "display_name": "Vtx Filter : Edge Direction",
+      "description": "Dot product comparison of connected edges against a direction attribute stored on the vtx.",
       "base_class": "UPCGExVtxFilterProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"filters/filters-vtx-nodes/edge-direction\")",
       "uproperties": [

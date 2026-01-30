@@ -11,24 +11,12 @@
           "display_name": "Min"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Max",
           "display_name": "Max"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Average",
           "display_name": "Average"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -41,52 +29,12 @@
           "display_name": "Alpha"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Time",
           "display_name": "Time"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "where",
-          "display_name": "where"
-        },
-        {
-          "name": "N",
-          "display_name": "N"
-        },
-        {
-          "name": "is",
-          "display_name": "is"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "number",
-          "display_name": "number"
-        },
-        {
-          "name": "of",
-          "display_name": "of"
-        },
-        {
-          "name": "segments",
-          "display_name": "segments"
-        },
-        {
           "name": "Distance",
           "display_name": "Distance"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

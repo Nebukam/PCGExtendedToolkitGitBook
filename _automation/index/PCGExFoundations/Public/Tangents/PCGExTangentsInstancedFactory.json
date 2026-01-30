@@ -8,27 +8,15 @@
       "values": [
         {
           "name": "None",
-          "display_name": "None"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "No Tangents"
         },
         {
           "name": "Attribute",
           "display_name": "Attribute"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "InPlace",
-          "display_name": "InPlace"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "In-place"
         }
       ],
       "used_by": []

@@ -11,24 +11,12 @@
           "display_name": "Min"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Max",
           "display_name": "Max"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Average",
           "display_name": "Average"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         }
       ],
       "used_by": []
@@ -230,8 +218,8 @@
     },
     {
       "name": "UPCGExTimeFilterProviderSettings",
-      "display_name": "UPCGExTimeFilterProviderSettings",
-      "description": "",
+      "display_name": "Filter : Time",
+      "description": "Creates a filter definition that checks points position against a path/spline/polygon2D closest alpha.",
       "base_class": "UPCGExFilterProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/spatial/time\")",
       "uproperties": [

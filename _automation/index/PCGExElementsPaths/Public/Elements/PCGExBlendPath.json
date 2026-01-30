@@ -8,19 +8,11 @@
       "values": [
         {
           "name": "Full",
-          "display_name": "Full"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Start to End"
         },
         {
           "name": "Switch",
           "display_name": "Switch"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

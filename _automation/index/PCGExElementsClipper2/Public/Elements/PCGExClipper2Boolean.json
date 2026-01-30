@@ -11,48 +11,16 @@
           "display_name": "Intersection"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "SearchHints",
-          "display_name": "SearchHints"
-        },
-        {
           "name": "Union",
           "display_name": "Union"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "SearchHints",
-          "display_name": "SearchHints"
         },
         {
           "name": "Difference",
           "display_name": "Difference"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "SearchHints",
-          "display_name": "SearchHints"
-        },
-        {
           "name": "Xor",
-          "display_name": "Xor"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "SearchHints",
-          "display_name": "SearchHints"
+          "display_name": "XOR"
         }
       ],
       "used_by": []
@@ -62,8 +30,8 @@
   "classes": [
     {
       "name": "UPCGExClipper2BooleanSettings",
-      "display_name": "UPCGExClipper2BooleanSettings",
-      "description": "",
+      "display_name": "Clipper2 : Boolean",
+      "description": "Does a Clipper2 Boolean operation.",
       "base_class": "UPCGExClipper2ProcessorSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/clipper2/clipper2-boolean\")",
       "uproperties": [

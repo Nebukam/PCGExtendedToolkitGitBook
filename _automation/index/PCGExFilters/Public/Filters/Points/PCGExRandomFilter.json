@@ -199,8 +199,8 @@
     },
     {
       "name": "UPCGExRandomFilterProviderSettings",
-      "display_name": "UPCGExRandomFilterProviderSettings",
-      "description": "",
+      "display_name": "Filter : Random",
+      "description": "Filter using a random value.",
       "base_class": "UPCGExFilterProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/random\")",
       "uproperties": [

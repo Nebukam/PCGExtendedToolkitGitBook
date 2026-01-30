@@ -11,24 +11,12 @@
           "display_name": "Asset"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "AttributeSet",
-          "display_name": "AttributeSet"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Attribute Set"
         },
         {
           "name": "Attribute",
-          "display_name": "Attribute"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Path Attribute"
         }
       ],
       "used_by": []
@@ -41,32 +29,16 @@
           "display_name": "Ascending"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Descending",
           "display_name": "Descending"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         },
         {
           "name": "WeightAscending",
           "display_name": "WeightAscending"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "WeightDescending",
           "display_name": "WeightDescending"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
         }
       ],
       "used_by": []
@@ -79,24 +51,12 @@
           "display_name": "Index"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Random",
           "display_name": "Random"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "WeightedRandom",
-          "display_name": "WeightedRandom"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Weighted random"
         }
       ],
       "used_by": []
@@ -106,51 +66,27 @@
       "values": [
         {
           "name": "NoOutput",
-          "display_name": "NoOutput"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "No Output"
         },
         {
           "name": "Raw",
           "display_name": "Raw"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Normalized",
           "display_name": "Normalized"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "NormalizedInverted",
           "display_name": "NormalizedInverted"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "NormalizedToDensity",
-          "display_name": "NormalizedToDensity"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Normalized to Density"
         },
         {
           "name": "NormalizedInvertedToDensity",
           "display_name": "NormalizedInvertedToDensity"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -171,10 +107,6 @@
           "display_name": "Hierarchy"
         },
         {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
           "name": "Collection",
           "display_name": "Collection"
         },
@@ -183,16 +115,8 @@
           "display_name": "RootCollection"
         },
         {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
           "name": "RootAsset",
           "display_name": "RootAsset"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
         }
       ],
       "used_by": []
@@ -205,24 +129,8 @@
           "display_name": "Local"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "Global",
           "display_name": "Global"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
         }
       ],
       "used_by": []
@@ -232,27 +140,11 @@
       "values": [
         {
           "name": "PerEntry",
-          "display_name": "PerEntry"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
+          "display_name": "Per Entry"
         },
         {
           "name": "Overrule",
           "display_name": "Overrule"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
         }
       ],
       "used_by": []

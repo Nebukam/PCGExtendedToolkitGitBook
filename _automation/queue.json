@@ -1,0 +1,18 @@
+{
+  "pending": [
+    "UPCGExCreateHeuristicAttributeSettings",
+    "UPCGExHeuristicsAzimuthProviderSettings",
+    "UPCGExHeuristicsShortestDistanceProviderSettings",
+    "UPCGExHeuristicFeedbackProviderSettings",
+    "UPCGExHeuristicsGradientProviderSettings",
+    "UPCGExHeuristicsInertiaProviderSettings",
+    "UPCGExHeuristicsLeastNodesProviderSettings",
+    "UPCGExHeuristicsSteepnessProviderSettings",
+    "UPCGExHeuristicsTurnPenaltyProviderSettings"
+  ],
+  "in_progress": null,
+  "completed": [
+    "UPCGExHeuristicsTensorProviderSettings"
+  ],
+  "skipped": []
+}

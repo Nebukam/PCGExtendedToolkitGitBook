@@ -8,35 +8,19 @@
       "values": [
         {
           "name": "ByDensity",
-          "display_name": "ByDensity"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "By Local Density"
         },
         {
           "name": "ByAttribute",
-          "display_name": "ByAttribute"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "By Attribute"
         },
         {
           "name": "ByCentrality",
-          "display_name": "ByCentrality"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "By Centrality"
         },
         {
           "name": "KMeansCentroids",
-          "display_name": "KMeansCentroids"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "K-Means Centroids"
         }
       ],
       "used_by": []

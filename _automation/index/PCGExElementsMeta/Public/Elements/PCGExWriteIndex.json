@@ -7,8 +7,8 @@
   "classes": [
     {
       "name": "UPCGExWriteIndexSettings",
-      "display_name": "UPCGExWriteIndexSettings",
-      "description": "",
+      "display_name": "Write Index",
+      "description": "Write the current point index to an attribute.",
       "base_class": "UPCGExPointsProcessorSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"metadata/write-index\")",
       "uproperties": [

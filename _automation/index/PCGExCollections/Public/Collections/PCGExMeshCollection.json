@@ -11,124 +11,12 @@
           "display_name": "None"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "Single",
-          "display_name": "Single"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "for",
-          "display_name": "for"
-        },
-        {
-          "name": "when",
-          "display_name": "when"
-        },
-        {
-          "name": "there",
-          "display_name": "there"
-        },
-        {
-          "name": "is",
-          "display_name": "is"
-        },
-        {
-          "name": "only",
-          "display_name": "only"
-        },
-        {
-          "name": "a",
-          "display_name": "a"
-        },
-        {
-          "name": "single",
-          "display_name": "single"
-        },
-        {
-          "name": "material",
-          "display_name": "material"
-        },
-        {
-          "name": "slot",
-          "display_name": "slot"
-        },
-        {
-          "name": "override",
-          "display_name": "override"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
+          "display_name": "Single Slot"
         },
         {
           "name": "Multi",
-          "display_name": "Multi"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "more",
-          "display_name": "more"
-        },
-        {
-          "name": "admin",
-          "display_name": "admin"
-        },
-        {
-          "name": "for",
-          "display_name": "for"
-        },
-        {
-          "name": "when",
-          "display_name": "when"
-        },
-        {
-          "name": "there",
-          "display_name": "there"
-        },
-        {
-          "name": "is",
-          "display_name": "is"
-        },
-        {
-          "name": "multiple",
-          "display_name": "multiple"
-        },
-        {
-          "name": "material",
-          "display_name": "material"
-        },
-        {
-          "name": "slots",
-          "display_name": "slots"
-        },
-        {
-          "name": "for",
-          "display_name": "for"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "entry",
-          "display_name": "entry"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
+          "display_name": "Multi Slots"
         }
       ],
       "used_by": []

@@ -11,32 +11,16 @@
           "display_name": "UVWConstant"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "UVWAttribute",
-          "display_name": "UVWAttribute"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "UVW"
         },
         {
           "name": "PositionConstant",
           "display_name": "PositionConstant"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "PositionAttribute",
           "display_name": "PositionAttribute"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -49,48 +33,20 @@
           "display_name": "Minimal"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "MinimalCross",
           "display_name": "MinimalCross"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "EqualSplit",
-          "display_name": "EqualSplit"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Equal Split"
         },
         {
           "name": "Cone",
           "display_name": "Cone"
         },
         {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "ConeCross",
           "display_name": "ConeCross"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

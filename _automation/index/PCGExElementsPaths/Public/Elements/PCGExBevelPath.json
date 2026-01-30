@@ -11,16 +11,8 @@
           "display_name": "Radius"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Distance",
           "display_name": "Distance"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -33,24 +25,12 @@
           "display_name": "Line"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Arc",
           "display_name": "Arc"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Custom",
           "display_name": "Custom"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -63,44 +43,12 @@
           "display_name": "None"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "ClosestNeighbor",
-          "display_name": "ClosestNeighbor"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Closest neighbor"
         },
         {
           "name": "Balanced",
           "display_name": "Balanced"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "falling",
-          "display_name": "falling"
-        },
-        {
-          "name": "back",
-          "display_name": "back"
-        },
-        {
-          "name": "to",
-          "display_name": "to"
-        },
-        {
-          "name": "closest",
-          "display_name": "closest"
-        },
-        {
-          "name": "neighbor",
-          "display_name": "neighbor"
         }
       ],
       "used_by": []
@@ -113,24 +61,12 @@
           "display_name": "Uniform"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Scale",
           "display_name": "Scale"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Distance",
           "display_name": "Distance"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

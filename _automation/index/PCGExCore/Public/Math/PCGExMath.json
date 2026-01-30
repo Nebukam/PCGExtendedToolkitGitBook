@@ -11,112 +11,16 @@
           "display_name": "Ignore"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "1",
-          "display_name": "1"
-        },
-        {
-          "name": "2",
-          "display_name": "2"
-        },
-        {
-          "name": "1",
-          "display_name": "1"
-        },
-        {
-          "name": "1",
-          "display_name": "1"
-        },
-        {
-          "name": "1",
-          "display_name": "1"
-        },
-        {
           "name": "Tile",
           "display_name": "Tile"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "1",
-          "display_name": "1"
-        },
-        {
-          "name": "2",
-          "display_name": "2"
-        },
-        {
-          "name": "0",
-          "display_name": "0"
-        },
-        {
-          "name": "1",
-          "display_name": "1"
-        },
-        {
-          "name": "2",
-          "display_name": "2"
         },
         {
           "name": "Clamp",
           "display_name": "Clamp"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "1",
-          "display_name": "1"
-        },
-        {
-          "name": "2",
-          "display_name": "2"
-        },
-        {
-          "name": "2",
-          "display_name": "2"
-        },
-        {
-          "name": "2",
-          "display_name": "2"
-        },
-        {
-          "name": "2",
-          "display_name": "2"
-        },
-        {
           "name": "Yoyo",
           "display_name": "Yoyo"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "1",
-          "display_name": "1"
-        },
-        {
-          "name": "2",
-          "display_name": "2"
-        },
-        {
-          "name": "1",
-          "display_name": "1"
-        },
-        {
-          "name": "0",
-          "display_name": "0"
-        },
-        {
-          "name": "1",
-          "display_name": "1"
         }
       ],
       "used_by": []
@@ -129,48 +33,16 @@
           "display_name": "None"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "Round",
           "display_name": "Round"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
         },
         {
           "name": "Ceil",
           "display_name": "Ceil"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
           "name": "Floor",
           "display_name": "Floor"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
         }
       ],
       "used_by": []

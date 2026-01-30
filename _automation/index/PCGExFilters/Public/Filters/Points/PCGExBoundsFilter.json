@@ -11,64 +11,16 @@
           "display_name": "Intersects"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
-          "name": "SearchHints",
-          "display_name": "SearchHints"
-        },
-        {
           "name": "IsInside",
-          "display_name": "IsInside"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
-          "name": "SearchHints",
-          "display_name": "SearchHints"
+          "display_name": "Is Inside"
         },
         {
           "name": "IsInsideOrOn",
-          "display_name": "IsInsideOrOn"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
-          "name": "SearchHints",
-          "display_name": "SearchHints"
+          "display_name": "Is Inside or On"
         },
         {
           "name": "IsInsideOrIntersects",
-          "display_name": "IsInsideOrIntersects"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
-          "name": "ActionIcon",
-          "display_name": "ActionIcon"
-        },
-        {
-          "name": "SearchHints",
-          "display_name": "SearchHints"
+          "display_name": "Is Inside or Intersects"
         }
       ],
       "used_by": []
@@ -78,19 +30,11 @@
       "values": [
         {
           "name": "PerPointBounds",
-          "display_name": "PerPointBounds"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Per Point Bounds"
         },
         {
           "name": "CollectionBounds",
-          "display_name": "CollectionBounds"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Collection Bounds"
         }
       ],
       "used_by": []
@@ -240,8 +184,8 @@
     },
     {
       "name": "UPCGExBoundsFilterProviderSettings",
-      "display_name": "UPCGExBoundsFilterProviderSettings",
-      "description": "",
+      "display_name": "Filter : Inclusion (Bounds)",
+      "description": "Creates a filter definition that compares dot value of two vectors.",
       "base_class": "UPCGExFilterProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/spatial/bounds\")",
       "uproperties": [

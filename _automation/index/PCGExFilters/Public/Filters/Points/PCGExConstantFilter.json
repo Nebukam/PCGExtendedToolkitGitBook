@@ -69,8 +69,8 @@
     },
     {
       "name": "UPCGExConstantFilterProviderSettings",
-      "display_name": "UPCGExConstantFilterProviderSettings",
-      "description": "",
+      "display_name": "Filter : Constant",
+      "description": "Filter that return a constant value.",
       "base_class": "UPCGExFilterProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/constant\")",
       "uproperties": [

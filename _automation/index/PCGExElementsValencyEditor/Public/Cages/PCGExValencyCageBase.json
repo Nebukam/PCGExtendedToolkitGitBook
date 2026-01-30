@@ -7,116 +7,20 @@
       "name": "EValencyRebuildReason",
       "values": [
         {
-          "name": "A",
-          "display_name": "A"
-        },
-        {
-          "name": "property",
-          "display_name": "property"
-        },
-        {
-          "name": "with",
-          "display_name": "with"
-        },
-        {
-          "name": "PCGEX_ValencyRebuild",
-          "display_name": "PCGEX_ValencyRebuild"
-        },
-        {
-          "name": "metadata",
-          "display_name": "metadata"
-        },
-        {
-          "name": "changed",
-          "display_name": "changed"
-        },
-        {
           "name": "PropertyChange",
           "display_name": "PropertyChange"
-        },
-        {
-          "name": "The",
-          "display_name": "The"
-        },
-        {
-          "name": "cage",
-          "display_name": "cage"
-        },
-        {
-          "name": "was",
-          "display_name": "was"
-        },
-        {
-          "name": "moved",
-          "display_name": "moved"
         },
         {
           "name": "Movement",
           "display_name": "Movement"
         },
         {
-          "name": "Assets",
-          "display_name": "Assets"
-        },
-        {
-          "name": "were",
-          "display_name": "were"
-        },
-        {
-          "name": "added",
-          "display_name": "added"
-        },
-        {
-          "name": "removed",
-          "display_name": "removed"
-        },
-        {
-          "name": "changed",
-          "display_name": "changed"
-        },
-        {
           "name": "AssetChange",
           "display_name": "AssetChange"
         },
         {
-          "name": "Orbital",
-          "display_name": "Orbital"
-        },
-        {
-          "name": "connections",
-          "display_name": "connections"
-        },
-        {
-          "name": "changed",
-          "display_name": "changed"
-        },
-        {
           "name": "ConnectionChange",
           "display_name": "ConnectionChange"
-        },
-        {
-          "name": "Cascaded",
-          "display_name": "Cascaded"
-        },
-        {
-          "name": "from",
-          "display_name": "from"
-        },
-        {
-          "name": "another",
-          "display_name": "another"
-        },
-        {
-          "name": "actor",
-          "display_name": "actor"
-        },
-        {
-          "name": "s",
-          "display_name": "s"
-        },
-        {
-          "name": "change",
-          "display_name": "change"
         },
         {
           "name": "ExternalCascade",

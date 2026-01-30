@@ -8,19 +8,11 @@
       "values": [
         {
           "name": "Single",
-          "display_name": "Single"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Single Attribute"
         },
         {
           "name": "List",
-          "display_name": "List"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Multiple Attributes"
         }
       ],
       "used_by": []

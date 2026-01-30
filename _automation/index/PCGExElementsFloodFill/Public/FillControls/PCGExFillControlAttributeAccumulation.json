@@ -11,64 +11,16 @@
           "display_name": "Sum"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Max",
-          "display_name": "Max"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Maximum"
         },
         {
           "name": "Min",
-          "display_name": "Min"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Minimum"
         },
         {
           "name": "Average",
           "display_name": "Average"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -192,8 +144,8 @@
     },
     {
       "name": "UPCGExFillControlsAttributeAccumulationProviderSettings",
-      "display_name": "UPCGExFillControlsAttributeAccumulationProviderSettings",
-      "description": "",
+      "display_name": "Fill Control : Attribute Accumulation",
+      "description": "Track accumulated attribute value along path, stop when threshold exceeded.",
       "base_class": "UPCGExFillControlsFactoryProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"clusters/flood-fill/fc-attribute-accumulation\")",
       "uproperties": [

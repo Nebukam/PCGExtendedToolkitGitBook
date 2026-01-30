@@ -11,64 +11,16 @@
           "display_name": "None"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Shortest",
           "display_name": "Shortest"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "restore",
-          "display_name": "restore"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "shortest",
-          "display_name": "shortest"
-        },
-        {
-          "name": "one",
-          "display_name": "one"
         },
         {
           "name": "Longest",
           "display_name": "Longest"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "restore",
-          "display_name": "restore"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "longest",
-          "display_name": "longest"
-        },
-        {
-          "name": "one",
-          "display_name": "one"
-        },
-        {
           "name": "Filters",
           "display_name": "Filters"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -81,24 +33,12 @@
           "display_name": "Clusters"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Points",
           "display_name": "Points"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Attribute",
           "display_name": "Attribute"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -108,8 +48,8 @@
   "classes": [
     {
       "name": "UPCGExRefineEdgesSettings",
-      "display_name": "UPCGExRefineEdgesSettings",
-      "description": "",
+      "display_name": "Cluster : Refine",
+      "description": "Refine edges according to special rules.",
       "base_class": "UPCGExClustersProcessorSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(Keywords = \"filter edge mst minimum spanning tree skeleton gabriel\"), meta=(PCGExNodeLibraryDoc=\"clusters/refine-cluster\")",
       "uproperties": [

@@ -126,8 +126,8 @@
   "classes": [
     {
       "name": "UPCGExBranchOnDataAttributeSettings",
-      "display_name": "UPCGExBranchOnDataAttributeSettings",
-      "description": "",
+      "display_name": "Branch on Data",
+      "description": "Branch on @Data domain attribute.",
       "base_class": "UPCGExPointsProcessorSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"quality-of-life/branch-on-data\")",
       "uproperties": [

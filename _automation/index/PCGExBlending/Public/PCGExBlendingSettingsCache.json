@@ -11,312 +11,76 @@
           "display_name": "Default"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "None",
           "display_name": "None"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "keep",
-          "display_name": "keep"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "original",
-          "display_name": "original"
-        },
-        {
-          "name": "value",
-          "display_name": "value"
         },
         {
           "name": "Average",
           "display_name": "Average"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Weight",
           "display_name": "Weight"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "try",
-          "display_name": "try"
-        },
-        {
-          "name": "Lerp",
-          "display_name": "Lerp"
-        },
-        {
-          "name": "instead",
-          "display_name": "instead"
         },
         {
           "name": "Min",
           "display_name": "Min"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Max",
           "display_name": "Max"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "Copy",
           "display_name": "Copy"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Sum",
           "display_name": "Sum"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "WeightedSum",
-          "display_name": "WeightedSum"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "weighted",
-          "display_name": "weighted"
+          "display_name": "Weighted Sum"
         },
         {
           "name": "Lerp",
           "display_name": "Lerp"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "try",
-          "display_name": "try"
-        },
-        {
-          "name": "Weight",
-          "display_name": "Weight"
-        },
-        {
-          "name": "instead",
-          "display_name": "instead"
-        },
-        {
           "name": "Subtract",
           "display_name": "Subtract"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "UnsignedMin",
-          "display_name": "UnsignedMin"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "but",
-          "display_name": "but"
-        },
-        {
-          "name": "keeps",
-          "display_name": "keeps"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "sign",
-          "display_name": "sign"
-        },
-        {
-          "name": "on",
-          "display_name": "on"
-        },
-        {
-          "name": "written",
-          "display_name": "written"
-        },
-        {
-          "name": "data",
-          "display_name": "data"
+          "display_name": "Unsigned Min"
         },
         {
           "name": "UnsignedMax",
-          "display_name": "UnsignedMax"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "but",
-          "display_name": "but"
-        },
-        {
-          "name": "keeps",
-          "display_name": "keeps"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "sign",
-          "display_name": "sign"
-        },
-        {
-          "name": "on",
-          "display_name": "on"
-        },
-        {
-          "name": "written",
-          "display_name": "written"
-        },
-        {
-          "name": "data",
-          "display_name": "data"
+          "display_name": "Unsigned Max"
         },
         {
           "name": "AbsoluteMin",
-          "display_name": "AbsoluteMin"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "but",
-          "display_name": "but"
-        },
-        {
-          "name": "keeps",
-          "display_name": "keeps"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "sign",
-          "display_name": "sign"
-        },
-        {
-          "name": "on",
-          "display_name": "on"
-        },
-        {
-          "name": "written",
-          "display_name": "written"
-        },
-        {
-          "name": "data",
-          "display_name": "data"
+          "display_name": "Unsigned Min"
         },
         {
           "name": "AbsoluteMax",
-          "display_name": "AbsoluteMax"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "but",
-          "display_name": "but"
-        },
-        {
-          "name": "keeps",
-          "display_name": "keeps"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "sign",
-          "display_name": "sign"
-        },
-        {
-          "name": "on",
-          "display_name": "on"
-        },
-        {
-          "name": "written",
-          "display_name": "written"
-        },
-        {
-          "name": "data",
-          "display_name": "data"
+          "display_name": "Unsigned Max"
         },
         {
           "name": "WeightedSubtract",
-          "display_name": "WeightedSubtract"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "weighted",
-          "display_name": "weighted"
+          "display_name": "Weighted Subtract"
         },
         {
           "name": "CopyOther",
           "display_name": "CopyOther"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Hash",
           "display_name": "Hash"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "UnsignedHash",
           "display_name": "UnsignedHash"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

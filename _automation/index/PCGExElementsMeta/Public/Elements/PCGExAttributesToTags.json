@@ -8,27 +8,15 @@
       "values": [
         {
           "name": "AddTags",
-          "display_name": "AddTags"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Hoist to Tags"
         },
         {
           "name": "Attribute",
-          "display_name": "Attribute"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Hoist to Attribute Set"
         },
         {
           "name": "Data",
-          "display_name": "Data"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Hoist to @Data"
         }
       ],
       "used_by": []
@@ -41,32 +29,12 @@
           "display_name": "Self"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "from",
-          "display_name": "from"
-        },
-        {
-          "name": "itself",
-          "display_name": "itself"
-        },
-        {
           "name": "EntryToCollection",
-          "display_name": "EntryToCollection"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Entry to Collection"
         },
         {
           "name": "CollectionToCollection",
-          "display_name": "CollectionToCollection"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Collection to Collection"
         }
       ],
       "used_by": []
@@ -76,51 +44,27 @@
       "values": [
         {
           "name": "FirstIndex",
-          "display_name": "FirstIndex"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "First Entry"
         },
         {
           "name": "LastIndex",
-          "display_name": "LastIndex"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Last Entry"
         },
         {
           "name": "RandomIndex",
-          "display_name": "RandomIndex"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Random Entry"
         },
         {
           "name": "Picker",
           "display_name": "Picker"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "PickerFirst",
           "display_name": "PickerFirst"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "PickerLast",
           "display_name": "PickerLast"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

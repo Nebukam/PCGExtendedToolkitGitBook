@@ -69,8 +69,8 @@
     },
     {
       "name": "UPCGExHeuristicsTensorProviderSettings",
-      "display_name": "UPCGExHeuristicsTensorProviderSettings",
-      "description": "",
+      "display_name": "Heuristics : Tensor",
+      "description": "Heuristics based on tensors.",
       "base_class": "UPCGExHeuristicsFactoryProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"pathfinding/heuristics/hx-tensor\")",
       "uproperties": [

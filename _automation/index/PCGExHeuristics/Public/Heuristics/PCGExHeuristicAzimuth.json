@@ -42,8 +42,8 @@
     },
     {
       "name": "UPCGExHeuristicsAzimuthProviderSettings",
-      "display_name": "UPCGExHeuristicsAzimuthProviderSettings",
-      "description": "",
+      "display_name": "Heuristics : Azimuth",
+      "description": "Heuristics based on direction toward final goal (north star).",
       "base_class": "UPCGExHeuristicsFactoryProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"pathfinding/heuristics/hx-azimuth\")",
       "uproperties": [

@@ -134,8 +134,8 @@
     },
     {
       "name": "UPCGExProbeNumericCompareProviderSettings",
-      "display_name": "UPCGExProbeNumericCompareProviderSettings",
-      "description": "",
+      "display_name": "Probe : Numeric Compare",
+      "description": "Connect points that pass the value comparison between the probing point and the candidate point.",
       "base_class": "UPCGExProbeFactoryProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"clusters/connect-points/probe-compare\")",
       "uproperties": [

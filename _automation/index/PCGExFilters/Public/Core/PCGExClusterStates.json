@@ -42,8 +42,8 @@
     },
     {
       "name": "UPCGExClusterStateFactoryProviderSettings",
-      "display_name": "UPCGExClusterStateFactoryProviderSettings",
-      "description": "",
+      "display_name": "State : Cluster",
+      "description": "A single, filter-driven vtx state.",
       "base_class": "UPCGExStateFactoryProviderSettings",
       "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"clusters/metadata/flag-nodes/node-flag\")",
       "uproperties": [

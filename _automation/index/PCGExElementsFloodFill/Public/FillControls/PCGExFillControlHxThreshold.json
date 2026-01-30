@@ -8,51 +8,15 @@
       "values": [
         {
           "name": "EdgeScore",
-          "display_name": "EdgeScore"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Edge Score"
         },
         {
           "name": "GlobalScore",
-          "display_name": "GlobalScore"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Global Score"
         },
         {
           "name": "ScoreDelta",
-          "display_name": "ScoreDelta"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Score Delta"
         }
       ],
       "used_by": []
@@ -176,8 +140,8 @@
     },
     {
       "name": "UPCGExFillControlsHeuristicsThresholdProviderSettings",
-      "display_name": "UPCGExFillControlsHeuristicsThresholdProviderSettings",
-      "description": "",
+      "display_name": "Fill Control : Heuristics Threshold",
+      "description": "Stop diffusion when instantaneous heuristic crosses a threshold.",
       "base_class": "UPCGExFillControlsFactoryProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"clusters/flood-fill/fc-heuristics-threshold\")",
       "uproperties": [

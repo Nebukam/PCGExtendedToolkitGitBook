@@ -11,24 +11,12 @@
           "display_name": "Single"
         },
         {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
-        },
-        {
           "name": "Fixed",
-          "display_name": "Fixed"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Multiple Fixed"
         },
         {
           "name": "Random",
-          "display_name": "Random"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Multiple Random"
         }
       ],
       "used_by": []

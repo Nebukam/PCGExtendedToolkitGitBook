@@ -8,71 +8,11 @@
       "values": [
         {
           "name": "Dot",
-          "display_name": "Dot"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "as",
-          "display_name": "as"
-        },
-        {
-          "name": "opposed",
-          "display_name": "opposed"
-        },
-        {
-          "name": "to",
-          "display_name": "to"
-        },
-        {
-          "name": "closest",
-          "display_name": "closest"
-        },
-        {
-          "name": "ones",
-          "display_name": "ones"
+          "display_name": "Best alignment"
         },
         {
           "name": "Dist",
-          "display_name": "Dist"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "even",
-          "display_name": "even"
-        },
-        {
-          "name": "if",
-          "display_name": "if"
-        },
-        {
-          "name": "they",
-          "display_name": "they"
-        },
-        {
-          "name": "were",
-          "display_name": "were"
-        },
-        {
-          "name": "not",
-          "display_name": "not"
-        },
-        {
-          "name": "the",
-          "display_name": "the"
-        },
-        {
-          "name": "best",
-          "display_name": "best"
-        },
-        {
-          "name": "aligned",
-          "display_name": "aligned"
+          "display_name": "Closest position"
         }
       ],
       "used_by": []
@@ -183,8 +123,8 @@
     },
     {
       "name": "UPCGExProbeBitmasksProviderSettings",
-      "display_name": "UPCGExProbeBitmasksProviderSettings",
-      "description": "",
+      "display_name": "Probe : Bitmasks",
+      "description": "Probe using bitmasks references & collections.",
       "base_class": "UPCGExProbeFactoryProviderSettings",
       "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\"",
       "uproperties": [

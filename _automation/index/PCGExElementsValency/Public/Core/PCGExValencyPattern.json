@@ -11,84 +11,20 @@
           "display_name": "Remove"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "output",
-          "display_name": "output"
-        },
-        {
-          "name": "to",
-          "display_name": "to"
-        },
-        {
-          "name": "secondary",
-          "display_name": "secondary"
-        },
-        {
-          "name": "pin",
-          "display_name": "pin"
-        },
-        {
           "name": "Collapse",
           "display_name": "Collapse"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "Swap",
           "display_name": "Swap"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Annotate",
           "display_name": "Annotate"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "no",
-          "display_name": "no"
-        },
-        {
-          "name": "removal",
-          "display_name": "removal"
-        },
-        {
           "name": "Fork",
           "display_name": "Fork"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -101,36 +37,12 @@
           "display_name": "Centroid"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "PatternRoot",
           "display_name": "PatternRoot"
         },
         {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "FirstMatch",
           "display_name": "FirstMatch"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

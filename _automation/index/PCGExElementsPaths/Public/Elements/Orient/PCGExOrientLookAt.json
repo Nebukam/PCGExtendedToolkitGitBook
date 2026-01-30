@@ -8,35 +8,19 @@
       "values": [
         {
           "name": "NextPoint",
-          "display_name": "NextPoint"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Next Point"
         },
         {
           "name": "PreviousPoint",
-          "display_name": "PreviousPoint"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Previous Point"
         },
         {
           "name": "Direction",
           "display_name": "Direction"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Position",
           "display_name": "Position"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

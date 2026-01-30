@@ -11,36 +11,12 @@
           "display_name": "Balanced"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
-          "name": "otherwise",
-          "display_name": "otherwise"
-        },
-        {
-          "name": "uses",
-          "display_name": "uses"
-        },
-        {
-          "name": "circumcenter",
-          "display_name": "circumcenter"
-        },
-        {
           "name": "Circumcenter",
           "display_name": "Circumcenter"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Centroid",
           "display_name": "Centroid"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []
@@ -53,24 +29,12 @@
           "display_name": "Euclidean"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Manhattan",
           "display_name": "Manhattan"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Chebyshev",
           "display_name": "Chebyshev"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

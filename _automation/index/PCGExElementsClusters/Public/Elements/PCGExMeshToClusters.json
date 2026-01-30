@@ -8,19 +8,11 @@
       "values": [
         {
           "name": "StaticMeshSoftPath",
-          "display_name": "StaticMeshSoftPath"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "StaticMesh Soft Path"
         },
         {
           "name": "ActorReference",
-          "display_name": "ActorReference"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Actor Reference"
         }
       ],
       "used_by": []

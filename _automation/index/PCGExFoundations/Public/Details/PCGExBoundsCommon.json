@@ -8,19 +8,11 @@
       "values": [
         {
           "name": "Merged",
-          "display_name": "Merged"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Merged Points"
         },
         {
           "name": "Individual",
-          "display_name": "Individual"
-        },
-        {
-          "name": "Tooltip",
-          "display_name": "Tooltip"
+          "display_name": "Per-point dataset"
         }
       ],
       "used_by": []

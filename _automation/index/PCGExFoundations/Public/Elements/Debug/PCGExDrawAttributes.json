@@ -11,40 +11,20 @@
           "display_name": "Direction"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "ConnectionToIndex",
           "display_name": "ConnectionToIndex"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         },
         {
           "name": "ConnectionToPosition",
           "display_name": "ConnectionToPosition"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Point",
           "display_name": "Point"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "Boolean",
           "display_name": "Boolean"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
         }
       ],
       "used_by": []

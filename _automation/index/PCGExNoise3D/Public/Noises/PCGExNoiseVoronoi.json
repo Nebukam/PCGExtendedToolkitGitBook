@@ -8,51 +8,19 @@
       "values": [
         {
           "name": "CellValue",
-          "display_name": "CellValue"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
+          "display_name": "Cell Value"
         },
         {
           "name": "Distance",
-          "display_name": "Distance"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
+          "display_name": "Distance to Center"
         },
         {
           "name": "EdgeDistance",
-          "display_name": "EdgeDistance"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
+          "display_name": "Edge Distance"
         },
         {
           "name": "Crackle",
           "display_name": "Crackle"
-        },
-        {
-          "name": "UMETA",
-          "display_name": "UMETA"
-        },
-        {
-          "name": "DisplayName",
-          "display_name": "DisplayName"
         }
       ],
       "used_by": []

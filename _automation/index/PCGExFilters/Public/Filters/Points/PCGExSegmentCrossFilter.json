@@ -8,19 +8,11 @@
       "values": [
         {
           "name": "ToNext",
-          "display_name": "ToNext"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "To Next"
         },
         {
           "name": "ToPrev",
-          "display_name": "ToPrev"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "To Prev"
         }
       ],
       "used_by": []
@@ -144,8 +136,8 @@
     },
     {
       "name": "UPCGExSegmentCrossFilterProviderSettings",
-      "display_name": "UPCGExSegmentCrossFilterProviderSettings",
-      "description": "",
+      "display_name": "Filter : Segment Cross",
+      "description": "Creates a filter definition that checks points SegmentCross against path-like data (paths, splines, polygons).",
       "base_class": "UPCGExFilterProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/spatial/segment-cross\")",
       "uproperties": [

@@ -11,24 +11,12 @@
           "display_name": "Target"
         },
         {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
-        },
-        {
           "name": "OneWayOffset",
-          "display_name": "OneWayOffset"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "One-way Offset"
         },
         {
           "name": "TwoWayOffset",
-          "display_name": "TwoWayOffset"
-        },
-        {
-          "name": "ToolTip",
-          "display_name": "ToolTip"
+          "display_name": "Two-way Offset"
         }
       ],
       "used_by": []
@@ -126,8 +114,8 @@
     },
     {
       "name": "UPCGExProbeIndexProviderSettings",
-      "display_name": "UPCGExProbeIndexProviderSettings",
-      "description": "",
+      "display_name": "Probe : Index",
+      "description": "Connects to a specific index, ignoring search radius.",
       "base_class": "UPCGExProbeFactoryProviderSettings",
       "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\"",
       "uproperties": [
