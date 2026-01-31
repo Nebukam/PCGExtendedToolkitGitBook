@@ -23,22 +23,29 @@ This noise simulates the caustic light patterns created by light refracting thro
 
 ```
 Single Wave Layer (simplified):
+
 ~~~  ~~~  ~~~  Gentle waves
  ‖    ‖    ‖   Light focuses where waves converge
  ■    ■    ■   Bright caustic spots
-
+```
+```
 Multiple Layers (WaveLayers = 3):
+
 Layer 1: ~~~  ~~~  ~~~
 Layer 2:  ~~~  ~~~  ~~~  (offset)
 Layer 3:   ~~~  ~~~  ~~~ (offset)
 Result:  ■  ■■ ■  ■     Complex caustic pattern
-
+```
+```
 Intensity Effect:
+
 Low (1.0):  ·  ·  ·  (subtle, evenly distributed)
 Medium (2.0): ●  ●  ●  (default, clear focal points)
 High (4.0):  ●● ●● ●● (very bright, sharp contrasts)
-
+```
+```
 Focus Effect:
+
 Low (1.0):  (●) (●) (●) (broad, blurred spots)
 Medium (2.0): ● ● ●     (clear focal points)
 High (8.0):  •• •• ••   (sharp, intense focal points)

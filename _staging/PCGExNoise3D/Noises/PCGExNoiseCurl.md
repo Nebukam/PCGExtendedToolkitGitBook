@@ -24,6 +24,7 @@ This noise generates a divergence-free vector field (∇·F = 0), meaning it has
 
 ```
 Divergence-Free Property:
+
 Traditional Noise (has divergence):
     ← ← ● → →  (vectors converge/diverge at points)
         ↓↓↓
@@ -32,16 +33,19 @@ Curl Noise (no divergence):
     ↻ → → ↻   (vectors flow around, never converge)
     ↑     ↓
     ↻ ← ← ↻
-
+```
+```
 Octaves Effect:
+
 1 Octave:  Smooth, large-scale swirls
 3 Octaves: Medium detail with smaller turbulence
 8 Octaves: Very turbulent, chaotic flow with fine details
-
+```
+```
 Lacunarity & Persistence:
+
 Low Lacunarity (1.5):   Gentle frequency increase per octave
 High Lacunarity (4.0):  Sharp frequency jumps, more variation
-
 Low Persistence (0.2):  Higher octaves contribute less (smooth)
 High Persistence (0.8): Higher octaves contribute more (turbulent)
 ```
