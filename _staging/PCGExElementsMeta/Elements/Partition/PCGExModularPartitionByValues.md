@@ -56,17 +56,63 @@ With Rules: Biome (no filter) + Height (filter size=100):
 
 ## Settings
 
-This node uses partition rules defined via connected sub-nodes and has no node-specific settings beyond inherited base settings.
+
+<details>
+<summary><strong>Split Output</strong> <code>bool</code></summary>
+
+When enabled, outputs separate point collections for each partition. When disabled, only writes partition identifier values to attributes without splitting.
+
+Default: `true`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Write Key Sum</strong> <code>bool</code></summary>
+
+When enabled, writes the sum of all partition rule keys to an attribute.
+
+Default: `false`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Key Sum Attribute Name</strong> <code>FName</code></summary>
+
+The attribute name to write the key sum to. Note that this value is not guaranteed to be unique across different key combinations.
+
+Default: `KeySum`
+
+📋 *Visible when Write Key Sum is enabled*
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+<summary><strong>Partition Rules</strong> <code>TArray&lt;FPCGExPartitonRuleConfig&gt;</code></summary>
+
+Array of partition rule configurations. Each rule transforms an attribute value into a partition key component.
+
+→ See [Partition Rule](PCGExModularPartitionByValues.md#partition-rule) for rule configuration details.
+
+⚡ PCG Overridable
+
+</details>
 
 ### Inherited Settings
 
-→ See [Partition by Values Base](PCGExPartitionByValues.md) for base partition settings.
+→ See [Points Processor Settings](../../Core/PCGExPointsProcessor.md) for common point processing settings.
 
 ## Outputs
 
 | Pin | Type | Description |
 |-----|------|-------------|
-| **(Dynamic)** | Points | Separate point collections for each unique partition key combination |
+| **(Dynamic)** | Points | Separate point collections for each unique partition key (when Split Output enabled) |
+| **Out** | Points | Original points with partition attributes (when Split Output disabled) |
 
 ---
 
