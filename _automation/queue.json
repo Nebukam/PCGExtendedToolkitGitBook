@@ -1,13 +1,5 @@
 {
-  "pending": [
-    "UPCGExFactoryData",
-    "UPCGExFactoryProviderSettings",
-    "UPCGExInstancedFactory",
-    "UPCGExFunctionPrototypes",
-    "UPCGExSubSystem",
-    "UPCGExSortingRule",
-    "UPCGExSortingRuleProviderSettings"
-  ],
+  "pending": [],
   "in_progress": null,
   "completed": [
     "UPCGExHeuristicsFactoryAttribute",
@@ -127,7 +119,14 @@
     "UPCGExClusterNodesData",
     "UPCGExClusterEdgesData",
     "UPCGExPointData",
-    "UPCGExParamDataBase"
+    "UPCGExParamDataBase",
+    "UPCGExFactoryData",
+    "UPCGExFactoryProviderSettings",
+    "UPCGExInstancedFactory",
+    "UPCGExFunctionPrototypes",
+    "UPCGExSubSystem",
+    "UPCGExSortingRule",
+    "UPCGExSortingRuleProviderSettings"
   ],
   "skipped": []
 }
