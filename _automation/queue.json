@@ -61,7 +61,33 @@
     "UPCGExFillControlsFactoryRunningAverage",
     "UPCGExFillControlsRunningAverageProviderSettings",
     "UPCGExFillControlsFactoryVtxFilters",
-    "UPCGExFillControlsVtxFiltersProviderSettings"
+    "UPCGExFillControlsVtxFiltersProviderSettings",
+    "UPCGExPartitionRule",
+    "UPCGExPartitionRuleProviderSettings",
+    "UPCGExModularPartitionByValuesSettings",
+    "UPCGExPartitionByValuesBaseSettings",
+    "UPCGExPartitionByValuesSettings",
+    "UPCGExAttributeHashSettings",
+    "UPCGExAttributeRemapSettings",
+    "UPCGExAttributeStatsSettings",
+    "UPCGExAttributesToTagsSettings",
+    "UPCGExBlendAttributesSettings",
+    "UPCGExMetaCleanupSettings",
+    "UPCGExCustomActorDataPacker",
+    "UPCGExPackActorDataSettings",
+    "UPCGExReduceDataAttributeSettings",
+    "UPCGExRefreshSeedSettings",
+    "UPCGExUberNoiseSettings",
+    "UPCGExWriteIndexSettings",
+    "UPCGExWriteStatesSettings",
+    "UPCGExPointStateFactoryProviderSettings",
+    "UPCGExModularSortPointsSettings",
+    "UPCGExSortCollectionsSettings",
+    "UPCGExNoiseFilterFactory",
+    "UPCGExNoiseFilterProviderSettings"
   ],
-  "skipped": []
+  "skipped": [
+    "UPCGExSortPointsBaseSettings",
+    "UPCGExSortPointsSettings"
+  ]
 }

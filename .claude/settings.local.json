@@ -4,7 +4,9 @@
       "Bash(grep:*)",
       "Bash(ls -la \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\_dry-run\\\\node-library\\\\clusters\"\" 2>/dev/null || dir \"D:GITPCGExtendedToolkitGitBook_dry-runnode-libraryclusters\"\")",
       "Bash(powershell:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(if not exist \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\_staging\\\\PCGExElementsMeta\\\\Elements\\\\Sorting\" mkdir \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\_staging\\\\PCGExElementsMeta\\\\Elements\\\\Sorting\")",
+      "Bash(if not exist \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\_staging\\\\PCGExElementsMeta\\\\Filters\\\\Points\" mkdir \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\_staging\\\\PCGExElementsMeta\\\\Filters\\\\Points\")"
     ]
   }
 }
