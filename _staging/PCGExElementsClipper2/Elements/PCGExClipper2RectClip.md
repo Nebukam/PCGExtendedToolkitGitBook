@@ -19,7 +19,7 @@ This node clips paths against an axis-aligned bounding box using Clipper2's opti
 4. **Clip Paths**: Uses Clipper2's RectClip64 algorithm for polygons or RectClipLines64 for open paths.
 5. **Unproject Results**: Clipped paths are transformed back to 3D space with interpolated attributes.
 
-### Usage Notes
+#### Usage Notes
 
 - **AABB Only**: This node works exclusively with axis-aligned bounding boxes. For arbitrary polygon clipping, use the Boolean node with Intersection operation.
 - **Performance**: RectClip is optimized specifically for rectangle clipping and is much faster than general boolean operations for this use case.

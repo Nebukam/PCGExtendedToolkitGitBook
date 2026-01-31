@@ -18,7 +18,7 @@ This factory creates blend operation instances that handle attribute blending be
 3. **Operation Creation**: Creates FPCGExBlendOperation instances configured with the blend settings.
 4. **Buffer Registration**: Identifies which attributes need to be loaded based on the blend configuration (operand selectors, weight attributes).
 
-### Usage Notes
+#### Usage Notes
 
 - **Factory Pattern**: This is a factory data class used internally by the PCGEx blending system. Users typically interact with blend operations through provider nodes rather than directly with factory instances.
 - **Constant Facades**: The factory can create lightweight constant data facades for operands that use inline values rather than attributes.

@@ -32,7 +32,7 @@ UPCGPointData (PCG native)
 
 **Thread Safety**: Supports multi-threaded operations with proper object allocation semantics (`NewObject_AnyThread`).
 
-### Usage Notes
+#### Usage Notes
 
 **Abstract Class**: This class cannot be instantiated directly - it serves as a base for concrete implementations.
 

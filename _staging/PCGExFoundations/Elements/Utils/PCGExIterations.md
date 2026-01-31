@@ -19,7 +19,7 @@ This node creates multiple duplicate entries of a lightweight dummy data object 
 4. **Utils Generation** (optional): Adds per-iteration index/progress attributes
 5. **Output**: Produces N data entries for loop consumption
 
-### Usage Notes
+#### Usage Notes
 
 - **Loop Control**: This node is primarily used to drive loop nodes when you need a specific number of iterations regardless of input data.
 - **Lightweight**: The dummy data is minimal - all iterations reference the same underlying object to minimize memory.

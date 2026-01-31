@@ -20,7 +20,7 @@ This tangent factory computes tangents by blending the incoming direction (from 
 5. **Scaling Application**: Applies arrive and leave scale factors to the tangent vectors
 6. **Tangent Output**: Returns scaled arrive and leave tangents (both in the same direction)
 
-### Usage Notes
+#### Usage Notes
 
 - **Bisector Behavior**: The averaged direction bisects the angle between incoming and outgoing path segments, creating smooth transitions even at sharp corners.
 - **Symmetric Tangents**: Both arrive and leave tangents point in the same direction, ensuring symmetric curvature around each point.

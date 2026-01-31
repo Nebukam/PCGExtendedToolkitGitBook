@@ -20,7 +20,7 @@ This node generates Globally Unique Identifiers (GUIDs) for every point in a col
 5. **Attribute Writing**: Writes the GUID value to the point's attribute
 6. **Output**: Produces point collection with GUID attribute on every point
 
-### Usage Notes
+#### Usage Notes
 
 - **Determinism**: GUIDs are deterministic - same inputs (position, seed, index, etc.) produce the same GUID every time.
 - **Integer vs String**: Integer GUIDs are more compact and faster to compare; String GUIDs are human-readable and easier to debug.

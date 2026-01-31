@@ -19,7 +19,7 @@ This node expands or contracts paths by a specified distance using the Clipper2 
 4. **Style Corners/Ends**: Corner joints and path endpoints are shaped according to the selected join and end type settings.
 5. **Unproject Results**: Resulting paths are transformed back to 3D space with interpolated attributes.
 
-### Usage Notes
+#### Usage Notes
 
 - **Negative Offset**: Negative offset values contract paths inward. Very large negative values may cause paths to disappear or invert.
 - **Multiple Iterations**: With iterations > 1, multiple offset rings are generated. The offset is applied cumulatively, so iteration 2 is offset from iteration 1, not from the original.

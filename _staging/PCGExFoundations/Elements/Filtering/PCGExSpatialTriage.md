@@ -19,7 +19,7 @@ This node classifies point collections by testing their bounding boxes against a
 4. **Classification**: Determines if collection is Inside, Touching, or Outside
 5. **Output Routing**: Routes collection to the appropriate output pin
 
-### Usage Notes
+#### Usage Notes
 
 - **Primary Use Case**: Partition-based workflows where you need to determine which data is uniquely owned by a partition (Inside), which crosses partition boundaries (Touching), and which is irrelevant (Outside).
 - **Performance**: Very fast box-box intersection tests make this suitable for large-scale spatial filtering.

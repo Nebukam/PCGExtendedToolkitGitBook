@@ -18,7 +18,7 @@ This provider node creates a configured blend operation that defines how attribu
 3. **Factory Creation**: Creates a UPCGExBlendOpFactory instance configured with these settings.
 4. **Output to Blender**: The factory is passed to an Attribute Blender node which executes the blend operation on actual point data.
 
-### Usage Notes
+#### Usage Notes
 
 - **Operand B Reuse**: If "Use Operand B" is disabled, the blend operation uses Operand A's input for both sides. This is useful for modes like "Copy" where you only need one source.
 - **Output Modes**: "Same as A" writes results back to Operand A's attribute, while "New" creates a fresh attribute. "Transient" creates a temporary attribute available only during the current operation.

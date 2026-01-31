@@ -18,7 +18,7 @@ This utility node removes all persistent debug drawing elements from the editor 
 3. **Passthrough**: Forwards input data to output unchanged
 
 
-### Usage Notes
+#### Usage Notes
 
 - **When to Use**: Place this node before Draw Attributes nodes when you want to start with a clean viewport, or after debug-heavy sections to prevent visual clutter.
 - **Performance**: Flushing debug lines is a lightweight operation with minimal performance impact.

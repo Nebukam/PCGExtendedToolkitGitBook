@@ -20,7 +20,7 @@ This tangent factory calculates tangents based on each point's transform rotatio
 5. **Tangent Assignment**: Sets both arrive and leave tangents to the inverted direction
 6. **Scaling Application**: Applies arrive and leave scale factors to the tangent vectors
 
-### Usage Notes
+#### Usage Notes
 
 - **Transform-Based**: Unlike neighbor-based methods, this approach uses each point's rotation, making it independent of point positions or spacing.
 - **Uniform Direction**: All points use their own transform's selected axis, meaning tangent directions can vary per point based on individual rotations.

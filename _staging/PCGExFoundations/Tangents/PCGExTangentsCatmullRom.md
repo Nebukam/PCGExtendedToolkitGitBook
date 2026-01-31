@@ -19,7 +19,7 @@ This tangent factory implements Catmull-Rom spline tangent calculation, a classi
 4. **Scaling Application**: Applies arrive and leave scale factors to the tangent vectors
 5. **Tangent Output**: Returns scaled arrive and leave tangents (both in the same direction)
 
-### Usage Notes
+#### Usage Notes
 
 - **Symmetric Tangents**: Unlike some tangent methods, Catmull-Rom produces parallel arrive and leave tangents, creating symmetric curvature around each point.
 - **C1 Continuity**: The method guarantees smooth first derivatives across the curve, meaning no sudden direction changes at control points.

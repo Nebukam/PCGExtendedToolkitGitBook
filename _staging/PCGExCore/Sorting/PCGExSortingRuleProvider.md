@@ -22,7 +22,7 @@ The Sorting Rule provider creates factory data that defines how point collection
 5. **Sort Execution**: Sort Points uses rule(s) to order point collections
 6. **Multi-Rule Resolution**: When multiple rules present, higher priority determines order first
 
-### Usage Notes
+#### Usage Notes
 
 - **Single vs Multi-Rule**: Use one rule for simple sorting, multiple rules for hierarchical ordering
 - **Priority Matters**: When values are equal in higher-priority rule, next rule determines order

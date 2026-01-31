@@ -20,7 +20,7 @@ UPCGExSubSystem is a tickable world subsystem that provides centralized infrastr
 5. **Resource Pooling**: Shared index buffer reduces allocation overhead
 6. **Cleanup**: Deinitializes when world unloads, releasing resources
 
-### Usage Notes
+#### Usage Notes
 
 - **World Singleton**: One instance per UWorld, accessed via `GetInstance(World)` or `GetSubsystemForCurrentWorld()`
 - **Thread Safety**: Uses read-write locks for subsystem state, index buffer, and event beacons

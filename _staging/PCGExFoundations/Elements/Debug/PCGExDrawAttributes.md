@@ -22,7 +22,7 @@ This debug node renders attribute values as visual debug elements in the editor 
 5. **Debug Drawing**: Renders debug shapes in viewport using engine debug draw API
 6. **Per-Point Processing**: Draws debug elements for each point in the collection
 
-### Usage Notes
+#### Usage Notes
 
 - **Performance**: Debug drawing is intended for editor use only and may impact performance with large point counts.
 - **Clearing Debug Lines**: Always toggle debug drawing OFF (D key) before disabling the node (E key) to avoid persistent debug lines cluttering the viewport.

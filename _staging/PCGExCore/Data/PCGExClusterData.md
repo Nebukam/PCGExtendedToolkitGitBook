@@ -96,7 +96,7 @@ Typical Cluster Pipeline:
    [Processed Cluster] → [Points/Paths/Attributes]
 ```
 
-### Usage Notes
+#### Usage Notes
 
 - **Paired Data**: Nodes and edges are typically used together - edges reference nodes by index, so both datasets must be present and synchronized.
 - **Cluster Binding**: Edge data maintains a bound cluster reference for efficient topology queries during operations.

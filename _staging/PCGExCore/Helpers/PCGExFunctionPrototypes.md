@@ -19,7 +19,7 @@ UPCGExFunctionPrototypes is a utility class that defines function signature prot
 4. **Match Collection**: Return array of validated functions ready for invocation
 5. **Safe Invocation**: Call validated functions knowing signatures match
 
-### Usage Notes
+#### Usage Notes
 
 - **Blueprint Function Library**: Extends UBlueprintFunctionLibrary for Blueprint accessibility
 - **Prototype Pattern**: Prototypes are never executed - they serve as signature templates

@@ -19,7 +19,7 @@ This node waits for PCG Components on referenced actors to complete their genera
 4. **Wait for Completion**: Monitors components until generation completes or timeout is reached.
 5. **Stage Output Data**: Collects generated data from components and routes it to matching output pins based on pin labels from the template graph.
 
-### Usage Notes
+#### Usage Notes
 
 - **Template Matching**: When `Must Match Template` is enabled, only components using the exact same graph instance are considered. This ensures you collect data from the expected graph.
 - **Actor References**: The referenced actors must exist in the world. Use `Wait for Missing Actors` with a timeout if actors may spawn dynamically.

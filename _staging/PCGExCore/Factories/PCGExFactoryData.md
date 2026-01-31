@@ -131,7 +131,7 @@ AddDataDependency(InData):
 Dependencies ensure proper loading and cleanup.
 ```
 
-### Usage Notes
+#### Usage Notes
 
 **Abstract Base**: UPCGExFactoryData cannot be instantiated - always use concrete derived classes (filter factories, heuristic factories, etc.).
 

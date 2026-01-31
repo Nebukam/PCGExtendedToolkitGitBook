@@ -16,7 +16,7 @@ This tangent factory produces zero-length tangents for all points, eliminating c
 1. **Tangent Assignment**: Sets both arrive and leave tangents to (0, 0, 0)
 2. **Output**: Returns zero vectors regardless of point position, rotation, or neighbors
 
-### Usage Notes
+#### Usage Notes
 
 - **Linear Interpolation**: Zero tangents produce straight-line segments between points with no curve smoothing.
 - **Sharp Corners**: All points become corner vertices rather than smooth curve points.

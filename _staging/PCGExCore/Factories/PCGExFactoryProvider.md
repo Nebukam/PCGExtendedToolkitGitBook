@@ -32,7 +32,7 @@ Factory Provider Pattern:
 5. **Main Thread Execution**: Providers run on main thread for thread safety
 6. **Param Output**: Factory data output as PCG param data type
 
-### Usage Notes
+#### Usage Notes
 
 - **Abstract Base**: Cannot be instantiated directly - always use concrete provider implementations (Filter Provider, Heuristic Provider, etc.)
 - **Main Thread Only**: Providers execute on the main thread (`CanExecuteOnlyOnMainThread` returns true)

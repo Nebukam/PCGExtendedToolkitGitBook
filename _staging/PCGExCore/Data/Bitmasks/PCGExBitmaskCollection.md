@@ -20,7 +20,7 @@ A Bitmask Collection is a data asset that serves as a library of named bitmask c
 5. **Identifier Lookup**: Nodes query the collection by identifier name to retrieve bitmasks
 6. **Direction Usage**: Optional direction vectors enable directional adjacency or orientation-based operations
 
-### Usage Notes
+#### Usage Notes
 
 - **Reusability**: Collections allow defining bitmasks once and using them across multiple nodes and graphs.
 - **Centralized Management**: Changing a bitmask in the collection updates it everywhere it's referenced.

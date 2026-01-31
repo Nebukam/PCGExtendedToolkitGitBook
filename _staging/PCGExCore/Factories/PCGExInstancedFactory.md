@@ -43,7 +43,7 @@ Provider Factory (Graph Flow):
 6. **Override Resolution**: Settings overrides loaded from optional override pins
 7. **Operation Creation**: Factory creates runtime operation objects for execution
 
-### Usage Notes
+#### Usage Notes
 
 - **Abstract Base**: Cannot be used directly - always extend with concrete implementations
 - **DefaultToInstanced**: Automatically marked for instancing in property system

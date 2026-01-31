@@ -19,7 +19,7 @@ This node destroys actors that were previously spawned by the PCG component exec
 4. **Cleanup Execution**: Destroys queued actors
 5. **Output**: Passes through input point data unchanged
 
-### Usage Notes
+#### Usage Notes
 
 - **Safety**: This node only destroys actors that were spawned by the PCG component currently executing the graph. Manually-placed actors or actors from other PCG components are protected from accidental deletion.
 - **Regeneration Workflow**: Commonly used when regenerating procedural content - destroy old actors before spawning new ones.

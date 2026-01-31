@@ -18,7 +18,7 @@ This node performs 2D boolean operations on paths using the Clipper2 library. It
 3. **Handle Fill Rule**: The fill rule determines how overlapping and self-intersecting regions are treated during the operation.
 4. **Unproject Results**: Resulting paths are transformed back to 3D space, blending attributes from source points.
 
-### Usage Notes
+#### Usage Notes
 
 - **Union without Operands**: Union mode combines all input paths into a single merged shape. No separate operand input is needed.
 - **Operand Pin**: For Intersection, Difference, and XOR operations, enable "Use Operand Pin" to provide a second set of paths as operands. Otherwise, all inputs are treated as a single group.

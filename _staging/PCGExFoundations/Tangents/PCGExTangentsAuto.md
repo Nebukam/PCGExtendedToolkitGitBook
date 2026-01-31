@@ -20,7 +20,7 @@ This tangent factory computes arrive and leave tangents for each point based on 
 5. **Scaling Application**: Applies arrive and leave scale factors to the tangent vectors
 6. **Tangent Output**: Returns scaled arrive and leave tangents for the point
 
-### Usage Notes
+#### Usage Notes
 
 - **Neighbor Dependency**: This method requires valid previous and next points. Edge points (first and last in sequence) may receive special handling depending on the parent node configuration.
 - **Geometric Basis**: Tangents are purely geometric - derived from point positions without considering transforms, velocities, or other attributes.
