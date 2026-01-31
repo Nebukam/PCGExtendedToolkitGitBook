@@ -25,8 +25,8 @@ This match rule establishes correspondences between data elements by comparing a
 
 ## Behavior
 
+#### Numeric Comparison Examples:
 ```
-Numeric Comparison Examples:
 Candidate Key = 5, Target Value = 5
 StrictlyEqual → Match ✓
 
@@ -37,8 +37,9 @@ StrictlyEqual → No Match ✗
 Candidate Key = 10, Target Value = 5
 GreaterThan → Match ✓
 ```
+
+#### String Comparison Examples:
 ```
-String Comparison Examples:
 Candidate Name = "Apple", Target Name = "Apple"
 StrictlyEqual → Match ✓
 
@@ -48,8 +49,9 @@ StrictlyEqual → No Match ✗ (case-sensitive)
 Candidate Tag = "fruit", Target Tags = "fruit,vegetable"
 Contains → Match ✓
 ```
+
+#### Operand Swap:
 ```
-Operand Swap:
 Normal: Candidate.Key > Target.Value
 Swapped: Target.Value > Candidate.Key
 (Useful for reversing comparison direction)

@@ -150,7 +150,8 @@ Collections are tested against branch filters using the filter manager system:
 ## Inputs
 
 | Pin | Type | Description |
-|-----|------|-------------|\n| **In** | Point Data | Point collections to route |
+|-----|------|-------------|
+| **In** | Point Data | Point collections to route |
 | **→ 0** | Filter Factories | Filters for branch 0 |
 | **→ 1** | Filter Factories | Filters for branch 1 |
 | **→ N** | Filter Factories | Filters for branch N (based on Num Branches) |

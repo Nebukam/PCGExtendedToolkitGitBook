@@ -328,7 +328,8 @@ Default: `"Default"`
 ## Inputs
 
 | Pin | Type | Description |
-|-----|------|-------------|\n| **In** | Any | Input data collections to route based on @Data attribute |
+|-----|------|-------------|
+| **In** | Any | Input data collections to route based on @Data attribute |
 
 ## Outputs
 

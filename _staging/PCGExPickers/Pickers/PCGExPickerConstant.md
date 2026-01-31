@@ -23,9 +23,8 @@ This picker selects a single constant index from a collection. It's the simplest
 
 ## Behavior
 
+#### Collection of 10 points (indices 0-9):
 ```
-Collection of 10 points (indices 0-9):
-
 Discrete Mode:
 DiscreteIndex: 0  → Selects index 0 (first item)
 DiscreteIndex: 5  → Selects index 5 (sixth item)
@@ -33,17 +32,17 @@ DiscreteIndex: 9  → Selects index 9 (last item)
 DiscreteIndex: -1 → Selects index 9 (last item)
 DiscreteIndex: -3 → Selects index 7 (third from end)
 ```
-```
-Normalized Mode (0.0 to 1.0):
 
+#### Normalized Mode (0.0 to 1.0):
+```
 RelativeIndex: 0.0  → Selects index 0 (0% = first)
 RelativeIndex: 0.5  → Selects index 5 (50% = middle)
 RelativeIndex: 1.0  → Selects index 9 (100% = last)
 RelativeIndex: 0.25 → Selects index 2 or 3 (depends on TruncateMode)
 ```
-```
-Out-of-Bounds with Safety:
 
+#### Out-of-Bounds with Safety:
+```
 DiscreteIndex: 15 (collection only has 10)
 - Safety = Ignore: No selection
 - Safety = Clamp: Selects index 9 (clamped to max)

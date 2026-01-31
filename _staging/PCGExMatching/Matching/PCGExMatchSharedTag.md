@@ -29,8 +29,8 @@ This match rule establishes correspondences between data elements based on their
 
 ## Behavior
 
+#### Mode: Specific Tag (TagName = "Fruit")
 ```
-Mode: Specific Tag (TagName = "Fruit")
 Target Tags: ["Fruit", "Red", "Sweet"]
 Candidate Tags: ["Fruit", "Organic"]
 → Match ✓ (both have "Fruit")
@@ -39,8 +39,9 @@ Target Tags: ["Vegetable", "Green"]
 Candidate Tags: ["Fruit", "Organic"]
 → No Match ✗ (target doesn't have "Fruit")
 ```
+
+#### Mode: Any Shared
 ```
-Mode: Any Shared
 Target Tags: ["A", "B", "C"]
 Candidate Tags: ["B", "D", "E"]
 → Match ✓ (share "B")
@@ -49,8 +50,9 @@ Target Tags: ["A", "B", "C"]
 Candidate Tags: ["D", "E", "F"]
 → No Match ✗ (no shared tags)
 ```
+
+#### Mode: All Shared
 ```
-Mode: All Shared
 Target Tags: ["A", "B", "C", "D"]
 Candidate Tags: ["B", "C"]
 → Match ✓ (all candidate tags exist in target)
@@ -59,8 +61,9 @@ Target Tags: ["A", "B"]
 Candidate Tags: ["B", "C"]
 → No Match ✗ (target missing "C")
 ```
+
+#### Value Matching:
 ```
-Value Matching:
 With bDoValueMatch = true:
 Target: Tag "Type" = "Apple" (Type:Apple)
 Candidate: Tag "Type" = "Apple" (Type:Apple)
@@ -70,8 +73,9 @@ Target: Tag "Type" = "Apple" (Type:Apple)
 Candidate: Tag "Type" = "Orange" (Type:Orange)
 → No Match ✗ (name matches but value doesn't)
 ```
+
+#### Attribute-Based Tag Name:
 ```
-Attribute-Based Tag Name:
 Candidate[0] has TagNameAttr = "Category"
 Candidate[1] has TagNameAttr = "Region"
 → Each candidate checks for its specific tag

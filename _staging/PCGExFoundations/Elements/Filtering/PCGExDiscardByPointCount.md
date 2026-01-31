@@ -21,25 +21,23 @@ This node removes point collections that fall outside a specified point count ra
 
 ## Behavior
 
+#### Remove Below Only (bRemoveBelow = true, MinPointCount = 10):
 ```
-Remove Below Only (bRemoveBelow = true, MinPointCount = 10):
-
 Collection A: 5 points → Discarded (below 10)
 Collection B: 10 points → Kept (>= 10)
 Collection C: 15 points → Kept (>= 10)
 Collection D: 100 points → Kept (>= 10)
 ```
+#### Remove Above Only (bRemoveAbove = true, MaxPointCount = 50):
 ```
-Remove Above Only (bRemoveAbove = true, MaxPointCount = 50):
-
 Collection A: 5 points → Kept (<= 50)
 Collection B: 50 points → Kept (<= 50)
 Collection C: 75 points → Discarded (> 50)
 Collection D: 100 points → Discarded (> 50)
 ```
-```
-Remove Both (bRemoveBelow = true, bRemoveAbove = true):
 
+#### Remove Both (bRemoveBelow = true, bRemoveAbove = true):
+```
 MinPointCount = 10, MaxPointCount = 50
 
 Collection A: 5 points → Discarded (< 10)
@@ -51,17 +49,17 @@ Collection F: 100 points → Discarded (> 50)
 
 Only collections with 10-50 points are kept
 ```
-```
-Neither Filter Enabled:
 
+#### Neither Filter Enabled:
+```
 bRemoveBelow = false
 bRemoveAbove = false
 
 All collections pass through (no filtering)
 ```
-```
-Empty Outputs Handling:
 
+#### Empty Outputs Handling:
+```
 Input: 10 collections
 After filtering: 7 kept, 3 discarded
 
@@ -207,7 +205,8 @@ Result: Collections with >1000 points discarded
 ## Inputs
 
 | Pin | Type | Description |
-|-----|------|-------------|\n| **In** | Point Data | Point collections to filter |
+|-----|------|-------------|
+| **In** | Point Data | Point collections to filter |
 
 ## Outputs
 

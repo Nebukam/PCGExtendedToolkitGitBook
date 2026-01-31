@@ -26,39 +26,38 @@ This picker reads range values from one or more attributes and generates index s
 
 ## Behavior
 
+#### Example with 1 attribute on a collection of 20 points:
 ```
-Example with 1 attribute on a collection of 20 points:
-
 Attribute values (FVector2):
 
 [(2, 5), (10, 12), (15, 17)]
 ```
-```
-Discrete Mode:
 
+#### Discrete Mode:
+```
 Range (2, 5):   {2, 3, 4, 5}
 Range (10, 12): {10, 11, 12}
 Range (15, 17): {15, 16, 17}
 Combined picks: {2, 3, 4, 5, 10, 11, 12, 15, 16, 17}
 ```
-```
-Normalized Mode (0-1 values):
 
+#### Normalized Mode (0-1 values):
+```
 Range (0.1, 0.25): 10% to 25% of 20 points → {2, 3, 4, 5}
 Range (0.5, 0.6):  50% to 60% → {10, 11, 12}
 Range (0.75, 0.85): 75% to 85% → {15, 16, 17}
 Combined: {2, 3, 4, 5, 10, 11, 12, 15, 16, 17}
 ```
-```
-Overlapping Ranges:
 
+#### Overlapping Ranges:
+```
 [(2, 5), (4, 8)]
 Expanded: {2, 3, 4, 5} ∪ {4, 5, 6, 7, 8}
 Result: {2, 3, 4, 5, 6, 7, 8} (deduplicated)
 ```
-```
-Negative Indices (20 points):
 
+#### Negative Indices (20 points):
+```
 Range (-5, -1) = Range (15, 19)
 Picks: {15, 16, 17, 18, 19} (last 5 items)
 ```

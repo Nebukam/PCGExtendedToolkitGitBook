@@ -17,23 +17,31 @@ This utility node removes all persistent debug drawing elements from the editor 
 2. **Flush Command**: Issues viewport clear command for persistent debug lines
 3. **Passthrough**: Forwards input data to output unchanged
 
+
+### Usage Notes
+
+- **When to Use**: Place this node before Draw Attributes nodes when you want to start with a clean viewport, or after debug-heavy sections to prevent visual clutter.
+- **Performance**: Flushing debug lines is a lightweight operation with minimal performance impact.
+- **Editor Only**: Debug drawing only affects editor viewports and has no effect in Play mode or builds.
+
 ## Behavior
 
+#### Before Flush:
 ```
-Before Flush:
 Viewport contains debug lines from previous nodes:
 - Direction vectors from DrawAttributes node
 - Connection lines from pathfinding visualization
 - Sphere markers from position debugging
 ```
+
+#### After Flush Debug:
 ```
-After Flush Debug:
 All persistent debug lines cleared from viewport
 Viewport is clean for new debug visualizations
 ```
-```
-Typical Usage Pattern:
 
+#### Typical Usage Pattern:
+```
 [Data Processing]
   ↓
 [Draw Attributes] → Debug lines appear
@@ -77,18 +85,11 @@ Default: `Magenta (1.0, 0.0, 1.0, 1.0)`
 
 </details>
 
-## Usage Notes
-
-**When to Use**: Place this node before Draw Attributes nodes when you want to start with a clean viewport, or after debug-heavy sections to prevent visual clutter.
-
-**Performance**: Flushing debug lines is a lightweight operation with minimal performance impact.
-
-**Editor Only**: Debug drawing only affects editor viewports and has no effect in Play mode or builds.
-
 ## Inputs
 
 | Pin | Type | Description |
-|-----|------|-------------|\n| **In** | Any | Input data to pass through (accepts any PCG data type) |
+|-----|------|-------------|
+| **In** | Any | Input data to pass through (accepts any PCG data type) |
 
 ## Outputs
 

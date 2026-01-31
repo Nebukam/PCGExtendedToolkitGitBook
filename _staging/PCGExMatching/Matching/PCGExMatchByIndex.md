@@ -28,22 +28,24 @@ This match rule establishes correspondences between data elements based on their
 
 ## Behavior
 
-```
 Source Mode Examples:
 
-Target Mode:
+#### Target Mode:
+```
 Target[0] has IndexAttr=5 → Matches Candidate[5]
 Target[1] has IndexAttr=2 → Matches Candidate[2]
 Target[2] has IndexAttr=0 → Matches Candidate[0]
+```
 
-Candidate Mode:
+#### Candidate Mode:
+```
 Candidate[0] has IndexAttr=3 → Matches Target[3]
 Candidate[1] has IndexAttr=1 → Matches Target[1]
 Candidate[2] has IndexAttr=4 → Matches Target[4]
 ```
-```
-Index Safety Examples (Candidate has 5 elements [0-4]):
 
+#### Index Safety Examples (Candidate has 5 elements [0-4]):
+```
 Index=7 with Tile:   7 % 5 = 2 → Matches Candidate[2]
 Index=7 with Clamp:  min(7, 4) = 4 → Matches Candidate[4]
 Index=7 with Ignore: Out of range → No Match

@@ -52,6 +52,9 @@ One-line description from PCGEX_NODE_INFOS.
 2. **Step**: Description
 3. **Step**: Description
 
+### Usage Notes (if applicable)
+see "Usage Notes (Optional Section)" below
+
 ## Behavior
 
 [ASCII diagram or table showing input → output transformation]
@@ -244,5 +247,62 @@ Use these icons based on node type:
 - `puzzle-piece` - Sub-nodes/factories/providers
 - `mountain` - Terrain/gradient related
 - `cog` - Utility/configuration nodes
+
+## Usage Notes (Optional Section)
+
+Include a Usage Notes section when the node has practical considerations that aren't obvious from settings alone. This section bridges the gap between "what the settings are" and "how to actually use this effectively."
+
+### When to Include
+
+Add Usage Notes when any of these apply:
+- **Primary purpose clarifications** - What the node is fundamentally designed for
+- **Technical implementation details** - Memory behavior, caching, performance characteristics
+- **Compatibility requirements** - How it interacts with other systems or nodes
+- **Important constraints** - Requirements, limitations, or prerequisites
+- **Edge case behaviors** - Special handling for first/last points, empty inputs, out-of-range indices
+- **Best practices** - Recommended usage patterns or approaches
+- **Common gotchas** - Non-obvious behaviors that might surprise users
+
+### When to Skip
+
+Skip this section if:
+- All practical information is already covered in Overview and Settings descriptions
+- The node behavior is self-explanatory from its settings alone
+- You would be repeating information already stated elsewhere
+
+### Format
+
+```markdown
+#### Usage Notes
+
+- **Key Concept**: 1-2 sentence explanation of the practical consideration.
+- **Another Concept**: Brief clarification of non-obvious behavior or requirement.
+- **Technical Detail**: Important implementation detail that affects how users should approach the node.
+```
+
+### Writing Style
+
+- **Lead with bolded keyword** - The concept name comes first in bold
+- **Keep concise** - Each note should be 1-2 sentences maximum
+- **Focus on practical impact** - "What you need to know" rather than abstract theory
+- **Use concrete examples** - Reference specific scenarios when helpful
+- **Avoid duplication** - Don't repeat settings documentation
+- **Order by importance** - Most fundamental concepts first, edge cases last
+
+### Example Topics
+
+Real examples from existing documentation:
+
+- `**Determinism**: GUIDs are reproducible when uniqueness factors remain constant`
+- `**Neighbor Dependency**: This method requires valid previous and next points`
+- `**Tag Priority**: In Strict mode, collections with multiple matching tags are assigned to the group corresponding to their highest-priority tag`
+- `**Empty Priorities**: If Resolution Priorities is empty, tag priority is determined by discovery order (non-deterministic)`
+- `**Lightweight**: The dummy data is minimal - all iterations reference the same underlying object to minimize memory`
+- `**C1 Continuity**: The method guarantees smooth first derivatives across the curve`
+- `**Symmetric Tangents**: Unlike some tangent methods, Catmull-Rom produces parallel arrive and leave tangents`
+
+### Placement
+
+Usage Notes should appear **after How it works** and **before Behavior** in the document structure, as shown in the template above.
 
 Now proceed with your assigned task.

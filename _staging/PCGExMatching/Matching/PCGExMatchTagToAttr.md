@@ -28,8 +28,8 @@ This match rule establishes correspondences by comparing tag values from candida
 
 ## Behavior
 
+#### Basic Tag-to-Attribute Match:
 ```
-Basic Tag-to-Attribute Match:
 Candidate has Tag "Category" = "Fruit"
 Target has Attribute "Type" = "Fruit"
 → Match ✓ (tag value equals attribute value)
@@ -38,36 +38,41 @@ Candidate has Tag "Category" = "Vegetable"
 Target has Attribute "Type" = "Fruit"
 → No Match ✗ (values don't match)
 ```
+
+#### Name-Only Match (bDoValueMatch = false):
 ```
-Name-Only Match (bDoValueMatch = false):
 Candidate has Tag "Category" (any value)
 → Match ✓ (tag exists, value not checked)
 
 Candidate doesn't have Tag "Category"
 → No Match ✗ (tag doesn't exist)
 ```
+
+#### Numeric Comparison:
 ```
-Numeric Comparison:
 Candidate Tag "Score" = "85"
 Target Attribute "Threshold" = 80
 Comparison = GreaterThan
 → Match ✓ (85 > 80)
 ```
+
+#### String Comparison:
 ```
-String Comparison:
 Candidate Tag "Region" = "North_America"
 Target Attribute "Filter" = "North"
 Comparison = StartsWith
 → Match ✓ ("North_America" starts with "North")
 ```
+
+#### Name Match Modes:
 ```
-Name Match Modes:
 Equals: Tag name must exactly match TagName
 Contains: Tag name contains TagName substring
 StartsWith/EndsWith: Tag name position matching
 ```
+
+#### Attribute-Based Tag Name:
 ```
-Attribute-Based Tag Name:
 Candidate[0] has TagNameAttr = "Priority"
   Looks for Tag "Priority" on Candidate[0]
 Candidate[1] has TagNameAttr = "Status"

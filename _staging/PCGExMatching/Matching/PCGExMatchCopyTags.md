@@ -23,9 +23,8 @@ The key behavior is that this rule has a side effect - it modifies candidate dat
 
 ## Behavior
 
+#### Match and Copy Example:
 ```
-Match and Copy Example:
-
 Before Match:
   Target[0]:    Tags = ["Fruit", "Red", "Sweet"]
   Candidate[0]: Tags = ["Organic"]
@@ -37,14 +36,16 @@ After Successful Match:
 If No Match:
   Candidate retains original tags only
 ```
+
+#### Strictness (Any vs All):
 ```
-Strictness (Any vs All):
 When used in contexts with multiple potential matches:
 - Any: First successful match copies its tags
 - All: All matched targets' tags are copied (accumulates)
 ```
+
+#### Invert Behavior:
 ```
-Invert Behavior:
 With bInvert = true:
 - Tags are copied when the match would normally FAIL
 - Inverts the copying logic

@@ -36,6 +36,7 @@ Output (bInvert = true):
 Kept: Points 0, 2, 4, 6, 8, 9 (6 points)
 Discarded: Points 1, 3, 5, 7 (4 points)
 ```
+
 #### Multiple Pickers (Combined):
 ```
 Picker A: Indices [1, 3, 5]
@@ -55,6 +56,7 @@ bOutputDiscardedPoints = true:
 - Out pin: Kept points
 - Discarded pin: Discarded points (separate dataset)
 ```
+
 #### Empty Outputs:
 ```
 Collection A: 10 points, picker selects all → Output has 10 points
@@ -154,7 +156,8 @@ Multiple pickers can be connected, and their selected indices are combined (unio
 ## Inputs
 
 | Pin | Type | Description |
-|-----|------|-------------|\n| **In** | Point Data | Point collections to filter |
+|-----|------|-------------|
+| **In** | Point Data | Point collections to filter |
 | **Pickers** | Picker Factories | Index selection configurations |
 
 ## Outputs

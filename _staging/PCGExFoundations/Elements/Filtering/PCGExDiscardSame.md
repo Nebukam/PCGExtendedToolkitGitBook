@@ -380,7 +380,8 @@ Sort direction when Sort Input Values = true.
 ## Inputs
 
 | Pin | Type | Description |
-|-----|------|-------------|\n| **In** | Point Data | Point collections to deduplicate |
+|-----|------|-------------|
+| **In** | Point Data | Point collections to deduplicate |
 
 ## Outputs
 

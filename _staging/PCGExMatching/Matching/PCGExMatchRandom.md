@@ -28,40 +28,44 @@ Each match test generates a new random value, making the matching stochastic whi
 
 ## Behavior
 
+#### Threshold Examples (with RandomSeed = 42):
 ```
-Threshold Examples (with RandomSeed = 42):
-
 Threshold = 0.0:  Never matches (0% probability)
 Threshold = 0.25: Matches ~25% of the time
 Threshold = 0.5:  Matches ~50% of the time (default)
 Threshold = 0.75: Matches ~75% of the time
 Threshold = 1.0:  Always matches (100% probability)
 ```
+
+#### Random Value vs Threshold:
 ```
-Random Value vs Threshold:
 Random Value = 0.3, Threshold = 0.5 → 0.3 < 0.5 → Match ✓
 Random Value = 0.7, Threshold = 0.5 → 0.7 >= 0.5 → No Match ✗
 ```
+
+#### Inverted Threshold:
 ```
-Inverted Threshold:
 With bInvertThreshold = true:
 Random Value = 0.3, Threshold = 0.5 → 0.3 >= 0.5 → No Match ✗
 Random Value = 0.7, Threshold = 0.5 → 0.7 >= 0.5 → Match ✓
 (Effectively inverts the probability)
 ```
+
+#### Attribute-Based Threshold:
 ```
-Attribute-Based Threshold:
 Candidate[0] has Threshold = 0.9 → High match probability
 Candidate[1] has Threshold = 0.1 → Low match probability
 Candidate[2] has Threshold = 0.5 → Medium match probability
 ```
+
+#### Deterministic Randomness:
 ```
-Deterministic Randomness:
 Same RandomSeed always produces the same sequence of random
 matches, allowing reproducible stochastic matching.
 ```
+
+#### Multiple Base Inversions:
 ```
-Multiple Base Inversions:
 - bInvertThreshold: Inverts the probability (high becomes low)
 - bInvert (inherited): Inverts the final match result
 - Combined: Both inversions can be applied together

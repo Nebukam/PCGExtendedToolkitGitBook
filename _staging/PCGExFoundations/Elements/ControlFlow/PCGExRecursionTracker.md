@@ -382,7 +382,8 @@ Default: `false`
 ## Inputs
 
 | Pin | Type | Description |
-|-----|------|-------------|\n| **In** | Any | Input data to pass through |
+|-----|------|-------------|
+| **In** | Any | Input data to pass through |
 | **Tracker** (optional) | Param Data | Existing tracker to update (Mode = Update or CreateOrUpdate) |
 | **Tracker Filters** (optional) | Filter Factories | Filters for tracker testing (when Do Additional Data Testing = true) |
 | **Test Data** (optional) | Point Data | Data collections to test against filters |

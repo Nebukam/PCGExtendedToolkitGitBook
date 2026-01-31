@@ -22,6 +22,13 @@ This debug node renders attribute values as visual debug elements in the editor 
 5. **Debug Drawing**: Renders debug shapes in viewport using engine debug draw API
 6. **Per-Point Processing**: Draws debug elements for each point in the collection
 
+### Usage Notes
+
+- **Performance**: Debug drawing is intended for editor use only and may impact performance with large point counts.
+- **Clearing Debug Lines**: Always toggle debug drawing OFF (D key) before disabling the node (E key) to avoid persistent debug lines cluttering the viewport.
+- **Persistent Lines**: This node clears persistent debug lines on execution to prevent accumulation.
+- **Viewport Visibility**: Debug draws only appear in editor viewports, not in Play mode or builds.
+
 ## Behavior
 
 #### Direction Mode (Vectors as Normals):
@@ -405,16 +412,6 @@ Default: `true`
 ⚡ PCG Overridable
 
 </details>
-
-## Usage Notes
-
-**Performance**: Debug drawing is intended for editor use only and may impact performance with large point counts.
-
-**Clearing Debug Lines**: Always toggle debug drawing OFF (D key) before disabling the node (E key) to avoid persistent debug lines cluttering the viewport.
-
-**Persistent Lines**: This node clears persistent debug lines on execution to prevent accumulation.
-
-**Viewport Visibility**: Debug draws only appear in editor viewports, not in Play mode or builds.
 
 ## Inputs
 
