@@ -294,11 +294,8 @@ Skip this section if:
 Real examples from existing documentation:
 
 - `**Determinism**: GUIDs are reproducible when uniqueness factors remain constant`
-- `**Neighbor Dependency**: This method requires valid previous and next points`
-- `**Tag Priority**: In Strict mode, collections with multiple matching tags are assigned to the group corresponding to their highest-priority tag`
 - `**Empty Priorities**: If Resolution Priorities is empty, tag priority is determined by discovery order (non-deterministic)`
 - `**Lightweight**: The dummy data is minimal - all iterations reference the same underlying object to minimize memory`
-- `**C1 Continuity**: The method guarantees smooth first derivatives across the curve`
 - `**Symmetric Tangents**: Unlike some tangent methods, Catmull-Rom produces parallel arrive and leave tangents`
 
 ### Placement
