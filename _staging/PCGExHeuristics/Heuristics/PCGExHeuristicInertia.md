@@ -26,12 +26,15 @@ Path so far: A → B → C (moving East)
 Averaged direction: →
 
 From C, evaluating options:
+
 Edge C→D: → (East, aligned)     Dot = 1.0  High score
 Edge C→E: ↗ (NE, partial)       Dot = 0.7  Medium score
 Edge C→F: ↑ (North, perpendicular) Dot = 0.0  Low score
 Edge C→G: ← (West, opposite)    Dot = -1.0 Very low score
-
+```
+```
 Sample Count Impact:
+
 Samples = 1: Only looks at B→C edge
 Samples = 3: Averages A→B, B→C, and any prior edges
 Higher samples = smoother, more gradual turns

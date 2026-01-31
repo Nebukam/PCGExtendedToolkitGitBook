@@ -28,22 +28,29 @@ This picker selects a contiguous range of indices from a collection. It defines 
 Collection of 10 points (indices 0-9):
 
 Discrete Mode:
+
 Range [2, 5]:    {2, 3, 4, 5}
 Range [0, 9]:    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9} (entire collection)
 Range [7, 7]:    {7} (single item)
 Range [-3, -1]:  {7, 8, 9} (last 3 items)
 Range [3, -2]:   {3, 4, 5, 6, 7, 8} (index 3 to second-to-last)
-
+```
+```
 Normalized Mode (0.0 to 1.0):
+
 Range [0.0, 0.5]:   {0, 1, 2, 3, 4, 5} (first half)
 Range [0.5, 1.0]:   {5, 6, 7, 8, 9} (second half)
 Range [0.25, 0.75]: {2, 3, 4, 5, 6, 7} (middle 50%)
 Range [0.0, 1.0]:   {0, 1, 2, 3, 4, 5, 6, 7, 8, 9} (entire collection)
-
+```
+```
 Auto-Swap (if start > end):
-Range [8, 3] → Sanitized to [3, 8] → {3, 4, 5, 6, 7, 8}
 
+Range [8, 3] → Sanitized to [3, 8] → {3, 4, 5, 6, 7, 8}
+```
+```
 Out-of-Bounds with Safety:
+
 Range [5, 15] (collection only has 10):
 - Safety = Ignore: Generates {5, 6, 7, 8, 9}, skips invalid indices
 - Safety = Clamp: Generates {5, 6, 7, 8, 9} (end clamped to 9)

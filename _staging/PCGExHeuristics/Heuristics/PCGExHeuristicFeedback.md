@@ -25,15 +25,20 @@ This heuristic tracks which nodes and edges have been visited during pathfinding
 
 ```
 Binary Mode (bBinary = true):
+
 Node/Edge Visit Status → Score
 Unvisited              → 0.0
 Visited (any count)    → 1.0
-
+```
+```
 Accumulative Mode (bBinary = false):
+
 Node visits: 0, 1, 2, 3...
 Feedback: 0.0, 0.33, 0.66, 1.0... (scaled by weight factor)
-
+```
+```
 Global vs Local Feedback:
+
 ┌─────────────────────────────────┐
 │ Local (default, parallel-safe): │
 │ Path A: ───●───●───●            │

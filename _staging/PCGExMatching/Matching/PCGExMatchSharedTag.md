@@ -38,7 +38,8 @@ Candidate Tags: ["Fruit", "Organic"]
 Target Tags: ["Vegetable", "Green"]
 Candidate Tags: ["Fruit", "Organic"]
 → No Match ✗ (target doesn't have "Fruit")
-
+```
+```
 Mode: Any Shared
 Target Tags: ["A", "B", "C"]
 Candidate Tags: ["B", "D", "E"]
@@ -47,7 +48,8 @@ Candidate Tags: ["B", "D", "E"]
 Target Tags: ["A", "B", "C"]
 Candidate Tags: ["D", "E", "F"]
 → No Match ✗ (no shared tags)
-
+```
+```
 Mode: All Shared
 Target Tags: ["A", "B", "C", "D"]
 Candidate Tags: ["B", "C"]
@@ -56,17 +58,19 @@ Candidate Tags: ["B", "C"]
 Target Tags: ["A", "B"]
 Candidate Tags: ["B", "C"]
 → No Match ✗ (target missing "C")
-
+```
+```
 Value Matching:
 With bDoValueMatch = true:
-Target: Tag "Type" = "Apple"
-Candidate: Tag "Type" = "Apple"
+Target: Tag "Type" = "Apple" (Type:Apple)
+Candidate: Tag "Type" = "Apple" (Type:Apple)
 → Match ✓ (name AND value match)
 
-Target: Tag "Type" = "Apple"
-Candidate: Tag "Type" = "Orange"
+Target: Tag "Type" = "Apple" (Type:Apple)
+Candidate: Tag "Type" = "Orange" (Type:Orange)
 → No Match ✗ (name matches but value doesn't)
-
+```
+```
 Attribute-Based Tag Name:
 Candidate[0] has TagNameAttr = "Category"
 Candidate[1] has TagNameAttr = "Region"

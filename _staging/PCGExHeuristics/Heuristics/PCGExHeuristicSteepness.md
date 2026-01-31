@@ -30,14 +30,18 @@ Edge A→B: Horizontal (→)       Dot = 0.0  (flat)
 Edge C→D: 45° upward (↗)       Dot = 0.7  (moderate climb)
 Edge E→F: Vertical upward (↑)  Dot = 1.0  (steep climb)
 Edge G→H: 45° downward (↘)     Dot = -0.7 (moderate descent)
-
+```
+```
 Absolute Steepness = true:
+
   A→B: 0.0 (flat)
   C→D: 0.7 (steep)
   E→F: 1.0 (steepest)
   G→H: 0.7 (steep, same as C→D)
-
+```
+```
 Absolute Steepness = false:
+
   A→B: 0.5 (remapped from 0.0)
   C→D: 0.85 (remapped from 0.7, going up)
   E→F: 1.0 (remapped from 1.0, going up)

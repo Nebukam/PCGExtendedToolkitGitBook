@@ -29,17 +29,23 @@ Example with 2 attributes on a collection of 10 points:
 
 Attribute A values: [1, 3, 5]
 Attribute B values: [7, 9]
-
+```
+```
 Discrete Mode:
+
 Combined picks: {1, 3, 5, 7, 9}
 Selected points: indices 1, 3, 5, 7, 9
-
+```
+```
 Normalized Mode (values between 0-1):
+
 Attribute A: [0.1, 0.3, 0.5]  → [1, 3, 5] (10% = index 1, 30% = index 3, etc.)
 Attribute B: [0.7, 0.9]       → [7, 9]
 Selected points: indices 1, 3, 5, 7, 9
-
+```
+```
 Negative Indices (10 points):
+
 Values: [0, -1, -2, 5]
 Resolved: [0, 9, 8, 5] (negative indices count from end)
 ```

@@ -34,12 +34,14 @@ Box A: (0,0,0) to (5,5,5)
 Box B: (3,3,3) to (8,8,8)
 Overlap: (3,3,3) to (5,5,5) = 2×2×2 = 8 cubic units
 → Match ✓
-
+```
+```
 No Overlap:
 Box A: (0,0,0) to (5,5,5)
 Box C: (10,10,10) to (15,15,15)
 → No Match ✗
-
+```
+```
 Expansion Modes:
 Original Box: (0,0,0) to (10,10,10)
 
@@ -55,7 +57,8 @@ Ratio = 50 / 100 = 0.5 (50% of smaller box)
 
 If MinOverlapRatio = 0.3 → Match ✓
 If MinOverlapRatio = 0.8 → No Match ✗
-
+```
+```
 Recursive/Transitive Matching:
 A overlaps B (direct match)
 B overlaps C (direct match)

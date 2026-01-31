@@ -33,8 +33,10 @@ Edge A: → (0°, straight)      Low penalty
 Edge B: ↗ (45°, gentle turn)  Medium penalty
 Edge C: ↑ (90°, right angle)  High penalty
 Edge D: ← (180°, U-turn)      Maximum penalty
-
+```
+```
 Example with Thresholds:
+
 MinAngleThreshold: 15°
 MaxAngleThreshold: 90°
 

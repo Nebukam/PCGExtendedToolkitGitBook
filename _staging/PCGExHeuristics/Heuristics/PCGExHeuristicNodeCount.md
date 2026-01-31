@@ -26,11 +26,15 @@ Scenario: Path from A to Goal
 
 Path 1: A → B → C → Goal (3 hops, 300 units)
 Path 2: A → D → Goal (2 hops, 400 units)
-
+```
+```
 Least Nodes Heuristic:
-Path 2 scores better (fewer hops) even though it's longer in distance.
 
+Path 2 scores better (fewer hops) even though it's longer in distance.
+```
+```
 Shortest Distance Heuristic:
+
 Path 1 scores better (shorter distance) even though it has more hops.
 
 Use Case Examples:

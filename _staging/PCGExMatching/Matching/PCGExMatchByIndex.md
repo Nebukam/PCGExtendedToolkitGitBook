@@ -40,7 +40,8 @@ Candidate Mode:
 Candidate[0] has IndexAttr=3 → Matches Target[3]
 Candidate[1] has IndexAttr=1 → Matches Target[1]
 Candidate[2] has IndexAttr=4 → Matches Target[4]
-
+```
+```
 Index Safety Examples (Candidate has 5 elements [0-4]):
 
 Index=7 with Tile:   7 % 5 = 2 → Matches Candidate[2]

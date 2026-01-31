@@ -24,12 +24,15 @@ This heuristic reads an attribute from either vertices or edges and converts it 
 Input Attribute Values → Normalization → Curve Sampling → Heuristic Score
 
 Example with AutoCurve mode:
+
 Vertex Attribute: [10, 50, 100, 75, 25]
 Auto Min/Max: 10, 100
 Normalized: [0.0, 0.44, 1.0, 0.72, 0.17]
 After Curve: [scores based on curve shape]
-
+```
+```
 Example with Raw mode:
+
 Vertex Attribute: [0.5, 0.8, 0.2]
 Output Scores: [0.5, 0.8, 0.2] (no processing)
 ```
