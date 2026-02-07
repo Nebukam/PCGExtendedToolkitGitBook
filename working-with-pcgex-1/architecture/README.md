@@ -28,6 +28,8 @@ Configure a filter once, use it everywhere. Change one provider, all connected c
 
 This pattern appears throughout PCGEx — filters, probes, heuristics, sorting rules, shape builders, and more. Once you recognize it, the toolkit becomes predictable.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Placeholder caption</p></figcaption></figure>
+
 ### Sub-Nodes
 
 Provider nodes are called **sub-nodes** in PCGEx. They're easy to spot:

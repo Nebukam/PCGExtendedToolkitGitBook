@@ -10,7 +10,7 @@ PCGEx builds on top of Unreal's PCG framework. If you're already comfortable wit
 PCGEx extends PCG — it doesn't replace it. A solid understanding of vanilla PCG makes everything in PCGEx click faster.
 {% endhint %}
 
-\### Procedural Generation Primer
+#### Procedural Generation Primer
 
 If you're new to procedural generation as a discipline:
 
@@ -30,9 +30,11 @@ Recommended resources for learning Unreal's PCG framework:
 Once you have the basics, these channels explore specific techniques and workflows:
 
 * [**Procedural Minds**](https://www.youtube.com/@procedural_minds) — PCG tutorials and procedural tool development
-*   [**Aziel Art**](https://www.youtube.com/@azielarts) — Practical skills for digital artists working with procedural tools
+* [**Aziel Art**](https://www.youtube.com/@azielarts) — Practical skills for digital artists working with procedural tools
 
-    <div data-gb-custom-block data-tag="hint" data-style="success" class="hint hint-success"><p>There's no single "right way" to use PCG. Many approaches lead to the same result — some with better performance or maintainability than others. Explore, experiment, and find what works for your project.</p></div>
+{% hint style="success" %}
+There's no single "right way" to use PCG. Many approaches lead to the same result — some with better performance or maintainability than others. Explore, experiment, and find what works for your project.
+{% endhint %}
 
 #### Community
 
