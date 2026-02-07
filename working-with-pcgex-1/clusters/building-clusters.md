@@ -16,6 +16,8 @@ These methods connect everything at once. They're "shotgun" approaches — fast,
 
 **Delaunay Triangulation** creates triangular mesh-like connectivity. Every point connects to nearby points forming triangles where no point lies inside any triangle's circumcircle.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Random point cloud transformed into Delaunay triangulation showing triangle connectivity</p></figcaption></figure>
+
 Properties:
 
 * Dense connectivity
@@ -23,6 +25,8 @@ Properties:
 * Maximizes minimum angles
 
 **Voronoi Diagram** creates connections between neighboring Voronoi cells. Each cell contains all space closest to one Vtx than any other.
+
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Points with Voronoi cell boundaries, edges connecting adjacent cell centers</p></figcaption></figure>
 
 Properties:
 
@@ -40,6 +44,8 @@ Both Delaunay and Voronoi have 2D and 3D variants. The 2D variants project onto 
 * **Radius**: Connect all points within a distance threshold
 * **Custom**: Probe-defined connection logic
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Points with K-nearest connections (K=3), showing each point connected to exactly 3 others</p></figcaption></figure>
+
 Properties:
 
 * Precise control over connection density
@@ -54,6 +60,8 @@ Grid-based cluster builders create regular connectivity:
 * **8-way**: Cardinals plus diagonals
 * **Custom**: Configurable neighbor patterns
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Grid showing 4-way vs 8-way connectivity patterns</p></figcaption></figure>
+
 Properties:
 
 * Uniform spacing and connectivity
@@ -64,11 +72,15 @@ Properties:
 
 **Mesh to Cluster** extracts mesh topology as cluster connectivity. Vtx appear at mesh vertex positions, Edges follow mesh edges.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Static mesh becoming cluster with same vertex/edge structure</p></figcaption></figure>
+
 This preserves mesh topology exactly and can extract from complex geometry.
 
 ### From Paths
 
 **Paths to Cluster** connects path endpoints to form networks. Path points become Vtx, path segments become Edges, and endpoints can merge when close together.
+
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Separate path segments becoming interconnected cluster at meeting points</p></figcaption></figure>
 
 The merging threshold controls when endpoints connect, turning independent path segments into a navigable network.
 

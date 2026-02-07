@@ -27,15 +27,7 @@ Two ideas will carry you through most of PCGEx:
 
 ### Learning Path
 
-| Section            | What You'll Learn                                                        |
-| ------------------ | ------------------------------------------------------------------------ |
-| Architecture       | The mental model — sub-nodes, provider/consumer pattern, vanilla interop |
-| Paths              | Ordered points, segments, common path operations                         |
-| Clusters           | Vtx + Edges, building and refining connectivity, path interop            |
-| Filters            | The universal condition system — composition, reusability                |
-| Asset Staging      | Collections, distribution, fitting, spawning                             |
-| Pathfinding        | Algorithms, heuristics, cells and regions                                |
-| Additional Systems | Sampling, tensors, topology, shapes, resolvers                           |
+<table data-view="cards"><thead><tr><th>Section</th><th>What You'll Learn</th></tr></thead><tbody><tr><td>Architecture</td><td>The mental model — sub-nodes, provider/consumer pattern, vanilla interop</td></tr><tr><td>Paths</td><td>Ordered points, segments, common path operations</td></tr><tr><td>Clusters</td><td>Vtx + Edges, building and refining connectivity, path interop</td></tr><tr><td>Filters</td><td>The universal condition system — composition, reusability</td></tr><tr><td>Asset Staging</td><td>Collections, distribution, fitting, spawning</td></tr><tr><td>Pathfinding</td><td>Algorithms, heuristics, cells and regions</td></tr><tr><td>Additional Systems</td><td>Sampling, tensors, topology, shapes, resolvers</td></tr></tbody></table>
 
 The sections build on each other. Architecture and filters are foundational — read those first. Paths and clusters are independent of each other but both feed into pathfinding. Asset staging stands alone but is prerequisite for valency.
 

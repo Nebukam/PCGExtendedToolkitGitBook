@@ -14,6 +14,8 @@ Operations fall into several categories: edge removal, Vtx filtering, topology s
 
 **Refine Edges** removes connections based on conditions: edge length thresholds, endpoint attribute conditions, or spatial criteria like crossing bounds or intersecting geometry.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Dense cluster becoming sparse after edge removal</p></figcaption></figure>
+
 Common refinement operations:
 
 * Remove edges longer than a threshold
@@ -25,6 +27,8 @@ This is where a dense Delaunay result turns into the sparse network you actually
 #### Subdividing Edges
 
 **Subdivide Edges** adds Vtx along edges, either by count (N new Vtx per edge) or by distance (one Vtx every X units).
+
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Long edges gaining intermediate Vtx points</p></figcaption></figure>
 
 Subdivision increases resolution along connections: more attachment points, higher pathfinding granularity, and finer control over per-edge operations.
 
@@ -50,6 +54,8 @@ Refinement can mark Vtx as invalid without removing them. Indices remain stable 
 
 **Fuse Clusters** merges close Vtx. Vtx within a threshold merge to one, edges update to reference merged Vtx, and duplicate edges can be removed or preserved.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Cluster with nearly-overlapping Vtx becoming cleaner after fusion</p></figcaption></figure>
+
 #### Bridge Detection
 
 **Find Bridges** identifies edges whose removal would disconnect the cluster. These are structurally critical connections — the load-bearing walls of your network.
@@ -64,6 +70,8 @@ Refinement can mark Vtx as invalid without removing them. Indices remain stable 
 
 **Relax Clusters** moves Vtx toward optimal positions using spring forces, Lloyd relaxation, or custom constraints.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Irregular cluster becoming more evenly spaced after relaxation</p></figcaption></figure>
+
 Relaxation preserves topology (same edges, same connections) but changes positions. More iterations approach equilibrium.
 
 #### Projection
@@ -75,6 +83,8 @@ Move Vtx onto surfaces, snap to grids, or align to geometry: project to landscap
 #### Neighbor Sampling
 
 **Sample Neighbors** computes Vtx attributes from connected neighbors: average of neighbor values, min/max among neighbors, count of neighbors meeting criteria.
+
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Vtx colored by average neighbor attribute value</p></figcaption></figure>
 
 #### Centrality Measures
 

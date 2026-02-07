@@ -38,6 +38,8 @@ Random selection weighted by entry values:
 
 Most common for natural-looking variety where some assets should appear more frequently.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Visual showing three entries with weights 50, 30, 20 as proportional pie chart</p></figcaption></figure>
+
 ### Seed System
 
 Distribution uses PCG's seed system for reproducibility:

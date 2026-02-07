@@ -15,6 +15,8 @@ Heuristics follow the provider/consumer sub-node pattern:
 3. Connect outputs to pathfinding node's Heuristics input
 4. Multiple heuristics combine into a composite score
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Multiple heuristic providers connected to a pathfinding node's Heuristics pin</p></figcaption></figure>
+
 ### What Heuristics Score
 
 Each heuristic evaluates edges and/or nodes and returns a score. Lower scores are generally better (less "cost").

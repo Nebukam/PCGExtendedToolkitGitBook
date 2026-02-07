@@ -45,4 +45,4 @@ The example project includes utility subgraphs that handle boilerplate (consiste
 The example project is only maintained for the latest engine version. Older versions are preserved in git branches but will not reflect the full breadth of available features.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>A few of the feature showcase &#x26; examples available</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>

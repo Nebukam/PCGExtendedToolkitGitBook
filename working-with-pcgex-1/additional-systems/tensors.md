@@ -6,6 +6,8 @@ icon: up-down-left-right
 
 **Tensors give direction to empty space.** Think of them as invisible flow fields — wind, current, magnetic pull — that exist independently of your points. Once a tensor field is defined, any operation can sample it and respond: orient along the flow, prefer edges that follow it, bias distribution toward it.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Tensor field visualization — arrows showing direction and intensity across space</p></figcaption></figure>
+
 ### Effectors
 
 A tensor field is built from **effectors** — sub-nodes that each contribute directional influence. They blend together at sample time, so combining a radial pull with a directional flow creates the kind of organic, curving field that's hard to author by hand.

@@ -17,6 +17,8 @@ Cluster nodes have paired input and output pins:
 
 Both collections must be present. A cluster without edges has no connectivity. Edges without Vtx have nothing to connect.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Cluster operation node showing paired Vtx and Edges pins on both input and output sides</p></figcaption></figure>
+
 ### Data Flow
 
 When processing clusters:
@@ -24,6 +26,8 @@ When processing clusters:
 1. Connect Vtx output to Vtx input
 2. Connect Edges output to Edges input
 3. Operations receive both, may modify both, output both
+
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>PCG graph showing cluster data flowing through multiple operations, with Vtx and Edges traveling in parallel</p></figcaption></figure>
 
 Vtx and Edges are separate wires but represent a single logical cluster.
 
@@ -43,10 +47,14 @@ Vtx and Edges are separate wires but represent a single logical cluster.
 
 Mixed data can flow through a single wire (switches, reroutes, subgraph pins), then Find Clusters separates it back into Vtx and Edges outputs.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Graph showing mixed cluster data flowing through a switch node, then Find Clusters separating into Vtx and Edges</p></figcaption></figure>
+
 Given a Vtx dataset as key, Find Clusters retrieves all matching Edge datasets. This is how you process clusters individually in a loop.
 
 {% hint style="success" %}
-Find Clusters is lightweight. Use it wherever you need to retrieve or separate cluster data.
+## Find Clusters is lightweight
+
+Use it wherever you need to retrieve or separate cluster data.
 {% endhint %}
 
 ### One Vtx, Multiple Edges
@@ -60,20 +68,6 @@ The number of Edge datasets paired with a Vtx is the actual cluster count. Each 
 {% hint style="warning" %}
 One Vtx dataset may have several associated Edge datasets representing separate connected components. This is normal, not a one-to-one pairing.
 {% endhint %}
-
-\## Shared Vtx Datasets
-
-Multiple clusters can also intentionally share the same Vtx collection with different Edge collections:
-
-```
-Points: [P0, P1, P2, P3, P4]
-
-Cluster A (Delaunay): Dense triangular connectivity
-Cluster B (K-Nearest): Each point to 3 nearest neighbors
-Cluster C (Threshold): Only short-distance connections
-```
-
-Same Vtx positions, different connectivity patterns.
 
 ### Reading from Both Collections
 

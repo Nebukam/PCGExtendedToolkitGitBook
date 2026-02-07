@@ -10,16 +10,20 @@ icon: layer-plus
 
 The simplest composition: connect multiple filter outputs to the same Filters input pin.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>PCG graph showing three filter provider nodes all connected to a single Filters input pin on a consumer node</p></figcaption></figure>
+
 When multiple filters connect to one pin:
 
 * All filters must pass for an element to pass
 * This is AND logic: Filter A **AND** Filter B **AND** Filter C
 * Evaluation exits early on first failure
-*   Order doesn't affect correctness, but affects performance
+* Order doesn't affect correctness, but affects performance
 
-    <div data-gb-custom-block data-tag="hint" data-style="success" class="hint hint-success"><p>Put your cheapest filters first in a stack. Early exit on failure means expensive filters only run on elements that passed the cheap tests.</p></div>
+{% hint style="success" %}
+Put your cheapest filters first in a stack. Early exit on failure means expensive filters only run on elements that passed the cheap tests.
+{% endhint %}
 
-    This implicit AND covers most cases. When you need OR logic or complex boolean expressions, use Filter Groups.
+This implicit AND covers most cases. When you need OR logic or complex boolean expressions, use Filter Groups.
 
 ### Filter Groups
 
@@ -32,6 +36,8 @@ Set a Filter Group to AND mode. Connect filter providers to its inputs. All conn
 #### OR Groups
 
 Set a Filter Group to OR mode. Any connected filter passing means the group passes. Evaluation exits early on first success. Elements failing all filters fail the group.
+
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Side-by-side showing AND group (all must pass) vs OR group (any can pass) with example filter connections</p></figcaption></figure>
 
 #### Setting Up a Filter Group
 
@@ -62,13 +68,19 @@ Filter Group (OR)
     └─ Filter D
 ```
 
-There's no depth limit. Build whatever logic your conditions require.
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Nested filter group structure in PCG graph showing the (A AND B) OR (C AND D) pattern</p></figcaption></figure>
+
+{% hint style="success" %}
+## There's no depth limit
+
+Build whatever logic your conditions require.
+{% endhint %}
 
 {% hint style="warning" %}
 Deep nesting gets hard to read. If you find yourself building complex nested logic, consider wrapping the filter setup in a subgraph with a clear name, or restructuring the underlying data.
 {% endhint %}
 
-\## Combining Stacking and Groups
+### Combining Stacking and Groups
 
 These approaches work together. Stack multiple simple filters on a consumer's pin (implicit AND), create groups for OR logic, and connect groups alongside individual filters to the same pin.
 

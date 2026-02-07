@@ -18,6 +18,8 @@ Like paths, clusters don't introduce new data types. They use regular PCG points
 * **Edge points** represent connections between Vtx
 * Connection data is stored as `int64` attributes
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Diagram showing Vtx points with Edge points between them, labeled to show both are regular PCG points</p></figcaption></figure>
+
 Since it's all standard point data, vanilla PCG nodes work on cluster data. You can transform Vtx, filter Edges, and modify attributes with standard operations.
 
 ### The Dual-Dataset Pattern
@@ -29,13 +31,15 @@ Clusters always involve two point collections traveling together:
 | **Vtx**    | Point positions and attributes    | The "nodes" of your network |
 | **Edges**  | Connection indices and attributes | The "links" between nodes   |
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>PCG graph showing node with Vtx and Edges input pins</p></figcaption></figure>
+
 Most cluster operations have both Vtx and Edges input pins. Operations read from both, may modify both, and output both.
 
 {% hint style="info" %}
 Multiple clusters can reference the same Vtx collection with different Edge collections. This is common when generating multiple connectivity patterns from the same points.
 {% endhint %}
 
-\## How Connections Are Stored
+### How Connections Are Stored
 
 Each Vtx is assigned a unique ID, and each Edge point stores two of these IDs — a start and an end. Think of it like a database relationship:
 
@@ -57,13 +61,15 @@ Edges Table:
 
 Edges reference Vtx by unique ID, not by point order. This means reordering, sorting, or shuffling your Vtx points won't break connectivity — the IDs travel with the points.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Database-style diagram showing Vtx table and Edges table with arrows indicating ID references</p></figcaption></figure>
+
 {% hint style="warning" %}
-\*\*Don't Modify Connection Attributes Manually\*\*\\
+## Don't Modify Connection Attributes Manually
 
 The ID attributes on Edges maintain cluster integrity. Use PCGEx nodes for topology modifications; they handle the bookkeeping automatically.
 {% endhint %}
 
-\## Undirected Connections
+### Undirected Connections
 
 Edges are undirected by default. An edge connecting Vtx A to Vtx B is traversable in both directions. There are no "one-way" edges in standard clusters.
 

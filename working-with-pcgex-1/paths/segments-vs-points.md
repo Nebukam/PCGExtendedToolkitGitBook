@@ -22,6 +22,8 @@ There are 4 points but only 3 segments (for an open path). Each segment connects
 
 For closed paths, there's one additional segment connecting the last point back to the first.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Diagram showing points P0-P3 with segments S0-S2 labeled between them</p></figcaption></figure>
+
 ### Segment Data Inheritance
 
 Here's the key: when an operation processes segments, each segment reads attributes from its **start point**.
@@ -31,6 +33,8 @@ Here's the key: when an operation processes segments, each segment reads attribu
 | S0      | P0             |
 | S1      | P1             |
 | S2      | P2             |
+
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Segments with arrows pointing to their start points showing data flow</p></figcaption></figure>
 
 ### Why This Matters
 
@@ -50,6 +54,8 @@ The operation offsets:
 * Segment 2 by 5 units (from P2's value)
 
 P3 has an offset value of 15, but in an open path there's no segment that starts at P3. That value only matters if the path is closed (for the segment from P3 back to P0).
+
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Path showing varying offset creating a wavy result, colored by offset value</p></figcaption></figure>
 
 ### The Off-By-One Trap
 

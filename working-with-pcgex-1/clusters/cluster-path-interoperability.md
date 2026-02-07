@@ -22,11 +22,15 @@ Path points become Vtx. Path segment order becomes Edge connections:
 * Path point 1 → Vtx 1
 * Segment 0→1 → Edge connecting Vtx 0 to Vtx 1
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Linear path becoming cluster with same structure</p></figcaption></figure>
+
 For closed paths, the final segment (last point to first point) becomes an additional edge.
 
 #### Endpoint Merging
 
 This is the key mechanism. When multiple paths convert together, endpoints within a distance threshold merge into a single Vtx. Three paths meeting at a crossroad become one Vtx with three edges — an intersection, not three dead ends sitting on top of each other.
+
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Three paths meeting at a point, becoming single Vtx with three edges</p></figcaption></figure>
 
 The merging threshold controls what counts as "the same point." This is how disconnected path segments become a navigable network.
 
@@ -44,9 +48,13 @@ You've built and refined a cluster — now you need ordered sequences for spawni
 
 **Break Clusters to Paths** converts edges to path segments. Each edge becomes a minimal two-point path, or edges chain into longer paths where possible.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Cluster becoming collection of linear path segments</p></figcaption></figure>
+
 #### Pathfinding Extraction
 
 Pathfinding operations extract specific routes as paths: find the shortest path between two Vtx and receive an ordered path following the route. This produces clean ordered paths from complex cluster topology.
+
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Cluster with highlighted path from A to B, becoming extracted path</p></figcaption></figure>
 
 #### Decomposition Strategies
 

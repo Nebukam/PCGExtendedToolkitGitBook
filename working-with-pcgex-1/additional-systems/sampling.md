@@ -8,6 +8,8 @@ icon: square-dashed-circle-plus
 
 The mental model is simple: **source points ask, targets answer, attributes carry the result.**
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Points sampling nearest surface — arrows from source points to surface, with attributes transferring back</p></figcaption></figure>
+
 ### Spatial Samplers
 
 These find the nearest thing and extract data from it:

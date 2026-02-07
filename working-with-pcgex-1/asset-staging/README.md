@@ -12,6 +12,8 @@ Staging separates **selection** from **spawning**:
 2. **Staging nodes** assign collection entries to points
 3. **Handlers** spawn the result — different handlers for different asset types
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Flow diagram: Collection → Staging Node → Staged Points → Handler → Scene</p></figcaption></figure>
+
 No assets are loaded during staging. The node reads pre-cached metadata and writes attributes. Staging is fast because it's just data, not asset loading.
 
 ### Collection Types

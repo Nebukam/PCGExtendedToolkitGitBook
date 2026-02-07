@@ -28,7 +28,7 @@ Configure a filter once, use it everywhere. Change one provider, all connected c
 
 This pattern appears throughout PCGEx — filters, probes, heuristics, sorting rules, shape builders, and more. Once you recognize it, the toolkit becomes predictable.
 
-<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Placeholder caption</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption></figcaption></figure>
 
 ### Sub-Nodes
 
@@ -37,6 +37,8 @@ Provider nodes are called **sub-nodes** in PCGEx. They're easy to spot:
 * A dashed circle icon (instead of a filled circle)
 * Names prefixed by type: `Filter : Compare`, `Probe : Sample`, `Heuristics : Distance`
 * Output pins with a distinctive icon matching consumer input pins
+
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption></figcaption></figure>
 
 Sub-nodes are lightweight. They don't process data themselves; they describe _how_ something should be done. The consumer that receives them handles the actual processing.
 
@@ -64,6 +66,8 @@ PCGEx has many sub-node types. Here are the major categories:
 
 Multiple sub-nodes connect to the same consumer pin. Filters stack (AND logic). Heuristics combine. Complex behavior builds from simple blocks without monolithic nodes.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Three filter providers connected to one consumer's Filters pin</p></figcaption></figure>
+
 #### Context Independence
 
 A filter doesn't know whether it's filtering points for sampling, edges for pathfinding, or vertices for cluster refinement. It evaluates conditions; the consumer provides context. The same filter logic works across entirely different operations, and learning one sub-node type teaches you patterns that apply everywhere.
@@ -88,6 +92,8 @@ PCGEx data is standard PCG point data with semantic meaning. A "path" is just po
 * Use **Transform Points** on cluster vertices
 * Use **Density Filter** on paths
 * Use **Merge** to combine PCGEx outputs
+
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>PCG graph showing a PCGEx cluster output flowing into a vanilla PCG Transform Points node</p></figcaption></figure>
 
 PCGEx doesn't lock you into its ecosystem. Mix approaches based on what each operation does best.
 

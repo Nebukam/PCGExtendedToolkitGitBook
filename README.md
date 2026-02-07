@@ -1,97 +1,39 @@
 ---
 icon: hand-wave
-cover: .gitbook/assets/1080Alpha.png
+cover: .gitbook/assets/banner_gumroad.png
 coverY: 0
+coverHeight: 368
 ---
 
-# Welcome
+# PCG Extended Toolkit
 
-## What is PCGEx?
+**A comprehensive node ecosystem that extend Unreal Engine's PCG framework with structure, connectivity, and spatial intelligence.** Build graph networks from points. Pathfind through them. Compose filters and heuristics as reusable sub-nodes. Stage assets. Sample across datasets. Manipulate paths. Streamline the sorting, fusion, partitioning, and attribute work that complex workflows demand.
 
-The PCG Extended Toolkit (_PCGEx for short_) is an open source plugin that extends Unreal Engine’ Procedural Content Generation pipeline, with a focus on **building spatial relationships between points** and **path manipulation**.
+All built on standard PCG points. No proprietary data types, no black box.
 
-It also comes with a lot of quality of life nodes, with support for a wide range of situations — even some very unique and niche things.
+Free, open-source, and production-ready.
 
 {% hint style="success" %}
-PCGEx is available for Unreal **5.7**, **5.6** _and beta/experimental for older version down to 5.3_
+Supports Unreal **5.7**, **5.6**, _and archived for 5.5, 5.4, 5.3_
 {% endhint %}
 
-{% hint style="info" %}
-PCGEx is **production ready —** but check the [changelogs](changelogs/ "mention")!
-{% endhint %}
+### Start Here
 
-### Jump right in
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Getting Started</strong></td><td>Core mental model, feature overview, learning path</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td><td></td><td><a href="working-with-pcgex-1/getting-started/">getting-started</a></td></tr><tr><td><strong>Installation</strong></td><td>Precompiled binaries, FAB, or build from source</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td><td></td><td><a href="working-with-pcgex-1/getting-started/installation.md">installation.md</a></td></tr><tr><td><strong>Example Project</strong></td><td>Annotated graphs across all major systems</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td><td></td><td><a href="working-with-pcgex-1/getting-started/example-project.md">example-project.md</a></td></tr></tbody></table>
 
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Quickstart</strong></td><td>Requirements &#x26; Installation</td><td></td><td></td><td><a href="general/quickstart/">quickstart</a></td></tr><tr><td><strong>Basics</strong></td><td>Learn the basics of PCGEx</td><td></td><td></td><td><a href="general/pcgex-101/">pcgex-101</a></td></tr><tr><td><strong>Join the community!</strong></td><td>Come join the Discord</td><td></td><td></td><td><a href="https://discord.gg/Aze3puAg6T">https://discord.gg/Aze3puAg6T</a></td></tr></tbody></table>
+### The Docs
 
-## Highlights
+**Working with PCGEx** — How PCGEx thinks. Architecture, mental models, system overviews. Start here if you're learning.
 
-How can PCGEx help you?
+**Node Library** — Per-node reference. Every setting, every pin, every mode. Go here when you know what you need.
 
-<figure><img src=".gitbook/assets/pcgex_users.png" alt=""><figcaption><p>Some of the studios that have integrated PCGEx into their pipelines</p></figcaption></figure>
+### At a Glance
 
-### Directed & Undirected graphs and diagrams
+<table data-view="cards"><thead><tr><th>System</th><th></th><th data-hidden data-card-cover data-type="image">Cover image</th></tr></thead><tbody><tr><td><strong>Clusters</strong></td><td>Graph networks from points — Delaunay, Voronoi, probes. Combine, refine, relax.</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td></tr><tr><td><strong>Pathfinding</strong></td><td>A*, Dijkstra, Bellman-Ford through cluster connectivity. Composable heuristics.</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td></tr><tr><td><strong>Filters</strong></td><td>Universal conditions — point, edge, Vtx, collection. Compose once, reuse everywhere.</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td></tr><tr><td><strong>Asset Staging</strong></td><td>Weighted collections, fitting, material variations. Selection separated from spawning.</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td></tr><tr><td><strong>Sampling</strong></td><td>Nearest point, surface, spline, bounds, textures. Data transfer between datasets.</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td></tr><tr><td><strong>Paths</strong></td><td>Offset, bevel, smooth, subdivide, split, stitch, solidify.</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td></tr><tr><td><strong>Tensors</strong></td><td>Directional flow fields. Orient, bias, guide.</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td></tr><tr><td><strong>Topology</strong></td><td>Clusters and paths to triangulated mesh surfaces.</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td></tr><tr><td><strong>Shapes</strong></td><td>Parametric generation — seed-adaptive, resolution-aware.</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td></tr><tr><td><strong>Valency</strong></td><td>WFC-style constraint solving on cluster topology.</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td></tr><tr><td><strong>Data Ops</strong></td><td>Point fusion with attribute blending, sorting, partitioning, bitmasks, attribute math.</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td></tr><tr><td><strong>Workflow</strong></td><td>Per-collection processing without loop subgraphs. Uber filters, cascading conditions, bulk operations. Less wiring, same results.</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td></tr></tbody></table>
 
-PCGEx introduces undirected graphs, allowing to create, manipulate & leverage connectivity between points. Find cells, contours, pathfinding and more.
+### Community & Support
 
-<figure><img src=".gitbook/assets/placeholder-wide.jpg" alt=""><figcaption></figcaption></figure>
-
-{% content-ref url="node-library/clusters/" %}
-[clusters](node-library/clusters/)
-{% endcontent-ref %}
-
-### Edge-based pathfinding & modular heuristics
-
-Leveraging diagrams & connected graphs, PCGEx enable highly customizable pathfinding using a modular and flexible heuristic ecosystem.
-
-<figure><img src=".gitbook/assets/placeholder-wide.jpg" alt=""><figcaption></figcaption></figure>
-
-{% content-ref url="node-library/pathfinding/" %}
-[pathfinding](node-library/pathfinding/)
-{% endcontent-ref %}
-
-### Tensor Ecosystem
-
-PCGEx comes with a tensor field ecosystem that seamlessly integrate with all other features. It lets you create complex spatial effectors to transform points, constrain heuristics, floodfill, or simply generate paths.
-
-<figure><img src=".gitbook/assets/placeholder-wide.jpg" alt=""><figcaption></figcaption></figure>
-
-{% content-ref url="node-library/tensors/" %}
-[tensors](node-library/tensors/)
-{% endcontent-ref %}
-
-### Modular filters
-
-PCGEx has a very large library of useful filters than can be combined to create infinitely complex conditions with branching and more — but more importantly, the plugin leverages filters as a powerful tool to create conditional behavior allowing tight control in intricate situations.
-
-<figure><img src=".gitbook/assets/placeholder-wide.jpg" alt=""><figcaption></figcaption></figure>
-
-{% content-ref url="node-library/filters/" %}
-[filters](node-library/filters/)
-{% endcontent-ref %}
-
-### Alternative, extended ways to sample & blend data
-
-PCGEx has a variety of data samplers for points, splines, textures that streamline & consolidate common use-cases into much more straightforward setups.
-
-<figure><img src=".gitbook/assets/placeholder-wide.jpg" alt=""><figcaption></figcaption></figure>
-
-{% content-ref url="node-library/sampling/" %}
-[sampling](node-library/sampling/)
-{% endcontent-ref %}
-
-### Paths Manipulation
-
-PCGEx has a lot to offer when it comes to manipulating paths (think splines before they're splines), refining them, splitting them, cutting them, bevelling them, you name it.
-
-<figure><img src=".gitbook/assets/placeholder-wide.jpg" alt=""><figcaption></figcaption></figure>
-
-{% content-ref url="node-library/paths/" %}
-[paths](node-library/paths/)
-{% endcontent-ref %}
-
-### Quality of Life
-
-Last but not least, there is a lot of QoL nodes designed to reduce the need & use of loop subgraphs as much as possible, extract information & statistics in new ways, manage & prepare data for spawning, creating graph dependency chains at runtime, ... At the time of writing, there's more than 200 nodes in the library.
-
-<figure><img src=".gitbook/assets/placeholder-wide.jpg" alt=""><figcaption></figcaption></figure>
+* [**Discord**](https://discord.gg/Aze3puAg6T) — Dedicated PCGEx community
+* [**GitHub**](https://github.com/Nebukam/PCGExtendedToolkit) — Source, issues, contributions
+* [**Patreon**](https://www.patreon.com/c/pcgex) — Support the project
+* [**Changelogs**](changelogs/) — What's new

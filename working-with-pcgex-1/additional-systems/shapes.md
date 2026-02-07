@@ -20,12 +20,7 @@ Output can be organized three ways:
 
 ### Available Shapes
 
-| Shape                | What It Generates                                                                                           |
-| -------------------- | ----------------------------------------------------------------------------------------------------------- |
-| **Circle**           | Points in a circular or arc pattern — configurable start/end angle, closed loop detection                   |
-| **Polygon**          | Regular polygon (triangle, square, pentagon, hex...) with optional skeleton spokes from center to perimeter |
-| **3D Grid**          | Three-dimensional grid pattern with per-axis resolution and fit adjustment                                  |
-| **Fibonacci Sphere** | Points distributed on a sphere using Fibonacci lattice — near-optimal uniformity without polar clustering   |
+<table data-view="cards"><thead><tr><th>Shape</th><th>What It Generates</th></tr></thead><tbody><tr><td><strong>Circle</strong></td><td>Points in a circular or arc pattern — configurable start/end angle, closed loop detection</td></tr><tr><td><strong>Polygon</strong></td><td>Regular polygon (triangle, square, pentagon, hex...) with optional skeleton spokes from center to perimeter</td></tr><tr><td><strong>3D Grid</strong></td><td>Three-dimensional grid pattern with per-axis resolution and fit adjustment</td></tr><tr><td><strong>Fibonacci Sphere</strong></td><td>Points distributed on a sphere using Fibonacci lattice — near-optimal uniformity without polar clustering</td></tr></tbody></table>
 
 Each shape supports two **resolution modes**: Fixed (exact point count regardless of size) or Distance (points spaced at a target interval — so larger shapes naturally produce more points). Parameters can be driven by attributes, so a single shape node can produce different geometry per seed.
 
@@ -47,6 +42,8 @@ Shape builders output standard PCG points. That's it — no special format, no l
 * Serve as spatial references for other operations
 
 Points can optionally carry a `ShapeId` attribute identifying which builder generated them, and shapes below a minimum point count can be pruned automatically.
+
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Circle, polygon, grid, and sphere shape outputs visualized as point clouds</p></figcaption></figure>
 
 ### Related
 

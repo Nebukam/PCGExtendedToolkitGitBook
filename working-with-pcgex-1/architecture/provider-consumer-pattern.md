@@ -34,6 +34,8 @@ Runtime instances are short-lived by design. With unbounded generation grids, ea
 {% endstep %}
 {% endstepper %}
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption></figcaption></figure>
+
 > The key takeaway: you configure once at the top, and the system handles replication at the bottom. The factory is the bridge.
 
 ### How Connections Work
@@ -47,6 +49,8 @@ Sub-node outputs connect to specialized input pins on consumer nodes:
 * Heuristics providers connect to `Heuristics` pins
 
 Pin types are matched. A filter output won't connect to a heuristics input.
+
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Sub-node output pin connected to a matching input pin on a consumer, showing the shared icon</p></figcaption></figure>
 
 #### Multiple Providers to One Pin
 

@@ -6,6 +6,8 @@ icon: triangle
 
 **At some point, you want actual geometry — not just points.** Clusters and paths describe structure, but they're still abstract data. Topology operations turn that structure into renderable dynamic mesh surfaces.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Cluster with cells → generated mesh surface showing triangulated faces</p></figcaption></figure>
+
 ### From Structure to Surface
 
 Each topology node takes a different kind of input and triangulates it into mesh geometry:

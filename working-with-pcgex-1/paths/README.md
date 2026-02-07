@@ -21,6 +21,8 @@ Path = {
 
 The points are regular PCG points with positions, attributes, and transforms. What makes them a "path" is that operations interpret them in sequence: P0 connects to P1, P1 to P2, and so on.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Points numbered 0-4 connected by lines showing their order</p></figcaption></figure>
+
 Since paths are just points, vanilla PCG nodes work on path data, path operations work on any ordered point collection, and no special handling is needed to pass paths between nodes.
 
 {% hint style="info" %}
@@ -44,6 +46,8 @@ Paths have two topology modes controlled by the `@Data.IsClosed` attribute:
 * Last point connects back to first
 
 This flag affects how operations behave. An offset operation on an open path handles endpoints differently than on a closed path. A subdivision operation adds different point counts.
+
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Side-by-side showing open path (line with endpoints) vs closed path (complete loop)</p></figcaption></figure>
 
 ### Path Direction
 
@@ -73,6 +77,8 @@ Path operations often compute tangent and normal vectors:
 * Computed from tangent and an "up" vector
 * Most path nodes default to Z-up
 * Adjust up vector when working with non-horizontal paths
+
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Path showing tangent arrows and normal arrows at each point</p></figcaption></figure>
 
 ### Path Metadata
 

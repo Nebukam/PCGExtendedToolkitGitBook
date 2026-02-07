@@ -10,6 +10,8 @@ icon: border-outer
 
 Cells are closed regions bounded by cluster edges. Think of them as the "polygons" formed by the cluster's edge network.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Cluster with individual cells highlighted in different colors</p></figcaption></figure>
+
 #### What Cells Represent
 
 In a cluster:
@@ -35,6 +37,8 @@ In a cluster:
 
 Contours trace boundaries around cluster regions — drawing the outline of connected areas.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Cluster regions with contour lines traced around them</p></figcaption></figure>
+
 #### What Contours Represent
 
 A contour is the outer edge of a connected region:
@@ -59,6 +63,8 @@ A contour is the outer edge of a connected region:
 ### Hulls
 
 Hulls extract the outer boundary of entire clusters: the outermost perimeter.
+
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Cluster with hull path highlighted as outer boundary</p></figcaption></figure>
 
 #### What Hulls Represent
 

@@ -14,6 +14,8 @@ A collection contains:
 * **Collection settings**: Defaults applied to entries
 * **Cached data**: Precomputed staging information
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Collection editor interface showing entry list and settings tabs</p></figcaption></figure>
+
 ### Collection Types
 
 #### Mesh Collection

@@ -6,6 +6,8 @@ icon: arrow-progress
 
 **Pathfinding in PCGEx doesn't raycast through space. It walks through the connections you've built.** Your cluster's edges are the navigable network — if an edge exists, the path can follow it. If you've removed it during refinement, it's gone. This gives you complete control over where paths can go.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Cluster with highlighted path from A to B following edges</p></figcaption></figure>
+
 ### Pathfinding Approaches
 
 PCGEx offers multiple approaches depending on what you need.

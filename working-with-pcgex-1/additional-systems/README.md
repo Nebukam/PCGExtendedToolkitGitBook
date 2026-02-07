@@ -10,12 +10,12 @@ icon: cubes-stacked
 
 These sub-node systems work across multiple node types:
 
-#### Resolvers
+#### Match & Select
 
 * **Matching**: Correlate data between sources and targets using match rules
 * **Pickers**: Index selection strategies (constant, range, attribute-driven)
 
-See Resolvers for details.
+See Match & Select for details.
 
 ### Self-Contained Modules
 
@@ -47,13 +47,7 @@ See Shapes for details.
 
 ### In This Section
 
-| Subsection | Purpose                        |
-| ---------- | ------------------------------ |
-| Resolvers  | Matching and picking sub-nodes |
-| Tensors    | Directional fields             |
-| Topology   | Mesh generation                |
-| Sampling   | Data extraction                |
-| Shapes     | Parametric geometry            |
+<table data-view="cards"><thead><tr><th>Subsection</th><th>Purpose</th></tr></thead><tbody><tr><td>Match &#x26; Select</td><td>Matching and picking sub-nodes</td></tr><tr><td>Tensors</td><td>Directional fields</td></tr><tr><td>Topology</td><td>Mesh generation</td></tr><tr><td>Sampling</td><td>Data extraction</td></tr><tr><td>Shapes</td><td>Parametric geometry</td></tr></tbody></table>
 
 ### Related
 

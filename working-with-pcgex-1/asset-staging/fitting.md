@@ -6,6 +6,8 @@ icon: distribute-spacing-vertical
 
 **Assets come in all shapes and sizes. Fitting makes them play nicely together.** When you're placing assets from a collection, some are tall, some are wide, and their pivots are rarely where you want them. Fitting normalizes these variations so diverse assets work cohesively — and lets you prune unwanted assets before spawning any mesh, all from a single node.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Before/after showing various-sized assets fitted to uniform slots</p></figcaption></figure>
+
 ### Scale to Fit
 
 Scale adjustment makes assets fit within target bounds:
@@ -68,6 +70,8 @@ For each axis (X, Y, Z):
 
 * Asset floats in middle of bounds
 * Good for suspended objects
+
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Same asset shown with different justification settings</p></figcaption></figure>
 
 ### Variations
 

@@ -8,6 +8,8 @@ icon: rotate
 
 **One filter, many consumers.** Filters are designed so that a single filter instance can connect to multiple consumers. The logic stays in one place, behavior stays consistent, and updates apply everywhere at once.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Hub-and-spoke diagram showing one filter provider node with its output connected to three different consumer nodes</p></figcaption></figure>
+
 Connect the same filter output to as many Filters input pins as needed. The filter is evaluated independently for each consumer's context.
 
 {% hint style="warning" %}
@@ -22,7 +24,7 @@ When filters reference unbounded input data (data spanning beyond the current ge
 
 For larger graphs, filters can be gathered like any other PCG data. Use **Named Redirectors** (reroute nodes with names) to maintain filters in one location and reference them throughout your graph. This avoids long wire runs across complex graphs and works within a single graph without subgraph overhead.
 
-***
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Graph showing filters defined in one area, connected to named redirector, then gathered at multiple consumer locations</p></figcaption></figure>
 
 ### Subgraph Patterns
 

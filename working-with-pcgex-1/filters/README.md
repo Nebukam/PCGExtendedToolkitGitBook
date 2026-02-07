@@ -6,6 +6,8 @@ icon: filters
 
 **Filters are the one system that touches everything else.** Almost every PCGEx operation asks "should I process this element?" and filters are how you answer that question. Configure a filter once, connect it to any node that accepts filters. The same filter works whether you're processing points, refining edges, controlling pathfinding, or deciding what to spawn.
 
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Hub-and-spoke diagram showing a single filter provider connected to multiple consumer nodes</p></figcaption></figure>
+
 ### The Core Idea
 
 Instead of each node implementing its own filtering logic, PCGEx uses a unified filter system. A filter like **Filter : Distance** handles nearest-neighbor queries, spatial indexing, and comparison math without exposing intermediate values. No need to create temporary attributes for distances, compare them, then clean them up. The filter encapsulates all of that — reducing graph complexity and keeping your data clean.
@@ -35,9 +37,11 @@ Operate on entire point data/collections rather than individual points:
 Specialized filters that require cluster topology data. They rely on connectivity information that only exists after cluster generation:
 
 * **Vtx filters**: Test vertices based on adjacency, degree, or neighbor properties
-*   **Edge filters**: Test edges based on endpoints, direction, or crossing detection
+* **Edge filters**: Test edges based on endpoints, direction, or crossing detection
 
-    <div data-gb-custom-block data-tag="hint" data-style="info" class="hint hint-info"><p>Cluster filters extend point filters. They have access to the same attribute/spatial tests plus topology-aware capabilities.</p></div>
+{% hint style="info" %}
+Cluster filters extend point filters. They have access to the same attribute/spatial tests plus topology-aware capabilities.
+{% endhint %}
 
 ### How Filters Work
 
@@ -47,6 +51,8 @@ Filters follow the provider/consumer pattern:
 2. **Configure its conditions** in the node's settings
 3. **Connect its output** to any node with a Filters input pin
 4. **Multiple filters** can connect to the same pin
+
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>PCG graph showing filter provider nodes with output pins connected to a consumer node's Filters input pin</p></figcaption></figure>
 
 At execution time:
 
