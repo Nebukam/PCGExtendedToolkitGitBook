@@ -1,5 +1,5 @@
 ---
-icon: gear-complex
+icon: arrow-down-from-arc
 ---
 
 # Fill Control
@@ -77,5 +77,3 @@ Fill control sub-nodes are connected to flood fill nodes via the Fill Controls i
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsFloodFill-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsFloodFill/Public/Core/PCGExFillControlsFactoryProvider.h)
-
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsFloodFill/Public/Core/PCGExFillControlsFactoryProvider.h -->

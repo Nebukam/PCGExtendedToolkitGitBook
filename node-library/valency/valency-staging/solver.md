@@ -1,5 +1,5 @@
 ---
-icon: gear-complex
+icon: arrow-down-from-arc
 ---
 
 # Solver
@@ -36,5 +36,3 @@ This factory inherits common settings from `UPCGExInstancedFactory`.
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsValency-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Core/PCGExValencySolverOperation.h)
-
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Core/PCGExValencySolverOperation.h -->

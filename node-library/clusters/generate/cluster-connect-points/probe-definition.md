@@ -1,5 +1,5 @@
 ---
-icon: gear-complex
+icon: arrow-down-from-arc
 ---
 
 # Probe Definition
@@ -40,5 +40,3 @@ This is an abstract base class with no node-specific settings. All configuration
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsProbing-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Core/PCGExProbeFactoryProvider.h)
-
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Core/PCGExProbeFactoryProvider.h -->

@@ -1,5 +1,5 @@
 ---
-icon: gear-complex
+icon: arrow-down-from-arc
 ---
 
 # Refine Operation
@@ -63,5 +63,3 @@ This abstract base class has no configurable settings. See the specific operatio
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsClusters-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Refining/PCGExEdgeRefineOperation.h)
-
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Refining/PCGExEdgeRefineOperation.h -->

@@ -1,5 +1,5 @@
 ---
-icon: code-commit
+icon: arrow-down-from-arc
 ---
 
 # Shared Settings
@@ -237,5 +237,3 @@ Most user-facing PCGEx nodes inherit these settings through intermediate base cl
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExCore-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Core/PCGExSettings.h)
-
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Core/PCGExSettings.h -->

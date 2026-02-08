@@ -1,5 +1,5 @@
 ---
-icon: gear-complex
+icon: arrow-down-from-arc
 ---
 
 # Noise 3D
@@ -239,5 +239,3 @@ Output: Processed noise value
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExNoise3D-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExNoise3D/Public/Core/PCGExNoise3DFactoryProvider.h)
-
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExNoise3D/Public/Core/PCGExNoise3DFactoryProvider.h -->
