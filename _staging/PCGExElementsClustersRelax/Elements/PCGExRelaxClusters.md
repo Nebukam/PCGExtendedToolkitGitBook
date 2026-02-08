@@ -185,7 +185,7 @@ This node inherits common cluster processing settings from its base class.
 
 ---
 
-📦 **Module**: `PCGExElementsClusters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/PCGExRelaxClusters.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsClusters-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/PCGExRelaxClusters.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 9 documented (Iterations, Relaxing, InfluenceDetails x3, output attributes x6)

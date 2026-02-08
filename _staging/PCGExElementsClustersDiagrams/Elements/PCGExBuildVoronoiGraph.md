@@ -139,7 +139,7 @@ This node inherits common settings from its base class.
 
 ---
 
-📦 **Module**: `PCGExElementsClusters` · [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Diagrams/PCGExBuildVoronoiGraph.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsClusters-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Diagrams/PCGExBuildVoronoiGraph.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 7 documented (Method, ExpandBounds, bPruneOutOfBounds, bMarkHull, HullAttributeName, bMarkEdgeOnTouch, GraphBuilderDetails)

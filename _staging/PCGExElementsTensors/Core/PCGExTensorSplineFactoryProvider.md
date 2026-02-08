@@ -50,7 +50,7 @@ Spline tensor factories inherit from the base tensor factory.
 
 ---
 
-📦 **Module**: `PCGExElementsTensors` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Core/PCGExTensorSplineFactoryProvider.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsTensors-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Core/PCGExTensorSplineFactoryProvider.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 0 (abstract base class, properties set by derived classes)

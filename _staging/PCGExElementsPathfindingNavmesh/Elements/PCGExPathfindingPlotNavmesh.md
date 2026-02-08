@@ -177,7 +177,7 @@ Default: `false`
 
 ---
 
-📦 **Module**: `PCGExElementsPathfindingNavmesh` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfindingNavmesh/Public/Elements/PCGExPathfindingPlotNavmesh.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsPathfindingNavmesh-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfindingNavmesh/Public/Elements/PCGExPathfindingPlotNavmesh.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 10 documented

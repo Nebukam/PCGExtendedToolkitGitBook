@@ -113,4 +113,4 @@ This filter inherits from the point filter factory base.
 
 ***
 
-📦 **Module**: `PCGExElementsTensors` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Filters/Points/PCGExTensorDotFilter.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsTensors-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Filters/Points/PCGExTensorDotFilter.h)

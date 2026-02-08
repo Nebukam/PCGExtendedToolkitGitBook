@@ -149,7 +149,7 @@ Default: `0`
 
 ---
 
-📦 **Module**: `PCGExElementsProbing` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExGlobalProbeChain.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsProbing-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExGlobalProbeChain.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 4 documented (SortMode, SortAttribute, ProjectionAxis, bClosedLoop)

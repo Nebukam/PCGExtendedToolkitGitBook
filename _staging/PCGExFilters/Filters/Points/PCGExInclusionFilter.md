@@ -277,7 +277,7 @@ Default: `true`
 
 ---
 
-📦 **Module**: `PCGExFilters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Public/Filters/Points/PCGExInclusionFilter.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExFilters-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Public/Filters/Points/PCGExInclusionFilter.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties:

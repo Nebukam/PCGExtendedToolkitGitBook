@@ -166,7 +166,7 @@ This node inherits output configuration from its base class.
 
 ---
 
-📦 **Module**: `PCGExElementsShapes` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsShapes/Public/Elements/PCGExCreateShapes.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsShapes-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsShapes/Public/Elements/PCGExCreateShapes.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 6 documented (bWriteShapeId, ShapeIdAttributeName, bForceOutputToElement, bRemoveBelow, MinPointCount, bRemoveAbove, MaxPointCount)

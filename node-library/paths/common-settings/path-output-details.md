@@ -97,4 +97,4 @@ Default: `500`
 
 ***
 
-📦 **Module**: `PCGExCore` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Paths/PCGExPathOutputDetails.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExCore-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Paths/PCGExPathOutputDetails.h)

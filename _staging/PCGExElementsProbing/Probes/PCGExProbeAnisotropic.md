@@ -132,7 +132,7 @@ Default: `0`
 
 ---
 
-📦 **Module**: `PCGExElementsProbing` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExProbeAnisotropic.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsProbing-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExProbeAnisotropic.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 2 documented (MaxAngle, bTransformDirection)

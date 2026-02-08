@@ -72,7 +72,7 @@ A list of tags separated by commas to apply to the output tuple data. Useful for
 
 ---
 
-📦 **Module**: `PCGExProperties` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExProperties/Public/Elements/PCGExTuple.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExProperties-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExProperties/Public/Elements/PCGExTuple.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 3 documented (Composition, Values, CommaSeparatedTags)

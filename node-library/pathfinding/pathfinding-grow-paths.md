@@ -375,4 +375,4 @@ Default: `false`
 
 ***
 
-📦 **Module**: `PCGExElementsPathfinding` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfinding/Public/Elements/PCGExPathfindingGrowPaths.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsPathfinding-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfinding/Public/Elements/PCGExPathfindingGrowPaths.h)

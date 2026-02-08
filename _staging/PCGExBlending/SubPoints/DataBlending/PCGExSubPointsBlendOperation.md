@@ -100,7 +100,7 @@ Default: Empty
 
 ---
 
-📦 **Module**: `PCGExBlending` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/SubPoints/DataBlending/PCGExSubPointsBlendOperation.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExBlending-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/SubPoints/DataBlending/PCGExSubPointsBlendOperation.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 1 documented (BlendingDetails with 5 inner properties via ShowOnlyInnerProperties)

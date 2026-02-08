@@ -139,7 +139,7 @@ Default: `DBL_COMPARE_TOLERANCE`
 
 ---
 
-📦 **Module**: `PCGExElementsMeta` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsMeta/Public/Filters/Points/PCGExNoiseFilter.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsMeta-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsMeta/Public/Filters/Points/PCGExNoiseFilter.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 5 documented (Comparison, Input, Constant, Attribute, Tolerance via FPCGExCompareSelectorDouble)

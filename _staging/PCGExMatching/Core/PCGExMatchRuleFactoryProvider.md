@@ -103,7 +103,7 @@ This allows for establishing indirect relationships, like "friend of a friend" p
 
 ---
 
-📦 **Module**: `PCGExMatching` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExMatching/Public/Core/PCGExMatchRuleFactoryProvider.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExMatching-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExMatching/Public/Core/PCGExMatchRuleFactoryProvider.h)
 
 <!-- VERIFICATION REPORT
 Common Properties: 2 documented (Strictness, Invert)

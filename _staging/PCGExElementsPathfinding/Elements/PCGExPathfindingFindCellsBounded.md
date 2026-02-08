@@ -247,7 +247,7 @@ Default: `false`
 
 ---
 
-📦 **Module**: `PCGExElementsPathfinding` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfinding/Public/Elements/PCGExPathfindingFindCellsBounded.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsPathfinding-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfinding/Public/Elements/PCGExPathfindingFindCellsBounded.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 17+ documented

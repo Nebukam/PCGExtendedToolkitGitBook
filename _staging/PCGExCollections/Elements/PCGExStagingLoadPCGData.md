@@ -170,7 +170,7 @@ This node inherits point filtering capabilities from its base class.
 
 ---
 
-📦 **Module**: `PCGExCollections` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollections/Public/Elements/PCGExStagingLoadPCGData.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExCollections-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollections/Public/Elements/PCGExStagingLoadPCGData.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 9 documented (CustomOutputPins, bRefreshSeeds, bOmitEmptyData, bFilterByTags, IncludeTags, ExcludeTags, TargetsForwarding, bForwardInputTags, bQuietUnsupportedTypeWarnings, bQuietInvalidEntryWarnings)

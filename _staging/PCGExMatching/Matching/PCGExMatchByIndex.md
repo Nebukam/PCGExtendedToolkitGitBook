@@ -140,7 +140,7 @@ This match rule inherits common settings from the base match rule configuration.
 
 ---
 
-📦 **Module**: `PCGExMatching` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExMatching/Public/Matching/PCGExMatchByIndex.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExMatching-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExMatching/Public/Matching/PCGExMatchByIndex.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 3 documented (Source, IndexAttribute, IndexSafety)

@@ -25,7 +25,7 @@ This is an internal `UWorldSubsystem` that manages shared filter infrastructure 
 
 ---
 
-📦 **Module**: `PCGExFilters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Public/PCGExFiltersSubSystem.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExFilters-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Public/PCGExFiltersSubSystem.h)
 
 <!-- VERIFICATION REPORT
 Class: UPCGExFiltersSubSystem

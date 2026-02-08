@@ -210,7 +210,7 @@ This match rule inherits common settings from the base match rule configuration.
 
 ---
 
-📦 **Module**: `PCGExMatching` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExMatching/Public/Matching/PCGExMatchAttrToAttr.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExMatching-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExMatching/Public/Matching/PCGExMatchAttrToAttr.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 7 documented (CandidateAttributeName, TargetAttributeName, Check, NumericComparison, Tolerance, StringComparison, bSwapOperands)

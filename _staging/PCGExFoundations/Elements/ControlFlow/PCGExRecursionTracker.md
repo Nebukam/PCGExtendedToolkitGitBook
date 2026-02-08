@@ -413,7 +413,7 @@ Default: `false`
 
 ---
 
-📦 **Module**: `PCGExFoundations` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/ControlFlow/PCGExRecursionTracker.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExFoundations-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/ControlFlow/PCGExRecursionTracker.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 15 documented (Type, Mode, ContinueAttributeName, MaxCount, AddTags, RemoveTags, CounterUpdate, bOutputProgress, bOutputIndex, bOutputRemainder, bOneMinus, bForceOutputContinue, bDoAdditionalDataTesting, bAddEntryWhenCreatingFromExistingData, RemainderOffsetWhenCreateInsteadOfUpdate, bGroupBranchPins)

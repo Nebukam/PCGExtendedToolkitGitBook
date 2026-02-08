@@ -43,4 +43,4 @@ All smoothing methods receive these values from the parent Path : Smooth node:
 
 ***
 
-📦 **Module**: `PCGExElementsPaths` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/Smoothing/PCGExSmoothingInstancedFactory.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsPaths-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/Smoothing/PCGExSmoothingInstancedFactory.h)

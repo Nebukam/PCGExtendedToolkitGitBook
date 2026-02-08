@@ -169,7 +169,7 @@ Multiple pickers can be connected, and their selected indices are combined (unio
 
 ---
 
-📦 **Module**: `PCGExFoundations` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Filtering/PCGExCherryPickPoints.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExFoundations-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Filtering/PCGExCherryPickPoints.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 3 documented (bInvert, bOutputDiscardedPoints, bAllowEmptyOutputs)

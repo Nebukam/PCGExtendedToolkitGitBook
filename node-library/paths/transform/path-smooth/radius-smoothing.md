@@ -49,4 +49,4 @@ This factory has no additional settings. The smoothing radius is controlled by t
 
 ***
 
-📦 **Module**: `PCGExElementsPaths` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/Smoothing/PCGExRadiusSmoothing.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsPaths-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/Smoothing/PCGExRadiusSmoothing.h)

@@ -70,7 +70,7 @@ When two points are equal according to the first rule, subsequent rules determin
 
 ---
 
-📦 **Module**: `PCGExElementsMeta` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsMeta/Public/Elements/Sorting/PCGExSortPoints.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsMeta-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsMeta/Public/Elements/Sorting/PCGExSortPoints.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 2 documented (SortDirection, Rules)

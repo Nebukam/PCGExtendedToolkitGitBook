@@ -224,7 +224,7 @@ This node inherits path processing settings from its base class.
 
 ---
 
-📦 **Module**: `PCGExElementsPaths` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExSubdivide.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsPaths-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExSubdivide.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 11 documented (SubdivideMethod, AmountInput, Distance, Count, bRedistributeEvenly, ManhattanDetails, Blending, bFlagSubPoints, SubPointFlagName, bWriteAlpha, AlphaAttributeName, DefaultAlpha)

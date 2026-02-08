@@ -97,7 +97,7 @@ This factory inherits from the instanced factory base.
 
 ---
 
-📦 **Module**: `PCGExElementsTensors` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Core/PCGExTensorSampler.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsTensors-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Core/PCGExTensorSampler.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 5 documented

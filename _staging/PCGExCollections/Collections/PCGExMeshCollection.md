@@ -108,7 +108,7 @@ This collection type inherits common asset collection functionality from its bas
 
 ---
 
-📦 **Module**: `PCGExCollections` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollections/Public/Collections/PCGExMeshCollection.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExCollections-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollections/Public/Collections/PCGExMeshCollection.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 3 documented (GlobalDescriptorMode, GlobalISMDescriptor, GlobalSMDescriptor, Entries array with mesh-specific fields)

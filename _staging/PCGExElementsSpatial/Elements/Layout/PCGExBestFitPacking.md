@@ -372,7 +372,7 @@ Default: `false`
 
 ---
 
-📦 **Module**: `PCGExElementsSpatial` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSpatial/Public/Elements/Layout/PCGExBestFitPacking.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsSpatial-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSpatial/Public/Elements/Layout/PCGExBestFitPacking.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 19 documented

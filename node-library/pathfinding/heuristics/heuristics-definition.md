@@ -198,4 +198,4 @@ Default: `(0, 0, 0)`
 
 ***
 
-📦 **Module**: `PCGExHeuristics` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExHeuristics/Public/Core/PCGExHeuristicsFactoryProvider.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExHeuristics-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExHeuristics/Public/Core/PCGExHeuristicsFactoryProvider.h)

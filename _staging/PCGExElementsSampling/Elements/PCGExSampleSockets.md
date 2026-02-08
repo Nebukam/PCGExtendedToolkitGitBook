@@ -125,7 +125,7 @@ Controls socket filtering and output attributes.
 
 ---
 
-📦 **Module**: `PCGExElementsSampling` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Elements/PCGExSampleSockets.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsSampling-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Elements/PCGExSampleSockets.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 4 documented

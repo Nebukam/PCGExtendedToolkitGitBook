@@ -64,4 +64,4 @@ This node has no node-specific settings beyond the inherited base settings.
 
 ***
 
-📦 **Module**: `PCGExElementsMeta` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsMeta/Public/Elements/PCGExBlendAttributes.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsMeta-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsMeta/Public/Elements/PCGExBlendAttributes.h)

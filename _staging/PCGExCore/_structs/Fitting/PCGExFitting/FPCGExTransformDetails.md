@@ -88,7 +88,7 @@ Default: `false`
 
 ---
 
-📦 **Module**: `PCGExCore` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Fitting/PCGExFitting.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExCore-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Fitting/PCGExFitting.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 5 documented (ScaleToFit, Justification, bInheritScale, bInheritRotation, bIgnoreBounds)

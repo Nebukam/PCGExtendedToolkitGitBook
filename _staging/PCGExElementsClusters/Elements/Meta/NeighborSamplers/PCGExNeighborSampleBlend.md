@@ -60,7 +60,7 @@ Each attribute uses its own blend operation's rules.
 
 ---
 
-📦 **Module**: `PCGExElementsClusters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Meta/NeighborSamplers/PCGExNeighborSampleBlend.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsClusters-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Meta/NeighborSamplers/PCGExNeighborSampleBlend.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 0 (uses input pin for BlendingFactories instead of inline settings)

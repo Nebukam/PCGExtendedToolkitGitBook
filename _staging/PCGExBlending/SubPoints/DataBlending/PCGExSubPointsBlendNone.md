@@ -39,7 +39,7 @@ This factory has no configurable settings.
 
 ---
 
-📦 **Module**: `PCGExBlending` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/SubPoints/DataBlending/PCGExSubPointsBlendNone.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExBlending-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/SubPoints/DataBlending/PCGExSubPointsBlendNone.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 0 documented (none present)

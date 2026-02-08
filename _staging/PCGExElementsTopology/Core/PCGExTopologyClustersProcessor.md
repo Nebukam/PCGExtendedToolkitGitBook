@@ -391,7 +391,7 @@ This node inherits cluster processing settings from its base class.
 
 ---
 
-📦 **Module**: `PCGExElementsTopology` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTopology/Public/Core/PCGExTopologyClustersProcessor.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsTopology-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTopology/Public/Core/PCGExTopologyClustersProcessor.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 4 top-level (OutputMode, ProjectionDetails, Constraints, Topology)

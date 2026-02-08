@@ -67,7 +67,7 @@ Default: `-1`
 
 ---
 
-📦 **Module**: `PCGExCore` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Clusters/PCGExClusterCommon.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExCore-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Clusters/PCGExClusterCommon.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 2 documented (PickingMethod, MaxDistance)

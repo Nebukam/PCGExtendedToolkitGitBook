@@ -153,7 +153,7 @@ Default: `Category`
 
 ---
 
-📦 **Module**: `PCGExCollections` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollections/Public/Elements/PCGExCollectionToModuleInfos.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExCollections-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollections/Public/Elements/PCGExCollectionToModuleInfos.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 10 documented (AssetCollection, bAllowDuplicates, bSkipEmptySymbol, bOmitInvalidAndEmpty, and 6 output attribute names)

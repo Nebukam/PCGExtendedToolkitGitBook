@@ -149,7 +149,7 @@ This probe inherits from the probe factory base.
 
 ---
 
-📦 **Module**: `PCGExElementsTensors` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Probes/PCGExProbeTensor.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsTensors-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Probes/PCGExProbeTensor.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 7 documented (via FPCGExProbeConfigTensor)

@@ -175,7 +175,7 @@ This node inherits from the tensor factory provider base.
 
 ---
 
-📦 **Module**: `PCGExElementsTensors` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Tensors/PCGExTensorSurface.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsTensors-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Tensors/PCGExTensorSurface.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 8 documented (Mode, MaxDistance, ReferenceAxis, bUseNormalForAway, bUseWorldCollision, CollisionSettings, ActorReferenceAttribute, bReturnZeroOnMiss)

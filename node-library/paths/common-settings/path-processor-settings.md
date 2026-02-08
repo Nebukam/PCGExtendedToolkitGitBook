@@ -97,4 +97,4 @@ Each derived processor specializes in a specific path operation type.
 
 ***
 
-📦 **Module**: `PCGExFoundations` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Core/PCGExPathProcessor.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExFoundations-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Core/PCGExPathProcessor.h)

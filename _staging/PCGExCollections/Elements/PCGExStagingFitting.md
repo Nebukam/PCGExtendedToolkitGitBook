@@ -151,7 +151,7 @@ This node inherits point processing and filtering capabilities from its base cla
 
 ---
 
-📦 **Module**: `PCGExCollections` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollections/Public/Elements/PCGExStagingFitting.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExCollections-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollections/Public/Elements/PCGExStagingFitting.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 7 documented (Source, AssetPathAttributeName, ScaleToFit, Justification, Variations, bPruneEmptyPoints, bWriteTranslation + TranslationAttributeName)

@@ -49,7 +49,7 @@ Shape builders are created through their specific definition nodes (e.g., "Shape
 
 ---
 
-📦 **Module**: `PCGExElementsShapes` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsShapes/Public/Core/PCGExShapeBuilderFactoryProvider.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsShapes-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsShapes/Public/Core/PCGExShapeBuilderFactoryProvider.h)
 
 <!-- VERIFICATION REPORT
 Abstract Classes:

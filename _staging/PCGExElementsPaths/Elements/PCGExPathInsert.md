@@ -470,7 +470,7 @@ Default: `NoInserts`
 
 ---
 
-📦 **Module**: `PCGExElementsPaths` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExPathInsert.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsPaths-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExPathInsert.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 34 documented (DataMatching, bExclusiveTargets, bSnapToPath, bEdgeInteriorOnly, bAllowPathExtension, bWithinRange, Range, bLimitInsertsPerEdge, LimitMode, InsertLimit, LimitTruncate, bPreventCollocation, CollocationTolerance, Blending, TargetForwarding, bFlagInsertedPoints, InsertedFlagName, bWriteAlpha, AlphaAttributeName, DefaultAlpha, bWriteDistance, DistanceAttributeName, DefaultDistance, bWriteTargetIndex, TargetIndexAttributeName, DefaultTargetIndex, bWriteDirection, DirectionAttributeName, bInvertDirection, DefaultDirection, bTagIfHasInserts, HasInsertsTag, bTagIfNoInserts, NoInsertsTag)

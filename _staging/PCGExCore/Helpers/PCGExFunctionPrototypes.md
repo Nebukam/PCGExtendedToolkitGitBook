@@ -187,7 +187,7 @@ Result: No crash, invalid function ignored
 
 ---
 
-📦 **Module**: `PCGExCore` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Helpers/PCGExFunctionPrototypes.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExCore-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Helpers/PCGExFunctionPrototypes.h)
 
 <!-- VERIFICATION REPORT
 Base Class Type: UBlueprintFunctionLibrary

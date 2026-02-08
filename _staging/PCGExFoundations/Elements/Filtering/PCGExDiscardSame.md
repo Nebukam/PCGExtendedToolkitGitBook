@@ -392,7 +392,7 @@ Sort direction when Sort Input Values = true.
 
 ---
 
-📦 **Module**: `PCGExFoundations` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Filtering/PCGExDiscardSame.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExFoundations-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Filtering/PCGExDiscardSame.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 12+ documented (Mode, TestMode, bTestBounds, TestBoundsTolerance, bTestPointCount, TestPointCountTolerance, bTestPositions, TestPositionTolerance, TestAttributesHash, AttributeHashConfigs, bIncludeSingleAttribute, AttributeHashConfig)

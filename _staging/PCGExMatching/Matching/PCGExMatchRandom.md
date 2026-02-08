@@ -187,7 +187,7 @@ This match rule inherits common settings from the base match rule configuration.
 
 ---
 
-📦 **Module**: `PCGExMatching` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExMatching/Public/Matching/PCGExMatchRandom.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExMatching-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExMatching/Public/Matching/PCGExMatchRandom.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 5 documented (RandomSeed, ThresholdInput, ThresholdAttribute, Threshold, bInvertThreshold)

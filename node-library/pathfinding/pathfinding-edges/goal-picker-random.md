@@ -121,4 +121,4 @@ Attribute containing the number of goals to pick (converted to int32).
 
 ***
 
-📦 **Module**: `PCGExElementsPathfinding` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfinding/Public/GoalPickers/PCGExGoalPickerRandom.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsPathfinding-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfinding/Public/GoalPickers/PCGExGoalPickerRandom.h)

@@ -133,7 +133,7 @@ Controls which attributes and tags are carried over from source data to socket p
 
 ---
 
-📦 **Module**: `PCGExFoundations` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Details/PCGExSocketOutputDetails.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExFoundations-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Details/PCGExSocketOutputDetails.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 12 documented (filters, metadata output, transform, carry over)

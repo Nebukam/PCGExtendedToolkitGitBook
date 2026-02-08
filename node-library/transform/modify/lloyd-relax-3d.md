@@ -82,4 +82,4 @@ This node inherits common settings from its base class.
 
 ***
 
-📦 **Module**: `PCGExElementsSpatial` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSpatial/Public/Elements/PCGExLloydRelax.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsSpatial-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSpatial/Public/Elements/PCGExLloydRelax.h)

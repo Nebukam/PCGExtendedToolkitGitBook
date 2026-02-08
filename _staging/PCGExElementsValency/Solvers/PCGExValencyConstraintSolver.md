@@ -63,7 +63,7 @@ This solver inherits from the base solver factory.
 
 ---
 
-📦 **Module**: `PCGExElementsValency` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Solvers/PCGExValencyConstraintSolver.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsValency-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Solvers/PCGExValencyConstraintSolver.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 2 documented (UrgencyBoostMultiplier, MinimumSpawnWeightBoost)

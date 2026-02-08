@@ -188,7 +188,7 @@ Properties of the navigation agent used for pathfinding. Affects which areas of 
 
 ---
 
-📦 **Module**: `PCGExElementsPathfindingNavmesh` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfindingNavmesh/Public/Elements/PCGExPathfindingNavmesh.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsPathfindingNavmesh-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfindingNavmesh/Public/Elements/PCGExPathfindingNavmesh.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 12 documented

@@ -203,7 +203,7 @@ Default: `value`
 ```markdown
 ---
 
-📦 **Module**: `ModuleName` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/ModuleName/Private/Path/FileName.cpp)
+**Module**: `ModuleName`  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/ModuleName/Private/Path/FileName.cpp)
 ```
 
 ---

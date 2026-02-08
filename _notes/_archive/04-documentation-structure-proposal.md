@@ -306,7 +306,7 @@ Brief examples of typical configurations (use-case agnostic).
 
 ---
 
-📦 **Module**: `PCGExModuleName` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExModuleName/Private/Category/PCGExNodeName.cpp)
+**Module**: `PCGExModuleName`  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExModuleName/Private/Category/PCGExNodeName.cpp)
 ```
 
 ---

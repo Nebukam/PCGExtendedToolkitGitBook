@@ -105,7 +105,7 @@ This node inherits from the tensor spline factory provider base.
 
 ---
 
-📦 **Module**: `PCGExElementsTensors` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Tensors/PCGExTensorPathPole.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsTensors-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Tensors/PCGExTensorPathPole.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 3 documented (PointType, bSmoothLinear, Radius)

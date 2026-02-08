@@ -59,7 +59,7 @@ Default: `0`
 
 ---
 
-📦 **Module**: `PCGExElementsActions` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsActions/Public/Core/PCGExActionFactoryProvider.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsActions-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsActions/Public/Core/PCGExActionFactoryProvider.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 2 documented (FilterFactories in factory, Priority in provider)

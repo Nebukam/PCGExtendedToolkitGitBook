@@ -487,7 +487,7 @@ This allows complete flexibility in sourcing variation parameters from either co
 
 ---
 
-📦 **Module**: `PCGExFoundations` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/PCGExTransformPoints.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExFoundations-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/PCGExTransformPoints.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 20+ documented (position: OffsetMin, OffsetMax, OffsetScaling, SnapPosition, OffsetSnap, AbsoluteOffset; rotation: bResetRotation, RotationMin, RotationMax, RotationScaling, SnapRotation, RotationSnap, AbsoluteRotation; scale: bResetScale, ScaleMin, ScaleMax, ScaleScaling, UniformScale, SnapScale, ScaleSnap; extras: bApplyScaleToBounds, bResetPointCenter, PointCenterLocation)

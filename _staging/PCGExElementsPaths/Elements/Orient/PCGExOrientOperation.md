@@ -54,7 +54,7 @@ The local axis that will be constrained toward world up (or a reference directio
 
 ---
 
-📦 **Module**: `PCGExElementsPaths` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/Orient/PCGExOrientOperation.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsPaths-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/Orient/PCGExOrientOperation.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 0 (abstract base class)

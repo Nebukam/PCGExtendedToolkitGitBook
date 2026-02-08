@@ -105,7 +105,7 @@ Range: `1` to `16`
 
 ---
 
-📦 **Module**: `PCGExElementsTensors` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Samplers/PCGExTensorSamplerRK4.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsTensors-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Samplers/PCGExTensorSamplerRK4.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 0 (inherits all from UPCGExTensorSampler)

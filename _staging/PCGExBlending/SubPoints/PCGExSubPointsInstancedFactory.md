@@ -28,7 +28,7 @@ This abstract base class has no configurable settings. Settings are defined in d
 
 ---
 
-📦 **Module**: `PCGExBlending` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/SubPoints/PCGExSubPointsInstancedFactory.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExBlending-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/SubPoints/PCGExSubPointsInstancedFactory.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 0 documented (abstract base class with no UPROPERTYs)

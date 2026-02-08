@@ -149,7 +149,7 @@ This picker inherits common settings from the base picker configuration.
 
 ---
 
-📦 **Module**: `PCGExPickers` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExPickers/Public/Pickers/PCGExPickerConstantRange.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExPickers-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExPickers/Public/Pickers/PCGExPickerConstantRange.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 4 documented (DiscreteStartIndex, RelativeStartIndex, DiscreteEndIndex, RelativeEndIndex - pairs mutually exclusive based on mode)

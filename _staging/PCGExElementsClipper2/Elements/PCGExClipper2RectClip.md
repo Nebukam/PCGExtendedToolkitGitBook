@@ -175,7 +175,7 @@ This node inherits common Clipper2 processing settings from its base class.
 
 ---
 
-📦 **Module**: `PCGExElementsClipper2` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClipper2/Public/Elements/PCGExClipper2RectClip.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsClipper2-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClipper2/Public/Elements/PCGExClipper2RectClip.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 8 documented (ProjectionDetails, BoundsSource, ManualBounds, BoundsPadding, BoundsPaddingScale, bClipOpenPathsAsLines, bClipAsLines, bInvertClip)

@@ -94,7 +94,7 @@ Default: `true`
 
 ---
 
-📦 **Module**: `PCGExCollections` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollections/Public/MeshSelectors/PCGExMeshSelectorStaged.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExCollections-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollections/Public/MeshSelectors/PCGExMeshSelectorStaged.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 6 documented (bApplyMaterialOverrides, bForceDisableCollisions, bUseTemplateDescriptor, TemplateDescriptor, bUseTimeSlicing, bOutputPoints)

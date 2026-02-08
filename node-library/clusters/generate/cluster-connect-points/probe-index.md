@@ -144,4 +144,4 @@ The attribute containing the index value per point.
 
 ***
 
-📦 **Module**: `PCGExElementsProbing` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExProbeIndex.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsProbing-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExProbeIndex.h)

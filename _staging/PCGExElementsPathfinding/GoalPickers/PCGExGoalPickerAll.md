@@ -52,7 +52,7 @@ This picker has no additional settings beyond those inherited from the base goal
 
 ---
 
-📦 **Module**: `PCGExElementsPathfinding` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfinding/Public/GoalPickers/PCGExGoalPickerAll.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsPathfinding-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfinding/Public/GoalPickers/PCGExGoalPickerAll.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 0 (no unique properties)

@@ -81,7 +81,7 @@ Cluster filters inherit all settings from point filters.
 
 ---
 
-📦 **Module**: `PCGExFilters` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Public/Core/PCGExClusterFilter.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExFilters-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Public/Core/PCGExClusterFilter.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 0 (abstract base class with no own properties)

@@ -46,7 +46,7 @@ This refinement operation has no additional settings. It simply removes all curr
 
 ---
 
-📦 **Module**: `PCGExElementsClusters` | [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Refining/PCGExEdgeRefineRemoveLeaves.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsClusters-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Refining/PCGExEdgeRefineRemoveLeaves.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 0 documented (no settings)

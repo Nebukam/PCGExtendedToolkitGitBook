@@ -182,4 +182,4 @@ Filter cells by compactness ratio (0-1, where 1 is a perfect circle). Compactnes
 
 ***
 
-📦 **Module**: `PCGExGraphs` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExGraphs-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h)

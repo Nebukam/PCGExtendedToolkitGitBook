@@ -228,7 +228,7 @@ Default: `false`
 
 ---
 
-📦 **Module**: `PCGExFoundations` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Filters/Points/PCGExRaycastFilter.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExFoundations-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Filters/Points/PCGExRaycastFilter.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 14 documented

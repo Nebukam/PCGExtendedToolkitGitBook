@@ -131,7 +131,7 @@ Default: `StrictlySmaller`
 
 ---
 
-📦 **Module**: `PCGExElementsFloodFill` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsFloodFill/Public/FillControls/PCGExFillControlAttributeThreshold.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsFloodFill-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsFloodFill/Public/FillControls/PCGExFillControlAttributeThreshold.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 6 documented

@@ -75,4 +75,4 @@ Default: `Up Vector (0, 0, 1)`
 
 ***
 
-📦 **Module**: `PCGExCore` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Math/PCGExProjectionDetails.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExCore-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Math/PCGExProjectionDetails.h)

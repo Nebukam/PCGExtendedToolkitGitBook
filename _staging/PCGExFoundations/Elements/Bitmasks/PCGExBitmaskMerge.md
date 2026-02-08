@@ -155,7 +155,7 @@ XOR → 0110 (toggle flags 0 and 1)
 
 ---
 
-📦 **Module**: `PCGExFoundations` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Bitmasks/PCGExBitmaskMerge.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExFoundations-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Bitmasks/PCGExBitmaskMerge.h)
 
 <!-- VERIFICATION REPORT
 Properties: 1 documented (Operation)

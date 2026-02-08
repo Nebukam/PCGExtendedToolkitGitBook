@@ -320,4 +320,4 @@ Default: `0`
 
 ***
 
-📦 **Module**: `PCGExElementsSampling` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Elements/PCGExSelfPruning.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsSampling-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Elements/PCGExSelfPruning.h)

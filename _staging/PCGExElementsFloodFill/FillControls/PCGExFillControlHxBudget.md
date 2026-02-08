@@ -129,7 +129,7 @@ Note: The Steps setting is not available for this control.
 
 ---
 
-📦 **Module**: `PCGExElementsFloodFill` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsFloodFill/Public/FillControls/PCGExFillControlHxBudget.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsFloodFill-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsFloodFill/Public/FillControls/PCGExFillControlHxBudget.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 5 documented

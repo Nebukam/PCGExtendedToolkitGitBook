@@ -211,7 +211,7 @@ This node inherits path processing settings from its base class.
 
 ---
 
-📦 **Module**: `PCGExElementsPaths` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExPathShift.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsPaths-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExPathShift.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 10 documented (ShiftType, InputMode, RelativeConstant, Truncate, DiscreteConstant, IndexSafety, bReverseShift, CherryPickedProperties, CherryPickedAttributes, bQuietDoubleShiftWarning)

@@ -400,4 +400,4 @@ Default: `false`
 
 ***
 
-📦 **Module**: `PCGExElementsBridges` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsBridges/Public/Elements/PCGExWaitForPCGData.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsBridges-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsBridges/Public/Elements/PCGExWaitForPCGData.h)

@@ -156,7 +156,7 @@ Default: `-1`
 
 ---
 
-📦 **Module**: `PCGExElementsSampling` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Core/PCGExTexParamFactoryProvider.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsSampling-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Core/PCGExTexParamFactoryProvider.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 9 documented (via FPCGExTextureParamConfig)

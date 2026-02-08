@@ -72,7 +72,7 @@ Default: empty
 
 ---
 
-📦 **Module**: `PCGExElementsValency` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Core/PCGExValencyOrbitalSet.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsValency-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Core/PCGExValencyOrbitalSet.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 4 documented (LayerName, AngleThreshold, bTransformDirection, Orbitals)

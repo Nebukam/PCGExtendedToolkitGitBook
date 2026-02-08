@@ -69,7 +69,7 @@ Default: empty (populated during compilation from editor-friendly CompatibleType
 
 ---
 
-📦 **Module**: `PCGExElementsValency` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Core/PCGExValencySocketRules.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsValency-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Core/PCGExValencySocketRules.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 3 documented (LayerName, SocketTypes, CompatibilityMatrix)

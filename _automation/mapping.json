@@ -1,5 +1,5 @@
 {
-  "generated": "2026-02-08T17:06:27.257Z",
+  "generated": "2026-02-08T18:06:25.685Z",
   "entries": [
     {
       "source_relative": "PCGExBlending/Public/Core/PCGExBlendOpFactory.h",
@@ -1481,8 +1481,8 @@
       "source_relative": "PCGExElementsMeta/Public/Filters/Points/PCGExNoiseFilter.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsMeta\\Public\\Filters\\Points\\PCGExNoiseFilter.h",
       "staging": "_staging/PCGExElementsMeta/Filters/Points/PCGExNoiseFilter.md",
-      "node_library": "node-library/filters/point-filters/filter-noise.md",
-      "doc_path": "filters/point-filters/filter-noise",
+      "node_library": "node-library/filters/point-filters/spatial/filter-noise.md",
+      "doc_path": "filters/point-filters/spatial/filter-noise",
       "current_doc_meta": "filters/filters-points/simple-comparisons/numeric",
       "status": "meta_mismatch"
     },
@@ -2750,28 +2750,28 @@
       "source_relative": "PCGExElementsValency/Public/Core/PCGExPatternMatcherOperation.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Core\\PCGExPatternMatcherOperation.h",
       "staging": "_staging/PCGExElementsValency/Core/PCGExPatternMatcherOperation.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/valency/valency-patterns/pattern-matcher.md",
+      "doc_path": "valency/valency-patterns/pattern-matcher",
       "current_doc_meta": null,
-      "status": "staging_only"
+      "status": "meta_missing"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Core/PCGExValencyBondingRules.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Core\\PCGExValencyBondingRules.h",
       "staging": "_staging/PCGExElementsValency/Core/PCGExValencyBondingRules.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/valency/rules/bonding-rules.md",
+      "doc_path": "valency/rules/bonding-rules",
       "current_doc_meta": null,
-      "status": "staging_only"
+      "status": "meta_missing"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Core/PCGExValencyOrbitalSet.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Core\\PCGExValencyOrbitalSet.h",
       "staging": "_staging/PCGExElementsValency/Core/PCGExValencyOrbitalSet.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/valency/rules/orbital-set.md",
+      "doc_path": "valency/rules/orbital-set",
       "current_doc_meta": null,
-      "status": "staging_only"
+      "status": "meta_missing"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Core/PCGExValencyProcessor.h",
@@ -2786,100 +2786,100 @@
       "source_relative": "PCGExElementsValency/Public/Core/PCGExValencySocketRules.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Core\\PCGExValencySocketRules.h",
       "staging": "_staging/PCGExElementsValency/Core/PCGExValencySocketRules.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/valency/rules/socket-rules.md",
+      "doc_path": "valency/rules/socket-rules",
       "current_doc_meta": null,
-      "status": "staging_only"
+      "status": "meta_missing"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Core/PCGExValencySolverOperation.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Core\\PCGExValencySolverOperation.h",
       "staging": "_staging/PCGExElementsValency/Core/PCGExValencySolverOperation.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/valency/valency-staging/solver.md",
+      "doc_path": "valency/valency-staging/solver",
       "current_doc_meta": null,
-      "status": "staging_only"
+      "status": "meta_missing"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Elements/PCGExValencyPatternReplacement.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Elements\\PCGExValencyPatternReplacement.h",
       "staging": "_staging/PCGExElementsValency/Elements/PCGExValencyPatternReplacement.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/valency/valency-patterns/README.md",
+      "doc_path": "valency/valency-patterns",
       "current_doc_meta": "valency/valency-pattern-replacement",
-      "status": "staging_only"
+      "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Elements/PCGExValencyStaging.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Elements\\PCGExValencyStaging.h",
       "staging": "_staging/PCGExElementsValency/Elements/PCGExValencyStaging.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/valency/valency-staging/README.md",
+      "doc_path": "valency/valency-staging",
       "current_doc_meta": "valency/valency-staging",
-      "status": "staging_only"
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Elements/PCGExWriteModuleSockets.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Elements\\PCGExWriteModuleSockets.h",
       "staging": "_staging/PCGExElementsValency/Elements/PCGExWriteModuleSockets.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/valency/valency-write-module-sockets.md",
+      "doc_path": "valency/valency-write-module-sockets",
       "current_doc_meta": "valency/write-module-sockets",
-      "status": "staging_only"
+      "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Elements/PCGExWriteValencyOrbitals.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Elements\\PCGExWriteValencyOrbitals.h",
       "staging": "_staging/PCGExElementsValency/Elements/PCGExWriteValencyOrbitals.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/valency/valency-write-orbitals.md",
+      "doc_path": "valency/valency-write-orbitals",
       "current_doc_meta": "valency/write-valency-orbitals",
-      "status": "staging_only"
+      "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Matchers/PCGExDefaultPatternMatcher.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Matchers\\PCGExDefaultPatternMatcher.h",
       "staging": "_staging/PCGExElementsValency/Matchers/PCGExDefaultPatternMatcher.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/valency/valency-patterns/default-pattern-matcher.md",
+      "doc_path": "valency/valency-patterns/default-pattern-matcher",
       "current_doc_meta": "valency/matchers/default",
-      "status": "staging_only"
+      "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Probes/PCGExProbeValency.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Probes\\PCGExProbeValency.h",
       "staging": "_staging/PCGExElementsValency/Probes/PCGExProbeValency.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/clusters/generate/cluster-connect-points/probe-orbital-valency.md",
+      "doc_path": "clusters/generate/cluster-connect-points/probe-orbital-valency",
       "current_doc_meta": "valency/probe-valency",
-      "status": "staging_only"
+      "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Solvers/PCGExValencyConstraintSolver.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Solvers\\PCGExValencyConstraintSolver.h",
       "staging": "_staging/PCGExElementsValency/Solvers/PCGExValencyConstraintSolver.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/valency/valency-staging/constraint-solver.md",
+      "doc_path": "valency/valency-staging/constraint-solver",
       "current_doc_meta": "valency/solvers/constraint",
-      "status": "staging_only"
+      "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Solvers/PCGExValencyEntropySolver.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Solvers\\PCGExValencyEntropySolver.h",
       "staging": "_staging/PCGExElementsValency/Solvers/PCGExValencyEntropySolver.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/valency/valency-staging/entropy-solver.md",
+      "doc_path": "valency/valency-staging/entropy-solver",
       "current_doc_meta": "valency/solvers/entropy",
-      "status": "staging_only"
+      "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Solvers/PCGExValencyPrioritySolver.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Solvers\\PCGExValencyPrioritySolver.h",
       "staging": "_staging/PCGExElementsValency/Solvers/PCGExValencyPrioritySolver.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/valency/valency-staging/priority-solver.md",
+      "doc_path": "valency/valency-staging/priority-solver",
       "current_doc_meta": "valency/solvers/priority",
-      "status": "staging_only"
+      "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExFilters/Public/Core/PCGExClusterFilter.h",
@@ -3020,10 +3020,10 @@
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExConstantFilter.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExFilters\\Public\\Filters\\Points\\PCGExConstantFilter.h",
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExConstantFilter.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/filters/point-filters/filter-constant.md",
+      "doc_path": "filters/point-filters/filter-constant",
       "current_doc_meta": "filters/filters-points/constant",
-      "status": "staging_only"
+      "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExDistanceFilter.h",
@@ -3047,10 +3047,10 @@
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExFilterGroup.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExFilters\\Public\\Filters\\Points\\PCGExFilterGroup.h",
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExFilterGroup.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/filters/filter-group-and-or.md",
+      "doc_path": "filters/filter-group-and-or",
       "current_doc_meta": "filters/and-or",
-      "status": "staging_only"
+      "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExGameplayTagsFilter.h",
@@ -3119,28 +3119,28 @@
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExPickerFilter.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExFilters\\Public\\Filters\\Points\\PCGExPickerFilter.h",
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExPickerFilter.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/filters/point-filters/filter-picker.md",
+      "doc_path": "filters/point-filters/filter-picker",
       "current_doc_meta": "filters/filters-points/picker",
-      "status": "staging_only"
+      "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExRandomFilter.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExFilters\\Public\\Filters\\Points\\PCGExRandomFilter.h",
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExRandomFilter.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/filters/point-filters/filter-random.md",
+      "doc_path": "filters/point-filters/filter-random",
       "current_doc_meta": "filters/filters-points/random",
-      "status": "staging_only"
+      "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExRandomRatioFilter.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExFilters\\Public\\Filters\\Points\\PCGExRandomRatioFilter.h",
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExRandomRatioFilter.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/filters/point-filters/filter-random-ratio.md",
+      "doc_path": "filters/point-filters/filter-random-ratio",
       "current_doc_meta": "filters/filters-points/random-1",
-      "status": "staging_only"
+      "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExSegmentCrossFilter.h",
@@ -3982,12 +3982,12 @@
   ],
   "summary": {
     "total_staging": 441,
-    "total_library": 392,
-    "matched": 391,
-    "staging_only": 50,
+    "total_library": 411,
+    "matched": 410,
+    "staging_only": 31,
     "library_only": 1,
-    "doc_meta_ok": 16,
-    "doc_meta_mismatch": 290,
-    "doc_meta_missing": 85
+    "doc_meta_ok": 17,
+    "doc_meta_mismatch": 303,
+    "doc_meta_missing": 90
   }
 }

@@ -65,7 +65,7 @@ Default: `Ignore`
 
 ---
 
-📦 **Module**: `PCGExElementsPaths` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/Smoothing/PCGExMovingAverageSmoothing.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsPaths-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/Smoothing/PCGExMovingAverageSmoothing.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 1 documented (IndexSafety)

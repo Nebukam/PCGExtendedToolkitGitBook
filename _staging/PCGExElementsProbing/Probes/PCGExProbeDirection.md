@@ -252,7 +252,7 @@ Default: `0`
 
 ---
 
-📦 **Module**: `PCGExElementsProbing` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExProbeDirection.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsProbing-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExProbeDirection.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 11 documented (bUseComponentWiseAngle, MaxAngle, MaxAngles, bUnsignedCheck, DirectionInput, DirectionAttribute, bInvertDirection, DirectionConstant, bTransformDirection, Favor, bDoChainedProcessing)

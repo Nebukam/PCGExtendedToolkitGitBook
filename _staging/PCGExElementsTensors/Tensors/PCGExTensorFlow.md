@@ -145,7 +145,7 @@ This node inherits from the tensor point factory provider base, which includes w
 
 ---
 
-📦 **Module**: `PCGExElementsTensors` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Tensors/PCGExTensorFlow.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsTensors-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Tensors/PCGExTensorFlow.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 5 documented (DirectionInput, DirectionAttribute, bInvertDirection, DirectionConstant, DirectionTransform)

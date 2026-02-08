@@ -259,7 +259,7 @@ Range: `0` to `63`
 
 ---
 
-📦 **Module**: `PCGExFoundations` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Constants/PCGExConstantEnum.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExFoundations-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Constants/PCGExConstantEnum.h)
 
 <!-- VERIFICATION REPORT
 Properties: 16 documented (Source, OutputMode, OutputEnumKeys, StripEnumNamespaceFromKey, KeyAttribute, OutputEnumDescriptions, DescriptionAttribute, OutputEnumValues, ValueOutputAttribute, bOutputFlags, FlagsName, FlagBitOffset, plus others)

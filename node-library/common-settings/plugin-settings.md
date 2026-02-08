@@ -312,4 +312,4 @@ All color values are customizable `FLinearColor` values with RGBA components.
 
 ***
 
-📦 **Class**: `UPCGExGlobalSettings` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExtendedToolkit/Public/PCGExGlobalSettings.h)
+📦 **Class**: `UPCGExGlobalSettings`  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExtendedToolkit/Public/PCGExGlobalSettings.h)

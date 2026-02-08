@@ -75,7 +75,7 @@ The vector attribute to read the look-at direction or position from.
 
 ---
 
-📦 **Module**: `PCGExElementsPaths` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/Orient/PCGExOrientLookAt.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsPaths-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/Orient/PCGExOrientLookAt.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 2 documented (LookAt, LookAtAttribute)

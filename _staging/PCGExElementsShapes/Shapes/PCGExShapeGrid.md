@@ -244,7 +244,7 @@ Default: `500`
 
 ---
 
-📦 **Module**: `PCGExElementsShapes` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsShapes/Public/Shapes/PCGExShapeGrid.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsShapes-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsShapes/Public/Shapes/PCGExShapeGrid.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties (Grid): 7

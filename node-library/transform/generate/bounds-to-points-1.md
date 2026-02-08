@@ -198,4 +198,4 @@ Copies source point attributes as tags on output collections.
 
 ***
 
-📦 **Module**: `PCGExElementsSpatial` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSpatial/Public/Elements/Bounds/PCGExBoundsToPoints.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsSpatial-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSpatial/Public/Elements/Bounds/PCGExBoundsToPoints.h)

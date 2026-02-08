@@ -128,7 +128,7 @@ Default: Empty
 
 ---
 
-📦 **Module**: `PCGExElementsTopology` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTopology/Public/Elements/PCGExSpawnDynamicMesh.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsTopology-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTopology/Public/Elements/PCGExSpawnDynamicMesh.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 5 documented (TemplateDescriptor, TargetActor, PropertyOverrideDescriptions, AttachmentRules, PostProcessFunctionNames)

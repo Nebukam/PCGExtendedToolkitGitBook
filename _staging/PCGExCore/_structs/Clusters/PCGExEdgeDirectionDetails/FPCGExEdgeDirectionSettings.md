@@ -83,7 +83,7 @@ Default: `SmallestToGreatest`
 
 ---
 
-📦 **Module**: `PCGExCore` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Clusters/PCGExEdgeDirectionDetails.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExCore-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Clusters/PCGExEdgeDirectionDetails.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 3 documented (DirectionMethod, DirSourceAttribute, DirectionChoice)

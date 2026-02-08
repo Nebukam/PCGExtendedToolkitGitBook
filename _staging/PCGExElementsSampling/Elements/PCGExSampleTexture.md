@@ -121,7 +121,7 @@ Default: `false`
 
 ---
 
-📦 **Module**: `PCGExElementsSampling` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Elements/PCGExSampleTexture.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsSampling-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Elements/PCGExSampleTexture.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 7 documented

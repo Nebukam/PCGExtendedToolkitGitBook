@@ -70,7 +70,7 @@ This node uses all settings from its base class with no additional node-specific
 
 ---
 
-📦 **Module**: `PCGExElementsTopology` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTopology/Public/Elements/PCGExTopologyClusterSurface.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsTopology-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTopology/Public/Elements/PCGExTopologyClusterSurface.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 0 (all inherited from UPCGExTopologyClustersProcessorSettings)

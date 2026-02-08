@@ -169,7 +169,7 @@ Default: `1.0` (constant)
 
 ---
 
-📦 **Module**: `PCGExElementsMeta` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsMeta/Public/Elements/PCGExUberNoise.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsMeta-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsMeta/Public/Elements/PCGExUberNoise.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 5 documented (Mode, OutputType, Attributes, BlendMode, SourceValueWeight)

@@ -86,7 +86,7 @@ List of rules defining which attributes to use for partitioning. Each rule speci
 
 ---
 
-📦 **Module**: `PCGExElementsMeta` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsMeta/Public/Elements/Partition/PCGExPartitionByValues.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsMeta-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsMeta/Public/Elements/Partition/PCGExPartitionByValues.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 4 documented (bSplitOutput, bWriteKeySum, KeySumAttributeName, PartitionRules)

@@ -181,4 +181,4 @@ Configuration for how distances are measured between source and target points.
 
 ***
 
-📦 **Module**: `PCGExElementsSpatial` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSpatial/Public/Elements/Bounds/PCGExBestMatchAxis.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsSpatial-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSpatial/Public/Elements/Bounds/PCGExBestMatchAxis.h)

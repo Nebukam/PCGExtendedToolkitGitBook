@@ -107,4 +107,4 @@ This picker inherits common settings from the base picker configuration.
 
 ***
 
-📦 **Module**: `PCGExPickers` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExPickers/Public/Pickers/PCGExPickerAttributeSetRanges.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExPickers-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExPickers/Public/Pickers/PCGExPickerAttributeSetRanges.h)

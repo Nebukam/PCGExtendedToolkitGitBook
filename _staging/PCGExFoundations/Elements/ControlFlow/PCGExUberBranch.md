@@ -171,7 +171,7 @@ Collections are tested against branch filters using the filter manager system:
 
 ---
 
-📦 **Module**: `PCGExFoundations` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/ControlFlow/PCGExUberBranch.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExFoundations-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/ControlFlow/PCGExUberBranch.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 2 documented (NumBranches, AsyncChunkSize)

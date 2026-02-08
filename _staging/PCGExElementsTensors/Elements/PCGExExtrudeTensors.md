@@ -400,7 +400,7 @@ This node inherits from the path processor base.
 
 ---
 
-📦 **Module**: `PCGExElementsTensors` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Elements/PCGExExtrudeTensors.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExElementsTensors-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Elements/PCGExExtrudeTensors.h)
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 35+ documented (grouped by category)

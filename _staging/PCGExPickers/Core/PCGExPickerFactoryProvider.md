@@ -107,7 +107,7 @@ Output: Set of indices for selection
 
 ---
 
-📦 **Module**: `PCGExPickers` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExPickers/Public/Core/PCGExPickerFactoryProvider.h)
+![Static Badge](https://img.shields.io/badge/Module-PCGExPickers-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExPickers/Public/Core/PCGExPickerFactoryProvider.h)
 
 <!-- VERIFICATION REPORT
 Base Configuration Properties: 3 documented (bTreatAsNormalized, TruncateMode, Safety)
