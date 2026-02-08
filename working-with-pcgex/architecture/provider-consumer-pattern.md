@@ -144,6 +144,6 @@ Factory data lives only during execution. Sub-node outputs can't be saved to PCG
 
 ### Related
 
-* Architecture Overview - The broader PCGEx mental model
-* Filters - Detailed look at filter sub-nodes
-* Filter Composition - How filters combine
+* [.](./ "mention") - The broader PCGEx mental model
+* [filters](../filters/ "mention") - Detailed look at filter sub-nodes
+* [filter-composition.md](../filters/filter-composition.md "mention") - How filters combine

@@ -123,11 +123,11 @@ Vanilla nodes ignore these semantics and just see points. PCGEx nodes understand
 
 **Concepts:**
 
-* Filters - The most common sub-node type
-* Clusters - Where sub-nodes configure topology operations
-* Pathfinding - Where heuristics sub-nodes configure traversal
+* [filters](../filters/ "mention") - The most common sub-node type
+* [clusters](../clusters/ "mention") - Where sub-nodes configure topology operations
+* [pathfinding](../pathfinding/ "mention") - Where heuristics sub-nodes configure traversal
 
 **Node Library:**
 
-* Filter Nodes - All filter sub-nodes
+* [filters](../../node-library/filters/ "mention") - All filter sub-nodes
 * Sub-nodes appear throughout the library, marked with dashed circle icons

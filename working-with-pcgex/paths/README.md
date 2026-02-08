@@ -108,9 +108,9 @@ A single output pin can carry multiple paths. Each path is a separate point coll
 
 **Concepts:**
 
-* Clusters - The other core data structure
-* Cluster-Path Interop - Converting between paths and clusters
+* [clusters](../clusters/ "mention")- The other core data structure
+* [cluster-path-interoperability.md](../clusters/cluster-path-interoperability.md "mention") - Converting between paths and clusters
 
 **Node Library:**
 
-* Path Nodes - Complete path operation reference
+* [paths](../../node-library/paths/ "mention") - Complete path operation reference
