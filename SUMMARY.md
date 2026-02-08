@@ -118,6 +118,7 @@
       * [Cluster : Delaunay 3D](node-library/clusters/generate/diagrams/cluster-delaunay-3d.md)
       * [Cluster : Voronoi 3D](node-library/clusters/generate/diagrams/cluster-voronoi-3d.md)
       * [Cluster : Convex Hull 3D](node-library/clusters/generate/diagrams/cluster-convex-hull-3d.md)
+    * [Mesh to Clusters](node-library/clusters/generate/mesh-to-clusters.md)
   * [Interop](node-library/clusters/interop/README.md)
     * [Cluster : Break to Paths](node-library/clusters/interop/cluster-break-to-paths.md)
     * [Path : To Clusters](node-library/clusters/interop/path-to-clusters.md)
