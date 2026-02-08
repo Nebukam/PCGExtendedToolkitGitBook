@@ -1,0 +1,411 @@
+{
+  "path": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertyFactoryProvider.h",
+  "module": "PCGExElementsClusters",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExSimpleEdgeOutputSettings",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bWriteDirection",
+          "display_name": "bWriteDirection",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DirectionAttribute",
+          "display_name": "DirectionAttribute",
+          "type": "FName",
+          "default": "\"Direction\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteDirection",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bInvertDirection",
+          "display_name": " └─ Invert",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteDirection",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteLength",
+          "display_name": "bWriteLength",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "LengthAttribute",
+          "display_name": "LengthAttribute",
+          "type": "FName",
+          "default": "\"Length\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteLength",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExEdgeOutputWithIndexSettings",
+      "base_class": "FPCGExSimpleEdgeOutputSettings",
+      "uproperties": [
+        {
+          "name": "bWriteEdgeIndex",
+          "display_name": "bWriteEdgeIndex",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "EdgeIndexAttribute",
+          "display_name": "EdgeIndexAttribute",
+          "type": "FName",
+          "default": "\"EdgeIndex\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteEdgeIndex",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteVtxIndex",
+          "display_name": "bWriteVtxIndex",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "VtxIndexAttribute",
+          "display_name": "VtxIndexAttribute",
+          "type": "FName",
+          "default": "\"VtxIndex\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteVtxIndex",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteNeighborCount",
+          "display_name": "bWriteNeighborCount",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "NeighborCountAttribute",
+          "display_name": "NeighborCountAttribute",
+          "type": "FName",
+          "default": "\"Count\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteNeighborCount",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [
+    {
+      "name": "UPCGExVtxPropertyFactoryData",
+      "display_name": "UPCGExVtxPropertyFactoryData",
+      "description": "",
+      "base_class": "UPCGExFactoryData",
+      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Data\"",
+      "uproperties": [],
+      "classification": {
+        "type": "factory_data",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": true,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": []
+    },
+    {
+      "name": "UPCGExVtxPropertyProviderSettings",
+      "display_name": "Vtx : Abstract",
+      "description": "Abstract vtx extra settings.",
+      "base_class": "UPCGExFactoryProviderSettings",
+      "uclass_meta": "Abstract, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|VtxProperty\", meta=(PCGExNodeLibraryDoc=\"TBD\")",
+      "uproperties": [],
+      "classification": {
+        "type": "provider",
+        "is_abstract": true,
+        "is_provider": true,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [
+        "SourcePointFilters",
+        "Labels"
+      ],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "BulkInitData",
+          "display_name": "BulkInitData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CacheData",
+          "display_name": "CacheData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScopedAttributeGet",
+          "display_name": "ScopedAttributeGet",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "StealData",
+          "display_name": "StealData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Disabled",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsDataStealing",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ExecutionPolicy",
+          "display_name": "ExecutionPolicy",
+          "type": "EPCGExExecutionPolicy",
+          "default": "EPCGExExecutionPolicy::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsInitPolicy",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bFlattenOutput",
+          "display_name": "bFlattenOutput",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bCleanupConsumableAttributes",
+          "display_name": "bCleanupConsumableAttributes",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedProtectedAttributesName",
+          "display_name": "Protected Attributes",
+          "type": "FString",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "ProtectedAttributes",
+          "display_name": "Protected Attributes",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bPropagateAbortedExecution",
+          "display_name": "bPropagateAbortedExecution",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietInvalidInputWarning",
+          "display_name": "bQuietInvalidInputWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietMissingInputError",
+          "display_name": "bQuietMissingInputError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietCancellationError",
+          "display_name": "bQuietCancellationError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        }
+      ],
+      "produces_factory": "UPCGExVtxPropertyFactoryData"
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExVtxPropertyOperation",
+      "base_class": "FPCGExOperation"
+    }
+  ],
+  "namespaces": {
+    "PCGExVtxProperty": {
+      "SourcePropertyLabel": "Properties",
+      "OutputPropertyLabel": "Property"
+    }
+  }
+}

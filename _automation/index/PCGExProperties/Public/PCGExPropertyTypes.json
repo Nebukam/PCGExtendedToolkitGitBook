@@ -1,0 +1,179 @@
+{
+  "path": "PCGExProperties/Public/PCGExPropertyTypes.h",
+  "module": "PCGExProperties",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExPropertyCompiled_Vector",
+      "base_class": "FPCGExPropertyCompiled",
+      "uproperties": [
+        {
+          "name": "Value",
+          "display_name": "Value",
+          "type": "FVector",
+          "default": "FVector::ZeroVector",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Property",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExPropertyCompiled_Vector2",
+      "base_class": "FPCGExPropertyCompiled",
+      "uproperties": [
+        {
+          "name": "Value",
+          "display_name": "Value",
+          "type": "FVector2D",
+          "default": "FVector2D::ZeroVector",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Property",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExPropertyCompiled_Vector4",
+      "base_class": "FPCGExPropertyCompiled",
+      "uproperties": [
+        {
+          "name": "Value",
+          "display_name": "Value",
+          "type": "FVector4",
+          "default": "FVector4::Zero()",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Property",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExPropertyCompiled_Color",
+      "base_class": "FPCGExPropertyCompiled",
+      "uproperties": [
+        {
+          "name": "Value",
+          "display_name": "Value",
+          "type": "FLinearColor",
+          "default": "FLinearColor::White",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Property",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExPropertyCompiled_Rotator",
+      "base_class": "FPCGExPropertyCompiled",
+      "uproperties": [
+        {
+          "name": "Value",
+          "display_name": "Value",
+          "type": "FRotator",
+          "default": "FRotator::ZeroRotator",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Property",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExPropertyCompiled_Quat",
+      "base_class": "FPCGExPropertyCompiled",
+      "uproperties": [
+        {
+          "name": "Value",
+          "display_name": "Value",
+          "type": "FQuat",
+          "default": "FQuat::Identity",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Property",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExPropertyCompiled_Transform",
+      "base_class": "FPCGExPropertyCompiled",
+      "uproperties": [
+        {
+          "name": "Value",
+          "display_name": "Value",
+          "type": "FTransform",
+          "default": "FTransform::Identity",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Property",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExPropertyCompiled_Enum",
+      "base_class": "FPCGExPropertyCompiled",
+      "uproperties": [
+        {
+          "name": "Value",
+          "display_name": "Value",
+          "type": "FEnumSelector",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Property",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

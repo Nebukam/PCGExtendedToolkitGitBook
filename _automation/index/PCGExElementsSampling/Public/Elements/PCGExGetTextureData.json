@@ -1,0 +1,657 @@
+{
+  "path": "PCGExElementsSampling/Public/Elements/PCGExGetTextureData.h",
+  "module": "PCGExElementsSampling",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExGetTexturePathType",
+      "values": [
+        {
+          "name": "TexturePath",
+          "display_name": "Texture Path"
+        },
+        {
+          "name": "MaterialPath",
+          "display_name": "Material Path"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExTextureFilter",
+      "values": [
+        {
+          "name": "Point",
+          "display_name": "Point"
+        },
+        {
+          "name": "Bilinear",
+          "display_name": "Bilinear"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExGetTextureDataSettings",
+      "display_name": "Get Texture Data",
+      "description": "Create texture data object from paths.",
+      "base_class": "UPCGExPointsProcessorSettings",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Sampling\", meta=(PCGExNodeLibraryDoc=\"sampling/textures/get-texture-data\")",
+      "uproperties": [
+        {
+          "name": "SourceType",
+          "display_name": "SourceType",
+          "type": "EPCGExGetTexturePathType",
+          "default": "EPCGExGetTexturePathType::MaterialPath",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SourceAttributeName",
+          "display_name": "SourceAttributeName",
+          "type": "FName",
+          "default": "FName(\"AssetPath\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOutputTextureIds",
+          "display_name": "bOutputTextureIds",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SourceType == EPCGExGetTexturePathType::MaterialPath",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bBuildTextureData",
+          "display_name": "bBuildTextureData",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SourceType == EPCGExGetTexturePathType::MaterialPath",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Filter",
+          "display_name": "Filter",
+          "type": "EPCGExTextureFilter",
+          "default": "EPCGExTextureFilter::Bilinear",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Data",
+          "advanced": false
+        },
+        {
+          "name": "Transform",
+          "display_name": "Transform",
+          "type": "FTransform",
+          "default": "FTransform::Identity",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Data",
+          "advanced": false
+        },
+        {
+          "name": "bUseAbsoluteTransform",
+          "display_name": "bUseAbsoluteTransform",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Data",
+          "advanced": false
+        },
+        {
+          "name": "ColorChannel",
+          "display_name": "ColorChannel",
+          "type": "EPCGTextureColorChannel",
+          "default": "EPCGTextureColorChannel::Alpha",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Data",
+          "advanced": false
+        },
+        {
+          "name": "TexelSize",
+          "display_name": "TexelSize",
+          "type": "float",
+          "default": "50.0f",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Data",
+          "advanced": false
+        },
+        {
+          "name": "Rotation",
+          "display_name": "Rotation",
+          "type": "float",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseAdvancedTiling",
+          "edit_condition_hides": false,
+          "category": "Settings|Data",
+          "advanced": false
+        },
+        {
+          "name": "bUseAdvancedTiling",
+          "display_name": "bUseAdvancedTiling",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Data",
+          "advanced": false
+        },
+        {
+          "name": "Tiling",
+          "display_name": "Tiling",
+          "type": "FVector2D",
+          "default": "FVector2D(1.0, 1.0)",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseAdvancedTiling",
+          "edit_condition_hides": false,
+          "category": "Settings|Data|Tiling",
+          "advanced": false
+        },
+        {
+          "name": "CenterOffset",
+          "display_name": "CenterOffset",
+          "type": "FVector2D",
+          "default": "FVector2D::ZeroVector",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseAdvancedTiling",
+          "edit_condition_hides": false,
+          "category": "Settings|Data|Tiling",
+          "advanced": false
+        },
+        {
+          "name": "bUseTileBounds",
+          "display_name": "bUseTileBounds",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Data|Tiling",
+          "advanced": false
+        },
+        {
+          "name": "TileBounds",
+          "display_name": "TileBounds",
+          "type": "FBox2D",
+          "default": "FBox2D(FVector2D(-0.5, -0.5), FVector2D(0.5, 0.5))",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseAdvancedTiling && bUseTileBounds",
+          "edit_condition_hides": false,
+          "category": "Settings|Data|Tiling",
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "node_settings",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": true,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": true,
+      "point_filter_label": "PCGExFilters::Labels::SourcePointFiltersLabel",
+      "filter_inputs": [
+        {
+          "label": "PCGExFilters::Labels::SourcePointFiltersLabel",
+          "tooltip": "Filters",
+          "factory_type": "PCGExFactories::PointFilters",
+          "required": false
+        }
+      ],
+      "inputs": [
+        "SourceTexLabel"
+      ],
+      "outputs": [
+        "OutputTextureDataLabel"
+      ],
+      "consumed_factories": [
+        {
+          "label": "PCGExTexture::SourceTexLabel",
+          "type_info": "FPCGExDataTypeInfoTexParam"
+        }
+      ],
+      "consumed_filters": [
+        {
+          "label": "PCGExFilters::Labels::SourcePointFiltersLabel",
+          "tooltip": "Filters",
+          "factory_type": "PCGExFactories::PointFilters",
+          "required": false
+        }
+      ],
+      "all_properties": [
+        {
+          "name": "BulkInitData",
+          "display_name": "BulkInitData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CacheData",
+          "display_name": "CacheData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScopedAttributeGet",
+          "display_name": "ScopedAttributeGet",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "StealData",
+          "display_name": "StealData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Disabled",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsDataStealing",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ExecutionPolicy",
+          "display_name": "ExecutionPolicy",
+          "type": "EPCGExExecutionPolicy",
+          "default": "EPCGExExecutionPolicy::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsInitPolicy",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bFlattenOutput",
+          "display_name": "bFlattenOutput",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bCleanupConsumableAttributes",
+          "display_name": "bCleanupConsumableAttributes",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedProtectedAttributesName",
+          "display_name": "Protected Attributes",
+          "type": "FString",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "ProtectedAttributes",
+          "display_name": "Protected Attributes",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bPropagateAbortedExecution",
+          "display_name": "bPropagateAbortedExecution",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietInvalidInputWarning",
+          "display_name": "bQuietInvalidInputWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietMissingInputError",
+          "display_name": "bQuietMissingInputError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietCancellationError",
+          "display_name": "bQuietCancellationError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "SourceType",
+          "display_name": "SourceType",
+          "type": "EPCGExGetTexturePathType",
+          "default": "EPCGExGetTexturePathType::MaterialPath",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SourceAttributeName",
+          "display_name": "SourceAttributeName",
+          "type": "FName",
+          "default": "FName(\"AssetPath\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOutputTextureIds",
+          "display_name": "bOutputTextureIds",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SourceType == EPCGExGetTexturePathType::MaterialPath",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bBuildTextureData",
+          "display_name": "bBuildTextureData",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SourceType == EPCGExGetTexturePathType::MaterialPath",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Filter",
+          "display_name": "Filter",
+          "type": "EPCGExTextureFilter",
+          "default": "EPCGExTextureFilter::Bilinear",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Data",
+          "advanced": false
+        },
+        {
+          "name": "Transform",
+          "display_name": "Transform",
+          "type": "FTransform",
+          "default": "FTransform::Identity",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Data",
+          "advanced": false
+        },
+        {
+          "name": "bUseAbsoluteTransform",
+          "display_name": "bUseAbsoluteTransform",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Data",
+          "advanced": false
+        },
+        {
+          "name": "ColorChannel",
+          "display_name": "ColorChannel",
+          "type": "EPCGTextureColorChannel",
+          "default": "EPCGTextureColorChannel::Alpha",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Data",
+          "advanced": false
+        },
+        {
+          "name": "TexelSize",
+          "display_name": "TexelSize",
+          "type": "float",
+          "default": "50.0f",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Data",
+          "advanced": false
+        },
+        {
+          "name": "Rotation",
+          "display_name": "Rotation",
+          "type": "float",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseAdvancedTiling",
+          "edit_condition_hides": false,
+          "category": "Settings|Data",
+          "advanced": false
+        },
+        {
+          "name": "bUseAdvancedTiling",
+          "display_name": "bUseAdvancedTiling",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Data",
+          "advanced": false
+        },
+        {
+          "name": "Tiling",
+          "display_name": "Tiling",
+          "type": "FVector2D",
+          "default": "FVector2D(1.0, 1.0)",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseAdvancedTiling",
+          "edit_condition_hides": false,
+          "category": "Settings|Data|Tiling",
+          "advanced": false
+        },
+        {
+          "name": "CenterOffset",
+          "display_name": "CenterOffset",
+          "type": "FVector2D",
+          "default": "FVector2D::ZeroVector",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseAdvancedTiling",
+          "edit_condition_hides": false,
+          "category": "Settings|Data|Tiling",
+          "advanced": false
+        },
+        {
+          "name": "bUseTileBounds",
+          "display_name": "bUseTileBounds",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Data|Tiling",
+          "advanced": false
+        },
+        {
+          "name": "TileBounds",
+          "display_name": "TileBounds",
+          "type": "FBox2D",
+          "default": "FBox2D(FVector2D(-0.5, -0.5), FVector2D(0.5, 0.5))",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseAdvancedTiling && bUseTileBounds",
+          "edit_condition_hides": false,
+          "category": "Settings|Data|Tiling",
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExGetTextureDataElement",
+      "base_class": "FPCGExPointsProcessorElement"
+    }
+  ],
+  "namespaces": {}
+}

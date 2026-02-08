@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsPathfindingNavmesh/Public/PCGExElementsPathfindingNavmesh.h",
+  "module": "PCGExElementsPathfindingNavmesh",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsPathfindingNavmeshModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

@@ -1,0 +1,27 @@
+{
+  "path": "PCGExFoundationsEditor/Public/Details/InputSettings/PCGExInputShorthandsCustomization.h",
+  "module": "PCGExFoundationsEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExInputShorthandCustomization",
+      "base_class": "IPropertyTypeCustomization"
+    },
+    {
+      "name": "FPCGExInputShorthandVectorCustomization",
+      "base_class": "FPCGExInputShorthandCustomization"
+    },
+    {
+      "name": "FPCGExInputShorthandDirectionCustomization",
+      "base_class": "FPCGExInputShorthandVectorCustomization"
+    },
+    {
+      "name": "FPCGExInputShorthandRotatorCustomization",
+      "base_class": "FPCGExInputShorthandCustomization"
+    }
+  ],
+  "namespaces": {}
+}

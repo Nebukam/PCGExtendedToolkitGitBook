@@ -1,0 +1,15 @@
+{
+  "path": "PCGExCollectionsEditor/Public/PCGExCollectionsEditor.h",
+  "module": "PCGExCollectionsEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExCollectionsEditorModule",
+      "base_class": "IPCGExEditorModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

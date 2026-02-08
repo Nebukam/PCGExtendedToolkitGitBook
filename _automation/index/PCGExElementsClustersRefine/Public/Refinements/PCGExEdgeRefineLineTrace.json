@@ -1,0 +1,202 @@
+{
+  "path": "PCGExElementsClustersRefine/Public/Refinements/PCGExEdgeRefineLineTrace.h",
+  "module": "PCGExElementsClustersRefine",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExEdgeRefineLineTrace",
+      "display_name": "UPCGExEdgeRefineLineTrace",
+      "description": "",
+      "base_class": "UPCGExEdgeRefineInstancedFactory",
+      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Refine : Line Trace\", PCGExNodeLibraryDoc=\"clusters/refine-cluster/line-trace\")",
+      "uproperties": [
+        {
+          "name": "CollisionSettings",
+          "display_name": "CollisionSettings",
+          "type": "FPCGExCollisionDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bTwoWayCheck",
+          "display_name": "bTwoWayCheck",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bScatter",
+          "display_name": "bScatter",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScatterSamples",
+          "display_name": " ├─ Samples",
+          "type": "double",
+          "default": "10",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bScatter",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScatterRadius",
+          "display_name": " └─ Radius",
+          "type": "double",
+          "default": "10",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bScatter",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bInvert",
+          "display_name": "bInvert",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "instanced_factory",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": true,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "CollisionSettings",
+          "display_name": "CollisionSettings",
+          "type": "FPCGExCollisionDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bTwoWayCheck",
+          "display_name": "bTwoWayCheck",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bScatter",
+          "display_name": "bScatter",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScatterSamples",
+          "display_name": " ├─ Samples",
+          "type": "double",
+          "default": "10",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bScatter",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScatterRadius",
+          "display_name": " └─ Radius",
+          "type": "double",
+          "default": "10",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bScatter",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bInvert",
+          "display_name": "bInvert",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExEdgeRefineLineTrace",
+      "base_class": "FPCGExEdgeRefineOperation"
+    }
+  ],
+  "namespaces": {}
+}

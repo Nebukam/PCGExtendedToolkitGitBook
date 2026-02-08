@@ -1,0 +1,105 @@
+{
+  "path": "PCGExElementsTensors/Public/Samplers/PCGExTensorSamplerRK4.h",
+  "module": "PCGExElementsTensors",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExTensorSamplerRK4",
+      "display_name": "UPCGExTensorSamplerRK4",
+      "description": "",
+      "base_class": "UPCGExTensorSampler",
+      "uclass_meta": "MinimalAPI, DisplayName = \"RK4\", meta=(DisplayName = \"RK4\", ToolTip =\"Samples the field using Runge-Kutta 4 method\")",
+      "uproperties": [],
+      "classification": {
+        "type": "unknown",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "Radius",
+          "display_name": "Radius",
+          "type": "double",
+          "default": "1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinStepFraction",
+          "display_name": "MinStepFraction",
+          "type": "double",
+          "default": "0.1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxStepFraction",
+          "display_name": "MaxStepFraction",
+          "type": "double",
+          "default": "1.0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ErrorTolerance",
+          "display_name": "ErrorTolerance",
+          "type": "double",
+          "default": "0.01",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxSubSteps",
+          "display_name": "MaxSubSteps",
+          "type": "int32",
+          "default": "4",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

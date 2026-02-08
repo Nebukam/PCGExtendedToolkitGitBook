@@ -1,0 +1,533 @@
+{
+  "path": "PCGExElementsPaths/Public/Elements/PCGExPathShift.h",
+  "module": "PCGExElementsPaths",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExShiftType",
+      "values": [
+        {
+          "name": "Index",
+          "display_name": "Index"
+        },
+        {
+          "name": "Metadata",
+          "display_name": "Metadata"
+        },
+        {
+          "name": "Properties",
+          "display_name": "Properties"
+        },
+        {
+          "name": "MetadataAndProperties",
+          "display_name": "Metadata and Properties"
+        },
+        {
+          "name": "CherryPick",
+          "display_name": "CherryPick"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExShiftPathMode",
+      "values": [
+        {
+          "name": "Discrete",
+          "display_name": "Discrete"
+        },
+        {
+          "name": "Relative",
+          "display_name": "Relative"
+        },
+        {
+          "name": "Filter",
+          "display_name": "Filter"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExShiftPathSettings",
+      "display_name": "Path : Shift",
+      "description": "Shift path points",
+      "base_class": "UPCGExPathProcessorSettings",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/shift\")",
+      "uproperties": [
+        {
+          "name": "ShiftType",
+          "display_name": "ShiftType",
+          "type": "EPCGExShiftType",
+          "default": "EPCGExShiftType::MetadataAndProperties",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "InputMode",
+          "display_name": "InputMode",
+          "type": "EPCGExShiftPathMode",
+          "default": "EPCGExShiftPathMode::Relative",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "RelativeConstant",
+          "display_name": "RelativeConstant",
+          "type": "double",
+          "default": "0.5",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "InputMode == EPCGExShiftPathMode::Relative",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Truncate",
+          "display_name": "Truncate",
+          "type": "EPCGExTruncateMode",
+          "default": "EPCGExTruncateMode::Round",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "InputMode == EPCGExShiftPathMode::Relative",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DiscreteConstant",
+          "display_name": "DiscreteConstant",
+          "type": "int32",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "InputMode == EPCGExShiftPathMode::Discrete",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "IndexSafety",
+          "display_name": "IndexSafety",
+          "type": "EPCGExIndexSafety",
+          "default": "EPCGExIndexSafety::Tile",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "InputMode != EPCGExShiftPathMode::Filter",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bReverseShift",
+          "display_name": "bReverseShift",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CherryPickedProperties",
+          "display_name": "CherryPickedProperties",
+          "type": "uint8",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ShiftType == EPCGExShiftType::CherryPick",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CherryPickedAttributes",
+          "display_name": "CherryPickedAttributes",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ShiftType == EPCGExShiftType::CherryPick",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bQuietDoubleShiftWarning",
+          "display_name": "bQuietDoubleShiftWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "node_settings",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "BulkInitData",
+          "display_name": "BulkInitData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CacheData",
+          "display_name": "CacheData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScopedAttributeGet",
+          "display_name": "ScopedAttributeGet",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "StealData",
+          "display_name": "StealData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Disabled",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsDataStealing",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ExecutionPolicy",
+          "display_name": "ExecutionPolicy",
+          "type": "EPCGExExecutionPolicy",
+          "default": "EPCGExExecutionPolicy::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsInitPolicy",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bFlattenOutput",
+          "display_name": "bFlattenOutput",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bCleanupConsumableAttributes",
+          "display_name": "bCleanupConsumableAttributes",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedProtectedAttributesName",
+          "display_name": "Protected Attributes",
+          "type": "FString",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "ProtectedAttributes",
+          "display_name": "Protected Attributes",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bPropagateAbortedExecution",
+          "display_name": "bPropagateAbortedExecution",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietInvalidInputWarning",
+          "display_name": "bQuietInvalidInputWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietMissingInputError",
+          "display_name": "bQuietMissingInputError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietCancellationError",
+          "display_name": "bQuietCancellationError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bOmitInvalidPathsOutputs",
+          "display_name": "bOmitInvalidPathsOutputs",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "ShiftType",
+          "display_name": "ShiftType",
+          "type": "EPCGExShiftType",
+          "default": "EPCGExShiftType::MetadataAndProperties",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "InputMode",
+          "display_name": "InputMode",
+          "type": "EPCGExShiftPathMode",
+          "default": "EPCGExShiftPathMode::Relative",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "RelativeConstant",
+          "display_name": "RelativeConstant",
+          "type": "double",
+          "default": "0.5",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "InputMode == EPCGExShiftPathMode::Relative",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Truncate",
+          "display_name": "Truncate",
+          "type": "EPCGExTruncateMode",
+          "default": "EPCGExTruncateMode::Round",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "InputMode == EPCGExShiftPathMode::Relative",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DiscreteConstant",
+          "display_name": "DiscreteConstant",
+          "type": "int32",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "InputMode == EPCGExShiftPathMode::Discrete",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "IndexSafety",
+          "display_name": "IndexSafety",
+          "type": "EPCGExIndexSafety",
+          "default": "EPCGExIndexSafety::Tile",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "InputMode != EPCGExShiftPathMode::Filter",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bReverseShift",
+          "display_name": "bReverseShift",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CherryPickedProperties",
+          "display_name": "CherryPickedProperties",
+          "type": "uint8",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ShiftType == EPCGExShiftType::CherryPick",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CherryPickedAttributes",
+          "display_name": "CherryPickedAttributes",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ShiftType == EPCGExShiftType::CherryPick",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bQuietDoubleShiftWarning",
+          "display_name": "bQuietDoubleShiftWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExShiftPathElement",
+      "base_class": "FPCGExPathProcessorElement"
+    }
+  ],
+  "namespaces": {}
+}

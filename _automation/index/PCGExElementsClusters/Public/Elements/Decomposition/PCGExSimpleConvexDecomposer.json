@@ -1,0 +1,71 @@
+{
+  "path": "PCGExElementsClusters/Public/Elements/Decomposition/PCGExSimpleConvexDecomposer.h",
+  "module": "PCGExElementsClusters",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExConvexDecompositionDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "MaxConcavityRatio",
+          "display_name": "MaxConcavityRatio",
+          "type": "double",
+          "default": "0.01",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinNodesPerCell",
+          "display_name": "MinNodesPerCell",
+          "type": "int32",
+          "default": "4",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxCells",
+          "display_name": "MaxCells",
+          "type": "int32",
+          "default": "32",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxDepth",
+          "display_name": "MaxDepth",
+          "type": "int32",
+          "default": "100",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

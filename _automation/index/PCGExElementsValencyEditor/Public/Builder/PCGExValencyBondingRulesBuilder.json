@@ -1,0 +1,206 @@
+{
+  "path": "PCGExElementsValencyEditor/Public/Builder/PCGExValencyBondingRulesBuilder.h",
+  "module": "PCGExElementsValencyEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExValencyBuildResult",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bSuccess",
+          "display_name": "bSuccess",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Result",
+          "advanced": false
+        },
+        {
+          "name": "ModuleCount",
+          "display_name": "ModuleCount",
+          "type": "int32",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Result",
+          "advanced": false
+        },
+        {
+          "name": "CageCount",
+          "display_name": "CageCount",
+          "type": "int32",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Result",
+          "advanced": false
+        },
+        {
+          "name": "PatternCount",
+          "display_name": "PatternCount",
+          "type": "int32",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Result",
+          "advanced": false
+        },
+        {
+          "name": "Warnings",
+          "display_name": "Warnings",
+          "type": "TArray<FText>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Result",
+          "advanced": false
+        },
+        {
+          "name": "Errors",
+          "display_name": "Errors",
+          "type": "TArray<FText>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Result",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [
+    {
+      "name": "UPCGExValencyBondingRulesBuilder",
+      "display_name": "UPCGExValencyBondingRulesBuilder",
+      "description": "",
+      "base_class": "UObject",
+      "uclass_meta": "BlueprintType",
+      "uproperties": [
+        {
+          "name": "bClearExistingModules",
+          "display_name": "bClearExistingModules",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Build Options",
+          "advanced": false
+        },
+        {
+          "name": "bValidateCompleteness",
+          "display_name": "bValidateCompleteness",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Build Options",
+          "advanced": false
+        },
+        {
+          "name": "bIncludeNullBoundaries",
+          "display_name": "bIncludeNullBoundaries",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Build Options",
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "unknown",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "bClearExistingModules",
+          "display_name": "bClearExistingModules",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Build Options",
+          "advanced": false
+        },
+        {
+          "name": "bValidateCompleteness",
+          "display_name": "bValidateCompleteness",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Build Options",
+          "advanced": false
+        },
+        {
+          "name": "bIncludeNullBoundaries",
+          "display_name": "bIncludeNullBoundaries",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Build Options",
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

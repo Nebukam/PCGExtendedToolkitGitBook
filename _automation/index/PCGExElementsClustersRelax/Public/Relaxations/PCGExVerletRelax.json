@@ -1,0 +1,333 @@
+{
+  "path": "PCGExElementsClustersRelax/Public/Relaxations/PCGExVerletRelax.h",
+  "module": "PCGExElementsClustersRelax",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExRelaxEdgeRestLength",
+      "values": [
+        {
+          "name": "Fixed",
+          "display_name": "Fixed"
+        },
+        {
+          "name": "Existing",
+          "display_name": "Existing"
+        },
+        {
+          "name": "Attribute",
+          "display_name": "Attribute"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExVerletRelax",
+      "display_name": "UPCGExVerletRelax",
+      "description": "",
+      "base_class": "UPCGExRelaxClusterOperation",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Verlet (Gravity)\", PCGExNodeLibraryDoc=\"clusters/relax-cluster/Gravity\")",
+      "uproperties": [
+        {
+          "name": "GravityInput",
+          "display_name": "GravityInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Gravity",
+          "display_name": "Gravity",
+          "type": "FVector",
+          "default": "FVector(0, 0, -100)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "GravityInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "FrictionInput",
+          "display_name": "FrictionInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Friction",
+          "display_name": "Friction",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "FrictionInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "EdgeScalingInput",
+          "display_name": "EdgeScalingInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "EdgeScaling",
+          "display_name": "Edge Scaling",
+          "type": "double",
+          "default": "1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "EdgeScalingInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "EdgeStiffnessInput",
+          "display_name": "EdgeStiffnessInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "EdgeStiffness",
+          "display_name": "Edge Stiffness",
+          "type": "double",
+          "default": "0.5",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "EdgeStiffnessInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "TimeStep",
+          "display_name": "TimeStep",
+          "type": "double",
+          "default": "0.1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DampingScale",
+          "display_name": "DampingScale",
+          "type": "double",
+          "default": "0.99",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "unknown",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "Precision",
+          "display_name": "Floating Point Precision",
+          "type": "double",
+          "default": "100",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "GravityInput",
+          "display_name": "GravityInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Gravity",
+          "display_name": "Gravity",
+          "type": "FVector",
+          "default": "FVector(0, 0, -100)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "GravityInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "FrictionInput",
+          "display_name": "FrictionInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Friction",
+          "display_name": "Friction",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "FrictionInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "EdgeScalingInput",
+          "display_name": "EdgeScalingInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "EdgeScaling",
+          "display_name": "Edge Scaling",
+          "type": "double",
+          "default": "1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "EdgeScalingInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "EdgeStiffnessInput",
+          "display_name": "EdgeStiffnessInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "EdgeStiffness",
+          "display_name": "Edge Stiffness",
+          "type": "double",
+          "default": "0.5",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "EdgeStiffnessInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "TimeStep",
+          "display_name": "TimeStep",
+          "type": "double",
+          "default": "0.1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DampingScale",
+          "display_name": "DampingScale",
+          "type": "double",
+          "default": "0.99",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

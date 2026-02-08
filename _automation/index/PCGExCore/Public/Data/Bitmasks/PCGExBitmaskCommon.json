@@ -1,0 +1,107 @@
+{
+  "path": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskCommon.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExBitOp",
+      "values": [
+        {
+          "name": "Set",
+          "display_name": "="
+        },
+        {
+          "name": "AND",
+          "display_name": "AND"
+        },
+        {
+          "name": "OR",
+          "display_name": "OR"
+        },
+        {
+          "name": "NOT",
+          "display_name": "NOT"
+        },
+        {
+          "name": "XOR",
+          "display_name": "XOR"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExBitOp_OR",
+      "values": [
+        {
+          "name": "OR",
+          "display_name": "OR"
+        },
+        {
+          "name": "Set",
+          "display_name": "SET"
+        },
+        {
+          "name": "AND",
+          "display_name": "AND"
+        },
+        {
+          "name": "NOT",
+          "display_name": "NOT"
+        },
+        {
+          "name": "XOR",
+          "display_name": "XOR"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExBitmaskMode",
+      "values": [
+        {
+          "name": "Direct",
+          "display_name": "Direct"
+        },
+        {
+          "name": "Individual",
+          "display_name": "Mutations"
+        },
+        {
+          "name": "Composite",
+          "display_name": "Composite"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExBitflagComparison",
+      "values": [
+        {
+          "name": "MatchPartial",
+          "display_name": "MatchPartial"
+        },
+        {
+          "name": "MatchFull",
+          "display_name": "MatchFull"
+        },
+        {
+          "name": "MatchStrict",
+          "display_name": "MatchStrict"
+        },
+        {
+          "name": "NoMatchPartial",
+          "display_name": "NoMatchPartial"
+        },
+        {
+          "name": "NoMatchFull",
+          "display_name": "NoMatchFull"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

@@ -1,0 +1,15 @@
+{
+  "path": "PCGExMatching/Public/PCGExMatching.h",
+  "module": "PCGExMatching",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExMatchingModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

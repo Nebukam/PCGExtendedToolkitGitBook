@@ -1,0 +1,14 @@
+{
+  "path": "PCGExFoundations/Public/Helpers/PCGExSocketHelpers.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {
+    "PCGExStaging": {
+      "OutputSocketLabel": "Sockets"
+    }
+  }
+}

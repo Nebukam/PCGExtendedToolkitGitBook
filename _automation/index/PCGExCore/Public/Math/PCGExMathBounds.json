@@ -1,0 +1,33 @@
+{
+  "path": "PCGExCore/Public/Math/PCGExMathBounds.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExBoxCheckMode",
+      "values": [
+        {
+          "name": "Box",
+          "display_name": "Box"
+        },
+        {
+          "name": "ExpandedBox",
+          "display_name": "Expanded Box"
+        },
+        {
+          "name": "Sphere",
+          "display_name": "Sphere"
+        },
+        {
+          "name": "ExpandedSphere",
+          "display_name": "Expanded Sphere"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

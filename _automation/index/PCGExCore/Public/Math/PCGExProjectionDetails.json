@@ -1,0 +1,60 @@
+{
+  "path": "PCGExCore/Public/Math/PCGExProjectionDetails.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExProjectionMethod",
+      "values": [
+        {
+          "name": "Normal",
+          "display_name": "Normal"
+        },
+        {
+          "name": "BestFit",
+          "display_name": "Best Fit"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExGeo2DProjectionDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Method",
+          "display_name": "Method",
+          "type": "EPCGExProjectionMethod",
+          "default": "EPCGExProjectionMethod::Normal",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ProjectionVector",
+          "display_name": "ProjectionVector",
+          "type": "FPCGExInputShorthandSelectorVector",
+          "default": "FPCGExInputShorthandSelectorVector(FName(\"@Data.Projection\"), FVector::UpVector, false)",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Method == EPCGExProjectionMethod::Normal",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

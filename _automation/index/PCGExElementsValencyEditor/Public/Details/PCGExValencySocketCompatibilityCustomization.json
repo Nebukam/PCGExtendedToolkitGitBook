@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsValencyEditor/Public/Details/PCGExValencySocketCompatibilityCustomization.h",
+  "module": "PCGExElementsValencyEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExValencySocketDefinitionCustomization",
+      "base_class": "IPropertyTypeCustomization"
+    }
+  ],
+  "namespaces": {}
+}

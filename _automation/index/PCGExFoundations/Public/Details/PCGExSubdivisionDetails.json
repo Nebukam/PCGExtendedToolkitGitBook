@@ -1,0 +1,147 @@
+{
+  "path": "PCGExFoundations/Public/Details/PCGExSubdivisionDetails.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExSubdivideMode",
+      "values": [
+        {
+          "name": "Distance",
+          "display_name": "Distance"
+        },
+        {
+          "name": "Count",
+          "display_name": "Count"
+        },
+        {
+          "name": "Manhattan",
+          "display_name": "Manhattan"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExManhattanMethod",
+      "values": [
+        {
+          "name": "Simple",
+          "display_name": "Simple"
+        },
+        {
+          "name": "GridDistance",
+          "display_name": "GridDistance"
+        },
+        {
+          "name": "GridCount",
+          "display_name": "GridCount"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExManhattanAlign",
+      "values": [
+        {
+          "name": "World",
+          "display_name": "World"
+        },
+        {
+          "name": "Custom",
+          "display_name": "Custom"
+        },
+        {
+          "name": "SegmentX",
+          "display_name": "Segment X"
+        },
+        {
+          "name": "SegmentY",
+          "display_name": "Segment Y"
+        },
+        {
+          "name": "SegmentZ",
+          "display_name": "Segment Z"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExManhattanDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Method",
+          "display_name": "Method",
+          "type": "EPCGExManhattanMethod",
+          "default": "EPCGExManhattanMethod::Simple",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Order",
+          "display_name": "Order",
+          "type": "EPCGExAxisOrder",
+          "default": "EPCGExAxisOrder::XYZ",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "GridSizeInput",
+          "display_name": "GridSizeInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSupportAttribute",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SpaceAlign",
+          "display_name": "SpaceAlign",
+          "type": "EPCGExManhattanAlign",
+          "default": "EPCGExManhattanAlign::World",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "OrientInput",
+          "display_name": "OrientInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSupportAttribute && SpaceAlign == EPCGExManhattanAlign::Custom",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

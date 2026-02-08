@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsClusters/Public/PCGExElementsClusters.h",
+  "module": "PCGExElementsClusters",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsClustersModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

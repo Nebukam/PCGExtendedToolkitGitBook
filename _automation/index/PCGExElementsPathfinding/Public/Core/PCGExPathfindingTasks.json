@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsPathfinding/Public/Core/PCGExPathfindingTasks.h",
+  "module": "PCGExElementsPathfinding",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExPathfindingTask",
+      "base_class": "PCGExMT"
+    }
+  ],
+  "namespaces": {}
+}

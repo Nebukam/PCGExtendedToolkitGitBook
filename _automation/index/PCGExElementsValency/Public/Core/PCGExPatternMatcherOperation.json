@@ -1,0 +1,176 @@
+{
+  "path": "PCGExElementsValency/Public/Core/PCGExPatternMatcherOperation.h",
+  "module": "PCGExElementsValency",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExPatternOverlapResolution",
+      "values": [
+        {
+          "name": "WeightBased",
+          "display_name": "WeightBased"
+        },
+        {
+          "name": "LargestFirst",
+          "display_name": "LargestFirst"
+        },
+        {
+          "name": "SmallestFirst",
+          "display_name": "SmallestFirst"
+        },
+        {
+          "name": "FirstDefined",
+          "display_name": "FirstDefined"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExPatternMatcherFactory",
+      "display_name": "UPCGExPatternMatcherFactory",
+      "description": "",
+      "base_class": "UPCGExInstancedFactory",
+      "uclass_meta": "Abstract",
+      "uproperties": [
+        {
+          "name": "RequiredTags",
+          "display_name": "RequiredTags",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Pattern Selection",
+          "advanced": false
+        },
+        {
+          "name": "ExcludedTags",
+          "display_name": "ExcludedTags",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Pattern Selection",
+          "advanced": false
+        },
+        {
+          "name": "PatternNames",
+          "display_name": "PatternNames",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Pattern Selection",
+          "advanced": false
+        },
+        {
+          "name": "bExclusive",
+          "display_name": "bExclusive",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "instanced_factory",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": true,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "RequiredTags",
+          "display_name": "RequiredTags",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Pattern Selection",
+          "advanced": false
+        },
+        {
+          "name": "ExcludedTags",
+          "display_name": "ExcludedTags",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Pattern Selection",
+          "advanced": false
+        },
+        {
+          "name": "PatternNames",
+          "display_name": "PatternNames",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Pattern Selection",
+          "advanced": false
+        },
+        {
+          "name": "bExclusive",
+          "display_name": "bExclusive",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "implementations": [
+        "UPCGExDefaultPatternMatcher"
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExPatternMatcherOperation",
+      "base_class": "FPCGExOperation"
+    }
+  ],
+  "namespaces": {}
+}

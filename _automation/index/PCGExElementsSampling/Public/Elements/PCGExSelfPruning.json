@@ -1,0 +1,626 @@
+{
+  "path": "PCGExElementsSampling/Public/Elements/PCGExSelfPruning.h",
+  "module": "PCGExElementsSampling",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExSelfPruningMode",
+      "values": [
+        {
+          "name": "Prune",
+          "display_name": "Prune"
+        },
+        {
+          "name": "WriteResult",
+          "display_name": "Write Result"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExSelfPruningExpandOrder",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "Before",
+          "display_name": "Before Transform"
+        },
+        {
+          "name": "After",
+          "display_name": "After Transform"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExSelfPruningSettings",
+      "display_name": "Self Pruning",
+      "description": "A slower, more precise self pruning node.",
+      "base_class": "UPCGExPointsProcessorSettings",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"sampling/self-pruning\")",
+      "uproperties": [
+        {
+          "name": "Mode",
+          "display_name": "Mode",
+          "type": "EPCGExSelfPruningMode",
+          "default": "EPCGExSelfPruningMode::Prune",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SortDirection",
+          "display_name": " ├─ Sort Direction",
+          "type": "EPCGExSortDirection",
+          "default": "EPCGExSortDirection::Ascending",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bRandomize",
+          "display_name": " └─ Randomize",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExSelfPruningMode::Prune",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "RandomRange",
+          "display_name": "  └─ Range",
+          "type": "double",
+          "default": "0.05",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bRandomize && Mode == EPCGExSelfPruningMode::Prune",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "NumOverlapAttributeName",
+          "display_name": " ├─ Output to",
+          "type": "FName",
+          "default": "FName(\"NumOverlaps\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExSelfPruningMode::WriteResult",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Units",
+          "display_name": " └─ Units",
+          "type": "EPCGExMeanMeasure",
+          "default": "EPCGExMeanMeasure::Discrete",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExSelfPruningMode::WriteResult",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOutputOneMinusOverlap",
+          "display_name": "   └─ OneMinus",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExSelfPruningMode::WriteResult && Units == EPCGExMeanMeasure::Relative",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bPreciseTest",
+          "display_name": "bPreciseTest",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Expansion",
+          "advanced": false
+        },
+        {
+          "name": "PrimaryMode",
+          "display_name": "PrimaryMode",
+          "type": "EPCGExSelfPruningExpandOrder",
+          "default": "EPCGExSelfPruningExpandOrder::None",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Expansion",
+          "advanced": false
+        },
+        {
+          "name": "PrimaryExpansionInput",
+          "display_name": " ├─ Input",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "PrimaryMode != EPCGExSelfPruningExpandOrder::None",
+          "edit_condition_hides": true,
+          "category": "Settings|Expansion",
+          "advanced": false
+        },
+        {
+          "name": "PrimaryExpansion",
+          "display_name": " └─ Primary Expansion",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "PrimaryMode != EPCGExSelfPruningExpandOrder::None && PrimaryExpansionInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": "Settings|Expansion",
+          "advanced": false
+        },
+        {
+          "name": "SecondaryMode",
+          "display_name": "SecondaryMode",
+          "type": "EPCGExSelfPruningExpandOrder",
+          "default": "EPCGExSelfPruningExpandOrder::None",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Expansion",
+          "advanced": false
+        },
+        {
+          "name": "SecondaryExpansionInput",
+          "display_name": " ├─ Input",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SecondaryMode != EPCGExSelfPruningExpandOrder::None",
+          "edit_condition_hides": true,
+          "category": "Settings|Expansion",
+          "advanced": false
+        },
+        {
+          "name": "SecondaryExpansion",
+          "display_name": " └─ Secondary Expansion",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SecondaryMode != EPCGExSelfPruningExpandOrder::None && SecondaryExpansionInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": "Settings|Expansion",
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "node_settings",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": true,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": true,
+      "point_filter_label": "PCGExFilters::Labels::SourceFiltersLabel",
+      "filter_inputs": [
+        {
+          "label": "PCGExFilters::Labels::SourceFiltersLabel",
+          "tooltip": "Filters which points can be processed as overlapping",
+          "factory_type": "PCGExFactories::PointFilters",
+          "required": false
+        }
+      ],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [
+        {
+          "label": "PCGExFilters::Labels::SourceFiltersLabel",
+          "tooltip": "Filters which points can be processed as overlapping",
+          "factory_type": "PCGExFactories::PointFilters",
+          "required": false
+        }
+      ],
+      "all_properties": [
+        {
+          "name": "BulkInitData",
+          "display_name": "BulkInitData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CacheData",
+          "display_name": "CacheData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScopedAttributeGet",
+          "display_name": "ScopedAttributeGet",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "StealData",
+          "display_name": "StealData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Disabled",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsDataStealing",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ExecutionPolicy",
+          "display_name": "ExecutionPolicy",
+          "type": "EPCGExExecutionPolicy",
+          "default": "EPCGExExecutionPolicy::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsInitPolicy",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bFlattenOutput",
+          "display_name": "bFlattenOutput",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bCleanupConsumableAttributes",
+          "display_name": "bCleanupConsumableAttributes",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedProtectedAttributesName",
+          "display_name": "Protected Attributes",
+          "type": "FString",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "ProtectedAttributes",
+          "display_name": "Protected Attributes",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bPropagateAbortedExecution",
+          "display_name": "bPropagateAbortedExecution",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietInvalidInputWarning",
+          "display_name": "bQuietInvalidInputWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietMissingInputError",
+          "display_name": "bQuietMissingInputError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietCancellationError",
+          "display_name": "bQuietCancellationError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "Mode",
+          "display_name": "Mode",
+          "type": "EPCGExSelfPruningMode",
+          "default": "EPCGExSelfPruningMode::Prune",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SortDirection",
+          "display_name": " ├─ Sort Direction",
+          "type": "EPCGExSortDirection",
+          "default": "EPCGExSortDirection::Ascending",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bRandomize",
+          "display_name": " └─ Randomize",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExSelfPruningMode::Prune",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "RandomRange",
+          "display_name": "  └─ Range",
+          "type": "double",
+          "default": "0.05",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bRandomize && Mode == EPCGExSelfPruningMode::Prune",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "NumOverlapAttributeName",
+          "display_name": " ├─ Output to",
+          "type": "FName",
+          "default": "FName(\"NumOverlaps\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExSelfPruningMode::WriteResult",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Units",
+          "display_name": " └─ Units",
+          "type": "EPCGExMeanMeasure",
+          "default": "EPCGExMeanMeasure::Discrete",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExSelfPruningMode::WriteResult",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOutputOneMinusOverlap",
+          "display_name": "   └─ OneMinus",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExSelfPruningMode::WriteResult && Units == EPCGExMeanMeasure::Relative",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bPreciseTest",
+          "display_name": "bPreciseTest",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Expansion",
+          "advanced": false
+        },
+        {
+          "name": "PrimaryMode",
+          "display_name": "PrimaryMode",
+          "type": "EPCGExSelfPruningExpandOrder",
+          "default": "EPCGExSelfPruningExpandOrder::None",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Expansion",
+          "advanced": false
+        },
+        {
+          "name": "PrimaryExpansionInput",
+          "display_name": " ├─ Input",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "PrimaryMode != EPCGExSelfPruningExpandOrder::None",
+          "edit_condition_hides": true,
+          "category": "Settings|Expansion",
+          "advanced": false
+        },
+        {
+          "name": "PrimaryExpansion",
+          "display_name": " └─ Primary Expansion",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "PrimaryMode != EPCGExSelfPruningExpandOrder::None && PrimaryExpansionInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": "Settings|Expansion",
+          "advanced": false
+        },
+        {
+          "name": "SecondaryMode",
+          "display_name": "SecondaryMode",
+          "type": "EPCGExSelfPruningExpandOrder",
+          "default": "EPCGExSelfPruningExpandOrder::None",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Expansion",
+          "advanced": false
+        },
+        {
+          "name": "SecondaryExpansionInput",
+          "display_name": " ├─ Input",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SecondaryMode != EPCGExSelfPruningExpandOrder::None",
+          "edit_condition_hides": true,
+          "category": "Settings|Expansion",
+          "advanced": false
+        },
+        {
+          "name": "SecondaryExpansion",
+          "display_name": " └─ Secondary Expansion",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SecondaryMode != EPCGExSelfPruningExpandOrder::None && SecondaryExpansionInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": "Settings|Expansion",
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExSelfPruningElement",
+      "base_class": "FPCGExPointsProcessorElement"
+    }
+  ],
+  "namespaces": {}
+}

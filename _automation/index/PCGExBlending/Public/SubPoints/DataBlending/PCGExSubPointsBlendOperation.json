@@ -1,0 +1,77 @@
+{
+  "path": "PCGExBlending/Public/SubPoints/DataBlending/PCGExSubPointsBlendOperation.h",
+  "module": "PCGExBlending",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExSubPointsBlendInstancedFactory",
+      "display_name": "UPCGExSubPointsBlendInstancedFactory",
+      "description": "",
+      "base_class": "UPCGExSubPointsInstancedFactory",
+      "uclass_meta": "Abstract",
+      "uproperties": [
+        {
+          "name": "BlendingDetails",
+          "display_name": "BlendingDetails",
+          "type": "FPCGExBlendingDetails",
+          "default": "FPCGExBlendingDetails(EPCGExBlendingType::Unset, EPCGExBlendingType::None)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": true,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "instanced_factory",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": true,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "BlendingDetails",
+          "display_name": "BlendingDetails",
+          "type": "FPCGExBlendingDetails",
+          "default": "FPCGExBlendingDetails(EPCGExBlendingType::Unset, EPCGExBlendingType::None)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": true,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "implementations": [
+        "UPCGExSubPointsBlendInheritEnd",
+        "UPCGExSubPointsBlendInheritStart",
+        "UPCGExSubPointsBlendNone"
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExSubPointsBlendOperation",
+      "base_class": "FPCGExSubPointsOperation"
+    }
+  ],
+  "namespaces": {}
+}

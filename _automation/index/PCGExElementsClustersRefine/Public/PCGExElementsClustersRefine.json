@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsClustersRefine/Public/PCGExElementsClustersRefine.h",
+  "module": "PCGExElementsClustersRefine",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsClustersRefineModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

@@ -1,0 +1,313 @@
+{
+  "path": "PCGExBlending/Public/Core/PCGExBlendOpFactory.h",
+  "module": "PCGExBlending",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExAttributeBlendWeight",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "WeightInput",
+          "display_name": "WeightInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Weight",
+          "display_name": "Weight",
+          "type": "double",
+          "default": "0.5",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "WeightInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bUseLocalCurve",
+          "display_name": "bUseLocalCurve",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "LocalWeightCurve",
+          "display_name": "Weight Curve",
+          "type": "FRuntimeFloatCurve",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseLocalCurve",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "WeightCurve",
+          "display_name": "Weight Curve",
+          "type": "TSoftObjectPtr<UCurveFloat>",
+          "default": "TSoftObjectPtr<UCurveFloat>(PCGExCurves::WeightDistributionLinear)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "!bUseLocalCurve",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "WeightCurveLookup",
+          "display_name": "WeightCurveLookup",
+          "type": "FPCGExCurveLookupDetails",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExAttributeBlendConfig",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bRequiresWeight",
+          "display_name": "bRequiresWeight",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "BlendMode",
+          "display_name": "BlendMode",
+          "type": "EPCGExABBlendingType",
+          "default": "EPCGExABBlendingType::Average",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "OperandASource",
+          "display_name": "OperandASource",
+          "type": "EPCGExOperandSource",
+          "default": "EPCGExOperandSource::Attribute",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "OperandA",
+          "display_name": "OperandA",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bUseOperandB",
+          "display_name": "bUseOperandB",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "OperandB",
+          "display_name": "OperandB",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseOperandB",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "OperandBSource",
+          "display_name": " └─ Inline",
+          "type": "EPCGExOperandSource",
+          "default": "EPCGExOperandSource::Attribute",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseOperandB",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "OutputMode",
+          "display_name": "OutputMode",
+          "type": "EPCGExBlendOpOutputMode",
+          "default": "EPCGExBlendOpOutputMode::SameAsA",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "OutputTo",
+          "display_name": "Output To",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "OutputMode == EPCGExBlendOpOutputMode::New || OutputMode == EPCGExBlendOpOutputMode::Transient",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bResetValueBeforeMultiSourceBlend",
+          "display_name": "bResetValueBeforeMultiSourceBlend",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "OutputType",
+          "display_name": "OutputType",
+          "type": "EPCGExOperandAuthority",
+          "default": "EPCGExOperandAuthority::Auto",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "CustomType",
+          "display_name": " └─ Type",
+          "type": "EPCGMetadataTypes",
+          "default": "EPCGMetadataTypes::Double",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "OutputType == EPCGExOperandAuthority::Custom",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "Weighting",
+          "display_name": "Weighting",
+          "type": "FPCGExAttributeBlendWeight",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bRequiresWeight",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": true,
+      "used_by": []
+    }
+  ],
+  "classes": [
+    {
+      "name": "UPCGExBlendOpFactory",
+      "display_name": "UPCGExBlendOpFactory",
+      "description": "",
+      "base_class": "UPCGExFactoryData",
+      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Blending\"",
+      "uproperties": [],
+      "classification": {
+        "type": "factory_data",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": true,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": []
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExBlendOperation",
+      "base_class": "FPCGExOperation"
+    }
+  ],
+  "namespaces": {
+    "PCGExBlending": {
+      "PreviousAttributeName": "#Previous",
+      "PreviousNameAttributeName": "#PreviousName"
+    }
+  }
+}

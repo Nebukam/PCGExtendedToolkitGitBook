@@ -1,0 +1,45 @@
+{
+  "path": "PCGExCollections/Public/Details/PCGExStagedTypeFilterDetails.h",
+  "module": "PCGExCollections",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExStagedTypeFilterDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "TypeFilter",
+          "display_name": "TypeFilter",
+          "type": "TMap<FName, bool>",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bIncludeInvalid",
+          "display_name": "bIncludeInvalid",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

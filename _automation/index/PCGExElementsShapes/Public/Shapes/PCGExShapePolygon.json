@@ -1,0 +1,550 @@
+{
+  "path": "PCGExElementsShapes/Public/Shapes/PCGExShapePolygon.h",
+  "module": "PCGExElementsShapes",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExPolygonShapeType",
+      "values": [
+        {
+          "name": "Convex",
+          "display_name": "Polygon"
+        },
+        {
+          "name": "Star",
+          "display_name": "Star"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExPolygonSkeletonConnectionType",
+      "values": [
+        {
+          "name": "Vertex",
+          "display_name": "Vertex"
+        },
+        {
+          "name": "Edge",
+          "display_name": "Edge"
+        },
+        {
+          "name": "Both",
+          "display_name": "Both"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExPolygonFittingMethod",
+      "values": [
+        {
+          "name": "VertexForward",
+          "display_name": "Vertex Forward"
+        },
+        {
+          "name": "EdgeForward",
+          "display_name": "Edge Forward"
+        },
+        {
+          "name": "Custom",
+          "display_name": "Custom"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExShapePolygonConfig",
+      "base_class": "FPCGExShapeConfigBase",
+      "uproperties": [
+        {
+          "name": "PolygonType",
+          "display_name": "PolygonType",
+          "type": "EPCGExPolygonShapeType",
+          "default": "EPCGExPolygonShapeType::Convex",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "NumVerticesInput",
+          "display_name": "NumVerticesInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "NumVerticesConstant",
+          "display_name": "Number of Vertices",
+          "type": "int32",
+          "default": "5",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "AddSkeletonInput",
+          "display_name": "AddSkeletonInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bAddSkeleton",
+          "display_name": "bAddSkeleton",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SkeletonConnectionMode",
+          "display_name": "SkeletonConnectionMode",
+          "type": "EPCGExPolygonSkeletonConnectionType",
+          "default": "EPCGExPolygonSkeletonConnectionType::Vertex",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bAddSkeleton",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "PolygonOrientation",
+          "display_name": "PolygonOrientation",
+          "type": "EPCGExPolygonFittingMethod",
+          "default": "EPCGExPolygonFittingMethod::VertexForward",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CustomPolygonOrientation",
+          "display_name": "CustomPolygonOrientation",
+          "type": "float",
+          "default": "0.0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "PolygonOrientation == EPCGExPolygonFittingMethod::Custom",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "OnHullAttribute",
+          "display_name": "OnHullAttribute",
+          "type": "FName",
+          "default": "\"bIsOnHull\"",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bWriteHullAttribute",
+          "display_name": "bWriteHullAttribute",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "AngleAttribute",
+          "display_name": "AngleAttribute",
+          "type": "FName",
+          "default": "\"Angle\"",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bWriteAngleAttribute",
+          "display_name": "bWriteAngleAttribute",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "EdgeIndexAttribute",
+          "display_name": "EdgeIndexAttribute",
+          "type": "FName",
+          "default": "\"EdgeIndex\"",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bWriteEdgeIndexAttribute",
+          "display_name": "bWriteEdgeIndexAttribute",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "EdgeAlphaAttribute",
+          "display_name": "EdgeAlphaAttribute",
+          "type": "FName",
+          "default": "\"Alpha\"",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bWriteEdgeAlphaAttribute",
+          "display_name": "bWriteEdgeAlphaAttribute",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bIsClosedLoop",
+          "display_name": "bIsClosedLoop",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": true,
+      "used_by": []
+    }
+  ],
+  "classes": [
+    {
+      "name": "UPCGExShapePolygonFactory",
+      "display_name": "UPCGExShapePolygonFactory",
+      "description": "",
+      "base_class": "UPCGExShapeBuilderFactoryData",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Data\"",
+      "uproperties": [],
+      "classification": {
+        "type": "factory_data",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": true,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": []
+    },
+    {
+      "name": "UPCGExCreateShapePolygonSettings",
+      "display_name": "Shape : Polygon",
+      "description": "Create points as a regular polygon or star.",
+      "base_class": "UPCGExShapeBuilderFactoryProviderSettings",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Builder|Params\", meta=(PCGExNodeLibraryDoc=\"misc/shapes/shape-polygon\")",
+      "uproperties": [
+        {
+          "name": "Config",
+          "display_name": "Config",
+          "type": "FPCGExShapePolygonConfig",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": true,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "node_settings",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "BulkInitData",
+          "display_name": "BulkInitData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CacheData",
+          "display_name": "CacheData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScopedAttributeGet",
+          "display_name": "ScopedAttributeGet",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "StealData",
+          "display_name": "StealData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Disabled",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsDataStealing",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ExecutionPolicy",
+          "display_name": "ExecutionPolicy",
+          "type": "EPCGExExecutionPolicy",
+          "default": "EPCGExExecutionPolicy::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsInitPolicy",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bFlattenOutput",
+          "display_name": "bFlattenOutput",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bCleanupConsumableAttributes",
+          "display_name": "bCleanupConsumableAttributes",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedProtectedAttributesName",
+          "display_name": "Protected Attributes",
+          "type": "FString",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "ProtectedAttributes",
+          "display_name": "Protected Attributes",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bPropagateAbortedExecution",
+          "display_name": "bPropagateAbortedExecution",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietInvalidInputWarning",
+          "display_name": "bQuietInvalidInputWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietMissingInputError",
+          "display_name": "bQuietMissingInputError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietCancellationError",
+          "display_name": "bQuietCancellationError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "Config",
+          "display_name": "Config",
+          "type": "FPCGExShapePolygonConfig",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": true,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExShapePolygonBuilder",
+      "base_class": "FPCGExShapeBuilderOperation"
+    }
+  ],
+  "namespaces": {}
+}

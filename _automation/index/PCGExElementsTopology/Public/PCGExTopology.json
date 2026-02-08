@@ -1,0 +1,262 @@
+{
+  "path": "PCGExElementsTopology/Public/PCGExTopology.h",
+  "module": "PCGExElementsTopology",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExTopologyOutputType",
+      "values": [
+        {
+          "name": "PerItem",
+          "display_name": "Per-item Geometry"
+        },
+        {
+          "name": "Merged",
+          "display_name": "Merged Geometry"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExUVInputDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bEnabled",
+          "display_name": "bEnabled",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "AttributeName",
+          "display_name": "AttributeName",
+          "type": "FName",
+          "default": "NAME_None",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Channel",
+          "display_name": "Channel",
+          "type": "int32",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExTopologyUVDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "UVs",
+          "display_name": "UVs",
+          "type": "TArray<FPCGExUVInputDetails>",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExTopologyDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Material",
+          "display_name": "Material",
+          "type": "TSoftObjectPtr<UMaterialInterface>",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DefaultVertexColor",
+          "display_name": "DefaultVertexColor",
+          "type": "FLinearColor",
+          "default": "FLinearColor::White",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "UVChannels",
+          "display_name": "UVChannels",
+          "type": "FPCGExTopologyUVDetails",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "PrimitiveOptions",
+          "display_name": "PrimitiveOptions",
+          "type": "FGeometryScriptPrimitiveOptions",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "TriangulationOptions",
+          "display_name": "TriangulationOptions",
+          "type": "FGeometryScriptPolygonsTriangulationOptions",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bQuietTriangulationError",
+          "display_name": "bQuietTriangulationError",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWeldEdges",
+          "display_name": "bWeldEdges",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Geometry Script",
+          "advanced": false
+        },
+        {
+          "name": "WeldEdgesOptions",
+          "display_name": "WeldEdgesOptions",
+          "type": "FGeometryScriptWeldEdgesOptions",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWeldEdges",
+          "edit_condition_hides": false,
+          "category": "Settings|Geometry Script",
+          "advanced": false
+        },
+        {
+          "name": "bComputeNormals",
+          "display_name": "bComputeNormals",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Geometry Script",
+          "advanced": false
+        },
+        {
+          "name": "NormalsOptions",
+          "display_name": "NormalsOptions",
+          "type": "FGeometryScriptCalculateNormalsOptions",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bComputeNormals",
+          "edit_condition_hides": false,
+          "category": "Settings|Geometry Script",
+          "advanced": false
+        },
+        {
+          "name": "bFlipNormals",
+          "display_name": "bFlipNormals",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Geometry Script",
+          "advanced": false
+        },
+        {
+          "name": "CoordinateSpace",
+          "display_name": "CoordinateSpace",
+          "type": "EPCGCoordinateSpace",
+          "default": "EPCGCoordinateSpace::OriginalComponent",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {
+    "PCGExTopology": {
+      "MeshOutputLabel": "Mesh"
+    }
+  }
+}

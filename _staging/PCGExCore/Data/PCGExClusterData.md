@@ -1,0 +1,174 @@
+---
+icon: diagram-project
+description: 'Cluster Data - PCG data types representing cluster structures with nodes and edges.'
+---
+
+# Cluster Data
+
+PCG data types representing cluster structures with nodes and edges.
+
+## Overview
+
+Cluster Data defines the PCG data type hierarchy for representing graph-like cluster structures in PCGEx. A cluster consists of two components: nodes (vertices) representing spatial points, and edges representing connections between nodes. These specialized data types extend PCG's point data system to carry relational information, enabling graph-based operations like pathfinding, connectivity analysis, and network processing.
+
+## Data Type Hierarchy
+
+```
+UPCGExPointData (Base point data)
+  └─ UPCGExClusterData (Abstract cluster base)
+      ├─ UPCGExClusterNodesData (Cluster vertices/nodes)
+      └─ UPCGExClusterEdgesData (Cluster edges/connections)
+```
+
+## Cluster Components
+
+### Nodes (Vertices)
+
+**Type**: `UPCGExClusterNodesData`
+**Display Name**: "PCGEx | Cluster Vtx"
+
+Represents the vertex/node component of a cluster. Each point in this data represents a node with spatial position and attributes. Nodes are the fundamental control points in the cluster graph.
+
+**Characteristics**:
+- Inherits full point data capabilities (position, rotation, scale, attributes)
+- Can store per-node attributes (degree, connectivity, custom data)
+- Serves as the spatial foundation for cluster operations
+- Thread-safe cluster binding via read-write lock
+
+### Edges (Connections)
+
+**Type**: `UPCGExClusterEdgesData`
+**Display Name**: "PCGEx | Cluster Edges"
+
+Represents the edge/connection component of a cluster. Each point represents an edge connecting two nodes, storing connection information and edge-specific attributes.
+
+**Characteristics**:
+- Stores edge connectivity (which nodes are connected)
+- Can carry edge attributes (weight, distance, type, custom data)
+- Bound to the cluster structure via shared reference
+- Enables relationship-based operations (pathfinding, traversal, filtering)
+
+## How Clusters Work
+
+#### Node-Edge Relationship:
+```
+Cluster Structure:
+
+Nodes (UPCGExClusterNodesData):
+  Node 0: Position (0, 0, 0)
+  Node 1: Position (100, 0, 0)
+  Node 2: Position (50, 100, 0)
+
+Edges (UPCGExClusterEdgesData):
+  Edge 0: Node 0 → Node 1
+  Edge 1: Node 1 → Node 2
+  Edge 2: Node 2 → Node 0
+
+Forms a triangular graph structure.
+```
+
+#### Cluster Binding:
+```
+Edge data can be bound to a cluster structure:
+
+Cluster = { Nodes, Edges, Connectivity Info }
+
+Edge Data → SetBoundCluster(Cluster)
+  → Edge operations can query node positions
+  → Edge operations can traverse connections
+  → Edge operations can access cluster topology
+```
+
+#### Data Flow:
+```
+Typical Cluster Pipeline:
+
+1. Generate Nodes
+   [Points] → [Node Data]
+
+2. Generate Edges
+   [Node Data] → [Build Cluster] → [Edge Data]
+
+3. Process Cluster
+   [Node Data + Edge Data] → [Cluster Operations]
+
+4. Extract Results
+   [Processed Cluster] → [Points/Paths/Attributes]
+```
+
+#### Usage Notes
+
+- **Paired Data**: Nodes and edges are typically used together - edges reference nodes by index, so both datasets must be present and synchronized.
+- **Cluster Binding**: Edge data maintains a bound cluster reference for efficient topology queries during operations.
+- **Type Safety**: The specialized data types ensure cluster operations receive correctly structured data.
+- **Thread Safety**: Node data uses read-write locks when accessing bound clusters for multi-threaded safety.
+- **Spatial Queries**: While edges store connectivity, they can query bound cluster for node positions and spatial relationships.
+
+## Data Type Information
+
+### Base Cluster Part
+
+**Struct**: `FPCGExDataTypeInfoClusterPart`
+**Display Name**: "PCGEx | Cluster Part"
+
+Base type information for all cluster components. Hidden in editor type selection (abstract base).
+
+### Vertex Type
+
+**Struct**: `FPCGExDataTypeInfoVtx`
+**Display Name**: "PCGEx | Cluster Vtx"
+
+Type information for cluster node/vertex data.
+
+### Edge Type
+
+**Struct**: `FPCGExDataTypeInfoEdges`
+**Display Name**: "PCGEx | Cluster Edges"
+
+Type information for cluster edge/connection data.
+
+## Common Operations
+
+**Building Clusters**:
+- Create node data from points
+- Generate edges based on proximity, Delaunay, MST, etc.
+- Bind edges to cluster structure
+
+**Processing Clusters**:
+- Pathfinding using edges
+- Connectivity analysis
+- Node/edge filtering
+- Attribute propagation along edges
+
+**Extracting Results**:
+- Convert clusters back to points
+- Generate paths from edge traversal
+- Export connectivity information
+
+## Related Systems
+
+Used by:
+- **Cluster Processors**: Nodes that operate on cluster structures
+- **Path Operations**: Pathfinding, traversal, routing
+- **Connectivity Analysis**: Graph algorithms, topology queries
+- **Network Processing**: Edge-based operations, flow analysis
+
+Generated by:
+- **Delaunay Triangulation**: Creates node-edge clusters from points
+- **MST (Minimum Spanning Tree)**: Generates tree-structured clusters
+- **Proximity Clustering**: Connects nearby nodes with edges
+- **Custom Cluster Builders**: User-defined cluster generation
+
+---
+
+📦 **Module**: `PCGExCore` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Data/PCGExClusterData.h)
+
+<!-- VERIFICATION REPORT
+Data Type Hierarchy: UPCGExClusterData (abstract base), UPCGExClusterNodesData (vertices), UPCGExClusterEdgesData (connections)
+Type Information: FPCGExDataTypeInfoClusterPart (base), FPCGExDataTypeInfoVtx (nodes), FPCGExDataTypeInfoEdges (edges)
+Components: Nodes (spatial points), Edges (connections between nodes)
+Binding: Edge data can bind to cluster structure for topology queries
+Thread Safety: Read-write locks for cluster access
+Purpose: Infrastructure for graph-based operations in PCGEx
+Use Cases: Pathfinding, connectivity analysis, network processing, cluster operations
+-->

@@ -1,0 +1,67 @@
+{
+  "path": "PCGExCore/Public/Factories/PCGExFactoryData.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExParamDataBase",
+      "display_name": "UPCGExParamDataBase",
+      "description": "",
+      "base_class": "UPCGExPointData",
+      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Data\"",
+      "uproperties": [],
+      "classification": {
+        "type": "unknown",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": []
+    },
+    {
+      "name": "UPCGExFactoryData",
+      "display_name": "UPCGExFactoryData",
+      "description": "",
+      "base_class": "UPCGExParamDataBase",
+      "uclass_meta": "Abstract, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Data\"",
+      "uproperties": [],
+      "classification": {
+        "type": "factory_data",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": true,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": []
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

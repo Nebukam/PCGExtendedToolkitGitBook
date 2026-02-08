@@ -1,0 +1,58 @@
+{
+  "path": "PCGExCore/Public/Clusters/PCGExEdgeDirectionDetails.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExEdgeDirectionSettings",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "DirectionMethod",
+          "display_name": "DirectionMethod",
+          "type": "EPCGExEdgeDirectionMethod",
+          "default": "EPCGExEdgeDirectionMethod::EndpointsOrder",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DirSourceAttribute",
+          "display_name": "DirSourceAttribute",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "DirectionMethod == EPCGExEdgeDirectionMethod::EdgeDotAttribute",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DirectionChoice",
+          "display_name": "DirectionChoice",
+          "type": "EPCGExEdgeDirectionChoice",
+          "default": "EPCGExEdgeDirectionChoice::SmallestToGreatest",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

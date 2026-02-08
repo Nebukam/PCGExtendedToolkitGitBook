@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsSpatial/Public/PCGExElementsSpatial.h",
+  "module": "PCGExElementsSpatial",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsSpatialModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

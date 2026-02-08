@@ -1,0 +1,15 @@
+{
+  "path": "PCGExtendedToolkitEditor/Public/PCGExtendedToolkitEditor.h",
+  "module": "PCGExtendedToolkitEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExtendedToolkitEditorModule",
+      "base_class": "IModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

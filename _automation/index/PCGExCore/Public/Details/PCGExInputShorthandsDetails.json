@@ -1,0 +1,759 @@
+{
+  "path": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExInputShorthandBase",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Input",
+          "display_name": "Input",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandNameBase",
+      "base_class": "FPCGExInputShorthandBase",
+      "uproperties": [
+        {
+          "name": "Attribute",
+          "display_name": "Attribute",
+          "type": "FName",
+          "default": "NAME_None",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandNameBoolean",
+      "base_class": "FPCGExInputShorthandNameBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandNameFloat",
+      "base_class": "FPCGExInputShorthandNameBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "float",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandNameDouble",
+      "base_class": "FPCGExInputShorthandNameBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandNameDoubleAbs",
+      "base_class": "FPCGExInputShorthandNameBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandNameDouble01",
+      "base_class": "FPCGExInputShorthandNameBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandNameInteger32",
+      "base_class": "FPCGExInputShorthandNameBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "int32",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandNameInteger32Abs",
+      "base_class": "FPCGExInputShorthandNameBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "int32",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandNameInteger3201",
+      "base_class": "FPCGExInputShorthandNameBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "int32",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandNameVector2",
+      "base_class": "FPCGExInputShorthandNameBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "FVector2D",
+          "default": "FVector2D::ZeroVector",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandNameVector",
+      "base_class": "FPCGExInputShorthandNameBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "FVector",
+          "default": "FVector::ZeroVector",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandNameDirection",
+      "base_class": "FPCGExInputShorthandNameVector",
+      "uproperties": [
+        {
+          "name": "bFlip",
+          "display_name": "bFlip",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandNameVector4",
+      "base_class": "FPCGExInputShorthandNameBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "FVector4",
+          "default": "FVector4(0, 0, 0, 1)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandNameRotator",
+      "base_class": "FPCGExInputShorthandNameBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "FRotator",
+          "default": "FRotator::ZeroRotator",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandNameTransform",
+      "base_class": "FPCGExInputShorthandNameBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "FTransform",
+          "default": "FTransform::Identity",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandNameString",
+      "base_class": "FPCGExInputShorthandNameBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "FString",
+          "default": "TEXT(\"\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandNameName",
+      "base_class": "FPCGExInputShorthandNameBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "FName",
+          "default": "NAME_None",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandSelectorBase",
+      "base_class": "FPCGExInputShorthandBase",
+      "uproperties": [
+        {
+          "name": "Attribute",
+          "display_name": "Attribute",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandSelectorBoolean",
+      "base_class": "FPCGExInputShorthandSelectorBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandSelectorFloat",
+      "base_class": "FPCGExInputShorthandSelectorBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "float",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandSelectorDouble",
+      "base_class": "FPCGExInputShorthandSelectorBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandSelectorDoubleAbs",
+      "base_class": "FPCGExInputShorthandSelectorBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandSelectorDouble01",
+      "base_class": "FPCGExInputShorthandSelectorBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandSelectorInteger32",
+      "base_class": "FPCGExInputShorthandSelectorBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "int32",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandSelectorInteger32Abs",
+      "base_class": "FPCGExInputShorthandSelectorBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "int32",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandSelectorInteger3201",
+      "base_class": "FPCGExInputShorthandSelectorBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "int32",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandSelectorVector2",
+      "base_class": "FPCGExInputShorthandSelectorBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "FVector2D",
+          "default": "FVector2D::ZeroVector",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandSelectorVector",
+      "base_class": "FPCGExInputShorthandSelectorBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "FVector",
+          "default": "FVector::ZeroVector",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandSelectorDirection",
+      "base_class": "FPCGExInputShorthandSelectorBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "FVector",
+          "default": "FVector::ZeroVector",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bFlip",
+          "display_name": "bFlip",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandSelectorVector4",
+      "base_class": "FPCGExInputShorthandSelectorBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "FVector4",
+          "default": "FVector4(0, 0, 0, 1)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandSelectorRotator",
+      "base_class": "FPCGExInputShorthandSelectorBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "FRotator",
+          "default": "FRotator::ZeroRotator",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandSelectorTransform",
+      "base_class": "FPCGExInputShorthandSelectorBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "FTransform",
+          "default": "FTransform::Identity",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandSelectorString",
+      "base_class": "FPCGExInputShorthandSelectorBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "FString",
+          "default": "TEXT(\"\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExInputShorthandSelectorName",
+      "base_class": "FPCGExInputShorthandSelectorBase",
+      "uproperties": [
+        {
+          "name": "Constant",
+          "display_name": "Constant",
+          "type": "FName",
+          "default": "NAME_None",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

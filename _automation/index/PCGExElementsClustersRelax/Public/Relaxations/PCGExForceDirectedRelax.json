@@ -1,0 +1,106 @@
+{
+  "path": "PCGExElementsClustersRelax/Public/Relaxations/PCGExForceDirectedRelax.h",
+  "module": "PCGExElementsClustersRelax",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExForceDirectedRelax",
+      "display_name": "UPCGExForceDirectedRelax",
+      "description": "",
+      "base_class": "UPCGExRelaxClusterOperation",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName=\"Force Directed\", PCGExNodeLibraryDoc=\"clusters/relax-cluster/force-directed\")",
+      "uproperties": [
+        {
+          "name": "SpringConstant",
+          "display_name": "SpringConstant",
+          "type": "double",
+          "default": "0.1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ElectrostaticConstant",
+          "display_name": "ElectrostaticConstant",
+          "type": "double",
+          "default": "1000",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "unknown",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "Precision",
+          "display_name": "Floating Point Precision",
+          "type": "double",
+          "default": "100",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "SpringConstant",
+          "display_name": "SpringConstant",
+          "type": "double",
+          "default": "0.1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ElectrostaticConstant",
+          "display_name": "ElectrostaticConstant",
+          "type": "double",
+          "default": "1000",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

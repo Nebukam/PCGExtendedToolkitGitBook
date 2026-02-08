@@ -1,0 +1,27 @@
+//→ See TODO FPCGExNodeSelectionDetails
+//→ See TODO FPCGExEdgeDirectionSettings
+//→ See TODO FPCGExAttributeGatherDetails
+//→ See TODO FPCGExCarryOverDetails
+//→ See TODO FPCGExNameFiltersDetails
+//→ See TODO FPCGExAttributeToTagDetails
+//→ See TODO FPCGExForwardDetails
+//→ See TODO FPCGExAttachmentRules
+//→ See TODO FPCGExAttributeSourceToTargetDetails
+//→ See TODO FPCGExJustificationDetails
+//→ See TODO FPCGExScaleToFitDetails
+//→ See TODO FPCGExTransformDetails
+//→ See TODO FPCGExGeo2DProjectionDetails
+//→ See TODO FPCGExUVW
+//→ See TODO FPCGExPathEdgeIntersectionDetails
+//→ See TODO FPCGExPathOutputDetails
+//→ See TODO FPCGExGraphBuilderDetails
+//→ See TODO FPCGExBlendingDetails
+
+<details>
+<summary><strong>Cluster Output Settings</strong> <code>FPCGExGraphBuilderDetails</code></summary>
+
+Write edge midpoint position as an attribute on edge points.
+
+//→ See TODO FPCGExGraphBuilderDetails
+
+</details>

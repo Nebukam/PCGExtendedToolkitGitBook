@@ -1,0 +1,647 @@
+{
+  "path": "PCGExElementsSpatial/Public/Elements/Layout/PCGExBinPacking.h",
+  "module": "PCGExElementsSpatial",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExBinFreeSpacePartitionMode",
+      "values": [
+        {
+          "name": "UVWConstant",
+          "display_name": "UVWConstant"
+        },
+        {
+          "name": "UVWAttribute",
+          "display_name": "UVW"
+        },
+        {
+          "name": "PositionConstant",
+          "display_name": "PositionConstant"
+        },
+        {
+          "name": "PositionAttribute",
+          "display_name": "PositionAttribute"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExPlacementFavor",
+      "values": [
+        {
+          "name": "SeedProximity",
+          "display_name": "Seed Proximity"
+        },
+        {
+          "name": "Space",
+          "display_name": "Space Conservation"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExBinPackingSettings",
+      "display_name": "Bin Packing",
+      "description": "[EXPERIMENTAL] An simple bin packing node.",
+      "base_class": "UPCGExPointsProcessorSettings",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"misc/layout/bin-packing\")",
+      "uproperties": [
+        {
+          "name": "SortDirection",
+          "display_name": "SortDirection",
+          "type": "EPCGExSortDirection",
+          "default": "EPCGExSortDirection::Ascending",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SeedMode",
+          "display_name": "SeedMode",
+          "type": "EPCGExBinSeedMode",
+          "default": "EPCGExBinSeedMode::UVWConstant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SeedUVW",
+          "display_name": "SeedUVW",
+          "type": "FVector",
+          "default": "FVector(0, 0, -1)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SeedMode == EPCGExBinSeedMode::UVWConstant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SeedUVWAttribute",
+          "display_name": "SeedUVWAttribute",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SeedMode == EPCGExBinSeedMode::UVWAttribute",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SeedPosition",
+          "display_name": "SeedPosition",
+          "type": "FVector",
+          "default": "FVector(0, 0, 0)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SeedMode == EPCGExBinSeedMode::PositionConstant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SeedPositionAttribute",
+          "display_name": "SeedPositionAttribute",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SeedMode == EPCGExBinSeedMode::PositionAttribute",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bInferSplitAxisFromSeed",
+          "display_name": "bInferSplitAxisFromSeed",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Fitting",
+          "advanced": false
+        },
+        {
+          "name": "SplitAxis",
+          "display_name": "SplitAxis",
+          "type": "EPCGExAxis",
+          "default": "EPCGExAxis::Up",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Fitting",
+          "advanced": false
+        },
+        {
+          "name": "SplitMode",
+          "display_name": "SplitMode",
+          "type": "EPCGExSpaceSplitMode",
+          "default": "EPCGExSpaceSplitMode::Minimal",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Fitting",
+          "advanced": false
+        },
+        {
+          "name": "bAvoidWastedSpace",
+          "display_name": "bAvoidWastedSpace",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Fitting",
+          "advanced": false
+        },
+        {
+          "name": "PlacementFavor",
+          "display_name": "PlacementFavor",
+          "type": "EPCGExPlacementFavor",
+          "default": "EPCGExPlacementFavor::SeedProximity",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Fitting",
+          "advanced": false
+        },
+        {
+          "name": "OccupationPadding",
+          "display_name": "OccupationPadding",
+          "type": "FPCGExInputShorthandSelectorVector",
+          "default": "FPCGExInputShorthandSelectorVector(FName(\"Padding\"))",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Fitting",
+          "advanced": false
+        },
+        {
+          "name": "bAbsolutePadding",
+          "display_name": "bAbsolutePadding",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Fitting",
+          "advanced": false
+        },
+        {
+          "name": "bQuietTooManyBinsWarning",
+          "display_name": "bQuietTooManyBinsWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietTooFewBinsWarning",
+          "display_name": "bQuietTooFewBinsWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "node_settings",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [
+        "SourceBinsLabel"
+      ],
+      "outputs": [
+        "OutputBinsLabel",
+        "Labels"
+      ],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "BulkInitData",
+          "display_name": "BulkInitData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CacheData",
+          "display_name": "CacheData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScopedAttributeGet",
+          "display_name": "ScopedAttributeGet",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "StealData",
+          "display_name": "StealData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Disabled",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsDataStealing",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ExecutionPolicy",
+          "display_name": "ExecutionPolicy",
+          "type": "EPCGExExecutionPolicy",
+          "default": "EPCGExExecutionPolicy::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsInitPolicy",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bFlattenOutput",
+          "display_name": "bFlattenOutput",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bCleanupConsumableAttributes",
+          "display_name": "bCleanupConsumableAttributes",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedProtectedAttributesName",
+          "display_name": "Protected Attributes",
+          "type": "FString",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "ProtectedAttributes",
+          "display_name": "Protected Attributes",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bPropagateAbortedExecution",
+          "display_name": "bPropagateAbortedExecution",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietInvalidInputWarning",
+          "display_name": "bQuietInvalidInputWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietMissingInputError",
+          "display_name": "bQuietMissingInputError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietCancellationError",
+          "display_name": "bQuietCancellationError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "SortDirection",
+          "display_name": "SortDirection",
+          "type": "EPCGExSortDirection",
+          "default": "EPCGExSortDirection::Ascending",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SeedMode",
+          "display_name": "SeedMode",
+          "type": "EPCGExBinSeedMode",
+          "default": "EPCGExBinSeedMode::UVWConstant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SeedUVW",
+          "display_name": "SeedUVW",
+          "type": "FVector",
+          "default": "FVector(0, 0, -1)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SeedMode == EPCGExBinSeedMode::UVWConstant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SeedUVWAttribute",
+          "display_name": "SeedUVWAttribute",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SeedMode == EPCGExBinSeedMode::UVWAttribute",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SeedPosition",
+          "display_name": "SeedPosition",
+          "type": "FVector",
+          "default": "FVector(0, 0, 0)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SeedMode == EPCGExBinSeedMode::PositionConstant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SeedPositionAttribute",
+          "display_name": "SeedPositionAttribute",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SeedMode == EPCGExBinSeedMode::PositionAttribute",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bInferSplitAxisFromSeed",
+          "display_name": "bInferSplitAxisFromSeed",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Fitting",
+          "advanced": false
+        },
+        {
+          "name": "SplitAxis",
+          "display_name": "SplitAxis",
+          "type": "EPCGExAxis",
+          "default": "EPCGExAxis::Up",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Fitting",
+          "advanced": false
+        },
+        {
+          "name": "SplitMode",
+          "display_name": "SplitMode",
+          "type": "EPCGExSpaceSplitMode",
+          "default": "EPCGExSpaceSplitMode::Minimal",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Fitting",
+          "advanced": false
+        },
+        {
+          "name": "bAvoidWastedSpace",
+          "display_name": "bAvoidWastedSpace",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Fitting",
+          "advanced": false
+        },
+        {
+          "name": "PlacementFavor",
+          "display_name": "PlacementFavor",
+          "type": "EPCGExPlacementFavor",
+          "default": "EPCGExPlacementFavor::SeedProximity",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Fitting",
+          "advanced": false
+        },
+        {
+          "name": "OccupationPadding",
+          "display_name": "OccupationPadding",
+          "type": "FPCGExInputShorthandSelectorVector",
+          "default": "FPCGExInputShorthandSelectorVector(FName(\"Padding\"))",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Fitting",
+          "advanced": false
+        },
+        {
+          "name": "bAbsolutePadding",
+          "display_name": "bAbsolutePadding",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Fitting",
+          "advanced": false
+        },
+        {
+          "name": "bQuietTooManyBinsWarning",
+          "display_name": "bQuietTooManyBinsWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietTooFewBinsWarning",
+          "display_name": "bQuietTooFewBinsWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExBinPackingElement",
+      "base_class": "FPCGExPointsProcessorElement"
+    }
+  ],
+  "namespaces": {}
+}

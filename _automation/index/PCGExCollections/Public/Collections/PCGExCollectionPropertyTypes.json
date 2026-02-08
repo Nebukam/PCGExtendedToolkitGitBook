@@ -1,0 +1,32 @@
+{
+  "path": "PCGExCollections/Public/Collections/PCGExCollectionPropertyTypes.h",
+  "module": "PCGExCollections",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExPropertyCompiled_AssetCollection",
+      "base_class": "FPCGExPropertyCompiled",
+      "uproperties": [
+        {
+          "name": "AssetCollection",
+          "display_name": "AssetCollection",
+          "type": "TSoftObjectPtr<UPCGExAssetCollection>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Property",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

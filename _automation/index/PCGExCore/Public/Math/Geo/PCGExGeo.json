@@ -1,0 +1,47 @@
+{
+  "path": "PCGExCore/Public/Math/Geo/PCGExGeo.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExCellCenter",
+      "values": [
+        {
+          "name": "Balanced",
+          "display_name": "Balanced"
+        },
+        {
+          "name": "Circumcenter",
+          "display_name": "Circumcenter"
+        },
+        {
+          "name": "Centroid",
+          "display_name": "Centroid"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExVoronoiMetric",
+      "values": [
+        {
+          "name": "Euclidean",
+          "display_name": "Euclidean"
+        },
+        {
+          "name": "Manhattan",
+          "display_name": "Manhattan"
+        },
+        {
+          "name": "Chebyshev",
+          "display_name": "Chebyshev"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

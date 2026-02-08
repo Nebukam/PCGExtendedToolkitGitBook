@@ -1,0 +1,890 @@
+{
+  "path": "PCGExElementsPaths/Public/Elements/PCGExBevelPath.h",
+  "module": "PCGExElementsPaths",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExBevelMode",
+      "values": [
+        {
+          "name": "Radius",
+          "display_name": "Radius"
+        },
+        {
+          "name": "Distance",
+          "display_name": "Distance"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExBevelProfileType",
+      "values": [
+        {
+          "name": "Line",
+          "display_name": "Line"
+        },
+        {
+          "name": "Arc",
+          "display_name": "Arc"
+        },
+        {
+          "name": "Custom",
+          "display_name": "Custom"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExBevelLimit",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "ClosestNeighbor",
+          "display_name": "Closest neighbor"
+        },
+        {
+          "name": "Balanced",
+          "display_name": "Balanced"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExBevelCustomProfileScaling",
+      "values": [
+        {
+          "name": "Uniform",
+          "display_name": "Uniform"
+        },
+        {
+          "name": "Scale",
+          "display_name": "Scale"
+        },
+        {
+          "name": "Distance",
+          "display_name": "Distance"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExBevelPathSettings",
+      "display_name": "Path : Bevel",
+      "description": "Bevel paths points.",
+      "base_class": "UPCGExPathProcessorSettings",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/bevel\")",
+      "uproperties": [
+        {
+          "name": "Mode",
+          "display_name": "Mode",
+          "type": "EPCGExBevelMode",
+          "default": "EPCGExBevelMode::Radius",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Type",
+          "display_name": "Type",
+          "type": "EPCGExBevelProfileType",
+          "default": "EPCGExBevelProfileType::Line",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bKeepCornerPoint",
+          "display_name": "bKeepCornerPoint",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Type == EPCGExBevelProfileType::Line",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MainAxisScaling",
+          "display_name": "MainAxisScaling",
+          "type": "EPCGExBevelCustomProfileScaling",
+          "default": "EPCGExBevelCustomProfileScaling::Uniform",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Type == EPCGExBevelProfileType::Custom",
+          "edit_condition_hides": true,
+          "category": "Settings|Profile Scaling",
+          "advanced": false
+        },
+        {
+          "name": "CrossAxisScaling",
+          "display_name": "CrossAxisScaling",
+          "type": "EPCGExBevelCustomProfileScaling",
+          "default": "EPCGExBevelCustomProfileScaling::Uniform",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Type == EPCGExBevelProfileType::Custom",
+          "edit_condition_hides": true,
+          "category": "Settings|Profile Scaling",
+          "advanced": false
+        },
+        {
+          "name": "WidthMeasure",
+          "display_name": "WidthMeasure",
+          "type": "EPCGExMeanMeasure",
+          "default": "EPCGExMeanMeasure::Relative",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "WidthInput",
+          "display_name": "WidthInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "WidthConstant",
+          "display_name": "Width",
+          "type": "double",
+          "default": "0.1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "WidthInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Limit",
+          "display_name": "Limit",
+          "type": "EPCGExBevelLimit",
+          "default": "EPCGExBevelLimit::Balanced",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bSlideAlongPath",
+          "display_name": "bSlideAlongPath",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Limit != EPCGExBevelLimit::None",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bSubdivide",
+          "display_name": "bSubdivide",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Type != EPCGExBevelProfileType::Custom",
+          "edit_condition_hides": true,
+          "category": "Settings|Subdivision",
+          "advanced": false
+        },
+        {
+          "name": "SubdivideMethod",
+          "display_name": "SubdivideMethod",
+          "type": "EPCGExSubdivideMode",
+          "default": "EPCGExSubdivideMode::Count",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSubdivide && Type != EPCGExBevelProfileType::Custom",
+          "edit_condition_hides": true,
+          "category": "Settings|Subdivision",
+          "advanced": false
+        },
+        {
+          "name": "SubdivisionAmountInput",
+          "display_name": "SubdivisionAmountInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSubdivide && Type != EPCGExBevelProfileType::Custom && SubdivideMethod != EPCGExSubdivideMode::Manhattan",
+          "edit_condition_hides": true,
+          "category": "Settings|Subdivision",
+          "advanced": false
+        },
+        {
+          "name": "ManhattanDetails",
+          "display_name": "Manhattan",
+          "type": "FPCGExManhattanDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSubdivide && Type != EPCGExBevelProfileType::Custom && SubdivideMethod == EPCGExSubdivideMode::Manhattan",
+          "edit_condition_hides": true,
+          "category": "Settings|Subdivision",
+          "advanced": false
+        },
+        {
+          "name": "bFlagPoles",
+          "display_name": "bFlagPoles",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Flags",
+          "advanced": false
+        },
+        {
+          "name": "PoleFlagName",
+          "display_name": "PoleFlagName",
+          "type": "FName",
+          "default": "\"IsBevelPole\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bFlagPoles",
+          "edit_condition_hides": false,
+          "category": "Settings|Flags",
+          "advanced": false
+        },
+        {
+          "name": "bFlagStartPoint",
+          "display_name": "bFlagStartPoint",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Flags",
+          "advanced": false
+        },
+        {
+          "name": "StartPointFlagName",
+          "display_name": "StartPointFlagName",
+          "type": "FName",
+          "default": "\"IsBevelStart\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bFlagStartPoint",
+          "edit_condition_hides": false,
+          "category": "Settings|Flags",
+          "advanced": false
+        },
+        {
+          "name": "bFlagEndPoint",
+          "display_name": "bFlagEndPoint",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Flags",
+          "advanced": false
+        },
+        {
+          "name": "EndPointFlagName",
+          "display_name": "EndPointFlagName",
+          "type": "FName",
+          "default": "\"IsBevelEnd\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bFlagEndPoint",
+          "edit_condition_hides": false,
+          "category": "Settings|Flags",
+          "advanced": false
+        },
+        {
+          "name": "bFlagSubdivision",
+          "display_name": "bFlagSubdivision",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Flags",
+          "advanced": false
+        },
+        {
+          "name": "SubdivisionFlagName",
+          "display_name": "SubdivisionFlagName",
+          "type": "FName",
+          "default": "\"IsSubdivision\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bFlagSubdivision",
+          "edit_condition_hides": false,
+          "category": "Settings|Flags",
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "node_settings",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": true,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": true,
+      "point_filter_label": "PCGExBevelPath::SourceBevelFilters",
+      "filter_inputs": [
+        {
+          "label": "PCGExBevelPath::SourceBevelFilters",
+          "tooltip": "Filters used to know if a point should be Beveled",
+          "factory_type": "PCGExFactories::PointFilters",
+          "required": false
+        }
+      ],
+      "inputs": [
+        "SourceCustomProfile"
+      ],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [
+        {
+          "label": "PCGExBevelPath::SourceBevelFilters",
+          "tooltip": "Filters used to know if a point should be Beveled",
+          "factory_type": "PCGExFactories::PointFilters",
+          "required": false
+        }
+      ],
+      "all_properties": [
+        {
+          "name": "BulkInitData",
+          "display_name": "BulkInitData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CacheData",
+          "display_name": "CacheData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScopedAttributeGet",
+          "display_name": "ScopedAttributeGet",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "StealData",
+          "display_name": "StealData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Disabled",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsDataStealing",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ExecutionPolicy",
+          "display_name": "ExecutionPolicy",
+          "type": "EPCGExExecutionPolicy",
+          "default": "EPCGExExecutionPolicy::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsInitPolicy",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bFlattenOutput",
+          "display_name": "bFlattenOutput",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bCleanupConsumableAttributes",
+          "display_name": "bCleanupConsumableAttributes",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedProtectedAttributesName",
+          "display_name": "Protected Attributes",
+          "type": "FString",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "ProtectedAttributes",
+          "display_name": "Protected Attributes",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bPropagateAbortedExecution",
+          "display_name": "bPropagateAbortedExecution",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietInvalidInputWarning",
+          "display_name": "bQuietInvalidInputWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietMissingInputError",
+          "display_name": "bQuietMissingInputError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietCancellationError",
+          "display_name": "bQuietCancellationError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bOmitInvalidPathsOutputs",
+          "display_name": "bOmitInvalidPathsOutputs",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "Mode",
+          "display_name": "Mode",
+          "type": "EPCGExBevelMode",
+          "default": "EPCGExBevelMode::Radius",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Type",
+          "display_name": "Type",
+          "type": "EPCGExBevelProfileType",
+          "default": "EPCGExBevelProfileType::Line",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bKeepCornerPoint",
+          "display_name": "bKeepCornerPoint",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Type == EPCGExBevelProfileType::Line",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MainAxisScaling",
+          "display_name": "MainAxisScaling",
+          "type": "EPCGExBevelCustomProfileScaling",
+          "default": "EPCGExBevelCustomProfileScaling::Uniform",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Type == EPCGExBevelProfileType::Custom",
+          "edit_condition_hides": true,
+          "category": "Settings|Profile Scaling",
+          "advanced": false
+        },
+        {
+          "name": "CrossAxisScaling",
+          "display_name": "CrossAxisScaling",
+          "type": "EPCGExBevelCustomProfileScaling",
+          "default": "EPCGExBevelCustomProfileScaling::Uniform",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Type == EPCGExBevelProfileType::Custom",
+          "edit_condition_hides": true,
+          "category": "Settings|Profile Scaling",
+          "advanced": false
+        },
+        {
+          "name": "WidthMeasure",
+          "display_name": "WidthMeasure",
+          "type": "EPCGExMeanMeasure",
+          "default": "EPCGExMeanMeasure::Relative",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "WidthInput",
+          "display_name": "WidthInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "WidthConstant",
+          "display_name": "Width",
+          "type": "double",
+          "default": "0.1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "WidthInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Limit",
+          "display_name": "Limit",
+          "type": "EPCGExBevelLimit",
+          "default": "EPCGExBevelLimit::Balanced",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bSlideAlongPath",
+          "display_name": "bSlideAlongPath",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Limit != EPCGExBevelLimit::None",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bSubdivide",
+          "display_name": "bSubdivide",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Type != EPCGExBevelProfileType::Custom",
+          "edit_condition_hides": true,
+          "category": "Settings|Subdivision",
+          "advanced": false
+        },
+        {
+          "name": "SubdivideMethod",
+          "display_name": "SubdivideMethod",
+          "type": "EPCGExSubdivideMode",
+          "default": "EPCGExSubdivideMode::Count",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSubdivide && Type != EPCGExBevelProfileType::Custom",
+          "edit_condition_hides": true,
+          "category": "Settings|Subdivision",
+          "advanced": false
+        },
+        {
+          "name": "SubdivisionAmountInput",
+          "display_name": "SubdivisionAmountInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSubdivide && Type != EPCGExBevelProfileType::Custom && SubdivideMethod != EPCGExSubdivideMode::Manhattan",
+          "edit_condition_hides": true,
+          "category": "Settings|Subdivision",
+          "advanced": false
+        },
+        {
+          "name": "ManhattanDetails",
+          "display_name": "Manhattan",
+          "type": "FPCGExManhattanDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSubdivide && Type != EPCGExBevelProfileType::Custom && SubdivideMethod == EPCGExSubdivideMode::Manhattan",
+          "edit_condition_hides": true,
+          "category": "Settings|Subdivision",
+          "advanced": false
+        },
+        {
+          "name": "bFlagPoles",
+          "display_name": "bFlagPoles",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Flags",
+          "advanced": false
+        },
+        {
+          "name": "PoleFlagName",
+          "display_name": "PoleFlagName",
+          "type": "FName",
+          "default": "\"IsBevelPole\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bFlagPoles",
+          "edit_condition_hides": false,
+          "category": "Settings|Flags",
+          "advanced": false
+        },
+        {
+          "name": "bFlagStartPoint",
+          "display_name": "bFlagStartPoint",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Flags",
+          "advanced": false
+        },
+        {
+          "name": "StartPointFlagName",
+          "display_name": "StartPointFlagName",
+          "type": "FName",
+          "default": "\"IsBevelStart\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bFlagStartPoint",
+          "edit_condition_hides": false,
+          "category": "Settings|Flags",
+          "advanced": false
+        },
+        {
+          "name": "bFlagEndPoint",
+          "display_name": "bFlagEndPoint",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Flags",
+          "advanced": false
+        },
+        {
+          "name": "EndPointFlagName",
+          "display_name": "EndPointFlagName",
+          "type": "FName",
+          "default": "\"IsBevelEnd\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bFlagEndPoint",
+          "edit_condition_hides": false,
+          "category": "Settings|Flags",
+          "advanced": false
+        },
+        {
+          "name": "bFlagSubdivision",
+          "display_name": "bFlagSubdivision",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Flags",
+          "advanced": false
+        },
+        {
+          "name": "SubdivisionFlagName",
+          "display_name": "SubdivisionFlagName",
+          "type": "FName",
+          "default": "\"IsSubdivision\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bFlagSubdivision",
+          "edit_condition_hides": false,
+          "category": "Settings|Flags",
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExBevelPathElement",
+      "base_class": "FPCGExPathProcessorElement"
+    }
+  ],
+  "namespaces": {
+    "PCGExBevelPath": {
+      "SourceBevelFilters": "Bevel Conditions",
+      "SourceCustomProfile": "Profile"
+    }
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "path": "PCGExBlending/Public/Details/PCGExFuseDetails.h",
+  "module": "PCGExBlending",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExFuseDetailsBase",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bSupportLocalTolerance",
+          "display_name": "bSupportLocalTolerance",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bComponentWiseTolerance",
+          "display_name": "bComponentWiseTolerance",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ToleranceInput",
+          "display_name": "ToleranceInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSupportLocalTolerance",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Tolerance",
+          "display_name": "Tolerance",
+          "type": "double",
+          "default": "DBL_COLLOCATION_TOLERANCE",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ToleranceInput == EPCGExInputValueType::Constant && !bComponentWiseTolerance",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Tolerances",
+          "display_name": "Tolerances",
+          "type": "FVector",
+          "default": "FVector(DBL_COLLOCATION_TOLERANCE)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ToleranceInput == EPCGExInputValueType::Constant && bComponentWiseTolerance",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExSourceFuseDetails",
+      "base_class": "FPCGExFuseDetailsBase",
+      "uproperties": [
+        {
+          "name": "SourceDistance",
+          "display_name": "SourceDistance",
+          "type": "EPCGExDistance",
+          "default": "EPCGExDistance::Center",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExFuseDetails",
+      "base_class": "FPCGExSourceFuseDetails",
+      "uproperties": [
+        {
+          "name": "TargetDistance",
+          "display_name": "TargetDistance",
+          "type": "EPCGExDistance",
+          "default": "EPCGExDistance::Center",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "FuseMethod",
+          "display_name": "FuseMethod",
+          "type": "EPCGExFuseMethod",
+          "default": "EPCGExFuseMethod::Voxel",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "VoxelGridOffset",
+          "display_name": "VoxelGridOffset",
+          "type": "FVector",
+          "default": "FVector::ZeroVector",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "FuseMethod == EPCGExFuseMethod::Voxel",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bInlineInsertion",
+          "display_name": "Stabilize Insertion Order",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

@@ -1,0 +1,15 @@
+{
+  "path": "PCGExFoundationsEditor/Public/Details/InputSettings/PCGExClampDetailsCustomization.h",
+  "module": "PCGExFoundationsEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExClampDetailsCustomization",
+      "base_class": "IPropertyTypeCustomization"
+    }
+  ],
+  "namespaces": {}
+}

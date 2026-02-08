@@ -1,0 +1,162 @@
+{
+  "path": "PCGExElementsTopology/Public/Data/Descriptors/PCGExDynamicMeshDescriptor.h",
+  "module": "PCGExElementsTopology",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExDynamicMeshDescriptor",
+      "base_class": "FPCGExMeshComponentDescriptor",
+      "uproperties": [
+        {
+          "name": "bUseAsyncCooking",
+          "display_name": "bUseAsyncCooking",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Dynamic Mesh Component|Collision",
+          "advanced": false
+        },
+        {
+          "name": "bEnableComplexCollision",
+          "display_name": "bEnableComplexCollision",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Dynamic Mesh Component|Collision",
+          "advanced": false
+        },
+        {
+          "name": "bDeferCollisionUpdates",
+          "display_name": "bDeferCollisionUpdates",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Dynamic Mesh Component|Collision",
+          "advanced": false
+        },
+        {
+          "name": "bExplicitShowWireframe",
+          "display_name": "Wireframe Overlay",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Dynamic Mesh Component|Rendering",
+          "advanced": false
+        },
+        {
+          "name": "WireframeColor",
+          "display_name": "Wireframe Color",
+          "type": "FLinearColor",
+          "default": "FLinearColor(0, 0.5f, 1.f)",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Dynamic Mesh Component|Rendering",
+          "advanced": false
+        },
+        {
+          "name": "ColorMode",
+          "display_name": "Color Override",
+          "type": "EDynamicMeshComponentColorOverrideMode",
+          "default": "EDynamicMeshComponentColorOverrideMode::None",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Dynamic Mesh Component|Rendering",
+          "advanced": false
+        },
+        {
+          "name": "ConstantColor",
+          "display_name": "Constant Color",
+          "type": "FColor",
+          "default": "FColor::White",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ColorMode == EDynamicMeshComponentColorOverrideMode::Constant",
+          "edit_condition_hides": false,
+          "category": "Dynamic Mesh Component|Rendering",
+          "advanced": false
+        },
+        {
+          "name": "ColorSpaceMode",
+          "display_name": "Vertex Color Space",
+          "type": "EDynamicMeshVertexColorTransformMode",
+          "default": "EDynamicMeshVertexColorTransformMode::NoTransform",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Dynamic Mesh Component|Rendering",
+          "advanced": false
+        },
+        {
+          "name": "bEnableFlatShading",
+          "display_name": "Flat Shading",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Dynamic Mesh Component|Rendering",
+          "advanced": false
+        },
+        {
+          "name": "bEnableViewModeOverrides",
+          "display_name": "View Mode Overrides",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Dynamic Mesh Component|Rendering",
+          "advanced": false
+        },
+        {
+          "name": "bEnableRaytracing",
+          "display_name": "bEnableRaytracing",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Dynamic Mesh Component|Rendering",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

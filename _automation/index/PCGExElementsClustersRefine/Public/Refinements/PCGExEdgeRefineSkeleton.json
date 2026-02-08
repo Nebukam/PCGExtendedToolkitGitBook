@@ -1,0 +1,98 @@
+{
+  "path": "PCGExElementsClustersRefine/Public/Refinements/PCGExEdgeRefineSkeleton.h",
+  "module": "PCGExElementsClustersRefine",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExEdgeRefineSkeleton",
+      "display_name": "UPCGExEdgeRefineSkeleton",
+      "description": "",
+      "base_class": "UPCGExEdgeRefineInstancedFactory",
+      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Refine : β Skeleton\", PCGExNodeLibraryDoc=\"clusters/refine-cluster/v-skeleton\")",
+      "uproperties": [
+        {
+          "name": "Beta",
+          "display_name": "Beta",
+          "type": "double",
+          "default": "1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bInvert",
+          "display_name": "bInvert",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "instanced_factory",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": true,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "Beta",
+          "display_name": "Beta",
+          "type": "double",
+          "default": "1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bInvert",
+          "display_name": "bInvert",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExEdgeRefineSkeleton",
+      "base_class": "FPCGExEdgeRefineOperation"
+    }
+  ],
+  "namespaces": {}
+}

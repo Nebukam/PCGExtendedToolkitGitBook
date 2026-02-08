@@ -1,0 +1,162 @@
+{
+  "path": "PCGExCore/Public/Paths/PCGExPathsCommon.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExSplinePointTypeRedux",
+      "values": [
+        {
+          "name": "Linear",
+          "display_name": "Linear"
+        },
+        {
+          "name": "Curve",
+          "display_name": "Curve"
+        },
+        {
+          "name": "Constant",
+          "display_name": "Constant"
+        },
+        {
+          "name": "CurveClamped",
+          "display_name": "CurveClamped"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExInlinePathProcessingOrder",
+      "values": [
+        {
+          "name": "FromStart",
+          "display_name": "From Start"
+        },
+        {
+          "name": "EndpointCompare",
+          "display_name": "Endpoint Comparison"
+        },
+        {
+          "name": "TaggedAny",
+          "display_name": "TaggedAny"
+        },
+        {
+          "name": "TaggedAll",
+          "display_name": "TaggedAll"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExInputScope",
+      "values": [
+        {
+          "name": "All",
+          "display_name": "All"
+        },
+        {
+          "name": "AllButTagged",
+          "display_name": "All but tagged"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExPathNormalDirection",
+      "values": [
+        {
+          "name": "Normal",
+          "display_name": "Normal"
+        },
+        {
+          "name": "Binormal",
+          "display_name": "Binormal"
+        },
+        {
+          "name": "AverageNormal",
+          "display_name": "Average Normal"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExSplineMeshUpMode",
+      "values": [
+        {
+          "name": "Constant",
+          "display_name": "Constant"
+        },
+        {
+          "name": "Attribute",
+          "display_name": "Attribute"
+        },
+        {
+          "name": "Tangents",
+          "display_name": "Tangents"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExSplineMeshAxis",
+      "values": [
+        {
+          "name": "Default",
+          "display_name": "Default"
+        },
+        {
+          "name": "X",
+          "display_name": "X"
+        },
+        {
+          "name": "Y",
+          "display_name": "Y"
+        },
+        {
+          "name": "Z",
+          "display_name": "Z"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExSplinePointType",
+      "values": [
+        {
+          "name": "Linear",
+          "display_name": "Linear"
+        },
+        {
+          "name": "Curve",
+          "display_name": "Curve"
+        },
+        {
+          "name": "Constant",
+          "display_name": "Constant"
+        },
+        {
+          "name": "CurveClamped",
+          "display_name": "CurveClamped"
+        },
+        {
+          "name": "CurveCustomTangent",
+          "display_name": "CurveCustomTangent"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {
+    "PCGExPaths": {
+      "SourcePathsLabel": "Paths",
+      "OutputPathsLabel": "Paths",
+      "SourceCanCutFilters": "Can Cut Conditions",
+      "SourceCanBeCutFilters": "Can Be Cut Conditions",
+      "SourceTriggerFilters": "Trigger Conditions",
+      "SourceShiftFilters": "Shift Conditions"
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "path": "PCGExCore/Public/Data/Utils/PCGExDataForwardDetails.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExForwardDetails",
+      "base_class": "FPCGExNameFiltersDetails",
+      "uproperties": [
+        {
+          "name": "bEnabled",
+          "display_name": "bEnabled",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bPreserveAttributesDefaultValue",
+          "display_name": "bPreserveAttributesDefaultValue",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bEnabled",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExAttributeToTagDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bAddIndexTag",
+          "display_name": "bAddIndexTag",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "IndexTagPrefix",
+          "display_name": "IndexTagPrefix",
+          "type": "FString",
+          "default": "TEXT(\"IndexTag\")",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bAddIndexTag",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bPrefixWithAttributeName",
+          "display_name": "bPrefixWithAttributeName",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Attributes",
+          "display_name": "Attributes",
+          "type": "TArray<FPCGAttributePropertyInputSelector>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedAttributeSelectors",
+          "display_name": "CommaSeparatedAttributeSelectors",
+          "type": "FString",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

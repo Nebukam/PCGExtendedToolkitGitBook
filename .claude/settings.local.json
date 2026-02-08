@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(ls -la \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\_dry-run\\\\node-library\\\\clusters\"\" 2>/dev/null || dir \"D:GITPCGExtendedToolkitGitBook_dry-runnode-libraryclusters\"\")",
+      "Bash(powershell:*)",
+      "Bash(node:*)",
+      "Bash(if not exist \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\_staging\\\\PCGExElementsMeta\\\\Elements\\\\Sorting\" mkdir \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\_staging\\\\PCGExElementsMeta\\\\Elements\\\\Sorting\")",
+      "Bash(if not exist \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\_staging\\\\PCGExElementsMeta\\\\Filters\\\\Points\" mkdir \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\_staging\\\\PCGExElementsMeta\\\\Filters\\\\Points\")",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(pushd:*)",
+      "Bash(dir:*)",
+      "Bash(cd:*)",
+      "Bash(if not exist \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\_staging\\\\PCGExFilters\\\\Filters\\\\Points\" mkdir \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\_staging\\\\PCGExFilters\\\\Filters\\\\Points\")",
+      "Bash(find:*)",
+      "Bash(done)",
+      "Bash(for d in \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\node-library\\\\clusters\\\\analyze\" \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\node-library\\\\clusters\\\\generate\" \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\node-library\\\\clusters\\\\generate\\\\connect-points\" \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\node-library\\\\clusters\\\\generate\\\\connect-points\\\\probes\" \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\node-library\\\\clusters\\\\generate\\\\diagrams\" \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\node-library\\\\clusters\\\\interop\" \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\node-library\\\\clusters\\\\refine\" \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\node-library\\\\clusters\\\\transform\")",
+      "Bash(do if [ -d \"$d\" ])",
+      "Bash(then echo \"EXISTS: $d\")",
+      "Bash(else echo \"MISSING: $d\")",
+      "Bash(fi)",
+      "WebFetch(domain:nebukam.github.io)",
+      "Bash(ls -la \"D:\\\\GIT\\\\PCGExtendedToolkitGitBook\\\\_staging\\\\PCGExElementsValency\"\" 2>nul || echo \"Directory not found \")"
+    ]
+  }
+}

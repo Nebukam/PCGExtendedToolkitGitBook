@@ -1,0 +1,165 @@
+{
+  "path": "PCGExCore/Public/Math/PCGExMathAxis.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExMinimalAxis",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "X",
+          "display_name": "X"
+        },
+        {
+          "name": "Y",
+          "display_name": "Y"
+        },
+        {
+          "name": "Z",
+          "display_name": "Z"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExAxis",
+      "values": [
+        {
+          "name": "Forward",
+          "display_name": "Forward"
+        },
+        {
+          "name": "Backward",
+          "display_name": "Backward"
+        },
+        {
+          "name": "Right",
+          "display_name": "Right"
+        },
+        {
+          "name": "Left",
+          "display_name": "Left"
+        },
+        {
+          "name": "Up",
+          "display_name": "Up"
+        },
+        {
+          "name": "Down",
+          "display_name": "Down"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExAxisOrder",
+      "values": [
+        {
+          "name": "XYZ",
+          "display_name": "X > Y > Z"
+        },
+        {
+          "name": "YZX",
+          "display_name": "Y > Z > X"
+        },
+        {
+          "name": "ZXY",
+          "display_name": "Z > X > Y"
+        },
+        {
+          "name": "YXZ",
+          "display_name": "Y > X > Z"
+        },
+        {
+          "name": "ZYX",
+          "display_name": "Z > Y > X"
+        },
+        {
+          "name": "XZY",
+          "display_name": "X > Z > Y"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExAxisAlign",
+      "values": [
+        {
+          "name": "Forward",
+          "display_name": "Forward"
+        },
+        {
+          "name": "Backward",
+          "display_name": "Backward"
+        },
+        {
+          "name": "Right",
+          "display_name": "Right"
+        },
+        {
+          "name": "Left",
+          "display_name": "Left"
+        },
+        {
+          "name": "Up",
+          "display_name": "Up"
+        },
+        {
+          "name": "Down",
+          "display_name": "Down"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExMakeRotAxis",
+      "values": [
+        {
+          "name": "X",
+          "display_name": "X"
+        },
+        {
+          "name": "XY",
+          "display_name": "X > Y"
+        },
+        {
+          "name": "XZ",
+          "display_name": "X > Z"
+        },
+        {
+          "name": "Y",
+          "display_name": "Y"
+        },
+        {
+          "name": "YX",
+          "display_name": "Y > X"
+        },
+        {
+          "name": "YZ",
+          "display_name": "Y > Z"
+        },
+        {
+          "name": "Z",
+          "display_name": "Z"
+        },
+        {
+          "name": "ZX",
+          "display_name": "Z > X"
+        },
+        {
+          "name": "ZY",
+          "display_name": "Z > Y"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

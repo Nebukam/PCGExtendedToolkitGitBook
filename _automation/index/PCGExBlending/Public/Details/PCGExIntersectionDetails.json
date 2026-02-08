@@ -1,0 +1,417 @@
+{
+  "path": "PCGExBlending/Public/Details/PCGExIntersectionDetails.h",
+  "module": "PCGExBlending",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExInclusionDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "InclusionOffset",
+          "display_name": "InclusionOffset",
+          "type": "double",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "InclusionTolerance",
+          "display_name": "InclusionTolerance",
+          "type": "double",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExUnionMetadataDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bWriteIsUnion",
+          "display_name": "bWriteIsUnion",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "IsUnionAttributeName",
+          "display_name": "Is Union",
+          "type": "FName",
+          "default": "\"bIsUnion\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteIsUnion",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteUnionSize",
+          "display_name": "bWriteUnionSize",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "UnionSizeAttributeName",
+          "display_name": "Union Size",
+          "type": "FName",
+          "default": "\"UnionSize\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteUnionSize",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExPointUnionMetadataDetails",
+      "base_class": "FPCGExUnionMetadataDetails",
+      "uproperties": [],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExEdgeUnionMetadataDetails",
+      "base_class": "FPCGExUnionMetadataDetails",
+      "uproperties": [
+        {
+          "name": "bWriteIsSubEdge",
+          "display_name": "bWriteIsSubEdge",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "IsSubEdgeAttributeName",
+          "display_name": "Is Sub Edge",
+          "type": "FName",
+          "default": "\"SubEdge\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteIsSubEdge",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExPointPointIntersectionDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "FuseDetails",
+          "display_name": "FuseDetails",
+          "type": "FPCGExFuseDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": true,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "PointUnionData",
+          "display_name": "PointUnionData",
+          "type": "FPCGExPointUnionMetadataDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "EdgeUnionData",
+          "display_name": "EdgeUnionData",
+          "type": "FPCGExEdgeUnionMetadataDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSupportsEdges",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExPointEdgeIntersectionDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bEnableSelfIntersection",
+          "display_name": "bEnableSelfIntersection",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "FuseDetails",
+          "display_name": "FuseDetails",
+          "type": "FPCGExSourceFuseDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": true,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bSnapOnEdge",
+          "display_name": "bSnapOnEdge",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteIsIntersector",
+          "display_name": "bWriteIsIntersector",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Metadata",
+          "advanced": false
+        },
+        {
+          "name": "IsIntersectorAttributeName",
+          "display_name": "IsIntersectorAttributeName",
+          "type": "FName",
+          "default": "\"bIsIntersector\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteIsIntersector",
+          "edit_condition_hides": false,
+          "category": "Settings|Metadata",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExEdgeEdgeIntersectionDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bEnableSelfIntersection",
+          "display_name": "bEnableSelfIntersection",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Tolerance",
+          "display_name": "Tolerance",
+          "type": "double",
+          "default": "DBL_INTERSECTION_TOLERANCE",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bUseMinAngle",
+          "display_name": "bUseMinAngle",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinAngle",
+          "display_name": "MinAngle",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseMinAngle",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bUseMaxAngle",
+          "display_name": "bUseMaxAngle",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxAngle",
+          "display_name": "MaxAngle",
+          "type": "double",
+          "default": "90",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseMaxAngle",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteCrossing",
+          "display_name": "bWriteCrossing",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Metadata",
+          "advanced": false
+        },
+        {
+          "name": "CrossingAttributeName",
+          "display_name": "CrossingAttributeName",
+          "type": "FName",
+          "default": "\"bCrossing\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteCrossing",
+          "edit_condition_hides": false,
+          "category": "Settings|Metadata",
+          "advanced": false
+        },
+        {
+          "name": "bFlagCrossing",
+          "display_name": "bFlagCrossing",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Metadata",
+          "advanced": false
+        },
+        {
+          "name": "FlagA",
+          "display_name": "FlagA",
+          "type": "FName",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bFlagCrossing",
+          "edit_condition_hides": false,
+          "category": "Settings|Metadata",
+          "advanced": false
+        },
+        {
+          "name": "FlagB",
+          "display_name": "FlagB",
+          "type": "FName",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bFlagCrossing",
+          "edit_condition_hides": false,
+          "category": "Settings|Metadata",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

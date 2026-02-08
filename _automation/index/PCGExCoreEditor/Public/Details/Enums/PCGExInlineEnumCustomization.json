@@ -1,0 +1,15 @@
+{
+  "path": "PCGExCoreEditor/Public/Details/Enums/PCGExInlineEnumCustomization.h",
+  "module": "PCGExCoreEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExInlineEnumCustomization",
+      "base_class": "IPropertyTypeCustomization"
+    }
+  ],
+  "namespaces": {}
+}

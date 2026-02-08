@@ -1,0 +1,173 @@
+{
+  "path": "PCGExElementsPathfinding/Public/GoalPickers/PCGExGoalPickerAttribute.h",
+  "module": "PCGExElementsPathfinding",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExGoalPickAttributeAmount",
+      "values": [
+        {
+          "name": "Single",
+          "display_name": "Single Attribute"
+        },
+        {
+          "name": "List",
+          "display_name": "Multiple Attributes"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExGoalPickerAttribute",
+      "display_name": "UPCGExGoalPickerAttribute",
+      "description": "",
+      "base_class": "UPCGExGoalPicker",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Index Attribute\", PCGExNodeLibraryDoc=\"pathfinding/pathfinding-edges/goal-picker-attribute\")",
+      "uproperties": [
+        {
+          "name": "GoalCount",
+          "display_name": "GoalCount",
+          "type": "EPCGExGoalPickAttributeAmount",
+          "default": "EPCGExGoalPickAttributeAmount::Single",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SingleSelector",
+          "display_name": "SingleSelector",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "GoalCount == EPCGExGoalPickAttributeAmount::Single",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedNames",
+          "display_name": "CommaSeparatedNames",
+          "type": "FString",
+          "default": "TEXT(\"\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "GoalCount == EPCGExGoalPickAttributeAmount::List",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "AttributeSelectors",
+          "display_name": "AttributeSelectors",
+          "type": "TArray<FPCGAttributePropertyInputSelector>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "GoalCount == EPCGExGoalPickAttributeAmount::List",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "unknown",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "IndexSafety",
+          "display_name": "IndexSafety",
+          "type": "EPCGExIndexSafety",
+          "default": "EPCGExIndexSafety::Tile",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "GoalCount",
+          "display_name": "GoalCount",
+          "type": "EPCGExGoalPickAttributeAmount",
+          "default": "EPCGExGoalPickAttributeAmount::Single",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SingleSelector",
+          "display_name": "SingleSelector",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "GoalCount == EPCGExGoalPickAttributeAmount::Single",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedNames",
+          "display_name": "CommaSeparatedNames",
+          "type": "FString",
+          "default": "TEXT(\"\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "GoalCount == EPCGExGoalPickAttributeAmount::List",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "AttributeSelectors",
+          "display_name": "AttributeSelectors",
+          "type": "TArray<FPCGAttributePropertyInputSelector>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "GoalCount == EPCGExGoalPickAttributeAmount::List",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

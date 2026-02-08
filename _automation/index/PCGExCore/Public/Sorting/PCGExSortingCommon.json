@@ -1,0 +1,25 @@
+{
+  "path": "PCGExCore/Public/Sorting/PCGExSortingCommon.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExSortDirection",
+      "values": [
+        {
+          "name": "Ascending",
+          "display_name": "Ascending"
+        },
+        {
+          "name": "Descending",
+          "display_name": "Descending"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

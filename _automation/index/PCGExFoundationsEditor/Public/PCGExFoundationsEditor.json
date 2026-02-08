@@ -1,0 +1,15 @@
+{
+  "path": "PCGExFoundationsEditor/Public/PCGExFoundationsEditor.h",
+  "module": "PCGExFoundationsEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExFoundationsEditorModule",
+      "base_class": "IPCGExEditorModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

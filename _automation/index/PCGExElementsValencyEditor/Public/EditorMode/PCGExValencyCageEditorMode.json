@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsValencyEditor/Public/EditorMode/PCGExValencyCageEditorMode.h",
+  "module": "PCGExElementsValencyEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExValencyCageEditorMode",
+      "base_class": "FEdMode"
+    }
+  ],
+  "namespaces": {}
+}

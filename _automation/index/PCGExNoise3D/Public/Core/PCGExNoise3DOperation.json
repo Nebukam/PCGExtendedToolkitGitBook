@@ -1,0 +1,15 @@
+{
+  "path": "PCGExNoise3D/Public/Core/PCGExNoise3DOperation.h",
+  "module": "PCGExNoise3D",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExNoise3DOperation",
+      "base_class": "FPCGExOperation"
+    }
+  ],
+  "namespaces": {}
+}

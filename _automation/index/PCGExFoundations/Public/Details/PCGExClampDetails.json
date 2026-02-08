@@ -1,0 +1,71 @@
+{
+  "path": "PCGExFoundations/Public/Details/PCGExClampDetails.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExClampDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bApplyClampMin",
+          "display_name": "bApplyClampMin",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ClampMinValue",
+          "display_name": "ClampMinValue",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bApplyClampMin",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bApplyClampMax",
+          "display_name": "bApplyClampMax",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ClampMaxValue",
+          "display_name": "ClampMaxValue",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bApplyClampMax",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

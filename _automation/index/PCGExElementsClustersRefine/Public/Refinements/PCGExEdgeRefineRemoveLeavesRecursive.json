@@ -1,0 +1,73 @@
+{
+  "path": "PCGExElementsClustersRefine/Public/Refinements/PCGExEdgeRefineRemoveLeavesRecursive.h",
+  "module": "PCGExElementsClustersRefine",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExEdgeRemoveLeavesRecursive",
+      "display_name": "UPCGExEdgeRemoveLeavesRecursive",
+      "description": "",
+      "base_class": "UPCGExEdgeRefineInstancedFactory",
+      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Remove Leaves (Recursive)\", PCGExNodeLibraryDoc=\"clusters/refine-cluster/remove-leaves-recursive\")",
+      "uproperties": [
+        {
+          "name": "MaxIterations",
+          "display_name": "MaxIterations",
+          "type": "int32",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "instanced_factory",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": true,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "MaxIterations",
+          "display_name": "MaxIterations",
+          "type": "int32",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "implementations": []
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExEdgeRemoveLeavesRecursive",
+      "base_class": "FPCGExEdgeRefineOperation"
+    }
+  ],
+  "namespaces": {}
+}

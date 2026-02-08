@@ -1,0 +1,71 @@
+{
+  "path": "PCGExElementsShapes/Public/Core/PCGExShapesCommon.h",
+  "module": "PCGExElementsShapes",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExShapeOutputMode",
+      "values": [
+        {
+          "name": "PerDataset",
+          "display_name": "Per Dataset"
+        },
+        {
+          "name": "PerSeed",
+          "display_name": "Per Seed"
+        },
+        {
+          "name": "PerShape",
+          "display_name": "Per Shape"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExShapeResolutionMode",
+      "values": [
+        {
+          "name": "Absolute",
+          "display_name": "Absolute"
+        },
+        {
+          "name": "Scaled",
+          "display_name": "Scaled"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExShapePointLookAt",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "Seed",
+          "display_name": "Seed"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExShapeBoundsSource",
+      "values": [
+        {
+          "name": "Fit",
+          "display_name": "Fit"
+        },
+        {
+          "name": "Constant",
+          "display_name": "Constant"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

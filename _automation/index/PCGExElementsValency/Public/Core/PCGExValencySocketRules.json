@@ -1,0 +1,279 @@
+{
+  "path": "PCGExElementsValency/Public/Core/PCGExValencySocketRules.h",
+  "module": "PCGExElementsValency",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExValencySocketDefinition",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "TypeId",
+          "display_name": "TypeId",
+          "type": "int32",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Internal",
+          "advanced": false
+        },
+        {
+          "name": "SocketType",
+          "display_name": "SocketType",
+          "type": "FName",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName",
+          "type": "FText",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CompatibleTypeIds",
+          "display_name": "CompatibleTypeIds",
+          "type": "TArray<int32>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Compatibility",
+          "advanced": false
+        },
+        {
+          "name": "DefaultOffset",
+          "display_name": "DefaultOffset",
+          "type": "FTransform",
+          "default": "FTransform::Identity",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DebugColor",
+          "display_name": "DebugColor",
+          "type": "FLinearColor",
+          "default": "FLinearColor::White",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExValencyModuleSocket",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "SocketName",
+          "display_name": "SocketName",
+          "type": "FName",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SocketType",
+          "display_name": "SocketType",
+          "type": "FName",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "LocalOffset",
+          "display_name": "LocalOffset",
+          "type": "FTransform",
+          "default": "FTransform::Identity",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOverrideOffset",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOverrideOffset",
+          "display_name": "bOverrideOffset",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bIsOutputSocket",
+          "display_name": "bIsOutputSocket",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [
+    {
+      "name": "UPCGExValencySocketRules",
+      "display_name": "UPCGExValencySocketRules",
+      "description": "",
+      "base_class": "UDataAsset",
+      "uclass_meta": "BlueprintType, DisplayName=\"[PCGEx] Valency | Socket Rules\"",
+      "uproperties": [
+        {
+          "name": "LayerName",
+          "display_name": "LayerName",
+          "type": "FName",
+          "default": "FName(\"Main\")",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SocketTypes",
+          "display_name": "SocketTypes",
+          "type": "TArray<FPCGExValencySocketDefinition>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CompatibilityMatrix",
+          "display_name": "CompatibilityMatrix",
+          "type": "TArray<int64>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "unknown",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "LayerName",
+          "display_name": "LayerName",
+          "type": "FName",
+          "default": "FName(\"Main\")",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SocketTypes",
+          "display_name": "SocketTypes",
+          "type": "TArray<FPCGExValencySocketDefinition>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CompatibilityMatrix",
+          "display_name": "CompatibilityMatrix",
+          "type": "TArray<int64>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

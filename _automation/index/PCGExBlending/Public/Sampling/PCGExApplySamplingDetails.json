@@ -1,0 +1,123 @@
+{
+  "path": "PCGExBlending/Public/Sampling/PCGExApplySamplingDetails.h",
+  "module": "PCGExBlending",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExApplySamplingDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bApplyTransform",
+          "display_name": "bApplyTransform",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "TransformPosition",
+          "display_name": " ├─ Position",
+          "type": "uint8",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bApplyTransform",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "TransformRotation",
+          "display_name": " ├─ Rotation",
+          "type": "uint8",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bApplyTransform",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "TransformScale",
+          "display_name": " └─ Scale",
+          "type": "uint8",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bApplyTransform",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bApplyLookAt",
+          "display_name": "bApplyLookAt",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "LookAtPosition",
+          "display_name": " └─ Position",
+          "type": "uint8",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bApplyLookAt",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "LookAtRotation",
+          "display_name": " └─ Rotation",
+          "type": "uint8",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bApplyLookAt",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "LookAtScale",
+          "display_name": " └─ Scale",
+          "type": "uint8",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bApplyLookAt",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

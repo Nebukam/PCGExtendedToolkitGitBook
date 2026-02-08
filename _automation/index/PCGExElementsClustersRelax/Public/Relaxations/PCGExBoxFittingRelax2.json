@@ -1,0 +1,294 @@
+{
+  "path": "PCGExElementsClustersRelax/Public/Relaxations/PCGExBoxFittingRelax2.h",
+  "module": "PCGExElementsClustersRelax",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExBoxFittingSeparation",
+      "values": [
+        {
+          "name": "MinimumPenetration",
+          "display_name": "Minimum Penetration"
+        },
+        {
+          "name": "EdgeDirection",
+          "display_name": "Edge Direction"
+        },
+        {
+          "name": "Centroid",
+          "display_name": "Centroid"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExBoxFittingRelax2",
+      "display_name": "UPCGExBoxFittingRelax2",
+      "description": "",
+      "base_class": "UPCGExFittingRelaxBase",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Box Fitting v2\", PCGExNodeLibraryDoc=\"clusters/relax-cluster/box-fitting\")",
+      "uproperties": [
+        {
+          "name": "ExtentsInput",
+          "display_name": "ExtentsInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Attribute",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Extents",
+          "display_name": "Extents",
+          "type": "FVector",
+          "default": "FVector(50, 50, 50)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ExtentsInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SeparationMode",
+          "display_name": "SeparationMode",
+          "type": "EPCGExBoxFittingSeparation",
+          "default": "EPCGExBoxFittingSeparation::MinimumPenetration",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Padding",
+          "display_name": "Padding",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bUseOrientedBounds",
+          "display_name": "bUseOrientedBounds",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "unknown",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "Precision",
+          "display_name": "Floating Point Precision",
+          "type": "double",
+          "default": "100",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "RepulsionConstant",
+          "display_name": "RepulsionConstant",
+          "type": "double",
+          "default": "100",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "EdgeFitting",
+          "display_name": "EdgeFitting",
+          "type": "EPCGExRelaxEdgeFitting",
+          "default": "EPCGExRelaxEdgeFitting::Existing",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DesiredEdgeLength",
+          "display_name": "Desired Edge Length",
+          "type": "double",
+          "default": "100",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "EdgeFitting == EPCGExRelaxEdgeFitting::Fixed",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DesiredEdgeLengthAttribute",
+          "display_name": "Desired Edge Length",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "EdgeFitting == EPCGExRelaxEdgeFitting::Attribute",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Scale",
+          "display_name": " └─ Scale",
+          "type": "double",
+          "default": "2",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "EdgeFitting == EPCGExRelaxEdgeFitting::Attribute || EdgeFitting == EPCGExRelaxEdgeFitting::Existing",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SpringConstant",
+          "display_name": "SpringConstant",
+          "type": "double",
+          "default": "0.1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "EdgeFitting != EPCGExRelaxEdgeFitting::Ignore",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "TimeStep",
+          "display_name": "TimeStep",
+          "type": "double",
+          "default": "0.01",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ExtentsInput",
+          "display_name": "ExtentsInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Attribute",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Extents",
+          "display_name": "Extents",
+          "type": "FVector",
+          "default": "FVector(50, 50, 50)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ExtentsInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SeparationMode",
+          "display_name": "SeparationMode",
+          "type": "EPCGExBoxFittingSeparation",
+          "default": "EPCGExBoxFittingSeparation::MinimumPenetration",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Padding",
+          "display_name": "Padding",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bUseOrientedBounds",
+          "display_name": "bUseOrientedBounds",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

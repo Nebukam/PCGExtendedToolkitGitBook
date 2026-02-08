@@ -1,0 +1,71 @@
+{
+  "path": "PCGExFoundations/Public/Details/PCGExSocket.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExSocket",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bManaged",
+          "display_name": "bManaged",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "false",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SocketName",
+          "display_name": "SocketName",
+          "type": "FName",
+          "default": "NAME_None",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "!bManaged",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "RelativeTransform",
+          "display_name": "RelativeTransform",
+          "type": "FTransform",
+          "default": "FTransform::Identity",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "!bManaged",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Tag",
+          "display_name": "Tag",
+          "type": "FString",
+          "default": "TEXT(\"\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "!bManaged",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

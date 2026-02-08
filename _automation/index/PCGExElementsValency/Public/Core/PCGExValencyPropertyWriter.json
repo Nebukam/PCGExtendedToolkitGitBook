@@ -1,0 +1,105 @@
+{
+  "path": "PCGExElementsValency/Public/Core/PCGExValencyPropertyWriter.h",
+  "module": "PCGExElementsValency",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExValencyPropertyOutputConfig",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bEnabled",
+          "display_name": "bEnabled",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Output",
+          "advanced": false
+        },
+        {
+          "name": "PropertyName",
+          "display_name": "PropertyName",
+          "type": "FName",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bEnabled",
+          "edit_condition_hides": false,
+          "category": "Output",
+          "advanced": false
+        },
+        {
+          "name": "OutputAttributeName",
+          "display_name": "OutputAttributeName",
+          "type": "FName",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bEnabled",
+          "edit_condition_hides": false,
+          "category": "Output",
+          "advanced": false
+        }
+      ],
+      "is_config": true,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExValencyPropertyOutputSettings",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Configs",
+          "display_name": "Configs",
+          "type": "TArray<FPCGExValencyPropertyOutputConfig>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Property Output",
+          "advanced": false
+        },
+        {
+          "name": "bOutputModuleTags",
+          "display_name": "bOutputModuleTags",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Property Output",
+          "advanced": false
+        },
+        {
+          "name": "ModuleTagsAttributeName",
+          "display_name": "ModuleTagsAttributeName",
+          "type": "FName",
+          "default": "FName(\"ModuleTags\")",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOutputModuleTags",
+          "edit_condition_hides": false,
+          "category": "Property Output",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

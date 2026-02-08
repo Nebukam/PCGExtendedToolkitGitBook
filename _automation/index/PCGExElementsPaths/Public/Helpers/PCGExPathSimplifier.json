@@ -1,0 +1,29 @@
+{
+  "path": "PCGExElementsPaths/Public/Helpers/PCGExPathSimplifier.h",
+  "module": "PCGExElementsPaths",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExTangentSmoothing",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "DirectionOnly",
+          "display_name": "DirectionOnly"
+        },
+        {
+          "name": "Full",
+          "display_name": "Full"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

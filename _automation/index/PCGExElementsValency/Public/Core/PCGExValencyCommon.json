@@ -1,0 +1,555 @@
+{
+  "path": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
+  "module": "PCGExElementsValency",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExValencyAssetType",
+      "values": [
+        {
+          "name": "Unknown",
+          "display_name": "Unknown"
+        },
+        {
+          "name": "Mesh",
+          "display_name": "Mesh"
+        },
+        {
+          "name": "Actor",
+          "display_name": "Actor"
+        },
+        {
+          "name": "DataAsset",
+          "display_name": "DataAsset"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExPlaceholderMode",
+      "values": [
+        {
+          "name": "Boundary",
+          "display_name": "Boundary"
+        },
+        {
+          "name": "Wildcard",
+          "display_name": "Wildcard"
+        },
+        {
+          "name": "Any",
+          "display_name": "Any"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExMissingConnectionBehavior",
+      "values": [
+        {
+          "name": "Unconstrained",
+          "display_name": "Unconstrained"
+        },
+        {
+          "name": "Boundary",
+          "display_name": "Boundary"
+        },
+        {
+          "name": "Wildcard",
+          "display_name": "Wildcard"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExValencyModuleSettings",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Weight",
+          "display_name": "Weight",
+          "type": "float",
+          "default": "1.0f",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings",
+          "advanced": false
+        },
+        {
+          "name": "MinSpawns",
+          "display_name": "MinSpawns",
+          "type": "int32",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings",
+          "advanced": false
+        },
+        {
+          "name": "MaxSpawns",
+          "display_name": "MaxSpawns",
+          "type": "int32",
+          "default": "-1",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExValencyMaterialOverride",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "SlotIndex",
+          "display_name": "SlotIndex",
+          "type": "int32",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Material",
+          "advanced": false
+        },
+        {
+          "name": "Material",
+          "display_name": "Material",
+          "type": "TSoftObjectPtr<UMaterialInterface>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Material",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExValencyMaterialVariant",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Overrides",
+          "display_name": "Overrides",
+          "type": "TArray<FPCGExValencyMaterialOverride>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Material",
+          "advanced": false
+        },
+        {
+          "name": "DiscoveryCount",
+          "display_name": "DiscoveryCount",
+          "type": "int32",
+          "default": "1",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Material",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExValencyAssetEntry",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Asset",
+          "display_name": "Asset",
+          "type": "TSoftObjectPtr<UObject>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Asset",
+          "advanced": false
+        },
+        {
+          "name": "AssetType",
+          "display_name": "AssetType",
+          "type": "EPCGExValencyAssetType",
+          "default": "EPCGExValencyAssetType::Unknown",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Asset",
+          "advanced": false
+        },
+        {
+          "name": "LocalTransform",
+          "display_name": "LocalTransform",
+          "type": "FTransform",
+          "default": "FTransform::Identity",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Asset",
+          "advanced": false
+        },
+        {
+          "name": "SourceActor",
+          "display_name": "SourceActor",
+          "type": "TWeakObjectPtr<AActor>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaterialVariant",
+          "display_name": "MaterialVariant",
+          "type": "FPCGExValencyMaterialVariant",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bHasMaterialVariant",
+          "display_name": "bHasMaterialVariant",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bPreserveLocalTransform",
+          "display_name": "bPreserveLocalTransform",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Settings",
+          "display_name": "Settings",
+          "type": "FPCGExValencyModuleSettings",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bHasSettings",
+          "display_name": "bHasSettings",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExValencyNeighborIndices",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Indices",
+          "display_name": "Indices",
+          "type": "TArray<int32>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Neighbors",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExValencyModuleLayerConfig",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "OrbitalMask",
+          "display_name": "OrbitalMask",
+          "type": "int64",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Config",
+          "advanced": false
+        },
+        {
+          "name": "BoundaryOrbitalMask",
+          "display_name": "BoundaryOrbitalMask",
+          "type": "int64",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Config",
+          "advanced": false
+        },
+        {
+          "name": "WildcardOrbitalMask",
+          "display_name": "WildcardOrbitalMask",
+          "type": "int64",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Config",
+          "advanced": false
+        },
+        {
+          "name": "OrbitalNeighbors",
+          "display_name": "OrbitalNeighbors",
+          "type": "TMap<FName, FPCGExValencyNeighborIndices>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Config",
+          "advanced": false
+        }
+      ],
+      "is_config": true,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExValencyModuleDefinition",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Asset",
+          "display_name": "Asset",
+          "type": "TSoftObjectPtr<UObject>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Module",
+          "advanced": false
+        },
+        {
+          "name": "AssetType",
+          "display_name": "AssetType",
+          "type": "EPCGExValencyAssetType",
+          "default": "EPCGExValencyAssetType::Unknown",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Module",
+          "advanced": false
+        },
+        {
+          "name": "LocalTransforms",
+          "display_name": "LocalTransforms",
+          "type": "TArray<FTransform>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Module",
+          "advanced": false
+        },
+        {
+          "name": "bHasLocalTransform",
+          "display_name": "bHasLocalTransform",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Module",
+          "advanced": false
+        },
+        {
+          "name": "MaterialVariant",
+          "display_name": "MaterialVariant",
+          "type": "FPCGExValencyMaterialVariant",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Module",
+          "advanced": false
+        },
+        {
+          "name": "bHasMaterialVariant",
+          "display_name": "bHasMaterialVariant",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Module",
+          "advanced": false
+        },
+        {
+          "name": "Settings",
+          "display_name": "Settings",
+          "type": "FPCGExValencyModuleSettings",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Module",
+          "advanced": false
+        },
+        {
+          "name": "ModuleName",
+          "display_name": "ModuleName",
+          "type": "FName",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Module",
+          "advanced": false
+        },
+        {
+          "name": "Layers",
+          "display_name": "Layers",
+          "type": "TMap<FName, FPCGExValencyModuleLayerConfig>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Module",
+          "advanced": false
+        },
+        {
+          "name": "Properties",
+          "display_name": "Properties",
+          "type": "TArray<FInstancedStruct>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Module",
+          "advanced": false
+        },
+        {
+          "name": "Tags",
+          "display_name": "Tags",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Module",
+          "advanced": false
+        },
+        {
+          "name": "Sockets",
+          "display_name": "Sockets",
+          "type": "TArray<FPCGExValencyModuleSocket>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Module|Sockets",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

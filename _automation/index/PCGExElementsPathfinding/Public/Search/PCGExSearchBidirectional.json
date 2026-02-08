@@ -1,0 +1,58 @@
+{
+  "path": "PCGExElementsPathfinding/Public/Search/PCGExSearchBidirectional.h",
+  "module": "PCGExElementsPathfinding",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExSearchBidirectional",
+      "display_name": "UPCGExSearchBidirectional",
+      "description": "",
+      "base_class": "UPCGExSearchInstancedFactory",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Bidirectional\", ToolTip =\"Bidirectional Search. Searches from both ends simultaneously. Very fast for large graphs.\", PCGExNodeLibraryDoc=\"pathfinding/search-algorithms/bidirectional\")",
+      "uproperties": [],
+      "classification": {
+        "type": "instanced_factory",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": true,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "bEarlyExit",
+          "display_name": "bEarlyExit",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExSearchOperationBidirectional",
+      "base_class": "FPCGExSearchOperation"
+    }
+  ],
+  "namespaces": {}
+}

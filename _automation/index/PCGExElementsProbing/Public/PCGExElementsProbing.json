@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsProbing/Public/PCGExElementsProbing.h",
+  "module": "PCGExElementsProbing",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsProbingModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

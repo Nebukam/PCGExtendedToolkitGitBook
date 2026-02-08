@@ -1,0 +1,822 @@
+{
+  "path": "PCGExElementsPaths/Public/Elements/PCGExAttributeRolling.h",
+  "module": "PCGExElementsPaths",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExRollingRangeControl",
+      "values": [
+        {
+          "name": "StartStop",
+          "display_name": "Start/Stop"
+        },
+        {
+          "name": "Toggle",
+          "display_name": "Toggle"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExRollingToggleInitialValue",
+      "values": [
+        {
+          "name": "Constant",
+          "display_name": "Constant"
+        },
+        {
+          "name": "ConstantPreserve",
+          "display_name": "ConstantPreserve"
+        },
+        {
+          "name": "FromPoint",
+          "display_name": "From Point"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExRollingValueControl",
+      "values": [
+        {
+          "name": "Pin",
+          "display_name": "Pin"
+        },
+        {
+          "name": "Previous",
+          "display_name": "Previous"
+        },
+        {
+          "name": "RangeStart",
+          "display_name": "Range Start"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExAttributeRollingSettings",
+      "display_name": "Path : Attribute Rolling",
+      "description": "Does a rolling blending of properties & attributes.",
+      "base_class": "UPCGExPathProcessorSettings",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(Keywords = \"range\", PCGExNodeLibraryDoc=\"paths/attribute-rolling\")",
+      "uproperties": [
+        {
+          "name": "RangeControl",
+          "display_name": "RangeControl",
+          "type": "EPCGExRollingRangeControl",
+          "default": "EPCGExRollingRangeControl::Toggle",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ValueControl",
+          "display_name": "ValueControl",
+          "type": "EPCGExRollingValueControl",
+          "default": "EPCGExRollingValueControl::Previous",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "InitialValueMode",
+          "display_name": "InitialValueMode",
+          "type": "EPCGExRollingToggleInitialValue",
+          "default": "EPCGExRollingToggleInitialValue::Constant",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bInitialValue",
+          "display_name": "bInitialValue",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "InitialValueMode != EPCGExRollingToggleInitialValue::FromPoint",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bReverseRolling",
+          "display_name": "bReverseRolling",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bBlendOutsideRange",
+          "display_name": "bBlendOutsideRange",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bBlendStopElement",
+          "display_name": "bBlendStopElement",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "!bBlendOutsideRange",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteRangeStart",
+          "display_name": "bWriteRangeStart",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "RangeStartAttributeName",
+          "display_name": "Range Start",
+          "type": "FName",
+          "default": "FName(\"RangeStart\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteRangeStart",
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "bWriteRangeStop",
+          "display_name": "bWriteRangeStop",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "RangeStopAttributeName",
+          "display_name": "Range Stop",
+          "type": "FName",
+          "default": "FName(\"RangeStop\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteRangeStop",
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "bWriteRangePole",
+          "display_name": "bWriteRangePole",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "RangePoleAttributeName",
+          "display_name": "Range Pole",
+          "type": "FName",
+          "default": "FName(\"RangePole\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteRangePole",
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "bWriteRangeIndex",
+          "display_name": "bWriteRangeIndex",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "RangeIndexAttributeName",
+          "display_name": "Range Index",
+          "type": "FName",
+          "default": "FName(\"RangeIndex\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteRangeIndex",
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "RangeIndexOffset",
+          "display_name": " └─ Index Offset",
+          "type": "int32",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteRangeIndex",
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "bWriteIsInsideRange",
+          "display_name": "bWriteIsInsideRange",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "IsInsideRangeAttributeName",
+          "display_name": "Is Inside Range",
+          "type": "FName",
+          "default": "FName(\"IsInsideRange\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteIsInsideRange",
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "bWriteIndexInsideRange",
+          "display_name": "bWriteIndexInsideRange",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "IndexInsideRangeAttributeName",
+          "display_name": "Index inside Range",
+          "type": "FName",
+          "default": "FName(\"IndexInsideRange\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteIndexInsideRange",
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "node_settings",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": true,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [
+        "Labels"
+      ],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [
+        {
+          "label": "PCGExFilters::Labels::SourceStartConditionLabel",
+          "tooltip": "...",
+          "required": "Required"
+        },
+        {
+          "label": "PCGExFilters::Labels::SourceStopConditionLabel",
+          "tooltip": "...",
+          "required": "Required"
+        },
+        {
+          "label": "PCGExFilters::Labels::SourceToggleConditionLabel",
+          "tooltip": "...",
+          "required": "Normal"
+        },
+        {
+          "label": "PCGExFilters::Labels::SourcePinConditionLabel",
+          "tooltip": "...",
+          "required": "Required"
+        }
+      ],
+      "all_properties": [
+        {
+          "name": "BulkInitData",
+          "display_name": "BulkInitData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CacheData",
+          "display_name": "CacheData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScopedAttributeGet",
+          "display_name": "ScopedAttributeGet",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "StealData",
+          "display_name": "StealData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Disabled",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsDataStealing",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ExecutionPolicy",
+          "display_name": "ExecutionPolicy",
+          "type": "EPCGExExecutionPolicy",
+          "default": "EPCGExExecutionPolicy::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsInitPolicy",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bFlattenOutput",
+          "display_name": "bFlattenOutput",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bCleanupConsumableAttributes",
+          "display_name": "bCleanupConsumableAttributes",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedProtectedAttributesName",
+          "display_name": "Protected Attributes",
+          "type": "FString",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "ProtectedAttributes",
+          "display_name": "Protected Attributes",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bPropagateAbortedExecution",
+          "display_name": "bPropagateAbortedExecution",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietInvalidInputWarning",
+          "display_name": "bQuietInvalidInputWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietMissingInputError",
+          "display_name": "bQuietMissingInputError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietCancellationError",
+          "display_name": "bQuietCancellationError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bOmitInvalidPathsOutputs",
+          "display_name": "bOmitInvalidPathsOutputs",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "RangeControl",
+          "display_name": "RangeControl",
+          "type": "EPCGExRollingRangeControl",
+          "default": "EPCGExRollingRangeControl::Toggle",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ValueControl",
+          "display_name": "ValueControl",
+          "type": "EPCGExRollingValueControl",
+          "default": "EPCGExRollingValueControl::Previous",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "InitialValueMode",
+          "display_name": "InitialValueMode",
+          "type": "EPCGExRollingToggleInitialValue",
+          "default": "EPCGExRollingToggleInitialValue::Constant",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bInitialValue",
+          "display_name": "bInitialValue",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "InitialValueMode != EPCGExRollingToggleInitialValue::FromPoint",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bReverseRolling",
+          "display_name": "bReverseRolling",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bBlendOutsideRange",
+          "display_name": "bBlendOutsideRange",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bBlendStopElement",
+          "display_name": "bBlendStopElement",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "!bBlendOutsideRange",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteRangeStart",
+          "display_name": "bWriteRangeStart",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "RangeStartAttributeName",
+          "display_name": "Range Start",
+          "type": "FName",
+          "default": "FName(\"RangeStart\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteRangeStart",
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "bWriteRangeStop",
+          "display_name": "bWriteRangeStop",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "RangeStopAttributeName",
+          "display_name": "Range Stop",
+          "type": "FName",
+          "default": "FName(\"RangeStop\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteRangeStop",
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "bWriteRangePole",
+          "display_name": "bWriteRangePole",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "RangePoleAttributeName",
+          "display_name": "Range Pole",
+          "type": "FName",
+          "default": "FName(\"RangePole\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteRangePole",
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "bWriteRangeIndex",
+          "display_name": "bWriteRangeIndex",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "RangeIndexAttributeName",
+          "display_name": "Range Index",
+          "type": "FName",
+          "default": "FName(\"RangeIndex\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteRangeIndex",
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "RangeIndexOffset",
+          "display_name": " └─ Index Offset",
+          "type": "int32",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteRangeIndex",
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "bWriteIsInsideRange",
+          "display_name": "bWriteIsInsideRange",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "IsInsideRangeAttributeName",
+          "display_name": "Is Inside Range",
+          "type": "FName",
+          "default": "FName(\"IsInsideRange\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteIsInsideRange",
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "bWriteIndexInsideRange",
+          "display_name": "bWriteIndexInsideRange",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "IndexInsideRangeAttributeName",
+          "display_name": "Index inside Range",
+          "type": "FName",
+          "default": "FName(\"IndexInsideRange\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteIndexInsideRange",
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExAttributeRollingElement",
+      "base_class": "FPCGExPathProcessorElement"
+    }
+  ],
+  "namespaces": {}
+}

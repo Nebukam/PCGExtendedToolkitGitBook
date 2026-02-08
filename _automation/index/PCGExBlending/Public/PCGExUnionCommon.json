@@ -1,0 +1,25 @@
+{
+  "path": "PCGExBlending/Public/PCGExUnionCommon.h",
+  "module": "PCGExBlending",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExFuseMethod",
+      "values": [
+        {
+          "name": "Voxel",
+          "display_name": "Spatial Hash"
+        },
+        {
+          "name": "Octree",
+          "display_name": "Octree"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

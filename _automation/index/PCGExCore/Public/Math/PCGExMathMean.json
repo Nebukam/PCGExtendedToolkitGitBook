@@ -1,0 +1,55 @@
+{
+  "path": "PCGExCore/Public/Math/PCGExMathMean.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExMeanMeasure",
+      "values": [
+        {
+          "name": "Relative",
+          "display_name": "Relative"
+        },
+        {
+          "name": "Discrete",
+          "display_name": "Discrete"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExMeanMethod",
+      "values": [
+        {
+          "name": "Average",
+          "display_name": "Average"
+        },
+        {
+          "name": "Median",
+          "display_name": "Median"
+        },
+        {
+          "name": "ModeMin",
+          "display_name": "ModeMin"
+        },
+        {
+          "name": "ModeMax",
+          "display_name": "ModeMax"
+        },
+        {
+          "name": "Central",
+          "display_name": "Central"
+        },
+        {
+          "name": "Fixed",
+          "display_name": "Fixed"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

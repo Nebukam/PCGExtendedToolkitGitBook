@@ -1,0 +1,15 @@
+{
+  "path": "PCGExCore/Public/Core/PCGExMT.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExIndexedTask",
+      "base_class": "FTask"
+    }
+  ],
+  "namespaces": {}
+}

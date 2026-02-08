@@ -1,0 +1,393 @@
+{
+  "path": "PCGExCore/Public/Utils/PCGExCompare.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExIndexMode",
+      "values": [
+        {
+          "name": "Pick",
+          "display_name": "Pick"
+        },
+        {
+          "name": "Offset",
+          "display_name": "Offset"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExAngularDomain",
+      "values": [
+        {
+          "name": "Scalar",
+          "display_name": "Scalar"
+        },
+        {
+          "name": "Degrees",
+          "display_name": "Degrees"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExComparison",
+      "values": [
+        {
+          "name": "StrictlyEqual",
+          "display_name": " == "
+        },
+        {
+          "name": "StrictlyNotEqual",
+          "display_name": " != "
+        },
+        {
+          "name": "EqualOrGreater",
+          "display_name": " >= "
+        },
+        {
+          "name": "EqualOrSmaller",
+          "display_name": " <= "
+        },
+        {
+          "name": "StrictlyGreater",
+          "display_name": " > "
+        },
+        {
+          "name": "StrictlySmaller",
+          "display_name": " < "
+        },
+        {
+          "name": "NearlyEqual",
+          "display_name": " ~= "
+        },
+        {
+          "name": "NearlyNotEqual",
+          "display_name": " !~= "
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExEquality",
+      "values": [
+        {
+          "name": "Equal",
+          "display_name": " == "
+        },
+        {
+          "name": "NotEqual",
+          "display_name": " != "
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExStringComparison",
+      "values": [
+        {
+          "name": "StrictlyEqual",
+          "display_name": " == "
+        },
+        {
+          "name": "StrictlyNotEqual",
+          "display_name": " != "
+        },
+        {
+          "name": "LengthStrictlyEqual",
+          "display_name": "LengthStrictlyEqual"
+        },
+        {
+          "name": "LengthStrictlyUnequal",
+          "display_name": "LengthStrictlyUnequal"
+        },
+        {
+          "name": "LengthEqualOrGreater",
+          "display_name": "LengthEqualOrGreater"
+        },
+        {
+          "name": "LengthEqualOrSmaller",
+          "display_name": "LengthEqualOrSmaller"
+        },
+        {
+          "name": "StrictlyGreater",
+          "display_name": "StrictlyGreater"
+        },
+        {
+          "name": "StrictlySmaller",
+          "display_name": "StrictlySmaller"
+        },
+        {
+          "name": "LocaleStrictlyGreater",
+          "display_name": "LocaleStrictlyGreater"
+        },
+        {
+          "name": "LocaleStrictlySmaller",
+          "display_name": "LocaleStrictlySmaller"
+        },
+        {
+          "name": "Contains",
+          "display_name": " Contains "
+        },
+        {
+          "name": "StartsWith",
+          "display_name": " Starts With "
+        },
+        {
+          "name": "EndsWith",
+          "display_name": " Ends With "
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExStringMatchMode",
+      "values": [
+        {
+          "name": "Equals",
+          "display_name": "Equals"
+        },
+        {
+          "name": "Contains",
+          "display_name": "Contains"
+        },
+        {
+          "name": "StartsWith",
+          "display_name": "Starts with"
+        },
+        {
+          "name": "EndsWith",
+          "display_name": "Ends with"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExComparisonDataType",
+      "values": [
+        {
+          "name": "Numeric",
+          "display_name": "Numeric"
+        },
+        {
+          "name": "String",
+          "display_name": "String"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExDirectionCheckMode",
+      "values": [
+        {
+          "name": "Dot",
+          "display_name": "Dot"
+        },
+        {
+          "name": "Hash",
+          "display_name": "Hash"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExVectorHashComparisonDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "HashToleranceInput",
+          "display_name": "HashToleranceInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "HashToleranceConstant",
+          "display_name": "Hash Tolerance",
+          "type": "double",
+          "default": "0.001",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "HashToleranceInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExStaticDotComparisonDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Domain",
+          "display_name": "Domain",
+          "type": "EPCGExAngularDomain",
+          "default": "EPCGExAngularDomain::Scalar",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Comparison",
+          "display_name": "Comparison",
+          "type": "EPCGExComparison",
+          "default": "EPCGExComparison::EqualOrGreater",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bUnsignedComparison",
+          "display_name": "bUnsignedComparison",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DotConstant",
+          "display_name": "Scalar",
+          "type": "double",
+          "default": "0.5",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Domain == EPCGExAngularDomain::Scalar",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DegreesConstant",
+          "display_name": "Degrees",
+          "type": "double",
+          "default": "90",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Domain == EPCGExAngularDomain::Degrees",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExDotComparisonDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Domain",
+          "display_name": "Domain",
+          "type": "EPCGExAngularDomain",
+          "default": "EPCGExAngularDomain::Scalar",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Comparison",
+          "display_name": "Comparison",
+          "type": "EPCGExComparison",
+          "default": "EPCGExComparison::EqualOrGreater",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bUnsignedComparison",
+          "display_name": "bUnsignedComparison",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ThresholdInput",
+          "display_name": "Threshold Input",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DotConstant",
+          "display_name": "Scalar",
+          "type": "double",
+          "default": "0.5",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ThresholdInput == EPCGExInputValueType::Constant && Domain == EPCGExAngularDomain::Scalar",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DegreesConstant",
+          "display_name": "Degrees",
+          "type": "double",
+          "default": "90",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ThresholdInput == EPCGExInputValueType::Constant && Domain == EPCGExAngularDomain::Degrees",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

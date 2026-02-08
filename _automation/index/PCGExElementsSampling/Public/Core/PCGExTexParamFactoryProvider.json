@@ -1,0 +1,425 @@
+{
+  "path": "PCGExElementsSampling/Public/Core/PCGExTexParamFactoryProvider.h",
+  "module": "PCGExElementsSampling",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExTexSampleAttributeType",
+      "values": [
+        {
+          "name": "Auto",
+          "display_name": "Auto"
+        },
+        {
+          "name": "Float",
+          "display_name": "Float"
+        },
+        {
+          "name": "Double",
+          "display_name": "Double"
+        },
+        {
+          "name": "Integer",
+          "display_name": "Double"
+        },
+        {
+          "name": "Vector4",
+          "display_name": "Vector4"
+        },
+        {
+          "name": "Vector",
+          "display_name": "Vector"
+        },
+        {
+          "name": "Vector2",
+          "display_name": "Vector2"
+        },
+        {
+          "name": "Invalid",
+          "display_name": "Invalid"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExTextureParamConfig",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "MaterialParameterName",
+          "display_name": "MaterialParameterName",
+          "type": "FName",
+          "default": "FName(\"TextureParameter\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "TextureIDAttributeName",
+          "display_name": "TextureIDAttributeName",
+          "type": "FName",
+          "default": "FName(\"TextureId\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SampleAttributeName",
+          "display_name": "SampleAttributeName",
+          "type": "FName",
+          "default": "FName(\"Sample\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Sampling",
+          "advanced": false
+        },
+        {
+          "name": "OutputType",
+          "display_name": "OutputType",
+          "type": "EPCGExTexSampleAttributeType",
+          "default": "EPCGExTexSampleAttributeType::Auto",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Sampling",
+          "advanced": false
+        },
+        {
+          "name": "SampledChannels",
+          "display_name": "SampledChannels",
+          "type": "uint8",
+          "default": "static_cast<uint8>(EPCGExTexChannelsFlags::All)",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Sampling",
+          "advanced": false
+        },
+        {
+          "name": "Scale",
+          "display_name": "Scale",
+          "type": "double",
+          "default": "1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Sampling",
+          "advanced": false
+        },
+        {
+          "name": "TextureIndexInput",
+          "display_name": "TextureIndexInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Texture Array",
+          "advanced": false
+        },
+        {
+          "name": "TextureIndex",
+          "display_name": "Texture Index",
+          "type": "int32",
+          "default": "-1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "TextureIndexInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": "Settings|Texture Array",
+          "advanced": false
+        }
+      ],
+      "is_config": true,
+      "used_by": []
+    }
+  ],
+  "classes": [
+    {
+      "name": "UPCGExTexParamFactoryData",
+      "display_name": "UPCGExTexParamFactoryData",
+      "description": "",
+      "base_class": "UPCGExFactoryData",
+      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Data\", meta=(PCGExNodeLibraryDoc=\"sampling/textures/texture-param\")",
+      "uproperties": [],
+      "classification": {
+        "type": "factory_data",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": true,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": []
+    },
+    {
+      "name": "UPCGExTexParamProviderSettings",
+      "display_name": "Texture Param",
+      "description": "A simple texture parameter definition.",
+      "base_class": "UPCGExFactoryProviderSettings",
+      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Sampling\"",
+      "uproperties": [
+        {
+          "name": "Config",
+          "display_name": "Config",
+          "type": "FPCGExTextureParamConfig",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": true,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "provider",
+        "is_abstract": false,
+        "is_provider": true,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "BulkInitData",
+          "display_name": "BulkInitData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CacheData",
+          "display_name": "CacheData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScopedAttributeGet",
+          "display_name": "ScopedAttributeGet",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "StealData",
+          "display_name": "StealData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Disabled",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsDataStealing",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ExecutionPolicy",
+          "display_name": "ExecutionPolicy",
+          "type": "EPCGExExecutionPolicy",
+          "default": "EPCGExExecutionPolicy::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsInitPolicy",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bFlattenOutput",
+          "display_name": "bFlattenOutput",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bCleanupConsumableAttributes",
+          "display_name": "bCleanupConsumableAttributes",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedProtectedAttributesName",
+          "display_name": "Protected Attributes",
+          "type": "FString",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "ProtectedAttributes",
+          "display_name": "Protected Attributes",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bPropagateAbortedExecution",
+          "display_name": "bPropagateAbortedExecution",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietInvalidInputWarning",
+          "display_name": "bQuietInvalidInputWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietMissingInputError",
+          "display_name": "bQuietMissingInputError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietCancellationError",
+          "display_name": "bQuietCancellationError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "Config",
+          "display_name": "Config",
+          "type": "FPCGExTextureParamConfig",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": true,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "produces_factory": "UPCGExTexParamFactoryData"
+    }
+  ],
+  "operations": [],
+  "namespaces": {
+    "PCGExTexture": {
+      "SourceTexLabel": "TextureParams",
+      "OutputTexLabel": "TextureParam",
+      "SourceTextureDataLabel": "TextureData",
+      "OutputTextureDataLabel": "TextureData",
+      "OutputTexTagLabel": "TexTag"
+    }
+  }
+}

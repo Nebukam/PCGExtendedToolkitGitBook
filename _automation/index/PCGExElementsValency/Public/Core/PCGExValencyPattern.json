@@ -1,0 +1,84 @@
+{
+  "path": "PCGExElementsValency/Public/Core/PCGExValencyPattern.h",
+  "module": "PCGExElementsValency",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExPatternOutputStrategy",
+      "values": [
+        {
+          "name": "Remove",
+          "display_name": "Remove"
+        },
+        {
+          "name": "Collapse",
+          "display_name": "Collapse"
+        },
+        {
+          "name": "Swap",
+          "display_name": "Swap"
+        },
+        {
+          "name": "Annotate",
+          "display_name": "Annotate"
+        },
+        {
+          "name": "Fork",
+          "display_name": "Fork"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExPatternTransformMode",
+      "values": [
+        {
+          "name": "Centroid",
+          "display_name": "Centroid"
+        },
+        {
+          "name": "PatternRoot",
+          "display_name": "PatternRoot"
+        },
+        {
+          "name": "FirstMatch",
+          "display_name": "FirstMatch"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExValencyPatternEntryCompiled",
+      "base_class": null,
+      "uproperties": [],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExValencyPatternSettingsCompiled",
+      "base_class": null,
+      "uproperties": [],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExValencyPatternCompiled",
+      "base_class": null,
+      "uproperties": [],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExValencyPatternSetCompiled",
+      "base_class": null,
+      "uproperties": [],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

@@ -1,0 +1,5365 @@
+{
+  "FPCGExAttributeBlendConfig": {
+    "used_by": [
+      "UPCGExBlendOpFactoryProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExBlendOpFactoryProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExBlendOpFactoryProviderSettings"
+  },
+  "FPCGExBlendingDetails": {
+    "used_by": [
+      "UPCGExSubPointsBlendInheritEnd",
+      "UPCGExSubPointsBlendInheritStart",
+      "UPCGExSubPointsBlendInterpolate",
+      "UPCGExSubPointsBlendNone",
+      "UPCGExSubPointsBlendInstancedFactory",
+      "UPCGExClipper2ProcessorSettings",
+      "UPCGExClipper2BooleanSettings",
+      "UPCGExClipper2OffsetSettings",
+      "UPCGExClipper2RectClipSettings",
+      "UPCGExWriteEdgePropertiesSettings",
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExSimplifyClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExBlendPathSettings",
+      "UPCGExFuseCollinearSettings",
+      "UPCGExPathCrossingsSettings",
+      "UPCGExResamplePathSettings",
+      "UPCGExSmoothSettings",
+      "UPCGExFusePointsSettings",
+      "UPCGExPointsToBoundsSettings",
+      "UPCGExClipper2TriangulateSettings"
+    ],
+    "origin_count": 15,
+    "origins": [
+      "UPCGExSubPointsBlendInstancedFactory",
+      "UPCGExClipper2ProcessorSettings",
+      "UPCGExWriteEdgePropertiesSettings",
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExSimplifyClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExBlendPathSettings",
+      "UPCGExFuseCollinearSettings",
+      "UPCGExPathCrossingsSettings",
+      "UPCGExResamplePathSettings",
+      "UPCGExSmoothSettings",
+      "UPCGExFusePointsSettings",
+      "UPCGExPointsToBoundsSettings"
+    ],
+    "usage_count": 23,
+    "user_facing_count": 15,
+    "user_facing_origins": [
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExPathCrossingsSettings",
+      "UPCGExResamplePathSettings",
+      "UPCGExSmoothSettings",
+      "UPCGExFusePointsSettings",
+      "UPCGExPointsToBoundsSettings"
+    ],
+    "user_facing_origin_count": 9,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExFittingVariations": {
+    "used_by": [
+      "UPCGExActorCollection",
+      "UPCGExMeshCollection",
+      "UPCGExPCGDataAssetCollection",
+      "UPCGExAssetCollection",
+      "FPCGExAssetCollectionEntry"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExAssetCollection"
+    ],
+    "usage_count": 5,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExAssetGrammarDetails": {
+    "used_by": [
+      "UPCGExActorCollection",
+      "UPCGExMeshCollection",
+      "UPCGExPCGDataAssetCollection",
+      "UPCGExAssetCollection",
+      "FPCGExAssetCollectionEntry"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExAssetCollection"
+    ],
+    "usage_count": 5,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExCollectionGrammarDetails": {
+    "used_by": [
+      "UPCGExActorCollection",
+      "UPCGExMeshCollection",
+      "UPCGExPCGDataAssetCollection",
+      "UPCGExAssetCollection",
+      "FPCGExAssetCollectionEntry"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExAssetCollection"
+    ],
+    "usage_count": 5,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExPropertySchemaCollection": {
+    "used_by": [
+      "UPCGExActorCollection",
+      "UPCGExMeshCollection",
+      "UPCGExPCGDataAssetCollection",
+      "UPCGExAssetCollection",
+      "UPCGExValencyBondingRules",
+      "UPCGExPropertyCollectionComponent"
+    ],
+    "origin_count": 3,
+    "origins": [
+      "UPCGExAssetCollection",
+      "UPCGExValencyBondingRules",
+      "UPCGExPropertyCollectionComponent"
+    ],
+    "usage_count": 6,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExPropertyRegistryEntry": {
+    "used_by": [
+      "UPCGExActorCollection",
+      "UPCGExMeshCollection",
+      "UPCGExPCGDataAssetCollection",
+      "UPCGExAssetCollection",
+      "UPCGExValencyBondingRules"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExAssetCollection",
+      "UPCGExValencyBondingRules"
+    ],
+    "usage_count": 5,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExActorCollectionEntry": {
+    "used_by": [
+      "UPCGExActorCollection"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExActorCollection"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExStaticMeshComponentDescriptor": {
+    "used_by": [
+      "UPCGExMeshCollection",
+      "UPCGExPathSplineMeshSettings",
+      "UPCGExPathSplineMeshSimpleSettings",
+      "FPCGExMeshCollectionEntry"
+    ],
+    "origin_count": 3,
+    "origins": [
+      "UPCGExMeshCollection",
+      "UPCGExPathSplineMeshSettings",
+      "UPCGExPathSplineMeshSimpleSettings"
+    ],
+    "usage_count": 4,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExPathSplineMeshSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExMeshCollectionEntry": {
+    "used_by": [
+      "UPCGExMeshCollection"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExMeshCollection"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExPCGDataAssetCollectionEntry": {
+    "used_by": [
+      "UPCGExPCGDataAssetCollection"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExPCGDataAssetCollection"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExRoamingAssetCollectionDetails": {
+    "used_by": [
+      "UPCGExAssetStagingSettings",
+      "UPCGExPathSplineMeshSettings"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExAssetStagingSettings",
+      "UPCGExPathSplineMeshSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExPathSplineMeshSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExAssetDistributionDetails": {
+    "used_by": [
+      "UPCGExAssetStagingSettings",
+      "UPCGExPathSplineMeshSettings"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExAssetStagingSettings",
+      "UPCGExPathSplineMeshSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExPathSplineMeshSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExScaleToFitDetails": {
+    "used_by": [
+      "UPCGExAssetStagingSettings",
+      "UPCGExStagingFittingSettings",
+      "UPCGExPathSplineMeshSettings",
+      "UPCGExValencyStagingSettings",
+      "FPCGExFittingDetailsHandler"
+    ],
+    "origin_count": 4,
+    "origins": [
+      "UPCGExAssetStagingSettings",
+      "UPCGExStagingFittingSettings",
+      "UPCGExPathSplineMeshSettings",
+      "UPCGExValencyStagingSettings"
+    ],
+    "usage_count": 5,
+    "user_facing_count": 3,
+    "user_facing_origins": [
+      "UPCGExStagingFittingSettings",
+      "UPCGExPathSplineMeshSettings",
+      "UPCGExValencyStagingSettings"
+    ],
+    "user_facing_origin_count": 3,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExJustificationDetails": {
+    "used_by": [
+      "UPCGExAssetStagingSettings",
+      "UPCGExStagingFittingSettings",
+      "UPCGExPathSplineMeshSettings",
+      "UPCGExValencyStagingSettings",
+      "FPCGExFittingDetailsHandler"
+    ],
+    "origin_count": 4,
+    "origins": [
+      "UPCGExAssetStagingSettings",
+      "UPCGExStagingFittingSettings",
+      "UPCGExPathSplineMeshSettings",
+      "UPCGExValencyStagingSettings"
+    ],
+    "usage_count": 5,
+    "user_facing_count": 3,
+    "user_facing_origins": [
+      "UPCGExStagingFittingSettings",
+      "UPCGExPathSplineMeshSettings",
+      "UPCGExValencyStagingSettings"
+    ],
+    "user_facing_origin_count": 3,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExFittingVariationsDetails": {
+    "used_by": [
+      "UPCGExAssetStagingSettings",
+      "UPCGExStagingFittingSettings"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExAssetStagingSettings",
+      "UPCGExStagingFittingSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExStagingFittingSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExStagedTypeFilterDetails": {
+    "used_by": [
+      "UPCGExAssetStagingSettings",
+      "UPCGExStagedTypeFilterSettings"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExAssetStagingSettings",
+      "UPCGExStagedTypeFilterSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExStagedTypeFilterSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExSocketOutputDetails": {
+    "used_by": [
+      "UPCGExAssetStagingSettings",
+      "UPCGExSocketStagingSettings",
+      "UPCGExSampleSocketsSettings"
+    ],
+    "origin_count": 3,
+    "origins": [
+      "UPCGExAssetStagingSettings",
+      "UPCGExSocketStagingSettings",
+      "UPCGExSampleSocketsSettings"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExSocketStagingSettings",
+      "UPCGExSampleSocketsSettings"
+    ],
+    "user_facing_origin_count": 2,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExForwardDetails": {
+    "used_by": [
+      "UPCGExPCGDataAssetLoaderSettings",
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExMeshToClustersSettings",
+      "UPCGExPickClosestClustersSettings",
+      "UPCGExClusterDiffusionSettings",
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingPlotEdgesSettings",
+      "UPCGExPathfindingNavmeshSettings",
+      "UPCGExPathInsertSettings",
+      "UPCGExSampleNearestSurfaceSettings",
+      "UPCGExSampleSurfaceGuidedSettings",
+      "UPCGExCopyToPointsSettings",
+      "FPCGExBoxIntersectionDetails"
+    ],
+    "origin_count": 15,
+    "origins": [
+      "UPCGExPCGDataAssetLoaderSettings",
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExMeshToClustersSettings",
+      "UPCGExPickClosestClustersSettings",
+      "UPCGExClusterDiffusionSettings",
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingPlotEdgesSettings",
+      "UPCGExPathfindingNavmeshSettings",
+      "UPCGExPathInsertSettings",
+      "UPCGExSampleNearestSurfaceSettings",
+      "UPCGExSampleSurfaceGuidedSettings",
+      "UPCGExCopyToPointsSettings"
+    ],
+    "usage_count": 16,
+    "user_facing_count": 14,
+    "user_facing_origins": [
+      "UPCGExPCGDataAssetLoaderSettings",
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExMeshToClustersSettings",
+      "UPCGExPickClosestClustersSettings",
+      "UPCGExClusterDiffusionSettings",
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingPlotEdgesSettings",
+      "UPCGExPathfindingNavmeshSettings",
+      "UPCGExPathInsertSettings",
+      "UPCGExSampleNearestSurfaceSettings",
+      "UPCGExCopyToPointsSettings"
+    ],
+    "user_facing_origin_count": 14,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExPropertyOutputSettings": {
+    "used_by": [
+      "UPCGExStagingLoadPropertiesSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExStagingLoadPropertiesSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExStagingLoadPropertiesSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExStagingLoadPropertiesSettings"
+  },
+  "FPCGExMicroCacheDistributionDetails": {
+    "used_by": [
+      "UPCGExPathSplineMeshSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExPathSplineMeshSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExPathSplineMeshSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExPathSplineMeshSettings"
+  },
+  "FPCGExTangentsDetails": {
+    "used_by": [
+      "UPCGExPathSplineMeshSettings",
+      "UPCGExCopyToPathsSettings",
+      "UPCGExPathSplineMeshSimpleSettings"
+    ],
+    "origin_count": 3,
+    "origins": [
+      "UPCGExPathSplineMeshSettings",
+      "UPCGExCopyToPathsSettings",
+      "UPCGExPathSplineMeshSimpleSettings"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExPathSplineMeshSettings",
+      "UPCGExCopyToPathsSettings"
+    ],
+    "user_facing_origin_count": 2,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExSplineMeshMutationDetails": {
+    "used_by": [
+      "UPCGExPathSplineMeshSettings",
+      "UPCGExPathSplineMeshSimpleSettings"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExPathSplineMeshSettings",
+      "UPCGExPathSplineMeshSimpleSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExPathSplineMeshSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExAssetTaggingDetails": {
+    "used_by": [
+      "UPCGExPathSplineMeshSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExPathSplineMeshSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExPathSplineMeshSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExPathSplineMeshSettings"
+  },
+  "FPCGExBitmaskCollectionEntry": {
+    "used_by": [
+      "UPCGExBitmaskCollection"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExBitmaskCollection"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExSortRuleConfig": {
+    "used_by": [
+      "UPCGExSortingRuleProviderSettings",
+      "UPCGExSortPointsSettings"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExSortingRuleProviderSettings",
+      "UPCGExSortPointsSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExAttributeGatherDetails": {
+    "used_by": [
+      "UPCGExActionWriteValuesProviderSettings",
+      "UPCGExBatchActionsSettings"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExActionWriteValuesProviderSettings",
+      "UPCGExBatchActionsSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExActionWriteValuesProviderSettings",
+      "UPCGExBatchActionsSettings"
+    ],
+    "user_facing_origin_count": 2,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExNameFiltersDetails": {
+    "used_by": [
+      "UPCGExBatchActionsSettings",
+      "UPCGExAttributeStatsSettings",
+      "UPCGExSplineToPathSettings",
+      "UPCGExMergePointsByTagSettings",
+      "FPCGExCarryOverDetails",
+      "FPCGExSocketOutputDetails",
+      "FPCGExCellArtifactsDetails"
+    ],
+    "origin_count": 4,
+    "origins": [
+      "UPCGExBatchActionsSettings",
+      "UPCGExAttributeStatsSettings",
+      "UPCGExSplineToPathSettings",
+      "UPCGExMergePointsByTagSettings"
+    ],
+    "usage_count": 7,
+    "user_facing_count": 4,
+    "user_facing_origins": [
+      "UPCGExBatchActionsSettings",
+      "UPCGExAttributeStatsSettings",
+      "UPCGExSplineToPathSettings",
+      "UPCGExMergePointsByTagSettings"
+    ],
+    "user_facing_origin_count": 4,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExAttributeToTagDetails": {
+    "used_by": [
+      "UPCGExWaitForPCGDataSettings",
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExPickClosestClustersSettings",
+      "UPCGExClusterDiffusionSettings",
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingNavmeshSettings",
+      "UPCGExBoundsAxisToPointsSettings",
+      "UPCGExBoundsToPointsSettings",
+      "UPCGExExtrudeTensorsSettings",
+      "UPCGExCopyToPointsSettings"
+    ],
+    "origin_count": 13,
+    "origins": [
+      "UPCGExWaitForPCGDataSettings",
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExPickClosestClustersSettings",
+      "UPCGExClusterDiffusionSettings",
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingNavmeshSettings",
+      "UPCGExBoundsAxisToPointsSettings",
+      "UPCGExBoundsToPointsSettings",
+      "UPCGExExtrudeTensorsSettings",
+      "UPCGExCopyToPointsSettings"
+    ],
+    "usage_count": 13,
+    "user_facing_count": 11,
+    "user_facing_origins": [
+      "UPCGExWaitForPCGDataSettings",
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExPickClosestClustersSettings",
+      "UPCGExClusterDiffusionSettings",
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingNavmeshSettings",
+      "UPCGExBoundsToPointsSettings",
+      "UPCGExCopyToPointsSettings"
+    ],
+    "user_facing_origin_count": 11,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExMatchingDetails": {
+    "used_by": [
+      "UPCGExClipper2ProcessorSettings",
+      "UPCGExClipper2BooleanSettings",
+      "UPCGExClipper2OffsetSettings",
+      "UPCGExClipper2RectClipSettings",
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExPathfindingPlotEdgesSettings",
+      "UPCGExBoundsPathIntersectionSettings",
+      "UPCGExCopyToPathsSettings",
+      "UPCGExPathInsertSettings",
+      "UPCGExSampleInsidePathSettings",
+      "UPCGExSampleNearestBoundsSettings",
+      "UPCGExSampleNearestPathSettings",
+      "UPCGExSampleNearestPointSettings",
+      "UPCGExBestMatchAxisSettings",
+      "UPCGExClipper2TriangulateSettings",
+      "UPCGExCopyToPointsSettings",
+      "UPCGExMergePointsSettings"
+    ],
+    "origin_count": 13,
+    "origins": [
+      "UPCGExClipper2ProcessorSettings",
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExPathfindingPlotEdgesSettings",
+      "UPCGExBoundsPathIntersectionSettings",
+      "UPCGExCopyToPathsSettings",
+      "UPCGExPathInsertSettings",
+      "UPCGExSampleInsidePathSettings",
+      "UPCGExSampleNearestBoundsSettings",
+      "UPCGExSampleNearestPathSettings",
+      "UPCGExSampleNearestPointSettings",
+      "UPCGExBestMatchAxisSettings",
+      "UPCGExCopyToPointsSettings",
+      "UPCGExMergePointsSettings"
+    ],
+    "usage_count": 17,
+    "user_facing_count": 12,
+    "user_facing_origins": [
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExPathfindingPlotEdgesSettings",
+      "UPCGExBoundsPathIntersectionSettings",
+      "UPCGExCopyToPathsSettings",
+      "UPCGExPathInsertSettings",
+      "UPCGExSampleNearestBoundsSettings",
+      "UPCGExBestMatchAxisSettings",
+      "UPCGExCopyToPointsSettings",
+      "UPCGExMergePointsSettings"
+    ],
+    "user_facing_origin_count": 9,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExCarryOverDetails": {
+    "used_by": [
+      "UPCGExClipper2ProcessorSettings",
+      "UPCGExClipper2BooleanSettings",
+      "UPCGExClipper2OffsetSettings",
+      "UPCGExClipper2RectClipSettings",
+      "UPCGExPathToClustersSettings",
+      "UPCGExConnectClustersSettings",
+      "UPCGExFindPointOnBoundsClustersSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExMergeVerticesSettings",
+      "UPCGExPackClustersSettings",
+      "UPCGExSimplifyClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExMetaCleanupSettings",
+      "UPCGExPathCrossingsSettings",
+      "UPCGExPathStitchSettings",
+      "UPCGExSplineToPathSettings",
+      "UPCGExFindPointOnBoundsSettings",
+      "UPCGExFusePointsSettings",
+      "UPCGExClipper2TriangulateSettings",
+      "UPCGExMergePointsSettings",
+      "UPCGExMergePointsByTagSettings",
+      "FPCGExSocketOutputDetails"
+    ],
+    "origin_count": 18,
+    "origins": [
+      "UPCGExClipper2ProcessorSettings",
+      "UPCGExPathToClustersSettings",
+      "UPCGExConnectClustersSettings",
+      "UPCGExFindPointOnBoundsClustersSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExMergeVerticesSettings",
+      "UPCGExPackClustersSettings",
+      "UPCGExSimplifyClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExMetaCleanupSettings",
+      "UPCGExPathCrossingsSettings",
+      "UPCGExPathStitchSettings",
+      "UPCGExSplineToPathSettings",
+      "UPCGExFindPointOnBoundsSettings",
+      "UPCGExFusePointsSettings",
+      "UPCGExMergePointsSettings",
+      "UPCGExMergePointsByTagSettings"
+    ],
+    "usage_count": 23,
+    "user_facing_count": 19,
+    "user_facing_origins": [
+      "UPCGExPathToClustersSettings",
+      "UPCGExConnectClustersSettings",
+      "UPCGExFindPointOnBoundsClustersSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExMergeVerticesSettings",
+      "UPCGExPackClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExMetaCleanupSettings",
+      "UPCGExPathCrossingsSettings",
+      "UPCGExPathStitchSettings",
+      "UPCGExSplineToPathSettings",
+      "UPCGExFindPointOnBoundsSettings",
+      "UPCGExFusePointsSettings",
+      "UPCGExMergePointsSettings",
+      "UPCGExMergePointsByTagSettings"
+    ],
+    "user_facing_origin_count": 16,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExGeo2DProjectionDetails": {
+    "used_by": [
+      "UPCGExClipper2BooleanSettings",
+      "UPCGExClipper2OffsetSettings",
+      "UPCGExClipper2RectClipSettings",
+      "UPCGExBreakClustersToPathsSettings",
+      "UPCGExConnectClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildConvexHull2DSettings",
+      "UPCGExBuildDelaunayGraph2DSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExBuildVoronoiGraph2DSettings",
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExFindClusterHullSettings",
+      "UPCGExReversePointOrderSettings",
+      "UPCGExWritePathPropertiesSettings",
+      "UPCGExConnectPointsSettings",
+      "UPCGExSampleInsidePathSettings",
+      "UPCGExSampleNearestPathSettings",
+      "UPCGExFlatProjectionSettings",
+      "UPCGExLloydRelax2DSettings",
+      "UPCGExTopologyClustersProcessorSettings",
+      "UPCGExClipper2TriangulateSettings",
+      "UPCGExTopologyClusterSurfaceSettings",
+      "UPCGExTopologyPointSurfaceSettings",
+      "FPCGExInclusionFilterConfig",
+      "FPCGExGraphBuilderDetails"
+    ],
+    "origin_count": 25,
+    "origins": [
+      "UPCGExClipper2BooleanSettings",
+      "UPCGExClipper2OffsetSettings",
+      "UPCGExClipper2RectClipSettings",
+      "UPCGExBreakClustersToPathsSettings",
+      "UPCGExConnectClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildConvexHull2DSettings",
+      "UPCGExBuildDelaunayGraph2DSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExBuildVoronoiGraph2DSettings",
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExFindClusterHullSettings",
+      "UPCGExReversePointOrderSettings",
+      "UPCGExWritePathPropertiesSettings",
+      "UPCGExConnectPointsSettings",
+      "UPCGExSampleInsidePathSettings",
+      "UPCGExSampleNearestPathSettings",
+      "UPCGExFlatProjectionSettings",
+      "UPCGExLloydRelax2DSettings",
+      "UPCGExTopologyClustersProcessorSettings",
+      "UPCGExClipper2TriangulateSettings",
+      "UPCGExTopologyPointSurfaceSettings"
+    ],
+    "usage_count": 28,
+    "user_facing_count": 19,
+    "user_facing_origins": [
+      "UPCGExClipper2BooleanSettings",
+      "UPCGExClipper2OffsetSettings",
+      "UPCGExBreakClustersToPathsSettings",
+      "UPCGExConnectClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildConvexHull2DSettings",
+      "UPCGExBuildDelaunayGraph2DSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExBuildVoronoiGraph2DSettings",
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExFindClusterHullSettings",
+      "UPCGExReversePointOrderSettings",
+      "UPCGExLloydRelax2DSettings",
+      "UPCGExClipper2TriangulateSettings",
+      "UPCGExTopologyPointSurfaceSettings"
+    ],
+    "user_facing_origin_count": 18,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExInputShorthandNameInteger32Abs": {
+    "used_by": [
+      "UPCGExClipper2OffsetSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExClipper2OffsetSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExClipper2OffsetSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExClipper2OffsetSettings"
+  },
+  "FPCGExInputShorthandSelectorDouble": {
+    "used_by": [
+      "UPCGExClipper2OffsetSettings",
+      "UPCGExUberNoiseSettings",
+      "UPCGExSampleInsidePathSettings",
+      "UPCGExSampleNearestPathSettings",
+      "UPCGExSampleNearestPointSettings",
+      "UPCGExSampleNearestSplineSettings",
+      "FPCGExRemapDetails"
+    ],
+    "origin_count": 6,
+    "origins": [
+      "UPCGExClipper2OffsetSettings",
+      "UPCGExUberNoiseSettings",
+      "UPCGExSampleInsidePathSettings",
+      "UPCGExSampleNearestPathSettings",
+      "UPCGExSampleNearestPointSettings",
+      "UPCGExSampleNearestSplineSettings"
+    ],
+    "usage_count": 7,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExClipper2OffsetSettings",
+      "UPCGExUberNoiseSettings"
+    ],
+    "user_facing_origin_count": 2,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExConvexDecompositionDetails": {
+    "used_by": [
+      "UPCGExClusterDecompositionSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExClusterDecompositionSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExClusterDecompositionSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExClusterDecompositionSettings"
+  },
+  "FPCGExSamplingConfig": {
+    "used_by": [
+      "UPCGExNeighborSampleAttributeSettings",
+      "UPCGExNeighborSampleBlendSettings",
+      "UPCGExNeighborSampleProviderSettings",
+      "UPCGExNeighborSampleFiltersSettings",
+      "UPCGExNeighborSamplePropertiesSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNeighborSampleProviderSettings"
+    ],
+    "usage_count": 5,
+    "user_facing_count": 4,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExNeighborSampleProviderSettings"
+  },
+  "FPCGExSamplerFilterConfig": {
+    "used_by": [
+      "UPCGExNeighborSampleFiltersSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNeighborSampleFiltersSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNeighborSampleFiltersSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNeighborSampleFiltersSettings"
+  },
+  "FPCGExEdgeDirectionSettings": {
+    "used_by": [
+      "UPCGExWriteEdgePropertiesSettings",
+      "UPCGExBreakClustersToPathsSettings",
+      "UPCGExEdgeOrderSettings",
+      "FPCGExIsoEdgeDirectionFilterConfig"
+    ],
+    "origin_count": 3,
+    "origins": [
+      "UPCGExWriteEdgePropertiesSettings",
+      "UPCGExBreakClustersToPathsSettings",
+      "UPCGExEdgeOrderSettings"
+    ],
+    "usage_count": 4,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExBreakClustersToPathsSettings",
+      "UPCGExEdgeOrderSettings"
+    ],
+    "user_facing_origin_count": 2,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExAmplitudeConfig": {
+    "used_by": [
+      "UPCGExVtxPropertyAmplitudeSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExVtxPropertyAmplitudeSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExVtxPropertyAmplitudeSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExVtxPropertyAmplitudeSettings"
+  },
+  "FPCGExEdgeMatchConfig": {
+    "used_by": [
+      "UPCGExVtxPropertyEdgeMatchSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExVtxPropertyEdgeMatchSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExVtxPropertyEdgeMatchSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExVtxPropertyEdgeMatchSettings"
+  },
+  "FPCGExSpecialEdgesConfig": {
+    "used_by": [
+      "UPCGExVtxPropertySpecialEdgesSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExVtxPropertySpecialEdgesSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExVtxPropertySpecialEdgesSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExVtxPropertySpecialEdgesSettings"
+  },
+  "FPCGExSpecialNeighborsConfig": {
+    "used_by": [
+      "UPCGExVtxPropertySpecialNeighborsSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExVtxPropertySpecialNeighborsSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExVtxPropertySpecialNeighborsSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExVtxPropertySpecialNeighborsSettings"
+  },
+  "FPCGExPathEdgeIntersectionDetails": {
+    "used_by": [
+      "UPCGExCutEdgesSettings",
+      "UPCGExPathCrossingsSettings"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExCutEdgesSettings",
+      "UPCGExPathCrossingsSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExCutEdgesSettings",
+      "UPCGExPathCrossingsSettings"
+    ],
+    "user_facing_origin_count": 2,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExGraphBuilderDetails": {
+    "used_by": [
+      "UPCGExCutEdgesSettings",
+      "UPCGExPathToClustersSettings",
+      "UPCGExBuildCustomGraphSettings",
+      "UPCGExConnectClustersSettings",
+      "UPCGExFilterVtxSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExMeshToClustersSettings",
+      "UPCGExSanitizeClustersSettings",
+      "UPCGExSimplifyClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildConvexHullSettings",
+      "UPCGExBuildConvexHull2DSettings",
+      "UPCGExBuildDelaunayGraphSettings",
+      "UPCGExBuildDelaunayGraph2DSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExBuildVoronoiGraphSettings",
+      "UPCGExBuildVoronoiGraph2DSettings",
+      "UPCGExRefineEdgesSettings",
+      "UPCGExConnectPointsSettings"
+    ],
+    "origin_count": 19,
+    "origins": [
+      "UPCGExCutEdgesSettings",
+      "UPCGExPathToClustersSettings",
+      "UPCGExBuildCustomGraphSettings",
+      "UPCGExConnectClustersSettings",
+      "UPCGExFilterVtxSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExMeshToClustersSettings",
+      "UPCGExSanitizeClustersSettings",
+      "UPCGExSimplifyClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildConvexHullSettings",
+      "UPCGExBuildConvexHull2DSettings",
+      "UPCGExBuildDelaunayGraphSettings",
+      "UPCGExBuildDelaunayGraph2DSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExBuildVoronoiGraphSettings",
+      "UPCGExBuildVoronoiGraph2DSettings",
+      "UPCGExRefineEdgesSettings",
+      "UPCGExConnectPointsSettings"
+    ],
+    "usage_count": 19,
+    "user_facing_count": 17,
+    "user_facing_origins": [
+      "UPCGExCutEdgesSettings",
+      "UPCGExPathToClustersSettings",
+      "UPCGExBuildCustomGraphSettings",
+      "UPCGExConnectClustersSettings",
+      "UPCGExFilterVtxSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExMeshToClustersSettings",
+      "UPCGExSanitizeClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildConvexHullSettings",
+      "UPCGExBuildConvexHull2DSettings",
+      "UPCGExBuildDelaunayGraphSettings",
+      "UPCGExBuildDelaunayGraph2DSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExBuildVoronoiGraphSettings",
+      "UPCGExBuildVoronoiGraph2DSettings",
+      "UPCGExRefineEdgesSettings"
+    ],
+    "user_facing_origin_count": 17,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExPointPointIntersectionDetails": {
+    "used_by": [
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExFusePointsSettings"
+    ],
+    "origin_count": 3,
+    "origins": [
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExFusePointsSettings"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 3,
+    "user_facing_origins": [
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExFusePointsSettings"
+    ],
+    "user_facing_origin_count": 3,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExPointEdgeIntersectionDetails": {
+    "used_by": [
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings"
+    ],
+    "user_facing_origin_count": 2,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExEdgeEdgeIntersectionDetails": {
+    "used_by": [
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings"
+    ],
+    "user_facing_origin_count": 2,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExRandomRatioDetails": {
+    "used_by": [
+      "UPCGExClusterCentralitySettings",
+      "FPCGExRandomRatioFilterConfig"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExClusterCentralitySettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExClusterCentralitySettings"
+  },
+  "FPCGExTransformDetails": {
+    "used_by": [
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExMeshToClustersSettings",
+      "UPCGExCopyToPointsSettings"
+    ],
+    "origin_count": 3,
+    "origins": [
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExMeshToClustersSettings",
+      "UPCGExCopyToPointsSettings"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 3,
+    "user_facing_origins": [
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExMeshToClustersSettings",
+      "UPCGExCopyToPointsSettings"
+    ],
+    "user_facing_origin_count": 3,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExFilterResultDetails": {
+    "used_by": [
+      "UPCGExFilterVtxSettings",
+      "UPCGExRefineEdgesSettings",
+      "UPCGExUberFilterSettings"
+    ],
+    "origin_count": 3,
+    "origins": [
+      "UPCGExFilterVtxSettings",
+      "UPCGExRefineEdgesSettings",
+      "UPCGExUberFilterSettings"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 3,
+    "user_facing_origins": [
+      "UPCGExFilterVtxSettings",
+      "UPCGExRefineEdgesSettings",
+      "UPCGExUberFilterSettings"
+    ],
+    "user_facing_origin_count": 3,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExGeoMeshImportDetails": {
+    "used_by": [
+      "UPCGExMeshToClustersSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExMeshToClustersSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExMeshToClustersSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExMeshToClustersSettings"
+  },
+  "FPCGExApplySamplingDetails": {
+    "used_by": [
+      "UPCGExSampleVtxByIDSettings",
+      "UPCGExSampleNearestBoundsSettings",
+      "UPCGExSampleNearestPathSettings",
+      "UPCGExSampleNearestPointSettings",
+      "UPCGExSampleNearestSplineSettings",
+      "UPCGExSampleNearestSurfaceSettings",
+      "UPCGExSampleSurfaceGuidedSettings"
+    ],
+    "origin_count": 7,
+    "origins": [
+      "UPCGExSampleVtxByIDSettings",
+      "UPCGExSampleNearestBoundsSettings",
+      "UPCGExSampleNearestPathSettings",
+      "UPCGExSampleNearestPointSettings",
+      "UPCGExSampleNearestSplineSettings",
+      "UPCGExSampleNearestSurfaceSettings",
+      "UPCGExSampleSurfaceGuidedSettings"
+    ],
+    "usage_count": 7,
+    "user_facing_count": 3,
+    "user_facing_origins": [
+      "UPCGExSampleVtxByIDSettings",
+      "UPCGExSampleNearestBoundsSettings",
+      "UPCGExSampleNearestSurfaceSettings"
+    ],
+    "user_facing_origin_count": 3,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExEdgeUnionMetadataDetails": {
+    "used_by": [
+      "UPCGExSimplifyClustersSettings",
+      "FPCGExPointPointIntersectionDetails"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExSimplifyClustersSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExSimplifyClustersSettings"
+  },
+  "FPCGExAdjacencyStateConfigBase": {
+    "used_by": [
+      "UPCGExAdjacencyStateFactoryProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExAdjacencyStateFactoryProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExAdjacencyStateFactoryProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExAdjacencyStateFactoryProviderSettings"
+  },
+  "FPCGExEdgeEndpointsCheckFilterConfig": {
+    "used_by": [
+      "UPCGExEdgeEndpointsCheckFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExEdgeEndpointsCheckFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExEdgeEndpointsCheckFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExEdgeEndpointsCheckFilterProviderSettings"
+  },
+  "FPCGExEdgeEndpointsCompareNumFilterConfig": {
+    "used_by": [
+      "UPCGExEdgeEndpointsCompareNumFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExEdgeEndpointsCompareNumFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExEdgeEndpointsCompareNumFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExEdgeEndpointsCompareNumFilterProviderSettings"
+  },
+  "FPCGExEdgeEndpointsCompareStrFilterConfig": {
+    "used_by": [
+      "UPCGExEdgeEndpointsCompareStrFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExEdgeEndpointsCompareStrFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExEdgeEndpointsCompareStrFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExEdgeEndpointsCompareStrFilterProviderSettings"
+  },
+  "FPCGExEdgeLengthFilterConfig": {
+    "used_by": [
+      "UPCGExEdgeLengthFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExEdgeLengthFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExEdgeLengthFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExEdgeLengthFilterProviderSettings"
+  },
+  "FPCGExEdgeNeighborsCountFilterConfig": {
+    "used_by": [
+      "UPCGExEdgeNeighborsCountFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExEdgeNeighborsCountFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExEdgeNeighborsCountFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExEdgeNeighborsCountFilterProviderSettings"
+  },
+  "FPCGExIsoEdgeDirectionFilterConfig": {
+    "used_by": [
+      "UPCGExIsoEdgeDirectionFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExIsoEdgeDirectionFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExIsoEdgeDirectionFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExIsoEdgeDirectionFilterProviderSettings"
+  },
+  "FPCGExNodeAdjacencyFilterConfig": {
+    "used_by": [
+      "UPCGExNodeAdjacencyFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNodeAdjacencyFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNodeAdjacencyFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNodeAdjacencyFilterProviderSettings"
+  },
+  "FPCGExNodeEdgeAngleFilterConfig": {
+    "used_by": [
+      "UPCGExNodeEdgeAngleFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNodeEdgeAngleFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNodeEdgeAngleFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNodeEdgeAngleFilterProviderSettings"
+  },
+  "FPCGExNodeEdgeDirectionFilterConfig": {
+    "used_by": [
+      "UPCGExNodeEdgeDirectionFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNodeEdgeDirectionFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNodeEdgeDirectionFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNodeEdgeDirectionFilterProviderSettings"
+  },
+  "FPCGExNodeNeighborsCountFilterConfig": {
+    "used_by": [
+      "UPCGExNodeNeighborsCountFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNodeNeighborsCountFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNodeNeighborsCountFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNodeNeighborsCountFilterProviderSettings"
+  },
+  "FPCGExCellConstraintsDetails": {
+    "used_by": [
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExFindClusterHullSettings",
+      "UPCGExTopologyClustersProcessorSettings",
+      "UPCGExTopologyClusterSurfaceSettings"
+    ],
+    "origin_count": 7,
+    "origins": [
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExFindClusterHullSettings",
+      "UPCGExTopologyClustersProcessorSettings"
+    ],
+    "usage_count": 8,
+    "user_facing_count": 7,
+    "user_facing_origins": [
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExFindClusterHullSettings"
+    ],
+    "user_facing_origin_count": 6,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExVoronoiSitesOutputDetails": {
+    "used_by": [
+      "UPCGExBuildVoronoiGraph2DSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExBuildVoronoiGraph2DSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExBuildVoronoiGraph2DSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExBuildVoronoiGraph2DSettings"
+  },
+  "FPCGExCollisionDetails": {
+    "used_by": [
+      "UPCGExEdgeRefineLineTrace",
+      "UPCGExSampleNearestSurfaceSettings",
+      "UPCGExSampleSurfaceGuidedSettings",
+      "FPCGExTensorSurfaceConfig",
+      "FPCGExRaycastFilterConfig"
+    ],
+    "origin_count": 3,
+    "origins": [
+      "UPCGExEdgeRefineLineTrace",
+      "UPCGExSampleNearestSurfaceSettings",
+      "UPCGExSampleSurfaceGuidedSettings"
+    ],
+    "usage_count": 5,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExEdgeRefineLineTrace",
+      "UPCGExSampleNearestSurfaceSettings"
+    ],
+    "user_facing_origin_count": 2,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExInfluenceDetails": {
+    "used_by": [
+      "UPCGExRelaxClustersSettings",
+      "UPCGExLloydRelaxSettings",
+      "UPCGExLloydRelax2DSettings"
+    ],
+    "origin_count": 3,
+    "origins": [
+      "UPCGExRelaxClustersSettings",
+      "UPCGExLloydRelaxSettings",
+      "UPCGExLloydRelax2DSettings"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 3,
+    "user_facing_origins": [
+      "UPCGExRelaxClustersSettings",
+      "UPCGExLloydRelaxSettings",
+      "UPCGExLloydRelax2DSettings"
+    ],
+    "user_facing_origin_count": 3,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExFloodFillSeedPickingDetails": {
+    "used_by": [
+      "UPCGExClusterDiffusionSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExClusterDiffusionSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExClusterDiffusionSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExClusterDiffusionSettings"
+  },
+  "FPCGExFloodFillFlowDetails": {
+    "used_by": [
+      "UPCGExClusterDiffusionSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExClusterDiffusionSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExClusterDiffusionSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExClusterDiffusionSettings"
+  },
+  "FPCGExFillControlConfigAttributeAccumulation": {
+    "used_by": [
+      "UPCGExFillControlsAttributeAccumulationProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExFillControlsAttributeAccumulationProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExFillControlsAttributeAccumulationProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExFillControlsAttributeAccumulationProviderSettings"
+  },
+  "FPCGExFillControlConfigAttributeThreshold": {
+    "used_by": [
+      "UPCGExFillControlsAttributeThresholdProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExFillControlsAttributeThresholdProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExFillControlsAttributeThresholdProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExFillControlsAttributeThresholdProviderSettings"
+  },
+  "FPCGExFillControlConfigCount": {
+    "used_by": [
+      "UPCGExFillControlsCountProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExFillControlsCountProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExFillControlsCountProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExFillControlsCountProviderSettings"
+  },
+  "FPCGExFillControlConfigDepth": {
+    "used_by": [
+      "UPCGExFillControlsDepthProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExFillControlsDepthProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExFillControlsDepthProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExFillControlsDepthProviderSettings"
+  },
+  "FPCGExFillControlConfigEdgeFilters": {
+    "used_by": [
+      "UPCGExFillControlsEdgeFiltersProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExFillControlsEdgeFiltersProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExFillControlsEdgeFiltersProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExFillControlsEdgeFiltersProviderSettings"
+  },
+  "FPCGExFillControlConfigHeuristicsBudget": {
+    "used_by": [
+      "UPCGExFillControlsHeuristicsBudgetProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExFillControlsHeuristicsBudgetProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExFillControlsHeuristicsBudgetProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExFillControlsHeuristicsBudgetProviderSettings"
+  },
+  "FPCGExFillControlConfigHeuristicsScoring": {
+    "used_by": [
+      "UPCGExFillControlsHeuristicsScoringProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExFillControlsHeuristicsScoringProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExFillControlsHeuristicsScoringProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExFillControlsHeuristicsScoringProviderSettings"
+  },
+  "FPCGExFillControlConfigHeuristicsThreshold": {
+    "used_by": [
+      "UPCGExFillControlsHeuristicsThresholdProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExFillControlsHeuristicsThresholdProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExFillControlsHeuristicsThresholdProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExFillControlsHeuristicsThresholdProviderSettings"
+  },
+  "FPCGExFillControlConfigKeepDirection": {
+    "used_by": [
+      "UPCGExFillControlsKeepDirectionProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExFillControlsKeepDirectionProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExFillControlsKeepDirectionProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExFillControlsKeepDirectionProviderSettings"
+  },
+  "FPCGExFillControlConfigLength": {
+    "used_by": [
+      "UPCGExFillControlsLengthProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExFillControlsLengthProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExFillControlsLengthProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExFillControlsLengthProviderSettings"
+  },
+  "FPCGExFillControlConfigRunningAverage": {
+    "used_by": [
+      "UPCGExFillControlsRunningAverageProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExFillControlsRunningAverageProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExFillControlsRunningAverageProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExFillControlsRunningAverageProviderSettings"
+  },
+  "FPCGExFillControlConfigVtxFilters": {
+    "used_by": [
+      "UPCGExFillControlsVtxFiltersProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExFillControlsVtxFiltersProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExFillControlsVtxFiltersProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExFillControlsVtxFiltersProviderSettings"
+  },
+  "FPCGExPartitonRuleConfig": {
+    "used_by": [
+      "UPCGExPartitionRuleProviderSettings",
+      "UPCGExPartitionByValuesSettings"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExPartitionRuleProviderSettings",
+      "UPCGExPartitionByValuesSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExPartitionRuleProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExAttributeHashConfig": {
+    "used_by": [
+      "UPCGExAttributeHashSettings",
+      "UPCGExDiscardSameSettings"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExAttributeHashSettings",
+      "UPCGExDiscardSameSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExAttributeHashSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExAttributeSourceToTargetDetails": {
+    "used_by": [
+      "UPCGExAttributeRemapSettings",
+      "UPCGExReduceDataAttributeSettings",
+      "UPCGExUberNoiseSettings",
+      "FPCGExAttributeSourceToTargetList"
+    ],
+    "origin_count": 3,
+    "origins": [
+      "UPCGExAttributeRemapSettings",
+      "UPCGExReduceDataAttributeSettings",
+      "UPCGExUberNoiseSettings"
+    ],
+    "usage_count": 4,
+    "user_facing_count": 3,
+    "user_facing_origins": [
+      "UPCGExAttributeRemapSettings",
+      "UPCGExReduceDataAttributeSettings",
+      "UPCGExUberNoiseSettings"
+    ],
+    "user_facing_origin_count": 3,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExStateConfigBase": {
+    "used_by": [
+      "UPCGExPointStateFactoryProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExPointStateFactoryProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExPointStateFactoryProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExPointStateFactoryProviderSettings"
+  },
+  "FPCGExNoiseFilterConfig": {
+    "used_by": [
+      "UPCGExNoiseFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNoiseFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNoiseFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNoiseFilterProviderSettings"
+  },
+  "FPCGExNodeSelectionDetails": {
+    "used_by": [
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingPlotEdgesSettings",
+      "FPCGExFloodFillSeedPickingDetails"
+    ],
+    "origin_count": 5,
+    "origins": [
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingPlotEdgesSettings"
+    ],
+    "usage_count": 6,
+    "user_facing_count": 5,
+    "user_facing_origins": [
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingPlotEdgesSettings"
+    ],
+    "user_facing_origin_count": 5,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExPathStatistics": {
+    "used_by": [
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingPlotEdgesSettings"
+    ],
+    "origin_count": 3,
+    "origins": [
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingPlotEdgesSettings"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 3,
+    "user_facing_origins": [
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingPlotEdgesSettings"
+    ],
+    "user_facing_origin_count": 3,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExPathOutputDetails": {
+    "used_by": [
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExPathfindingPlotEdgesSettings",
+      "UPCGExExtrudeTensorsSettings"
+    ],
+    "origin_count": 3,
+    "origins": [
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExPathfindingPlotEdgesSettings",
+      "UPCGExExtrudeTensorsSettings"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExPathfindingPlotEdgesSettings"
+    ],
+    "user_facing_origin_count": 2,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExCellArtifactsDetails": {
+    "used_by": [
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExFindClusterHullSettings"
+    ],
+    "origin_count": 5,
+    "origins": [
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExFindClusterHullSettings"
+    ],
+    "usage_count": 5,
+    "user_facing_count": 5,
+    "user_facing_origins": [
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExFindClusterHullSettings"
+    ],
+    "user_facing_origin_count": 5,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExCellGrowthDetails": {
+    "used_by": [
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings"
+    ],
+    "origin_count": 4,
+    "origins": [
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings"
+    ],
+    "usage_count": 4,
+    "user_facing_count": 4,
+    "user_facing_origins": [
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings"
+    ],
+    "user_facing_origin_count": 4,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExCellSeedMutationDetails": {
+    "used_by": [
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings"
+    ],
+    "user_facing_origin_count": 2,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExManhattanDetails": {
+    "used_by": [
+      "UPCGExBevelPathSettings",
+      "UPCGExSubdivideSettings"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExBevelPathSettings",
+      "UPCGExSubdivideSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExSubdivideSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExBoxIntersectionDetails": {
+    "used_by": [
+      "UPCGExBoundsPathIntersectionSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExBoundsPathIntersectionSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExBoundsPathIntersectionSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExBoundsPathIntersectionSettings"
+  },
+  "FPCGExAxisDeformDetails": {
+    "used_by": [
+      "UPCGExCopyToPathsSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCopyToPathsSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCopyToPathsSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCopyToPathsSettings"
+  },
+  "FPCGExAttachmentRules": {
+    "used_by": [
+      "UPCGExCreateSplineSettings",
+      "UPCGExSpawnDynamicMeshSettings"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExCreateSplineSettings",
+      "UPCGExSpawnDynamicMeshSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExCreateSplineSettings",
+      "UPCGExSpawnDynamicMeshSettings"
+    ],
+    "user_facing_origin_count": 2,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExUnionMetadataDetails": {
+    "used_by": [
+      "UPCGExFuseCollinearSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExFuseCollinearSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExFuseCollinearSettings"
+  },
+  "FPCGExInputShorthandNameDoubleAbs": {
+    "used_by": [
+      "UPCGExPathInsertSettings",
+      "UPCGExResamplePathSettings"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExPathInsertSettings",
+      "UPCGExResamplePathSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExPathInsertSettings",
+      "UPCGExResamplePathSettings"
+    ],
+    "user_facing_origin_count": 2,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExInputShorthandNameDouble01": {
+    "used_by": [
+      "UPCGExPathReduceSettings",
+      "FPCGExMatchOverlapConfig"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExPathReduceSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExPathReduceSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExPathReduceSettings"
+  },
+  "FPCGExShrinkPathEndpointDistanceDetails": {
+    "used_by": [
+      "UPCGExShrinkPathSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExShrinkPathSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExShrinkPathSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExShrinkPathSettings"
+  },
+  "FPCGExShrinkPathEndpointCountDetails": {
+    "used_by": [
+      "UPCGExShrinkPathSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExShrinkPathSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExShrinkPathSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExShrinkPathSettings"
+  },
+  "FPCGExPathSolidificationAxisDetails": {
+    "used_by": [
+      "UPCGExPathSolidifySettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExPathSolidifySettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExPathSolidifySettings"
+  },
+  "FPCGExPathSolidificationRadiusDetails": {
+    "used_by": [
+      "UPCGExPathSolidifySettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExPathSolidifySettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExPathSolidifySettings"
+  },
+  "FPCGExStaticDotComparisonDetails": {
+    "used_by": [
+      "UPCGExPathStitchSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExPathStitchSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExPathStitchSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExPathStitchSettings"
+  },
+  "FPCGExSwapAttributePairDetails": {
+    "used_by": [
+      "UPCGExReversePointOrderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExReversePointOrderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExReversePointOrderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExReversePointOrderSettings"
+  },
+  "FPCGExLeanTransformDetails": {
+    "used_by": [
+      "UPCGExSplineToPathSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExSplineToPathSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExSplineToPathSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExSplineToPathSettings"
+  },
+  "FPCGExInclusionDetails": {
+    "used_by": [
+      "UPCGExWritePathPropertiesSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExWritePathPropertiesSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExWritePathPropertiesSettings"
+  },
+  "FPCGExProbeConfigGlobalAnisotropic": {
+    "used_by": [
+      "UPCGExProbeGlobalAnisotropicProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExProbeGlobalAnisotropicProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExProbeGlobalAnisotropicProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExProbeGlobalAnisotropicProviderSettings"
+  },
+  "FPCGExProbeConfigChain": {
+    "used_by": [
+      "UPCGExProbeChainProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExProbeChainProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExProbeChainProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExProbeChainProviderSettings"
+  },
+  "FPCGExProbeConfigDBSCAN": {
+    "used_by": [
+      "UPCGExProbeDBSCANProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExProbeDBSCANProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExProbeDBSCANProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExProbeDBSCANProviderSettings"
+  },
+  "FPCGExProbeConfigGradientFlow": {
+    "used_by": [
+      "UPCGExProbeGradientFlowProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExProbeGradientFlowProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExProbeGradientFlowProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExProbeGradientFlowProviderSettings"
+  },
+  "FPCGExProbeConfigHubSpoke": {
+    "used_by": [
+      "UPCGExProbeHubSpokeProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExProbeHubSpokeProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExProbeHubSpokeProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExProbeHubSpokeProviderSettings"
+  },
+  "FPCGExProbeConfigKNN": {
+    "used_by": [
+      "UPCGExProbeKNNProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExProbeKNNProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExProbeKNNProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExProbeKNNProviderSettings"
+  },
+  "FPCGExProbeConfigLevelSet": {
+    "used_by": [
+      "UPCGExProbeLevelSetProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExProbeLevelSetProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExProbeLevelSetProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExProbeLevelSetProviderSettings"
+  },
+  "FPCGExProbeConfigSpanner": {
+    "used_by": [
+      "UPCGExProbeSpannerProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExProbeSpannerProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExProbeSpannerProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExProbeSpannerProviderSettings"
+  },
+  "FPCGExProbeConfigTheta": {
+    "used_by": [
+      "UPCGExProbeThetaProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExProbeThetaProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExProbeThetaProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExProbeThetaProviderSettings"
+  },
+  "FPCGExProbeConfigAnisotropic": {
+    "used_by": [
+      "UPCGExProbeAnisotropicProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExProbeAnisotropicProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExProbeAnisotropicProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExProbeAnisotropicProviderSettings"
+  },
+  "FPCGExProbeConfigBitmasks": {
+    "used_by": [
+      "UPCGExProbeBitmasksProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExProbeBitmasksProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExProbeBitmasksProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExProbeBitmasksProviderSettings"
+  },
+  "FPCGExProbeConfigClosest": {
+    "used_by": [
+      "UPCGExProbeClosestProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExProbeClosestProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExProbeClosestProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExProbeClosestProviderSettings"
+  },
+  "FPCGExProbeConfigDirection": {
+    "used_by": [
+      "UPCGExProbeDirectionProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExProbeDirectionProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExProbeDirectionProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExProbeDirectionProviderSettings"
+  },
+  "FPCGExProbeConfigIndex": {
+    "used_by": [
+      "UPCGExProbeIndexProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExProbeIndexProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExProbeIndexProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExProbeIndexProviderSettings"
+  },
+  "FPCGExProbeConfigNumericCompare": {
+    "used_by": [
+      "UPCGExProbeNumericCompareProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExProbeNumericCompareProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExProbeNumericCompareProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExProbeNumericCompareProviderSettings"
+  },
+  "FPCGExTextureParamConfig": {
+    "used_by": [
+      "UPCGExTexParamProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExTexParamProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExTexParamProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExTexParamProviderSettings"
+  },
+  "FPCGExOverlapScoresWeighting": {
+    "used_by": [
+      "UPCGExDiscardByOverlapSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExDiscardByOverlapSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExDiscardByOverlapSettings"
+  },
+  "FPCGExCurveLookupDetails": {
+    "used_by": [
+      "UPCGExSampleInsidePathSettings",
+      "UPCGExSampleNearestBoundsSettings",
+      "UPCGExSampleNearestPathSettings",
+      "UPCGExSampleNearestPointSettings",
+      "UPCGExSampleNearestSplineSettings",
+      "FPCGExAttributeBlendWeight",
+      "FPCGExSamplingConfig",
+      "FPCGExTensorConfigBase",
+      "FPCGExRandomFilterConfig",
+      "FPCGExRemapDetails",
+      "FPCGExHeuristicConfigBase",
+      "FPCGExNoise3DConfigBase"
+    ],
+    "origin_count": 5,
+    "origins": [
+      "UPCGExSampleInsidePathSettings",
+      "UPCGExSampleNearestBoundsSettings",
+      "UPCGExSampleNearestPathSettings",
+      "UPCGExSampleNearestPointSettings",
+      "UPCGExSampleNearestSplineSettings"
+    ],
+    "usage_count": 12,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExSampleNearestBoundsSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExPropertiesBlendingDetails": {
+    "used_by": [
+      "UPCGExSampleNearestBoundsSettings",
+      "UPCGExSampleNearestPointSettings"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExSampleNearestBoundsSettings",
+      "UPCGExSampleNearestPointSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExSampleNearestBoundsSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExDistanceDetails": {
+    "used_by": [
+      "UPCGExSampleNearestPointSettings",
+      "UPCGExBestMatchAxisSettings",
+      "FPCGExDistanceFilterConfig",
+      "FPCGExNumericCompareNearestFilterConfig"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExSampleNearestPointSettings",
+      "UPCGExBestMatchAxisSettings"
+    ],
+    "usage_count": 4,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExBestMatchAxisSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExInputShorthandSelectorDoubleAbs": {
+    "used_by": [
+      "UPCGExSampleNearestSurfaceSettings",
+      "UPCGExSampleSurfaceGuidedSettings",
+      "UPCGExBinPacking3DSettings",
+      "FPCGExCollisionDetails",
+      "FPCGExRaycastFilterConfig"
+    ],
+    "origin_count": 3,
+    "origins": [
+      "UPCGExSampleNearestSurfaceSettings",
+      "UPCGExSampleSurfaceGuidedSettings",
+      "UPCGExBinPacking3DSettings"
+    ],
+    "usage_count": 5,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExSampleNearestSurfaceSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExInputShorthandSelectorDirection": {
+    "used_by": [
+      "UPCGExSampleSurfaceGuidedSettings",
+      "FPCGExRaycastFilterConfig"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExSampleSurfaceGuidedSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExSampleSurfaceGuidedSettings"
+  },
+  "FPCGExShapeCircleConfig": {
+    "used_by": [
+      "UPCGExCreateShapeCircleSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateShapeCircleSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateShapeCircleSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateShapeCircleSettings"
+  },
+  "FPCGExShapeFiblatConfig": {
+    "used_by": [
+      "UPCGExCreateShapeFiblatSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateShapeFiblatSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateShapeFiblatSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateShapeFiblatSettings"
+  },
+  "FPCGExShapeGridConfig": {
+    "used_by": [
+      "UPCGExCreateShapeGridSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateShapeGridSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateShapeGridSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateShapeGridSettings"
+  },
+  "FPCGExShapePolygonConfig": {
+    "used_by": [
+      "UPCGExCreateShapePolygonSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateShapePolygonSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateShapePolygonSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateShapePolygonSettings"
+  },
+  "FPCGExUVW": {
+    "used_by": [
+      "UPCGExBoundsToPointsSettings",
+      "UPCGExMovePivotSettings"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExBoundsToPointsSettings",
+      "UPCGExMovePivotSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExBoundsToPointsSettings",
+      "UPCGExMovePivotSettings"
+    ],
+    "user_facing_origin_count": 2,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExInputShorthandSelectorVector": {
+    "used_by": [
+      "UPCGExBinPackingSettings",
+      "UPCGExBinPacking3DSettings",
+      "UPCGExTransformPointsSettings",
+      "FPCGExGeo2DProjectionDetails",
+      "FPCGExCollisionDetails",
+      "FPCGExRaycastFilterConfig"
+    ],
+    "origin_count": 3,
+    "origins": [
+      "UPCGExBinPackingSettings",
+      "UPCGExBinPacking3DSettings",
+      "UPCGExTransformPointsSettings"
+    ],
+    "usage_count": 6,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExBinPackingSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExInputShorthandSelectorDouble01": {
+    "used_by": [
+      "UPCGExBinPacking3DSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExBinPacking3DSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExBinPacking3DSettings"
+  },
+  "FPCGExInputShorthandSelectorInteger32": {
+    "used_by": [
+      "UPCGExBinPacking3DSettings",
+      "FPCGExRandomRatioDetails"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExBinPacking3DSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExBinPacking3DSettings"
+  },
+  "FPCGExBP3DAffinityRule": {
+    "used_by": [
+      "UPCGExBinPacking3DSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExBinPacking3DSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExBinPacking3DSettings"
+  },
+  "FPCGExPointsToBoundsDataDetails": {
+    "used_by": [
+      "UPCGExPointsToBoundsSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExPointsToBoundsSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExPointsToBoundsSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExPointsToBoundsSettings"
+  },
+  "FPCGExPathIntersectionDetails": {
+    "used_by": [
+      "UPCGExExtrudeTensorsSettings",
+      "FPCGExSegmentCrossFilterConfig"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExExtrudeTensorsSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExExtrudeTensorsSettings"
+  },
+  "FPCGExTensorHandlerDetails": {
+    "used_by": [
+      "UPCGExExtrudeTensorsSettings",
+      "UPCGExTensorsTransformSettings",
+      "FPCGExTensorDotFilterConfig",
+      "FPCGExHeuristicConfigTensor",
+      "FPCGExProbeConfigTensor"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExExtrudeTensorsSettings",
+      "UPCGExTensorsTransformSettings"
+    ],
+    "usage_count": 5,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExTensorsTransformSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExTensorDotFilterConfig": {
+    "used_by": [
+      "UPCGExTensorDotFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExTensorDotFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExTensorDotFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExTensorDotFilterProviderSettings"
+  },
+  "FPCGExHeuristicConfigTensor": {
+    "used_by": [
+      "UPCGExHeuristicsTensorProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExHeuristicsTensorProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExHeuristicsTensorProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExHeuristicsTensorProviderSettings"
+  },
+  "FPCGExProbeConfigTensor": {
+    "used_by": [
+      "UPCGExProbeTensorProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExProbeTensorProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExProbeTensorProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExProbeTensorProviderSettings"
+  },
+  "FPCGExTensorSamplingMutationsDetails": {
+    "used_by": [
+      "UPCGExCreateTensorConstantSettings",
+      "UPCGExCreateTensorNoiseSettings",
+      "FPCGExTensorConfigBase"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExCreateTensorConstantSettings",
+      "UPCGExCreateTensorNoiseSettings"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExCreateTensorConstantSettings",
+      "UPCGExCreateTensorNoiseSettings"
+    ],
+    "user_facing_origin_count": 2,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExTensorConstantConfig": {
+    "used_by": [
+      "UPCGExCreateTensorConstantSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateTensorConstantSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateTensorConstantSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateTensorConstantSettings"
+  },
+  "FPCGExTensorFlowConfig": {
+    "used_by": [
+      "UPCGExCreateTensorFlowSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateTensorFlowSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateTensorFlowSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateTensorFlowSettings"
+  },
+  "FPCGExTensorInertiaConfig": {
+    "used_by": [
+      "UPCGExCreateTensorInertiaSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateTensorInertiaSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateTensorInertiaSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateTensorInertiaSettings"
+  },
+  "FPCGExTensorInertiaConstantConfig": {
+    "used_by": [
+      "UPCGExCreateTensorInertiaConstantSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateTensorInertiaConstantSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateTensorInertiaConstantSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateTensorInertiaConstantSettings"
+  },
+  "FPCGExTensorNoiseConfig": {
+    "used_by": [
+      "UPCGExCreateTensorNoiseSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateTensorNoiseSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateTensorNoiseSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateTensorNoiseSettings"
+  },
+  "FPCGExTensorNoiseBoundedConfig": {
+    "used_by": [
+      "UPCGExCreateTensorNoiseBoundedSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateTensorNoiseBoundedSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateTensorNoiseBoundedSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateTensorNoiseBoundedSettings"
+  },
+  "FPCGExTensorNullConfig": {
+    "used_by": [
+      "UPCGExCreateTensorNullSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateTensorNullSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateTensorNullSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateTensorNullSettings"
+  },
+  "FPCGExTensorPathFlowConfig": {
+    "used_by": [
+      "UPCGExCreateTensorPathFlowSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateTensorPathFlowSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateTensorPathFlowSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateTensorPathFlowSettings"
+  },
+  "FPCGExTensorPathPoleConfig": {
+    "used_by": [
+      "UPCGExCreateTensorPathPoleSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateTensorPathPoleSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateTensorPathPoleSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateTensorPathPoleSettings"
+  },
+  "FPCGExTensorPoleConfig": {
+    "used_by": [
+      "UPCGExCreateTensorPoleSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateTensorPoleSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateTensorPoleSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateTensorPoleSettings"
+  },
+  "FPCGExTensorSpinConfig": {
+    "used_by": [
+      "UPCGExCreateTensorSpinSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateTensorSpinSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateTensorSpinSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateTensorSpinSettings"
+  },
+  "FPCGExTensorSplineFlowConfig": {
+    "used_by": [
+      "UPCGExCreateTensorSplineFlowSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateTensorSplineFlowSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateTensorSplineFlowSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateTensorSplineFlowSettings"
+  },
+  "FPCGExTensorSplinePoleConfig": {
+    "used_by": [
+      "UPCGExCreateTensorSplinePoleSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateTensorSplinePoleSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateTensorSplinePoleSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateTensorSplinePoleSettings"
+  },
+  "FPCGExTensorSurfaceConfig": {
+    "used_by": [
+      "UPCGExCreateTensorSurfaceSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateTensorSurfaceSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateTensorSurfaceSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateTensorSurfaceSettings"
+  },
+  "FPCGExTopologyDetails": {
+    "used_by": [
+      "UPCGExTopologyClustersProcessorSettings",
+      "UPCGExClipper2TriangulateSettings",
+      "UPCGExTopologyClusterSurfaceSettings",
+      "UPCGExTopologyPathSurfaceSettings",
+      "UPCGExTopologyPointSurfaceSettings"
+    ],
+    "origin_count": 4,
+    "origins": [
+      "UPCGExTopologyClustersProcessorSettings",
+      "UPCGExClipper2TriangulateSettings",
+      "UPCGExTopologyPathSurfaceSettings",
+      "UPCGExTopologyPointSurfaceSettings"
+    ],
+    "usage_count": 5,
+    "user_facing_count": 4,
+    "user_facing_origins": [
+      "UPCGExClipper2TriangulateSettings",
+      "UPCGExTopologyPathSurfaceSettings",
+      "UPCGExTopologyPointSurfaceSettings"
+    ],
+    "user_facing_origin_count": 3,
+    "is_shared": true,
+    "document_with": null
+  },
+  "FPCGExDynamicMeshDescriptor": {
+    "used_by": [
+      "UPCGExSpawnDynamicMeshSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExSpawnDynamicMeshSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExSpawnDynamicMeshSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExSpawnDynamicMeshSettings"
+  },
+  "FPCGExValencyModuleDefinition": {
+    "used_by": [
+      "UPCGExValencyBondingRules"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExValencyBondingRules"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExValencyPatternSetCompiled": {
+    "used_by": [
+      "UPCGExValencyBondingRules"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExValencyBondingRules"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExValencyOrbitalEntry": {
+    "used_by": [
+      "UPCGExValencyOrbitalSet"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExValencyOrbitalSet"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExValencySocketDefinition": {
+    "used_by": [
+      "UPCGExValencySocketRules"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExValencySocketRules"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExValencyPropertyOutputSettings": {
+    "used_by": [
+      "UPCGExValencyStagingSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExValencyStagingSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExValencyStagingSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExValencyStagingSettings"
+  },
+  "FPCGExProbeConfigValency": {
+    "used_by": [
+      "UPCGExProbeValencyProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExProbeValencyProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExProbeValencyProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExProbeValencyProviderSettings"
+  },
+  "FPCGExValencyAssetEntry": {
+    "used_by": [
+      "APCGExValencyAssetPalette",
+      "APCGExValencyCage",
+      "APCGExValencyCageSimple"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "APCGExValencyAssetPalette",
+      "APCGExValencyCage"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExValencyModuleSettings": {
+    "used_by": [
+      "APCGExValencyAssetPalette",
+      "APCGExValencyCage",
+      "APCGExValencyCageSimple",
+      "FPCGExValencyAssetEntry",
+      "FPCGExValencyModuleDefinition"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "APCGExValencyAssetPalette",
+      "APCGExValencyCage"
+    ],
+    "usage_count": 5,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExValencyCageOrbital": {
+    "used_by": [
+      "APCGExValencyCage",
+      "APCGExValencyCageBase",
+      "APCGExValencyCageNull",
+      "APCGExValencyCagePattern",
+      "APCGExValencyCageSimple"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "APCGExValencyCageBase"
+    ],
+    "usage_count": 5,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExValencyPatternSettings": {
+    "used_by": [
+      "APCGExValencyCagePattern"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "APCGExValencyCagePattern"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExClusterStateConfigBase": {
+    "used_by": [
+      "UPCGExClusterStateFactoryProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExClusterStateFactoryProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExClusterStateFactoryProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExClusterStateFactoryProviderSettings"
+  },
+  "FPCGExAttributeCheckFilterConfig": {
+    "used_by": [
+      "UPCGExAttributeCheckFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExAttributeCheckFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExAttributeCheckFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExAttributeCheckFilterProviderSettings"
+  },
+  "FPCGExDataBoundsFilterConfig": {
+    "used_by": [
+      "UPCGExDataBoundsFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExDataBoundsFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExDataBoundsFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExDataBoundsFilterProviderSettings"
+  },
+  "FPCGExEntryCountFilterConfig": {
+    "used_by": [
+      "UPCGExEntryCountFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExEntryCountFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExEntryCountFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExEntryCountFilterProviderSettings"
+  },
+  "FPCGExTagCheckFilterConfig": {
+    "used_by": [
+      "UPCGExTagCheckFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExTagCheckFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExTagCheckFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExTagCheckFilterProviderSettings"
+  },
+  "FPCGExTagValueFilterConfig": {
+    "used_by": [
+      "UPCGExTagValueFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExTagValueFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExTagValueFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExTagValueFilterProviderSettings"
+  },
+  "FPCGExAngleFilterConfig": {
+    "used_by": [
+      "UPCGExAngleFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExAngleFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExAngleFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExAngleFilterProviderSettings"
+  },
+  "FPCGExBitmaskFilterConfig": {
+    "used_by": [
+      "UPCGExBitmaskFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExBitmaskFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExBitmaskFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExBitmaskFilterProviderSettings"
+  },
+  "FPCGExBooleanCompareFilterConfig": {
+    "used_by": [
+      "UPCGExBooleanCompareFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExBooleanCompareFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExBooleanCompareFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExBooleanCompareFilterProviderSettings"
+  },
+  "FPCGExBoundsFilterConfig": {
+    "used_by": [
+      "UPCGExBoundsFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExBoundsFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExBoundsFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExBoundsFilterProviderSettings"
+  },
+  "FPCGExConstantFilterConfig": {
+    "used_by": [
+      "UPCGExConstantFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExConstantFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExConstantFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExConstantFilterProviderSettings"
+  },
+  "FPCGExDistanceFilterConfig": {
+    "used_by": [
+      "UPCGExDistanceFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExDistanceFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExDistanceFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExDistanceFilterProviderSettings"
+  },
+  "FPCGExDotFilterConfig": {
+    "used_by": [
+      "UPCGExDotFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExDotFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExDotFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExDotFilterProviderSettings"
+  },
+  "FPCGExGameplayTagsFilterConfig": {
+    "used_by": [
+      "UPCGExGameplayTagsFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExGameplayTagsFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExGameplayTagsFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExGameplayTagsFilterProviderSettings"
+  },
+  "FPCGExInclusionFilterConfig": {
+    "used_by": [
+      "UPCGExInclusionFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExInclusionFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExInclusionFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExInclusionFilterProviderSettings"
+  },
+  "FPCGExMeanFilterConfig": {
+    "used_by": [
+      "UPCGExMeanFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExMeanFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExMeanFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExMeanFilterProviderSettings"
+  },
+  "FPCGExModuloCompareFilterConfig": {
+    "used_by": [
+      "UPCGExModuloCompareFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExModuloCompareFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExModuloCompareFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExModuloCompareFilterProviderSettings"
+  },
+  "FPCGExNumericCompareFilterConfig": {
+    "used_by": [
+      "UPCGExNumericCompareFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNumericCompareFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNumericCompareFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNumericCompareFilterProviderSettings"
+  },
+  "FPCGExNumericCompareNearestFilterConfig": {
+    "used_by": [
+      "UPCGExNumericCompareNearestFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNumericCompareNearestFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNumericCompareNearestFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNumericCompareNearestFilterProviderSettings"
+  },
+  "FPCGExNumericSelfCompareFilterConfig": {
+    "used_by": [
+      "UPCGExNumericSelfCompareFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNumericSelfCompareFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNumericSelfCompareFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNumericSelfCompareFilterProviderSettings"
+  },
+  "FPCGExPickerFilterConfig": {
+    "used_by": [
+      "UPCGExPickerFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExPickerFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExPickerFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExPickerFilterProviderSettings"
+  },
+  "FPCGExRandomFilterConfig": {
+    "used_by": [
+      "UPCGExRandomFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExRandomFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExRandomFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExRandomFilterProviderSettings"
+  },
+  "FPCGExRandomRatioFilterConfig": {
+    "used_by": [
+      "UPCGExRandomRatioFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExRandomRatioFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExRandomRatioFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExRandomRatioFilterProviderSettings"
+  },
+  "FPCGExSegmentCrossFilterConfig": {
+    "used_by": [
+      "UPCGExSegmentCrossFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExSegmentCrossFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExSegmentCrossFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExSegmentCrossFilterProviderSettings"
+  },
+  "FPCGExSegmentLengthFilterConfig": {
+    "used_by": [
+      "UPCGExSegmentLengthFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExSegmentLengthFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExSegmentLengthFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExSegmentLengthFilterProviderSettings"
+  },
+  "FPCGExStringCompareFilterConfig": {
+    "used_by": [
+      "UPCGExStringCompareFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExStringCompareFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExStringCompareFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExStringCompareFilterProviderSettings"
+  },
+  "FPCGExStringSelfCompareFilterConfig": {
+    "used_by": [
+      "UPCGExStringSelfCompareFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExStringSelfCompareFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExStringSelfCompareFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExStringSelfCompareFilterProviderSettings"
+  },
+  "FPCGExTimeFilterConfig": {
+    "used_by": [
+      "UPCGExTimeFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExTimeFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExTimeFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExTimeFilterProviderSettings"
+  },
+  "FPCGExValueHashFilterConfig": {
+    "used_by": [
+      "UPCGExValueHashFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExValueHashFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExValueHashFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExValueHashFilterProviderSettings"
+  },
+  "FPCGExWithinRangeFilterConfig": {
+    "used_by": [
+      "UPCGExWithinRangeFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExWithinRangeFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExWithinRangeFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExWithinRangeFilterProviderSettings"
+  },
+  "FPCGExBitmask": {
+    "used_by": [
+      "UPCGExBitmaskSettings",
+      "FPCGExBitmaskCollectionEntry"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExBitmaskSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExBitmaskSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExBitmaskSettings"
+  },
+  "FPCGExBranchOnDataPin": {
+    "used_by": [
+      "UPCGExBranchOnDataAttributeSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExBranchOnDataAttributeSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExBranchOnDataAttributeSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExBranchOnDataAttributeSettings"
+  },
+  "FPCGExAttributeDebugDrawConfig": {
+    "used_by": [
+      "UPCGExDrawAttributesSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExDrawAttributesSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExDrawAttributesSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExDrawAttributesSettings"
+  },
+  "FPCGExInputShorthandSelectorBoolean": {
+    "used_by": [
+      "UPCGExTransformPointsSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExTransformPointsSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExTransformPointsSettings"
+  },
+  "FPCGExInputShorthandSelectorRotator": {
+    "used_by": [
+      "UPCGExTransformPointsSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExTransformPointsSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExTransformPointsSettings"
+  },
+  "FPCGExGUIDDetails": {
+    "used_by": [
+      "UPCGExGetGUIDSettings",
+      "UPCGExWriteGUIDSettings"
+    ],
+    "origin_count": 2,
+    "origins": [
+      "UPCGExGetGUIDSettings",
+      "UPCGExWriteGUIDSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExWriteGUIDSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExRaycastFilterConfig": {
+    "used_by": [
+      "UPCGExRaycastFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExRaycastFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExRaycastFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExRaycastFilterProviderSettings"
+  },
+  "FPCGExHeuristicAttributeConfig": {
+    "used_by": [
+      "UPCGExCreateHeuristicAttributeSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateHeuristicAttributeSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateHeuristicAttributeSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateHeuristicAttributeSettings"
+  },
+  "FPCGExHeuristicConfigAzimuth": {
+    "used_by": [
+      "UPCGExHeuristicsAzimuthProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExHeuristicsAzimuthProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExHeuristicsAzimuthProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExHeuristicsAzimuthProviderSettings"
+  },
+  "FPCGExHeuristicConfigShortestDistance": {
+    "used_by": [
+      "UPCGExHeuristicsShortestDistanceProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExHeuristicsShortestDistanceProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExHeuristicsShortestDistanceProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExHeuristicsShortestDistanceProviderSettings"
+  },
+  "FPCGExHeuristicConfigFeedback": {
+    "used_by": [
+      "UPCGExHeuristicFeedbackProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExHeuristicFeedbackProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExHeuristicFeedbackProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExHeuristicFeedbackProviderSettings"
+  },
+  "FPCGExHeuristicGradientConfig": {
+    "used_by": [
+      "UPCGExHeuristicsGradientProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExHeuristicsGradientProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExHeuristicsGradientProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExHeuristicsGradientProviderSettings"
+  },
+  "FPCGExHeuristicConfigInertia": {
+    "used_by": [
+      "UPCGExHeuristicsInertiaProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExHeuristicsInertiaProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExHeuristicsInertiaProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExHeuristicsInertiaProviderSettings"
+  },
+  "FPCGExHeuristicConfigLeastNodes": {
+    "used_by": [
+      "UPCGExHeuristicsLeastNodesProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExHeuristicsLeastNodesProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExHeuristicsLeastNodesProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExHeuristicsLeastNodesProviderSettings"
+  },
+  "FPCGExHeuristicConfigSteepness": {
+    "used_by": [
+      "UPCGExHeuristicsSteepnessProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExHeuristicsSteepnessProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExHeuristicsSteepnessProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExHeuristicsSteepnessProviderSettings"
+  },
+  "FPCGExHeuristicConfigTurnPenalty": {
+    "used_by": [
+      "UPCGExHeuristicsTurnPenaltyProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExHeuristicsTurnPenaltyProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExHeuristicsTurnPenaltyProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExHeuristicsTurnPenaltyProviderSettings"
+  },
+  "FPCGExMatchAttrToAttrConfig": {
+    "used_by": [
+      "UPCGExCreateMatchAttrToAttrSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateMatchAttrToAttrSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateMatchAttrToAttrSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateMatchAttrToAttrSettings"
+  },
+  "FPCGExMatchByIndexConfig": {
+    "used_by": [
+      "UPCGExCreateMatchByIndexSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateMatchByIndexSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateMatchByIndexSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateMatchByIndexSettings"
+  },
+  "FPCGExMatchCopyTagsConfig": {
+    "used_by": [
+      "UPCGExCreateMatchCopyTagsSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateMatchCopyTagsSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateMatchCopyTagsSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateMatchCopyTagsSettings"
+  },
+  "FPCGExMatchOverlapConfig": {
+    "used_by": [
+      "UPCGExCreateMatchOverlapSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateMatchOverlapSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateMatchOverlapSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateMatchOverlapSettings"
+  },
+  "FPCGExMatchRandomConfig": {
+    "used_by": [
+      "UPCGExCreateMatchRandomSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateMatchRandomSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateMatchRandomSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateMatchRandomSettings"
+  },
+  "FPCGExMatchSharedTagConfig": {
+    "used_by": [
+      "UPCGExCreateMatchSharedTagSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateMatchSharedTagSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateMatchSharedTagSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateMatchSharedTagSettings"
+  },
+  "FPCGExMatchTagToAttrConfig": {
+    "used_by": [
+      "UPCGExCreateMatchTagToAttrSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExCreateMatchTagToAttrSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExCreateMatchTagToAttrSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExCreateMatchTagToAttrSettings"
+  },
+  "FPCGExNoiseConfigCaustic": {
+    "used_by": [
+      "UPCGExNoise3DCausticProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNoise3DCausticProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNoise3DCausticProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNoise3DCausticProviderSettings"
+  },
+  "FPCGExNoiseConfigCurl": {
+    "used_by": [
+      "UPCGExNoise3DCurlProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNoise3DCurlProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNoise3DCurlProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNoise3DCurlProviderSettings"
+  },
+  "FPCGExNoiseConfigFBM": {
+    "used_by": [
+      "UPCGExNoise3DFBMProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNoise3DFBMProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNoise3DFBMProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNoise3DFBMProviderSettings"
+  },
+  "FPCGExNoiseConfigFlow": {
+    "used_by": [
+      "UPCGExNoise3DFlowProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNoise3DFlowProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNoise3DFlowProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNoise3DFlowProviderSettings"
+  },
+  "FPCGExNoiseConfigGabor": {
+    "used_by": [
+      "UPCGExNoise3DGaborProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNoise3DGaborProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNoise3DGaborProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNoise3DGaborProviderSettings"
+  },
+  "FPCGExNoiseConfigMarble": {
+    "used_by": [
+      "UPCGExNoise3DMarbleProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNoise3DMarbleProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNoise3DMarbleProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNoise3DMarbleProviderSettings"
+  },
+  "FPCGExNoiseConfigOpenSimplex2": {
+    "used_by": [
+      "UPCGExNoise3DOpenSimplex2ProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNoise3DOpenSimplex2ProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNoise3DOpenSimplex2ProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNoise3DOpenSimplex2ProviderSettings"
+  },
+  "FPCGExNoiseConfigPerlin": {
+    "used_by": [
+      "UPCGExNoise3DPerlinProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNoise3DPerlinProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNoise3DPerlinProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNoise3DPerlinProviderSettings"
+  },
+  "FPCGExNoiseConfigSimplex": {
+    "used_by": [
+      "UPCGExNoise3DSimplexProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNoise3DSimplexProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNoise3DSimplexProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNoise3DSimplexProviderSettings"
+  },
+  "FPCGExNoiseConfigSpots": {
+    "used_by": [
+      "UPCGExNoise3DSpotsProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNoise3DSpotsProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNoise3DSpotsProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNoise3DSpotsProviderSettings"
+  },
+  "FPCGExNoiseConfigSwiss": {
+    "used_by": [
+      "UPCGExNoise3DSwissProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNoise3DSwissProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNoise3DSwissProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNoise3DSwissProviderSettings"
+  },
+  "FPCGExNoiseConfigTiling": {
+    "used_by": [
+      "UPCGExNoise3DTilingProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNoise3DTilingProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNoise3DTilingProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNoise3DTilingProviderSettings"
+  },
+  "FPCGExNoiseConfigValue": {
+    "used_by": [
+      "UPCGExNoise3DValueProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNoise3DValueProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNoise3DValueProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNoise3DValueProviderSettings"
+  },
+  "FPCGExNoiseConfigVoronoi": {
+    "used_by": [
+      "UPCGExNoise3DVoronoiProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNoise3DVoronoiProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNoise3DVoronoiProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNoise3DVoronoiProviderSettings"
+  },
+  "FPCGExNoiseConfigWhite": {
+    "used_by": [
+      "UPCGExNoise3DWhiteProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNoise3DWhiteProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNoise3DWhiteProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNoise3DWhiteProviderSettings"
+  },
+  "FPCGExNoiseConfigWorley": {
+    "used_by": [
+      "UPCGExNoise3DWorleyProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExNoise3DWorleyProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExNoise3DWorleyProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExNoise3DWorleyProviderSettings"
+  },
+  "FPCGExPickerAttributeSetConfig": {
+    "used_by": [
+      "UPCGExPickerAttributeSetSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExPickerAttributeSetSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExPickerAttributeSetSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExPickerAttributeSetSettings"
+  },
+  "FPCGExPickerAttributeSetRangesConfig": {
+    "used_by": [
+      "UPCGExPickerAttributeSetRangesSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExPickerAttributeSetRangesSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExPickerAttributeSetRangesSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExPickerAttributeSetRangesSettings"
+  },
+  "FPCGExPickerConstantConfig": {
+    "used_by": [
+      "UPCGExPickerConstantSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExPickerConstantSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExPickerConstantSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExPickerConstantSettings"
+  },
+  "FPCGExPickerConstantRangeConfig": {
+    "used_by": [
+      "UPCGExPickerConstantRangeSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExPickerConstantRangeSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExPickerConstantRangeSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExPickerConstantRangeSettings"
+  },
+  "FPCGExPropertyOverrides": {
+    "used_by": [
+      "UPCGExTupleSettings",
+      "FPCGExAssetCollectionEntry"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExTupleSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExTupleSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExTupleSettings"
+  },
+  "FPCGExAttributeBlendWeight": {
+    "used_by": [
+      "FPCGExAttributeBlendConfig"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExBlendOpFactoryProviderSettings",
+    "document_with_type": "class"
+  },
+  "FPCGExPointPropertyBlendingOverrides": {
+    "used_by": [
+      "FPCGExBlendingDetails"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "FPCGExBlendingDetails",
+    "document_with_type": "struct"
+  },
+  "FPCGExFuseDetails": {
+    "used_by": [
+      "FPCGExPointPointIntersectionDetails"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "FPCGExPointPointIntersectionDetails",
+    "document_with_type": "struct"
+  },
+  "FPCGExPointUnionMetadataDetails": {
+    "used_by": [
+      "FPCGExPointPointIntersectionDetails"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "FPCGExPointPointIntersectionDetails",
+    "document_with_type": "struct"
+  },
+  "FPCGExSourceFuseDetails": {
+    "used_by": [
+      "FPCGExPointEdgeIntersectionDetails"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "FPCGExPointEdgeIntersectionDetails",
+    "document_with_type": "struct"
+  },
+  "FPCGExMaterialOverrideEntry": {
+    "used_by": [
+      "FPCGExMaterialOverrideCollection"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExMaterialOverrideSingleEntry": {
+    "used_by": [
+      "FPCGExMeshCollectionEntry"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExMaterialOverrideCollection": {
+    "used_by": [
+      "FPCGExMeshCollectionEntry"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExSocket": {
+    "used_by": [
+      "FPCGExAssetStagingData"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExAssetStagingData": {
+    "used_by": [
+      "FPCGExAssetCollectionEntry"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExAssetDistributionIndexDetails": {
+    "used_by": [
+      "FPCGExAssetDistributionDetails",
+      "FPCGExMicroCacheDistributionDetails"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExPathSplineMeshSettings",
+    "document_with_type": "class"
+  },
+  "FPCGExClampedBitOp": {
+    "used_by": [
+      "FPCGExBitmask",
+      "FPCGExBitmaskWithOperation"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExBitmaskSettings",
+    "document_with_type": "class"
+  },
+  "FPCGExBitmaskRef": {
+    "used_by": [
+      "FPCGExBitmask",
+      "FPCGExBitmaskWithOperation",
+      "FPCGExAdjacencyStateConfigBase",
+      "FPCGExProbeConfigBitmasks",
+      "FPCGExValencyOrbitalEntry",
+      "FPCGExBitmaskFilterConfig"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 6,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExBitmaskSettings",
+    "document_with_type": "class"
+  },
+  "FPCGExInputShorthandSelectorInteger32Abs": {
+    "used_by": [
+      "FPCGExRandomRatioDetails",
+      "FPCGExProbeConfigKNN",
+      "FPCGExCellGrowthDetails"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 3,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExClusterCentralitySettings",
+    "document_with_type": "class"
+  },
+  "FPCGExSingleJustifyDetails": {
+    "used_by": [
+      "FPCGExJustificationDetails"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "FPCGExJustificationDetails",
+    "document_with_type": "struct"
+  },
+  "FPCGExDotComparisonDetails": {
+    "used_by": [
+      "FPCGExEdgeMatchConfig",
+      "FPCGExIsoEdgeDirectionFilterConfig",
+      "FPCGExNodeEdgeAngleFilterConfig",
+      "FPCGExNodeEdgeDirectionFilterConfig",
+      "FPCGExTensorDotFilterConfig",
+      "FPCGExAngleFilterConfig",
+      "FPCGExDotFilterConfig"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 7,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExVtxPropertyEdgeMatchSettings",
+    "document_with_type": "class"
+  },
+  "FPCGExEdgeOutputWithIndexSettings": {
+    "used_by": [
+      "FPCGExEdgeMatchConfig",
+      "FPCGExSpecialEdgesConfig",
+      "FPCGExSpecialNeighborsConfig"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 3,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExVtxPropertyEdgeMatchSettings",
+    "document_with_type": "class"
+  },
+  "FPCGExSimpleEdgeOutputSettings": {
+    "used_by": [
+      "FPCGExSpecialEdgesConfig"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExVtxPropertySpecialEdgesSettings",
+    "document_with_type": "class"
+  },
+  "FPCGExVectorHashComparisonDetails": {
+    "used_by": [
+      "FPCGExIsoEdgeDirectionFilterConfig",
+      "FPCGExNodeEdgeDirectionFilterConfig",
+      "FPCGExFillControlConfigKeepDirection"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 3,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExIsoEdgeDirectionFilterProviderSettings",
+    "document_with_type": "class"
+  },
+  "FPCGExAdjacencySettings": {
+    "used_by": [
+      "FPCGExNodeAdjacencyFilterConfig",
+      "FPCGExNodeEdgeDirectionFilterConfig"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExNodeAdjacencyFilterProviderSettings",
+    "document_with_type": "class"
+  },
+  "FPCGExClampDetails": {
+    "used_by": [
+      "FPCGExComponentRemapRule",
+      "FPCGExShapeGridConfig"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExCreateShapeGridSettings",
+    "document_with_type": "class"
+  },
+  "FPCGExRemapDetails": {
+    "used_by": [
+      "FPCGExComponentRemapRule"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExCompareSelectorDouble": {
+    "used_by": [
+      "FPCGExNoiseFilterConfig",
+      "FPCGExDataBoundsFilterConfig"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExNoiseFilterProviderSettings",
+    "document_with_type": "class"
+  },
+  "FPCGExFittingDetailsHandler": {
+    "used_by": [
+      "FPCGExShapeConfigBase"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExInputShorthandNameDouble": {
+    "used_by": [
+      "FPCGExShapeFiblatConfig"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExCreateShapeFiblatSettings",
+    "document_with_type": "class"
+  },
+  "FPCGExTensorSamplerDetails": {
+    "used_by": [
+      "FPCGExTensorHandlerDetails"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExUVInputDetails": {
+    "used_by": [
+      "FPCGExTopologyUVDetails"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExTopologyUVDetails": {
+    "used_by": [
+      "FPCGExTopologyDetails"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "FPCGExTopologyDetails",
+    "document_with_type": "struct"
+  },
+  "FPCGExValencyMaterialOverride": {
+    "used_by": [
+      "FPCGExValencyMaterialVariant"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExValencyMaterialVariant": {
+    "used_by": [
+      "FPCGExValencyAssetEntry",
+      "FPCGExValencyModuleDefinition"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExValencyNeighborIndices": {
+    "used_by": [
+      "FPCGExValencyModuleLayerConfig"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExValencyModuleLayerConfig": {
+    "used_by": [
+      "FPCGExValencyModuleDefinition"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExValencyModuleSocket": {
+    "used_by": [
+      "FPCGExValencyModuleDefinition"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExValencyPropertyOutputConfig": {
+    "used_by": [
+      "FPCGExValencyPropertyOutputSettings"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExValencyStagingSettings",
+    "document_with_type": "class"
+  },
+  "FPCGExBitmaskWithOperation": {
+    "used_by": [
+      "FPCGExStateConfigBase",
+      "FPCGExFilterResultDetails"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExPointStateFactoryProviderSettings",
+    "document_with_type": "class"
+  },
+  "FPCGExTangentsScalingDetails": {
+    "used_by": [
+      "FPCGExTangentsDetails"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "FPCGExTangentsDetails",
+    "document_with_type": "struct"
+  },
+  "FPCGExCellOBBAttributesDetails": {
+    "used_by": [
+      "FPCGExCellArtifactsDetails"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "FPCGExCellArtifactsDetails",
+    "document_with_type": "struct"
+  },
+  "FPCGExBasicEdgeSolidificationDetails": {
+    "used_by": [
+      "FPCGExGraphBuilderDetails"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "FPCGExGraphBuilderDetails",
+    "document_with_type": "struct"
+  },
+  "FPCGExInputShorthandNameVector": {
+    "used_by": [
+      "FPCGExMatchOverlapConfig"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExCreateMatchOverlapSettings",
+    "document_with_type": "class"
+  },
+  "FPCGExPropertyOverrideEntry": {
+    "used_by": [
+      "FPCGExPropertyOverrides"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExTupleSettings",
+    "document_with_type": "class"
+  },
+  "FPCGExPropertySchema": {
+    "used_by": [
+      "FPCGExPropertySchemaCollection"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExPropertyOutputConfig": {
+    "used_by": [
+      "FPCGExPropertyOutputSettings"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExStagingLoadPropertiesSettings",
+    "document_with_type": "class"
+  }
+}

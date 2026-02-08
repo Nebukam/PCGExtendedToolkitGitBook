@@ -1,0 +1,143 @@
+{
+  "path": "PCGExBlending/Public/Sampling/PCGExSamplingCommon.h",
+  "module": "PCGExBlending",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExRangeType",
+      "values": [
+        {
+          "name": "FullRange",
+          "display_name": "Full Range"
+        },
+        {
+          "name": "EffectiveRange",
+          "display_name": "Effective Range"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExSurfaceSource",
+      "values": [
+        {
+          "name": "All",
+          "display_name": "Any surface"
+        },
+        {
+          "name": "ActorReferences",
+          "display_name": "Actor Reference"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExSampleMethod",
+      "values": [
+        {
+          "name": "WithinRange",
+          "display_name": "WithinRange"
+        },
+        {
+          "name": "ClosestTarget",
+          "display_name": "Closest Target"
+        },
+        {
+          "name": "FarthestTarget",
+          "display_name": "Farthest Target"
+        },
+        {
+          "name": "BestCandidate",
+          "display_name": "Best Candidate"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExSampleSource",
+      "values": [
+        {
+          "name": "Source",
+          "display_name": "In"
+        },
+        {
+          "name": "Target",
+          "display_name": "Target"
+        },
+        {
+          "name": "Constant",
+          "display_name": "Constant"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExAngleRange",
+      "values": [
+        {
+          "name": "URadians",
+          "display_name": "URadians"
+        },
+        {
+          "name": "PIRadians",
+          "display_name": "PIRadians"
+        },
+        {
+          "name": "TAURadians",
+          "display_name": "TAURadians"
+        },
+        {
+          "name": "UDegrees",
+          "display_name": "UDegrees"
+        },
+        {
+          "name": "PIDegrees",
+          "display_name": "PIDegrees"
+        },
+        {
+          "name": "TAUDegrees",
+          "display_name": "TAUDegrees"
+        },
+        {
+          "name": "NormalizedHalf",
+          "display_name": "NormalizedHalf"
+        },
+        {
+          "name": "Normalized",
+          "display_name": "Normalized"
+        },
+        {
+          "name": "InvertedNormalizedHalf",
+          "display_name": "InvertedNormalizedHalf"
+        },
+        {
+          "name": "InvertedNormalized",
+          "display_name": "InvertedNormalized"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExSampleWeightMode",
+      "values": [
+        {
+          "name": "Distance",
+          "display_name": "Distance"
+        },
+        {
+          "name": "Attribute",
+          "display_name": "Attribute"
+        },
+        {
+          "name": "AttributeMult",
+          "display_name": "Att x Dist"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

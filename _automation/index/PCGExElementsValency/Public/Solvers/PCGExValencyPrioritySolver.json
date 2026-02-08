@@ -1,0 +1,124 @@
+{
+  "path": "PCGExElementsValency/Public/Solvers/PCGExValencyPrioritySolver.h",
+  "module": "PCGExElementsValency",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExValencyPrioritySolver",
+      "display_name": "UPCGExValencyPrioritySolver",
+      "description": "",
+      "base_class": "UPCGExValencySolverInstancedFactory",
+      "uclass_meta": "DisplayName = \"Priority Solver\", meta=(ToolTip = \"Priority-based WFC solver. Collapses states in order of an attribute value (highest first).\", PCGExNodeLibraryDoc=\"valency/solvers/priority\")",
+      "uproperties": [
+        {
+          "name": "PriorityAttribute",
+          "display_name": "PriorityAttribute",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinimumSpawnWeightBoost",
+          "display_name": "MinimumSpawnWeightBoost",
+          "type": "float",
+          "default": "2.0f",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bInvertPriority",
+          "display_name": "bInvertPriority",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "instanced_factory",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": true,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "PriorityAttribute",
+          "display_name": "PriorityAttribute",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinimumSpawnWeightBoost",
+          "display_name": "MinimumSpawnWeightBoost",
+          "type": "float",
+          "default": "2.0f",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bInvertPriority",
+          "display_name": "bInvertPriority",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExValencyPrioritySolver",
+      "base_class": "FPCGExValencySolverOperation"
+    }
+  ],
+  "namespaces": {}
+}

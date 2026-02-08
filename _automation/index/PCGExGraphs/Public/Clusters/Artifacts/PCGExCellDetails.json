@@ -1,0 +1,1092 @@
+{
+  "path": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+  "module": "PCGExGraphs",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExCellTriageOutput",
+      "values": [
+        {
+          "name": "Separate",
+          "display_name": "Separate Pins"
+        },
+        {
+          "name": "Combined",
+          "display_name": "Combined"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExCellTriageResult",
+      "values": [
+        {
+          "name": "Inside",
+          "display_name": "Inside"
+        },
+        {
+          "name": "Touching",
+          "display_name": "Touching"
+        },
+        {
+          "name": "Outside",
+          "display_name": "Outside"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExPointPropertyOutput",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "Density",
+          "display_name": "Density"
+        },
+        {
+          "name": "Steepness",
+          "display_name": "Steepness"
+        },
+        {
+          "name": "ColorR",
+          "display_name": "R Channel"
+        },
+        {
+          "name": "ColorG",
+          "display_name": "G Channel"
+        },
+        {
+          "name": "ColorB",
+          "display_name": "B Channel"
+        },
+        {
+          "name": "ColorA",
+          "display_name": "A Channel"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExCellRotationMethod",
+      "values": [
+        {
+          "name": "Projection2D",
+          "display_name": "Projection 2D"
+        },
+        {
+          "name": "TopologicalHints",
+          "display_name": "Topological Hints"
+        },
+        {
+          "name": "LocalTangent3D",
+          "display_name": "Local Tangent 3D"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExCellOutputOrientation",
+      "values": [
+        {
+          "name": "CCW",
+          "display_name": "Clockwise"
+        },
+        {
+          "name": "CW",
+          "display_name": "Counter Clockwise"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExCellShapeTypeOutput",
+      "values": [
+        {
+          "name": "Both",
+          "display_name": "Convex & Concave"
+        },
+        {
+          "name": "ConvexOnly",
+          "display_name": "Convex Only"
+        },
+        {
+          "name": "ConcaveOnly",
+          "display_name": "Concave Only"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExCellSeedLocation",
+      "values": [
+        {
+          "name": "Original",
+          "display_name": "Original"
+        },
+        {
+          "name": "Centroid",
+          "display_name": "Centroid"
+        },
+        {
+          "name": "PathBoundsCenter",
+          "display_name": "Path bounds center"
+        },
+        {
+          "name": "FirstNode",
+          "display_name": "First Node"
+        },
+        {
+          "name": "LastNode",
+          "display_name": "Last Node"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExCellSeedBounds",
+      "values": [
+        {
+          "name": "Original",
+          "display_name": "Original"
+        },
+        {
+          "name": "MatchCell",
+          "display_name": "Match Cell"
+        },
+        {
+          "name": "MatchPathResetQuat",
+          "display_name": "MatchPathResetQuat"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExCellSeedOwnership",
+      "values": [
+        {
+          "name": "SeedOrder",
+          "display_name": "Seed Order"
+        },
+        {
+          "name": "Closest",
+          "display_name": "Closest"
+        },
+        {
+          "name": "ClosestProjected",
+          "display_name": "ClosestProjected"
+        },
+        {
+          "name": "BestCandidate",
+          "display_name": "Best Candidate"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExCellConstraintsDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "RotationMethod",
+          "display_name": "RotationMethod",
+          "type": "EPCGExCellRotationMethod",
+          "default": "EPCGExCellRotationMethod::Projection2D",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "OutputWinding",
+          "display_name": "OutputWinding",
+          "type": "EPCGExWinding",
+          "default": "EPCGExWinding::CounterClockwise",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUsedForPaths",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "AspectFilter",
+          "display_name": "AspectFilter",
+          "type": "EPCGExCellShapeTypeOutput",
+          "default": "EPCGExCellShapeTypeOutput::Both",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bKeepCellsWithLeaves",
+          "display_name": "bKeepCellsWithLeaves",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bDuplicateLeafPoints",
+          "display_name": " └─ Duplicate Leaf points",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bKeepCellsWithLeaves && bUsedForPaths",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOmitWrappingBounds",
+          "display_name": "bOmitWrappingBounds",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "WrapperClassificationTolerance",
+          "display_name": " ├─ Classification Tolerance",
+          "type": "double",
+          "default": "0.1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOmitWrappingBounds",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bKeepWrapperIfSolePath",
+          "display_name": " └─ Keep if Sole",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOmitWrappingBounds",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOmitBelowBoundsSize",
+          "display_name": "bOmitBelowBoundsSize",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinBoundsSize",
+          "display_name": " ┌─ Min Bounds Size",
+          "type": "double",
+          "default": "3",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOmitBelowBoundsSize",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOmitAboveBoundsSize",
+          "display_name": "bOmitAboveBoundsSize",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxBoundsSize",
+          "display_name": " └─ Max Bounds Size",
+          "type": "double",
+          "default": "500",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOmitAboveBoundsSize",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOmitBelowPointCount",
+          "display_name": "bOmitBelowPointCount",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinPointCount",
+          "display_name": " ┌─ Min Point Count",
+          "type": "int32",
+          "default": "3",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOmitBelowPointCount",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOmitAbovePointCount",
+          "display_name": "bOmitAbovePointCount",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxPointCount",
+          "display_name": " └─ Max Point Count",
+          "type": "int32",
+          "default": "500",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOmitAbovePointCount",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOmitBelowArea",
+          "display_name": "bOmitBelowArea",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinArea",
+          "display_name": " ┌─ Min Area",
+          "type": "double",
+          "default": "3",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOmitBelowArea",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOmitAboveArea",
+          "display_name": "bOmitAboveArea",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxArea",
+          "display_name": " └─ Max Area",
+          "type": "double",
+          "default": "500",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOmitAboveArea",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOmitBelowPerimeter",
+          "display_name": "bOmitBelowPerimeter",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinPerimeter",
+          "display_name": " ┌─ Min Perimeter",
+          "type": "double",
+          "default": "3",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOmitBelowPerimeter",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOmitAbovePerimeter",
+          "display_name": "bOmitAbovePerimeter",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxPerimeter",
+          "display_name": " └─ Max Perimeter",
+          "type": "double",
+          "default": "500",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOmitAbovePerimeter",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOmitBelowSegmentLength",
+          "display_name": "bOmitBelowSegmentLength",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinSegmentLength",
+          "display_name": " ┌─ Min Segment Length",
+          "type": "double",
+          "default": "3",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOmitBelowSegmentLength",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOmitAboveSegmentLength",
+          "display_name": "bOmitAboveSegmentLength",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxSegmentLength",
+          "display_name": " └─ Max Segment Length",
+          "type": "double",
+          "default": "500",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOmitAboveSegmentLength",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOmitBelowCompactness",
+          "display_name": "bOmitBelowCompactness",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinCompactness",
+          "display_name": " ┌─ Min Compactness",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOmitBelowCompactness",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOmitAboveCompactness",
+          "display_name": "bOmitAboveCompactness",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxCompactness",
+          "display_name": " └─ Max Compactness",
+          "type": "double",
+          "default": "1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOmitAboveCompactness",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExCellSeedMutationDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "AspectFilter",
+          "display_name": "AspectFilter",
+          "type": "EPCGExCellShapeTypeOutput",
+          "default": "EPCGExCellShapeTypeOutput::Both",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Location",
+          "display_name": "Location",
+          "type": "EPCGExCellSeedLocation",
+          "default": "EPCGExCellSeedLocation::Centroid",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bMatchCellBounds",
+          "display_name": "bMatchCellBounds",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bResetScale",
+          "display_name": "bResetScale",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bResetRotation",
+          "display_name": "bResetRotation",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "AreaTo",
+          "display_name": "AreaTo",
+          "type": "EPCGExPointPropertyOutput",
+          "default": "EPCGExPointPropertyOutput::None",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "PerimeterTo",
+          "display_name": "PerimeterTo",
+          "type": "EPCGExPointPropertyOutput",
+          "default": "EPCGExPointPropertyOutput::None",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CompactnessTo",
+          "display_name": "CompactnessTo",
+          "type": "EPCGExPointPropertyOutput",
+          "default": "EPCGExPointPropertyOutput::None",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExCellOBBAttributesDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bUseMinBoxFit",
+          "display_name": "bUseMinBoxFit",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "AxisOrder",
+          "display_name": "AxisOrder",
+          "type": "EPCGExAxisOrder",
+          "default": "EPCGExAxisOrder::XYZ",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinExtent",
+          "display_name": "MinExtent",
+          "type": "FVector",
+          "default": "FVector(1)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExCellArtifactsDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bOutputPaths",
+          "display_name": "bOutputPaths",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOutputCellBounds",
+          "display_name": "bOutputCellBounds",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "OBBAttributes",
+          "display_name": " └─ Settings",
+          "type": "FPCGExCellOBBAttributesDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOutputCellBounds",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteCellHash",
+          "display_name": "bWriteCellHash",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CellHashAttributeName",
+          "display_name": "Cell Hash",
+          "type": "FName",
+          "default": "FName(\"CellHash\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteCellHash",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteArea",
+          "display_name": "bWriteArea",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "AreaAttributeName",
+          "display_name": "Cell Area",
+          "type": "FName",
+          "default": "FName(\"Area\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteArea",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteCompactness",
+          "display_name": "bWriteCompactness",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CompactnessAttributeName",
+          "display_name": "Cell Compactness",
+          "type": "FName",
+          "default": "FName(\"Compactness\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteCompactness",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteNumNodes",
+          "display_name": "bWriteNumNodes",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "NumNodesAttributeName",
+          "display_name": "Num Nodes",
+          "type": "FName",
+          "default": "FName(\"NumNodes\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteNumNodes",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteVtxId",
+          "display_name": "bWriteVtxId",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "VtxIdAttributeName",
+          "display_name": "Vtx ID",
+          "type": "FName",
+          "default": "FName(\"VtxId\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteVtxId",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bFlagTerminalPoint",
+          "display_name": "bFlagTerminalPoint",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "TerminalFlagAttributeName",
+          "display_name": "Flag Terminal",
+          "type": "FName",
+          "default": "FName(\"IsTerminal\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bFlagTerminalPoint",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteNumRepeat",
+          "display_name": "bWriteNumRepeat",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "NumRepeatAttributeName",
+          "display_name": "Repeat",
+          "type": "FName",
+          "default": "FName(\"Repeat\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteNumRepeat",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bTagConcave",
+          "display_name": "bTagConcave",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Tagging",
+          "advanced": false
+        },
+        {
+          "name": "ConcaveTag",
+          "display_name": "ConcaveTag",
+          "type": "FString",
+          "default": "TEXT(\"Concave\")",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bTagConcave",
+          "edit_condition_hides": false,
+          "category": "Settings|Tagging",
+          "advanced": false
+        },
+        {
+          "name": "bTagConvex",
+          "display_name": "bTagConvex",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Tagging",
+          "advanced": false
+        },
+        {
+          "name": "ConvexTag",
+          "display_name": "ConvexTag",
+          "type": "FString",
+          "default": "TEXT(\"Convex\")",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bTagConvex",
+          "edit_condition_hides": false,
+          "category": "Settings|Tagging",
+          "advanced": false
+        },
+        {
+          "name": "TagForwarding",
+          "display_name": "TagForwarding",
+          "type": "FPCGExNameFiltersDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOutputPaths",
+          "edit_condition_hides": true,
+          "category": "Settings|Tagging",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExCellGrowthDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Growth",
+          "display_name": "Growth",
+          "type": "FPCGExInputShorthandSelectorInteger32Abs",
+          "default": "FPCGExInputShorthandSelectorInteger32Abs(FName(\"Growth\"), 0)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

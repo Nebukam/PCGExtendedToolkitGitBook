@@ -1,0 +1,127 @@
+{
+  "path": "PCGExFoundations/Public/Elements/Constants/PCGExConstantsDefinitions.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExConstantListID",
+      "values": [
+        {
+          "name": "ZeroAndOne",
+          "display_name": "0 and 1"
+        },
+        {
+          "name": "MinusOne",
+          "display_name": "-1"
+        },
+        {
+          "name": "Twos",
+          "display_name": "0.5 and 2"
+        },
+        {
+          "name": "Tens",
+          "display_name": "Powers of 10"
+        },
+        {
+          "name": "Irrationals",
+          "display_name": "Irrationals"
+        },
+        {
+          "name": "Angles",
+          "display_name": "Angles"
+        },
+        {
+          "name": "Zero",
+          "display_name": "0"
+        },
+        {
+          "name": "One",
+          "display_name": "1"
+        },
+        {
+          "name": "Vectors",
+          "display_name": "Axes"
+        },
+        {
+          "name": "Booleans",
+          "display_name": "True and False"
+        },
+        {
+          "name": "TrueBool",
+          "display_name": "True"
+        },
+        {
+          "name": "FalseBool",
+          "display_name": "False"
+        },
+        {
+          "name": "MAX_BOOL",
+          "display_name": "MAX_BOOL"
+        },
+        {
+          "name": "ADDITIONAL_VECTORS",
+          "display_name": "ADDITIONAL_VECTORS"
+        },
+        {
+          "name": "OneVector",
+          "display_name": "Unit Vector"
+        },
+        {
+          "name": "ZeroVector",
+          "display_name": "Zero Vector"
+        },
+        {
+          "name": "HalfVector",
+          "display_name": "Half Vector"
+        },
+        {
+          "name": "UpVector",
+          "display_name": "Up Vector"
+        },
+        {
+          "name": "RightVector",
+          "display_name": "Right Vector"
+        },
+        {
+          "name": "ForwardVector",
+          "display_name": "Forward Vector"
+        },
+        {
+          "name": "ADDITIONAL_NUMERICS",
+          "display_name": "ADDITIONAL_NUMERICS"
+        },
+        {
+          "name": "Two",
+          "display_name": "2"
+        },
+        {
+          "name": "Half",
+          "display_name": "0.5"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExConstantType",
+      "values": [
+        {
+          "name": "Number",
+          "display_name": "Number"
+        },
+        {
+          "name": "Vector",
+          "display_name": "Vector"
+        },
+        {
+          "name": "Bool",
+          "display_name": "Bool"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

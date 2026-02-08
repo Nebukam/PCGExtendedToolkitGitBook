@@ -1,0 +1,87 @@
+{
+  "path": "PCGExMatching/Public/PCGExMatchingCommon.h",
+  "module": "PCGExMatching",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExMapMatchMode",
+      "values": [
+        {
+          "name": "Disabled",
+          "display_name": "Disabled"
+        },
+        {
+          "name": "All",
+          "display_name": "All"
+        },
+        {
+          "name": "Any",
+          "display_name": "Any"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExMatchStrictness",
+      "values": [
+        {
+          "name": "Required",
+          "display_name": "Required"
+        },
+        {
+          "name": "Any",
+          "display_name": "Optional"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExClusterComponentTagMatchMode",
+      "values": [
+        {
+          "name": "Vtx",
+          "display_name": "Vtx"
+        },
+        {
+          "name": "Edges",
+          "display_name": "Edges"
+        },
+        {
+          "name": "Any",
+          "display_name": "Any"
+        },
+        {
+          "name": "Both",
+          "display_name": "Vtx and Edges"
+        },
+        {
+          "name": "Separated",
+          "display_name": "Separate"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExMatchingDetailsUsage",
+      "values": [
+        {
+          "name": "Default",
+          "display_name": "Default"
+        },
+        {
+          "name": "Cluster",
+          "display_name": "Cluster"
+        },
+        {
+          "name": "Sampling",
+          "display_name": "Sampling"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

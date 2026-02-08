@@ -1,0 +1,79 @@
+{
+  "path": "PCGExNoise3D/Public/Core/PCGExNoise3DCommon.h",
+  "module": "PCGExNoise3D",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExNoiseBlendMode",
+      "values": [
+        {
+          "name": "Blend",
+          "display_name": "Blend"
+        },
+        {
+          "name": "Add",
+          "display_name": "Add"
+        },
+        {
+          "name": "Multiply",
+          "display_name": "Multiply"
+        },
+        {
+          "name": "Min",
+          "display_name": "Min"
+        },
+        {
+          "name": "Max",
+          "display_name": "Max"
+        },
+        {
+          "name": "Subtract",
+          "display_name": "Subtract"
+        },
+        {
+          "name": "Screen",
+          "display_name": "Screen"
+        },
+        {
+          "name": "Overlay",
+          "display_name": "Overlay"
+        },
+        {
+          "name": "SoftLight",
+          "display_name": "Soft Light"
+        },
+        {
+          "name": "First",
+          "display_name": "First Valid"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExNoiseInPlaceMode",
+      "values": [
+        {
+          "name": "Composite",
+          "display_name": "Composite"
+        },
+        {
+          "name": "BlendResult",
+          "display_name": "Blend Result"
+        },
+        {
+          "name": "Additive",
+          "display_name": "Additive"
+        },
+        {
+          "name": "Multiplicative",
+          "display_name": "Multiplicative"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

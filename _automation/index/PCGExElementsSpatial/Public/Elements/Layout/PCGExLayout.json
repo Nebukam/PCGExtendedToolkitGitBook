@@ -1,0 +1,64 @@
+{
+  "path": "PCGExElementsSpatial/Public/Elements/Layout/PCGExLayout.h",
+  "module": "PCGExElementsSpatial",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExBinSeedMode",
+      "values": [
+        {
+          "name": "UVWConstant",
+          "display_name": "UVWConstant"
+        },
+        {
+          "name": "UVWAttribute",
+          "display_name": "UVW"
+        },
+        {
+          "name": "PositionConstant",
+          "display_name": "PositionConstant"
+        },
+        {
+          "name": "PositionAttribute",
+          "display_name": "PositionAttribute"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExSpaceSplitMode",
+      "values": [
+        {
+          "name": "Minimal",
+          "display_name": "Minimal"
+        },
+        {
+          "name": "MinimalCross",
+          "display_name": "MinimalCross"
+        },
+        {
+          "name": "EqualSplit",
+          "display_name": "Equal Split"
+        },
+        {
+          "name": "Cone",
+          "display_name": "Cone"
+        },
+        {
+          "name": "ConeCross",
+          "display_name": "ConeCross"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {
+    "PCGExLayout": {
+      "SourceBinsLabel": "Bins",
+      "OutputBinsLabel": "Bins"
+    }
+  }
+}

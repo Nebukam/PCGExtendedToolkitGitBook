@@ -1,0 +1,141 @@
+{
+  "path": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskCollection.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExBitmaskCollectionEntry",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Identifier",
+          "display_name": "Identifier",
+          "type": "FName",
+          "default": "NAME_None",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Bitmask",
+          "display_name": "Bitmask",
+          "type": "FPCGExBitmask",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Direction",
+          "display_name": "Direction",
+          "type": "FVector",
+          "default": "FVector::UpVector",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [
+    {
+      "name": "UPCGExBitmaskCollection",
+      "display_name": "UPCGExBitmaskCollection",
+      "description": "",
+      "base_class": "UDataAsset",
+      "uclass_meta": "BlueprintType, DisplayName=\"[PCGEx] Bitmask Library\"",
+      "uproperties": [
+        {
+          "name": "Notes",
+          "display_name": "Notes",
+          "type": "FString",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Entries",
+          "display_name": "Entries",
+          "type": "TArray<FPCGExBitmaskCollectionEntry>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "unknown",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "Notes",
+          "display_name": "Notes",
+          "type": "FString",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Entries",
+          "display_name": "Entries",
+          "type": "TArray<FPCGExBitmaskCollectionEntry>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

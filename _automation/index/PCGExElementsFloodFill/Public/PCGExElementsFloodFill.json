@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsFloodFill/Public/PCGExElementsFloodFill.h",
+  "module": "PCGExElementsFloodFill",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsFloodFill",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

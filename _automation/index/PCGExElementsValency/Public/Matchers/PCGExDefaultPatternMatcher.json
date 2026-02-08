@@ -1,0 +1,124 @@
+{
+  "path": "PCGExElementsValency/Public/Matchers/PCGExDefaultPatternMatcher.h",
+  "module": "PCGExElementsValency",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExDefaultPatternMatcher",
+      "display_name": "UPCGExDefaultPatternMatcher",
+      "description": "",
+      "base_class": "UPCGExPatternMatcherFactory",
+      "uclass_meta": "DisplayName = \"Default Pattern Matcher\", meta=(ToolTip = \"Default subgraph isomorphism pattern matcher using DFS with backtracking.\", PCGExNodeLibraryDoc=\"valency/matchers/default\")",
+      "uproperties": [
+        {
+          "name": "OverlapResolution",
+          "display_name": "OverlapResolution",
+          "type": "EPCGExPatternOverlapResolution",
+          "default": "EPCGExPatternOverlapResolution::WeightBased",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "unknown",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "RequiredTags",
+          "display_name": "RequiredTags",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Pattern Selection",
+          "advanced": false
+        },
+        {
+          "name": "ExcludedTags",
+          "display_name": "ExcludedTags",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Pattern Selection",
+          "advanced": false
+        },
+        {
+          "name": "PatternNames",
+          "display_name": "PatternNames",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Pattern Selection",
+          "advanced": false
+        },
+        {
+          "name": "bExclusive",
+          "display_name": "bExclusive",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "OverlapResolution",
+          "display_name": "OverlapResolution",
+          "type": "EPCGExPatternOverlapResolution",
+          "default": "EPCGExPatternOverlapResolution::WeightBased",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExDefaultPatternMatcherOperation",
+      "base_class": "FPCGExPatternMatcherOperation"
+    }
+  ],
+  "namespaces": {}
+}

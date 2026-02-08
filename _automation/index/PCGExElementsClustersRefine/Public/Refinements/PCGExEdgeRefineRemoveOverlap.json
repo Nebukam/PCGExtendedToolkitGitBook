@@ -1,0 +1,218 @@
+{
+  "path": "PCGExElementsClustersRefine/Public/Refinements/PCGExEdgeRefineRemoveOverlap.h",
+  "module": "PCGExElementsClustersRefine",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExEdgeOverlapPick",
+      "values": [
+        {
+          "name": "Shortest",
+          "display_name": "Shortest"
+        },
+        {
+          "name": "Longest",
+          "display_name": "Longest"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExEdgeRemoveOverlap",
+      "display_name": "UPCGExEdgeRemoveOverlap",
+      "description": "",
+      "base_class": "UPCGExEdgeRefineInstancedFactory",
+      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Refine : Overlap\", PCGExNodeLibraryDoc=\"clusters/refine-cluster/overlap\")",
+      "uproperties": [
+        {
+          "name": "Keep",
+          "display_name": "Keep",
+          "type": "EPCGExEdgeOverlapPick",
+          "default": "EPCGExEdgeOverlapPick::Longest",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Tolerance",
+          "display_name": "Tolerance",
+          "type": "double",
+          "default": "DBL_INTERSECTION_TOLERANCE",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bUseMinAngle",
+          "display_name": "bUseMinAngle",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinAngle",
+          "display_name": "MinAngle",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseMinAngle",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bUseMaxAngle",
+          "display_name": "bUseMaxAngle",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxAngle",
+          "display_name": "MaxAngle",
+          "type": "double",
+          "default": "90",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseMaxAngle",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "instanced_factory",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": true,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "Keep",
+          "display_name": "Keep",
+          "type": "EPCGExEdgeOverlapPick",
+          "default": "EPCGExEdgeOverlapPick::Longest",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Tolerance",
+          "display_name": "Tolerance",
+          "type": "double",
+          "default": "DBL_INTERSECTION_TOLERANCE",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bUseMinAngle",
+          "display_name": "bUseMinAngle",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinAngle",
+          "display_name": "MinAngle",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseMinAngle",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bUseMaxAngle",
+          "display_name": "bUseMaxAngle",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxAngle",
+          "display_name": "MaxAngle",
+          "type": "double",
+          "default": "90",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseMaxAngle",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "implementations": []
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExEdgeRemoveOverlap",
+      "base_class": "FPCGExEdgeRefineOperation"
+    }
+  ],
+  "namespaces": {}
+}

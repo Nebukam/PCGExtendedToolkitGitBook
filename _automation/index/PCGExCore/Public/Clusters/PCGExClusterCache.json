@@ -1,0 +1,25 @@
+{
+  "path": "PCGExCore/Public/Clusters/PCGExClusterCache.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EClusterCacheType",
+      "values": [
+        {
+          "name": "PreBuild",
+          "display_name": "PreBuild"
+        },
+        {
+          "name": "Opportunistic",
+          "display_name": "Opportunistic"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

@@ -1,0 +1,263 @@
+{
+  "path": "PCGExElementsMeta/Public/Elements/Partition/PCGExPartition.h",
+  "module": "PCGExElementsMeta",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExPartitionFilterMode",
+      "values": [
+        {
+          "name": "Floor",
+          "display_name": "Floor"
+        },
+        {
+          "name": "Ceil",
+          "display_name": "Ceil"
+        },
+        {
+          "name": "Round",
+          "display_name": "Round"
+        },
+        {
+          "name": "Modulo",
+          "display_name": "Modulo"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExPartitonRuleConfig",
+      "base_class": "FPCGExInputConfig",
+      "uproperties": [
+        {
+          "name": "bEnabled",
+          "display_name": "bEnabled",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "FilterSize",
+          "display_name": "FilterSize",
+          "type": "double",
+          "default": "1.0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Upscale",
+          "display_name": "Upscale",
+          "type": "double",
+          "default": "1.0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Offset",
+          "display_name": "Offset",
+          "type": "double",
+          "default": "0.0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "FilterMode",
+          "display_name": "FilterMode",
+          "type": "EPCGExPartitionFilterMode",
+          "default": "EPCGExPartitionFilterMode::Floor",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ModuloValue",
+          "display_name": "ModuloValue",
+          "type": "int32",
+          "default": "10",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "FilterMode==EPCGExPartitionFilterMode::Modulo",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bClampKey",
+          "display_name": "bClampKey",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "KeyClampMin",
+          "display_name": "KeyClampMin",
+          "type": "int64",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bClampKey",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "KeyClampMax",
+          "display_name": "KeyClampMax",
+          "type": "int64",
+          "default": "100",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bClampKey",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bInvertKey",
+          "display_name": "bInvertKey",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bAbsoluteKey",
+          "display_name": "bAbsoluteKey",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteKey",
+          "display_name": "bWriteKey",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "KeyAttributeName",
+          "display_name": "KeyAttributeName",
+          "type": "FName",
+          "default": "\"@Data.PartitionKey\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteKey",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bUsePartitionIndexAsKey",
+          "display_name": "bUsePartitionIndexAsKey",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteKey",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteTag",
+          "display_name": "bWriteTag",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "TagPrefixName",
+          "display_name": "TagPrefixName",
+          "type": "FName",
+          "default": "\"Partition\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteTag",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bTagUsePartitionIndexAsKey",
+          "display_name": "bTagUsePartitionIndexAsKey",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteTag",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": true,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

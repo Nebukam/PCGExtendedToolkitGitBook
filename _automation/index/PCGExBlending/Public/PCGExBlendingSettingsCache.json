@@ -1,0 +1,93 @@
+{
+  "path": "PCGExBlending/Public/PCGExBlendingSettingsCache.h",
+  "module": "PCGExBlending",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExBlendingTypeDefault",
+      "values": [
+        {
+          "name": "Default",
+          "display_name": "Default"
+        },
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "Average",
+          "display_name": "Average"
+        },
+        {
+          "name": "Weight",
+          "display_name": "Weight"
+        },
+        {
+          "name": "Min",
+          "display_name": "Min"
+        },
+        {
+          "name": "Max",
+          "display_name": "Max"
+        },
+        {
+          "name": "Copy",
+          "display_name": "Copy"
+        },
+        {
+          "name": "Sum",
+          "display_name": "Sum"
+        },
+        {
+          "name": "WeightedSum",
+          "display_name": "Weighted Sum"
+        },
+        {
+          "name": "Lerp",
+          "display_name": "Lerp"
+        },
+        {
+          "name": "Subtract",
+          "display_name": "Subtract"
+        },
+        {
+          "name": "UnsignedMin",
+          "display_name": "Unsigned Min"
+        },
+        {
+          "name": "UnsignedMax",
+          "display_name": "Unsigned Max"
+        },
+        {
+          "name": "AbsoluteMin",
+          "display_name": "Unsigned Min"
+        },
+        {
+          "name": "AbsoluteMax",
+          "display_name": "Unsigned Max"
+        },
+        {
+          "name": "WeightedSubtract",
+          "display_name": "Weighted Subtract"
+        },
+        {
+          "name": "CopyOther",
+          "display_name": "CopyOther"
+        },
+        {
+          "name": "Hash",
+          "display_name": "Hash"
+        },
+        {
+          "name": "UnsignedHash",
+          "display_name": "UnsignedHash"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

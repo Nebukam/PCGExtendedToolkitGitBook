@@ -1,0 +1,79 @@
+{
+  "path": "PCGExCore/Public/Data/PCGExDataCommon.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExInputValueType",
+      "values": [
+        {
+          "name": "Constant",
+          "display_name": "Constant"
+        },
+        {
+          "name": "Attribute",
+          "display_name": "Attribute"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExInputValueToggle",
+      "values": [
+        {
+          "name": "Constant",
+          "display_name": "Constant"
+        },
+        {
+          "name": "Attribute",
+          "display_name": "Attribute"
+        },
+        {
+          "name": "Disabled",
+          "display_name": "Disabled"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExDataInputValueType",
+      "values": [
+        {
+          "name": "Constant",
+          "display_name": "Constant"
+        },
+        {
+          "name": "Attribute",
+          "display_name": "@Data"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExNumericOutput",
+      "values": [
+        {
+          "name": "Double",
+          "display_name": "Double"
+        },
+        {
+          "name": "Float",
+          "display_name": "Float"
+        },
+        {
+          "name": "Int32",
+          "display_name": "Int32"
+        },
+        {
+          "name": "Int64",
+          "display_name": "Int64"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

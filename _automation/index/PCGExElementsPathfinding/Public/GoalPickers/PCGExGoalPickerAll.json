@@ -1,0 +1,53 @@
+{
+  "path": "PCGExElementsPathfinding/Public/GoalPickers/PCGExGoalPickerAll.h",
+  "module": "PCGExElementsPathfinding",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExGoalPickerAll",
+      "display_name": "UPCGExGoalPickerAll",
+      "description": "",
+      "base_class": "UPCGExGoalPicker",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"All\", PCGExNodeLibraryDoc=\"pathfinding/pathfinding-edges/goal-picker-all\")",
+      "uproperties": [],
+      "classification": {
+        "type": "unknown",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "IndexSafety",
+          "display_name": "IndexSafety",
+          "type": "EPCGExIndexSafety",
+          "default": "EPCGExIndexSafety::Tile",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

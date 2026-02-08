@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsValency/Public/PCGExElementsValency.h",
+  "module": "PCGExElementsValency",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsValencyModule",
+      "base_class": "IPCGExModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

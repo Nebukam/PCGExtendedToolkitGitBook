@@ -1,0 +1,223 @@
+{
+  "path": "PCGExFoundations/Public/Tangents/PCGExTangentsInstancedFactory.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExTangentSource",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "No Tangents"
+        },
+        {
+          "name": "Attribute",
+          "display_name": "Attribute"
+        },
+        {
+          "name": "InPlace",
+          "display_name": "In-place"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExTangentsScalingDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "ArriveScaleInput",
+          "display_name": "ArriveScaleInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ArriveScaleConstant",
+          "display_name": "Arrive Scale",
+          "type": "double",
+          "default": "1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ArriveScaleInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "LeaveScaleInput",
+          "display_name": "LeaveScaleInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "LeaveScaleConstant",
+          "display_name": "Leave Scale",
+          "type": "double",
+          "default": "1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "LeaveScaleInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExTangentsDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Source",
+          "display_name": "Source",
+          "type": "EPCGExTangentSource",
+          "default": "EPCGExTangentSource::Attribute",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ArriveTangentAttribute",
+          "display_name": "ArriveTangentAttribute",
+          "type": "FName",
+          "default": "\"ArriveTangent\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Source == EPCGExTangentSource::Attribute",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "LeaveTangentAttribute",
+          "display_name": "LeaveTangentAttribute",
+          "type": "FName",
+          "default": "\"LeaveTangent\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Source == EPCGExTangentSource::Attribute",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Tangents",
+          "display_name": "Tangents",
+          "type": "TObjectPtr<UPCGExTangentsInstancedFactory>",
+          "default": null,
+          "overridable": true,
+          "instanced": true,
+          "show_only_inner": false,
+          "edit_condition": "Source == EPCGExTangentSource::InPlace",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Scaling",
+          "display_name": "Scaling",
+          "type": "FPCGExTangentsScalingDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bDeprecationApplied",
+          "display_name": "bDeprecationApplied",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [
+    {
+      "name": "UPCGExTangentsInstancedFactory",
+      "display_name": "UPCGExTangentsInstancedFactory",
+      "description": "",
+      "base_class": "UPCGExInstancedFactory",
+      "uclass_meta": "Abstract",
+      "uproperties": [],
+      "classification": {
+        "type": "instanced_factory",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": true,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [],
+      "implementations": [
+        "UPCGExAutoTangents",
+        "UPCGExCatmullRomTangents",
+        "UPCGExFromNeighborsTangents",
+        "UPCGExFromTransformTangents",
+        "UPCGExZeroTangents"
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExTangentsOperation",
+      "base_class": "FPCGExOperation"
+    }
+  ],
+  "namespaces": {
+    "PCGExTangents": {
+      "SourceOverridesTangents": "Overrides : Tangents",
+      "SourceOverridesTangentsStart": "Overrides : Start Tangents",
+      "SourceOverridesTangentsEnd": "Overrides : End Tangents"
+    }
+  }
+}

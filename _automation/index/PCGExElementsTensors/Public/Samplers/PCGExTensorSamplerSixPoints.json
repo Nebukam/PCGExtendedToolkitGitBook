@@ -1,0 +1,105 @@
+{
+  "path": "PCGExElementsTensors/Public/Samplers/PCGExTensorSamplerSixPoints.h",
+  "module": "PCGExElementsTensors",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExTensorSamplerSixPoints",
+      "display_name": "UPCGExTensorSamplerSixPoints",
+      "description": "",
+      "base_class": "UPCGExTensorSampler",
+      "uclass_meta": "MinimalAPI, DisplayName = \"Six Points\", meta=(DisplayName = \"Six Points\", ToolTip =\"Samples the field using six points around the sampling target location, and averaging the results.\")",
+      "uproperties": [],
+      "classification": {
+        "type": "unknown",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "Radius",
+          "display_name": "Radius",
+          "type": "double",
+          "default": "1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinStepFraction",
+          "display_name": "MinStepFraction",
+          "type": "double",
+          "default": "0.1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxStepFraction",
+          "display_name": "MaxStepFraction",
+          "type": "double",
+          "default": "1.0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ErrorTolerance",
+          "display_name": "ErrorTolerance",
+          "type": "double",
+          "default": "0.01",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxSubSteps",
+          "display_name": "MaxSubSteps",
+          "type": "int32",
+          "default": "4",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

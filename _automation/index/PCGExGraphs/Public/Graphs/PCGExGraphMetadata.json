@@ -1,0 +1,33 @@
+{
+  "path": "PCGExGraphs/Public/Graphs/PCGExGraphMetadata.h",
+  "module": "PCGExGraphs",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExIntersectionType",
+      "values": [
+        {
+          "name": "Unknown",
+          "display_name": "Unknown"
+        },
+        {
+          "name": "PointEdge",
+          "display_name": "Point/Edge"
+        },
+        {
+          "name": "EdgeEdge",
+          "display_name": "Edge/Edge"
+        },
+        {
+          "name": "FusedEdge",
+          "display_name": "Fused Edge"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

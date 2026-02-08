@@ -1,0 +1,104 @@
+{
+  "path": "PCGExCore/Public/Utils/PCGExCurveLookup.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExCurveLUTMode",
+      "values": [
+        {
+          "name": "Direct",
+          "display_name": "Direct"
+        },
+        {
+          "name": "Lookup",
+          "display_name": "Lookup"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExCurveLookupDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bUseLocalCurve",
+          "display_name": "bUseLocalCurve",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "LocalCurve",
+          "display_name": "Curve",
+          "type": "FRuntimeFloatCurve",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseLocalCurve",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ExternalCurve",
+          "display_name": "Curve",
+          "type": "TSoftObjectPtr<UCurveFloat>",
+          "default": "TSoftObjectPtr<UCurveFloat>(PCGExCurves::WeightDistributionLinear)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "!bUseLocalCurve",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Mode",
+          "display_name": "Mode",
+          "type": "EPCGExCurveLUTMode",
+          "default": "EPCGExCurveLUTMode::Direct",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Samples",
+          "display_name": "Samples",
+          "type": "int32",
+          "default": "512",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExCurveLUTMode::Lookup",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExCurveFloatLookup",
+      "base_class": "TSharedFromThis"
+    }
+  ],
+  "namespaces": {}
+}

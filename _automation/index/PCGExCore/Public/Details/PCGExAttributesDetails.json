@@ -1,0 +1,113 @@
+{
+  "path": "PCGExCore/Public/Details/PCGExAttributesDetails.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExInputConfig",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "TitlePropertyName",
+          "display_name": "TitlePropertyName",
+          "type": "FString",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "false",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Selector",
+          "display_name": "Attribute",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": true,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExAttributeSourceToTargetDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Source",
+          "display_name": "Source",
+          "type": "FName",
+          "default": "NAME_None",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOutputToDifferentName",
+          "display_name": "bOutputToDifferentName",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Target",
+          "display_name": "Target",
+          "type": "FName",
+          "default": "NAME_None",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOutputToDifferentName",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExAttributeSourceToTargetList",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Attributes",
+          "display_name": "Attributes",
+          "type": "TArray<FPCGExAttributeSourceToTargetDetails>",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

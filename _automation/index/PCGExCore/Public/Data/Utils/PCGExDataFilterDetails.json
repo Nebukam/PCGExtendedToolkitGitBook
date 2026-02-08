@@ -1,0 +1,183 @@
+{
+  "path": "PCGExCore/Public/Data/Utils/PCGExDataFilterDetails.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExAttributeFilter",
+      "values": [
+        {
+          "name": "All",
+          "display_name": "All"
+        },
+        {
+          "name": "Exclude",
+          "display_name": "Exclude"
+        },
+        {
+          "name": "Include",
+          "display_name": "Include"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExNameFiltersDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "FilterMode",
+          "display_name": "FilterMode",
+          "type": "EPCGExAttributeFilter",
+          "default": "EPCGExAttributeFilter::All",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Matches",
+          "display_name": "Matches",
+          "type": "TMap<FString, EPCGExStringMatchMode>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "FilterMode != EPCGExAttributeFilter::All",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedNames",
+          "display_name": "CommaSeparatedNames",
+          "type": "FString",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedNameFilter",
+          "display_name": "CommaSeparatedNameFilter",
+          "type": "EPCGExStringMatchMode",
+          "default": "EPCGExStringMatchMode::Equals",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "FilterMode != EPCGExAttributeFilter::All",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bPreservePCGExData",
+          "display_name": "bPreservePCGExData",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExAttributeGatherDetails",
+      "base_class": "FPCGExNameFiltersDetails",
+      "uproperties": [],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExCarryOverDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bPreserveAttributesDefaultValue",
+          "display_name": "bPreserveAttributesDefaultValue",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Attributes",
+          "display_name": "Attributes",
+          "type": "FPCGExNameFiltersDetails",
+          "default": "FPCGExNameFiltersDetails(false)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bDataDomainToElements",
+          "display_name": " └─ Data domain to Elements",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Tags",
+          "display_name": "Tags",
+          "type": "FPCGExNameFiltersDetails",
+          "default": "FPCGExNameFiltersDetails(false)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bTestTagsWithValues",
+          "display_name": " └─ Flatten tag value",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

@@ -1,0 +1,67 @@
+{
+  "path": "PCGExCollections/Public/PCGExCollectionsSettings.h",
+  "module": "PCGExCollections",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExCollectionsSettings",
+      "display_name": "UPCGExCollectionsSettings",
+      "description": "",
+      "base_class": "UDeveloperSettings",
+      "uclass_meta": "Config=Game, DefaultConfig, meta=(DisplayName=\"PCGEx | Collections\", Description=\"Configure PCG Extended Toolkit' Collections module settings\")",
+      "uproperties": [
+        {
+          "name": "bDisableCollisionByDefault",
+          "display_name": "bDisableCollisionByDefault",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Collections",
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "node_settings",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "bDisableCollisionByDefault",
+          "display_name": "bDisableCollisionByDefault",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Collections",
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

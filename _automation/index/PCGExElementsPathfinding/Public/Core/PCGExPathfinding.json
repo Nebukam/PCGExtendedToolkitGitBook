@@ -1,0 +1,95 @@
+{
+  "path": "PCGExElementsPathfinding/Public/Core/PCGExPathfinding.h",
+  "module": "PCGExElementsPathfinding",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExPathComposition",
+      "values": [
+        {
+          "name": "Vtx",
+          "display_name": "Vtx"
+        },
+        {
+          "name": "Edges",
+          "display_name": "Edge"
+        },
+        {
+          "name": "VtxAndEdges",
+          "display_name": "Vtx & Edges"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExPathStatistics",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bWritePointUseCount",
+          "display_name": "bWritePointUseCount",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "PointUseCountAttributeName",
+          "display_name": "PointUseCount",
+          "type": "FName",
+          "default": "FName(\"PointUseCount\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWritePointUseCount",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteEdgeUseCount",
+          "display_name": "bWriteEdgeUseCount",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "EdgeUseCountAttributeName",
+          "display_name": "EdgeUseCount",
+          "type": "FName",
+          "default": "FName(\"EdgeUseCount\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteEdgeUseCount",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {
+    "PCGExPathfinding": {
+      "SourceOverridesGoalPicker": "Overrides : Goal Picker",
+      "SourceOverridesSearch": "Overrides : Search"
+    }
+  }
+}

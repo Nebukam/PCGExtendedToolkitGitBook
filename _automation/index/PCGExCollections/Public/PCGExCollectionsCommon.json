@@ -1,0 +1,157 @@
+{
+  "path": "PCGExCollections/Public/PCGExCollectionsCommon.h",
+  "module": "PCGExCollections",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExCollectionSource",
+      "values": [
+        {
+          "name": "Asset",
+          "display_name": "Asset"
+        },
+        {
+          "name": "AttributeSet",
+          "display_name": "Attribute Set"
+        },
+        {
+          "name": "Attribute",
+          "display_name": "Path Attribute"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExIndexPickMode",
+      "values": [
+        {
+          "name": "Ascending",
+          "display_name": "Ascending"
+        },
+        {
+          "name": "Descending",
+          "display_name": "Descending"
+        },
+        {
+          "name": "WeightAscending",
+          "display_name": "WeightAscending"
+        },
+        {
+          "name": "WeightDescending",
+          "display_name": "WeightDescending"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExDistribution",
+      "values": [
+        {
+          "name": "Index",
+          "display_name": "Index"
+        },
+        {
+          "name": "Random",
+          "display_name": "Random"
+        },
+        {
+          "name": "WeightedRandom",
+          "display_name": "Weighted random"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExWeightOutputMode",
+      "values": [
+        {
+          "name": "NoOutput",
+          "display_name": "No Output"
+        },
+        {
+          "name": "Raw",
+          "display_name": "Raw"
+        },
+        {
+          "name": "Normalized",
+          "display_name": "Normalized"
+        },
+        {
+          "name": "NormalizedInverted",
+          "display_name": "NormalizedInverted"
+        },
+        {
+          "name": "NormalizedToDensity",
+          "display_name": "Normalized to Density"
+        },
+        {
+          "name": "NormalizedInvertedToDensity",
+          "display_name": "NormalizedInvertedToDensity"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExAssetTagInheritance",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "Asset",
+          "display_name": "Asset"
+        },
+        {
+          "name": "Hierarchy",
+          "display_name": "Hierarchy"
+        },
+        {
+          "name": "Collection",
+          "display_name": "Collection"
+        },
+        {
+          "name": "RootCollection",
+          "display_name": "RootCollection"
+        },
+        {
+          "name": "RootAsset",
+          "display_name": "RootAsset"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExEntryVariationMode",
+      "values": [
+        {
+          "name": "Local",
+          "display_name": "Local"
+        },
+        {
+          "name": "Global",
+          "display_name": "Global"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExGlobalVariationRule",
+      "values": [
+        {
+          "name": "PerEntry",
+          "display_name": "Per Entry"
+        },
+        {
+          "name": "Overrule",
+          "display_name": "Overrule"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

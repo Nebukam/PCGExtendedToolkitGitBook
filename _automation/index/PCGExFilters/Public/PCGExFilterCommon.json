@@ -1,0 +1,75 @@
+{
+  "path": "PCGExFilters/Public/PCGExFilterCommon.h",
+  "module": "PCGExFilters",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExFilterFallback",
+      "values": [
+        {
+          "name": "Pass",
+          "display_name": "Pass"
+        },
+        {
+          "name": "Fail",
+          "display_name": "Fail"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExFilterResult",
+      "values": [
+        {
+          "name": "Pass",
+          "display_name": "Pass"
+        },
+        {
+          "name": "Fail",
+          "display_name": "Fail"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExFilterNoDataFallback",
+      "values": [
+        {
+          "name": "Error",
+          "display_name": "Throw Error"
+        },
+        {
+          "name": "Pass",
+          "display_name": "Pass"
+        },
+        {
+          "name": "Fail",
+          "display_name": "Fail"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExFilterGroupMode",
+      "values": [
+        {
+          "name": "AND",
+          "display_name": "And"
+        },
+        {
+          "name": "OR",
+          "display_name": "Or"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {
+    "Labels": {
+      "SourceUseValueIfFilters": "UsableValueFilters"
+    }
+  }
+}

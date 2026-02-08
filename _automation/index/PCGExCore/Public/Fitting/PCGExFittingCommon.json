@@ -1,0 +1,147 @@
+{
+  "path": "PCGExCore/Public/Fitting/PCGExFittingCommon.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExVariationSnapping",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "No Snapping"
+        },
+        {
+          "name": "SnapOffset",
+          "display_name": "Snap Offset"
+        },
+        {
+          "name": "SnapResult",
+          "display_name": "Snap Result"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExFitMode",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "Uniform",
+          "display_name": "Uniform"
+        },
+        {
+          "name": "Individual",
+          "display_name": "Individual"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExScaleToFit",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "Fill",
+          "display_name": "Fill"
+        },
+        {
+          "name": "Min",
+          "display_name": "Min"
+        },
+        {
+          "name": "Max",
+          "display_name": "Max"
+        },
+        {
+          "name": "Avg",
+          "display_name": "Average"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExJustifyFrom",
+      "values": [
+        {
+          "name": "Min",
+          "display_name": "Min"
+        },
+        {
+          "name": "Center",
+          "display_name": "Center"
+        },
+        {
+          "name": "Max",
+          "display_name": "Max"
+        },
+        {
+          "name": "Pivot",
+          "display_name": "Pivot"
+        },
+        {
+          "name": "Custom",
+          "display_name": "Custom"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExJustifyTo",
+      "values": [
+        {
+          "name": "Min",
+          "display_name": "Min"
+        },
+        {
+          "name": "Center",
+          "display_name": "Center"
+        },
+        {
+          "name": "Max",
+          "display_name": "Max"
+        },
+        {
+          "name": "Pivot",
+          "display_name": "Pivot"
+        },
+        {
+          "name": "Custom",
+          "display_name": "Custom"
+        },
+        {
+          "name": "Same",
+          "display_name": "Same"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExVariationMode",
+      "values": [
+        {
+          "name": "Disabled",
+          "display_name": "Disabled"
+        },
+        {
+          "name": "Before",
+          "display_name": "Before fitting"
+        },
+        {
+          "name": "After",
+          "display_name": "After fitting"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

@@ -1,0 +1,3049 @@
+{
+  "FPCGExAttributeBlendWeight": {
+    "file": "PCGExBlending/Public/Core/PCGExBlendOpFactory.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "UPCGExBlendOpFactoryProviderSettings"
+  },
+  "FPCGExAttributeBlendConfig": {
+    "file": "PCGExBlending/Public/Core/PCGExBlendOpFactory.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "UPCGExBlendOpFactoryProviderSettings"
+  },
+  "FPCGExAttributeBlendToTargetDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExBlendingDetails.h",
+    "base_class": "FPCGExAttributeSourceToTargetDetails",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExPointPropertyBlendingOverrides": {
+    "file": "PCGExBlending/Public/Details/PCGExBlendingDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "FPCGExBlendingDetails"
+  },
+  "FPCGExPropertiesBlendingDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExBlendingDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "document_with": null
+  },
+  "FPCGExBlendingDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExBlendingDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 23,
+    "user_facing_count": 15,
+    "document_with": null
+  },
+  "FPCGExFuseDetailsBase": {
+    "file": "PCGExBlending/Public/Details/PCGExFuseDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExSourceFuseDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExFuseDetails.h",
+    "base_class": "FPCGExFuseDetailsBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "FPCGExPointEdgeIntersectionDetails"
+  },
+  "FPCGExFuseDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExFuseDetails.h",
+    "base_class": "FPCGExSourceFuseDetails",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "FPCGExPointPointIntersectionDetails"
+  },
+  "FPCGExInclusionDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExIntersectionDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "UPCGExWritePathPropertiesSettings"
+  },
+  "FPCGExUnionMetadataDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExIntersectionDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "UPCGExFuseCollinearSettings"
+  },
+  "FPCGExPointUnionMetadataDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExIntersectionDetails.h",
+    "base_class": "FPCGExUnionMetadataDetails",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "FPCGExPointPointIntersectionDetails"
+  },
+  "FPCGExEdgeUnionMetadataDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExIntersectionDetails.h",
+    "base_class": "FPCGExUnionMetadataDetails",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "document_with": "UPCGExSimplifyClustersSettings"
+  },
+  "FPCGExPointPointIntersectionDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExIntersectionDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 3,
+    "user_facing_count": 3,
+    "document_with": null
+  },
+  "FPCGExPointEdgeIntersectionDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExIntersectionDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "document_with": null
+  },
+  "FPCGExEdgeEdgeIntersectionDetails": {
+    "file": "PCGExBlending/Public/Details/PCGExIntersectionDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "document_with": null
+  },
+  "FPCGExApplySamplingDetails": {
+    "file": "PCGExBlending/Public/Sampling/PCGExApplySamplingDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 7,
+    "user_facing_count": 3,
+    "document_with": null
+  },
+  "FPCGExActorCollectionEntry": {
+    "file": "PCGExCollections/Public/Collections/PCGExActorCollection.h",
+    "base_class": "FPCGExAssetCollectionEntry",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExPropertyCompiled_AssetCollection": {
+    "file": "PCGExCollections/Public/Collections/PCGExCollectionPropertyTypes.h",
+    "base_class": "FPCGExPropertyCompiled",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExMaterialOverrideEntry": {
+    "file": "PCGExCollections/Public/Collections/PCGExMeshCollection.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExMaterialOverrideCollection": {
+    "file": "PCGExCollections/Public/Collections/PCGExMeshCollection.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExMaterialOverrideSingleEntry": {
+    "file": "PCGExCollections/Public/Collections/PCGExMeshCollection.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExMeshCollectionEntry": {
+    "file": "PCGExCollections/Public/Collections/PCGExMeshCollection.h",
+    "base_class": "FPCGExAssetCollectionEntry",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExPCGDataAssetCollectionEntry": {
+    "file": "PCGExCollections/Public/Collections/PCGExPCGDataAssetCollection.h",
+    "base_class": "FPCGExAssetCollectionEntry",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExAssetStagingData": {
+    "file": "PCGExCollections/Public/Core/PCGExAssetCollection.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExAssetCollectionEntry": {
+    "file": "PCGExCollections/Public/Core/PCGExAssetCollection.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExCollectionTypeSet": {
+    "file": "PCGExCollections/Public/Core/PCGExAssetCollectionTypes.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExAssetGrammarDetails": {
+    "file": "PCGExCollections/Public/Core/PCGExAssetGrammar.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 5,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExCollectionGrammarDetails": {
+    "file": "PCGExCollections/Public/Core/PCGExAssetGrammar.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 5,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExRoamingAssetCollectionDetails": {
+    "file": "PCGExCollections/Public/Details/PCGExRoamingAssetCollectionDetails.h",
+    "base_class": "FPCGExAssetAttributeSetDetails",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "document_with": null
+  },
+  "FPCGExStagedTypeFilterDetails": {
+    "file": "PCGExCollections/Public/Details/PCGExStagedTypeFilterDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "document_with": null
+  },
+  "FPCGExAssetDistributionIndexDetails": {
+    "file": "PCGExCollections/Public/Details/PCGExStagingDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "document_with": "UPCGExPathSplineMeshSettings"
+  },
+  "FPCGExComponentTaggingDetails": {
+    "file": "PCGExCollections/Public/Details/PCGExStagingDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExAssetTaggingDetails": {
+    "file": "PCGExCollections/Public/Details/PCGExStagingDetails.h",
+    "base_class": "FPCGExComponentTaggingDetails",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExPathSplineMeshSettings"
+  },
+  "FPCGExAssetDistributionDetails": {
+    "file": "PCGExCollections/Public/Details/PCGExStagingDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "document_with": null
+  },
+  "FPCGExMicroCacheDistributionDetails": {
+    "file": "PCGExCollections/Public/Details/PCGExStagingDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExPathSplineMeshSettings"
+  },
+  "FPCGExAssetAttributeSetDetails": {
+    "file": "PCGExCollections/Public/Details/PCGExStagingDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExNodeSelectionDetails": {
+    "file": "PCGExCore/Public/Clusters/PCGExClusterCommon.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 6,
+    "user_facing_count": 5,
+    "document_with": null
+  },
+  "FPCGExEdgeDirectionSettings": {
+    "file": "PCGExCore/Public/Clusters/PCGExEdgeDirectionDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 4,
+    "user_facing_count": 2,
+    "document_with": null
+  },
+  "FPCGExBitmaskCollectionEntry": {
+    "file": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskCollection.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExClampedBit": {
+    "file": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExClampedBitOp": {
+    "file": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskDetails.h",
+    "base_class": "FPCGExClampedBit",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "document_with": "UPCGExBitmaskSettings"
+  },
+  "FPCGExSimpleBitmask": {
+    "file": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExBitmaskRef": {
+    "file": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 6,
+    "user_facing_count": 0,
+    "document_with": "UPCGExBitmaskSettings"
+  },
+  "FPCGExBitmask": {
+    "file": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "document_with": "UPCGExBitmaskSettings"
+  },
+  "FPCGExBitmaskWithOperation": {
+    "file": "PCGExCore/Public/Data/Bitmasks/PCGExBitmaskDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "document_with": "UPCGExPointStateFactoryProviderSettings"
+  },
+  "FPCGExPrimitiveComponentDescriptor": {
+    "file": "PCGExCore/Public/Data/Descriptors/PCGExComponentDescriptors.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExMeshComponentDescriptor": {
+    "file": "PCGExCore/Public/Data/Descriptors/PCGExComponentDescriptors.h",
+    "base_class": "FPCGExPrimitiveComponentDescriptor",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExStaticMeshComponentDescriptor": {
+    "file": "PCGExCore/Public/Data/Descriptors/PCGExComponentDescriptors.h",
+    "base_class": "FPCGExMeshComponentDescriptor",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 4,
+    "user_facing_count": 1,
+    "document_with": null
+  },
+  "FPCGExGeoMeshImportDetails": {
+    "file": "PCGExCore/Public/Data/External/PCGExMeshImportDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExMeshToClustersSettings"
+  },
+  "FPCGExAttributeHashConfig": {
+    "file": "PCGExCore/Public/Data/Utils/PCGExAttributeHasher.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "document_with": null
+  },
+  "FPCGExNameFiltersDetails": {
+    "file": "PCGExCore/Public/Data/Utils/PCGExDataFilterDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 7,
+    "user_facing_count": 4,
+    "document_with": null
+  },
+  "FPCGExAttributeGatherDetails": {
+    "file": "PCGExCore/Public/Data/Utils/PCGExDataFilterDetails.h",
+    "base_class": "FPCGExNameFiltersDetails",
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "document_with": null
+  },
+  "FPCGExCarryOverDetails": {
+    "file": "PCGExCore/Public/Data/Utils/PCGExDataFilterDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 23,
+    "user_facing_count": 19,
+    "document_with": null
+  },
+  "FPCGExForwardDetails": {
+    "file": "PCGExCore/Public/Data/Utils/PCGExDataForwardDetails.h",
+    "base_class": "FPCGExNameFiltersDetails",
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 16,
+    "user_facing_count": 14,
+    "document_with": null
+  },
+  "FPCGExAttributeToTagDetails": {
+    "file": "PCGExCore/Public/Data/Utils/PCGExDataForwardDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 13,
+    "user_facing_count": 11,
+    "document_with": null
+  },
+  "FPCGExAttachmentRules": {
+    "file": "PCGExCore/Public/Details/PCGExAttachmentRules.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "document_with": null
+  },
+  "FPCGExInputConfig": {
+    "file": "PCGExCore/Public/Details/PCGExAttributesDetails.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExAttributeSourceToTargetDetails": {
+    "file": "PCGExCore/Public/Details/PCGExAttributesDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 4,
+    "user_facing_count": 3,
+    "document_with": null
+  },
+  "FPCGExAttributeSourceToTargetList": {
+    "file": "PCGExCore/Public/Details/PCGExAttributesDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExCompareSelectorDouble": {
+    "file": "PCGExCore/Public/Details/PCGExCompareShorthandsDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "document_with": "UPCGExNoiseFilterProviderSettings"
+  },
+  "FPCGExRandomRatioDetails": {
+    "file": "PCGExCore/Public/Details/PCGExDetailsNoise.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "document_with": "UPCGExClusterCentralitySettings"
+  },
+  "FPCGExDistanceDetails": {
+    "file": "PCGExCore/Public/Details/PCGExDistancesDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 4,
+    "user_facing_count": 1,
+    "document_with": null
+  },
+  "FPCGExInputShorthandBase": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandNameBase": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandNameBoolean": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandNameFloat": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandNameDouble": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "UPCGExCreateShapeFiblatSettings"
+  },
+  "FPCGExInputShorthandNameDoubleAbs": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "document_with": null
+  },
+  "FPCGExInputShorthandNameDouble01": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "document_with": "UPCGExPathReduceSettings"
+  },
+  "FPCGExInputShorthandNameInteger32": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandNameInteger32Abs": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExClipper2OffsetSettings"
+  },
+  "FPCGExInputShorthandNameInteger3201": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandNameVector2": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandNameVector": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "UPCGExCreateMatchOverlapSettings"
+  },
+  "FPCGExInputShorthandNameDirection": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameVector",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandNameVector4": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandNameRotator": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandNameTransform": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandNameString": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandNameName": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandNameBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandSelectorBase": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandSelectorBoolean": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "UPCGExTransformPointsSettings"
+  },
+  "FPCGExInputShorthandSelectorFloat": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandSelectorDouble": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 7,
+    "user_facing_count": 2,
+    "document_with": null
+  },
+  "FPCGExInputShorthandSelectorDoubleAbs": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 5,
+    "user_facing_count": 1,
+    "document_with": null
+  },
+  "FPCGExInputShorthandSelectorDouble01": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "UPCGExBinPacking3DSettings"
+  },
+  "FPCGExInputShorthandSelectorInteger32": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "document_with": "UPCGExBinPacking3DSettings"
+  },
+  "FPCGExInputShorthandSelectorInteger32Abs": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 3,
+    "user_facing_count": 0,
+    "document_with": "UPCGExClusterCentralitySettings"
+  },
+  "FPCGExInputShorthandSelectorInteger3201": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandSelectorVector2": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandSelectorVector": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 6,
+    "user_facing_count": 1,
+    "document_with": null
+  },
+  "FPCGExInputShorthandSelectorDirection": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "document_with": "UPCGExSampleSurfaceGuidedSettings"
+  },
+  "FPCGExInputShorthandSelectorVector4": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandSelectorRotator": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "UPCGExTransformPointsSettings"
+  },
+  "FPCGExInputShorthandSelectorTransform": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandSelectorString": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExInputShorthandSelectorName": {
+    "file": "PCGExCore/Public/Details/PCGExInputShorthandsDetails.h",
+    "base_class": "FPCGExInputShorthandSelectorBase",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExScaleToFitDetails": {
+    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 5,
+    "user_facing_count": 3,
+    "document_with": null
+  },
+  "FPCGExSingleJustifyDetails": {
+    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "FPCGExJustificationDetails"
+  },
+  "FPCGExJustificationDetails": {
+    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 5,
+    "user_facing_count": 3,
+    "document_with": null
+  },
+  "FPCGExFittingVariationsDetails": {
+    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "document_with": null
+  },
+  "FPCGExFittingDetailsHandler": {
+    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExTransformDetails": {
+    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
+    "base_class": "FPCGExFittingDetailsHandler",
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 3,
+    "user_facing_count": 3,
+    "document_with": null
+  },
+  "FPCGExLeanTransformDetails": {
+    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExSplineToPathSettings"
+  },
+  "FPCGExFittingVariations": {
+    "file": "PCGExCore/Public/Fitting/PCGExFittingVariations.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 5,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExGeo2DProjectionDetails": {
+    "file": "PCGExCore/Public/Math/PCGExProjectionDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 28,
+    "user_facing_count": 19,
+    "document_with": null
+  },
+  "FPCGExUVW": {
+    "file": "PCGExCore/Public/Math/PCGExUVW.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "document_with": null
+  },
+  "FPCGExPathEdgeIntersectionDetails": {
+    "file": "PCGExCore/Public/Paths/PCGExPathIntersectionDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "document_with": null
+  },
+  "FPCGExPathFilterSettings": {
+    "file": "PCGExCore/Public/Paths/PCGExPathIntersectionDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExPathIntersectionDetails": {
+    "file": "PCGExCore/Public/Paths/PCGExPathIntersectionDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "document_with": "UPCGExExtrudeTensorsSettings"
+  },
+  "FPCGExPathOutputDetails": {
+    "file": "PCGExCore/Public/Paths/PCGExPathOutputDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 3,
+    "user_facing_count": 2,
+    "document_with": null
+  },
+  "FPCGExSortRuleConfig": {
+    "file": "PCGExCore/Public/Sorting/PCGExSortingDetails.h",
+    "base_class": "FPCGExInputConfig",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExVectorHashComparisonDetails": {
+    "file": "PCGExCore/Public/Utils/PCGExCompare.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 3,
+    "user_facing_count": 0,
+    "document_with": "UPCGExIsoEdgeDirectionFilterProviderSettings"
+  },
+  "FPCGExStaticDotComparisonDetails": {
+    "file": "PCGExCore/Public/Utils/PCGExCompare.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExPathStitchSettings"
+  },
+  "FPCGExDotComparisonDetails": {
+    "file": "PCGExCore/Public/Utils/PCGExCompare.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 7,
+    "user_facing_count": 0,
+    "document_with": "UPCGExVtxPropertyEdgeMatchSettings"
+  },
+  "FPCGExCurveLookupDetails": {
+    "file": "PCGExCore/Public/Utils/PCGExCurveLookup.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 12,
+    "user_facing_count": 1,
+    "document_with": null
+  },
+  "FPCGExDefaultValueContainer": {
+    "file": "PCGExCore/Public/Utils/PCGExDefaultValueContainer.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExConvexDecompositionDetails": {
+    "file": "PCGExElementsClusters/Public/Elements/Decomposition/PCGExSimpleConvexDecomposer.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExClusterDecompositionSettings"
+  },
+  "FPCGExSamplingConfig": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/NeighborSamplers/PCGExNeighborSampleFactoryProvider.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 5,
+    "user_facing_count": 4,
+    "document_with": "UPCGExNeighborSampleProviderSettings"
+  },
+  "FPCGExSamplerFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/NeighborSamplers/PCGExNeighborSampleFilters.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNeighborSampleFiltersSettings"
+  },
+  "FPCGExAmplitudeConfig": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertyAmplitude.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExVtxPropertyAmplitudeSettings"
+  },
+  "FPCGExEdgeMatchConfig": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertyEdgeMatch.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExVtxPropertyEdgeMatchSettings"
+  },
+  "FPCGExSimpleEdgeOutputSettings": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertyFactoryProvider.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "UPCGExVtxPropertySpecialEdgesSettings"
+  },
+  "FPCGExEdgeOutputWithIndexSettings": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertyFactoryProvider.h",
+    "base_class": "FPCGExSimpleEdgeOutputSettings",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 3,
+    "user_facing_count": 0,
+    "document_with": "UPCGExVtxPropertyEdgeMatchSettings"
+  },
+  "FPCGExSpecialEdgesConfig": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertySpecialEdges.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExVtxPropertySpecialEdgesSettings"
+  },
+  "FPCGExSpecialNeighborsConfig": {
+    "file": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertySpecialNeighbors.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExVtxPropertySpecialNeighborsSettings"
+  },
+  "FNewGraphSettingsResult": {
+    "file": "PCGExElementsClusters/Public/Elements/PCGExBuildCustomGraph.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExAdjacencyStateConfigBase": {
+    "file": "PCGExElementsClusters/Public/Elements/States/PCGExAdjacencyStates.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExAdjacencyStateFactoryProviderSettings"
+  },
+  "FPCGExEdgeEndpointsCheckFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeEndpointsCheckFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExEdgeEndpointsCheckFilterProviderSettings"
+  },
+  "FPCGExEdgeEndpointsCompareNumFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeEndpointsCompareNumFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExEdgeEndpointsCompareNumFilterProviderSettings"
+  },
+  "FPCGExEdgeEndpointsCompareStrFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeEndpointsCompareStrFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExEdgeEndpointsCompareStrFilterProviderSettings"
+  },
+  "FPCGExEdgeLengthFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeLengthFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExEdgeLengthFilterProviderSettings"
+  },
+  "FPCGExEdgeNeighborsCountFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeNeighborsCountFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExEdgeNeighborsCountFilterProviderSettings"
+  },
+  "FPCGExIsoEdgeDirectionFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Edges/PCGExIsoEdgeDirectionFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExIsoEdgeDirectionFilterProviderSettings"
+  },
+  "FPCGExNodeAdjacencyFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeAdjacencyFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNodeAdjacencyFilterProviderSettings"
+  },
+  "FPCGExNodeEdgeAngleFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeEdgeAngleFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNodeEdgeAngleFilterProviderSettings"
+  },
+  "FPCGExNodeEdgeDirectionFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeEdgeDirectionFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNodeEdgeDirectionFilterProviderSettings"
+  },
+  "FPCGExNodeNeighborsCountFilterConfig": {
+    "file": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeNeighborsCountFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNodeNeighborsCountFilterProviderSettings"
+  },
+  "FPCGExAdjacencySettings": {
+    "file": "PCGExElementsClusters/Public/Filters/PCGExAdjacency.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "document_with": "UPCGExNodeAdjacencyFilterProviderSettings"
+  },
+  "FPCGExVoronoiSitesOutputDetails": {
+    "file": "PCGExElementsClustersDiagrams/Public/Elements/PCGExBuildVoronoiGraph2D.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExBuildVoronoiGraph2DSettings"
+  },
+  "FPCGExFillControlConfigBase": {
+    "file": "PCGExElementsFloodFill/Public/Core/PCGExFillControlsFactoryProvider.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExFloodFillFlowDetails": {
+    "file": "PCGExElementsFloodFill/Public/Core/PCGExFloodFill.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExClusterDiffusionSettings"
+  },
+  "FPCGExFloodFillSeedPickingDetails": {
+    "file": "PCGExElementsFloodFill/Public/Elements/PCGExFloodFillClusters.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExClusterDiffusionSettings"
+  },
+  "FPCGExFillControlConfigAttributeAccumulation": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlAttributeAccumulation.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExFillControlsAttributeAccumulationProviderSettings"
+  },
+  "FPCGExFillControlConfigAttributeThreshold": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlAttributeThreshold.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExFillControlsAttributeThresholdProviderSettings"
+  },
+  "FPCGExFillControlConfigCount": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlCount.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExFillControlsCountProviderSettings"
+  },
+  "FPCGExFillControlConfigDepth": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlDepth.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExFillControlsDepthProviderSettings"
+  },
+  "FPCGExFillControlConfigEdgeFilters": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlEdgeFilters.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExFillControlsEdgeFiltersProviderSettings"
+  },
+  "FPCGExFillControlConfigHeuristicsBudget": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlHxBudget.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExFillControlsHeuristicsBudgetProviderSettings"
+  },
+  "FPCGExFillControlConfigHeuristicsScoring": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlHxScoring.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExFillControlsHeuristicsScoringProviderSettings"
+  },
+  "FPCGExFillControlConfigHeuristicsThreshold": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlHxThreshold.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExFillControlsHeuristicsThresholdProviderSettings"
+  },
+  "FPCGExFillControlConfigKeepDirection": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlKeepDirection.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExFillControlsKeepDirectionProviderSettings"
+  },
+  "FPCGExFillControlConfigLength": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlLength.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExFillControlsLengthProviderSettings"
+  },
+  "FPCGExFillControlConfigRunningAverage": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlRunningAverage.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExFillControlsRunningAverageProviderSettings"
+  },
+  "FPCGExFillControlConfigVtxFilters": {
+    "file": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlVtxFilters.h",
+    "base_class": "FPCGExFillControlConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExFillControlsVtxFiltersProviderSettings"
+  },
+  "FPCGExPartitonRuleConfig": {
+    "file": "PCGExElementsMeta/Public/Elements/Partition/PCGExPartition.h",
+    "base_class": "FPCGExInputConfig",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "document_with": null
+  },
+  "FPCGExComponentRemapRule": {
+    "file": "PCGExElementsMeta/Public/Elements/PCGExAttributeRemap.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExNoiseFilterConfig": {
+    "file": "PCGExElementsMeta/Public/Filters/Points/PCGExNoiseFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNoiseFilterProviderSettings"
+  },
+  "FPCGExPathStatistics": {
+    "file": "PCGExElementsPathfinding/Public/Core/PCGExPathfinding.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 3,
+    "user_facing_count": 3,
+    "document_with": null
+  },
+  "FPCGExBoxIntersectionDetails": {
+    "file": "PCGExElementsPaths/Public/Details/PCGExBoxIntersectionDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExBoundsPathIntersectionSettings"
+  },
+  "FPCGExShrinkPathEndpointDistanceDetails": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathShrink.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExShrinkPathSettings"
+  },
+  "FPCGExShrinkPathEndpointCountDetails": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathShrink.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExShrinkPathSettings"
+  },
+  "FPCGExPathSolidificationAxisDetails": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathSolidify.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "UPCGExPathSolidifySettings"
+  },
+  "FPCGExPathSolidificationRadiusDetails": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExPathSolidify.h",
+    "base_class": "FPCGExPathSolidificationAxisDetails",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "UPCGExPathSolidifySettings"
+  },
+  "FPCGExSwapAttributePairDetails": {
+    "file": "PCGExElementsPaths/Public/Elements/PCGExReversePointOrder.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExReversePointOrderSettings"
+  },
+  "FPCGExProbeConfigBase": {
+    "file": "PCGExElementsProbing/Public/Core/PCGExProbeOperation.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExProbeConfigGlobalAnisotropic": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeAnisotropic.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExProbeGlobalAnisotropicProviderSettings"
+  },
+  "FPCGExProbeConfigChain": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeChain.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExProbeChainProviderSettings"
+  },
+  "FPCGExProbeConfigDBSCAN": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeDBSCAN.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExProbeDBSCANProviderSettings"
+  },
+  "FPCGExProbeConfigGradientFlow": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeGradientFlow.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExProbeGradientFlowProviderSettings"
+  },
+  "FPCGExProbeConfigHubSpoke": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeHubSpoke.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExProbeHubSpokeProviderSettings"
+  },
+  "FPCGExProbeConfigKNN": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeKNN.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExProbeKNNProviderSettings"
+  },
+  "FPCGExProbeConfigLevelSet": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeLevelSet.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExProbeLevelSetProviderSettings"
+  },
+  "FPCGExProbeConfigSpanner": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeSpanner.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExProbeSpannerProviderSettings"
+  },
+  "FPCGExProbeConfigTheta": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeTheta.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExProbeThetaProviderSettings"
+  },
+  "FPCGExProbeConfigAnisotropic": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExProbeAnisotropic.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExProbeAnisotropicProviderSettings"
+  },
+  "FPCGExProbeConfigBitmasks": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExProbeBitmasks.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExProbeBitmasksProviderSettings"
+  },
+  "FPCGExProbeConfigClosest": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExProbeClosest.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExProbeClosestProviderSettings"
+  },
+  "FPCGExProbeConfigDirection": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExProbeDirection.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExProbeDirectionProviderSettings"
+  },
+  "FPCGExProbeConfigIndex": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExProbeIndex.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExProbeIndexProviderSettings"
+  },
+  "FPCGExProbeConfigNumericCompare": {
+    "file": "PCGExElementsProbing/Public/Probes/PCGExProbeNumericCompare.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExProbeNumericCompareProviderSettings"
+  },
+  "FPCGExTextureParamConfig": {
+    "file": "PCGExElementsSampling/Public/Core/PCGExTexParamFactoryProvider.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExTexParamProviderSettings"
+  },
+  "FPCGExOverlapScoresWeighting": {
+    "file": "PCGExElementsSampling/Public/Elements/PCGExDiscardByOverlap.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "UPCGExDiscardByOverlapSettings"
+  },
+  "FPCGExShapeConfigBase": {
+    "file": "PCGExElementsShapes/Public/Core/PCGExShapeConfigBase.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExShapeCircleConfig": {
+    "file": "PCGExElementsShapes/Public/Shapes/PCGExShapeCircle.h",
+    "base_class": "FPCGExShapeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateShapeCircleSettings"
+  },
+  "FPCGExShapeFiblatConfig": {
+    "file": "PCGExElementsShapes/Public/Shapes/PCGExShapeFiblat.h",
+    "base_class": "FPCGExShapeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateShapeFiblatSettings"
+  },
+  "FPCGExShapeGridConfig": {
+    "file": "PCGExElementsShapes/Public/Shapes/PCGExShapeGrid.h",
+    "base_class": "FPCGExShapeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateShapeGridSettings"
+  },
+  "FPCGExShapePolygonConfig": {
+    "file": "PCGExElementsShapes/Public/Shapes/PCGExShapePolygon.h",
+    "base_class": "FPCGExShapeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateShapePolygonSettings"
+  },
+  "FPCGExBP3DAffinityRule": {
+    "file": "PCGExElementsSpatial/Public/Elements/Layout/PCGExBinPacking3D.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "UPCGExBinPacking3DSettings"
+  },
+  "FPCGExPointsToBoundsDataDetails": {
+    "file": "PCGExElementsSpatial/Public/Elements/PCGExPointsToBounds.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExPointsToBoundsSettings"
+  },
+  "FPCGExTensorSamplingMutationsDetails": {
+    "file": "PCGExElementsTensors/Public/Core/PCGExTensor.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 3,
+    "user_facing_count": 2,
+    "document_with": null
+  },
+  "FPCGExTensorConfigBase": {
+    "file": "PCGExElementsTensors/Public/Core/PCGExTensor.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExTensorSamplerDetails": {
+    "file": "PCGExElementsTensors/Public/Core/PCGExTensorHandler.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExTensorHandlerDetails": {
+    "file": "PCGExElementsTensors/Public/Core/PCGExTensorHandler.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 5,
+    "user_facing_count": 1,
+    "document_with": null
+  },
+  "FPCGExTensorDotFilterConfig": {
+    "file": "PCGExElementsTensors/Public/Filters/Points/PCGExTensorDotFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExTensorDotFilterProviderSettings"
+  },
+  "FPCGExHeuristicConfigTensor": {
+    "file": "PCGExElementsTensors/Public/Heuristics/PCGExHeuristicTensor.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExHeuristicsTensorProviderSettings"
+  },
+  "FPCGExProbeConfigTensor": {
+    "file": "PCGExElementsTensors/Public/Probes/PCGExProbeTensor.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExProbeTensorProviderSettings"
+  },
+  "FPCGExTensorConstantConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorConstant.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateTensorConstantSettings"
+  },
+  "FPCGExTensorFlowConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorFlow.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateTensorFlowSettings"
+  },
+  "FPCGExTensorInertiaConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorInertia.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateTensorInertiaSettings"
+  },
+  "FPCGExTensorInertiaConstantConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorInertiaConstant.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateTensorInertiaConstantSettings"
+  },
+  "FPCGExTensorNoiseConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorNoise.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateTensorNoiseSettings"
+  },
+  "FPCGExTensorNoiseBoundedConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorNoiseBounded.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateTensorNoiseBoundedSettings"
+  },
+  "FPCGExTensorNullConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorNull.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateTensorNullSettings"
+  },
+  "FPCGExTensorPathFlowConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorPathFlow.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateTensorPathFlowSettings"
+  },
+  "FPCGExTensorPathPoleConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorPathPole.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateTensorPathPoleSettings"
+  },
+  "FPCGExTensorPoleConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorPole.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateTensorPoleSettings"
+  },
+  "FPCGExTensorSpinConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorSpin.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateTensorSpinSettings"
+  },
+  "FPCGExTensorSplineFlowConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorSplineFlow.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateTensorSplineFlowSettings"
+  },
+  "FPCGExTensorSplinePoleConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorSplinePole.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateTensorSplinePoleSettings"
+  },
+  "FPCGExTensorSurfaceConfig": {
+    "file": "PCGExElementsTensors/Public/Tensors/PCGExTensorSurface.h",
+    "base_class": "FPCGExTensorConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateTensorSurfaceSettings"
+  },
+  "FPCGExDynamicMeshDescriptor": {
+    "file": "PCGExElementsTopology/Public/Data/Descriptors/PCGExDynamicMeshDescriptor.h",
+    "base_class": "FPCGExMeshComponentDescriptor",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExSpawnDynamicMeshSettings"
+  },
+  "FPCGExUVInputDetails": {
+    "file": "PCGExElementsTopology/Public/PCGExTopology.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExTopologyUVDetails": {
+    "file": "PCGExElementsTopology/Public/PCGExTopology.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "FPCGExTopologyDetails"
+  },
+  "FPCGExTopologyDetails": {
+    "file": "PCGExElementsTopology/Public/PCGExTopology.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 5,
+    "user_facing_count": 4,
+    "document_with": null
+  },
+  "FPCGExValencyLayerCompiled": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyBondingRules.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExValencyModuleTags": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyBondingRules.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExValencyBondingRulesCompiled": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyBondingRules.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExValencyModuleSettings": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 5,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExValencyMaterialOverride": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExValencyMaterialVariant": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExValencyAssetEntry": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 3,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExValencyNeighborIndices": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExValencyModuleLayerConfig": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExValencyModuleDefinition": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExValencyOrbitalEntry": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyOrbitalSet.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExValencyPatternEntryCompiled": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyPattern.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExValencyPatternSettingsCompiled": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyPattern.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExValencyPatternCompiled": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyPattern.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExValencyPatternSetCompiled": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyPattern.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExValencyPropertyOutputConfig": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyPropertyWriter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "UPCGExValencyStagingSettings"
+  },
+  "FPCGExValencyPropertyOutputSettings": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencyPropertyWriter.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExValencyStagingSettings"
+  },
+  "FPCGExValencySocketDefinition": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencySocketRules.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExValencyModuleSocket": {
+    "file": "PCGExElementsValency/Public/Core/PCGExValencySocketRules.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExProbeConfigValency": {
+    "file": "PCGExElementsValency/Public/Probes/PCGExProbeValency.h",
+    "base_class": "FPCGExProbeConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExProbeValencyProviderSettings"
+  },
+  "FPCGExValencyBuildResult": {
+    "file": "PCGExElementsValencyEditor/Public/Builder/PCGExValencyBondingRulesBuilder.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExValencyCageOrbital": {
+    "file": "PCGExElementsValencyEditor/Public/Cages/PCGExValencyCageOrbital.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 5,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExValencyPatternSettings": {
+    "file": "PCGExElementsValencyEditor/Public/Cages/PCGExValencyCagePattern.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExClusterStateConfigBase": {
+    "file": "PCGExFilters/Public/Core/PCGExClusterStates.h",
+    "base_class": "FPCGExStateConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExClusterStateFactoryProviderSettings"
+  },
+  "FPCGExStateConfigBase": {
+    "file": "PCGExFilters/Public/Core/PCGExPointStates.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExPointStateFactoryProviderSettings"
+  },
+  "FPCGExFilterResultDetails": {
+    "file": "PCGExFilters/Public/Details/PCGExFilterDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 3,
+    "user_facing_count": 3,
+    "document_with": null
+  },
+  "FPCGExAttributeCheckFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Collections/PCGExAttributeCheckFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExAttributeCheckFilterProviderSettings"
+  },
+  "FPCGExDataBoundsFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Collections/PCGExDataBoundsFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExDataBoundsFilterProviderSettings"
+  },
+  "FPCGExEntryCountFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Collections/PCGExEntryCountFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExEntryCountFilterProviderSettings"
+  },
+  "FPCGExTagCheckFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Collections/PCGExTagCheckFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExTagCheckFilterProviderSettings"
+  },
+  "FPCGExTagValueFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Collections/PCGExTagValueFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExTagValueFilterProviderSettings"
+  },
+  "FPCGExAngleFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExAngleFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExAngleFilterProviderSettings"
+  },
+  "FPCGExBitmaskFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExBitmaskFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExBitmaskFilterProviderSettings"
+  },
+  "FPCGExBooleanCompareFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExBooleanCompareFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExBooleanCompareFilterProviderSettings"
+  },
+  "FPCGExBoundsFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExBoundsFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExBoundsFilterProviderSettings"
+  },
+  "FPCGExConstantFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExConstantFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExConstantFilterProviderSettings"
+  },
+  "FPCGExDistanceFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExDistanceFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExDistanceFilterProviderSettings"
+  },
+  "FPCGExDotFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExDotFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExDotFilterProviderSettings"
+  },
+  "FPCGExGameplayTagsFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExGameplayTagsFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExGameplayTagsFilterProviderSettings"
+  },
+  "FPCGExInclusionFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExInclusionFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExInclusionFilterProviderSettings"
+  },
+  "FPCGExMeanFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExMeanFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExMeanFilterProviderSettings"
+  },
+  "FPCGExModuloCompareFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExModuloCompareFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExModuloCompareFilterProviderSettings"
+  },
+  "FPCGExNumericCompareFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExNumericCompareFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNumericCompareFilterProviderSettings"
+  },
+  "FPCGExNumericCompareNearestFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExNumericCompareNearestFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNumericCompareNearestFilterProviderSettings"
+  },
+  "FPCGExNumericSelfCompareFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExNumericSelfCompareFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNumericSelfCompareFilterProviderSettings"
+  },
+  "FPCGExPickerFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExPickerFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExPickerFilterProviderSettings"
+  },
+  "FPCGExRandomFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExRandomFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExRandomFilterProviderSettings"
+  },
+  "FPCGExRandomRatioFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExRandomRatioFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExRandomRatioFilterProviderSettings"
+  },
+  "FPCGExSegmentCrossFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExSegmentCrossFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExSegmentCrossFilterProviderSettings"
+  },
+  "FPCGExSegmentLengthFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExSegmentLengthFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExSegmentLengthFilterProviderSettings"
+  },
+  "FPCGExStringCompareFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExStringCompareFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExStringCompareFilterProviderSettings"
+  },
+  "FPCGExStringSelfCompareFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExStringSelfCompareFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExStringSelfCompareFilterProviderSettings"
+  },
+  "FPCGExTimeFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExTimeFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExTimeFilterProviderSettings"
+  },
+  "FPCGExValueHashFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExValueHashFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExValueHashFilterProviderSettings"
+  },
+  "FPCGExWithinRangeFilterConfig": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExWithinRangeFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExWithinRangeFilterProviderSettings"
+  },
+  "FPCGExAxisDeformDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExAxisDeformDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCopyToPathsSettings"
+  },
+  "FPCGExAxisTwistDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExAxisDeformDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExClampDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExClampDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 0,
+    "document_with": "UPCGExCreateShapeGridSettings"
+  },
+  "FPCGExCollisionDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExCollisionDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 5,
+    "user_facing_count": 2,
+    "document_with": null
+  },
+  "FPCGExInfluenceDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExInfluenceDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 3,
+    "user_facing_count": 3,
+    "document_with": null
+  },
+  "FPCGExRemapDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExRemapDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExSocket": {
+    "file": "PCGExFoundations/Public/Details/PCGExSocket.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExSocketFitDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExSocketFitDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExSocketOutputDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExSocketOutputDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 3,
+    "user_facing_count": 2,
+    "document_with": null
+  },
+  "FPCGExSplineMeshMutationDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExSplineMeshDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "document_with": null
+  },
+  "FPCGExManhattanDetails": {
+    "file": "PCGExFoundations/Public/Details/PCGExSubdivisionDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "document_with": null
+  },
+  "FPCGExBranchOnDataPin": {
+    "file": "PCGExFoundations/Public/Elements/ControlFlow/PCGExBranchOnDataAttribute.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExBranchOnDataAttributeSettings"
+  },
+  "FPCGExAttributeDebugDrawConfig": {
+    "file": "PCGExFoundations/Public/Elements/Debug/PCGExDrawAttributes.h",
+    "base_class": "FPCGExInputConfig",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExDrawAttributesSettings"
+  },
+  "FPCGExAttributeDebugDraw": {
+    "file": "PCGExFoundations/Public/Elements/Debug/PCGExDrawAttributes.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExGUIDDetails": {
+    "file": "PCGExFoundations/Public/Elements/Utils/PCGExWriteGUID.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "document_with": null
+  },
+  "FPCGExRaycastFilterConfig": {
+    "file": "PCGExFoundations/Public/Filters/Points/PCGExRaycastFilter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExRaycastFilterProviderSettings"
+  },
+  "FPCGExTangentsScalingDetails": {
+    "file": "PCGExFoundations/Public/Tangents/PCGExTangentsInstancedFactory.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "FPCGExTangentsDetails"
+  },
+  "FPCGExTangentsDetails": {
+    "file": "PCGExFoundations/Public/Tangents/PCGExTangentsInstancedFactory.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 3,
+    "user_facing_count": 2,
+    "document_with": null
+  },
+  "FPCGExCellConstraintsDetails": {
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 8,
+    "user_facing_count": 7,
+    "document_with": null
+  },
+  "FPCGExCellSeedMutationDetails": {
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "document_with": null
+  },
+  "FPCGExCellOBBAttributesDetails": {
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "FPCGExCellArtifactsDetails"
+  },
+  "FPCGExCellArtifactsDetails": {
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 5,
+    "user_facing_count": 5,
+    "document_with": null
+  },
+  "FPCGExCellGrowthDetails": {
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 4,
+    "user_facing_count": 4,
+    "document_with": null
+  },
+  "FPCGExBasicEdgeSolidificationDetails": {
+    "file": "PCGExGraphs/Public/Graphs/PCGExGraphDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "FPCGExGraphBuilderDetails"
+  },
+  "FPCGExGraphBuilderDetails": {
+    "file": "PCGExGraphs/Public/Graphs/PCGExGraphDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 19,
+    "user_facing_count": 17,
+    "document_with": null
+  },
+  "FPCGExHeuristicConfigBase": {
+    "file": "PCGExHeuristics/Public/Core/PCGExHeuristicsFactoryProvider.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExHeuristicAttributeConfig": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicAttribute.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateHeuristicAttributeSettings"
+  },
+  "FPCGExHeuristicConfigAzimuth": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicAzimuth.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExHeuristicsAzimuthProviderSettings"
+  },
+  "FPCGExHeuristicConfigShortestDistance": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicDistance.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExHeuristicsShortestDistanceProviderSettings"
+  },
+  "FPCGExHeuristicConfigFeedback": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicFeedback.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExHeuristicFeedbackProviderSettings"
+  },
+  "FPCGExHeuristicGradientConfig": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicGradient.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExHeuristicsGradientProviderSettings"
+  },
+  "FPCGExHeuristicConfigInertia": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicInertia.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExHeuristicsInertiaProviderSettings"
+  },
+  "FPCGExHeuristicConfigLeastNodes": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicNodeCount.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExHeuristicsLeastNodesProviderSettings"
+  },
+  "FPCGExHeuristicConfigSteepness": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicSteepness.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExHeuristicsSteepnessProviderSettings"
+  },
+  "FPCGExHeuristicConfigTurnPenalty": {
+    "file": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicTurnPenalty.h",
+    "base_class": "FPCGExHeuristicConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExHeuristicsTurnPenaltyProviderSettings"
+  },
+  "FPCGExMatchRuleConfigBase": {
+    "file": "PCGExMatching/Public/Core/PCGExMatchRuleFactoryProvider.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExMatchingDetails": {
+    "file": "PCGExMatching/Public/Details/PCGExMatchingDetails.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": true,
+    "usage_count": 17,
+    "user_facing_count": 12,
+    "document_with": null
+  },
+  "FPCGExMatchAttrToAttrConfig": {
+    "file": "PCGExMatching/Public/Matching/PCGExMatchAttrToAttr.h",
+    "base_class": "FPCGExMatchRuleConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateMatchAttrToAttrSettings"
+  },
+  "FPCGExMatchByIndexConfig": {
+    "file": "PCGExMatching/Public/Matching/PCGExMatchByIndex.h",
+    "base_class": "FPCGExMatchRuleConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateMatchByIndexSettings"
+  },
+  "FPCGExMatchCopyTagsConfig": {
+    "file": "PCGExMatching/Public/Matching/PCGExMatchCopyTags.h",
+    "base_class": "FPCGExMatchRuleConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateMatchCopyTagsSettings"
+  },
+  "FPCGExMatchOverlapConfig": {
+    "file": "PCGExMatching/Public/Matching/PCGExMatchOverlap.h",
+    "base_class": "FPCGExMatchRuleConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateMatchOverlapSettings"
+  },
+  "FPCGExMatchRandomConfig": {
+    "file": "PCGExMatching/Public/Matching/PCGExMatchRandom.h",
+    "base_class": "FPCGExMatchRuleConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateMatchRandomSettings"
+  },
+  "FPCGExMatchSharedTagConfig": {
+    "file": "PCGExMatching/Public/Matching/PCGExMatchSharedTag.h",
+    "base_class": "FPCGExMatchRuleConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateMatchSharedTagSettings"
+  },
+  "FPCGExMatchTagToAttrConfig": {
+    "file": "PCGExMatching/Public/Matching/PCGExMatchTagToAttr.h",
+    "base_class": "FPCGExMatchRuleConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExCreateMatchTagToAttrSettings"
+  },
+  "FPCGExNoise3DConfigBase": {
+    "file": "PCGExNoise3D/Public/Core/PCGExNoise3DFactoryProvider.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExNoiseConfigCaustic": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseCaustic.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNoise3DCausticProviderSettings"
+  },
+  "FPCGExNoiseConfigCurl": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseCurl.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNoise3DCurlProviderSettings"
+  },
+  "FPCGExNoiseConfigFBM": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseFBM.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNoise3DFBMProviderSettings"
+  },
+  "FPCGExNoiseConfigFlow": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseFlow.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNoise3DFlowProviderSettings"
+  },
+  "FPCGExNoiseConfigGabor": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseGabor.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNoise3DGaborProviderSettings"
+  },
+  "FPCGExNoiseConfigMarble": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseMarble.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNoise3DMarbleProviderSettings"
+  },
+  "FPCGExNoiseConfigOpenSimplex2": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseOpenSimplex2.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNoise3DOpenSimplex2ProviderSettings"
+  },
+  "FPCGExNoiseConfigPerlin": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoisePerlin.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNoise3DPerlinProviderSettings"
+  },
+  "FPCGExNoiseConfigSimplex": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseSimplex.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNoise3DSimplexProviderSettings"
+  },
+  "FPCGExNoiseConfigSpots": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseSpots.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNoise3DSpotsProviderSettings"
+  },
+  "FPCGExNoiseConfigSwiss": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseSwiss.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNoise3DSwissProviderSettings"
+  },
+  "FPCGExNoiseConfigTiling": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseTiling.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNoise3DTilingProviderSettings"
+  },
+  "FPCGExNoiseConfigValue": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseValue.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNoise3DValueProviderSettings"
+  },
+  "FPCGExNoiseConfigVoronoi": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseVoronoi.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNoise3DVoronoiProviderSettings"
+  },
+  "FPCGExNoiseConfigWhite": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseWhite.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNoise3DWhiteProviderSettings"
+  },
+  "FPCGExNoiseConfigWorley": {
+    "file": "PCGExNoise3D/Public/Noises/PCGExNoiseWorley.h",
+    "base_class": "FPCGExNoise3DConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExNoise3DWorleyProviderSettings"
+  },
+  "FPCGExPickerConfigBase": {
+    "file": "PCGExPickers/Public/Core/PCGExPickerFactoryProvider.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExPickerAttributeSetConfig": {
+    "file": "PCGExPickers/Public/Pickers/PCGExPickerAttributeSet.h",
+    "base_class": "FPCGExPickerConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExPickerAttributeSetSettings"
+  },
+  "FPCGExPickerAttributeSetRangesConfig": {
+    "file": "PCGExPickers/Public/Pickers/PCGExPickerAttributeSetRanges.h",
+    "base_class": "FPCGExPickerConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExPickerAttributeSetRangesSettings"
+  },
+  "FPCGExPickerConstantConfig": {
+    "file": "PCGExPickers/Public/Pickers/PCGExPickerConstant.h",
+    "base_class": "FPCGExPickerConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExPickerConstantSettings"
+  },
+  "FPCGExPickerConstantRangeConfig": {
+    "file": "PCGExPickers/Public/Pickers/PCGExPickerConstantRange.h",
+    "base_class": "FPCGExPickerConfigBase",
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExPickerConstantRangeSettings"
+  },
+  "FPCGExPropertyRegistryEntry": {
+    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 5,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExPropertyCompiled": {
+    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExPropertyOverrideEntry": {
+    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "UPCGExTupleSettings"
+  },
+  "FPCGExPropertyOverrides": {
+    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 2,
+    "user_facing_count": 1,
+    "document_with": "UPCGExTupleSettings"
+  },
+  "FPCGExPropertySchema": {
+    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExPropertySchemaCollection": {
+    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 6,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExPropertyCompiled_Vector": {
+    "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
+    "base_class": "FPCGExPropertyCompiled",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExPropertyCompiled_Vector2": {
+    "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
+    "base_class": "FPCGExPropertyCompiled",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExPropertyCompiled_Vector4": {
+    "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
+    "base_class": "FPCGExPropertyCompiled",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExPropertyCompiled_Color": {
+    "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
+    "base_class": "FPCGExPropertyCompiled",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExPropertyCompiled_Rotator": {
+    "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
+    "base_class": "FPCGExPropertyCompiled",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExPropertyCompiled_Quat": {
+    "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
+    "base_class": "FPCGExPropertyCompiled",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExPropertyCompiled_Transform": {
+    "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
+    "base_class": "FPCGExPropertyCompiled",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExPropertyCompiled_Enum": {
+    "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
+    "base_class": "FPCGExPropertyCompiled",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
+  },
+  "FPCGExPropertyOutputConfig": {
+    "file": "PCGExProperties/Public/PCGExPropertyWriter.h",
+    "base_class": null,
+    "is_config": true,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "UPCGExStagingLoadPropertiesSettings"
+  },
+  "FPCGExPropertyOutputSettings": {
+    "file": "PCGExProperties/Public/PCGExPropertyWriter.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "document_with": "UPCGExStagingLoadPropertiesSettings"
+  }
+}

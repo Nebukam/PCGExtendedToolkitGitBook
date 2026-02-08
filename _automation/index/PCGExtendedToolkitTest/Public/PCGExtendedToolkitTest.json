@@ -1,0 +1,15 @@
+{
+  "path": "PCGExtendedToolkitTest/Public/PCGExtendedToolkitTest.h",
+  "module": "PCGExtendedToolkitTest",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExtendedToolkitTestModule",
+      "base_class": "IModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

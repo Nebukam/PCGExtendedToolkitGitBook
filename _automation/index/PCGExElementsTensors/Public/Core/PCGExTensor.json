@@ -1,0 +1,428 @@
+{
+  "path": "PCGExElementsTensors/Public/Core/PCGExTensor.h",
+  "module": "PCGExElementsTensors",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExTensorSamplingMode",
+      "values": [
+        {
+          "name": "Weighted",
+          "display_name": "Weighted"
+        },
+        {
+          "name": "OrderedInPlace",
+          "display_name": "OrderedInPlace"
+        },
+        {
+          "name": "OrderedMutated",
+          "display_name": "OrderedMutated"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExEffectorFlattenMode",
+      "values": [
+        {
+          "name": "Weighted",
+          "display_name": "Weighted"
+        },
+        {
+          "name": "Closest",
+          "display_name": "Closest"
+        },
+        {
+          "name": "StrongestWeight",
+          "display_name": "StrongestWeight"
+        },
+        {
+          "name": "StrongestPotency",
+          "display_name": "StrongestPotency"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExEffectorInfluenceShape",
+      "values": [
+        {
+          "name": "Box",
+          "display_name": "Box"
+        },
+        {
+          "name": "Sphere",
+          "display_name": "Sphere"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExTensorStopConditionHandling",
+      "values": [
+        {
+          "name": "Exclude",
+          "display_name": "Exclude"
+        },
+        {
+          "name": "Include",
+          "display_name": "Include"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExTensorSamplingMutationsDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bInvert",
+          "display_name": "bInvert",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bBidirectional",
+          "display_name": "bBidirectional",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "BidirectionalAxisReference",
+          "display_name": " └─ Reference Axis",
+          "type": "EPCGExAxis",
+          "default": "EPCGExAxis::Forward",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bBidirectional",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bScaleDirectionAndSize",
+          "display_name": "bScaleDirectionAndSize",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Scale",
+          "display_name": "Scale",
+          "type": "FVector",
+          "default": "FVector::OneVector",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bScaleDirectionAndSize",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExTensorConfigBase",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "TensorWeight",
+          "display_name": "TensorWeight",
+          "type": "double",
+          "default": "1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Blending",
+          "display_name": "Blending",
+          "type": "EPCGExEffectorFlattenMode",
+          "default": "EPCGExEffectorFlattenMode::Weighted",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bUseLocalGuideCurve",
+          "display_name": "bUseLocalGuideCurve",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Guide",
+          "advanced": false
+        },
+        {
+          "name": "LocalGuideCurve",
+          "display_name": "Guide Curve",
+          "type": "FRuntimeVectorCurve",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseLocalGuideCurve",
+          "edit_condition_hides": true,
+          "category": "Settings|Guide",
+          "advanced": false
+        },
+        {
+          "name": "GuideCurve",
+          "display_name": "Guide Curve",
+          "type": "TSoftObjectPtr<UCurveVector>",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "!bUseLocalGuideCurve",
+          "edit_condition_hides": true,
+          "category": "Settings|Guide",
+          "advanced": false
+        },
+        {
+          "name": "PotencyInput",
+          "display_name": "PotencyInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Attribute",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSupportAttributes",
+          "edit_condition_hides": true,
+          "category": "Settings|Potency",
+          "advanced": false
+        },
+        {
+          "name": "Potency",
+          "display_name": "Potency",
+          "type": "double",
+          "default": "1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "PotencyInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": "Settings|Potency",
+          "advanced": false
+        },
+        {
+          "name": "bUseLocalPotencyFalloffCurve",
+          "display_name": "bUseLocalPotencyFalloffCurve",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Potency",
+          "advanced": false
+        },
+        {
+          "name": "LocalPotencyFalloffCurve",
+          "display_name": "Potency Falloff Curve",
+          "type": "FRuntimeFloatCurve",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseLocalPotencyFalloffCurve",
+          "edit_condition_hides": true,
+          "category": "Settings|Potency",
+          "advanced": false
+        },
+        {
+          "name": "PotencyFalloffCurve",
+          "display_name": "Potency Falloff Curve",
+          "type": "TSoftObjectPtr<UCurveFloat>",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "!bUseLocalPotencyFalloffCurve",
+          "edit_condition_hides": true,
+          "category": "Settings|Potency",
+          "advanced": false
+        },
+        {
+          "name": "PotencyFalloffCurveLookup",
+          "display_name": "PotencyFalloffCurveLookup",
+          "type": "FPCGExCurveLookupDetails",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Potency",
+          "advanced": false
+        },
+        {
+          "name": "PotencyScale",
+          "display_name": "Potency Scale",
+          "type": "double",
+          "default": "1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Potency",
+          "advanced": false
+        },
+        {
+          "name": "WeightInput",
+          "display_name": "WeightInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSupportAttributes",
+          "edit_condition_hides": true,
+          "category": "Settings|Weighting",
+          "advanced": false
+        },
+        {
+          "name": "Weight",
+          "display_name": "Weight",
+          "type": "double",
+          "default": "1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "WeightInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": "Settings|Weighting",
+          "advanced": false
+        },
+        {
+          "name": "bUseLocalWeightFalloffCurve",
+          "display_name": "bUseLocalWeightFalloffCurve",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Weighting",
+          "advanced": false
+        },
+        {
+          "name": "LocalWeightFalloffCurve",
+          "display_name": "Weight Falloff Curve",
+          "type": "FRuntimeFloatCurve",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseLocalWeightFalloffCurve",
+          "edit_condition_hides": true,
+          "category": "Settings|Weighting",
+          "advanced": false
+        },
+        {
+          "name": "WeightFalloffCurve",
+          "display_name": "Weight Falloff Curve",
+          "type": "TSoftObjectPtr<UCurveFloat>",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "!bUseLocalWeightFalloffCurve",
+          "edit_condition_hides": true,
+          "category": "Settings|Weighting",
+          "advanced": false
+        },
+        {
+          "name": "WeightFalloffCurveLookup",
+          "display_name": "WeightFalloffCurveLookup",
+          "type": "FPCGExCurveLookupDetails",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Weighting",
+          "advanced": false
+        },
+        {
+          "name": "EffectorFlattenMode",
+          "display_name": "EffectorFlattenMode",
+          "type": "EPCGExEffectorFlattenMode",
+          "default": "EPCGExEffectorFlattenMode::Weighted",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Potency",
+          "advanced": false
+        },
+        {
+          "name": "Mutations",
+          "display_name": "Sampling Mutations",
+          "type": "FPCGExTensorSamplingMutationsDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSupportMutations",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": true,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {
+    "PCGExTensor": {
+      "OutputTensorLabel": "Tensor",
+      "SourceTensorsLabel": "Tensors",
+      "SourceEffectorsLabel": "Effectors",
+      "SourceTensorConfigSourceLabel": "Parent Tensor"
+    }
+  }
+}

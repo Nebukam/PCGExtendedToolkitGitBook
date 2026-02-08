@@ -1,0 +1,15 @@
+{
+  "path": "PCGExFilters/Public/PCGExFilters.h",
+  "module": "PCGExFilters",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExFiltersModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

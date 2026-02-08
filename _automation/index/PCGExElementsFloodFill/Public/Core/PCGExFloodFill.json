@@ -1,0 +1,105 @@
+{
+  "path": "PCGExElementsFloodFill/Public/Core/PCGExFloodFill.h",
+  "module": "PCGExElementsFloodFill",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExFloodFillSettingSource",
+      "values": [
+        {
+          "name": "Seed",
+          "display_name": "Seed"
+        },
+        {
+          "name": "Vtx",
+          "display_name": "Vtx"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExFloodFillPrioritization",
+      "values": [
+        {
+          "name": "Heuristics",
+          "display_name": "Heuristics"
+        },
+        {
+          "name": "Depth",
+          "display_name": "Depth"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExFloodFillFlowDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Priority",
+          "display_name": "Priority",
+          "type": "EPCGExFloodFillPrioritization",
+          "default": "EPCGExFloodFillPrioritization::Heuristics",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "FillRateSource",
+          "display_name": "FillRateSource",
+          "type": "EPCGExFloodFillSettingSource",
+          "default": "EPCGExFloodFillSettingSource::Seed",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "FillRateInput",
+          "display_name": "FillRateInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "FillRateConstant",
+          "display_name": "Fill Rate",
+          "type": "int32",
+          "default": "1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "FillRateInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {
+    "PCGExFloodFill": {
+      "OutputFillControlsLabel": "Fill Control",
+      "SourceFillControlsLabel": "Fill Controls"
+    }
+  }
+}

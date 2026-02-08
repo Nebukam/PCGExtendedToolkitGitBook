@@ -1,0 +1,807 @@
+[
+  {
+    "name": "FPCGExGeo2DProjectionDetails",
+    "file": "PCGExCore/Public/Math/PCGExProjectionDetails.h",
+    "origin_count": 25,
+    "origins": [
+      "UPCGExClipper2BooleanSettings",
+      "UPCGExClipper2OffsetSettings",
+      "UPCGExClipper2RectClipSettings",
+      "UPCGExBreakClustersToPathsSettings",
+      "UPCGExConnectClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildConvexHull2DSettings",
+      "UPCGExBuildDelaunayGraph2DSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExBuildVoronoiGraph2DSettings",
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExFindClusterHullSettings",
+      "UPCGExReversePointOrderSettings",
+      "UPCGExWritePathPropertiesSettings",
+      "UPCGExConnectPointsSettings",
+      "UPCGExSampleInsidePathSettings",
+      "UPCGExSampleNearestPathSettings",
+      "UPCGExFlatProjectionSettings",
+      "UPCGExLloydRelax2DSettings",
+      "UPCGExTopologyClustersProcessorSettings",
+      "UPCGExClipper2TriangulateSettings",
+      "UPCGExTopologyPointSurfaceSettings"
+    ],
+    "usage_count": 28,
+    "user_facing_count": 19,
+    "user_facing_origins": [
+      "UPCGExClipper2BooleanSettings",
+      "UPCGExClipper2OffsetSettings",
+      "UPCGExBreakClustersToPathsSettings",
+      "UPCGExConnectClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildConvexHull2DSettings",
+      "UPCGExBuildDelaunayGraph2DSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExBuildVoronoiGraph2DSettings",
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExFindClusterHullSettings",
+      "UPCGExReversePointOrderSettings",
+      "UPCGExLloydRelax2DSettings",
+      "UPCGExClipper2TriangulateSettings",
+      "UPCGExTopologyPointSurfaceSettings"
+    ],
+    "user_facing_origin_count": 18
+  },
+  {
+    "name": "FPCGExCarryOverDetails",
+    "file": "PCGExCore/Public/Data/Utils/PCGExDataFilterDetails.h",
+    "origin_count": 18,
+    "origins": [
+      "UPCGExClipper2ProcessorSettings",
+      "UPCGExPathToClustersSettings",
+      "UPCGExConnectClustersSettings",
+      "UPCGExFindPointOnBoundsClustersSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExMergeVerticesSettings",
+      "UPCGExPackClustersSettings",
+      "UPCGExSimplifyClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExMetaCleanupSettings",
+      "UPCGExPathCrossingsSettings",
+      "UPCGExPathStitchSettings",
+      "UPCGExSplineToPathSettings",
+      "UPCGExFindPointOnBoundsSettings",
+      "UPCGExFusePointsSettings",
+      "UPCGExMergePointsSettings",
+      "UPCGExMergePointsByTagSettings"
+    ],
+    "usage_count": 23,
+    "user_facing_count": 19,
+    "user_facing_origins": [
+      "UPCGExPathToClustersSettings",
+      "UPCGExConnectClustersSettings",
+      "UPCGExFindPointOnBoundsClustersSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExMergeVerticesSettings",
+      "UPCGExPackClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExMetaCleanupSettings",
+      "UPCGExPathCrossingsSettings",
+      "UPCGExPathStitchSettings",
+      "UPCGExSplineToPathSettings",
+      "UPCGExFindPointOnBoundsSettings",
+      "UPCGExFusePointsSettings",
+      "UPCGExMergePointsSettings",
+      "UPCGExMergePointsByTagSettings"
+    ],
+    "user_facing_origin_count": 16
+  },
+  {
+    "name": "FPCGExGraphBuilderDetails",
+    "file": "PCGExGraphs/Public/Graphs/PCGExGraphDetails.h",
+    "origin_count": 19,
+    "origins": [
+      "UPCGExCutEdgesSettings",
+      "UPCGExPathToClustersSettings",
+      "UPCGExBuildCustomGraphSettings",
+      "UPCGExConnectClustersSettings",
+      "UPCGExFilterVtxSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExMeshToClustersSettings",
+      "UPCGExSanitizeClustersSettings",
+      "UPCGExSimplifyClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildConvexHullSettings",
+      "UPCGExBuildConvexHull2DSettings",
+      "UPCGExBuildDelaunayGraphSettings",
+      "UPCGExBuildDelaunayGraph2DSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExBuildVoronoiGraphSettings",
+      "UPCGExBuildVoronoiGraph2DSettings",
+      "UPCGExRefineEdgesSettings",
+      "UPCGExConnectPointsSettings"
+    ],
+    "usage_count": 19,
+    "user_facing_count": 17,
+    "user_facing_origins": [
+      "UPCGExCutEdgesSettings",
+      "UPCGExPathToClustersSettings",
+      "UPCGExBuildCustomGraphSettings",
+      "UPCGExConnectClustersSettings",
+      "UPCGExFilterVtxSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExMeshToClustersSettings",
+      "UPCGExSanitizeClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildConvexHullSettings",
+      "UPCGExBuildConvexHull2DSettings",
+      "UPCGExBuildDelaunayGraphSettings",
+      "UPCGExBuildDelaunayGraph2DSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExBuildVoronoiGraphSettings",
+      "UPCGExBuildVoronoiGraph2DSettings",
+      "UPCGExRefineEdgesSettings"
+    ],
+    "user_facing_origin_count": 17
+  },
+  {
+    "name": "FPCGExBlendingDetails",
+    "file": "PCGExBlending/Public/Details/PCGExBlendingDetails.h",
+    "origin_count": 15,
+    "origins": [
+      "UPCGExSubPointsBlendInstancedFactory",
+      "UPCGExClipper2ProcessorSettings",
+      "UPCGExWriteEdgePropertiesSettings",
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExSimplifyClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExBlendPathSettings",
+      "UPCGExFuseCollinearSettings",
+      "UPCGExPathCrossingsSettings",
+      "UPCGExResamplePathSettings",
+      "UPCGExSmoothSettings",
+      "UPCGExFusePointsSettings",
+      "UPCGExPointsToBoundsSettings"
+    ],
+    "usage_count": 23,
+    "user_facing_count": 15,
+    "user_facing_origins": [
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExBuildDualGraphSettings",
+      "UPCGExPathCrossingsSettings",
+      "UPCGExResamplePathSettings",
+      "UPCGExSmoothSettings",
+      "UPCGExFusePointsSettings",
+      "UPCGExPointsToBoundsSettings"
+    ],
+    "user_facing_origin_count": 9
+  },
+  {
+    "name": "FPCGExForwardDetails",
+    "file": "PCGExCore/Public/Data/Utils/PCGExDataForwardDetails.h",
+    "origin_count": 15,
+    "origins": [
+      "UPCGExPCGDataAssetLoaderSettings",
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExMeshToClustersSettings",
+      "UPCGExPickClosestClustersSettings",
+      "UPCGExClusterDiffusionSettings",
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingPlotEdgesSettings",
+      "UPCGExPathfindingNavmeshSettings",
+      "UPCGExPathInsertSettings",
+      "UPCGExSampleNearestSurfaceSettings",
+      "UPCGExSampleSurfaceGuidedSettings",
+      "UPCGExCopyToPointsSettings"
+    ],
+    "usage_count": 16,
+    "user_facing_count": 14,
+    "user_facing_origins": [
+      "UPCGExPCGDataAssetLoaderSettings",
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExMeshToClustersSettings",
+      "UPCGExPickClosestClustersSettings",
+      "UPCGExClusterDiffusionSettings",
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingPlotEdgesSettings",
+      "UPCGExPathfindingNavmeshSettings",
+      "UPCGExPathInsertSettings",
+      "UPCGExSampleNearestSurfaceSettings",
+      "UPCGExCopyToPointsSettings"
+    ],
+    "user_facing_origin_count": 14
+  },
+  {
+    "name": "FPCGExMatchingDetails",
+    "file": "PCGExMatching/Public/Details/PCGExMatchingDetails.h",
+    "origin_count": 13,
+    "origins": [
+      "UPCGExClipper2ProcessorSettings",
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExPathfindingPlotEdgesSettings",
+      "UPCGExBoundsPathIntersectionSettings",
+      "UPCGExCopyToPathsSettings",
+      "UPCGExPathInsertSettings",
+      "UPCGExSampleInsidePathSettings",
+      "UPCGExSampleNearestBoundsSettings",
+      "UPCGExSampleNearestPathSettings",
+      "UPCGExSampleNearestPointSettings",
+      "UPCGExBestMatchAxisSettings",
+      "UPCGExCopyToPointsSettings",
+      "UPCGExMergePointsSettings"
+    ],
+    "usage_count": 17,
+    "user_facing_count": 12,
+    "user_facing_origins": [
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExPathfindingPlotEdgesSettings",
+      "UPCGExBoundsPathIntersectionSettings",
+      "UPCGExCopyToPathsSettings",
+      "UPCGExPathInsertSettings",
+      "UPCGExSampleNearestBoundsSettings",
+      "UPCGExBestMatchAxisSettings",
+      "UPCGExCopyToPointsSettings",
+      "UPCGExMergePointsSettings"
+    ],
+    "user_facing_origin_count": 9
+  },
+  {
+    "name": "FPCGExAttributeToTagDetails",
+    "file": "PCGExCore/Public/Data/Utils/PCGExDataForwardDetails.h",
+    "origin_count": 13,
+    "origins": [
+      "UPCGExWaitForPCGDataSettings",
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExPickClosestClustersSettings",
+      "UPCGExClusterDiffusionSettings",
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingNavmeshSettings",
+      "UPCGExBoundsAxisToPointsSettings",
+      "UPCGExBoundsToPointsSettings",
+      "UPCGExExtrudeTensorsSettings",
+      "UPCGExCopyToPointsSettings"
+    ],
+    "usage_count": 13,
+    "user_facing_count": 11,
+    "user_facing_origins": [
+      "UPCGExWaitForPCGDataSettings",
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExPickClosestClustersSettings",
+      "UPCGExClusterDiffusionSettings",
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingNavmeshSettings",
+      "UPCGExBoundsToPointsSettings",
+      "UPCGExCopyToPointsSettings"
+    ],
+    "user_facing_origin_count": 11
+  },
+  {
+    "name": "FPCGExCellConstraintsDetails",
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "origin_count": 7,
+    "origins": [
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExFindClusterHullSettings",
+      "UPCGExTopologyClustersProcessorSettings"
+    ],
+    "usage_count": 8,
+    "user_facing_count": 7,
+    "user_facing_origins": [
+      "UPCGExBuildCellDiagramSettings",
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExFindClusterHullSettings"
+    ],
+    "user_facing_origin_count": 6
+  },
+  {
+    "name": "FPCGExNodeSelectionDetails",
+    "file": "PCGExCore/Public/Clusters/PCGExClusterCommon.h",
+    "origin_count": 5,
+    "origins": [
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingPlotEdgesSettings"
+    ],
+    "usage_count": 6,
+    "user_facing_count": 5,
+    "user_facing_origins": [
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingPlotEdgesSettings"
+    ],
+    "user_facing_origin_count": 5
+  },
+  {
+    "name": "FPCGExCellArtifactsDetails",
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "origin_count": 5,
+    "origins": [
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExFindClusterHullSettings"
+    ],
+    "usage_count": 5,
+    "user_facing_count": 5,
+    "user_facing_origins": [
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings",
+      "UPCGExFindClusterHullSettings"
+    ],
+    "user_facing_origin_count": 5
+  },
+  {
+    "name": "FPCGExNameFiltersDetails",
+    "file": "PCGExCore/Public/Data/Utils/PCGExDataFilterDetails.h",
+    "origin_count": 4,
+    "origins": [
+      "UPCGExBatchActionsSettings",
+      "UPCGExAttributeStatsSettings",
+      "UPCGExSplineToPathSettings",
+      "UPCGExMergePointsByTagSettings"
+    ],
+    "usage_count": 7,
+    "user_facing_count": 4,
+    "user_facing_origins": [
+      "UPCGExBatchActionsSettings",
+      "UPCGExAttributeStatsSettings",
+      "UPCGExSplineToPathSettings",
+      "UPCGExMergePointsByTagSettings"
+    ],
+    "user_facing_origin_count": 4
+  },
+  {
+    "name": "FPCGExTopologyDetails",
+    "file": "PCGExElementsTopology/Public/PCGExTopology.h",
+    "origin_count": 4,
+    "origins": [
+      "UPCGExTopologyClustersProcessorSettings",
+      "UPCGExClipper2TriangulateSettings",
+      "UPCGExTopologyPathSurfaceSettings",
+      "UPCGExTopologyPointSurfaceSettings"
+    ],
+    "usage_count": 5,
+    "user_facing_count": 4,
+    "user_facing_origins": [
+      "UPCGExClipper2TriangulateSettings",
+      "UPCGExTopologyPathSurfaceSettings",
+      "UPCGExTopologyPointSurfaceSettings"
+    ],
+    "user_facing_origin_count": 3
+  },
+  {
+    "name": "FPCGExCellGrowthDetails",
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "origin_count": 4,
+    "origins": [
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings"
+    ],
+    "usage_count": 4,
+    "user_facing_count": 4,
+    "user_facing_origins": [
+      "UPCGExFindAllCellsSettings",
+      "UPCGExFindAllCellsBoundedSettings",
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings"
+    ],
+    "user_facing_origin_count": 4
+  },
+  {
+    "name": "FPCGExApplySamplingDetails",
+    "file": "PCGExBlending/Public/Sampling/PCGExApplySamplingDetails.h",
+    "origin_count": 7,
+    "origins": [
+      "UPCGExSampleVtxByIDSettings",
+      "UPCGExSampleNearestBoundsSettings",
+      "UPCGExSampleNearestPathSettings",
+      "UPCGExSampleNearestPointSettings",
+      "UPCGExSampleNearestSplineSettings",
+      "UPCGExSampleNearestSurfaceSettings",
+      "UPCGExSampleSurfaceGuidedSettings"
+    ],
+    "usage_count": 7,
+    "user_facing_count": 3,
+    "user_facing_origins": [
+      "UPCGExSampleVtxByIDSettings",
+      "UPCGExSampleNearestBoundsSettings",
+      "UPCGExSampleNearestSurfaceSettings"
+    ],
+    "user_facing_origin_count": 3
+  },
+  {
+    "name": "FPCGExScaleToFitDetails",
+    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
+    "origin_count": 4,
+    "origins": [
+      "UPCGExAssetStagingSettings",
+      "UPCGExStagingFittingSettings",
+      "UPCGExPathSplineMeshSettings",
+      "UPCGExValencyStagingSettings"
+    ],
+    "usage_count": 5,
+    "user_facing_count": 3,
+    "user_facing_origins": [
+      "UPCGExStagingFittingSettings",
+      "UPCGExPathSplineMeshSettings",
+      "UPCGExValencyStagingSettings"
+    ],
+    "user_facing_origin_count": 3
+  },
+  {
+    "name": "FPCGExJustificationDetails",
+    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
+    "origin_count": 4,
+    "origins": [
+      "UPCGExAssetStagingSettings",
+      "UPCGExStagingFittingSettings",
+      "UPCGExPathSplineMeshSettings",
+      "UPCGExValencyStagingSettings"
+    ],
+    "usage_count": 5,
+    "user_facing_count": 3,
+    "user_facing_origins": [
+      "UPCGExStagingFittingSettings",
+      "UPCGExPathSplineMeshSettings",
+      "UPCGExValencyStagingSettings"
+    ],
+    "user_facing_origin_count": 3
+  },
+  {
+    "name": "FPCGExAttributeSourceToTargetDetails",
+    "file": "PCGExCore/Public/Details/PCGExAttributesDetails.h",
+    "origin_count": 3,
+    "origins": [
+      "UPCGExAttributeRemapSettings",
+      "UPCGExReduceDataAttributeSettings",
+      "UPCGExUberNoiseSettings"
+    ],
+    "usage_count": 4,
+    "user_facing_count": 3,
+    "user_facing_origins": [
+      "UPCGExAttributeRemapSettings",
+      "UPCGExReduceDataAttributeSettings",
+      "UPCGExUberNoiseSettings"
+    ],
+    "user_facing_origin_count": 3
+  },
+  {
+    "name": "FPCGExPointPointIntersectionDetails",
+    "file": "PCGExBlending/Public/Details/PCGExIntersectionDetails.h",
+    "origin_count": 3,
+    "origins": [
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExFusePointsSettings"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 3,
+    "user_facing_origins": [
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings",
+      "UPCGExFusePointsSettings"
+    ],
+    "user_facing_origin_count": 3
+  },
+  {
+    "name": "FPCGExTransformDetails",
+    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
+    "origin_count": 3,
+    "origins": [
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExMeshToClustersSettings",
+      "UPCGExCopyToPointsSettings"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 3,
+    "user_facing_origins": [
+      "UPCGExCopyClustersToPointsSettings",
+      "UPCGExMeshToClustersSettings",
+      "UPCGExCopyToPointsSettings"
+    ],
+    "user_facing_origin_count": 3
+  },
+  {
+    "name": "FPCGExFilterResultDetails",
+    "file": "PCGExFilters/Public/Details/PCGExFilterDetails.h",
+    "origin_count": 3,
+    "origins": [
+      "UPCGExFilterVtxSettings",
+      "UPCGExRefineEdgesSettings",
+      "UPCGExUberFilterSettings"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 3,
+    "user_facing_origins": [
+      "UPCGExFilterVtxSettings",
+      "UPCGExRefineEdgesSettings",
+      "UPCGExUberFilterSettings"
+    ],
+    "user_facing_origin_count": 3
+  },
+  {
+    "name": "FPCGExInfluenceDetails",
+    "file": "PCGExFoundations/Public/Details/PCGExInfluenceDetails.h",
+    "origin_count": 3,
+    "origins": [
+      "UPCGExRelaxClustersSettings",
+      "UPCGExLloydRelaxSettings",
+      "UPCGExLloydRelax2DSettings"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 3,
+    "user_facing_origins": [
+      "UPCGExRelaxClustersSettings",
+      "UPCGExLloydRelaxSettings",
+      "UPCGExLloydRelax2DSettings"
+    ],
+    "user_facing_origin_count": 3
+  },
+  {
+    "name": "FPCGExPathStatistics",
+    "file": "PCGExElementsPathfinding/Public/Core/PCGExPathfinding.h",
+    "origin_count": 3,
+    "origins": [
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingPlotEdgesSettings"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 3,
+    "user_facing_origins": [
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExPathfindingGrowPathsSettings",
+      "UPCGExPathfindingPlotEdgesSettings"
+    ],
+    "user_facing_origin_count": 3
+  },
+  {
+    "name": "FPCGExCollisionDetails",
+    "file": "PCGExFoundations/Public/Details/PCGExCollisionDetails.h",
+    "origin_count": 3,
+    "origins": [
+      "UPCGExEdgeRefineLineTrace",
+      "UPCGExSampleNearestSurfaceSettings",
+      "UPCGExSampleSurfaceGuidedSettings"
+    ],
+    "usage_count": 5,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExEdgeRefineLineTrace",
+      "UPCGExSampleNearestSurfaceSettings"
+    ],
+    "user_facing_origin_count": 2
+  },
+  {
+    "name": "FPCGExEdgeDirectionSettings",
+    "file": "PCGExCore/Public/Clusters/PCGExEdgeDirectionDetails.h",
+    "origin_count": 3,
+    "origins": [
+      "UPCGExWriteEdgePropertiesSettings",
+      "UPCGExBreakClustersToPathsSettings",
+      "UPCGExEdgeOrderSettings"
+    ],
+    "usage_count": 4,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExBreakClustersToPathsSettings",
+      "UPCGExEdgeOrderSettings"
+    ],
+    "user_facing_origin_count": 2
+  },
+  {
+    "name": "FPCGExSocketOutputDetails",
+    "file": "PCGExFoundations/Public/Details/PCGExSocketOutputDetails.h",
+    "origin_count": 3,
+    "origins": [
+      "UPCGExAssetStagingSettings",
+      "UPCGExSocketStagingSettings",
+      "UPCGExSampleSocketsSettings"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExSocketStagingSettings",
+      "UPCGExSampleSocketsSettings"
+    ],
+    "user_facing_origin_count": 2
+  },
+  {
+    "name": "FPCGExTangentsDetails",
+    "file": "PCGExFoundations/Public/Tangents/PCGExTangentsInstancedFactory.h",
+    "origin_count": 3,
+    "origins": [
+      "UPCGExPathSplineMeshSettings",
+      "UPCGExCopyToPathsSettings",
+      "UPCGExPathSplineMeshSimpleSettings"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExPathSplineMeshSettings",
+      "UPCGExCopyToPathsSettings"
+    ],
+    "user_facing_origin_count": 2
+  },
+  {
+    "name": "FPCGExPathOutputDetails",
+    "file": "PCGExCore/Public/Paths/PCGExPathOutputDetails.h",
+    "origin_count": 3,
+    "origins": [
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExPathfindingPlotEdgesSettings",
+      "UPCGExExtrudeTensorsSettings"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExPathfindingEdgesSettings",
+      "UPCGExPathfindingPlotEdgesSettings"
+    ],
+    "user_facing_origin_count": 2
+  },
+  {
+    "name": "FPCGExTensorSamplingMutationsDetails",
+    "file": "PCGExElementsTensors/Public/Core/PCGExTensor.h",
+    "origin_count": 2,
+    "origins": [
+      "UPCGExCreateTensorConstantSettings",
+      "UPCGExCreateTensorNoiseSettings"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExCreateTensorConstantSettings",
+      "UPCGExCreateTensorNoiseSettings"
+    ],
+    "user_facing_origin_count": 2
+  },
+  {
+    "name": "FPCGExAttributeGatherDetails",
+    "file": "PCGExCore/Public/Data/Utils/PCGExDataFilterDetails.h",
+    "origin_count": 2,
+    "origins": [
+      "UPCGExActionWriteValuesProviderSettings",
+      "UPCGExBatchActionsSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExActionWriteValuesProviderSettings",
+      "UPCGExBatchActionsSettings"
+    ],
+    "user_facing_origin_count": 2
+  },
+  {
+    "name": "FPCGExPathEdgeIntersectionDetails",
+    "file": "PCGExCore/Public/Paths/PCGExPathIntersectionDetails.h",
+    "origin_count": 2,
+    "origins": [
+      "UPCGExCutEdgesSettings",
+      "UPCGExPathCrossingsSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExCutEdgesSettings",
+      "UPCGExPathCrossingsSettings"
+    ],
+    "user_facing_origin_count": 2
+  },
+  {
+    "name": "FPCGExPointEdgeIntersectionDetails",
+    "file": "PCGExBlending/Public/Details/PCGExIntersectionDetails.h",
+    "origin_count": 2,
+    "origins": [
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings"
+    ],
+    "user_facing_origin_count": 2
+  },
+  {
+    "name": "FPCGExEdgeEdgeIntersectionDetails",
+    "file": "PCGExBlending/Public/Details/PCGExIntersectionDetails.h",
+    "origin_count": 2,
+    "origins": [
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExPathToClustersSettings",
+      "UPCGExFuseClustersSettings"
+    ],
+    "user_facing_origin_count": 2
+  },
+  {
+    "name": "FPCGExCellSeedMutationDetails",
+    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
+    "origin_count": 2,
+    "origins": [
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExFindContoursSettings",
+      "UPCGExFindContoursBoundedSettings"
+    ],
+    "user_facing_origin_count": 2
+  },
+  {
+    "name": "FPCGExAttachmentRules",
+    "file": "PCGExCore/Public/Details/PCGExAttachmentRules.h",
+    "origin_count": 2,
+    "origins": [
+      "UPCGExCreateSplineSettings",
+      "UPCGExSpawnDynamicMeshSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExCreateSplineSettings",
+      "UPCGExSpawnDynamicMeshSettings"
+    ],
+    "user_facing_origin_count": 2
+  },
+  {
+    "name": "FPCGExUVW",
+    "file": "PCGExCore/Public/Math/PCGExUVW.h",
+    "origin_count": 2,
+    "origins": [
+      "UPCGExBoundsToPointsSettings",
+      "UPCGExMovePivotSettings"
+    ],
+    "usage_count": 2,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExBoundsToPointsSettings",
+      "UPCGExMovePivotSettings"
+    ],
+    "user_facing_origin_count": 2
+  }
+]

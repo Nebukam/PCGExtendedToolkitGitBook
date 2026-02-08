@@ -1,0 +1,174 @@
+{
+  "path": "PCGExElementsClusters/Public/Filters/PCGExAdjacency.h",
+  "module": "PCGExElementsClusters",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExAdjacencyTestMode",
+      "values": [
+        {
+          "name": "All",
+          "display_name": "All"
+        },
+        {
+          "name": "Some",
+          "display_name": "Some"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExAdjacencyGatherMode",
+      "values": [
+        {
+          "name": "Individual",
+          "display_name": "Individual"
+        },
+        {
+          "name": "Average",
+          "display_name": "Average"
+        },
+        {
+          "name": "Min",
+          "display_name": "Min"
+        },
+        {
+          "name": "Max",
+          "display_name": "Max"
+        },
+        {
+          "name": "Sum",
+          "display_name": "Sum"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExAdjacencyThreshold",
+      "values": [
+        {
+          "name": "AtLeast",
+          "display_name": "At Least"
+        },
+        {
+          "name": "AtMost",
+          "display_name": "At Most"
+        },
+        {
+          "name": "Exactly",
+          "display_name": "Exactly"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExRelativeThresholdRoundingMode",
+      "values": [
+        {
+          "name": "Round",
+          "display_name": "Round"
+        },
+        {
+          "name": "Floor",
+          "display_name": "Floor"
+        },
+        {
+          "name": "Ceil",
+          "display_name": "Ceil"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExAdjacencySettings",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Mode",
+          "display_name": "Mode",
+          "type": "EPCGExAdjacencyTestMode",
+          "default": "EPCGExAdjacencyTestMode::Some",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Consolidation",
+          "display_name": "Consolidation",
+          "type": "EPCGExAdjacencyGatherMode",
+          "default": "EPCGExAdjacencyGatherMode::Average",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExAdjacencyTestMode::All",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ThresholdComparison",
+          "display_name": "ThresholdComparison",
+          "type": "EPCGExComparison",
+          "default": "EPCGExComparison::NearlyEqual",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExAdjacencyTestMode::Some",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ThresholdType",
+          "display_name": "ThresholdType",
+          "type": "EPCGExMeanMeasure",
+          "default": "EPCGExMeanMeasure::Discrete",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExAdjacencyTestMode::Some",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ThresholdInput",
+          "display_name": "ThresholdInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExAdjacencyTestMode::Some",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Rounding",
+          "display_name": "Rounding",
+          "type": "EPCGExRelativeThresholdRoundingMode",
+          "default": "EPCGExRelativeThresholdRoundingMode::Round",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExAdjacencyTestMode::Some && ThresholdType == EPCGExMeanMeasure::Relative",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

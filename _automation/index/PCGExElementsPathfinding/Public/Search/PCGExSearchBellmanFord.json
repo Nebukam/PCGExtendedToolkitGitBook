@@ -1,0 +1,85 @@
+{
+  "path": "PCGExElementsPathfinding/Public/Search/PCGExSearchBellmanFord.h",
+  "module": "PCGExElementsPathfinding",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExSearchBellmanFord",
+      "display_name": "UPCGExSearchBellmanFord",
+      "description": "",
+      "base_class": "UPCGExSearchInstancedFactory",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Bellman-Ford\", ToolTip =\"Bellman-Ford Search. Handles negative edge weights and detects negative cycles. Slower but more robust.\", PCGExNodeLibraryDoc=\"pathfinding/search-algorithms/bellman-ford\")",
+      "uproperties": [
+        {
+          "name": "bDetectNegativeCycles",
+          "display_name": "bDetectNegativeCycles",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "instanced_factory",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": true,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "bEarlyExit",
+          "display_name": "bEarlyExit",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bDetectNegativeCycles",
+          "display_name": "bDetectNegativeCycles",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExSearchOperationBellmanFord",
+      "base_class": "FPCGExSearchOperation"
+    }
+  ],
+  "namespaces": {}
+}

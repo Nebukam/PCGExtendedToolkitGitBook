@@ -1,0 +1,44 @@
+{
+  "path": "PCGExFoundations/Public/Tangents/PCGExTangentsZero.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExZeroTangents",
+      "display_name": "UPCGExZeroTangents",
+      "description": "",
+      "base_class": "UPCGExTangentsInstancedFactory",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Zero\", PCGExNodeLibraryDoc=\"paths/write-tangents/tangents-zero\")",
+      "uproperties": [],
+      "classification": {
+        "type": "instanced_factory",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": true,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": []
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExTangentsZero",
+      "base_class": "FPCGExTangentsOperation"
+    }
+  ],
+  "namespaces": {}
+}

@@ -1,0 +1,15 @@
+{
+  "path": "PCGExCore/Public/Utils/PCGExUniqueNameGenerator.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExUniqueNameGenerator",
+      "base_class": "TSharedFromThis"
+    }
+  ],
+  "namespaces": {}
+}

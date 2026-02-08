@@ -1,0 +1,29 @@
+{
+  "path": "PCGExCore/Public/Math/PCGExMathContrast.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExContrastCurve",
+      "values": [
+        {
+          "name": "Power",
+          "display_name": "Power"
+        },
+        {
+          "name": "SCurve",
+          "display_name": "SCurve"
+        },
+        {
+          "name": "Gain",
+          "display_name": "Gain"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

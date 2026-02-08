@@ -1,0 +1,15 @@
+{
+  "path": "PCGExPickers/Public/PCGExPickers.h",
+  "module": "PCGExPickers",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExPickersModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

@@ -1,0 +1,32 @@
+{
+  "path": "PCGExCollections/Public/Details/PCGExRoamingAssetCollectionDetails.h",
+  "module": "PCGExCollections",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExRoamingAssetCollectionDetails",
+      "base_class": "FPCGExAssetAttributeSetDetails",
+      "uproperties": [
+        {
+          "name": "AssetCollectionType",
+          "display_name": "AssetCollectionType",
+          "type": "TSubclassOf<UPCGExAssetCollection>",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSupportCustomType",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

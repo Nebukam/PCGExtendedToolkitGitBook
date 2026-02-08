@@ -1,0 +1,15 @@
+{
+  "path": "PCGExPropertiesEditor/Public/Details/PCGExPropertyOverrideEntryCustomization.h",
+  "module": "PCGExPropertiesEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExPropertyOverrideEntryCustomization",
+      "base_class": "IPropertyTypeCustomization"
+    }
+  ],
+  "namespaces": {}
+}

@@ -1,0 +1,14 @@
+{
+  "path": "PCGExCore/Public/Helpers/PCGExMetaHelpers.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {
+    "PCGExMetaHelpers": {
+      "InvalidName": "INVALID_DATA"
+    }
+  }
+}

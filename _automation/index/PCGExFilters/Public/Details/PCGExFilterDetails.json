@@ -1,0 +1,191 @@
+{
+  "path": "PCGExFilters/Public/Details/PCGExFilterDetails.h",
+  "module": "PCGExFilters",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExFilterDataAction",
+      "values": [
+        {
+          "name": "Keep",
+          "display_name": "Keep"
+        },
+        {
+          "name": "Omit",
+          "display_name": "Omit"
+        },
+        {
+          "name": "Tag",
+          "display_name": "Tag"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExTagsToDataAction",
+      "values": [
+        {
+          "name": "Ignore",
+          "display_name": "Do Nothing"
+        },
+        {
+          "name": "ToData",
+          "display_name": "To @Data"
+        },
+        {
+          "name": "ToElements",
+          "display_name": "Attribute"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExResultWriteAction",
+      "values": [
+        {
+          "name": "Bool",
+          "display_name": "Boolean"
+        },
+        {
+          "name": "Counter",
+          "display_name": "Counter"
+        },
+        {
+          "name": "Bitmask",
+          "display_name": "Bitmask"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExFilterResultDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bEnabled",
+          "display_name": "bEnabled",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOptional",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Action",
+          "display_name": "Action",
+          "type": "EPCGExResultWriteAction",
+          "default": "EPCGExResultWriteAction::Bool",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ResultAttributeName",
+          "display_name": "ResultAttributeName",
+          "type": "FName",
+          "default": "FName(\"Result\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "PassIncrement",
+          "display_name": " ├─ Pass Increment",
+          "type": "double",
+          "default": "1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Action == EPCGExResultWriteAction::Counter",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "FailIncrement",
+          "display_name": " └─ Fail Increment",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Action == EPCGExResultWriteAction::Counter",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bDoBitmaskOpOnPass",
+          "display_name": "bDoBitmaskOpOnPass",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Action == EPCGExResultWriteAction::Bitmask",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "PassBitmask",
+          "display_name": " ├─ Pass Bitmask",
+          "type": "FPCGExBitmaskWithOperation",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bDoBitmaskOpOnPass && Action == EPCGExResultWriteAction::Bitmask",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bDoBitmaskOpOnFail",
+          "display_name": "bDoBitmaskOpOnFail",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Action == EPCGExResultWriteAction::Bitmask",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "FailBitmask",
+          "display_name": " └─ Fail Bitmask",
+          "type": "FPCGExBitmaskWithOperation",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bDoBitmaskOpOnFail && Action == EPCGExResultWriteAction::Bitmask",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

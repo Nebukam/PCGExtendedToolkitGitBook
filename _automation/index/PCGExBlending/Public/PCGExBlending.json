@@ -1,0 +1,15 @@
+{
+  "path": "PCGExBlending/Public/PCGExBlending.h",
+  "module": "PCGExBlending",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExBlendingModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

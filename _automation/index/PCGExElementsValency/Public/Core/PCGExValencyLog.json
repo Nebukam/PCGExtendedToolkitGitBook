@@ -1,0 +1,79 @@
+{
+  "path": "PCGExElementsValency/Public/Core/PCGExValencyLog.h",
+  "module": "PCGExElementsValency",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExValencyLogCategory",
+      "values": [
+        {
+          "name": "Building",
+          "display_name": "Building"
+        },
+        {
+          "name": "Compilation",
+          "display_name": "Compilation"
+        },
+        {
+          "name": "Solver",
+          "display_name": "Solver"
+        },
+        {
+          "name": "Staging",
+          "display_name": "Staging"
+        },
+        {
+          "name": "EditorMode",
+          "display_name": "EditorMode"
+        },
+        {
+          "name": "Cages",
+          "display_name": "Cages"
+        },
+        {
+          "name": "Mirror",
+          "display_name": "Mirror"
+        },
+        {
+          "name": "Rebuild",
+          "display_name": "Rebuild"
+        },
+        {
+          "name": "MAX",
+          "display_name": "MAX"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExValencyLogVerbosity",
+      "values": [
+        {
+          "name": "Off",
+          "display_name": "Off"
+        },
+        {
+          "name": "Error",
+          "display_name": "Error"
+        },
+        {
+          "name": "Warning",
+          "display_name": "Warning"
+        },
+        {
+          "name": "Info",
+          "display_name": "Info"
+        },
+        {
+          "name": "Verbose",
+          "display_name": "Verbose"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

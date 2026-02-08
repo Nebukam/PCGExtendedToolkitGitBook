@@ -1,0 +1,142 @@
+{
+  "path": "PCGExCore/Public/Details/PCGExDetailsNoise.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "PCGExSpatialNoiseMode",
+      "values": [
+        {
+          "name": "Perlin",
+          "display_name": "Perlin"
+        },
+        {
+          "name": "Caustic",
+          "display_name": "Caustic"
+        },
+        {
+          "name": "Voronoi",
+          "display_name": "Voronoi"
+        },
+        {
+          "name": "FractionalBrownian",
+          "display_name": "FractionalBrownian"
+        },
+        {
+          "name": "EdgeMask",
+          "display_name": "EdgeMask"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "PCGExSpatialNoiseMask2DMode",
+      "values": [
+        {
+          "name": "Perlin",
+          "display_name": "Perlin"
+        },
+        {
+          "name": "Caustic",
+          "display_name": "Caustic"
+        },
+        {
+          "name": "FractionalBrownian",
+          "display_name": "FractionalBrownian"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExRandomRatioDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "BaseSeed",
+          "display_name": "BaseSeed",
+          "type": "FPCGExInputShorthandSelectorInteger32",
+          "default": "FPCGExInputShorthandSelectorInteger32(FName(\"@Data.Seed\"), 42)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Units",
+          "display_name": "Units",
+          "type": "EPCGExMeanMeasure",
+          "default": "EPCGExMeanMeasure::Relative",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bDoClampMin",
+          "display_name": "bDoClampMin",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ClampMin",
+          "display_name": "ClampMin",
+          "type": "FPCGExInputShorthandSelectorInteger32Abs",
+          "default": "FPCGExInputShorthandSelectorInteger32Abs(FName(\"@Data.ClampMin\"), 1, false)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bDoClampMin",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bDoClampMax",
+          "display_name": "bDoClampMax",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ClampMax",
+          "display_name": "ClampMax",
+          "type": "FPCGExInputShorthandSelectorInteger32Abs",
+          "default": "FPCGExInputShorthandSelectorInteger32Abs(FName(\"@Data.ClampMax\"), 500, false)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bDoClampMax",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

@@ -1,0 +1,314 @@
+{
+  "path": "PCGExGraphs/Public/Graphs/PCGExGraphDetails.h",
+  "module": "PCGExGraphs",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExBasicEdgeRadius",
+      "values": [
+        {
+          "name": "Average",
+          "display_name": "Average"
+        },
+        {
+          "name": "Lerp",
+          "display_name": "Lerp"
+        },
+        {
+          "name": "Min",
+          "display_name": "Min"
+        },
+        {
+          "name": "Max",
+          "display_name": "Max"
+        },
+        {
+          "name": "Fixed",
+          "display_name": "Fixed"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExBasicEdgeSolidificationDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "SolidificationAxis",
+          "display_name": "SolidificationAxis",
+          "type": "EPCGExMinimalAxis",
+          "default": "EPCGExMinimalAxis::None",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "RadiusType",
+          "display_name": "RadiusType",
+          "type": "EPCGExBasicEdgeRadius",
+          "default": "EPCGExBasicEdgeRadius::Lerp",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "RadiusConstant",
+          "display_name": "RadiusConstant",
+          "type": "double",
+          "default": "5",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "RadiusType == EPCGExBasicEdgeRadius::Fixed",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "RadiusScale",
+          "display_name": "RadiusScale",
+          "type": "double",
+          "default": "1",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "RadiusType != EPCGExBasicEdgeRadius::Fixed",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExGraphBuilderDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bWriteEdgePosition",
+          "display_name": "bWriteEdgePosition",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "EdgePosition",
+          "display_name": "EdgePosition",
+          "type": "double",
+          "default": "0.5",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteEdgePosition",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "BasicEdgeSolidification",
+          "display_name": " └─ Solidification",
+          "type": "FPCGExBasicEdgeSolidificationDetails",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteEdgePosition",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bRemoveSmallClusters",
+          "display_name": "bRemoveSmallClusters",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinVtxCount",
+          "display_name": " ┌─ Min Vtx Count",
+          "type": "int32",
+          "default": "3",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bRemoveSmallClusters",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinEdgeCount",
+          "display_name": " └─ Min Edge Count",
+          "type": "int32",
+          "default": "3",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bRemoveSmallClusters",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bRemoveBigClusters",
+          "display_name": "bRemoveBigClusters",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxVtxCount",
+          "display_name": " ┌─ Max Vtx Count",
+          "type": "int32",
+          "default": "500",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bRemoveBigClusters",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxEdgeCount",
+          "display_name": " └─ Max Edge Count",
+          "type": "int32",
+          "default": "500",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bRemoveBigClusters",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bRefreshEdgeSeed",
+          "display_name": "bRefreshEdgeSeed",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "BuildAndCacheClusters",
+          "display_name": "BuildAndCacheClusters",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bPreBuildFaceEnumerator",
+          "display_name": "bPreBuildFaceEnumerator",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Pre-Built Cache",
+          "advanced": false
+        },
+        {
+          "name": "FaceEnumeratorProjection",
+          "display_name": "FaceEnumeratorProjection",
+          "type": "FPCGExGeo2DProjectionDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bPreBuildFaceEnumerator",
+          "edit_condition_hides": false,
+          "category": "Settings|Pre-Built Cache",
+          "advanced": false
+        },
+        {
+          "name": "bPreBuildChains",
+          "display_name": "bPreBuildChains",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Pre-Built Cache",
+          "advanced": false
+        },
+        {
+          "name": "bOutputEdgeLength",
+          "display_name": "bOutputEdgeLength",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Extra Data",
+          "advanced": false
+        },
+        {
+          "name": "EdgeLengthName",
+          "display_name": "EdgeLengthName",
+          "type": "FName",
+          "default": "FName(\"EdgeLength\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOutputEdgeLength",
+          "edit_condition_hides": false,
+          "category": "Settings|Extra Data",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

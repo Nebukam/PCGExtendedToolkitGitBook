@@ -1,0 +1,41 @@
+{
+  "path": "PCGExCore/Public/Data/PCGExDataTags.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExSupportedTagValue",
+      "values": [
+        {
+          "name": "Integer",
+          "display_name": "Integer"
+        },
+        {
+          "name": "FloatingPoint",
+          "display_name": "Floating Point"
+        },
+        {
+          "name": "String",
+          "display_name": "String"
+        },
+        {
+          "name": "Vector2",
+          "display_name": "Vector 2D"
+        },
+        {
+          "name": "Vector",
+          "display_name": "Vector"
+        },
+        {
+          "name": "Vector4",
+          "display_name": "Vector 4"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

@@ -1,0 +1,25 @@
+{
+  "path": "PCGExElementsPathfindingNavmesh/Public/Core/PCGExNavmesh.h",
+  "module": "PCGExElementsPathfindingNavmesh",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExPathfindingNavmeshMode",
+      "values": [
+        {
+          "name": "Regular",
+          "display_name": "Regular"
+        },
+        {
+          "name": "Hierarchical",
+          "display_name": "HIerarchical"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

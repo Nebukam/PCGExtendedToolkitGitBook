@@ -1,0 +1,98 @@
+{
+  "path": "PCGExCore/Public/Data/Utils/PCGExAttributeHasher.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExDataHashScope",
+      "values": [
+        {
+          "name": "All",
+          "display_name": "All"
+        },
+        {
+          "name": "Uniques",
+          "display_name": "Uniques"
+        },
+        {
+          "name": "FirstAndLast",
+          "display_name": "First and Last"
+        },
+        {
+          "name": "First",
+          "display_name": "First only"
+        },
+        {
+          "name": "Last",
+          "display_name": "Last only"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExAttributeHashConfig",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "SourceAttribute",
+          "display_name": "SourceAttribute",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Scope",
+          "display_name": "Scope",
+          "type": "EPCGExDataHashScope",
+          "default": "EPCGExDataHashScope::Uniques",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bSortInputValues",
+          "display_name": "bSortInputValues",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Sorting",
+          "display_name": "Sorting",
+          "type": "EPCGExSortDirection",
+          "default": "EPCGExSortDirection::Ascending",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bSortInputValues",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": true,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

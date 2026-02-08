@@ -1,0 +1,58 @@
+{
+  "path": "PCGExBlending/Public/SubPoints/DataBlending/PCGExSubPointsBlendInheritStart.h",
+  "module": "PCGExBlending",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExSubPointsBlendInheritStart",
+      "display_name": "UPCGExSubPointsBlendInheritStart",
+      "description": "",
+      "base_class": "UPCGExSubPointsBlendInstancedFactory",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Inherit First\", PCGExNodeLibraryDoc=\"paths/sub-point-blending/inherit-first\")",
+      "uproperties": [],
+      "classification": {
+        "type": "instanced_factory",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": true,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "BlendingDetails",
+          "display_name": "BlendingDetails",
+          "type": "FPCGExBlendingDetails",
+          "default": "FPCGExBlendingDetails(EPCGExBlendingType::Unset, EPCGExBlendingType::None)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": true,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExSubPointsBlendInheritStart",
+      "base_class": "FPCGExSubPointsBlendOperation"
+    }
+  ],
+  "namespaces": {}
+}

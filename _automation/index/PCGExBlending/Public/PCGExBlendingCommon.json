@@ -1,0 +1,307 @@
+{
+  "path": "PCGExBlending/Public/PCGExBlendingCommon.h",
+  "module": "PCGExBlending",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExBlendingType",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "Average",
+          "display_name": "Average"
+        },
+        {
+          "name": "Weight",
+          "display_name": "Weight"
+        },
+        {
+          "name": "Min",
+          "display_name": "Min"
+        },
+        {
+          "name": "Max",
+          "display_name": "Max"
+        },
+        {
+          "name": "Copy",
+          "display_name": "Copy"
+        },
+        {
+          "name": "Sum",
+          "display_name": "Sum"
+        },
+        {
+          "name": "WeightedSum",
+          "display_name": "Weighted Sum"
+        },
+        {
+          "name": "Lerp",
+          "display_name": "Lerp"
+        },
+        {
+          "name": "Subtract",
+          "display_name": "Subtract"
+        },
+        {
+          "name": "UnsignedMin",
+          "display_name": "Unsigned Min"
+        },
+        {
+          "name": "UnsignedMax",
+          "display_name": "Unsigned Max"
+        },
+        {
+          "name": "AbsoluteMin",
+          "display_name": "Absolute Min"
+        },
+        {
+          "name": "AbsoluteMax",
+          "display_name": "Absolute Max"
+        },
+        {
+          "name": "WeightedSubtract",
+          "display_name": "Weighted Subtract"
+        },
+        {
+          "name": "CopyOther",
+          "display_name": "CopyOther"
+        },
+        {
+          "name": "Hash",
+          "display_name": "Hash"
+        },
+        {
+          "name": "UnsignedHash",
+          "display_name": "UnsignedHash"
+        },
+        {
+          "name": "WeightNormalize",
+          "display_name": "WeightNormalize"
+        },
+        {
+          "name": "Unset",
+          "display_name": "Unset"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExABBlendingType",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "Average",
+          "display_name": "Average"
+        },
+        {
+          "name": "Weight",
+          "display_name": "Weight"
+        },
+        {
+          "name": "Multiply",
+          "display_name": "Multiply"
+        },
+        {
+          "name": "Divide",
+          "display_name": "Divide"
+        },
+        {
+          "name": "Min",
+          "display_name": "Min"
+        },
+        {
+          "name": "Max",
+          "display_name": "Max"
+        },
+        {
+          "name": "CopyTarget",
+          "display_name": "CopyTarget"
+        },
+        {
+          "name": "CopySource",
+          "display_name": "CopySource"
+        },
+        {
+          "name": "Add",
+          "display_name": "Add"
+        },
+        {
+          "name": "Subtract",
+          "display_name": "Subtract"
+        },
+        {
+          "name": "WeightedAdd",
+          "display_name": "Weighted Add"
+        },
+        {
+          "name": "WeightedSubtract",
+          "display_name": "Weighted Subtract"
+        },
+        {
+          "name": "Lerp",
+          "display_name": "Lerp"
+        },
+        {
+          "name": "UnsignedMin",
+          "display_name": "Unsigned Min"
+        },
+        {
+          "name": "UnsignedMax",
+          "display_name": "Unsigned Max"
+        },
+        {
+          "name": "AbsoluteMin",
+          "display_name": "Absolute Min"
+        },
+        {
+          "name": "AbsoluteMax",
+          "display_name": "Absolute Max"
+        },
+        {
+          "name": "Hash",
+          "display_name": "Hash"
+        },
+        {
+          "name": "UnsignedHash",
+          "display_name": "UnsignedHash"
+        },
+        {
+          "name": "Mod",
+          "display_name": "Mod"
+        },
+        {
+          "name": "ModCW",
+          "display_name": "ModCW"
+        },
+        {
+          "name": "WeightNormalize",
+          "display_name": "WeightNormalize"
+        },
+        {
+          "name": "GeometricMean",
+          "display_name": "Geometrical Mean"
+        },
+        {
+          "name": "HarmonicMean",
+          "display_name": "Harmonic Mean"
+        },
+        {
+          "name": "RMS",
+          "display_name": "RMS"
+        },
+        {
+          "name": "Step",
+          "display_name": "Step"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExBlendOver",
+      "values": [
+        {
+          "name": "Distance",
+          "display_name": "Distance"
+        },
+        {
+          "name": "Index",
+          "display_name": "Count"
+        },
+        {
+          "name": "Fixed",
+          "display_name": "Fixed"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExBlendingInterface",
+      "values": [
+        {
+          "name": "Individual",
+          "display_name": "Individual"
+        },
+        {
+          "name": "Monolithic",
+          "display_name": "Monolithic"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExOperandSource",
+      "values": [
+        {
+          "name": "Constant",
+          "display_name": "Constant"
+        },
+        {
+          "name": "Attribute",
+          "display_name": "Attribute"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExOperandAuthority",
+      "values": [
+        {
+          "name": "A",
+          "display_name": "Operand A"
+        },
+        {
+          "name": "B",
+          "display_name": "Operand B"
+        },
+        {
+          "name": "Custom",
+          "display_name": "Custom"
+        },
+        {
+          "name": "Auto",
+          "display_name": "Auto"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExBlendOpOutputMode",
+      "values": [
+        {
+          "name": "SameAsA",
+          "display_name": "Same as A"
+        },
+        {
+          "name": "SameAsB",
+          "display_name": "Same as B"
+        },
+        {
+          "name": "New",
+          "display_name": "New"
+        },
+        {
+          "name": "Transient",
+          "display_name": "Transient"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {
+    "PCGExBlending": {
+      "SourceOverridesBlendingOps": "Overrides : Blending",
+      "SourceBlendingLabel": "Blend Ops",
+      "OutputBlendingLabel": "Blend Op"
+    }
+  }
+}

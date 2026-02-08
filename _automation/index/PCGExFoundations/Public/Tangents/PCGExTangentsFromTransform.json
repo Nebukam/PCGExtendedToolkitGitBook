@@ -1,0 +1,72 @@
+{
+  "path": "PCGExFoundations/Public/Tangents/PCGExTangentsFromTransform.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExFromTransformTangents",
+      "display_name": "UPCGExFromTransformTangents",
+      "description": "",
+      "base_class": "UPCGExTangentsInstancedFactory",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"From Transform\", PCGExNodeLibraryDoc=\"paths/write-tangents/tangents-transform\")",
+      "uproperties": [
+        {
+          "name": "Axis",
+          "display_name": "Axis",
+          "type": "EPCGExAxis",
+          "default": "EPCGExAxis::Forward",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "instanced_factory",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": true,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "Axis",
+          "display_name": "Axis",
+          "type": "EPCGExAxis",
+          "default": "EPCGExAxis::Forward",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExTangentsFromTransform",
+      "base_class": "FPCGExTangentsOperation"
+    }
+  ],
+  "namespaces": {}
+}

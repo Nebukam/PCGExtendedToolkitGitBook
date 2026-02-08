@@ -1,0 +1,49 @@
+{
+  "path": "PCGExElementsValency/Public/Core/PCGExValencySolverOperation.h",
+  "module": "PCGExElementsValency",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExValencySolverInstancedFactory",
+      "display_name": "UPCGExValencySolverInstancedFactory",
+      "description": "",
+      "base_class": "UPCGExInstancedFactory",
+      "uclass_meta": "Abstract",
+      "uproperties": [],
+      "classification": {
+        "type": "instanced_factory",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": true,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [],
+      "implementations": [
+        "UPCGExValencyConstraintSolverFactory",
+        "UPCGExValencyEntropySolver",
+        "UPCGExValencyPrioritySolver"
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExValencySolverOperation",
+      "base_class": "FPCGExOperation"
+    }
+  ],
+  "namespaces": {}
+}

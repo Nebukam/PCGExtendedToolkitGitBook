@@ -1,0 +1,199 @@
+{
+  "path": "PCGExFoundations/Public/Details/PCGExCollisionDetails.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExCollisionFilterType",
+      "values": [
+        {
+          "name": "Channel",
+          "display_name": "Channel"
+        },
+        {
+          "name": "ObjectType",
+          "display_name": "Object Type"
+        },
+        {
+          "name": "Profile",
+          "display_name": "Profile"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExTraceMode",
+      "values": [
+        {
+          "name": "Line",
+          "display_name": "Line"
+        },
+        {
+          "name": "Sphere",
+          "display_name": "Sphere"
+        },
+        {
+          "name": "Box",
+          "display_name": "Box"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExCollisionDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "TraceMode",
+          "display_name": "TraceMode",
+          "type": "EPCGExTraceMode",
+          "default": "EPCGExTraceMode::Line",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SphereRadius",
+          "display_name": "SphereRadius",
+          "type": "FPCGExInputShorthandSelectorDoubleAbs",
+          "default": "FPCGExInputShorthandSelectorDoubleAbs(FName(\"SphereRadius\"), 50.0)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "TraceMode == EPCGExTraceMode::Sphere",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "BoxHalfExtents",
+          "display_name": "BoxHalfExtents",
+          "type": "FPCGExInputShorthandSelectorVector",
+          "default": "FPCGExInputShorthandSelectorVector(FName(\"BoxHalfExtents\"), FVector(25.0))",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "TraceMode == EPCGExTraceMode::Box",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bTraceComplex",
+          "display_name": "bTraceComplex",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CollisionType",
+          "display_name": "CollisionType",
+          "type": "EPCGExCollisionFilterType",
+          "default": "EPCGExCollisionFilterType::Channel",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CollisionChannel",
+          "display_name": "CollisionChannel",
+          "type": "TEnumAsByte<ECollisionChannel>",
+          "default": "ECC_WorldDynamic",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "CollisionType == EPCGExCollisionFilterType::Channel",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CollisionObjectType",
+          "display_name": "CollisionObjectType",
+          "type": "int32",
+          "default": "ObjectTypeQuery1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "CollisionType == EPCGExCollisionFilterType::ObjectType",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CollisionProfileName",
+          "display_name": "CollisionProfileName",
+          "type": "FName",
+          "default": "NAME_None",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "CollisionType == EPCGExCollisionFilterType::Profile",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bIgnoreSelf",
+          "display_name": "bIgnoreSelf",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bIgnoreActors",
+          "display_name": "bIgnoreActors",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "IgnoredActorSelector",
+          "display_name": "IgnoredActorSelector",
+          "type": "FPCGActorSelectorSettings",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bIgnoreActors",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

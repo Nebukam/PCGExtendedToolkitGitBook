@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsClipper2/Public/PCGExElementsClipper2.h",
+  "module": "PCGExElementsClipper2",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsClipper2Module",
+      "base_class": "IPCGExModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

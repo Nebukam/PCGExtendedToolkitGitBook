@@ -1,0 +1,101 @@
+{
+  "path": "PCGExCore/Public/Clusters/PCGExClusterCommon.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExClusterClosestSearchMode",
+      "values": [
+        {
+          "name": "Vtx",
+          "display_name": "Closest vtx"
+        },
+        {
+          "name": "Edge",
+          "display_name": "Closest edge"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExClusterElement",
+      "values": [
+        {
+          "name": "Vtx",
+          "display_name": "Point"
+        },
+        {
+          "name": "Edge",
+          "display_name": "Edge"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExAdjacencyDirectionOrigin",
+      "values": [
+        {
+          "name": "FromNode",
+          "display_name": "From Node to Neighbor"
+        },
+        {
+          "name": "FromNeighbor",
+          "display_name": "From Neighbor to Node"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExNodeSelectionDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "PickingMethod",
+          "display_name": "PickingMethod",
+          "type": "EPCGExClusterClosestSearchMode",
+          "default": "EPCGExClusterClosestSearchMode::Edge",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxDistance",
+          "display_name": "MaxDistance",
+          "type": "double",
+          "default": "-1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {
+    "Labels": {
+      "SourceEdgesLabel": "Edges",
+      "OutputEdgesLabel": "Edges",
+      "SourceVerticesLabel": "Vtx",
+      "OutputVerticesLabel": "Vtx",
+      "OutputKeptEdgesLabel": "Kept Edges",
+      "OutputRemovedEdgesLabel": "Removed Edges",
+      "OutputSitesLabel": "Sites",
+      "SourcePackedClustersLabel": "Packed Clusters",
+      "OutputPackedClustersLabel": "Packed Clusters",
+      "SourceEdgeSortingRules": "Direction Sorting"
+    }
+  }
+}

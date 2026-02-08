@@ -1,0 +1,10 @@
+{
+  "path": "PCGExFoundations/Public/PCGExFoundationsPCH.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

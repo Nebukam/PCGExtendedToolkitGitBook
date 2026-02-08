@@ -1,0 +1,67 @@
+{
+  "path": "PCGExElementsPathfinding/Public/GoalPickers/PCGExGoalPicker.h",
+  "module": "PCGExElementsPathfinding",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExGoalPicker",
+      "display_name": "UPCGExGoalPicker",
+      "description": "",
+      "base_class": "UPCGExInstancedFactory",
+      "uclass_meta": "meta=(DisplayName = \"Default\", PCGExNodeLibraryDoc=\"pathfinding/pathfinding-edges/goal-picker-default\")",
+      "uproperties": [
+        {
+          "name": "IndexSafety",
+          "display_name": "IndexSafety",
+          "type": "EPCGExIndexSafety",
+          "default": "EPCGExIndexSafety::Tile",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "instanced_factory",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": true,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "IndexSafety",
+          "display_name": "IndexSafety",
+          "type": "EPCGExIndexSafety",
+          "default": "EPCGExIndexSafety::Tile",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

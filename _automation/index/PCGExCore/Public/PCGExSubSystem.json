@@ -1,0 +1,86 @@
+{
+  "path": "PCGExCore/Public/PCGExSubSystem.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExSubsystemEventType",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "Regenerate",
+          "display_name": "Regenerate"
+        },
+        {
+          "name": "DataUpdate",
+          "display_name": "Data Update"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExSubSystem",
+      "display_name": "UPCGExSubSystem",
+      "description": "",
+      "base_class": "UTickableWorldSubsystem",
+      "uclass_meta": "",
+      "uproperties": [
+        {
+          "name": "OnGlobalEvent",
+          "display_name": "OnGlobalEvent",
+          "type": "FOnGlobalEvent",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Delegates",
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "unknown",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "OnGlobalEvent",
+          "display_name": "OnGlobalEvent",
+          "type": "FOnGlobalEvent",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Delegates",
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

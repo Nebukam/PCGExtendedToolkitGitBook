@@ -1,0 +1,43 @@
+{
+  "path": "PCGExCore/Public/Math/PCGExWinding.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExWinding",
+      "values": [
+        {
+          "name": "Clockwise",
+          "display_name": "Clockwise"
+        },
+        {
+          "name": "CounterClockwise",
+          "display_name": "Counter Clockwise"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExWindingMutation",
+      "values": [
+        {
+          "name": "Unchanged",
+          "display_name": "Unchanged"
+        },
+        {
+          "name": "Clockwise",
+          "display_name": "Clockwise"
+        },
+        {
+          "name": "CounterClockwise",
+          "display_name": "CounterClockwise"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

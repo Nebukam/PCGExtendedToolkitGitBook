@@ -1,0 +1,55 @@
+{
+  "path": "PCGExCore/Public/Math/PCGExMath.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExIndexSafety",
+      "values": [
+        {
+          "name": "Ignore",
+          "display_name": "Ignore"
+        },
+        {
+          "name": "Tile",
+          "display_name": "Tile"
+        },
+        {
+          "name": "Clamp",
+          "display_name": "Clamp"
+        },
+        {
+          "name": "Yoyo",
+          "display_name": "Yoyo"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExTruncateMode",
+      "values": [
+        {
+          "name": "None",
+          "display_name": "None"
+        },
+        {
+          "name": "Round",
+          "display_name": "Round"
+        },
+        {
+          "name": "Ceil",
+          "display_name": "Ceil"
+        },
+        {
+          "name": "Floor",
+          "display_name": "Floor"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

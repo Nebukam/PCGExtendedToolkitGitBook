@@ -1,0 +1,271 @@
+{
+  "path": "PCGExCollections/Public/Collections/PCGExPCGDataAssetCollection.h",
+  "module": "PCGExCollections",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExPCGDataAssetCollectionEntry",
+      "base_class": "FPCGExAssetCollectionEntry",
+      "uproperties": [
+        {
+          "name": "DataAsset",
+          "display_name": "DataAsset",
+          "type": "TSoftObjectPtr<UPCGDataAsset>",
+          "default": "nullptr",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "!bIsSubCollection",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SubCollection",
+          "display_name": "SubCollection",
+          "type": "TObjectPtr<UPCGExPCGDataAssetCollection>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bIsSubCollection",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bOverrideWeights",
+          "display_name": "bOverrideWeights",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "!bIsSubCollection",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "PointWeights",
+          "display_name": " └─ Weights",
+          "type": "TArray<int32>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "!bIsSubCollection && bOverrideWeights",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [
+    {
+      "name": "UPCGExPCGDataAssetCollection",
+      "display_name": "UPCGExPCGDataAssetCollection",
+      "description": "",
+      "base_class": "UPCGExAssetCollection",
+      "uclass_meta": "BlueprintType, DisplayName=\"[PCGEx] Collection | PCGDataAsset\"",
+      "uproperties": [
+        {
+          "name": "Entries",
+          "display_name": "Entries",
+          "type": "TArray<FPCGExPCGDataAssetCollectionEntry>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "unknown",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "Notes",
+          "display_name": "Notes",
+          "type": "FString",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CollectionTags",
+          "display_name": "CollectionTags",
+          "type": "TSet<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bAutoRebuildStaging",
+          "display_name": "bAutoRebuildStaging",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "GlobalVariationMode",
+          "display_name": "GlobalVariationMode",
+          "type": "EPCGExGlobalVariationRule",
+          "default": "EPCGExGlobalVariationRule::PerEntry",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "GlobalVariations",
+          "display_name": "GlobalVariations",
+          "type": "FPCGExFittingVariations",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "GlobalGrammarMode",
+          "display_name": "GlobalGrammarMode",
+          "type": "EPCGExGlobalVariationRule",
+          "default": "EPCGExGlobalVariationRule::PerEntry",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "GlobalAssetGrammar",
+          "display_name": "GlobalAssetGrammar",
+          "type": "FPCGExAssetGrammarDetails",
+          "default": "FPCGExAssetGrammarDetails(FName(\"N/A\"))",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CollectionGrammar",
+          "display_name": "CollectionGrammar",
+          "type": "FPCGExCollectionGrammarDetails",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bDoNotIgnoreInvalidEntries",
+          "display_name": "bDoNotIgnoreInvalidEntries",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CollectionProperties",
+          "display_name": "CollectionProperties",
+          "type": "FPCGExPropertySchemaCollection",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Properties",
+          "advanced": false
+        },
+        {
+          "name": "PropertyRegistry",
+          "display_name": "PropertyRegistry",
+          "type": "TArray<FPCGExPropertyRegistryEntry>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Properties",
+          "advanced": false
+        },
+        {
+          "name": "Entries",
+          "display_name": "Entries",
+          "type": "TArray<FPCGExPCGDataAssetCollectionEntry>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

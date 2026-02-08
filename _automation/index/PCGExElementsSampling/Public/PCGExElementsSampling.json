@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsSampling/Public/PCGExElementsSampling.h",
+  "module": "PCGExElementsSampling",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsSamplingModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

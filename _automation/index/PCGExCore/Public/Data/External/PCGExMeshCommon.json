@@ -1,0 +1,37 @@
+{
+  "path": "PCGExCore/Public/Data/External/PCGExMeshCommon.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExTriangulationType",
+      "values": [
+        {
+          "name": "Raw",
+          "display_name": "Raw Triangles"
+        },
+        {
+          "name": "Dual",
+          "display_name": "Dual Graph"
+        },
+        {
+          "name": "Hollow",
+          "display_name": "Hollow Graph"
+        },
+        {
+          "name": "Boundaries",
+          "display_name": "Boundaries"
+        },
+        {
+          "name": "NoTriangulation",
+          "display_name": "NoTriangulation"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

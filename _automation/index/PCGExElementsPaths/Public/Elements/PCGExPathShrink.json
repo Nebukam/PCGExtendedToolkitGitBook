@@ -1,0 +1,665 @@
+{
+  "path": "PCGExElementsPaths/Public/Elements/PCGExPathShrink.h",
+  "module": "PCGExElementsPaths",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExPathShrinkMode",
+      "values": [
+        {
+          "name": "Count",
+          "display_name": "Count"
+        },
+        {
+          "name": "Distance",
+          "display_name": "Distance"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExPathShrinkDistanceCutType",
+      "values": [
+        {
+          "name": "NewPoint",
+          "display_name": "New Point"
+        },
+        {
+          "name": "Previous",
+          "display_name": "Previous"
+        },
+        {
+          "name": "Next",
+          "display_name": "Next"
+        },
+        {
+          "name": "Closest",
+          "display_name": "Closest"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExShrinkEndpoint",
+      "values": [
+        {
+          "name": "Both",
+          "display_name": "Start and End"
+        },
+        {
+          "name": "Start",
+          "display_name": "Start"
+        },
+        {
+          "name": "End",
+          "display_name": "End"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExShrinkConstantMode",
+      "values": [
+        {
+          "name": "Shared",
+          "display_name": "Shared"
+        },
+        {
+          "name": "Separate",
+          "display_name": "Separate"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExShrinkPathEndpointDistanceDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "AmountInput",
+          "display_name": "AmountInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Distance",
+          "display_name": "Distance",
+          "type": "double",
+          "default": "10",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "AmountInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CutType",
+          "display_name": "CutType",
+          "type": "EPCGExPathShrinkDistanceCutType",
+          "default": "EPCGExPathShrinkDistanceCutType::NewPoint",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExShrinkPathEndpointCountDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "ValueSource",
+          "display_name": "ValueSource",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Count",
+          "display_name": "Count",
+          "type": "int32",
+          "default": "10",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ValueSource == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [
+    {
+      "name": "UPCGExShrinkPathSettings",
+      "display_name": "Path : Shrink",
+      "description": "Shrink path from its beginning and end.",
+      "base_class": "UPCGExPathProcessorSettings",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(Keywords = \"reduce extend\", PCGExNodeLibraryDoc=\"paths/shrink\")",
+      "uproperties": [
+        {
+          "name": "ShrinkEndpoint",
+          "display_name": "ShrinkEndpoint",
+          "type": "EPCGExShrinkEndpoint",
+          "default": "EPCGExShrinkEndpoint::Both",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SettingsMode",
+          "display_name": "SettingsMode",
+          "type": "EPCGExShrinkConstantMode",
+          "default": "EPCGExShrinkConstantMode::Shared",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ShrinkEndpoint == EPCGExShrinkEndpoint::Both",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ShrinkMode",
+          "display_name": "ShrinkMode",
+          "type": "EPCGExPathShrinkMode",
+          "default": "EPCGExPathShrinkMode::Distance",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "PrimaryDistanceDetails",
+          "display_name": "PrimaryDistanceDetails",
+          "type": "FPCGExShrinkPathEndpointDistanceDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ShrinkMode == EPCGExPathShrinkMode::Distance",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SecondaryDistanceDetails",
+          "display_name": "SecondaryDistanceDetails",
+          "type": "FPCGExShrinkPathEndpointDistanceDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ShrinkMode == EPCGExPathShrinkMode::Distance && ShrinkEndpoint == EPCGExShrinkEndpoint::Both && SettingsMode == EPCGExShrinkConstantMode::Separate",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "PrimaryCountDetails",
+          "display_name": "PrimaryCountDetails",
+          "type": "FPCGExShrinkPathEndpointCountDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ShrinkMode == EPCGExPathShrinkMode::Count",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SecondaryCountDetails",
+          "display_name": "SecondaryCountDetails",
+          "type": "FPCGExShrinkPathEndpointCountDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ShrinkMode == EPCGExPathShrinkMode::Count && ShrinkEndpoint == EPCGExShrinkEndpoint::Both && SettingsMode == EPCGExShrinkConstantMode::Separate",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bEndpointsIgnoreStopConditions",
+          "display_name": "bEndpointsIgnoreStopConditions",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bPreserveFirstMetadata",
+          "display_name": "bPreserveFirstMetadata",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bPreserveLastMetadata",
+          "display_name": "bPreserveLastMetadata",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bQuietClosedLoopWarning",
+          "display_name": "bQuietClosedLoopWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "node_settings",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "BulkInitData",
+          "display_name": "BulkInitData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CacheData",
+          "display_name": "CacheData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScopedAttributeGet",
+          "display_name": "ScopedAttributeGet",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "StealData",
+          "display_name": "StealData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Disabled",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsDataStealing",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ExecutionPolicy",
+          "display_name": "ExecutionPolicy",
+          "type": "EPCGExExecutionPolicy",
+          "default": "EPCGExExecutionPolicy::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsInitPolicy",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bFlattenOutput",
+          "display_name": "bFlattenOutput",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bCleanupConsumableAttributes",
+          "display_name": "bCleanupConsumableAttributes",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedProtectedAttributesName",
+          "display_name": "Protected Attributes",
+          "type": "FString",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "ProtectedAttributes",
+          "display_name": "Protected Attributes",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bPropagateAbortedExecution",
+          "display_name": "bPropagateAbortedExecution",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietInvalidInputWarning",
+          "display_name": "bQuietInvalidInputWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietMissingInputError",
+          "display_name": "bQuietMissingInputError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietCancellationError",
+          "display_name": "bQuietCancellationError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bOmitInvalidPathsOutputs",
+          "display_name": "bOmitInvalidPathsOutputs",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "ShrinkEndpoint",
+          "display_name": "ShrinkEndpoint",
+          "type": "EPCGExShrinkEndpoint",
+          "default": "EPCGExShrinkEndpoint::Both",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SettingsMode",
+          "display_name": "SettingsMode",
+          "type": "EPCGExShrinkConstantMode",
+          "default": "EPCGExShrinkConstantMode::Shared",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ShrinkEndpoint == EPCGExShrinkEndpoint::Both",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ShrinkMode",
+          "display_name": "ShrinkMode",
+          "type": "EPCGExPathShrinkMode",
+          "default": "EPCGExPathShrinkMode::Distance",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "PrimaryDistanceDetails",
+          "display_name": "PrimaryDistanceDetails",
+          "type": "FPCGExShrinkPathEndpointDistanceDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ShrinkMode == EPCGExPathShrinkMode::Distance",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SecondaryDistanceDetails",
+          "display_name": "SecondaryDistanceDetails",
+          "type": "FPCGExShrinkPathEndpointDistanceDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ShrinkMode == EPCGExPathShrinkMode::Distance && ShrinkEndpoint == EPCGExShrinkEndpoint::Both && SettingsMode == EPCGExShrinkConstantMode::Separate",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "PrimaryCountDetails",
+          "display_name": "PrimaryCountDetails",
+          "type": "FPCGExShrinkPathEndpointCountDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ShrinkMode == EPCGExPathShrinkMode::Count",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SecondaryCountDetails",
+          "display_name": "SecondaryCountDetails",
+          "type": "FPCGExShrinkPathEndpointCountDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "ShrinkMode == EPCGExPathShrinkMode::Count && ShrinkEndpoint == EPCGExShrinkEndpoint::Both && SettingsMode == EPCGExShrinkConstantMode::Separate",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bEndpointsIgnoreStopConditions",
+          "display_name": "bEndpointsIgnoreStopConditions",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bPreserveFirstMetadata",
+          "display_name": "bPreserveFirstMetadata",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bPreserveLastMetadata",
+          "display_name": "bPreserveLastMetadata",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bQuietClosedLoopWarning",
+          "display_name": "bQuietClosedLoopWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExShrinkPathElement",
+      "base_class": "FPCGExPathProcessorElement"
+    }
+  ],
+  "namespaces": {}
+}

@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsClustersRelax/Public/PCGExElementsClustersRelax.h",
+  "module": "PCGExElementsClustersRelax",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsClustersRelaxModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

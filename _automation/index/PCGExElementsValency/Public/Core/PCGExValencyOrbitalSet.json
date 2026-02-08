@@ -1,0 +1,193 @@
+{
+  "path": "PCGExElementsValency/Public/Core/PCGExValencyOrbitalSet.h",
+  "module": "PCGExElementsValency",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExValencyOrbitalEntry",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "BitmaskRef",
+          "display_name": "BitmaskRef",
+          "type": "FPCGExBitmaskRef",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DisplayName",
+          "display_name": "DisplayName",
+          "type": "FText",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DebugColor",
+          "display_name": "DebugColor",
+          "type": "FLinearColor",
+          "default": "FLinearColor::White",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [
+    {
+      "name": "UPCGExValencyOrbitalSet",
+      "display_name": "UPCGExValencyOrbitalSet",
+      "description": "",
+      "base_class": "UDataAsset",
+      "uclass_meta": "BlueprintType, DisplayName=\"[PCGEx] Valency | Orbital Set\"",
+      "uproperties": [
+        {
+          "name": "LayerName",
+          "display_name": "LayerName",
+          "type": "FName",
+          "default": "FName(\"Main\")",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "AngleThreshold",
+          "display_name": "AngleThreshold",
+          "type": "double",
+          "default": "22.5",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bTransformDirection",
+          "display_name": "bTransformDirection",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Orbitals",
+          "display_name": "Orbitals",
+          "type": "TArray<FPCGExValencyOrbitalEntry>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "unknown",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "LayerName",
+          "display_name": "LayerName",
+          "type": "FName",
+          "default": "FName(\"Main\")",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "AngleThreshold",
+          "display_name": "AngleThreshold",
+          "type": "double",
+          "default": "22.5",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bTransformDirection",
+          "display_name": "bTransformDirection",
+          "type": "bool",
+          "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Orbitals",
+          "display_name": "Orbitals",
+          "type": "TArray<FPCGExValencyOrbitalEntry>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

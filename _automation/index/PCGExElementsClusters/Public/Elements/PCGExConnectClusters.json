@@ -1,0 +1,515 @@
+{
+  "path": "PCGExElementsClusters/Public/Elements/PCGExConnectClusters.h",
+  "module": "PCGExElementsClusters",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExBridgeClusterMethod",
+      "values": [
+        {
+          "name": "Delaunay3D",
+          "display_name": "Delaunay 3D"
+        },
+        {
+          "name": "Delaunay2D",
+          "display_name": "Delaunay 2D"
+        },
+        {
+          "name": "LeastEdges",
+          "display_name": "Least Edges"
+        },
+        {
+          "name": "MostEdges",
+          "display_name": "Most Edges"
+        },
+        {
+          "name": "Filters",
+          "display_name": "Node Filters"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExConnectClustersSettings",
+      "display_name": "Cluster : Connect",
+      "description": "Connects isolated edge clusters by their closest vertices, if they share the same vtx group.",
+      "base_class": "UPCGExClustersProcessorSettings",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/connect-clusters\")",
+      "uproperties": [
+        {
+          "name": "BridgeMethod",
+          "display_name": "Connect Method",
+          "type": "EPCGExBridgeClusterMethod",
+          "default": "EPCGExBridgeClusterMethod::Delaunay3D",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ProjectionDetails",
+          "display_name": "ProjectionDetails",
+          "type": "FPCGExGeo2DProjectionDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "BridgeMethod == EPCGExBridgeClusterMethod::Delaunay2D",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CarryOverDetails",
+          "display_name": "Carry Over Settings",
+          "type": "FPCGExCarryOverDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "GraphBuilderDetails",
+          "display_name": "Cluster Output Settings",
+          "type": "FPCGExGraphBuilderDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bFlagVtxConnector",
+          "display_name": "bFlagVtxConnector",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Additional Outputs",
+          "advanced": false
+        },
+        {
+          "name": "VtxConnectorFlagName",
+          "display_name": "VtxConnectorFlagName",
+          "type": "FName",
+          "default": "\"NumBridges\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bFlagVtxConnector",
+          "edit_condition_hides": false,
+          "category": "Settings|Additional Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bFlagEdgeConnector",
+          "display_name": "bFlagEdgeConnector",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Additional Outputs",
+          "advanced": false
+        },
+        {
+          "name": "EdgeConnectorFlagName",
+          "display_name": "EdgeConnectorFlagName",
+          "type": "FName",
+          "default": "\"IsBridge\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bFlagEdgeConnector",
+          "edit_condition_hides": false,
+          "category": "Settings|Additional Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bQuietNoBridgeWarning",
+          "display_name": "bQuietNoBridgeWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "node_settings",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": true,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [
+        "Labels"
+      ],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [
+        {
+          "label": "PCGExClusters::Labels::SourceFilterGenerators",
+          "tooltip": "Nodes that don't meet requirements won't generate connections",
+          "required": "Required"
+        },
+        {
+          "label": "PCGExClusters::Labels::SourceFilterConnectables",
+          "tooltip": "Nodes that don't meet requirements can't receive connections",
+          "required": "Required"
+        }
+      ],
+      "all_properties": [
+        {
+          "name": "BulkInitData",
+          "display_name": "BulkInitData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CacheData",
+          "display_name": "CacheData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScopedAttributeGet",
+          "display_name": "ScopedAttributeGet",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "StealData",
+          "display_name": "StealData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Disabled",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsDataStealing",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ExecutionPolicy",
+          "display_name": "ExecutionPolicy",
+          "type": "EPCGExExecutionPolicy",
+          "default": "EPCGExExecutionPolicy::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsInitPolicy",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bFlattenOutput",
+          "display_name": "bFlattenOutput",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bCleanupConsumableAttributes",
+          "display_name": "bCleanupConsumableAttributes",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedProtectedAttributesName",
+          "display_name": "Protected Attributes",
+          "type": "FString",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "ProtectedAttributes",
+          "display_name": "Protected Attributes",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bPropagateAbortedExecution",
+          "display_name": "bPropagateAbortedExecution",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietInvalidInputWarning",
+          "display_name": "bQuietInvalidInputWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietMissingInputError",
+          "display_name": "bQuietMissingInputError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietCancellationError",
+          "display_name": "bQuietCancellationError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "ScopedIndexLookupBuild",
+          "display_name": "ScopedIndexLookupBuild",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "bQuietMissingClusterPairElement",
+          "display_name": "bQuietMissingClusterPairElement",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": true
+        },
+        {
+          "name": "BridgeMethod",
+          "display_name": "Connect Method",
+          "type": "EPCGExBridgeClusterMethod",
+          "default": "EPCGExBridgeClusterMethod::Delaunay3D",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ProjectionDetails",
+          "display_name": "ProjectionDetails",
+          "type": "FPCGExGeo2DProjectionDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "BridgeMethod == EPCGExBridgeClusterMethod::Delaunay2D",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CarryOverDetails",
+          "display_name": "Carry Over Settings",
+          "type": "FPCGExCarryOverDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "GraphBuilderDetails",
+          "display_name": "Cluster Output Settings",
+          "type": "FPCGExGraphBuilderDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bFlagVtxConnector",
+          "display_name": "bFlagVtxConnector",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Additional Outputs",
+          "advanced": false
+        },
+        {
+          "name": "VtxConnectorFlagName",
+          "display_name": "VtxConnectorFlagName",
+          "type": "FName",
+          "default": "\"NumBridges\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bFlagVtxConnector",
+          "edit_condition_hides": false,
+          "category": "Settings|Additional Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bFlagEdgeConnector",
+          "display_name": "bFlagEdgeConnector",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Additional Outputs",
+          "advanced": false
+        },
+        {
+          "name": "EdgeConnectorFlagName",
+          "display_name": "EdgeConnectorFlagName",
+          "type": "FName",
+          "default": "\"IsBridge\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bFlagEdgeConnector",
+          "edit_condition_hides": false,
+          "category": "Settings|Additional Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bQuietNoBridgeWarning",
+          "display_name": "bQuietNoBridgeWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExConnectClustersElement",
+      "base_class": "FPCGExClustersProcessorElement"
+    }
+  ],
+  "namespaces": {}
+}

@@ -1,0 +1,47 @@
+{
+  "path": "PCGExCore/Public/Clusters/PCGExEdge.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExEdgeDirectionMethod",
+      "values": [
+        {
+          "name": "EndpointsOrder",
+          "display_name": "Endpoints Order"
+        },
+        {
+          "name": "EndpointsIndices",
+          "display_name": "Endpoints Indices"
+        },
+        {
+          "name": "EndpointsSort",
+          "display_name": "Endpoints Sort"
+        },
+        {
+          "name": "EdgeDotAttribute",
+          "display_name": "Edge Dot Attribute"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExEdgeDirectionChoice",
+      "values": [
+        {
+          "name": "SmallestToGreatest",
+          "display_name": "Smallest to Greatest"
+        },
+        {
+          "name": "GreatestToSmallest",
+          "display_name": "Greatest to Smallest"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

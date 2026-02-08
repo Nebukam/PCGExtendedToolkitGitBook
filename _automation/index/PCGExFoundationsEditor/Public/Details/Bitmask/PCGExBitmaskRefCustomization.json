@@ -1,0 +1,15 @@
+{
+  "path": "PCGExFoundationsEditor/Public/Details/Bitmask/PCGExBitmaskRefCustomization.h",
+  "module": "PCGExFoundationsEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExBitmaskRefCustomization",
+      "base_class": "IPropertyTypeCustomization"
+    }
+  ],
+  "namespaces": {}
+}

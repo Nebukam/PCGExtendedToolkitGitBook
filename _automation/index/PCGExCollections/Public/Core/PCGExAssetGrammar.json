@@ -1,0 +1,229 @@
+{
+  "path": "PCGExCollections/Public/Core/PCGExAssetGrammar.h",
+  "module": "PCGExCollections",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExGrammarScaleMode",
+      "values": [
+        {
+          "name": "Fixed",
+          "display_name": "Fixed"
+        },
+        {
+          "name": "Flex",
+          "display_name": "Flexible"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExGrammarSizeReference",
+      "values": [
+        {
+          "name": "X",
+          "display_name": "X"
+        },
+        {
+          "name": "Y",
+          "display_name": "Y"
+        },
+        {
+          "name": "Z",
+          "display_name": "Z"
+        },
+        {
+          "name": "Min",
+          "display_name": "Smallest"
+        },
+        {
+          "name": "Max",
+          "display_name": "Largest"
+        },
+        {
+          "name": "Average",
+          "display_name": "Average"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExGrammarSubCollectionMode",
+      "values": [
+        {
+          "name": "Inherit",
+          "display_name": "Inherit"
+        },
+        {
+          "name": "Override",
+          "display_name": "Override"
+        },
+        {
+          "name": "Flatten",
+          "display_name": "Flatten"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExCollectionGrammarSize",
+      "values": [
+        {
+          "name": "Fixed",
+          "display_name": "Fixed"
+        },
+        {
+          "name": "Min",
+          "display_name": "Smallest"
+        },
+        {
+          "name": "Max",
+          "display_name": "Largest"
+        },
+        {
+          "name": "Average",
+          "display_name": "Average"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExAssetGrammarDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Symbol",
+          "display_name": "Symbol",
+          "type": "FName",
+          "default": "NAME_None",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScaleMode",
+          "display_name": "ScaleMode",
+          "type": "EPCGExGrammarScaleMode",
+          "default": "EPCGExGrammarScaleMode::Fixed",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Size",
+          "display_name": "Size",
+          "type": "EPCGExGrammarSizeReference",
+          "default": "EPCGExGrammarSizeReference::X",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DebugColor",
+          "display_name": "DebugColor",
+          "type": "FLinearColor",
+          "default": "FLinearColor::White",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExCollectionGrammarDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Symbol",
+          "display_name": "Symbol",
+          "type": "FName",
+          "default": "NAME_None",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScaleMode",
+          "display_name": "ScaleMode",
+          "type": "EPCGExGrammarScaleMode",
+          "default": "EPCGExGrammarScaleMode::Fixed",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SizeMode",
+          "display_name": "SizeMode",
+          "type": "EPCGExCollectionGrammarSize",
+          "default": "EPCGExCollectionGrammarSize::Min",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Size",
+          "display_name": "Size",
+          "type": "double",
+          "default": "100",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SizeMode == EPCGExCollectionGrammarSize::Fixed",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "DebugColor",
+          "display_name": "DebugColor",
+          "type": "FLinearColor",
+          "default": "FLinearColor::White",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

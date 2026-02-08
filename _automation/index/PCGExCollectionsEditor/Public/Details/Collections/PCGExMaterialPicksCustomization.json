@@ -1,0 +1,23 @@
+{
+  "path": "PCGExCollectionsEditor/Public/Details/Collections/PCGExMaterialPicksCustomization.h",
+  "module": "PCGExCollectionsEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExMaterialOverrideSingleEntryCustomization",
+      "base_class": "IPropertyTypeCustomization"
+    },
+    {
+      "name": "FPCGExMaterialOverrideEntryCustomization",
+      "base_class": "IPropertyTypeCustomization"
+    },
+    {
+      "name": "FPCGExMaterialOverrideCollectionCustomization",
+      "base_class": "IPropertyTypeCustomization"
+    }
+  ],
+  "namespaces": {}
+}

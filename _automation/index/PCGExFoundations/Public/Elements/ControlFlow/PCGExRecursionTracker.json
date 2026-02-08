@@ -1,0 +1,686 @@
+{
+  "path": "PCGExFoundations/Public/Elements/ControlFlow/PCGExRecursionTracker.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExRecursionTrackerType",
+      "values": [
+        {
+          "name": "Simple",
+          "display_name": "Simple"
+        },
+        {
+          "name": "Branch",
+          "display_name": "Branch"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExRecursionTrackerMode",
+      "values": [
+        {
+          "name": "Create",
+          "display_name": "Create"
+        },
+        {
+          "name": "Update",
+          "display_name": "Update"
+        },
+        {
+          "name": "CreateOrUpdate",
+          "display_name": "Create or Update"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExRecursionTrackerSettings",
+      "display_name": "Break",
+      "description": "A Simple Recursion tracker to make working with recursive subgraphs easier. Acts as a \\",
+      "base_class": "UPCGExSettings",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), meta=(PCGExNodeLibraryDoc=\"quality-of-life/recursion-tracker\")",
+      "uproperties": [
+        {
+          "name": "Type",
+          "display_name": "Type",
+          "type": "EPCGExRecursionTrackerType",
+          "default": "EPCGExRecursionTrackerType::Branch",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Mode",
+          "display_name": "Mode",
+          "type": "EPCGExRecursionTrackerMode",
+          "default": "EPCGExRecursionTrackerMode::CreateOrUpdate",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ContinueAttributeName",
+          "display_name": "ContinueAttributeName",
+          "type": "FName",
+          "default": "\"Continue\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Update",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxCount",
+          "display_name": "MaxCount",
+          "type": "int32",
+          "default": "20",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Update",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "AddTags",
+          "display_name": "AddTags",
+          "type": "FString",
+          "default": "TEXT(\"\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Tagging",
+          "advanced": false
+        },
+        {
+          "name": "RemoveTags",
+          "display_name": "RemoveTags",
+          "type": "FString",
+          "default": "TEXT(\"\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Create",
+          "edit_condition_hides": true,
+          "category": "Settings|Tagging",
+          "advanced": false
+        },
+        {
+          "name": "CounterUpdate",
+          "display_name": "CounterUpdate",
+          "type": "int32",
+          "default": "-1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Create",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "bOutputProgress",
+          "display_name": "bOutputProgress",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Create",
+          "edit_condition_hides": true,
+          "category": "Settings|Extra Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bOutputIndex",
+          "display_name": "bOutputIndex",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Create",
+          "edit_condition_hides": true,
+          "category": "Settings|Extra Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bOutputRemainder",
+          "display_name": "bOutputRemainder",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Create",
+          "edit_condition_hides": true,
+          "category": "Settings|Extra Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bOneMinus",
+          "display_name": " └─ One Minus",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Create && bOutputProgress",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bForceOutputContinue",
+          "display_name": "bForceOutputContinue",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Create",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "bDoAdditionalDataTesting",
+          "display_name": "bDoAdditionalDataTesting",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Create && Type == EPCGExRecursionTrackerType::Simple",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bAddEntryWhenCreatingFromExistingData",
+          "display_name": "bAddEntryWhenCreatingFromExistingData",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Create",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "RemainderOffsetWhenCreateInsteadOfUpdate",
+          "display_name": "RemainderOffsetWhenCreateInsteadOfUpdate",
+          "type": "int32",
+          "default": "-1",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExRecursionTrackerMode::CreateOrUpdate",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "bGroupBranchPins",
+          "display_name": "bGroupBranchPins",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": true
+        }
+      ],
+      "classification": {
+        "type": "node_settings",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": true,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [
+        "DefaultInputLabel",
+        "SourceTrackerLabel",
+        "SourceTrackerFilters",
+        "SourceTestData",
+        "Labels"
+      ],
+      "outputs": [
+        "OutputContinueLabel",
+        "OutputStopLabel",
+        "OutputTrackerLabel",
+        "Output"
+      ],
+      "consumed_factories": [],
+      "consumed_filters": [
+        {
+          "label": "PCGExRecursionTracker::SourceTrackerFilters",
+          "tooltip": "Filters incoming data, if any.",
+          "required": "Advanced"
+        },
+        {
+          "label": "PCGExFilters::Labels::SourceFiltersLabel",
+          "tooltip": "Collection filters used on the collections above.",
+          "required": "Normal"
+        }
+      ],
+      "all_properties": [
+        {
+          "name": "BulkInitData",
+          "display_name": "BulkInitData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CacheData",
+          "display_name": "CacheData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScopedAttributeGet",
+          "display_name": "ScopedAttributeGet",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "StealData",
+          "display_name": "StealData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Disabled",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsDataStealing",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ExecutionPolicy",
+          "display_name": "ExecutionPolicy",
+          "type": "EPCGExExecutionPolicy",
+          "default": "EPCGExExecutionPolicy::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsInitPolicy",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bFlattenOutput",
+          "display_name": "bFlattenOutput",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bCleanupConsumableAttributes",
+          "display_name": "bCleanupConsumableAttributes",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedProtectedAttributesName",
+          "display_name": "Protected Attributes",
+          "type": "FString",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "ProtectedAttributes",
+          "display_name": "Protected Attributes",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bPropagateAbortedExecution",
+          "display_name": "bPropagateAbortedExecution",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietInvalidInputWarning",
+          "display_name": "bQuietInvalidInputWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietMissingInputError",
+          "display_name": "bQuietMissingInputError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietCancellationError",
+          "display_name": "bQuietCancellationError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "Type",
+          "display_name": "Type",
+          "type": "EPCGExRecursionTrackerType",
+          "default": "EPCGExRecursionTrackerType::Branch",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Mode",
+          "display_name": "Mode",
+          "type": "EPCGExRecursionTrackerMode",
+          "default": "EPCGExRecursionTrackerMode::CreateOrUpdate",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ContinueAttributeName",
+          "display_name": "ContinueAttributeName",
+          "type": "FName",
+          "default": "\"Continue\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Update",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxCount",
+          "display_name": "MaxCount",
+          "type": "int32",
+          "default": "20",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Update",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "AddTags",
+          "display_name": "AddTags",
+          "type": "FString",
+          "default": "TEXT(\"\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Tagging",
+          "advanced": false
+        },
+        {
+          "name": "RemoveTags",
+          "display_name": "RemoveTags",
+          "type": "FString",
+          "default": "TEXT(\"\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Create",
+          "edit_condition_hides": true,
+          "category": "Settings|Tagging",
+          "advanced": false
+        },
+        {
+          "name": "CounterUpdate",
+          "display_name": "CounterUpdate",
+          "type": "int32",
+          "default": "-1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Create",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "bOutputProgress",
+          "display_name": "bOutputProgress",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Create",
+          "edit_condition_hides": true,
+          "category": "Settings|Extra Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bOutputIndex",
+          "display_name": "bOutputIndex",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Create",
+          "edit_condition_hides": true,
+          "category": "Settings|Extra Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bOutputRemainder",
+          "display_name": "bOutputRemainder",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Create",
+          "edit_condition_hides": true,
+          "category": "Settings|Extra Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bOneMinus",
+          "display_name": " └─ One Minus",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Create && bOutputProgress",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bForceOutputContinue",
+          "display_name": "bForceOutputContinue",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Create",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "bDoAdditionalDataTesting",
+          "display_name": "bDoAdditionalDataTesting",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Create && Type == EPCGExRecursionTrackerType::Simple",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bAddEntryWhenCreatingFromExistingData",
+          "display_name": "bAddEntryWhenCreatingFromExistingData",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExRecursionTrackerMode::Create",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "RemainderOffsetWhenCreateInsteadOfUpdate",
+          "display_name": "RemainderOffsetWhenCreateInsteadOfUpdate",
+          "type": "int32",
+          "default": "-1",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode == EPCGExRecursionTrackerMode::CreateOrUpdate",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": true
+        },
+        {
+          "name": "bGroupBranchPins",
+          "display_name": "bGroupBranchPins",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": true
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExRecursionTrackerElement",
+      "base_class": "IPCGExElement"
+    }
+  ],
+  "namespaces": {}
+}

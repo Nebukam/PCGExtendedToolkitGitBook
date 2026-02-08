@@ -1,0 +1,39 @@
+{
+  "path": "PCGExElementsTopology/Public/Components/PCGExDynamicMeshComponent.h",
+  "module": "PCGExElementsTopology",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExDynamicMeshComponent",
+      "display_name": "UPCGExDynamicMeshComponent",
+      "description": "",
+      "base_class": "UDynamicMeshComponent",
+      "uclass_meta": "Hidden, meta=(BlueprintSpawnableComponent), ClassGroup = Rendering",
+      "uproperties": [],
+      "classification": {
+        "type": "unknown",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": []
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

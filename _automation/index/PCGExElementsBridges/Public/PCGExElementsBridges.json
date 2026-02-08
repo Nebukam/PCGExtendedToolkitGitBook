@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsBridges/Public/PCGExElementsBridges.h",
+  "module": "PCGExElementsBridges",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsBridgesModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

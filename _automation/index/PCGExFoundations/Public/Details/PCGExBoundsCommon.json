@@ -1,0 +1,25 @@
+{
+  "path": "PCGExFoundations/Public/Details/PCGExBoundsCommon.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExPointOnBoundsOutputMode",
+      "values": [
+        {
+          "name": "Merged",
+          "display_name": "Merged Points"
+        },
+        {
+          "name": "Individual",
+          "display_name": "Per-point dataset"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

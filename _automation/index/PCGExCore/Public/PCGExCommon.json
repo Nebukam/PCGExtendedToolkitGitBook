@@ -1,0 +1,154 @@
+{
+  "path": "PCGExCore/Public/PCGExCommon.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExOptionState",
+      "values": [
+        {
+          "name": "Default",
+          "display_name": "Default"
+        },
+        {
+          "name": "Enabled",
+          "display_name": "Enabled"
+        },
+        {
+          "name": "Disabled",
+          "display_name": "Disabled"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExExecutionPolicy",
+      "values": [
+        {
+          "name": "Default",
+          "display_name": "Default"
+        },
+        {
+          "name": "NoPause",
+          "display_name": "No Pause"
+        },
+        {
+          "name": "NoPauseButLoop",
+          "display_name": "NoPauseButLoop"
+        },
+        {
+          "name": "NoPauseButTopLoop",
+          "display_name": "NoPauseButTopLoop"
+        },
+        {
+          "name": "Ignored",
+          "display_name": "Ignored"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExPointBoundsSource",
+      "values": [
+        {
+          "name": "ScaledBounds",
+          "display_name": "Scaled Bounds"
+        },
+        {
+          "name": "DensityBounds",
+          "display_name": "Density Bounds"
+        },
+        {
+          "name": "Bounds",
+          "display_name": "Bounds"
+        },
+        {
+          "name": "Center",
+          "display_name": "Center"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExDistance",
+      "values": [
+        {
+          "name": "Center",
+          "display_name": "Center"
+        },
+        {
+          "name": "SphereBounds",
+          "display_name": "Sphere Bounds"
+        },
+        {
+          "name": "BoxBounds",
+          "display_name": "Box Bounds"
+        },
+        {
+          "name": "None",
+          "display_name": "None"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExDistanceType",
+      "values": [
+        {
+          "name": "Euclidian",
+          "display_name": "Euclidian"
+        },
+        {
+          "name": "Manhattan",
+          "display_name": "Manhattan"
+        },
+        {
+          "name": "Chebyshev",
+          "display_name": "Chebyshev"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExTransformMode",
+      "values": [
+        {
+          "name": "Absolute",
+          "display_name": "Absolute"
+        },
+        {
+          "name": "Relative",
+          "display_name": "Relative"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExResolutionMode",
+      "values": [
+        {
+          "name": "Distance",
+          "display_name": "Distance"
+        },
+        {
+          "name": "Fixed",
+          "display_name": "Count"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {
+    "Labels": {
+      "SourceSeedsLabel": "Seeds",
+      "SourceTargetsLabel": "Targets",
+      "SourceSourcesLabel": "Sources",
+      "SourceBoundsLabel": "Bounds",
+      "SourceDeformersLabel": "Deformers",
+      "OutputDiscardedLabel": "Discarded"
+    }
+  }
+}

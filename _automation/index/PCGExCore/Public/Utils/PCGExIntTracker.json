@@ -1,0 +1,15 @@
+{
+  "path": "PCGExCore/Public/Utils/PCGExIntTracker.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExIntTracker",
+      "base_class": "TSharedFromThis"
+    }
+  ],
+  "namespaces": {}
+}

@@ -1,0 +1,37 @@
+{
+  "path": "PCGExCore/Public/Math/OBB/PCGExOBBIntersections.h",
+  "module": "PCGExCore",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExCutType",
+      "values": [
+        {
+          "name": "Undefined",
+          "display_name": "Undefined"
+        },
+        {
+          "name": "Entry",
+          "display_name": "Entry"
+        },
+        {
+          "name": "EntryNoExit",
+          "display_name": "EntryNoExit"
+        },
+        {
+          "name": "Exit",
+          "display_name": "Exit"
+        },
+        {
+          "name": "ExitNoEntry",
+          "display_name": "ExitNoEntry"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

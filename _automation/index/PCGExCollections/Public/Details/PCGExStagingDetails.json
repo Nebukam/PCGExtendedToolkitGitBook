@@ -1,0 +1,332 @@
+{
+  "path": "PCGExCollections/Public/Details/PCGExStagingDetails.h",
+  "module": "PCGExCollections",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExAssetDistributionIndexDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "PickMode",
+          "display_name": "PickMode",
+          "type": "EPCGExIndexPickMode",
+          "default": "EPCGExIndexPickMode::Ascending",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "IndexSafety",
+          "display_name": "IndexSafety",
+          "type": "EPCGExIndexSafety",
+          "default": "EPCGExIndexSafety::Tile",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "IndexSource",
+          "display_name": "IndexSource",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bRemapIndexToCollectionSize",
+          "display_name": "bRemapIndexToCollectionSize",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "TruncateRemap",
+          "display_name": "TruncateRemap",
+          "type": "EPCGExTruncateMode",
+          "default": "EPCGExTruncateMode::None",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExComponentTaggingDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bForwardInputDataTags",
+          "display_name": "bForwardInputDataTags",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExAssetTaggingDetails",
+      "base_class": "FPCGExComponentTaggingDetails",
+      "uproperties": [
+        {
+          "name": "GrabTags",
+          "display_name": "GrabTags",
+          "type": "uint8",
+          "default": "static_cast<uint8>(EPCGExAssetTagInheritance::Asset)",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExAssetDistributionDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "bUseCategories",
+          "display_name": "bUseCategories",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Category",
+          "advanced": false
+        },
+        {
+          "name": "CategoryInput",
+          "display_name": "CategoryInput",
+          "type": "EPCGExInputValueType",
+          "default": "EPCGExInputValueType::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseCategories",
+          "edit_condition_hides": true,
+          "category": "Settings|Category",
+          "advanced": false
+        },
+        {
+          "name": "Category",
+          "display_name": "Category",
+          "type": "FName",
+          "default": "FName(\"Category\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bUseCategories && CategoryInput == EPCGExInputValueType::Constant",
+          "edit_condition_hides": true,
+          "category": "Settings|Category",
+          "advanced": false
+        },
+        {
+          "name": "SeedComponents",
+          "display_name": "SeedComponents",
+          "type": "uint8",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Distribution",
+          "display_name": "Distribution",
+          "type": "EPCGExDistribution",
+          "default": "EPCGExDistribution::WeightedRandom",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "IndexSettings",
+          "display_name": " └─ Index Settings",
+          "type": "FPCGExAssetDistributionIndexDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Distribution == EPCGExDistribution::Index",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "LocalSeed",
+          "display_name": "LocalSeed",
+          "type": "int32",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExMicroCacheDistributionDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "SeedComponents",
+          "display_name": "SeedComponents",
+          "type": "uint8",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Distribution",
+          "display_name": "Distribution",
+          "type": "EPCGExDistribution",
+          "default": "EPCGExDistribution::WeightedRandom",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "IndexSettings",
+          "display_name": " └─ Index Settings",
+          "type": "FPCGExAssetDistributionIndexDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Distribution == EPCGExDistribution::Index",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "LocalSeed",
+          "display_name": "LocalSeed",
+          "type": "int32",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExAssetAttributeSetDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "AssetPathSourceAttribute",
+          "display_name": "AssetPathSourceAttribute",
+          "type": "FName",
+          "default": "FName(\"AssetPath\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "WeightSourceAttribute",
+          "display_name": "WeightSourceAttribute",
+          "type": "FName",
+          "default": "NAME_None",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CategorySourceAttribute",
+          "display_name": "CategorySourceAttribute",
+          "type": "FName",
+          "default": "NAME_None",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

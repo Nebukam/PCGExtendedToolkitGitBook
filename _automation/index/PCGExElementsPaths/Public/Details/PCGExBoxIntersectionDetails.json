@@ -1,0 +1,162 @@
+{
+  "path": "PCGExElementsPaths/Public/Details/PCGExBoxIntersectionDetails.h",
+  "module": "PCGExElementsPaths",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExBoxIntersectionDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "BoundsSource",
+          "display_name": "BoundsSource",
+          "type": "EPCGExPointBoundsSource",
+          "default": "EPCGExPointBoundsSource::ScaledBounds",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteIsIntersection",
+          "display_name": "bWriteIsIntersection",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "IsIntersectionAttributeName",
+          "display_name": "IsIntersection",
+          "type": "FName",
+          "default": "FName(\"IsIntersection\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteIsIntersection",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteCutType",
+          "display_name": "bWriteCutType",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CutTypeAttributeName",
+          "display_name": "CutType",
+          "type": "FName",
+          "default": "FName(\"CutType\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteCutType",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CutTypeValueMapping",
+          "display_name": " └─ Mapping",
+          "type": "TMap<EPCGExCutType, int32>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteCutType",
+          "edit_condition_hides": false,
+          "category": "Settings",
+          "advanced": false
+        },
+        {
+          "name": "bWriteNormal",
+          "display_name": "bWriteNormal",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "NormalAttributeName",
+          "display_name": "Normal",
+          "type": "FName",
+          "default": "FName(\"Normal\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteNormal",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bWriteBoundIndex",
+          "display_name": "bWriteBoundIndex",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "BoundIndexAttributeName",
+          "display_name": "BoundIndex",
+          "type": "FName",
+          "default": "FName(\"BoundIndex\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteBoundIndex",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "IntersectionForwarding",
+          "display_name": "IntersectionForwarding",
+          "type": "FPCGExForwardDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Forwarding",
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

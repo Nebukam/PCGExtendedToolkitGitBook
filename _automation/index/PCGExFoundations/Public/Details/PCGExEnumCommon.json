@@ -1,0 +1,25 @@
+{
+  "path": "PCGExFoundations/Public/Details/PCGExEnumCommon.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExEnumConstantSourceType",
+      "values": [
+        {
+          "name": "Picker",
+          "display_name": "Picker"
+        },
+        {
+          "name": "Selector",
+          "display_name": "Selector"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

@@ -1,0 +1,19 @@
+{
+  "path": "PCGExCollectionsEditor/Public/Details/Collections/PCGExAssetEntryCustomization.h",
+  "module": "PCGExCollectionsEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExAssetEntryCustomization",
+      "base_class": "IPropertyTypeCustomization"
+    },
+    {
+      "name": "FPCGExEntryHeaderCustomizationBase",
+      "base_class": "FPCGExAssetEntryCustomization"
+    }
+  ],
+  "namespaces": {}
+}

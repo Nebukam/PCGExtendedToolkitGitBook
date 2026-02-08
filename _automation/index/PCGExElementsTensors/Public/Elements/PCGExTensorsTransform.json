@@ -1,0 +1,703 @@
+{
+  "path": "PCGExElementsTensors/Public/Elements/PCGExTensorsTransform.h",
+  "module": "PCGExElementsTensors",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExTensorTransformMode",
+      "values": [
+        {
+          "name": "Absolute",
+          "display_name": "Absolute"
+        },
+        {
+          "name": "Relative",
+          "display_name": "Relative"
+        },
+        {
+          "name": "Align",
+          "display_name": "Align"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExTensorsTransformSettings",
+      "display_name": "Tensors Transform",
+      "description": "Transform input points using tensors.",
+      "base_class": "UPCGExPointsProcessorSettings",
+      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"tensors/tensors-transform\")",
+      "uproperties": [
+        {
+          "name": "bTransformPosition",
+          "display_name": "bTransformPosition",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bTransformRotation",
+          "display_name": "bTransformRotation",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Rotation",
+          "display_name": "Rotation",
+          "type": "EPCGExTensorTransformMode",
+          "default": "EPCGExTensorTransformMode::Align",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bTransformRotation",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "AlignAxis",
+          "display_name": "AlignAxis",
+          "type": "EPCGExAxis",
+          "default": "EPCGExAxis::Forward",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bTransformRotation && Rotation == EPCGExTensorTransformMode::Align",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Iterations",
+          "display_name": "Iterations",
+          "type": "int32",
+          "default": "1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "StopConditionHandling",
+          "display_name": "StopConditionHandling",
+          "type": "EPCGExTensorStopConditionHandling",
+          "default": "EPCGExTensorStopConditionHandling::Exclude",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Limits",
+          "advanced": false
+        },
+        {
+          "name": "bWriteEffectorsPings",
+          "display_name": "bWriteEffectorsPings",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "EffectorsPingsAttributeName",
+          "display_name": "Effectors Pings",
+          "type": "FName",
+          "default": "FName(\"EffectorsPings\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteEffectorsPings",
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bWriteUpdateCount",
+          "display_name": "bWriteUpdateCount",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "UpdateCountAttributeName",
+          "display_name": "Update Count",
+          "type": "FName",
+          "default": "FName(\"UpdateCount\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteUpdateCount",
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bWriteTraveledDistance",
+          "display_name": "bWriteTraveledDistance",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "TraveledDistanceAttributeName",
+          "display_name": "Traveled Distance",
+          "type": "FName",
+          "default": "FName(\"TraveledDistance\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteTraveledDistance",
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bWriteGracefullyStopped",
+          "display_name": "bWriteGracefullyStopped",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "GracefullyStoppedAttributeName",
+          "display_name": "Gracefully Stopped",
+          "type": "FName",
+          "default": "FName(\"GracefullyStopped\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteGracefullyStopped",
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bWriteMaxIterationsReached",
+          "display_name": "bWriteMaxIterationsReached",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "MaxIterationsReachedAttributeName",
+          "display_name": "Max Iterations Reached",
+          "type": "FName",
+          "default": "FName(\"MaxIterationsReached\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteMaxIterationsReached",
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "TensorHandlerDetails",
+          "display_name": "Tensor Sampling Settings",
+          "type": "FPCGExTensorHandlerDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "node_settings",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": true,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": true,
+      "point_filter_label": "PCGExFilters::Labels::SourceFiltersLabel",
+      "filter_inputs": [
+        {
+          "label": "PCGExFilters::Labels::SourceFiltersLabel",
+          "tooltip": "Filters",
+          "factory_type": "PCGExFactories::PointFilters",
+          "required": false
+        }
+      ],
+      "inputs": [
+        "SourceTensorsLabel",
+        "Labels"
+      ],
+      "outputs": [],
+      "consumed_factories": [
+        {
+          "label": "PCGExTensor::SourceTensorsLabel",
+          "type_info": "FPCGExDataTypeInfoTensor"
+        }
+      ],
+      "consumed_filters": [
+        {
+          "label": "PCGExFilters::Labels::SourceFiltersLabel",
+          "tooltip": "Filters",
+          "factory_type": "PCGExFactories::PointFilters",
+          "required": false
+        },
+        {
+          "label": "PCGExFilters::Labels::SourceStopConditionLabel",
+          "tooltip": "Transformed points will be tested against those filters, and transform will stop at first fail. Only a small subset of PCGEx are supported.",
+          "required": "Normal"
+        }
+      ],
+      "all_properties": [
+        {
+          "name": "BulkInitData",
+          "display_name": "BulkInitData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "CacheData",
+          "display_name": "CacheData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ScopedAttributeGet",
+          "display_name": "ScopedAttributeGet",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "StealData",
+          "display_name": "StealData",
+          "type": "EPCGExOptionState",
+          "default": "EPCGExOptionState::Disabled",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsDataStealing",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ExecutionPolicy",
+          "display_name": "ExecutionPolicy",
+          "type": "EPCGExExecutionPolicy",
+          "default": "EPCGExExecutionPolicy::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsInitPolicy",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bFlattenOutput",
+          "display_name": "bFlattenOutput",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bCleanupConsumableAttributes",
+          "display_name": "bCleanupConsumableAttributes",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "CommaSeparatedProtectedAttributesName",
+          "display_name": "Protected Attributes",
+          "type": "FString",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "ProtectedAttributes",
+          "display_name": "Protected Attributes",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCleanupConsumableAttributes",
+          "edit_condition_hides": false,
+          "category": "Cleanup",
+          "advanced": false
+        },
+        {
+          "name": "bPropagateAbortedExecution",
+          "display_name": "bPropagateAbortedExecution",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietInvalidInputWarning",
+          "display_name": "bQuietInvalidInputWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietMissingInputError",
+          "display_name": "bQuietMissingInputError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bQuietCancellationError",
+          "display_name": "bQuietCancellationError",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Warnings and Errors",
+          "advanced": false
+        },
+        {
+          "name": "bTransformPosition",
+          "display_name": "bTransformPosition",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bTransformRotation",
+          "display_name": "bTransformRotation",
+          "type": "bool",
+          "default": "true",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Rotation",
+          "display_name": "Rotation",
+          "type": "EPCGExTensorTransformMode",
+          "default": "EPCGExTensorTransformMode::Align",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bTransformRotation",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "AlignAxis",
+          "display_name": "AlignAxis",
+          "type": "EPCGExAxis",
+          "default": "EPCGExAxis::Forward",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bTransformRotation && Rotation == EPCGExTensorTransformMode::Align",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Iterations",
+          "display_name": "Iterations",
+          "type": "int32",
+          "default": "1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "StopConditionHandling",
+          "display_name": "StopConditionHandling",
+          "type": "EPCGExTensorStopConditionHandling",
+          "default": "EPCGExTensorStopConditionHandling::Exclude",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Limits",
+          "advanced": false
+        },
+        {
+          "name": "bWriteEffectorsPings",
+          "display_name": "bWriteEffectorsPings",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "EffectorsPingsAttributeName",
+          "display_name": "Effectors Pings",
+          "type": "FName",
+          "default": "FName(\"EffectorsPings\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteEffectorsPings",
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bWriteUpdateCount",
+          "display_name": "bWriteUpdateCount",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "UpdateCountAttributeName",
+          "display_name": "Update Count",
+          "type": "FName",
+          "default": "FName(\"UpdateCount\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteUpdateCount",
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bWriteTraveledDistance",
+          "display_name": "bWriteTraveledDistance",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "TraveledDistanceAttributeName",
+          "display_name": "Traveled Distance",
+          "type": "FName",
+          "default": "FName(\"TraveledDistance\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteTraveledDistance",
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bWriteGracefullyStopped",
+          "display_name": "bWriteGracefullyStopped",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "GracefullyStoppedAttributeName",
+          "display_name": "Gracefully Stopped",
+          "type": "FName",
+          "default": "FName(\"GracefullyStopped\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteGracefullyStopped",
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "bWriteMaxIterationsReached",
+          "display_name": "bWriteMaxIterationsReached",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "MaxIterationsReachedAttributeName",
+          "display_name": "Max Iterations Reached",
+          "type": "FName",
+          "default": "FName(\"MaxIterationsReached\")",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bWriteMaxIterationsReached",
+          "edit_condition_hides": false,
+          "category": "Settings|Outputs",
+          "advanced": false
+        },
+        {
+          "name": "TensorHandlerDetails",
+          "display_name": "Tensor Sampling Settings",
+          "type": "FPCGExTensorHandlerDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExTensorsTransformElement",
+      "base_class": "FPCGExPointsProcessorElement"
+    }
+  ],
+  "namespaces": {}
+}

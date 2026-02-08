@@ -1,0 +1,110 @@
+{
+  "path": "PCGExFoundations/Public/Details/PCGExAxisDeformDetails.h",
+  "module": "PCGExFoundations",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExTransformAlphaUsage",
+      "values": [
+        {
+          "name": "StartAndEnd",
+          "display_name": "Start & End"
+        },
+        {
+          "name": "StartAndSize",
+          "display_name": "Start & Size"
+        },
+        {
+          "name": "CenterAndSize",
+          "display_name": "Center & Size"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [
+    {
+      "name": "FPCGExAxisDeformDetails",
+      "base_class": null,
+      "uproperties": [
+        {
+          "name": "Usage",
+          "display_name": "Usage",
+          "type": "EPCGExTransformAlphaUsage",
+          "default": "EPCGExTransformAlphaUsage::StartAndEnd",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "FirstAlphaInput",
+          "display_name": "FirstAlphaInput",
+          "type": "EPCGExSampleSource",
+          "default": "EPCGExSampleSource::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "FirstAlphaConstant",
+          "display_name": "First Alpha",
+          "type": "double",
+          "default": "0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "FirstAlphaInput == EPCGExSampleSource::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SecondAlphaInput",
+          "display_name": "SecondAlphaInput",
+          "type": "EPCGExSampleSource",
+          "default": "EPCGExSampleSource::Constant",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "SecondAlphaConstant",
+          "display_name": "Second Alpha",
+          "type": "double",
+          "default": "1",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "SecondAlphaInput == EPCGExSampleSource::Constant",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    },
+    {
+      "name": "FPCGExAxisTwistDetails",
+      "base_class": null,
+      "uproperties": [],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}
