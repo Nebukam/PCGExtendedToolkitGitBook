@@ -10,7 +10,7 @@ Compare a value against spatial noise.
 
 This filter evaluates spatial noise at each point's position and compares the result against a threshold value. Points pass or fail the filter based on the comparison result. Connected noise sub-nodes define the type and configuration of noise sampled at each point location.
 
-> This is a [filter-definition](../common-settings/filter-definition/ "mention")
+> This is a [filter-definition](../../common-settings/filter-definition/ "mention")
 
 ### How It Works
 

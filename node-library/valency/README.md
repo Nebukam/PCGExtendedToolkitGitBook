@@ -14,4 +14,4 @@ Valency is an advanced system that builds on clusters and asset staging. Familia
 
 For understanding orbitals, cages, bonding rules, and the solve process:
 
-* [Valency Concepts](../working-with-pcgex/valency/valency/)
+* [Valency Concepts](../../working-with-pcgex/valency/valency/)
