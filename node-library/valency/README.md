@@ -12,11 +12,11 @@ Valency is an advanced system that builds on clusters and asset staging. Familia
 
 ### Sections
 
-| Section            | Contents                                                                  |
-| ------------------ | ------------------------------------------------------------------------- |
-| Rules              | Bonding rules, socket rules, orbital set definitions                      |
-| Valency : Staging  | Solvers — constraint solver, entropy solver, priority solver              |
-| Valency : Patterns | Pattern matching and replacement on solved clusters                       |
+| Section                                         | Contents                                                     |
+| ----------------------------------------------- | ------------------------------------------------------------ |
+| [rules](rules/ "mention")                       | Bonding rules, socket rules, orbital set definitions         |
+| [valency-staging](valency-staging/ "mention")   | Solvers — constraint solver, entropy solver, priority solver |
+| [valency-patterns](valency-patterns/ "mention") | Pattern matching and replacement on solved clusters          |
 
 Once a solve completes, utility nodes extract the results — writing socket transforms from solved module assignments or exposing orbital data as point attributes for downstream processing.
 

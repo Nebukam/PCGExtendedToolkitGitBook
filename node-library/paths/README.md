@@ -10,15 +10,15 @@ The nodes in this section cover the full lifecycle of path data. You can create 
 
 ### Sections
 
-| Section         | Contents                                                                          |
-| --------------- | --------------------------------------------------------------------------------- |
-| Common Settings | Shared configuration — path processor settings, tangents, sub-point blending      |
-| Generate        | Create paths from splines, offset curves, tensor fields, or by splitting existing paths |
-| Modify          | Structural changes — bevel, resample, subdivide, fuse, stitch, shrink, and more   |
-| Intersect       | Crossings and clipping — Clipper2 booleans, rect clip, path-path crossings        |
-| Transform       | Position and orientation — smooth, offset, orient, slide                           |
-| Analyze         | Property extraction — path statistics, tangent computation                         |
-| Output          | Conversion to Unreal objects — splines, spline meshes, staging-driven meshes      |
+| Section                                       | Contents                                                                                |
+| --------------------------------------------- | --------------------------------------------------------------------------------------- |
+| [common-settings](common-settings/ "mention") | Shared configuration — path processor settings, tangents, sub-point blending            |
+| [generate](generate/ "mention")               | Create paths from splines, offset curves, tensor fields, or by splitting existing paths |
+| [modify](modify/ "mention")                   | Structural changes — bevel, resample, subdivide, fuse, stitch, shrink, and more         |
+| [intersect](intersect/ "mention")             | Crossings and clipping — Clipper2 booleans, rect clip, path-path crossings              |
+| [transform](transform/ "mention")             | Position and orientation — smooth, offset, orient, slide                                |
+| [analyze](analyze/ "mention")                 | Property extraction — path statistics, tangent computation                              |
+| [output](output/ "mention")                   | Conversion to Unreal objects — splines, spline meshes, staging-driven meshes            |
 
 ### Concepts
 

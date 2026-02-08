@@ -8,9 +8,9 @@ icon: grid-round-2-plus
 
 ### Sections
 
-| Section  | Contents                                                              |
-| -------- | --------------------------------------------------------------------- |
-| Generate | Create new attributes — indices, GUIDs, constants, tuples, actor data |
-| Modify   | Transform existing attributes — blending, remapping, cleanup          |
-| Analyze  | Inspect attribute data — hashing, statistics, reduction               |
-| Bitmasks | Bitwise operations on integer attributes — set, clear, test, combine  |
+| Section                         | Contents                                                              |
+| ------------------------------- | --------------------------------------------------------------------- |
+| [keys](keys/ "mention")         | Create new attributes — indices, GUIDs, constants, tuples, actor data |
+| [modify](modify/ "mention")     | Transform existing attributes — blending, remapping, cleanup          |
+| [analyze](analyze/ "mention")   | Inspect attribute data — hashing, statistics, reduction               |
+| [bitmasks](bitmasks/ "mention") | Bitwise operations on integer attributes — set, clear, test, combine  |

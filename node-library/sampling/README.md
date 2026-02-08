@@ -8,12 +8,12 @@ icon: grid-round-2-plus
 
 ### Sections
 
-| Section                    | Contents                                                                                |
-| -------------------------- | --------------------------------------------------------------------------------------- |
-| Common Settings            | Shared configuration — apply sampling details                                           |
-| Nearest                    | Spatial queries — nearest point, bounds, spline, surface, path, line trace, containment |
-| Cluster : Sample Neighbors | Aggregate attribute values from adjacent Vtx using sampler sub-nodes                    |
-| Textures                   | Texture sampling pipeline — texture params, data loading, UV sampling                   |
+| Section                                                         | Contents                                                                                |
+| --------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| [common-settings](common-settings/ "mention")                   | Shared configuration — apply sampling details                                           |
+| [nearest](nearest/ "mention")                                   | Spatial queries — nearest point, bounds, spline, surface, path, line trace, containment |
+| [cluster-sample-neighbors](cluster-sample-neighbors/ "mention") | Aggregate attribute values from adjacent Vtx using sampler sub-nodes                    |
+| [textures](textures/ "mention")                                 | Texture sampling pipeline — texture params, data loading, UV sampling                   |
 
 Beyond spatial queries and texture reads, sampling also covers overlap analysis. Nodes like **Discard By Overlap** and **Self Pruning** use the same spatial reasoning to score and remove overlapping points — either across collections or within a single one. Overlap stats can be written as attributes for downstream filtering without discarding anything.
 

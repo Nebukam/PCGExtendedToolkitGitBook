@@ -8,11 +8,11 @@ icon: grid-round-2-plus
 
 ### Sections
 
-| Section         | Contents                                                                         |
-| --------------- | -------------------------------------------------------------------------------- |
-| Common Settings | Shared configuration — tensor sampling mutations                                 |
-| Tensors         | Field sources — constant, pole, spin, flow, noise, path/spline, surface, inertia |
-| Samplers        | Sampling methods — default, adaptive RK, RK4, six-point averaging                |
+| Section                                       | Contents                                                                         |
+| --------------------------------------------- | -------------------------------------------------------------------------------- |
+| [common-settings](common-settings/ "mention") | Shared configuration — tensor sampling mutations                                 |
+| [tensors](tensors/ "mention")                 | Field sources — constant, pole, spin, flow, noise, path/spline, surface, inertia |
+| [samplers](samplers/ "mention")               | Sampling methods — default, adaptive RK, RK4, six-point averaging                |
 
 #### Tensor Consumers
 

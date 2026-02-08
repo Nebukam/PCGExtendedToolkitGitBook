@@ -8,9 +8,9 @@ icon: grid-round-2-plus
 
 ### Sections
 
-| Section   | Contents                                                                       |
-| --------- | ------------------------------------------------------------------------------ |
-| Generate  | Create new point data — Copy to Points, Bounds To Points                       |
-| Modify    | Reshape point sets — fusing, bounds conversion, bin packing                    |
-| Transform | Move and orient points — transforms, relaxation, projection, tensor-driven     |
-| Analyze   | Inspect spatial properties — collocation, normalization, bounds decomposition   |
+| Section                           | Contents                                                                      |
+| --------------------------------- | ----------------------------------------------------------------------------- |
+| [generate](generate/ "mention")   | Create new point data — Copy to Points, Bounds To Points                      |
+| [modify](modify/ "mention")       | Reshape point sets — fusing, bounds conversion, bin packing                   |
+| [transform](transform/ "mention") | Move and orient points — transforms, relaxation, projection, tensor-driven    |
+| [analyze](analyze/ "mention")     | Inspect spatial properties — collocation, normalization, bounds decomposition |
