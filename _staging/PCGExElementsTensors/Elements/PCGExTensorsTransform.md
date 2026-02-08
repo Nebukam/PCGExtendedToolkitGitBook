@@ -305,7 +305,7 @@ This node inherits common settings from its base class.
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsTensors-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Elements/PCGExTensorsTransform.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Elements/PCGExTensorsTransform.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 17 documented

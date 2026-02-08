@@ -56,8 +56,7 @@ For each `FPCGEx*` or `EPCGEx*` type used:
 
 - [ ] Module badge uses correct module name
 - [ ] Badge URL format: `https://img.shields.io/badge/Source-NAME-473F69`
-- [ ] `<!-- SOURCE: url -->` comment exists on the line after the badge (one per source URL)
-- [ ] Source URL in comment matches the visible source link
+- [ ] Badge is a clickable link to the source file
 - [ ] GitHub URL path is valid
 
 ## Output Format

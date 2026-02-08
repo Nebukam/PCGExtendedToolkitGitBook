@@ -436,7 +436,7 @@ Default: `false`
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsSpatial-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSpatial/Public/Elements/Layout/PCGExBinPacking3D.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSpatial/Public/Elements/Layout/PCGExBinPacking3D.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 27 documented

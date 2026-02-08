@@ -175,7 +175,7 @@ Default: `false`
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsPathfinding-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfinding/Public/Elements/PCGExPathfindingFindAllCellsBounded.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfinding/Public/Elements/PCGExPathfindingFindAllCellsBounded.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 7 documented (OutputMode, TriageFlags, Constraints, Artifacts, HoleGrowth, ProjectionDetails, bUseOctreeSearch)

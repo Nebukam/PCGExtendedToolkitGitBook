@@ -394,7 +394,7 @@ Sort direction when Sort Input Values = true.
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExFoundations-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Filtering/PCGExDiscardSame.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Filtering/PCGExDiscardSame.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 12+ documented (Mode, TestMode, bTestBounds, TestBoundsTolerance, bTestPointCount, TestPointCountTolerance, bTestPositions, TestPositionTolerance, TestAttributesHash, AttributeHashConfigs, bIncludeSingleAttribute, AttributeHashConfig)

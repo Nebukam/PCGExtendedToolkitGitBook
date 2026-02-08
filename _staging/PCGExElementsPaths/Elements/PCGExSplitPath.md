@@ -182,7 +182,7 @@ This node inherits path processing settings from its base class.
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsPaths-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExSplitPath.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExSplitPath.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 8 documented (SplitAction, InitialBehavior, bInclusive, bOmitSinglePointOutputs, bTagIfEvenSplit, IsEvenTag, bTagIfOddSplit, IsOddTag)

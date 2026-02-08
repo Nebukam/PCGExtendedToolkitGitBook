@@ -94,7 +94,7 @@ See [Fitting Relax Base](./PCGExFittingRelaxBase.md) for details.
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsClusters-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Relax/PCGExRadiusFittingRelax.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Relax/PCGExRadiusFittingRelax.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 3 documented

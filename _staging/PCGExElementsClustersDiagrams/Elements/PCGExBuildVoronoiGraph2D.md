@@ -264,7 +264,7 @@ This node inherits common settings from its base class.
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsClusters-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Diagrams/PCGExBuildVoronoiGraph2D.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Diagrams/PCGExBuildVoronoiGraph2D.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 13 documented

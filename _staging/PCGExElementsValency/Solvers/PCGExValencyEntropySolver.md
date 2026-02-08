@@ -52,7 +52,7 @@ This solver inherits from the base solver factory.
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsValency-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Solvers/PCGExValencyEntropySolver.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Solvers/PCGExValencyEntropySolver.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 1 documented (MinimumSpawnWeightBoost)

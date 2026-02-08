@@ -174,7 +174,7 @@ Filter cells by compactness ratio (0-1, where 1 is a perfect circle). Compactnes
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExGraphs-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 20+ documented (rotation, winding, shape filter, size constraints)

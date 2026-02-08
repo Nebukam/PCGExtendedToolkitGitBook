@@ -222,7 +222,7 @@ Default: `0`
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsProbing-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExProbeNumericCompare.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExProbeNumericCompare.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 8 documented (MaxConnectionsInput, MaxConnectionsConstant, MaxConnectionsAttribute, Attribute, Comparison, Tolerance, bPreventCoincidence, CoincidencePreventionTolerance)

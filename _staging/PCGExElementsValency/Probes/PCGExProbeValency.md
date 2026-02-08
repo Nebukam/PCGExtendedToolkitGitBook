@@ -126,7 +126,7 @@ Default: `0`
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsValency-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Probes/PCGExProbeValency.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Probes/PCGExProbeValency.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 2 documented (OrbitalSet, Favor)

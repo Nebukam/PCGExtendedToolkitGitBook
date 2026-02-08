@@ -85,7 +85,7 @@ Default: Empty (no consumption)
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsActions-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsActions/Public/Elements/PCGExBatchActions.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsActions/Public/Elements/PCGExBatchActions.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 3 documented (DefaultAttributesFilter, bDoConsumeProcessedAttributes, ConsumeProcessedAttributes)

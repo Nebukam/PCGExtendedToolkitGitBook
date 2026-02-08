@@ -126,7 +126,7 @@ See [Vtx Property Provider](./PCGExVtxPropertyFactoryProvider.md) for base class
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsClusters-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertySpecialNeighbors.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertySpecialNeighbors.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 1 documented (Config with 2 sub-settings)

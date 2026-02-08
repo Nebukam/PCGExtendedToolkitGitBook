@@ -180,7 +180,7 @@ This node inherits path processing settings from its base class.
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsPaths-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExWritePathProperties.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExWritePathProperties.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 40+ documented (path attributes, point attributes, tagging, inclusion settings)

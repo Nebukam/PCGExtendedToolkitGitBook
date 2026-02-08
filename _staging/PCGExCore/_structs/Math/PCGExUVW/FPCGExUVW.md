@@ -132,7 +132,7 @@ Default: `0`
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExCore-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Math/PCGExUVW.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Math/PCGExUVW.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 7 documented (BoundsReference, UInput, U, VInput, V, WInput, W)

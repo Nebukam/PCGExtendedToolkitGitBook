@@ -300,7 +300,7 @@ Configuration for random downsampling. Controls the proportion of vertices used 
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsClusters-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/PCGExClusterCentrality.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/PCGExClusterCentrality.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 13 documented

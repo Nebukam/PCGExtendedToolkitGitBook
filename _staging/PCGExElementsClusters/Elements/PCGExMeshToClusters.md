@@ -175,7 +175,7 @@ Which input point attributes to forward onto the generated clusters.
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsClusters-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/PCGExMeshToClusters.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/PCGExMeshToClusters.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 11 documented

@@ -129,7 +129,7 @@ Default: `DBL_COMPARE_TOLERANCE`
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExFilters-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Public/Filters/Collections/PCGExEntryCountFilter.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Public/Filters/Collections/PCGExEntryCountFilter.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties:

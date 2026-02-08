@@ -63,7 +63,7 @@ Default: `Per Seed`
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsShapes-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsShapes/Public/Core/PCGExShapeProcessor.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsShapes/Public/Core/PCGExShapeProcessor.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 1 documented

@@ -50,7 +50,7 @@ Default: `true`
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsPathfinding-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfinding/Public/Search/PCGExSearchOperation.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfinding/Public/Search/PCGExSearchOperation.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 1 documented (bEarlyExit)

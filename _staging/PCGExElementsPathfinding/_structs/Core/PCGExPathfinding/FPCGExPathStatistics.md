@@ -94,7 +94,7 @@ Default: `EdgeUseCount`
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsPathfinding-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfinding/Public/Core/PCGExPathfinding.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfinding/Public/Core/PCGExPathfinding.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 4 documented (bWritePointUseCount, PointUseCount, bWriteEdgeUseCount, EdgeUseCount)

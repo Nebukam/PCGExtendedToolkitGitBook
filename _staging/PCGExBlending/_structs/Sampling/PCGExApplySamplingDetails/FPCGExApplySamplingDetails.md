@@ -104,7 +104,7 @@ Selects which rotation components from the look-at calculation are applied to po
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExBlending-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/Sampling/PCGExApplySamplingDetails.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/Sampling/PCGExApplySamplingDetails.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 6 documented (bApplyTransform, Position, Rotation, Scale, bApplyLookAt, LookAtRotation)

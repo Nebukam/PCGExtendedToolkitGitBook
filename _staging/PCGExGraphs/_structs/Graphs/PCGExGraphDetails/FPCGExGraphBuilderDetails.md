@@ -196,7 +196,7 @@ Default: `false` · Attribute: `EdgeLength`
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExGraphs-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExGraphs/Public/Graphs/PCGExGraphDetails.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExGraphs/Public/Graphs/PCGExGraphDetails.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 14 documented (edge position, solidification, size filtering, caching)

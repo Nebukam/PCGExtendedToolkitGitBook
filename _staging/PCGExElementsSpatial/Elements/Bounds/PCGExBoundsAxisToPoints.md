@@ -270,7 +270,7 @@ Copies source point attributes as tags on output collections. Only available whe
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsSpatial-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSpatial/Public/Elements/Bounds/PCGExBoundsAxisToPoints.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSpatial/Public/Elements/Bounds/PCGExBoundsAxisToPoints.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 13 documented (bGeneratePerPointData, BoundsReference, Priority, DirectionConstraint, Direction, SizeConstraint, SizeThreshold, ConstraintsOrder, U, bSetExtents, Extents, bSetScale, Scale, PointAttributesToOutputTags)

@@ -166,7 +166,7 @@ Settings for vector hash comparison mode.
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsClusters-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeEdgeDirectionFilter.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeEdgeDirectionFilter.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 10 documented (via FPCGExNodeEdgeDirectionFilterConfig)

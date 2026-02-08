@@ -56,7 +56,7 @@ Default: `-1`
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExCollectionsEditor-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollectionsEditor/Public/PCGExCollectionsEditorSettings.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollectionsEditor/Public/PCGExCollectionsEditorSettings.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 2 documented (HiddenPropertyNames, PCGExDataVersion)

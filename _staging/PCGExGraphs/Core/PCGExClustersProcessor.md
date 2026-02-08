@@ -119,7 +119,7 @@ Each derived processor specializes in a specific cluster operation type.
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExGraphs-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExGraphs/Public/Core/PCGExClustersProcessor.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExGraphs/Public/Core/PCGExClustersProcessor.h -->
+
 
 <!-- VERIFICATION REPORT
 Common Properties: 2 documented (ScopedIndexLookupBuild, bQuietMissingClusterPairElement)

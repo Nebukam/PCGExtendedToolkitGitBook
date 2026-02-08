@@ -191,7 +191,7 @@ Copies source point attributes as tags on output collections.
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsSpatial-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSpatial/Public/Elements/Bounds/PCGExBoundsToPoints.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSpatial/Public/Elements/Bounds/PCGExBoundsToPoints.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 9 documented (bGeneratePerPointData, SymmetryAxis, UVW, bSetExtents, Extents, bMultiplyExtents, bSetScale, Scale, PointAttributesToOutputTags)

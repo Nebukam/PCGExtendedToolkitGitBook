@@ -67,7 +67,7 @@ This node has no node-specific settings beyond the inherited base settings.
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsMeta-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsMeta/Public/Elements/PCGExBlendAttributes.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsMeta/Public/Elements/PCGExBlendAttributes.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 0 (none)

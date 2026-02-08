@@ -260,7 +260,7 @@ Default: `true`
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsMeta-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsMeta/Public/Elements/PCGExWriteIndex.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsMeta/Public/Elements/PCGExWriteIndex.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 14 documented

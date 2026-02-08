@@ -1,12 +1,12 @@
 {
-  "generated": "2026-02-08T18:44:47.723Z",
+  "generated": "2026-02-08T20:22:54.975Z",
   "entries": [
     {
       "source_relative": "PCGExBlending/Public/Core/PCGExBlendOpFactory.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExBlending\\Public\\Core\\PCGExBlendOpFactory.h",
       "staging": "_staging/PCGExBlending/Core/PCGExBlendOpFactory.md",
-      "node_library": "node-library/metadata/blendop/blend-op-factory.md",
-      "doc_path": "metadata/blendop/blend-op-factory",
+      "node_library": "node-library/metadata/modify/blendop/blend-op-factory.md",
+      "doc_path": "metadata/modify/blendop/blend-op-factory",
       "current_doc_meta": null,
       "status": "meta_missing"
     },
@@ -14,9 +14,9 @@
       "source_relative": "PCGExBlending/Public/Core/PCGExBlendOpFactoryProvider.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExBlending\\Public\\Core\\PCGExBlendOpFactoryProvider.h",
       "staging": "_staging/PCGExBlending/Core/PCGExBlendOpFactoryProvider.md",
-      "node_library": "node-library/metadata/blendop/README.md",
-      "doc_path": "metadata/blendop",
-      "current_doc_meta": "metadata/uber-blend/blend-op",
+      "node_library": "node-library/metadata/modify/blendop/README.md",
+      "doc_path": "metadata/modify/blendop",
+      "current_doc_meta": "metadata/blendop",
       "status": "meta_mismatch"
     },
     {
@@ -52,8 +52,8 @@
       "staging": "_staging/PCGExBlending/SubPoints/DataBlending/PCGExSubPointsBlendInheritEnd.md",
       "node_library": "node-library/paths/common-settings/sub-points-blending/inherit-last.md",
       "doc_path": "paths/common-settings/sub-points-blending/inherit-last",
-      "current_doc_meta": "paths/sub-point-blending/inherit-end",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/common-settings/sub-points-blending/inherit-last",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExBlending/Public/SubPoints/DataBlending/PCGExSubPointsBlendInheritStart.h",
@@ -61,8 +61,8 @@
       "staging": "_staging/PCGExBlending/SubPoints/DataBlending/PCGExSubPointsBlendInheritStart.md",
       "node_library": "node-library/paths/common-settings/sub-points-blending/inherit-first.md",
       "doc_path": "paths/common-settings/sub-points-blending/inherit-first",
-      "current_doc_meta": "paths/sub-point-blending/inherit-first",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/common-settings/sub-points-blending/inherit-first",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExBlending/Public/SubPoints/DataBlending/PCGExSubPointsBlendInterpolate.h",
@@ -70,8 +70,8 @@
       "staging": "_staging/PCGExBlending/SubPoints/DataBlending/PCGExSubPointsBlendInterpolate.md",
       "node_library": "node-library/paths/common-settings/sub-points-blending/interpolate.md",
       "doc_path": "paths/common-settings/sub-points-blending/interpolate",
-      "current_doc_meta": "paths/sub-point-blending/interpolate",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/common-settings/sub-points-blending/interpolate",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExBlending/Public/SubPoints/DataBlending/PCGExSubPointsBlendNone.h",
@@ -79,8 +79,8 @@
       "staging": "_staging/PCGExBlending/SubPoints/DataBlending/PCGExSubPointsBlendNone.md",
       "node_library": "node-library/paths/common-settings/sub-points-blending/no-blending.md",
       "doc_path": "paths/common-settings/sub-points-blending/no-blending",
-      "current_doc_meta": "paths/sub-point-blending/none",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/common-settings/sub-points-blending/no-blending",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExBlending/Public/SubPoints/DataBlending/PCGExSubPointsBlendOperation.h",
@@ -142,8 +142,8 @@
       "staging": "_staging/PCGExCollections/Elements/PCGExAssetCollectionToSet.md",
       "node_library": "node-library/staging/utilities/asset-collection-to-set.md",
       "doc_path": "staging/utilities/asset-collection-to-set",
-      "current_doc_meta": "assets-management/asset-collection-to-set",
-      "status": "meta_mismatch"
+      "current_doc_meta": "staging/utilities/asset-collection-to-set",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExCollections/Public/Elements/PCGExAssetStaging.h",
@@ -151,8 +151,8 @@
       "staging": "_staging/PCGExCollections/Elements/PCGExAssetStaging.md",
       "node_library": "node-library/staging/staging-distribute.md",
       "doc_path": "staging/staging-distribute",
-      "current_doc_meta": "assets-management/asset-staging",
-      "status": "meta_mismatch"
+      "current_doc_meta": "staging/staging-distribute",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExCollections/Public/Elements/PCGExCollectionToModuleInfos.h",
@@ -160,8 +160,8 @@
       "staging": "_staging/PCGExCollections/Elements/PCGExCollectionToModuleInfos.md",
       "node_library": "node-library/staging/utilities/collection-to-module-infos.md",
       "doc_path": "staging/utilities/collection-to-module-infos",
-      "current_doc_meta": "assets-management/collection-to-module-infos",
-      "status": "meta_mismatch"
+      "current_doc_meta": "staging/utilities/collection-to-module-infos",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExCollections/Public/Elements/PCGExStagingFitting.h",
@@ -169,8 +169,8 @@
       "staging": "_staging/PCGExCollections/Elements/PCGExStagingFitting.md",
       "node_library": "node-library/staging/staging-fitting.md",
       "doc_path": "staging/staging-fitting",
-      "current_doc_meta": "assets-management/staging-fitting",
-      "status": "meta_mismatch"
+      "current_doc_meta": "staging/staging-fitting",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExCollections/Public/Elements/PCGExStagingLoadPCGData.h",
@@ -178,8 +178,8 @@
       "staging": "_staging/PCGExCollections/Elements/PCGExStagingLoadPCGData.md",
       "node_library": "node-library/staging/staging-load-pcgdata.md",
       "doc_path": "staging/staging-load-pcgdata",
-      "current_doc_meta": "assets-management/pcgdataasset-loader",
-      "status": "meta_mismatch"
+      "current_doc_meta": "staging/staging-load-pcgdata",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExCollections/Public/Elements/PCGExStagingLoadProperties.h",
@@ -187,8 +187,8 @@
       "staging": "_staging/PCGExCollections/Elements/PCGExStagingLoadProperties.md",
       "node_library": "node-library/staging/staging-load-properties.md",
       "doc_path": "staging/staging-load-properties",
-      "current_doc_meta": "assets-management/asset-staging",
-      "status": "meta_mismatch"
+      "current_doc_meta": "staging/staging-load-properties",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExCollections/Public/Elements/PCGExStagingLoadSockets.h",
@@ -196,8 +196,8 @@
       "staging": "_staging/PCGExCollections/Elements/PCGExStagingLoadSockets.md",
       "node_library": "node-library/staging/staging-load-sockets.md",
       "doc_path": "staging/staging-load-sockets",
-      "current_doc_meta": "assets-management/asset-staging",
-      "status": "meta_mismatch"
+      "current_doc_meta": "staging/staging-load-sockets",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExCollections/Public/Elements/PCGExStagingSplineMesh.h",
@@ -205,8 +205,8 @@
       "staging": "_staging/PCGExCollections/Elements/PCGExStagingSplineMesh.md",
       "node_library": "node-library/paths/output/staging-spline-mesh.md",
       "doc_path": "paths/output/staging-spline-mesh",
-      "current_doc_meta": "assets-management/spline-mesh",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/output/staging-spline-mesh",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExCollections/Public/Elements/PCGExStagingTypeFilter.h",
@@ -214,8 +214,8 @@
       "staging": "_staging/PCGExCollections/Elements/PCGExStagingTypeFilter.md",
       "node_library": "node-library/staging/staging-type-filter.md",
       "doc_path": "staging/staging-type-filter",
-      "current_doc_meta": "assets-management/staged-type-filter",
-      "status": "meta_mismatch"
+      "current_doc_meta": "staging/staging-type-filter",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExCollections/Public/MeshSelectors/PCGExMeshSelectorStaged.h",
@@ -439,8 +439,8 @@
       "staging": "_staging/PCGExElementsActions/Actions/PCGExActionWriteValues.md",
       "node_library": "node-library/utilities/batch-actions/action-write-attributes.md",
       "doc_path": "utilities/batch-actions/action-write-attributes",
-      "current_doc_meta": "quality-of-life/batch-actions/write-attributes",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/batch-actions/action-write-attributes",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsActions/Public/Core/PCGExActionFactoryProvider.h",
@@ -457,8 +457,8 @@
       "staging": "_staging/PCGExElementsActions/Elements/PCGExBatchActions.md",
       "node_library": "node-library/utilities/batch-actions/README.md",
       "doc_path": "utilities/batch-actions",
-      "current_doc_meta": "quality-of-life/batch-actions",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/batch-actions",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsBridges/Public/Elements/PCGExWaitForPCGData.h",
@@ -484,8 +484,8 @@
       "staging": "_staging/PCGExElementsClipper2/Elements/PCGExClipper2Boolean.md",
       "node_library": "node-library/paths/intersect/clipper2-boolean.md",
       "doc_path": "paths/intersect/clipper2-boolean",
-      "current_doc_meta": "paths/clipper2/clipper2-boolean",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/intersect/clipper2-boolean",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClipper2/Public/Elements/PCGExClipper2Offset.h",
@@ -493,8 +493,8 @@
       "staging": "_staging/PCGExElementsClipper2/Elements/PCGExClipper2Offset.md",
       "node_library": "node-library/paths/generate/clipper2-offset.md",
       "doc_path": "paths/generate/clipper2-offset",
-      "current_doc_meta": "paths/clipper2/clipper2-offset",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/generate/clipper2-offset",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClipper2/Public/Elements/PCGExClipper2RectClip.h",
@@ -502,8 +502,8 @@
       "staging": "_staging/PCGExElementsClipper2/Elements/PCGExClipper2RectClip.md",
       "node_library": "node-library/paths/intersect/clipper2-rect-clip.md",
       "doc_path": "paths/intersect/clipper2-rect-clip",
-      "current_doc_meta": "paths/clipper2/clipper2-rectclip",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/intersect/clipper2-rect-clip",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/Decomposition/PCGExClusterDecomposition.h",
@@ -511,15 +511,15 @@
       "staging": "_staging/PCGExElementsClusters/Elements/Decomposition/PCGExClusterDecomposition.md",
       "node_library": "node-library/clusters/refine/cluster-decomposition.md",
       "doc_path": "clusters/refine/cluster-decomposition",
-      "current_doc_meta": "metadata/vtx-properties",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/refine/cluster-decomposition",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/Diagrams/PCGExBuildCellDiagram.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClusters\\Public\\Elements\\Diagrams\\PCGExBuildCellDiagram.h",
       "staging": "_staging/PCGExElementsClustersDiagrams/Elements/PCGExBuildCellDiagram.md",
-      "node_library": "node-library/clusters/generate/diagrams/cluster-cell-diagram.md",
-      "doc_path": "clusters/generate/diagrams/cluster-cell-diagram",
+      "node_library": "node-library/clusters/generate/cluster-cell-diagram.md",
+      "doc_path": "clusters/generate/cluster-cell-diagram",
       "current_doc_meta": null,
       "status": "meta_missing"
     },
@@ -527,8 +527,8 @@
       "source_relative": "PCGExElementsClusters/Public/Elements/Diagrams/PCGExBuildConvexHull.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClusters\\Public\\Elements\\Diagrams\\PCGExBuildConvexHull.h",
       "staging": "_staging/PCGExElementsClustersDiagrams/Elements/PCGExBuildConvexHull.md",
-      "node_library": "node-library/clusters/generate/diagrams/cluster-convex-hull-3d.md",
-      "doc_path": "clusters/generate/diagrams/cluster-convex-hull-3d",
+      "node_library": "node-library/clusters/generate/cluster-convex-hull-3d.md",
+      "doc_path": "clusters/generate/cluster-convex-hull-3d",
       "current_doc_meta": null,
       "status": "meta_missing"
     },
@@ -536,8 +536,8 @@
       "source_relative": "PCGExElementsClusters/Public/Elements/Diagrams/PCGExBuildConvexHull2D.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClusters\\Public\\Elements\\Diagrams\\PCGExBuildConvexHull2D.h",
       "staging": "_staging/PCGExElementsClustersDiagrams/Elements/PCGExBuildConvexHull2D.md",
-      "node_library": "node-library/clusters/generate/diagrams/cluster-convex-hull-2d.md",
-      "doc_path": "clusters/generate/diagrams/cluster-convex-hull-2d",
+      "node_library": "node-library/clusters/generate/cluster-convex-hull-2d.md",
+      "doc_path": "clusters/generate/cluster-convex-hull-2d",
       "current_doc_meta": null,
       "status": "meta_missing"
     },
@@ -545,8 +545,8 @@
       "source_relative": "PCGExElementsClusters/Public/Elements/Diagrams/PCGExBuildDelaunayGraph.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClusters\\Public\\Elements\\Diagrams\\PCGExBuildDelaunayGraph.h",
       "staging": "_staging/PCGExElementsClustersDiagrams/Elements/PCGExBuildDelaunayGraph.md",
-      "node_library": "node-library/clusters/generate/diagrams/cluster-delaunay-3d.md",
-      "doc_path": "clusters/generate/diagrams/cluster-delaunay-3d",
+      "node_library": "node-library/clusters/generate/cluster-delaunay-3d.md",
+      "doc_path": "clusters/generate/cluster-delaunay-3d",
       "current_doc_meta": null,
       "status": "meta_missing"
     },
@@ -554,8 +554,8 @@
       "source_relative": "PCGExElementsClusters/Public/Elements/Diagrams/PCGExBuildDelaunayGraph2D.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClusters\\Public\\Elements\\Diagrams\\PCGExBuildDelaunayGraph2D.h",
       "staging": "_staging/PCGExElementsClustersDiagrams/Elements/PCGExBuildDelaunayGraph2D.md",
-      "node_library": "node-library/clusters/generate/diagrams/cluster-delaunay-2d.md",
-      "doc_path": "clusters/generate/diagrams/cluster-delaunay-2d",
+      "node_library": "node-library/clusters/generate/cluster-delaunay-2d.md",
+      "doc_path": "clusters/generate/cluster-delaunay-2d",
       "current_doc_meta": null,
       "status": "meta_missing"
     },
@@ -563,8 +563,8 @@
       "source_relative": "PCGExElementsClusters/Public/Elements/Diagrams/PCGExBuildDualGraph.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClusters\\Public\\Elements\\Diagrams\\PCGExBuildDualGraph.h",
       "staging": "_staging/PCGExElementsClustersDiagrams/Elements/PCGExBuildDualGraph.md",
-      "node_library": "node-library/clusters/generate/diagrams/cluster-dual-graph.md",
-      "doc_path": "clusters/generate/diagrams/cluster-dual-graph",
+      "node_library": "node-library/clusters/generate/cluster-dual-graph.md",
+      "doc_path": "clusters/generate/cluster-dual-graph",
       "current_doc_meta": null,
       "status": "meta_missing"
     },
@@ -572,8 +572,8 @@
       "source_relative": "PCGExElementsClusters/Public/Elements/Diagrams/PCGExBuildVoronoiGraph.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClusters\\Public\\Elements\\Diagrams\\PCGExBuildVoronoiGraph.h",
       "staging": "_staging/PCGExElementsClustersDiagrams/Elements/PCGExBuildVoronoiGraph.md",
-      "node_library": "node-library/clusters/generate/diagrams/cluster-voronoi-3d.md",
-      "doc_path": "clusters/generate/diagrams/cluster-voronoi-3d",
+      "node_library": "node-library/clusters/generate/cluster-voronoi-3d.md",
+      "doc_path": "clusters/generate/cluster-voronoi-3d",
       "current_doc_meta": null,
       "status": "meta_missing"
     },
@@ -581,8 +581,8 @@
       "source_relative": "PCGExElementsClusters/Public/Elements/Diagrams/PCGExBuildVoronoiGraph2D.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClusters\\Public\\Elements\\Diagrams\\PCGExBuildVoronoiGraph2D.h",
       "staging": "_staging/PCGExElementsClustersDiagrams/Elements/PCGExBuildVoronoiGraph2D.md",
-      "node_library": "node-library/clusters/generate/diagrams/cluster-voronoi-2d.md",
-      "doc_path": "clusters/generate/diagrams/cluster-voronoi-2d",
+      "node_library": "node-library/clusters/generate/cluster-voronoi-2d.md",
+      "doc_path": "clusters/generate/cluster-voronoi-2d",
       "current_doc_meta": null,
       "status": "meta_missing"
     },
@@ -601,8 +601,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/Meta/NeighborSamplers/PCGExNeighborSampleBlend.md",
       "node_library": "node-library/sampling/cluster-sample-neighbors/sampler-vtx-blend.md",
       "doc_path": "sampling/cluster-sample-neighbors/sampler-vtx-blend",
-      "current_doc_meta": "sampling/sample-neighbors/sampler-vtx-properties",
-      "status": "meta_mismatch"
+      "current_doc_meta": "sampling/cluster-sample-neighbors/sampler-vtx-blend",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/Meta/NeighborSamplers/PCGExNeighborSampleFactoryProvider.h",
@@ -619,8 +619,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/Meta/NeighborSamplers/PCGExNeighborSampleFilters.md",
       "node_library": "node-library/sampling/cluster-sample-neighbors/sampler-test-neighbors.md",
       "doc_path": "sampling/cluster-sample-neighbors/sampler-test-neighbors",
-      "current_doc_meta": "sampling/sample-neighbors/sampler-test-neighbors",
-      "status": "meta_mismatch"
+      "current_doc_meta": "sampling/cluster-sample-neighbors/sampler-test-neighbors",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/Meta/NeighborSamplers/PCGExNeighborSampleProperties.h",
@@ -637,8 +637,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/Meta/PCGExSampleNeighbors.md",
       "node_library": "node-library/sampling/cluster-sample-neighbors/README.md",
       "doc_path": "sampling/cluster-sample-neighbors",
-      "current_doc_meta": "sampling/sample-neighbors",
-      "status": "meta_mismatch"
+      "current_doc_meta": "sampling/cluster-sample-neighbors",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/Meta/PCGExWriteEdgeProperties.h",
@@ -646,8 +646,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/Meta/PCGExWriteEdgeProperties.md",
       "node_library": "node-library/clusters/analyze/cluster-edge-properties.md",
       "doc_path": "clusters/analyze/cluster-edge-properties",
-      "current_doc_meta": "metadata/edge-properties",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/analyze/cluster-edge-properties",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/Meta/PCGExWriteVtxProperties.h",
@@ -655,8 +655,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/Meta/PCGExWriteVtxProperties.md",
       "node_library": "node-library/clusters/analyze/cluster-vtx-properties/README.md",
       "doc_path": "clusters/analyze/cluster-vtx-properties",
-      "current_doc_meta": "metadata/vtx-properties",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/analyze/cluster-vtx-properties",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertyAmplitude.h",
@@ -664,8 +664,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/Meta/VtxProperties/PCGExVtxPropertyAmplitude.md",
       "node_library": "node-library/clusters/analyze/cluster-vtx-properties/vtx-amplitude.md",
       "doc_path": "clusters/analyze/cluster-vtx-properties/vtx-amplitude",
-      "current_doc_meta": "clusters/metadata/vtx-properties/vtx-amplitude",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/analyze/cluster-vtx-properties/vtx-amplitude",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertyEdgeMatch.h",
@@ -673,8 +673,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/Meta/VtxProperties/PCGExVtxPropertyEdgeMatch.md",
       "node_library": "node-library/clusters/analyze/cluster-vtx-properties/vtx-edge-match.md",
       "doc_path": "clusters/analyze/cluster-vtx-properties/vtx-edge-match",
-      "current_doc_meta": "clusters/metadata/vtx-properties/vtx-edge-match",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/analyze/cluster-vtx-properties/vtx-edge-match",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertyFactoryProvider.h",
@@ -682,8 +682,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/Meta/VtxProperties/PCGExVtxPropertyFactoryProvider.md",
       "node_library": "node-library/clusters/analyze/cluster-vtx-properties/vtx-property-provider.md",
       "doc_path": "clusters/analyze/cluster-vtx-properties/vtx-property-provider",
-      "current_doc_meta": "TBD",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/analyze/cluster-vtx-properties/vtx-property-provider",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertySpecialEdges.h",
@@ -691,8 +691,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/Meta/VtxProperties/PCGExVtxPropertySpecialEdges.md",
       "node_library": "node-library/clusters/analyze/cluster-vtx-properties/vtx-special-edges.md",
       "doc_path": "clusters/analyze/cluster-vtx-properties/vtx-special-edges",
-      "current_doc_meta": "clusters/metadata/vtx-properties/vtx-special-edges",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/analyze/cluster-vtx-properties/vtx-special-edges",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/Meta/VtxProperties/PCGExVtxPropertySpecialNeighbors.h",
@@ -700,8 +700,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/Meta/VtxProperties/PCGExVtxPropertySpecialNeighbors.md",
       "node_library": "node-library/clusters/analyze/cluster-vtx-properties/vtx-special-neighbors.md",
       "doc_path": "clusters/analyze/cluster-vtx-properties/vtx-special-neighbors",
-      "current_doc_meta": "clusters/metadata/vtx-properties/vtx-special-neighbors",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/analyze/cluster-vtx-properties/vtx-special-neighbors",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExBuildCustomGraph.h",
@@ -718,8 +718,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/PCGExClusterCentrality.md",
       "node_library": "node-library/clusters/analyze/cluster-centrality.md",
       "doc_path": "clusters/analyze/cluster-centrality",
-      "current_doc_meta": "clusters/centrality",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/analyze/cluster-centrality",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExConnectClusters.h",
@@ -727,8 +727,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/PCGExConnectClusters.md",
       "node_library": "node-library/clusters/refine/cluster-connect.md",
       "doc_path": "clusters/refine/cluster-connect",
-      "current_doc_meta": "clusters/connect-clusters",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/refine/cluster-connect",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExCopyClustersToPoints.h",
@@ -736,8 +736,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/PCGExCopyClustersToPoints.md",
       "node_library": "node-library/clusters/transform/cluster-copy-to-points.md",
       "doc_path": "clusters/transform/cluster-copy-to-points",
-      "current_doc_meta": "clusters/copy-clusters-to-points",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/transform/cluster-copy-to-points",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExEdgeOrder.h",
@@ -745,8 +745,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/PCGExEdgeOrder.md",
       "node_library": "node-library/clusters/analyze/cluster-edge-order.md",
       "doc_path": "clusters/analyze/cluster-edge-order",
-      "current_doc_meta": "clusters/metadata/edge-order",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/analyze/cluster-edge-order",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExFilterVtx.h",
@@ -754,8 +754,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/PCGExFilterVtx.md",
       "node_library": "node-library/clusters/refine/cluster-filter-vtx.md",
       "doc_path": "clusters/refine/cluster-filter-vtx",
-      "current_doc_meta": "clusters/find-clusters-data-1",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/refine/cluster-filter-vtx",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExFindClustersData.h",
@@ -763,8 +763,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/PCGExFindClustersData.md",
       "node_library": "node-library/clusters/utilities/find-clusters.md",
       "doc_path": "clusters/utilities/find-clusters",
-      "current_doc_meta": "clusters/find-clusters-data",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/utilities/find-clusters",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExFindPointOnBoundsClusters.h",
@@ -772,8 +772,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/PCGExFindPointOnBoundsClusters.md",
       "node_library": "node-library/clusters/utilities/cluster-find-point-on-bounds.md",
       "doc_path": "clusters/utilities/cluster-find-point-on-bounds",
-      "current_doc_meta": "clusters/find-point-on-bounds",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/utilities/cluster-find-point-on-bounds",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExFuseClusters.h",
@@ -781,8 +781,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/PCGExFuseClusters.md",
       "node_library": "node-library/clusters/refine/cluster-fuse.md",
       "doc_path": "clusters/refine/cluster-fuse",
-      "current_doc_meta": "clusters/fuse-clusters",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/refine/cluster-fuse",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExMakeClustersUnique.h",
@@ -790,8 +790,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/PCGExMakeClustersUnique.md",
       "node_library": "node-library/clusters/utilities/cluster-make-unique.md",
       "doc_path": "clusters/utilities/cluster-make-unique",
-      "current_doc_meta": "clusters/packing/make-unique",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/utilities/cluster-make-unique",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExMergeVertices.h",
@@ -799,8 +799,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/PCGExMergeVertices.md",
       "node_library": "node-library/clusters/utilities/cluster-merge-vtx.md",
       "doc_path": "clusters/utilities/cluster-merge-vtx",
-      "current_doc_meta": "clusters/packing/merge-vtx",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/utilities/cluster-merge-vtx",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExMeshToClusters.h",
@@ -808,8 +808,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/PCGExMeshToClusters.md",
       "node_library": "node-library/clusters/generate/mesh-to-clusters.md",
       "doc_path": "clusters/generate/mesh-to-clusters",
-      "current_doc_meta": "clusters/mesh-to-clusters",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/mesh-to-clusters",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExPackClusters.h",
@@ -817,8 +817,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/PCGExPackClusters.md",
       "node_library": "node-library/clusters/utilities/pack-and-unpack/cluster-pack.md",
       "doc_path": "clusters/utilities/pack-and-unpack/cluster-pack",
-      "current_doc_meta": "clusters/packing/pack-cluster",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/utilities/pack-and-unpack/cluster-pack",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExPartitionVertices.h",
@@ -826,8 +826,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/PCGExPartitionVertices.md",
       "node_library": "node-library/clusters/analyze/cluster-partition-vtx.md",
       "doc_path": "clusters/analyze/cluster-partition-vtx",
-      "current_doc_meta": "clusters/packing/partition-vtx",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/analyze/cluster-partition-vtx",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExPickClosestClusters.h",
@@ -835,8 +835,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/PCGExPickClosestClusters.md",
       "node_library": "node-library/clusters/utilities/cluster-pick-closest.md",
       "doc_path": "clusters/utilities/cluster-pick-closest",
-      "current_doc_meta": "clusters/pick-closest-cluster",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/utilities/cluster-pick-closest",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExRefineEdges.h",
@@ -862,8 +862,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/PCGExSampleVtxByID.md",
       "node_library": "node-library/clusters/utilities/sample-vtx-by-id.md",
       "doc_path": "clusters/utilities/sample-vtx-by-id",
-      "current_doc_meta": "sampling/vtx-by-id",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/utilities/sample-vtx-by-id",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExSanitizeClusters.h",
@@ -871,8 +871,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/PCGExSanitizeClusters.md",
       "node_library": "node-library/clusters/utilities/cluster-sanitize.md",
       "doc_path": "clusters/utilities/cluster-sanitize",
-      "current_doc_meta": "clusters/sanitize",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/utilities/cluster-sanitize",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExSimplifyClusters.h",
@@ -880,8 +880,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/PCGExSimplifyClusters.md",
       "node_library": "node-library/clusters/refine/cluster-simplify.md",
       "doc_path": "clusters/refine/cluster-simplify",
-      "current_doc_meta": "clusters/simplify",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/refine/cluster-simplify",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExSubdivideEdges.h",
@@ -898,8 +898,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/PCGExUnpackClusters.md",
       "node_library": "node-library/clusters/utilities/pack-and-unpack/cluster-unpack.md",
       "doc_path": "clusters/utilities/pack-and-unpack/cluster-unpack",
-      "current_doc_meta": "clusters/packing/unpack-cluster",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/utilities/pack-and-unpack/cluster-unpack",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/Paths/PCGExBreakClustersToPaths.h",
@@ -907,8 +907,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/Paths/PCGExBreakClustersToPaths.md",
       "node_library": "node-library/clusters/interop/cluster-break-to-paths.md",
       "doc_path": "clusters/interop/cluster-break-to-paths",
-      "current_doc_meta": "clusters/paths-interop/break-cluster-to-paths",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/interop/cluster-break-to-paths",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/Paths/PCGExCutClusters.h",
@@ -916,8 +916,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/Paths/PCGExCutClusters.md",
       "node_library": "node-library/clusters/interop/cluster-cut.md",
       "doc_path": "clusters/interop/cluster-cut",
-      "current_doc_meta": "clusters/paths-interop/cut-clusters",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/interop/cluster-cut",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/Paths/PCGExPathToClusters.h",
@@ -925,8 +925,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/Paths/PCGExPathToClusters.md",
       "node_library": "node-library/clusters/interop/path-to-clusters.md",
       "doc_path": "clusters/interop/path-to-clusters",
-      "current_doc_meta": "clusters/paths-interop/path-to-clusters",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/interop/path-to-clusters",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/Refining/PCGExEdgeRefineByFilter.h",
@@ -1114,8 +1114,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/States/PCGExAdjacencyStates.md",
       "node_library": "node-library/clusters/analyze/cluster-write-states/state-bitmask-adjacency.md",
       "doc_path": "clusters/analyze/cluster-write-states/state-bitmask-adjacency",
-      "current_doc_meta": "clusters/metadata/flag-nodes/state-bitmask-adjacency",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/analyze/cluster-write-states/state-bitmask-adjacency",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/States/PCGExClusterWriteStates.h",
@@ -1123,8 +1123,8 @@
       "staging": "_staging/PCGExElementsClusters/Elements/States/PCGExClusterWriteStates.md",
       "node_library": "node-library/clusters/analyze/cluster-write-states/README.md",
       "doc_path": "clusters/analyze/cluster-write-states",
-      "current_doc_meta": "clusters/metadata/flag-nodes",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/analyze/cluster-write-states",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeEndpointsCheckFilter.h",
@@ -1132,8 +1132,8 @@
       "staging": "_staging/PCGExElementsClusters/Filters/Edges/PCGExEdgeEndpointsCheckFilter.md",
       "node_library": "node-library/filters/edge-filters/edge-filter-endpoints-check.md",
       "doc_path": "filters/edge-filters/edge-filter-endpoints-check",
-      "current_doc_meta": "filters/filters-edges/endpoints-check",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/edge-filters/edge-filter-endpoints-check",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeEndpointsCompareNumFilter.h",
@@ -1141,8 +1141,8 @@
       "staging": "_staging/PCGExElementsClusters/Filters/Edges/PCGExEdgeEndpointsCompareNumFilter.md",
       "node_library": "node-library/filters/edge-filters/edge-filter-endpoints-compare-numeric.md",
       "doc_path": "filters/edge-filters/edge-filter-endpoints-compare-numeric",
-      "current_doc_meta": "filters/filters-edges/endpoints-compare-numeric",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/edge-filters/edge-filter-endpoints-compare-numeric",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeEndpointsCompareStrFilter.h",
@@ -1150,8 +1150,8 @@
       "staging": "_staging/PCGExElementsClusters/Filters/Edges/PCGExEdgeEndpointsCompareStrFilter.md",
       "node_library": "node-library/filters/edge-filters/edge-filter-endpoints-compare-string.md",
       "doc_path": "filters/edge-filters/edge-filter-endpoints-compare-string",
-      "current_doc_meta": "filters/filters-edges/endpoints-compare-string",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/edge-filters/edge-filter-endpoints-compare-string",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeLengthFilter.h",
@@ -1159,8 +1159,8 @@
       "staging": "_staging/PCGExElementsClusters/Filters/Edges/PCGExEdgeLengthFilter.md",
       "node_library": "node-library/filters/edge-filters/edge-filter-length.md",
       "doc_path": "filters/edge-filters/edge-filter-length",
-      "current_doc_meta": "filters/filters-edges/direction-1",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/edge-filters/edge-filter-length",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Filters/Edges/PCGExEdgeNeighborsCountFilter.h",
@@ -1168,8 +1168,8 @@
       "staging": "_staging/PCGExElementsClusters/Filters/Edges/PCGExEdgeNeighborsCountFilter.md",
       "node_library": "node-library/filters/edge-filters/edge-filter-num-vtx.md",
       "doc_path": "filters/edge-filters/edge-filter-num-vtx",
-      "current_doc_meta": "filters/filters-edges/neighbors-count",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/edge-filters/edge-filter-num-vtx",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Filters/Edges/PCGExIsoEdgeDirectionFilter.h",
@@ -1177,8 +1177,8 @@
       "staging": "_staging/PCGExElementsClusters/Filters/Edges/PCGExIsoEdgeDirectionFilter.md",
       "node_library": "node-library/filters/edge-filters/edge-filter-edge-direction.md",
       "doc_path": "filters/edge-filters/edge-filter-edge-direction",
-      "current_doc_meta": "filters/filters-edges/direction",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/edge-filters/edge-filter-edge-direction",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeAdjacencyFilter.h",
@@ -1186,8 +1186,8 @@
       "staging": "_staging/PCGExElementsClusters/Filters/Nodes/PCGExNodeAdjacencyFilter.md",
       "node_library": "node-library/filters/vtx-filters/vtx-filter-adjacency.md",
       "doc_path": "filters/vtx-filters/vtx-filter-adjacency",
-      "current_doc_meta": "filters/filters-vtx-nodes/adjacency",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/vtx-filters/vtx-filter-adjacency",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeEdgeAngleFilter.h",
@@ -1195,8 +1195,8 @@
       "staging": "_staging/PCGExElementsClusters/Filters/Nodes/PCGExNodeEdgeAngleFilter.md",
       "node_library": "node-library/filters/vtx-filters/vtx-filter-edge-angle.md",
       "doc_path": "filters/vtx-filters/vtx-filter-edge-angle",
-      "current_doc_meta": "filters/filters-vtx-nodes/edge-angle",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/vtx-filters/vtx-filter-edge-angle",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeEdgeDirectionFilter.h",
@@ -1204,8 +1204,8 @@
       "staging": "_staging/PCGExElementsClusters/Filters/Nodes/PCGExNodeEdgeDirectionFilter.md",
       "node_library": "node-library/filters/vtx-filters/vtx-filter-edge-direction.md",
       "doc_path": "filters/vtx-filters/vtx-filter-edge-direction",
-      "current_doc_meta": "filters/filters-vtx-nodes/edge-direction",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/vtx-filters/vtx-filter-edge-direction",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Filters/Nodes/PCGExNodeNeighborsCountFilter.h",
@@ -1213,8 +1213,8 @@
       "staging": "_staging/PCGExElementsClusters/Filters/Nodes/PCGExNodeNeighborsCountFilter.md",
       "node_library": "node-library/filters/vtx-filters/vtx-filter-num-edges.md",
       "doc_path": "filters/vtx-filters/vtx-filter-num-edges",
-      "current_doc_meta": "filters/filters-vtx-nodes/neighbors-count",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/vtx-filters/vtx-filter-num-edges",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsFloodFill/Public/Core/PCGExFillControlsFactoryProvider.h",
@@ -1222,8 +1222,8 @@
       "staging": "_staging/PCGExElementsFloodFill/Core/PCGExFillControlsFactoryProvider.md",
       "node_library": "node-library/pathfinding/cluster-flood-fill/fill-control.md",
       "doc_path": "pathfinding/cluster-flood-fill/fill-control",
-      "current_doc_meta": "TBD",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/cluster-flood-fill/fill-control",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsFloodFill/Public/Elements/PCGExFloodFillClusters.h",
@@ -1231,8 +1231,8 @@
       "staging": "_staging/PCGExElementsFloodFill/Elements/PCGExFloodFillClusters.md",
       "node_library": "node-library/pathfinding/cluster-flood-fill/README.md",
       "doc_path": "pathfinding/cluster-flood-fill",
-      "current_doc_meta": "clusters/flood-fill",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/cluster-flood-fill",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlAttributeAccumulation.h",
@@ -1240,8 +1240,8 @@
       "staging": "_staging/PCGExElementsFloodFill/FillControls/PCGExFillControlAttributeAccumulation.md",
       "node_library": "node-library/pathfinding/cluster-flood-fill/fc-attribute-accumulation.md",
       "doc_path": "pathfinding/cluster-flood-fill/fc-attribute-accumulation",
-      "current_doc_meta": "clusters/flood-fill/fc-attribute-accumulation",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/cluster-flood-fill/fc-attribute-accumulation",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlAttributeThreshold.h",
@@ -1249,8 +1249,8 @@
       "staging": "_staging/PCGExElementsFloodFill/FillControls/PCGExFillControlAttributeThreshold.md",
       "node_library": "node-library/pathfinding/cluster-flood-fill/fc-attribute-threshold.md",
       "doc_path": "pathfinding/cluster-flood-fill/fc-attribute-threshold",
-      "current_doc_meta": "clusters/flood-fill/fc-attribute-threshold",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/cluster-flood-fill/fc-attribute-threshold",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlCount.h",
@@ -1258,8 +1258,8 @@
       "staging": "_staging/PCGExElementsFloodFill/FillControls/PCGExFillControlCount.md",
       "node_library": "node-library/pathfinding/cluster-flood-fill/fc-count.md",
       "doc_path": "pathfinding/cluster-flood-fill/fc-count",
-      "current_doc_meta": "clusters/flood-fill/fc-count",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/cluster-flood-fill/fc-count",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlDepth.h",
@@ -1267,8 +1267,8 @@
       "staging": "_staging/PCGExElementsFloodFill/FillControls/PCGExFillControlDepth.md",
       "node_library": "node-library/pathfinding/cluster-flood-fill/fc-depth.md",
       "doc_path": "pathfinding/cluster-flood-fill/fc-depth",
-      "current_doc_meta": "clusters/flood-fill/fc-depth",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/cluster-flood-fill/fc-depth",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlEdgeFilters.h",
@@ -1276,8 +1276,8 @@
       "staging": "_staging/PCGExElementsFloodFill/FillControls/PCGExFillControlEdgeFilters.md",
       "node_library": "node-library/pathfinding/cluster-flood-fill/fc-edge-filters.md",
       "doc_path": "pathfinding/cluster-flood-fill/fc-edge-filters",
-      "current_doc_meta": "clusters/flood-fill/fc-edge-filters",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/cluster-flood-fill/fc-edge-filters",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlHxBudget.h",
@@ -1285,8 +1285,8 @@
       "staging": "_staging/PCGExElementsFloodFill/FillControls/PCGExFillControlHxBudget.md",
       "node_library": "node-library/pathfinding/cluster-flood-fill/fc-heuristics-budget.md",
       "doc_path": "pathfinding/cluster-flood-fill/fc-heuristics-budget",
-      "current_doc_meta": "clusters/flood-fill/fc-heuristics-budget",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/cluster-flood-fill/fc-heuristics-budget",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlHxScoring.h",
@@ -1294,8 +1294,8 @@
       "staging": "_staging/PCGExElementsFloodFill/FillControls/PCGExFillControlHxScoring.md",
       "node_library": "node-library/pathfinding/cluster-flood-fill/fc-heuristics-scoring.md",
       "doc_path": "pathfinding/cluster-flood-fill/fc-heuristics-scoring",
-      "current_doc_meta": "clusters/flood-fill/fc-heuristics-scoring",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/cluster-flood-fill/fc-heuristics-scoring",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlHxThreshold.h",
@@ -1303,8 +1303,8 @@
       "staging": "_staging/PCGExElementsFloodFill/FillControls/PCGExFillControlHxThreshold.md",
       "node_library": "node-library/pathfinding/cluster-flood-fill/fc-heuristics-threshold.md",
       "doc_path": "pathfinding/cluster-flood-fill/fc-heuristics-threshold",
-      "current_doc_meta": "clusters/flood-fill/fc-heuristics-threshold",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/cluster-flood-fill/fc-heuristics-threshold",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlKeepDirection.h",
@@ -1312,8 +1312,8 @@
       "staging": "_staging/PCGExElementsFloodFill/FillControls/PCGExFillControlKeepDirection.md",
       "node_library": "node-library/pathfinding/cluster-flood-fill/fc-keep-direction.md",
       "doc_path": "pathfinding/cluster-flood-fill/fc-keep-direction",
-      "current_doc_meta": "clusters/flood-fill/fc-keep-direction",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/cluster-flood-fill/fc-keep-direction",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlLength.h",
@@ -1321,8 +1321,8 @@
       "staging": "_staging/PCGExElementsFloodFill/FillControls/PCGExFillControlLength.md",
       "node_library": "node-library/pathfinding/cluster-flood-fill/fc-length.md",
       "doc_path": "pathfinding/cluster-flood-fill/fc-length",
-      "current_doc_meta": "clusters/flood-fill/fc-length",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/cluster-flood-fill/fc-length",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlRunningAverage.h",
@@ -1330,8 +1330,8 @@
       "staging": "_staging/PCGExElementsFloodFill/FillControls/PCGExFillControlRunningAverage.md",
       "node_library": "node-library/pathfinding/cluster-flood-fill/fc-running-average.md",
       "doc_path": "pathfinding/cluster-flood-fill/fc-running-average",
-      "current_doc_meta": "flood-fill/fc-running-average",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/cluster-flood-fill/fc-running-average",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsFloodFill/Public/FillControls/PCGExFillControlVtxFilters.h",
@@ -1339,88 +1339,88 @@
       "staging": "_staging/PCGExElementsFloodFill/FillControls/PCGExFillControlVtxFilters.md",
       "node_library": "node-library/pathfinding/cluster-flood-fill/fc-vtx-filters.md",
       "doc_path": "pathfinding/cluster-flood-fill/fc-vtx-filters",
-      "current_doc_meta": "flood-fill/fc-vtx-filters",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/cluster-flood-fill/fc-vtx-filters",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExAttributeHash.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsMeta\\Public\\Elements\\PCGExAttributeHash.h",
       "staging": "_staging/PCGExElementsMeta/Elements/PCGExAttributeHash.md",
-      "node_library": "node-library/metadata/attributes/attribute-hash.md",
-      "doc_path": "metadata/attributes/attribute-hash",
-      "current_doc_meta": "metadata/attribute-hash",
+      "node_library": "node-library/metadata/analyze/attribute-hash.md",
+      "doc_path": "metadata/analyze/attribute-hash",
+      "current_doc_meta": "metadata/attributes/attribute-hash",
       "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExAttributeRemap.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsMeta\\Public\\Elements\\PCGExAttributeRemap.h",
       "staging": "_staging/PCGExElementsMeta/Elements/PCGExAttributeRemap.md",
-      "node_library": "node-library/metadata/attributes/attribute-remap.md",
-      "doc_path": "metadata/attributes/attribute-remap",
-      "current_doc_meta": "metadata/attribute-remap",
+      "node_library": "node-library/metadata/modify/attribute-remap.md",
+      "doc_path": "metadata/modify/attribute-remap",
+      "current_doc_meta": "metadata/attributes/attribute-remap",
       "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExAttributeStats.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsMeta\\Public\\Elements\\PCGExAttributeStats.h",
       "staging": "_staging/PCGExElementsMeta/Elements/PCGExAttributeStats.md",
-      "node_library": "node-library/metadata/attributes/attribute-stats.md",
-      "doc_path": "metadata/attributes/attribute-stats",
-      "current_doc_meta": "metadata/attribute-stats",
+      "node_library": "node-library/metadata/analyze/attribute-stats.md",
+      "doc_path": "metadata/analyze/attribute-stats",
+      "current_doc_meta": "metadata/attributes/attribute-stats",
       "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExAttributesToTags.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsMeta\\Public\\Elements\\PCGExAttributesToTags.h",
       "staging": "_staging/PCGExElementsMeta/Elements/PCGExAttributesToTags.md",
-      "node_library": "node-library/metadata/attributes/hoist-attributes.md",
-      "doc_path": "metadata/attributes/hoist-attributes",
-      "current_doc_meta": "misc/attributes-to-tags",
+      "node_library": "node-library/metadata/keys/hoist-attributes.md",
+      "doc_path": "metadata/keys/hoist-attributes",
+      "current_doc_meta": "metadata/attributes/hoist-attributes",
       "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExBlendAttributes.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsMeta\\Public\\Elements\\PCGExBlendAttributes.h",
       "staging": "_staging/PCGExElementsMeta/Elements/PCGExBlendAttributes.md",
-      "node_library": "node-library/metadata/attributes/uber-blend.md",
-      "doc_path": "metadata/attributes/uber-blend",
-      "current_doc_meta": "metadata/uber-blend",
+      "node_library": "node-library/metadata/modify/uber-blend.md",
+      "doc_path": "metadata/modify/uber-blend",
+      "current_doc_meta": "metadata/attributes/uber-blend",
       "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExMetaCleanup.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsMeta\\Public\\Elements\\PCGExMetaCleanup.h",
       "staging": "_staging/PCGExElementsMeta/Elements/PCGExMetaCleanup.md",
-      "node_library": "node-library/metadata/attributes/meta-cleanup.md",
-      "doc_path": "metadata/attributes/meta-cleanup",
-      "current_doc_meta": "quality-of-life/meta-cleanup",
+      "node_library": "node-library/metadata/modify/meta-cleanup.md",
+      "doc_path": "metadata/modify/meta-cleanup",
+      "current_doc_meta": "metadata/attributes/meta-cleanup",
       "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExPackActorData.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsMeta\\Public\\Elements\\PCGExPackActorData.h",
       "staging": "_staging/PCGExElementsMeta/Elements/Guide-PCGExPackActorData.md",
-      "node_library": "node-library/metadata/attributes/pack-actor-data/creating-a-custom-actor-data-packer.md",
-      "doc_path": "metadata/attributes/pack-actor-data/creating-a-custom-actor-data-packer",
-      "current_doc_meta": "quality-of-life/pack-actor-data",
+      "node_library": "node-library/metadata/keys/pack-actor-data/creating-a-custom-actor-data-packer.md",
+      "doc_path": "metadata/keys/pack-actor-data/creating-a-custom-actor-data-packer",
+      "current_doc_meta": "metadata/attributes/pack-actor-data/creating-a-custom-actor-data-packer",
       "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExReduceDataAttribute.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsMeta\\Public\\Elements\\PCGExReduceDataAttribute.h",
       "staging": "_staging/PCGExElementsMeta/Elements/PCGExReduceDataAttribute.md",
-      "node_library": "node-library/metadata/attributes/reduce-data.md",
-      "doc_path": "metadata/attributes/reduce-data",
-      "current_doc_meta": "metadata/reduce-data",
+      "node_library": "node-library/metadata/analyze/reduce-data.md",
+      "doc_path": "metadata/analyze/reduce-data",
+      "current_doc_meta": "metadata/attributes/reduce-data",
       "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExRefreshSeed.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsMeta\\Public\\Elements\\PCGExRefreshSeed.h",
       "staging": "_staging/PCGExElementsMeta/Elements/PCGExRefreshSeed.md",
-      "node_library": "node-library/metadata/attributes/refresh-seed.md",
-      "doc_path": "metadata/attributes/refresh-seed",
-      "current_doc_meta": "metadata/refresh-seed",
+      "node_library": "node-library/metadata/modify/refresh-seed.md",
+      "doc_path": "metadata/modify/refresh-seed",
+      "current_doc_meta": "metadata/attributes/refresh-seed",
       "status": "meta_mismatch"
     },
     {
@@ -1429,8 +1429,8 @@
       "staging": "_staging/PCGExElementsMeta/Elements/PCGExUberNoise.md",
       "node_library": "node-library/utilities/noise/uber-noise.md",
       "doc_path": "utilities/noise/uber-noise",
-      "current_doc_meta": "metadata/uber-noise",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/noise/uber-noise",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExWriteIndex.h",
@@ -1438,8 +1438,8 @@
       "staging": "_staging/PCGExElementsMeta/Elements/PCGExWriteIndex.md",
       "node_library": "node-library/metadata/keys/write-index.md",
       "doc_path": "metadata/keys/write-index",
-      "current_doc_meta": "metadata/write-index",
-      "status": "meta_mismatch"
+      "current_doc_meta": "metadata/keys/write-index",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExWriteStates.h",
@@ -1447,8 +1447,8 @@
       "staging": "_staging/PCGExElementsMeta/Elements/PCGExWriteStates.md",
       "node_library": "node-library/metadata/bitmasks/write-states/README.md",
       "doc_path": "metadata/bitmasks/write-states",
-      "current_doc_meta": "clusters/metadata/write-states",
-      "status": "meta_mismatch"
+      "current_doc_meta": "metadata/bitmasks/write-states",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/Partition/PCGExModularPartitionByValues.h",
@@ -1456,8 +1456,8 @@
       "staging": "_staging/PCGExElementsMeta/Elements/Partition/PCGExModularPartitionByValues.md",
       "node_library": "node-library/utilities/partitioning/partition-by-values.md",
       "doc_path": "utilities/partitioning/partition-by-values",
-      "current_doc_meta": "misc/partition-by-values",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/partitioning/partition-by-values",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/Partition/PCGExPartitionByValues.h",
@@ -1474,8 +1474,8 @@
       "staging": "_staging/PCGExElementsMeta/Elements/Sorting/PCGExModularSortPoints.md",
       "node_library": "node-library/utilities/sorting/sort-points.md",
       "doc_path": "utilities/sorting/sort-points",
-      "current_doc_meta": "misc/sort-points",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/sorting/sort-points",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/Sorting/PCGExSortCollections.h",
@@ -1483,8 +1483,8 @@
       "staging": "_staging/PCGExElementsMeta/Elements/Sorting/PCGExSortCollections.md",
       "node_library": "node-library/utilities/sorting/sort-data.md",
       "doc_path": "utilities/sorting/sort-data",
-      "current_doc_meta": "metadata/reduce-data",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/sorting/sort-data",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/Sorting/PCGExSortPoints.h",
@@ -1501,8 +1501,8 @@
       "staging": "_staging/PCGExElementsMeta/Filters/Points/PCGExNoiseFilter.md",
       "node_library": "node-library/filters/point-filters/spatial/filter-noise.md",
       "doc_path": "filters/point-filters/spatial/filter-noise",
-      "current_doc_meta": "filters/filters-points/simple-comparisons/numeric",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/spatial/filter-noise",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPathfinding/Public/Core/PCGExPathfinding.h",
@@ -1528,8 +1528,8 @@
       "staging": "_staging/PCGExElementsPathfinding/Elements/PCGExPathfindingFindAllCells.md",
       "node_library": "node-library/pathfinding/cells/find-all-cells.md",
       "doc_path": "pathfinding/cells/find-all-cells",
-      "current_doc_meta": "pathfinding/contours/find-all-cells",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/cells/find-all-cells",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPathfinding/Public/Elements/PCGExPathfindingFindAllCellsBounded.h",
@@ -1537,8 +1537,8 @@
       "staging": "_staging/PCGExElementsPathfinding/Elements/PCGExPathfindingFindAllCellsBounded.md",
       "node_library": "node-library/pathfinding/cells/find-all-cells-bounded.md",
       "doc_path": "pathfinding/cells/find-all-cells-bounded",
-      "current_doc_meta": "pathfinding/contours/find-all-cells-bounded",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/cells/find-all-cells-bounded",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPathfinding/Public/Elements/PCGExPathfindingFindCells.h",
@@ -1546,8 +1546,8 @@
       "staging": "_staging/PCGExElementsPathfinding/Elements/PCGExPathfindingFindCells.md",
       "node_library": "node-library/pathfinding/cells/find-cells.md",
       "doc_path": "pathfinding/cells/find-cells",
-      "current_doc_meta": "pathfinding/contours/find-contours",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/cells/find-cells",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPathfinding/Public/Elements/PCGExPathfindingFindCellsBounded.h",
@@ -1555,8 +1555,8 @@
       "staging": "_staging/PCGExElementsPathfinding/Elements/PCGExPathfindingFindCellsBounded.md",
       "node_library": "node-library/pathfinding/cells/find-cells-bounded.md",
       "doc_path": "pathfinding/cells/find-cells-bounded",
-      "current_doc_meta": "pathfinding/contours/find-contours-bounded",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/cells/find-cells-bounded",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPathfinding/Public/Elements/PCGExPathfindingFindClusterHull.h",
@@ -1564,8 +1564,8 @@
       "staging": "_staging/PCGExElementsPathfinding/Elements/PCGExPathfindingFindClusterHull.md",
       "node_library": "node-library/pathfinding/cells/find-cluster-hull.md",
       "doc_path": "pathfinding/cells/find-cluster-hull",
-      "current_doc_meta": "pathfinding/contours/find-all-cells-1",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/cells/find-cluster-hull",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPathfinding/Public/Elements/PCGExPathfindingGrowPaths.h",
@@ -1609,8 +1609,8 @@
       "staging": "_staging/PCGExElementsPathfinding/GoalPickers/PCGExGoalPickerAttribute.md",
       "node_library": "node-library/pathfinding/pathfinding-edges/goal-picker-index-attribute.md",
       "doc_path": "pathfinding/pathfinding-edges/goal-picker-index-attribute",
-      "current_doc_meta": "pathfinding/pathfinding-edges/goal-picker-attribute",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/pathfinding-edges/goal-picker-index-attribute",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPathfinding/Public/GoalPickers/PCGExGoalPickerRandom.h",
@@ -1627,8 +1627,8 @@
       "staging": "_staging/PCGExElementsPathfinding/Search/PCGExSearchAStar.md",
       "node_library": "node-library/pathfinding/algorithms/search-a.md",
       "doc_path": "pathfinding/algorithms/search-a",
-      "current_doc_meta": "pathfinding/search-algorithms/a-a-star",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/algorithms/search-a",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPathfinding/Public/Search/PCGExSearchBellmanFord.h",
@@ -1636,8 +1636,8 @@
       "staging": "_staging/PCGExElementsPathfinding/Search/PCGExSearchBellmanFord.md",
       "node_library": "node-library/pathfinding/algorithms/search-bellman-ford.md",
       "doc_path": "pathfinding/algorithms/search-bellman-ford",
-      "current_doc_meta": "pathfinding/search-algorithms/bellman-ford",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/algorithms/search-bellman-ford",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPathfinding/Public/Search/PCGExSearchBidirectional.h",
@@ -1645,8 +1645,8 @@
       "staging": "_staging/PCGExElementsPathfinding/Search/PCGExSearchBidirectional.md",
       "node_library": "node-library/pathfinding/algorithms/search-bidirectional.md",
       "doc_path": "pathfinding/algorithms/search-bidirectional",
-      "current_doc_meta": "pathfinding/search-algorithms/bidirectional",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/algorithms/search-bidirectional",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPathfinding/Public/Search/PCGExSearchDijkstra.h",
@@ -1654,8 +1654,8 @@
       "staging": "_staging/PCGExElementsPathfinding/Search/PCGExSearchDijkstra.md",
       "node_library": "node-library/pathfinding/algorithms/search-dijkstra.md",
       "doc_path": "pathfinding/algorithms/search-dijkstra",
-      "current_doc_meta": "pathfinding/search-algorithms/dijkstra",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/algorithms/search-dijkstra",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPathfinding/Public/Search/PCGExSearchOperation.h",
@@ -1690,8 +1690,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/Orient/PCGExOrientAverage.md",
       "node_library": "node-library/paths/transform/path-orient/orient-average.md",
       "doc_path": "paths/transform/path-orient/orient-average",
-      "current_doc_meta": "paths/orient/orient-average",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/transform/path-orient/orient-average",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/Orient/PCGExOrientLookAt.h",
@@ -1699,8 +1699,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/Orient/PCGExOrientLookAt.md",
       "node_library": "node-library/paths/transform/path-orient/orient-look-at.md",
       "doc_path": "paths/transform/path-orient/orient-look-at",
-      "current_doc_meta": "paths/orient/orient-look-at",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/transform/path-orient/orient-look-at",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/Orient/PCGExOrientOperation.h",
@@ -1717,16 +1717,16 @@
       "staging": "_staging/PCGExElementsPaths/Elements/Orient/PCGExOrientWeighted.md",
       "node_library": "node-library/paths/transform/path-orient/orient-weighted.md",
       "doc_path": "paths/transform/path-orient/orient-weighted",
-      "current_doc_meta": "paths/orient/orient-weighted",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/transform/path-orient/orient-weighted",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExAttributeRolling.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsPaths\\Public\\Elements\\PCGExAttributeRolling.h",
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExAttributeRolling.md",
-      "node_library": "node-library/paths/transform/path-attribute-rolling.md",
-      "doc_path": "paths/transform/path-attribute-rolling",
-      "current_doc_meta": "paths/attribute-rolling",
+      "node_library": "node-library/paths/modify/path-attribute-rolling.md",
+      "doc_path": "paths/modify/path-attribute-rolling",
+      "current_doc_meta": "paths/transform/path-attribute-rolling",
       "status": "meta_mismatch"
     },
     {
@@ -1735,16 +1735,16 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExBevelPath.md",
       "node_library": "node-library/paths/modify/path-bevel.md",
       "doc_path": "paths/modify/path-bevel",
-      "current_doc_meta": "paths/bevel",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/modify/path-bevel",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExBlendPath.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsPaths\\Public\\Elements\\PCGExBlendPath.h",
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExBlendPath.md",
-      "node_library": "node-library/paths/transform/path-blend.md",
-      "doc_path": "paths/transform/path-blend",
-      "current_doc_meta": "paths/blend",
+      "node_library": "node-library/paths/modify/path-blend.md",
+      "doc_path": "paths/modify/path-blend",
+      "current_doc_meta": "paths/transform/path-blend",
       "status": "meta_mismatch"
     },
     {
@@ -1753,8 +1753,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExBoundsPathIntersection.md",
       "node_library": "node-library/paths/intersect/path-bounds-intersection.md",
       "doc_path": "paths/intersect/path-bounds-intersection",
-      "current_doc_meta": "paths/path-bounds-intersection",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/intersect/path-bounds-intersection",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExCopyToPaths.h",
@@ -1762,8 +1762,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExCopyToPaths.md",
       "node_library": "node-library/paths/generate/copy-to-path.md",
       "doc_path": "paths/generate/copy-to-path",
-      "current_doc_meta": "transform/copy-to-path",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/generate/copy-to-path",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExCreateSpline.h",
@@ -1771,8 +1771,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExCreateSpline.md",
       "node_library": "node-library/paths/output/create-spline.md",
       "doc_path": "paths/output/create-spline",
-      "current_doc_meta": "paths/create-spline",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/output/create-spline",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExFuseCollinear.h",
@@ -1780,16 +1780,16 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExFuseCollinear.md",
       "node_library": "node-library/paths/modify/path-fuse-collinear.md",
       "doc_path": "paths/modify/path-fuse-collinear",
-      "current_doc_meta": "paths/fuse-collinear",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/modify/path-fuse-collinear",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExOffsetPath.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsPaths\\Public\\Elements\\PCGExOffsetPath.h",
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExOffsetPath.md",
-      "node_library": "node-library/paths/modify/path-offset.md",
-      "doc_path": "paths/modify/path-offset",
-      "current_doc_meta": "paths/offset",
+      "node_library": "node-library/paths/transform/path-offset.md",
+      "doc_path": "paths/transform/path-offset",
+      "current_doc_meta": "paths/modify/path-offset",
       "status": "meta_mismatch"
     },
     {
@@ -1798,8 +1798,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExOrient.md",
       "node_library": "node-library/paths/transform/path-orient/README.md",
       "doc_path": "paths/transform/path-orient",
-      "current_doc_meta": "paths/orient",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/transform/path-orient",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExPathCrossings.h",
@@ -1807,8 +1807,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExPathCrossings.md",
       "node_library": "node-library/paths/intersect/path-path-crossings.md",
       "doc_path": "paths/intersect/path-path-crossings",
-      "current_doc_meta": "paths/crossings",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/intersect/path-path-crossings",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExPathInsert.h",
@@ -1816,8 +1816,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExPathInsert.md",
       "node_library": "node-library/paths/modify/path-insert.md",
       "doc_path": "paths/modify/path-insert",
-      "current_doc_meta": "paths/insert",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/modify/path-insert",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExPathReduce.h",
@@ -1825,8 +1825,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExPathReduce.md",
       "node_library": "node-library/paths/modify/path-reduce.md",
       "doc_path": "paths/modify/path-reduce",
-      "current_doc_meta": "paths/reduce",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/modify/path-reduce",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExPathResample.h",
@@ -1834,16 +1834,16 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExPathResample.md",
       "node_library": "node-library/paths/modify/path-resample.md",
       "doc_path": "paths/modify/path-resample",
-      "current_doc_meta": "paths/resample",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/modify/path-resample",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExPathShift.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsPaths\\Public\\Elements\\PCGExPathShift.h",
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExPathShift.md",
-      "node_library": "node-library/paths/transform/path-shift.md",
-      "doc_path": "paths/transform/path-shift",
-      "current_doc_meta": "paths/shift",
+      "node_library": "node-library/paths/modify/path-shift.md",
+      "doc_path": "paths/modify/path-shift",
+      "current_doc_meta": "paths/transform/path-shift",
       "status": "meta_mismatch"
     },
     {
@@ -1852,16 +1852,16 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExPathShrink.md",
       "node_library": "node-library/paths/modify/path-shrink.md",
       "doc_path": "paths/modify/path-shrink",
-      "current_doc_meta": "paths/shrink",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/modify/path-shrink",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExPathSlide.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsPaths\\Public\\Elements\\PCGExPathSlide.h",
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExPathSlide.md",
-      "node_library": "node-library/paths/modify/path-slide.md",
-      "doc_path": "paths/modify/path-slide",
-      "current_doc_meta": "paths/slide",
+      "node_library": "node-library/paths/transform/path-slide.md",
+      "doc_path": "paths/transform/path-slide",
+      "current_doc_meta": "paths/modify/path-slide",
       "status": "meta_mismatch"
     },
     {
@@ -1870,8 +1870,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExPathSolidify.md",
       "node_library": "node-library/paths/modify/path-solidify.md",
       "doc_path": "paths/modify/path-solidify",
-      "current_doc_meta": "paths/solidify",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/modify/path-solidify",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExPathSplineMeshSimple.h",
@@ -1879,8 +1879,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExPathSplineMeshSimple.md",
       "node_library": "node-library/paths/output/path-spline-mesh-simple.md",
       "doc_path": "paths/output/path-spline-mesh-simple",
-      "current_doc_meta": "paths/spline-mesh/spline-mesh-simple",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/output/path-spline-mesh-simple",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExPathStitch.h",
@@ -1888,8 +1888,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExPathStitch.md",
       "node_library": "node-library/paths/modify/path-stitch.md",
       "doc_path": "paths/modify/path-stitch",
-      "current_doc_meta": "paths/stitch",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/modify/path-stitch",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExReversePointOrder.h",
@@ -1897,8 +1897,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExReversePointOrder.md",
       "node_library": "node-library/utilities/sorting/reverse-order.md",
       "doc_path": "utilities/sorting/reverse-order",
-      "current_doc_meta": "misc/reverse-point-order",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/sorting/reverse-order",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExSmooth.h",
@@ -1906,8 +1906,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExSmooth.md",
       "node_library": "node-library/paths/transform/path-smooth/README.md",
       "doc_path": "paths/transform/path-smooth",
-      "current_doc_meta": "paths/smooth",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/transform/path-smooth",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExSplineToPath.h",
@@ -1915,16 +1915,16 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExSplineToPath.md",
       "node_library": "node-library/paths/generate/spline-to-path.md",
       "doc_path": "paths/generate/spline-to-path",
-      "current_doc_meta": "paths/spline-to-path",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/generate/spline-to-path",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExSplitPath.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsPaths\\Public\\Elements\\PCGExSplitPath.h",
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExSplitPath.md",
-      "node_library": "node-library/paths/modify/path-split.md",
-      "doc_path": "paths/modify/path-split",
-      "current_doc_meta": "paths/split",
+      "node_library": "node-library/paths/generate/path-split.md",
+      "doc_path": "paths/generate/path-split",
+      "current_doc_meta": "paths/modify/path-split",
       "status": "meta_mismatch"
     },
     {
@@ -1933,25 +1933,25 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExSubdivide.md",
       "node_library": "node-library/paths/modify/path-subdivide.md",
       "doc_path": "paths/modify/path-subdivide",
-      "current_doc_meta": "paths/subdivide",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/modify/path-subdivide",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExWritePathProperties.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsPaths\\Public\\Elements\\PCGExWritePathProperties.h",
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExWritePathProperties.md",
-      "node_library": "node-library/paths/transform/path-properties.md",
-      "doc_path": "paths/transform/path-properties",
-      "current_doc_meta": "paths/path-properties",
+      "node_library": "node-library/paths/analyze/path-properties.md",
+      "doc_path": "paths/analyze/path-properties",
+      "current_doc_meta": "paths/transform/path-properties",
       "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExWriteTangents.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsPaths\\Public\\Elements\\PCGExWriteTangents.h",
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExWriteTangents.md",
-      "node_library": "node-library/paths/transform/path-write-tangents.md",
-      "doc_path": "paths/transform/path-write-tangents",
-      "current_doc_meta": "paths/write-tangents",
+      "node_library": "node-library/paths/analyze/path-write-tangents.md",
+      "doc_path": "paths/analyze/path-write-tangents",
+      "current_doc_meta": "paths/transform/path-write-tangents",
       "status": "meta_mismatch"
     },
     {
@@ -1960,8 +1960,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/Smoothing/PCGExMovingAverageSmoothing.md",
       "node_library": "node-library/paths/transform/path-smooth/moving-average-smoothing.md",
       "doc_path": "paths/transform/path-smooth/moving-average-smoothing",
-      "current_doc_meta": "paths/smooth/smooth-moving-average",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/transform/path-smooth/moving-average-smoothing",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/Smoothing/PCGExRadiusSmoothing.h",
@@ -1969,8 +1969,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/Smoothing/PCGExRadiusSmoothing.md",
       "node_library": "node-library/paths/transform/path-smooth/radius-smoothing.md",
       "doc_path": "paths/transform/path-smooth/radius-smoothing",
-      "current_doc_meta": "paths/smooth/smooth-radius",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/transform/path-smooth/radius-smoothing",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/Smoothing/PCGExSmoothingInstancedFactory.h",
@@ -1996,8 +1996,8 @@
       "staging": "_staging/PCGExElementsProbing/Elements/PCGExConnectPoints.md",
       "node_library": "node-library/clusters/generate/cluster-connect-points/README.md",
       "doc_path": "clusters/generate/cluster-connect-points",
-      "current_doc_meta": "clusters/connect-points",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-connect-points",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeAnisotropic.h",
@@ -2005,8 +2005,8 @@
       "staging": "_staging/PCGExElementsProbing/Probes/PCGExGlobalProbeAnisotropic.md",
       "node_library": "node-library/clusters/generate/cluster-connect-points/g-probe-global-anisotropic.md",
       "doc_path": "clusters/generate/cluster-connect-points/g-probe-global-anisotropic",
-      "current_doc_meta": "clusters/connect-points/g-probe-anisotropic",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-connect-points/g-probe-global-anisotropic",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeChain.h",
@@ -2014,8 +2014,8 @@
       "staging": "_staging/PCGExElementsProbing/Probes/PCGExGlobalProbeChain.md",
       "node_library": "node-library/clusters/generate/cluster-connect-points/g-probe-chain-path.md",
       "doc_path": "clusters/generate/cluster-connect-points/g-probe-chain-path",
-      "current_doc_meta": "clusters/connect-points/g-probe-chain",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-connect-points/g-probe-chain-path",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeDBSCAN.h",
@@ -2023,8 +2023,8 @@
       "staging": "_staging/PCGExElementsProbing/Probes/PCGExGlobalProbeDBSCAN.md",
       "node_library": "node-library/clusters/generate/cluster-connect-points/g-probe-dbscan.md",
       "doc_path": "clusters/generate/cluster-connect-points/g-probe-dbscan",
-      "current_doc_meta": "clusters/connect-points/g-probe-dbscan",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-connect-points/g-probe-dbscan",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeGradientFlow.h",
@@ -2032,8 +2032,8 @@
       "staging": "_staging/PCGExElementsProbing/Probes/PCGExGlobalProbeGradientFlow.md",
       "node_library": "node-library/clusters/generate/cluster-connect-points/g-probe-gradient-flow.md",
       "doc_path": "clusters/generate/cluster-connect-points/g-probe-gradient-flow",
-      "current_doc_meta": "clusters/connect-points/g-probe-gradient-flow",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-connect-points/g-probe-gradient-flow",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeHubSpoke.h",
@@ -2041,8 +2041,8 @@
       "staging": "_staging/PCGExElementsProbing/Probes/PCGExGlobalProbeHubSpoke.md",
       "node_library": "node-library/clusters/generate/cluster-connect-points/g-probe-hub-and-spoke.md",
       "doc_path": "clusters/generate/cluster-connect-points/g-probe-hub-and-spoke",
-      "current_doc_meta": "clusters/connect-points/g-probe-hub-and-spoke",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-connect-points/g-probe-hub-and-spoke",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeKNN.h",
@@ -2050,8 +2050,8 @@
       "staging": "_staging/PCGExElementsProbing/Probes/PCGExGlobalProbeKNN.md",
       "node_library": "node-library/clusters/generate/cluster-connect-points/g-probe-knn.md",
       "doc_path": "clusters/generate/cluster-connect-points/g-probe-knn",
-      "current_doc_meta": "clusters/connect-points/g-probe-knn",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-connect-points/g-probe-knn",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeLevelSet.h",
@@ -2059,8 +2059,8 @@
       "staging": "_staging/PCGExElementsProbing/Probes/PCGExGlobalProbeLevelSet.md",
       "node_library": "node-library/clusters/generate/cluster-connect-points/g-probe-level-set.md",
       "doc_path": "clusters/generate/cluster-connect-points/g-probe-level-set",
-      "current_doc_meta": "clusters/connect-points/g-probe-level-set",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-connect-points/g-probe-level-set",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeSpanner.h",
@@ -2068,8 +2068,8 @@
       "staging": "_staging/PCGExElementsProbing/Probes/PCGExGlobalProbeSpanner.md",
       "node_library": "node-library/clusters/generate/cluster-connect-points/g-probe-greedy-spanner.md",
       "doc_path": "clusters/generate/cluster-connect-points/g-probe-greedy-spanner",
-      "current_doc_meta": "clusters/connect-points/g-probe-spanner",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-connect-points/g-probe-greedy-spanner",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsProbing/Public/Probes/PCGExGlobalProbeTheta.h",
@@ -2077,8 +2077,8 @@
       "staging": "_staging/PCGExElementsProbing/Probes/PCGExGlobalProbeTheta.md",
       "node_library": "node-library/clusters/generate/cluster-connect-points/g-probe-theta-graph.md",
       "doc_path": "clusters/generate/cluster-connect-points/g-probe-theta-graph",
-      "current_doc_meta": "clusters/connect-points/g-probe-theta",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-connect-points/g-probe-theta-graph",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsProbing/Public/Probes/PCGExProbeAnisotropic.h",
@@ -2086,8 +2086,8 @@
       "staging": "_staging/PCGExElementsProbing/Probes/PCGExProbeAnisotropic.md",
       "node_library": "node-library/clusters/generate/cluster-connect-points/probe-anisotropic.md",
       "doc_path": "clusters/generate/cluster-connect-points/probe-anisotropic",
-      "current_doc_meta": "clusters/connect-points/probe-anisotropic",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-connect-points/probe-anisotropic",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsProbing/Public/Probes/PCGExProbeBitmasks.h",
@@ -2095,8 +2095,8 @@
       "staging": "_staging/PCGExElementsProbing/Probes/PCGExProbeBitmasks.md",
       "node_library": "node-library/clusters/generate/cluster-connect-points/probe-bitmasks.md",
       "doc_path": "clusters/generate/cluster-connect-points/probe-bitmasks",
-      "current_doc_meta": "clusters/connect-points/probe-bitmasks",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-connect-points/probe-bitmasks",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsProbing/Public/Probes/PCGExProbeClosest.h",
@@ -2104,8 +2104,8 @@
       "staging": "_staging/PCGExElementsProbing/Probes/PCGExProbeClosest.md",
       "node_library": "node-library/clusters/generate/cluster-connect-points/probe-closest.md",
       "doc_path": "clusters/generate/cluster-connect-points/probe-closest",
-      "current_doc_meta": "clusters/connect-points/probe-closest",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-connect-points/probe-closest",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsProbing/Public/Probes/PCGExProbeDirection.h",
@@ -2113,8 +2113,8 @@
       "staging": "_staging/PCGExElementsProbing/Probes/PCGExProbeDirection.md",
       "node_library": "node-library/clusters/generate/cluster-connect-points/probe-direction.md",
       "doc_path": "clusters/generate/cluster-connect-points/probe-direction",
-      "current_doc_meta": "clusters/connect-points/probe-direction",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-connect-points/probe-direction",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsProbing/Public/Probes/PCGExProbeIndex.h",
@@ -2122,8 +2122,8 @@
       "staging": "_staging/PCGExElementsProbing/Probes/PCGExProbeIndex.md",
       "node_library": "node-library/clusters/generate/cluster-connect-points/probe-index.md",
       "doc_path": "clusters/generate/cluster-connect-points/probe-index",
-      "current_doc_meta": "clusters/connect-points/probe-index",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-connect-points/probe-index",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsProbing/Public/Probes/PCGExProbeNumericCompare.h",
@@ -2131,8 +2131,8 @@
       "staging": "_staging/PCGExElementsProbing/Probes/PCGExProbeNumericCompare.md",
       "node_library": "node-library/clusters/generate/cluster-connect-points/probe-numeric-compare.md",
       "doc_path": "clusters/generate/cluster-connect-points/probe-numeric-compare",
-      "current_doc_meta": "clusters/connect-points/probe-compare",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-connect-points/probe-numeric-compare",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSampling/Public/Core/PCGExTexParamFactoryProvider.h",
@@ -2149,8 +2149,8 @@
       "staging": "_staging/PCGExElementsSampling/Elements/PCGExDiscardByOverlap.md",
       "node_library": "node-library/sampling/discard-by-overlap.md",
       "doc_path": "sampling/discard-by-overlap",
-      "current_doc_meta": "filters/discard-by-overlap",
-      "status": "meta_mismatch"
+      "current_doc_meta": "sampling/discard-by-overlap",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSampling/Public/Elements/PCGExGetTextureData.h",
@@ -2167,8 +2167,8 @@
       "staging": "_staging/PCGExElementsSampling/Elements/PCGExSampleInsidePath.md",
       "node_library": "node-library/sampling/nearest/sample-inside-path.md",
       "doc_path": "sampling/nearest/sample-inside-path",
-      "current_doc_meta": "sampling/nearest-spline-2",
-      "status": "meta_mismatch"
+      "current_doc_meta": "sampling/nearest/sample-inside-path",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSampling/Public/Elements/PCGExSampleNearestBounds.h",
@@ -2176,8 +2176,8 @@
       "staging": "_staging/PCGExElementsSampling/Elements/PCGExSampleNearestBounds.md",
       "node_library": "node-library/sampling/nearest/sample-nearest-bounds.md",
       "doc_path": "sampling/nearest/sample-nearest-bounds",
-      "current_doc_meta": "sampling/nearest-bounds",
-      "status": "meta_mismatch"
+      "current_doc_meta": "sampling/nearest/sample-nearest-bounds",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSampling/Public/Elements/PCGExSampleNearestPath.h",
@@ -2185,8 +2185,8 @@
       "staging": "_staging/PCGExElementsSampling/Elements/PCGExSampleNearestPath.md",
       "node_library": "node-library/sampling/nearest/sample-nearest-path.md",
       "doc_path": "sampling/nearest/sample-nearest-path",
-      "current_doc_meta": "sampling/nearest-spline-1",
-      "status": "meta_mismatch"
+      "current_doc_meta": "sampling/nearest/sample-nearest-path",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSampling/Public/Elements/PCGExSampleNearestPoint.h",
@@ -2194,8 +2194,8 @@
       "staging": "_staging/PCGExElementsSampling/Elements/PCGExSampleNearestPoint.md",
       "node_library": "node-library/sampling/nearest/sample-nearest-point.md",
       "doc_path": "sampling/nearest/sample-nearest-point",
-      "current_doc_meta": "sampling/nearest-point",
-      "status": "meta_mismatch"
+      "current_doc_meta": "sampling/nearest/sample-nearest-point",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSampling/Public/Elements/PCGExSampleNearestSpline.h",
@@ -2203,8 +2203,8 @@
       "staging": "_staging/PCGExElementsSampling/Elements/PCGExSampleNearestSpline.md",
       "node_library": "node-library/sampling/nearest/sample-nearest-spline.md",
       "doc_path": "sampling/nearest/sample-nearest-spline",
-      "current_doc_meta": "sampling/nearest-spline",
-      "status": "meta_mismatch"
+      "current_doc_meta": "sampling/nearest/sample-nearest-spline",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSampling/Public/Elements/PCGExSampleNearestSurface.h",
@@ -2212,8 +2212,8 @@
       "staging": "_staging/PCGExElementsSampling/Elements/PCGExSampleNearestSurface.md",
       "node_library": "node-library/sampling/nearest/sample-nearest-surface.md",
       "doc_path": "sampling/nearest/sample-nearest-surface",
-      "current_doc_meta": "sampling/nearest-surface",
-      "status": "meta_mismatch"
+      "current_doc_meta": "sampling/nearest/sample-nearest-surface",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSampling/Public/Elements/PCGExSampleOverlapStats.h",
@@ -2221,8 +2221,8 @@
       "staging": "_staging/PCGExElementsSampling/Elements/PCGExSampleOverlapStats.md",
       "node_library": "node-library/sampling/sample-overlap-stats.md",
       "doc_path": "sampling/sample-overlap-stats",
-      "current_doc_meta": "sampling/overlap-stats",
-      "status": "meta_mismatch"
+      "current_doc_meta": "sampling/sample-overlap-stats",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSampling/Public/Elements/PCGExSampleSockets.h",
@@ -2230,8 +2230,8 @@
       "staging": "_staging/PCGExElementsSampling/Elements/PCGExSampleSockets.md",
       "node_library": "node-library/staging/utilities/sample-sockets.md",
       "doc_path": "staging/utilities/sample-sockets",
-      "current_doc_meta": "sampling/sockets",
-      "status": "meta_mismatch"
+      "current_doc_meta": "staging/utilities/sample-sockets",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSampling/Public/Elements/PCGExSampleSurfaceGuided.h",
@@ -2239,8 +2239,8 @@
       "staging": "_staging/PCGExElementsSampling/Elements/PCGExSampleSurfaceGuided.md",
       "node_library": "node-library/sampling/nearest/sample-line-trace.md",
       "doc_path": "sampling/nearest/sample-line-trace",
-      "current_doc_meta": "sampling/line-trace",
-      "status": "meta_mismatch"
+      "current_doc_meta": "sampling/nearest/sample-line-trace",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSampling/Public/Elements/PCGExSampleTexture.h",
@@ -2266,8 +2266,8 @@
       "staging": "_staging/PCGExElementsShapes/Core/PCGExShapeBuilderFactoryProvider.md",
       "node_library": "node-library/shapes/shape.md",
       "doc_path": "shapes/shape",
-      "current_doc_meta": "misc/shapes/create-shapes",
-      "status": "meta_mismatch"
+      "current_doc_meta": "shapes/shape",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsShapes/Public/Core/PCGExShapeProcessor.h",
@@ -2293,8 +2293,8 @@
       "staging": "_staging/PCGExElementsShapes/Shapes/PCGExShapeCircle.md",
       "node_library": "node-library/shapes/shape-circle.md",
       "doc_path": "shapes/shape-circle",
-      "current_doc_meta": "misc/shapes/shape-circle",
-      "status": "meta_mismatch"
+      "current_doc_meta": "shapes/shape-circle",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsShapes/Public/Shapes/PCGExShapeFiblat.h",
@@ -2302,8 +2302,8 @@
       "staging": "_staging/PCGExElementsShapes/Shapes/PCGExShapeFiblat.md",
       "node_library": "node-library/shapes/shape-f-sphere.md",
       "doc_path": "shapes/shape-f-sphere",
-      "current_doc_meta": "misc/shapes/shape-sphere",
-      "status": "meta_mismatch"
+      "current_doc_meta": "shapes/shape-f-sphere",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsShapes/Public/Shapes/PCGExShapeGrid.h",
@@ -2311,8 +2311,8 @@
       "staging": "_staging/PCGExElementsShapes/Shapes/PCGExShapeGrid.md",
       "node_library": "node-library/shapes/shape-3d-grid.md",
       "doc_path": "shapes/shape-3d-grid",
-      "current_doc_meta": "misc/shapes/shape-grid",
-      "status": "meta_mismatch"
+      "current_doc_meta": "shapes/shape-3d-grid",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsShapes/Public/Shapes/PCGExShapePolygon.h",
@@ -2320,16 +2320,16 @@
       "staging": "_staging/PCGExElementsShapes/Shapes/PCGExShapePolygon.md",
       "node_library": "node-library/shapes/shape-polygon.md",
       "doc_path": "shapes/shape-polygon",
-      "current_doc_meta": "misc/shapes/shape-polygon",
-      "status": "meta_mismatch"
+      "current_doc_meta": "shapes/shape-polygon",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSpatial/Public/Elements/Bounds/PCGExBestMatchAxis.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsSpatial\\Public\\Elements\\Bounds\\PCGExBestMatchAxis.h",
       "staging": "_staging/PCGExElementsSpatial/Elements/Bounds/PCGExBestMatchAxis.md",
-      "node_library": "node-library/transform/modify/best-match-axis.md",
-      "doc_path": "transform/modify/best-match-axis",
-      "current_doc_meta": "transform/move-pivot",
+      "node_library": "node-library/transform/transform/best-match-axis.md",
+      "doc_path": "transform/transform/best-match-axis",
+      "current_doc_meta": "transform/modify/best-match-axis",
       "status": "meta_mismatch"
     },
     {
@@ -2338,16 +2338,16 @@
       "staging": "_staging/PCGExElementsSpatial/Elements/Bounds/PCGExBoundsAxisToPoints.md",
       "node_library": "node-library/transform/analyze/bounds-axis-to-points.md",
       "doc_path": "transform/analyze/bounds-axis-to-points",
-      "current_doc_meta": "misc/bounds-axis-to-points",
-      "status": "meta_mismatch"
+      "current_doc_meta": "transform/analyze/bounds-axis-to-points",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSpatial/Public/Elements/Bounds/PCGExBoundsToPoints.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsSpatial\\Public\\Elements\\Bounds\\PCGExBoundsToPoints.h",
       "staging": "_staging/PCGExElementsSpatial/Elements/Bounds/PCGExBoundsToPoints.md",
-      "node_library": "node-library/transform/generate/bounds-to-points-1.md",
-      "doc_path": "transform/generate/bounds-to-points-1",
-      "current_doc_meta": "misc/bounds-to-points",
+      "node_library": "node-library/transform/generate/bounds-to-points.md",
+      "doc_path": "transform/generate/bounds-to-points",
+      "current_doc_meta": "transform/generate/bounds-to-points-1",
       "status": "meta_mismatch"
     },
     {
@@ -2356,8 +2356,8 @@
       "staging": "_staging/PCGExElementsSpatial/Elements/Bounds/PCGExFindPointOnBounds.md",
       "node_library": "node-library/transform/analyze/find-point-on-bounds.md",
       "doc_path": "transform/analyze/find-point-on-bounds",
-      "current_doc_meta": "misc/find-point-on-bounds",
-      "status": "meta_mismatch"
+      "current_doc_meta": "transform/analyze/find-point-on-bounds",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSpatial/Public/Elements/Layout/PCGExBestFitPacking.h",
@@ -2374,8 +2374,8 @@
       "staging": "_staging/PCGExElementsSpatial/Elements/Layout/PCGExBinPacking.md",
       "node_library": "node-library/transform/modify/bin-packing.md",
       "doc_path": "transform/modify/bin-packing",
-      "current_doc_meta": "misc/layout/bin-packing",
-      "status": "meta_mismatch"
+      "current_doc_meta": "transform/modify/bin-packing",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSpatial/Public/Elements/Layout/PCGExBinPacking3D.h",
@@ -2383,8 +2383,8 @@
       "staging": "_staging/PCGExElementsSpatial/Elements/Layout/PCGExBinPacking3D.md",
       "node_library": "node-library/transform/modify/bin-packing-3d-q4realbpp.md",
       "doc_path": "transform/modify/bin-packing-3d-q4realbpp",
-      "current_doc_meta": "misc/layout/bin-packing-3d",
-      "status": "meta_mismatch"
+      "current_doc_meta": "transform/modify/bin-packing-3d-q4realbpp",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSpatial/Public/Elements/PCGExCollocationCount.h",
@@ -2392,16 +2392,16 @@
       "staging": "_staging/PCGExElementsSpatial/Elements/PCGExCollocationCount.md",
       "node_library": "node-library/transform/analyze/collocation-count.md",
       "doc_path": "transform/analyze/collocation-count",
-      "current_doc_meta": "misc/collocation-count",
-      "status": "meta_mismatch"
+      "current_doc_meta": "transform/analyze/collocation-count",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSpatial/Public/Elements/PCGExFlatProjection.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsSpatial\\Public\\Elements\\PCGExFlatProjection.h",
       "staging": "_staging/PCGExElementsSpatial/Elements/PCGExFlatProjection.md",
-      "node_library": "node-library/transform/modify/flat-projection.md",
-      "doc_path": "transform/modify/flat-projection",
-      "current_doc_meta": "transform/flat-projection",
+      "node_library": "node-library/transform/transform/flat-projection.md",
+      "doc_path": "transform/transform/flat-projection",
+      "current_doc_meta": "transform/modify/flat-projection",
       "status": "meta_mismatch"
     },
     {
@@ -2410,34 +2410,34 @@
       "staging": "_staging/PCGExElementsSpatial/Elements/PCGExFusePoints.md",
       "node_library": "node-library/transform/modify/fuse-points.md",
       "doc_path": "transform/modify/fuse-points",
-      "current_doc_meta": "misc/fuse-points",
-      "status": "meta_mismatch"
+      "current_doc_meta": "transform/modify/fuse-points",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSpatial/Public/Elements/PCGExLloydRelax.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsSpatial\\Public\\Elements\\PCGExLloydRelax.h",
       "staging": "_staging/PCGExElementsSpatial/Elements/PCGExLloydRelax.md",
-      "node_library": "node-library/transform/modify/lloyd-relax-3d.md",
-      "doc_path": "transform/modify/lloyd-relax-3d",
-      "current_doc_meta": "transform/lloyd-relax-3d",
+      "node_library": "node-library/transform/transform/lloyd-relax-3d.md",
+      "doc_path": "transform/transform/lloyd-relax-3d",
+      "current_doc_meta": "transform/modify/lloyd-relax-3d",
       "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExElementsSpatial/Public/Elements/PCGExLloydRelax2D.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsSpatial\\Public\\Elements\\PCGExLloydRelax2D.h",
       "staging": "_staging/PCGExElementsSpatial/Elements/PCGExLloydRelax2D.md",
-      "node_library": "node-library/transform/modify/lloyd-relax-2d.md",
-      "doc_path": "transform/modify/lloyd-relax-2d",
-      "current_doc_meta": "transform/lloyd-relax-2d",
+      "node_library": "node-library/transform/transform/lloyd-relax-2d.md",
+      "doc_path": "transform/transform/lloyd-relax-2d",
+      "current_doc_meta": "transform/modify/lloyd-relax-2d",
       "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExElementsSpatial/Public/Elements/PCGExMovePivot.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsSpatial\\Public\\Elements\\PCGExMovePivot.h",
       "staging": "_staging/PCGExElementsSpatial/Elements/PCGExMovePivot.md",
-      "node_library": "node-library/transform/modify/move-pivot.md",
-      "doc_path": "transform/modify/move-pivot",
-      "current_doc_meta": "transform/move-pivot",
+      "node_library": "node-library/transform/transform/move-pivot.md",
+      "doc_path": "transform/transform/move-pivot",
+      "current_doc_meta": "transform/modify/move-pivot",
       "status": "meta_mismatch"
     },
     {
@@ -2446,16 +2446,16 @@
       "staging": "_staging/PCGExElementsSpatial/Elements/PCGExNormalize.md",
       "node_library": "node-library/transform/analyze/normalize.md",
       "doc_path": "transform/analyze/normalize",
-      "current_doc_meta": "transform/normalize",
-      "status": "meta_mismatch"
+      "current_doc_meta": "transform/analyze/normalize",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSpatial/Public/Elements/PCGExPointsToBounds.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsSpatial\\Public\\Elements\\PCGExPointsToBounds.h",
       "staging": "_staging/PCGExElementsSpatial/Elements/PCGExPointsToBounds.md",
-      "node_library": "node-library/transform/generate/points-to-bounds.md",
-      "doc_path": "transform/generate/points-to-bounds",
-      "current_doc_meta": "misc/points-to-bounds",
+      "node_library": "node-library/transform/modify/points-to-bounds.md",
+      "doc_path": "transform/modify/points-to-bounds",
+      "current_doc_meta": "transform/generate/points-to-bounds",
       "status": "meta_mismatch"
     },
     {
@@ -2500,16 +2500,16 @@
       "staging": "_staging/PCGExElementsTensors/Elements/PCGExExtrudeTensors.md",
       "node_library": "node-library/paths/generate/path-extrude-tensors.md",
       "doc_path": "paths/generate/path-extrude-tensors",
-      "current_doc_meta": "tensors/extrude-tensors",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/generate/path-extrude-tensors",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTensors/Public/Elements/PCGExTensorsTransform.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsTensors\\Public\\Elements\\PCGExTensorsTransform.h",
       "staging": "_staging/PCGExElementsTensors/Elements/PCGExTensorsTransform.md",
-      "node_library": "node-library/transform/modify/tensors-transform.md",
-      "doc_path": "transform/modify/tensors-transform",
-      "current_doc_meta": "tensors/tensors-transform",
+      "node_library": "node-library/transform/transform/tensors-transform.md",
+      "doc_path": "transform/transform/tensors-transform",
+      "current_doc_meta": "transform/modify/tensors-transform",
       "status": "meta_mismatch"
     },
     {
@@ -2518,8 +2518,8 @@
       "staging": "_staging/PCGExElementsTensors/Filters/Points/PCGExTensorDotFilter.md",
       "node_library": "node-library/filters/point-filters/spatial/filter-tensor-dot.md",
       "doc_path": "filters/point-filters/spatial/filter-tensor-dot",
-      "current_doc_meta": "filters/filters-points/math-checks/tensor-dot-product",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/spatial/filter-tensor-dot",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTensors/Public/Heuristics/PCGExHeuristicTensor.h",
@@ -2527,8 +2527,8 @@
       "staging": "_staging/PCGExElementsTensors/Heuristics/PCGExHeuristicTensor.md",
       "node_library": "node-library/pathfinding/heuristics/heuristics-tensor.md",
       "doc_path": "pathfinding/heuristics/heuristics-tensor",
-      "current_doc_meta": "pathfinding/heuristics/hx-tensor",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/heuristics/heuristics-tensor",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTensors/Public/Probes/PCGExProbeTensor.h",
@@ -2536,8 +2536,8 @@
       "staging": "_staging/PCGExElementsTensors/Probes/PCGExProbeTensor.md",
       "node_library": "node-library/clusters/generate/cluster-connect-points/probe-tensor.md",
       "doc_path": "clusters/generate/cluster-connect-points/probe-tensor",
-      "current_doc_meta": "clusters/connect-points/probe-direction-1",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-connect-points/probe-tensor",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTensors/Public/Samplers/PCGExTensorSamplerAdaptive.h",
@@ -2572,8 +2572,8 @@
       "staging": "_staging/PCGExElementsTensors/Tensors/PCGExTensorConstant.md",
       "node_library": "node-library/tensors/tensors/tensor-constant.md",
       "doc_path": "tensors/tensors/tensor-constant",
-      "current_doc_meta": "tensors/effectors/tensor-constant",
-      "status": "meta_mismatch"
+      "current_doc_meta": "tensors/tensors/tensor-constant",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTensors/Public/Tensors/PCGExTensorFlow.h",
@@ -2581,8 +2581,8 @@
       "staging": "_staging/PCGExElementsTensors/Tensors/PCGExTensorFlow.md",
       "node_library": "node-library/tensors/tensors/tensor-flow.md",
       "doc_path": "tensors/tensors/tensor-flow",
-      "current_doc_meta": "tensors/effectors/tensor-inertia-constant",
-      "status": "meta_mismatch"
+      "current_doc_meta": "tensors/tensors/tensor-flow",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTensors/Public/Tensors/PCGExTensorInertia.h",
@@ -2590,8 +2590,8 @@
       "staging": "_staging/PCGExElementsTensors/Tensors/PCGExTensorInertia.md",
       "node_library": "node-library/tensors/tensors/tensor-inertia.md",
       "doc_path": "tensors/tensors/tensor-inertia",
-      "current_doc_meta": "tensors/effectors/tensor-inertia",
-      "status": "meta_mismatch"
+      "current_doc_meta": "tensors/tensors/tensor-inertia",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTensors/Public/Tensors/PCGExTensorInertiaConstant.h",
@@ -2599,8 +2599,8 @@
       "staging": "_staging/PCGExElementsTensors/Tensors/PCGExTensorInertiaConstant.md",
       "node_library": "node-library/tensors/tensors/tensor-inertia-constant.md",
       "doc_path": "tensors/tensors/tensor-inertia-constant",
-      "current_doc_meta": "tensors/effectors/tensor-inertia-constant",
-      "status": "meta_mismatch"
+      "current_doc_meta": "tensors/tensors/tensor-inertia-constant",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTensors/Public/Tensors/PCGExTensorNoise.h",
@@ -2608,8 +2608,8 @@
       "staging": "_staging/PCGExElementsTensors/Tensors/PCGExTensorNoise.md",
       "node_library": "node-library/tensors/tensors/tensor-noise.md",
       "doc_path": "tensors/tensors/tensor-noise",
-      "current_doc_meta": "tensors/effectors/tensor-noise",
-      "status": "meta_mismatch"
+      "current_doc_meta": "tensors/tensors/tensor-noise",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTensors/Public/Tensors/PCGExTensorNoiseBounded.h",
@@ -2617,8 +2617,8 @@
       "staging": "_staging/PCGExElementsTensors/Tensors/PCGExTensorNoiseBounded.md",
       "node_library": "node-library/tensors/tensors/tensor-noise-bounded.md",
       "doc_path": "tensors/tensors/tensor-noise-bounded",
-      "current_doc_meta": "tensors/effectors/tensor-noise-bounded",
-      "status": "meta_mismatch"
+      "current_doc_meta": "tensors/tensors/tensor-noise-bounded",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTensors/Public/Tensors/PCGExTensorNull.h",
@@ -2626,8 +2626,8 @@
       "staging": "_staging/PCGExElementsTensors/Tensors/PCGExTensorNull.md",
       "node_library": "node-library/tensors/tensors/tensor-null.md",
       "doc_path": "tensors/tensors/tensor-null",
-      "current_doc_meta": "tensors/effectors/tensor-null",
-      "status": "meta_mismatch"
+      "current_doc_meta": "tensors/tensors/tensor-null",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTensors/Public/Tensors/PCGExTensorPathFlow.h",
@@ -2635,8 +2635,8 @@
       "staging": "_staging/PCGExElementsTensors/Tensors/PCGExTensorPathFlow.md",
       "node_library": "node-library/tensors/tensors/tensor-path-flow.md",
       "doc_path": "tensors/tensors/tensor-path-flow",
-      "current_doc_meta": "tensors/effectors/tensor-path-flow",
-      "status": "meta_mismatch"
+      "current_doc_meta": "tensors/tensors/tensor-path-flow",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTensors/Public/Tensors/PCGExTensorPathPole.h",
@@ -2644,8 +2644,8 @@
       "staging": "_staging/PCGExElementsTensors/Tensors/PCGExTensorPathPole.md",
       "node_library": "node-library/tensors/tensors/tensor-path-pole.md",
       "doc_path": "tensors/tensors/tensor-path-pole",
-      "current_doc_meta": "tensors/effectors/tensor-path-pole",
-      "status": "meta_mismatch"
+      "current_doc_meta": "tensors/tensors/tensor-path-pole",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTensors/Public/Tensors/PCGExTensorPole.h",
@@ -2653,8 +2653,8 @@
       "staging": "_staging/PCGExElementsTensors/Tensors/PCGExTensorPole.md",
       "node_library": "node-library/tensors/tensors/tensor-pole.md",
       "doc_path": "tensors/tensors/tensor-pole",
-      "current_doc_meta": "tensors/effectors/tensor-pole",
-      "status": "meta_mismatch"
+      "current_doc_meta": "tensors/tensors/tensor-pole",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTensors/Public/Tensors/PCGExTensorSpin.h",
@@ -2662,8 +2662,8 @@
       "staging": "_staging/PCGExElementsTensors/Tensors/PCGExTensorSpin.md",
       "node_library": "node-library/tensors/tensors/tensor-spin.md",
       "doc_path": "tensors/tensors/tensor-spin",
-      "current_doc_meta": "tensors/effectors/tensor-spin",
-      "status": "meta_mismatch"
+      "current_doc_meta": "tensors/tensors/tensor-spin",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTensors/Public/Tensors/PCGExTensorSplineFlow.h",
@@ -2671,8 +2671,8 @@
       "staging": "_staging/PCGExElementsTensors/Tensors/PCGExTensorSplineFlow.md",
       "node_library": "node-library/tensors/tensors/tensor-spline-flow.md",
       "doc_path": "tensors/tensors/tensor-spline-flow",
-      "current_doc_meta": "tensors/effectors/tensor-spline-flow",
-      "status": "meta_mismatch"
+      "current_doc_meta": "tensors/tensors/tensor-spline-flow",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTensors/Public/Tensors/PCGExTensorSplinePole.h",
@@ -2680,8 +2680,8 @@
       "staging": "_staging/PCGExElementsTensors/Tensors/PCGExTensorSplinePole.md",
       "node_library": "node-library/tensors/tensors/tensor-spline-pole.md",
       "doc_path": "tensors/tensors/tensor-spline-pole",
-      "current_doc_meta": "tensors/effectors/tensor-spline-pole",
-      "status": "meta_mismatch"
+      "current_doc_meta": "tensors/tensors/tensor-spline-pole",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTensors/Public/Tensors/PCGExTensorSurface.h",
@@ -2689,8 +2689,8 @@
       "staging": "_staging/PCGExElementsTensors/Tensors/PCGExTensorSurface.md",
       "node_library": "node-library/tensors/tensors/tensor-surface.md",
       "doc_path": "tensors/tensors/tensor-surface",
-      "current_doc_meta": "tensors/effectors/tensor-surface",
-      "status": "meta_mismatch"
+      "current_doc_meta": "tensors/tensors/tensor-surface",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTopology/Public/Components/PCGExDynamicMeshComponent.h",
@@ -2716,8 +2716,8 @@
       "staging": "_staging/PCGExElementsTopology/Elements/PCGExClipper2Triangulate.md",
       "node_library": "node-library/topology/clipper2-triangulate.md",
       "doc_path": "topology/clipper2-triangulate",
-      "current_doc_meta": "paths/clipper2/clipper2-triangulate",
-      "status": "meta_mismatch"
+      "current_doc_meta": "topology/clipper2-triangulate",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTopology/Public/Elements/PCGExSpawnDynamicMesh.h",
@@ -2725,8 +2725,8 @@
       "staging": "_staging/PCGExElementsTopology/Elements/PCGExSpawnDynamicMesh.md",
       "node_library": "node-library/topology/spawn-dynamic-mesh.md",
       "doc_path": "topology/spawn-dynamic-mesh",
-      "current_doc_meta": "topology/cluster-surface/toggle-topology",
-      "status": "meta_mismatch"
+      "current_doc_meta": "topology/spawn-dynamic-mesh",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTopology/Public/Elements/PCGExTopologyClusterSurface.h",
@@ -2734,8 +2734,8 @@
       "staging": "_staging/PCGExElementsTopology/Elements/PCGExTopologyClusterSurface.md",
       "node_library": "node-library/topology/topology-cluster-surface.md",
       "doc_path": "topology/topology-cluster-surface",
-      "current_doc_meta": "topology/cluster-surface",
-      "status": "meta_mismatch"
+      "current_doc_meta": "topology/topology-cluster-surface",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTopology/Public/Elements/PCGExTopologyPathSurface.h",
@@ -2743,8 +2743,8 @@
       "staging": "_staging/PCGExElementsTopology/Elements/PCGExTopologyPathSurface.md",
       "node_library": "node-library/topology/topology-path-surface.md",
       "doc_path": "topology/topology-path-surface",
-      "current_doc_meta": "topology/path-surface",
-      "status": "meta_mismatch"
+      "current_doc_meta": "topology/topology-path-surface",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTopology/Public/Elements/PCGExTopologyPointSurface.h",
@@ -2752,8 +2752,8 @@
       "staging": "_staging/PCGExElementsTopology/Elements/PCGExTopologyPointSurface.md",
       "node_library": "node-library/topology/topology-point-surface.md",
       "doc_path": "topology/topology-point-surface",
-      "current_doc_meta": "clusters/diagrams/delaunay-2d",
-      "status": "meta_mismatch"
+      "current_doc_meta": "topology/topology-point-surface",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTopology/Public/PCGExTopology.h",
@@ -2824,8 +2824,8 @@
       "staging": "_staging/PCGExElementsValency/Elements/PCGExValencyPatternReplacement.md",
       "node_library": "node-library/valency/valency-patterns/README.md",
       "doc_path": "valency/valency-patterns",
-      "current_doc_meta": "valency/valency-pattern-replacement",
-      "status": "meta_mismatch"
+      "current_doc_meta": "valency/valency-patterns",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Elements/PCGExValencyStaging.h",
@@ -2842,8 +2842,8 @@
       "staging": "_staging/PCGExElementsValency/Elements/PCGExWriteModuleSockets.md",
       "node_library": "node-library/valency/valency-write-module-sockets.md",
       "doc_path": "valency/valency-write-module-sockets",
-      "current_doc_meta": "valency/write-module-sockets",
-      "status": "meta_mismatch"
+      "current_doc_meta": "valency/valency-write-module-sockets",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Elements/PCGExWriteValencyOrbitals.h",
@@ -2851,8 +2851,8 @@
       "staging": "_staging/PCGExElementsValency/Elements/PCGExWriteValencyOrbitals.md",
       "node_library": "node-library/valency/valency-write-orbitals.md",
       "doc_path": "valency/valency-write-orbitals",
-      "current_doc_meta": "valency/write-valency-orbitals",
-      "status": "meta_mismatch"
+      "current_doc_meta": "valency/valency-write-orbitals",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Matchers/PCGExDefaultPatternMatcher.h",
@@ -2860,8 +2860,8 @@
       "staging": "_staging/PCGExElementsValency/Matchers/PCGExDefaultPatternMatcher.md",
       "node_library": "node-library/valency/valency-patterns/default-pattern-matcher.md",
       "doc_path": "valency/valency-patterns/default-pattern-matcher",
-      "current_doc_meta": "valency/matchers/default",
-      "status": "meta_mismatch"
+      "current_doc_meta": "valency/valency-patterns/default-pattern-matcher",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Probes/PCGExProbeValency.h",
@@ -2869,8 +2869,8 @@
       "staging": "_staging/PCGExElementsValency/Probes/PCGExProbeValency.md",
       "node_library": "node-library/clusters/generate/cluster-connect-points/probe-orbital-valency.md",
       "doc_path": "clusters/generate/cluster-connect-points/probe-orbital-valency",
-      "current_doc_meta": "valency/probe-valency",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-connect-points/probe-orbital-valency",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Solvers/PCGExValencyConstraintSolver.h",
@@ -2878,8 +2878,8 @@
       "staging": "_staging/PCGExElementsValency/Solvers/PCGExValencyConstraintSolver.md",
       "node_library": "node-library/valency/valency-staging/constraint-solver.md",
       "doc_path": "valency/valency-staging/constraint-solver",
-      "current_doc_meta": "valency/solvers/constraint",
-      "status": "meta_mismatch"
+      "current_doc_meta": "valency/valency-staging/constraint-solver",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Solvers/PCGExValencyEntropySolver.h",
@@ -2887,8 +2887,8 @@
       "staging": "_staging/PCGExElementsValency/Solvers/PCGExValencyEntropySolver.md",
       "node_library": "node-library/valency/valency-staging/entropy-solver.md",
       "doc_path": "valency/valency-staging/entropy-solver",
-      "current_doc_meta": "valency/solvers/entropy",
-      "status": "meta_mismatch"
+      "current_doc_meta": "valency/valency-staging/entropy-solver",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Solvers/PCGExValencyPrioritySolver.h",
@@ -2896,8 +2896,8 @@
       "staging": "_staging/PCGExElementsValency/Solvers/PCGExValencyPrioritySolver.md",
       "node_library": "node-library/valency/valency-staging/priority-solver.md",
       "doc_path": "valency/valency-staging/priority-solver",
-      "current_doc_meta": "valency/solvers/priority",
-      "status": "meta_mismatch"
+      "current_doc_meta": "valency/valency-staging/priority-solver",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Core/PCGExClusterFilter.h",
@@ -2959,8 +2959,8 @@
       "staging": "_staging/PCGExFilters/Filters/Collections/PCGExAttributeCheckFilter.md",
       "node_library": "node-library/filters/data-filters/data-filter-attribute-check.md",
       "doc_path": "filters/data-filters/data-filter-attribute-check",
-      "current_doc_meta": "filters/filters-collections/attribute-check",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/data-filters/data-filter-attribute-check",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Collections/PCGExDataBoundsFilter.h",
@@ -2968,8 +2968,8 @@
       "staging": "_staging/PCGExFilters/Filters/Collections/PCGExDataBoundsFilter.md",
       "node_library": "node-library/filters/data-filters/data-filter-bounds.md",
       "doc_path": "filters/data-filters/data-filter-bounds",
-      "current_doc_meta": "filters/filters-collections/tag-value",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/data-filters/data-filter-bounds",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Collections/PCGExEntryCountFilter.h",
@@ -2977,8 +2977,8 @@
       "staging": "_staging/PCGExFilters/Filters/Collections/PCGExEntryCountFilter.md",
       "node_library": "node-library/filters/data-filters/data-filter-entry-count.md",
       "doc_path": "filters/data-filters/data-filter-entry-count",
-      "current_doc_meta": "filters/filters-collections/entry-count",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/data-filters/data-filter-entry-count",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Collections/PCGExTagCheckFilter.h",
@@ -2986,8 +2986,8 @@
       "staging": "_staging/PCGExFilters/Filters/Collections/PCGExTagCheckFilter.md",
       "node_library": "node-library/filters/data-filters/data-filter-tag-check.md",
       "doc_path": "filters/data-filters/data-filter-tag-check",
-      "current_doc_meta": "filters/filters-collections/tag-check",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/data-filters/data-filter-tag-check",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Collections/PCGExTagValueFilter.h",
@@ -2995,8 +2995,8 @@
       "staging": "_staging/PCGExFilters/Filters/Collections/PCGExTagValueFilter.md",
       "node_library": "node-library/filters/data-filters/data-filter-tag-value.md",
       "doc_path": "filters/data-filters/data-filter-tag-value",
-      "current_doc_meta": "filters/filters-collections/tag-value",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/data-filters/data-filter-tag-value",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExAngleFilter.h",
@@ -3004,8 +3004,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExAngleFilter.md",
       "node_library": "node-library/filters/point-filters/math/filter-angle.md",
       "doc_path": "filters/point-filters/math/filter-angle",
-      "current_doc_meta": "filters/filters-points/self-comparisons/numeric-1",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/math/filter-angle",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExBitmaskFilter.h",
@@ -3013,8 +3013,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExBitmaskFilter.md",
       "node_library": "node-library/filters/point-filters/math/filter-bitmask.md",
       "doc_path": "filters/point-filters/math/filter-bitmask",
-      "current_doc_meta": "filters/filters-points/bitmask",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/math/filter-bitmask",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExBooleanCompareFilter.h",
@@ -3022,8 +3022,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExBooleanCompareFilter.md",
       "node_library": "node-library/filters/point-filters/attribute/filter-bool-compare.md",
       "doc_path": "filters/point-filters/attribute/filter-bool-compare",
-      "current_doc_meta": "filters/filters-points/simple-comparisons/boolean",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/attribute/filter-bool-compare",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExBoundsFilter.h",
@@ -3031,8 +3031,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExBoundsFilter.md",
       "node_library": "node-library/filters/point-filters/spatial/filter-inclusion-bounds.md",
       "doc_path": "filters/point-filters/spatial/filter-inclusion-bounds",
-      "current_doc_meta": "filters/filters-points/spatial/bounds",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/spatial/filter-inclusion-bounds",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExConstantFilter.h",
@@ -3040,8 +3040,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExConstantFilter.md",
       "node_library": "node-library/filters/point-filters/filter-constant.md",
       "doc_path": "filters/point-filters/filter-constant",
-      "current_doc_meta": "filters/filters-points/constant",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/filter-constant",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExDistanceFilter.h",
@@ -3049,8 +3049,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExDistanceFilter.md",
       "node_library": "node-library/filters/point-filters/spatial/filter-distance.md",
       "doc_path": "filters/point-filters/spatial/filter-distance",
-      "current_doc_meta": "filters/filters-points/spatial/distance",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/spatial/filter-distance",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExDotFilter.h",
@@ -3058,8 +3058,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExDotFilter.md",
       "node_library": "node-library/filters/point-filters/math/filter-dot.md",
       "doc_path": "filters/point-filters/math/filter-dot",
-      "current_doc_meta": "filters/filters-points/math-checks/dot-product",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/math/filter-dot",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExFilterGroup.h",
@@ -3067,8 +3067,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExFilterGroup.md",
       "node_library": "node-library/filters/filter-group-and-or.md",
       "doc_path": "filters/filter-group-and-or",
-      "current_doc_meta": "filters/and-or",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/filter-group-and-or",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExGameplayTagsFilter.h",
@@ -3076,8 +3076,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExGameplayTagsFilter.md",
       "node_library": "node-library/filters/point-filters/attribute/filter-gameplaytags.md",
       "doc_path": "filters/point-filters/attribute/filter-gameplaytags",
-      "current_doc_meta": "filters/filters-points/gameplay-tags",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/attribute/filter-gameplaytags",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExInclusionFilter.h",
@@ -3085,8 +3085,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExInclusionFilter.md",
       "node_library": "node-library/filters/point-filters/spatial/filter-inclusion-path-splines.md",
       "doc_path": "filters/point-filters/spatial/filter-inclusion-path-splines",
-      "current_doc_meta": "filters/filters-points/spatial/inclusion",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/spatial/filter-inclusion-path-splines",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExMeanFilter.h",
@@ -3094,8 +3094,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExMeanFilter.md",
       "node_library": "node-library/filters/point-filters/math/filter-mean.md",
       "doc_path": "filters/point-filters/math/filter-mean",
-      "current_doc_meta": "filters/filters-points/math-checks/mean-value",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/math/filter-mean",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExModuloCompareFilter.h",
@@ -3103,8 +3103,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExModuloCompareFilter.md",
       "node_library": "node-library/filters/point-filters/math/filter-modulo-compare.md",
       "doc_path": "filters/point-filters/math/filter-modulo-compare",
-      "current_doc_meta": "filters/filters-points/math-checks/modulo-comparison",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/math/filter-modulo-compare",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExNumericCompareFilter.h",
@@ -3112,8 +3112,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExNumericCompareFilter.md",
       "node_library": "node-library/filters/point-filters/attribute/filter-compare-numeric.md",
       "doc_path": "filters/point-filters/attribute/filter-compare-numeric",
-      "current_doc_meta": "filters/filters-points/simple-comparisons/numeric",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/attribute/filter-compare-numeric",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExNumericCompareNearestFilter.h",
@@ -3121,8 +3121,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExNumericCompareNearestFilter.md",
       "node_library": "node-library/filters/point-filters/attribute/filter-compare-nearest-numeric.md",
       "doc_path": "filters/point-filters/attribute/filter-compare-nearest-numeric",
-      "current_doc_meta": "filters/filters-points/spatial/compare-nearest-numeric",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/attribute/filter-compare-nearest-numeric",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExNumericSelfCompareFilter.h",
@@ -3130,8 +3130,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExNumericSelfCompareFilter.md",
       "node_library": "node-library/filters/point-filters/attribute/filter-self-compare-numeric.md",
       "doc_path": "filters/point-filters/attribute/filter-self-compare-numeric",
-      "current_doc_meta": "filters/filters-points/self-comparisons/numeric",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/attribute/filter-self-compare-numeric",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExPickerFilter.h",
@@ -3139,8 +3139,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExPickerFilter.md",
       "node_library": "node-library/filters/point-filters/filter-picker.md",
       "doc_path": "filters/point-filters/filter-picker",
-      "current_doc_meta": "filters/filters-points/picker",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/filter-picker",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExRandomFilter.h",
@@ -3148,8 +3148,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExRandomFilter.md",
       "node_library": "node-library/filters/point-filters/filter-random.md",
       "doc_path": "filters/point-filters/filter-random",
-      "current_doc_meta": "filters/filters-points/random",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/filter-random",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExRandomRatioFilter.h",
@@ -3157,8 +3157,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExRandomRatioFilter.md",
       "node_library": "node-library/filters/point-filters/filter-random-ratio.md",
       "doc_path": "filters/point-filters/filter-random-ratio",
-      "current_doc_meta": "filters/filters-points/random-1",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/filter-random-ratio",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExSegmentCrossFilter.h",
@@ -3166,8 +3166,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExSegmentCrossFilter.md",
       "node_library": "node-library/filters/point-filters/math/filter-segment-cross.md",
       "doc_path": "filters/point-filters/math/filter-segment-cross",
-      "current_doc_meta": "filters/filters-points/spatial/segment-cross",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/math/filter-segment-cross",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExSegmentLengthFilter.h",
@@ -3175,8 +3175,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExSegmentLengthFilter.md",
       "node_library": "node-library/filters/point-filters/math/filter-segment-length.md",
       "doc_path": "filters/point-filters/math/filter-segment-length",
-      "current_doc_meta": "filters/filters-points/self-comparisons/numeric-2",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/math/filter-segment-length",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExStringCompareFilter.h",
@@ -3184,8 +3184,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExStringCompareFilter.md",
       "node_library": "node-library/filters/point-filters/attribute/filter-compare-string.md",
       "doc_path": "filters/point-filters/attribute/filter-compare-string",
-      "current_doc_meta": "filters/filters-points/simple-comparisons/string",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/attribute/filter-compare-string",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExStringSelfCompareFilter.h",
@@ -3193,8 +3193,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExStringSelfCompareFilter.md",
       "node_library": "node-library/filters/point-filters/attribute/filter-self-compare-string.md",
       "doc_path": "filters/point-filters/attribute/filter-self-compare-string",
-      "current_doc_meta": "filters/filters-points/self-comparisons/string",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/attribute/filter-self-compare-string",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExTimeFilter.h",
@@ -3202,8 +3202,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExTimeFilter.md",
       "node_library": "node-library/filters/point-filters/spatial/filter-time.md",
       "doc_path": "filters/point-filters/spatial/filter-time",
-      "current_doc_meta": "filters/filters-points/spatial/time",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/spatial/filter-time",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExValueHashFilter.h",
@@ -3211,8 +3211,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExValueHashFilter.md",
       "node_library": "node-library/filters/point-filters/attribute/filter-contains-hash.md",
       "doc_path": "filters/point-filters/attribute/filter-contains-hash",
-      "current_doc_meta": "filters/filters-points/simple-comparisons/contains-hash",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/attribute/filter-contains-hash",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/Filters/Points/PCGExWithinRangeFilter.h",
@@ -3220,8 +3220,8 @@
       "staging": "_staging/PCGExFilters/Filters/Points/PCGExWithinRangeFilter.md",
       "node_library": "node-library/filters/point-filters/attribute/filter-within-range.md",
       "doc_path": "filters/point-filters/attribute/filter-within-range",
-      "current_doc_meta": "filters/filters-points/simple-comparisons/within-range",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/attribute/filter-within-range",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFilters/Public/PCGExFiltersSubSystem.h",
@@ -3283,8 +3283,8 @@
       "staging": "_staging/PCGExFoundations/Elements/Bitmasks/PCGExBitmask.md",
       "node_library": "node-library/metadata/bitmasks/bitmask.md",
       "doc_path": "metadata/bitmasks/bitmask",
-      "current_doc_meta": "TBD",
-      "status": "meta_mismatch"
+      "current_doc_meta": "metadata/bitmasks/bitmask",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Elements/Bitmasks/PCGExBitmaskMerge.h",
@@ -3310,8 +3310,8 @@
       "staging": "_staging/PCGExFoundations/Elements/Constants/PCGExConstantEnum.md",
       "node_library": "node-library/metadata/keys/enum-constant.md",
       "doc_path": "metadata/keys/enum-constant",
-      "current_doc_meta": "quality-of-life/enum",
-      "status": "meta_mismatch"
+      "current_doc_meta": "metadata/keys/enum-constant",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Elements/Constants/PCGExConstants.h",
@@ -3319,8 +3319,8 @@
       "staging": "_staging/PCGExFoundations/Elements/Constants/PCGExConstants.md",
       "node_library": "node-library/metadata/keys/constant.md",
       "doc_path": "metadata/keys/constant",
-      "current_doc_meta": "quality-of-life/constants",
-      "status": "meta_mismatch"
+      "current_doc_meta": "metadata/keys/constant",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Elements/ControlFlow/PCGExBranchOnDataAttribute.h",
@@ -3328,8 +3328,8 @@
       "staging": "_staging/PCGExFoundations/Elements/ControlFlow/PCGExBranchOnDataAttribute.md",
       "node_library": "node-library/utilities/control-flow/branch-on-data.md",
       "doc_path": "utilities/control-flow/branch-on-data",
-      "current_doc_meta": "quality-of-life/branch-on-data",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/control-flow/branch-on-data",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Elements/ControlFlow/PCGExRecursionTracker.h",
@@ -3337,8 +3337,8 @@
       "staging": "_staging/PCGExFoundations/Elements/ControlFlow/PCGExRecursionTracker.md",
       "node_library": "node-library/utilities/control-flow/break.md",
       "doc_path": "utilities/control-flow/break",
-      "current_doc_meta": "quality-of-life/recursion-tracker",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/control-flow/break",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Elements/ControlFlow/PCGExUberBranch.h",
@@ -3346,8 +3346,8 @@
       "staging": "_staging/PCGExFoundations/Elements/ControlFlow/PCGExUberBranch.md",
       "node_library": "node-library/utilities/control-flow/uber-branch.md",
       "doc_path": "utilities/control-flow/uber-branch",
-      "current_doc_meta": "quality-of-life/uber-branch",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/control-flow/uber-branch",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Elements/Debug/PCGExDrawAttributes.h",
@@ -3373,8 +3373,8 @@
       "staging": "_staging/PCGExFoundations/Elements/Filtering/PCGExCherryPickPoints.md",
       "node_library": "node-library/utilities/pickers/cherry-pick-points.md",
       "doc_path": "utilities/pickers/cherry-pick-points",
-      "current_doc_meta": "filters/cherry-pick-points",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/pickers/cherry-pick-points",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Elements/Filtering/PCGExDiscardByPointCount.h",
@@ -3382,8 +3382,8 @@
       "staging": "_staging/PCGExFoundations/Elements/Filtering/PCGExDiscardByPointCount.md",
       "node_library": "node-library/utilities/discarding/discard-by-point-count.md",
       "doc_path": "utilities/discarding/discard-by-point-count",
-      "current_doc_meta": "filters/discard-by-point-count",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/discarding/discard-by-point-count",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Elements/Filtering/PCGExDiscardSame.h",
@@ -3391,8 +3391,8 @@
       "staging": "_staging/PCGExFoundations/Elements/Filtering/PCGExDiscardSame.md",
       "node_library": "node-library/utilities/discarding/discard-same.md",
       "doc_path": "utilities/discarding/discard-same",
-      "current_doc_meta": "filters/discard-same",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/discarding/discard-same",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Elements/Filtering/PCGExSpatialTriage.h",
@@ -3400,8 +3400,8 @@
       "staging": "_staging/PCGExFoundations/Elements/Filtering/PCGExSpatialTriage.md",
       "node_library": "node-library/utilities/discarding/spatial-triage.md",
       "doc_path": "utilities/discarding/spatial-triage",
-      "current_doc_meta": "quality-of-life/spatial-triage",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/discarding/spatial-triage",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Elements/Filtering/PCGExUberFilter.h",
@@ -3427,8 +3427,8 @@
       "staging": "_staging/PCGExFoundations/Elements/Filtering/PCGExUberFilterCollections.md",
       "node_library": "node-library/filters/uber-filter-data.md",
       "doc_path": "filters/uber-filter-data",
-      "current_doc_meta": "filters/uber-filter-collection",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/uber-filter-data",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Elements/PCGExCopyToPoints.h",
@@ -3436,16 +3436,16 @@
       "staging": "_staging/PCGExFoundations/Elements/PCGExCopyToPoints.md",
       "node_library": "node-library/transform/generate/copy-to-points.md",
       "doc_path": "transform/generate/copy-to-points",
-      "current_doc_meta": "misc/copy-to-points",
-      "status": "meta_mismatch"
+      "current_doc_meta": "transform/generate/copy-to-points",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Elements/PCGExTransformPoints.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExFoundations\\Public\\Elements\\PCGExTransformPoints.h",
       "staging": "_staging/PCGExFoundations/Elements/PCGExTransformPoints.md",
-      "node_library": "node-library/transform/generate/transform-points.md",
-      "doc_path": "transform/generate/transform-points",
-      "current_doc_meta": "transform/transform-points",
+      "node_library": "node-library/transform/transform/transform-points.md",
+      "doc_path": "transform/transform/transform-points",
+      "current_doc_meta": "transform/generate/transform-points",
       "status": "meta_mismatch"
     },
     {
@@ -3454,8 +3454,8 @@
       "staging": "_staging/PCGExFoundations/Elements/Utils/PCGExDestroyActor.md",
       "node_library": "node-library/utilities/discarding/destroy-actor.md",
       "doc_path": "utilities/discarding/destroy-actor",
-      "current_doc_meta": "misc/destroy-actor",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/discarding/destroy-actor",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Elements/Utils/PCGExGetGUID.h",
@@ -3463,8 +3463,8 @@
       "staging": "_staging/PCGExFoundations/Elements/Utils/PCGExGetGUID.md",
       "node_library": "node-library/metadata/keys/get-guid.md",
       "doc_path": "metadata/keys/get-guid",
-      "current_doc_meta": "metadata/get-guid",
-      "status": "meta_mismatch"
+      "current_doc_meta": "metadata/keys/get-guid",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Elements/Utils/PCGExIterations.h",
@@ -3472,8 +3472,8 @@
       "staging": "_staging/PCGExFoundations/Elements/Utils/PCGExIterations.md",
       "node_library": "node-library/utilities/control-flow/iterations.md",
       "doc_path": "utilities/control-flow/iterations",
-      "current_doc_meta": "quality-of-life/iterations",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/control-flow/iterations",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Elements/Utils/PCGExMergePoints.h",
@@ -3481,8 +3481,8 @@
       "staging": "_staging/PCGExFoundations/Elements/Utils/PCGExMergePoints.md",
       "node_library": "node-library/utilities/merge-points.md",
       "doc_path": "utilities/merge-points",
-      "current_doc_meta": "misc/merge-points",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/merge-points",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Elements/Utils/PCGExMergePointsByTag.h",
@@ -3499,8 +3499,8 @@
       "staging": "_staging/PCGExFoundations/Elements/Utils/PCGExWriteGUID.md",
       "node_library": "node-library/metadata/keys/write-guid.md",
       "doc_path": "metadata/keys/write-guid",
-      "current_doc_meta": "metadata/write-guid",
-      "status": "meta_mismatch"
+      "current_doc_meta": "metadata/keys/write-guid",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Filters/Points/PCGExRaycastFilter.h",
@@ -3508,8 +3508,8 @@
       "staging": "_staging/PCGExFoundations/Filters/Points/PCGExRaycastFilter.md",
       "node_library": "node-library/filters/point-filters/spatial/filter-raycast.md",
       "doc_path": "filters/point-filters/spatial/filter-raycast",
-      "current_doc_meta": "filters/filters-points/world/raycast-1",
-      "status": "meta_mismatch"
+      "current_doc_meta": "filters/point-filters/spatial/filter-raycast",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Tangents/PCGExTangentsAuto.h",
@@ -3517,8 +3517,8 @@
       "staging": "_staging/PCGExFoundations/Tangents/PCGExTangentsAuto.md",
       "node_library": "node-library/paths/common-settings/tangents/auto.md",
       "doc_path": "paths/common-settings/tangents/auto",
-      "current_doc_meta": "paths/write-tangents/tangents-auto",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/common-settings/tangents/auto",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Tangents/PCGExTangentsCatmullRom.h",
@@ -3526,8 +3526,8 @@
       "staging": "_staging/PCGExFoundations/Tangents/PCGExTangentsCatmullRom.md",
       "node_library": "node-library/paths/common-settings/tangents/catmull-rom.md",
       "doc_path": "paths/common-settings/tangents/catmull-rom",
-      "current_doc_meta": "paths/write-tangents/tangents-catmull-rom",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/common-settings/tangents/catmull-rom",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Tangents/PCGExTangentsFromNeighbors.h",
@@ -3535,8 +3535,8 @@
       "staging": "_staging/PCGExFoundations/Tangents/PCGExTangentsFromNeighbors.md",
       "node_library": "node-library/paths/common-settings/tangents/from-neighbors.md",
       "doc_path": "paths/common-settings/tangents/from-neighbors",
-      "current_doc_meta": "paths/write-tangents/tangents-neighbors",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/common-settings/tangents/from-neighbors",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Tangents/PCGExTangentsFromTransform.h",
@@ -3544,8 +3544,8 @@
       "staging": "_staging/PCGExFoundations/Tangents/PCGExTangentsFromTransform.md",
       "node_library": "node-library/paths/common-settings/tangents/from-transform.md",
       "doc_path": "paths/common-settings/tangents/from-transform",
-      "current_doc_meta": "paths/write-tangents/tangents-transform",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/common-settings/tangents/from-transform",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Tangents/PCGExTangentsInstancedFactory.h",
@@ -3562,8 +3562,8 @@
       "staging": "_staging/PCGExFoundations/Tangents/PCGExTangentsZero.md",
       "node_library": "node-library/paths/common-settings/tangents/zero.md",
       "doc_path": "paths/common-settings/tangents/zero",
-      "current_doc_meta": "paths/write-tangents/tangents-zero",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/common-settings/tangents/zero",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
@@ -3580,8 +3580,8 @@
       "staging": "_staging/PCGExGraphs/Core/PCGExClustersProcessor.md",
       "node_library": "node-library/clusters/common-settings/cluster-processor-settings.md",
       "doc_path": "clusters/common-settings/cluster-processor-settings",
-      "current_doc_meta": "TBD",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/common-settings/cluster-processor-settings",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExGraphs/Public/Graphs/PCGExGraphDetails.h",
@@ -3607,8 +3607,8 @@
       "staging": "_staging/PCGExHeuristics/Heuristics/PCGExHeuristicAttribute.md",
       "node_library": "node-library/pathfinding/heuristics/heuristics-attribute.md",
       "doc_path": "pathfinding/heuristics/heuristics-attribute",
-      "current_doc_meta": "pathfinding/heuristics/hx-attribute",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/heuristics/heuristics-attribute",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicAzimuth.h",
@@ -3616,8 +3616,8 @@
       "staging": "_staging/PCGExHeuristics/Heuristics/PCGExHeuristicAzimuth.md",
       "node_library": "node-library/pathfinding/heuristics/heuristics-azimuth.md",
       "doc_path": "pathfinding/heuristics/heuristics-azimuth",
-      "current_doc_meta": "pathfinding/heuristics/hx-azimuth",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/heuristics/heuristics-azimuth",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicDistance.h",
@@ -3625,8 +3625,8 @@
       "staging": "_staging/PCGExHeuristics/Heuristics/PCGExHeuristicDistance.md",
       "node_library": "node-library/pathfinding/heuristics/heuristics-shortest-distance.md",
       "doc_path": "pathfinding/heuristics/heuristics-shortest-distance",
-      "current_doc_meta": "pathfinding/heuristics/hx-shortest-distance",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/heuristics/heuristics-shortest-distance",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicFeedback.h",
@@ -3634,8 +3634,8 @@
       "staging": "_staging/PCGExHeuristics/Heuristics/PCGExHeuristicFeedback.md",
       "node_library": "node-library/pathfinding/heuristics/heuristics-feedback.md",
       "doc_path": "pathfinding/heuristics/heuristics-feedback",
-      "current_doc_meta": "pathfinding/heuristics/hx-feedback",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/heuristics/heuristics-feedback",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicGradient.h",
@@ -3643,8 +3643,8 @@
       "staging": "_staging/PCGExHeuristics/Heuristics/PCGExHeuristicGradient.md",
       "node_library": "node-library/pathfinding/heuristics/heuristics-gradient.md",
       "doc_path": "pathfinding/heuristics/heuristics-gradient",
-      "current_doc_meta": "pathfinding/heuristics/hx-gradient",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/heuristics/heuristics-gradient",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicInertia.h",
@@ -3652,8 +3652,8 @@
       "staging": "_staging/PCGExHeuristics/Heuristics/PCGExHeuristicInertia.md",
       "node_library": "node-library/pathfinding/heuristics/heuristics-inertia.md",
       "doc_path": "pathfinding/heuristics/heuristics-inertia",
-      "current_doc_meta": "pathfinding/heuristics/hx-inertia",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/heuristics/heuristics-inertia",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicNodeCount.h",
@@ -3661,8 +3661,8 @@
       "staging": "_staging/PCGExHeuristics/Heuristics/PCGExHeuristicNodeCount.md",
       "node_library": "node-library/pathfinding/heuristics/heuristics-least-nodes.md",
       "doc_path": "pathfinding/heuristics/heuristics-least-nodes",
-      "current_doc_meta": "pathfinding/heuristics/hx-least-nodes",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/heuristics/heuristics-least-nodes",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicSteepness.h",
@@ -3670,8 +3670,8 @@
       "staging": "_staging/PCGExHeuristics/Heuristics/PCGExHeuristicSteepness.md",
       "node_library": "node-library/pathfinding/heuristics/heuristics-steepness.md",
       "doc_path": "pathfinding/heuristics/heuristics-steepness",
-      "current_doc_meta": "pathfinding/heuristics/hx-steepness",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/heuristics/heuristics-steepness",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExHeuristics/Public/Heuristics/PCGExHeuristicTurnPenalty.h",
@@ -3679,8 +3679,8 @@
       "staging": "_staging/PCGExHeuristics/Heuristics/PCGExHeuristicTurnPenalty.md",
       "node_library": "node-library/pathfinding/heuristics/heuristics-turn-penalty.md",
       "doc_path": "pathfinding/heuristics/heuristics-turn-penalty",
-      "current_doc_meta": "pathfinding/heuristics/hx-turn-penalty",
-      "status": "meta_mismatch"
+      "current_doc_meta": "pathfinding/heuristics/heuristics-turn-penalty",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExHeuristics/Public/PCGExHeuristicsHandler.h",
@@ -3697,8 +3697,8 @@
       "staging": "_staging/PCGExMatching/Core/PCGExMatchRuleFactoryProvider.md",
       "node_library": "node-library/utilities/data-matching/match-rule.md",
       "doc_path": "utilities/data-matching/match-rule",
-      "current_doc_meta": "misc/data-matching/match-rule",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/data-matching/match-rule",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExMatching/Public/Details/PCGExMatchingDetails.h",
@@ -3715,8 +3715,8 @@
       "staging": "_staging/PCGExMatching/Matching/PCGExMatchAttrToAttr.md",
       "node_library": "node-library/utilities/data-matching/match-attributes.md",
       "doc_path": "utilities/data-matching/match-attributes",
-      "current_doc_meta": "misc/data-matching/attributes",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/data-matching/match-attributes",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExMatching/Public/Matching/PCGExMatchByIndex.h",
@@ -3724,8 +3724,8 @@
       "staging": "_staging/PCGExMatching/Matching/PCGExMatchByIndex.md",
       "node_library": "node-library/utilities/data-matching/match-by-index.md",
       "doc_path": "utilities/data-matching/match-by-index",
-      "current_doc_meta": "misc/data-matching/index",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/data-matching/match-by-index",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExMatching/Public/Matching/PCGExMatchCopyTags.h",
@@ -3733,8 +3733,8 @@
       "staging": "_staging/PCGExMatching/Matching/PCGExMatchCopyTags.md",
       "node_library": "node-library/utilities/data-matching/match-copy-tags.md",
       "doc_path": "utilities/data-matching/match-copy-tags",
-      "current_doc_meta": "misc/shapes/shape-circle",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/data-matching/match-copy-tags",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExMatching/Public/Matching/PCGExMatchOverlap.h",
@@ -3742,8 +3742,8 @@
       "staging": "_staging/PCGExMatching/Matching/PCGExMatchOverlap.md",
       "node_library": "node-library/utilities/data-matching/match-overlap.md",
       "doc_path": "utilities/data-matching/match-overlap",
-      "current_doc_meta": "misc/data-matching/overlap",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/data-matching/match-overlap",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExMatching/Public/Matching/PCGExMatchRandom.h",
@@ -3751,8 +3751,8 @@
       "staging": "_staging/PCGExMatching/Matching/PCGExMatchRandom.md",
       "node_library": "node-library/utilities/data-matching/match-random.md",
       "doc_path": "utilities/data-matching/match-random",
-      "current_doc_meta": "misc/data-matching/random",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/data-matching/match-random",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExMatching/Public/Matching/PCGExMatchSharedTag.h",
@@ -3760,8 +3760,8 @@
       "staging": "_staging/PCGExMatching/Matching/PCGExMatchSharedTag.md",
       "node_library": "node-library/utilities/data-matching/match-shared-tag.md",
       "doc_path": "utilities/data-matching/match-shared-tag",
-      "current_doc_meta": "misc/data-matching/tags-attributes",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/data-matching/match-shared-tag",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExMatching/Public/Matching/PCGExMatchTagToAttr.h",
@@ -3769,8 +3769,8 @@
       "staging": "_staging/PCGExMatching/Matching/PCGExMatchTagToAttr.md",
       "node_library": "node-library/utilities/data-matching/match-tags-attributes.md",
       "doc_path": "utilities/data-matching/match-tags-attributes",
-      "current_doc_meta": "misc/data-matching/tags-attributes",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/data-matching/match-tags-attributes",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExNoise3D/Public/Core/PCGExNoise3DFactoryProvider.h",
@@ -3787,8 +3787,8 @@
       "staging": "_staging/PCGExNoise3D/Noises/PCGExNoiseCaustic.md",
       "node_library": "node-library/utilities/noise/noise-caustic.md",
       "doc_path": "utilities/noise/noise-caustic",
-      "current_doc_meta": "/misc/noises/noise-caustic",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/noise/noise-caustic",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExNoise3D/Public/Noises/PCGExNoiseCurl.h",
@@ -3796,8 +3796,8 @@
       "staging": "_staging/PCGExNoise3D/Noises/PCGExNoiseCurl.md",
       "node_library": "node-library/utilities/noise/noise-curl.md",
       "doc_path": "utilities/noise/noise-curl",
-      "current_doc_meta": "/misc/noises/noise-curl",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/noise/noise-curl",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExNoise3D/Public/Noises/PCGExNoiseFBM.h",
@@ -3805,8 +3805,8 @@
       "staging": "_staging/PCGExNoise3D/Noises/PCGExNoiseFBM.md",
       "node_library": "node-library/utilities/noise/noise-fbm.md",
       "doc_path": "utilities/noise/noise-fbm",
-      "current_doc_meta": "/misc/noises/noise-fbm",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/noise/noise-fbm",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExNoise3D/Public/Noises/PCGExNoiseFlow.h",
@@ -3814,8 +3814,8 @@
       "staging": "_staging/PCGExNoise3D/Noises/PCGExNoiseFlow.md",
       "node_library": "node-library/utilities/noise/noise-flow.md",
       "doc_path": "utilities/noise/noise-flow",
-      "current_doc_meta": "/misc/noises/noise-flow",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/noise/noise-flow",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExNoise3D/Public/Noises/PCGExNoiseGabor.h",
@@ -3823,8 +3823,8 @@
       "staging": "_staging/PCGExNoise3D/Noises/PCGExNoiseGabor.md",
       "node_library": "node-library/utilities/noise/noise-gabor.md",
       "doc_path": "utilities/noise/noise-gabor",
-      "current_doc_meta": "/misc/noises/noise-gabor",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/noise/noise-gabor",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExNoise3D/Public/Noises/PCGExNoiseMarble.h",
@@ -3832,8 +3832,8 @@
       "staging": "_staging/PCGExNoise3D/Noises/PCGExNoiseMarble.md",
       "node_library": "node-library/utilities/noise/noise-marble.md",
       "doc_path": "utilities/noise/noise-marble",
-      "current_doc_meta": "/misc/noises/noise-marble",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/noise/noise-marble",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExNoise3D/Public/Noises/PCGExNoiseOpenSimplex2.h",
@@ -3841,8 +3841,8 @@
       "staging": "_staging/PCGExNoise3D/Noises/PCGExNoiseOpenSimplex2.md",
       "node_library": "node-library/utilities/noise/noise-opensimplex2.md",
       "doc_path": "utilities/noise/noise-opensimplex2",
-      "current_doc_meta": "/misc/noises/noise-open-simplex-2",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/noise/noise-opensimplex2",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExNoise3D/Public/Noises/PCGExNoisePerlin.h",
@@ -3850,8 +3850,8 @@
       "staging": "_staging/PCGExNoise3D/Noises/PCGExNoisePerlin.md",
       "node_library": "node-library/utilities/noise/noise-perlin.md",
       "doc_path": "utilities/noise/noise-perlin",
-      "current_doc_meta": "/misc/noises/noise-perlin",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/noise/noise-perlin",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExNoise3D/Public/Noises/PCGExNoiseSimplex.h",
@@ -3859,8 +3859,8 @@
       "staging": "_staging/PCGExNoise3D/Noises/PCGExNoiseSimplex.md",
       "node_library": "node-library/utilities/noise/noise-simplex.md",
       "doc_path": "utilities/noise/noise-simplex",
-      "current_doc_meta": "/misc/noises/noise-simplex",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/noise/noise-simplex",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExNoise3D/Public/Noises/PCGExNoiseSpots.h",
@@ -3868,8 +3868,8 @@
       "staging": "_staging/PCGExNoise3D/Noises/PCGExNoiseSpots.md",
       "node_library": "node-library/utilities/noise/noise-spots.md",
       "doc_path": "utilities/noise/noise-spots",
-      "current_doc_meta": "/misc/noises/noise-spots",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/noise/noise-spots",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExNoise3D/Public/Noises/PCGExNoiseSwiss.h",
@@ -3877,8 +3877,8 @@
       "staging": "_staging/PCGExNoise3D/Noises/PCGExNoiseSwiss.md",
       "node_library": "node-library/utilities/noise/noise-swiss-erosion.md",
       "doc_path": "utilities/noise/noise-swiss-erosion",
-      "current_doc_meta": "/misc/noises/noise-swiss",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/noise/noise-swiss-erosion",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExNoise3D/Public/Noises/PCGExNoiseTiling.h",
@@ -3886,8 +3886,8 @@
       "staging": "_staging/PCGExNoise3D/Noises/PCGExNoiseTiling.md",
       "node_library": "node-library/utilities/noise/noise-tiling.md",
       "doc_path": "utilities/noise/noise-tiling",
-      "current_doc_meta": "/misc/noises/noise-tiling",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/noise/noise-tiling",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExNoise3D/Public/Noises/PCGExNoiseValue.h",
@@ -3895,8 +3895,8 @@
       "staging": "_staging/PCGExNoise3D/Noises/PCGExNoiseValue.md",
       "node_library": "node-library/utilities/noise/noise-value.md",
       "doc_path": "utilities/noise/noise-value",
-      "current_doc_meta": "/misc/noises/noise-value",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/noise/noise-value",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExNoise3D/Public/Noises/PCGExNoiseVoronoi.h",
@@ -3904,8 +3904,8 @@
       "staging": "_staging/PCGExNoise3D/Noises/PCGExNoiseVoronoi.md",
       "node_library": "node-library/utilities/noise/noise-voronoi.md",
       "doc_path": "utilities/noise/noise-voronoi",
-      "current_doc_meta": "/misc/noises/noise-voronoi",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/noise/noise-voronoi",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExNoise3D/Public/Noises/PCGExNoiseWhite.h",
@@ -3913,8 +3913,8 @@
       "staging": "_staging/PCGExNoise3D/Noises/PCGExNoiseWhite.md",
       "node_library": "node-library/utilities/noise/noise-white.md",
       "doc_path": "utilities/noise/noise-white",
-      "current_doc_meta": "/misc/noises/noise-white",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/noise/noise-white",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExNoise3D/Public/Noises/PCGExNoiseWorley.h",
@@ -3922,8 +3922,8 @@
       "staging": "_staging/PCGExNoise3D/Noises/PCGExNoiseWorley.md",
       "node_library": "node-library/utilities/noise/noise-worley.md",
       "doc_path": "utilities/noise/noise-worley",
-      "current_doc_meta": "/misc/noises/noise-worley",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/noise/noise-worley",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExPickers/Public/Core/PCGExPickerFactoryProvider.h",
@@ -3940,8 +3940,8 @@
       "staging": "_staging/PCGExPickers/Pickers/PCGExPickerAttributeSet.md",
       "node_library": "node-library/utilities/pickers/picker-indices-from-set.md",
       "doc_path": "utilities/pickers/picker-indices-from-set",
-      "current_doc_meta": "filters/cherry-pick-points/picker-constant-set",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/pickers/picker-indices-from-set",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExPickers/Public/Pickers/PCGExPickerAttributeSetRanges.h",
@@ -3949,8 +3949,8 @@
       "staging": "_staging/PCGExPickers/Pickers/PCGExPickerAttributeSetRanges.md",
       "node_library": "node-library/utilities/pickers/picker-ranges-from-set.md",
       "doc_path": "utilities/pickers/picker-ranges-from-set",
-      "current_doc_meta": "filters/cherry-pick-points/picker-constant-set-1",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/pickers/picker-ranges-from-set",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExPickers/Public/Pickers/PCGExPickerConstant.h",
@@ -3958,8 +3958,8 @@
       "staging": "_staging/PCGExPickers/Pickers/PCGExPickerConstant.md",
       "node_library": "node-library/utilities/pickers/picker-constant.md",
       "doc_path": "utilities/pickers/picker-constant",
-      "current_doc_meta": "filters/cherry-pick-points/picker-constant",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/pickers/picker-constant",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExPickers/Public/Pickers/PCGExPickerConstantRange.h",
@@ -3967,8 +3967,8 @@
       "staging": "_staging/PCGExPickers/Pickers/PCGExPickerConstantRange.md",
       "node_library": "node-library/utilities/pickers/picker-range.md",
       "doc_path": "utilities/pickers/picker-range",
-      "current_doc_meta": "filters/cherry-pick-points/picker-range",
-      "status": "meta_mismatch"
+      "current_doc_meta": "utilities/pickers/picker-range",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExProperties/Public/Elements/PCGExTuple.h",
@@ -3976,27 +3976,36 @@
       "staging": "_staging/PCGExProperties/Elements/PCGExTuple.md",
       "node_library": "node-library/metadata/keys/tuple.md",
       "doc_path": "metadata/keys/tuple",
-      "current_doc_meta": "quality-of-life/tuple",
-      "status": "meta_mismatch"
+      "current_doc_meta": "metadata/keys/tuple",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExProperties/Public/PCGExPropertyCollectionComponent.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExProperties\\Public\\PCGExPropertyCollectionComponent.h",
       "staging": "_staging/PCGExProperties/PCGExPropertyCollectionComponent.md",
-      "node_library": "node-library/metadata/attributes/property-collection-component.md",
-      "doc_path": "metadata/attributes/property-collection-component",
+      "node_library": "node-library/metadata/keys/property-collection-component.md",
+      "doc_path": "metadata/keys/property-collection-component",
       "current_doc_meta": null,
       "status": "meta_missing"
+    },
+    {
+      "source_relative": "PCGExtendedToolkit/Public/PCGExGlobalSettings.h",
+      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExtendedToolkit\\Public\\PCGExGlobalSettings.h",
+      "staging": null,
+      "node_library": "node-library/common-settings/plugin-settings.md",
+      "doc_path": "common-settings/plugin-settings",
+      "current_doc_meta": null,
+      "status": "library_only"
     }
   ],
   "summary": {
     "total_staging": 443,
-    "total_library": 413,
+    "total_library": 414,
     "matched": 413,
     "staging_only": 30,
-    "library_only": 0,
-    "doc_meta_ok": 17,
-    "doc_meta_mismatch": 304,
+    "library_only": 1,
+    "doc_meta_ok": 294,
+    "doc_meta_mismatch": 27,
     "doc_meta_missing": 92
   }
 }

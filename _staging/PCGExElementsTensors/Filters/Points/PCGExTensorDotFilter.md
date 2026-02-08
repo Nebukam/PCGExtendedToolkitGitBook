@@ -110,7 +110,7 @@ This filter inherits from the point filter factory base.
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsTensors-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Filters/Points/PCGExTensorDotFilter.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Filters/Points/PCGExTensorDotFilter.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 4 documented (via FPCGExTensorDotFilterConfig struct)

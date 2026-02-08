@@ -30,7 +30,7 @@ This abstract base class has no configurable settings. Settings are defined in d
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExBlending-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/SubPoints/PCGExSubPointsInstancedFactory.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/SubPoints/PCGExSubPointsInstancedFactory.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 0 documented (abstract base class with no UPROPERTYs)

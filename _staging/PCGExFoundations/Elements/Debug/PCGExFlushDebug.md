@@ -101,7 +101,7 @@ Default: `Magenta (1.0, 0.0, 1.0, 1.0)`
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExFoundations-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Debug/PCGExFlushDebug.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Debug/PCGExFlushDebug.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 2 documented (bPCGExDebug, CustomColor)

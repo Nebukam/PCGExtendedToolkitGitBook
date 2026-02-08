@@ -362,7 +362,7 @@ Default: `true`
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsMeta-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsMeta/Public/Elements/PCGExAttributeStats.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsMeta/Public/Elements/PCGExAttributeStats.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 40+ documented (filter settings, output mode, individual stat outputs)

@@ -135,7 +135,7 @@ Controls which attributes and tags are carried over from source data to socket p
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExFoundations-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Details/PCGExSocketOutputDetails.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Details/PCGExSocketOutputDetails.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 12 documented (filters, metadata output, transform, carry over)

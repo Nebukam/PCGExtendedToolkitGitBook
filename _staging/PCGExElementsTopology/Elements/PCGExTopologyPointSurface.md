@@ -123,7 +123,7 @@ This node inherits point processing settings from its base class.
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsTopology-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTopology/Public/Elements/PCGExTopologyPointSurface.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTopology/Public/Elements/PCGExTopologyPointSurface.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 5 documented (ProjectionDetails, bAttemptRepair, RepairDegenerate, Topology, bQuietBadVerticesWarning)

@@ -58,7 +58,7 @@ Default: `false`
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsClusters-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Refining/PCGExEdgeRefinePrimMST.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Refining/PCGExEdgeRefinePrimMST.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 1 documented (bInvert)

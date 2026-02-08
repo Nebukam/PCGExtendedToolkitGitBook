@@ -25,7 +25,9 @@ const MAPPING_OUTPUT = path.join(AUTOMATION_PATH, 'mapping.json');
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
-const SOURCE_URL_RE = /<!-- SOURCE: (https:\/\/github\.com\/Nebukam\/PCGExtendedToolkit\/blob\/main\/Source\/[^\s]+) -->/;
+// Matches ](github-url) — works for both clickable badges and named links.
+// Won't match the badge image URL since that's img.shields.io, not github.com.
+const SOURCE_URL_RE = /\]\((https:\/\/github\.com\/Nebukam\/PCGExtendedToolkit\/blob\/main\/Source\/[^)]+)\)/;
 const DOC_META_RE = /PCGExNodeLibraryDoc\s*=\s*"([^"]+)"/;
 
 /**

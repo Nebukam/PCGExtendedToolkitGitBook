@@ -109,7 +109,7 @@ Output: Set of indices for selection
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExPickers-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExPickers/Public/Core/PCGExPickerFactoryProvider.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExPickers/Public/Core/PCGExPickerFactoryProvider.h -->
+
 
 <!-- VERIFICATION REPORT
 Base Configuration Properties: 3 documented (bTreatAsNormalized, TruncateMode, Safety)

@@ -193,7 +193,7 @@ This noise inherits common settings from the base noise configuration.
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExNoise3D-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExNoise3D/Public/Noises/PCGExNoiseFBM.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExNoise3D/Public/Noises/PCGExNoiseFBM.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 6 documented (Octaves, Lacunarity, Persistence, Variant, RidgeOffset, WarpStrength)

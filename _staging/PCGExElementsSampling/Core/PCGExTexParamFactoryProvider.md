@@ -158,7 +158,7 @@ Default: `-1`
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsSampling-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Core/PCGExTexParamFactoryProvider.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Core/PCGExTexParamFactoryProvider.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 9 documented (via FPCGExTextureParamConfig)

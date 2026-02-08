@@ -179,7 +179,7 @@ Collection: "WindDirections"
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExCore-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Data/Bitmasks/PCGExBitmaskCollection.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Data/Bitmasks/PCGExBitmaskCollection.h -->
+
 
 <!-- VERIFICATION REPORT
 Asset Type: UDataAsset (Bitmask Collection Library)

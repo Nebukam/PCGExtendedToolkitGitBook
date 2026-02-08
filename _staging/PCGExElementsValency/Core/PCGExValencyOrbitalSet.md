@@ -74,7 +74,7 @@ Default: empty
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsValency-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Core/PCGExValencyOrbitalSet.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Core/PCGExValencyOrbitalSet.h -->
+
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 4 documented (LayerName, AngleThreshold, bTransformDirection, Orbitals)

@@ -102,4 +102,4 @@ Default: `true`
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExCollections-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollections/Public/MeshSelectors/PCGExMeshSelectorStaged.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollections/Public/MeshSelectors/PCGExMeshSelectorStaged.h -->
+

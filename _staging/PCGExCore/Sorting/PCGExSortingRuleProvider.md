@@ -166,7 +166,7 @@ This is a provider node with no spatial input pins.
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExCore-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Sorting/PCGExSortingRuleProvider.h)
 
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Sorting/PCGExSortingRuleProvider.h -->
+
 
 <!-- VERIFICATION REPORT
 Node Type: Factory Provider (Sorting Rule)
