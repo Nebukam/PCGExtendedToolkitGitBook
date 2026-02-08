@@ -72,7 +72,9 @@ Default: `false`
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsClusters-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Refining/PCGExEdgeRefineSkeleton.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsClusters-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Refining/PCGExEdgeRefineSkeleton.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Refining/PCGExEdgeRefineSkeleton.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 2 documented (Beta, bInvert)

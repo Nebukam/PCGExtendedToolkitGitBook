@@ -109,7 +109,9 @@ Note: The Steps setting is not available for this control.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsFloodFill-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsFloodFill/Public/FillControls/PCGExFillControlKeepDirection.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsFloodFill-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsFloodFill/Public/FillControls/PCGExFillControlKeepDirection.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsFloodFill/Public/FillControls/PCGExFillControlKeepDirection.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 4 documented

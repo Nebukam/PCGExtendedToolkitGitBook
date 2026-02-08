@@ -121,7 +121,9 @@ Controls which attributes and tags are carried over during merging.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExFoundations-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Utils/PCGExMergePointsByTag.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExFoundations-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Utils/PCGExMergePointsByTag.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Utils/PCGExMergePointsByTag.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 6 documented (Mode, SortDirection, FallbackBehavior, TagFilters, ResolutionPriorities, CarryOverDetails)

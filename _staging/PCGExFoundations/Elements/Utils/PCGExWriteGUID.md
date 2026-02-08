@@ -413,7 +413,9 @@ Default: `true`
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExFoundations-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Utils/PCGExWriteGUID.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExFoundations-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Utils/PCGExWriteGUID.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Utils/PCGExWriteGUID.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 1 documented (Config), Config expands to 10 nested properties

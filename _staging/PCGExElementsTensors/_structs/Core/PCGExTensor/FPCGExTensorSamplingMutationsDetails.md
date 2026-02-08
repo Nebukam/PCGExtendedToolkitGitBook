@@ -100,7 +100,9 @@ Default: `(1, 1, 1)`
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsTensors-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Core/PCGExTensor.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsTensors-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Core/PCGExTensor.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Core/PCGExTensor.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 5 documented (bInvert, bBidirectional, ReferenceAxis, bScaleDirectionAndSize, Scale)

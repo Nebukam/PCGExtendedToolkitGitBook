@@ -316,7 +316,7 @@ Sample Texture uses these tags to match points to textures via the FLookup syste
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsSampling-473F69)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsSampling-473F69)
 
 **Related Nodes**:
 - [Texture Param](Core/PCGExTexParamFactoryProvider.md)

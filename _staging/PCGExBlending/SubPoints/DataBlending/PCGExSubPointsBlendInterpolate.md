@@ -95,7 +95,9 @@ The Default Blending for this factory is set to `Lerp` (linear interpolation) by
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExBlending-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/SubPoints/DataBlending/PCGExSubPointsBlendInterpolate.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExBlending-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/SubPoints/DataBlending/PCGExSubPointsBlendInterpolate.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/SubPoints/DataBlending/PCGExSubPointsBlendInterpolate.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 2 documented (BlendOver, Lerp)

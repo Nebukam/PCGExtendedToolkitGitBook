@@ -184,7 +184,9 @@ This node inherits path processing settings from its base class.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsTopology-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTopology/Public/Elements/PCGExTopologyPathSurface.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsTopology-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTopology/Public/Elements/PCGExTopologyPathSurface.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTopology/Public/Elements/PCGExTopologyPathSurface.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 1 (Topology - FPCGExTopologyDetails struct with 12 sub-properties)

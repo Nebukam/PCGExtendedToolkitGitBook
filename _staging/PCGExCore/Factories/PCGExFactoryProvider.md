@@ -142,7 +142,9 @@ Providers inherit common settings from [UPCGExSettings](../Core/PCGExSettings.md
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExCore-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Factories/PCGExFactoryProvider.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExCore-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Factories/PCGExFactoryProvider.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Factories/PCGExFactoryProvider.h -->
 
 <!-- VERIFICATION REPORT
 Base Class Type: Abstract Provider (UPCGExSettings)

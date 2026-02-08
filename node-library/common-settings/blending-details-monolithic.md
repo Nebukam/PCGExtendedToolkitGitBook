@@ -108,4 +108,6 @@ Override blend modes for specific named attributes. Map attribute names to their
 
 ***
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExBlending-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/Details/PCGExBlendingDetails.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExBlending-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/Details/PCGExBlendingDetails.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/Details/PCGExBlendingDetails.h -->

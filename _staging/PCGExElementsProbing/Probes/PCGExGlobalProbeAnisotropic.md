@@ -184,7 +184,9 @@ Default: `0`
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsProbing-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExGlobalProbeAnisotropic.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsProbing-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExGlobalProbeAnisotropic.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExGlobalProbeAnisotropic.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 7 documented (PrimaryAxis, SecondaryAxis, PrimaryScale, SecondaryScale, TertiaryScale, K, bUsePerPointNormal)

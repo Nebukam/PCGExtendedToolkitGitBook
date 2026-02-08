@@ -149,7 +149,9 @@ This node inherits path processing settings from its base class.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsPaths-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExPathReduce.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsPaths-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExPathReduce.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExPathReduce.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 6 documented (Mode, ErrorTolerance, ArriveName, LeaveName, SmoothingMode, Smoothing)

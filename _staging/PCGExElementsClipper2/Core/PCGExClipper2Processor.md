@@ -219,7 +219,9 @@ Determines how overlapping regions are treated during boolean operations.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsClipper2-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClipper2/Public/Core/PCGExClipper2Processor.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsClipper2-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClipper2/Public/Core/PCGExClipper2Processor.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClipper2/Public/Core/PCGExClipper2Processor.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 13 documented

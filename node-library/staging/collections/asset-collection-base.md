@@ -169,4 +169,6 @@ Default: Auto-generated from schema
 
 ***
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExCollections-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollections/Public/Core/PCGExAssetCollection.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExCollections-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollections/Public/Core/PCGExAssetCollection.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollections/Public/Core/PCGExAssetCollection.h -->

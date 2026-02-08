@@ -185,7 +185,9 @@ This node inherits path processing settings from its base class.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsPaths-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExWriteTangents.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsPaths-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExWriteTangents.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExWriteTangents.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 10 documented (ArriveName, LeaveName, Tangents, StartTangents, EndTangents, ArriveScaleInput, ArriveScaleConstant, LeaveScaleInput, LeaveScaleConstant)

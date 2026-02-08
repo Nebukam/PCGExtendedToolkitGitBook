@@ -153,7 +153,9 @@ This heuristic inherits common settings from its base class.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExHeuristics-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExHeuristics/Public/Heuristics/PCGExHeuristicTurnPenalty.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExHeuristics-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExHeuristics/Public/Heuristics/PCGExHeuristicTurnPenalty.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExHeuristics/Public/Heuristics/PCGExHeuristicTurnPenalty.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 5 documented (MinAngleThreshold, MaxAngleThreshold, bAbsoluteAngle, GlobalScore, FallbackScore)

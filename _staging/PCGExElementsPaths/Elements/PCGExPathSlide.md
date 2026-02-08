@@ -172,7 +172,9 @@ This node inherits path processing settings from its base class.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsPaths-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExPathSlide.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsPaths-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExPathSlide.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExPathSlide.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 7 documented (Mode, Direction, AmountMeasure, SlideAmountInput, SlideAmountConstant, bWriteOldPosition, RestorePositionAttributeName)

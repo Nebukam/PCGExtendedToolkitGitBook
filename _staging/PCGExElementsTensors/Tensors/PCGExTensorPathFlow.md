@@ -123,7 +123,9 @@ This node inherits from the tensor spline factory provider base.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsTensors-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Tensors/PCGExTensorPathFlow.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsTensors-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Tensors/PCGExTensorPathFlow.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Tensors/PCGExTensorPathFlow.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 4 documented (PointType, bSmoothLinear, Radius, SplineDirection)

@@ -144,7 +144,9 @@ This node inherits common settings from its base class.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsClusters-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Diagrams/PCGExBuildDelaunayGraph.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsClusters-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Diagrams/PCGExBuildDelaunayGraph.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Diagrams/PCGExBuildDelaunayGraph.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 9 documented (bUrquhart, bOutputSites, bMarkSiteHull, SiteHullAttributeName, bMergeUrquhartSites, bMarkHull, HullAttributeName, bMarkEdgeOnTouch, GraphBuilderDetails)

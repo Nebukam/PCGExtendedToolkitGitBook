@@ -108,4 +108,6 @@ Output: Set of indices for selection
 
 ***
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExPickers-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExPickers/Public/Core/PCGExPickerFactoryProvider.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExPickers-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExPickers/Public/Core/PCGExPickerFactoryProvider.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExPickers/Public/Core/PCGExPickerFactoryProvider.h -->

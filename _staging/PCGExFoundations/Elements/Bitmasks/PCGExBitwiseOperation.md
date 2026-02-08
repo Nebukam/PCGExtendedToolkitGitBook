@@ -220,7 +220,9 @@ Result: All flags cleared
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExFoundations-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Bitmasks/PCGExBitwiseOperation.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExFoundations-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Bitmasks/PCGExBitwiseOperation.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Bitmasks/PCGExBitwiseOperation.h -->
 
 <!-- VERIFICATION REPORT
 Properties: 5 documented (FlagAttribute, Operation, MaskInput, MaskAttribute, Bitmask)

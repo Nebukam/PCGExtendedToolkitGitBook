@@ -172,7 +172,9 @@ Common instanced factory hierarchies:
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExCore-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Factories/PCGExInstancedFactory.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExCore-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Factories/PCGExInstancedFactory.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Factories/PCGExInstancedFactory.h -->
 
 <!-- VERIFICATION REPORT
 Base Class Type: Abstract (UObject)

@@ -86,7 +86,9 @@ Default: `false`
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExCollections-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollections/Public/Elements/PCGExStagingTypeFilter.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExCollections-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollections/Public/Elements/PCGExStagingTypeFilter.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollections/Public/Elements/PCGExStagingTypeFilter.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 3 documented (FilterMode, TypeConfig with 2 inner properties, bOutputDiscarded)

@@ -83,7 +83,9 @@ A comma-separated list of attribute names to convert to tags. Provides a quick w
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExCore-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Data/Utils/PCGExDataForwardDetails.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExCore-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Data/Utils/PCGExDataForwardDetails.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Data/Utils/PCGExDataForwardDetails.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 5 documented (bAddIndexTag, IndexTagPrefix, bPrefixWithAttributeName, Attributes, CommaSeparatedAttributeSelectors)

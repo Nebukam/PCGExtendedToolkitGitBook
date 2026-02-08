@@ -209,7 +209,9 @@ All public methods are thread-safe through appropriate locking.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExCore-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/PCGExSubSystem.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExCore-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/PCGExSubSystem.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/PCGExSubSystem.h -->
 
 <!-- VERIFICATION REPORT
 Base Class Type: UTickableWorldSubsystem

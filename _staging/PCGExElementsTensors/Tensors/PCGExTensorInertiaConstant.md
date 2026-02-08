@@ -121,7 +121,9 @@ This node inherits from the tensor factory provider base.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsTensors-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Tensors/PCGExTensorInertiaConstant.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsTensors-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Tensors/PCGExTensorInertiaConstant.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Tensors/PCGExTensorInertiaConstant.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 5 documented (Axis, Offset, TensorWeight, Potency, bSetInertiaOnce)

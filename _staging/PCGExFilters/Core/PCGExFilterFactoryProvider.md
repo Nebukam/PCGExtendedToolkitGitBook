@@ -104,7 +104,9 @@ Grouped filters that combine multiple filter results.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExFilters-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Public/Core/PCGExFilterFactoryProvider.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExFilters-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Public/Core/PCGExFilterFactoryProvider.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Public/Core/PCGExFilterFactoryProvider.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties:

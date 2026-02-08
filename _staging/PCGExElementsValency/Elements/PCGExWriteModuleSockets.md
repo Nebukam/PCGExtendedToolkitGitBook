@@ -164,7 +164,9 @@ This node inherits settings from its base classes.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsValency-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Elements/PCGExWriteModuleSockets.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsValency-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Elements/PCGExWriteModuleSockets.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Elements/PCGExWriteModuleSockets.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 10 documented (SocketRules, ModuleDataAttributeName, SocketOutputAttributeName, bOutputSourceIndex, SourceIndexAttributeName, bOutputSocketName, SocketNameAttributeName, bOutputSocketType, SocketTypeAttributeName, bQuietMissingSocketRules)

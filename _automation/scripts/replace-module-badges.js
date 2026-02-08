@@ -26,7 +26,7 @@ const SCAN_DIRS = [
 const MODULE_RE = /\*\*Module\*\*: `([^`]+)`/;
 
 function makeBadge(moduleName) {
-    return `![Static Badge](https://img.shields.io/badge/Module-${moduleName}-473F69)`;
+    return `![Static Badge](https://img.shields.io/badge/Source-${moduleName}-473F69)`;
 }
 
 // ── Helpers ──────────────────────────────────────────────────────────────────

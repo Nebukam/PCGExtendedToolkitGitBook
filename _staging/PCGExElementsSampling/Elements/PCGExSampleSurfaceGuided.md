@@ -333,7 +333,9 @@ Default: `false`
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsSampling-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Elements/PCGExSampleSurfaceGuided.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsSampling-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Elements/PCGExSampleSurfaceGuided.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Elements/PCGExSampleSurfaceGuided.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 40+ documented

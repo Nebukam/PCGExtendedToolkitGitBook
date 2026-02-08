@@ -98,7 +98,9 @@ Array of attribute selectors, each specifying a goal index. Creates one path per
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsPathfinding-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfinding/Public/GoalPickers/PCGExGoalPickerAttribute.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsPathfinding-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfinding/Public/GoalPickers/PCGExGoalPickerAttribute.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfinding/Public/GoalPickers/PCGExGoalPickerAttribute.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 4 documented (GoalCount, SingleSelector, CommaSeparatedNames, AttributeSelectors)

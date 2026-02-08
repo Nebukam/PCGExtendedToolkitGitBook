@@ -222,7 +222,9 @@ Most user-facing PCGEx nodes inherit these settings through intermediate base cl
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExCore-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Core/PCGExSettings.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExCore-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Core/PCGExSettings.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Core/PCGExSettings.h -->
 
 <!-- VERIFICATION REPORT
 Base Class Type: Abstract Settings Class (UPCGSettings)

@@ -139,7 +139,9 @@ Default: `bIsCrossing`
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExCore-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Paths/PCGExPathIntersectionDetails.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExCore-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Paths/PCGExPathIntersectionDetails.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Paths/PCGExPathIntersectionDetails.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 8 documented (bEnableSelfIntersection, Tolerance, bUseMinAngle, MinAngle, bUseMaxAngle, MaxAngle, bWriteCrossing, CrossingAttributeName)

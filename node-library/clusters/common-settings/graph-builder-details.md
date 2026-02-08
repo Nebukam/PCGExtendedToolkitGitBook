@@ -205,4 +205,6 @@ Default: `false` · Attribute: `EdgeLength`
 
 ***
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExGraphs-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExGraphs/Public/Graphs/PCGExGraphDetails.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExGraphs-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExGraphs/Public/Graphs/PCGExGraphDetails.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExGraphs/Public/Graphs/PCGExGraphDetails.h -->

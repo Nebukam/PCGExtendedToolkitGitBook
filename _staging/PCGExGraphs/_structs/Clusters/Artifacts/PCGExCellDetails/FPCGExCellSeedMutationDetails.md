@@ -138,7 +138,9 @@ Default: `None`
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExGraphs-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExGraphs-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 8 documented (AspectFilter, Location, bMatchCellBounds, bResetScale, bResetRotation, AreaTo, PerimeterTo, CompactnessTo)

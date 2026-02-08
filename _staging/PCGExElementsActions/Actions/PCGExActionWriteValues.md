@@ -64,7 +64,9 @@ Default: All attributes
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsActions-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsActions/Public/Actions/PCGExActionWriteValues.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsActions-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsActions/Public/Actions/PCGExActionWriteValues.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsActions/Public/Actions/PCGExActionWriteValues.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 2 documented (SuccessAttributesFilter, FailAttributesFilter in provider settings)

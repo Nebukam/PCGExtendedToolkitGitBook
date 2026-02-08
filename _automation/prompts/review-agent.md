@@ -55,7 +55,7 @@ For each `FPCGEx*` or `EPCGEx*` type used:
 ### 5. Module/Source Link
 
 - [ ] Module badge uses correct module name
-- [ ] Badge URL format: `https://img.shields.io/badge/Module-NAME-473F6`
+- [ ] Badge URL format: `https://img.shields.io/badge/Source-NAME-473F6`
 - [ ] Source link points to actual file
 - [ ] GitHub URL path is valid
 

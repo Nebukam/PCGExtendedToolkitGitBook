@@ -217,7 +217,9 @@ Result: Collections with >1000 points discarded
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExFoundations-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Filtering/PCGExDiscardByPointCount.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExFoundations-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Filtering/PCGExDiscardByPointCount.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Elements/Filtering/PCGExDiscardByPointCount.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 5 documented (bRemoveBelow, MinPointCount, bRemoveAbove, MaxPointCount, bAllowEmptyOutputs)

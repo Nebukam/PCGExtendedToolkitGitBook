@@ -210,7 +210,9 @@ Remap rule for the W component of FVector4 values.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsMeta-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsMeta/Public/Elements/PCGExAttributeRemap.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsMeta-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsMeta/Public/Elements/PCGExAttributeRemap.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsMeta/Public/Elements/PCGExAttributeRemap.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 11 documented (Attributes, bAutoCastIntegerToDouble, BaseRemap, component overrides x3 with rules)

@@ -133,7 +133,9 @@ Default: `true`
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExFilters-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Public/Core/PCGExClusterStates.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExFilters-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Public/Core/PCGExClusterStates.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFilters/Public/Core/PCGExClusterStates.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: Config struct (FPCGExClusterStateConfigBase inherits FPCGExStateConfigBase)

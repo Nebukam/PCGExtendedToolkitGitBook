@@ -132,7 +132,9 @@ This noise inherits common settings from the base noise configuration.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExNoise3D-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExNoise3D/Public/Noises/PCGExNoiseSimplex.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExNoise3D-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExNoise3D/Public/Noises/PCGExNoiseSimplex.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExNoise3D/Public/Noises/PCGExNoiseSimplex.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 3 documented (Octaves, Lacunarity, Persistence)

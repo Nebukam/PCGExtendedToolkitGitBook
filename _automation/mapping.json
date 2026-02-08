@@ -1,5 +1,5 @@
 {
-  "generated": "2026-02-08T18:06:25.685Z",
+  "generated": "2026-02-08T18:38:34.452Z",
   "entries": [
     {
       "source_relative": "PCGExBlending/Public/Core/PCGExBlendOpFactory.h",
@@ -806,10 +806,10 @@
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExMeshToClusters.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClusters\\Public\\Elements\\PCGExMeshToClusters.h",
       "staging": "_staging/PCGExElementsClusters/Elements/PCGExMeshToClusters.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/clusters/generate/mesh-to-clusters.md",
+      "doc_path": "clusters/generate/mesh-to-clusters",
       "current_doc_meta": "clusters/mesh-to-clusters",
-      "status": "staging_only"
+      "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/PCGExPackClusters.h",
@@ -3982,12 +3982,12 @@
   ],
   "summary": {
     "total_staging": 441,
-    "total_library": 411,
-    "matched": 410,
-    "staging_only": 31,
+    "total_library": 412,
+    "matched": 411,
+    "staging_only": 30,
     "library_only": 1,
     "doc_meta_ok": 17,
-    "doc_meta_mismatch": 303,
+    "doc_meta_mismatch": 304,
     "doc_meta_missing": 90
   }
 }

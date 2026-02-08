@@ -186,7 +186,9 @@ Default: `(0, 0, 0)`
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExHeuristics-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExHeuristics/Public/Core/PCGExHeuristicsFactoryProvider.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExHeuristics-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExHeuristics/Public/Core/PCGExHeuristicsFactoryProvider.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExHeuristics/Public/Core/PCGExHeuristicsFactoryProvider.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 12 base properties documented

@@ -193,7 +193,9 @@ Default: `0`
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsProbing-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExGlobalProbeHubSpoke.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsProbing-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExGlobalProbeHubSpoke.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExGlobalProbeHubSpoke.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 6 documented (HubSelectionMode, NumHubs, HubAttribute, bConnectHubs, bNearestHubOnly, KMeansIterations)

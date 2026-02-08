@@ -203,7 +203,9 @@ This match rule inherits common settings from the base match rule configuration.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExMatching-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExMatching/Public/Matching/PCGExMatchOverlap.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExMatching-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExMatching/Public/Matching/PCGExMatchOverlap.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExMatching/Public/Matching/PCGExMatchOverlap.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 6 documented (ExpansionMode, Expansion, bUseMinOverlapRatio, MinOverlapRatio, bRecursive, MaxRecursionDepth)

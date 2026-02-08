@@ -123,7 +123,9 @@ Default: `1`
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExMatching-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExMatching/Public/Details/PCGExMatchingDetails.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExMatching-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExMatching/Public/Details/PCGExMatchingDetails.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExMatching/Public/Details/PCGExMatchingDetails.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 7 documented (Mode, ClusterMatchMode, bSplitUnmatched, bOutputUnmatched, bQuietUnmatchedWarning, bLimitMatches, Limit)

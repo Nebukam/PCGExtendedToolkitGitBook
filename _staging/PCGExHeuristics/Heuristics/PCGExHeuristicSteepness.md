@@ -135,7 +135,9 @@ This heuristic inherits common settings from its base class.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExHeuristics-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExHeuristics/Public/Heuristics/PCGExHeuristicSteepness.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExHeuristics-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExHeuristics/Public/Heuristics/PCGExHeuristicSteepness.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExHeuristics/Public/Heuristics/PCGExHeuristicSteepness.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 4 documented (bAccumulateScore, AccumulationSamples, UpVector, bAbsoluteSteepness)

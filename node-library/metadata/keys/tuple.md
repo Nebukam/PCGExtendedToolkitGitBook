@@ -74,4 +74,6 @@ A list of tags separated by commas to apply to the output tuple data. Useful for
 
 ***
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExProperties-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExProperties/Public/Elements/PCGExTuple.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExProperties-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExProperties/Public/Elements/PCGExTuple.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExProperties/Public/Elements/PCGExTuple.h -->

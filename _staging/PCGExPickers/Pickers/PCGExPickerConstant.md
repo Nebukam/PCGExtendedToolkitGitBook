@@ -104,7 +104,9 @@ This picker inherits common settings from the base picker configuration.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExPickers-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExPickers/Public/Pickers/PCGExPickerConstant.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExPickers-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExPickers/Public/Pickers/PCGExPickerConstant.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExPickers/Public/Pickers/PCGExPickerConstant.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 2 documented (DiscreteIndex, RelativeIndex - mutually exclusive based on mode)

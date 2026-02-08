@@ -233,7 +233,9 @@ This node inherits path processing settings from its base class.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Module-PCGExElementsPaths-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExPathSolidify.h)
+![Static Badge](https://img.shields.io/badge/Source-PCGExElementsPaths-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExPathSolidify.h)
+
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExPathSolidify.h -->
 
 <!-- VERIFICATION REPORT
 Node-Specific Properties: 15+ documented (bRemoveLastPoint, SolidificationOrder, OrderAttribute, RotationConstruction, PrimaryAxis, SecondaryAxis, TertiaryAxis, NormalType, Normal, bInvertDirection, SolidificationLerpInput, SolidificationLerpConstant)
