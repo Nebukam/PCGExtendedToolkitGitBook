@@ -8,11 +8,7 @@ icon: grid-round-2-plus
 
 ### Sections
 
-| Section                                       | Contents                                                                 |
-| --------------------------------------------- | ------------------------------------------------------------------------ |
-| [common-settings](common-settings/ "mention") | Shared configuration — socket output details                             |
-| [collections](collections/ "mention")         | Collection data asset types — mesh, actor, PCG Data                      |
-| [utilities](utilities/ "mention")             | Supporting nodes — mesh selector, socket sampling, collection conversion |
+<table data-view="cards"><thead><tr><th>Section</th><th>Contents</th></tr></thead><tbody><tr><td><a data-mention href="common-settings/">common-settings</a></td><td>Shared configuration — socket output details</td></tr><tr><td><a data-mention href="collections/">collections</a></td><td>Collection data asset types — mesh, actor, PCG Data</td></tr><tr><td><a data-mention href="utilities/">utilities</a></td><td>Supporting nodes — mesh selector, socket sampling, collection conversion</td></tr></tbody></table>
 
 The actual spawning happens through vanilla PCG nodes. Staged meshes feed into Spawn Static Mesh, staged actors into Spawn Actor, and staged PCG Data Assets into their own loader. Because staging only writes attributes and metadata, it stays cleanly decoupled from how the engine ultimately instantiates the result.
 

@@ -8,12 +8,7 @@ icon: grid-round-2-plus
 
 ### Sections
 
-| Section                                                         | Contents                                                                                |
-| --------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| [common-settings](common-settings/ "mention")                   | Shared configuration — apply sampling details                                           |
-| [nearest](nearest/ "mention")                                   | Spatial queries — nearest point, bounds, spline, surface, path, line trace, containment |
-| [cluster-sample-neighbors](cluster-sample-neighbors/ "mention") | Aggregate attribute values from adjacent Vtx using sampler sub-nodes                    |
-| [textures](textures/ "mention")                                 | Texture sampling pipeline — texture params, data loading, UV sampling                   |
+<table data-view="cards"><thead><tr><th>Section</th><th>Contents</th></tr></thead><tbody><tr><td><a data-mention href="common-settings/">common-settings</a></td><td>Shared configuration — apply sampling details</td></tr><tr><td><a data-mention href="nearest/">nearest</a></td><td>Spatial queries — nearest point, bounds, spline, surface, path, line trace, containment</td></tr><tr><td><a data-mention href="cluster-sample-neighbors/">cluster-sample-neighbors</a></td><td>Aggregate attribute values from adjacent Vtx using sampler sub-nodes</td></tr><tr><td><a data-mention href="textures/">textures</a></td><td>Texture sampling pipeline — texture params, data loading, UV sampling</td></tr></tbody></table>
 
 Beyond spatial queries and texture reads, sampling also covers overlap analysis. Nodes like **Discard By Overlap** and **Self Pruning** use the same spatial reasoning to score and remove overlapping points — either across collections or within a single one. Overlap stats can be written as attributes for downstream filtering without discarding anything.
 

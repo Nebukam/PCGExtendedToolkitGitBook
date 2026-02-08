@@ -12,15 +12,7 @@ Beyond algorithm-driven search, **Plot Edges** writes pathfinding results as edg
 
 ### Sections
 
-| Section                                                                       | Contents                                                                                             |
-| ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| [common-settings](common-settings/ "mention")                                 | Shared configuration — heuristic composition, path statistics                                        |
-| [algorithms.md](../../working-with-pcgex/pathfinding/algorithms.md "mention") | A\*, Dijkstra, Bidirectional, Bellman-Ford                                                           |
-| [heuristics](heuristics/ "mention")                                           | Scoring sub-nodes — distance, azimuth, attribute, inertia, turn penalty, steepness, feedback, tensor |
-| [pathfinding-edges](pathfinding-edges/ "mention")                             | Goal-based pathfinding with goal picker sub-nodes                                                    |
-| [cluster-flood-fill](cluster-flood-fill/ "mention")                           | Region growth from seed points with configurable fill controls                                       |
-| [cells](cells/ "mention")                                                     | Region extraction — cell discovery, convex hulls, bounded areas from cluster topology                |
-| [navmesh](navmesh/ "mention")                                                 | Navigation mesh integration — pathfinding and plotting without clusters                              |
+<table data-view="cards"><thead><tr><th>Section</th><th>Contents</th></tr></thead><tbody><tr><td><a data-mention href="common-settings/">common-settings</a></td><td>Shared configuration — heuristic composition, path statistics</td></tr><tr><td><a data-mention href="../../working-with-pcgex/pathfinding/algorithms.md">algorithms.md</a></td><td>A*, Dijkstra, Bidirectional, Bellman-Ford</td></tr><tr><td><a data-mention href="heuristics/">heuristics</a></td><td>Scoring sub-nodes — distance, azimuth, attribute, inertia, turn penalty, steepness, feedback, tensor</td></tr><tr><td><a data-mention href="pathfinding-edges/">pathfinding-edges</a></td><td>Goal-based pathfinding with goal picker sub-nodes</td></tr><tr><td><a data-mention href="cluster-flood-fill/">cluster-flood-fill</a></td><td>Region growth from seed points with configurable fill controls</td></tr><tr><td><a data-mention href="cells/">cells</a></td><td>Region extraction — cell discovery, convex hulls, bounded areas from cluster topology</td></tr><tr><td><a data-mention href="navmesh/">navmesh</a></td><td>Navigation mesh integration — pathfinding and plotting without clusters</td></tr></tbody></table>
 
 ### Concepts
 

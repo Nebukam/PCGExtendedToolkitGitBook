@@ -10,15 +10,7 @@ The nodes in this section cover the full lifecycle of path data. You can create 
 
 ### Sections
 
-| Section                                       | Contents                                                                                |
-| --------------------------------------------- | --------------------------------------------------------------------------------------- |
-| [common-settings](common-settings/ "mention") | Shared configuration — path processor settings, tangents, sub-point blending            |
-| [generate](generate/ "mention")               | Create paths from splines, offset curves, tensor fields, or by splitting existing paths |
-| [modify](modify/ "mention")                   | Structural changes — bevel, resample, subdivide, fuse, stitch, shrink, and more         |
-| [intersect](intersect/ "mention")             | Crossings and clipping — Clipper2 booleans, rect clip, path-path crossings              |
-| [transform](transform/ "mention")             | Position and orientation — smooth, offset, orient, slide                                |
-| [analyze](analyze/ "mention")                 | Property extraction — path statistics, tangent computation                              |
-| [output](output/ "mention")                   | Conversion to Unreal objects — splines, spline meshes, staging-driven meshes            |
+<table data-view="cards"><thead><tr><th>Section</th><th>Contents</th></tr></thead><tbody><tr><td><a data-mention href="common-settings/">common-settings</a></td><td>Shared configuration — path processor settings, tangents, sub-point blending</td></tr><tr><td><a data-mention href="generate/">generate</a></td><td>Create paths from splines, offset curves, tensor fields, or by splitting existing paths</td></tr><tr><td><a data-mention href="modify/">modify</a></td><td>Structural changes — bevel, resample, subdivide, fuse, stitch, shrink, and more</td></tr><tr><td><a data-mention href="intersect/">intersect</a></td><td>Crossings and clipping — Clipper2 booleans, rect clip, path-path crossings</td></tr><tr><td><a data-mention href="transform/">transform</a></td><td>Position and orientation — smooth, offset, orient, slide</td></tr><tr><td><a data-mention href="analyze/">analyze</a></td><td>Property extraction — path statistics, tangent computation</td></tr><tr><td><a data-mention href="output/">output</a></td><td>Conversion to Unreal objects — splines, spline meshes, staging-driven meshes</td></tr></tbody></table>
 
 ### Concepts
 

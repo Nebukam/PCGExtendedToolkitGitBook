@@ -10,15 +10,7 @@ The subsections follow a natural pipeline. Most workflows touch only a few of th
 
 ### Sections
 
-| Section                                       | Contents                                                                          |
-| --------------------------------------------- | --------------------------------------------------------------------------------- |
-| [common-settings](common-settings/ "mention") | Shared configuration — cluster processor settings, edge/Vtx output options        |
-| [generate](generate/ "mention")               | Build clusters — Delaunay, Voronoi, Convex Hull, Connect Points, Mesh to Clusters |
-| [refine](refine/ "mention")                   | Sculpt topology — edge pruning, simplification, fusing, decomposition             |
-| [transform](transform/ "mention")             | Move Vtx without changing connectivity — relaxation strategies, copy to points    |
-| [analyze](analyze/ "mention")                 | Extract metrics — centrality, properties, edge ordering, state writing            |
-| [interop](interop/ "mention")                 | Convert between clusters and paths — chain extraction, path merging, cutting      |
-| [utilities](utilities/ "mention")             | Housekeeping — find clusters, sanitize, merge Vtx, pack, select by proximity      |
+<table data-view="cards"><thead><tr><th>Section</th><th>Contents</th></tr></thead><tbody><tr><td><a data-mention href="common-settings/">common-settings</a></td><td>Shared configuration — cluster processor settings, edge/Vtx output options</td></tr><tr><td><a data-mention href="generate/">generate</a></td><td>Build clusters — Delaunay, Voronoi, Convex Hull, Connect Points, Mesh to Clusters</td></tr><tr><td><a data-mention href="refine/">refine</a></td><td>Sculpt topology — edge pruning, simplification, fusing, decomposition</td></tr><tr><td><a data-mention href="transform/">transform</a></td><td>Move Vtx without changing connectivity — relaxation strategies, copy to points</td></tr><tr><td><a data-mention href="analyze/">analyze</a></td><td>Extract metrics — centrality, properties, edge ordering, state writing</td></tr><tr><td><a data-mention href="interop/">interop</a></td><td>Convert between clusters and paths — chain extraction, path merging, cutting</td></tr><tr><td><a data-mention href="utilities/">utilities</a></td><td>Housekeeping — find clusters, sanitize, merge Vtx, pack, select by proximity</td></tr></tbody></table>
 
 
 
