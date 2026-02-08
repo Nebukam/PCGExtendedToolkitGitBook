@@ -32,8 +32,7 @@ const SCAN_DIRS = [
 
 const BADGE_RE = /!\[Static Badge\]\(https:\/\/img\.shields\.io\/badge\/Source-/;
 const GITHUB_URL_RE = /https:\/\/github\.com\/Nebukam\/PCGExtendedToolkit\/blob\/main\/Source\/[^)\s]+/g;
-const ALREADY_HAS_META = /
-<!-- SOURCE:/;
+const ALREADY_HAS_META = /<!-- SOURCE:/;
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
