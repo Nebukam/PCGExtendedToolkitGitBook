@@ -7,17 +7,16 @@
 ## Confirmed Decisions
 
 ### Structure
-- [x] Fresh start in `_staging-concepts/` for conceptual docs
-- [x] Cherry-pick from existing `working-with-pcgex/` content
-- [x] Conceptual docs use numbered folders for ordering (00-, 01-, etc.)
+- [x] Conceptual docs live in `working-with-pcgex/` (promoted from `_staging-concepts/`)
+- [x] `_staging-concepts/` retains only meta files (style guide, plans, progress, decisions)
+- [x] `_staging/` is 1:1 codebase mirror — auto-generated node docs organized by module
+- [x] `node-library/` is user-facing reorganization of `_staging/` with different folder structure and filenames
 - [x] Node library uses operation-type sub-grouping (generate/refine/transform/analyze)
 - [x] All filters unified in one location regardless of source module
 - [x] Valency docs go last due to complexity and self-containment
 - [x] Shapes gets its own root folder in node library
 - [x] Node library gets a homepage explaining structure for discovery
 - [x] "Misc" folder renamed to `utilities/` (merges misc + QoL)
-- [x] `_staging/` remains untouched (filenames good for maintenance)
-- [x] Final node-library created with renamed copies from _staging
 
 ### Content Approach
 - [x] Use-case agnostic - describe capabilities, not applications
@@ -55,12 +54,7 @@ _(None currently - all major decisions confirmed)_
 ### Existing Content Disposition
 **Question:** What happens to `working-with-pcgex/` after migration?
 
-**Options:**
-1. Delete after cherry-picking
-2. Archive in `_archive/`
-3. Keep as-is until new docs are complete, then remove
-
-**Decision:** _pending_
+**Decision:** `working-with-pcgex/` IS the canonical location for concept content. Content was promoted in-place rather than migrated elsewhere. The `_staging-concepts/` subdirectories were removed; only meta files remain.
 
 ---
 

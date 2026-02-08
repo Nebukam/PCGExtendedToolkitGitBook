@@ -42,14 +42,25 @@ PCGEx (PCG Extended Toolkit) is an Unreal Engine plugin extending the Procedural
 
 ## Documentation Structure
 
-**Conceptual Docs** (`_staging-concepts/`)
+**Conceptual Docs** (`working-with-pcgex/`)
 - Teaches understanding: mental models, workflows, concepts
 - Use-case agnostic
 - Links to node library for specifics
+- This is the live, canonical location for concept content
 
-**Node Library** (to be reorganized)
-- Per-node reference
-- Settings, inputs, outputs, behavior
+**Meta / Infrastructure** (`_staging-concepts/`)
+- Style guide, plans, progress tracking, decisions
+- No content pages — only meta files
+- Section content was promoted to `working-with-pcgex/`
+
+**Per-Node Staging** (`_staging/`)
+- 1:1 representation of codebase — auto-generated node docs organized by module
+- Filenames match codebase class names
+- Not user-facing
+
+**Node Library** (`node-library/`)
+- User-facing version of `_staging/` with reorganized folder structure and filenames
+- Per-node reference: settings, inputs, outputs, behavior
 - Doesn't teach concepts
 
 ---
@@ -83,7 +94,8 @@ Check `_PROGRESS.md` for:
 | Module architecture | `_notes/modules/*.md` |
 | Generated node docs | `_staging/[Module]/Elements/*.md` |
 | Plugin source code | `D:\GIT\PCGExWorkbench\Plugins\PCGExtendedToolkit\Source\` |
-| Existing conceptual content | `working-with-pcgex/` |
+| Live conceptual content | `working-with-pcgex/` |
+| Meta/infrastructure | `_staging-concepts/` (style guide, plans, progress only) |
 | Doc automation | `_automation/scripts/pcgex-doc.js` |
 
 ---

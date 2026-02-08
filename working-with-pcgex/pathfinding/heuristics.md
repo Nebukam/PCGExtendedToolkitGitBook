@@ -108,7 +108,7 @@ Scores combine using configurable aggregation:
 | Weighted Average | Balanced mix of all scores          |
 | Weighted Sum     | Simple addition of weighted scores  |
 | Geometric Mean   | Stricter: all heuristics must agree |
-| Harmonic Mean    | More permissive combination         |
+| Harmonic Mean    | Emphasizes low scores — cheap paths dominate |
 | Min              | Lowest scoring path (OR-like)       |
 | Max              | Highest scoring path (AND-like)     |
 

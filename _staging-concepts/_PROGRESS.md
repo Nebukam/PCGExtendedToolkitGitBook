@@ -5,42 +5,55 @@
 
 ---
 
+## Architecture Note
+
+Concept content has been promoted from `_staging-concepts/` subdirectories to `working-with-pcgex/` (the live location). The `_staging-concepts/` directory now contains only meta files (this file, style guide, plans, decisions, etc.). Section `_BRIEF.md` files were removed along with the numbered subdirectories.
+
+---
+
 ## Current Focus
 
-**Phase**: Core Content Complete → Landing Pages for Remaining
-**Active Work**: 6 core sections complete, landing pages for remaining 4 sections
+**Phase**: Content complete for core sections. Pathfinding section reviewed and corrected against source code. Doc queue (105 items) fully processed.
+**Active Work**: Remaining landing pages, node-library reorganization
 
 ---
 
 ## Section Status
 
-### Conceptual Documentation
+### Conceptual Documentation (live in `working-with-pcgex/`)
 
 | Section | Status | Notes |
 |---------|--------|-------|
-| `00-getting-started/` | **Landing Page** | README placeholder created |
-| `01-architecture/` | **Complete** | README, provider-consumer done |
-| `02-paths/` | **Complete** | README, segments-vs-points, common-operations done |
-| `03-clusters/` | **Complete** | README, dual-dataset, building, refining, interop done |
-| `04-filters/` | **Complete** | README, composition, reusability done |
-| `05-asset-staging/` | **Complete** | README, collections, distribution, fitting done |
-| `06-pathfinding/` | **Complete** | README, algorithms, heuristics, cells-and-hulls done |
-| `07-additional-systems/` | **Landing Pages** | README + 5 subsection READMEs created |
-| `08-valency/` | **Landing Page** | README with WIP flag, deferred |
-| `09-tips-and-tricks/` | **Landing Page** | README placeholder created |
+| Getting started | **Landing Page** | README placeholder |
+| Architecture | **Complete** | README, provider-consumer |
+| Paths | **Complete** | README, segments-vs-points, common-operations |
+| Clusters | **Complete** | README, dual-dataset, building, refining, interop |
+| Filters | **Complete** | README, composition, reusability |
+| Asset staging | **Complete** | README, collections, distribution, fitting |
+| Pathfinding | **Complete** | README, algorithms, heuristics, cells-and-hulls. Reviewed against source — algorithms rewritten, cells-and-hulls corrected (removed fabricated "Contours" section) |
+| Additional systems | **Landing Pages** | README + subsection READMEs |
+| Valency | **Landing Page** | README with WIP flag, deferred |
+| Tips and tricks | **Landing Page** | README placeholder |
 
-### Infrastructure
+### Per-Node Documentation
 
 | Item | Status | Notes |
 |------|--------|-------|
-| `_PLAN.md` | Complete | Structure and rationale |
-| `_DECISIONS.md` | Complete | Decision tracking |
-| `_CONTENT-MAP.md` | Complete | Migration mapping |
-| `_STYLE-GUIDE.md` | Complete | Writing guidelines |
-| `_SESSION-CONTEXT.md` | Complete | Session orientation |
-| `_PROGRESS.md` | Complete | This file |
-| `_BRIEF-TEMPLATE.md` | Complete | Template for section briefs |
-| Section `_BRIEF.md` files | Complete | All sections have briefs, all reviewed with user |
+| Doc queue | **Complete** | 105 items processed, queue empty |
+| `_staging/` docs | Complete | 1:1 codebase mirror, organized by module |
+| `node-library/` | Partially reorganized | User-facing structure with different folders/filenames |
+
+### Infrastructure (meta files in `_staging-concepts/`)
+
+| Item | Status | Notes |
+|------|--------|-------|
+| `_PLAN.md` | Updated | Structure and rationale — reflects new architecture |
+| `_DECISIONS.md` | Updated | Decision tracking |
+| `_CONTENT-MAP.md` | Outdated | Migration mapping — references old `_staging-concepts/` paths |
+| `_STYLE-GUIDE.md` | Complete | Writing guidelines — still current |
+| `_SESSION-CONTEXT.md` | Updated | Session orientation — reflects new architecture |
+| `_PROGRESS.md` | Updated | This file |
+| `_BRIEF-TEMPLATE.md` | Complete | Template (no longer used — section briefs removed) |
 
 ### Node Library Reorganization
 

@@ -85,7 +85,8 @@ Pathfinding produces paths as point sequences:
 
 PCGEx pathfinding includes operations that extract path-like data without explicit goals:
 
-**Cells**: Find closed regions bounded by edges **Contours**: Trace boundaries around regions **Hulls**: Extract outer cluster boundary
+**Cells**: Find closed regions bounded by edges — either around specific seeds or exhaustively across the whole cluster
+**Hulls**: Extract the outer boundary of a cluster as a single path
 
 These are covered in Cells and Hulls.
 
@@ -97,8 +98,8 @@ These are covered in Cells and Hulls.
 | Connect ordered waypoints    | Pathfinding : Plot Edges |
 | Explore from seeds           | Pathfinding : Grow Paths |
 | Spread values/territories    | Flood Fill               |
-| Find enclosed regions        | Find Cells               |
-| Extract boundaries           | Find Contours/Hull       |
+| Find enclosed regions        | Find Cells / Find All Cells |
+| Extract outer boundary       | Find Cluster Hull           |
 
 ### In This Section
 

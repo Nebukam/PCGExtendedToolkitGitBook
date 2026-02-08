@@ -10,10 +10,11 @@
 **Goal**: Create clear separation between conceptual/guide documentation and per-node reference documentation.
 
 **Approach**:
-- Fresh start in `_staging-concepts/` for conceptual docs
-- Cherry-pick useful content from existing `working-with-pcgex/`
-- Reorganize node library for better discovery
-- Keep per-node docs as reference (complete via automation)
+- Conceptual docs live in `working-with-pcgex/` (promoted from `_staging-concepts/`)
+- `_staging-concepts/` retains only meta files (style guide, plans, progress, decisions)
+- `_staging/` holds 1:1 codebase node docs (auto-generated, organized by module)
+- `node-library/` is the user-facing reorganization of `_staging/` with different structure and filenames
+- Per-node docs completed via automation pipeline
 
 ---
 
@@ -74,83 +75,31 @@ All follow the same provider/factory pattern under the hood.
 
 ## Conceptual Documentation Structure
 
+Content lives in `working-with-pcgex/`. The structure below reflects the target layout:
+
 ```
-_staging-concepts/
-├── 00-getting-started/
-│   ├── README.md              # What is PCGEx, who is it for
-│   ├── installation.md        # Setup
-│   └── first-graph.md         # Minimal "hello world" (abstract)
-│
-├── 01-architecture/
-│   ├── README.md              # The PCGEx mental model overview
-│   ├── provider-consumer.md   # Sub-nodes, factories, composition
-│   └── working-with-vanilla.md # PCGEx + vanilla PCG interop
-│
-├── 02-paths/
-│   ├── README.md              # What paths are (ordered points)
-│   ├── points-are-paths.md    # "Everything is points" for paths
-│   ├── segments-vs-points.md  # The segment mental model
-│   └── common-operations.md   # Transform, resample, etc. (conceptual)
-│
-├── 03-clusters/
-│   ├── README.md              # What clusters are (Vtx + Edges)
-│   ├── points-are-clusters.md # "Everything is points" for clusters
-│   ├── the-dual-dataset.md    # Working with Vtx AND Edges
-│   ├── building-clusters.md   # Diagrams, Connect Points, from paths
-│   ├── refining-clusters.md   # Filters, refinement operations
-│   └── cluster-path-interop.md # Converting between paths and clusters
-│
-├── 04-filters/
-│   ├── README.md              # The filter ecosystem
-│   ├── filter-types.md        # Point, Edge, Vtx, Collection filters
-│   ├── composition.md         # AND/OR groups, stacking, nesting
-│   └── reusability.md         # Subgraph patterns, prefab filters
-│
-├── 05-asset-staging/
-│   ├── README.md              # What staging solves, the workflow
-│   ├── collections.md         # Mesh/Actor collections
-│   ├── distribution.md        # How assets are picked and placed
-│   ├── fitting.md             # Scale, justify, variations
-│   └── socket-staging.md      # Socket-based assembly
-│
-├── 06-pathfinding/
-│   ├── README.md              # Pathfinding on clusters
-│   ├── algorithms.md          # A*, Dijkstra, when to use which
-│   ├── heuristics.md          # What heuristics are, composition
-│   ├── goal-pickers.md        # How destinations are selected
-│   └── cells-and-hulls.md     # Contour finding, bounded regions
-│
-├── 07-additional-systems/
-│   ├── tensors/
-│   │   ├── README.md          # Directional fields
-│   │   ├── effectors.md       # What creates tensor fields
-│   │   └── sampling.md        # How tensors influence operations
-│   ├── topology/
-│   │   └── README.md          # Mesh generation from paths/clusters
-│   ├── sampling/
-│   │   └── README.md          # Nearest queries, data extraction
-│   └── shapes/
-│       └── README.md          # Programmatic geometry generation
-│
-├── 08-valency/                # Last due to complexity, self-contained
-│   ├── README.md              # WFC-style constraint solving
-│   ├── orbitals-and-cages.md  # Core concepts
-│   ├── bonding-rules.md       # How constraints work
-│   ├── solving-process.md     # The solve workflow
-│   └── patterns.md            # Pattern matching and replacement
-│
-└── 09-tips-and-tricks/
-    ├── README.md
-    ├── subgraph-patterns.md   # Reusable subgraph techniques
-    ├── performance.md         # Optimization strategies
-    └── common-pitfalls.md     # Collected gotchas
+working-with-pcgex/
+├── getting-started/           # What is PCGEx, setup, first graph
+├── architecture/              # Mental model, provider/consumer, vanilla interop
+├── paths/                     # Paths as ordered points, segments, common ops
+├── clusters/                  # Vtx + Edges, dual dataset, building, refining
+├── filter-ecosystem/          # Filter types, composition, reusability
+├── asset-staging/             # Collections, distribution, fitting
+├── pathfinding/               # Algorithms, heuristics, cells & hulls
+├── tensors/                   # Directional fields, effectors, sampling
+├── topology/                  # Mesh generation from paths/clusters
+├── sampling/                  # Nearest queries, data extraction
+├── valency/                   # WFC-style constraint solving (complex, self-contained)
+└── tips-and-tricks/           # Subgraph patterns, performance, pitfalls
 ```
+
+> **Note**: Folder names in `working-with-pcgex/` may differ from the original numbered `_staging-concepts/` plan. The content is the same; only the location and naming changed.
 
 ### Principles for Conceptual Docs
 1. **Use-case agnostic** - Describe capabilities, not applications
 2. **Build on prior concepts** - Each section references earlier ones
 3. **Link to node library** - "For specific nodes, see [Node Library > X]"
-4. **Cherry-pick from existing** - working-with-pcgex has good material
+4. **Verify against source** - Always check actual codebase behavior, not assumptions
 
 ---
 

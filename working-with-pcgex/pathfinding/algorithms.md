@@ -4,16 +4,22 @@ icon: map
 
 # Algorithms
 
-**PCGEx supports multiple pathfinding algorithms, and the right choice depends on what you're looking for.** A\* is the default for good reason, but Dijkstra, Bidirectional, and Bellman-Ford each have scenarios where they're the better pick.
+**All search algorithms in PCGEx use heuristics.** This is the single most important thing to understand — there are no "raw" edge weights. Every algorithm evaluates edges through the heuristics handler, which computes traversal cost from your connected heuristic sub-nodes. The algorithms differ in *how they use* those heuristic scores, not *whether* they use them.
+
+### The Shared Foundation
+
+Every algorithm calls `Heuristics->GetEdgeScore()` on each edge it considers. This is where your heuristic sub-nodes (shortest distance, steepness, inertia, etc.) contribute their scores. The edge score *is* the traversal cost.
+
+Where A\* differs from the rest is that it also calls `Heuristics->GetGlobalScore()` — a forward-looking estimation of remaining cost to the goal. The other algorithms skip that estimation and work purely from accumulated edge scores.
 
 ### Algorithm Comparison
 
-| Algorithm     | Best For                            | Tradeoff                         |
-| ------------- | ----------------------------------- | -------------------------------- |
-| A\*           | Point-to-point with good heuristics | Needs heuristics to be effective |
-| Dijkstra      | Exploring all paths from source     | No heuristic guidance            |
-| Bidirectional | Large clusters, long paths          | Uses more memory                 |
-| Bellman-Ford  | Negative edge weights               | Slower than alternatives         |
+| Algorithm     | Edge Scoring | Goal Estimation              | Best For                                           |
+| ------------- | ------------ | ---------------------------- | -------------------------------------------------- |
+| A\*           | Heuristics   | Yes (`GetGlobalScore`)       | Point-to-point, goal-directed search               |
+| Dijkstra      | Heuristics   | No                           | Thorough exploration, respects all modifiers equally |
+| Bidirectional | Heuristics   | No                           | Large clusters, long paths                         |
+| Bellman-Ford  | Heuristics   | No                           | Heuristics that can produce negative scores        |
 
 ### A\* (A-Star)
 
@@ -21,164 +27,152 @@ The default choice for goal-directed pathfinding.
 
 #### How It Works
 
-A\* combines actual traversal cost with estimated remaining cost:
+A\* maintains a priority queue sorted by `f(n) = g(n) + h(n)`:
 
-* **g(n)**: Cost to reach node n from start
-* **h(n)**: Estimated cost from n to goal (heuristic)
-* **f(n)**: Total: g(n) + h(n)
+* **g(n)**: Accumulated `GetEdgeScore()` cost from start to node n
+* **h(n)**: `GetGlobalScore()` estimation from n to goal, scaled by `ReferenceWeight`
+* **f(n)**: The sum — nodes with lower f-score are explored first
 
-Explores nodes with lowest f(n) first, prioritizing paths that seem promising.
+The global score pulls the search toward the goal, so A\* often finds a path while exploring far fewer nodes than the alternatives.
 
 #### Characteristics
 
-* **Optimal** when heuristic never overestimates (admissible)
-* **Efficient** compared to exhaustive search
-* **Heuristic-dependent**: Poor heuristics degrade to Dijkstra
+* **Goal-directed**: The global estimation biases search toward the goal
+* **Efficient**: Explores fewer nodes when heuristics provide good estimates
+* **Estimation-dependent**: If `GetGlobalScore` doesn't estimate well, A\* explores more broadly and approaches Dijkstra behavior
 
 #### When to Use
 
-* Point-to-point pathfinding
-* When you have meaningful heuristics (distance, direction)
-* When you want the "best" path, not just "a" path
+* Point-to-point pathfinding (the default case)
+* When heuristic sub-nodes provide meaningful distance/direction estimates
+* When you want fast results and the path doesn't need to be globally optimal across all heuristic modifiers
 
 ### Dijkstra's Algorithm
 
-Finds shortest paths from a source to all reachable nodes.
+Explores based on accumulated heuristic cost with no goal estimation.
 
 #### How It Works
 
-Explores nodes in order of accumulated cost from source:
+Dijkstra uses a priority queue sorted purely by accumulated `GetEdgeScore()` cost:
 
-* No heuristic estimation
-* Guaranteed to find shortest path
-* Explores more nodes than A\* for point-to-point
+* Every edge is scored through your heuristics — it is *not* "no heuristics"
+* No `GetGlobalScore()` call — no estimation of remaining cost
+* Explores outward from the seed in order of total heuristic cost
+
+Without the goal-directed shortcut, Dijkstra explores more nodes but considers all heuristic modifiers more thoroughly.
 
 #### Characteristics
 
-* **Always optimal**: No heuristic assumptions
-* **Exhaustive**: Explores until goal found or all nodes visited
-* **Slower than A**\* for point-to-point with good heuristics
+* **Thorough**: Explores by accumulated cost without bias toward the goal
+* **Respects modifiers**: "More respectful of modifiers and weights" than A\*
+* **Slower for point-to-point**: Explores more nodes since it doesn't estimate remaining distance
 
 #### When to Use
 
-* Need paths to multiple destinations from one source
-* Heuristics aren't meaningful for your topology
-* Analyzing overall cluster accessibility
+* When you want the path that most faithfully respects your heuristic scores
+* When A\*'s global estimation is skewing results away from what your modifiers intend
+* When finding paths from one source to multiple goals (Dijkstra naturally explores outward)
 
 ### Bidirectional Search
 
-Searches from both ends at once — one search expands forward from the seed, another expands backward from the goal. When they meet, the path is complete.
+Searches from both ends simultaneously using heuristic-scored edges.
 
 #### How It Works
 
-Two simultaneous searches converge:
+Two Dijkstra-like searches run in alternation:
 
-* Forward search expands from seed toward goal
-* Backward search expands from goal toward seed
-* Path is found when the two frontiers meet
+* Forward search expands from seed, scoring edges with `GetEdgeScore(seed → goal)`
+* Backward search expands from goal, scoring edges with `GetEdgeScore(goal → seed)`
+* When the frontiers meet, the path is reconstructed through the meeting point
+
+Both searches use your heuristics for edge scoring. The backward search swaps the seed/goal context so directional heuristics (like inertia) work correctly in reverse.
 
 #### Characteristics
 
-* **Faster on large clusters**: Reduces search space from O(b^d) to roughly O(b^(d/2))
-* **More memory**: Maintains two search frontiers instead of one
-* **Works best with symmetric edge costs**: Since edges are undirected by default, this is usually the case
+* **Faster on large clusters**: Reduces search space roughly from O(b^d) to O(b^(d/2))
+* **More memory**: Maintains two sets of visited nodes, travel stacks, and scored queues
+* **Symmetric assumption**: Works best when heuristic scores are similar in both directions
 
 #### When to Use
 
-* Large clusters where A\* still explores too many nodes
-* Long paths where the distance between seed and goal is significant
-* When edge costs are symmetric (the common case)
+* Large clusters where A\* or Dijkstra explore too many nodes
+* Long paths where the seed-goal distance is significant
+* When edge costs are roughly symmetric (the common case with undirected clusters)
 
 ### Bellman-Ford
 
-Handles negative edge weights that other algorithms can't.
+Handles heuristics that produce negative scores.
 
 #### How It Works
 
-Relaxes all edges repeatedly:
+Instead of a priority queue, Bellman-Ford relaxes all edges repeatedly:
 
-* N-1 iterations for N nodes
-* Handles negative weights correctly
-* Can detect negative cycles
+* Iterates N-1 times (where N is node count), checking every edge each pass
+* Each edge is scored through `GetEdgeScore()` — the same heuristics system
+* Can detect negative cycles (heuristic scoring loops where cost decreases infinitely)
+
+The key difference: A\*, Dijkstra, and Bidirectional all use priority queues that assume non-negative edge costs. If your heuristics can produce negative scores, those algorithms may find incorrect paths. Bellman-Ford handles this correctly.
 
 #### Characteristics
 
-* **Slower** than A\* and Dijkstra (O(VE) vs O(E + V log V))
-* **Handles negative weights**: Unique capability
-* **Detects negative cycles**: Can report if no solution exists
+* **Handles negative scores**: The only algorithm that correctly handles heuristics producing negative values
+* **Detects negative cycles**: Can report when no valid path exists due to infinitely decreasing cost loops
+* **Slower** than A\* and Dijkstra (O(VE) vs O(E log V)) — iterates over all edges multiple times
 
 #### When to Use
 
-* Edge costs can be negative (penalties that go negative)
-* Need to detect impossible paths (negative cycles)
-* Correctness matters more than speed
+* When your heuristic combination can produce negative edge scores
+* When you need negative cycle detection as a safety check
+* When correctness matters more than speed
 
 ### Practical Guidance
 
-#### Default: A\* with Distance Heuristic
+#### Default: A\*
 
-For most cases, A\* with shortest distance heuristic works well:
+For most setups, A\* with distance-based heuristics works well:
 
-* Fast for point-to-point
+* Fast goal-directed search
 * Produces reasonable paths
-* Easy to configure
+* The global estimation gets you there quickly
 
 #### When to Switch
 
 **Switch to Dijkstra when:**
 
-* Finding paths from one source to many destinations
-* Your heuristics don't improve search meaningfully
-* You need guaranteed optimal without heuristic tuning
+* A\*'s global estimation is overriding your modifiers — you want the search to respect accumulated heuristic cost more faithfully
+* Path quality matters more than search speed
+* You're finding paths to multiple goals from one seed
 
 **Switch to Bidirectional when:**
 
 * Cluster is large and paths are long
-* A\* is still exploring too many nodes
-* Edge costs are symmetric (the default)
+* A\* and Dijkstra explore too many nodes
+* Edge costs are roughly symmetric
 
 **Switch to Bellman-Ford when:**
 
-* Edge costs can genuinely be negative
+* Your heuristic sub-nodes can produce negative scores
 * You need negative cycle detection
-
-#### Heuristic Impact
-
-Algorithm choice interacts with heuristic quality:
-
-* **Good heuristics**: A\* significantly outperforms Dijkstra
-* **Poor heuristics**: A\* performs like Dijkstra but with overhead
-* **No heuristics**: Use Dijkstra directly
-
-See Heuristics for heuristic configuration.
+* Correctness with unusual heuristic configurations is critical
 
 ### Performance Considerations
 
-#### Cluster Size
-
-All algorithms scale with cluster complexity:
-
-* More Vtx = more nodes to explore
-* More Edges = more traversal options
-* Complex heuristics add per-edge computation
-
-#### Path Count
-
-Finding many paths is more expensive than finding one:
-
-* Multiple seed/goal pairs multiply computation
-* Consider batch processing for many paths
-
 #### Heuristic Complexity
 
-Complex heuristics add per-edge evaluation cost:
+All algorithms evaluate heuristics per edge, so heuristic cost scales the same way:
 
-* Simple heuristics (distance, attribute lookup) are cheap
-* History-dependent heuristics (inertia, feedback) add overhead
-* Balance path quality against computation cost
+* Simple heuristics (distance, attribute lookup) are cheap per edge
+* History-dependent heuristics (inertia, feedback) add overhead per edge
+* More heuristic sub-nodes = more evaluations per edge, regardless of algorithm
+
+#### Algorithm-Specific Cost
+
+* **A\***: Fewest nodes explored (with good estimation), plus `GetGlobalScore` per node
+* **Dijkstra**: More nodes explored, but no global score overhead
+* **Bidirectional**: Fewer nodes than Dijkstra, but double the memory
+* **Bellman-Ford**: Visits all edges N-1 times — significantly slower on large clusters
 
 ### Related
 
 * Pathfinding Overview - Pathfinding concepts
-* Heuristics - Scoring functions
-* Cells and Hulls - Region extraction
+* Heuristics - Scoring functions that drive all algorithms

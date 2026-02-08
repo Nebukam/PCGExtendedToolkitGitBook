@@ -1,45 +1,36 @@
-# Content Migration Map
+# Content Map
 
-> Maps existing content to new structure locations.
-
----
-
-## Existing → New Conceptual Docs
-
-| Existing File | Quality | New Location | Notes |
-|---------------|---------|--------------|-------|
-| `working-with-pcgex/filter-ecosystem.md` | Excellent | `04-filters/README.md` | Adapt as template |
-| `working-with-pcgex/clusters/clusters-fundamentals.md` | Good | `03-clusters/README.md` | Cherry-pick concepts |
-| `working-with-pcgex/clusters/vtx-+-edges.md` | Good | `03-clusters/the-dual-dataset.md` | Merge content |
-| `working-with-pcgex/clusters/working-with-vtx-and-edges.md` | Good | `03-clusters/` | Cherry-pick |
-| `working-with-pcgex/clusters/common-pitfalls.md` | Good | `09-tips-and-tricks/common-pitfalls.md` | Merge with other pitfalls |
-| `working-with-pcgex/clusters/hello-cluster/` | Mixed | Consider for examples | Use-case specific, may not fit |
-| `working-with-pcgex/paths/paths-fundamentals.md` | Good | `02-paths/README.md` | Cherry-pick concepts |
-| `working-with-pcgex/paths/common-operations.md` | Good | `02-paths/common-operations.md` | Adapt |
-| `working-with-pcgex/paths/common-pitfalls.md` | Good | `09-tips-and-tricks/common-pitfalls.md` | Merge |
-| `working-with-pcgex/valency/` | Comprehensive | `08-valency/` | Light editing, mostly reuse |
-| `working-with-pcgex/asset-staging/` | Partial | `05-asset-staging/` | Expand and restructure |
-| `working-with-pcgex/tensors/` | Sparse | `07-additional-systems/tensors/` | Needs expansion |
-| `working-with-pcgex/tips-and-tricks-1/` | Good | `09-tips-and-tricks/` | Consolidate |
-| `general/pcgex-101/` | Brief | Various | Distribute to appropriate sections |
-| `general/quickstart/` | Good | `00-getting-started/` | Adapt |
+> Maps documentation structure and locations.
+>
+> **Architecture note**: Concept content lives directly in `working-with-pcgex/` (not in `_staging-concepts/`). Content was written/rewritten in-place. The `_staging-concepts/` directory now holds only meta files.
 
 ---
 
-## New Conceptual Docs Needing Fresh Content
+## Conceptual Docs — Live in `working-with-pcgex/`
 
-| New Location | Priority | Source Material |
-|--------------|----------|-----------------|
-| `01-architecture/README.md` | High | New - mental model overview |
-| `01-architecture/provider-consumer.md` | High | New - sub-node pattern |
-| `01-architecture/working-with-vanilla.md` | Medium | New - interop guide |
-| `02-paths/points-are-paths.md` | High | New - "everything is points" for paths |
-| `03-clusters/points-are-clusters.md` | High | New - "everything is points" for clusters |
-| `03-clusters/building-clusters.md` | Medium | Partially from existing |
-| `06-pathfinding/` | Medium | New - concepts currently missing |
-| `07-additional-systems/sampling/` | Low | New |
-| `07-additional-systems/topology/` | Low | New |
-| `07-additional-systems/shapes/` | Low | New |
+Content has been rewritten with the warm-to-technical gradient tone. The following sections are complete or have landing pages:
+
+| Section | Location | Status |
+|---------|----------|--------|
+| Architecture | `working-with-pcgex/architecture/` or similar | Complete |
+| Paths | `working-with-pcgex/paths/` | Complete |
+| Clusters | `working-with-pcgex/clusters/` | Complete |
+| Filters | `working-with-pcgex/filter-ecosystem/` or similar | Complete |
+| Asset staging | `working-with-pcgex/asset-staging/` | Complete |
+| Pathfinding | `working-with-pcgex/pathfinding/` | Complete (reviewed against source) |
+| Valency | `working-with-pcgex/valency/` | Landing page (deferred) |
+| Additional systems | Various subsections | Landing pages |
+
+---
+
+## Remaining Content Gaps
+
+| Area | Priority | Notes |
+|------|----------|-------|
+| Additional systems (tensors, topology, sampling, shapes) | Medium | Landing pages exist, full content needed |
+| Valency concepts | Low | Deferred — existing docs used with WIP flag |
+| Getting started / first graph | Medium | Landing page exists |
+| Tips and tricks | Low | Collect throughout process |
 
 ---
 
@@ -68,42 +59,29 @@
 | `node-library/transform/` | `node-library/transform/` (keep) |
 | `node-library/assets-management/` | `node-library/staging/` (rename) |
 
-### _staging Per-Node Docs
+### Per-Node Docs Pipeline
 
-Current organization: By module (matches codebase)
+**`_staging/`** — 1:1 codebase mirror, organized by module:
 ```
 _staging/
 ├── PCGExElementsClusters/
 ├── PCGExElementsPaths/
 ├── PCGExElementsPathfinding/
+├── PCGExElementsValency/
 └── ...
 ```
 
-Target organization: By feature (matches node library)
-- Need script/process to reorganize
-- Or: Generate directly into new structure
+**`node-library/`** — User-facing reorganization with different folder structure and filenames. Copied from `_staging/` with renames and light editing.
 
 ---
 
-## Priority Order for Migration
+## Remaining Work
 
-### Phase 1: Foundation
-1. Create conceptual structure skeleton (empty READMEs)
-2. Migrate `01-architecture/` content (new)
-3. Migrate `04-filters/` (excellent existing content)
+### Content
+1. Complete remaining concept landing pages (getting started, additional systems, tips)
+2. Valency concept content (deferred — existing docs used with WIP flag)
 
-### Phase 2: Core Concepts
-4. Migrate `02-paths/`
-5. Migrate `03-clusters/`
-6. Migrate `05-asset-staging/`
-
-### Phase 3: Advanced Systems
-7. Migrate `06-pathfinding/`
-8. Migrate `07-additional-systems/`
-9. Migrate `08-valency/`
-
-### Phase 4: Polish
-10. Migrate `00-getting-started/`
-11. Migrate `09-tips-and-tricks/`
-12. Create node library homepage
-13. Reorganize node library structure
+### Node Library
+3. Node library homepage content
+4. Complete file reorganization from `_staging/` to `node-library/`
+5. Cross-linking pass (concepts ↔ node library)

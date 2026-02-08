@@ -4,91 +4,73 @@ icon: border-outer
 
 # Cells and Hulls
 
-**Not all cluster traversal is about getting from A to B.** PCGEx can also extract structural features from cluster topology: the enclosed regions between edges (cells), the outlines of connected areas (contours), and the outer boundary of the whole cluster (hulls). These operations produce paths, so everything you know about path processing applies to the results.
+**Not all cluster traversal is about getting from A to B.** PCGEx can also extract structural features from cluster topology — the enclosed regions between edges (cells) and the outer boundary of the whole cluster (hulls). These operations produce paths, so everything you know about path processing applies to the results.
 
 ### Cells
 
-Cells are closed regions bounded by cluster edges. Think of them as the "polygons" formed by the cluster's edge network.
+Cells are closed regions bounded by cluster edges. Think of them as the "polygons" formed by the cluster's edge network — each cell is a closed loop of Vtx tracing one enclosed area.
 
 <figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Cluster with individual cells highlighted in different colors</p></figcaption></figure>
 
-#### What Cells Represent
+#### Seeded Cell Finding
 
-In a cluster:
+**Pathfinding : Find Cells** finds cells around specific seed points:
 
-* Edges form boundaries
-* Cells are the enclosed areas between edges
-* Each cell is a closed loop of Vtx
+* Each seed claims a cell — the closed region of edges surrounding it
+* Seeds compete for ownership when cells overlap (configurable: seed order or best candidate)
+* Supports seed growth, which expands selection to adjacent cells
+* Outputs the cell boundary as a closed path, plus an oriented bounding box
 
-#### Finding Cells
+This is what you want when you care about *specific* regions — place seeds where you want cells extracted.
 
-**Find All Cells** extracts every cell from a cluster:
+**Pathfinding : Find Cells (Bounded)** adds spatial triage:
 
-* Seeds determine starting points for cell discovery
-* Cells are output as closed paths
-* Each cell is an ordered sequence of Vtx forming its boundary
+* Same seed-based cell finding, plus a bounds input
+* Each found cell is categorized as Inside, Touching, or Outside the bounds
+* Outputs can be separated into distinct pins or combined with triage tags
 
-**Find All Cells (Bounded)** adds spatial constraints:
+#### Exhaustive Cell Finding
 
-* Only find cells within specified bounds
-* Useful for region-limited extraction
+**Pathfinding : Find All Cells** enumerates every cell in the cluster:
 
-### Contours
+* No seeds needed — discovers all enclosed regions automatically
+* Supports hole exclusion: provide "hole" points to skip cells containing them
+* Hole growth expands exclusion to adjacent cells
+* Outputs all cell boundaries as closed paths
 
-Contours trace boundaries around cluster regions — drawing the outline of connected areas.
+**Pathfinding : Find All Cells (Bounded)** adds the same spatial triage:
 
-<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Cluster regions with contour lines traced around them</p></figcaption></figure>
+* Finds all cells, then categorizes each as Inside, Touching, or Outside the bounds
 
-#### What Contours Represent
+#### Cell Constraints
 
-A contour is the outer edge of a connected region:
+All cell-finding nodes share constraint settings that filter which cells are valid:
 
-* Follows the boundary where cluster meets empty space
-* Can trace multiple disconnected regions
-* Produces closed paths for each region
-
-#### Finding Contours
-
-**Find Contours** traces region boundaries:
-
-* Seeds identify regions to trace
-* Each region produces a contour path
-* Handles complex shapes with indentations
-
-**Find Contours (Bounded)** adds spatial limits:
-
-* Only trace contours within bounds
-* Clips contours at boundary edges
+* Minimum/maximum vertex count
+* Planarity checks
+* 2D projection settings for planar analysis
 
 ### Hulls
 
-Hulls extract the outer boundary of entire clusters: the outermost perimeter.
+**Pathfinding : Find Cluster Hull** extracts the outer boundary of each cluster as a single closed path.
 
 <figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Cluster with hull path highlighted as outer boundary</p></figcaption></figure>
 
-#### What Hulls Represent
+Where cells are the interior polygons, the hull is the outermost perimeter:
 
-The hull is the convex or cluster outer boundary:
-
-* Wraps around the entire cluster
-* Excludes internal structure
-* Single path for the whole cluster
-
-#### Finding Hulls
-
-**Find Cluster Hull** extracts the outer boundary:
-
-* Walks the cluster perimeter
-* Produces a closed path
-* Can use convex hull or cluster boundary
+* One hull path per cluster
+* Excludes all internal structure
+* Uses the same constraint and projection settings as cell finding
 
 ### Comparison
 
-| Extraction | Finds                     | Output                   |
-| ---------- | ------------------------- | ------------------------ |
-| Cells      | Interior enclosed regions | Multiple closed paths    |
-| Contours   | Region boundaries         | Outline paths per region |
-| Hull       | Outer cluster boundary    | Single outer path        |
+| Node                        | Input                                | Output                               |
+| --------------------------- | ------------------------------------ | ------------------------------------ |
+| Find Cells                  | Seeds + Cluster                      | Cell path per seed                   |
+| Find Cells (Bounded)        | Seeds + Cluster + Bounds             | Cell paths, triaged by bounds        |
+| Find All Cells              | Cluster (+ optional Holes)           | All cell paths                       |
+| Find All Cells (Bounded)    | Cluster + Bounds (+ optional Holes)  | All cell paths, triaged by bounds    |
+| Find Cluster Hull           | Cluster                              | Single hull path per cluster         |
 
 ### Practical Uses
 
@@ -97,17 +79,17 @@ The hull is the convex or cluster outer boundary:
 Extract cells to identify distinct areas:
 
 1. Generate cluster from points
-2. Find all cells
+2. Find all cells (or seed specific regions)
 3. Each cell represents a bounded region
-4. Process regions independently
+4. Process regions independently — filter by area, assign attributes, spawn content
 
 #### Boundary Drawing
 
-Extract contours or hulls for boundary visualization:
+Extract hulls for boundary visualization:
 
 1. Generate cluster
-2. Find contours/hull
-3. Use paths for spawning boundaries, walls, borders
+2. Find cluster hull
+3. Use the hull path for spawning boundaries, walls, or borders
 
 #### Area Calculation
 
@@ -125,33 +107,26 @@ Cells map directly to polygon geometry:
 2. Each cell becomes a polygon face
 3. Suitable for mesh construction
 
-### Relation to Pathfinding
-
-These operations share infrastructure with pathfinding:
-
-* Traverse cluster topology
-* Produce ordered point sequences
-* Use the same cluster data structures
-
-But they don't require goals or heuristics. They're structural extraction, not route finding.
-
 ### Seeds and Starting Points
 
-Cell and contour finding often use seeds:
+The seeded variants (Find Cells) and exhaustive variants (Find All Cells) serve different purposes:
 
-* Seeds are points that identify regions of interest
-* Operations find cells/contours containing or near seeds
-* Without seeds, operations may find all possible cells
+* **Seeded**: You control which cells are extracted by placing seeds. Useful when you want specific regions.
+* **Exhaustive**: Every cell in the cluster is found. Useful when you need the complete cell decomposition.
 
-Seed placement determines which regions are extracted.
+For seeded finding, seed placement determines which regions are extracted. Seeds are matched to nearby cluster Vtx, and the cell surrounding that Vtx is traced.
 
 ### Output as Paths
 
-All these operations output paths:
+All these operations output closed paths:
 
-* Closed paths (loops) for cells and contours
-* Can be processed with path operations
-* Suitable for further refinement (offset, subdivide, smooth)
+* Each cell boundary or hull is an ordered sequence of Vtx
+* Can be processed with path operations (offset, subdivide, smooth)
+* Maintains cluster attribute inheritance
+
+### Relation to Pathfinding
+
+These operations share infrastructure with pathfinding — they traverse cluster topology and produce ordered point sequences using the same data structures. But they don't require goals or heuristics. They're structural extraction, not route finding.
 
 ### Related
 
