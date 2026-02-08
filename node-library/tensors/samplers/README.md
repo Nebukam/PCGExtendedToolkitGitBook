@@ -4,15 +4,10 @@ icon: rectangles-mixed
 
 # Samplers
 
-**Tensor sampler sub-nodes. Control how tensor fields are evaluated at each point.**
+**Samplers control how tensor fields are evaluated at each point during tracing.** The choice of sampler determines the trade-off between speed and accuracy as the tracer steps through the field.
 
-| Sub-Node        | Description                                                                                           |
-| --------------- | ----------------------------------------------------------------------------------------------------- |
-| **Default**     | Single-point sampling with configurable step size and error tolerance.                                |
-| **RK4**         | Fourth-order Runge-Kutta. Four intermediate samples per step for higher accuracy.                     |
-| **Six Points**  | Averages six axis-aligned samples for noise smoothing.                                                |
-| **Adaptive RK** | Adaptive step size based on field curvature. Smaller steps in curved regions, larger in smooth areas. |
+The default sampler takes a single sample per step — fast and sufficient when the field is smooth. RK4 (fourth-order Runge-Kutta) takes four intermediate samples per step, which dramatically improves accuracy in fields with tight curvature. Six-point sampling averages axis-aligned samples around each position, which smooths out noisy fields. Adaptive sampling adjusts the step size dynamically based on local field curvature — taking smaller steps through sharp bends and larger steps through smooth regions.
 
 ### Concepts
 
-* [Tensors](../)
+* [Tensor Concepts](../../../working-with-pcgex/additional-systems/tensors.md)

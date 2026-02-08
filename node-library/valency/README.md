@@ -4,11 +4,21 @@ icon: grid-round-2-plus
 
 # Valency
 
-**Constraint solving and module assignment — WFC-style rule-based generation on cluster topology.** Valency assigns collection entries to Vtx based on connectivity constraints (orbitals, cages, bonding rules), then solves for valid configurations.
+**Valency is WFC-style constraint solving on cluster topology.** It assigns collection entries to Vtx based on connectivity constraints — orbitals, cages, bonding rules — then solves for valid configurations across the entire cluster. The system sits at the intersection of clusters and asset staging, using both as its foundation.
 
 {% hint style="warning" %}
 Valency is an advanced system that builds on clusters and asset staging. Familiarity with both is recommended before diving in.
 {% endhint %}
+
+### Sections
+
+| Section            | Contents                                                                  |
+| ------------------ | ------------------------------------------------------------------------- |
+| Rules              | Bonding rules, socket rules, orbital set definitions                      |
+| Valency : Staging  | Solvers — constraint solver, entropy solver, priority solver              |
+| Valency : Patterns | Pattern matching and replacement on solved clusters                       |
+
+Once a solve completes, utility nodes extract the results — writing socket transforms from solved module assignments or exposing orbital data as point attributes for downstream processing.
 
 ### Concepts
 

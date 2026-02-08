@@ -4,15 +4,9 @@ icon: grid-2
 
 # Data Filters
 
-**Filters that evaluate entire point collections rather than individual points.**
+**Data filters evaluate entire point collections rather than individual points.** Where point filters ask a question per-point, data filters ask a question per-collection and return a single answer for the whole dataset.
 
-| Node                | Description                                                |
-| ------------------- | ---------------------------------------------------------- |
-| **Entry Count**     | Test the number of points in the collection                |
-| **Tag Check**       | Test for specific tags on the collection                   |
-| **Tag Value**       | Extract and test tag values                                |
-| **Data Bounds**     | Test collection bounding box properties                    |
-| **Attribute Check** | Test whether a specific attribute exists on the collection |
+They test the properties you'd check before processing begins: how many entries are in the collection, whether specific tags are present, what values those tags carry, the shape and extent of the bounding box, and whether a particular attribute exists at all. These are the guards that let you skip, route, or branch based on collection-level metadata without ever inspecting individual points.
 
 ### Concepts
 

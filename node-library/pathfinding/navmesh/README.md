@@ -4,4 +4,4 @@ icon: grid-round-2
 
 # Navmesh
 
-**Navigation mesh integration nodes.** These nodes bridge PCGEx cluster-based pathfinding with Unreal Engine's navigation mesh system.
+**Pathfinding through Unreal's navigation mesh instead of a cluster.** These nodes skip the cluster-based pipeline entirely and query the engine's NavMesh directly. Pathfinding : Navmesh finds paths between seed/goal pairs on the NavMesh, and Plot Navmesh writes the results as point data. Useful when you need runtime-compatible paths that respect navigation volumes and obstacles without building a cluster first.

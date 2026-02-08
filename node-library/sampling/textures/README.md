@@ -4,12 +4,8 @@ icon: grid-round-2
 
 # Textures
 
-**Three-node pipeline for sampling textures through PCG points.**
+**A three-stage pipeline for sampling textures through PCG points.** Texture sampling is split into discrete steps so each stage can be configured independently.
 
-| Node                 | Description                                                                                               |
-| -------------------- | --------------------------------------------------------------------------------------------------------- |
-| **Texture Param**    | Define which texture to extract from materials and how to read it. Channel selection, output type, scale. |
-| **Get Texture Data** | Load texture data from material or texture paths. Bilinear or point filtering.                            |
-| **Sample Texture**   | Sample loaded texture data at UV coordinates from point attributes.                                       |
+First, define *what* to sample — which texture channel to extract, what output type to produce, and how to scale the result. Next, load the actual texture data from a material or a direct texture reference, choosing between bilinear or point filtering. Finally, read values at UV coordinates pulled from point attributes.
 
-The pipeline: **Texture Param** defines what to sample, **Get Texture Data** loads it, **Sample Texture** reads values at UV coordinates.
+The separation matters because the definition and loading steps can be reused across multiple sampling passes without redundant configuration.

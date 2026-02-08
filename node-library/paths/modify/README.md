@@ -4,23 +4,12 @@ icon: grid-round-2
 
 # Modify
 
-**Nodes that change path shape, point count, or topology.**
+**Modification changes what the path is, not just where it sits.** These nodes alter point count, topology, and shape -- the structural identity of a path.
 
-| Node                         | Description                                                                     |
-| ---------------------------- | ------------------------------------------------------------------------------- |
-| **Bevel**                    | Round off corners. Radius or distance mode. Line, arc, or custom profile.       |
-| **Offset**                   | Perpendicular displacement. Raw, smooth, or mitre corner handling.              |
-| **Resample**                 | Enforce uniform spacing. Sweep (keep count) or redistribute (target distance).  |
-| **Subdivide**                | Add points between existing ones. By count, distance, or Manhattan distance.    |
-| **Fuse Collinear**           | Remove points that don't contribute to shape. Collinearity threshold.           |
-| **Reduce**                   | Tangent-based simplification with error tolerance.                              |
-| **Insert**                   | Insert external points at their nearest path location.                          |
-| **Split**                    | Break a path into pieces. Split, remove, disconnect, partition, or switch mode. |
-| **Stitch**                   | Connect multiple paths end-to-end. Connect or fuse endpoints.                   |
-| **Shrink**                   | Shorten from start, end, or both. By count or distance.                         |
-| **Slide**                    | Move points along the path toward neighbors. Relative or discrete amount.       |
-| **Solidify**                 | Convert segments into oriented bounding box representations.                    |
-| **Path Crossings**           | Find intersection points between or within paths.                               |
-| **Bounds Path Intersection** | Find points within a distance threshold of paths.                               |
+Several nodes add or remove points to reshape geometry. Beveling rounds off corners with line, arc, or custom profiles. Resampling enforces uniform spacing, either preserving point count or targeting a specific distance. Subdivision inserts points between existing ones, while fusing collinear points and tangent-based reduction go the other direction, removing points that don't contribute meaningful shape.
 
-> See Common Operations for path modification workflows.
+Other operations change the path's extent or connectivity. You can insert external points at their nearest path location, stitch multiple paths end-to-end, shrink endpoints inward, shift the starting point of closed paths, or solidify segments into oriented bounding boxes.
+
+Attribute operations live here too. Rolling segments a path into ranges and blends attributes within each range, while blending interpolates attributes from start to end as a gradient.
+
+> See [Common Path Operations](../../../working-with-pcgex/paths/common-path-operations.md) for path modification workflows.

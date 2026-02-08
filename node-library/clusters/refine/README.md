@@ -4,35 +4,10 @@ icon: grid-round-2
 
 # Refine
 
-**Edge refinement operations. All refinement sub-nodes run through the Refine Edges node, which accepts one or more refinement operations.**
+**Raw cluster generation almost never gives you exactly the topology you want. Refinement is where you sculpt it.**
 
-| Node             | Description                                                 |
-| ---------------- | ----------------------------------------------------------- |
-| **Refine Edges** | Applies one or more refinement operations to cluster edges. |
+The central node here is Cluster : Refine, which accepts one or more refinement operation sub-nodes. These range from filter-based pruning (keep or remove edges by condition) to geometric refinements like Gabriel graph construction and minimum spanning tree extraction, to overlap removal for cleaning up crossed edges. You can chain multiple operations in a single Refine pass.
 
-| Node                   | Description                                               |
-| ---------------------- | --------------------------------------------------------- |
-| **Subdivide Edges**    | Insert new Vtx along edges by count or distance           |
-| **Simplify Clusters**  | Remove redundant degree-2 Vtx from chains                 |
-| **Filter Vtx**         | Remove vertices by condition with cascading edge cleanup  |
-| **Fuse Clusters**      | Merge close Vtx across clusters with attribute blending   |
-| **Connect Clusters**   | Bridge disconnected cluster components                    |
-| **Decompose Clusters** | Separate disconnected components into individual clusters |
-
-### Refinement Sub-Nodes
-
-| Sub-Node                      | Description                                                                          |
-| ----------------------------- | ------------------------------------------------------------------------------------ |
-| **Filter**                    | Remove/keep edges based on filter evaluation                                         |
-| **Length-Based**              | Keep/remove shortest or longest edge per Vtx (4 variants)                            |
-| **Score-Based**               | Keep/remove highest or lowest scoring edge per Vtx (4 variants, requires heuristics) |
-| **Gabriel**                   | Produce Gabriel graph (diametric circle test)                                        |
-| **Beta Skeleton**             | Configurable neighborhood parameter                                                  |
-| **MST (Prim)**                | Minimum spanning tree via Prim's algorithm (requires heuristics)                     |
-| **DFS (Tarjan)**              | Identify bridge edges via depth-first search                                         |
-| **Remove Leaves**             | Strip dead-end vertices                                                              |
-| **Remove Leaves (Recursive)** | Strip dead-end vertices recursively                                                  |
-| **Overlap**                   | Remove overlapping/crossing edges with angle filtering                               |
-| **Line Trace**                | Remove edges blocked by world geometry via raycasts                                  |
+Beyond Refine, this section includes standalone nodes that handle broader structural changes. Simplification collapses redundant degree-2 chains. Vtx filtering removes points entirely with cascading edge cleanup. Fuse Clusters merges overlapping Vtx across separate clusters. Connect Clusters bridges disconnected components, and Decompose Clusters splits them apart. These are coarser tools than edge refinement — they reshape the cluster at a structural level rather than edge by edge.
 
 > See [Refining Clusters](../../../working-with-pcgex/clusters/refining-clusters.md) for refinement strategies and workflows.

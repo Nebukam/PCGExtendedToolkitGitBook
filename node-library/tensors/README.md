@@ -8,10 +8,11 @@ icon: grid-round-2-plus
 
 ### Sections
 
-| Section   | Contents                                                                         |
-| --------- | -------------------------------------------------------------------------------- |
-| Effectors | Field sources — constant, pole, spin, flow, noise, path/spline, surface, inertia |
-| Samplers  | Sampling methods — default, adaptive RK, RK4, six-point averaging                |
+| Section         | Contents                                                                         |
+| --------------- | -------------------------------------------------------------------------------- |
+| Common Settings | Shared configuration — tensor sampling mutations                                 |
+| Tensors         | Field sources — constant, pole, spin, flow, noise, path/spline, surface, inertia |
+| Samplers        | Sampling methods — default, adaptive RK, RK4, six-point averaging                |
 
 #### Tensor Consumers
 
@@ -32,4 +33,4 @@ Tensors also appear as optional influence in other systems:
 
 For understanding tensor fields, effector types, and sampling:
 
-* [Tensor Concepts](./)
+* [Tensor Concepts](../../working-with-pcgex/additional-systems/tensors.md)

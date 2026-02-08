@@ -4,14 +4,9 @@ icon: grid-2
 
 # Vtx Filters
 
-**Filters that evaluate cluster Vtx using topology information -- adjacency, neighbor relationships, edge properties.**
+**Vtx filters evaluate cluster Vtx through their topology — the edges they connect to, the neighbors they share, and the angles they form.** Regular point filters can test any attribute on a Vtx, but Vtx filters see the cluster structure around each point.
 
-| Node                    | Description                             |
-| ----------------------- | --------------------------------------- |
-| **Node Adjacency**      | Test relationships between adjacent Vtx |
-| **Node Edge Num**       | Test the number of connected neighbors  |
-| **Node Edge Direction** | Test directions of connected edges      |
-| **Node Edge Angle**     | Test angles between connected edges     |
+Adjacency filters test relationships between a Vtx and its neighbors: whether connected Vtx share attribute values, how many edges radiate from a point, and what directions those edges take. Angle filters measure the spread between connected edges, which is useful for identifying sharp turns, dead ends, or smooth junctions in a cluster's geometry.
 
 ### Concepts
 

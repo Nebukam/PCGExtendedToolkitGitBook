@@ -2,6 +2,15 @@
 icon: grid-round-2-plus
 ---
 
-# Transform
+# Spatial
 
-**Generic point transforms — operations that modify point positions, rotations, and scales without requiring cluster or path context.** These work on any point data regardless of what it represents.
+**Point-level spatial operations that work on any data — no cluster or path context required.** Generating new points from existing ones, fusing overlapping points, transforming positions and orientations, and analyzing spatial properties like collocation and bounds.
+
+### Sections
+
+| Section   | Contents                                                                       |
+| --------- | ------------------------------------------------------------------------------ |
+| Generate  | Create new point data — Copy to Points, Bounds To Points                       |
+| Modify    | Reshape point sets — fusing, bounds conversion, bin packing                    |
+| Transform | Move and orient points — transforms, relaxation, projection, tensor-driven     |
+| Analyze   | Inspect spatial properties — collocation, normalization, bounds decomposition   |

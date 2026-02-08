@@ -4,23 +4,14 @@ icon: grid-round-2-plus
 
 # Shapes
 
-**Parametric shape builders — generate point patterns from mathematical definitions.** Each shape is generated fresh from its seed point: position, rotation, and scale determine the result. With distance-based resolution, larger seeds produce more points to maintain consistent spacing.
+**Shapes are parametric point patterns generated from mathematical definitions.** Each shape builder is a sub-node that describes a geometry — circles, regular polygons, 3D grids, Fibonacci sphere distributions — and **Create Shapes** is the node that applies those builders to seed points.
 
-#### Available Shapes
+Every shape is generated relative to its seed point's transform. Position, rotation, and scale all flow through. With distance-based resolution, larger seeds automatically produce more points to maintain consistent spacing across different scales.
 
-| Shape                | What It Generates                                                       |
-| -------------------- | ----------------------------------------------------------------------- |
-| **Circle**           | Circular or arc patterns — configurable start/end angle                 |
-| **Polygon**          | Regular polygons with optional skeleton spokes from center to perimeter |
-| **3D Grid**          | Three-dimensional grid with per-axis resolution and fit adjustment      |
-| **Fibonacci Sphere** | Near-optimal uniform sphere distribution via Fibonacci lattice          |
-
-#### Create Shapes
-
-The **Create Shapes** node takes seed points and applies shape builder sub-nodes to each. Output modes: Per Dataset, Per Seed, or Per Shape.
+Create Shapes supports multiple output modes so the resulting points can be grouped per dataset, per seed, or per individual shape depending on what downstream processing needs.
 
 ### Concepts
 
 For understanding shape generation and seed-relative behavior:
 
-* [Shape Concepts](./)
+* [Shape Concepts](../../working-with-pcgex/additional-systems/shapes.md)

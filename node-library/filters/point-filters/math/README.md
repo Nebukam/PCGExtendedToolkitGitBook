@@ -4,17 +4,11 @@ icon: grid-2
 
 # Math
 
-**Filters using numeric and logical operations.**
+**Math filters apply numeric and logical operations that go beyond simple attribute comparison.** Where attribute filters ask "what value does this point have?", math filters ask "what does this value mean in context?"
 
-| Node               | Description                        |
-| ------------------ | ---------------------------------- |
-| **Modulo Compare** | Test remainder of division         |
-| **Mean Filter**    | Compare against collection average |
-| **Dot Filter**     | Dot product between vectors        |
-| **Angle Filter**   | Angle between directions           |
-| **Bitmask Filter** | Bitwise flag testing               |
-| **Segment Length** | Test edge/segment length           |
-| **Segment Cross**  | Test segment intersection          |
+Modulo arithmetic lets you select every Nth point or test divisibility patterns. Statistical filters compare a point's value against the collection mean. Dot product and angle filters evaluate directional relationships between vectors. Bitmask filters test individual bit flags for encoded state.
+
+The section also includes segment geometry filters — length testing and cross-product checks — which evaluate the implicit line segment between consecutive points.
 
 ### Concepts
 
