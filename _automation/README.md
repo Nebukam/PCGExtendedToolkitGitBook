@@ -340,14 +340,68 @@ _automation/
 │   ├── _inheritance.json              # Inheritance mapping
 │   ├── _classification.json           # Type classification
 │   └── [Module]/[Path]/[File].json    # Per-file data
+├── mapping.json                       # Generated staging ↔ library ↔ source mapping
 ├── scripts/
 │   ├── pcgex-doc.js                   # Main CLI (use this!)
+│   ├── build-mapping.js               # Staging ↔ node-library ↔ source mapping
 │   ├── index-generator.js             # Build index
 │   └── get-context.js                 # Legacy context builder
 └── prompts/
     ├── doc-agent.md                   # Documentation format rules
     └── review-agent.md                # Review instructions
 ```
+
+## Staging ↔ Node-Library Mapping
+
+The `build-mapping.js` script links three locations together: `_staging/*.md` docs, `node-library/*.md` published pages, and the C++ source `.h` files. The linking key is the GitHub source URL in each markdown file's footer.
+
+### Commands
+
+```bash
+cd D:\GIT\PCGExtendedToolkitGitBook\_automation
+
+# Build (or rebuild) mapping.json
+node scripts/build-mapping.js
+
+# List staging files with no node-library counterpart, grouped by module
+node scripts/build-mapping.js audit
+
+# List PCGExNodeLibraryDoc mismatches between source .h files and node-library paths
+node scripts/build-mapping.js check
+
+# Preview what source .h files would be updated
+node scripts/build-mapping.js update-source
+
+# Actually write the corrected PCGExNodeLibraryDoc values into .h files
+node scripts/build-mapping.js update-source --write
+```
+
+### How It Works
+
+1. Scans `_staging/**/*.md` and `node-library/**/*.md` for `[Source](https://github.com/.../Source/...)` links
+2. Normalizes each URL to a relative `.h` path (fixing the one `.cpp` → `.h` edge case)
+3. Matches files that point to the same source header
+4. Reads `PCGExNodeLibraryDoc` metadata from each `.h` file and compares it to the expected value derived from the node-library file path
+
+### Output: `mapping.json`
+
+Each entry contains:
+
+| Field | Description |
+|-------|-------------|
+| `source_relative` | Path relative to the Source root (e.g. `PCGExModule/Public/Path/File.h`) |
+| `source_disk` | Absolute path to the `.h` file on disk |
+| `staging` | Relative path to the staging `.md`, or `null` |
+| `node_library` | Relative path to the node-library `.md`, or `null` |
+| `doc_path` | Expected `PCGExNodeLibraryDoc` value (from node-library path) |
+| `current_doc_meta` | Current `PCGExNodeLibraryDoc` value in the `.h` file |
+| `status` | `ok`, `staging_only`, `library_only`, `meta_mismatch`, or `meta_missing` |
+
+The file also includes a `summary` block with aggregate counts.
+
+### `update-source`
+
+Replaces existing `PCGExNodeLibraryDoc="old"` values with the correct path derived from the node-library file structure. Entries where the metadata is missing entirely (no `PCGExNodeLibraryDoc` in the UCLASS macro) are skipped with a note — those require manual addition.
 
 ## Key Patterns
 
