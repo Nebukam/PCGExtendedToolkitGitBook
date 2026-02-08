@@ -1,5 +1,4 @@
 ---
-description: 'In editor :: PCGEx | Texture Param'
 icon: circle-dashed
 ---
 
@@ -7,24 +6,35 @@ icon: circle-dashed
 
 A simple texture parameter definition.
 
-📌 **Subnode** — Connects to **Texture Params** pins.
+### Overview
 
-**How It Works**
+This sub-node defines parameters for sampling textures from materials. It specifies which material texture parameter to sample, what channels to read, and how to output the sampled values. Multiple Texture Param nodes can be used together to sample different textures or channels from the same material.
 
-> AI-Generated, needs proofreading
+### How It Works
 
-* The Texture Param node defines a texture parameter by using the specified Material Parameter Name to identify the texture within materials that require this information.
-* It outputs the path of the texture to an attribute named according to the Texture IDAttribute Name setting.
-* The node samples the texture and outputs the sampled value to an attribute named as per the Sample Attribute Name, with the data type defined by Output Type.
-* Depending on the Selected Output Type, the output will be truncated or sparse based on the components specified in Sampled Channels.
+1. **Identify Texture**: Locates the texture using the material parameter name.
+2. **Configure Channels**: Specifies which color channels (R, G, B, A) to sample.
+3. **Set Output Type**: Determines the attribute type for sampled values.
+4. **Apply Scale**: Optionally scales the output values.
 
-#### Configuration
+**Usage Notes**
+
+* **Material Parameter**: The parameter name must match a texture parameter in the material.
+* **Channel Selection**: Sample specific channels or combinations (RGB, RGBA).
+* **Output Types**: Auto-detect based on channels, or force specific types (Vector4, Vector, etc.).
+* **Texture Arrays**: Supports sampling from texture arrays using an index.
+
+### Settings
+
+#### Parameter Identification
 
 <details>
 
-<summary><strong>Material Parameter Name</strong> <code>Name</code></summary>
+<summary><strong>Material Parameter Name</strong> <code>FName</code></summary>
 
-Name of the texture parameter to look for, when used in node that are set up to require this info.
+Name of the texture parameter to look for in the material.
+
+Default: `TextureParameter`
 
 ⚡ PCG Overridable
 
@@ -32,9 +42,25 @@ Name of the texture parameter to look for, when used in node that are set up to 
 
 <details>
 
-<summary><strong>Texture IDAttribute Name</strong> <code>Name</code></summary>
+<summary><strong>Texture ID Attribute Name</strong> <code>FName</code></summary>
 
-Name of the attribute to output the path to
+Name of the attribute to output the texture identifier to.
+
+Default: `TextureId`
+
+⚡ PCG Overridable
+
+</details>
+
+#### Sampling
+
+<details>
+
+<summary><strong>Sample Attribute Name</strong> <code>FName</code></summary>
+
+Name of the attribute to output the sampled value to.
+
+Default: `Sample`
 
 ⚡ PCG Overridable
 
@@ -42,23 +68,19 @@ Name of the attribute to output the path to
 
 <details>
 
-<summary><strong>Config</strong> <code>PCGExTextureParamConfig</code></summary>
+<summary><strong>Output Type</strong> <code>EPCGExTexSampleAttributeType</code></summary>
 
-Controls config.
+Type of the attribute to output the sampled value to.
 
-📦 See: TextureParam configuration
+| Option      | Description                             |
+| ----------- | --------------------------------------- |
+| **Auto**    | Output type driven by selected channels |
+| **Double**  | Output as Double                        |
+| **Vector4** | Output as Vector4 (RGBA)                |
+| **Vector**  | Output as Vector (RGB)                  |
+| **Vector2** | Output as Vector2 (RG)                  |
 
-⚡ PCG Overridable
-
-</details>
-
-**Sampling**
-
-<details>
-
-<summary><strong>Sample Attribute Name</strong> <code>Name</code></summary>
-
-Name of the attribute to output the sampled value to
+Default: `Auto`
 
 ⚡ PCG Overridable
 
@@ -66,30 +88,20 @@ Name of the attribute to output the sampled value to
 
 <details>
 
-<summary><strong>Output Type</strong> <code>PCGExTexSampleAttributeType</code></summary>
+<summary><strong>Sampled Channels</strong> <code>EPCGExTexChannelsFlags</code></summary>
 
-Type of the attribute to output the sampled value to
+Which color channels to sample from the texture.
 
-**Values:**
+| Flag     | Description                |
+| -------- | -------------------------- |
+| **R**    | Red channel                |
+| **G**    | Green channel              |
+| **B**    | Blue channel               |
+| **A**    | Alpha channel              |
+| **RGB**  | RGB channels (omits alpha) |
+| **RGBA** | All channels               |
 
-* **Auto**: Output type will be driven by selected channels.
-* **Float**: Output sample attribute type will be Float
-* **Double**: Output sample attribute type will be Double
-* **Double**: Output sample attribute type will be Integer
-* **Vector4**: Output sample attribute type will be Vector4
-* **Vector**: Output sample attribute type will be Vector
-* **Vector2**: Output sample attribute type will be Vector2
-* **Invalid**
-
-⚡ PCG Overridable
-
-</details>
-
-<details>
-
-<summary><strong>Sampled Channels</strong> <code>uint8</code></summary>
-
-What components will be sampled. Note that output will be truncated or sparse depending on the selected output type.
+Default: `RGBA`
 
 </details>
 
@@ -97,27 +109,40 @@ What components will be sampled. Note that output will be truncated or sparse de
 
 <summary><strong>Scale</strong> <code>double</code></summary>
 
-Apply a scale factor to the output value
+Scale factor applied to the output value.
+
+Default: `1`
 
 ⚡ PCG Overridable
 
 </details>
 
-**Texture Array**
+#### Texture Array
 
 <details>
 
-<summary><strong>Texture Index Input</strong> <code>PCGExInputValueType</code></summary>
+<summary><strong>Texture Index Input</strong> <code>EPCGExInputValueType</code></summary>
 
-Resolution input type
+Source for the texture array index.
+
+| Option        | Description                     |
+| ------------- | ------------------------------- |
+| **Constant**  | Use fixed index value           |
+| **Attribute** | Read index from point attribute |
+
+Default: `Constant`
 
 </details>
 
 <details>
 
-<summary><strong>Texture Index (Attr)</strong> <code>Name</code></summary>
+<summary><strong>Texture Index (Attr)</strong> <code>FName</code></summary>
 
-Texture Index Attribute.
+Attribute containing the texture array index.
+
+Default: `TextureIndex`
+
+📋 _Visible when Texture Index Input = Attribute_
 
 ⚡ PCG Overridable
 
@@ -127,7 +152,11 @@ Texture Index Attribute.
 
 <summary><strong>Texture Index</strong> <code>int32</code></summary>
 
-Texture Index Constant.
+Fixed texture array index. Use -1 for non-array textures.
+
+Default: `-1`
+
+📋 _Visible when Texture Index Input = Constant_
 
 ⚡ PCG Overridable
 
@@ -135,4 +164,4 @@ Texture Index Constant.
 
 ***
 
-Source: `Source\PCGExElementsSampling\Public\Core\PCGExTexParamFactoryProvider.h`
+📦 **Module**: `PCGExElementsSampling` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Core/PCGExTexParamFactoryProvider.h)

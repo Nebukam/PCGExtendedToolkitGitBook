@@ -1,29 +1,66 @@
 ---
-description: 'In editor :: PCGEx | Pathfinding : Plot Navmesh'
-icon: scrubber
+icon: circle
 ---
 
 # Pathfinding : Plot Navmesh
 
-Extract a single paths from navmesh, going through each seed points in order.
+Extract a single path from navmesh, going through each seed point in order.
 
-**How It Works**
+### Overview
 
-> AI-Generated, needs proofreading
+This node generates a continuous path that visits a sequence of plot (waypoint) points in order, finding optimal routes between consecutive waypoints using Unreal Engine's navigation mesh. Unlike regular navmesh pathfinding which goes from one seed to one goal, this creates a single path connecting multiple waypoints in sequence through the navmesh.
 
-* Extracts a single path from a navigation mesh by connecting seed points in the specified order.
-* Optionally adds the initial seed point at the beginning of the generated path if "Add Seed To Path" is enabled.
-* Optionally appends the goal point to the end of the path when "Add Goal To Path" setting is active.
-* Inserts additional plot points within the path if "Add Plot Points To Path" option is selected.
-* Creates a closed loop path if the "Closed Loop" boolean is set to true, connecting the last point back to the first.
+### How It Works
 
-#### Configuration
+1. **Order Waypoints**: Processes plot points in their input order.
+2. **Query Navmesh**: Finds paths between consecutive waypoints.
+3. **Concatenate Segments**: Joins all path segments into a single continuous path.
+4. **Optionally Close Loop**: Can connect the last point back to the first.
+
+**Usage Notes**
+
+* **Ordered Sequence**: Plot points are visited in their input order.
+* **Closed Loop**: Enable to path from the last waypoint back to the first.
+* **Failed Segments**: If any segment fails, optionally omit the entire path.
+* **Plot Point Insertion**: Original plot points can be inserted into the output path.
+
+### Behavior
+
+**Plot-Based Navmesh Path:**
+
+```
+Level with plot points (A, B, C, D) and obstacles:
+    ┌─────────────────────────────┐
+    │  A        ████████       B  │
+    │           ████████          │
+    │  ▓▓▓▓▓▓▓▓████████▓▓▓▓▓▓▓▓  │
+    │           ████████          │
+    │  D        ████████       C  │
+    └─────────────────────────────┘
+
+Resulting Path (visiting in order):
+    A → ... → B → ... → C → ... → D
+
+Closed Loop: D → ... → A (back to start)
+```
+
+### Inputs
+
+| Pin       | Type   | Description                           |
+| --------- | ------ | ------------------------------------- |
+| **Plots** | Points | Ordered waypoint collections to visit |
+
+### Settings
+
+#### Path Composition
 
 <details>
 
-<summary><strong>Add Seed To Path</strong> <code>bool</code></summary>
+<summary><strong>Add Seed to Path</strong> <code>bool</code></summary>
 
-Add seed point at the beginning of the path
+When enabled, includes the first plot point at the beginning of the path.
+
+Default: `true`
 
 ⚡ PCG Overridable
 
@@ -31,9 +68,11 @@ Add seed point at the beginning of the path
 
 <details>
 
-<summary><strong>Add Goal To Path</strong> <code>bool</code></summary>
+<summary><strong>Add Goal to Path</strong> <code>bool</code></summary>
 
-Add goal point at the end of the path
+When enabled, includes the last plot point at the end of the path.
+
+Default: `true`
 
 ⚡ PCG Overridable
 
@@ -41,9 +80,11 @@ Add goal point at the end of the path
 
 <details>
 
-<summary><strong>Add Plot Points To Path</strong> <code>bool</code></summary>
+<summary><strong>Add Plot Points to Path</strong> <code>bool</code></summary>
 
-Insert plot points inside the path
+When enabled, inserts all intermediate plot points into the path at their corresponding positions.
+
+Default: `false`
 
 ⚡ PCG Overridable
 
@@ -53,17 +94,23 @@ Insert plot points inside the path
 
 <summary><strong>Closed Loop</strong> <code>bool</code></summary>
 
-Controls closed loop.
+When enabled, paths from the last waypoint back to the first, creating a closed circuit.
+
+Default: `false`
 
 ⚡ PCG Overridable
 
 </details>
 
+#### Navigation
+
 <details>
 
 <summary><strong>Require Navigable End Location</strong> <code>bool</code></summary>
 
-Whether the pathfinding requires a naviguable end location.
+When enabled, pathfinding fails if waypoint locations are not on navigable surfaces.
+
+Default: `true`
 
 ⚡ PCG Overridable
 
@@ -73,48 +120,71 @@ Whether the pathfinding requires a naviguable end location.
 
 <summary><strong>Fuse Distance</strong> <code>double</code></summary>
 
-Fuse sub points by distance.
+Minimum distance between consecutive path points. Points closer than this are merged together.
+
+Default: `10`
 
 ⚡ PCG Overridable
 
 </details>
 
+#### Blending
+
 <details>
 
-<summary><strong>Blending</strong> <code>PCGExSubPointsBlendInstancedFactory</code> ⚙️</summary>
+<summary><strong>Blending</strong> <code>UPCGExSubPointsBlendInstancedFactory</code></summary>
 
-Controls how path points blend from seed to goal.
+Controls how attributes are interpolated along path segments.
+
+Available: Inherit Start, Inherit End, None
 
 ⚡ PCG Overridable
 
 </details>
 
+#### Advanced
+
 <details>
 
-<summary><strong>Pathfinding Mode</strong> <code>PCGExPathfindingNavmeshMode</code></summary>
+<summary><strong>Pathfinding Mode</strong> <code>EPCGExPathfindingNavmeshMode</code></summary>
 
-Pathfinding mode
+The navmesh query mode to use.
+
+| Option           | Description                                       |
+| ---------------- | ------------------------------------------------- |
+| **Regular**      | Standard navmesh pathfinding                      |
+| **Hierarchical** | Uses hierarchical pathfinding for large distances |
+
+Default: `Regular`
 
 </details>
 
 <details>
 
-<summary><strong>Nav Agent Properties</strong> <code>NavAgentProperties</code></summary>
+<summary><strong>Nav Agent Properties</strong> <code>FNavAgentProperties</code></summary>
 
-Nav agent to be used by the nav system.
+Properties of the navigation agent used for pathfinding. Affects which areas of the navmesh are traversable.
 
 </details>
 
 <details>
 
-<summary><strong>Omit Complete Path On Failed Plot</strong> <code>bool</code></summary>
+<summary><strong>Omit Complete Path on Failed Plot</strong> <code>bool</code></summary>
 
-Controls omit complete path on failed plot.
+When enabled, if any segment between waypoints fails, the entire path is discarded.
+
+Default: `false`
 
 ⚡ PCG Overridable
 
 </details>
+
+### Outputs
+
+| Pin       | Type   | Description                             |
+| --------- | ------ | --------------------------------------- |
+| **Paths** | Points | Continuous paths visiting all waypoints |
 
 ***
 
-Source: `Source\PCGExElementsPathfindingNavmesh\Public\Elements\PCGExPathfindingPlotNavmesh.h`
+📦 **Module**: `PCGExElementsPathfindingNavmesh` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfindingNavmesh/Public/Elements/PCGExPathfindingPlotNavmesh.h)

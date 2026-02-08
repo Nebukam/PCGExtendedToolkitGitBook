@@ -1,243 +1,154 @@
 ---
-description: Asset collection workflow
-icon: boxes-packing
+icon: spray-can
 ---
 
 # Asset Staging
 
-PCGEx introduces the concept of [assets-management](../../node-library/assets-management/ "mention"), a small set of features that work together to **heavily streamline managing list of assets and distribute them on points; as well as promote re-usability and easy tooling.**
+**Every PCG project hits the same wall: you need varied assets, weighted selection, material swaps, and per-entry metadata — and vanilla PCG makes you build all of that from scratch every time.** Complex loop chains, multiple layers of match-and-set, everyone reinventing the same wheel. Asset staging handles this in one system.
 
-> In short, a collection a list of entries, each of which has a weight, full ISMC / SM descriptor exposed, material randomization, sockets (including custom entries), transform variations, and a few additional goodies.
+Staging separates **selection** from **spawning**:
 
-{% hint style="info" %}
-Asset management is primarily designed for random distribution but can be used with more precise control as well.
-{% endhint %}
+1. **Collections** define available assets with metadata (weights, categories, materials, sockets, properties)
+2. **Staging nodes** assign collection entries to points
+3. **Handlers** spawn the result — different handlers for different asset types
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Flow diagram: Collection → Staging Node → Staged Points → Handler → Scene</p></figcaption></figure>
 
-### Staging has two main components
+No assets are loaded during staging. The node reads pre-cached metadata and writes attributes. Staging is fast because it's just data, not asset loading.
 
-{% stepper %}
-{% step %}
-### Asset Collections
+### Collection Types
 
-The first part is [collections](../../node-library/assets-management/collections/ "mention").
+Collections aren't just about meshes. There are three types, and each serves a different purpose with a different downstream handler:
 
-Asset collections are **data assets** that contain a list of _entries_. Each entry represent a single mesh, actor _or another collection_; and it expose useful parameters.
+<table data-view="cards"><thead><tr><th>Collection Type</th><th>Contains</th><th>Spawner</th><th data-hidden data-card-cover data-type="image">Cover image</th></tr></thead><tbody><tr><td><strong>Mesh Collection</strong></td><td>Static meshes</td><td>Vanilla Spawn Static Mesh + Mesh Selector Staged</td><td data-object-fit="contain"><a href="../../.gitbook/assets/PCGExMeshCollection.png">PCGExMeshCollection.png</a></td></tr><tr><td><strong>Actor Collection</strong></td><td>Actor classes (blueprints)</td><td>Vanilla Spawn Actor</td><td data-object-fit="contain"><a href="../../.gitbook/assets/PCGExActorCollection.png">PCGExActorCollection.png</a></td></tr><tr><td><strong>PCG Data Collection</strong></td><td>PCG Data Assets</td><td>PCGEx Load PCG Data Asset</td><td data-object-fit="contain"><a href="../../.gitbook/assets/PCGExPCGDataAssetCollection.png">PCGExPCGDataAssetCollection.png</a></td></tr></tbody></table>
 
-> There are two main types of collections at the moment: [mesh-collection.md](../../node-library/assets-management/collections/mesh-collection.md "mention") and [actor-collection.md](../../node-library/assets-management/collections/actor-collection.md "mention"). _Each is dedicated to a single type of asset, but you can't mix the two types together — i.e, Mesh-type collection cannot have actor-type subcollections_.
-{% endstep %}
+**PCG Data Collections** deserve special attention. PCG Data Assets are often created by converting a level or level section into a reusable data asset. Distributing these through collections gives you weighted, categorized placement of entire pre-authored level chunks.
 
-{% step %}
-### Asset Staging Node
+**Actor Collections** handle anything that needs to be a full actor: blueprints with logic, interactive objects, complex hierarchies. The Spawn Actor node handles instantiation.
 
-The second part is the [asset-staging](../../node-library/assets-management/asset-staging/ "mention") node.
-
-That node takes a single Collection data asset and use information & attributes stored on those points to _assign_ a single entry to each point; and can do extensive computations based on the selected entry.
-
-> Note that the asset staging doesn't spawn anything — it only prepare the points with all the necessary information for them to spawn later with the stock `Static Mesh Spawner` or `Spawn Actor` nodes.
->
-> _Mesh Collections can also be used with_ [spline-mesh](../../node-library/paths/spline-mesh/ "mention")_._
-{% endstep %}
-{% endstepper %}
-
-{% content-ref url="technical-note-asset-collections.md" %}
-[technical-note-asset-collections.md](technical-note-asset-collections.md)
-{% endcontent-ref %}
-
-## Basic Collection Management
-
-### Creating Collections
-
-There's two ways of creating a new collection; either a fresh new data asset, or through content browser action from a selection of either mesh or actors.&#x20;
-
-<details>
-
-<summary>New Data Asset</summary>
-
-Simply create a new asset of type **Data Asset** and select either `[PCGEx] Mesh Collection` or `[PCGEx] Actor Collection`, depending on the type of asset you want to work with.
-
-<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
-
-
-
-</details>
-
-<details>
-
-<summary>Create Collection from Selection</summary>
-
-Select a bunch of either static mesh or actors in the content browser, right click on any of them and go to `Asset Action > Create Or Update Asset Collection(s)`
-
-This will create a fresh new asset collection with an entry for each item&#x20;
-
-<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
-
-{% hint style="warning" %}
-Note that if an asset collection asset is part of the content browser selection, **that collection will be updated with the selected items** **instead of creating a new asset**.
-
-_Updating a collection means adding the selected assets to the collection, not replacing them._
-{% endhint %}
-
-</details>
-
-### Collection Editor
-
-{% tabs %}
-{% tab title="Assets Tab" %}
-<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
-
-The Asset tab is selected by default and represent the content of the collection.&#x20;
-
-> Some settings can be set per-item, or instead use global parameter set at the collection level itself.
-{% endtab %}
-
-{% tab title="Collection Settings" %}
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
-
-The Collection Settings contains global settings.&#x20;
-
-> Individual entries may be set-up to use values stored here instead, so it's easier to batch-override values.
-{% endtab %}
-{% endtabs %}
-
-### Managing entries
-
-Once you have one or more collection running, you'll want to make sure to add one or more _entries_.
-
-{% hint style="danger" %}
-When modifying a collection (adding entry, tweaking parameters), **make sure to hit the Rebuild Staging button at the top and save the asset when you're done.**
-
-_This will make sure precomputed data is properly updated before saving._
-{% endhint %}
-
-> _We'll be using a Mesh Collection for the example, Actor Collection have a slightly different model but same rules apply._
-
-<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>Entries can be either an asset, or another collection!</p></figcaption></figure>
-
-**Entries are a list of potential things that can be associated (**_**or matched**_**) with a point** when that collection is used with the [asset-staging](../../node-library/assets-management/asset-staging/ "mention") node.
-
-What matters the most is the `Static Mesh,` `Weight` and `Category`.             &#x20;
-
-* `Static Mesh` represent the mesh associated with this entry.
-* `Weight` is the weight of this entry relative to other entries _within the collection_.
-* `Category` is optional, but is a convenient way to "group" entries together inside a collection. _It can play a key role in narrowing distribution._
-
-{% hint style="info" %}
-There is no need to set the mesh in the available descriptors; that value will be overwritten with the main Static Mesh.
-{% endhint %}
-
-<figure><img src="../../.gitbook/assets/image (6) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
-
-<details>
-
-<summary>Entry properties overview</summary>
-
-Properties are covered in more details in their respective collection' section; but how they are used (or ignored) depends on the context in which the collection is used.
-
-{% hint style="warning" %}
-&#x20;Most of these features require the use of both the [Asset Staging](../../node-library/assets-management/asset-staging/) node in _Collection Map_ mode and the [Mesh Selector - Staged](../../node-library/assets-management/asset-staging/mesh-selector-staged.md) on the `Static Mesh Spawner`.
-{% endhint %}
-
-* `Is Sub Collection` lets you use **another collection instead of a single mesh**. If that entry gets picked, an entry from that sub-collection will be selected instead. There's no limit to the amount of nesting; <mark style="color:$danger;">but make sure to not create circular dependencies</mark>.
-* `ISM descriptor` is only used when working with the `Static Mesh Spawner`.
-* `SM descriptor` is only used by Spline Mesh components generated by the [Spline Mesh](../../node-library/paths/spline-mesh/) node
-* `Material Variants` lets you setup material randomization; <mark style="color:$info;">for either 1-slot materials or multi-slot with specific indices.</mark>
-* `Category` is for when you want more precise control when staging assets, allowing points to only consider entries from a specific category.
-* `Tags` will be added on generated components (_ISMC or SplineMeshes_)
-* `Variation Mode` & `Variations` are opt-in feature to add some ranged variance to spawned assets, such as slight offsets in position, rotation or scale.
-* `Staging` contains the pre-computed data that will be used by the Asset Staging node, as well as sockets gathered from the selected mesh. <mark style="color:$info;">It's mostly read-only for verification purposes; although socket support custom entries</mark>.
+**Mesh Collections** are the most common for static props and environmental pieces, with additional support for material overrides and ISM/SM descriptors.
 
 {% hint style="success" %}
-**A weight value of 0 will disable that entry**, letting you keep all the settings and iterate faster with different settings without loosing data.
+Entry types can be mixed on the same points. A single distribution pass can stage meshes, actors, and PCG Data Assets — then downstream handlers each pick up their respective types. Use the Entry Type filter or write the entry type to an attribute for routing when using mixed sources.
 {% endhint %}
 
-</details>
+### Collections as Data Assets
 
-## Collection Staging
+Collections are created in the Content Browser as Data Assets. They're tracked by PCG — edit a collection and any freshly generated graph referencing it will auto-refresh. This makes iteration fast: tweak weights, swap assets, adjust properties, and see the result immediately.
 
-Preferred Setup - Collection Map
+Each entry carries:
 
-This cover the preferred way of working with the asset collection. If you're after the least "custom" approach, or simply need a random asset path, see [#basic-setup-mesh-path-to-attribute](./#basic-setup-mesh-path-to-attribute "mention").
+* **Weight** (probability relative to other entries)
+* **Category** (for filtered distribution)
+* **Custom properties** (arbitrary key-value data per entry)
+* **Variations** (transform randomization)
+* **Tags**
+* Type-specific metadata (descriptors, materials, sockets, grammar rules)
 
-{% stepper %}
-{% step %}
-### Stage a collection
+#### Subcollections
 
-Drop the PCGEx' Asset Staging node and select which collection to use and change the `Output Mode` to **Collection Map**.
+Entries can reference other collections instead of assets, creating hierarchy:
 
-<figure><img src="../../.gitbook/assets/image (10) (1) (1).png" alt=""><figcaption></figcaption></figure>
+```
+Main Collection
+├─ Entry: Subcollection "Tall Objects" (weight: 30)
+│   ├─ Entry: LampPost (weight: 50)
+│   └─ Entry: Tree (weight: 50)
+├─ Entry: Subcollection "Short Objects" (weight: 70)
+│   ├─ Entry: Trash (weight: 40)
+│   ├─ Entry: Crate (weight: 40)
+│   └─ Entry: Barrel (weight: 20)
+```
 
-This will reveal a new <mark style="color:$warning;">**Map**</mark> pin, and add a non-human readable value to the points data.
+{% hint style="warning" %}
+Avoid circular subcollection references. A collection cannot reference itself, directly or indirectly.
+{% endhint %}
 
-<details>
+#### Custom Properties
 
-<summary>What's going on here</summary>
+The recent addition of **per-entry custom properties** covers the remaining edge cases. Define a property schema at the collection level, override values per entry, and load them onto points with **Staging : Load Properties**. This turns collections into rich data sources — not just asset pickers.
 
-Collection map output will write a `int64` attribute on the points as well as output a small attribute set with some data in it.
+### The Staging Workflow
 
-The `int64` attribute `PCGEx/CollectionEntry` contains packed selection data for that point, in a format that can be very efficiently retrieved by the [mesh-selector-staged.md](../../node-library/assets-management/asset-staging/mesh-selector-staged.md "mention") with the help of the data mapping produced by the node.
+#### Distribute
 
-You can read more about this in the [technical-note-asset-collections.md](technical-note-asset-collections.md "mention")
+**Staging : Distribute** assigns collection entries to points:
 
-</details>
-{% endstep %}
+1. For each input point, select an entry using distribution settings
+2. Write entry information to point attributes
+3. Output staged points ready for handling
 
-{% step %}
-### Spawn meshes
+Two output modes:
 
-Drop a stock `Static Mesh Spawner`, select the [mesh-selector-staged.md](../../node-library/assets-management/asset-staging/mesh-selector-staged.md "mention").
+* **Collection Map** (recommended): Stores references for use with PCGEx spawning. Supports chaining, merging, and deferred spawning.
+* **Point Attributes**: Writes asset paths directly for use with vanilla PCG spawners.
 
-<figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+#### Spawning by Type
 
-Now, expand the node to reveal extra pins, and plug the [asset-staging](../../node-library/assets-management/asset-staging/ "mention")' <mark style="color:$warning;">**Map**</mark> to the the <mark style="color:$warning;">**Overrides**</mark> pin of the spawner.&#x20;
+After staging, each asset type uses the appropriate spawner. PCGEx is built to interface with vanilla PCG spawning nodes — it prepares the data, vanilla nodes do the spawning:
 
-<mark style="color:$success;">That's it.</mark>
-{% endstep %}
-{% endstepper %}
+**Meshes** → Vanilla **Spawn Static Mesh** with Mesh Selector Staged (collection map) or Mesh Selector by Attribute (attribute mode) **Actors** → Vanilla **Spawn Actor** node **PCG Data Assets** → PCGEx's **Load PCG Data Asset** node (the one exception — no vanilla equivalent exists)
 
-> Collection Map enable more advanced ways to stage lots of assets and use a single `Static Mesh Spawner` — read more about it in the [chain-staging.md](chain-staging.md "mention") page.
-
-### Basic setup - Mesh path to attribute
-
-The most straightforward way to use Asset Collections is by using them with an Asset Staging node, and output the entry path to an attribute for use with the `Mesh Selector by Attribute`.
+Collection map mode preserves material variations, descriptors, and per-entry properties that attribute output loses.
 
 {% hint style="info" %}
-**This is not the preferred way to work with asset collections** as it prevents you from leveraging the much more efficient workflow covered right after this.
+The collection system is extensible. Production teams can create custom collection types in C++ and build their own staging consumers. The existing staging nodes serve as good examples of how to read and process collection data.
 {% endhint %}
 
-<details>
+### Distribution
 
-<summary>1 - Stage a collection</summary>
+Distribution controls how entries are selected:
 
-Drop the PCGEx' Asset Staging node and select which collection to use.\
-By default, this will write the path of the mesh to a new point attribute named `AssetPath`
+* **Index Mode**: Deterministic, by position in collection
+* **Random Mode**: Equal probability, ignores weights
+* **Weighted Random Mode**: Probability proportional to weight
 
-_The staging node offer a lot of options and tweaks, which we won't cover here._
+#### Categories
 
-<figure><img src="../../.gitbook/assets/image (8) (1) (1).png" alt=""><figcaption></figcaption></figure>
+Entries can belong to categories. Points specify which category to draw from (constant or attribute-based), and distribution applies only within that category. Points with `Type = "decoration"` select only from decoration-category entries.
 
-This will distribute entries on the points, writing the asset path to an attribute and optionally modifying the output points so they match the bounds of the mesh when spawned.
+### Fitting
 
-</details>
+Staging can adjust point transforms to match asset bounds:
 
-<details>
+* **Scale to Fit**: Scale points so spawned assets fit within specified bounds
+* **Justification**: Align the asset's pivot within bounds (center, bottom, corner, etc.)
 
-<summary>2 - Spawn Meshes</summary>
+Justification controls where the asset sits after scaling — it's the difference between an asset centered in its slot versus sitting on the ground plane. Less intuitive than scale-to-fit, but essential for correct placement.
 
-Drop a stock `Static Mesh Spawner`, select the `Mesh Selector by Attribute` and use the attribute your wrote to in the previous step.
+**Staging : Fitting** is a standalone node that applies fitting as a separate pass. It works with both collection map data and vanilla mesh path attributes, bringing scale-to-fit and justification to workflows that don't use the full staging pipeline.
 
-<figure><img src="../../.gitbook/assets/image (9) (1) (1).png" alt=""><figcaption></figcaption></figure>
+### Material Variations
 
-<mark style="color:$success;">That's it.</mark>
+Mesh entries support material slot overrides with weighted variants. Each slot can have multiple materials with independent weights. Selection uses the same seed system as entry distribution — visual variety without duplicating mesh assets.
 
-</details>
+### Sockets
 
-## In depth Staging settings
+Entries can define **sockets**: named attachment points extracted from meshes or added manually. **Staging : Load Sockets** creates points at socket positions from staged entries, enabling procedural modular construction.
 
-Now that you have a basic setup running with an asset staging node and a collection distributed to points, let's dig into the meat of that node' features.
+### Foundational Role
 
-* [distribution.md](distribution.md "mention") controls how entries & sub-collections are assigned to individual points.
-* [fit-to-size.md](fit-to-size.md "mention") and [justification.md](justification.md "mention") covers how [fitting.md](../../node-library/shared-concepts/fitting.md "mention") settings are used in the context of staging
-* [variations.md](variations.md "mention") covers briefly how variations can be leveraged during staging.
+Asset staging underlies other PCGEx systems:
 
+* **Valency** uses collections for module assignment
+* **Grammar** systems reference collection entries via **Collection to Module Infos**
+* **Spline Mesh** uses mesh collections for spline components
+
+Understanding staging is prerequisite for these advanced features.
+
+### In This Section
+
+* Collections - Collection types and organization
+* Distribution - Selection strategies and categories
+* Fitting - Scale, justification, and transform adjustment
+
+### Related
+
+**Concepts:**
+
+* Valency - Constraint solving using staged collections
+
+**Node Library:**
+
+* Staging Nodes - Staging operation reference
+* Collection Types - Collection data asset reference

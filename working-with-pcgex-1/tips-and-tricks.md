@@ -1,6 +1,0 @@
----
-icon: lightbulb
----
-
-# Tips & Tricks
-

@@ -1,6 +1,0 @@
----
-icon: dice-three
----
-
-# Variations
-

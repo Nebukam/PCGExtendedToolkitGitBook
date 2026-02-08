@@ -19,7 +19,7 @@ Supports Unreal **5.7**, **5.6**, _and archived for 5.5, 5.4, 5.3_
 
 ### Start Here
 
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Getting Started</strong></td><td>Core mental model, feature overview, learning path</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td><td></td><td><a href="working-with-pcgex-1/getting-started/">getting-started</a></td></tr><tr><td><strong>Installation</strong></td><td>Precompiled binaries, FAB, or build from source</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td><td></td><td><a href="working-with-pcgex-1/getting-started/installation.md">installation.md</a></td></tr><tr><td><strong>Example Project</strong></td><td>Annotated graphs across all major systems</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td><td></td><td><a href="working-with-pcgex-1/getting-started/example-project.md">example-project.md</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Getting Started</strong></td><td>Core mental model, feature overview, learning path</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td><td></td><td><a href="working-with-pcgex/getting-started/">getting-started</a></td></tr><tr><td><strong>Installation</strong></td><td>Precompiled binaries, FAB, or build from source</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td><td></td><td><a href="working-with-pcgex/getting-started/installation.md">installation.md</a></td></tr><tr><td><strong>Example Project</strong></td><td>Annotated graphs across all major systems</td><td><a href=".gitbook/assets/placeholder-wide.jpg">placeholder-wide.jpg</a></td><td></td><td><a href="working-with-pcgex/getting-started/example-project.md">example-project.md</a></td></tr></tbody></table>
 
 ### The Docs
 
@@ -36,4 +36,4 @@ Supports Unreal **5.7**, **5.6**, _and archived for 5.5, 5.4, 5.3_
 * [**Discord**](https://discord.gg/Aze3puAg6T) — Dedicated PCGEx community
 * [**GitHub**](https://github.com/Nebukam/PCGExtendedToolkit) — Source, issues, contributions
 * [**Patreon**](https://www.patreon.com/c/pcgex) — Support the project
-* [**Changelogs**](changelogs/) — What's new
+* [**Changelogs**](infos/changelogs/) — What's new

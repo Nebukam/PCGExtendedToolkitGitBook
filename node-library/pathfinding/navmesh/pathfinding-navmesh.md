@@ -1,46 +1,93 @@
 ---
-description: 'In editor :: PCGEx | Pathfinding : Navmesh'
-icon: scrubber
+icon: circle
 ---
 
 # Pathfinding : Navmesh
 
 Extract paths from navmesh.
 
-**How It Works**
+### Overview
 
-> AI-Generated, needs proofreading
+This node generates paths between seed and goal points using Unreal Engine's built-in navigation mesh system. Unlike cluster-based pathfinding, this uses the level's pre-computed navmesh for pathfinding, making it suitable for game-world navigation that respects level geometry and navigation settings.
 
-* Extracts paths from a predefined navigation mesh (navmesh).
-* Utilizes settings to control goal selection and path composition, including whether to add a seed point at the beginning of the path and whether to include the goal point.
-* Ensures that the end location of the generated path is navigable if the "Require Navigable End Location" setting is enabled.
-* Fuses sub points in the path based on a specified distance threshold defined by the "Fuse Distance" parameter.
+### How It Works
 
-#### Configuration
+1. **Match Seeds to Goals**: Uses the goal picker to pair seed points with goal points.
+2. **Query Navmesh**: Finds paths through the navigation mesh for each pair.
+3. **Process Points**: Applies fusing and blending to path points.
+4. **Output Paths**: Creates path data with forwarded attributes and tags.
+
+**Usage Notes**
+
+* **Requires Navmesh**: The level must have a valid navigation mesh built.
+* **Nav Agent**: Respects navigation agent properties (size, capabilities).
+* **Navigable Endpoints**: Can require endpoints to be on navigable surfaces.
+* **Attribute Forwarding**: Seed and goal attributes can be transferred to paths.
+
+### Behavior
+
+**Navmesh Path Generation:**
+
+```
+Level with navmesh (navigable areas shown):
+    ┌─────────────────────────────┐
+    │  S1      ████████      G1   │
+    │          ████████           │
+    │  ▓▓▓▓▓▓▓▓████████▓▓▓▓▓▓▓▓  │
+    │          ████████           │
+    │  S2      ████████      G2   │
+    └─────────────────────────────┘
+
+    ████ = Non-navigable obstacle
+    ▓▓▓▓ = Navmesh path around obstacle
+
+Output: Paths following navmesh around obstacles
+   S1 → ... → G1 (navigates around obstacle)
+   S2 → ... → G2 (navigates around obstacle)
+```
+
+### Inputs
+
+| Pin       | Type   | Description                  |
+| --------- | ------ | ---------------------------- |
+| **Seeds** | Points | Starting points for paths    |
+| **Goals** | Points | Destination points for paths |
+
+### Settings
+
+#### Goal Picker
 
 <details>
 
-<summary><strong>Goal Picker</strong> <code>PCGExGoalPicker</code> ⚙️</summary>
+<summary><strong>Goal Picker</strong> <code>UPCGExGoalPicker</code></summary>
 
-Controls how goals are picked.
+Controls how seed points are matched with goal points. Uses the same goal picker system as cluster pathfinding.
+
+Available: Default (by index), All, Random, Index Attribute
 
 ⚡ PCG Overridable
 
 </details>
 
+#### Path Composition
+
 <details>
 
-<summary><strong>Add Seed To Path</strong> <code>bool</code></summary>
+<summary><strong>Add Seed to Path</strong> <code>bool</code></summary>
 
-Add seed point at the beginning of the path
+When enabled, includes the original seed point at the beginning of each path.
+
+Default: `true`
 
 </details>
 
 <details>
 
-<summary><strong>Add Goal To Path</strong> <code>bool</code></summary>
+<summary><strong>Add Goal to Path</strong> <code>bool</code></summary>
 
-Add goal point at the beginning of the path
+When enabled, includes the original goal point at the end of each path.
+
+Default: `true`
 
 </details>
 
@@ -48,7 +95,9 @@ Add goal point at the beginning of the path
 
 <summary><strong>Require Navigable End Location</strong> <code>bool</code></summary>
 
-Whether the pathfinding requires a naviguable end location.
+When enabled, pathfinding fails if the goal location is not on a navigable surface.
+
+Default: `true`
 
 </details>
 
@@ -56,82 +105,99 @@ Whether the pathfinding requires a naviguable end location.
 
 <summary><strong>Fuse Distance</strong> <code>double</code></summary>
 
-Fuse sub points by distance.
+Minimum distance between consecutive path points. Points closer than this are merged together.
+
+Default: `10`
 
 </details>
 
-**Advanced**
+#### Blending
 
 <details>
 
-<summary><strong>Pathfinding Mode</strong> <code>PCGExPathfindingNavmeshMode</code></summary>
+<summary><strong>Blending</strong> <code>UPCGExSubPointsBlendInstancedFactory</code></summary>
 
-Pathfinding mode
+Controls how attributes are interpolated along the path from seed to goal.
 
-</details>
-
-<details>
-
-<summary><strong>Nav Agent Properties</strong> <code>NavAgentProperties</code></summary>
-
-Nav agent to be used by the nav system.
-
-</details>
-
-**Blending**
-
-<details>
-
-<summary><strong>Blending</strong> <code>PCGExSubPointsBlendInstancedFactory</code> ⚙️</summary>
-
-Controls how path points blend from seed to goal.
+Available: Inherit Start, Inherit End, None
 
 ⚡ PCG Overridable
 
 </details>
 
-**Tagging & Forwarding**
+#### Tagging & Forwarding
 
 <details>
 
-<summary><strong>Seed Attributes To Path Tags</strong> <code>PCGExAttributeToTagDetails</code></summary>
+<summary><strong>Seed Attributes to Path Tags</strong> <code>FPCGExAttributeToTagDetails</code></summary>
 
-TBD
+Copies specified attributes from seed points as tags on output paths.
 
-📦 See: AttributeToTag configuration
+//→ See TODO FPCGExAttributeToTagDetails
 
 </details>
 
 <details>
 
-<summary><strong>Seed Forwarding</strong> <code>PCGExForwardDetails</code></summary>
+<summary><strong>Seed Forwarding</strong> <code>FPCGExForwardDetails</code></summary>
 
-Which Seed attributes to forward on paths.
+Controls which seed point attributes are forwarded to path points.
 
-📦 See: Forward configuration
-
-</details>
-
-<details>
-
-<summary><strong>Goal Attributes To Path Tags</strong> <code>PCGExAttributeToTagDetails</code></summary>
-
-TBD
-
-📦 See: AttributeToTag configuration
+//→ See TODO FPCGExForwardDetails
 
 </details>
 
 <details>
 
-<summary><strong>Goal Forwarding</strong> <code>PCGExForwardDetails</code></summary>
+<summary><strong>Goal Attributes to Path Tags</strong> <code>FPCGExAttributeToTagDetails</code></summary>
 
-Which Goal attributes to forward on paths.
+Copies specified attributes from goal points as tags on output paths.
 
-📦 See: Forward configuration
+//→ See TODO FPCGExAttributeToTagDetails
 
 </details>
+
+<details>
+
+<summary><strong>Goal Forwarding</strong> <code>FPCGExForwardDetails</code></summary>
+
+Controls which goal point attributes are forwarded to path points.
+
+//→ See TODO FPCGExForwardDetails
+
+</details>
+
+#### Advanced
+
+<details>
+
+<summary><strong>Pathfinding Mode</strong> <code>EPCGExPathfindingNavmeshMode</code></summary>
+
+The navmesh query mode to use.
+
+| Option           | Description                                       |
+| ---------------- | ------------------------------------------------- |
+| **Regular**      | Standard navmesh pathfinding                      |
+| **Hierarchical** | Uses hierarchical pathfinding for large distances |
+
+Default: `Regular`
+
+</details>
+
+<details>
+
+<summary><strong>Nav Agent Properties</strong> <code>FNavAgentProperties</code></summary>
+
+Properties of the navigation agent used for pathfinding. Affects which areas of the navmesh are traversable based on agent size and capabilities.
+
+</details>
+
+### Outputs
+
+| Pin       | Type   | Description                           |
+| --------- | ------ | ------------------------------------- |
+| **Paths** | Points | Generated paths following the navmesh |
 
 ***
 
-Source: `Source\PCGExElementsPathfindingNavmesh\Public\Elements\PCGExPathfindingNavmesh.h`
+📦 **Module**: `PCGExElementsPathfindingNavmesh` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfindingNavmesh/Public/Elements/PCGExPathfindingNavmesh.h)

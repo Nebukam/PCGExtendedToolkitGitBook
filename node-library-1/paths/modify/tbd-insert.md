@@ -1,6 +1,0 @@
----
-icon: circle
----
-
-# TBD Insert
-

@@ -1,6 +1,0 @@
----
-icon: objects-column
----
-
-# Collections
-

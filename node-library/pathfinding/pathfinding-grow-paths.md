@@ -1,73 +1,122 @@
 ---
-description: 'In editor :: PCGEx | Pathfinding : Grow Paths'
-icon: scrubber
+hidden: true
+icon: circle-plus
 ---
 
 # Pathfinding : Grow Paths
 
-{% hint style="warning" %}
-Grow Paths has been deprecated in favor of [flood-fill](../clusters/flood-fill/ "mention").
-{% endhint %}
-
 Grow paths from seeds.
 
-**How It Works**
+{% hint style="danger" %}
+This node is deprecated; use [cluster-flood-fill](cluster-flood-fill/ "mention") instead.
+{% endhint %}
 
-> AI-Generated, needs proofreading
+### Overview
 
-* The node initializes path growth from designated seeds within a graph structure.
-* Seed selection follows rules defined by the "Seed Picking" setting to determine starting nodes for path generation.
-* Path growth proceeds iteratively according to the "Growth Mode", with each iteration expanding paths outward from existing nodes until reaching the limit set by either "Num Iterations Constant" or the attribute specified in "Num Iterations Attribute".
-* Each seed can undergo a maximum number of iterations as defined, allowing for controlled expansion and complexity of generated paths.
+This node generates paths by growing outward from seed points through a cluster graph. Unlike goal-directed pathfinding, growth-based paths extend iteratively based on a growth direction, heuristics, and configurable limits. Seeds can spawn multiple branches that grow in parallel or sequence until they reach maximum iterations, distance, or stop conditions.
 
-#### Configuration
+### How It Works
+
+1. **Map Seeds**: Associates each seed point with its nearest cluster node.
+2. **Initialize Growth**: Sets up growth parameters (iterations, direction, distance).
+3. **Iterate Growth**: Extends paths by selecting the best next node based on heuristics.
+4. **Check Limits**: Stops growth when reaching max iterations, distance, or stop points.
+5. **Output Paths**: Creates path data for each completed growth.
+
+**Usage Notes**
+
+* **Growth Mode**: Parallel grows all seeds simultaneously; Sequence grows one seed completely before the next.
+* **Branching**: Seeds can spawn multiple growth branches from their starting node.
+* **Dynamic Parameters**: Iterations, direction, and distance can be read from attributes.
+* **Stop Points**: Mark vertices where growth should terminate.
+* **No-Growth Points**: Mark vertices that paths cannot traverse (but can be seed locations).
+
+### Behavior
+
+```
+Growth-Based Path Generation:
+
+Seed S with 2 branches, 3 iterations, direction = Right:
+
+Cluster:
+    [A]───[B]───[C]───[D]
+     │     │     │     │
+    [E]───[S]───[G]───[H]
+     │     │     │     │
+    [I]───[J]───[K]───[L]
+
+Growth (direction favors rightward):
+   Branch 1: S → G → C → D (3 iterations)
+   Branch 2: S → G → H → L (3 iterations, different path)
+
+Output: Two paths, both starting from S
+```
+
+### Inputs
+
+| Pin            | Type   | Description                            |
+| -------------- | ------ | -------------------------------------- |
+| **Vtx**        | Points | Cluster vertices                       |
+| **Edges**      | Points | Cluster edges                          |
+| **Seeds**      | Points | Starting points for growth             |
+| **Heuristics** | Params | Heuristic sub-nodes for growth scoring |
+
+### Settings
+
+#### Seed Selection
 
 <details>
 
-<summary><strong>Seed Picking</strong> <code>PCGExNodeSelectionDetails</code></summary>
+<summary><strong>Seed Picking</strong> <code>FPCGExNodeSelectionDetails</code></summary>
 
-Drive how a seed selects a node.
+Controls how seed points find their nearest cluster node.
 
-📦 See: NodeSelection configuration
-
-⚡ PCG Overridable
+//→ See TODO FPCGExNodeSelectionDetails
 
 </details>
 
 <details>
 
-<summary><strong>Growth Mode</strong> <code>PCGExGrowthIterationMode</code></summary>
+<summary><strong>Heuristic Score Mode</strong> <code>EPCGExHeuristicScoreMode</code></summary>
+
+How multiple heuristic scores are combined.
+
+Default: `Weighted Average`
+
+</details>
+
+#### Growth Mode
+
+<details>
+
+<summary><strong>Growth Mode</strong> <code>EPCGExGrowthIterationMode</code></summary>
 
 Controls how iterative growth is managed.
 
-**Values:**
+| Option       | Description                                               |
+| ------------ | --------------------------------------------------------- |
+| **Parallel** | Grows all seeds one iteration at a time until none remain |
+| **Sequence** | Grows each seed to completion before starting the next    |
 
-* **Parallel**: Does one growth iteration on each seed until none remain
-* **Sequence**: Grow a seed to its end, then move to the next seed
-
-</details>
-
-<details>
-
-<summary><strong>Num Iterations</strong> <code>PCGExGrowthValueSource</code></summary>
-
-The maximum number of growth iterations for a given seed.
-
-**Values:**
-
-* **Constant**: Use a single constant for all seeds
-* **Seed Attribute**: Attribute read on the seed.
-* **Vtx Attribute**: Attribute read on the vtx.
+Default: `Parallel`
 
 </details>
 
+#### Iterations
+
 <details>
 
-<summary><strong>Num Iterations Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+<summary><strong>Num Iterations</strong> <code>EPCGExGrowthValueSource</code></summary>
 
-Num iteration attribute name. (will be translated to int32)
+Source for maximum growth iterations per seed.
 
-⚡ PCG Overridable
+| Option             | Description                        |
+| ------------------ | ---------------------------------- |
+| **Constant**       | Use fixed value for all seeds      |
+| **Seed Attribute** | Read from seed point attribute     |
+| **Vtx Attribute**  | Read from cluster vertex attribute |
+
+Default: `Constant`
 
 </details>
 
@@ -75,7 +124,11 @@ Num iteration attribute name. (will be translated to int32)
 
 <summary><strong>Num Iterations Constant</strong> <code>int32</code></summary>
 
-Num iteration constant
+Fixed number of growth iterations.
+
+Default: `3`
+
+📋 _Visible when Num Iterations = Constant_
 
 ⚡ PCG Overridable
 
@@ -83,15 +136,11 @@ Num iteration constant
 
 <details>
 
-<summary><strong>Num Iterations Update Mode</strong> <code>PCGExGrowthUpdateMode</code></summary>
+<summary><strong>Num Iterations Attribute</strong> <code>FPCGAttributePropertyInputSelector</code></summary>
 
-Controls num iterations update mode.
+Attribute containing iteration count (converted to int32).
 
-**Values:**
-
-* **Once**: Read once at the beginning of the computation.
-* **Set Each Iteration**: Set the remaining number of iteration after each iteration.
-* **Add Each Iteration**: Add to the remaning number of iterations after each iteration.
+📋 _Visible when Num Iterations = Seed/Vtx Attribute_
 
 ⚡ PCG Overridable
 
@@ -99,23 +148,48 @@ Controls num iterations update mode.
 
 <details>
 
-<summary><strong>Seed Num Branches</strong> <code>PCGExGrowthValueSource</code></summary>
+<summary><strong>Num Iterations Update Mode</strong> <code>EPCGExGrowthUpdateMode</code></summary>
 
-The maximum number of growth started by a given seed.
+How iteration count updates during growth.
 
-**Values:**
+| Option                 | Description                            |
+| ---------------------- | -------------------------------------- |
+| **Once**               | Read once at start                     |
+| **Set Each Iteration** | Replace remaining iterations each step |
+| **Add Each Iteration** | Add to remaining iterations each step  |
 
-* **Constant**: Use a single constant for all seeds
-* **Seed Attribute**: Attribute read on the seed.
-* **Vtx Attribute**: Attribute read on the vtx.
+Default: `Once`
+
+📋 _Visible when Num Iterations = Vtx Attribute_
+
+⚡ PCG Overridable
+
+</details>
+
+#### Branching
+
+<details>
+
+<summary><strong>Seed Num Branches</strong> <code>EPCGExGrowthValueSource</code></summary>
+
+Source for number of growth branches per seed.
+
+Default: `Constant`
 
 </details>
 
 <details>
 
-<summary><strong>Seed Num Branches Mean</strong> <code>PCGExMeanMeasure</code></summary>
+<summary><strong>Seed Num Branches Mean</strong> <code>EPCGExMeanMeasure</code></summary>
 
-How the NumBranches value is to be interpreted against the actual number of neighbors.
+How branch count relates to available neighbors.
+
+| Option       | Description                               |
+| ------------ | ----------------------------------------- |
+| **Discrete** | Use exact branch count                    |
+| **Relative** | Interpret as ratio of available neighbors |
+
+Default: `Discrete`
 
 </details>
 
@@ -123,7 +197,37 @@ How the NumBranches value is to be interpreted against the actual number of neig
 
 <summary><strong>Num Branches Constant</strong> <code>int32</code></summary>
 
-Num branches constant
+Fixed number of branches per seed.
+
+Default: `1`
+
+📋 _Visible when Seed Num Branches = Constant_
+
+⚡ PCG Overridable
+
+</details>
+
+#### Growth Direction
+
+<details>
+
+<summary><strong>Growth Direction</strong> <code>EPCGExGrowthValueSource</code></summary>
+
+Source for preferred growth direction.
+
+Default: `Constant`
+
+</details>
+
+<details>
+
+<summary><strong>Growth Direction Constant</strong> <code>FVector</code></summary>
+
+Fixed growth direction vector.
+
+Default: `Up (0, 0, 1)`
+
+📋 _Visible when Growth Direction = Constant_
 
 ⚡ PCG Overridable
 
@@ -131,83 +235,23 @@ Num branches constant
 
 <details>
 
-<summary><strong>Num Branches Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+<summary><strong>Growth Direction Update Mode</strong> <code>EPCGExGrowthUpdateMode</code></summary>
 
-Num branches attribute name. (will be translated to int32)
+How direction updates during growth.
 
-⚡ PCG Overridable
-
-</details>
-
-<details>
-
-<summary><strong>Growth Direction</strong> <code>PCGExGrowthValueSource</code></summary>
-
-The maximum number of growth iterations for a given seed.
-
-**Values:**
-
-* **Constant**: Use a single constant for all seeds
-* **Seed Attribute**: Attribute read on the seed.
-* **Vtx Attribute**: Attribute read on the vtx.
+Default: `Once`
 
 </details>
 
-<details>
-
-<summary><strong>Growth Direction Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
-
-Growth direction attribute name. (will be translated to a FVector)
-
-⚡ PCG Overridable
-
-</details>
+#### Growth Distance
 
 <details>
 
-<summary><strong>Growth Direction Constant</strong> <code>Vector</code></summary>
+<summary><strong>Growth Max Distance</strong> <code>EPCGExGrowthValueSource</code></summary>
 
-Growth direction constant
+Source for maximum growth distance.
 
-⚡ PCG Overridable
-
-</details>
-
-<details>
-
-<summary><strong>Growth Direction Update Mode</strong> <code>PCGExGrowthUpdateMode</code></summary>
-
-Controls growth direction update mode.
-
-**Values:**
-
-* **Once**: Read once at the beginning of the computation.
-* **Set Each Iteration**: Set the remaining number of iteration after each iteration.
-* **Add Each Iteration**: Add to the remaning number of iterations after each iteration.
-
-</details>
-
-<details>
-
-<summary><strong>Growth Max Distance</strong> <code>PCGExGrowthValueSource</code></summary>
-
-The maximum growth distance for a given seed.
-
-**Values:**
-
-* **Constant**: Use a single constant for all seeds
-* **Seed Attribute**: Attribute read on the seed.
-* **Vtx Attribute**: Attribute read on the vtx.
-
-</details>
-
-<details>
-
-<summary><strong>Growth Max Distance Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
-
-Max growth distance attribute name. (will be translated to a FVector)
-
-⚡ PCG Overridable
+Default: `Constant`
 
 </details>
 
@@ -215,37 +259,25 @@ Max growth distance attribute name. (will be translated to a FVector)
 
 <summary><strong>Growth Max Distance Constant</strong> <code>double</code></summary>
 
-Max growth distance constant
+Maximum distance a growth can travel.
+
+Default: `500`
+
+📋 _Visible when Growth Max Distance = Constant_
 
 ⚡ PCG Overridable
 
 </details>
 
-**Advanced**
-
-<details>
-
-<summary><strong>Statistics</strong> <code>PCGExPathStatistics</code></summary>
-
-Output various statistics.
-
-</details>
-
-<details>
-
-<summary><strong>Use Octree Search</strong> <code>bool</code></summary>
-
-Whether or not to search for closest node using an octree. Depending on your dataset, enabling this may be either much faster, or slightly slower.
-
-</details>
-
-**Limits**
+#### Limits
 
 <details>
 
 <summary><strong>Use Growth Stop</strong> <code>bool</code></summary>
 
-Controls use growth stop.
+When enabled, uses an attribute to mark vertices where growth terminates.
+
+Default: `false`
 
 ⚡ PCG Overridable
 
@@ -253,19 +285,11 @@ Controls use growth stop.
 
 <details>
 
-<summary><strong>Growth Stop Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+<summary><strong>Growth Stop Attribute</strong> <code>FPCGAttributePropertyInputSelector</code></summary>
 
-An attribute read on the Vtx as a boolean. If true and this node is used in a path, the path stops there.
+Boolean attribute marking stop points. Growth ends when reaching these vertices.
 
-⚡ PCG Overridable
-
-</details>
-
-<details>
-
-<summary><strong>Invert Growth Stop</strong> <code>bool</code></summary>
-
-Inverse Growth Stop behavior
+📋 _Visible when Use Growth Stop is enabled_
 
 ⚡ PCG Overridable
 
@@ -275,7 +299,9 @@ Inverse Growth Stop behavior
 
 <summary><strong>Use No Growth</strong> <code>bool</code></summary>
 
-Controls use no growth.
+When enabled, uses an attribute to mark vertices that growth cannot traverse.
+
+Default: `false`
 
 ⚡ PCG Overridable
 
@@ -283,46 +309,70 @@ Controls use no growth.
 
 <details>
 
-<summary><strong>No Growth Attribute</strong> <code>PCGAttributePropertyInputSelector</code></summary>
+<summary><strong>No Growth Attribute</strong> <code>FPCGAttributePropertyInputSelector</code></summary>
 
-An attribute read on the Vtx as a boolean. If true, this point will never be grown on, but may be still used as seed.
+Boolean attribute marking no-growth points. Paths cannot pass through these vertices.
 
-⚡ PCG Overridable
-
-</details>
-
-<details>
-
-<summary><strong>Invert No Growth</strong> <code>bool</code></summary>
-
-Inverse No Growth behavior
+📋 _Visible when Use No Growth is enabled_
 
 ⚡ PCG Overridable
 
 </details>
 
-**Tagging & Forwarding**
+#### Tagging & Forwarding
 
 <details>
 
-<summary><strong>Seed Attributes To Path Tags</strong> <code>PCGExAttributeToTagDetails</code></summary>
+<summary><strong>Seed Attributes to Path Tags</strong> <code>FPCGExAttributeToTagDetails</code></summary>
 
-TBD
+Copies attributes from seed points to output path tags.
 
-📦 See: AttributeToTag configuration
+//→ See TODO FPCGExAttributeToTagDetails
 
 </details>
 
 <details>
 
-<summary><strong>Seed Forwarding</strong> <code>PCGExForwardDetails</code></summary>
+<summary><strong>Seed Forwarding</strong> <code>FPCGExForwardDetails</code></summary>
 
-Which Seed attributes to forward on paths.
+Forwards attributes from seed points to path points.
 
-📦 See: Forward configuration
+//→ See TODO FPCGExForwardDetails
 
 </details>
+
+#### Advanced
+
+<details>
+
+<summary><strong>Statistics</strong> <code>FPCGExPathStatistics</code></summary>
+
+Outputs usage statistics to cluster attributes.
+
+</details>
+
+<details>
+
+<summary><strong>Use Octree Search</strong> <code>bool</code></summary>
+
+Uses octree spatial indexing for nearest node queries.
+
+Default: `false`
+
+</details>
+
+#### Inherited Settings
+
+→ See Clusters Processor Settings for common cluster processing settings.
+
+### Outputs
+
+| Pin       | Type   | Description                                     |
+| --------- | ------ | ----------------------------------------------- |
+| **Paths** | Points | Generated growth paths                          |
+| **Vtx**   | Points | Modified vertices (with usage stats if enabled) |
+| **Edges** | Points | Modified edges (with usage stats if enabled)    |
 
 ***
 
-Source: `Source\PCGExElementsPathfinding\Public\Elements\PCGExPathfindingGrowPaths.h`
+📦 **Module**: `PCGExElementsPathfinding` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPathfinding/Public/Elements/PCGExPathfindingGrowPaths.h)

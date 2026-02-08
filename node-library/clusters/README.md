@@ -1,21 +1,34 @@
 ---
-icon: grid-round-2
+icon: grid-round-2-plus
 ---
 
 # Clusters
 
-{% content-ref url="../../working-with-pcgex/clusters/" %}
-[clusters](../../working-with-pcgex/clusters/)
-{% endcontent-ref %}
+**Everything for building, refining, transforming, and analyzing clusters.** From generating initial connectivity with diagrams and probes, through edge refinement and relaxation, to decomposition and path conversion.
 
-{% content-ref url="../assets-management/common-settings/" %}
-[common-settings](../assets-management/common-settings/)
-{% endcontent-ref %}
+Clusters are the dual-dataset system: Vtx (points) connected by Edges (also points). Most operations in this section take both as input.
 
-{% content-ref url="../shared-concepts/clusters-settings/output-settings.md" %}
-[output-settings.md](../shared-concepts/clusters-settings/output-settings.md)
-{% endcontent-ref %}
+### Sections
 
-{% content-ref url="common-settings/edge-direction.md" %}
-[edge-direction.md](common-settings/edge-direction.md)
-{% endcontent-ref %}
+| Section       | Contents                                                                                            |
+| ------------- | --------------------------------------------------------------------------------------------------- |
+| Generate      | Create clusters — diagrams (Delaunay, Voronoi, etc.), Connect Points with probes, from paths/meshes |
+| Refine        | Remove or keep edges — filter-based, geometric (Gabriel, MST), overlap removal                      |
+| Transform     | Modify cluster shape — relaxation (Laplacian, force-directed, Verlet), centrality                   |
+| Analyze       | Extract properties — cluster states, metadata, statistics                                           |
+| Pack / Unpack | Bundle and unbundle cluster data                                                                    |
+| Interop       | Convert between clusters and paths                                                                  |
+
+#### Generation Subsections
+
+| Subsection     | Contents                                                               |
+| -------------- | ---------------------------------------------------------------------- |
+| Diagrams       | Delaunay 2D/3D, Voronoi 2D/3D, Convex Hull, Cell Diagram, Dual Graph   |
+| Connect Points | Probe-based connectivity with distance, direction, and custom criteria |
+| Probes         | All probe types for Connect Points                                     |
+
+### Concepts
+
+For understanding cluster architecture, the dual-dataset model, and building strategies:
+
+* [Cluster Concepts](../../working-with-pcgex/clusters/)

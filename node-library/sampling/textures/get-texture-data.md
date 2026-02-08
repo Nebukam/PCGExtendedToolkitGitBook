@@ -1,32 +1,73 @@
 ---
-description: 'In editor :: PCGEx | Get Texture Data'
-icon: scrubber
+icon: circle
 ---
 
 # Get Texture Data
 
-Create texture data object from paths.
+Create texture data objects from paths.
 
-**How It Works**
+### Overview
 
-> AI-Generated, needs proofreading
+This node creates PCG Texture Data objects from texture or material paths stored in point attributes. It reads asset paths from points, resolves them to actual textures (extracting from materials if needed), and outputs ready-to-use texture data for sampling operations. This bridges the gap between asset references and PCG's texture sampling system.
 
-* Reads asset paths from an attribute specified by "Source Attribute Name", which can be either material or texture based on "Source Type".
-* Builds PCG Texture data for each unique texture reference if "Build Texture Data" is enabled.
-* Writes resolved texture paths as per their definitions if "Output Texture Ids" is enabled.
+### How It Works
 
-#### Configuration
+1. **Read Paths**: Gets asset paths from the specified attribute.
+2. **Resolve Assets**: Loads textures directly or extracts them from materials.
+3. **Build Texture Data**: Creates PCG Texture Data objects with sampling parameters.
+4. **Output References**: Optionally writes texture IDs back to points.
+
+**Usage Notes**
+
+* **Material Mode**: Extracts textures from materials using Texture Param definitions.
+* **Texture Mode**: Loads textures directly from texture asset paths.
+* **Filtering**: Supports Point (nearest) or Bilinear texture filtering.
+* **Tiling**: Configure texture tiling and transform for sampling.
+
+### Behavior
+
+Texture Data Creation:
+
+```
+Points with $AssetPath attribute:
+   P0: "/Game/Materials/M_Ground"
+   P1: "/Game/Materials/M_Grass"
+   P2: "/Game/Materials/M_Ground" (duplicate)
+
+With Texture Param looking for "Diffuse":
+   → Extracts diffuse texture from each material
+   → Creates unique Texture Data per unique texture
+   → Writes texture IDs to points
+
+Output:
+   Texture Data: [T_Ground_D, T_Grass_D]
+   Points: P0($TextureId=0), P1($TextureId=1), P2($TextureId=0)
+```
+
+### Inputs
+
+| Pin                | Type   | Description                                       |
+| ------------------ | ------ | ------------------------------------------------- |
+| **In**             | Points | Points with asset path attributes                 |
+| **Texture Params** | Params | Texture parameter definitions (for material mode) |
+| **Point Filters**  | Params | Optional filters for which points to process      |
+
+### Settings
+
+#### Source Configuration
 
 <details>
 
-<summary><strong>Source Type</strong> <code>PCGExGetTexturePathType</code></summary>
+<summary><strong>Source Type</strong> <code>EPCGExGetTexturePathType</code></summary>
 
-Type of path
+Type of asset path stored in the attribute.
 
-**Values:**
+| Option            | Description                                                       |
+| ----------------- | ----------------------------------------------------------------- |
+| **Texture Path**  | Attribute contains direct texture asset paths                     |
+| **Material Path** | Attribute contains material asset paths (requires Texture Params) |
 
-* **Texture Path**: Point attribute contains a texture path
-* **Material Path**: Point attribute contains a material path
+Default: `Material Path`
 
 ⚡ PCG Overridable
 
@@ -34,9 +75,11 @@ Type of path
 
 <details>
 
-<summary><strong>Source Attribute Name</strong> <code>Name</code></summary>
+<summary><strong>Source Attribute Name</strong> <code>FName</code></summary>
 
-Name of the attribute to read asset path from (material or texture).
+Name of the attribute containing the asset path.
+
+Default: `AssetPath`
 
 ⚡ PCG Overridable
 
@@ -44,9 +87,13 @@ Name of the attribute to read asset path from (material or texture).
 
 <details>
 
-<summary><strong>Output Texture Ids</strong> <code>bool</code></summary>
+<summary><strong>Output Texture IDs</strong> <code>bool</code></summary>
 
-If enabled, will write resolved texture paths as per their definitions.
+When enabled, writes resolved texture identifiers to points as defined by Texture Params.
+
+Default: `true`
+
+📋 _Visible when Source Type = Material Path_
 
 ⚡ PCG Overridable
 
@@ -56,24 +103,30 @@ If enabled, will write resolved texture paths as per their definitions.
 
 <summary><strong>Build Texture Data</strong> <code>bool</code></summary>
 
-If enabled, will build PCG Texture data for each unique texture reference found.
+When enabled, creates PCG Texture Data objects for each unique texture.
+
+Default: `true`
+
+📋 _Visible when Source Type = Material Path_
 
 ⚡ PCG Overridable
 
 </details>
 
-**Data**
+#### Texture Data Settings
 
 <details>
 
-<summary><strong>Filter</strong> <code>PCGExTextureFilter</code></summary>
+<summary><strong>Filter</strong> <code>EPCGExTextureFilter</code></summary>
 
-Method used to determine the value for a sample based on the value of nearby texels.
+Method used to sample texel values.
 
-**Values:**
+| Option       | Description                                      |
+| ------------ | ------------------------------------------------ |
+| **Point**    | Takes the value of the texel the sample lands in |
+| **Bilinear** | Interpolates values of four nearest texels       |
 
-* **Point**: Takes the value of whatever texel the sample lands in.
-* **Bilinear**: Bilinearly interpolates the values of the four nearest texels to the sample location.
+Default: `Bilinear`
 
 ⚡ PCG Overridable
 
@@ -81,9 +134,11 @@ Method used to determine the value for a sample based on the value of nearby tex
 
 <details>
 
-<summary><strong>Transform</strong> <code>Transform</code></summary>
+<summary><strong>Transform</strong> <code>FTransform</code></summary>
 
-Surface transform
+Transform applied to the texture surface.
+
+Default: `Identity`
 
 ⚡ PCG Overridable
 
@@ -93,7 +148,9 @@ Surface transform
 
 <summary><strong>Use Absolute Transform</strong> <code>bool</code></summary>
 
-Controls use absolute transform.
+When enabled, uses the transform as absolute rather than relative.
+
+Default: `false`
 
 ⚡ PCG Overridable
 
@@ -101,9 +158,11 @@ Controls use absolute transform.
 
 <details>
 
-<summary><strong>Color Channel</strong> <code>PCGTextureColorChannel</code></summary>
+<summary><strong>Color Channel</strong> <code>EPCGTextureColorChannel</code></summary>
 
-Controls color channel.
+Which color channel to use for single-value operations.
+
+Default: `Alpha`
 
 </details>
 
@@ -111,9 +170,21 @@ Controls color channel.
 
 <summary><strong>Texel Size</strong> <code>float</code></summary>
 
-The size of one texel in cm, used when calling ToPointData.
+Size of one texel in centimeters, used when converting to point data.
 
-_Range: min: 1.0_
+Default: `50.0`
+
+</details>
+
+#### Tiling
+
+<details>
+
+<summary><strong>Use Advanced Tiling</strong> <code>bool</code></summary>
+
+Enables advanced tiling options for texture sampling.
+
+Default: `false`
 
 </details>
 
@@ -121,33 +192,35 @@ _Range: min: 1.0_
 
 <summary><strong>Rotation</strong> <code>float</code></summary>
 
-Rotation to apply when sampling texture.
+Rotation to apply when sampling texture (in degrees).
+
+Default: `0`
+
+📋 _Visible when Use Advanced Tiling is enabled_
 
 </details>
 
 <details>
 
-<summary><strong>Use Advanced Tiling</strong> <code>bool</code></summary>
+<summary><strong>Tiling</strong> <code>FVector2D</code></summary>
 
-Whether to tile the source or to stretch it to fit target area.
+Texture tiling factor (1.0 = no tiling).
 
-</details>
+Default: `(1.0, 1.0)`
 
-**Data > Tiling**
-
-<details>
-
-<summary><strong>Tiling</strong> <code>Vector2D</code></summary>
-
-Controls tiling.
+📋 _Visible when Use Advanced Tiling is enabled_
 
 </details>
 
 <details>
 
-<summary><strong>Center Offset</strong> <code>Vector2D</code></summary>
+<summary><strong>Center Offset</strong> <code>FVector2D</code></summary>
 
-Controls center offset.
+Offset applied to the tiling center.
+
+Default: `(0, 0)`
+
+📋 _Visible when Use Advanced Tiling is enabled_
 
 </details>
 
@@ -155,18 +228,31 @@ Controls center offset.
 
 <summary><strong>Use Tile Bounds</strong> <code>bool</code></summary>
 
-Controls use tile bounds.
+When enabled, constrains sampling to a specific tile region.
+
+Default: `false`
 
 </details>
 
 <details>
 
-<summary><strong>Tile Bounds</strong> <code>Box2D</code></summary>
+<summary><strong>Tile Bounds</strong> <code>FBox2D</code></summary>
 
-Controls tile bounds.
+Bounds of the tile region to sample from.
+
+Default: `(-0.5, -0.5) to (0.5, 0.5)`
+
+📋 _Visible when Use Advanced Tiling and Use Tile Bounds are enabled_
 
 </details>
 
+### Outputs
+
+| Pin              | Type         | Description                           |
+| ---------------- | ------------ | ------------------------------------- |
+| **Out**          | Points       | Points with texture ID attributes     |
+| **Texture Data** | Texture Data | PCG Texture Data objects for sampling |
+
 ***
 
-Source: `Source\PCGExElementsSampling\Public\Elements\PCGExGetTextureData.h`
+📦 **Module**: `PCGExElementsSampling` · 📄 [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Elements/PCGExGetTextureData.h)
