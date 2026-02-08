@@ -29,7 +29,7 @@ This component has no user-configurable settings. It inherits all functionality 
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Source-PCGExElementsTopology-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTopology/Public/Components/PCGExDynamicMeshComponent.h)
+[![Static Badge](https://img.shields.io/badge/Source-PCGExElementsTopology-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTopology/Public/Components/PCGExDynamicMeshComponent.h)
 
 <!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTopology/Public/Components/PCGExDynamicMeshComponent.h -->
 

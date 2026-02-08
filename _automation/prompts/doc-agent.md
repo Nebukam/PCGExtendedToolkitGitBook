@@ -100,7 +100,10 @@ This node inherits common settings from its base class.
 ---
 
 ![Static Badge](https://img.shields.io/badge/Source-ModuleName-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/...)
+<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/... -->
 ```
+
+> **Important**: The `<!-- SOURCE: url -->` comment is **required** on the line immediately after the badge. It is the machine-readable source of truth used by automation scripts. One comment per source URL.
 
 ## Handling Inherited Settings
 

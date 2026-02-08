@@ -25,7 +25,7 @@ const MAPPING_OUTPUT = path.join(AUTOMATION_PATH, 'mapping.json');
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
-const SOURCE_URL_RE = /\[Source\]\((https:\/\/github\.com\/Nebukam\/PCGExtendedToolkit\/blob\/main\/Source\/[^)]+)\)/;
+const SOURCE_URL_RE = /<!-- SOURCE: (https:\/\/github\.com\/Nebukam\/PCGExtendedToolkit\/blob\/main\/Source\/[^\s]+) -->/;
 const DOC_META_RE = /PCGExNodeLibraryDoc\s*=\s*"([^"]+)"/;
 
 /**

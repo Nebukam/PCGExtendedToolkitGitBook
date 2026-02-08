@@ -187,7 +187,7 @@ Result: No crash, invalid function ignored
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Source-PCGExCore-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Helpers/PCGExFunctionPrototypes.h)
+[![Static Badge](https://img.shields.io/badge/Source-PCGExCore-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Helpers/PCGExFunctionPrototypes.h)
 
 <!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCore/Public/Helpers/PCGExFunctionPrototypes.h -->
 

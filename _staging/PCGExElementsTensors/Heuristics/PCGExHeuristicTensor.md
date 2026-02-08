@@ -84,7 +84,7 @@ This heuristic inherits from the heuristics factory base.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Source-PCGExElementsTensors-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Heuristics/PCGExHeuristicTensor.h)
+[![Static Badge](https://img.shields.io/badge/Source-PCGExElementsTensors-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Heuristics/PCGExHeuristicTensor.h)
 
 <!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Heuristics/PCGExHeuristicTensor.h -->
 

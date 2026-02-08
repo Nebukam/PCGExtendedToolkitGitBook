@@ -379,6 +379,6 @@ OutPoint.Transform.Location = HexToWorld(InNodeIdx)
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Source-PCGExElementsClusters-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/PCGExBuildCustomGraph.h)
+[![Static Badge](https://img.shields.io/badge/Source-PCGExElementsClusters-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/PCGExBuildCustomGraph.h)
 
 <!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/PCGExBuildCustomGraph.h -->

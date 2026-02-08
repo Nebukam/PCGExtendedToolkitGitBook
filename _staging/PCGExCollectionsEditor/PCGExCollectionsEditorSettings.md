@@ -54,7 +54,7 @@ Default: `-1`
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Source-PCGExCollectionsEditor-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollectionsEditor/Public/PCGExCollectionsEditorSettings.h)
+[![Static Badge](https://img.shields.io/badge/Source-PCGExCollectionsEditor-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollectionsEditor/Public/PCGExCollectionsEditorSettings.h)
 
 <!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollectionsEditor/Public/PCGExCollectionsEditorSettings.h -->
 

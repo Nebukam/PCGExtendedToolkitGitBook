@@ -67,6 +67,6 @@ Note: The Source setting is not available for this control as it always evaluate
 
 ***
 
-![Static Badge](https://img.shields.io/badge/Source-PCGExElementsFloodFill-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsFloodFill/Public/FillControls/PCGExFillControlVtxFilters.h)
+[![Static Badge](https://img.shields.io/badge/Source-PCGExElementsFloodFill-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsFloodFill/Public/FillControls/PCGExFillControlVtxFilters.h)
 
 <!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsFloodFill/Public/FillControls/PCGExFillControlVtxFilters.h -->

@@ -56,7 +56,7 @@ The property collection containing schema definitions and default values. Each s
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Source-PCGExProperties-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExProperties/Public/PCGExPropertyCollectionComponent.h)
+[![Static Badge](https://img.shields.io/badge/Source-PCGExProperties-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExProperties/Public/PCGExPropertyCollectionComponent.h)
 
 <!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExProperties/Public/PCGExPropertyCollectionComponent.h -->
 

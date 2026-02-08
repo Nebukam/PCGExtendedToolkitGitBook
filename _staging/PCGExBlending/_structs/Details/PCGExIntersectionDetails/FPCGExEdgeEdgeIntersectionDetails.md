@@ -138,7 +138,7 @@ Default: `bCrossing`
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Source-PCGExBlending-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/Details/PCGExIntersectionDetails.h)
+[![Static Badge](https://img.shields.io/badge/Source-PCGExBlending-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/Details/PCGExIntersectionDetails.h)
 
 <!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/Details/PCGExIntersectionDetails.h -->
 

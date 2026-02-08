@@ -175,7 +175,7 @@ This node inherits common Clipper2 processing settings from its base class.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Source-PCGExElementsClipper2-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClipper2/Public/Elements/PCGExClipper2RectClip.h)
+[![Static Badge](https://img.shields.io/badge/Source-PCGExElementsClipper2-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClipper2/Public/Elements/PCGExClipper2RectClip.h)
 
 <!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClipper2/Public/Elements/PCGExClipper2RectClip.h -->
 

@@ -228,7 +228,7 @@ Default: `false`
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Source-PCGExFoundations-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Filters/Points/PCGExRaycastFilter.h)
+[![Static Badge](https://img.shields.io/badge/Source-PCGExFoundations-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Filters/Points/PCGExRaycastFilter.h)
 
 <!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExFoundations/Public/Filters/Points/PCGExRaycastFilter.h -->
 

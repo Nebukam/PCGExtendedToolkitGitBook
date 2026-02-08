@@ -53,7 +53,7 @@ This matcher inherits common settings from its base factory.
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Source-PCGExElementsValency-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Matchers/PCGExDefaultPatternMatcher.h)
+[![Static Badge](https://img.shields.io/badge/Source-PCGExElementsValency-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Matchers/PCGExDefaultPatternMatcher.h)
 
 <!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsValency/Public/Matchers/PCGExDefaultPatternMatcher.h -->
 

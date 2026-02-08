@@ -376,7 +376,7 @@ Default: `false`
 
 ---
 
-![Static Badge](https://img.shields.io/badge/Source-PCGExElementsBridges-473F69)  ·  [Source](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsBridges/Public/Elements/PCGExWaitForPCGData.h)
+[![Static Badge](https://img.shields.io/badge/Source-PCGExElementsBridges-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsBridges/Public/Elements/PCGExWaitForPCGData.h)
 
 <!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsBridges/Public/Elements/PCGExWaitForPCGData.h -->
 

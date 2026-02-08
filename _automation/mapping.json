@@ -1,5 +1,5 @@
 {
-  "generated": "2026-02-08T18:38:34.452Z",
+  "generated": "2026-02-08T18:44:47.723Z",
   "entries": [
     {
       "source_relative": "PCGExBlending/Public/Core/PCGExBlendOpFactory.h",
@@ -943,6 +943,24 @@
       "staging": "_staging/PCGExElementsClustersRefine/Refinements/PCGExEdgeRefineGabriel.md",
       "node_library": "node-library/clusters/refine/cluster-refine/refine-gabriel.md",
       "doc_path": "clusters/refine/cluster-refine/refine-gabriel",
+      "current_doc_meta": null,
+      "status": "meta_missing"
+    },
+    {
+      "source_relative": "PCGExElementsClusters/Public/Elements/Refining/PCGExEdgeRefineKeepHighestScore.h",
+      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClusters\\Public\\Elements\\Refining\\PCGExEdgeRefineKeepHighestScore.h",
+      "staging": "_staging/PCGExElementsClustersRefine/Refinements/PCGExEdgeRefineScoreBased.md",
+      "node_library": "node-library/clusters/refine/cluster-refine/score-based-refinements.md",
+      "doc_path": "clusters/refine/cluster-refine/score-based-refinements",
+      "current_doc_meta": null,
+      "status": "meta_missing"
+    },
+    {
+      "source_relative": "PCGExElementsClusters/Public/Elements/Refining/PCGExEdgeRefineKeepShortest.h",
+      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClusters\\Public\\Elements\\Refining\\PCGExEdgeRefineKeepShortest.h",
+      "staging": "_staging/PCGExElementsClustersRefine/Refinements/PCGExEdgeRefineLengthBased.md",
+      "node_library": "node-library/clusters/refine/cluster-refine/length-based-refinements.md",
+      "doc_path": "clusters/refine/cluster-refine/length-based-refinements",
       "current_doc_meta": null,
       "status": "meta_missing"
     },
@@ -3969,25 +3987,16 @@
       "doc_path": "metadata/attributes/property-collection-component",
       "current_doc_meta": null,
       "status": "meta_missing"
-    },
-    {
-      "source_relative": "PCGExtendedToolkit/Public/PCGExGlobalSettings.h",
-      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExtendedToolkit\\Public\\PCGExGlobalSettings.h",
-      "staging": null,
-      "node_library": "node-library/common-settings/plugin-settings.md",
-      "doc_path": "common-settings/plugin-settings",
-      "current_doc_meta": null,
-      "status": "library_only"
     }
   ],
   "summary": {
-    "total_staging": 441,
-    "total_library": 412,
-    "matched": 411,
+    "total_staging": 443,
+    "total_library": 413,
+    "matched": 413,
     "staging_only": 30,
-    "library_only": 1,
+    "library_only": 0,
     "doc_meta_ok": 17,
     "doc_meta_mismatch": 304,
-    "doc_meta_missing": 90
+    "doc_meta_missing": 92
   }
 }
