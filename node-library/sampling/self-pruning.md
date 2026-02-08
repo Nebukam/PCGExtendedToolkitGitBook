@@ -174,7 +174,7 @@ The expansion settings here are **only for overlap testing** — they don't actu
 If you need to actually modify point bounds, use a **Bounds Modifier** node before or after.
 
 {% hint style="info" %}
-## Why "Before/After Transform"?
+### Why "Before/After Transform"?
 
 Point bounds (`$BoundsMin`/`$BoundsMax`) are stored in **local space** — they don't include the point's scale, rotation, or position. To test overlaps in world space, the node must apply the point's transform.
 
@@ -194,7 +194,7 @@ The question is: do you want to expand **before** or **after** that transform is
 {% endhint %}
 
 {% hint style="info" %}
-## Primary vs Secondary Bounds
+### Primary vs Secondary Bounds
 
 Overlap testing checks each point against all others. These settings let you expand bounds differently for each role:
 
@@ -321,5 +321,3 @@ Default: `0`
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsSampling-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Elements/PCGExSelfPruning.h)
-
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Elements/PCGExSelfPruning.h -->

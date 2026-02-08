@@ -23,7 +23,7 @@ This utility node creates fresh, independent copies of cluster data with new uni
 * **No Transformation**: Data content is preserved exactly; only the data pointer changes.
 
 {% hint style="info" %}
-## When to Use This Node
+### When to Use This Node
 
 Use Make Unique when you:
 
@@ -59,5 +59,3 @@ This node inherits common settings from its base class.
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsClusters-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/PCGExMakeClustersUnique.h)
-
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/PCGExMakeClustersUnique.h -->

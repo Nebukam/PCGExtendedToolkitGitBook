@@ -48,7 +48,7 @@ Seed Points + Tensor Field:
 | **Paths**        | Point Data       | Optional external paths for intersection testing             |
 
 {% hint style="warning" %}
-## Only spatial filters that do not rely on point attributes will work as stop conditions.&#x20;
+### Only spatial filters that do not rely on point attributes will work as stop conditions.
 
 Points generated during extrusion exist only in world space and do not have access to the same attributes as your input data. Use filters based on position, bounds, or other spatial criteria (e.g., Bounds Filter, Inclusion Filter, Distance Filter).
 {% endhint %}
@@ -423,5 +423,3 @@ This node inherits from the path processor base.
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsTensors-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Elements/PCGExExtrudeTensors.h)
-
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTensors/Public/Elements/PCGExExtrudeTensors.h -->

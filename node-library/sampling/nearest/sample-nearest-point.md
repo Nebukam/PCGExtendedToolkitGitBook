@@ -18,7 +18,7 @@ This node samples data from nearby target points, finding the closest points wit
 4. **Write Results**: Outputs transforms, distances, and blended values.
 
 {% hint style="info" %}
-## Every source point samples independently
+### Every source point samples independently
 
 This node processes **all input points** — each source point finds and samples its own nearby targets. It does _not_ find "the one closest pair" between inputs and targets.
 
@@ -361,5 +361,3 @@ Default: `true`
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsSampling-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Elements/PCGExSampleNearestPoint.h)
-
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Elements/PCGExSampleNearestPoint.h -->

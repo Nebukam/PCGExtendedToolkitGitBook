@@ -7,7 +7,7 @@ icon: circle
 Offset path points.
 
 {% hint style="success" %}
-## Superseded by [clipper2-offset.md](../generate/clipper2-offset.md "mention")
+### Superseded by [clipper2-offset.md](../generate/clipper2-offset.md "mention")
 
 While this offset node has still many valid uses, [clipper2-offset.md](../generate/clipper2-offset.md "mention") is a much better choice if you want robust self-intersection handling.
 {% endhint %}
@@ -241,5 +241,3 @@ This node inherits path processing settings from its base class.
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsPaths-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExOffsetPath.h)
-
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExOffsetPath.h -->

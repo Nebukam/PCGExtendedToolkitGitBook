@@ -18,7 +18,7 @@ This node generates a triangulated mesh surface directly from point data using D
 4. **Apply Settings**: Material, UV mapping, normals, and other topology settings are applied to the output mesh.
 
 {% hint style="warning" %}
-## Performance Consideration
+### Performance Consideration
 
 This node uses Unreal's built-in Geometry Script Delaunay algorithm, which is significantly slower than the Delaunator library used by other PCGEx nodes (such as Delaunay 2D). If you only need the triangulation topology and not a Dynamic Mesh output, consider using those alternatives for better performance.
 {% endhint %}
@@ -127,5 +127,3 @@ This node inherits point processing settings from its base class.
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsTopology-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTopology/Public/Elements/PCGExTopologyPointSurface.h)
-
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTopology/Public/Elements/PCGExTopologyPointSurface.h -->

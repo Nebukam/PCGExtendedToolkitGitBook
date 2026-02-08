@@ -24,7 +24,7 @@ This node computes and writes various properties to edge points in a cluster, in
 * **Heuristics**: Connect heuristic nodes to compute pathfinding-style scores for edges.
 
 {% hint style="info" %}
-## Heuristics Limitations
+### Heuristics Limitations
 
 Not all heuristics will produce meaningful scores in this context. Some heuristics are designed for pathfinding and rely on:
 
@@ -247,5 +247,3 @@ This node inherits common settings from its base class.
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsClusters-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Meta/PCGExWriteEdgeProperties.h)
-
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsClusters/Public/Elements/Meta/PCGExWriteEdgeProperties.h -->

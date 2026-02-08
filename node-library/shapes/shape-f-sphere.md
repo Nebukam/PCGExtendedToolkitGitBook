@@ -11,7 +11,7 @@ Create a Fibonacci Lattice sphere.
 This shape builder generates points evenly distributed on a spherical surface using the Fibonacci lattice algorithm. This mathematical approach creates a quasi-uniform point distribution that avoids clustering at poles, making it ideal for spherical sampling, omnidirectional probes, or decorating spherical objects. The phi constant can be customized to create different spiral patterns.
 
 {% hint style="success" %}
-## Why Fibonacci Lattice?
+### Why Fibonacci Lattice?
 
 The Fibonacci lattice algorithm offers two significant advantages over traditional sphere point generation:
 
@@ -232,5 +232,3 @@ Default: `500`
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsShapes-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsShapes/Public/Shapes/PCGExShapeFiblat.h)
-
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsShapes/Public/Shapes/PCGExShapeFiblat.h -->

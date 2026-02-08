@@ -21,7 +21,7 @@ This node smooths path data by gathering neighboring points and blending their p
 **Usage Notes**
 
 {% hint style="info" %}
-## **BlendOps Required**
+### **BlendOps Required**
 
 This node requires BlendOps to define what gets blended. The `Weight` blend mode is typically a good default for smooth results, but other modes can produce different effects using the same neighbor weights.
 {% endhint %}
@@ -231,5 +231,3 @@ This node inherits path processing settings from its base class.
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsPaths-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExSmooth.h)
-
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExSmooth.h -->

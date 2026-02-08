@@ -19,7 +19,7 @@ This node converts Unreal Spline data into PCG path points, extracting spline co
 5. **Write Metadata**: Optionally write length, alpha, and point type information.
 
 {% hint style="warning" %}
-## Not a sampler !
+### Not a sampler !
 
 This node doesn't do any sampling, interpolation or transformations. It is a direct 1:1 representation of the spline control points _as PCG points_.
 {% endhint %}
@@ -213,5 +213,3 @@ This node inherits path processing settings from its base class.
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsPaths-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExSplineToPath.h)
-
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsPaths/Public/Elements/PCGExSplineToPath.h -->

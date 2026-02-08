@@ -11,7 +11,7 @@ Use shape builders to create shapes from input seed points.
 This node generates point collections by applying shape builder definitions to seed points. Each seed point serves as the origin for shape generation, with the shape builder determining the pattern of output points (circles, grids, polygons, etc.). Multiple shape builders can be combined to create layered or composite shapes from each seed.
 
 {% hint style="success" %}
-## Scale-Relative Generation
+### Scale-Relative Generation
 
 The shape system's key strength is that all shapes compute their geometry relative to their "allocated space" - the seed point's scale/bounds. This means:
 
@@ -173,5 +173,3 @@ This node inherits output configuration from its base class.
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsShapes-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsShapes/Public/Elements/PCGExCreateShapes.h)
-
-<!-- SOURCE: https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsShapes/Public/Elements/PCGExCreateShapes.h -->
