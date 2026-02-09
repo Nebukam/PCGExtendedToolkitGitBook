@@ -1,5 +1,5 @@
 {
-  "generated": "2026-02-08T20:22:54.975Z",
+  "generated": "2026-02-08T23:17:49.902Z",
   "entries": [
     {
       "source_relative": "PCGExBlending/Public/Core/PCGExBlendOpFactory.h",
@@ -16,8 +16,8 @@
       "staging": "_staging/PCGExBlending/Core/PCGExBlendOpFactoryProvider.md",
       "node_library": "node-library/metadata/modify/blendop/README.md",
       "doc_path": "metadata/modify/blendop",
-      "current_doc_meta": "metadata/blendop",
-      "status": "meta_mismatch"
+      "current_doc_meta": "metadata/modify/blendop",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExBlending/Public/Details/PCGExBlendingDetails.h",
@@ -1348,8 +1348,8 @@
       "staging": "_staging/PCGExElementsMeta/Elements/PCGExAttributeHash.md",
       "node_library": "node-library/metadata/analyze/attribute-hash.md",
       "doc_path": "metadata/analyze/attribute-hash",
-      "current_doc_meta": "metadata/attributes/attribute-hash",
-      "status": "meta_mismatch"
+      "current_doc_meta": "metadata/analyze/attribute-hash",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExAttributeRemap.h",
@@ -1357,8 +1357,8 @@
       "staging": "_staging/PCGExElementsMeta/Elements/PCGExAttributeRemap.md",
       "node_library": "node-library/metadata/modify/attribute-remap.md",
       "doc_path": "metadata/modify/attribute-remap",
-      "current_doc_meta": "metadata/attributes/attribute-remap",
-      "status": "meta_mismatch"
+      "current_doc_meta": "metadata/modify/attribute-remap",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExAttributeStats.h",
@@ -1366,8 +1366,8 @@
       "staging": "_staging/PCGExElementsMeta/Elements/PCGExAttributeStats.md",
       "node_library": "node-library/metadata/analyze/attribute-stats.md",
       "doc_path": "metadata/analyze/attribute-stats",
-      "current_doc_meta": "metadata/attributes/attribute-stats",
-      "status": "meta_mismatch"
+      "current_doc_meta": "metadata/analyze/attribute-stats",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExAttributesToTags.h",
@@ -1375,8 +1375,8 @@
       "staging": "_staging/PCGExElementsMeta/Elements/PCGExAttributesToTags.md",
       "node_library": "node-library/metadata/keys/hoist-attributes.md",
       "doc_path": "metadata/keys/hoist-attributes",
-      "current_doc_meta": "metadata/attributes/hoist-attributes",
-      "status": "meta_mismatch"
+      "current_doc_meta": "metadata/keys/hoist-attributes",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExBlendAttributes.h",
@@ -1384,8 +1384,8 @@
       "staging": "_staging/PCGExElementsMeta/Elements/PCGExBlendAttributes.md",
       "node_library": "node-library/metadata/modify/uber-blend.md",
       "doc_path": "metadata/modify/uber-blend",
-      "current_doc_meta": "metadata/attributes/uber-blend",
-      "status": "meta_mismatch"
+      "current_doc_meta": "metadata/modify/uber-blend",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExMetaCleanup.h",
@@ -1393,8 +1393,8 @@
       "staging": "_staging/PCGExElementsMeta/Elements/PCGExMetaCleanup.md",
       "node_library": "node-library/metadata/modify/meta-cleanup.md",
       "doc_path": "metadata/modify/meta-cleanup",
-      "current_doc_meta": "metadata/attributes/meta-cleanup",
-      "status": "meta_mismatch"
+      "current_doc_meta": "metadata/modify/meta-cleanup",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExPackActorData.h",
@@ -1402,8 +1402,8 @@
       "staging": "_staging/PCGExElementsMeta/Elements/Guide-PCGExPackActorData.md",
       "node_library": "node-library/metadata/keys/pack-actor-data/creating-a-custom-actor-data-packer.md",
       "doc_path": "metadata/keys/pack-actor-data/creating-a-custom-actor-data-packer",
-      "current_doc_meta": "metadata/attributes/pack-actor-data/creating-a-custom-actor-data-packer",
-      "status": "meta_mismatch"
+      "current_doc_meta": "metadata/keys/pack-actor-data/creating-a-custom-actor-data-packer",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExReduceDataAttribute.h",
@@ -1411,8 +1411,8 @@
       "staging": "_staging/PCGExElementsMeta/Elements/PCGExReduceDataAttribute.md",
       "node_library": "node-library/metadata/analyze/reduce-data.md",
       "doc_path": "metadata/analyze/reduce-data",
-      "current_doc_meta": "metadata/attributes/reduce-data",
-      "status": "meta_mismatch"
+      "current_doc_meta": "metadata/analyze/reduce-data",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExRefreshSeed.h",
@@ -1420,8 +1420,8 @@
       "staging": "_staging/PCGExElementsMeta/Elements/PCGExRefreshSeed.md",
       "node_library": "node-library/metadata/modify/refresh-seed.md",
       "doc_path": "metadata/modify/refresh-seed",
-      "current_doc_meta": "metadata/attributes/refresh-seed",
-      "status": "meta_mismatch"
+      "current_doc_meta": "metadata/modify/refresh-seed",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsMeta/Public/Elements/PCGExUberNoise.h",
@@ -1726,8 +1726,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExAttributeRolling.md",
       "node_library": "node-library/paths/modify/path-attribute-rolling.md",
       "doc_path": "paths/modify/path-attribute-rolling",
-      "current_doc_meta": "paths/transform/path-attribute-rolling",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/modify/path-attribute-rolling",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExBevelPath.h",
@@ -1744,8 +1744,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExBlendPath.md",
       "node_library": "node-library/paths/modify/path-blend.md",
       "doc_path": "paths/modify/path-blend",
-      "current_doc_meta": "paths/transform/path-blend",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/modify/path-blend",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExBoundsPathIntersection.h",
@@ -1789,8 +1789,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExOffsetPath.md",
       "node_library": "node-library/paths/transform/path-offset.md",
       "doc_path": "paths/transform/path-offset",
-      "current_doc_meta": "paths/modify/path-offset",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/transform/path-offset",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExOrient.h",
@@ -1843,8 +1843,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExPathShift.md",
       "node_library": "node-library/paths/modify/path-shift.md",
       "doc_path": "paths/modify/path-shift",
-      "current_doc_meta": "paths/transform/path-shift",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/modify/path-shift",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExPathShrink.h",
@@ -1861,8 +1861,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExPathSlide.md",
       "node_library": "node-library/paths/transform/path-slide.md",
       "doc_path": "paths/transform/path-slide",
-      "current_doc_meta": "paths/modify/path-slide",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/transform/path-slide",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExPathSolidify.h",
@@ -1924,8 +1924,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExSplitPath.md",
       "node_library": "node-library/paths/generate/path-split.md",
       "doc_path": "paths/generate/path-split",
-      "current_doc_meta": "paths/modify/path-split",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/generate/path-split",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExSubdivide.h",
@@ -1942,8 +1942,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExWritePathProperties.md",
       "node_library": "node-library/paths/analyze/path-properties.md",
       "doc_path": "paths/analyze/path-properties",
-      "current_doc_meta": "paths/transform/path-properties",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/analyze/path-properties",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/PCGExWriteTangents.h",
@@ -1951,8 +1951,8 @@
       "staging": "_staging/PCGExElementsPaths/Elements/PCGExWriteTangents.md",
       "node_library": "node-library/paths/analyze/path-write-tangents.md",
       "doc_path": "paths/analyze/path-write-tangents",
-      "current_doc_meta": "paths/transform/path-write-tangents",
-      "status": "meta_mismatch"
+      "current_doc_meta": "paths/analyze/path-write-tangents",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsPaths/Public/Elements/Smoothing/PCGExMovingAverageSmoothing.h",
@@ -2329,8 +2329,8 @@
       "staging": "_staging/PCGExElementsSpatial/Elements/Bounds/PCGExBestMatchAxis.md",
       "node_library": "node-library/transform/transform/best-match-axis.md",
       "doc_path": "transform/transform/best-match-axis",
-      "current_doc_meta": "transform/modify/best-match-axis",
-      "status": "meta_mismatch"
+      "current_doc_meta": "transform/transform/best-match-axis",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSpatial/Public/Elements/Bounds/PCGExBoundsAxisToPoints.h",
@@ -2347,8 +2347,8 @@
       "staging": "_staging/PCGExElementsSpatial/Elements/Bounds/PCGExBoundsToPoints.md",
       "node_library": "node-library/transform/generate/bounds-to-points.md",
       "doc_path": "transform/generate/bounds-to-points",
-      "current_doc_meta": "transform/generate/bounds-to-points-1",
-      "status": "meta_mismatch"
+      "current_doc_meta": "transform/generate/bounds-to-points",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSpatial/Public/Elements/Bounds/PCGExFindPointOnBounds.h",
@@ -2401,8 +2401,8 @@
       "staging": "_staging/PCGExElementsSpatial/Elements/PCGExFlatProjection.md",
       "node_library": "node-library/transform/transform/flat-projection.md",
       "doc_path": "transform/transform/flat-projection",
-      "current_doc_meta": "transform/modify/flat-projection",
-      "status": "meta_mismatch"
+      "current_doc_meta": "transform/transform/flat-projection",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSpatial/Public/Elements/PCGExFusePoints.h",
@@ -2419,8 +2419,8 @@
       "staging": "_staging/PCGExElementsSpatial/Elements/PCGExLloydRelax.md",
       "node_library": "node-library/transform/transform/lloyd-relax-3d.md",
       "doc_path": "transform/transform/lloyd-relax-3d",
-      "current_doc_meta": "transform/modify/lloyd-relax-3d",
-      "status": "meta_mismatch"
+      "current_doc_meta": "transform/transform/lloyd-relax-3d",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSpatial/Public/Elements/PCGExLloydRelax2D.h",
@@ -2428,8 +2428,8 @@
       "staging": "_staging/PCGExElementsSpatial/Elements/PCGExLloydRelax2D.md",
       "node_library": "node-library/transform/transform/lloyd-relax-2d.md",
       "doc_path": "transform/transform/lloyd-relax-2d",
-      "current_doc_meta": "transform/modify/lloyd-relax-2d",
-      "status": "meta_mismatch"
+      "current_doc_meta": "transform/transform/lloyd-relax-2d",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSpatial/Public/Elements/PCGExMovePivot.h",
@@ -2437,8 +2437,8 @@
       "staging": "_staging/PCGExElementsSpatial/Elements/PCGExMovePivot.md",
       "node_library": "node-library/transform/transform/move-pivot.md",
       "doc_path": "transform/transform/move-pivot",
-      "current_doc_meta": "transform/modify/move-pivot",
-      "status": "meta_mismatch"
+      "current_doc_meta": "transform/transform/move-pivot",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsSpatial/Public/Elements/PCGExNormalize.h",
@@ -2455,8 +2455,8 @@
       "staging": "_staging/PCGExElementsSpatial/Elements/PCGExPointsToBounds.md",
       "node_library": "node-library/transform/modify/points-to-bounds.md",
       "doc_path": "transform/modify/points-to-bounds",
-      "current_doc_meta": "transform/generate/points-to-bounds",
-      "status": "meta_mismatch"
+      "current_doc_meta": "transform/modify/points-to-bounds",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTensors/Public/Core/PCGExTensor.h",
@@ -2509,8 +2509,8 @@
       "staging": "_staging/PCGExElementsTensors/Elements/PCGExTensorsTransform.md",
       "node_library": "node-library/transform/transform/tensors-transform.md",
       "doc_path": "transform/transform/tensors-transform",
-      "current_doc_meta": "transform/modify/tensors-transform",
-      "status": "meta_mismatch"
+      "current_doc_meta": "transform/transform/tensors-transform",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsTensors/Public/Filters/Points/PCGExTensorDotFilter.h",
@@ -3445,8 +3445,8 @@
       "staging": "_staging/PCGExFoundations/Elements/PCGExTransformPoints.md",
       "node_library": "node-library/transform/transform/transform-points.md",
       "doc_path": "transform/transform/transform-points",
-      "current_doc_meta": "transform/generate/transform-points",
-      "status": "meta_mismatch"
+      "current_doc_meta": "transform/transform/transform-points",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExFoundations/Public/Elements/Utils/PCGExDestroyActor.h",
@@ -4004,8 +4004,8 @@
     "matched": 413,
     "staging_only": 30,
     "library_only": 1,
-    "doc_meta_ok": 294,
-    "doc_meta_mismatch": 27,
+    "doc_meta_ok": 321,
+    "doc_meta_mismatch": 0,
     "doc_meta_missing": 92
   }
 }

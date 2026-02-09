@@ -1,5 +1,5 @@
 ---
-icon: rectangles-mixed
+icon: function
 ---
 
 # Tensor Sampler (Adaptive RK)

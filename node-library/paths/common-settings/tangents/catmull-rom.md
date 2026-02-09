@@ -1,5 +1,5 @@
 ---
-icon: rectangles-mixed
+icon: function
 ---
 
 # Catmull-Rom
