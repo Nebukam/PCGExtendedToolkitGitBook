@@ -18,9 +18,13 @@ This node converts closed paths into triangulated meshes using Clipper2's Constr
 2. **Apply Fill Rule**: The fill rule determines how overlapping or nested paths are interpreted as solid vs hollow regions.
 3. **Triangulate**: Clipper2 performs constrained Delaunay triangulation, optionally optimizing for better triangle quality.
 4. **Build Mesh**: Triangles are assembled into a PCG Dynamic Mesh with optional repair, normals computation, and UV mapping.
-5.  **Map Attributes**: Source point indices are preserved so vertex attributes can be looked up from the original paths.
+5. **Map Attributes**: Source point indices are preserved so vertex attributes can be looked up from the original paths.
 
-    <div data-gb-custom-block data-tag="hint" data-style="success" class="hint hint-success"><p>### Automatic Hole Detection The relationship between paths (which is a hole vs an outer boundary) is computed automatically based on data groups. Paths within the same data group are processed together, and Clipper2 determines containment relationships based on the fill rule and path winding. You don't need to manually tag or classify paths as holes.</p></div>
+{% hint style="success" %}
+## Automatic Hole Detection
+
+The relationship between paths (which is a hole vs an outer boundary) is computed automatically based on data groups. Paths within the same data group are processed together, and Clipper2 determines containment relationships based on the fill rule and path winding. You don't need to manually tag or classify paths as holes.
+{% endhint %}
 
 **Usage Notes**
 
@@ -155,5 +159,3 @@ This node inherits path processing settings from its base class.
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsTopology-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsTopology/Public/Elements/PCGExClipper2Triangulate.h)
-
-
