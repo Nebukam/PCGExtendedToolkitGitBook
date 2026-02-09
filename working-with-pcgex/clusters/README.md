@@ -109,7 +109,7 @@ All PCGEx cluster operations output valid clusters. Explicit sanitization is onl
 
 ### In This Section
 
-* [the-dual-dataset](the-dual-dataset/ "mention") - Working with Vtx and Edges together
+* [the-dual-dataset.md](the-dual-dataset.md "mention") - Working with Vtx and Edges together
 * [building-clusters.md](building-clusters.md "mention") - Creating clusters from points, meshes, paths
 * [refining-clusters.md](refining-clusters.md "mention") - Filtering, simplifying, modifying topology
 * [cluster-path-interoperability.md](cluster-path-interoperability.md "mention") - Converting between clusters and paths
