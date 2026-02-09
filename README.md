@@ -13,6 +13,8 @@ All built on standard PCG points. No proprietary data types, no black box.
 
 Free, open-source, and production-ready.
 
+<figure><img src=".gitbook/assets/theyuseit.png" alt=""><figcaption></figcaption></figure>
+
 {% hint style="success" %}
 Supports Unreal **5.7**, **5.6**, _and archived for 5.5, 5.4, 5.3_
 {% endhint %}
@@ -20,6 +22,8 @@ Supports Unreal **5.7**, **5.6**, _and archived for 5.5, 5.4, 5.3_
 ### Start Here
 
 <table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><a data-mention href="working-with-pcgex/getting-started/">getting-started</a></td><td>Core mental model, feature overview, learning path</td><td><a href=".gitbook/assets/placeholder_B.jpg">placeholder_B.jpg</a></td><td></td><td><a href="working-with-pcgex/getting-started/">getting-started</a></td></tr><tr><td><a data-mention href="working-with-pcgex/getting-started/installation.md">installation.md</a></td><td>Precompiled binaries, FAB, or build from source</td><td><a href=".gitbook/assets/placeholder_C.jpg">placeholder_C.jpg</a></td><td></td><td><a href="working-with-pcgex/getting-started/installation.md">installation.md</a></td></tr><tr><td><a data-mention href="working-with-pcgex/getting-started/example-project.md">example-project.md</a></td><td>Annotated graphs across all major systems</td><td><a href=".gitbook/assets/placeholder_A.jpg">placeholder_A.jpg</a></td><td></td><td><a href="working-with-pcgex/getting-started/example-project.md">example-project.md</a></td></tr></tbody></table>
+
+<figure><img src=".gitbook/assets/theyuseit.png" alt=""><figcaption><p><em>PCGEx is in their pipeline</em></p></figcaption></figure>
 
 ### The Docs
 
