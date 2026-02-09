@@ -4,22 +4,22 @@ icon: map
 
 # Algorithms
 
-**All search algorithms in PCGEx use heuristics.** This is the single most important thing to understand — there are no "raw" edge weights. Every algorithm evaluates edges through the heuristics handler, which computes traversal cost from your connected heuristic sub-nodes. The algorithms differ in *how they use* those heuristic scores, not *whether* they use them.
+**All search algorithms in PCGEx use heuristics.** This is the single most important thing to understand — there are no "raw" edge weights. Every algorithm evaluates edges through the heuristics handler, which computes traversal cost from your connected heuristic sub-nodes. The algorithms differ in _how they use_ those heuristic scores, not _whether_ they use them.
 
 ### The Shared Foundation
 
-Every algorithm calls `Heuristics->GetEdgeScore()` on each edge it considers. This is where your heuristic sub-nodes (shortest distance, steepness, inertia, etc.) contribute their scores. The edge score *is* the traversal cost.
+Every algorithm calls `Heuristics->GetEdgeScore()` on each edge it considers. This is where your heuristic sub-nodes (shortest distance, steepness, inertia, etc.) contribute their scores. The edge score _is_ the traversal cost.
 
 Where A\* differs from the rest is that it also calls `Heuristics->GetGlobalScore()` — a forward-looking estimation of remaining cost to the goal. The other algorithms skip that estimation and work purely from accumulated edge scores.
 
 ### Algorithm Comparison
 
-| Algorithm     | Edge Scoring | Goal Estimation              | Best For                                           |
-| ------------- | ------------ | ---------------------------- | -------------------------------------------------- |
-| A\*           | Heuristics   | Yes (`GetGlobalScore`)       | Point-to-point, goal-directed search               |
-| Dijkstra      | Heuristics   | No                           | Thorough exploration, respects all modifiers equally |
-| Bidirectional | Heuristics   | No                           | Large clusters, long paths                         |
-| Bellman-Ford  | Heuristics   | No                           | Heuristics that can produce negative scores        |
+| Algorithm                                                                                              | Edge Scoring | Goal Estimation        | Best For                                             |
+| ------------------------------------------------------------------------------------------------------ | ------------ | ---------------------- | ---------------------------------------------------- |
+| [search-a.md](../../node-library/pathfinding/algorithms/search-a.md "mention")                         | Heuristics   | Yes (`GetGlobalScore`) | Point-to-point, goal-directed search                 |
+| [search-dijkstra.md](../../node-library/pathfinding/algorithms/search-dijkstra.md "mention")           | Heuristics   | No                     | Thorough exploration, respects all modifiers equally |
+| [search-bidirectional.md](../../node-library/pathfinding/algorithms/search-bidirectional.md "mention") | Heuristics   | No                     | Large clusters, long paths                           |
+| [search-bellman-ford.md](../../node-library/pathfinding/algorithms/search-bellman-ford.md "mention")   | Heuristics   | No                     | Heuristics that can produce negative scores          |
 
 ### A\* (A-Star)
 
@@ -55,11 +55,17 @@ Explores based on accumulated heuristic cost with no goal estimation.
 
 Dijkstra uses a priority queue sorted purely by accumulated `GetEdgeScore()` cost:
 
-* Every edge is scored through your heuristics — it is *not* "no heuristics"
+* Every edge is scored through your heuristics — it is _not_ "no heuristics"
 * No `GetGlobalScore()` call — no estimation of remaining cost
 * Explores outward from the seed in order of total heuristic cost
 
 Without the goal-directed shortcut, Dijkstra explores more nodes but considers all heuristic modifiers more thoroughly.
+
+{% hint style="info" %}
+Dijkstra has its `early exit` option set to true by default.&#x20;
+
+Disable that if you want the canon search.
+{% endhint %}
 
 #### Characteristics
 
@@ -125,6 +131,8 @@ The key difference: A\*, Dijkstra, and Bidirectional all use priority queues tha
 * When you need negative cycle detection as a safety check
 * When correctness matters more than speed
 
+***
+
 ### Practical Guidance
 
 #### Default: A\*
@@ -174,5 +182,5 @@ All algorithms evaluate heuristics per edge, so heuristic cost scales the same w
 
 ### Related
 
-* Pathfinding Overview - Pathfinding concepts
-* Heuristics - Scoring functions that drive all algorithms
+* [.](./ "mention") - Pathfinding concepts
+* [heuristics](../../node-library/pathfinding/heuristics/ "mention") - Scoring functions that drive all algorithms

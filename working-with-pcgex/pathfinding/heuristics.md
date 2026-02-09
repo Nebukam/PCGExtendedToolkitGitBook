@@ -1,5 +1,5 @@
 ---
-icon: function
+icon: arrow-right-arrow-left
 ---
 
 # Heuristics
@@ -103,14 +103,14 @@ Each heuristic contributes its score weighted by its factor.
 
 Scores combine using configurable aggregation:
 
-| Mode             | Behavior                            |
-| ---------------- | ----------------------------------- |
-| Weighted Average | Balanced mix of all scores          |
-| Weighted Sum     | Simple addition of weighted scores  |
-| Geometric Mean   | Stricter: all heuristics must agree |
+| Mode             | Behavior                                     |
+| ---------------- | -------------------------------------------- |
+| Weighted Average | Balanced mix of all scores                   |
+| Weighted Sum     | Simple addition of weighted scores           |
+| Geometric Mean   | Stricter: all heuristics must agree          |
 | Harmonic Mean    | Emphasizes low scores — cheap paths dominate |
-| Min              | Lowest scoring path (OR-like)       |
-| Max              | Highest scoring path (AND-like)     |
+| Min              | Lowest scoring path (OR-like)                |
+| Max              | Highest scoring path (AND-like)              |
 
 #### Weight Factors
 

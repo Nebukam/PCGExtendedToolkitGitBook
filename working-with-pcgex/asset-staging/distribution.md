@@ -159,6 +159,6 @@ Distribution computation is fast:
 
 ### Related
 
-* Asset Staging Overview - Staging system introduction
-* Collections - Collection structure and entries
-* Fitting - Transform adjustment after distribution
+* [.](./ "mention") - Staging system introduction
+* [collections.md](collections.md "mention") - Collection structure and entries
+* [fitting.md](fitting.md "mention") - Transform adjustment after distribution

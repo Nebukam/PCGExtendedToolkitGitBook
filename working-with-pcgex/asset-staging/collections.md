@@ -179,6 +179,6 @@ Use collections when you need: weighted distribution, material variations, modul
 
 ### Related
 
-* Asset Staging Overview - Staging system introduction
-* Distribution - How entries are selected
-* Fitting - Transform adjustment
+* [.](./ "mention") - Staging system introduction
+* [distribution.md](distribution.md "mention") - How entries are selected
+* [fitting.md](fitting.md "mention") - Transform adjustment

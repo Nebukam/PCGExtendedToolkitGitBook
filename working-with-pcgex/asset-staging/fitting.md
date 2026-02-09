@@ -172,6 +172,6 @@ These appear in node settings wherever fitting is supported.
 
 ### Related
 
-* Asset Staging Overview - Staging system introduction
-* Collections - Collection structure
-* Distribution - Entry selection
+* [.](./ "mention") - Staging system introduction
+* [collections.md](collections.md "mention") - Collection structure
+* [distribution.md](distribution.md "mention") - Entry selection

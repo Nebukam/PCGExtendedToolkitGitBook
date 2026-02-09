@@ -144,8 +144,8 @@ Hierarchical generation greatly benefits from that : smaller grid re-use pre-com
 
 ### In This Section
 
-* Composition - Combining filters with AND/OR logic, nesting groups
-* Reusability - Sharing filters across your graph
+* [filter-composition.md](filter-composition.md "mention") - Combining filters with AND/OR logic, nesting groups
+* [filter-reusability.md](filter-reusability.md "mention") - Sharing filters across your graph
 
 ### Related
 

@@ -85,37 +85,35 @@ Pathfinding produces paths as point sequences:
 
 PCGEx pathfinding includes operations that extract path-like data without explicit goals:
 
-**Cells**: Find closed regions bounded by edges — either around specific seeds or exhaustively across the whole cluster
-**Hulls**: Extract the outer boundary of a cluster as a single path
+**Cells**: Find closed regions bounded by edges — either around specific seeds or exhaustively across the whole cluster **Hulls**: Extract the outer boundary of a cluster as a single path
 
 These are covered in Cells and Hulls.
 
 ### When to Use What
 
-| Need                         | Approach                 |
-| ---------------------------- | ------------------------ |
-| Best path between two points | Pathfinding : Edges      |
-| Connect ordered waypoints    | Pathfinding : Plot Edges |
-| Explore from seeds           | Pathfinding : Grow Paths |
-| Spread values/territories    | Flood Fill               |
-| Find enclosed regions        | Find Cells / Find All Cells |
-| Extract outer boundary       | Find Cluster Hull           |
+| Need                         | Approach                                                                                                                                                              |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Best path between two points | [pathfinding-edges](../../node-library/pathfinding/pathfinding-edges/ "mention")                                                                                      |
+| Connect ordered waypoints    | [pathfinding-plot-edges.md](../../node-library/pathfinding/pathfinding-plot-edges.md "mention")                                                                       |
+| Spread values/territories    | [cluster-flood-fill](../../node-library/pathfinding/cluster-flood-fill/ "mention")                                                                                    |
+| Find enclosed regions        | [find-cells.md](../../node-library/pathfinding/cells/find-cells.md "mention") / [find-all-cells.md](../../node-library/pathfinding/cells/find-all-cells.md "mention") |
+| Extract outer boundary       | [find-cluster-hull.md](../../node-library/pathfinding/cells/find-cluster-hull.md "mention")                                                                           |
 
 ### In This Section
 
-* Algorithms - A\*, Dijkstra, and when to use each
-* Heuristics - Scoring functions that guide path selection
-* Cells and Hulls - Extracting bounded regions
+* [algorithms.md](algorithms.md "mention") - A\*, Dijkstra, and when to use each
+* [heuristics.md](heuristics.md "mention") - Scoring functions that guide path selection
+* [cells-and-hulls.md](cells-and-hulls.md "mention")  - Extracting bounded regions
 
 ### Related
 
 **Concepts:**
 
-* Clusters - Pathfinding operates on clusters
-* Provider/Consumer - Heuristics follow this pattern
-* Cluster Refinement - Remove edges before pathfinding
+* [clusters](../clusters/ "mention") - Pathfinding operates on clusters
+* [provider-consumer-pattern.md](../architecture/provider-consumer-pattern.md "mention") - Heuristics follow this pattern
+* [refining-clusters.md](../clusters/refining-clusters.md "mention") - Remove edges before pathfinding
 
 **Node Library:**
 
-* Pathfinding Nodes - Complete reference
-* Heuristic Nodes - All heuristic providers
+* [pathfinding](../../node-library/pathfinding/ "mention") - Complete reference
+* [heuristics](../../node-library/pathfinding/heuristics/ "mention") - All heuristic providers

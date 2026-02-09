@@ -68,6 +68,8 @@ Avoid circular subcollection references. A collection cannot reference itself, d
 
 The recent addition of **per-entry custom properties** covers the remaining edge cases. Define a property schema at the collection level, override values per entry, and load them onto points with **Staging : Load Properties**. This turns collections into rich data sources — not just asset pickers.
 
+***
+
 ### The Staging Workflow
 
 #### Distribute
@@ -138,17 +140,17 @@ Understanding staging is prerequisite for these advanced features.
 
 ### In This Section
 
-* Collections - Collection types and organization
-* Distribution - Selection strategies and categories
-* Fitting - Scale, justification, and transform adjustment
+* [collections.md](collections.md "mention") - Collection types and organization
+* [distribution.md](distribution.md "mention") - Selection strategies and categories
+* [fitting.md](fitting.md "mention") - Scale, justification, and transform adjustment
 
 ### Related
 
 **Concepts:**
 
-* Valency - Constraint solving using staged collections
+* [valency](../valency/ "mention") - Constraint solving using staged collections
 
 **Node Library:**
 
-* Staging Nodes - Staging operation reference
-* Collection Types - Collection data asset reference
+* [staging](../../node-library/staging/ "mention") - Staging operation reference
+* [collections](../../node-library/staging/collections/ "mention") - Collection data asset reference
