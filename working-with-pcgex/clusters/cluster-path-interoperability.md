@@ -114,7 +114,7 @@ If you need to preserve exact path structure, keep the original and use the clus
 
 ### Related
 
-* Path Overview - Path fundamentals
-* Cluster Overview - Cluster fundamentals
-* Building Clusters - The "combine methods" philosophy
-* Pathfinding - Finding routes through clusters
+* [paths](../paths/ "mention") - Path fundamentals
+* [.](./ "mention") - Cluster fundamentals
+* [building-clusters.md](building-clusters.md "mention") - The "combine methods" philosophy
+* [pathfinding](../pathfinding/ "mention") - Finding routes through clusters

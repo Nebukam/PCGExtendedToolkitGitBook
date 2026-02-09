@@ -109,7 +109,7 @@ See Cluster-Path Interop for the full back-and-forth workflow.
 
 ### Related
 
-* Cluster Overview — Cluster fundamentals
-* Building Clusters — Generation strategies in depth
-* Refining Clusters — Refinement concepts
-* Cluster Nodes — Complete node reference
+* [.](./ "mention") — Cluster fundamentals
+* [building-clusters.md](building-clusters.md "mention") — Generation strategies in depth
+* [refining-clusters.md](refining-clusters.md "mention") — Refinement concepts
+* [clusters](../../node-library/clusters/ "mention") — Complete node reference

@@ -101,28 +101,28 @@ Rebuilding cluster connectivity has a cost. Prefer PCGEx's built-in filtering an
 
 All PCGEx cluster operations output valid clusters. Explicit sanitization is only needed after vanilla PCG nodes modify point counts.
 
-### Why "Cluster" Not "Graph"
-
-The term "graph" is overloaded in PCG contexts: it could mean the PCG graph editor, a graph data structure, or a graph visualization. PCGEx uses "cluster" to avoid confusion.
-
-When reading about graph algorithms (pathfinding, spanning trees), translate: "graph vertex" = Vtx, "graph edge" = Edge.
+> #### Why "Cluster" not "Graph"
+>
+> The term "graph" is overloaded in PCG contexts: it could mean the PCG graph editor, a graph data structure, or a graph visualization. PCGEx uses "cluster" to avoid confusion.
+>
+> When reading about graph algorithms (pathfinding, spanning trees), translate: "graph vertex" = Vtx, "graph edge" = Edge.
 
 ### In This Section
 
-* The Dual Dataset - Working with Vtx and Edges together
-* Building Clusters - Creating clusters from points, meshes, paths
-* Refining Clusters - Filtering, simplifying, modifying topology
-* Cluster-Path Interop - Converting between clusters and paths
+* [the-dual-dataset.md](the-dual-dataset.md "mention") - Working with Vtx and Edges together
+* [building-clusters.md](building-clusters.md "mention") - Creating clusters from points, meshes, paths
+* [refining-clusters.md](refining-clusters.md "mention") - Filtering, simplifying, modifying topology
+* [cluster-path-interoperability.md](cluster-path-interoperability.md "mention") - Converting between clusters and paths
 
 ### Related
 
 **Concepts:**
 
-* Paths - The other core data structure
-* Filters - Edge and Vtx filters
-* Pathfinding - Traversing clusters
+* [paths](../paths/ "mention") - The other core data structure
+* [filters](../filters/ "mention") - Edge and Vtx filters
+* [pathfinding](../pathfinding/ "mention") - Traversing clusters
 
 **Node Library:**
 
-* Cluster Nodes - Complete cluster operation reference
-* Diagram Nodes - Delaunay, Voronoi, etc.
+* [clusters](../../node-library/clusters/ "mention") - Complete cluster operation reference
+* [generate](../../node-library/clusters/generate/ "mention") - Delaunay, Voronoi, etc.

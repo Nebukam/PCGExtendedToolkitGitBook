@@ -117,6 +117,6 @@ Operations process multiple clusters in parallel. Each cluster (Vtx + Edges pair
 
 ### Related
 
-* Cluster Overview - Cluster fundamentals
-* Building Clusters - Creating clusters from various sources
-* Refining Clusters - Modifying cluster topology
+* [.](./ "mention") - Cluster fundamentals
+* [building-clusters.md](building-clusters.md "mention") - Creating clusters from various sources
+* [refining-clusters.md](refining-clusters.md "mention") - Modifying cluster topology

@@ -107,15 +107,14 @@ Think of cluster generation methods as ingredients, not solutions. The final clu
 
 ### Quick Reference
 
-| Method           | Character                                               |
-| ---------------- | ------------------------------------------------------- |
-| Delaunay         | Dense, comprehensive — good base layer                  |
-| Voronoi          | Territorial partitioning — region boundaries            |
-| Connect Points   | Precise, surgical — exactly the connections you specify |
-| Grid builder     | Uniform, predictable — tile-based layouts               |
-| Mesh to Cluster  | Topology extraction — inherit existing structure        |
-| Paths to Cluster | Network from paths — merge at endpoints                 |
-| Fuse Clusters    | Combine any of the above                                |
+| Method                                                                                           | Character                                               |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
+| [cluster-delaunay-2d.md](../../node-library/clusters/generate/cluster-delaunay-2d.md "mention")  | Dense, comprehensive — good base layer                  |
+| [cluster-voronoi-2d.md](../../node-library/clusters/generate/cluster-voronoi-2d.md "mention")    | Territorial partitioning — region boundaries            |
+| [cluster-connect-points](../../node-library/clusters/generate/cluster-connect-points/ "mention") | Precise, surgical — exactly the connections you specify |
+| [mesh-to-clusters.md](../../node-library/clusters/generate/mesh-to-clusters.md "mention")        | Topology extraction — inherit existing structure        |
+| [path-to-clusters.md](../../node-library/clusters/interop/path-to-clusters.md "mention")         | Network from paths — merge at endpoints                 |
+| [cluster-fuse.md](../../node-library/clusters/refine/cluster-fuse.md "mention")                  | Combine any of the above                                |
 
 ### After Building
 
@@ -123,6 +122,6 @@ Newly created clusters often need refinement: removing unwanted edges, filtering
 
 ### Related
 
-* Cluster Overview - Cluster fundamentals
-* Refining Clusters - Post-generation processing
-* Diagram Nodes - Delaunay, Voronoi node reference
+* [.](./ "mention") - Cluster fundamentals
+* [refining-clusters.md](refining-clusters.md "mention") - Post-generation processing
+* [generate](../../node-library/clusters/generate/ "mention") - Delaunay, Voronoi node reference

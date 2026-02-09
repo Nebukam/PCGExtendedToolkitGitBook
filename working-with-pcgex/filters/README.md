@@ -151,9 +151,9 @@ Hierarchical generation greatly benefits from that : smaller grid re-use pre-com
 
 **Concepts:**
 
-* Provider/Consumer Pattern - The underlying architecture
-* Cluster Refinement - Filters in cluster context
-* Pathfinding - Filters for edge traversability
+* [architecture](../architecture/ "mention") - The underlying architecture
+* [refining-clusters.md](../clusters/refining-clusters.md "mention") - Filters in cluster context
+* [pathfinding](../pathfinding/ "mention") - Filters for edge traversability
 
 **Node Library:**
 

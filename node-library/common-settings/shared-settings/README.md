@@ -80,7 +80,11 @@ Modifies input data directly instead of making copies (zero-copy optimization).
 | **Enabled**            | Modify inputs directly (dangerous) |
 | **Disabled** (default) | Never steal data                   |
 
-**DANGER**: Only enable if you're absolutely certain the input data isn't used by any other node. This can corrupt data if misused.
+{% hint style="danger" %}
+## **DANGER**
+
+Only enable if you're absolutely certain the input data isn't used by any other node. This can corrupt data if misused and cause crashes.
+{% endhint %}
 
 📋 _Visible when node supports data stealing_
 
@@ -110,9 +114,7 @@ Default: `Default`
 
 <summary><strong>Flatten Output</strong> <code>bool</code></summary>
 
-Merges hierarchical data into a single flat collection.
-
-When enabled, nested or grouped data structures are collapsed into one level.
+Merges hierarchical data into a single flat collection and flatten all metadata inheritance.
 
 Default: `false`
 
@@ -125,6 +127,10 @@ Default: `false`
 Deletes attributes marked as "consumable" from the output data.
 
 Consumable attributes are temporary working data that don't need to persist. Cleaning them up reduces memory usage and clutter.
+
+{% hint style="info" %}
+Most per-point attribute selectors used for read operation are automatically declared as "consumables".
+{% endhint %}
 
 Default: `false`
 

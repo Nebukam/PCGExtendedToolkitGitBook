@@ -94,5 +94,5 @@ The distinction depends on what happens with the path downstream.
 
 ### Related
 
-* Path Overview - Path fundamentals
-* Common Operations - Operation categories
+* [.](./ "mention") - Path fundamentals
+* [common-path-operations.md](common-path-operations.md "mention") - Operation categories

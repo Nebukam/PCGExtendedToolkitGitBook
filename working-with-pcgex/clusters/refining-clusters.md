@@ -109,6 +109,6 @@ Order matters. Filtering before relaxation produces different results than relax
 
 ### Related
 
-* Cluster Overview - Cluster fundamentals
-* Building Clusters - Creating clusters
-* Filters - Filter system used by refinement operations
+* [.](./ "mention") - Cluster fundamentals
+* [building-clusters.md](building-clusters.md "mention") - Creating clusters
+* [filters](../filters/ "mention") - Filter system used by refinement operations

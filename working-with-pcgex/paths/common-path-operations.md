@@ -82,6 +82,6 @@ Smoothing before resampling produces different results than resampling before sm
 
 ### Related
 
-* Path Overview — Path fundamentals
-* Segments vs Points — Understanding segment-based operations
-* Path Nodes — Complete node reference
+* [.](./ "mention") — Path fundamentals
+* [segments-vs-points.md](segments-vs-points.md "mention") — Understanding segment-based operations
+* [paths](../../node-library/paths/ "mention") — Complete node reference
