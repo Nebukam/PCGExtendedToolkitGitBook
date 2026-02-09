@@ -32,55 +32,55 @@ Common scoring factors:
 
 #### Distance-Based
 
-**Shortest Distance**: Score based on edge length
+[heuristics-shortest-distance.md](../../node-library/pathfinding/heuristics/heuristics-shortest-distance.md "mention") : Score based on edge length
 
 * Shorter edges = lower cost
 * Classic "shortest path" behavior
 
-**Azimuth**: Score based on direction toward goal
+[heuristics-azimuth.md](../../node-library/pathfinding/heuristics/heuristics-azimuth.md "mention"): Score based on direction toward goal
 
 * Edges pointing toward goal score lower
 * Prefers direct routes
 
 #### Attribute-Based
 
-**Attribute**: Read cost from Vtx/Edge attributes
+[heuristics-attribute.md](../../node-library/pathfinding/heuristics/heuristics-attribute.md "mention"): Read cost from Vtx/Edge attributes
 
 * Use precomputed difficulty values
 * Enable per-edge custom costs
 
-**Gradient**: Score attribute change rate
+[heuristics-gradient.md](../../node-library/pathfinding/heuristics/heuristics-gradient.md "mention"): Score attribute change rate
 
 * Prefer increasing/decreasing values
 * Avoid or seek sudden changes
 
 #### Path-History-Based
 
-**Inertia**: Penalize direction changes
+[heuristics-inertia.md](../../node-library/pathfinding/heuristics/heuristics-inertia.md "mention"): Penalize direction changes
 
 * Prefer continuing in same direction
 * Produces straighter paths
 
-**Turn Penalty**: Penalize sharp turns
+[heuristics-turn-penalty.md](../../node-library/pathfinding/heuristics/heuristics-turn-penalty.md "mention"): Penalize sharp turns
 
 * Angle-based cost for direction changes
 * Smoother paths with gradual curves
 
 #### Topology-Based
 
-**Least Nodes**: Minimize hop count
+[heuristics-least-nodes.md](../../node-library/pathfinding/heuristics/heuristics-least-nodes.md "mention"): Minimize hop count
 
 * Fewer Vtx in path = lower cost
 * Not same as shortest distance
 
-**Steepness**: Score vertical slope
+[heuristics-steepness.md](../../node-library/pathfinding/heuristics/heuristics-steepness.md "mention"): Score vertical slope
 
 * Penalize steep ascents/descents
 * Keeps paths on gentler terrain
 
 #### Feedback-Based
 
-**Feedback**: Track visited nodes
+[heuristics-feedback.md](../../node-library/pathfinding/heuristics/heuristics-feedback.md "mention"): Track visited nodes
 
 * Penalize revisiting
 * Encourage exploration of new areas
@@ -215,6 +215,6 @@ For large clusters with many paths:
 
 ### Related
 
-* Pathfinding Overview - Pathfinding concepts
-* Algorithms - How algorithms use heuristics
-* Heuristic Nodes - Complete reference
+* [.](./ "mention") - Pathfinding concepts
+* [algorithms.md](algorithms.md "mention") - How algorithms use heuristics
+* [heuristics](../../node-library/pathfinding/heuristics/ "mention") - Complete reference

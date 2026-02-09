@@ -4,8 +4,6 @@ icon: rotate
 
 # Filter Reusability
 
-## Filter Reusability
-
 **One filter, many consumers.** Filters are designed so that a single filter instance can connect to multiple consumers. The logic stays in one place, behavior stays consistent, and updates apply everywhere at once.
 
 <figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Hub-and-spoke diagram showing one filter provider node with its output connected to three different consumer nodes</p></figcaption></figure>
@@ -70,5 +68,5 @@ Each instance of the subgraph uses different threshold values.
 
 ### Related
 
-* Filter Overview - Filter fundamentals
-* Composition - AND/OR logic, nesting groups
+* [.](./ "mention") - Filter fundamentals
+* [filter-composition.md](filter-composition.md "mention") - AND/OR logic, nesting groups

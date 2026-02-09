@@ -12,16 +12,16 @@ icon: triangle
 
 Each topology node takes a different kind of input and triangulates it into mesh geometry:
 
-| Node                     | Input                 | What It Does                                                                    |
-| ------------------------ | --------------------- | ------------------------------------------------------------------------------- |
-| **Cluster Surface**      | Cluster (Vtx + Edges) | Traces edges to find closed cells, triangulates each cell into polygon faces    |
-| **Path Surface**         | Closed paths          | Treats each path as a closed polygon boundary and triangulates it               |
-| **Point Surface**        | Scattered points      | Computes Delaunay triangulation directly — no edges needed                      |
-| **Clipper2 Triangulate** | Closed paths          | Constrained Delaunay triangulation with fill rules and automatic hole detection |
+| Node                                                                                             | Input                 | What It Does                                                                    |
+| ------------------------------------------------------------------------------------------------ | --------------------- | ------------------------------------------------------------------------------- |
+| [topology-cluster-surface.md](../../node-library/topology/topology-cluster-surface.md "mention") | Cluster (Vtx + Edges) | Traces edges to find closed cells, triangulates each cell into polygon faces    |
+| [topology-path-surface.md](../../node-library/topology/topology-path-surface.md "mention")       | Closed paths          | Treats each path as a closed polygon boundary and triangulates it               |
+| [topology-point-surface.md](../../node-library/topology/topology-point-surface.md "mention")     | Scattered points      | Computes Delaunay triangulation directly — no edges needed                      |
+| [clipper2-triangulate.md](../../node-library/topology/clipper2-triangulate.md "mention")         | Closed paths          | Constrained Delaunay triangulation with fill rules and automatic hole detection |
 
-**Cluster Surface** is the most involved. It walks the edge connectivity to identify closed cells, projects them to 2D, applies cell constraints, then triangulates. Cell constraints let you filter by shape (convex/concave), size (area, perimeter, point count), compactness, and whether to include the outer boundary cell.
+[topology-cluster-surface.md](../../node-library/topology/topology-cluster-surface.md "mention") is the most involved. It walks the edge connectivity to identify closed cells, projects them to 2D, applies cell constraints, then triangulates. Cell constraints let you filter by shape (convex/concave), size (area, perimeter, point count), compactness, and whether to include the outer boundary cell.
 
-**Clipper2 Triangulate** handles the case where you have overlapping or nested paths — fill rules (even-odd, non-zero, positive, negative) determine which regions are solid and which are holes.
+[clipper2-triangulate.md](../../node-library/topology/clipper2-triangulate.md "mention") handles the case where you have overlapping or nested paths — fill rules (even-odd, non-zero, positive, negative) determine which regions are solid and which are holes.
 
 ### The Pipeline
 
@@ -54,6 +54,6 @@ Topology output is runtime geometry. It's base mesh data that's often a starting
 
 ### Related
 
-* Clusters - Source topology for mesh generation
-* Paths - Source paths for surface generation
-* Topology Nodes
+* [clusters](../../node-library/clusters/ "mention") - Source topology for mesh generation
+* [paths](../../node-library/paths/ "mention") - Source paths for surface generation
+* [topology](../../node-library/topology/ "mention") Nodes

@@ -30,7 +30,8 @@
   * [Segments vs Points](working-with-pcgex/paths/segments-vs-points.md)
   * [Common Path Operations](working-with-pcgex/paths/common-path-operations.md)
 * [Clusters](working-with-pcgex/clusters/README.md)
-  * [The Dual Dataset](working-with-pcgex/clusters/the-dual-dataset.md)
+  * [The Dual Dataset](working-with-pcgex/clusters/the-dual-dataset/README.md)
+    * [Loop over Clusters](working-with-pcgex/clusters/the-dual-dataset/loop-over-clusters.md)
   * [Building Clusters](working-with-pcgex/clusters/building-clusters.md)
   * [Refining Clusters](working-with-pcgex/clusters/refining-clusters.md)
   * [Cluster-Path Interoperability](working-with-pcgex/clusters/cluster-path-interoperability.md)
@@ -68,8 +69,9 @@
     * [Debugging & Visualization](working-with-pcgex/valency/valency/debugging-and-visualization.md)
     * [Your First Valency System](working-with-pcgex/valency/valency/your-first-valency-system.md)
 * [Tips & Tricks](working-with-pcgex/tips-and-tricks/README.md)
-  * [EditorOnly Subgraphs](working-with-pcgex/tips-and-tricks/editoronly-subgraphs.md)
-  * [Merge before Spawn](working-with-pcgex/tips-and-tricks/merge-before-spawn.md)
+  * [Vanilla PCG](working-with-pcgex/tips-and-tricks/vanilla-pcg/README.md)
+    * [EditorOnly Subgraphs](working-with-pcgex/tips-and-tricks/vanilla-pcg/editoronly-subgraphs.md)
+    * [Merge before Spawn](working-with-pcgex/tips-and-tricks/vanilla-pcg/merge-before-spawn.md)
 
 ## Node Library
 

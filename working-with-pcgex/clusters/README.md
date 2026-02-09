@@ -93,7 +93,7 @@ This dual-attribute system models complex relationships precisely.
 
 ### Sanitization
 
-If vanilla PCG nodes delete Vtx or Edge points, the cluster's connectivity data becomes invalid: edge indices point to removed elements or wrong positions. Run **Sanitize Clusters** to rebuild connectivity before using the cluster with PCGEx nodes again.
+If vanilla PCG nodes delete Vtx or Edge points, the cluster's connectivity data becomes invalid: edge indices point to removed elements or wrong positions. Run [cluster-sanitize.md](../../node-library/clusters/utilities/cluster-sanitize.md "mention") to rebuild connectivity before using the cluster with PCGEx nodes again.
 
 {% hint style="warning" %}
 Rebuilding cluster connectivity has a cost. Prefer PCGEx's built-in filtering and refinement nodes, which handle connectivity automatically and avoid the need for explicit sanitization.
@@ -109,7 +109,7 @@ All PCGEx cluster operations output valid clusters. Explicit sanitization is onl
 
 ### In This Section
 
-* [the-dual-dataset.md](the-dual-dataset.md "mention") - Working with Vtx and Edges together
+* [the-dual-dataset](the-dual-dataset/ "mention") - Working with Vtx and Edges together
 * [building-clusters.md](building-clusters.md "mention") - Creating clusters from points, meshes, paths
 * [refining-clusters.md](refining-clusters.md "mention") - Filtering, simplifying, modifying topology
 * [cluster-path-interoperability.md](cluster-path-interoperability.md "mention") - Converting between clusters and paths

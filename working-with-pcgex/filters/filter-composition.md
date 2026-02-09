@@ -27,7 +27,7 @@ This implicit AND covers most cases. When you need OR logic or complex boolean e
 
 ### Filter Groups
 
-**Filter Group** is a special node that combines filters with explicit boolean logic.
+[filter-group-and-or.md](../../node-library/filters/filter-group-and-or.md "mention") is a special node that combines filters with explicit boolean logic.
 
 #### AND Groups
 
@@ -41,7 +41,7 @@ Set a Filter Group to OR mode. Any connected filter passing means the group pass
 
 #### Setting Up a Filter Group
 
-1. Place a **Filter Group** node
+1. Place a [filter-group-and-or.md](../../node-library/filters/filter-group-and-or.md "mention") node
 2. Set Mode to AND or OR in node settings
 3. Connect filter provider outputs to the group's filter inputs
 4. Connect the group's output to your consumer node
@@ -156,11 +156,13 @@ When composed filters don't behave as expected:
 1. **Test individually**: Disconnect filters and test each one alone
 2. **Check modes**: Verify AND vs OR on each group
 3. **Check inversion**: Inverted filters/groups flip expected behavior
-4.  **Visualize results**: Many nodes can output filter results as attributes for viewport visualization
+4. **Visualize results**: Many nodes can output filter results as attributes for viewport visualization
 
-    <div data-gb-custom-block data-tag="hint" data-style="info" class="hint hint-info"><p><strong>Uber Filter</strong> tests filter group outputs in isolation. It shows exactly what passes and fails without any other processing.</p></div>
+{% hint style="info" %}
+[uber-filter.md](../../node-library/filters/uber-filter.md "mention") tests filter group outputs in isolation. It shows exactly what passes and fails without any other processing.
+{% endhint %}
 
 ### Related
 
-* Filter Overview - Filter fundamentals
-* Reusability - Wrapping filter setups in subgraphs
+* [.](./ "mention") - Filter fundamentals
+* [filter-reusability.md](filter-reusability.md "mention") - Wrapping filter setups in subgraphs

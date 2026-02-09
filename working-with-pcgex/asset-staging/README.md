@@ -8,8 +8,8 @@ icon: spray-can
 
 Staging separates **selection** from **spawning**:
 
-1. **Collections** define available assets with metadata (weights, categories, materials, sockets, properties)
-2. **Staging nodes** assign collection entries to points
+1. [collections](../../node-library/staging/collections/ "mention") define available assets with metadata (weights, categories, materials, sockets, properties)
+2. [staging](../../node-library/staging/ "mention") nodes assign collection entries to points
 3. **Handlers** spawn the result — different handlers for different asset types
 
 <figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Flow diagram: Collection → Staging Node → Staged Points → Handler → Scene</p></figcaption></figure>
@@ -20,16 +20,16 @@ No assets are loaded during staging. The node reads pre-cached metadata and writ
 
 Collections aren't just about meshes. There are three types, and each serves a different purpose with a different downstream handler:
 
-<table data-view="cards"><thead><tr><th>Collection Type</th><th>Contains</th><th>Spawner</th><th data-hidden data-card-cover data-type="image">Cover image</th></tr></thead><tbody><tr><td><strong>Mesh Collection</strong></td><td>Static meshes</td><td>Vanilla Spawn Static Mesh + Mesh Selector Staged</td><td data-object-fit="contain"><a href="../../.gitbook/assets/PCGExMeshCollection.png">PCGExMeshCollection.png</a></td></tr><tr><td><strong>Actor Collection</strong></td><td>Actor classes (blueprints)</td><td>Vanilla Spawn Actor</td><td data-object-fit="contain"><a href="../../.gitbook/assets/PCGExActorCollection.png">PCGExActorCollection.png</a></td></tr><tr><td><strong>PCG Data Collection</strong></td><td>PCG Data Assets</td><td>PCGEx Load PCG Data Asset</td><td data-object-fit="contain"><a href="../../.gitbook/assets/PCGExPCGDataAssetCollection.png">PCGExPCGDataAssetCollection.png</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th>Collection Type</th><th>Contains</th><th>Spawner</th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><a data-mention href="../../node-library/staging/collections/mesh-collection.md">mesh-collection.md</a></td><td>Static meshes</td><td>Vanilla Spawn Static Mesh + Mesh Selector Staged</td><td data-object-fit="contain"><a href="../../.gitbook/assets/PCGExMeshCollection.png">PCGExMeshCollection.png</a></td><td><a href="../../node-library/staging/collections/mesh-collection.md">mesh-collection.md</a></td></tr><tr><td><a data-mention href="../../node-library/staging/collections/actor-collection.md">actor-collection.md</a></td><td>Actor classes (blueprints)</td><td>Vanilla Spawn Actor</td><td data-object-fit="contain"><a href="../../.gitbook/assets/PCGExActorCollection.png">PCGExActorCollection.png</a></td><td><a href="../../node-library/staging/collections/actor-collection.md">actor-collection.md</a></td></tr><tr><td><a data-mention href="../../node-library/staging/collections/pcg-data-asset-collection.md">pcg-data-asset-collection.md</a></td><td>PCG Data Assets</td><td>PCGEx Load PCG Data Asset</td><td data-object-fit="contain"><a href="../../.gitbook/assets/PCGExPCGDataAssetCollection.png">PCGExPCGDataAssetCollection.png</a></td><td><a href="../../node-library/staging/collections/pcg-data-asset-collection.md">pcg-data-asset-collection.md</a></td></tr></tbody></table>
 
-**PCG Data Collections** deserve special attention. PCG Data Assets are often created by converting a level or level section into a reusable data asset. Distributing these through collections gives you weighted, categorized placement of entire pre-authored level chunks.
+[pcg-data-asset-collection.md](../../node-library/staging/collections/pcg-data-asset-collection.md "mention") deserve special attention. PCG Data Assets are often created by converting a level or level section into a reusable data asset. Distributing these through collections gives you weighted, categorized placement of entire pre-authored level chunks.
 
-**Actor Collections** handle anything that needs to be a full actor: blueprints with logic, interactive objects, complex hierarchies. The Spawn Actor node handles instantiation.
+[actor-collection.md](../../node-library/staging/collections/actor-collection.md "mention") handle anything that needs to be a full actor: blueprints with logic, interactive objects, complex hierarchies. The Spawn Actor node handles instantiation.
 
-**Mesh Collections** are the most common for static props and environmental pieces, with additional support for material overrides and ISM/SM descriptors.
+[mesh-collection.md](../../node-library/staging/collections/mesh-collection.md "mention") are the most common for static props and environmental pieces, with additional support for material overrides and ISM/SM descriptors.
 
 {% hint style="success" %}
-Entry types can be mixed on the same points. A single distribution pass can stage meshes, actors, and PCG Data Assets — then downstream handlers each pick up their respective types. Use the Entry Type filter or write the entry type to an attribute for routing when using mixed sources.
+Entry types can be mixed on the same points. A single distribution pass can stage meshes, actors, and PCG Data Assets — then downstream handlers each pick up their respective types. Use the [staging-type-filter.md](../../node-library/staging/staging-type-filter.md "mention") or write the entry type to an attribute for routing when using mixed sources.
 {% endhint %}
 
 ### Collections as Data Assets
@@ -89,7 +89,7 @@ Two output modes:
 
 After staging, each asset type uses the appropriate spawner. PCGEx is built to interface with vanilla PCG spawning nodes — it prepares the data, vanilla nodes do the spawning:
 
-**Meshes** → Vanilla **Spawn Static Mesh** with Mesh Selector Staged (collection map) or Mesh Selector by Attribute (attribute mode) **Actors** → Vanilla **Spawn Actor** node **PCG Data Assets** → PCGEx's **Load PCG Data Asset** node (the one exception — no vanilla equivalent exists)
+**Meshes** → Vanilla **Spawn Static Mesh** with the [staging-data-mesh-selector.md](../../node-library/staging/utilities/staging-data-mesh-selector.md "mention") (collection map) or Mesh Selector by Attribute (attribute mode) **Actors** → Vanilla **Spawn Actor** node **PCG Data Assets** → PCGEx's [staging-load-pcgdata.md](../../node-library/staging/staging-load-pcgdata.md "mention") node (_the one exception — no vanilla equivalent exists_)
 
 Collection map mode preserves material variations, descriptors, and per-entry properties that attribute output loses.
 
@@ -113,12 +113,12 @@ Entries can belong to categories. Points specify which category to draw from (co
 
 Staging can adjust point transforms to match asset bounds:
 
-* **Scale to Fit**: Scale points so spawned assets fit within specified bounds
-* **Justification**: Align the asset's pivot within bounds (center, bottom, corner, etc.)
+* [scale-to-fit-details.md](../../node-library/common-settings/transform-details/scale-to-fit-details.md "mention"): Scale points so spawned assets fit within specified bounds
+* [justification-details.md](../../node-library/common-settings/transform-details/justification-details.md "mention"): Align the asset's pivot within bounds (center, bottom, corner, etc.)
 
 Justification controls where the asset sits after scaling — it's the difference between an asset centered in its slot versus sitting on the ground plane. Less intuitive than scale-to-fit, but essential for correct placement.
 
-**Staging : Fitting** is a standalone node that applies fitting as a separate pass. It works with both collection map data and vanilla mesh path attributes, bringing scale-to-fit and justification to workflows that don't use the full staging pipeline.
+[staging-fitting.md](../../node-library/staging/staging-fitting.md "mention") is a standalone node that applies fitting as a separate pass. It works with both collection map data and vanilla mesh path attributes, bringing scale-to-fit and justification to workflows that don't use the full staging pipeline.
 
 ### Material Variations
 
@@ -126,15 +126,17 @@ Mesh entries support material slot overrides with weighted variants. Each slot c
 
 ### Sockets
 
-Entries can define **sockets**: named attachment points extracted from meshes or added manually. **Staging : Load Sockets** creates points at socket positions from staged entries, enabling procedural modular construction.
+Entries can define **sockets**: named attachment points extracted from meshes or added manually. [staging-load-sockets.md](../../node-library/staging/staging-load-sockets.md "mention") creates points at socket positions from staged entries, enabling procedural modular construction.
+
+> If you don't work with collections, [sample-sockets.md](../../node-library/staging/utilities/sample-sockets.md "mention") is still here for you
 
 ### Foundational Role
 
 Asset staging underlies other PCGEx systems:
 
-* **Valency** uses collections for module assignment
-* **Grammar** systems reference collection entries via **Collection to Module Infos**
-* **Spline Mesh** uses mesh collections for spline components
+* [valency](../../node-library/valency/ "mention") uses collections for module assignment
+* **Grammar** systems reference collection entries via [collection-to-module-infos.md](../../node-library/staging/utilities/collection-to-module-infos.md "mention")
+* [staging-spline-mesh.md](../../node-library/paths/output/staging-spline-mesh.md "mention") uses mesh collections for spline components
 
 Understanding staging is prerequisite for these advanced features.
 

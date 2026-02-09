@@ -46,7 +46,7 @@ You've built and refined a cluster — now you need ordered sequences for spawni
 
 #### Edge Extraction
 
-**Break Clusters to Paths** converts edges to path segments. Each edge becomes a minimal two-point path, or edges chain into longer paths where possible.
+[cluster-break-to-paths.md](../../node-library/clusters/interop/cluster-break-to-paths.md "mention") converts edges to path segments. Each edge becomes a minimal two-point path, or edges chain into longer paths where possible.
 
 <figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Cluster becoming collection of linear path segments</p></figcaption></figure>
 
@@ -84,7 +84,7 @@ If you find yourself wanting "cluster features on paths" or "path features on cl
 
 #### Recovering Attributes with Sampling
 
-Each conversion and processing step can change your data — positions shift, points get added or removed, attributes get lost in translation. The **data sampling** toolset is how you bring values back from earlier states.
+Each conversion and processing step can change your data — positions shift, points get added or removed, attributes get lost in translation. The [sampling.md](../additional-systems/sampling.md "mention") toolset is how you bring values back from earlier states.
 
 A common pattern: you compute centrality on a cluster, extract paths via pathfinding, subdivide and offset those paths — and now you want the original centrality values on the final points. Sample Nearest from the earlier Vtx dataset onto your processed path points, and the values carry forward.
 

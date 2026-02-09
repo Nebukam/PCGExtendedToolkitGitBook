@@ -75,35 +75,35 @@ PCGEx includes 30+ filter providers across the different layers:
 
 **Comparison:**
 
-* **Filter : Compare (Numeric)**: Test numeric attribute against value
-* **Filter : Compare (String)**: String matching
-* **Filter : Compare (Boolean)**: Boolean test
-* **Filter : Self Compare**: Compare two attributes on the same point
-* **Filter : Within Range**: Value falls between min/max
+* [filter-compare-numeric.md](../../node-library/filters/point-filters/attribute/filter-compare-numeric.md "mention"): Test numeric attribute against value
+* [filter-compare-string.md](../../node-library/filters/point-filters/attribute/filter-compare-string.md "mention"): String matching
+* [filter-bool-compare.md](../../node-library/filters/point-filters/attribute/filter-bool-compare.md "mention"): Boolean test
+* [filter-self-compare-numeric.md](../../node-library/filters/point-filters/attribute/filter-self-compare-numeric.md "mention") : Compare two attributes on the same point
+* [filter-within-range.md](../../node-library/filters/point-filters/attribute/filter-within-range.md "mention"): Value falls between min/max
 
 **Spatial:**
 
-* **Filter : Distance**: Distance to target points
-* **Filter : Inclusion (Bounds)**: Inside/outside bounding volumes
-* **Filter : Inclusion (Path/Splines)**: Point-in-polygon tests
+* [filter-distance.md](../../node-library/filters/point-filters/spatial/filter-distance.md "mention"): Distance to target points
+* [filter-inclusion-bounds.md](../../node-library/filters/point-filters/spatial/filter-inclusion-bounds.md "mention"): Inside/outside bounding volumes
+* [filter-inclusion-path-splines.md](../../node-library/filters/point-filters/spatial/filter-inclusion-path-splines.md "mention"): Point-in-polygon tests
 
 **Math:**
 
-* **Filter : Dot**: Dot product threshold
-* **Filter : Angle**: Curvature or spread angle
-* **Filter : Modulo Compare**: Modulo arithmetic test
+* [filter-dot.md](../../node-library/filters/point-filters/math/filter-dot.md "mention"): Dot product threshold
+* [filter-angle.md](../../node-library/filters/point-filters/math/filter-angle.md "mention"): Curvature or spread angle
+* [filter-modulo-compare.md](../../node-library/filters/point-filters/math/filter-modulo-compare.md "mention"): Modulo arithmetic test
 
 **Probabilistic:**
 
-* **Filter : Random**: Random pass/fail with configurable probability
-* **Filter : Random Ratio**: Keep a ratio of elements
+* [filter-random.md](../../node-library/filters/point-filters/filter-random.md "mention"): Random pass/fail with configurable probability
+* [filter-random-ratio.md](../../node-library/filters/point-filters/filter-random-ratio.md "mention"): Keep a ratio of elements
 
 **Topology (Cluster layer):**
 
-* **Filter : Adjacency**: Neighbor count or properties
-* **Filter : Edge**: Edge endpoint conditions
+* [vtx-filter-adjacency.md](../../node-library/filters/vtx-filters/vtx-filter-adjacency.md "mention"): Neighbor count or properties
+* [edge-filter-endpoints-check.md](../../node-library/filters/edge-filters/edge-filter-endpoints-check.md "mention"): Edge endpoint conditions
 
-See the Filter Node Library for complete documentation of each filter.
+See the [filters](../../node-library/filters/ "mention") Node Library for complete documentation of each filter.
 
 ### Consuming Filters
 
@@ -115,7 +115,7 @@ Any node with a Filters input pin can consume filters. Nodes may have:
 Connecting multiple filters to one pin creates implicit AND logic: all filters must pass for an element to pass.
 
 {% hint style="success" %}
-**Uber Filter** is a utility consumer that takes any number of filters and outputs the combined result. Useful for debugging filter setups or creating filter checkpoints in your graph.
+[uber-filter.md](../../node-library/filters/uber-filter.md "mention") is a utility consumer that takes any number of filters and outputs the combined result. Useful for debugging filter setups or creating filter checkpoints in your graph.
 {% endhint %}
 
 ***
@@ -157,4 +157,4 @@ Hierarchical generation greatly benefits from that : smaller grid re-use pre-com
 
 **Node Library:**
 
-* Filter Nodes - Complete filter reference
+* [filters](../../node-library/filters/ "mention") Nodes - Complete filter reference

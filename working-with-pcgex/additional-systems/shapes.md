@@ -8,7 +8,7 @@ icon: shapes
 
 ### How It Works
 
-**Create Shapes** takes seed points and applies one or more shape builder sub-nodes to each. Every seed becomes the origin for shape generation — the seed's position, rotation, and scale define where and how big each shape is.
+[create-shapes.md](../../node-library/shapes/create-shapes.md "mention") takes seed points and applies one or more shape builder sub-nodes to each. Every seed becomes the origin for shape generation — the seed's position, rotation, and scale define where and how big each shape is.
 
 This isn't stamping the same copy onto every point. Each shape is **generated fresh from its seed**. A large seed produces a large circle; a small seed produces a small one. With distance-based resolution, the large circle also gets _more points_ to maintain consistent spacing — while the small one gets fewer. Consistent metrics no matter the seed. The shape adapts to the seed, not the other way around.
 
@@ -20,7 +20,7 @@ Output can be organized three ways:
 
 ### Available Shapes
 
-<table data-view="cards"><thead><tr><th>Shape</th><th>What It Generates</th></tr></thead><tbody><tr><td><strong>Circle</strong></td><td>Points in a circular or arc pattern — configurable start/end angle, closed loop detection</td></tr><tr><td><strong>Polygon</strong></td><td>Regular polygon (triangle, square, pentagon, hex...) with optional skeleton spokes from center to perimeter</td></tr><tr><td><strong>3D Grid</strong></td><td>Three-dimensional grid pattern with per-axis resolution and fit adjustment</td></tr><tr><td><strong>Fibonacci Sphere</strong></td><td>Points distributed on a sphere using Fibonacci lattice — near-optimal uniformity without polar clustering</td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th>Shape</th><th>What It Generates</th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><a data-mention href="../../node-library/shapes/shape-circle.md">shape-circle.md</a></td><td>Points in a circular or arc pattern — configurable start/end angle, closed loop detection</td><td><a href="../../node-library/shapes/shape-circle.md">shape-circle.md</a></td></tr><tr><td><a data-mention href="../../node-library/shapes/shape-f-sphere.md">shape-f-sphere.md</a></td><td>Points distributed on a sphere using Fibonacci lattice — near-optimal uniformity without polar clustering</td><td><a href="../../node-library/shapes/shape-f-sphere.md">shape-f-sphere.md</a></td></tr><tr><td><a data-mention href="../../node-library/shapes/shape-3d-grid.md">shape-3d-grid.md</a></td><td>Three-dimensional grid pattern with per-axis resolution and fit adjustment</td><td><a href="../../node-library/shapes/shape-3d-grid.md">shape-3d-grid.md</a></td></tr><tr><td><a data-mention href="../../node-library/shapes/shape-polygon.md">shape-polygon.md</a></td><td>Regular polygon (triangle, square, pentagon, hex...) with optional skeleton spokes from center to perimeter</td><td><a href="../../node-library/shapes/shape-polygon.md">shape-polygon.md</a></td></tr></tbody></table>
 
 Each shape supports two **resolution modes**: Fixed (exact point count regardless of size) or Distance (points spaced at a target interval — so larger shapes naturally produce more points). Parameters can be driven by attributes, so a single shape node can produce different geometry per seed.
 
@@ -47,5 +47,5 @@ Points can optionally carry a `ShapeId` attribute identifying which builder gene
 
 ### Related
 
-* Shape Nodes
-* Clusters - Shapes can seed cluster generation
+* [shapes](../../node-library/shapes/ "mention") Nodes
+* [clusters](../../node-library/clusters/ "mention") - Shapes can seed cluster generation

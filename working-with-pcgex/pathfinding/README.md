@@ -14,7 +14,7 @@ PCGEx offers multiple approaches depending on what you need.
 
 #### Goal-Based Pathfinding
 
-**Pathfinding : Edges** finds optimal paths between specified points:
+[pathfinding-edges](../../node-library/pathfinding/pathfinding-edges/ "mention") finds optimal paths between specified points:
 
 * Requires seed points (sources) and goal points (destinations)
 * Uses algorithms (A\*, Dijkstra) to find shortest/best paths
@@ -24,7 +24,7 @@ Classic pathfinding: "Find the best path from A to B."
 
 #### Sequential Plot Pathfinding
 
-**Pathfinding : Plot Edges** traces through pre-ordered waypoints:
+[pathfinding-plot-edges.md](../../node-library/pathfinding/pathfinding-plot-edges.md "mention") traces through pre-ordered waypoints:
 
 * Takes ordered input points
 * Connects them sequentially through cluster topology
@@ -32,17 +32,7 @@ Classic pathfinding: "Find the best path from A to B."
 
 Often more intuitive: "Connect these waypoints in order through the cluster."
 
-#### Growth-Based Pathfinding
-
-**Pathfinding : Grow Paths** expands from seeds until stopped:
-
-* Seeds are starting points
-* Paths grow outward following edges
-* Stops on conditions (iteration count, distance, attribute-based limits)
-
-Exploratory: "Grow outward from here until you can't."
-
-#### Flood Fill
+#### [cluster-flood-fill](../../node-library/pathfinding/cluster-flood-fill/ "mention")
 
 Spreads values through cluster connectivity:
 
@@ -56,11 +46,11 @@ Not traditional pathfinding, but uses the same cluster traversal:
 * Distance calculation from sources
 * Region segmentation
 
-Fill Controls are sub-nodes that determine how flood fill spreads. Some Fill Controls can use filters for Vtx or Edge conditions.
+[fill-control.md](../../node-library/pathfinding/cluster-flood-fill/fill-control.md "mention")s are sub-nodes that determine how flood fill spreads. Some Fill Controls can use filters for Vtx or Edge conditions.
 
 ### How Paths Are Guided
 
-Pathfinding nodes use **heuristics** to score and select paths, not filters:
+Pathfinding nodes use [heuristics.md](heuristics.md "mention") to score and select paths, not filters:
 
 * Heuristics assign costs to edges and nodes
 * Lower-cost paths are preferred
@@ -69,9 +59,13 @@ Pathfinding nodes use **heuristics** to score and select paths, not filters:
 For growth-based pathfinding, **attribute-based limits** control where paths can go:
 
 * Stop attributes mark endpoints
-*   No-growth attributes block traversal
+* No-growth attributes block traversal
 
-    <div data-gb-custom-block data-tag="hint" data-style="info" class="hint hint-info"><p>If you need to exclude edges or vertices from pathfinding, remove them from the cluster beforehand using cluster refinement operations.</p></div>
+{% hint style="info" %}
+If you need to completely exclude edges or vertices from pathfinding, remove them from the cluster beforehand using cluster refinement operations.
+
+_Heuristics cannot 100% prevent traversal._
+{% endhint %}
 
 ### Path Output
 

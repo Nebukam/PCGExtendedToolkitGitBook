@@ -14,16 +14,16 @@ Cells are closed regions bounded by cluster edges. Think of them as the "polygon
 
 #### Seeded Cell Finding
 
-**Pathfinding : Find Cells** finds cells around specific seed points:
+[find-cells.md](../../node-library/pathfinding/cells/find-cells.md "mention") finds cells around specific seed points:
 
 * Each seed claims a cell — the closed region of edges surrounding it
 * Seeds compete for ownership when cells overlap (configurable: seed order or best candidate)
 * Supports seed growth, which expands selection to adjacent cells
 * Outputs the cell boundary as a closed path, plus an oriented bounding box
 
-This is what you want when you care about *specific* regions — place seeds where you want cells extracted.
+This is what you want when you care about _specific_ regions — place seeds where you want cells extracted.
 
-**Pathfinding : Find Cells (Bounded)** adds spatial triage:
+[find-cells-bounded.md](../../node-library/pathfinding/cells/find-cells-bounded.md "mention") adds spatial triage:
 
 * Same seed-based cell finding, plus a bounds input
 * Each found cell is categorized as Inside, Touching, or Outside the bounds
@@ -31,14 +31,14 @@ This is what you want when you care about *specific* regions — place seeds whe
 
 #### Exhaustive Cell Finding
 
-**Pathfinding : Find All Cells** enumerates every cell in the cluster:
+[find-all-cells.md](../../node-library/pathfinding/cells/find-all-cells.md "mention") enumerates every cell in the cluster:
 
 * No seeds needed — discovers all enclosed regions automatically
 * Supports hole exclusion: provide "hole" points to skip cells containing them
 * Hole growth expands exclusion to adjacent cells
 * Outputs all cell boundaries as closed paths
 
-**Pathfinding : Find All Cells (Bounded)** adds the same spatial triage:
+[find-all-cells-bounded.md](../../node-library/pathfinding/cells/find-all-cells-bounded.md "mention") adds the same spatial triage:
 
 * Finds all cells, then categorizes each as Inside, Touching, or Outside the bounds
 
@@ -52,7 +52,7 @@ All cell-finding nodes share constraint settings that filter which cells are val
 
 ### Hulls
 
-**Pathfinding : Find Cluster Hull** extracts the outer boundary of each cluster as a single closed path.
+[find-cluster-hull.md](../../node-library/pathfinding/cells/find-cluster-hull.md "mention") extracts the outer boundary of each cluster as a single closed path.
 
 <figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Cluster with hull path highlighted as outer boundary</p></figcaption></figure>
 
@@ -64,13 +64,13 @@ Where cells are the interior polygons, the hull is the outermost perimeter:
 
 ### Comparison
 
-| Node                        | Input                                | Output                               |
-| --------------------------- | ------------------------------------ | ------------------------------------ |
-| Find Cells                  | Seeds + Cluster                      | Cell path per seed                   |
-| Find Cells (Bounded)        | Seeds + Cluster + Bounds             | Cell paths, triaged by bounds        |
-| Find All Cells              | Cluster (+ optional Holes)           | All cell paths                       |
-| Find All Cells (Bounded)    | Cluster + Bounds (+ optional Holes)  | All cell paths, triaged by bounds    |
-| Find Cluster Hull           | Cluster                              | Single hull path per cluster         |
+| Node                                                                                                  | Input                               | Output                            |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------- | --------------------------------- |
+| [find-cells.md](../../node-library/pathfinding/cells/find-cells.md "mention")                         | Seeds + Cluster                     | Cell path per seed                |
+| [find-cells-bounded.md](../../node-library/pathfinding/cells/find-cells-bounded.md "mention")         | Seeds + Cluster + Bounds            | Cell paths, triaged by bounds     |
+| [find-all-cells.md](../../node-library/pathfinding/cells/find-all-cells.md "mention")                 | Cluster (+ optional Holes)          | All cell paths                    |
+| [find-all-cells-bounded.md](../../node-library/pathfinding/cells/find-all-cells-bounded.md "mention") | Cluster + Bounds (+ optional Holes) | All cell paths, triaged by bounds |
+| [find-cluster-hull.md](../../node-library/pathfinding/cells/find-cluster-hull.md "mention")           | Cluster                             | Single hull path per cluster      |
 
 ### Practical Uses
 
@@ -130,6 +130,6 @@ These operations share infrastructure with pathfinding — they traverse cluster
 
 ### Related
 
-* Pathfinding Overview - Pathfinding concepts
-* Paths - Path operations for extracted boundaries
-* Cluster Path Interop - Converting between formats
+* [.](./ "mention") - Pathfinding concepts
+* [paths](../paths/ "mention") - Path operations for extracted boundaries
+* [cluster-path-interoperability.md](../clusters/cluster-path-interoperability.md "mention") - Converting between formats

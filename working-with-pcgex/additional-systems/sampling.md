@@ -14,15 +14,15 @@ The mental model is simple: **source points ask, targets answer, attributes carr
 
 These find the nearest thing and extract data from it:
 
-| Sampler             | Target                    | Key Output                                                                    |
-| ------------------- | ------------------------- | ----------------------------------------------------------------------------- |
-| **Nearest Point**   | Other point sets          | Transform, distance, transferred attributes from closest point(s)             |
-| **Nearest Bounds**  | Point bounds (box/sphere) | Distance, signed distance, component-wise distance to nearest bounds          |
-| **Nearest Spline**  | Spline curves             | Position on spline, tangent, alpha (normalized position along curve)          |
-| **Nearest Surface** | Collision surfaces        | Hit location, normal, physical material, inside/outside detection             |
-| **Line Trace**      | Collision surfaces        | Directed trace — hit point, normal, UV coords, vertex color, face index       |
-| **Nearest Path**    | Paths (as edges)          | Nearest point on path edges, signed distance, inside/outside for closed paths |
-| **Inside Path**     | Closed paths              | Containment test — whether points lie inside closed path boundaries           |
+| Sampler                                                                                              | Target                    | Key Output                                                                    |
+| ---------------------------------------------------------------------------------------------------- | ------------------------- | ----------------------------------------------------------------------------- |
+| [sample-nearest-point.md](../../node-library/sampling/nearest/sample-nearest-point.md "mention")     | Other point sets          | Transform, distance, transferred attributes from closest point(s)             |
+| [sample-nearest-bounds.md](../../node-library/sampling/nearest/sample-nearest-bounds.md "mention")   | Point bounds (box/sphere) | Distance, signed distance, component-wise distance to nearest bounds          |
+| [sample-nearest-spline.md](../../node-library/sampling/nearest/sample-nearest-spline.md "mention")   | Spline curves             | Position on spline, tangent, alpha (normalized position along curve)          |
+| [sample-nearest-surface.md](../../node-library/sampling/nearest/sample-nearest-surface.md "mention") | Collision surfaces        | Hit location, normal, physical material, inside/outside detection             |
+| [sample-line-trace.md](../../node-library/sampling/nearest/sample-line-trace.md "mention")           | Collision surfaces        | Directed trace — hit point, normal, UV coords, vertex color, face index       |
+| [sample-nearest-path.md](../../node-library/sampling/nearest/sample-nearest-path.md "mention")       | Paths (as edges)          | Nearest point on path edges, signed distance, inside/outside for closed paths |
+| [sample-inside-path.md](../../node-library/sampling/nearest/sample-inside-path.md "mention")         | Closed paths              | Containment test — whether points lie inside closed path boundaries           |
 
 Most spatial samplers support multiple **sample methods**: within range (all targets in radius), closest, farthest, or best candidate (weighted evaluation). Results include success/failure flags, distance, and optional look-at transforms.
 
@@ -32,11 +32,11 @@ Most spatial samplers support multiple **sample methods**: within range (all tar
 
 A separate family of samplers deals with overlap between datasets or within a single dataset:
 
-| Node                   | Purpose                                                                                       |
-| ---------------------- | --------------------------------------------------------------------------------------------- |
-| **Discard By Overlap** | Scores entire datasets by how much they overlap others, then prunes low- or high-scoring sets |
-| **Overlap Stats**      | Writes per-point overlap counts — how many other datasets overlap each point                  |
-| **Self Pruning**       | Removes overlapping points within a single collection, with optional OBB precision testing    |
+| Node                                                                                     | Purpose                                                                                       |
+| ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| [discard-by-overlap.md](../../node-library/sampling/discard-by-overlap.md "mention")     | Scores entire datasets by how much they overlap others, then prunes low- or high-scoring sets |
+| [sample-overlap-stats.md](../../node-library/sampling/sample-overlap-stats.md "mention") | Writes per-point overlap counts — how many other datasets overlap each point                  |
+| [self-pruning.md](../../node-library/sampling/self-pruning.md "mention")                 | Removes overlapping points within a single collection, with optional OBB precision testing    |
 
 These are useful for cleaning up overlapping distributions before spawning.
 
@@ -44,15 +44,15 @@ These are useful for cleaning up overlapping distributions before spawning.
 
 Texture sampling uses a three-node pipeline:
 
-1. **Texture Params** (sub-node) — define what to extract: which texture parameter, which channels (R, G, B, A, RGB, RGBA), output type
-2. **Get Texture Data** — load textures from material paths or direct texture paths, with tiling and transform options
-3. **Sample Texture** — sample the loaded texture at UV coordinates and write values to attributes
+1. [texture-param.md](../../node-library/sampling/textures/texture-param.md "mention") (sub-node) — define what to extract: which texture parameter, which channels (R, G, B, A, RGB, RGBA), output type
+2. [get-texture-data.md](../../node-library/sampling/textures/get-texture-data.md "mention") — load textures from material paths or direct texture paths, with tiling and transform options
+3. [sample-texture.md](../../node-library/sampling/textures/sample-texture.md "mention") — sample the loaded texture at UV coordinates and write values to attributes
 
 Multiple texture params can feed into a single sampling pass, extracting different channels or textures simultaneously.
 
 ### Mesh Socket Extraction
 
-**Sample Sockets** extracts socket positions from static meshes as new points — with tag and name filtering to select specific sockets. This feeds into modular construction workflows where named attachment points drive procedural assembly.
+[sample-sockets.md](../../node-library/staging/utilities/sample-sockets.md "mention") extracts socket positions from static meshes as new points — with tag and name filtering to select specific sockets. This feeds into modular construction workflows where named attachment points drive procedural assembly.
 
 ### Data Transfer
 
@@ -64,6 +64,6 @@ Sampling is the glue between processing stages. Whenever you need to recover att
 
 ### Related
 
-* Sampling Nodes
-* Filters - Distance filters use similar spatial queries
-* Cluster Path Interop - Sampling for attribute recovery across formats
+* [sampling](../../node-library/sampling/ "mention") Nodes
+* [filters](../../node-library/filters/ "mention") - Distance filters use similar spatial queries
+* [cluster-path-interoperability.md](../clusters/cluster-path-interoperability.md "mention") - Sampling for attribute recovery across formats

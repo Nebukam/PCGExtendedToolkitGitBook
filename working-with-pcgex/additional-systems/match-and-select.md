@@ -12,15 +12,15 @@ Two families: **matching** (correlate data between sources) and **pickers** (sel
 
 Matching rules define how points from one dataset correspond to points in another. You configure the rules, and any consuming node uses them to find the right pairing.
 
-| Rule                  | Matches By                                                                                                                                  |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Attributes**        | Compares attribute values between datasets — numeric (equal, nearly equal, greater/less than) or string (exact, contains, starts/ends with) |
-| **Tags x Attributes** | Compares tag values on one side against attribute values on the other                                                                       |
-| **Shared Tag**        | Common tags between datasets — specific tag, any shared, or all shared                                                                      |
-| **Overlap**           | Spatial bounding box intersection with configurable expansion and octree acceleration                                                       |
-| **By Index**          | Pairs elements by index position, with safety modes for mismatched sizes (clamp, wrap, yoyo)                                                |
-| **Random**            | Probabilistic matching with seed-based threshold — deterministic randomness                                                                 |
-| **Copy Tags**         | Side-effect rule: copies tags from matched targets to candidates when other rules succeed                                                   |
+| Rule                                                                                                      | Matches By                                                                                                                                  |
+| --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| [match-attributes.md](../../node-library/utilities/data-matching/match-attributes.md "mention")           | Compares attribute values between datasets — numeric (equal, nearly equal, greater/less than) or string (exact, contains, starts/ends with) |
+| [match-tags-attributes.md](../../node-library/utilities/data-matching/match-tags-attributes.md "mention") | Compares tag values on one side against attribute values on the other                                                                       |
+| [match-shared-tag.md](../../node-library/utilities/data-matching/match-shared-tag.md "mention")           | Common tags between datasets — specific tag, any shared, or all shared                                                                      |
+| [match-overlap.md](../../node-library/utilities/data-matching/match-overlap.md "mention")                 | Spatial bounding box intersection with configurable expansion and octree acceleration                                                       |
+| [match-by-index.md](../../node-library/utilities/data-matching/match-by-index.md "mention")               | Pairs elements by index position, with safety modes for mismatched sizes (clamp, wrap, yoyo)                                                |
+| [match-random.md](../../node-library/utilities/data-matching/match-random.md "mention")                   | Probabilistic matching with seed-based threshold — deterministic randomness                                                                 |
+| [match-copy-tags.md](../../node-library/utilities/data-matching/match-copy-tags.md "mention")             | Side-effect rule: copies tags from matched targets to candidates when other rules succeed                                                   |
 
 #### Multi-Rule Composition
 
@@ -44,12 +44,12 @@ When a node uses matching to pair entire datasets (not just individual points), 
 
 Pickers answer a simpler question: "which index do I want?" They select entries from ordered collections — constant values, ranges, attribute-driven lookups.
 
-| Picker               | Selection Strategy                                                                  |
-| -------------------- | ----------------------------------------------------------------------------------- |
-| **Constant**         | Single index — discrete value or 0–1 normalized position                            |
-| **Range**            | Contiguous span from start to end, with auto-swap if reversed                       |
-| **Indices from Set** | Multiple discrete indices read from one or more attributes                          |
-| **Ranges from Set**  | Multiple ranges from `FVector2D` attributes (X=start, Y=end), merged if overlapping |
+| Picker                                                                                                  | Selection Strategy                                                                  |
+| ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| [picker-constant.md](../../node-library/utilities/pickers/picker-constant.md "mention")                 | Single index — discrete value or 0–1 normalized position                            |
+| [picker-range.md](../../node-library/utilities/pickers/picker-range.md "mention")                       | Contiguous span from start to end, with auto-swap if reversed                       |
+| [picker-indices-from-set.md](../../node-library/utilities/pickers/picker-indices-from-set.md "mention") | Multiple discrete indices read from one or more attributes                          |
+| [picker-ranges-from-set.md](../../node-library/utilities/pickers/picker-ranges-from-set.md "mention")   | Multiple ranges from `FVector2D` attributes (X=start, Y=end), merged if overlapping |
 
 All pickers share these behaviors:
 
@@ -72,6 +72,6 @@ If you're comfortable with how filters compose, these work the same way. The dif
 
 ### Related
 
-* Provider/Consumer Pattern
-* Matching Nodes
-* Picker Nodes
+* [provider-consumer-pattern.md](../architecture/provider-consumer-pattern.md "mention")
+* [data-matching](../../node-library/utilities/data-matching/ "mention") nodes
+* [pickers](../../node-library/utilities/pickers/ "mention") nodes

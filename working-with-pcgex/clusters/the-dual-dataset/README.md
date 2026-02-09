@@ -17,7 +17,7 @@ Cluster nodes have paired input and output pins:
 
 Both collections must be present. A cluster without edges has no connectivity. Edges without Vtx have nothing to connect.
 
-<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Cluster operation node showing paired Vtx and Edges pins on both input and output sides</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Cluster operation node showing paired Vtx and Edges pins on both input and output sides</p></figcaption></figure>
 
 ### Data Flow
 
@@ -27,13 +27,13 @@ When processing clusters:
 2. Connect Edges output to Edges input
 3. Operations receive both, may modify both, output both
 
-<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>PCG graph showing cluster data flowing through multiple operations, with Vtx and Edges traveling in parallel</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>PCG graph showing cluster data flowing through multiple operations, with Vtx and Edges traveling in parallel</p></figcaption></figure>
 
 Vtx and Edges are separate wires but represent a single logical cluster.
 
 ### Find Clusters
 
-**Find Clusters** is a no-cost utility node that retrieves matching Vtx and Edges pairs from mixed inputs. It separates and matches — it doesn't combine.
+[find-clusters.md](../../../node-library/clusters/utilities/find-clusters.md "mention") is a no-cost utility node that retrieves matching Vtx and Edges pairs from mixed inputs. It separates and matches — it doesn't combine.
 
 #### Search Modes
 
@@ -47,7 +47,7 @@ Vtx and Edges are separate wires but represent a single logical cluster.
 
 Mixed data can flow through a single wire (switches, reroutes, subgraph pins), then Find Clusters separates it back into Vtx and Edges outputs.
 
-<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Graph showing mixed cluster data flowing through a switch node, then Find Clusters separating into Vtx and Edges</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Graph showing mixed cluster data flowing through a switch node, then Find Clusters separating into Vtx and Edges</p></figcaption></figure>
 
 Given a Vtx dataset as key, Find Clusters retrieves all matching Edge datasets. This is how you process clusters individually in a loop.
 
@@ -90,7 +90,7 @@ Vtx and Edges are regular PCG points. Standard operations work for transforms (p
 Operations that change point count need attention: filtering with deletion, sampling (creates new points), merging/splitting.
 
 {% hint style="warning" %}
-If vanilla nodes delete Vtx or Edge points, run **Sanitize Clusters** before further PCGEx operations. Indices need updating.
+If vanilla nodes delete Vtx or Edge points, run [cluster-sanitize.md](../../../node-library/clusters/utilities/cluster-sanitize.md "mention") before further PCGEx operations. Indices need updating.
 {% endhint %}
 
 #### Handled Automatically
@@ -117,6 +117,6 @@ Operations process multiple clusters in parallel. Each cluster (Vtx + Edges pair
 
 ### Related
 
-* [.](./ "mention") - Cluster fundamentals
-* [building-clusters.md](building-clusters.md "mention") - Creating clusters from various sources
-* [refining-clusters.md](refining-clusters.md "mention") - Modifying cluster topology
+* [..](../ "mention") - Cluster fundamentals
+* [building-clusters.md](../building-clusters.md "mention") - Creating clusters from various sources
+* [refining-clusters.md](../refining-clusters.md "mention") - Modifying cluster topology

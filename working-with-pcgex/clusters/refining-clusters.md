@@ -12,7 +12,7 @@ Operations fall into several categories: edge removal, Vtx filtering, topology s
 
 #### Removing Edges
 
-**Refine Edges** removes connections based on conditions: edge length thresholds, endpoint attribute conditions, or spatial criteria like crossing bounds or intersecting geometry.
+[cluster-refine](../../node-library/clusters/refine/cluster-refine/ "mention") removes connections based on conditions: edge length thresholds, endpoint attribute conditions, or spatial criteria like crossing bounds or intersecting geometry.
 
 <figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Dense cluster becoming sparse after edge removal</p></figcaption></figure>
 
@@ -26,7 +26,7 @@ This is where a dense Delaunay result turns into the sparse network you actually
 
 #### Subdividing Edges
 
-**Subdivide Edges** adds Vtx along edges, either by count (N new Vtx per edge) or by distance (one Vtx every X units).
+[tbd-subdivide-edges.md](../../node-library/clusters/refine/tbd-subdivide-edges.md "mention") adds Vtx along edges, either by count (N new Vtx per edge) or by distance (one Vtx every X units).
 
 <figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Long edges gaining intermediate Vtx points</p></figcaption></figure>
 
@@ -36,7 +36,7 @@ Subdivision increases resolution along connections: more attachment points, high
 
 #### Filtering Vtx
 
-**Filter Vtx** removes vertices based on conditions: attribute filters (value comparisons), topology filters (neighbor count, degree), or spatial filters (within bounds, near reference).
+[cluster-filter-vtx.md](../../node-library/clusters/refine/cluster-filter-vtx.md "mention") removes vertices based on conditions: attribute filters (value comparisons), topology filters (neighbor count, degree), or spatial filters (within bounds, near reference).
 
 When Vtx are removed:
 
@@ -52,23 +52,19 @@ Refinement can mark Vtx as invalid without removing them. Indices remain stable 
 
 #### Fusing
 
-**Fuse Clusters** merges close Vtx. Vtx within a threshold merge to one, edges update to reference merged Vtx, and duplicate edges can be removed or preserved.
+[find-clusters.md](../../node-library/clusters/utilities/find-clusters.md "mention") merges close Vtx. Vtx within a threshold merge to one, edges update to reference merged Vtx, and duplicate edges can be removed or preserved.
 
 <figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Cluster with nearly-overlapping Vtx becoming cleaner after fusion</p></figcaption></figure>
 
 #### Bridge Detection
 
-**Find Bridges** identifies edges whose removal would disconnect the cluster. These are structurally critical connections — the load-bearing walls of your network.
-
-#### Island Removal
-
-**Prune Isolated** removes Vtx with no connections. This typically happens when all edges to a Vtx are removed during refinement. Cascading is configurable: removing an edge may create an isolated Vtx, which triggers more removal.
+[cluster-connect.md](../../node-library/clusters/refine/cluster-connect.md "mention") identifies edges whose removal would disconnect the cluster. These are structurally critical connections — the load-bearing walls of your network.
 
 ### Position Optimization
 
 #### Relaxation
 
-**Relax Clusters** moves Vtx toward optimal positions using spring forces, Lloyd relaxation, or custom constraints.
+[cluster-relax](../../node-library/clusters/transform/cluster-relax/ "mention") moves Vtx toward optimal positions using spring forces, Lloyd relaxation, or custom constraints.
 
 <figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Irregular cluster becoming more evenly spaced after relaxation</p></figcaption></figure>
 
@@ -76,23 +72,23 @@ Relaxation preserves topology (same edges, same connections) but changes positio
 
 #### Projection
 
-Move Vtx onto surfaces, snap to grids, or align to geometry: project to landscape, snap to grid positions, or align to reference geometry.
+Move Vtx onto surfaces, snap to grids, or align to geometry: project to landscape, snap to grid positions, or align to reference geometry; exposed through [projection-details.md](../../node-library/common-settings/projection-details.md "mention").
 
 ### Attribute Enrichment
 
 #### Neighbor Sampling
 
-**Sample Neighbors** computes Vtx attributes from connected neighbors: average of neighbor values, min/max among neighbors, count of neighbors meeting criteria.
+[cluster-sample-neighbors](../../node-library/sampling/cluster-sample-neighbors/ "mention") computes Vtx attributes from connected neighbors: average of neighbor values, min/max among neighbors, count of neighbors meeting criteria.
 
 <figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Vtx colored by average neighbor attribute value</p></figcaption></figure>
 
 #### Centrality Measures
 
-Compute topological importance: degree (connection count), betweenness (how often a Vtx appears in shortest paths), closeness (average distance to all other Vtx), and more.
+Compute topological importance: degree (connection count), betweenness (how often a Vtx appears in shortest paths), closeness (average distance to all other Vtx), and more with [cluster-centrality.md](../../node-library/clusters/analyze/cluster-centrality.md "mention").
 
 #### Edge Properties
 
-Compute Edge attributes: length/distance, direction vectors, properties derived from endpoint Vtx.
+Compute Edge attributes: length/distance, direction vectors, properties derived from endpoint Vtx with [cluster-edge-properties.md](../../node-library/clusters/analyze/cluster-edge-properties.md "mention").
 
 ### Combining Refinements
 

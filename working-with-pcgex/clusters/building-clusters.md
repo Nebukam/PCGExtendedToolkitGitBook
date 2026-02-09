@@ -14,7 +14,7 @@ This is the canonical approach: generate, combine, refine. Not "pick the right a
 
 These methods connect everything at once. They're "shotgun" approaches — fast, comprehensive, and great as a starting layer that you refine or combine with more precise clusters.
 
-**Delaunay Triangulation** creates triangular mesh-like connectivity. Every point connects to nearby points forming triangles where no point lies inside any triangle's circumcircle.
+[cluster-delaunay-2d.md](../../node-library/clusters/generate/cluster-delaunay-2d.md "mention") creates triangular mesh-like connectivity. Every point connects to nearby points forming triangles where no point lies inside any triangle's circumcircle.
 
 <figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Random point cloud transformed into Delaunay triangulation showing triangle connectivity</p></figcaption></figure>
 
@@ -24,7 +24,7 @@ Properties:
 * No overlapping edges (in 2D projection)
 * Maximizes minimum angles
 
-**Voronoi Diagram** creates connections between neighboring Voronoi cells. Each cell contains all space closest to one Vtx than any other.
+[cluster-voronoi-2d.md](../../node-library/clusters/generate/cluster-voronoi-2d.md "mention") creates connections between neighboring Voronoi cells. Each cell contains all space closest to one Vtx than any other.
 
 <figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Points with Voronoi cell boundaries, edges connecting adjacent cell centers</p></figcaption></figure>
 
@@ -38,7 +38,7 @@ Both Delaunay and Voronoi have 2D and 3D variants. The 2D variants project onto 
 
 #### Probe-Based Connection
 
-**Connect Points** is the precise tool. You control exactly which connections form through configurable probes:
+[cluster-connect-points](../../node-library/clusters/generate/cluster-connect-points/ "mention") is the precise tool. You control exactly which connections form through configurable probes:
 
 * **K-Nearest**: Connect each point to its K closest neighbors
 * **Radius**: Connect all points within a distance threshold
@@ -70,7 +70,7 @@ Properties:
 
 ### From Meshes
 
-**Mesh to Cluster** extracts mesh topology as cluster connectivity. Vtx appear at mesh vertex positions, Edges follow mesh edges.
+[mesh-to-clusters.md](../../node-library/clusters/generate/mesh-to-clusters.md "mention") extracts mesh topology as cluster connectivity. Vtx appear at mesh vertex positions, Edges follow mesh edges.
 
 <figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Static mesh becoming cluster with same vertex/edge structure</p></figcaption></figure>
 
@@ -78,7 +78,7 @@ This preserves mesh topology exactly and can extract from complex geometry.
 
 ### From Paths
 
-**Paths to Cluster** connects path endpoints to form networks. Path points become Vtx, path segments become Edges, and endpoints can merge when close together.
+[path-to-clusters.md](../../node-library/clusters/interop/path-to-clusters.md "mention") connects path endpoints to form networks. Path points become Vtx, path segments become Edges, and endpoints can merge when close together.
 
 <figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Separate path segments becoming interconnected cluster at meeting points</p></figcaption></figure>
 
@@ -103,7 +103,7 @@ Think of cluster generation methods as ingredients, not solutions. The final clu
 
 #### Decomposition
 
-**Decompose Clusters** does the opposite — it separates disconnected components. Each connected component becomes its own cluster.
+[cluster-decomposition.md](../../node-library/clusters/refine/cluster-decomposition.md "mention") does the opposite — it separates disconnected components. Each connected component becomes its own cluster.
 
 ### Quick Reference
 
@@ -118,7 +118,7 @@ Think of cluster generation methods as ingredients, not solutions. The final clu
 
 ### After Building
 
-Newly created clusters often need refinement: removing unwanted edges, filtering Vtx by criteria, subdividing long edges, computing additional attributes. See Refining Clusters for post-generation processing.
+Newly created clusters often need refinement: removing unwanted edges, filtering Vtx by criteria, subdividing long edges, computing additional attributes. See [refining-clusters.md](refining-clusters.md "mention") for post-generation processing.
 
 ### Related
 
