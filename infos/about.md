@@ -41,3 +41,7 @@ PCGEx is MIT-licensed. The full source is on [GitHub](https://github.com/Nebukam
 * [Discord](https://discord.gg/Aze3puAg6T) — Community and support
 * [GitHub Issues](https://github.com/Nebukam/PCGExtendedToolkit/issues) — Bug reports
 * [Patreon](https://www.patreon.com/c/pcgex) — Support the project
+
+
+
+<figure><img src="../.gitbook/assets/theyuseit.png" alt=""><figcaption><p>They got PCGEx in their pipeline!</p></figcaption></figure>
