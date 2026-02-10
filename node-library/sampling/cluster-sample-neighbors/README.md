@@ -53,8 +53,6 @@ Connect these sub-nodes to the Samplers pin:
 
 | Sampler                      | Description                                                |
 | ---------------------------- | ---------------------------------------------------------- |
-| **Sampler : Vtx Attributes** | Sample and blend custom vertex attributes                  |
-| **Sampler : Vtx Properties** | Sample and blend point properties (Transform, Color, etc.) |
 | **Sampler : Vtx Blend**      | Use blend operations for complex attribute blending        |
 | **Sampler : Test Neighbors** | Test neighbors against filters and output statistics       |
 
