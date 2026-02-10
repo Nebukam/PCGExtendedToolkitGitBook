@@ -1,8 +1,8 @@
 ---
 icon: hand-wave
-cover: .gitbook/assets/banner_gumroad.png
+cover: .gitbook/assets/Main.png
 coverY: 0
-coverHeight: 368
+coverHeight: 352
 layout:
   width: default
   cover:
