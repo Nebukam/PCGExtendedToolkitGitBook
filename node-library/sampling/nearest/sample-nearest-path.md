@@ -21,8 +21,8 @@ Disable **Only Sample When Inside** and **Always Sample When Inside** to switch 
 5. **Blend and write**: Qualifying paths are weighted by the distance curve and blended. Results are stored as point attributes.
 
 {% hint style="info" %}
+### Containment by default.
 
-## Containment by default.  
 Out of the box, this node only samples paths that enclose the source point. Points outside all paths will fail sampling. This is the inverse of [Sample Inside Path](sample-inside-path.md), where paths sample the points they contain.
 {% endhint %}
 
@@ -199,11 +199,11 @@ Default: `false`
 
 How to interpret the sample alpha value.
 
-| Option       | Description                                         |
-| ------------ | --------------------------------------------------- |
-| **Alpha**    | 0–1 normalized position along the path              |
-| **Time**     | 0–N value where N is the number of segments         |
-| **Distance** | Distance along the path in world units              |
+| Option       | Description                                 |
+| ------------ | ------------------------------------------- |
+| **Alpha**    | 0–1 normalized position along the path      |
+| **Time**     | 0–N value where N is the number of segments |
+| **Distance** | Distance along the path in world units      |
 
 Default: `Alpha`
 
@@ -487,5 +487,3 @@ Default: `true`
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsSampling-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Elements/PCGExSampleNearestPath.h)
-
-

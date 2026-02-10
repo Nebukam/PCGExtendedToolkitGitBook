@@ -19,12 +19,12 @@ layout:
 
 # Example Project
 
+<figure><img src="../../.gitbook/assets/Splash_ExampleProject_GIT.png" alt=""><figcaption></figcaption></figure>
+
 The example project is the best way to see PCGEx in action across all major systems. It's divided into two parts:
 
 * **Showroom** — Abstract showcases of individual nodes and features, one at a time
 * **Examples** — More involved setups showing how nodes work together for complex results
-
-
 
 <figure><img src="../../.gitbook/assets/image (38).png" alt=""><figcaption></figcaption></figure>
 

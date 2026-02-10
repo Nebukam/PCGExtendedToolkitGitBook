@@ -18,8 +18,8 @@ Tests which target oriented bounding boxes (OBBs) contain each source point, the
 4. **Write outputs**: Transforms, distances, angles, and blended attributes are stored as point attributes.
 
 {% hint style="info" %}
+### Containment, not proximity.
 
-## Containment, not proximity.  
 A source point must be **inside** a target's OBB to sample it. Points outside all target bounds will fail sampling. The **Bounds Source** setting controls OBB size and directly affects which points fall inside.
 {% endhint %}
 
@@ -354,5 +354,3 @@ Default: `true`
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsSampling-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsSampling/Public/Elements/PCGExSampleNearestBounds.h)
-
-
