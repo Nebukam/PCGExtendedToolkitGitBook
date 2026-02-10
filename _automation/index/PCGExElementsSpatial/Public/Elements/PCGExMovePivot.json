@@ -10,7 +10,7 @@
       "display_name": "Move Pivot",
       "description": "Move pivot point relative to its bounds.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"transform/move-pivot\")",
+      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"transform/transform/move-pivot\")",
       "uproperties": [
         {
           "name": "UVW",

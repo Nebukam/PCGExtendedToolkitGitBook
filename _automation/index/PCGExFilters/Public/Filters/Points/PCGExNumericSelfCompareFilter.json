@@ -151,7 +151,7 @@
       "display_name": "Filter : Self Compare (Numeric)",
       "description": "Creates a filter definition that compares an attribute numeric value against itself at another index.",
       "base_class": "UPCGExFilterProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/self-comparisons/numeric\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/point-filters/attribute/filter-self-compare-numeric\")",
       "uproperties": [
         {
           "name": "Config",

@@ -987,21 +987,24 @@
       "UPCGExWriteEdgePropertiesSettings",
       "UPCGExBreakClustersToPathsSettings",
       "UPCGExEdgeOrderSettings",
+      "UPCGExClusterToZoneGraphSettings",
       "FPCGExIsoEdgeDirectionFilterConfig"
     ],
-    "origin_count": 3,
+    "origin_count": 4,
     "origins": [
       "UPCGExWriteEdgePropertiesSettings",
       "UPCGExBreakClustersToPathsSettings",
-      "UPCGExEdgeOrderSettings"
+      "UPCGExEdgeOrderSettings",
+      "UPCGExClusterToZoneGraphSettings"
     ],
-    "usage_count": 4,
-    "user_facing_count": 2,
+    "usage_count": 5,
+    "user_facing_count": 3,
     "user_facing_origins": [
       "UPCGExBreakClustersToPathsSettings",
-      "UPCGExEdgeOrderSettings"
+      "UPCGExEdgeOrderSettings",
+      "UPCGExClusterToZoneGraphSettings"
     ],
-    "user_facing_origin_count": 2,
+    "user_facing_origin_count": 3,
     "is_shared": true,
     "document_with": null
   },
@@ -2177,20 +2180,23 @@
   "FPCGExAttachmentRules": {
     "used_by": [
       "UPCGExCreateSplineSettings",
-      "UPCGExSpawnDynamicMeshSettings"
+      "UPCGExSpawnDynamicMeshSettings",
+      "UPCGExClusterToZoneGraphSettings"
     ],
-    "origin_count": 2,
+    "origin_count": 3,
     "origins": [
       "UPCGExCreateSplineSettings",
-      "UPCGExSpawnDynamicMeshSettings"
+      "UPCGExSpawnDynamicMeshSettings",
+      "UPCGExClusterToZoneGraphSettings"
     ],
-    "usage_count": 2,
-    "user_facing_count": 2,
+    "usage_count": 3,
+    "user_facing_count": 3,
     "user_facing_origins": [
       "UPCGExCreateSplineSettings",
-      "UPCGExSpawnDynamicMeshSettings"
+      "UPCGExSpawnDynamicMeshSettings",
+      "UPCGExClusterToZoneGraphSettings"
     ],
-    "user_facing_origin_count": 2,
+    "user_facing_origin_count": 3,
     "is_shared": true,
     "document_with": null
   },
@@ -4764,6 +4770,51 @@
     "user_facing_origin_count": 1,
     "is_shared": false,
     "document_with": "UPCGExTupleSettings"
+  },
+  "FPCGExFeatureIdentifier": {
+    "used_by": [
+      "UPCGExWatabouData"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExWatabouData"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExFeatureDetails": {
+    "used_by": [
+      "UPCGExWatabouFeaturesCollection"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExWatabouFeaturesCollection"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExWatabouFeature": {
+    "used_by": [
+      "UPCGExWatabouFeaturesCollection"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExWatabouFeaturesCollection"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
   },
   "FPCGExAttributeBlendWeight": {
     "used_by": [

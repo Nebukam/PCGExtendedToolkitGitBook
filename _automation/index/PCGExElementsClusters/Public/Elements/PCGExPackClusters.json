@@ -10,7 +10,7 @@
       "display_name": "Cluster : Pack",
       "description": "Pack each cluster into an single point data object containing both vtx and edges.",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/packing/pack-cluster\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/utilities/pack-and-unpack/cluster-pack\")",
       "uproperties": [
         {
           "name": "CarryOverDetails",

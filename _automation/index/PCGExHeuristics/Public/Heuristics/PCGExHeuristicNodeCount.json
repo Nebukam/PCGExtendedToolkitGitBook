@@ -46,7 +46,7 @@
       "display_name": "Heuristics : Least Nodes",
       "description": "Heuristics based on node count.",
       "base_class": "UPCGExHeuristicsFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"pathfinding/heuristics/hx-least-nodes\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"pathfinding/heuristics/heuristics-least-nodes\")",
       "uproperties": [
         {
           "name": "Config",

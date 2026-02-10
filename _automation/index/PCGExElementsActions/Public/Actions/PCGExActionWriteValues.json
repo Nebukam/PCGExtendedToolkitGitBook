@@ -52,7 +52,7 @@
       "display_name": "Action : Write Attributes",
       "description": "Forward attributes based on the match result.",
       "base_class": "UPCGExActionProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|ActionWriteValues\", meta=(PCGExNodeLibraryDoc=\"quality-of-life/batch-actions/write-attributes\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|ActionWriteValues\", meta=(PCGExNodeLibraryDoc=\"utilities/batch-actions/action-write-attributes\")",
       "uproperties": [
         {
           "name": "SuccessAttributesFilter",

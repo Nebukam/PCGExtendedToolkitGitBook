@@ -253,7 +253,7 @@
       "display_name": "Filter : Raycast",
       "description": "Filters points based on raycast results against surfaces.",
       "base_class": "UPCGExFilterProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/world/raycast-1\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/point-filters/spatial/filter-raycast\")",
       "uproperties": [
         {
           "name": "Config",

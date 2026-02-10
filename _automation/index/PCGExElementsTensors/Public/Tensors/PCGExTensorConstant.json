@@ -60,7 +60,7 @@
       "display_name": "Tensor : Constant",
       "description": "A tensor that has a constant value in the field. Note that this tensor will prevent sampling from failing.",
       "base_class": "UPCGExTensorFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Tensors|Params\", meta=(PCGExNodeLibraryDoc=\"tensors/effectors/tensor-constant\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Tensors|Params\", meta=(PCGExNodeLibraryDoc=\"tensors/tensors/tensor-constant\")",
       "uproperties": [
         {
           "name": "TensorWeight",

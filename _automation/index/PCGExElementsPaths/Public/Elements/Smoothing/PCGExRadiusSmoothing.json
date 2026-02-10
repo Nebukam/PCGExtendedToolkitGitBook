@@ -10,7 +10,7 @@
       "display_name": "UPCGExRadiusSmoothing",
       "description": "",
       "base_class": "UPCGExSmoothingInstancedFactory",
-      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Radius\", PCGExNodeLibraryDoc=\"paths/smooth/smooth-radius\")",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Radius\", PCGExNodeLibraryDoc=\"paths/transform/path-smooth/radius-smoothing\")",
       "uproperties": [],
       "classification": {
         "type": "instanced_factory",

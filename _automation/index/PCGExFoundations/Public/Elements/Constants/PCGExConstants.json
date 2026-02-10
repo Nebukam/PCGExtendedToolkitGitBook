@@ -10,7 +10,7 @@
       "display_name": "Constant",
       "description": "Constants.",
       "base_class": "UPCGExSettings",
-      "uclass_meta": "BlueprintType, ClassGroup=(Procedural), meta=(PCGExNodeLibraryDoc=\"quality-of-life/constants\")",
+      "uclass_meta": "BlueprintType, ClassGroup=(Procedural), meta=(PCGExNodeLibraryDoc=\"metadata/keys/constant\")",
       "uproperties": [
         {
           "name": "ConstantList",

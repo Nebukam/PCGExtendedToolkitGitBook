@@ -25,7 +25,7 @@
       "display_name": "Clipper2 : Rect Clip",
       "description": "Fast rectangle clipping using optimized Clipper2 algorithm.",
       "base_class": "UPCGExClipper2ProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/clipper2/clipper2-rectclip\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/intersect/clipper2-rect-clip\")",
       "uproperties": [
         {
           "name": "ProjectionDetails",

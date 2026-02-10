@@ -203,7 +203,7 @@
       "display_name": "Data Filter : Bounds",
       "description": "Test an aspect of the collection' bounds",
       "base_class": "UPCGExFilterCollectionProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-collections/tag-value\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/data-filters/data-filter-bounds\")",
       "uproperties": [
         {
           "name": "Config",

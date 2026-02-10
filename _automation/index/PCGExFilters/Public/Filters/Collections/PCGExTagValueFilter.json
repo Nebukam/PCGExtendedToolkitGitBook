@@ -138,7 +138,7 @@
       "display_name": "Data Filter : Tag Value",
       "description": "Test the value of one or multiple tags",
       "base_class": "UPCGExFilterCollectionProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-collections/tag-value\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/data-filters/data-filter-tag-value\")",
       "uproperties": [
         {
           "name": "Config",

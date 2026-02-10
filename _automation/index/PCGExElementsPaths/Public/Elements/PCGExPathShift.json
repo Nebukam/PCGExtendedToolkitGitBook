@@ -55,7 +55,7 @@
       "display_name": "Path : Shift",
       "description": "Shift path points",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/shift\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/modify/path-shift\")",
       "uproperties": [
         {
           "name": "ShiftType",

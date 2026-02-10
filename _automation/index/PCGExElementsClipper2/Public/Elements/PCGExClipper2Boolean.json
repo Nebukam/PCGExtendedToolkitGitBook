@@ -33,7 +33,7 @@
       "display_name": "Clipper2 : Boolean",
       "description": "Does a Clipper2 Boolean operation.",
       "base_class": "UPCGExClipper2ProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/clipper2/clipper2-boolean\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/intersect/clipper2-boolean\")",
       "uproperties": [
         {
           "name": "ProjectionDetails",

@@ -203,7 +203,7 @@
       "display_name": "Filter : Segment Length",
       "description": "Creates a filter definition that compares the distance between the tested point and another inside the same dataset.",
       "base_class": "UPCGExFilterProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/self-comparisons/numeric-2\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/point-filters/math/filter-segment-length\")",
       "uproperties": [
         {
           "name": "Config",

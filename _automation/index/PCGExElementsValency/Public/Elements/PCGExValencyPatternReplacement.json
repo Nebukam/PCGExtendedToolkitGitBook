@@ -10,7 +10,7 @@
       "display_name": "Valency : Patterns",
       "description": "Detects patterns in solved clusters and transforms matched points.",
       "base_class": "UPCGExValencyProcessorSettings",
-      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Valency\", meta=(Keywords = \"wfc wave function collapse valency pattern replacement\", PCGExNodeLibraryDoc=\"valency/valency-pattern-replacement\")",
+      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Valency\", meta=(Keywords = \"wfc wave function collapse valency pattern replacement\", PCGExNodeLibraryDoc=\"valency/valency-patterns\")",
       "uproperties": [
         {
           "name": "bOutputMatchedPoints",

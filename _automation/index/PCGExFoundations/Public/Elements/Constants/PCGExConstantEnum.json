@@ -55,7 +55,7 @@
       "display_name": "Enum Constant",
       "description": "Break an enum into handy constant values.",
       "base_class": "UPCGExSettings",
-      "uclass_meta": "BlueprintType, ClassGroup=(Procedural), meta=(AutoExpandCategories=\"Settings|Output Attributes\", PCGExNodeLibraryDoc=\"quality-of-life/enum\")",
+      "uclass_meta": "BlueprintType, ClassGroup=(Procedural), meta=(AutoExpandCategories=\"Settings|Output Attributes\", PCGExNodeLibraryDoc=\"metadata/keys/enum-constant\")",
       "uproperties": [
         {
           "name": "Source",

@@ -10,7 +10,7 @@
       "display_name": "Cluster : Connect Points",
       "description": "Connect points according to a set of probes",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/connect-points\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/generate/cluster-connect-points\")",
       "uproperties": [
         {
           "name": "bPreventCoincidence",

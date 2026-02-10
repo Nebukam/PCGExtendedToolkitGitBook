@@ -1,0 +1,15 @@
+{
+  "path": "PCGExtendedToolkitWatabouEditor/Public/PCGExWatabouDataActions.h",
+  "module": "PCGExtendedToolkitWatabouEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExWatabouDataActions",
+      "base_class": "FAssetTypeActions_Base"
+    }
+  ],
+  "namespaces": {}
+}

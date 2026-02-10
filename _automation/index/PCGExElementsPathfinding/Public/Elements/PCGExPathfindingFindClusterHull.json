@@ -10,7 +10,7 @@
       "display_name": "Pathfinding : Find Cluster Hull",
       "description": "Output a single hull per cluster, as a path.",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"pathfinding/contours/find-all-cells-1\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"pathfinding/cells/find-cluster-hull\")",
       "uproperties": [
         {
           "name": "Constraints",

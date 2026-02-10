@@ -10,7 +10,7 @@
       "display_name": "Sample : Vtx by ID",
       "description": "Sample a cluster vtx by using a stored Vtx ID.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Sampling\", meta=(PCGExNodeLibraryDoc=\"sampling/vtx-by-id\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Sampling\", meta=(PCGExNodeLibraryDoc=\"clusters/utilities/sample-vtx-by-id\")",
       "uproperties": [
         {
           "name": "VtxIdSource",

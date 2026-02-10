@@ -43,7 +43,7 @@
       "display_name": "Break",
       "description": "A Simple Recursion tracker to make working with recursive subgraphs easier. Acts as a \\",
       "base_class": "UPCGExSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), meta=(PCGExNodeLibraryDoc=\"quality-of-life/recursion-tracker\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), meta=(PCGExNodeLibraryDoc=\"utilities/control-flow/break\")",
       "uproperties": [
         {
           "name": "Type",

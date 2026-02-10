@@ -125,7 +125,7 @@
       "display_name": "Noise : Tiling",
       "description": "Tiling noise - seamlessly tileable patterns.",
       "base_class": "UPCGExNoise3DFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category = \"PCGEx|Noise\", meta=(PCGExNodeLibraryDoc=\"/misc/noises/noise-tiling\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category = \"PCGEx|Noise\", meta=(PCGExNodeLibraryDoc=\"utilities/noise/noise-tiling\")",
       "uproperties": [
         {
           "name": "Config",

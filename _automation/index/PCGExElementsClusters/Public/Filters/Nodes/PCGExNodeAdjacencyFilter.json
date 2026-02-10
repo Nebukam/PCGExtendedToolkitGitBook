@@ -125,7 +125,7 @@
       "display_name": "Vtx Filter : Adjacency",
       "description": "Numeric comparison of adjacent values, testing either adjacent nodes or connected edges.",
       "base_class": "UPCGExVtxFilterProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"filters/filters-vtx-nodes/adjacency\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"filters/vtx-filters/vtx-filter-adjacency\")",
       "uproperties": [
         {
           "name": "Config",

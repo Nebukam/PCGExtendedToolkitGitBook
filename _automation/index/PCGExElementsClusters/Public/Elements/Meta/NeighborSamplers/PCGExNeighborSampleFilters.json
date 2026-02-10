@@ -255,7 +255,7 @@
       "display_name": "Sampler : Test Neighbors",
       "description": "Writes the number of neighbors that pass the provided filters",
       "base_class": "UPCGExNeighborSampleProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|NeighborSample\", meta=(PCGExNodeLibraryDoc=\"sampling/sample-neighbors/sampler-test-neighbors\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|NeighborSample\", meta=(PCGExNodeLibraryDoc=\"sampling/cluster-sample-neighbors/sampler-test-neighbors\")",
       "uproperties": [
         {
           "name": "Config",

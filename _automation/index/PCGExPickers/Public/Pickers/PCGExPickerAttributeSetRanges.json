@@ -32,7 +32,7 @@
       "display_name": "UPCGExPickerAttributeSetRangesFactory",
       "description": "",
       "base_class": "UPCGExPickerFactoryData",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Data\", meta=(PCGExNodeLibraryDoc=\"filters/cherry-pick-points/picker-constant-set-1\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Data\", meta=(PCGExNodeLibraryDoc=\"utilities/pickers/picker-ranges-from-set\")",
       "uproperties": [],
       "classification": {
         "type": "factory_data",

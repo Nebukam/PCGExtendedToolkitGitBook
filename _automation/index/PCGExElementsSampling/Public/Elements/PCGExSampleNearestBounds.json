@@ -41,7 +41,7 @@
       "display_name": "Sample : Nearest Bounds",
       "description": "Sample nearest target bounds.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Sampling\", meta=(PCGExNodeLibraryDoc=\"sampling/nearest-bounds\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Sampling\", meta=(PCGExNodeLibraryDoc=\"sampling/nearest/sample-nearest-bounds\")",
       "uproperties": [
         {
           "name": "DataMatching",

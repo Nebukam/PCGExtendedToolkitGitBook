@@ -138,7 +138,7 @@
       "display_name": "Filter : Distance",
       "description": "Creates a filter definition that compares the distance from the point to the nearest target.",
       "base_class": "UPCGExFilterProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/spatial/distance\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/point-filters/spatial/filter-distance\")",
       "uproperties": [
         {
           "name": "Config",

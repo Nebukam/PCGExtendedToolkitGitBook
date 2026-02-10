@@ -10,7 +10,7 @@
       "display_name": "UPCGExOrientAverage",
       "description": "",
       "base_class": "UPCGExOrientInstancedFactory",
-      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Average\", PCGExNodeLibraryDoc=\"paths/orient/orient-average\")",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Average\", PCGExNodeLibraryDoc=\"paths/transform/path-orient/orient-average\")",
       "uproperties": [],
       "classification": {
         "type": "instanced_factory",

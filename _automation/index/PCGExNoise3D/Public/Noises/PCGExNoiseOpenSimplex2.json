@@ -86,7 +86,7 @@
       "display_name": "Noise : OpenSimplex2",
       "description": "OpenSimplex2 - patent-free, high quality gradient noise.",
       "base_class": "UPCGExNoise3DFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category = \"PCGEx|Noise\", meta=(PCGExNodeLibraryDoc=\"/misc/noises/noise-open-simplex-2\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category = \"PCGEx|Noise\", meta=(PCGExNodeLibraryDoc=\"utilities/noise/noise-opensimplex2\")",
       "uproperties": [
         {
           "name": "Config",

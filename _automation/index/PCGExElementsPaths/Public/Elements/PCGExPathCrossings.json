@@ -10,7 +10,7 @@
       "display_name": "Path × Path Crossings",
       "description": "Find crossing points between & inside paths.",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/crossings\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/intersect/path-path-crossings\")",
       "uproperties": [
         {
           "name": "bSelfIntersectionOnly",

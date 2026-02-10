@@ -144,7 +144,7 @@
       "display_name": "Fill Control : Heuristics Threshold",
       "description": "Stop diffusion when instantaneous heuristic crosses a threshold.",
       "base_class": "UPCGExFillControlsFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"clusters/flood-fill/fc-heuristics-threshold\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"pathfinding/cluster-flood-fill/fc-heuristics-threshold\")",
       "uproperties": [
         {
           "name": "Config",

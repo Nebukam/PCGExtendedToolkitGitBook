@@ -10,7 +10,7 @@
       "display_name": "UPCGExMovingAverageSmoothing",
       "description": "",
       "base_class": "UPCGExSmoothingInstancedFactory",
-      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Moving Average\", PCGExNodeLibraryDoc=\"paths/smooth/smooth-moving-average\")",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Moving Average\", PCGExNodeLibraryDoc=\"paths/transform/path-smooth/moving-average-smoothing\")",
       "uproperties": [
         {
           "name": "IndexSafety",

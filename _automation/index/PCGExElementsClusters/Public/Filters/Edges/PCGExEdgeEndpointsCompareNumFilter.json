@@ -122,7 +122,7 @@
       "display_name": "Edge Filter : Endpoints Compare (Numeric)",
       "description": "Compare the value of an attribute on each of the edge endpoint.",
       "base_class": "UPCGExEdgeFilterProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"filters/filters-edges/endpoints-compare-numeric\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"filters/edge-filters/edge-filter-endpoints-compare-numeric\")",
       "uproperties": [
         {
           "name": "Config",

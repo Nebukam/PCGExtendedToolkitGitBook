@@ -131,7 +131,7 @@
       "display_name": "Match : Shared Tag",
       "description": "Match data that share common tags",
       "base_class": "UPCGExMatchRuleFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"DataMatch\", meta=(PCGExNodeLibraryDoc=\"misc/data-matching/tags-attributes\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"DataMatch\", meta=(PCGExNodeLibraryDoc=\"utilities/data-matching/match-shared-tag\")",
       "uproperties": [
         {
           "name": "Config",

@@ -10,7 +10,7 @@
       "display_name": "Pathfinding : Find All Cells (Bounded)",
       "description": "Finds all cluster cells and triages them by spatial bounds relationship (Inside/Touching/Outside).",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"pathfinding/contours/find-all-cells-bounded\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"pathfinding/cells/find-all-cells-bounded\")",
       "uproperties": [
         {
           "name": "OutputMode",

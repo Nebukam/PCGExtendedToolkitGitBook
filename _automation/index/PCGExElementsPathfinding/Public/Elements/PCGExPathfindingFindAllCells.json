@@ -10,7 +10,7 @@
       "display_name": "Pathfinding : Find All Cells",
       "description": "Attempts to find the contours of all cluster cells.",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"pathfinding/contours/find-all-cells\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"pathfinding/cells/find-all-cells\")",
       "uproperties": [
         {
           "name": "Constraints",

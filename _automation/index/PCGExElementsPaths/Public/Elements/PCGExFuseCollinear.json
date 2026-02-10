@@ -10,7 +10,7 @@
       "display_name": "Path : Fuse Collinear",
       "description": "FuseCollinear paths points.",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/fuse-collinear\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/modify/path-fuse-collinear\")",
       "uproperties": [
         {
           "name": "Threshold",

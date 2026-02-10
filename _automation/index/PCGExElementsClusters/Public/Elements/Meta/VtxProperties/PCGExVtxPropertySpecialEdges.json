@@ -86,7 +86,7 @@
       "display_name": "Vtx : Special Edges",
       "description": "Edge' edge cases (pun not intended)",
       "base_class": "UPCGExVtxPropertyProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|VtxProperty\", meta=(PCGExNodeLibraryDoc=\"clusters/metadata/vtx-properties/vtx-special-edges\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|VtxProperty\", meta=(PCGExNodeLibraryDoc=\"clusters/analyze/cluster-vtx-properties/vtx-special-edges\")",
       "uproperties": [
         {
           "name": "Config",

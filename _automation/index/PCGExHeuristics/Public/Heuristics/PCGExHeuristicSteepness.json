@@ -99,7 +99,7 @@
       "display_name": "Heuristics : Steepness",
       "description": "Heuristics based on steepness.",
       "base_class": "UPCGExHeuristicsFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"pathfinding/heuristics/hx-steepness\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"pathfinding/heuristics/heuristics-steepness\")",
       "uproperties": [
         {
           "name": "Config",

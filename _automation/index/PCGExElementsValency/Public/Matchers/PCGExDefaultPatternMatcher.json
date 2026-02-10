@@ -10,7 +10,7 @@
       "display_name": "UPCGExDefaultPatternMatcher",
       "description": "",
       "base_class": "UPCGExPatternMatcherFactory",
-      "uclass_meta": "DisplayName = \"Default Pattern Matcher\", meta=(ToolTip = \"Default subgraph isomorphism pattern matcher using DFS with backtracking.\", PCGExNodeLibraryDoc=\"valency/matchers/default\")",
+      "uclass_meta": "DisplayName = \"Default Pattern Matcher\", meta=(ToolTip = \"Default subgraph isomorphism pattern matcher using DFS with backtracking.\", PCGExNodeLibraryDoc=\"valency/valency-patterns/default-pattern-matcher\")",
       "uproperties": [
         {
           "name": "OverlapResolution",

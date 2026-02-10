@@ -10,7 +10,7 @@
       "display_name": "Meta Cleanup",
       "description": "Keep/Remove tags & attributes using string queries.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"quality-of-life/meta-cleanup\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"metadata/modify/meta-cleanup\")",
       "uproperties": [
         {
           "name": "Filters",

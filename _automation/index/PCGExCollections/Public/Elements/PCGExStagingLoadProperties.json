@@ -10,7 +10,7 @@
       "display_name": "Staging : Load Properties",
       "description": "Output property values from staged entries as point attributes.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(Keywords = \"stage property attribute output\", PCGExNodeLibraryDoc=\"assets-management/asset-staging\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(Keywords = \"stage property attribute output\", PCGExNodeLibraryDoc=\"staging/staging-load-properties\")",
       "uproperties": [
         {
           "name": "PropertyOutputSettings",

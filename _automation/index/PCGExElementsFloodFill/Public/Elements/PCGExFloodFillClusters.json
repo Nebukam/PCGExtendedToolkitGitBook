@@ -123,7 +123,7 @@
       "display_name": "Cluster : Flood Fill",
       "description": "Diffuses vtx attributes onto their neighbors.",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/flood-fill\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"pathfinding/cluster-flood-fill\")",
       "uproperties": [
         {
           "name": "Seeds",

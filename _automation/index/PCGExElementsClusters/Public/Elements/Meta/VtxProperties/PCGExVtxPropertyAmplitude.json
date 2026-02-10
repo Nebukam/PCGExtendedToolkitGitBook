@@ -345,7 +345,7 @@
       "display_name": "Vtx : Amplitude",
       "description": "Amplitude of a vtx, based on neighboring connections.",
       "base_class": "UPCGExVtxPropertyProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|VtxProperty\", meta=(PCGExNodeLibraryDoc=\"clusters/metadata/vtx-properties/vtx-amplitude\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|VtxProperty\", meta=(PCGExNodeLibraryDoc=\"clusters/analyze/cluster-vtx-properties/vtx-amplitude\")",
       "uproperties": [
         {
           "name": "Config",

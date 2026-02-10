@@ -61,7 +61,7 @@
       "display_name": "Path : Attribute Rolling",
       "description": "Does a rolling blending of properties & attributes.",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(Keywords = \"range\", PCGExNodeLibraryDoc=\"paths/attribute-rolling\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(Keywords = \"range\", PCGExNodeLibraryDoc=\"paths/modify/path-attribute-rolling\")",
       "uproperties": [
         {
           "name": "RangeControl",

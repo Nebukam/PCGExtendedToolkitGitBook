@@ -79,7 +79,7 @@
       "display_name": "Path : Bevel",
       "description": "Bevel paths points.",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/bevel\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/modify/path-bevel\")",
       "uproperties": [
         {
           "name": "Mode",

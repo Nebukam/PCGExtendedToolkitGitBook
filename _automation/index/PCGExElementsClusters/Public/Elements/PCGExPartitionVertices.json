@@ -10,7 +10,7 @@
       "display_name": "Cluster : Partition Vtx",
       "description": "Split Vtx into per-cluster groups.",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/packing/partition-vtx\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/analyze/cluster-partition-vtx\")",
       "uproperties": [],
       "classification": {
         "type": "node_settings",

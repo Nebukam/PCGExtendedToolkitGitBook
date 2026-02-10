@@ -125,7 +125,7 @@
       "display_name": "Noise : Caustic",
       "description": "Caustic noise - water light patterns.",
       "base_class": "UPCGExNoise3DFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category = \"PCGEx|Noise\", meta=(PCGExNodeLibraryDoc=\"/misc/noises/noise-caustic\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category = \"PCGEx|Noise\", meta=(PCGExNodeLibraryDoc=\"utilities/noise/noise-caustic\")",
       "uproperties": [
         {
           "name": "Config",

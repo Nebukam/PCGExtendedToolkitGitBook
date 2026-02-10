@@ -10,7 +10,7 @@
       "display_name": "UPCGExSearchBidirectional",
       "description": "",
       "base_class": "UPCGExSearchInstancedFactory",
-      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Bidirectional\", ToolTip =\"Bidirectional Search. Searches from both ends simultaneously. Very fast for large graphs.\", PCGExNodeLibraryDoc=\"pathfinding/search-algorithms/bidirectional\")",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Bidirectional\", ToolTip =\"Bidirectional Search. Searches from both ends simultaneously. Very fast for large graphs.\", PCGExNodeLibraryDoc=\"pathfinding/algorithms/search-bidirectional\")",
       "uproperties": [],
       "classification": {
         "type": "instanced_factory",

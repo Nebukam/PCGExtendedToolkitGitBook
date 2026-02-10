@@ -10,7 +10,7 @@
       "display_name": "Path : To Clusters",
       "description": "Merge paths to edge clusters for glorious pathfinding inception",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"clusters/paths-interop/path-to-clusters\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"clusters/interop/path-to-clusters\")",
       "uproperties": [
         {
           "name": "bFusePaths",

@@ -10,7 +10,7 @@
       "display_name": "UPCGExSubPointsBlendInterpolate",
       "description": "",
       "base_class": "UPCGExSubPointsBlendInstancedFactory",
-      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Interpolate\", PCGExNodeLibraryDoc=\"paths/sub-point-blending/interpolate\")",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Interpolate\", PCGExNodeLibraryDoc=\"paths/common-settings/sub-points-blending/interpolate\")",
       "uproperties": [
         {
           "name": "BlendOver",

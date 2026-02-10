@@ -25,7 +25,7 @@
       "display_name": "Path : Orient",
       "description": "Orient paths points",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/orient\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/transform/path-orient\")",
       "uproperties": [
         {
           "name": "OrientAxis",

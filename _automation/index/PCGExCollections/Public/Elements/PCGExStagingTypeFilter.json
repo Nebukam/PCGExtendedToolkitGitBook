@@ -25,7 +25,7 @@
       "display_name": "Staging : Type Filter",
       "description": "Filters staged points by their collection entry type.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(Keywords = \"filter type staged collection\", PCGExNodeLibraryDoc=\"assets-management/staged-type-filter\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(Keywords = \"filter type staged collection\", PCGExNodeLibraryDoc=\"staging/staging-type-filter\")",
       "uproperties": [
         {
           "name": "FilterMode",

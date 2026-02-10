@@ -38,7 +38,7 @@
       "display_name": "ShapeBuilder Definition",
       "description": "Creates a single shape builder node, to be used with a Shape processor node.",
       "base_class": "UPCGExFactoryProviderSettings",
-      "uclass_meta": "Abstract, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"misc/shapes/create-shapes\")",
+      "uclass_meta": "Abstract, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"shapes/shape\")",
       "uproperties": [],
       "classification": {
         "type": "provider",

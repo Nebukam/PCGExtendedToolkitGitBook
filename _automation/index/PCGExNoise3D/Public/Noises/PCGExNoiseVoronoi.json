@@ -109,7 +109,7 @@
       "display_name": "Noise : Voronoi",
       "description": "Voronoi noise - cell patterns with multiple modes.",
       "base_class": "UPCGExNoise3DFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category = \"PCGEx|Noise\", meta=(PCGExNodeLibraryDoc=\"/misc/noises/noise-voronoi\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category = \"PCGEx|Noise\", meta=(PCGExNodeLibraryDoc=\"utilities/noise/noise-voronoi\")",
       "uproperties": [
         {
           "name": "Config",

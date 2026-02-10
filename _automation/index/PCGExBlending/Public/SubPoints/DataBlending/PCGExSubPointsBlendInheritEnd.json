@@ -10,7 +10,7 @@
       "display_name": "UPCGExSubPointsBlendInheritEnd",
       "description": "",
       "base_class": "UPCGExSubPointsBlendInstancedFactory",
-      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Inherit Last\", PCGExNodeLibraryDoc=\"paths/sub-point-blending/inherit-end\")",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Inherit Last\", PCGExNodeLibraryDoc=\"paths/common-settings/sub-points-blending/inherit-last\")",
       "uproperties": [],
       "classification": {
         "type": "instanced_factory",

@@ -10,7 +10,7 @@
       "display_name": "Cluster : Find point on Bounds",
       "description": "Find the closest vtx or edge on each cluster' bounds.",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/find-point-on-bounds\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/utilities/cluster-find-point-on-bounds\")",
       "uproperties": [
         {
           "name": "SearchMode",

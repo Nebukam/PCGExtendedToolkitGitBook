@@ -1,0 +1,18 @@
+{
+  "path": "PCGExtendedToolkitWatabou/Public/PCGExWatabou.h",
+  "module": "PCGExtendedToolkitWatabou",
+  "type": "header",
+  "enums": [],
+  "structs": [
+    {
+      "name": "FPCGExWatabouVersion",
+      "base_class": null,
+      "uproperties": [],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

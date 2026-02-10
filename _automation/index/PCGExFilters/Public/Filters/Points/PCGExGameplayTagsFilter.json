@@ -125,7 +125,7 @@
       "display_name": "Filter : GameplayTags",
       "description": "Creates a filter definition that checks gameplay tags of an actor reference.",
       "base_class": "UPCGExFilterProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/gameplay-tags\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/point-filters/attribute/filter-gameplaytags\")",
       "uproperties": [
         {
           "name": "Config",

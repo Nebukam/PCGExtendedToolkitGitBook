@@ -10,7 +10,7 @@
       "display_name": "Collection to Module Infos",
       "description": "Converts an asset collection to a grammar-friendly attribute set that can be used as module infos.",
       "base_class": "UPCGExSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), meta=(PCGExNodeLibraryDoc=\"assets-management/collection-to-module-infos\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), meta=(PCGExNodeLibraryDoc=\"staging/utilities/collection-to-module-infos\")",
       "uproperties": [
         {
           "name": "AssetCollection",

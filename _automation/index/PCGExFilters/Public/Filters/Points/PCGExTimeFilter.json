@@ -222,7 +222,7 @@
       "display_name": "Filter : Time",
       "description": "Creates a filter definition that checks points position against a path/spline/polygon2D closest alpha.",
       "base_class": "UPCGExFilterProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/spatial/time\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/point-filters/spatial/filter-time\")",
       "uproperties": [
         {
           "name": "Config",

@@ -25,7 +25,7 @@
       "display_name": "Staging : Distribute",
       "description": "Distribute PCGEx Asset Collection entries to points.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(Keywords = \"stage prepare spawn proxy\", PCGExNodeLibraryDoc=\"assets-management/asset-staging\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(Keywords = \"stage prepare spawn proxy\", PCGExNodeLibraryDoc=\"staging/staging-distribute\")",
       "uproperties": [
         {
           "name": "CollectionSource",

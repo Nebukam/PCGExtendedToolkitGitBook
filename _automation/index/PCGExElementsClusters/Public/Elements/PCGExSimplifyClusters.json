@@ -25,7 +25,7 @@
       "display_name": "Cluster : Simplify",
       "description": "Simplify connections by operating on isolated chains of nodes (only two neighbors).",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/simplify\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/refine/cluster-simplify\")",
       "uproperties": [
         {
           "name": "bOperateOnLeavesOnly",

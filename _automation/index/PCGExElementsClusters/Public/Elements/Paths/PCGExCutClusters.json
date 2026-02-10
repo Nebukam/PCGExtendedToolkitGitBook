@@ -29,7 +29,7 @@
       "display_name": "Cluster : Cut",
       "description": "Cut clusters nodes & edges using paths.",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/paths-interop/cut-clusters\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/interop/cluster-cut\")",
       "uproperties": [
         {
           "name": "IntersectionDetails",

@@ -10,7 +10,7 @@
       "display_name": "Topology : Point Surface",
       "description": "Create a delaunay triangulated surface for each input dataset.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(Keywords = \"triangulation\", PCGExNodeLibraryDoc=\"clusters/diagrams/delaunay-2d\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(Keywords = \"triangulation\", PCGExNodeLibraryDoc=\"topology/topology-point-surface\")",
       "uproperties": [
         {
           "name": "ProjectionDetails",

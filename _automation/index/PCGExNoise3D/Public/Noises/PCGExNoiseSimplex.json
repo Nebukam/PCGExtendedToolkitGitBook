@@ -86,7 +86,7 @@
       "display_name": "Noise : Simplex",
       "description": "Simplex gradient noise - efficient, high quality.",
       "base_class": "UPCGExNoise3DFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category = \"PCGEx|Noise\", meta=(PCGExNodeLibraryDoc=\"/misc/noises/noise-simplex\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category = \"PCGEx|Noise\", meta=(PCGExNodeLibraryDoc=\"utilities/noise/noise-simplex\")",
       "uproperties": [
         {
           "name": "Config",

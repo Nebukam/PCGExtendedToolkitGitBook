@@ -10,7 +10,7 @@
       "display_name": "UPCGExSearchAStar",
       "description": "",
       "base_class": "UPCGExSearchInstancedFactory",
-      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"A*\", ToolTip =\"A* Search. Returns early with the least possible amount of traversed nodes.\", PCGExNodeLibraryDoc=\"pathfinding/search-algorithms/a-a-star\")",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"A*\", ToolTip =\"A* Search. Returns early with the least possible amount of traversed nodes.\", PCGExNodeLibraryDoc=\"pathfinding/algorithms/search-a\")",
       "uproperties": [],
       "classification": {
         "type": "instanced_factory",

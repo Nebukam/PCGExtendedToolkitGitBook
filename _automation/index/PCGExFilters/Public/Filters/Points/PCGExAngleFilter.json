@@ -127,7 +127,7 @@
       "display_name": "Filter : Angle",
       "description": "Creates a filter definition that compares dot value of the direction of a point toward its previous and next points.",
       "base_class": "UPCGExFilterProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/self-comparisons/numeric-1\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/point-filters/math/filter-angle\")",
       "uproperties": [
         {
           "name": "Config",

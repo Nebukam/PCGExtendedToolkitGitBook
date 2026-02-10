@@ -73,7 +73,7 @@
       "display_name": "Vtx : Special Neighbors",
       "description": "Fetch data from neighbors",
       "base_class": "UPCGExVtxPropertyProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|VtxProperty\", meta=(PCGExNodeLibraryDoc=\"clusters/metadata/vtx-properties/vtx-special-neighbors\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|VtxProperty\", meta=(PCGExNodeLibraryDoc=\"clusters/analyze/cluster-vtx-properties/vtx-special-neighbors\")",
       "uproperties": [
         {
           "name": "Config",

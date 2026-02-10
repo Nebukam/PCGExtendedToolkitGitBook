@@ -57,7 +57,7 @@
       "display_name": "Path : Stitch",
       "description": "Stitch paths together by their endpoints.",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/stitch\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/modify/path-stitch\")",
       "uproperties": [
         {
           "name": "Method",

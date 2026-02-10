@@ -25,7 +25,7 @@
       "display_name": "Path : Blend",
       "description": "Blend path individual points between its start and end points.",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/blend\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/modify/path-blend\")",
       "uproperties": [
         {
           "name": "BlendOver",

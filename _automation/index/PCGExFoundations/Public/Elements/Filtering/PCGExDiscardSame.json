@@ -47,7 +47,7 @@
       "display_name": "Discard Same",
       "description": "Discard entire datasets based on a selection of parameters",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"filters/discard-same\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"utilities/discarding/discard-same\")",
       "uproperties": [
         {
           "name": "Mode",

@@ -1,0 +1,39 @@
+{
+  "path": "PCGExtendedToolkitZoneGraph/Public/PCGExZoneGraphGlobalSettings.h",
+  "module": "PCGExtendedToolkitZoneGraph",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExZoneGraphGlobalSettings",
+      "display_name": "UPCGExZoneGraphGlobalSettings",
+      "description": "",
+      "base_class": "UDeveloperSettings",
+      "uclass_meta": "Config=Game, DefaultConfig, meta=(DisplayName=\"PCGEx + ZoneGraph\", Description=\"Configure PCGEx + ZoneGraph settings\")",
+      "uproperties": [],
+      "classification": {
+        "type": "node_settings",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": []
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

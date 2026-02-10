@@ -77,7 +77,7 @@
       "display_name": "Hoist Attributes",
       "description": "Hoist element values to tags or data domain",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"misc/attributes-to-tags\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"metadata/keys/hoist-attributes\")",
       "uproperties": [
         {
           "name": "Action",

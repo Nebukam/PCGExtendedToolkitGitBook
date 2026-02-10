@@ -177,7 +177,7 @@
       "display_name": "Filter : Mean",
       "description": "Creates a filter definition that compares values against their mean.",
       "base_class": "UPCGExFilterProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/math-checks/mean-value\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/point-filters/math/filter-mean\")",
       "uproperties": [
         {
           "name": "Config",

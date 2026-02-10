@@ -10,7 +10,7 @@
       "display_name": "Topology : Path Surface",
       "description": "Create a path surface topology",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"topology/path-surface\")",
+      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"topology/topology-path-surface\")",
       "uproperties": [
         {
           "name": "Topology",

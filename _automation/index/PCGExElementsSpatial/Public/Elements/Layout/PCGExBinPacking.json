@@ -47,7 +47,7 @@
       "display_name": "Bin Packing",
       "description": "[EXPERIMENTAL] An simple bin packing node.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"misc/layout/bin-packing\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"transform/modify/bin-packing\")",
       "uproperties": [
         {
           "name": "SortDirection",

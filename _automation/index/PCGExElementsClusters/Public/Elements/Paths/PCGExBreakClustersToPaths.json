@@ -43,7 +43,7 @@
       "display_name": "Cluster : Break to Paths",
       "description": "Create individual paths from continuous edge chains.",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/paths-interop/break-cluster-to-paths\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/interop/cluster-break-to-paths\")",
       "uproperties": [
         {
           "name": "LeavesHandling",

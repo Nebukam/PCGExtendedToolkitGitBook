@@ -25,7 +25,7 @@
       "display_name": "Uber Noise",
       "description": "Generate noise or mutate existing attribute using noises.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"metadata/uber-noise\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"utilities/noise/uber-noise\")",
       "uproperties": [
         {
           "name": "Mode",

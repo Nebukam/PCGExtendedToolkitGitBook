@@ -99,7 +99,7 @@
       "display_name": "Filter : Tensor Dot",
       "description": "Creates a filter definition that compares dot value of a vector and tensors.",
       "base_class": "UPCGExFilterProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/math-checks/tensor-dot-product\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/point-filters/spatial/filter-tensor-dot\")",
       "uproperties": [
         {
           "name": "Config",

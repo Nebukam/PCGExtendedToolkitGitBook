@@ -33,7 +33,7 @@
       "display_name": "UPCGExOrientLookAt",
       "description": "",
       "base_class": "UPCGExOrientInstancedFactory",
-      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Look At\", PCGExNodeLibraryDoc=\"paths/orient/orient-look-at\")",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Look At\", PCGExNodeLibraryDoc=\"paths/transform/path-orient/orient-look-at\")",
       "uproperties": [
         {
           "name": "LookAt",

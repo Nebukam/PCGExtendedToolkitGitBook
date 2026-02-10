@@ -38,7 +38,7 @@
       "display_name": "Sampler : Vtx Blend",
       "description": "Create a vtx attribute sampler that uses blend operations to blend values from neighbors.",
       "base_class": "UPCGExNeighborSampleProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|NeighborSample\", meta=(PCGExNodeLibraryDoc=\"sampling/sample-neighbors/sampler-vtx-properties\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|NeighborSample\", meta=(PCGExNodeLibraryDoc=\"sampling/cluster-sample-neighbors/sampler-vtx-blend\")",
       "uproperties": [],
       "classification": {
         "type": "node_settings",

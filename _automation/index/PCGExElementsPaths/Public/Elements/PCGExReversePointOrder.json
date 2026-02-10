@@ -77,7 +77,7 @@
       "display_name": "Reverse Order",
       "description": "Simply reverse the order of points or change winding of paths.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"misc/reverse-point-order\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"utilities/sorting/reverse-order\")",
       "uproperties": [
         {
           "name": "Method",

@@ -10,7 +10,7 @@
       "display_name": "Cluster : Sample Neighbors",
       "description": "Sample cluster vtx' neighbors values.",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"sampling/sample-neighbors\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"sampling/cluster-sample-neighbors\")",
       "uproperties": [],
       "classification": {
         "type": "node_settings",
@@ -24,9 +24,16 @@
         "consumed_factory_types": [],
         "instanced_properties": []
       },
-      "has_point_filter": false,
-      "point_filter_label": null,
-      "filter_inputs": [],
+      "has_point_filter": true,
+      "point_filter_label": "PCGExClusters::Labels::SourceVtxFiltersLabel",
+      "filter_inputs": [
+        {
+          "label": "PCGExClusters::Labels::SourceVtxFiltersLabel",
+          "tooltip": "Optional per-node filters. Only nodes that pass the filter will be sampled; filtered-out nodes can still be read by other nodes.",
+          "factory_type": "PCGExFactories::ClusterNodeFilters",
+          "required": false
+        }
+      ],
       "inputs": [
         "SourceSamplersLabel"
       ],
@@ -37,7 +44,14 @@
           "type_info": "FPCGExDataTypeInfoNeighborSampler"
         }
       ],
-      "consumed_filters": [],
+      "consumed_filters": [
+        {
+          "label": "PCGExClusters::Labels::SourceVtxFiltersLabel",
+          "tooltip": "Optional per-node filters. Only nodes that pass the filter will be sampled; filtered-out nodes can still be read by other nodes.",
+          "factory_type": "PCGExFactories::ClusterNodeFilters",
+          "required": false
+        }
+      ],
       "all_properties": [
         {
           "name": "BulkInitData",

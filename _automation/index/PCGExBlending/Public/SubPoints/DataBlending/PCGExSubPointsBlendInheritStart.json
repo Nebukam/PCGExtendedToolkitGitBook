@@ -10,7 +10,7 @@
       "display_name": "UPCGExSubPointsBlendInheritStart",
       "description": "",
       "base_class": "UPCGExSubPointsBlendInstancedFactory",
-      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Inherit First\", PCGExNodeLibraryDoc=\"paths/sub-point-blending/inherit-first\")",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Inherit First\", PCGExNodeLibraryDoc=\"paths/common-settings/sub-points-blending/inherit-first\")",
       "uproperties": [],
       "classification": {
         "type": "instanced_factory",

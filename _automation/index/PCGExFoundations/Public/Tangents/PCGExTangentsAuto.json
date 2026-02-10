@@ -10,7 +10,7 @@
       "display_name": "UPCGExAutoTangents",
       "description": "",
       "base_class": "UPCGExTangentsInstancedFactory",
-      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Auto\", PCGExNodeLibraryDoc=\"paths/write-tangents/tangents-auto\")",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Auto\", PCGExNodeLibraryDoc=\"paths/common-settings/tangents/auto\")",
       "uproperties": [],
       "classification": {
         "type": "instanced_factory",

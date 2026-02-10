@@ -37,7 +37,7 @@
       "display_name": "Iterations",
       "description": "A Simple Iterations data generator. It create a single instance of a lightweight dummy data object and adds duplicate entries to the node output to be used as individual iterations for a loop node.",
       "base_class": "UPCGExSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), meta=(PCGExNodeLibraryDoc=\"quality-of-life/iterations\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), meta=(PCGExNodeLibraryDoc=\"utilities/control-flow/iterations\")",
       "uproperties": [
         {
           "name": "Type",

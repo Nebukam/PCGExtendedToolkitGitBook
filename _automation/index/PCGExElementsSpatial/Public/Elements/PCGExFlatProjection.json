@@ -10,7 +10,7 @@
       "display_name": "Flat Projection",
       "description": "Project points from their position in space to the XY plane.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"transform/flat-projection\")",
+      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"transform/transform/flat-projection\")",
       "uproperties": [
         {
           "name": "bRestorePreviousProjection",

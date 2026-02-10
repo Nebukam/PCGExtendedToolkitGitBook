@@ -161,7 +161,7 @@
       "display_name": "Path : Shrink",
       "description": "Shrink path from its beginning and end.",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(Keywords = \"reduce extend\", PCGExNodeLibraryDoc=\"paths/shrink\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(Keywords = \"reduce extend\", PCGExNodeLibraryDoc=\"paths/modify/path-shrink\")",
       "uproperties": [
         {
           "name": "ShrinkEndpoint",

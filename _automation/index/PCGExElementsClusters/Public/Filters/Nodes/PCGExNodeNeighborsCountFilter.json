@@ -99,7 +99,7 @@
       "display_name": "Vtx Filter : Num Edges",
       "description": "Check against the node' edges count.",
       "base_class": "UPCGExVtxFilterProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"filters/filters-vtx-nodes/neighbors-count\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"filters/vtx-filters/vtx-filter-num-edges\")",
       "uproperties": [
         {
           "name": "Config",

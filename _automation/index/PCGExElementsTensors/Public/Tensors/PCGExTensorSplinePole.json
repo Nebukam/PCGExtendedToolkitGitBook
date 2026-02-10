@@ -73,7 +73,7 @@
       "display_name": "Tensor : Spline Pole",
       "description": "A tensor that represent a vector/flow field along a spline",
       "base_class": "UPCGExTensorSplineFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Tensors|Params\", meta=(PCGExNodeLibraryDoc=\"tensors/effectors/tensor-spline-pole\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Tensors|Params\", meta=(PCGExNodeLibraryDoc=\"tensors/tensors/tensor-spline-pole\")",
       "uproperties": [
         {
           "name": "Config",

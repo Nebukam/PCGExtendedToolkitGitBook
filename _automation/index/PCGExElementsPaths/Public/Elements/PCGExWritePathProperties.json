@@ -25,7 +25,7 @@
       "display_name": "Path : Properties",
       "description": "One-stop node to compute useful path infos.",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/path-properties\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/analyze/path-properties\")",
       "uproperties": [
         {
           "name": "ProjectionDetails",

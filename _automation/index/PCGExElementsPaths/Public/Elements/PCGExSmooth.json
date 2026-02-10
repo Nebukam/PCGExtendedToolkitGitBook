@@ -10,7 +10,7 @@
       "display_name": "Path : Smooth",
       "description": "Smooth paths points.",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/smooth\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/transform/path-smooth\")",
       "uproperties": [
         {
           "name": "bPreserveStart",

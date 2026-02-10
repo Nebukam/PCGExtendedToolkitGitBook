@@ -46,7 +46,7 @@
       "display_name": "Heuristics : Shortest Distance",
       "description": "Heuristics based on distance.",
       "base_class": "UPCGExHeuristicsFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"pathfinding/heuristics/hx-shortest-distance\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"pathfinding/heuristics/heuristics-shortest-distance\")",
       "uproperties": [
         {
           "name": "Config",

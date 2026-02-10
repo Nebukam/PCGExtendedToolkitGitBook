@@ -10,7 +10,7 @@
       "display_name": "UPCGExFromTransformTangents",
       "description": "",
       "base_class": "UPCGExTangentsInstancedFactory",
-      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"From Transform\", PCGExNodeLibraryDoc=\"paths/write-tangents/tangents-transform\")",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"From Transform\", PCGExNodeLibraryDoc=\"paths/common-settings/tangents/from-transform\")",
       "uproperties": [
         {
           "name": "Axis",

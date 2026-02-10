@@ -20,9 +20,26 @@ const { execSync } = require('child_process');
 const AUTOMATION_PATH = path.dirname(__dirname);
 const INDEX_PATH = path.join(AUTOMATION_PATH, 'index');
 const QUEUE_PATH = path.join(AUTOMATION_PATH, 'queue.json');
-const SOURCE_PATH = 'D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source';
+const SOURCES_CONFIG = path.join(AUTOMATION_PATH, 'sources.json');
 const DOCS_PATH = 'D:\\GIT\\PCGExtendedToolkitGitBook';
 const STAGING_PATH = path.join(DOCS_PATH, '_staging');
+
+// Load source paths from config
+let SOURCE_PATHS;
+if (fs.existsSync(SOURCES_CONFIG)) {
+    SOURCE_PATHS = JSON.parse(fs.readFileSync(SOURCES_CONFIG, 'utf8')).sources;
+} else {
+    SOURCE_PATHS = ['D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source'];
+}
+
+// Resolve a relative source file path to its absolute location across all source roots
+function resolveSourceFile(relativePath) {
+    for (const sourcePath of SOURCE_PATHS) {
+        const full = path.join(sourcePath, relativePath);
+        if (fs.existsSync(full)) return full;
+    }
+    return null;
+}
 
 // Load indexes
 let classIndex, structIndex, enumIndex, classification, inheritance, sharedStructs, structUsage;
@@ -568,8 +585,8 @@ function buildStructContext(structName) {
     }
 
     // Read source to include the actual struct definition
-    const headerPath = path.join(SOURCE_PATH, structInfo.file);
-    if (fs.existsSync(headerPath)) {
+    const headerPath = resolveSourceFile(structInfo.file);
+    if (headerPath) {
         const headerContent = fs.readFileSync(headerPath, 'utf8');
 
         // Try to extract just this struct's definition
@@ -603,16 +620,17 @@ function buildContext(className) {
     if (!classData) return null;
 
     // Read source files
-    const headerPath = path.join(SOURCE_PATH, fileData.path);
-    const cppPath = headerPath.replace('/Public/', '/Private/').replace('.h', '.cpp');
+    const headerPath = resolveSourceFile(fileData.path);
+    const cppRelative = fileData.path.replace('/Public/', '/Private/').replace('.h', '.cpp');
+    const cppPath = resolveSourceFile(cppRelative);
 
     let headerContent = '';
     let cppContent = '';
 
-    if (fs.existsSync(headerPath)) {
+    if (headerPath) {
         headerContent = fs.readFileSync(headerPath, 'utf8');
     }
-    if (fs.existsSync(cppPath)) {
+    if (cppPath) {
         cppContent = fs.readFileSync(cppPath, 'utf8');
     }
 

@@ -10,7 +10,7 @@
       "display_name": "Find point on Bounds",
       "description": "Find the closest point on the dataset bounds.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"misc/find-point-on-bounds\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"transform/analyze/find-point-on-bounds\")",
       "uproperties": [
         {
           "name": "OutputMode",

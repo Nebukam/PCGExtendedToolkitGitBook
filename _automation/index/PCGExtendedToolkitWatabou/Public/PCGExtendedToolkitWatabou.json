@@ -1,0 +1,15 @@
+{
+  "path": "PCGExtendedToolkitWatabou/Public/PCGExtendedToolkitWatabou.h",
+  "module": "PCGExtendedToolkitWatabou",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExtendedToolkitWatabouModule",
+      "base_class": "IModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

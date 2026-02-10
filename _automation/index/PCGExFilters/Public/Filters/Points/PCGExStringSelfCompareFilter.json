@@ -151,7 +151,7 @@
       "display_name": "Filter : Self Compare (String)",
       "description": "Creates a filter definition that compares an attribute value against itself at another index.",
       "base_class": "UPCGExFilterProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/self-comparisons/string\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/point-filters/attribute/filter-self-compare-string\")",
       "uproperties": [
         {
           "name": "Config",

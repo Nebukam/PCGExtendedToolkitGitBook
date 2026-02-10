@@ -29,7 +29,7 @@
       "display_name": "Cluster : Filter Vtx",
       "description": "Filter out vtx from clusters.",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/find-clusters-data-1\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/refine/cluster-filter-vtx\")",
       "uproperties": [
         {
           "name": "Mode",

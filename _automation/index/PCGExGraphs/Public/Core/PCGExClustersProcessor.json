@@ -10,7 +10,7 @@
       "display_name": "Edges Processor Settings",
       "description": "TOOLTIP_TEXT",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "Abstract, BlueprintType, ClassGroup = (Procedural), meta=(PCGExNodeLibraryDoc=\"TBD\")",
+      "uclass_meta": "Abstract, BlueprintType, ClassGroup = (Procedural), meta=(PCGExNodeLibraryDoc=\"clusters/common-settings/cluster-processor-settings\")",
       "uproperties": [
         {
           "name": "ScopedIndexLookupBuild",

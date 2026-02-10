@@ -10,7 +10,7 @@
       "display_name": "Bounds To Points",
       "description": "Generate a point on the surface of the bounds.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"misc/bounds-to-points\")",
+      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"transform/generate/bounds-to-points\")",
       "uproperties": [
         {
           "name": "bGeneratePerPointData",

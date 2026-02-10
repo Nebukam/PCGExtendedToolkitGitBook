@@ -10,7 +10,7 @@
       "display_name": "Cluster : Merge Vtx",
       "description": "Merge Vtx so all edges share the same vtx collection.",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/packing/merge-vtx\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/utilities/cluster-merge-vtx\")",
       "uproperties": [
         {
           "name": "CarryOverDetails",

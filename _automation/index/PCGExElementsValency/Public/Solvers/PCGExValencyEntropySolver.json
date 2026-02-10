@@ -10,7 +10,7 @@
       "display_name": "UPCGExValencyEntropySolver",
       "description": "",
       "base_class": "UPCGExValencySolverInstancedFactory",
-      "uclass_meta": "DisplayName = \"Entropy Solver\", meta=(ToolTip = \"Entropy-based WFC solver. Collapses states with fewest candidates first.\", PCGExNodeLibraryDoc=\"valency/solvers/entropy\")",
+      "uclass_meta": "DisplayName = \"Entropy Solver\", meta=(ToolTip = \"Entropy-based WFC solver. Collapses states with fewest candidates first.\", PCGExNodeLibraryDoc=\"valency/valency-staging/entropy-solver\")",
       "uproperties": [
         {
           "name": "MinimumSpawnWeightBoost",

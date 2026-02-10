@@ -117,7 +117,7 @@
       "display_name": "Shape : φ Sphere",
       "description": "Create a Fibonacci Lattice sphere.",
       "base_class": "UPCGExShapeBuilderFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Builder|Params\", meta=(PCGExNodeLibraryDoc=\"misc/shapes/shape-sphere\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Builder|Params\", meta=(PCGExNodeLibraryDoc=\"shapes/shape-f-sphere\")",
       "uproperties": [
         {
           "name": "Config",

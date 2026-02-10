@@ -37,7 +37,7 @@
       "display_name": "Cluster : Connect",
       "description": "Connects isolated edge clusters by their closest vertices, if they share the same vtx group.",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/connect-clusters\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/refine/cluster-connect\")",
       "uproperties": [
         {
           "name": "BridgeMethod",

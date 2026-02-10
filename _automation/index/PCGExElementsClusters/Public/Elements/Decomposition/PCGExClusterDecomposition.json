@@ -10,7 +10,7 @@
       "display_name": "Cluster : Decomposition",
       "description": "Compute convex/k decomposition of clusters and write partition as an ID on the nodes.",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"metadata/vtx-properties\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/refine/cluster-decomposition\")",
       "uproperties": [
         {
           "name": "DecompositionSettings",

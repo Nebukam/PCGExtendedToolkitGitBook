@@ -29,7 +29,7 @@
       "display_name": "Find Clusters",
       "description": "Find vtx/edge pairs inside a soup of data collections",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/find-clusters-data\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/utilities/find-clusters\")",
       "uproperties": [
         {
           "name": "SearchMode",

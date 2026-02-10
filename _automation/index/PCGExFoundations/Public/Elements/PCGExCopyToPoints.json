@@ -10,7 +10,7 @@
       "display_name": "Copy to Points",
       "description": "Copy source points to target points, with size-to-fit and justification goodies.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"misc/copy-to-points\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"transform/generate/copy-to-points\")",
       "uproperties": [
         {
           "name": "DataMatching",

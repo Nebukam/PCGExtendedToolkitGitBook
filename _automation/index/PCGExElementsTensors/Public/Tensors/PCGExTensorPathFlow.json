@@ -112,7 +112,7 @@
       "display_name": "Tensor : Path Flow",
       "description": "A tensor that represent a vector/flow field along a path",
       "base_class": "UPCGExTensorSplineFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Tensors|Params\", meta=(PCGExNodeLibraryDoc=\"tensors/effectors/tensor-path-flow\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Tensors|Params\", meta=(PCGExNodeLibraryDoc=\"tensors/tensors/tensor-path-flow\")",
       "uproperties": [
         {
           "name": "Config",

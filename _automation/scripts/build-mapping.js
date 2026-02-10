@@ -19,9 +19,26 @@ const AUTOMATION_PATH = path.dirname(__dirname);
 const DOCS_ROOT = path.dirname(AUTOMATION_PATH);
 const STAGING_PATH = path.join(DOCS_ROOT, '_staging');
 const LIBRARY_PATH = path.join(DOCS_ROOT, 'node-library');
-const SOURCE_PATH = 'D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source';
+const SOURCES_CONFIG = path.join(AUTOMATION_PATH, 'sources.json');
 const GITHUB_PREFIX = 'https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/';
 const MAPPING_OUTPUT = path.join(AUTOMATION_PATH, 'mapping.json');
+
+// Load source paths from config
+let SOURCE_PATHS;
+if (fs.existsSync(SOURCES_CONFIG)) {
+    SOURCE_PATHS = JSON.parse(fs.readFileSync(SOURCES_CONFIG, 'utf8')).sources;
+} else {
+    SOURCE_PATHS = ['D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source'];
+}
+
+// Resolve a relative source file path across all source roots
+function resolveSourceFile(relativePath) {
+    for (const sourcePath of SOURCE_PATHS) {
+        const full = path.join(sourcePath, relativePath);
+        if (fs.existsSync(full)) return full;
+    }
+    return null;
+}
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -95,8 +112,8 @@ function scanDirectory(dir) {
  * Returns the value string or null.
  */
 function readDocMeta(sourceRelative) {
-    const filePath = path.join(SOURCE_PATH, sourceRelative);
-    if (!fs.existsSync(filePath)) return null;
+    const filePath = resolveSourceFile(sourceRelative);
+    if (!filePath) return null;
 
     const content = fs.readFileSync(filePath, 'utf8');
     const match = content.match(DOC_META_RE);
@@ -158,7 +175,7 @@ function buildMapping() {
         const docPath = nodeLib ? computeDocPath(nodeLib) : null;
         const currentMeta = readDocMeta(sourceRel);
         const normalizedMeta = normalizeMeta(currentMeta);
-        const sourceDisk = path.join(SOURCE_PATH, sourceRel);
+        const sourceDisk = resolveSourceFile(sourceRel) || sourceRel;
 
         let status;
         if (staging && nodeLib) {

@@ -86,7 +86,7 @@
       "display_name": "Tensor : Spline Flow",
       "description": "A tensor that represent a vector/flow field along a spline",
       "base_class": "UPCGExTensorSplineFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Tensors|Params\", meta=(PCGExNodeLibraryDoc=\"tensors/effectors/tensor-spline-flow\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Tensors|Params\", meta=(PCGExNodeLibraryDoc=\"tensors/tensors/tensor-spline-flow\")",
       "uproperties": [
         {
           "name": "Config",

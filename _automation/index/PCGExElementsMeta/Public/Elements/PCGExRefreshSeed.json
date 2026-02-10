@@ -10,7 +10,7 @@
       "display_name": "Refresh Seed",
       "description": "Refresh point seed based on position.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"metadata/refresh-seed\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"metadata/modify/refresh-seed\")",
       "uproperties": [
         {
           "name": "Base",

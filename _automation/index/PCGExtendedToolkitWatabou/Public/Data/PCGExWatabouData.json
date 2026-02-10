@@ -1,0 +1,145 @@
+{
+  "path": "PCGExtendedToolkitWatabou/Public/Data/PCGExWatabouData.h",
+  "module": "PCGExtendedToolkitWatabou",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExWatabouData",
+      "display_name": "UPCGExWatabouData",
+      "description": "",
+      "base_class": "UDataAsset",
+      "uclass_meta": "",
+      "uproperties": [
+        {
+          "name": "Bounds",
+          "display_name": "Bounds",
+          "type": "FBox",
+          "default": "FBox(NoInit)",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Features",
+          "display_name": "Features",
+          "type": "TObjectPtr<UPCGExWatabouFeaturesCollection>",
+          "default": null,
+          "overridable": false,
+          "instanced": true,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Identifiers",
+          "display_name": "Identifiers",
+          "type": "TMap<FPCGExFeatureIdentifier, int32>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "AssetImportData",
+          "display_name": "AssetImportData",
+          "type": "TObjectPtr<class UAssetImportData>",
+          "default": null,
+          "overridable": false,
+          "instanced": true,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "unknown",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "Bounds",
+          "display_name": "Bounds",
+          "type": "FBox",
+          "default": "FBox(NoInit)",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Features",
+          "display_name": "Features",
+          "type": "TObjectPtr<UPCGExWatabouFeaturesCollection>",
+          "default": null,
+          "overridable": false,
+          "instanced": true,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Identifiers",
+          "display_name": "Identifiers",
+          "type": "TMap<FPCGExFeatureIdentifier, int32>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "AssetImportData",
+          "display_name": "AssetImportData",
+          "type": "TObjectPtr<class UAssetImportData>",
+          "default": null,
+          "overridable": false,
+          "instanced": true,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

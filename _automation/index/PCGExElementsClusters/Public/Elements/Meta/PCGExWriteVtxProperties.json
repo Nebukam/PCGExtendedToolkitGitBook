@@ -10,7 +10,7 @@
       "display_name": "Cluster : Vtx Properties",
       "description": "Extract & write extra informations from the edges connected to the vtx.",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"metadata/vtx-properties\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/analyze/cluster-vtx-properties\")",
       "uproperties": [
         {
           "name": "bMutateVtxToOOB",

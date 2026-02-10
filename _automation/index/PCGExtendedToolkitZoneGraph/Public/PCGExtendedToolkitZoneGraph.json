@@ -1,0 +1,15 @@
+{
+  "path": "PCGExtendedToolkitZoneGraph/Public/PCGExtendedToolkitZoneGraph.h",
+  "module": "PCGExtendedToolkitZoneGraph",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExtendedToolkitZoneGraphModule",
+      "base_class": "IModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

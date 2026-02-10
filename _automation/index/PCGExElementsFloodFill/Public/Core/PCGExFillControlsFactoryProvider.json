@@ -73,7 +73,7 @@
       "display_name": "Fill Controls Definition",
       "description": "Creates a single Fill Control node, to be used with flood fill nodes.",
       "base_class": "UPCGExFactoryProviderSettings",
-      "uclass_meta": "Abstract, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"TBD\")",
+      "uclass_meta": "Abstract, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"pathfinding/cluster-flood-fill/fill-control\")",
       "uproperties": [],
       "classification": {
         "type": "provider",

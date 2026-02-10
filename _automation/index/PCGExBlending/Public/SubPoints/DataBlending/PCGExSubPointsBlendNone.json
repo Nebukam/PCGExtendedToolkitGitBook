@@ -10,7 +10,7 @@
       "display_name": "UPCGExSubPointsBlendNone",
       "description": "",
       "base_class": "UPCGExSubPointsBlendInstancedFactory",
-      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"No Blending\", PCGExNodeLibraryDoc=\"paths/sub-point-blending/none\")",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"No Blending\", PCGExNodeLibraryDoc=\"paths/common-settings/sub-points-blending/no-blending\")",
       "uproperties": [],
       "classification": {
         "type": "instanced_factory",

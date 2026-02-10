@@ -10,7 +10,7 @@
       "display_name": "Cluster : Fuse",
       "description": "Finds Point/Edge and Edge/Edge intersections between all input clusters.",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/fuse-clusters\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/refine/cluster-fuse\")",
       "uproperties": [
         {
           "name": "PointPointIntersectionDetails",

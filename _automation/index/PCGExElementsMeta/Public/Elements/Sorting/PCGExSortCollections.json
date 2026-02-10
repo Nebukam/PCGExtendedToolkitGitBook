@@ -10,7 +10,7 @@
       "display_name": "Sort Data",
       "description": "Sort data using @Data domain attributes.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"metadata/reduce-data\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"utilities/sorting/sort-data\")",
       "uproperties": [
         {
           "name": "SortDirection",

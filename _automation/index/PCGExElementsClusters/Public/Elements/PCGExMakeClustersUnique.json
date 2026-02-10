@@ -10,7 +10,7 @@
       "display_name": "Cluster : Make Unique",
       "description": "Outputs a new, unique data pointer for the input clusters; to avoid overlap and unexpected behaviors.",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/packing/make-unique\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/utilities/cluster-make-unique\")",
       "uproperties": [],
       "classification": {
         "type": "node_settings",

@@ -10,7 +10,7 @@
       "display_name": "Sample : Sockets",
       "description": "Parse static mesh paths and output sockets as points.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Sampling\", meta=(PCGExNodeLibraryDoc=\"sampling/sockets\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Sampling\", meta=(PCGExNodeLibraryDoc=\"staging/utilities/sample-sockets\")",
       "uproperties": [
         {
           "name": "AssetType",

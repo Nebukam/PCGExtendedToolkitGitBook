@@ -10,7 +10,7 @@
       "display_name": "Cluster : Edge Order",
       "description": "Fix an order for edge start & end endpoints.",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/metadata/edge-order\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/analyze/cluster-edge-order\")",
       "uproperties": [
         {
           "name": "DirectionSettings",

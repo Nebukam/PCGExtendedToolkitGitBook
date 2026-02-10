@@ -154,7 +154,7 @@
       "display_name": "Filter : Contains (Hash)",
       "description": "Creates a filter definition that checks whether a given value hash is contained within a one or more set of values. Important note : this is a hash comparison, so it's highly type sensitive! Float 0 != Double 0",
       "base_class": "UPCGExFilterProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/simple-comparisons/contains-hash\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/point-filters/attribute/filter-contains-hash\")",
       "uproperties": [
         {
           "name": "Config",

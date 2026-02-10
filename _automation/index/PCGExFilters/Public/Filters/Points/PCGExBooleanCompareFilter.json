@@ -71,7 +71,7 @@
       "display_name": "UPCGExBooleanCompareFilterFactory",
       "description": "",
       "base_class": "UPCGExPointFilterFactoryData",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/simple-comparisons/boolean\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/point-filters/attribute/filter-bool-compare\")",
       "uproperties": [],
       "classification": {
         "type": "factory_data",

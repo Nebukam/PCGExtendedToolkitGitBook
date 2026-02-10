@@ -268,7 +268,7 @@
       "display_name": "Filter : Inclusion (Path/Splines)",
       "description": "Creates a filter definition that checks points inclusion against path-like data (paths, splines, polygons).",
       "base_class": "UPCGExFilterProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/spatial/inclusion\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/point-filters/spatial/filter-inclusion-path-splines\")",
       "uproperties": [
         {
           "name": "Config",

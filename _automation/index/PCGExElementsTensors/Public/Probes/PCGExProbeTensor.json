@@ -138,7 +138,7 @@
       "display_name": "Probe : Tensor",
       "description": "Sample a tensor at point location and probe in that direction.",
       "base_class": "UPCGExProbeFactoryProviderSettings",
-      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"clusters/connect-points/probe-direction-1\")",
+      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"clusters/generate/cluster-connect-points/probe-tensor\")",
       "uproperties": [
         {
           "name": "Config",

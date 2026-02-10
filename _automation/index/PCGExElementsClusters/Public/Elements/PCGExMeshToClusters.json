@@ -25,7 +25,7 @@
       "display_name": "Mesh to Clusters",
       "description": "Creates clusters from mesh topology.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/mesh-to-clusters\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/generate/mesh-to-clusters\")",
       "uproperties": [
         {
           "name": "GraphOutputType",

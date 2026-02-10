@@ -10,7 +10,7 @@
       "display_name": "Spawn Dynamic Mesh",
       "description": "A more flexible alternative to the native Spawn Dynamic Mesh",
       "base_class": "UPCGExSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), meta=(PCGExNodeLibraryDoc=\"topology/cluster-surface/toggle-topology\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), meta=(PCGExNodeLibraryDoc=\"topology/spawn-dynamic-mesh\")",
       "uproperties": [
         {
           "name": "TemplateDescriptor",

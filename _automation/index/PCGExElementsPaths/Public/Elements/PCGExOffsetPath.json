@@ -47,7 +47,7 @@
       "display_name": "Path : Offset",
       "description": "Offset paths points.",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/offset\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/transform/path-offset\")",
       "uproperties": [
         {
           "name": "OffsetMethod",

@@ -10,7 +10,7 @@
       "display_name": "Path × Bounds Intersection",
       "description": "Find intersection with target input points.",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/path-bounds-intersection\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/intersect/path-bounds-intersection\")",
       "uproperties": [
         {
           "name": "DataMatching",

@@ -565,7 +565,11 @@
     "UPCGExPickerConstantSettings",
     "UPCGExPickerConstantRangeSettings",
     "UPCGExTupleSettings",
-    "UPCGExGlobalSettings"
+    "UPCGExGlobalSettings",
+    "UPCGExClusterToZoneGraphSettings",
+    "UPCGExZoneGraphGlobalSettings",
+    "UPCGExWatabouGlobalSettings",
+    "UPCGExLoadWatabouDataSettings"
   ],
   "consumers": [
     "UPCGExBlendOpFactoryProviderSettings",
@@ -649,7 +653,8 @@
     "UPCGExUberFilterCascadeSettings",
     "UPCGExUberFilterCollectionsSettings",
     "UPCGExCopyToPointsSettings",
-    "UPCGExTransformPointsSettings"
+    "UPCGExTransformPointsSettings",
+    "UPCGExClusterToZoneGraphSettings"
   ],
   "abstract_bases": [
     "UPCGExBlendOpFactoryProviderSettings",

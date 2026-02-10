@@ -10,7 +10,7 @@
       "display_name": "Path : Write Tangents",
       "description": "Computes & writes points tangents.",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/write-tangents\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/analyze/path-write-tangents\")",
       "uproperties": [
         {
           "name": "ArriveName",

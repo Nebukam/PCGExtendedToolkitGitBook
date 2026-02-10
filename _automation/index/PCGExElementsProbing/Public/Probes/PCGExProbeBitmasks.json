@@ -99,7 +99,7 @@
       "display_name": "UPCGExProbeFactoryBitmasks",
       "description": "",
       "base_class": "UPCGExProbeFactoryData",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Data\", meta=(PCGExNodeLibraryDoc=\"clusters/connect-points/probe-bitmasks\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Data\", meta=(PCGExNodeLibraryDoc=\"clusters/generate/cluster-connect-points/probe-bitmasks\")",
       "uproperties": [],
       "classification": {
         "type": "factory_data",

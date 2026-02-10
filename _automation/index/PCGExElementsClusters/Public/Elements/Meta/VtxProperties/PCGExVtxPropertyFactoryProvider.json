@@ -198,7 +198,7 @@
       "display_name": "Vtx : Abstract",
       "description": "Abstract vtx extra settings.",
       "base_class": "UPCGExFactoryProviderSettings",
-      "uclass_meta": "Abstract, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|VtxProperty\", meta=(PCGExNodeLibraryDoc=\"TBD\")",
+      "uclass_meta": "Abstract, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|VtxProperty\", meta=(PCGExNodeLibraryDoc=\"clusters/analyze/cluster-vtx-properties/vtx-property-provider\")",
       "uproperties": [],
       "classification": {
         "type": "provider",

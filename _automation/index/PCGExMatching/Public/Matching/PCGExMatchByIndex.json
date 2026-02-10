@@ -101,7 +101,7 @@
       "display_name": "Match : By Index",
       "description": "Match by index",
       "base_class": "UPCGExMatchRuleFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"DataMatch\", meta=(PCGExNodeLibraryDoc=\"misc/data-matching/index\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"DataMatch\", meta=(PCGExNodeLibraryDoc=\"utilities/data-matching/match-by-index\")",
       "uproperties": [
         {
           "name": "Config",

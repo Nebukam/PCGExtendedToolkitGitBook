@@ -3658,5 +3658,53 @@
     "type": "node_settings",
     "base_class": "UDeveloperSettings",
     "display_name": "UPCGExGlobalSettings"
+  },
+  "UPCGExClusterToZoneGraphSettings": {
+    "file": "PCGExtendedToolkitZoneGraph/Public/Graph/PCGExClusterToZoneGraph.h",
+    "type": "node_settings",
+    "base_class": "UPCGExClustersProcessorSettings",
+    "display_name": "Cluster to Zone Graph"
+  },
+  "UPCGExZoneGraphGlobalSettings": {
+    "file": "PCGExtendedToolkitZoneGraph/Public/PCGExZoneGraphGlobalSettings.h",
+    "type": "node_settings",
+    "base_class": "UDeveloperSettings",
+    "display_name": "UPCGExZoneGraphGlobalSettings"
+  },
+  "UPCGExWatabouData": {
+    "file": "PCGExtendedToolkitWatabou/Public/Data/PCGExWatabouData.h",
+    "type": "unknown",
+    "base_class": "UDataAsset",
+    "display_name": "UPCGExWatabouData"
+  },
+  "UPCGExWatabouFeaturesCollection": {
+    "file": "PCGExtendedToolkitWatabou/Public/Data/PCGExWatabouFeature.h",
+    "type": "unknown",
+    "base_class": "UObject",
+    "display_name": "UPCGExWatabouFeaturesCollection"
+  },
+  "UPCGExWatabouGlobalSettings": {
+    "file": "PCGExtendedToolkitWatabou/Public/PCGExWatabouGlobalSettings.h",
+    "type": "node_settings",
+    "base_class": "UDeveloperSettings",
+    "display_name": "UPCGExWatabouGlobalSettings"
+  },
+  "UPCGExLoadWatabouDataSettings": {
+    "file": "PCGExtendedToolkitWatabou/Public/Staging/PCGExLoadWatabouData.h",
+    "type": "node_settings",
+    "base_class": "UPCGExPointsProcessorSettings",
+    "display_name": "Load Watabou Data"
+  },
+  "UPCGExWatabouDataFactory": {
+    "file": "PCGExtendedToolkitWatabouEditor/Public/PCGExWatabouDataFactory.h",
+    "type": "unknown",
+    "base_class": "UFactory",
+    "display_name": "UPCGExWatabouDataFactory"
+  },
+  "UPCGExWatabouDataReimportFactory": {
+    "file": "PCGExtendedToolkitWatabouEditor/Public/PCGExWatabouDataFactory.h",
+    "type": "unknown",
+    "base_class": "UPCGExWatabouDataFactory",
+    "display_name": "UPCGExWatabouDataReimportFactory"
   }
 }

@@ -151,7 +151,7 @@
       "display_name": "Filter : Modulo Compare",
       "description": "A % B != C",
       "base_class": "UPCGExFilterProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/math-checks/modulo-comparison\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/point-filters/math/filter-modulo-compare\")",
       "uproperties": [
         {
           "name": "Config",

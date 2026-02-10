@@ -10,7 +10,7 @@
       "display_name": "UPCGExSearchDijkstra",
       "description": "",
       "base_class": "UPCGExSearchInstancedFactory",
-      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Dijkstra\", ToolTip =\"Dijkstra search. Slower than A* but more respectful of modifiers and weights.\", PCGExNodeLibraryDoc=\"pathfinding/search-algorithms/dijkstra\")",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Dijkstra\", ToolTip =\"Dijkstra search. Slower than A* but more respectful of modifiers and weights.\", PCGExNodeLibraryDoc=\"pathfinding/algorithms/search-dijkstra\")",
       "uproperties": [],
       "classification": {
         "type": "instanced_factory",

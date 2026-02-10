@@ -165,7 +165,8 @@
     "UPCGExBitmaskCollection",
     "UPCGExValencyBondingRules",
     "UPCGExValencyOrbitalSet",
-    "UPCGExValencySocketRules"
+    "UPCGExValencySocketRules",
+    "UPCGExWatabouData"
   ],
   "FPCGExAssetAttributeSetDetails": [
     "FPCGExRoamingAssetCollectionDetails"
@@ -292,7 +293,8 @@
     "UPCGExMergePointsSettings",
     "UPCGExMergePointsByTagSettings",
     "UPCGExWriteGUIDSettings",
-    "UPCGExClustersProcessorSettings"
+    "UPCGExClustersProcessorSettings",
+    "UPCGExLoadWatabouDataSettings"
   ],
   "FPCGExPointsProcessorElement": [
     "FPCGExAssetStagingElement",
@@ -383,7 +385,8 @@
     "FPCGExMergePointsElement",
     "FPCGExMergePointsByTagElement",
     "FPCGExWriteGUIDElement",
-    "FPCGExClustersProcessorElement"
+    "FPCGExClustersProcessorElement",
+    "FPCGExLoadWatabouDataElement"
   ],
   "UPCGExPathProcessorSettings": [
     "UPCGExPathSplineMeshSettings",
@@ -454,12 +457,15 @@
     "UPCGExCollectionsSettings",
     "UPCGExCollectionsEditorSettings",
     "UPCGExValencyEditorSettings",
-    "UPCGExGlobalSettings"
+    "UPCGExGlobalSettings",
+    "UPCGExZoneGraphGlobalSettings",
+    "UPCGExWatabouGlobalSettings"
   ],
   "FAssetTypeActions_Base": [
     "FPCGExActorCollectionActions",
     "FPCGExMeshCollectionActions",
-    "FPCGExPCGDataAssetCollectionActions"
+    "FPCGExPCGDataAssetCollectionActions",
+    "FPCGExWatabouDataActions"
   ],
   "FPCGExAssetCollectionEditor": [
     "FPCGExActorCollectionEditor",
@@ -585,7 +591,8 @@
   "UObject": [
     "UPCGExInstancedFactory",
     "UPCGExCustomGraphSettings",
-    "UPCGExValencyBondingRulesBuilder"
+    "UPCGExValencyBondingRulesBuilder",
+    "UPCGExWatabouFeaturesCollection"
   ],
   "FPCGExFittingDetailsHandler": [
     "FPCGExTransformDetails"
@@ -665,7 +672,8 @@
     "UPCGExPathfindingPlotEdgesSettings",
     "UPCGExTopologyClustersProcessorSettings",
     "UPCGExValencyProcessorSettings",
-    "UPCGExWriteValencyOrbitalsSettings"
+    "UPCGExWriteValencyOrbitalsSettings",
+    "UPCGExClusterToZoneGraphSettings"
   ],
   "FPCGExClustersProcessorElement": [
     "FPCGExClusterDecompositionElement",
@@ -704,7 +712,8 @@
     "FPCGExPathfindingPlotEdgesElement",
     "FPCGExTopologyClustersProcessorElement",
     "FPCGExValencyProcessorElement",
-    "FPCGExWriteValencyOrbitalsElement"
+    "FPCGExWriteValencyOrbitalsElement",
+    "FPCGExClusterToZoneGraphElement"
   ],
   "UPCGExNeighborSamplerFactoryData": [
     "UPCGExNeighborSamplerFactoryAttribute",
@@ -1497,6 +1506,16 @@
   "IModuleInterface": [
     "FPCGExtendedToolkitModule",
     "FPCGExtendedToolkitEditorModule",
-    "FPCGExtendedToolkitTestModule"
+    "FPCGExtendedToolkitTestModule",
+    "FPCGExtendedToolkitZoneGraphModule",
+    "FPCGExtendedToolkitZoneGraphEditorModule",
+    "FPCGExtendedToolkitWatabouModule",
+    "FPCGExtendedToolkitWatabouEditorModule"
+  ],
+  "UFactory": [
+    "UPCGExWatabouDataFactory"
+  ],
+  "UPCGExWatabouDataFactory": [
+    "UPCGExWatabouDataReimportFactory"
   ]
 }

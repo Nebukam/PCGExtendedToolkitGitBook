@@ -10,7 +10,7 @@
       "display_name": "UPCGExValencyConstraintSolverFactory",
       "description": "",
       "base_class": "UPCGExValencySolverInstancedFactory",
-      "uclass_meta": "DisplayName = \"Constraint Solver\", meta=(ToolTip = \"Constraint-aware WFC solver with guaranteed min spawn satisfaction when possible.\", PCGExNodeLibraryDoc=\"valency/solvers/constraint\")",
+      "uclass_meta": "DisplayName = \"Constraint Solver\", meta=(ToolTip = \"Constraint-aware WFC solver with guaranteed min spawn satisfaction when possible.\", PCGExNodeLibraryDoc=\"valency/valency-staging/constraint-solver\")",
       "uproperties": [
         {
           "name": "UrgencyBoostMultiplier",

@@ -144,7 +144,7 @@
       "display_name": "Match : Overlap",
       "description": "Check if there is an overlap with the data bounds (AABB)",
       "base_class": "UPCGExMatchRuleFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"DataMatch\", meta=(PCGExNodeLibraryDoc=\"misc/data-matching/overlap\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"DataMatch\", meta=(PCGExNodeLibraryDoc=\"utilities/data-matching/match-overlap\")",
       "uproperties": [
         {
           "name": "Config",

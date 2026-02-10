@@ -152,7 +152,7 @@
       "display_name": "Noise : FBM",
       "description": "Fractal Brownian Motion with variants (ridged, billow, warped).",
       "base_class": "UPCGExNoise3DFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category = \"PCGEx|Noise\", meta=(PCGExNodeLibraryDoc=\"/misc/noises/noise-fbm\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category = \"PCGEx|Noise\", meta=(PCGExNodeLibraryDoc=\"utilities/noise/noise-fbm\")",
       "uproperties": [
         {
           "name": "Config",

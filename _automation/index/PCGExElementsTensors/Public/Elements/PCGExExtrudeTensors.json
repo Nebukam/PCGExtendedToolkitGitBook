@@ -39,7 +39,7 @@
       "display_name": "Path : Extrude Tensors",
       "description": "Extrude input points into paths along tensors.",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"tensors/extrude-tensors\")",
+      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"paths/generate/path-extrude-tensors\")",
       "uproperties": [
         {
           "name": "bTransformRotation",

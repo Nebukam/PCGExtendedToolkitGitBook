@@ -10,7 +10,7 @@
       "display_name": "UPCGExOrientWeighted",
       "description": "",
       "base_class": "UPCGExOrientInstancedFactory",
-      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Weighted\", PCGExNodeLibraryDoc=\"paths/orient/orient-weighted\")",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Weighted\", PCGExNodeLibraryDoc=\"paths/transform/path-orient/orient-weighted\")",
       "uproperties": [
         {
           "name": "bInverseWeight",

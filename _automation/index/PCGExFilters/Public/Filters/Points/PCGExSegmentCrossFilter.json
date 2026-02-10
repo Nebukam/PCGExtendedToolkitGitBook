@@ -140,7 +140,7 @@
       "display_name": "Filter : Segment Cross",
       "description": "Creates a filter definition that checks points SegmentCross against path-like data (paths, splines, polygons).",
       "base_class": "UPCGExFilterProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-points/spatial/segment-cross\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/point-filters/math/filter-segment-cross\")",
       "uproperties": [
         {
           "name": "Config",

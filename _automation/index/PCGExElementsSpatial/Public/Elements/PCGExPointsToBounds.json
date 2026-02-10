@@ -229,7 +229,7 @@
       "display_name": "Points to Bounds",
       "description": "Merge points group to a single point representing their bounds.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"misc/points-to-bounds\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"transform/modify/points-to-bounds\")",
       "uproperties": [
         {
           "name": "bOutputOrientedBoundingBox",

@@ -10,7 +10,7 @@
       "display_name": "UPCGExSearchBellmanFord",
       "description": "",
       "base_class": "UPCGExSearchInstancedFactory",
-      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Bellman-Ford\", ToolTip =\"Bellman-Ford Search. Handles negative edge weights and detects negative cycles. Slower but more robust.\", PCGExNodeLibraryDoc=\"pathfinding/search-algorithms/bellman-ford\")",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Bellman-Ford\", ToolTip =\"Bellman-Ford Search. Handles negative edge weights and detects negative cycles. Slower but more robust.\", PCGExNodeLibraryDoc=\"pathfinding/algorithms/search-bellman-ford\")",
       "uproperties": [
         {
           "name": "bDetectNegativeCycles",

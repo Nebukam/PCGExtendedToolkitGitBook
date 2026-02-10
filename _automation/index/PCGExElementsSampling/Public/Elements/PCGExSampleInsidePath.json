@@ -29,7 +29,7 @@
       "display_name": "Sample : Inside Path",
       "description": "Sample the points inside the paths.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Sampling\", meta=(PCGExNodeLibraryDoc=\"sampling/nearest-spline-2\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Sampling\", meta=(PCGExNodeLibraryDoc=\"sampling/nearest/sample-inside-path\")",
       "uproperties": [
         {
           "name": "DataMatching",

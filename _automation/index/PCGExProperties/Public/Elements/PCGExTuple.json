@@ -10,7 +10,7 @@
       "display_name": "Tuple",
       "description": "A Simple Tuple attribute.",
       "base_class": "UPCGExSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), meta=(PCGExNodeLibraryDoc=\"quality-of-life/tuple\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), meta=(PCGExNodeLibraryDoc=\"metadata/keys/tuple\")",
       "uproperties": [
         {
           "name": "Values",

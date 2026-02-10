@@ -58,7 +58,7 @@
       "display_name": "Attribute Remap",
       "description": "Remap a single property or attribute.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"metadata/attribute-remap\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"metadata/modify/attribute-remap\")",
       "uproperties": [
         {
           "name": "Attributes",

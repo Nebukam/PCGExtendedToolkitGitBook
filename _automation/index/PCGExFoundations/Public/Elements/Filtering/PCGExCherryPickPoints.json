@@ -25,7 +25,7 @@
       "display_name": "Cherry Pick Points",
       "description": "Filter points by indices, either read from local attributes or using external sources.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"filters/cherry-pick-points\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"utilities/pickers/cherry-pick-points\")",
       "uproperties": [
         {
           "name": "bInvert",

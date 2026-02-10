@@ -99,7 +99,7 @@
       "display_name": "Data Filter : Entry Count",
       "description": "Does a numeric comparison against the number of entries",
       "base_class": "UPCGExFilterCollectionProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/filters-collections/entry-count\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Filter\", meta=(PCGExNodeLibraryDoc=\"filters/data-filters/data-filter-entry-count\")",
       "uproperties": [
         {
           "name": "Config",

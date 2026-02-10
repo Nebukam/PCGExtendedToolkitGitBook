@@ -84,7 +84,7 @@
       "display_name": "UPCGExFillControlsFactoryRunningAverage",
       "description": "",
       "base_class": "UPCGExFillControlsFactoryData",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Data\", meta=(PCGExNodeLibraryDoc=\"flood-fill/fc-running-average\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Data\", meta=(PCGExNodeLibraryDoc=\"pathfinding/cluster-flood-fill/fc-running-average\")",
       "uproperties": [],
       "classification": {
         "type": "factory_data",

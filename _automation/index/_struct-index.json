@@ -332,8 +332,8 @@
     "base_class": null,
     "is_config": false,
     "is_shared": true,
-    "usage_count": 4,
-    "user_facing_count": 2,
+    "usage_count": 5,
+    "user_facing_count": 3,
     "document_with": null
   },
   "FPCGExBitmaskCollectionEntry": {
@@ -486,8 +486,8 @@
     "base_class": null,
     "is_config": false,
     "is_shared": true,
-    "usage_count": 2,
-    "user_facing_count": 2,
+    "usage_count": 3,
+    "user_facing_count": 3,
     "document_with": null
   },
   "FPCGExInputConfig": {
@@ -3045,5 +3045,39 @@
     "usage_count": 1,
     "user_facing_count": 1,
     "document_with": "UPCGExStagingLoadPropertiesSettings"
+  },
+  "FPCGExFeatureDetails": {
+    "file": "PCGExtendedToolkitWatabou/Public/Data/PCGExWatabouFeature.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExFeatureIdentifier": {
+    "file": "PCGExtendedToolkitWatabou/Public/Data/PCGExWatabouFeature.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExWatabouFeature": {
+    "file": "PCGExtendedToolkitWatabou/Public/Data/PCGExWatabouFeature.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": null
+  },
+  "FPCGExWatabouVersion": {
+    "file": "PCGExtendedToolkitWatabou/Public/PCGExWatabou.h",
+    "base_class": null,
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 0
   }
 }

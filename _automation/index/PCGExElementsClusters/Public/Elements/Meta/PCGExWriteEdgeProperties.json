@@ -29,7 +29,7 @@
       "display_name": "Cluster : Edge Properties",
       "description": "Extract & write extra edge informations to the point representing the edge.",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"metadata/edge-properties\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/analyze/cluster-edge-properties\")",
       "uproperties": [
         {
           "name": "DirectionSettings",

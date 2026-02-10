@@ -47,7 +47,7 @@
       "display_name": "Sample : Nearest Spline",
       "description": "Find the closest transform on nearest polylines.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Sampling\", meta=(PCGExNodeLibraryDoc=\"sampling/nearest-spline\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Sampling\", meta=(PCGExNodeLibraryDoc=\"sampling/nearest/sample-nearest-spline\")",
       "uproperties": [
         {
           "name": "SampleInputs",

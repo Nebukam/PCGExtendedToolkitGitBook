@@ -73,7 +73,7 @@
       "display_name": "Probe : Anisotropic",
       "description": "Probe in 16 directions over the X/Y axis. It's recommended to use internal projection to get the best results",
       "base_class": "UPCGExProbeFactoryProviderSettings",
-      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"clusters/connect-points/probe-anisotropic\")",
+      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"clusters/generate/cluster-connect-points/probe-anisotropic\")",
       "uproperties": [
         {
           "name": "Config",

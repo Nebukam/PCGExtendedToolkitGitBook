@@ -135,7 +135,7 @@
       "display_name": "Heuristics : Gradient",
       "description": "Heuristics based on attribute gradient between nodes.",
       "base_class": "UPCGExHeuristicsFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"pathfinding/heuristics/hx-gradient\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"pathfinding/heuristics/heuristics-gradient\")",
       "uproperties": [
         {
           "name": "Config",

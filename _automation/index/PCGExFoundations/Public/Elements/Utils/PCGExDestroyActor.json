@@ -10,7 +10,7 @@
       "display_name": "Destroy Actor",
       "description": "Destroy target actor references that have been previously spawned by the PCG component this note is currently executing on.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Sampling\", meta=(PCGExNodeLibraryDoc=\"misc/destroy-actor\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Sampling\", meta=(PCGExNodeLibraryDoc=\"utilities/discarding/destroy-actor\")",
       "uproperties": [
         {
           "name": "ActorReferenceAttribute",

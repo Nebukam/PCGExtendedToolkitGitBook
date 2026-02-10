@@ -99,7 +99,7 @@
       "display_name": "Heuristics : Inertia",
       "description": "Heuristics based on direction inertia from last visited node. NOTE: Can be quite expensive.",
       "base_class": "UPCGExHeuristicsFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"pathfinding/heuristics/hx-inertia\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"pathfinding/heuristics/heuristics-inertia\")",
       "uproperties": [
         {
           "name": "Config",

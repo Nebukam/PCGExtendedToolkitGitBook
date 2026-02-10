@@ -95,7 +95,7 @@
       "display_name": "Bin Packing 3D (Q4RealBPP)",
       "description": "3D bin packing with real-world constraints from the Q4RealBPP paper: weight limits, category affinities, load bearing, and multi-objective scoring.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"misc/layout/bin-packing-3d\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"transform/modify/bin-packing-3d-q4realbpp\")",
       "uproperties": [
         {
           "name": "SortDirection",

@@ -10,7 +10,7 @@
       "display_name": "Normalize",
       "description": "Output normalized position against data bounds to a new vector attribute.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"transform/normalize\")",
+      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"transform/analyze/normalize\")",
       "uproperties": [
         {
           "name": "BoundsSource",

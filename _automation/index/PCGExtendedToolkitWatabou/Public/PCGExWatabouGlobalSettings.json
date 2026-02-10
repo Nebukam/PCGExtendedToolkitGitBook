@@ -1,0 +1,39 @@
+{
+  "path": "PCGExtendedToolkitWatabou/Public/PCGExWatabouGlobalSettings.h",
+  "module": "PCGExtendedToolkitWatabou",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExWatabouGlobalSettings",
+      "display_name": "UPCGExWatabouGlobalSettings",
+      "description": "",
+      "base_class": "UDeveloperSettings",
+      "uclass_meta": "Config=Game, DefaultConfig, meta=(DisplayName=\"PCGEx + Watabou\", Description=\"Configure PCGEx + Watabou settings\")",
+      "uproperties": [],
+      "classification": {
+        "type": "node_settings",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": []
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

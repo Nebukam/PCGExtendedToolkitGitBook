@@ -319,7 +319,7 @@
       "display_name": "Shape : Polygon",
       "description": "Create points as a regular polygon or star.",
       "base_class": "UPCGExShapeBuilderFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Builder|Params\", meta=(PCGExNodeLibraryDoc=\"misc/shapes/shape-polygon\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Builder|Params\", meta=(PCGExNodeLibraryDoc=\"shapes/shape-polygon\")",
       "uproperties": [
         {
           "name": "Config",

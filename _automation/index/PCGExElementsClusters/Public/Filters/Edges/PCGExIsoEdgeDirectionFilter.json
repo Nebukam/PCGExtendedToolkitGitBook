@@ -151,7 +151,7 @@
       "display_name": "Edge Filter : Edge Direction",
       "description": "Dot product comparison of the edge direction against a local attribute or constant.",
       "base_class": "UPCGExEdgeFilterProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"filters/filters-edges/direction\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"filters/edge-filters/edge-filter-edge-direction\")",
       "uproperties": [
         {
           "name": "Config",

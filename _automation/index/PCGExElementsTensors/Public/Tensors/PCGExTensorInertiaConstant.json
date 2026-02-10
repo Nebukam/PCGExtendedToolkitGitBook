@@ -86,7 +86,7 @@
       "display_name": "Tensor : Inertia (Constant)",
       "description": "A tensor constant that uses the seed transform.",
       "base_class": "UPCGExTensorFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Tensors|Params\", meta=(PCGExNodeLibraryDoc=\"tensors/effectors/tensor-inertia-constant\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Tensors|Params\", meta=(PCGExNodeLibraryDoc=\"tensors/tensors/tensor-inertia-constant\")",
       "uproperties": [
         {
           "name": "Axis",

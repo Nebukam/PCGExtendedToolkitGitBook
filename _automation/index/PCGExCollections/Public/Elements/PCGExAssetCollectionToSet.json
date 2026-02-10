@@ -41,7 +41,7 @@
       "display_name": "Asset Collection to Set",
       "description": "Converts an asset collection to an attribute set.",
       "base_class": "UPCGExSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), meta=(PCGExNodeLibraryDoc=\"assets-management/asset-collection-to-set\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), meta=(PCGExNodeLibraryDoc=\"staging/utilities/asset-collection-to-set\")",
       "uproperties": [
         {
           "name": "AssetCollection",

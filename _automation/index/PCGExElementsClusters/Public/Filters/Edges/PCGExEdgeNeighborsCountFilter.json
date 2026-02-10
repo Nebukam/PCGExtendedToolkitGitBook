@@ -144,7 +144,7 @@
       "display_name": "Edge Filter : Num Vtx",
       "description": "Check against the edge' endpoints neighbor count.",
       "base_class": "UPCGExEdgeFilterProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"filters/filters-edges/neighbors-count\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"filters/edge-filters/edge-filter-num-vtx\")",
       "uproperties": [
         {
           "name": "Config",

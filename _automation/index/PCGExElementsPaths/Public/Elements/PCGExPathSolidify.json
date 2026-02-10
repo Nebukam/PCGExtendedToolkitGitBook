@@ -124,7 +124,7 @@
       "display_name": "Path : Solidify",
       "description": "Solidify a path.",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/solidify\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/modify/path-solidify\")",
       "uproperties": [
         {
           "name": "bRemoveLastPoint",

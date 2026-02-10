@@ -29,7 +29,7 @@
       "display_name": "Uber Filter (Data)",
       "description": "Filter entire collections based on multiple rules & conditions.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"filters/uber-filter-collection\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"filters/uber-filter-data\")",
       "uproperties": [
         {
           "name": "Mode",

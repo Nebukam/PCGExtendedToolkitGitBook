@@ -25,7 +25,7 @@
       "display_name": "Path : Reduce",
       "description": "Reduce point but attempts to preserve aspect using tangents",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/reduce\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/modify/path-reduce\")",
       "uproperties": [
         {
           "name": "Mode",

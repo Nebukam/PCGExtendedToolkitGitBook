@@ -88,7 +88,7 @@
       "display_name": "G-Probe : KNN",
       "description": "K-Nearest Neighbors",
       "base_class": "UPCGExProbeFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"clusters/connect-points/g-probe-knn\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Graph|Params\", meta=(PCGExNodeLibraryDoc=\"clusters/generate/cluster-connect-points/g-probe-knn\")",
       "uproperties": [
         {
           "name": "Config",

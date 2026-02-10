@@ -12,8 +12,26 @@
 const fs = require('fs');
 const path = require('path');
 
-const SOURCE_PATH = 'D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source';
-const INDEX_PATH = 'D:\\GIT\\PCGExtendedToolkitGitBook\\_automation\\index';
+const AUTOMATION_PATH = path.dirname(__dirname);
+const SOURCES_CONFIG = path.join(AUTOMATION_PATH, 'sources.json');
+const INDEX_PATH = path.join(AUTOMATION_PATH, 'index');
+
+// Load source paths from config
+let SOURCE_PATHS;
+if (fs.existsSync(SOURCES_CONFIG)) {
+    SOURCE_PATHS = JSON.parse(fs.readFileSync(SOURCES_CONFIG, 'utf8')).sources;
+} else {
+    SOURCE_PATHS = ['D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source'];
+}
+
+// Resolve a relative source file path to its absolute location across all source roots
+function resolveSourceFile(relativePath) {
+    for (const sourcePath of SOURCE_PATHS) {
+        const full = path.join(sourcePath, relativePath);
+        if (fs.existsSync(full)) return full;
+    }
+    return null;
+}
 
 // Load summary indexes
 const classIndex = JSON.parse(fs.readFileSync(path.join(INDEX_PATH, '_class-index.json'), 'utf8'));
@@ -264,8 +282,8 @@ function buildClassContext(className) {
     }
 
     // Source file content
-    const sourcePath = path.join(SOURCE_PATH, fileData.path);
-    if (fs.existsSync(sourcePath)) {
+    const sourcePath = resolveSourceFile(fileData.path);
+    if (sourcePath) {
         context.push('## Source Header');
         context.push('');
         context.push('```cpp');
@@ -275,8 +293,9 @@ function buildClassContext(className) {
     }
 
     // CPP file if exists
-    const cppPath = sourcePath.replace('/Public/', '/Private/').replace('.h', '.cpp');
-    if (fs.existsSync(cppPath)) {
+    const cppRelative = fileData.path.replace('/Public/', '/Private/').replace('.h', '.cpp');
+    const cppPath = resolveSourceFile(cppRelative);
+    if (cppPath) {
         context.push('## Source Implementation');
         context.push('');
         context.push('```cpp');

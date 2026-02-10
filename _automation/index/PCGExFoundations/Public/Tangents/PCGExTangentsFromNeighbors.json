@@ -10,7 +10,7 @@
       "display_name": "UPCGExFromNeighborsTangents",
       "description": "",
       "base_class": "UPCGExTangentsInstancedFactory",
-      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"From Neighbors\", PCGExNodeLibraryDoc=\"paths/write-tangents/tangents-neighbors\")",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"From Neighbors\", PCGExNodeLibraryDoc=\"paths/common-settings/tangents/from-neighbors\")",
       "uproperties": [],
       "classification": {
         "type": "instanced_factory",

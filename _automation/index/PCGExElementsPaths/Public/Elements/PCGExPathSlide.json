@@ -39,7 +39,7 @@
       "display_name": "Path : Slide",
       "description": "Slide points of a path along the path, either toward the next or previous point",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/slide\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/transform/path-slide\")",
       "uproperties": [
         {
           "name": "Mode",

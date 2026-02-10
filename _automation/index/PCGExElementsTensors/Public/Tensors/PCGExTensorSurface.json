@@ -178,7 +178,7 @@
       "display_name": "Tensor : Surface",
       "description": "A tensor that samples nearby surfaces to compute direction fields. Uses all connected surface sources additively.",
       "base_class": "UPCGExTensorFactoryProviderSettings",
-      "uclass_meta": "Hidden, MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category = \"PCGEx|Tensors|Params\", meta = (PCGExNodeLibraryDoc = \"tensors/effectors/tensor-surface\")",
+      "uclass_meta": "Hidden, MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category = \"PCGEx|Tensors|Params\", meta = (PCGExNodeLibraryDoc = \"tensors/tensors/tensor-surface\")",
       "uproperties": [
         {
           "name": "Config",

@@ -15,8 +15,20 @@ const fs = require('fs');
 const path = require('path');
 
 // Configuration
-const SOURCE_PATH = process.argv[2] || 'D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source';
-const OUTPUT_PATH = process.argv[3] || 'D:\\GIT\\PCGExtendedToolkitGitBook\\_automation\\index';
+const AUTOMATION_PATH = path.dirname(__dirname);
+const SOURCES_CONFIG = path.join(AUTOMATION_PATH, 'sources.json');
+const OUTPUT_PATH = process.argv[2] || path.join(AUTOMATION_PATH, 'index');
+
+// Load source paths from config, with CLI override for single-source usage
+let SOURCE_PATHS;
+if (process.argv[3]) {
+    // Legacy: node index-generator.js <source> <output>
+    SOURCE_PATHS = [process.argv[3]];
+} else if (fs.existsSync(SOURCES_CONFIG)) {
+    SOURCE_PATHS = JSON.parse(fs.readFileSync(SOURCES_CONFIG, 'utf8')).sources;
+} else {
+    SOURCE_PATHS = ['D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source'];
+}
 
 // Global registries (for cross-referencing)
 const classRegistry = {};      // All classes by name
@@ -605,15 +617,31 @@ function getImplementations(baseClassName) {
 
 // Main execution
 console.log('=== PCGEx Index Generator v2 ===');
-console.log(`Source: ${SOURCE_PATH}`);
+console.log(`Sources: ${SOURCE_PATHS.length} directories`);
+for (const sp of SOURCE_PATHS) {
+    console.log(`  - ${sp}`);
+}
 console.log(`Output: ${OUTPUT_PATH}`);
 console.log();
 
 // Ensure output directory
 ensureDir(OUTPUT_PATH);
 
-// Find all source files
-const allFiles = findSourceFiles(SOURCE_PATH);
+// Find all source files across all source paths
+// Track which SOURCE_PATH each file came from for later resolution
+const sourcePathForFile = {};  // absolutePath -> SOURCE_PATH root
+const allFiles = [];
+for (const sourcePath of SOURCE_PATHS) {
+    if (!fs.existsSync(sourcePath)) {
+        console.log(`WARNING: Source path not found, skipping: ${sourcePath}`);
+        continue;
+    }
+    const files = findSourceFiles(sourcePath);
+    for (const f of files) {
+        sourcePathForFile[f] = sourcePath;
+    }
+    allFiles.push(...files);
+}
 const headers = allFiles.filter(f => f.endsWith('.h'));
 const cpps = allFiles.filter(f => f.endsWith('.cpp'));
 
@@ -625,7 +653,7 @@ console.log('Phase 1: Parsing headers...');
 const headerDataMap = {};
 let processed = 0;
 for (const header of headers) {
-    const relativePath = path.relative(SOURCE_PATH, header).replace(/\\/g, '/');
+    const relativePath = path.relative(sourcePathForFile[header], header).replace(/\\/g, '/');
     headerDataMap[relativePath] = parseHeaderFile(header, relativePath);
     processed++;
     if (processed % 100 === 0) {
@@ -639,7 +667,7 @@ console.log('Phase 2: Parsing cpp files...');
 const cppDataMap = {};
 processed = 0;
 for (const cpp of cpps) {
-    const relativePath = path.relative(SOURCE_PATH, cpp).replace(/\\/g, '/');
+    const relativePath = path.relative(sourcePathForFile[cpp], cpp).replace(/\\/g, '/');
     cppDataMap[relativePath] = parseCppFile(cpp, relativePath);
     processed++;
     if (processed % 100 === 0) {

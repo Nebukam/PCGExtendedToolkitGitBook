@@ -37,7 +37,7 @@
       "display_name": "Clipper2 : Offset",
       "description": "Does a Clipper2 offset operation with optional dual (inward+outward) offset.",
       "base_class": "UPCGExClipper2ProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/clipper2/clipper2-offset\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/generate/clipper2-offset\")",
       "uproperties": [
         {
           "name": "ProjectionDetails",

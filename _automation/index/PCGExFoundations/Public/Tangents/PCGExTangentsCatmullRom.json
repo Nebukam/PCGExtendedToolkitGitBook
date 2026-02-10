@@ -10,7 +10,7 @@
       "display_name": "UPCGExCatmullRomTangents",
       "description": "",
       "base_class": "UPCGExTangentsInstancedFactory",
-      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Catmull-Rom\", PCGExNodeLibraryDoc=\"paths/write-tangents/tangents-catmull-rom\")",
+      "uclass_meta": "MinimalAPI, meta=(DisplayName = \"Catmull-Rom\", PCGExNodeLibraryDoc=\"paths/common-settings/tangents/catmull-rom\")",
       "uproperties": [],
       "classification": {
         "type": "instanced_factory",

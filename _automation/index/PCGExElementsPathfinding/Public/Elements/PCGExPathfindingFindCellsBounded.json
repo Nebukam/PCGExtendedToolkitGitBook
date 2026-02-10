@@ -10,7 +10,7 @@
       "display_name": "Pathfinding : Find Cells (Bounded)",
       "description": "Finds closed cells around seed points and triages them by spatial bounds relationship (Inside/Touching/Outside).",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"pathfinding/contours/find-contours-bounded\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"pathfinding/cells/find-cells-bounded\")",
       "uproperties": [
         {
           "name": "OutputMode",

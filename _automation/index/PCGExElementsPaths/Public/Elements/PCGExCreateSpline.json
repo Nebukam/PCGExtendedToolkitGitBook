@@ -10,7 +10,7 @@
       "display_name": "Create Spline",
       "description": "Create splines from input points.",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"paths/create-spline\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Misc\", meta=(PCGExNodeLibraryDoc=\"paths/output/create-spline\")",
       "uproperties": [
         {
           "name": "Mode",

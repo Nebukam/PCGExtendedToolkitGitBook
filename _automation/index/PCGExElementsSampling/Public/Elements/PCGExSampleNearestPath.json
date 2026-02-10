@@ -47,7 +47,7 @@
       "display_name": "Sample : Nearest Path",
       "description": "Sample the nearest(s) paths.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Sampling\", meta=(PCGExNodeLibraryDoc=\"sampling/nearest-spline-1\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Sampling\", meta=(PCGExNodeLibraryDoc=\"sampling/nearest/sample-nearest-path\")",
       "uproperties": [
         {
           "name": "DataMatching",

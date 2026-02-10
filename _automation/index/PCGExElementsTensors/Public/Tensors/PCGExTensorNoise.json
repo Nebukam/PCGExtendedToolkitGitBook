@@ -60,7 +60,7 @@
       "display_name": "Tensor : Noise",
       "description": "A tensor that uses 3D noises as direction.",
       "base_class": "UPCGExTensorFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Tensors|Params\", meta=(PCGExNodeLibraryDoc=\"tensors/effectors/tensor-noise\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Tensors|Params\", meta=(PCGExNodeLibraryDoc=\"tensors/tensors/tensor-noise\")",
       "uproperties": [
         {
           "name": "TensorWeight",

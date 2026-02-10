@@ -46,7 +46,7 @@
       "display_name": "Tensor : Null",
       "description": "A tensor that represent a Null field",
       "base_class": "UPCGExTensorPointFactoryProviderSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Tensors|Params\", meta=(PCGExNodeLibraryDoc=\"tensors/effectors/tensor-null\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Tensors|Params\", meta=(PCGExNodeLibraryDoc=\"tensors/tensors/tensor-null\")",
       "uproperties": [
         {
           "name": "Config",

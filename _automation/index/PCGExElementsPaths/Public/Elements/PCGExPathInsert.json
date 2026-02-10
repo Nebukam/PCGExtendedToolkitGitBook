@@ -25,7 +25,7 @@
       "display_name": "Path : Insert",
       "description": "Insert target points into paths at their nearest location.",
       "base_class": "UPCGExPathProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/insert\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Path\", meta=(PCGExNodeLibraryDoc=\"paths/modify/path-insert\")",
       "uproperties": [
         {
           "name": "DataMatching",
