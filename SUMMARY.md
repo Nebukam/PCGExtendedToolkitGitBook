@@ -268,6 +268,7 @@
     * [Constant](node-library/metadata/keys/constant.md)
     * [Enum Constant](node-library/metadata/keys/enum-constant.md)
     * [Tuple](node-library/metadata/keys/tuple.md)
+    * [Tuple : Distribute](node-library/metadata/keys/tuple-distribute.md)
     * [Pack Actor Data](node-library/metadata/keys/pack-actor-data/README.md)
       * [Creating a Custom Actor Data Packer](node-library/metadata/keys/pack-actor-data/creating-a-custom-actor-data-packer.md)
     * [Hoist Attributes](node-library/metadata/keys/hoist-attributes.md)
