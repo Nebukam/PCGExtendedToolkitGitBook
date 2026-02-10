@@ -2,7 +2,34 @@
   "path": "PCGExtendedToolkitZoneGraph/Public/Graph/PCGExClusterToZoneGraph.h",
   "module": "PCGExtendedToolkitZoneGraph",
   "type": "header",
-  "enums": [],
+  "enums": [
+    {
+      "name": "EPCGExZGAutoRadiusMode",
+      "values": [
+        {
+          "name": "Disabled",
+          "display_name": "Disabled"
+        },
+        {
+          "name": "WidestLane",
+          "display_name": "Widest Lane"
+        },
+        {
+          "name": "HalfProfile",
+          "display_name": "Half Profile Width"
+        },
+        {
+          "name": "WidestLaneMin",
+          "display_name": "WidestLaneMin"
+        },
+        {
+          "name": "HalfProfileMin",
+          "display_name": "HalfProfileMin"
+        }
+      ],
+      "used_by": []
+    }
+  ],
   "structs": [],
   "classes": [
     {
@@ -10,7 +37,7 @@
       "display_name": "Cluster to Zone Graph",
       "description": "Create Zone Graph from clusters.",
       "base_class": "UPCGExClustersProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\"",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"cluster-to-zone-graph\")",
       "uproperties": [
         {
           "name": "DirectionSettings",
@@ -74,7 +101,33 @@
           "show_only_inner": false,
           "edit_condition": null,
           "edit_condition_hides": false,
-          "category": null,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "bOverridePolygonRadius",
+          "display_name": "bOverridePolygonRadius",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "AutoRadiusMode",
+          "display_name": "AutoRadiusMode",
+          "type": "EPCGExZGAutoRadiusMode",
+          "default": "EPCGExZGAutoRadiusMode::Disabled",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|ZoneGraph",
           "advanced": false
         },
         {
@@ -87,7 +140,20 @@
           "show_only_inner": false,
           "edit_condition": null,
           "edit_condition_hides": false,
-          "category": null,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "bOverridePolygonRoutingType",
+          "display_name": "bOverridePolygonRoutingType",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|ZoneGraph",
           "advanced": false
         },
         {
@@ -100,7 +166,20 @@
           "show_only_inner": false,
           "edit_condition": null,
           "edit_condition_hides": false,
-          "category": null,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "bOverridePolygonPointType",
+          "display_name": "bOverridePolygonPointType",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|ZoneGraph",
           "advanced": false
         },
         {
@@ -113,20 +192,20 @@
           "show_only_inner": false,
           "edit_condition": null,
           "edit_condition_hides": false,
-          "category": null,
+          "category": "Settings|ZoneGraph",
           "advanced": false
         },
         {
-          "name": "AdditionalIntersectionTags",
-          "display_name": "AdditionalIntersectionTags",
-          "type": "FZoneGraphTagMask",
-          "default": "FZoneGraphTagMask::None",
+          "name": "bOverrideRoadPointType",
+          "display_name": "bOverrideRoadPointType",
+          "type": "bool",
+          "default": "false",
           "overridable": false,
           "instanced": false,
           "show_only_inner": false,
           "edit_condition": null,
           "edit_condition_hides": false,
-          "category": "Settings|Intersections",
+          "category": "Settings|ZoneGraph",
           "advanced": false
         },
         {
@@ -139,7 +218,98 @@
           "show_only_inner": false,
           "edit_condition": null,
           "edit_condition_hides": false,
-          "category": "Settings",
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "bOverrideLaneProfile",
+          "display_name": "bOverrideLaneProfile",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "AdditionalIntersectionTags",
+          "display_name": "AdditionalIntersectionTags",
+          "type": "FZoneGraphTagMask",
+          "default": "FZoneGraphTagMask::None",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "bOverrideAdditionalIntersectionTags",
+          "display_name": "bOverrideAdditionalIntersectionTags",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "bOutputPolygonPaths",
+          "display_name": "bOutputPolygonPaths",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "bOutputRoadPaths",
+          "display_name": "bOutputRoadPaths",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "ArriveName",
+          "display_name": "ArriveName",
+          "type": "FName",
+          "default": "\"ArriveTangent\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOutputRoadPaths",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "LeaveName",
+          "display_name": "LeaveName",
+          "type": "FName",
+          "default": "\"LeaveTangent\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOutputRoadPaths",
+          "edit_condition_hides": false,
+          "category": null,
           "advanced": false
         }
       ],
@@ -166,7 +336,10 @@
         }
       ],
       "inputs": [],
-      "outputs": [],
+      "outputs": [
+        "OutputPolygonPathsLabel",
+        "OutputRoadPathsLabel"
+      ],
       "consumed_factories": [],
       "consumed_filters": [
         {
@@ -434,7 +607,33 @@
           "show_only_inner": false,
           "edit_condition": null,
           "edit_condition_hides": false,
-          "category": null,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "bOverridePolygonRadius",
+          "display_name": "bOverridePolygonRadius",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "AutoRadiusMode",
+          "display_name": "AutoRadiusMode",
+          "type": "EPCGExZGAutoRadiusMode",
+          "default": "EPCGExZGAutoRadiusMode::Disabled",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|ZoneGraph",
           "advanced": false
         },
         {
@@ -447,7 +646,20 @@
           "show_only_inner": false,
           "edit_condition": null,
           "edit_condition_hides": false,
-          "category": null,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "bOverridePolygonRoutingType",
+          "display_name": "bOverridePolygonRoutingType",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|ZoneGraph",
           "advanced": false
         },
         {
@@ -460,7 +672,20 @@
           "show_only_inner": false,
           "edit_condition": null,
           "edit_condition_hides": false,
-          "category": null,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "bOverridePolygonPointType",
+          "display_name": "bOverridePolygonPointType",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|ZoneGraph",
           "advanced": false
         },
         {
@@ -473,20 +698,20 @@
           "show_only_inner": false,
           "edit_condition": null,
           "edit_condition_hides": false,
-          "category": null,
+          "category": "Settings|ZoneGraph",
           "advanced": false
         },
         {
-          "name": "AdditionalIntersectionTags",
-          "display_name": "AdditionalIntersectionTags",
-          "type": "FZoneGraphTagMask",
-          "default": "FZoneGraphTagMask::None",
+          "name": "bOverrideRoadPointType",
+          "display_name": "bOverrideRoadPointType",
+          "type": "bool",
+          "default": "false",
           "overridable": false,
           "instanced": false,
           "show_only_inner": false,
           "edit_condition": null,
           "edit_condition_hides": false,
-          "category": "Settings|Intersections",
+          "category": "Settings|ZoneGraph",
           "advanced": false
         },
         {
@@ -499,7 +724,98 @@
           "show_only_inner": false,
           "edit_condition": null,
           "edit_condition_hides": false,
-          "category": "Settings",
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "bOverrideLaneProfile",
+          "display_name": "bOverrideLaneProfile",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "AdditionalIntersectionTags",
+          "display_name": "AdditionalIntersectionTags",
+          "type": "FZoneGraphTagMask",
+          "default": "FZoneGraphTagMask::None",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "bOverrideAdditionalIntersectionTags",
+          "display_name": "bOverrideAdditionalIntersectionTags",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "bOutputPolygonPaths",
+          "display_name": "bOutputPolygonPaths",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "bOutputRoadPaths",
+          "display_name": "bOutputRoadPaths",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|Output",
+          "advanced": false
+        },
+        {
+          "name": "ArriveName",
+          "display_name": "ArriveName",
+          "type": "FName",
+          "default": "\"ArriveTangent\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOutputRoadPaths",
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "LeaveName",
+          "display_name": "LeaveName",
+          "type": "FName",
+          "default": "\"LeaveTangent\"",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bOutputRoadPaths",
+          "edit_condition_hides": false,
+          "category": null,
           "advanced": false
         }
       ]

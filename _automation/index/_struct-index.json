@@ -2972,6 +2972,15 @@
     "user_facing_count": 0,
     "document_with": null
   },
+  "FPCGExWeightedPropertyOverrides": {
+    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+    "base_class": "FPCGExPropertyOverrides",
+    "is_config": false,
+    "is_shared": false,
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "document_with": "UPCGExDistributeTupleSettings"
+  },
   "FPCGExPropertyCompiled_Vector": {
     "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
     "base_class": "FPCGExPropertyCompiled",

@@ -1371,6 +1371,10 @@
     "file": "PCGExNoise3D/Public/Noises/PCGExNoiseWorley.h",
     "value_count": 6
   },
+  "EPCGExZGAutoRadiusMode": {
+    "file": "PCGExtendedToolkitZoneGraph/Public/Graph/PCGExClusterToZoneGraph.h",
+    "value_count": 5
+  },
   "EPCGExWatabouFeatureType": {
     "file": "PCGExtendedToolkitWatabou/Public/Data/PCGExWatabouFeature.h",
     "value_count": 6

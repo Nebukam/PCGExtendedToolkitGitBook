@@ -1,0 +1,15 @@
+{
+  "path": "PCGExPropertiesEditor/Public/Details/PCGExWeightedPropertyOverridesCustomization.h",
+  "module": "PCGExPropertiesEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExWeightedPropertyOverridesCustomization",
+      "base_class": "IPropertyTypeCustomization"
+    }
+  ],
+  "namespaces": {}
+}

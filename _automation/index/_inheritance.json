@@ -206,6 +206,7 @@
   ],
   "UPCGExPointsProcessorSettings": [
     "UPCGExAssetStagingSettings",
+    "UPCGExDistributeTupleSettings",
     "UPCGExStagingFittingSettings",
     "UPCGExPCGDataAssetLoaderSettings",
     "UPCGExStagingLoadPropertiesSettings",
@@ -298,6 +299,7 @@
   ],
   "FPCGExPointsProcessorElement": [
     "FPCGExAssetStagingElement",
+    "FPCGExDistributeTupleElement",
     "FPCGExStagingFittingElement",
     "FPCGExPCGDataAssetLoaderElement",
     "FPCGExStagingLoadPropertiesElement",
@@ -500,7 +502,8 @@
     "FPCGExPropertyOverrideEntryCustomization",
     "FPCGExPropertyOverridesCustomization",
     "FPCGExPropertySchemaCollectionCustomization",
-    "FPCGExPropertySchemaCustomization"
+    "FPCGExPropertySchemaCustomization",
+    "FPCGExWeightedPropertyOverridesCustomization"
   ],
   "FPCGExAssetEntryCustomization": [
     "FPCGExEntryHeaderCustomizationBase"
@@ -1502,6 +1505,9 @@
   ],
   "UActorComponent": [
     "UPCGExPropertyCollectionComponent"
+  ],
+  "FPCGExPropertyOverrides": [
+    "FPCGExWeightedPropertyOverrides"
   ],
   "IModuleInterface": [
     "FPCGExtendedToolkitModule",

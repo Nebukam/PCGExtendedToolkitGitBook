@@ -220,6 +220,27 @@
       ],
       "is_config": false,
       "used_by": []
+    },
+    {
+      "name": "FPCGExWeightedPropertyOverrides",
+      "base_class": "FPCGExPropertyOverrides",
+      "uproperties": [
+        {
+          "name": "Weight",
+          "display_name": "Weight",
+          "type": "int32",
+          "default": "1",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
     }
   ],
   "classes": [],

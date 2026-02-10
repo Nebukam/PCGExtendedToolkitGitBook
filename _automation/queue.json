@@ -1,8 +1,11 @@
 {
   "pending": [],
-  "in_progress": "UPCGExZoneGraphGlobalSettings",
+  "in_progress": null,
   "completed": [
-    "UPCGExClusterToZoneGraphSettings"
+    "UPCGExClusterToZoneGraphSettings",
+    "UPCGExDistributeTupleSettings"
   ],
-  "skipped": []
+  "skipped": [
+    "UPCGExZoneGraphGlobalSettings"
+  ]
 }

@@ -89,6 +89,12 @@
     "base_class": "UPCGExSettings",
     "display_name": "Collection to Module Infos"
   },
+  "UPCGExDistributeTupleSettings": {
+    "file": "PCGExCollections/Public/Elements/PCGExDistributeTuple.h",
+    "type": "node_settings",
+    "base_class": "UPCGExPointsProcessorSettings",
+    "display_name": "Tuple : Distribute"
+  },
   "UPCGExStagingFittingSettings": {
     "file": "PCGExCollections/Public/Elements/PCGExStagingFitting.h",
     "type": "node_settings",

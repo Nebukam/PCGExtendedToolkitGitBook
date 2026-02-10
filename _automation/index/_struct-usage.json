@@ -391,6 +391,21 @@
     "is_shared": true,
     "document_with": null
   },
+  "FPCGExWeightedPropertyOverrides": {
+    "used_by": [
+      "UPCGExDistributeTupleSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExDistributeTupleSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExDistributeTupleSettings"
+  },
   "FPCGExForwardDetails": {
     "used_by": [
       "UPCGExPCGDataAssetLoaderSettings",
