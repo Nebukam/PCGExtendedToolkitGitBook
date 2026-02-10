@@ -3,6 +3,23 @@ icon: hand-wave
 cover: .gitbook/assets/banner_gumroad.png
 coverY: 0
 coverHeight: 368
+layout:
+  width: default
+  cover:
+    visible: true
+    size: full
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
 ---
 
 # PCG Extended Toolkit
