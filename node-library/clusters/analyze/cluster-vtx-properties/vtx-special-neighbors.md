@@ -4,41 +4,43 @@ icon: circle-dashed
 
 # Vtx : Special Neighbors
 
-Outputs data about a vertex's largest and smallest neighbors based on their bounds extents.
+Outputs data about a vertex's most-connected and least-connected neighbors.
 
 ### Overview
 
-This vertex property provider analyzes the neighbors connected to each vertex and identifies which have the largest and smallest bounds. Unlike Special Edges which focuses on edge length, this node examines the size of neighboring vertices themselves. You can output direction vectors, distances, edge indices, and vertex indices for both extremes.
+This vertex property provider analyzes the neighbors connected to each vertex and identifies which neighbor has the **highest valency** (most connections) and which has the **lowest valency** (fewest connections). You can output direction vectors, distances, edge indices, and vertex indices for both extremes.
 
 > This is a [vtx-property-provider.md](vtx-property-provider.md "mention")
 
 ### How It Works
 
-1. **Neighbor Analysis**: For each vertex, the node examines all connected neighbors and compares their bounds extents.
-2. **Size Comparison**: Identifies which neighbor has the largest bounds and which has the smallest.
-3. **Data Extraction**: Gathers the direction and distance to each identified neighbor along with index information.
-4. **Attribute Output**: Writes the enabled outputs as vertex attributes with configurable names.
+1. **Neighbor analysis**: For each vertex, examine all connected neighbors and compare their adjacency count (how many edges each neighbor has).
+2. **Find extremes**: Identify the neighbor with the most connections (largest) and the one with the fewest (smallest).
+3. **Write outputs**: Direction, distance, edge index, vertex index, and neighbor count for each extreme.
+
+{% hint style="info" %}
+**Valency, not bounds.** This node compares neighbors by their **connection count** (number of edges), not by their physical size or bounds. The "largest" neighbor is the one with the most edges in the cluster.
+{% endhint %}
 
 **Usage Notes**
 
-* **Bounds-Based**: This node compares neighbor vertices by their bounds size, not by edge length.
-* **Per-Vertex Output**: Each vertex receives data about its own largest/smallest neighbors independently.
-* **Index Outputs**: Use the edge and vertex index outputs to trace back to specific neighbors for further processing.
+* **Complementary to Special Edges**: Special Edges finds the longest/shortest edge by length. This node finds the most/least connected neighbor by valency.
+* **Index outputs**: Use the edge and vertex index outputs to trace back to specific neighbors for further processing.
 
 ### Behavior
 
 ```
 Input Cluster:                  Output Attributes (per vertex):
 
-    B (large)                   For vertex A with neighbors B,C,D:
+    B (4 edges)                 For vertex A with neighbors B,C,D:
     |
-    |                           Largest: neighbor B (biggest bounds)
+    |                           Largest: neighbor B (most connections)
     |                             → LargestDir, LargestLen, LargestVtxIndex...
-    A----C (medium)
-    |                           Smallest: neighbor D (smallest bounds)
+    A----C (2 edges)
+    |                           Smallest: neighbor D (fewest connections)
     |                             → SmallestDir, SmallestLen, SmallestVtxIndex...
     |
-    D (small)
+    D (1 edge)
 ```
 
 ### Settings
@@ -49,7 +51,7 @@ Input Cluster:                  Output Attributes (per vertex):
 
 <summary><strong>Largest Neighbor</strong> <code>FPCGExEdgeOutputWithIndexSettings</code></summary>
 
-Output settings for the neighbor with the largest bounds.
+Output settings for the neighbor with the most connections (highest valency).
 
 **Direction Output:**
 
@@ -87,7 +89,7 @@ All settings are PCG Overridable.
 
 <summary><strong>Smallest Neighbor</strong> <code>FPCGExEdgeOutputWithIndexSettings</code></summary>
 
-Output settings for the neighbor with the smallest bounds.
+Output settings for the neighbor with the fewest connections (lowest valency).
 
 **Direction Output:**
 
