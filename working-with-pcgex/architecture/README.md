@@ -131,7 +131,7 @@ Vanilla nodes ignore these semantics and just see points. PCGEx nodes understand
 
 ### In This Section
 
-* Provider/Consumer Pattern - Deep dive into sub-nodes and factories
+* [provider-consumer-pattern.md](provider-consumer-pattern.md "mention") - Deep dive into sub-nodes and factories
 
 ### Related
 
@@ -144,4 +144,4 @@ Vanilla nodes ignore these semantics and just see points. PCGEx nodes understand
 **Node Library:**
 
 * [filters](../../node-library/filters/ "mention") - All filter sub-nodes
-* Sub-nodes appear throughout the library, marked with dashed circle icons
+* Sub-nodes appear throughout the library, marked with a <i class="fa-circle-dashed">:circle-dashed:</i> dashed circle icons while instanced ones use <i class="fa-function">:function:</i>
