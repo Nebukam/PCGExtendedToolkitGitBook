@@ -1,5 +1,5 @@
 {
-  "generated": "2026-02-10T06:15:27.548Z",
+  "generated": "2026-02-10T06:25:37.143Z",
   "entries": [
     {
       "source_relative": "PCGExBlending/Public/Core/PCGExBlendOpFactory.h",
@@ -162,6 +162,15 @@
       "doc_path": "staging/utilities/collection-to-module-infos",
       "current_doc_meta": "staging/utilities/collection-to-module-infos",
       "status": "ok"
+    },
+    {
+      "source_relative": "PCGExCollections/Public/Elements/PCGExDistributeTuple.h",
+      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExCollections\\Public\\Elements\\PCGExDistributeTuple.h",
+      "staging": "_staging/PCGExCollections/Elements/PCGExDistributeTuple.md",
+      "node_library": "node-library/metadata/keys/tuple-distribute.md",
+      "doc_path": "metadata/keys/tuple-distribute",
+      "current_doc_meta": "metadata/keys/distribute-tuple",
+      "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExCollections/Public/Elements/PCGExStagingFitting.h",
@@ -4008,13 +4017,13 @@
     }
   ],
   "summary": {
-    "total_staging": 444,
-    "total_library": 414,
-    "matched": 413,
+    "total_staging": 445,
+    "total_library": 415,
+    "matched": 414,
     "staging_only": 31,
     "library_only": 1,
     "doc_meta_ok": 321,
-    "doc_meta_mismatch": 0,
+    "doc_meta_mismatch": 1,
     "doc_meta_missing": 92
   }
 }
