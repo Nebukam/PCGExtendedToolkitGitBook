@@ -10,42 +10,65 @@ Discard entire datasets based on how they overlap with each other.
 
 ### Overview
 
-This node analyzes how multiple point collections overlap with each other and discards entire datasets based on weighted scoring. It computes overlap metrics between all input collections and prunes them according to configurable weights, allowing fine-grained control over which overlapping datasets to keep or discard.
+Analyzes how multiple point collections overlap with each other and **discards entire datasets** based on weighted scoring. This is self-pruning for collections — it decides which overlapping datasets to keep and which to throw away.
 
 ### How It Works
 
-1. **Compute Bounds**: Calculates bounds for each point in all datasets.
-2. **Detect Overlaps**: Tests for overlapping regions between all dataset pairs.
-3. **Score Datasets**: Computes weighted scores based on overlap and static metrics.
-4. **Prune by Score**: Removes datasets with highest (or lowest) overlap scores.
-5. **Output Remaining**: Returns datasets that survived the pruning process.
+1. **Compute bounds**: Build bounds for every point in every dataset.
+2. **Detect overlaps**: Test all dataset pairs for overlapping regions, then drill into per-point overlap detection.
+3. **Score**: Compute a weighted score for each dataset from overlap metrics and intrinsic properties.
+4. **Prune**: Remove the worst-scoring dataset, update all remaining scores, repeat until no overlaps remain.
+
+{% hint style="warning" %}
+**Pruning is iterative.** When a dataset is pruned, its overlaps with other datasets are removed. This changes everyone else's dynamic scores, so the node re-scores and re-sorts after every prune. A dataset that looked like a bad candidate might become a good one after its main overlap partner is removed.
+{% endhint %}
 
 **Usage Notes**
 
-* **Dataset-Level**: Operates on entire collections, not individual points.
-* **Weighted Scoring**: Combines dynamic overlap metrics with static dataset properties.
-* **Pruning Order**: Can prioritize removing high-scoring or low-scoring datasets.
-* **Custom Tags**: Supports tag-based scoring for additional control.
+* **Dataset-level**: Operates on entire collections, not individual points.
+* **Only ratios matter**: Weights are internally normalized within each category, so `OverlapCount = 4, OverlapSubCount = 2` is identical to `OverlapCount = 2, OverlapSubCount = 1`.
+* **Custom scoring**: Tag scores and `@Data` attribute scores let you bias the system toward keeping or discarding specific datasets regardless of their overlap.
+
+### How Scoring Works
+
+Each dataset gets a single **Weight** value that determines its pruning priority. This weight is a blend of two categories:
+
+**Dynamic scores** — computed from actual overlaps, change as datasets are pruned:
+
+| Metric                   | What it measures                                          |
+| ------------------------ | --------------------------------------------------------- |
+| **Overlap Count**        | How many other datasets this one overlaps with            |
+| **Overlap Sub Count**    | Total number of individual point-to-point overlaps        |
+| **Overlap Volume**       | Cumulative intersection volume across all overlapping points |
+| **Overlap Volume Density** | Overlap volume divided by overlapping point count       |
+
+**Static scores** — intrinsic to the dataset, don't change during pruning:
+
+| Metric              | What it measures                                     |
+| ------------------- | ---------------------------------------------------- |
+| **Num Points**      | How many points the dataset contains                 |
+| **Volume**          | Total volume of all point bounds                     |
+| **Volume Density**  | Points per unit of volume                            |
+| **Custom Tag Score** | Sum of score values for matching tags               |
+| **Data Score**      | Sum of `@Data` attribute values                      |
+
+Each raw score is **normalized relative to the current maximum** across all remaining datasets (so the highest becomes 1.0). The final weight is:
+
+```
+Weight = (StaticWeight × StaticBalance) + (DynamicWeight × DynamicBalance)
+```
+
+**Dynamic Balance** and **Static Balance** control how much each category matters. The default (`Dynamic = 1`, `Static = 0.5`) means overlap data has roughly twice the influence of intrinsic properties.
 
 ### Behavior
 
-**Overlap-Based Dataset Pruning:**
-
 ```
-Input Collections:
-   A: 50 points, bounds overlap B and C
-   B: 30 points, bounds overlap A
-   C: 100 points, bounds overlap A
+Input:  A (50pts, overlaps B+C), B (30pts, overlaps A), C (100pts, overlaps A)
 
-Scoring (example with point count weight):
-   A: High overlap count, medium points → High score
-   B: Low overlap count, few points → Low score
-   C: Low overlap count, many points → Medium score
-
-Logic = High First:
-   Prune A first (highest score)
-   Re-evaluate: B and C no longer overlap
-   Output: B and C
+Round 1 — Score all:
+   A: overlaps 2 datasets → highest dynamic score → pruned
+Round 2 — Re-score:
+   B and C no longer overlap → both output
 ```
 
 ### Inputs
@@ -114,30 +137,30 @@ Default: `10`
 
 <summary><strong>Weighting</strong> <code>FPCGExOverlapScoresWeighting</code></summary>
 
-Controls how overlap scores are calculated.
+See [How Scoring Works](#how-scoring-works) above for a full explanation of how these combine.
 
-**Dynamic Weights** (computed from overlaps):
+**Dynamic Weights** (from overlaps — change as datasets are pruned):
 
-| Property                   | Description                              | Default |
-| -------------------------- | ---------------------------------------- | ------- |
-| **Dynamic Balance**        | How much dynamic weights count vs static | `1`     |
-| **Overlap Count**          | Weight for number of overlapping sets    | `2`     |
-| **Overlap Sub Count**      | Weight for number of overlapping points  | `1`     |
-| **Overlap Volume**         | Weight for cumulative overlap volume     | `0`     |
-| **Overlap Volume Density** | Volume per overlapping point             | `0`     |
+| Property                   | Default | Description                            |
+| -------------------------- | ------- | -------------------------------------- |
+| **Dynamic Balance**        | `1`     | Weight of dynamic category vs static   |
+| **Overlap Count**          | `2`     | Weight for number of overlapping sets  |
+| **Overlap Sub Count**      | `1`     | Weight for number of overlapping points |
+| **Overlap Volume**         | `0`     | Weight for cumulative overlap volume   |
+| **Overlap Volume Density** | `0`     | Weight for volume per overlapping point |
 
-**Static Weights** (dataset properties):
+**Static Weights** (intrinsic to dataset — constant during pruning):
 
-| Property              | Description                              | Default |
-| --------------------- | ---------------------------------------- | ------- |
-| **Static Balance**    | How much static weights count vs dynamic | `0.5`   |
-| **Num Points**        | Weight for point count                   | `1`     |
-| **Volume**            | Weight for total dataset volume          | `0`     |
-| **Volume Density**    | Weight for volume density                | `0`     |
-| **Custom Tag Weight** | Weight for tag-based scores              | `0`     |
-| **Tag Scores**        | Map of tags to score values              |         |
-| **Data Score Weight** | Weight for @Data attributes              | `0`     |
-| **Data Scores**       | List of @Data attributes to use          |         |
+| Property              | Default | Description                            |
+| --------------------- | ------- | -------------------------------------- |
+| **Static Balance**    | `0.5`   | Weight of static category vs dynamic   |
+| **Num Points**        | `1`     | Weight for point count                 |
+| **Volume**            | `0`     | Weight for total dataset volume        |
+| **Volume Density**    | `0`     | Weight for points per volume           |
+| **Custom Tag Weight** | `0`     | Weight for tag-based scores            |
+| **Tag Scores**        |         | Map of tags to score values            |
+| **Data Score Weight** | `0`     | Weight for `@Data` attribute scores    |
+| **Data Scores**       |         | List of `@Data` attribute names to sum |
 
 ⚡ PCG Overridable
 
