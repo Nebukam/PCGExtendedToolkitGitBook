@@ -4,11 +4,13 @@ icon: grid-round-2
 
 # Nearest
 
-**Spatial query samplers that find nearby geometry and write the results as attributes.** Each node in this section targets a different kind of spatial data — points, bounds, splines, surfaces, or paths — but they all work the same way: define a search, find the closest match, and output what you need as point attributes.
+**Spatial query samplers that find nearby geometry and write the results as attributes.** Each node in this section targets a different kind of spatial data — points, bounds, splines, surfaces, or paths — but they share a common pattern: define a search, find matches, and output results as point attributes.
 
-Point and bounds lookups give you distance-weighted blending against other collections. Spline sampling returns transforms, tangents, and alpha positions along curves. Surface sampling traces to collidable geometry and writes hit location, normal, and distance. Path lookups test proximity to edges and can determine whether a point sits inside a closed path boundary. Line tracing fires directed rays to collision surfaces, optionally capturing UV coordinates and vertex colors at the hit point.
+Not all samplers work by proximity. Bounds and path samplers default to **containment testing** — they check whether a point lies inside a target's boundary rather than searching for the nearest one. Path sampling goes both directions: points can sample the paths they're inside of, or paths can sample the target points they contain and write aggregated results to their `@Data` domain.
 
-That's it. Pick the geometry type you want to query, wire it in, and the sampler handles the spatial lookup.
+Point lookups give you distance-weighted blending against other collections. Spline sampling returns transforms, tangents, and alpha positions along curves. Surface sampling traces to collidable geometry and writes hit location, normal, and distance. Line tracing fires directed rays to collision surfaces, optionally capturing UV coordinates and vertex colors at the hit point.
+
+Pick the geometry type you want to query, wire it in, and the sampler handles the spatial lookup.
 
 ### Concepts
 

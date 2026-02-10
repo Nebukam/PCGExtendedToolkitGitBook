@@ -8,40 +8,42 @@ Sample nearest target bounds.
 
 ### Overview
 
-This node samples data from nearby point bounds, computing weighted transforms, distances, and angles based on spatial relationships. It finds target bounds within range of each source point and blends sampled data according to distance-weighted curves. Useful for proximity-based effects, orientation alignment, and spatial queries against bounding volumes.
+Tests which target oriented bounding boxes (OBBs) contain each source point, then samples data from the matching targets. Despite the name, this is a **containment test**, not a proximity search — a source point only samples targets whose bounds it falls inside.
 
 ### How It Works
 
-1. **Find Targets**: Locates target bounds within range of each source point.
-2. **Apply Weights**: Computes distance-based weights using the remap curve.
-3. **Blend Results**: Combines sampled data using configured blending modes.
-4. **Write Outputs**: Stores transforms, distances, and angles to attributes.
+1. **Build target OBBs**: Each target point's bounds are converted to an OBB based on the Bounds Source setting and indexed in an octree.
+2. **Test containment**: For each source point, query target OBBs and keep only those that contain the point.
+3. **Select and blend**: Among containing OBBs, the sample method picks which to use. Results are weighted by the remap curve and blended.
+4. **Write outputs**: Transforms, distances, angles, and blended attributes are stored as point attributes.
+
+{% hint style="info" %}
+
+## Containment, not proximity.  
+A source point must be **inside** a target's OBB to sample it. Points outside all target bounds will fail sampling. The **Bounds Source** setting controls OBB size and directly affects which points fall inside.
+{% endhint %}
 
 **Usage Notes**
 
-* **Bounds Source**: Choose between scaled, density, or raw bounds.
-* **Sample Methods**: Sample all, closest, farthest, largest, or smallest bounds.
-* **Weight Curve**: Control influence falloff with distance.
-* **Apply Sampling**: Optionally apply sampled transform directly to points.
+* **Sample Methods**: Among containing OBBs, pick all, closest, farthest, largest, smallest, or best candidate.
+* **Apply Sampling**: Optionally apply sampled transform and look-at directly to points.
 
 ### Behavior
 
-**Bounds Sampling:**
-
 ```
-Source point P with targets in range:
-   T1: bounds at distance 50, size 100
-   T2: bounds at distance 100, size 200
-   T3: bounds at distance 150, size 50
+Target OBBs:
+   T1: center (0,0,0), extents 200
+   T3: center (100,0,0), extents 50
 
-Sample Method = Closest:
-   → Samples T1 only
+Source point P at (50, 0, 0):
+   Inside T1? ✓   Inside T3? ✓
 
-Sample Method = Largest:
-   → Samples T2 only
+   Sample Method = All      → Blends T1 and T3
+   Sample Method = Closest  → Samples T3 only
+   Sample Method = Largest  → Samples T1 only
 
-Sample Method = All (within range 200):
-   → Blends T1 (weight 0.8), T2 (weight 0.5), T3 (weight 0.2)
+Point Q at (500, 0, 0):
+   Inside nothing → Sampling fails
 ```
 
 ### Inputs

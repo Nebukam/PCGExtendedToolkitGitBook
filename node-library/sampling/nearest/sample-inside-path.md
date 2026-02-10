@@ -8,50 +8,50 @@ Sample the points inside the paths.
 
 ### Overview
 
-This node samples points based on their spatial relationship to path polygons. It determines whether points lie inside or outside closed paths (using 2D projection) and can compute distances to path edges. This is useful for filtering points by containment, computing signed distances, or identifying points within specific regions defined by paths.
+The inverse of **Sample Nearest Path**. Here, **paths sample data from the target points they contain.** Each path acts as a region — target points inside its 2D projection are collected, blended, and the result is written to the path's `@Data` domain.
 
 ### How It Works
 
-1. **Project to 2D**: Projects points and paths using the specified projection.
-2. **Test Containment**: Determines if each point lies inside closed path polygons.
-3. **Compute Distance**: Calculates distance to nearest path edge.
-4. **Apply Weights**: Weighs samples based on distance curve.
-5. **Output Results**: Writes containment status and distance attributes.
+1. **Build path boundary**: Each source path is projected to 2D. An optional inclusion offset insets the boundary.
+2. **Query target points**: Target points within the path's expanded bounding box are gathered.
+3. **Test containment**: Each target is tested against the path via 2D projection. By default, points outside are skipped.
+4. **Blend and write**: Qualifying points are blended using distance-based weighting and written to the path's `@Data` domain.
+
+{% hint style="info" %}
+**Path-centric, not point-centric.** Paths are the primary input. Results are written per-path to the `@Data` domain, not per-point. This answers "what do the points inside this path look like?" rather than "which path contains this point?"
+{% endhint %}
 
 **Usage Notes**
 
-* **Closed Paths**: Inside testing only works with closed loop paths.
-* **2D Projection**: Uses configurable projection for containment testing.
-* **Height Check**: Optional vertical tolerance for 3D containment approximation.
-* **Distance Modes**: Can sample closest, farthest, or all paths within range.
+* **Output modes**: Output all paths, only those that sampled at least one point, or split successes and failures to separate pins.
+* **Blending**: Connect blending operations to control how multiple target point attributes are combined.
+* **Height Inclusion**: Optional vertical tolerance for 3D containment approximation.
 
 ### Behavior
 
 ```
-Inside Path Sampling:
-
-Closed path (polygon):
+Source path (closed polygon):
     ┌─────────────────┐
-    │  P1    P2       │
-    │        ●────────┼──P3 (outside)
+    │  T1    T2       │
+    │        ●────────┼──T3 (outside)
     │  ●     ●        │
     └─────────────────┘
 
-Results:
-   P1: Inside = true, Distance = 50
-   P2: Inside = true, Distance = 20
-   P3: Inside = false, Distance = 30
+With defaults (OnlySampleWhenInside + AlwaysSampleWhenInside):
+   T1, T2: inside  → sampled and blended
+   T3:     outside → skipped
 
-With bOnlySampleWhenInside = true:
-   Only P1 and P2 are sampled
+Path receives blended data → written to @Data domain
 ```
 
 ### Inputs
 
-| Pin       | Type   | Description                       |
-| --------- | ------ | --------------------------------- |
-| **In**    | Points | Points to test for containment    |
-| **Paths** | Points | Path collections defining regions |
+| Pin               | Type   | Description                                |
+| ----------------- | ------ | ------------------------------------------ |
+| **Paths**         | Points | Source paths that define containment regions |
+| **Targets**       | Points | Target points to sample from               |
+| **Sorting Rules** | Params | Optional sorting for Best Candidate method |
+| **Blending**      | Params | Optional blending operation factories      |
 
 ### Settings
 
@@ -99,14 +99,14 @@ Default: `All`
 
 <summary><strong>Sample Method</strong> <code>EPCGExSampleMethod</code></summary>
 
-How to select which paths to sample.
+How to select which target points to sample.
 
-| Option              | Description                      |
-| ------------------- | -------------------------------- |
-| **Within Range**    | Sample all paths within range    |
-| **Closest Target**  | Sample only the closest path     |
-| **Farthest Target** | Sample only the farthest path    |
-| **Best Candidate**  | Sample based on sorting criteria |
+| Option              | Description                                |
+| ------------------- | ------------------------------------------ |
+| **Within Range**    | Sample all target points within range      |
+| **Closest Target**  | Sample only the closest target point       |
+| **Farthest Target** | Sample only the farthest target point      |
+| **Best Candidate**  | Sample based on sorting criteria           |
 
 Default: `Within Range`
 
@@ -118,7 +118,7 @@ Default: `Within Range`
 
 <summary><strong>Always Sample When Inside</strong> <code>bool</code></summary>
 
-When enabled, always samples points inside paths even if beyond max range.
+When enabled, always samples target points inside the path even if beyond max edge distance.
 
 Default: `true`
 
@@ -130,7 +130,7 @@ Default: `true`
 
 <summary><strong>Only Sample When Inside</strong> <code>bool</code></summary>
 
-When enabled, only samples paths if the point lies inside.
+When enabled, only samples target points that lie inside the path boundary.
 
 Default: `true`
 
@@ -235,13 +235,13 @@ Curve controlling weight falloff based on distance.
 
 <summary><strong>Output Mode</strong> <code>EPCGExSampleInsidePathOutput</code></summary>
 
-Which points to output.
+Which paths to output.
 
-| Option           | Description                             |
-| ---------------- | --------------------------------------- |
-| **All**          | Output all points                       |
-| **Success Only** | Output only successfully sampled points |
-| **Split**        | Split into success and failure pins     |
+| Option           | Description                                          |
+| ---------------- | ---------------------------------------------------- |
+| **All**          | Output all paths                                     |
+| **Success Only** | Output only paths that sampled at least one point    |
+| **Split**        | Split into success and discarded pins                |
 
 Default: `All`
 
@@ -251,7 +251,7 @@ Default: `All`
 
 <summary><strong>Write Success</strong> <code>bool</code></summary>
 
-When enabled, writes sampling success to a boolean attribute.
+When enabled, writes whether the path successfully sampled any target points.
 
 Default: `false`
 
@@ -263,7 +263,7 @@ Default: `false`
 
 <summary><strong>Write Distance</strong> <code>bool</code></summary>
 
-When enabled, writes sampled distance to an attribute.
+When enabled, writes the weighted distance to sampled target points.
 
 Default: `false`
 
@@ -275,7 +275,7 @@ Default: `false`
 
 <summary><strong>Write Num Inside</strong> <code>bool</code></summary>
 
-When enabled, writes the count of paths the point lies inside.
+When enabled, writes the count of target points inside the path.
 
 Default: `false`
 
@@ -287,7 +287,7 @@ Default: `false`
 
 <summary><strong>Write Num Samples</strong> <code>bool</code></summary>
 
-When enabled, writes the number of sampled paths.
+When enabled, writes the number of target points sampled by the path.
 
 Default: `false`
 
@@ -301,7 +301,7 @@ Default: `false`
 
 <summary><strong>Tag If Has Successes</strong> <code>bool</code></summary>
 
-When enabled, adds a tag if at least one path was successfully sampled.
+When enabled, adds a tag to paths that successfully sampled at least one target point.
 
 Default: `false`
 
@@ -311,19 +311,30 @@ Default: `false`
 
 <summary><strong>Tag If Has No Successes</strong> <code>bool</code></summary>
 
-When enabled, adds a tag if no paths were sampled.
+When enabled, adds a tag to paths that found no target points.
 
 Default: `false`
 
 </details>
 
+#### Advanced
+
+<details>
+
+<summary><strong>Ignore Self</strong> <code>bool</code></summary>
+
+Excludes a path's own data when source paths are also targets.
+
+Default: `true`
+
+</details>
+
 ### Outputs
 
-| Pin         | Type   | Description                                 |
-| ----------- | ------ | ------------------------------------------- |
-| **Out**     | Points | Points with sampling results                |
-| **Success** | Points | Successfully sampled points (if Split mode) |
-| **Failure** | Points | Points that failed sampling (if Split mode) |
+| Pin            | Type   | Description                                       |
+| -------------- | ------ | ------------------------------------------------- |
+| **Paths**      | Points | Paths with sampled data on `@Data` domain         |
+| **Discarded**  | Points | Paths that failed sampling (if Split output mode) |
 
 ***
 

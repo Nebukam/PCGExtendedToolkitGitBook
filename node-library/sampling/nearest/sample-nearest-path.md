@@ -8,37 +8,42 @@ Sample the nearest path(s).
 
 ### Overview
 
-This node samples data from nearby path edges, finding the closest points along paths and computing weighted distances, directions, and other spatial relationships. It can determine if points lie inside closed paths (using 2D projection) and blend attributes from sampled path points based on distance.
+With default settings, this is a **containment sampler** — it answers "which paths contain this point?" rather than "which paths are nearby?" Each source point is tested against paths using 2D projection, and only paths whose closed boundary encloses the point are sampled. Range limits are bypassed for contained points.
+
+Disable **Only Sample When Inside** and **Always Sample When Inside** to switch to standard proximity-based sampling instead.
 
 ### How It Works
 
-1. **Find Paths**: Locates paths within range of each source point.
-2. **Sample Edges**: Finds the closest point on path edges.
-3. **Test Containment**: Optionally checks if points are inside closed paths.
-4. **Blend Results**: Combines sampled data using distance weights.
-5. **Write Outputs**: Stores distances, directions, and blended attributes.
+1. **Gather paths**: Paths within range are collected via octree query. Optionally filtered to only closed loops or open lines.
+2. **Find closest point on path**: For each candidate path, the closest point along its edges is computed — or a specific alpha position if enabled.
+3. **Test containment**: The source point is tested against the path using 2D projection (point-in-polygon).
+4. **Filter**: By default, paths that don't contain the point are skipped. Range limits are bypassed for contained points.
+5. **Blend and write**: Qualifying paths are weighted by the distance curve and blended. Results are stored as point attributes.
+
+{% hint style="info" %}
+
+## Containment by default.  
+Out of the box, this node only samples paths that enclose the source point. Points outside all paths will fail sampling. This is the inverse of [Sample Inside Path](sample-inside-path.md), where paths sample the points they contain.
+{% endhint %}
 
 **Usage Notes**
 
-* **Inside Detection**: Uses 2D projection to test point containment in closed paths.
-* **Sample Methods**: Choose closest, farthest, or all paths within range.
-* **Inclusion Offset**: Inset paths for containment testing.
-* **Path Types**: Can filter to only closed loops or open lines.
+* **2D projection**: Containment testing projects onto a configurable 2D plane. **Height Inclusion** adds an optional vertical tolerance.
+* **Sample at specific alpha**: Instead of closest point, sample at a fixed position along the path using alpha (0–1), time, or distance units.
+* **Path-specific outputs**: Beyond standard sampler outputs, writes **Time**, **Segment Time**, **Num Inside**, and **Closed Loop**.
 
 ### Behavior
 
-**Path Sampling:**
-
 ```
-Source point P with paths in range:
-   Path1: closed polygon, P is inside, edge distance 30
-   Path2: open line, P is outside, edge distance 50
+Source point P:
+   Inside Path1 (closed)? ✓  → Sampled (range bypassed)
+   Inside Path2 (closed)? ✗  → Skipped
+   Near Path3 (open)?     ✗  → Skipped (can't contain)
 
-bOnlySampleWhenInside = true:
-   → Only samples Path1
+   → P inherits attributes from Path1
 
-bOnlySampleWhenInside = false:
-   → Samples both, blends by distance weight
+Disable OnlySampleWhenInside:
+   → All paths within range sampled by proximity
 ```
 
 ### Inputs
@@ -134,7 +139,7 @@ Default: `true`
 
 <summary><strong>Inclusion Offset</strong> <code>double</code></summary>
 
-Inset offset applied to paths for containment testing.
+Inset offset applied to paths for containment testing. Positive values shrink the effective containment boundary.
 
 Default: `0`
 
@@ -158,11 +163,89 @@ Default: `0`
 
 <summary><strong>Range Max</strong> <code>double</code></summary>
 
-Maximum sampling distance. Can be constant or from attribute.
+Maximum sampling distance. Can be constant or from attribute. When **Always Sample When Inside** is enabled, this limit is bypassed for points inside paths.
 
 Default: `300`
 
 ⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Height Inclusion</strong> <code>double</code></summary>
+
+If greater than 0, adds a vertical tolerance to containment testing. Points must be within this distance of the path's elevation to count as "inside." A value of 0 means infinite vertical tolerance (pure 2D projection).
+
+Default: `0`
+
+</details>
+
+<details>
+
+<summary><strong>Sample Specific Alpha</strong> <code>bool</code></summary>
+
+When enabled, samples each path at a fixed position instead of finding the closest point on the path edge.
+
+Default: `false`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Mode</strong> <code>EPCGExPathSampleAlphaMode</code></summary>
+
+How to interpret the sample alpha value.
+
+| Option       | Description                                         |
+| ------------ | --------------------------------------------------- |
+| **Alpha**    | 0–1 normalized position along the path              |
+| **Time**     | 0–N value where N is the number of segments         |
+| **Distance** | Distance along the path in world units              |
+
+Default: `Alpha`
+
+📋 _Visible when Sample Specific Alpha is enabled_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Wrap Closed Loops</strong> <code>bool</code></summary>
+
+When enabled, wraps out-of-bounds alpha values on closed loops so they cycle around the path.
+
+Default: `true`
+
+📋 _Visible when Sample Specific Alpha is enabled_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Sample Alpha</strong> <code>double</code></summary>
+
+The alpha value to sample at. Can be constant or from attribute.
+
+Default: `0.5`
+
+📋 _Visible when Sample Specific Alpha is enabled_
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Apply Sampling</strong> <code>FPCGExApplySamplingDetails</code></summary>
+
+Whether to apply sampled transform and look-at directly to source points.
 
 </details>
 
@@ -259,9 +342,45 @@ Default: `false`
 
 <details>
 
-<summary><strong>Write Is Inside</strong> <code>bool</code></summary>
+<summary><strong>Write Component Wise Distance</strong> <code>bool</code></summary>
 
-Writes whether the point is inside closed paths.
+Writes distance as a vector with per-axis components.
+
+Default: `false`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Angle</strong> <code>bool</code></summary>
+
+Writes the angle between source and sampled path directions.
+
+Default: `false`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Time</strong> <code>bool</code></summary>
+
+Writes the normalized position (0–1) along the sampled path where the closest point was found.
+
+Default: `false`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Segment Time</strong> <code>bool</code></summary>
+
+Writes the interpolation factor within the matched path segment.
 
 Default: `false`
 
@@ -273,7 +392,7 @@ Default: `false`
 
 <summary><strong>Write Num Inside</strong> <code>bool</code></summary>
 
-Writes the count of closed paths containing this point.
+Writes the count of paths containing this point (via 2D projection containment).
 
 Default: `false`
 
@@ -286,6 +405,18 @@ Default: `false`
 <summary><strong>Write Num Samples</strong> <code>bool</code></summary>
 
 Writes the count of sampled paths.
+
+Default: `false`
+
+⚡ PCG Overridable
+
+</details>
+
+<details>
+
+<summary><strong>Write Closed Loop</strong> <code>bool</code></summary>
+
+Writes whether the sampled path is a closed loop.
 
 Default: `false`
 
@@ -312,6 +443,38 @@ Default: `false`
 Adds a tag if sampling failed for all points.
 
 Default: `false`
+
+</details>
+
+#### Advanced
+
+<details>
+
+<summary><strong>Process Filtered Out As Fails</strong> <code>bool</code></summary>
+
+When enabled, filtered-out points are marked as failed samples.
+
+Default: `true`
+
+</details>
+
+<details>
+
+<summary><strong>Prune Failed Samples</strong> <code>bool</code></summary>
+
+When enabled, removes points that failed to sample anything.
+
+Default: `false`
+
+</details>
+
+<details>
+
+<summary><strong>Ignore Self</strong> <code>bool</code></summary>
+
+Excludes a point's own data when source points are also paths.
+
+Default: `true`
 
 </details>
 
