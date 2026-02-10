@@ -1,33 +1,44 @@
 ---
-description: Don't use them. Ever.
+description: A single checkbox that silently breaks packaged builds.
 icon: triangle-exclamation
 ---
 
 # EditorOnly Subgraphs
 
 {% hint style="danger" %}
-This is actually a very important and overlooked piece of information regarding PCG, so read that carefully if you think of, or have any `Editor Only` subgraph in your project.
+If any PCG graph in your project has the `Editor Only` toggle enabled, your packaged build will silently lose content. Read this before shipping.
 {% endhint %}
 
-## A package breaking setting
+## The Problem
 
 <figure><img src="../../.gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
 
-If you ever came across this option in the PCG graph editor and thought "oh, handy!", <mark style="background-color:red;">**go uncheck it right now**</mark>.
+This checkbox looks harmless. It isn't.
 
-During the cooking process, Unreal will interrogate assets to check whether they are editor only or not, which is fine. PCG Graph, however, have an **extremely destructive implementation of that method**: a graph will recursively check all of its nodes, and if any one node (including unpluggued, culled, disabled ones)has this toggle set to true, **the entire hierarchy will be flagged as `EditorOnly` and stripped.**
+During cooking, Unreal checks each asset to determine whether it's editor-only. PCG graphs implement this check **recursively** — if any node in the graph (including disconnected, culled, or disabled nodes) has this toggle set to `true`, the entire graph hierarchy is flagged `EditorOnly` and stripped from the build.
 
-Including any PCG Component that references that graph, rendering everything even remotely associated with an `EditorOnly` PCG Graph _null_.
+The consequences cascade:
 
-## pcgex.ListEditorOnlyGraphs
+- The graph itself is removed from the cooked package
+- Every PCG Component referencing that graph becomes `null`
+- Every actor relying on those components loses its procedural content
+- **No warning is logged during cooking** — the content simply vanishes
 
-I once encountered that and it cost me hours of tracking down why one of my PCG component was null in a packaged build. I was super freaked out so I made a quick script to make sure to leave no stone unturned: you can run the `pcgex.ListEditorOnlyGraphs` command in the console, this will list every single node that will be flagged by the cooking process including the affected hierarchy.
+A single forgotten checkbox on a disconnected debug subgraph can silently null out entire levels.
 
-Go get rid of these, for real.
+## Detection
 
-***
+PCGEx ships a console command to audit your project:
 
-Here's the code I used, if you need it without the whole PCGEx thing:
+```
+pcgex.ListEditorOnlyGraphs
+```
+
+This scans every PCG graph asset and reports which ones will be flagged by the cooking process, including the full path. Run it before any packaging pass.
+
+---
+
+If you need the same functionality without PCGEx, here's a standalone console command you can drop into any module:
 
 ```cpp
 static FAutoConsoleCommand CommandListEditorOnlyGraphs(
