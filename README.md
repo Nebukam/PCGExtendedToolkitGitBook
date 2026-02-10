@@ -1,5 +1,5 @@
 ---
-icon: hand-wave
+icon: share-nodes
 cover: .gitbook/assets/Main.png
 coverY: 0
 coverHeight: 352
