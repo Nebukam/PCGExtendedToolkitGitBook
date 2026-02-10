@@ -48,6 +48,7 @@
   * [Heuristics](working-with-pcgex/pathfinding/heuristics.md)
   * [Cells and Hulls](working-with-pcgex/pathfinding/cells-and-hulls.md)
 * [Additional Systems](working-with-pcgex/additional-systems/README.md)
+  * [Blending](working-with-pcgex/additional-systems/blending.md)
   * [Match & Select](working-with-pcgex/additional-systems/match-and-select.md)
   * [Sampling](working-with-pcgex/additional-systems/sampling.md)
   * [Shapes](working-with-pcgex/additional-systems/shapes.md)

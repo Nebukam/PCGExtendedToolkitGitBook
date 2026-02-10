@@ -17,6 +17,12 @@ These sub-node systems work across multiple node types:
 
 See [match-and-select.md](match-and-select.md "mention") for details.
 
+#### Blending
+
+Whenever a node combines data from multiple sources — sampling neighbors, fusing points, smoothing paths — blending controls how each attribute merges. Two configuration interfaces: per-attribute BlendOp sub-nodes for fine control, or monolithic bulk settings for simple cases.
+
+See [blending.md](blending.md "mention") for details.
+
 ### Self-Contained Modules
 
 Each module addresses specific procedural needs:
@@ -47,7 +53,7 @@ See [shapes.md](shapes.md "mention") for details.
 
 ### In This Section
 
-<table data-view="cards"><thead><tr><th>Subsection</th><th>Purpose</th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><a data-mention href="match-and-select.md">match-and-select.md</a></td><td>Matching and picking sub-nodes</td><td><a href="match-and-select.md">match-and-select.md</a></td></tr><tr><td><a data-mention href="tensors.md">tensors.md</a></td><td>Directional fields</td><td><a href="tensors.md">tensors.md</a></td></tr><tr><td><a data-mention href="topology.md">topology.md</a></td><td>Mesh generation</td><td></td></tr><tr><td><a data-mention href="sampling.md">sampling.md</a></td><td>Data extraction</td><td></td></tr><tr><td><a data-mention href="shapes.md">shapes.md</a></td><td>Parametric geometry</td><td></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th>Subsection</th><th>Purpose</th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><a data-mention href="blending.md">blending.md</a></td><td>Attribute blending configuration</td><td><a href="blending.md">blending.md</a></td></tr><tr><td><a data-mention href="match-and-select.md">match-and-select.md</a></td><td>Matching and picking sub-nodes</td><td><a href="match-and-select.md">match-and-select.md</a></td></tr><tr><td><a data-mention href="tensors.md">tensors.md</a></td><td>Directional fields</td><td><a href="tensors.md">tensors.md</a></td></tr><tr><td><a data-mention href="topology.md">topology.md</a></td><td>Mesh generation</td><td></td></tr><tr><td><a data-mention href="sampling.md">sampling.md</a></td><td>Data extraction</td><td></td></tr><tr><td><a data-mention href="shapes.md">shapes.md</a></td><td>Parametric geometry</td><td></td></tr></tbody></table>
 
 ### Related
 
