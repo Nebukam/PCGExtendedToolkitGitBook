@@ -11,6 +11,18 @@
     "base_class": "UPCGExFactoryProviderSettings",
     "display_name": "BlendOp"
   },
+  "UPCGExBlendOpMonolithicFactory": {
+    "file": "PCGExBlending/Public/Core/PCGExBlendOpMonolithicFactoryProvider.h",
+    "type": "unknown",
+    "base_class": "UPCGExBlendOpFactory",
+    "display_name": "UPCGExBlendOpMonolithicFactory"
+  },
+  "UPCGExBlendOpMonolithicProviderSettings": {
+    "file": "PCGExBlending/Public/Core/PCGExBlendOpMonolithicFactoryProvider.h",
+    "type": "provider",
+    "base_class": "UPCGExFactoryProviderSettings",
+    "display_name": "BlendOp : Blend All"
+  },
   "UPCGExSubPointsBlendInheritEnd": {
     "file": "PCGExBlending/Public/SubPoints/DataBlending/PCGExSubPointsBlendInheritEnd.h",
     "type": "instanced_factory",

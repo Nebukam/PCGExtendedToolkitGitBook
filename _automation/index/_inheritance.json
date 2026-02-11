@@ -39,6 +39,7 @@
   ],
   "UPCGExFactoryProviderSettings": [
     "UPCGExBlendOpFactoryProviderSettings",
+    "UPCGExBlendOpMonolithicProviderSettings",
     "UPCGExSortingRuleProviderSettings",
     "UPCGExActionProviderSettings",
     "UPCGExNeighborSampleProviderSettings",
@@ -56,6 +57,9 @@
     "UPCGExMatchRuleFactoryProviderSettings",
     "UPCGExNoise3DFactoryProviderSettings",
     "UPCGExPickerFactoryProviderSettings"
+  ],
+  "UPCGExBlendOpFactory": [
+    "UPCGExBlendOpMonolithicFactory"
   ],
   "FPCGExAttributeSourceToTargetDetails": [
     "FPCGExAttributeBlendToTargetDetails"
@@ -149,16 +153,16 @@
     "UPCGExMeshCollection",
     "UPCGExPCGDataAssetCollection"
   ],
-  "FPCGExPropertyCompiled": [
-    "FPCGExPropertyCompiled_AssetCollection",
-    "FPCGExPropertyCompiled_Vector",
-    "FPCGExPropertyCompiled_Vector2",
-    "FPCGExPropertyCompiled_Vector4",
-    "FPCGExPropertyCompiled_Color",
-    "FPCGExPropertyCompiled_Rotator",
-    "FPCGExPropertyCompiled_Quat",
-    "FPCGExPropertyCompiled_Transform",
-    "FPCGExPropertyCompiled_Enum"
+  "FPCGExProperty": [
+    "FPCGExProperty_AssetCollection",
+    "FPCGExProperty_Vector",
+    "FPCGExProperty_Vector2",
+    "FPCGExProperty_Vector4",
+    "FPCGExProperty_Color",
+    "FPCGExProperty_Rotator",
+    "FPCGExProperty_Quat",
+    "FPCGExProperty_Transform",
+    "FPCGExProperty_Enum"
   ],
   "UDataAsset": [
     "UPCGExAssetCollection",
@@ -1503,11 +1507,11 @@
     "UPCGExPickerConstantSettings",
     "UPCGExPickerConstantRangeSettings"
   ],
-  "UActorComponent": [
-    "UPCGExPropertyCollectionComponent"
-  ],
   "FPCGExPropertyOverrides": [
     "FPCGExWeightedPropertyOverrides"
+  ],
+  "UActorComponent": [
+    "UPCGExPropertyCollectionComponent"
   ],
   "IModuleInterface": [
     "FPCGExtendedToolkitModule",

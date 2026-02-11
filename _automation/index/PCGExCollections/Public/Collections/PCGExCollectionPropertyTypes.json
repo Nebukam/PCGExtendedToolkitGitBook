@@ -5,8 +5,8 @@
   "enums": [],
   "structs": [
     {
-      "name": "FPCGExPropertyCompiled_AssetCollection",
-      "base_class": "FPCGExPropertyCompiled",
+      "name": "FPCGExProperty_AssetCollection",
+      "base_class": "FPCGExProperty",
       "uproperties": [
         {
           "name": "AssetCollection",

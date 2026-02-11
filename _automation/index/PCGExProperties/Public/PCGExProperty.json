@@ -1,5 +1,5 @@
 {
-  "path": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+  "path": "PCGExProperties/Public/PCGExProperty.h",
   "module": "PCGExProperties",
   "type": "header",
   "enums": [],
@@ -65,7 +65,7 @@
       "used_by": []
     },
     {
-      "name": "FPCGExPropertyCompiled",
+      "name": "FPCGExProperty",
       "base_class": null,
       "uproperties": [
         {

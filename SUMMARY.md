@@ -586,6 +586,9 @@
 ## Developers Area
 
 * [Module Cherry-Picking Guide](developers-area/module-cherry-picking-guide.md)
+* [Custom Collections](developers-area/custom-collections.md)
+* [Custom Properties](developers-area/custom-properties.md)
+* [Custom Filters](developers-area/custom-filters.md)
 
 ## Infos
 

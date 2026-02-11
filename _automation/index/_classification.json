@@ -1,6 +1,7 @@
 {
   "providers": [
     "UPCGExBlendOpFactoryProviderSettings",
+    "UPCGExBlendOpMonolithicProviderSettings",
     "UPCGExFactoryProviderSettings",
     "UPCGExSortingRuleProviderSettings",
     "UPCGExActionWriteValuesProviderSettings",
@@ -659,6 +660,7 @@
   ],
   "abstract_bases": [
     "UPCGExBlendOpFactoryProviderSettings",
+    "UPCGExBlendOpMonolithicProviderSettings",
     "UPCGExSubPointsBlendInterpolate",
     "UPCGExSubPointsBlendInstancedFactory",
     "UPCGExSubPointsInstancedFactory",

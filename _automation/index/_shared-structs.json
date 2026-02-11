@@ -151,8 +151,9 @@
   {
     "name": "FPCGExBlendingDetails",
     "file": "PCGExBlending/Public/Details/PCGExBlendingDetails.h",
-    "origin_count": 15,
+    "origin_count": 16,
     "origins": [
+      "UPCGExBlendOpMonolithicProviderSettings",
       "UPCGExSubPointsBlendInstancedFactory",
       "UPCGExClipper2ProcessorSettings",
       "UPCGExWriteEdgePropertiesSettings",
@@ -169,7 +170,7 @@
       "UPCGExFusePointsSettings",
       "UPCGExPointsToBoundsSettings"
     ],
-    "usage_count": 23,
+    "usage_count": 24,
     "user_facing_count": 15,
     "user_facing_origins": [
       "UPCGExPathToClustersSettings",

@@ -204,7 +204,7 @@ PCGExElementsClusters           # Cluster operations
 PCGExElementsClustersRefine     # Cluster Refinements
 PCGExElementsClustersRelax      # Cluster Relaxation
 PCGExElementsClustersDiagrams   # Cluster Diagrams
-PCGExElementsFloodFill          # Cluster Diagrams
+PCGExElementsFloodFill          # Cluster Floodfill
 PCGExElementsMeta               # Metadata operations
 PCGExElementsPathfinding        # Pathfinding algorithms
 PCGExElementsPathfindingNavmesh # Navmesh pathfinding

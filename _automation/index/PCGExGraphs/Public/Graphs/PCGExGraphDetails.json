@@ -253,7 +253,7 @@
         },
         {
           "name": "FaceEnumeratorProjection",
-          "display_name": "FaceEnumeratorProjection",
+          "display_name": "Pre Build Face Enumerator",
           "type": "FPCGExGeo2DProjectionDetails",
           "default": null,
           "overridable": true,

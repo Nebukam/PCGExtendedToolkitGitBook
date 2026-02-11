@@ -3,7 +3,9 @@
   "in_progress": null,
   "completed": [
     "UPCGExClusterToZoneGraphSettings",
-    "UPCGExDistributeTupleSettings"
+    "UPCGExDistributeTupleSettings",
+    "UPCGExBlendOpMonolithicFactory",
+    "UPCGExBlendOpMonolithicProviderSettings"
   ],
   "skipped": [
     "UPCGExZoneGraphGlobalSettings"

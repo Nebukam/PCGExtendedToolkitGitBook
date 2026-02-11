@@ -47,7 +47,7 @@
     "base_class": null,
     "is_config": false,
     "is_shared": true,
-    "usage_count": 23,
+    "usage_count": 24,
     "user_facing_count": 15,
     "document_with": null
   },
@@ -157,9 +157,9 @@
     "user_facing_count": 0,
     "document_with": null
   },
-  "FPCGExPropertyCompiled_AssetCollection": {
+  "FPCGExProperty_AssetCollection": {
     "file": "PCGExCollections/Public/Collections/PCGExCollectionPropertyTypes.h",
-    "base_class": "FPCGExPropertyCompiled",
+    "base_class": "FPCGExProperty",
     "is_config": false,
     "is_shared": false,
     "usage_count": 0
@@ -2921,7 +2921,7 @@
     "document_with": "UPCGExPickerConstantRangeSettings"
   },
   "FPCGExPropertyRegistryEntry": {
-    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+    "file": "PCGExProperties/Public/PCGExProperty.h",
     "base_class": null,
     "is_config": false,
     "is_shared": false,
@@ -2929,15 +2929,15 @@
     "user_facing_count": 0,
     "document_with": null
   },
-  "FPCGExPropertyCompiled": {
-    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+  "FPCGExProperty": {
+    "file": "PCGExProperties/Public/PCGExProperty.h",
     "base_class": null,
     "is_config": false,
     "is_shared": false,
     "usage_count": 0
   },
   "FPCGExPropertyOverrideEntry": {
-    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+    "file": "PCGExProperties/Public/PCGExProperty.h",
     "base_class": null,
     "is_config": false,
     "is_shared": false,
@@ -2946,7 +2946,7 @@
     "document_with": "UPCGExTupleSettings"
   },
   "FPCGExPropertyOverrides": {
-    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+    "file": "PCGExProperties/Public/PCGExProperty.h",
     "base_class": null,
     "is_config": false,
     "is_shared": false,
@@ -2955,7 +2955,7 @@
     "document_with": "UPCGExTupleSettings"
   },
   "FPCGExPropertySchema": {
-    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+    "file": "PCGExProperties/Public/PCGExProperty.h",
     "base_class": null,
     "is_config": false,
     "is_shared": false,
@@ -2964,7 +2964,7 @@
     "document_with": null
   },
   "FPCGExPropertySchemaCollection": {
-    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+    "file": "PCGExProperties/Public/PCGExProperty.h",
     "base_class": null,
     "is_config": false,
     "is_shared": false,
@@ -2973,7 +2973,7 @@
     "document_with": null
   },
   "FPCGExWeightedPropertyOverrides": {
-    "file": "PCGExProperties/Public/PCGExPropertyCompiled.h",
+    "file": "PCGExProperties/Public/PCGExProperty.h",
     "base_class": "FPCGExPropertyOverrides",
     "is_config": false,
     "is_shared": false,
@@ -2981,58 +2981,58 @@
     "user_facing_count": 0,
     "document_with": "UPCGExDistributeTupleSettings"
   },
-  "FPCGExPropertyCompiled_Vector": {
+  "FPCGExProperty_Vector": {
     "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
-    "base_class": "FPCGExPropertyCompiled",
+    "base_class": "FPCGExProperty",
     "is_config": false,
     "is_shared": false,
     "usage_count": 0
   },
-  "FPCGExPropertyCompiled_Vector2": {
+  "FPCGExProperty_Vector2": {
     "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
-    "base_class": "FPCGExPropertyCompiled",
+    "base_class": "FPCGExProperty",
     "is_config": false,
     "is_shared": false,
     "usage_count": 0
   },
-  "FPCGExPropertyCompiled_Vector4": {
+  "FPCGExProperty_Vector4": {
     "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
-    "base_class": "FPCGExPropertyCompiled",
+    "base_class": "FPCGExProperty",
     "is_config": false,
     "is_shared": false,
     "usage_count": 0
   },
-  "FPCGExPropertyCompiled_Color": {
+  "FPCGExProperty_Color": {
     "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
-    "base_class": "FPCGExPropertyCompiled",
+    "base_class": "FPCGExProperty",
     "is_config": false,
     "is_shared": false,
     "usage_count": 0
   },
-  "FPCGExPropertyCompiled_Rotator": {
+  "FPCGExProperty_Rotator": {
     "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
-    "base_class": "FPCGExPropertyCompiled",
+    "base_class": "FPCGExProperty",
     "is_config": false,
     "is_shared": false,
     "usage_count": 0
   },
-  "FPCGExPropertyCompiled_Quat": {
+  "FPCGExProperty_Quat": {
     "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
-    "base_class": "FPCGExPropertyCompiled",
+    "base_class": "FPCGExProperty",
     "is_config": false,
     "is_shared": false,
     "usage_count": 0
   },
-  "FPCGExPropertyCompiled_Transform": {
+  "FPCGExProperty_Transform": {
     "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
-    "base_class": "FPCGExPropertyCompiled",
+    "base_class": "FPCGExProperty",
     "is_config": false,
     "is_shared": false,
     "usage_count": 0
   },
-  "FPCGExPropertyCompiled_Enum": {
+  "FPCGExProperty_Enum": {
     "file": "PCGExProperties/Public/PCGExPropertyTypes.h",
-    "base_class": "FPCGExPropertyCompiled",
+    "base_class": "FPCGExProperty",
     "is_config": false,
     "is_shared": false,
     "usage_count": 0

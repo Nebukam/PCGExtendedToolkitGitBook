@@ -132,6 +132,19 @@
           "advanced": false
         },
         {
+          "name": "EdgeUnionData",
+          "display_name": "EdgeUnionData",
+          "type": "FPCGExEdgeUnionMetadataDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
           "name": "EdgeBlendingDetails",
           "display_name": "EdgeBlendingDetails",
           "type": "FPCGExBlendingDetails",
@@ -148,19 +161,6 @@
           "name": "EdgeCarryOverDetails",
           "display_name": "Carry Over Settings",
           "type": "FPCGExCarryOverDetails",
-          "default": null,
-          "overridable": true,
-          "instanced": false,
-          "show_only_inner": false,
-          "edit_condition": null,
-          "edit_condition_hides": false,
-          "category": "Settings|Data Blending",
-          "advanced": false
-        },
-        {
-          "name": "EdgeUnionData",
-          "display_name": "EdgeUnionData",
-          "type": "FPCGExEdgeUnionMetadataDetails",
           "default": null,
           "overridable": true,
           "instanced": false,
@@ -525,6 +525,19 @@
           "advanced": false
         },
         {
+          "name": "EdgeUnionData",
+          "display_name": "EdgeUnionData",
+          "type": "FPCGExEdgeUnionMetadataDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
           "name": "EdgeBlendingDetails",
           "display_name": "EdgeBlendingDetails",
           "type": "FPCGExBlendingDetails",
@@ -541,19 +554,6 @@
           "name": "EdgeCarryOverDetails",
           "display_name": "Carry Over Settings",
           "type": "FPCGExCarryOverDetails",
-          "default": null,
-          "overridable": true,
-          "instanced": false,
-          "show_only_inner": false,
-          "edit_condition": null,
-          "edit_condition_hides": false,
-          "category": "Settings|Data Blending",
-          "advanced": false
-        },
-        {
-          "name": "EdgeUnionData",
-          "display_name": "EdgeUnionData",
-          "type": "FPCGExEdgeUnionMetadataDetails",
           "default": null,
           "overridable": true,
           "instanced": false,

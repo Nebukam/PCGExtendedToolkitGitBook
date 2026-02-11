@@ -140,19 +140,6 @@
           "edit_condition_hides": true,
           "category": null,
           "advanced": false
-        },
-        {
-          "name": "bInlineInsertion",
-          "display_name": "Stabilize Insertion Order",
-          "type": "bool",
-          "default": "true",
-          "overridable": false,
-          "instanced": false,
-          "show_only_inner": false,
-          "edit_condition": null,
-          "edit_condition_hides": false,
-          "category": null,
-          "advanced": false
         }
       ],
       "is_config": false,

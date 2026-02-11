@@ -5,8 +5,8 @@
   "enums": [],
   "structs": [
     {
-      "name": "FPCGExPropertyCompiled_Vector",
-      "base_class": "FPCGExPropertyCompiled",
+      "name": "FPCGExProperty_Vector",
+      "base_class": "FPCGExProperty",
       "uproperties": [
         {
           "name": "Value",
@@ -26,8 +26,8 @@
       "used_by": []
     },
     {
-      "name": "FPCGExPropertyCompiled_Vector2",
-      "base_class": "FPCGExPropertyCompiled",
+      "name": "FPCGExProperty_Vector2",
+      "base_class": "FPCGExProperty",
       "uproperties": [
         {
           "name": "Value",
@@ -47,8 +47,8 @@
       "used_by": []
     },
     {
-      "name": "FPCGExPropertyCompiled_Vector4",
-      "base_class": "FPCGExPropertyCompiled",
+      "name": "FPCGExProperty_Vector4",
+      "base_class": "FPCGExProperty",
       "uproperties": [
         {
           "name": "Value",
@@ -68,8 +68,8 @@
       "used_by": []
     },
     {
-      "name": "FPCGExPropertyCompiled_Color",
-      "base_class": "FPCGExPropertyCompiled",
+      "name": "FPCGExProperty_Color",
+      "base_class": "FPCGExProperty",
       "uproperties": [
         {
           "name": "Value",
@@ -89,8 +89,8 @@
       "used_by": []
     },
     {
-      "name": "FPCGExPropertyCompiled_Rotator",
-      "base_class": "FPCGExPropertyCompiled",
+      "name": "FPCGExProperty_Rotator",
+      "base_class": "FPCGExProperty",
       "uproperties": [
         {
           "name": "Value",
@@ -110,8 +110,8 @@
       "used_by": []
     },
     {
-      "name": "FPCGExPropertyCompiled_Quat",
-      "base_class": "FPCGExPropertyCompiled",
+      "name": "FPCGExProperty_Quat",
+      "base_class": "FPCGExProperty",
       "uproperties": [
         {
           "name": "Value",
@@ -131,8 +131,8 @@
       "used_by": []
     },
     {
-      "name": "FPCGExPropertyCompiled_Transform",
-      "base_class": "FPCGExPropertyCompiled",
+      "name": "FPCGExProperty_Transform",
+      "base_class": "FPCGExProperty",
       "uproperties": [
         {
           "name": "Value",
@@ -152,8 +152,8 @@
       "used_by": []
     },
     {
-      "name": "FPCGExPropertyCompiled_Enum",
-      "base_class": "FPCGExPropertyCompiled",
+      "name": "FPCGExProperty_Enum",
+      "base_class": "FPCGExProperty",
       "uproperties": [
         {
           "name": "Value",
