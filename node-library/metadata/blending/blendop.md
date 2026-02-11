@@ -44,9 +44,9 @@ Example: Lerp Mode with Weight = 0.5
 
 ### Inputs
 
-| Pin        | Type   | Description                                  |
-| ---------- | ------ | -------------------------------------------- |
-| **Labels** | Labels | Optional inline constant values for operands |
+| Pin     | Type | Description                                  |
+| ------- | ---- | -------------------------------------------- |
+| **A/B** | Any  | Optional inline constant values for operands |
 
 ### Settings
 
@@ -137,7 +137,7 @@ Default: `SameAsA`
 </details>
 
 {% hint style="info" %}
-\### Transient Output: Chain Blend Operations Together
+## Transient Output: Chain Blend Operations Together
 
 The **Transient** output mode is a powerful but easy-to-miss feature. Instead of writing to a permanent attribute, it creates a temporary value that:
 
@@ -304,7 +304,7 @@ Settings for how the weight curve is sampled (clamping, extrapolation behavior, 
 
 This node inherits common factory provider settings from its base class.
 
-→ See PCGExFactoryProviderSettings for shared provider configuration.
+→ See [factory-provider-base.md](../../common-settings/shared-settings/factory-provider-base.md "mention") for shared provider configuration.
 
 ### Outputs
 
@@ -315,5 +315,3 @@ This node inherits common factory provider settings from its base class.
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExBlending-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/Core/PCGExBlendOpFactoryProvider.h)
-
-

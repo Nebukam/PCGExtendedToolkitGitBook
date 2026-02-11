@@ -58,10 +58,6 @@ This factory class has no directly editable properties. Configuration is handled
 
 This factory inherits settings from its base class.
 
-→ See PCGExFactoryData for factory lifecycle and registration settings.
-
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExBlending-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExBlending/Public/Core/PCGExBlendOpFactory.h)
-
-

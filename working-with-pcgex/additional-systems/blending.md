@@ -4,7 +4,7 @@ icon: blender
 
 # Blending
 
-**When a node combines data from multiple sources, something has to decide how attributes merge. That's blending.** A sampler finds three nearby points. What happens to their colors, densities, custom values? Blending defines the math. You configure *what* gets blended and *how*; the consuming node handles the *when*.
+**When a node combines data from multiple sources, something has to decide how attributes merge. That's blending.** A sampler finds three nearby points. What happens to their colors, densities, custom values? Blending defines the math. You configure _what_ gets blended and _how_; the consuming node handles the _when_.
 
 Blending is a sub-node system. It follows the same provider/consumer pattern as filters and match rules, but instead of pass/fail decisions, it produces combined attribute values.
 
@@ -24,15 +24,15 @@ Without explicit blending configuration, most consuming nodes fall back to sensi
 
 Any node with a **Blending** pin is a blending consumer. The most common ones:
 
-| Node | Context |
-|------|---------|
-| [sample-nearest-point.md](../../node-library/sampling/nearest/sample-nearest-point.md "mention") | Transfer and blend attributes from nearby target points |
-| [sample-nearest-bounds.md](../../node-library/sampling/nearest/sample-nearest-bounds.md "mention") | Blend attributes from nearest bounds |
-| [smoothing.md](../../node-library/paths/transform/path-smooth/smoothing.md "mention") | Blend attributes during path smoothing |
-| [path-blend.md](../../node-library/paths/modify/path-blend.md "mention") | Interpolate attributes along a path between endpoints |
-| [cluster-edge-properties.md](../../node-library/clusters/analyze/cluster-edge-properties.md "mention") | Blend vtx attributes when writing edge properties |
-| [uber-blend.md](../../node-library/metadata/modify/uber-blend.md "mention") | Standalone blending: apply BlendOps to any point set |
-| [sampler-vtx-blend.md](../../node-library/sampling/cluster-sample-neighbors/sampler-vtx-blend.md "mention") | Blend neighbor attributes during cluster sampling |
+| Node                                                                                                        | Context                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| [sample-nearest-point.md](../../node-library/sampling/nearest/sample-nearest-point.md "mention")            | Transfer and blend attributes from nearby target points |
+| [sample-nearest-bounds.md](../../node-library/sampling/nearest/sample-nearest-bounds.md "mention")          | Blend attributes from nearest bounds                    |
+| [smoothing.md](../../node-library/paths/transform/path-smooth/smoothing.md "mention")                       | Blend attributes during path smoothing                  |
+| [path-blend.md](../../node-library/paths/modify/path-blend.md "mention")                                    | Interpolate attributes along a path between endpoints   |
+| [cluster-edge-properties.md](../../node-library/clusters/analyze/cluster-edge-properties.md "mention")      | Blend vtx attributes when writing edge properties       |
+| [uber-blend.md](../../node-library/metadata/modify/uber-blend.md "mention")                                 | Standalone blending: apply BlendOps to any point set    |
+| [sampler-vtx-blend.md](../../node-library/sampling/cluster-sample-neighbors/sampler-vtx-blend.md "mention") | Blend neighbor attributes during cluster sampling       |
 
 If you see a "Blending" or "Blend Ops" pin on a node, that node is a consumer.
 
@@ -54,7 +54,7 @@ BlendOp (Sum)     → "Score"    ─┘
 
 Best when you care about a few specific attributes and want precise per-attribute behavior.
 
-See [blendop](../../node-library/metadata/modify/blendop/ "mention") for the full BlendOp node reference.
+See [blendop.md](../../node-library/metadata/blending/blendop.md "mention") for the full BlendOp node reference.
 
 #### Monolithic (bulk configuration)
 
@@ -82,17 +82,17 @@ A BlendOp defines a single blend operation between two operands:
 
 The core blend modes:
 
-| Mode | Behavior |
-|------|----------|
-| **Average** | Arithmetic mean of all values |
-| **Weight** | Weighted average (normalizes by total weight) |
-| **Min** / **Max** | Component-wise minimum or maximum |
-| **Copy** | Takes A directly |
-| **Sum** | Adds values together |
-| **Lerp** | Linear interpolation between A and B using weight |
-| **Subtract** | Subtracts B from A |
-| **Multiply** / **Divide** | Component-wise multiplication or division |
-| **Add** | A + B (binary addition) |
+| Mode                      | Behavior                                          |
+| ------------------------- | ------------------------------------------------- |
+| **Average**               | Arithmetic mean of all values                     |
+| **Weight**                | Weighted average (normalizes by total weight)     |
+| **Min** / **Max**         | Component-wise minimum or maximum                 |
+| **Copy**                  | Takes A directly                                  |
+| **Sum**                   | Adds values together                              |
+| **Lerp**                  | Linear interpolation between A and B using weight |
+| **Subtract**              | Subtracts B from A                                |
+| **Multiply** / **Divide** | Component-wise multiplication or division         |
+| **Add**                   | A + B (binary addition)                           |
 
 {% hint style="info" %}
 BlendOps support **transient output**: writing to a temporary attribute that only exists during the blending pass. A later BlendOp (with higher Priority) can read that transient value as its own operand. This lets you chain multi-step calculations without leaving intermediary attributes in your data.
@@ -100,11 +100,11 @@ BlendOps support **transient output**: writing to a temporary attribute that onl
 
 ### What about weights?
 
-Weights control *how much* each source contributes to the blend. There are two layers:
+Weights control _how much_ each source contributes to the blend. There are two layers:
 
 **1. Consumer-computed weights.** The consuming node calculates a weight for each source point, typically based on distance. A nearby point contributes more than a distant one. Most samplers expose a `Weight Mode` setting (Distance, Attribute, or Constant) and a `Weight Remap` curve.
 
-**2. Per-BlendOp weights.** Each BlendOp can carry its own weight, either a constant value or read from an attribute. This weight is applied *on top of* whatever the consumer provides. A weight curve can remap the value before it's used.
+**2. Per-BlendOp weights.** Each BlendOp can carry its own weight, either a constant value or read from an attribute. This weight is applied _on top of_ whatever the consumer provides. A weight curve can remap the value before it's used.
 
 For multi-source blending (sampling multiple neighbors, fusing several points), the system accumulates blend steps internally and finalizes at the end. Average mode divides by count, Weight mode normalizes by total weight. The math stays correct regardless of how many sources contribute.
 
@@ -120,7 +120,7 @@ For multi-source blending (sampling multiple neighbors, fusing several points), 
 
 ### Related
 
-* [blendop](../../node-library/metadata/modify/blendop/ "mention") — BlendOp node reference
+* [blendop.md](../../node-library/metadata/blending/blendop.md "mention") — BlendOp node reference
 * [uber-blend.md](../../node-library/metadata/modify/uber-blend.md "mention") — Standalone blending node
 * [blending-details-monolithic.md](../../node-library/common-settings/blending-details-monolithic.md "mention") — Monolithic settings reference
 * [sampling.md](sampling.md "mention") — Sampling concept page
