@@ -252,6 +252,7 @@ bool Value = OperandB->Read(PointIndex);
 ```
 
 {% hint style="info" %}
+
 Older filters still use the legacy pattern with separate `CompareAgainst` enum + attribute selector + constant UPROPERTYs + `PCGEX_SETTING_VALUE_DECL` macro. Input shorthands are the preferred approach for new code — they reduce boilerplate, provide consistent UI, and handle buffer dependency registration via `RegisterBufferDependencies()`.
 {% endhint %}
 
