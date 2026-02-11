@@ -2,5 +2,5 @@
 icon: box-isometric
 ---
 
-# Old
+# Previous updates
 
