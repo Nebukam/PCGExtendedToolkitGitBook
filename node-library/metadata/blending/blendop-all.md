@@ -8,8 +8,9 @@ Creates bulk blend operations from monolithic blending settings.
 
 #### Overview
 
-This provider node creates blend operations for all attributes at once using a single configuration block. Instead of wiring individual [blendop.md](blendop.md "mention") sub-nodes for each attribute, you configure a default blend mode and optionally override specific properties or attributes. The node generates one blend operation per participating attribute automatically. \
-Think of this as a [blending-details-monolithic.md](../../common-settings/blending-details-monolithic.md "mention") in node form.
+This provider node creates blend operations for all attributes at once using a single configuration block. Instead of wiring individual [blendop.md](blendop.md "mention") sub-nodes for each attribute, you configure a default blend mode and optionally override specific properties or attributes. The node generates one blend operation per participating attribute automatically.&#x20;
+
+> Think of this as a [blending-details-monolithic.md](../../common-settings/blending-details-monolithic.md "mention") in node form.
 
 #### How It Works
 
@@ -78,7 +79,7 @@ Monolithic blending configuration. Controls which attributes participate, the de
 
 </details>
 
-> See blending-details-monolithic.md for: Blending Filter, Filtered Attributes, Default Blending, Properties Overrides, Attributes Overrides.
+> See  [blending-details-monolithic.md](../../common-settings/blending-details-monolithic.md "mention") for: Blending Filter, Filtered Attributes, Default Blending, Properties Overrides, Attributes Overrides.
 
 **Inherited Settings**
 

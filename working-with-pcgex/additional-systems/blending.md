@@ -31,7 +31,7 @@ Any node with a **Blending** pin is a blending consumer. The most common ones:
 | [smoothing.md](../../node-library/paths/transform/path-smooth/smoothing.md "mention")                       | Blend attributes during path smoothing                  |
 | [path-blend.md](../../node-library/paths/modify/path-blend.md "mention")                                    | Interpolate attributes along a path between endpoints   |
 | [cluster-edge-properties.md](../../node-library/clusters/analyze/cluster-edge-properties.md "mention")      | Blend vtx attributes when writing edge properties       |
-| [uber-blend.md](../../node-library/metadata/modify/uber-blend.md "mention")                                 | Standalone blending: apply BlendOps to any point set    |
+| [uber-blend.md](../../node-library/metadata/blending/uber-blend.md "mention")                               | Standalone blending: apply BlendOps to any point set    |
 | [sampler-vtx-blend.md](../../node-library/sampling/cluster-sample-neighbors/sampler-vtx-blend.md "mention") | Blend neighbor attributes during cluster sampling       |
 
 If you see a "Blending" or "Blend Ops" pin on a node, that node is a consumer.
@@ -121,7 +121,7 @@ For multi-source blending (sampling multiple neighbors, fusing several points), 
 ### Related
 
 * [blendop.md](../../node-library/metadata/blending/blendop.md "mention") — BlendOp node reference
-* [uber-blend.md](../../node-library/metadata/modify/uber-blend.md "mention") — Standalone blending node
+* [uber-blend.md](../../node-library/metadata/blending/uber-blend.md "mention") — Standalone blending node
 * [blending-details-monolithic.md](../../node-library/common-settings/blending-details-monolithic.md "mention") — Monolithic settings reference
 * [sampling.md](sampling.md "mention") — Sampling concept page
 * [provider-consumer-pattern.md](../architecture/provider-consumer-pattern.md "mention") — How sub-nodes work

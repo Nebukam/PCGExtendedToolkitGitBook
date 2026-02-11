@@ -1,5 +1,5 @@
 ---
-icon: grid-2
+icon: circles-overlap-3
 ---
 
 # Blending
