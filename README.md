@@ -3,23 +3,6 @@ icon: share-nodes
 cover: .gitbook/assets/Main.png
 coverY: 0
 coverHeight: 352
-layout:
-  width: default
-  cover:
-    visible: true
-    size: full
-  title:
-    visible: true
-  description:
-    visible: true
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
-  metadata:
-    visible: true
 ---
 
 # PCG Extended Toolkit
