@@ -10,6 +10,8 @@ Ellipsoidal distance metric for directional connectivity.
 
 This global probe finds connections using an anisotropic (direction-dependent) distance metric. Instead of measuring simple Euclidean distance, it scales distances differently along three perpendicular axes, creating an ellipsoidal search space. This allows connections to be preferentially established along certain directions while still considering neighbors in all directions.
 
+<figure><img src="../../../../.gitbook/assets/image (177).png" alt=""><figcaption></figcaption></figure>
+
 ### How It Works
 
 1. **Axis Setup**: Establishes a coordinate frame from primary and secondary axes (tertiary is computed as their cross product)
@@ -194,5 +196,3 @@ Default: `0`
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsProbing-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExGlobalProbeAnisotropic.h)
-
-

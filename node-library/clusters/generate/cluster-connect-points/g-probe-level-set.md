@@ -10,6 +10,8 @@ Connects points with similar scalar values (isolines/contours).
 
 This global probe creates connections between points that have similar values for a specified scalar attribute. Points are connected only if their attribute values differ by less than the maximum level difference threshold. This creates isoline-like or contour-following connectivity, useful for connecting points at similar elevations, temperatures, densities, or any other scalar field.
 
+<figure><img src="../../../../.gitbook/assets/image (179).png" alt=""><figcaption></figcaption></figure>
+
 ### How It Works
 
 1. **Level Reading**: Reads the scalar attribute value for each point
@@ -161,5 +163,3 @@ Default: `0`
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsProbing-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExGlobalProbeLevelSet.h)
-
-

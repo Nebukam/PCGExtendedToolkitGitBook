@@ -10,6 +10,8 @@ K-Nearest Neighbors connectivity.
 
 This global probe connects each point to its K nearest neighbors based on Euclidean distance. KNN is one of the most fundamental connectivity algorithms, creating local neighborhood relationships without requiring a search radius. The "Mutual" mode adds an additional constraint requiring both points to consider each other as nearest neighbors for a connection to be created.
 
+<figure><img src="../../../../.gitbook/assets/image (170).png" alt=""><figcaption></figcaption></figure>
+
 ### How It Works
 
 1. **Distance Calculation**: Computes distances from each point to all other points
@@ -84,5 +86,3 @@ Default: `Mutual`
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsProbing-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExGlobalProbeKNN.h)
-
-

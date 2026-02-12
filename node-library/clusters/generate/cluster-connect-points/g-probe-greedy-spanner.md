@@ -10,6 +10,8 @@ Greedy t-spanner - sparse graph with path length guarantees.
 
 This global probe creates a t-spanner graph, a sparse connectivity structure that guarantees the shortest path between any two points through the graph is at most t times their direct Euclidean distance. The greedy algorithm iteratively adds edges, skipping any edge where a sufficiently short path already exists. This produces efficient networks that balance connectivity with edge economy.
 
+<figure><img src="../../../../.gitbook/assets/image (176).png" alt=""><figcaption></figcaption></figure>
+
 ### How It Works
 
 1. **Edge Sorting**: Generates all potential edges and sorts them by length (shortest first)
@@ -96,5 +98,3 @@ Min: `100`
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsProbing-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExGlobalProbeSpanner.h)
-
-

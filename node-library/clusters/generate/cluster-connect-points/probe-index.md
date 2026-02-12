@@ -10,6 +10,8 @@ Connects to a specific index, ignoring search radius.
 
 This per-point probe creates connections based on point indices rather than spatial proximity. Each point connects to a target index that can be constant, read from an attribute, or calculated as an offset from the point's own index. This is useful for creating deterministic connections in ordered point sets, such as linking sequential points or creating specific topological patterns.
 
+<figure><img src="../../../../.gitbook/assets/image (168).png" alt=""><figcaption></figcaption></figure>
+
 ### How It Works
 
 1. **Index Resolution**: Gets the target index (constant, attribute, or calculated offset)
@@ -145,5 +147,3 @@ The attribute containing the index value per point.
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsProbing-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExProbeIndex.h)
-
-

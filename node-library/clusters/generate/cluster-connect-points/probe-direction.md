@@ -10,6 +10,8 @@ Probe in a given direction.
 
 This per-point probe searches for neighbors in a specific direction within an angle tolerance. The direction can be constant for all points or read from an attribute, and optionally transformed by each point's rotation. This creates directional connectivity where edges follow a preferred vector, useful for flow patterns, alignment constraints, or oriented structures.
 
+<figure><img src="../../../../.gitbook/assets/image (166).png" alt=""><figcaption></figcaption></figure>
+
 ### How It Works
 
 1. **Direction Setup**: Gets the probe direction (constant or from attribute)
@@ -266,5 +268,3 @@ Default: `0`
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsProbing-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExProbeDirection.h)
-
-

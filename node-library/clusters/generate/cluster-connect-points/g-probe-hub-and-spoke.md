@@ -10,6 +10,8 @@ Creates hierarchical hub-and-spoke network topology.
 
 This global probe creates a two-tier network structure where selected "hub" points serve as central connectors, and remaining "spoke" points connect to their nearest hub(s). Hubs can be selected using various criteria including local density, attribute values, geometric centrality, or K-means clustering. This creates efficient star-topology networks commonly used for distribution systems, transportation hubs, or hierarchical organization.
 
+<figure><img src="../../../../.gitbook/assets/image (174).png" alt=""><figcaption></figcaption></figure>
+
 ### How It Works
 
 1. **Hub Selection**: Identifies hub points using the chosen selection mode (density, attribute, centrality, or K-means)
@@ -202,5 +204,3 @@ Default: `0`
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsProbing-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExGlobalProbeHubSpoke.h)
-
-

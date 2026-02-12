@@ -10,6 +10,8 @@ Theta/Yao graph spanner - connects to nearest in angular cones.
 
 This global probe creates a Theta graph (or Yao graph variant) by dividing the space around each point into angular cones and connecting to the nearest neighbor within each cone. This produces a geometric spanner with provable path quality guarantees while maintaining sparse connectivity. The resulting graph has at most NumCones edges per point but ensures efficient paths between any two points.
 
+<figure><img src="../../../../.gitbook/assets/image (178).png" alt=""><figcaption></figcaption></figure>
+
 ### How It Works
 
 1. **Cone Setup**: Divides 360° around the cone axis into NumCones equal angular sectors
@@ -155,5 +157,3 @@ Default: `0`
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsProbing-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExGlobalProbeTheta.h)
-
-

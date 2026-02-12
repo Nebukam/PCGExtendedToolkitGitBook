@@ -10,6 +10,8 @@ Density-based connectivity/reachability (DBSCAN-style).
 
 This global probe creates connections based on the DBSCAN (Density-Based Spatial Clustering of Applications with Noise) algorithm. Points are classified as either "core" points (having sufficient neighbors within the search radius) or "border" points (within range of a core point but lacking enough neighbors themselves). Connections are then established based on these classifications, creating clusters that follow local point density.
 
+<figure><img src="../../../../.gitbook/assets/image (173).png" alt=""><figcaption></figcaption></figure>
+
 ### How It Works
 
 1. **Core Point Detection**: Identifies points with at least MinPoints neighbors within the search radius (Epsilon)
@@ -152,5 +154,3 @@ Default: `0`
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsProbing-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExGlobalProbeDBSCAN.h)
-
-

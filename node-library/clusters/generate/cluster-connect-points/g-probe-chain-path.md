@@ -10,6 +10,8 @@ Creates sequential chain connections based on sorting criteria.
 
 This global probe creates a single continuous path by connecting points in a sorted sequence. Points are first sorted according to the chosen mode, then connected sequentially to form a chain. The resulting graph is a path (or loop) where each point connects to at most two neighbors - the previous and next point in the sequence.
 
+<figure><img src="../../../../.gitbook/assets/image (172).png" alt=""><figcaption></figcaption></figure>
+
 ### How It Works
 
 1. **Sort Points**: Orders all points according to the selected sorting mode (attribute value, axis projection, spatial curve, or Hilbert curve)
@@ -156,5 +158,3 @@ Default: `0`
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExElementsProbing-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExElementsProbing/Public/Probes/PCGExGlobalProbeChain.h)
-
-
