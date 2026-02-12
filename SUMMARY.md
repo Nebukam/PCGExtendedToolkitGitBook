@@ -588,9 +588,11 @@
 ## Developers Area
 
 * [Module Cherry-Picking Guide](developers-area/module-cherry-picking-guide.md)
-* [Custom Collections](developers-area/custom-collections.md)
-* [Custom Properties](developers-area/custom-properties.md)
-* [Custom Filters](developers-area/custom-filters.md)
+* [Precompiled Headers (PCH)](developers-area/precompiled-headers-pch.md)
+* [Extending PCGEx](developers-area/extending-pcgex/README.md)
+  * [Custom Filters](developers-area/extending-pcgex/custom-filters.md)
+  * [Custom Properties](developers-area/extending-pcgex/custom-properties.md)
+  * [Custom Collections](developers-area/extending-pcgex/custom-collections.md)
 
 ## Infos
 

@@ -32,8 +32,8 @@ FPCGExPropertySchemaCollection         ← defines a set of typed properties
 
 Properties support two independent output mechanisms:
 
-- **Point attribute output** — `InitializeOutput()` creates a buffer on a facade; `WriteOutput()` / `WriteOutputFrom()` writes to it per-point
-- **Metadata attribute output** — `CreateMetadataAttribute()` + `WriteMetadataValue()` for param data tables (used by the Tuple node)
+* **Point attribute output** — `InitializeOutput()` creates a buffer on a facade; `WriteOutput()` / `WriteOutputFrom()` writes to it per-point
+* **Metadata attribute output** — `CreateMetadataAttribute()` + `WriteMetadataValue()` for param data tables (used by the Tuple node)
 
 Both are optional. A property can support one, both, or neither (reference-only).
 
@@ -216,12 +216,12 @@ Properties can live in any module — they just need to derive from `FPCGExPrope
 
 #### Reference Implementations
 
-| Type | Path | Pattern |
-|------|------|---------|
-| `FPCGExProperty_Vector` | `PCGExProperties/Public/PCGExPropertyTypes.h` | Simple (macro-based) |
-| `FPCGExProperty_Color` | `PCGExProperties/Public/PCGExPropertyTypes.h` | Converting (FLinearColor → FVector4) |
-| `FPCGExProperty_Enum` | `PCGExProperties/Public/PCGExPropertyTypes.h` | Converting (FEnumSelector → int64) |
-| `FPCGExProperty_AssetCollection` | `PCGExCollections/Public/Collections/PCGExCollectionPropertyTypes.h` | Reference-only (no output) |
+| Type                             | Path                                                                 | Pattern                              |
+| -------------------------------- | -------------------------------------------------------------------- | ------------------------------------ |
+| `FPCGExProperty_Vector`          | `PCGExProperties/Public/PCGExPropertyTypes.h`                        | Simple (macro-based)                 |
+| `FPCGExProperty_Color`           | `PCGExProperties/Public/PCGExPropertyTypes.h`                        | Converting (FLinearColor → FVector4) |
+| `FPCGExProperty_Enum`            | `PCGExProperties/Public/PCGExPropertyTypes.h`                        | Converting (FEnumSelector → int64)   |
+| `FPCGExProperty_AssetCollection` | `PCGExCollections/Public/Collections/PCGExCollectionPropertyTypes.h` | Reference-only (no output)           |
 
 For the macro expansion and manual implementations side-by-side, see `PCGExProperties/Private/PCGExPropertyTypes.cpp`.
 
@@ -229,7 +229,7 @@ For the macro expansion and manual implementations side-by-side, see `PCGExPrope
 
 #### Related
 
-- Source: `PCGExProperties/Public/PCGExProperty.h` — base class with inline extension guide
-- Source: `PCGExProperties/Public/PCGExPropertyTypes.h` — all built-in types
-- Source: `PCGExProperties/Private/PCGExPropertyTypes.cpp` — `PCGEX_PROPERTY_IMPL` macro and manual implementations
-- Concept: [Collections](../working-with-pcgex/asset-staging/collections.md) (properties are used extensively in the collection system)
+* Source: `PCGExProperties/Public/PCGExProperty.h` — base class with inline extension guide
+* Source: `PCGExProperties/Public/PCGExPropertyTypes.h` — all built-in types
+* Source: `PCGExProperties/Private/PCGExPropertyTypes.cpp` — `PCGEX_PROPERTY_IMPL` macro and manual implementations
+* Concept: [Collections](../../working-with-pcgex/asset-staging/collections.md) (properties are used extensively in the collection system)

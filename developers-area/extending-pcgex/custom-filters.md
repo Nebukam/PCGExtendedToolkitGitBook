@@ -214,8 +214,9 @@ FString UPCGExMyFilterProviderSettings::GetDisplayName() const
 ```
 
 The `PCGEX_CREATE_FILTER_FACTORY` macro expects naming conventions:
-- Provider: `UPCGEx<ID>FilterProviderSettings`
-- Factory: `UPCGEx<ID>FilterFactory`
+
+* Provider: `UPCGEx<ID>FilterProviderSettings`
+* Factory: `UPCGEx<ID>FilterFactory`
 
 It generates a `CreateFactory()` that allocates the factory, copies `InitializationFailurePolicy`, `MissingDataPolicy`, and `Config`, then calls `Init()` to validate. If `Init()` fails, the factory is destroyed and `nullptr` is returned.
 
@@ -252,7 +253,6 @@ bool Value = OperandB->Read(PointIndex);
 ```
 
 {% hint style="info" %}
-
 Older filters still use the legacy pattern with separate `CompareAgainst` enum + attribute selector + constant UPROPERTYs + `PCGEX_SETTING_VALUE_DECL` macro. Input shorthands are the preferred approach for new code — they reduce boilerplate, provide consistent UI, and handle buffer dependency registration via `RegisterBufferDependencies()`.
 {% endhint %}
 
@@ -262,8 +262,8 @@ Older filters still use the legacy pattern with separate `CompareAgainst` enum +
 
 For filters that need topology access (neighbor count, edge lengths, adjacency), subclass the cluster filter base instead:
 
-- **Vtx filter**: Factory → `UPCGExNodeFilterFactoryData`, Instance → `PCGExClusterFilter::IVtxFilter`, Provider → `UPCGExVtxFilterProviderSettings`
-- **Edge filter**: Factory → `UPCGExEdgeFilterFactoryData`, Instance → `PCGExClusterFilter::IEdgeFilter`, Provider → `UPCGExEdgeFilterProviderSettings`
+* **Vtx filter**: Factory → `UPCGExNodeFilterFactoryData`, Instance → `PCGExClusterFilter::IVtxFilter`, Provider → `UPCGExVtxFilterProviderSettings`
+* **Edge filter**: Factory → `UPCGExEdgeFilterFactoryData`, Instance → `PCGExClusterFilter::IEdgeFilter`, Provider → `UPCGExEdgeFilterProviderSettings`
 
 Cluster filters receive the `FCluster` and `EdgeDataFacade` during `Init()`. The `IVtxFilter::Test(int32)` automatically resolves the index to an `FNode`, and `IEdgeFilter::Test(int32)` resolves to an `FEdge`. You override `Test(FNode)` or `Test(FEdge)` respectively.
 
@@ -284,11 +284,11 @@ The cluster-aware `PCGExClusterFilter::FManager` extends this by routing cluster
 
 #### Reference Implementations
 
-| Filter | Path | Pattern |
-|--------|------|---------|
-| Constant | `PCGExFilters/Public/Filters/Points/PCGExConstantFilter.h` | Simplest possible — no attribute access, fixed boolean return |
+| Filter       | Path                                                             | Pattern                                                         |
+| ------------ | ---------------------------------------------------------------- | --------------------------------------------------------------- |
+| Constant     | `PCGExFilters/Public/Filters/Points/PCGExConstantFilter.h`       | Simplest possible — no attribute access, fixed boolean return   |
 | Bool Compare | `PCGExFilters/Public/Filters/Points/PCGExBooleanCompareFilter.h` | Attribute access + comparison + dual-input (attribute/constant) |
-| Edge Length | `PCGExFilters/Public/Filters/Edges/` | Cluster edge filter — accesses edge data from topology |
+| Edge Length  | `PCGExFilters/Public/Filters/Edges/`                             | Cluster edge filter — accesses edge data from topology          |
 
 Start with the Constant filter to understand the wiring, then look at Bool Compare for the attribute-access pattern.
 
@@ -296,8 +296,8 @@ Start with the Constant filter to understand the wiring, then look at Bool Compa
 
 #### Related
 
-- Source: `PCGExFilters/Public/Core/PCGExPointFilter.h` — IFilter, ISimpleFilter, FManager
-- Source: `PCGExFilters/Public/Core/PCGExClusterFilter.h` — IVtxFilter, IEdgeFilter
-- Source: `PCGExFilters/Public/Core/PCGExFilterFactoryProvider.h` — PCGEX_CREATE_FILTER_FACTORY macro
-- Concept: [Filters](../working-with-pcgex/filters/README.md)
-- Concept: [Filter Composition](../working-with-pcgex/filters/filter-composition.md)
+* Source: `PCGExFilters/Public/Core/PCGExPointFilter.h` — IFilter, ISimpleFilter, FManager
+* Source: `PCGExFilters/Public/Core/PCGExClusterFilter.h` — IVtxFilter, IEdgeFilter
+* Source: `PCGExFilters/Public/Core/PCGExFilterFactoryProvider.h` — PCGEX\_CREATE\_FILTER\_FACTORY macro
+* Concept: [Filters](../../working-with-pcgex/filters/)
+* Concept: [Filter Composition](../../working-with-pcgex/filters/filter-composition.md)

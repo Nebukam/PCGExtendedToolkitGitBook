@@ -144,10 +144,11 @@ struct FPCGExMyAssetCollectionEntry : public FPCGExAssetCollectionEntry
 ```
 
 Key points:
-- `GetSubCollectionPtr()` and `ClearSubCollection()` bridge your typed `SubCollection` to the base class's `InternalSubCollection`
-- `EDITOR_Sanitize()` syncs them in the other direction — the editor calls this when properties change
-- `UpdateStaging()` populates `Staging.Path` and `Staging.Bounds` from your asset
-- `Validate()` rejects entries that would produce null lookups
+
+* `GetSubCollectionPtr()` and `ClearSubCollection()` bridge your typed `SubCollection` to the base class's `InternalSubCollection`
+* `EDITOR_Sanitize()` syncs them in the other direction — the editor calls this when properties change
+* `UpdateStaging()` populates `Staging.Path` and `Staging.Bounds` from your asset
+* `Validate()` rejects entries that would produce null lookups
 
 **3. Create the collection class**
 
@@ -251,11 +252,9 @@ PCGExMyAsset::FMicroCache* GetMyMicroCache() const
 
 #### Reference Implementations
 
-**Actor Collection** (`PCGExCollections/Public/Collections/PCGExActorCollection.h`)
-The simplest built-in type. No MicroCache, no descriptors, no extra global settings. Study this first — it shows the minimum viable collection.
+**Actor Collection** (`PCGExCollections/Public/Collections/PCGExActorCollection.h`) The simplest built-in type. No MicroCache, no descriptors, no extra global settings. Study this first — it shows the minimum viable collection.
 
-**Mesh Collection** (`PCGExCollections/Public/Collections/PCGExMeshCollection.h`)
-The most complete built-in type. Adds material variants via MicroCache, ISM/SM descriptors, and global descriptor mode. Study this for advanced patterns.
+**Mesh Collection** (`PCGExCollections/Public/Collections/PCGExMeshCollection.h`) The most complete built-in type. Adds material variants via MicroCache, ISM/SM descriptors, and global descriptor mode. Study this for advanced patterns.
 
 ***
 
@@ -264,18 +263,19 @@ The most complete built-in type. Adds material variants via MicroCache, ISM/SM d
 The type registry uses deferred initialization: `PCGEX_REGISTER_COLLECTION_TYPE` schedules a lambda via `FTypeRegistry::AddPendingRegistration()`. The registrations execute during module startup via `ProcessPendingRegistrations()`. This means your custom type is safe to register from any module's `.cpp` — no manual ordering required.
 
 At runtime, the registry supports:
-- `Find(TypeId)` — get `FTypeInfo` by ID
-- `FindByClass(UClass*)` — reverse lookup from UClass
-- `IsA(TypeId, BaseTypeId)` — inheritance check
-- `ForEach(Callback)` — iterate all registered types
+
+* `Find(TypeId)` — get `FTypeInfo` by ID
+* `FindByClass(UClass*)` — reverse lookup from UClass
+* `IsA(TypeId, BaseTypeId)` — inheritance check
+* `ForEach(Callback)` — iterate all registered types
 
 ***
 
 #### Related
 
-- Source: `PCGExCollections/Public/Core/PCGExAssetCollection.h`
-- Source: `PCGExCollections/Public/Core/PCGExAssetCollectionTypes.h`
-- Source: `PCGExCollections/Public/Collections/PCGExActorCollection.h`
-- Source: `PCGExCollections/Public/Collections/PCGExMeshCollection.h`
-- Concept: [Collections](../working-with-pcgex/asset-staging/collections.md)
-- Node reference: [Asset Collection Base](../node-library/staging/collections/asset-collection-base.md)
+* Source: `PCGExCollections/Public/Core/PCGExAssetCollection.h`
+* Source: `PCGExCollections/Public/Core/PCGExAssetCollectionTypes.h`
+* Source: `PCGExCollections/Public/Collections/PCGExActorCollection.h`
+* Source: `PCGExCollections/Public/Collections/PCGExMeshCollection.h`
+* Concept: [Collections](../../working-with-pcgex/asset-staging/collections.md)
+* Node reference: [Asset Collection Base](../../node-library/staging/collections/asset-collection-base.md)
