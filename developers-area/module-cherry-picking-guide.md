@@ -22,7 +22,7 @@ The cherry-picking system is implemented through:
 
 Edit `Config/PCGExSubModulesConfig.ini` (plugin-level) or `<ProjectRoot>/Config/PCGExSubModulesConfig.ini` (project-level):
 
-````ini
+```ini
 # PCGExtendedToolkit SubModules Configuration
 # List the modules you want enabled.
 
@@ -34,9 +34,13 @@ PCGExElementsPathfinding
 # Commented modules are disabled
 ;PCGExElementsZoneGraph
 ;PCGExElementsWatabou
-```<div data-gb-custom-block data-tag="hint" data-style='info'>**Note**: Project-level config takes precedence over plugin-level config.</div>
+```
 
-#### 2. Generate Plugin Manifest
+{% hint style="info" %}
+**Note**: Project-level config takes precedence over plugin-level config.
+{% endhint %}
+
+**2. Generate Plugin Manifest**
 
 Run the generation script from your project root or the Scripts folder:
 
@@ -44,7 +48,7 @@ Run the generation script from your project root or the Scripts folder:
 
 ```batch
 Plugins\PCGExtendedToolkit\Scripts\RunGeneratePCGExUplugin.bat
-````
+```
 
 **macOS/Linux:**
 
