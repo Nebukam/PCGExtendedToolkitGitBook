@@ -593,6 +593,7 @@
   * [Custom Filters](developers-area/extending-pcgex/custom-filters.md)
   * [Custom Properties](developers-area/extending-pcgex/custom-properties.md)
   * [Custom Collections](developers-area/extending-pcgex/custom-collections.md)
+* [Cluster Data Format](developers-area/cluster-data-format.md)
 
 ## Infos
 

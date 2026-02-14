@@ -1,5 +1,5 @@
 ---
-icon: code-branch
+icon: chart-network
 ---
 
 # Module Cherry-Picking Guide
