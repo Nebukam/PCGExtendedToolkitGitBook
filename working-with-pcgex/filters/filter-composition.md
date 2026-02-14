@@ -106,6 +106,8 @@ Most filters have an Invert option that flips their logic. This applies before t
 
 Use inversion sparingly; it makes filter logic harder to follow. Often a different comparison operator expresses the condition more clearly.
 
+<figure><img src="../../.gitbook/assets/image (190).png" alt=""><figcaption></figcaption></figure>
+
 ### Practical Patterns
 
 #### Exclusion Zones

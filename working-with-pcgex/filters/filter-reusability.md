@@ -38,7 +38,7 @@ Subgraphs add complexity but enable cross-graph reuse. Consider simpler approach
 
 A useful pattern: create internal "static" filters for core processing logic, then expose an "Additional Filters" pin that feeds into a Filter Group. Users can extend conditions without modifying the subgraph.
 
-<figure><img src="../../.gitbook/assets/image (188).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (189).png" alt=""><figcaption></figcaption></figure>
 
 ```
 Subgraph: Complex Operation
