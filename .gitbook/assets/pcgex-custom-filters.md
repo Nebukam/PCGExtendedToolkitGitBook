@@ -368,19 +368,19 @@ TArray<FPCGPinProperties> UPCGExMyFilterProviderSettings::InputPinProperties() c
 
 ### Attribute-or-Constant Values
 
-Use `PCGEX_SETTING_VALUE_DECL`/`IMPL` for settings that can come from an attribute or a constant:
+Use **shorthand setting structs** for settings that can come from an attribute or a constant. These structs bundle the input type, attribute selector, and constant value into a single UPROPERTY:
 
 ```cpp
-// In config struct (header):
-PCGEX_SETTING_VALUE_DECL(Threshold, double)
-
-// In .cpp:
-PCGEX_SETTING_VALUE_IMPL(FMyConfig, Threshold, double, CompareAgainst, ThresholdSelector, ThresholdConstant)
+// In config struct (header) — single property replaces 3 separate fields:
+UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Settings, meta = (PCG_Overridable))
+FPCGExInputShorthandSelectorDouble Threshold = FPCGExInputShorthandSelectorDouble(FName("Threshold"), 100.0);
 ```
+
+Available shorthand types: `FPCGExInputShorthandSelectorDouble`, `FPCGExInputShorthandSelectorVector`, `FPCGExInputShorthandSelectorRotator`, `FPCGExInputShorthandSelectorBool`, etc.
 
 Then in filter Init:
 ```cpp
-ThresholdGetter = TypedFilterFactory->Config.GetValueSettingThreshold(PCGEX_QUIET_HANDLING);
+ThresholdGetter = TypedFilterFactory->Config.Threshold.GetValueSetting();
 if (!ThresholdGetter->Init(InPointDataFacade)) { return false; }
 ```
 
@@ -389,20 +389,25 @@ And in Test:
 const double Value = ThresholdGetter->Read(PointIndex);
 ```
 
+See `PCGExTransformPoints.h/.cpp` for a comprehensive example of shorthand settings usage.
+
 ### Registering Buffer Dependencies
 
-If your filter reads attributes, register them for preloading:
+If your filter reads attributes, register them for preloading. Shorthand settings have a built-in method:
 
 ```cpp
 void UPCGExMyFilterFactory::RegisterBuffersDependencies(
     FPCGExContext* InContext, PCGExData::FFacadePreloader& FacadePreloader) const
 {
     Super::RegisterBuffersDependencies(InContext, FacadePreloader);
-    if (Config.CompareAgainst == EPCGExInputValueType::Attribute)
-    {
-        FacadePreloader.Register<double>(InContext, Config.MySelector);
-    }
+    Config.Threshold.RegisterBufferDependencies(InContext, FacadePreloader);
 }
+```
+
+For non-shorthand attribute selectors, register manually:
+
+```cpp
+FacadePreloader.Register<double>(InContext, Config.MySelector);
 ```
 
 ---
