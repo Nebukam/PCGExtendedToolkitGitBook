@@ -8,6 +8,10 @@ icon: boxes-stacked
 
 The codebase documents the extension steps inline — the header comments on `FPCGExAssetCollectionEntry` and `UPCGExAssetCollection` are the canonical reference. This guide walks through them with context.
 
+{% file src="../../.gitbook/assets/pcgex-collections.md" %}
+<i class="fa-claude">:claude:</i> Claude Skill
+{% endfile %}
+
 ***
 
 #### Architecture

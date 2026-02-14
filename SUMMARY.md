@@ -591,7 +591,6 @@
 * [Precompiled Headers (PCH)](developers-area/precompiled-headers-pch.md)
 * [Cluster Data Format](developers-area/cluster-data-format.md)
 * [Extending PCGEx](developers-area/extending-pcgex/README.md)
-  * [Claude Skills](developers-area/extending-pcgex/claude-skills.md)
   * [Custom Filters](developers-area/extending-pcgex/custom-filters.md)
   * [Custom Properties](developers-area/extending-pcgex/custom-properties.md)
   * [Custom Collections](developers-area/extending-pcgex/custom-collections.md)

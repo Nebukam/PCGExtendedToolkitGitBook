@@ -8,6 +8,10 @@ icon: filter
 
 A filter is three classes working together: a Config struct holding settings, a Factory (UObject) that creates filter instances, and a Filter instance (lightweight, `TSharedFromThis`) that does the actual per-point evaluation. A fourth class — the Provider Settings — is the PCG node that users interact with in the graph editor.
 
+{% file src="../../.gitbook/assets/pcgex-custom-filters.md" %}
+<i class="fa-claude">:claude:</i> Claude Skill
+{% endfile %}
+
 ***
 
 #### Architecture
