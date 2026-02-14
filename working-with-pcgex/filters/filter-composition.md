@@ -10,7 +10,7 @@ icon: layer-plus
 
 The simplest composition: connect multiple filter outputs to the same Filters input pin.
 
-<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>PCG graph showing three filter provider nodes all connected to a single Filters input pin on a consumer node</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (182).png" alt=""><figcaption></figcaption></figure>
 
 When multiple filters connect to one pin:
 
@@ -37,7 +37,7 @@ Set a Filter Group to AND mode. Connect filter providers to its inputs. All conn
 
 Set a Filter Group to OR mode. Any connected filter passing means the group passes. Evaluation exits early on first success. Elements failing all filters fail the group.
 
-<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Side-by-side showing AND group (all must pass) vs OR group (any can pass) with example filter connections</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (183).png" alt=""><figcaption></figcaption></figure>
 
 #### Setting Up a Filter Group
 
@@ -52,7 +52,7 @@ The group acts as a single combined filter from the consumer's perspective.
 The Mode setting is `PCG_Overridable`. In subgraphs, you can expose it as a parameter, letting users choose AND or OR logic at instantiation time.
 {% endhint %}
 
-\## Nesting Groups
+### Nesting Groups
 
 Filter Groups can contain other Filter Groups, enabling complex boolean expressions.
 
@@ -68,7 +68,7 @@ Filter Group (OR)
     └─ Filter D
 ```
 
-<figure><img src="../../.gitbook/assets/placeholder-wide.jpg" alt=""><figcaption><p>Nested filter group structure in PCG graph showing the (A AND B) OR (C AND D) pattern</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (184).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="success" %}
 ## There's no depth limit
