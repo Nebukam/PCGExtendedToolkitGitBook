@@ -6,6 +6,10 @@ icon: diagram-project
 
 **Clusters are just two PCG point data collections — vertices and edges — linked by matching tags.** The connectivity is encoded in two int64 point attributes using a simple bit-packing scheme. If you can read PCG point data and parse int64s, <mark style="color:$success;">you can reconstruct the full graph topology without any dependency on PCGEx code</mark>.
 
+{% hint style="success" %}
+This format is **definitive** and will not change.
+{% endhint %}
+
 ***
 
 **Overview**
