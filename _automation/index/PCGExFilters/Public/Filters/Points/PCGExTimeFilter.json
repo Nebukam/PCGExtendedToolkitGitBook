@@ -182,6 +182,19 @@
           "edit_condition_hides": false,
           "category": null,
           "advanced": false
+        },
+        {
+          "name": "DataMatching",
+          "display_name": "DataMatching",
+          "type": "FPCGExFilterMatchingDetails",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": true,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
         }
       ],
       "is_config": true,

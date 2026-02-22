@@ -1,0 +1,190 @@
+{
+  "path": "PCGExCollections/Public/Helpers/PCGExDefaultLevelDataExporter.h",
+  "module": "PCGExCollections",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExActorExportType",
+      "values": [
+        {
+          "name": "Mesh",
+          "display_name": "Mesh"
+        },
+        {
+          "name": "Actor",
+          "display_name": "Actor"
+        },
+        {
+          "name": "Skip",
+          "display_name": "Skip"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExDefaultLevelDataExporter",
+      "display_name": "UPCGExDefaultLevelDataExporter",
+      "description": "",
+      "base_class": "UPCGExLevelDataExporter",
+      "uclass_meta": "DisplayName = \"Default Level Data Exporter\"",
+      "uproperties": [
+        {
+          "name": "IncludeTags",
+          "display_name": "IncludeTags",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Filtering",
+          "advanced": false
+        },
+        {
+          "name": "ExcludeTags",
+          "display_name": "ExcludeTags",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Filtering",
+          "advanced": false
+        },
+        {
+          "name": "IncludeClasses",
+          "display_name": "IncludeClasses",
+          "type": "TArray<TSoftClassPtr<AActor>>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Filtering",
+          "advanced": false
+        },
+        {
+          "name": "ExcludeClasses",
+          "display_name": "ExcludeClasses",
+          "type": "TArray<TSoftClassPtr<AActor>>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Filtering",
+          "advanced": false
+        },
+        {
+          "name": "bGenerateCollections",
+          "display_name": "bGenerateCollections",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "unknown",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": false,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "IncludeTags",
+          "display_name": "IncludeTags",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Filtering",
+          "advanced": false
+        },
+        {
+          "name": "ExcludeTags",
+          "display_name": "ExcludeTags",
+          "type": "TArray<FName>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Filtering",
+          "advanced": false
+        },
+        {
+          "name": "IncludeClasses",
+          "display_name": "IncludeClasses",
+          "type": "TArray<TSoftClassPtr<AActor>>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Filtering",
+          "advanced": false
+        },
+        {
+          "name": "ExcludeClasses",
+          "display_name": "ExcludeClasses",
+          "type": "TArray<TSoftClassPtr<AActor>>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Filtering",
+          "advanced": false
+        },
+        {
+          "name": "bGenerateCollections",
+          "display_name": "bGenerateCollections",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [],
+  "namespaces": {}
+}

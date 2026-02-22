@@ -3,11 +3,8 @@
   "in_progress": null,
   "completed": [
     "UPCGExClusterToZoneGraphSettings",
-    "UPCGExDistributeTupleSettings",
-    "UPCGExBlendOpMonolithicFactory",
-    "UPCGExBlendOpMonolithicProviderSettings"
+    "UPCGExStagingLoadLevelSettings",
+    "UPCGExStagingSpawnActorsSettings"
   ],
-  "skipped": [
-    "UPCGExZoneGraphGlobalSettings"
-  ]
+  "skipped": []
 }

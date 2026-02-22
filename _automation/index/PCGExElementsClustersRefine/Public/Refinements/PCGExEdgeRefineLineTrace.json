@@ -10,7 +10,7 @@
       "display_name": "UPCGExEdgeRefineLineTrace",
       "description": "",
       "base_class": "UPCGExEdgeRefineInstancedFactory",
-      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Refine : Line Trace\", PCGExNodeLibraryDoc=\"clusters/refine-cluster/line-trace\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Refine : Line Trace\", PCGExNodeLibraryDoc=\"clusters/refine/cluster-refine/refine-line-trace\")",
       "uproperties": [
         {
           "name": "CollisionSettings",

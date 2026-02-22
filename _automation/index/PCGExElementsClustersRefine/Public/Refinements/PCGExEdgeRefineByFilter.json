@@ -10,7 +10,7 @@
       "display_name": "UPCGExEdgeRefineByFilter",
       "description": "",
       "base_class": "UPCGExEdgeRefineInstancedFactory",
-      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Refine : Filter\", PCGExNodeLibraryDoc=\"clusters/refine-cluster/filters\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Refine : Filter\", PCGExNodeLibraryDoc=\"clusters/refine/cluster-refine/refine-filter\")",
       "uproperties": [
         {
           "name": "bInvert",

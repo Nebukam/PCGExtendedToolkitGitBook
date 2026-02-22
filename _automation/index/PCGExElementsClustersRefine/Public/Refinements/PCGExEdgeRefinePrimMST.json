@@ -10,7 +10,7 @@
       "display_name": "UPCGExEdgeRefinePrimMST",
       "description": "",
       "base_class": "UPCGExEdgeRefineInstancedFactory",
-      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Refine : MST (Prim)\", PCGExNodeLibraryDoc=\"clusters/refine-cluster/mst-prim\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Refine : MST (Prim)\", PCGExNodeLibraryDoc=\"clusters/refine/cluster-refine/refine-mst-prim\")",
       "uproperties": [
         {
           "name": "bInvert",

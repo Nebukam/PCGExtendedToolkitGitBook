@@ -75,6 +75,10 @@
         {
           "name": "Sampling",
           "display_name": "Sampling"
+        },
+        {
+          "name": "Filter",
+          "display_name": "Filter"
         }
       ],
       "used_by": []

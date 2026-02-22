@@ -117,6 +117,19 @@
           "advanced": false
         },
         {
+          "name": "bMergeEmbeddedCollectionMaps",
+          "display_name": "bMergeEmbeddedCollectionMaps",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
           "name": "bQuietUnsupportedTypeWarnings",
           "display_name": "bQuietUnsupportedTypeWarnings",
           "type": "bool",
@@ -170,7 +183,8 @@
         "OutputPinDefault"
       ],
       "outputs": [
-        "OutputPinDefault"
+        "OutputPinDefault",
+        "Labels"
       ],
       "consumed_factories": [],
       "consumed_filters": [
@@ -453,6 +467,19 @@
           "edit_condition": null,
           "edit_condition_hides": false,
           "category": "Settings|Tagging & Forwarding",
+          "advanced": false
+        },
+        {
+          "name": "bMergeEmbeddedCollectionMaps",
+          "display_name": "bMergeEmbeddedCollectionMaps",
+          "type": "bool",
+          "default": "false",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
           "advanced": false
         },
         {

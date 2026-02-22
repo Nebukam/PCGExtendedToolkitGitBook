@@ -10,7 +10,7 @@
       "display_name": "Cluster : Delaunay 3D",
       "description": "Create a 3D delaunay tetrahedralization for each input dataset.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/diagrams/delaunay-3d\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/generate/cluster-delaunay-3d\")",
       "uproperties": [
         {
           "name": "bUrquhart",

@@ -25,7 +25,7 @@
       "display_name": "UPCGExEdgeRemoveOverlap",
       "description": "",
       "base_class": "UPCGExEdgeRefineInstancedFactory",
-      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Refine : Overlap\", PCGExNodeLibraryDoc=\"clusters/refine-cluster/overlap\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Refine : Overlap\", PCGExNodeLibraryDoc=\"clusters/refine/cluster-refine/refine-overlap\")",
       "uproperties": [
         {
           "name": "Keep",

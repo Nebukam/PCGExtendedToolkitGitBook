@@ -42,8 +42,8 @@
           "overridable": false,
           "instanced": false,
           "show_only_inner": false,
-          "edit_condition": null,
-          "edit_condition_hides": false,
+          "edit_condition": "Usage != EPCGExMatchingDetailsUsage::Filter",
+          "edit_condition_hides": true,
           "category": null,
           "advanced": false
         },
@@ -55,7 +55,7 @@
           "overridable": false,
           "instanced": false,
           "show_only_inner": false,
-          "edit_condition": "!bSplitUnmatched",
+          "edit_condition": "!bSplitUnmatched && Usage != EPCGExMatchingDetailsUsage::Filter",
           "edit_condition_hides": true,
           "category": null,
           "advanced": false
@@ -68,7 +68,7 @@
           "overridable": false,
           "instanced": false,
           "show_only_inner": false,
-          "edit_condition": "!bSplitUnmatched",
+          "edit_condition": "!bSplitUnmatched && Usage != EPCGExMatchingDetailsUsage::Filter",
           "edit_condition_hides": true,
           "category": null,
           "advanced": false
@@ -81,7 +81,7 @@
           "overridable": false,
           "instanced": false,
           "show_only_inner": false,
-          "edit_condition": "Mode != EPCGExMapMatchMode::Disabled && Usage != EPCGExMatchingDetailsUsage::Sampling",
+          "edit_condition": "Mode != EPCGExMapMatchMode::Disabled && Usage != EPCGExMatchingDetailsUsage::Sampling && Usage != EPCGExMatchingDetailsUsage::Filter",
           "edit_condition_hides": true,
           "category": null,
           "advanced": false
@@ -94,7 +94,7 @@
           "overridable": true,
           "instanced": false,
           "show_only_inner": false,
-          "edit_condition": "bLimitMatches && Mode != EPCGExMapMatchMode::Disabled && Usage != EPCGExMatchingDetailsUsage::Sampling",
+          "edit_condition": "bLimitMatches && Mode != EPCGExMapMatchMode::Disabled && Usage != EPCGExMatchingDetailsUsage::Sampling && Usage != EPCGExMatchingDetailsUsage::Filter",
           "edit_condition_hides": true,
           "category": null,
           "advanced": false
@@ -107,7 +107,7 @@
           "overridable": true,
           "instanced": false,
           "show_only_inner": false,
-          "edit_condition": "bLimitMatches && LimitInput == EPCGExInputValueType::Constant && Mode != EPCGExMapMatchMode::Disabled && Usage != EPCGExMatchingDetailsUsage::Sampling",
+          "edit_condition": "bLimitMatches && LimitInput == EPCGExInputValueType::Constant && Mode != EPCGExMapMatchMode::Disabled && Usage != EPCGExMatchingDetailsUsage::Sampling && Usage != EPCGExMatchingDetailsUsage::Filter",
           "edit_condition_hides": true,
           "category": null,
           "advanced": false

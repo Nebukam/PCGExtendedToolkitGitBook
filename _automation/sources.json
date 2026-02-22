@@ -1,7 +1,7 @@
 {
   "sources": [
     "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source",
-    "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkitZoneGraph\\Source",
-    "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkitWatabou\\Source"
+    "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExElementsZoneGraph\\Source",
+    "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExElementsWatabou\\Source"
   ]
 }

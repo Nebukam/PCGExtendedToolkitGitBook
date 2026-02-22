@@ -10,7 +10,7 @@
       "display_name": "UPCGExEdgeRefineSkeleton",
       "description": "",
       "base_class": "UPCGExEdgeRefineInstancedFactory",
-      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Refine : β Skeleton\", PCGExNodeLibraryDoc=\"clusters/refine-cluster/v-skeleton\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Refine : β Skeleton\", PCGExNodeLibraryDoc=\"clusters/refine/cluster-refine/refine-v-skeleton\")",
       "uproperties": [
         {
           "name": "Beta",

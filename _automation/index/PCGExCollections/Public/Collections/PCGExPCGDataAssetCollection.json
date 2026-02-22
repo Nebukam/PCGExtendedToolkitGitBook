@@ -2,12 +2,40 @@
   "path": "PCGExCollections/Public/Collections/PCGExPCGDataAssetCollection.h",
   "module": "PCGExCollections",
   "type": "header",
-  "enums": [],
+  "enums": [
+    {
+      "name": "EPCGExDataAssetEntrySource",
+      "values": [
+        {
+          "name": "DataAsset",
+          "display_name": "Data Asset"
+        },
+        {
+          "name": "Level",
+          "display_name": "Level"
+        }
+      ],
+      "used_by": []
+    }
+  ],
   "structs": [
     {
       "name": "FPCGExPCGDataAssetCollectionEntry",
       "base_class": "FPCGExAssetCollectionEntry",
       "uproperties": [
+        {
+          "name": "Source",
+          "display_name": "Source",
+          "type": "EPCGExDataAssetEntrySource",
+          "default": "EPCGExDataAssetEntrySource::DataAsset",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "!bIsSubCollection",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
         {
           "name": "DataAsset",
           "display_name": "DataAsset",
@@ -16,7 +44,20 @@
           "overridable": false,
           "instanced": false,
           "show_only_inner": false,
-          "edit_condition": "!bIsSubCollection",
+          "edit_condition": "Source==EPCGExDataAssetEntrySource::DataAsset && !bIsSubCollection",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "Level",
+          "display_name": "Level",
+          "type": "TSoftObjectPtr<UWorld>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Source==EPCGExDataAssetEntrySource::Level && !bIsSubCollection",
           "edit_condition_hides": true,
           "category": null,
           "advanced": false
@@ -42,7 +83,7 @@
           "overridable": false,
           "instanced": false,
           "show_only_inner": false,
-          "edit_condition": "!bIsSubCollection",
+          "edit_condition": "Source==EPCGExDataAssetEntrySource::DataAsset && !bIsSubCollection",
           "edit_condition_hides": true,
           "category": null,
           "advanced": false
@@ -55,7 +96,7 @@
           "overridable": false,
           "instanced": false,
           "show_only_inner": false,
-          "edit_condition": "!bIsSubCollection && bOverrideWeights",
+          "edit_condition": "Source==EPCGExDataAssetEntrySource::DataAsset && !bIsSubCollection && bOverrideWeights",
           "edit_condition_hides": true,
           "category": null,
           "advanced": false
@@ -73,6 +114,19 @@
       "base_class": "UPCGExAssetCollection",
       "uclass_meta": "BlueprintType, DisplayName=\"[PCGEx] Collection | PCGDataAsset\"",
       "uproperties": [
+        {
+          "name": "LevelExporter",
+          "display_name": "LevelExporter",
+          "type": "TObjectPtr<UPCGExLevelDataExporter>",
+          "default": null,
+          "overridable": false,
+          "instanced": true,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
         {
           "name": "Entries",
           "display_name": "Entries",
@@ -132,6 +186,19 @@
           "edit_condition_hides": false,
           "category": null,
           "advanced": false
+        },
+        {
+          "name": "CollectionGUID",
+          "display_name": "CollectionGUID",
+          "type": "uint32",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": true
         },
         {
           "name": "bAutoRebuildStaging",
@@ -248,6 +315,19 @@
           "edit_condition": null,
           "edit_condition_hides": false,
           "category": "Properties",
+          "advanced": false
+        },
+        {
+          "name": "LevelExporter",
+          "display_name": "LevelExporter",
+          "type": "TObjectPtr<UPCGExLevelDataExporter>",
+          "default": null,
+          "overridable": false,
+          "instanced": true,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
           "advanced": false
         },
         {

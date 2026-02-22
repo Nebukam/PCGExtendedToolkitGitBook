@@ -64,7 +64,29 @@
       "used_by": []
     }
   ],
-  "structs": [],
+  "structs": [
+    {
+      "name": "FPCGExFilterMatchingDetails",
+      "base_class": "FPCGExMatchingDetails",
+      "uproperties": [
+        {
+          "name": "NoMatchFallback",
+          "display_name": "NoMatchFallback",
+          "type": "EPCGExFilterFallback",
+          "default": "EPCGExFilterFallback::Fail",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "Mode != EPCGExMapMatchMode::Disabled",
+          "edit_condition_hides": true,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "is_config": false,
+      "used_by": []
+    }
+  ],
   "classes": [],
   "operations": [],
   "namespaces": {

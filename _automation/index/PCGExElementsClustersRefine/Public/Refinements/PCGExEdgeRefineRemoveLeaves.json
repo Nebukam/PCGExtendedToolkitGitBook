@@ -10,7 +10,7 @@
       "display_name": "UPCGExEdgeRemoveLeaves",
       "description": "",
       "base_class": "UPCGExEdgeRefineInstancedFactory",
-      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Remove Leaves\", PCGExNodeLibraryDoc=\"clusters/refine-cluster/remove-leaves\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Remove Leaves\", PCGExNodeLibraryDoc=\"clusters/refine/cluster-refine/remove-leaves\")",
       "uproperties": [],
       "classification": {
         "type": "instanced_factory",

@@ -65,6 +65,12 @@
     "base_class": "UPCGExAssetCollection",
     "display_name": "UPCGExActorCollection"
   },
+  "UPCGExLevelCollection": {
+    "file": "PCGExCollections/Public/Collections/PCGExLevelCollection.h",
+    "type": "unknown",
+    "base_class": "UPCGExAssetCollection",
+    "display_name": "UPCGExLevelCollection"
+  },
   "UPCGExMeshCollection": {
     "file": "PCGExCollections/Public/Collections/PCGExMeshCollection.h",
     "type": "unknown",
@@ -113,6 +119,36 @@
     "base_class": "UPCGExPointsProcessorSettings",
     "display_name": "Staging : Fitting"
   },
+  "UPCGExLevelStreamingDynamic": {
+    "file": "PCGExCollections/Public/Elements/PCGExStagingLoadLevel.h",
+    "type": "unknown",
+    "base_class": "ULevelStreamingDynamic",
+    "display_name": "UPCGExLevelStreamingDynamic"
+  },
+  "UPCGExLevelStreamingLevelInstance": {
+    "file": "PCGExCollections/Public/Elements/PCGExStagingLoadLevel.h",
+    "type": "unknown",
+    "base_class": "ULevelStreamingLevelInstance",
+    "display_name": "UPCGExLevelStreamingLevelInstance"
+  },
+  "APCGExLevelInstance": {
+    "file": "PCGExCollections/Public/Elements/PCGExStagingLoadLevel.h",
+    "type": "unknown",
+    "base_class": "ALevelInstance",
+    "display_name": "APCGExLevelInstance"
+  },
+  "UPCGExManagedStreamingLevels": {
+    "file": "PCGExCollections/Public/Elements/PCGExStagingLoadLevel.h",
+    "type": "unknown",
+    "base_class": "UPCGManagedResource",
+    "display_name": "UPCGExManagedStreamingLevels"
+  },
+  "UPCGExStagingLoadLevelSettings": {
+    "file": "PCGExCollections/Public/Elements/PCGExStagingLoadLevel.h",
+    "type": "node_settings",
+    "base_class": "UPCGExPointsProcessorSettings",
+    "display_name": "Staging : Spawn Level"
+  },
   "UPCGExPCGDataAssetLoaderSettings": {
     "file": "PCGExCollections/Public/Elements/PCGExStagingLoadPCGData.h",
     "type": "node_settings",
@@ -131,6 +167,12 @@
     "base_class": "UPCGExPointsProcessorSettings",
     "display_name": "Staging : Load Sockets"
   },
+  "UPCGExStagingSpawnActorsSettings": {
+    "file": "PCGExCollections/Public/Elements/PCGExStagingSpawnActors.h",
+    "type": "node_settings",
+    "base_class": "UPCGExPointsProcessorSettings",
+    "display_name": "Staging : Spawn Actors"
+  },
   "UPCGExPathSplineMeshSettings": {
     "file": "PCGExCollections/Public/Elements/PCGExStagingSplineMesh.h",
     "type": "node_settings",
@@ -142,6 +184,18 @@
     "type": "node_settings",
     "base_class": "UPCGExPointsProcessorSettings",
     "display_name": "Staging : Type Filter"
+  },
+  "UPCGExDefaultLevelDataExporter": {
+    "file": "PCGExCollections/Public/Helpers/PCGExDefaultLevelDataExporter.h",
+    "type": "unknown",
+    "base_class": "UPCGExLevelDataExporter",
+    "display_name": "UPCGExDefaultLevelDataExporter"
+  },
+  "UPCGExLevelDataExporter": {
+    "file": "PCGExCollections/Public/Helpers/PCGExLevelDataExporter.h",
+    "type": "unknown",
+    "base_class": "UObject",
+    "display_name": "UPCGExLevelDataExporter"
   },
   "UPCGExMeshSelectorStaged": {
     "file": "PCGExCollections/Public/MeshSelectors/PCGExMeshSelectorStaged.h",
@@ -2333,162 +2387,6 @@
     "base_class": "UPCGExPointsProcessorSettings",
     "display_name": "Topology : Point Surface"
   },
-  "UPCGExPatternMatcherFactory": {
-    "file": "PCGExElementsValency/Public/Core/PCGExPatternMatcherOperation.h",
-    "type": "instanced_factory",
-    "base_class": "UPCGExInstancedFactory",
-    "display_name": "UPCGExPatternMatcherFactory"
-  },
-  "UPCGExValencyBondingRules": {
-    "file": "PCGExElementsValency/Public/Core/PCGExValencyBondingRules.h",
-    "type": "unknown",
-    "base_class": "UDataAsset",
-    "display_name": "UPCGExValencyBondingRules"
-  },
-  "UPCGExValencyOrbitalSet": {
-    "file": "PCGExElementsValency/Public/Core/PCGExValencyOrbitalSet.h",
-    "type": "unknown",
-    "base_class": "UDataAsset",
-    "display_name": "UPCGExValencyOrbitalSet"
-  },
-  "UPCGExValencyProcessorSettings": {
-    "file": "PCGExElementsValency/Public/Core/PCGExValencyProcessor.h",
-    "type": "node_settings",
-    "base_class": "UPCGExClustersProcessorSettings",
-    "display_name": "UPCGExValencyProcessorSettings"
-  },
-  "UPCGExValencySocketRules": {
-    "file": "PCGExElementsValency/Public/Core/PCGExValencySocketRules.h",
-    "type": "unknown",
-    "base_class": "UDataAsset",
-    "display_name": "UPCGExValencySocketRules"
-  },
-  "UPCGExValencySolverInstancedFactory": {
-    "file": "PCGExElementsValency/Public/Core/PCGExValencySolverOperation.h",
-    "type": "instanced_factory",
-    "base_class": "UPCGExInstancedFactory",
-    "display_name": "UPCGExValencySolverInstancedFactory"
-  },
-  "UPCGExValencyPatternReplacementSettings": {
-    "file": "PCGExElementsValency/Public/Elements/PCGExValencyPatternReplacement.h",
-    "type": "node_settings",
-    "base_class": "UPCGExValencyProcessorSettings",
-    "display_name": "Valency : Patterns"
-  },
-  "UPCGExValencyStagingSettings": {
-    "file": "PCGExElementsValency/Public/Elements/PCGExValencyStaging.h",
-    "type": "node_settings",
-    "base_class": "UPCGExValencyProcessorSettings",
-    "display_name": "Valency : Staging"
-  },
-  "UPCGExWriteModuleSocketsSettings": {
-    "file": "PCGExElementsValency/Public/Elements/PCGExWriteModuleSockets.h",
-    "type": "node_settings",
-    "base_class": "UPCGExValencyProcessorSettings",
-    "display_name": "Valency : Write Module Sockets"
-  },
-  "UPCGExWriteValencyOrbitalsSettings": {
-    "file": "PCGExElementsValency/Public/Elements/PCGExWriteValencyOrbitals.h",
-    "type": "node_settings",
-    "base_class": "UPCGExClustersProcessorSettings",
-    "display_name": "Valency : Write Orbitals"
-  },
-  "UPCGExDefaultPatternMatcher": {
-    "file": "PCGExElementsValency/Public/Matchers/PCGExDefaultPatternMatcher.h",
-    "type": "unknown",
-    "base_class": "UPCGExPatternMatcherFactory",
-    "display_name": "UPCGExDefaultPatternMatcher"
-  },
-  "UPCGExProbeFactoryValency": {
-    "file": "PCGExElementsValency/Public/Probes/PCGExProbeValency.h",
-    "type": "factory_data",
-    "base_class": "UPCGExProbeFactoryData",
-    "display_name": "UPCGExProbeFactoryValency"
-  },
-  "UPCGExProbeValencyProviderSettings": {
-    "file": "PCGExElementsValency/Public/Probes/PCGExProbeValency.h",
-    "type": "provider",
-    "base_class": "UPCGExProbeFactoryProviderSettings",
-    "display_name": "Probe : Orbital (Valency)"
-  },
-  "UPCGExValencyConstraintSolverFactory": {
-    "file": "PCGExElementsValency/Public/Solvers/PCGExValencyConstraintSolver.h",
-    "type": "instanced_factory",
-    "base_class": "UPCGExValencySolverInstancedFactory",
-    "display_name": "UPCGExValencyConstraintSolverFactory"
-  },
-  "UPCGExValencyEntropySolver": {
-    "file": "PCGExElementsValency/Public/Solvers/PCGExValencyEntropySolver.h",
-    "type": "instanced_factory",
-    "base_class": "UPCGExValencySolverInstancedFactory",
-    "display_name": "UPCGExValencyEntropySolver"
-  },
-  "UPCGExValencyPrioritySolver": {
-    "file": "PCGExElementsValency/Public/Solvers/PCGExValencyPrioritySolver.h",
-    "type": "instanced_factory",
-    "base_class": "UPCGExValencySolverInstancedFactory",
-    "display_name": "UPCGExValencyPrioritySolver"
-  },
-  "UPCGExValencyBondingRulesBuilder": {
-    "file": "PCGExElementsValencyEditor/Public/Builder/PCGExValencyBondingRulesBuilder.h",
-    "type": "unknown",
-    "base_class": "UObject",
-    "display_name": "UPCGExValencyBondingRulesBuilder"
-  },
-  "APCGExValencyAssetPalette": {
-    "file": "PCGExElementsValencyEditor/Public/Cages/PCGExValencyAssetPalette.h",
-    "type": "unknown",
-    "base_class": "AActor",
-    "display_name": "APCGExValencyAssetPalette"
-  },
-  "APCGExValencyCage": {
-    "file": "PCGExElementsValencyEditor/Public/Cages/PCGExValencyCage.h",
-    "type": "unknown",
-    "base_class": "APCGExValencyCageBase",
-    "display_name": "APCGExValencyCage"
-  },
-  "APCGExValencyCageBase": {
-    "file": "PCGExElementsValencyEditor/Public/Cages/PCGExValencyCageBase.h",
-    "type": "unknown",
-    "base_class": "AActor",
-    "display_name": "APCGExValencyCageBase"
-  },
-  "APCGExValencyCageNull": {
-    "file": "PCGExElementsValencyEditor/Public/Cages/PCGExValencyCageNull.h",
-    "type": "unknown",
-    "base_class": "APCGExValencyCageBase",
-    "display_name": "APCGExValencyCageNull"
-  },
-  "APCGExValencyCagePattern": {
-    "file": "PCGExElementsValencyEditor/Public/Cages/PCGExValencyCagePattern.h",
-    "type": "unknown",
-    "base_class": "APCGExValencyCageBase",
-    "display_name": "APCGExValencyCagePattern"
-  },
-  "APCGExValencyCageSimple": {
-    "file": "PCGExElementsValencyEditor/Public/Cages/PCGExValencyCageSimple.h",
-    "type": "unknown",
-    "base_class": "APCGExValencyCage",
-    "display_name": "APCGExValencyCageSimple"
-  },
-  "UPCGExValencyCageSocketComponent": {
-    "file": "PCGExElementsValencyEditor/Public/Components/PCGExValencyCageSocketComponent.h",
-    "type": "unknown",
-    "base_class": "USceneComponent",
-    "display_name": "UPCGExValencyCageSocketComponent"
-  },
-  "UPCGExValencyEditorSettings": {
-    "file": "PCGExElementsValencyEditor/Public/PCGExValencyEditorSettings.h",
-    "type": "node_settings",
-    "base_class": "UDeveloperSettings",
-    "display_name": "UPCGExValencyEditorSettings"
-  },
-  "AValencyContextVolume": {
-    "file": "PCGExElementsValencyEditor/Public/Volumes/ValencyContextVolume.h",
-    "type": "unknown",
-    "base_class": "AVolume",
-    "display_name": "AValencyContextVolume"
-  },
   "UPCGExClusterFilterFactoryData": {
     "file": "PCGExFilters/Public/Core/PCGExClusterFilter.h",
     "type": "factory_data",
@@ -2698,6 +2596,18 @@
     "type": "provider",
     "base_class": "UPCGExFilterProviderSettings",
     "display_name": "Filter : Constant"
+  },
+  "UPCGExDataMatchFilterFactory": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExDataMatchFilter.h",
+    "type": "factory_data",
+    "base_class": "UPCGExPointFilterFactoryData",
+    "display_name": "UPCGExDataMatchFilterFactory"
+  },
+  "UPCGExDataMatchFilterProviderSettings": {
+    "file": "PCGExFilters/Public/Filters/Points/PCGExDataMatchFilter.h",
+    "type": "provider",
+    "base_class": "UPCGExFilterProviderSettings",
+    "display_name": "Filter : Data Match"
   },
   "UPCGExDistanceFilterFactory": {
     "file": "PCGExFilters/Public/Filters/Points/PCGExDistanceFilter.h",
@@ -3678,49 +3588,37 @@
     "display_name": "UPCGExGlobalSettings"
   },
   "UPCGExClusterToZoneGraphSettings": {
-    "file": "PCGExtendedToolkitZoneGraph/Public/Graph/PCGExClusterToZoneGraph.h",
+    "file": "PCGExElementsZoneGraph/Public/Graph/PCGExClusterToZoneGraph.h",
     "type": "node_settings",
     "base_class": "UPCGExClustersProcessorSettings",
     "display_name": "Cluster to Zone Graph"
   },
-  "UPCGExZoneGraphGlobalSettings": {
-    "file": "PCGExtendedToolkitZoneGraph/Public/PCGExZoneGraphGlobalSettings.h",
-    "type": "node_settings",
-    "base_class": "UDeveloperSettings",
-    "display_name": "UPCGExZoneGraphGlobalSettings"
-  },
   "UPCGExWatabouData": {
-    "file": "PCGExtendedToolkitWatabou/Public/Data/PCGExWatabouData.h",
+    "file": "PCGExElementsWatabou/Public/Data/PCGExWatabouData.h",
     "type": "unknown",
     "base_class": "UDataAsset",
     "display_name": "UPCGExWatabouData"
   },
   "UPCGExWatabouFeaturesCollection": {
-    "file": "PCGExtendedToolkitWatabou/Public/Data/PCGExWatabouFeature.h",
+    "file": "PCGExElementsWatabou/Public/Data/PCGExWatabouFeature.h",
     "type": "unknown",
     "base_class": "UObject",
     "display_name": "UPCGExWatabouFeaturesCollection"
   },
-  "UPCGExWatabouGlobalSettings": {
-    "file": "PCGExtendedToolkitWatabou/Public/PCGExWatabouGlobalSettings.h",
-    "type": "node_settings",
-    "base_class": "UDeveloperSettings",
-    "display_name": "UPCGExWatabouGlobalSettings"
-  },
   "UPCGExLoadWatabouDataSettings": {
-    "file": "PCGExtendedToolkitWatabou/Public/Staging/PCGExLoadWatabouData.h",
+    "file": "PCGExElementsWatabou/Public/Staging/PCGExLoadWatabouData.h",
     "type": "node_settings",
     "base_class": "UPCGExPointsProcessorSettings",
     "display_name": "Load Watabou Data"
   },
   "UPCGExWatabouDataFactory": {
-    "file": "PCGExtendedToolkitWatabouEditor/Public/PCGExWatabouDataFactory.h",
+    "file": "PCGExElementsWatabouEditor/Public/PCGExWatabouDataFactory.h",
     "type": "unknown",
     "base_class": "UFactory",
     "display_name": "UPCGExWatabouDataFactory"
   },
   "UPCGExWatabouDataReimportFactory": {
-    "file": "PCGExtendedToolkitWatabouEditor/Public/PCGExWatabouDataFactory.h",
+    "file": "PCGExElementsWatabouEditor/Public/PCGExWatabouDataFactory.h",
     "type": "unknown",
     "base_class": "UPCGExWatabouDataFactory",
     "display_name": "UPCGExWatabouDataReimportFactory"

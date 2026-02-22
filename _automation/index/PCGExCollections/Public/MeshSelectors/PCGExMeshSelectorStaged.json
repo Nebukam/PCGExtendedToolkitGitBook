@@ -89,6 +89,19 @@
           "edit_condition_hides": false,
           "category": null,
           "advanced": false
+        },
+        {
+          "name": "bQuietMissingStagingDataWarning",
+          "display_name": "bQuietMissingStagingDataWarning",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
         }
       ],
       "classification": {
@@ -181,6 +194,19 @@
           "display_name": "bOutputPoints",
           "type": "bool",
           "default": "true",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "bQuietMissingStagingDataWarning",
+          "display_name": "bQuietMissingStagingDataWarning",
+          "type": "bool",
+          "default": "false",
           "overridable": false,
           "instanced": false,
           "show_only_inner": false,

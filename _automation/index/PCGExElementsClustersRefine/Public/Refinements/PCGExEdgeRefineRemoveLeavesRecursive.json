@@ -10,7 +10,7 @@
       "display_name": "UPCGExEdgeRemoveLeavesRecursive",
       "description": "",
       "base_class": "UPCGExEdgeRefineInstancedFactory",
-      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Remove Leaves (Recursive)\", PCGExNodeLibraryDoc=\"clusters/refine-cluster/remove-leaves-recursive\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Remove Leaves (Recursive)\", PCGExNodeLibraryDoc=\"clusters/refine/cluster-refine/remove-leaves-recursive\")",
       "uproperties": [
         {
           "name": "MaxIterations",

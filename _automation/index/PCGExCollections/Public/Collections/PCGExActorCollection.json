@@ -59,6 +59,32 @@
           "edit_condition_hides": true,
           "category": "Settings|Bounds",
           "advanced": false
+        },
+        {
+          "name": "bHasPCGComponent",
+          "display_name": "bHasPCGComponent",
+          "type": "bool",
+          "default": "false",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|PCG",
+          "advanced": false
+        },
+        {
+          "name": "CachedPCGGraph",
+          "display_name": "CachedPCGGraph",
+          "type": "TSoftObjectPtr<UPCGGraphInterface>",
+          "default": null,
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": "Settings|PCG",
+          "advanced": false
         }
       ],
       "is_config": false,
@@ -132,6 +158,19 @@
           "edit_condition_hides": false,
           "category": null,
           "advanced": false
+        },
+        {
+          "name": "CollectionGUID",
+          "display_name": "CollectionGUID",
+          "type": "uint32",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": true
         },
         {
           "name": "bAutoRebuildStaging",

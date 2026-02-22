@@ -13,6 +13,10 @@
         {
           "name": "BestFit",
           "display_name": "Best Fit"
+        },
+        {
+          "name": "LocalTangent",
+          "display_name": "Local Tangent"
         }
       ],
       "used_by": []

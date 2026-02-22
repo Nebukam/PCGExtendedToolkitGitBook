@@ -30,8 +30,6 @@
     "FPCGExSmoothingOperation",
     "FPCGExProbeOperation",
     "FPCGExShapeBuilderOperation",
-    "FPCGExPatternMatcherOperation",
-    "FPCGExValencySolverOperation",
     "FPCGExTangentsOperation",
     "FPCGExHeuristicOperation",
     "FPCGExMatchRuleOperation",
@@ -100,7 +98,8 @@
     "FPCGExGraphsModule",
     "FPCGExHeuristicsModule",
     "FPCGExMatchingModule",
-    "FPCGExPickersModule"
+    "FPCGExPickersModule",
+    "FPCGExElementsZoneGraphModule"
   ],
   "UPCGExSubPointsBlendInstancedFactory": [
     "UPCGExSubPointsBlendInheritEnd",
@@ -131,8 +130,6 @@
     "UPCGExOrientInstancedFactory",
     "UPCGExSmoothingInstancedFactory",
     "UPCGExTensorSampler",
-    "UPCGExPatternMatcherFactory",
-    "UPCGExValencySolverInstancedFactory",
     "UPCGExTangentsInstancedFactory"
   ],
   "TSharedFromThis": [
@@ -145,11 +142,13 @@
   ],
   "FPCGExAssetCollectionEntry": [
     "FPCGExActorCollectionEntry",
+    "FPCGExLevelCollectionEntry",
     "FPCGExMeshCollectionEntry",
     "FPCGExPCGDataAssetCollectionEntry"
   ],
   "UPCGExAssetCollection": [
     "UPCGExActorCollection",
+    "UPCGExLevelCollection",
     "UPCGExMeshCollection",
     "UPCGExPCGDataAssetCollection"
   ],
@@ -167,9 +166,6 @@
   "UDataAsset": [
     "UPCGExAssetCollection",
     "UPCGExBitmaskCollection",
-    "UPCGExValencyBondingRules",
-    "UPCGExValencyOrbitalSet",
-    "UPCGExValencySocketRules",
     "UPCGExWatabouData"
   ],
   "FPCGExAssetAttributeSetDetails": [
@@ -212,9 +208,11 @@
     "UPCGExAssetStagingSettings",
     "UPCGExDistributeTupleSettings",
     "UPCGExStagingFittingSettings",
+    "UPCGExStagingLoadLevelSettings",
     "UPCGExPCGDataAssetLoaderSettings",
     "UPCGExStagingLoadPropertiesSettings",
     "UPCGExSocketStagingSettings",
+    "UPCGExStagingSpawnActorsSettings",
     "UPCGExStagedTypeFilterSettings",
     "UPCGExBatchActionsSettings",
     "UPCGExWaitForPCGDataSettings",
@@ -305,9 +303,11 @@
     "FPCGExAssetStagingElement",
     "FPCGExDistributeTupleElement",
     "FPCGExStagingFittingElement",
+    "FPCGExStagingLoadLevelElement",
     "FPCGExPCGDataAssetLoaderElement",
     "FPCGExStagingLoadPropertiesElement",
     "FPCGExSocketStagingElement",
+    "FPCGExStagingSpawnActorsElement",
     "FPCGExStagedTypeFilterElement",
     "FPCGExBatchActionsElement",
     "FPCGExWaitForPCGDataElement",
@@ -394,6 +394,18 @@
     "FPCGExClustersProcessorElement",
     "FPCGExLoadWatabouDataElement"
   ],
+  "ULevelStreamingDynamic": [
+    "UPCGExLevelStreamingDynamic"
+  ],
+  "ULevelStreamingLevelInstance": [
+    "UPCGExLevelStreamingLevelInstance"
+  ],
+  "ALevelInstance": [
+    "APCGExLevelInstance"
+  ],
+  "UPCGManagedResource": [
+    "UPCGExManagedStreamingLevels"
+  ],
   "UPCGExPathProcessorSettings": [
     "UPCGExPathSplineMeshSettings",
     "UPCGExClipper2ProcessorSettings",
@@ -456,25 +468,33 @@
     "FPCGExExtrudeTensorsElement",
     "FPCGExTopologyPathSurfaceElement"
   ],
+  "UPCGExLevelDataExporter": [
+    "UPCGExDefaultLevelDataExporter"
+  ],
+  "UObject": [
+    "UPCGExLevelDataExporter",
+    "UPCGExInstancedFactory",
+    "UPCGExCustomGraphSettings",
+    "UPCGExWatabouFeaturesCollection"
+  ],
   "UPCGMeshSelectorBase": [
     "UPCGExMeshSelectorStaged"
   ],
   "UDeveloperSettings": [
     "UPCGExCollectionsSettings",
     "UPCGExCollectionsEditorSettings",
-    "UPCGExValencyEditorSettings",
-    "UPCGExGlobalSettings",
-    "UPCGExZoneGraphGlobalSettings",
-    "UPCGExWatabouGlobalSettings"
+    "UPCGExGlobalSettings"
   ],
   "FAssetTypeActions_Base": [
     "FPCGExActorCollectionActions",
+    "FPCGExLevelCollectionActions",
     "FPCGExMeshCollectionActions",
     "FPCGExPCGDataAssetCollectionActions",
     "FPCGExWatabouDataActions"
   ],
   "FPCGExAssetCollectionEditor": [
     "FPCGExActorCollectionEditor",
+    "FPCGExLevelCollectionEditor",
     "FPCGExMeshCollectionEditor",
     "FPCGExPCGDataAssetCollectionEditor"
   ],
@@ -491,8 +511,6 @@
     "FPCGExMaterialOverrideCollectionCustomization",
     "FPCGExGridEnumCustomization",
     "FPCGExInlineEnumCustomization",
-    "FPCGExPropertyOutputConfigCustomization",
-    "FPCGExValencySocketDefinitionCustomization",
     "FPCGExBitmaskCustomization",
     "FPCGExBitmaskEntryCustomization",
     "FPCGExBitmaskRefCustomization",
@@ -515,9 +533,9 @@
   "IPCGExEditorModuleInterface": [
     "FPCGExCollectionsEditorModule",
     "FPCGExCoreEditorModule",
-    "FPCGExElementsValencyEditorModule",
     "FPCGExFoundationsEditorModule",
-    "FPCGExPropertiesEditorModule"
+    "FPCGExPropertiesEditorModule",
+    "FPCGExElementsWatabouEditorModule"
   ],
   "FTask": [
     "FPCGExIndexedTask"
@@ -595,12 +613,6 @@
   "UPCGExParamDataBase": [
     "UPCGExFactoryData"
   ],
-  "UObject": [
-    "UPCGExInstancedFactory",
-    "UPCGExCustomGraphSettings",
-    "UPCGExValencyBondingRulesBuilder",
-    "UPCGExWatabouFeaturesCollection"
-  ],
   "FPCGExFittingDetailsHandler": [
     "FPCGExTransformDetails"
   ],
@@ -638,7 +650,6 @@
   ],
   "IPCGExModuleInterface": [
     "FPCGExElementsClipper2Module",
-    "FPCGExElementsValencyModule",
     "FPCGExNoise3DModule",
     "FPCGExPropertiesModule"
   ],
@@ -678,8 +689,6 @@
     "UPCGExPathfindingGrowPathsSettings",
     "UPCGExPathfindingPlotEdgesSettings",
     "UPCGExTopologyClustersProcessorSettings",
-    "UPCGExValencyProcessorSettings",
-    "UPCGExWriteValencyOrbitalsSettings",
     "UPCGExClusterToZoneGraphSettings"
   ],
   "FPCGExClustersProcessorElement": [
@@ -718,8 +727,6 @@
     "FPCGExPathfindingGrowPathsElement",
     "FPCGExPathfindingPlotEdgesElement",
     "FPCGExTopologyClustersProcessorElement",
-    "FPCGExValencyProcessorElement",
-    "FPCGExWriteValencyOrbitalsElement",
     "FPCGExClusterToZoneGraphElement"
   ],
   "UPCGExNeighborSamplerFactoryData": [
@@ -918,6 +925,7 @@
     "UPCGExBooleanCompareFilterFactory",
     "UPCGExBoundsFilterFactory",
     "UPCGExConstantFilterFactory",
+    "UPCGExDataMatchFilterFactory",
     "UPCGExDistanceFilterFactory",
     "UPCGExDotFilterFactory",
     "UPCGExGameplayTagsFilterFactory",
@@ -947,6 +955,7 @@
     "UPCGExBooleanCompareFilterProviderSettings",
     "UPCGExBoundsFilterProviderSettings",
     "UPCGExConstantFilterProviderSettings",
+    "UPCGExDataMatchFilterProviderSettings",
     "UPCGExDistanceFilterProviderSettings",
     "UPCGExDotFilterProviderSettings",
     "UPCGExGameplayTagsFilterProviderSettings",
@@ -1026,8 +1035,7 @@
     "FPCGExProbeConfigDirection",
     "FPCGExProbeConfigIndex",
     "FPCGExProbeConfigNumericCompare",
-    "FPCGExProbeConfigTensor",
-    "FPCGExProbeConfigValency"
+    "FPCGExProbeConfigTensor"
   ],
   "UPCGExProbeFactoryData": [
     "UPCGExProbeFactoryGlobalAnisotropic",
@@ -1045,8 +1053,7 @@
     "UPCGExProbeFactoryDirection",
     "UPCGExProbeFactoryIndex",
     "UPCGExProbeFactoryNumericCompare",
-    "UPCGExProbeFactoryTensor",
-    "UPCGExProbeFactoryValency"
+    "UPCGExProbeFactoryTensor"
   ],
   "UPCGExProbeFactoryProviderSettings": [
     "UPCGExProbeGlobalAnisotropicProviderSettings",
@@ -1064,8 +1071,7 @@
     "UPCGExProbeDirectionProviderSettings",
     "UPCGExProbeIndexProviderSettings",
     "UPCGExProbeNumericCompareProviderSettings",
-    "UPCGExProbeTensorProviderSettings",
-    "UPCGExProbeValencyProviderSettings"
+    "UPCGExProbeTensorProviderSettings"
   ],
   "FPCGExProbeOperation": [
     "FPCGExProbeGlobalAnisotropic",
@@ -1083,8 +1089,7 @@
     "FPCGExProbeDirection",
     "FPCGExProbeIndex",
     "FPCGExProbeNumericCompare",
-    "FPCGExProbeTensor",
-    "FPCGExProbeValency"
+    "FPCGExProbeTensor"
   ],
   "UPCGExShapeProcessorSettings": [
     "UPCGExCreateShapesSettings"
@@ -1257,53 +1262,6 @@
   "FPCGExTopologyClustersProcessorElement": [
     "FPCGExTopologyClusterSurfaceElement"
   ],
-  "UPCGExValencyProcessorSettings": [
-    "UPCGExValencyPatternReplacementSettings",
-    "UPCGExValencyStagingSettings",
-    "UPCGExWriteModuleSocketsSettings"
-  ],
-  "FPCGExValencyProcessorElement": [
-    "FPCGExValencyPatternReplacementElement",
-    "FPCGExValencyStagingElement",
-    "FPCGExWriteModuleSocketsElement"
-  ],
-  "UPCGExPatternMatcherFactory": [
-    "UPCGExDefaultPatternMatcher"
-  ],
-  "FPCGExPatternMatcherOperation": [
-    "FPCGExDefaultPatternMatcherOperation"
-  ],
-  "UPCGExValencySolverInstancedFactory": [
-    "UPCGExValencyConstraintSolverFactory",
-    "UPCGExValencyEntropySolver",
-    "UPCGExValencyPrioritySolver"
-  ],
-  "FPCGExValencySolverOperation": [
-    "FPCGExValencyConstraintSolver",
-    "FPCGExValencyEntropySolver",
-    "FPCGExValencyPrioritySolver"
-  ],
-  "AActor": [
-    "APCGExValencyAssetPalette",
-    "APCGExValencyCageBase"
-  ],
-  "APCGExValencyCageBase": [
-    "APCGExValencyCage",
-    "APCGExValencyCageNull",
-    "APCGExValencyCagePattern"
-  ],
-  "APCGExValencyCage": [
-    "APCGExValencyCageSimple"
-  ],
-  "USceneComponent": [
-    "UPCGExValencyCageSocketComponent"
-  ],
-  "FEdMode": [
-    "FPCGExValencyCageEditorMode"
-  ],
-  "AVolume": [
-    "AValencyContextVolume"
-  ],
   "UPCGExClusterFilterFactoryData": [
     "UPCGExNodeFilterFactoryData",
     "UPCGExEdgeFilterFactoryData",
@@ -1345,6 +1303,9 @@
     "UPCGExInclusionFilterFactory",
     "UPCGExSegmentCrossFilterFactory",
     "UPCGExTimeFilterFactory"
+  ],
+  "FPCGExMatchingDetails": [
+    "FPCGExFilterMatchingDetails"
   ],
   "UWorldSubsystem": [
     "UPCGExFiltersSubSystem"
@@ -1515,12 +1476,10 @@
   ],
   "IModuleInterface": [
     "FPCGExtendedToolkitModule",
-    "FPCGExtendedToolkitEditorModule",
-    "FPCGExtendedToolkitTestModule",
-    "FPCGExtendedToolkitZoneGraphModule",
-    "FPCGExtendedToolkitZoneGraphEditorModule",
-    "FPCGExtendedToolkitWatabouModule",
-    "FPCGExtendedToolkitWatabouEditorModule"
+    "FPCGExtendedToolkitEditorModule"
+  ],
+  "IPCGExAddonModuleInterface": [
+    "FPCGExElementsWatabouModule"
   ],
   "UFactory": [
     "UPCGExWatabouDataFactory"

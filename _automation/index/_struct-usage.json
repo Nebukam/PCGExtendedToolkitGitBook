@@ -80,6 +80,7 @@
   "FPCGExFittingVariations": {
     "used_by": [
       "UPCGExActorCollection",
+      "UPCGExLevelCollection",
       "UPCGExMeshCollection",
       "UPCGExPCGDataAssetCollection",
       "UPCGExAssetCollection",
@@ -89,7 +90,7 @@
     "origins": [
       "UPCGExAssetCollection"
     ],
-    "usage_count": 5,
+    "usage_count": 6,
     "user_facing_count": 0,
     "user_facing_origins": [],
     "user_facing_origin_count": 0,
@@ -99,6 +100,7 @@
   "FPCGExAssetGrammarDetails": {
     "used_by": [
       "UPCGExActorCollection",
+      "UPCGExLevelCollection",
       "UPCGExMeshCollection",
       "UPCGExPCGDataAssetCollection",
       "UPCGExAssetCollection",
@@ -108,7 +110,7 @@
     "origins": [
       "UPCGExAssetCollection"
     ],
-    "usage_count": 5,
+    "usage_count": 6,
     "user_facing_count": 0,
     "user_facing_origins": [],
     "user_facing_origin_count": 0,
@@ -118,6 +120,7 @@
   "FPCGExCollectionGrammarDetails": {
     "used_by": [
       "UPCGExActorCollection",
+      "UPCGExLevelCollection",
       "UPCGExMeshCollection",
       "UPCGExPCGDataAssetCollection",
       "UPCGExAssetCollection",
@@ -127,7 +130,7 @@
     "origins": [
       "UPCGExAssetCollection"
     ],
-    "usage_count": 5,
+    "usage_count": 6,
     "user_facing_count": 0,
     "user_facing_origins": [],
     "user_facing_origin_count": 0,
@@ -137,16 +140,15 @@
   "FPCGExPropertySchemaCollection": {
     "used_by": [
       "UPCGExActorCollection",
+      "UPCGExLevelCollection",
       "UPCGExMeshCollection",
       "UPCGExPCGDataAssetCollection",
       "UPCGExAssetCollection",
-      "UPCGExValencyBondingRules",
       "UPCGExPropertyCollectionComponent"
     ],
-    "origin_count": 3,
+    "origin_count": 2,
     "origins": [
       "UPCGExAssetCollection",
-      "UPCGExValencyBondingRules",
       "UPCGExPropertyCollectionComponent"
     ],
     "usage_count": 6,
@@ -159,15 +161,14 @@
   "FPCGExPropertyRegistryEntry": {
     "used_by": [
       "UPCGExActorCollection",
+      "UPCGExLevelCollection",
       "UPCGExMeshCollection",
       "UPCGExPCGDataAssetCollection",
-      "UPCGExAssetCollection",
-      "UPCGExValencyBondingRules"
+      "UPCGExAssetCollection"
     ],
-    "origin_count": 2,
+    "origin_count": 1,
     "origins": [
-      "UPCGExAssetCollection",
-      "UPCGExValencyBondingRules"
+      "UPCGExAssetCollection"
     ],
     "usage_count": 5,
     "user_facing_count": 0,
@@ -183,6 +184,21 @@
     "origin_count": 1,
     "origins": [
       "UPCGExActorCollection"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": null
+  },
+  "FPCGExLevelCollectionEntry": {
+    "used_by": [
+      "UPCGExLevelCollection"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExLevelCollection"
     ],
     "usage_count": 1,
     "user_facing_count": 0,
@@ -286,24 +302,21 @@
       "UPCGExAssetStagingSettings",
       "UPCGExStagingFittingSettings",
       "UPCGExPathSplineMeshSettings",
-      "UPCGExValencyStagingSettings",
       "FPCGExFittingDetailsHandler"
     ],
-    "origin_count": 4,
+    "origin_count": 3,
     "origins": [
       "UPCGExAssetStagingSettings",
       "UPCGExStagingFittingSettings",
-      "UPCGExPathSplineMeshSettings",
-      "UPCGExValencyStagingSettings"
+      "UPCGExPathSplineMeshSettings"
     ],
-    "usage_count": 5,
-    "user_facing_count": 3,
+    "usage_count": 4,
+    "user_facing_count": 2,
     "user_facing_origins": [
       "UPCGExStagingFittingSettings",
-      "UPCGExPathSplineMeshSettings",
-      "UPCGExValencyStagingSettings"
+      "UPCGExPathSplineMeshSettings"
     ],
-    "user_facing_origin_count": 3,
+    "user_facing_origin_count": 2,
     "is_shared": true,
     "document_with": null
   },
@@ -312,24 +325,21 @@
       "UPCGExAssetStagingSettings",
       "UPCGExStagingFittingSettings",
       "UPCGExPathSplineMeshSettings",
-      "UPCGExValencyStagingSettings",
       "FPCGExFittingDetailsHandler"
     ],
-    "origin_count": 4,
+    "origin_count": 3,
     "origins": [
       "UPCGExAssetStagingSettings",
       "UPCGExStagingFittingSettings",
-      "UPCGExPathSplineMeshSettings",
-      "UPCGExValencyStagingSettings"
+      "UPCGExPathSplineMeshSettings"
     ],
-    "usage_count": 5,
-    "user_facing_count": 3,
+    "usage_count": 4,
+    "user_facing_count": 2,
     "user_facing_origins": [
       "UPCGExStagingFittingSettings",
-      "UPCGExPathSplineMeshSettings",
-      "UPCGExValencyStagingSettings"
+      "UPCGExPathSplineMeshSettings"
     ],
-    "user_facing_origin_count": 3,
+    "user_facing_origin_count": 2,
     "is_shared": true,
     "document_with": null
   },
@@ -411,6 +421,7 @@
   "FPCGExForwardDetails": {
     "used_by": [
       "UPCGExPCGDataAssetLoaderSettings",
+      "UPCGExStagingSpawnActorsSettings",
       "UPCGExCopyClustersToPointsSettings",
       "UPCGExMeshToClustersSettings",
       "UPCGExPickClosestClustersSettings",
@@ -427,9 +438,10 @@
       "UPCGExCopyToPointsSettings",
       "FPCGExBoxIntersectionDetails"
     ],
-    "origin_count": 15,
+    "origin_count": 16,
     "origins": [
       "UPCGExPCGDataAssetLoaderSettings",
+      "UPCGExStagingSpawnActorsSettings",
       "UPCGExCopyClustersToPointsSettings",
       "UPCGExMeshToClustersSettings",
       "UPCGExPickClosestClustersSettings",
@@ -445,10 +457,11 @@
       "UPCGExSampleSurfaceGuidedSettings",
       "UPCGExCopyToPointsSettings"
     ],
-    "usage_count": 16,
-    "user_facing_count": 14,
+    "usage_count": 17,
+    "user_facing_count": 15,
     "user_facing_origins": [
       "UPCGExPCGDataAssetLoaderSettings",
+      "UPCGExStagingSpawnActorsSettings",
       "UPCGExCopyClustersToPointsSettings",
       "UPCGExMeshToClustersSettings",
       "UPCGExPickClosestClustersSettings",
@@ -463,7 +476,7 @@
       "UPCGExSampleNearestSurfaceSettings",
       "UPCGExCopyToPointsSettings"
     ],
-    "user_facing_origin_count": 14,
+    "user_facing_origin_count": 15,
     "is_shared": true,
     "document_with": null
   },
@@ -1015,13 +1028,12 @@
       "UPCGExClusterToZoneGraphSettings"
     ],
     "usage_count": 5,
-    "user_facing_count": 3,
+    "user_facing_count": 2,
     "user_facing_origins": [
       "UPCGExBreakClustersToPathsSettings",
-      "UPCGExEdgeOrderSettings",
-      "UPCGExClusterToZoneGraphSettings"
+      "UPCGExEdgeOrderSettings"
     ],
-    "user_facing_origin_count": 3,
+    "user_facing_origin_count": 2,
     "is_shared": true,
     "document_with": null
   },
@@ -2207,13 +2219,12 @@
       "UPCGExClusterToZoneGraphSettings"
     ],
     "usage_count": 3,
-    "user_facing_count": 3,
+    "user_facing_count": 2,
     "user_facing_origins": [
       "UPCGExCreateSplineSettings",
-      "UPCGExSpawnDynamicMeshSettings",
-      "UPCGExClusterToZoneGraphSettings"
+      "UPCGExSpawnDynamicMeshSettings"
     ],
-    "user_facing_origin_count": 3,
+    "user_facing_origin_count": 2,
     "is_shared": true,
     "document_with": null
   },
@@ -3364,172 +3375,6 @@
     "is_shared": false,
     "document_with": "UPCGExSpawnDynamicMeshSettings"
   },
-  "FPCGExValencyModuleDefinition": {
-    "used_by": [
-      "UPCGExValencyBondingRules"
-    ],
-    "origin_count": 1,
-    "origins": [
-      "UPCGExValencyBondingRules"
-    ],
-    "usage_count": 1,
-    "user_facing_count": 0,
-    "user_facing_origins": [],
-    "user_facing_origin_count": 0,
-    "is_shared": false,
-    "document_with": null
-  },
-  "FPCGExValencyPatternSetCompiled": {
-    "used_by": [
-      "UPCGExValencyBondingRules"
-    ],
-    "origin_count": 1,
-    "origins": [
-      "UPCGExValencyBondingRules"
-    ],
-    "usage_count": 1,
-    "user_facing_count": 0,
-    "user_facing_origins": [],
-    "user_facing_origin_count": 0,
-    "is_shared": false,
-    "document_with": null
-  },
-  "FPCGExValencyOrbitalEntry": {
-    "used_by": [
-      "UPCGExValencyOrbitalSet"
-    ],
-    "origin_count": 1,
-    "origins": [
-      "UPCGExValencyOrbitalSet"
-    ],
-    "usage_count": 1,
-    "user_facing_count": 0,
-    "user_facing_origins": [],
-    "user_facing_origin_count": 0,
-    "is_shared": false,
-    "document_with": null
-  },
-  "FPCGExValencySocketDefinition": {
-    "used_by": [
-      "UPCGExValencySocketRules"
-    ],
-    "origin_count": 1,
-    "origins": [
-      "UPCGExValencySocketRules"
-    ],
-    "usage_count": 1,
-    "user_facing_count": 0,
-    "user_facing_origins": [],
-    "user_facing_origin_count": 0,
-    "is_shared": false,
-    "document_with": null
-  },
-  "FPCGExValencyPropertyOutputSettings": {
-    "used_by": [
-      "UPCGExValencyStagingSettings"
-    ],
-    "origin_count": 1,
-    "origins": [
-      "UPCGExValencyStagingSettings"
-    ],
-    "usage_count": 1,
-    "user_facing_count": 1,
-    "user_facing_origins": [
-      "UPCGExValencyStagingSettings"
-    ],
-    "user_facing_origin_count": 1,
-    "is_shared": false,
-    "document_with": "UPCGExValencyStagingSettings"
-  },
-  "FPCGExProbeConfigValency": {
-    "used_by": [
-      "UPCGExProbeValencyProviderSettings"
-    ],
-    "origin_count": 1,
-    "origins": [
-      "UPCGExProbeValencyProviderSettings"
-    ],
-    "usage_count": 1,
-    "user_facing_count": 1,
-    "user_facing_origins": [
-      "UPCGExProbeValencyProviderSettings"
-    ],
-    "user_facing_origin_count": 1,
-    "is_shared": false,
-    "document_with": "UPCGExProbeValencyProviderSettings"
-  },
-  "FPCGExValencyAssetEntry": {
-    "used_by": [
-      "APCGExValencyAssetPalette",
-      "APCGExValencyCage",
-      "APCGExValencyCageSimple"
-    ],
-    "origin_count": 2,
-    "origins": [
-      "APCGExValencyAssetPalette",
-      "APCGExValencyCage"
-    ],
-    "usage_count": 3,
-    "user_facing_count": 0,
-    "user_facing_origins": [],
-    "user_facing_origin_count": 0,
-    "is_shared": false,
-    "document_with": null
-  },
-  "FPCGExValencyModuleSettings": {
-    "used_by": [
-      "APCGExValencyAssetPalette",
-      "APCGExValencyCage",
-      "APCGExValencyCageSimple",
-      "FPCGExValencyAssetEntry",
-      "FPCGExValencyModuleDefinition"
-    ],
-    "origin_count": 2,
-    "origins": [
-      "APCGExValencyAssetPalette",
-      "APCGExValencyCage"
-    ],
-    "usage_count": 5,
-    "user_facing_count": 0,
-    "user_facing_origins": [],
-    "user_facing_origin_count": 0,
-    "is_shared": false,
-    "document_with": null
-  },
-  "FPCGExValencyCageOrbital": {
-    "used_by": [
-      "APCGExValencyCage",
-      "APCGExValencyCageBase",
-      "APCGExValencyCageNull",
-      "APCGExValencyCagePattern",
-      "APCGExValencyCageSimple"
-    ],
-    "origin_count": 1,
-    "origins": [
-      "APCGExValencyCageBase"
-    ],
-    "usage_count": 5,
-    "user_facing_count": 0,
-    "user_facing_origins": [],
-    "user_facing_origin_count": 0,
-    "is_shared": false,
-    "document_with": null
-  },
-  "FPCGExValencyPatternSettings": {
-    "used_by": [
-      "APCGExValencyCagePattern"
-    ],
-    "origin_count": 1,
-    "origins": [
-      "APCGExValencyCagePattern"
-    ],
-    "usage_count": 1,
-    "user_facing_count": 0,
-    "user_facing_origins": [],
-    "user_facing_origin_count": 0,
-    "is_shared": false,
-    "document_with": null
-  },
   "FPCGExClusterStateConfigBase": {
     "used_by": [
       "UPCGExClusterStateFactoryProviderSettings"
@@ -3716,6 +3561,23 @@
     "user_facing_origin_count": 1,
     "is_shared": false,
     "document_with": "UPCGExConstantFilterProviderSettings"
+  },
+  "FPCGExDataMatchFilterConfig": {
+    "used_by": [
+      "UPCGExDataMatchFilterProviderSettings"
+    ],
+    "origin_count": 1,
+    "origins": [
+      "UPCGExDataMatchFilterProviderSettings"
+    ],
+    "usage_count": 1,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExDataMatchFilterProviderSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": "UPCGExDataMatchFilterProviderSettings"
   },
   "FPCGExDistanceFilterConfig": {
     "used_by": [
@@ -5004,12 +4866,11 @@
       "FPCGExBitmaskWithOperation",
       "FPCGExAdjacencyStateConfigBase",
       "FPCGExProbeConfigBitmasks",
-      "FPCGExValencyOrbitalEntry",
       "FPCGExBitmaskFilterConfig"
     ],
     "origin_count": 0,
     "origins": [],
-    "usage_count": 6,
+    "usage_count": 5,
     "user_facing_count": 0,
     "user_facing_origins": [],
     "user_facing_origin_count": 0,
@@ -5238,86 +5099,6 @@
     "document_with": "FPCGExTopologyDetails",
     "document_with_type": "struct"
   },
-  "FPCGExValencyMaterialOverride": {
-    "used_by": [
-      "FPCGExValencyMaterialVariant"
-    ],
-    "origin_count": 0,
-    "origins": [],
-    "usage_count": 1,
-    "user_facing_count": 0,
-    "user_facing_origins": [],
-    "user_facing_origin_count": 0,
-    "is_shared": false,
-    "document_with": null
-  },
-  "FPCGExValencyMaterialVariant": {
-    "used_by": [
-      "FPCGExValencyAssetEntry",
-      "FPCGExValencyModuleDefinition"
-    ],
-    "origin_count": 0,
-    "origins": [],
-    "usage_count": 2,
-    "user_facing_count": 0,
-    "user_facing_origins": [],
-    "user_facing_origin_count": 0,
-    "is_shared": false,
-    "document_with": null
-  },
-  "FPCGExValencyNeighborIndices": {
-    "used_by": [
-      "FPCGExValencyModuleLayerConfig"
-    ],
-    "origin_count": 0,
-    "origins": [],
-    "usage_count": 1,
-    "user_facing_count": 0,
-    "user_facing_origins": [],
-    "user_facing_origin_count": 0,
-    "is_shared": false,
-    "document_with": null
-  },
-  "FPCGExValencyModuleLayerConfig": {
-    "used_by": [
-      "FPCGExValencyModuleDefinition"
-    ],
-    "origin_count": 0,
-    "origins": [],
-    "usage_count": 1,
-    "user_facing_count": 0,
-    "user_facing_origins": [],
-    "user_facing_origin_count": 0,
-    "is_shared": false,
-    "document_with": null
-  },
-  "FPCGExValencyModuleSocket": {
-    "used_by": [
-      "FPCGExValencyModuleDefinition"
-    ],
-    "origin_count": 0,
-    "origins": [],
-    "usage_count": 1,
-    "user_facing_count": 0,
-    "user_facing_origins": [],
-    "user_facing_origin_count": 0,
-    "is_shared": false,
-    "document_with": null
-  },
-  "FPCGExValencyPropertyOutputConfig": {
-    "used_by": [
-      "FPCGExValencyPropertyOutputSettings"
-    ],
-    "origin_count": 0,
-    "origins": [],
-    "usage_count": 1,
-    "user_facing_count": 0,
-    "user_facing_origins": [],
-    "user_facing_origin_count": 0,
-    "is_shared": false,
-    "document_with": "UPCGExValencyStagingSettings",
-    "document_with_type": "class"
-  },
   "FPCGExBitmaskWithOperation": {
     "used_by": [
       "FPCGExStateConfigBase",
@@ -5331,6 +5112,25 @@
     "user_facing_origin_count": 0,
     "is_shared": false,
     "document_with": "UPCGExPointStateFactoryProviderSettings",
+    "document_with_type": "class"
+  },
+  "FPCGExFilterMatchingDetails": {
+    "used_by": [
+      "FPCGExBoundsFilterConfig",
+      "FPCGExDistanceFilterConfig",
+      "FPCGExInclusionFilterConfig",
+      "FPCGExNumericCompareNearestFilterConfig",
+      "FPCGExSegmentCrossFilterConfig",
+      "FPCGExTimeFilterConfig"
+    ],
+    "origin_count": 0,
+    "origins": [],
+    "usage_count": 6,
+    "user_facing_count": 0,
+    "user_facing_origins": [],
+    "user_facing_origin_count": 0,
+    "is_shared": false,
+    "document_with": "UPCGExBoundsFilterProviderSettings",
     "document_with_type": "class"
   },
   "FPCGExTangentsScalingDetails": {

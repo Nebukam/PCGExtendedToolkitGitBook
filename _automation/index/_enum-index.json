@@ -63,6 +63,10 @@
     "file": "PCGExCollections/Public/Collections/PCGExMeshCollection.h",
     "value_count": 3
   },
+  "EPCGExDataAssetEntrySource": {
+    "file": "PCGExCollections/Public/Collections/PCGExPCGDataAssetCollection.h",
+    "value_count": 2
+  },
   "EPCGExGrammarScaleMode": {
     "file": "PCGExCollections/Public/Core/PCGExAssetGrammar.h",
     "value_count": 2
@@ -93,7 +97,11 @@
   },
   "EPCGExStagedTypeFilterMode": {
     "file": "PCGExCollections/Public/Elements/PCGExStagingTypeFilter.h",
-    "value_count": 2
+    "value_count": 3
+  },
+  "EPCGExActorExportType": {
+    "file": "PCGExCollections/Public/Helpers/PCGExDefaultLevelDataExporter.h",
+    "value_count": 3
   },
   "EPCGExCollectionSource": {
     "file": "PCGExCollections/Public/PCGExCollectionsCommon.h",
@@ -285,7 +293,7 @@
   },
   "EPCGExProjectionMethod": {
     "file": "PCGExCore/Public/Math/PCGExProjectionDetails.h",
-    "value_count": 2
+    "value_count": 3
   },
   "EPCGExWinding": {
     "file": "PCGExCore/Public/Math/PCGExWinding.h",
@@ -396,11 +404,11 @@
     "value_count": 2
   },
   "EPCGExGenerationTriggerAction": {
-    "file": "PCGExElementsBridges/Public/Elements/PCGExWaitForPCGData.h",
+    "file": "PCGExElementsBridges/Public/Helpers/PCGExPCGGenerationWatcher.h",
     "value_count": 4
   },
   "EPCGExRuntimeGenerationTriggerAction": {
-    "file": "PCGExElementsBridges/Public/Elements/PCGExWaitForPCGData.h",
+    "file": "PCGExElementsBridges/Public/Helpers/PCGExPCGGenerationWatcher.h",
     "value_count": 3
   },
   "EPCGExClipper2EndpointType": {
@@ -995,62 +1003,6 @@
     "file": "PCGExElementsTopology/Public/PCGExTopology.h",
     "value_count": 2
   },
-  "EPCGExPatternOverlapResolution": {
-    "file": "PCGExElementsValency/Public/Core/PCGExPatternMatcherOperation.h",
-    "value_count": 4
-  },
-  "EPCGExValencyAssetType": {
-    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
-    "value_count": 4
-  },
-  "EPCGExPlaceholderMode": {
-    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
-    "value_count": 3
-  },
-  "EPCGExMissingConnectionBehavior": {
-    "file": "PCGExElementsValency/Public/Core/PCGExValencyCommon.h",
-    "value_count": 3
-  },
-  "EPCGExValencyLogCategory": {
-    "file": "PCGExElementsValency/Public/Core/PCGExValencyLog.h",
-    "value_count": 9
-  },
-  "EPCGExValencyLogVerbosity": {
-    "file": "PCGExElementsValency/Public/Core/PCGExValencyLog.h",
-    "value_count": 5
-  },
-  "EPCGExPatternOutputStrategy": {
-    "file": "PCGExElementsValency/Public/Core/PCGExValencyPattern.h",
-    "value_count": 5
-  },
-  "EPCGExPatternTransformMode": {
-    "file": "PCGExElementsValency/Public/Core/PCGExValencyPattern.h",
-    "value_count": 3
-  },
-  "EPCGExFixedPickSelectionMode": {
-    "file": "PCGExElementsValency/Public/Elements/PCGExValencyStaging.h",
-    "value_count": 3
-  },
-  "EPCGExFixedPickIncompatibleBehavior": {
-    "file": "PCGExElementsValency/Public/Elements/PCGExValencyStaging.h",
-    "value_count": 2
-  },
-  "EPCGExOrbitalAssignmentMode": {
-    "file": "PCGExElementsValency/Public/Elements/PCGExWriteValencyOrbitals.h",
-    "value_count": 2
-  },
-  "EPCGExProbeValencyPriorization": {
-    "file": "PCGExElementsValency/Public/Probes/PCGExProbeValency.h",
-    "value_count": 2
-  },
-  "EValencyRebuildReason": {
-    "file": "PCGExElementsValencyEditor/Public/Cages/PCGExValencyCageBase.h",
-    "value_count": 5
-  },
-  "EPCGExValencyCageShape": {
-    "file": "PCGExElementsValencyEditor/Public/Cages/PCGExValencyCageSimple.h",
-    "value_count": 3
-  },
   "EPCGExFilterDataAction": {
     "file": "PCGExFilters/Public/Details/PCGExFilterDetails.h",
     "value_count": 3
@@ -1271,10 +1223,6 @@
     "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
     "value_count": 7
   },
-  "EPCGExCellRotationMethod": {
-    "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
-    "value_count": 3
-  },
   "EPCGExCellOutputOrientation": {
     "file": "PCGExGraphs/Public/Clusters/Artifacts/PCGExCellDetails.h",
     "value_count": 2
@@ -1337,7 +1285,7 @@
   },
   "EPCGExMatchingDetailsUsage": {
     "file": "PCGExMatching/Public/PCGExMatchingCommon.h",
-    "value_count": 3
+    "value_count": 4
   },
   "EPCGExNoiseBlendMode": {
     "file": "PCGExNoise3D/Public/Core/PCGExNoise3DCommon.h",
@@ -1371,12 +1319,16 @@
     "file": "PCGExNoise3D/Public/Noises/PCGExNoiseWorley.h",
     "value_count": 6
   },
+  "EPCGExZGOrientationMode": {
+    "file": "PCGExElementsZoneGraph/Public/Graph/PCGExClusterToZoneGraph.h",
+    "value_count": 3
+  },
   "EPCGExZGAutoRadiusMode": {
-    "file": "PCGExtendedToolkitZoneGraph/Public/Graph/PCGExClusterToZoneGraph.h",
+    "file": "PCGExElementsZoneGraph/Public/Graph/PCGExClusterToZoneGraph.h",
     "value_count": 5
   },
   "EPCGExWatabouFeatureType": {
-    "file": "PCGExtendedToolkitWatabou/Public/Data/PCGExWatabouFeature.h",
+    "file": "PCGExElementsWatabou/Public/Data/PCGExWatabouFeature.h",
     "value_count": 6
   }
 }

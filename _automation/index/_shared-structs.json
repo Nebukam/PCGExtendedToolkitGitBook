@@ -188,9 +188,10 @@
   {
     "name": "FPCGExForwardDetails",
     "file": "PCGExCore/Public/Data/Utils/PCGExDataForwardDetails.h",
-    "origin_count": 15,
+    "origin_count": 16,
     "origins": [
       "UPCGExPCGDataAssetLoaderSettings",
+      "UPCGExStagingSpawnActorsSettings",
       "UPCGExCopyClustersToPointsSettings",
       "UPCGExMeshToClustersSettings",
       "UPCGExPickClosestClustersSettings",
@@ -206,10 +207,11 @@
       "UPCGExSampleSurfaceGuidedSettings",
       "UPCGExCopyToPointsSettings"
     ],
-    "usage_count": 16,
-    "user_facing_count": 14,
+    "usage_count": 17,
+    "user_facing_count": 15,
     "user_facing_origins": [
       "UPCGExPCGDataAssetLoaderSettings",
+      "UPCGExStagingSpawnActorsSettings",
       "UPCGExCopyClustersToPointsSettings",
       "UPCGExMeshToClustersSettings",
       "UPCGExPickClosestClustersSettings",
@@ -224,7 +226,7 @@
       "UPCGExSampleNearestSurfaceSettings",
       "UPCGExCopyToPointsSettings"
     ],
-    "user_facing_origin_count": 14
+    "user_facing_origin_count": 15
   },
   {
     "name": "FPCGExMatchingDetails",
@@ -447,63 +449,6 @@
     "user_facing_origin_count": 3
   },
   {
-    "name": "FPCGExScaleToFitDetails",
-    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
-    "origin_count": 4,
-    "origins": [
-      "UPCGExAssetStagingSettings",
-      "UPCGExStagingFittingSettings",
-      "UPCGExPathSplineMeshSettings",
-      "UPCGExValencyStagingSettings"
-    ],
-    "usage_count": 5,
-    "user_facing_count": 3,
-    "user_facing_origins": [
-      "UPCGExStagingFittingSettings",
-      "UPCGExPathSplineMeshSettings",
-      "UPCGExValencyStagingSettings"
-    ],
-    "user_facing_origin_count": 3
-  },
-  {
-    "name": "FPCGExJustificationDetails",
-    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
-    "origin_count": 4,
-    "origins": [
-      "UPCGExAssetStagingSettings",
-      "UPCGExStagingFittingSettings",
-      "UPCGExPathSplineMeshSettings",
-      "UPCGExValencyStagingSettings"
-    ],
-    "usage_count": 5,
-    "user_facing_count": 3,
-    "user_facing_origins": [
-      "UPCGExStagingFittingSettings",
-      "UPCGExPathSplineMeshSettings",
-      "UPCGExValencyStagingSettings"
-    ],
-    "user_facing_origin_count": 3
-  },
-  {
-    "name": "FPCGExEdgeDirectionSettings",
-    "file": "PCGExCore/Public/Clusters/PCGExEdgeDirectionDetails.h",
-    "origin_count": 4,
-    "origins": [
-      "UPCGExWriteEdgePropertiesSettings",
-      "UPCGExBreakClustersToPathsSettings",
-      "UPCGExEdgeOrderSettings",
-      "UPCGExClusterToZoneGraphSettings"
-    ],
-    "usage_count": 5,
-    "user_facing_count": 3,
-    "user_facing_origins": [
-      "UPCGExBreakClustersToPathsSettings",
-      "UPCGExEdgeOrderSettings",
-      "UPCGExClusterToZoneGraphSettings"
-    ],
-    "user_facing_origin_count": 3
-  },
-  {
     "name": "FPCGExAttributeSourceToTargetDetails",
     "file": "PCGExCore/Public/Details/PCGExAttributesDetails.h",
     "origin_count": 3,
@@ -612,22 +557,22 @@
     "user_facing_origin_count": 3
   },
   {
-    "name": "FPCGExAttachmentRules",
-    "file": "PCGExCore/Public/Details/PCGExAttachmentRules.h",
-    "origin_count": 3,
+    "name": "FPCGExEdgeDirectionSettings",
+    "file": "PCGExCore/Public/Clusters/PCGExEdgeDirectionDetails.h",
+    "origin_count": 4,
     "origins": [
-      "UPCGExCreateSplineSettings",
-      "UPCGExSpawnDynamicMeshSettings",
+      "UPCGExWriteEdgePropertiesSettings",
+      "UPCGExBreakClustersToPathsSettings",
+      "UPCGExEdgeOrderSettings",
       "UPCGExClusterToZoneGraphSettings"
     ],
-    "usage_count": 3,
-    "user_facing_count": 3,
+    "usage_count": 5,
+    "user_facing_count": 2,
     "user_facing_origins": [
-      "UPCGExCreateSplineSettings",
-      "UPCGExSpawnDynamicMeshSettings",
-      "UPCGExClusterToZoneGraphSettings"
+      "UPCGExBreakClustersToPathsSettings",
+      "UPCGExEdgeOrderSettings"
     ],
-    "user_facing_origin_count": 3
+    "user_facing_origin_count": 2
   },
   {
     "name": "FPCGExCollisionDetails",
@@ -643,6 +588,40 @@
     "user_facing_origins": [
       "UPCGExEdgeRefineLineTrace",
       "UPCGExSampleNearestSurfaceSettings"
+    ],
+    "user_facing_origin_count": 2
+  },
+  {
+    "name": "FPCGExScaleToFitDetails",
+    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
+    "origin_count": 3,
+    "origins": [
+      "UPCGExAssetStagingSettings",
+      "UPCGExStagingFittingSettings",
+      "UPCGExPathSplineMeshSettings"
+    ],
+    "usage_count": 4,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExStagingFittingSettings",
+      "UPCGExPathSplineMeshSettings"
+    ],
+    "user_facing_origin_count": 2
+  },
+  {
+    "name": "FPCGExJustificationDetails",
+    "file": "PCGExCore/Public/Fitting/PCGExFitting.h",
+    "origin_count": 3,
+    "origins": [
+      "UPCGExAssetStagingSettings",
+      "UPCGExStagingFittingSettings",
+      "UPCGExPathSplineMeshSettings"
+    ],
+    "usage_count": 4,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExStagingFittingSettings",
+      "UPCGExPathSplineMeshSettings"
     ],
     "user_facing_origin_count": 2
   },
@@ -694,6 +673,23 @@
     "user_facing_origins": [
       "UPCGExPathfindingEdgesSettings",
       "UPCGExPathfindingPlotEdgesSettings"
+    ],
+    "user_facing_origin_count": 2
+  },
+  {
+    "name": "FPCGExAttachmentRules",
+    "file": "PCGExCore/Public/Details/PCGExAttachmentRules.h",
+    "origin_count": 3,
+    "origins": [
+      "UPCGExCreateSplineSettings",
+      "UPCGExSpawnDynamicMeshSettings",
+      "UPCGExClusterToZoneGraphSettings"
+    ],
+    "usage_count": 3,
+    "user_facing_count": 2,
+    "user_facing_origins": [
+      "UPCGExCreateSplineSettings",
+      "UPCGExSpawnDynamicMeshSettings"
     ],
     "user_facing_origin_count": 2
   },

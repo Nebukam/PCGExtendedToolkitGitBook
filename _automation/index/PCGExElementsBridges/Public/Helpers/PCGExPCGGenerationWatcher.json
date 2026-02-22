@@ -1,0 +1,51 @@
+{
+  "path": "PCGExElementsBridges/Public/Helpers/PCGExPCGGenerationWatcher.h",
+  "module": "PCGExElementsBridges",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExGenerationTriggerAction",
+      "values": [
+        {
+          "name": "Ignore",
+          "display_name": "Ignore"
+        },
+        {
+          "name": "AsIs",
+          "display_name": "As-is"
+        },
+        {
+          "name": "Generate",
+          "display_name": "Generate"
+        },
+        {
+          "name": "ForceGenerate",
+          "display_name": "ForceGenerate"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExRuntimeGenerationTriggerAction",
+      "values": [
+        {
+          "name": "Ignore",
+          "display_name": "Ignore"
+        },
+        {
+          "name": "AsIs",
+          "display_name": "As-is"
+        },
+        {
+          "name": "RefreshFirst",
+          "display_name": "Refresh"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}

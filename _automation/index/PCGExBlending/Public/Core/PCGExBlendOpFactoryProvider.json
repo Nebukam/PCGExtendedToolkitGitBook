@@ -10,7 +10,7 @@
       "display_name": "BlendOp",
       "description": "Creates a single Blend Operation node, to be used with the Attribute Blender.",
       "base_class": "UPCGExFactoryProviderSettings",
-      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Blending\", meta=(PCGExNodeLibraryDoc=\"metadata/modify/blendop\")",
+      "uclass_meta": "BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Blending\", meta=(PCGExNodeLibraryDoc=\"metadata/blending/blendop\")",
       "uproperties": [
         {
           "name": "Priority",

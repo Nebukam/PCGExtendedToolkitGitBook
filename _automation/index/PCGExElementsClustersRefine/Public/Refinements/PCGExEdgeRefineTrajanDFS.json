@@ -10,7 +10,7 @@
       "display_name": "UPCGExEdgeRefineTrajanDFS",
       "description": "",
       "base_class": "UPCGExEdgeRefineInstancedFactory",
-      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Refine : DFS (Trajan)\", PCGExNodeLibraryDoc=\"clusters/refine-cluster/dfs-trajan\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Refine : DFS (Trajan)\", PCGExNodeLibraryDoc=\"clusters/refine/cluster-refine/refine-dfs-tarjan\")",
       "uproperties": [
         {
           "name": "bInvert",

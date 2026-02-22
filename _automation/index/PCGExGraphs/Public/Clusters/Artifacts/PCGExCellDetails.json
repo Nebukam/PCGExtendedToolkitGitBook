@@ -70,24 +70,6 @@
       "used_by": []
     },
     {
-      "name": "EPCGExCellRotationMethod",
-      "values": [
-        {
-          "name": "Projection2D",
-          "display_name": "Projection 2D"
-        },
-        {
-          "name": "TopologicalHints",
-          "display_name": "Topological Hints"
-        },
-        {
-          "name": "LocalTangent3D",
-          "display_name": "Local Tangent 3D"
-        }
-      ],
-      "used_by": []
-    },
-    {
       "name": "EPCGExCellOutputOrientation",
       "values": [
         {
@@ -192,19 +174,6 @@
       "base_class": null,
       "uproperties": [
         {
-          "name": "RotationMethod",
-          "display_name": "RotationMethod",
-          "type": "EPCGExCellRotationMethod",
-          "default": "EPCGExCellRotationMethod::Projection2D",
-          "overridable": true,
-          "instanced": false,
-          "show_only_inner": false,
-          "edit_condition": null,
-          "edit_condition_hides": false,
-          "category": null,
-          "advanced": false
-        },
-        {
           "name": "OutputWinding",
           "display_name": "OutputWinding",
           "type": "EPCGExWinding",
@@ -265,19 +234,6 @@
           "instanced": false,
           "show_only_inner": false,
           "edit_condition": null,
-          "edit_condition_hides": false,
-          "category": null,
-          "advanced": false
-        },
-        {
-          "name": "WrapperClassificationTolerance",
-          "display_name": " ├─ Classification Tolerance",
-          "type": "double",
-          "default": "0.1",
-          "overridable": true,
-          "instanced": false,
-          "show_only_inner": false,
-          "edit_condition": "bOmitWrappingBounds",
           "edit_condition_hides": false,
           "category": null,
           "advanced": false

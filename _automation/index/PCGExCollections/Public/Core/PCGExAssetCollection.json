@@ -238,6 +238,19 @@
           "advanced": false
         },
         {
+          "name": "CollectionGUID",
+          "display_name": "CollectionGUID",
+          "type": "uint32",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": true
+        },
+        {
           "name": "bAutoRebuildStaging",
           "display_name": "bAutoRebuildStaging",
           "type": "bool",
@@ -400,6 +413,19 @@
           "edit_condition_hides": false,
           "category": null,
           "advanced": false
+        },
+        {
+          "name": "CollectionGUID",
+          "display_name": "CollectionGUID",
+          "type": "uint32",
+          "default": "0",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": true
         },
         {
           "name": "bAutoRebuildStaging",

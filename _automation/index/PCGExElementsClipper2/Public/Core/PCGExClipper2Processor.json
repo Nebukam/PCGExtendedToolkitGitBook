@@ -96,11 +96,11 @@
       "values": [
         {
           "name": "Split",
-          "display_name": "Split"
+          "display_name": "Separate"
         },
         {
           "name": "Consolidate",
-          "display_name": "Consolidate"
+          "display_name": "Merged"
         }
       ],
       "used_by": []

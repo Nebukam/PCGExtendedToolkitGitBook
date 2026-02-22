@@ -97,7 +97,7 @@
       "display_name": "Cluster : Voronoi 2D",
       "description": "Create a 2D Voronoi graph for each input dataset.",
       "base_class": "UPCGExPointsProcessorSettings",
-      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/diagrams/voronoi-2d\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, ClassGroup = (Procedural), Category=\"PCGEx|Clusters\", meta=(PCGExNodeLibraryDoc=\"clusters/generate/cluster-voronoi-2d\")",
       "uproperties": [
         {
           "name": "Metric",

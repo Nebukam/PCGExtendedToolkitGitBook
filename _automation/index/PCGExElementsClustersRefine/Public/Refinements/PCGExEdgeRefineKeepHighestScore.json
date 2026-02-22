@@ -10,7 +10,7 @@
       "display_name": "UPCGExEdgeKeepHighestScore",
       "description": "",
       "base_class": "UPCGExEdgeRefineInstancedFactory",
-      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Keep Highest Score\", PCGExNodeLibraryDoc=\"clusters/refine-cluster/edge-score\")",
+      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Keep Highest Score\", PCGExNodeLibraryDoc=\"clusters/refine/cluster-refine/score-based-refinements\")",
       "uproperties": [],
       "classification": {
         "type": "instanced_factory",

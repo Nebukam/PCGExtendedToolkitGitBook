@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsWatabouEditor/Public/PCGExElementsWatabouEditor.h",
+  "module": "PCGExElementsWatabouEditor",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsWatabouEditorModule",
+      "base_class": "IPCGExEditorModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

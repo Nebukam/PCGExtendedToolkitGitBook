@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsZoneGraph/Public/PCGExElementsZoneGraph.h",
+  "module": "PCGExElementsZoneGraph",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsZoneGraphModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}
