@@ -10,7 +10,8 @@
     "UPCGExDecompMaxBoxesExt",
     "UPCGExDecompSpectral",
     "UPCGExDecompThreshold",
-    "UPCGExClusterDecompositionSettings"
+    "UPCGExClusterDecompositionSettings",
+    "UPCGExStagedTypeFilterSettings"
   ],
   "skipped": []
 }

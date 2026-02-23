@@ -1,5 +1,5 @@
 {
-  "generated": "2026-02-11T04:01:43.681Z",
+  "generated": "2026-02-23T03:56:03.021Z",
   "entries": [
     {
       "source_relative": "PCGExBlending/Public/Core/PCGExBlendOpFactory.h",
@@ -191,6 +191,15 @@
       "status": "ok"
     },
     {
+      "source_relative": "PCGExCollections/Public/Elements/PCGExStagingLoadLevel.h",
+      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExCollections\\Public\\Elements\\PCGExStagingLoadLevel.h",
+      "staging": "_staging/PCGExCollections/Elements/PCGExStagingLoadLevel.md",
+      "node_library": null,
+      "doc_path": null,
+      "current_doc_meta": "staging/staging-load-level",
+      "status": "staging_only"
+    },
+    {
       "source_relative": "PCGExCollections/Public/Elements/PCGExStagingLoadPCGData.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExCollections\\Public\\Elements\\PCGExStagingLoadPCGData.h",
       "staging": "_staging/PCGExCollections/Elements/PCGExStagingLoadPCGData.md",
@@ -216,6 +225,15 @@
       "doc_path": "staging/staging-load-sockets",
       "current_doc_meta": "staging/staging-load-sockets",
       "status": "ok"
+    },
+    {
+      "source_relative": "PCGExCollections/Public/Elements/PCGExStagingSpawnActors.h",
+      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExCollections\\Public\\Elements\\PCGExStagingSpawnActors.h",
+      "staging": "_staging/PCGExCollections/Elements/PCGExStagingSpawnActors.md",
+      "node_library": null,
+      "doc_path": null,
+      "current_doc_meta": "staging/staging-spawn-actors",
+      "status": "staging_only"
     },
     {
       "source_relative": "PCGExCollections/Public/Elements/PCGExStagingSplineMesh.h",
@@ -525,12 +543,12 @@
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/Decomposition/PCGExClusterDecomposition.h",
-      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClusters\\Public\\Elements\\Decomposition\\PCGExClusterDecomposition.h",
-      "staging": "_staging/PCGExElementsClusters/Elements/Decomposition/PCGExClusterDecomposition.md",
+      "source_disk": "PCGExElementsClusters/Public/Elements/Decomposition/PCGExClusterDecomposition.h",
+      "staging": null,
       "node_library": "node-library/clusters/refine/cluster-decomposition.md",
       "doc_path": "clusters/refine/cluster-decomposition",
-      "current_doc_meta": "clusters/refine/cluster-decomposition",
-      "status": "ok"
+      "current_doc_meta": null,
+      "status": "library_only"
     },
     {
       "source_relative": "PCGExElementsClusters/Public/Elements/Meta/NeighborSamplers/PCGExNeighborSampleAttribute.h",
@@ -1055,6 +1073,87 @@
       "status": "meta_missing"
     },
     {
+      "source_relative": "PCGExElementsClustersDecomp/Public/Core/PCGExDecompositionOperation.h",
+      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClustersDecomp\\Public\\Core\\PCGExDecompositionOperation.h",
+      "staging": "_staging/PCGExElementsClustersDecomp/Core/PCGExDecompositionOperation.md",
+      "node_library": "node-library/clusters/analyze/cluster-decomposition/decomposition-factory.md",
+      "doc_path": "clusters/analyze/cluster-decomposition/decomposition-factory",
+      "current_doc_meta": null,
+      "status": "meta_missing"
+    },
+    {
+      "source_relative": "PCGExElementsClustersDecomp/Public/Decompositions/PCGExDecompBSPOccupancy.h",
+      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClustersDecomp\\Public\\Decompositions\\PCGExDecompBSPOccupancy.h",
+      "staging": "_staging/PCGExElementsClustersDecomp/Decompositions/PCGExDecompBSPOccupancy.md",
+      "node_library": "node-library/clusters/analyze/cluster-decomposition/decomp-bsp-occupancy.md",
+      "doc_path": "clusters/analyze/cluster-decomposition/decomp-bsp-occupancy",
+      "current_doc_meta": null,
+      "status": "meta_missing"
+    },
+    {
+      "source_relative": "PCGExElementsClustersDecomp/Public/Decompositions/PCGExDecompConvexBSP.h",
+      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClustersDecomp\\Public\\Decompositions\\PCGExDecompConvexBSP.h",
+      "staging": "_staging/PCGExElementsClustersDecomp/Decompositions/PCGExDecompConvexBSP.md",
+      "node_library": "node-library/clusters/analyze/cluster-decomposition/decomp-convex-bsp.md",
+      "doc_path": "clusters/analyze/cluster-decomposition/decomp-convex-bsp",
+      "current_doc_meta": null,
+      "status": "meta_missing"
+    },
+    {
+      "source_relative": "PCGExElementsClustersDecomp/Public/Decompositions/PCGExDecompGridPartition.h",
+      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClustersDecomp\\Public\\Decompositions\\PCGExDecompGridPartition.h",
+      "staging": "_staging/PCGExElementsClustersDecomp/Decompositions/PCGExDecompGridPartition.md",
+      "node_library": "node-library/clusters/analyze/cluster-decomposition/decomp-grid-partition.md",
+      "doc_path": "clusters/analyze/cluster-decomposition/decomp-grid-partition",
+      "current_doc_meta": null,
+      "status": "meta_missing"
+    },
+    {
+      "source_relative": "PCGExElementsClustersDecomp/Public/Decompositions/PCGExDecompMaxBoxes.h",
+      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClustersDecomp\\Public\\Decompositions\\PCGExDecompMaxBoxes.h",
+      "staging": "_staging/PCGExElementsClustersDecomp/Decompositions/PCGExDecompMaxBoxes.md",
+      "node_library": "node-library/clusters/analyze/cluster-decomposition/decomp-max-boxes.md",
+      "doc_path": "clusters/analyze/cluster-decomposition/decomp-max-boxes",
+      "current_doc_meta": null,
+      "status": "meta_missing"
+    },
+    {
+      "source_relative": "PCGExElementsClustersDecomp/Public/Decompositions/PCGExDecompMaxBoxesExt.h",
+      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClustersDecomp\\Public\\Decompositions\\PCGExDecompMaxBoxesExt.h",
+      "staging": "_staging/PCGExElementsClustersDecomp/Decompositions/PCGExDecompMaxBoxesExt.md",
+      "node_library": "node-library/clusters/analyze/cluster-decomposition/decomp-max-boxes-extended.md",
+      "doc_path": "clusters/analyze/cluster-decomposition/decomp-max-boxes-extended",
+      "current_doc_meta": null,
+      "status": "meta_missing"
+    },
+    {
+      "source_relative": "PCGExElementsClustersDecomp/Public/Decompositions/PCGExDecompSpectral.h",
+      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClustersDecomp\\Public\\Decompositions\\PCGExDecompSpectral.h",
+      "staging": "_staging/PCGExElementsClustersDecomp/Decompositions/PCGExDecompSpectral.md",
+      "node_library": "node-library/clusters/analyze/cluster-decomposition/decomp-spectral.md",
+      "doc_path": "clusters/analyze/cluster-decomposition/decomp-spectral",
+      "current_doc_meta": null,
+      "status": "meta_missing"
+    },
+    {
+      "source_relative": "PCGExElementsClustersDecomp/Public/Decompositions/PCGExDecompThreshold.h",
+      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClustersDecomp\\Public\\Decompositions\\PCGExDecompThreshold.h",
+      "staging": "_staging/PCGExElementsClustersDecomp/Decompositions/PCGExDecompThreshold.md",
+      "node_library": "node-library/clusters/analyze/cluster-decomposition/decomp-threshold.md",
+      "doc_path": "clusters/analyze/cluster-decomposition/decomp-threshold",
+      "current_doc_meta": null,
+      "status": "meta_missing"
+    },
+    {
+      "source_relative": "PCGExElementsClustersDecomp/Public/Elements/PCGExClusterDecomposition.h",
+      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClustersDecomp\\Public\\Elements\\PCGExClusterDecomposition.h",
+      "staging": "_staging/PCGExElementsClustersDecomp/Elements/PCGExClusterDecomposition.md",
+      "node_library": "node-library/clusters/analyze/cluster-decomposition/README.md",
+      "doc_path": "clusters/analyze/cluster-decomposition",
+      "current_doc_meta": "clusters/cluster-decomposition",
+      "status": "meta_mismatch"
+    },
+    {
       "source_relative": "PCGExElementsClustersDiagrams/Public/Elements/PCGExBuildCellDiagram.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsClustersDiagrams\\Public\\Elements\\PCGExBuildCellDiagram.h",
       "staging": "_staging/PCGExElementsClustersDiagrams/Elements/PCGExBuildCellDiagram.md",
@@ -1069,8 +1168,8 @@
       "staging": "_staging/PCGExElementsClustersDiagrams/Elements/PCGExBuildConvexHull.md",
       "node_library": "node-library/clusters/generate/cluster-convex-hull-3d.md",
       "doc_path": "clusters/generate/cluster-convex-hull-3d",
-      "current_doc_meta": "clusters/diagrams/convex-hull-3d",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-convex-hull-3d",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClustersDiagrams/Public/Elements/PCGExBuildConvexHull2D.h",
@@ -1078,8 +1177,8 @@
       "staging": "_staging/PCGExElementsClustersDiagrams/Elements/PCGExBuildConvexHull2D.md",
       "node_library": "node-library/clusters/generate/cluster-convex-hull-2d.md",
       "doc_path": "clusters/generate/cluster-convex-hull-2d",
-      "current_doc_meta": "clusters/diagrams/convex-hull-2d",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-convex-hull-2d",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClustersDiagrams/Public/Elements/PCGExBuildDelaunayGraph.h",
@@ -1087,8 +1186,8 @@
       "staging": "_staging/PCGExElementsClustersDiagrams/Elements/PCGExBuildDelaunayGraph.md",
       "node_library": "node-library/clusters/generate/cluster-delaunay-3d.md",
       "doc_path": "clusters/generate/cluster-delaunay-3d",
-      "current_doc_meta": "clusters/diagrams/delaunay-3d",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-delaunay-3d",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClustersDiagrams/Public/Elements/PCGExBuildDelaunayGraph2D.h",
@@ -1096,8 +1195,8 @@
       "staging": "_staging/PCGExElementsClustersDiagrams/Elements/PCGExBuildDelaunayGraph2D.md",
       "node_library": "node-library/clusters/generate/cluster-delaunay-2d.md",
       "doc_path": "clusters/generate/cluster-delaunay-2d",
-      "current_doc_meta": "clusters/diagrams/delaunay-2d",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-delaunay-2d",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClustersDiagrams/Public/Elements/PCGExBuildDualGraph.h",
@@ -1114,8 +1213,8 @@
       "staging": "_staging/PCGExElementsClustersDiagrams/Elements/PCGExBuildVoronoiGraph.md",
       "node_library": "node-library/clusters/generate/cluster-voronoi-3d.md",
       "doc_path": "clusters/generate/cluster-voronoi-3d",
-      "current_doc_meta": "clusters/diagrams/voronoi-3d",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-voronoi-3d",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClustersDiagrams/Public/Elements/PCGExBuildVoronoiGraph2D.h",
@@ -1123,8 +1222,8 @@
       "staging": "_staging/PCGExElementsClustersDiagrams/Elements/PCGExBuildVoronoiGraph2D.md",
       "node_library": "node-library/clusters/generate/cluster-voronoi-2d.md",
       "doc_path": "clusters/generate/cluster-voronoi-2d",
-      "current_doc_meta": "clusters/diagrams/voronoi-2d",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/generate/cluster-voronoi-2d",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClustersRefine/Public/Refinements/PCGExEdgeRefineByFilter.h",
@@ -1132,8 +1231,8 @@
       "staging": "_staging/PCGExElementsClustersRefine/Refinements/PCGExEdgeRefineByFilter.md",
       "node_library": "node-library/clusters/refine/cluster-refine/refine-filter.md",
       "doc_path": "clusters/refine/cluster-refine/refine-filter",
-      "current_doc_meta": "clusters/refine-cluster/filters",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/refine/cluster-refine/refine-filter",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClustersRefine/Public/Refinements/PCGExEdgeRefineGabriel.h",
@@ -1141,8 +1240,8 @@
       "staging": "_staging/PCGExElementsClustersRefine/Refinements/PCGExEdgeRefineGabriel.md",
       "node_library": "node-library/clusters/refine/cluster-refine/refine-gabriel.md",
       "doc_path": "clusters/refine/cluster-refine/refine-gabriel",
-      "current_doc_meta": "clusters/refine-cluster/gabriel",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/refine/cluster-refine/refine-gabriel",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClustersRefine/Public/Refinements/PCGExEdgeRefineKeepHighestScore.h",
@@ -1150,8 +1249,8 @@
       "staging": "_staging/PCGExElementsClustersRefine/Refinements/PCGExEdgeRefineScoreBased.md",
       "node_library": "node-library/clusters/refine/cluster-refine/score-based-refinements.md",
       "doc_path": "clusters/refine/cluster-refine/score-based-refinements",
-      "current_doc_meta": "clusters/refine-cluster/edge-score",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/refine/cluster-refine/score-based-refinements",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClustersRefine/Public/Refinements/PCGExEdgeRefineKeepShortest.h",
@@ -1159,8 +1258,8 @@
       "staging": "_staging/PCGExElementsClustersRefine/Refinements/PCGExEdgeRefineLengthBased.md",
       "node_library": "node-library/clusters/refine/cluster-refine/length-based-refinements.md",
       "doc_path": "clusters/refine/cluster-refine/length-based-refinements",
-      "current_doc_meta": "clusters/refine-cluster/edge-length",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/refine/cluster-refine/length-based-refinements",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClustersRefine/Public/Refinements/PCGExEdgeRefineLineTrace.h",
@@ -1168,8 +1267,8 @@
       "staging": "_staging/PCGExElementsClustersRefine/Refinements/PCGExEdgeRefineLineTrace.md",
       "node_library": "node-library/clusters/refine/cluster-refine/refine-line-trace.md",
       "doc_path": "clusters/refine/cluster-refine/refine-line-trace",
-      "current_doc_meta": "clusters/refine-cluster/line-trace",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/refine/cluster-refine/refine-line-trace",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClustersRefine/Public/Refinements/PCGExEdgeRefineOperation.h",
@@ -1186,8 +1285,8 @@
       "staging": "_staging/PCGExElementsClustersRefine/Refinements/PCGExEdgeRefinePrimMST.md",
       "node_library": "node-library/clusters/refine/cluster-refine/refine-mst-prim.md",
       "doc_path": "clusters/refine/cluster-refine/refine-mst-prim",
-      "current_doc_meta": "clusters/refine-cluster/mst-prim",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/refine/cluster-refine/refine-mst-prim",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClustersRefine/Public/Refinements/PCGExEdgeRefineRemoveLeaves.h",
@@ -1195,8 +1294,8 @@
       "staging": "_staging/PCGExElementsClustersRefine/Refinements/PCGExEdgeRefineRemoveLeaves.md",
       "node_library": "node-library/clusters/refine/cluster-refine/remove-leaves.md",
       "doc_path": "clusters/refine/cluster-refine/remove-leaves",
-      "current_doc_meta": "clusters/refine-cluster/remove-leaves",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/refine/cluster-refine/remove-leaves",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClustersRefine/Public/Refinements/PCGExEdgeRefineRemoveLeavesRecursive.h",
@@ -1204,8 +1303,8 @@
       "staging": "_staging/PCGExElementsClustersRefine/Refinements/PCGExEdgeRefineRemoveLeavesRecursive.md",
       "node_library": "node-library/clusters/refine/cluster-refine/remove-leaves-recursive.md",
       "doc_path": "clusters/refine/cluster-refine/remove-leaves-recursive",
-      "current_doc_meta": "clusters/refine-cluster/remove-leaves-recursive",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/refine/cluster-refine/remove-leaves-recursive",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClustersRefine/Public/Refinements/PCGExEdgeRefineRemoveOverlap.h",
@@ -1213,8 +1312,8 @@
       "staging": "_staging/PCGExElementsClustersRefine/Refinements/PCGExEdgeRefineRemoveOverlap.md",
       "node_library": "node-library/clusters/refine/cluster-refine/refine-overlap.md",
       "doc_path": "clusters/refine/cluster-refine/refine-overlap",
-      "current_doc_meta": "clusters/refine-cluster/overlap",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/refine/cluster-refine/refine-overlap",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClustersRefine/Public/Refinements/PCGExEdgeRefineSkeleton.h",
@@ -1222,8 +1321,8 @@
       "staging": "_staging/PCGExElementsClustersRefine/Refinements/PCGExEdgeRefineSkeleton.md",
       "node_library": "node-library/clusters/refine/cluster-refine/refine-v-skeleton.md",
       "doc_path": "clusters/refine/cluster-refine/refine-v-skeleton",
-      "current_doc_meta": "clusters/refine-cluster/v-skeleton",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/refine/cluster-refine/refine-v-skeleton",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClustersRefine/Public/Refinements/PCGExEdgeRefineTrajanDFS.h",
@@ -1231,8 +1330,8 @@
       "staging": "_staging/PCGExElementsClustersRefine/Refinements/PCGExEdgeRefineTrajanDFS.md",
       "node_library": "node-library/clusters/refine/cluster-refine/refine-dfs-tarjan.md",
       "doc_path": "clusters/refine/cluster-refine/refine-dfs-tarjan",
-      "current_doc_meta": "clusters/refine-cluster/dfs-trajan",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/refine/cluster-refine/refine-dfs-tarjan",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsFloodFill/Public/Core/PCGExFillControlsFactoryProvider.h",
@@ -2784,7 +2883,7 @@
     },
     {
       "source_relative": "PCGExElementsValency/Public/Core/PCGExPatternMatcherOperation.h",
-      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Core\\PCGExPatternMatcherOperation.h",
+      "source_disk": "PCGExElementsValency/Public/Core/PCGExPatternMatcherOperation.h",
       "staging": "_staging/PCGExElementsValency/Core/PCGExPatternMatcherOperation.md",
       "node_library": "node-library/valency/valency-patterns/pattern-matcher.md",
       "doc_path": "valency/valency-patterns/pattern-matcher",
@@ -2793,7 +2892,7 @@
     },
     {
       "source_relative": "PCGExElementsValency/Public/Core/PCGExValencyBondingRules.h",
-      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Core\\PCGExValencyBondingRules.h",
+      "source_disk": "PCGExElementsValency/Public/Core/PCGExValencyBondingRules.h",
       "staging": "_staging/PCGExElementsValency/Core/PCGExValencyBondingRules.md",
       "node_library": "node-library/valency/rules/bonding-rules.md",
       "doc_path": "valency/rules/bonding-rules",
@@ -2802,7 +2901,7 @@
     },
     {
       "source_relative": "PCGExElementsValency/Public/Core/PCGExValencyOrbitalSet.h",
-      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Core\\PCGExValencyOrbitalSet.h",
+      "source_disk": "PCGExElementsValency/Public/Core/PCGExValencyOrbitalSet.h",
       "staging": "_staging/PCGExElementsValency/Core/PCGExValencyOrbitalSet.md",
       "node_library": "node-library/valency/rules/orbital-set.md",
       "doc_path": "valency/rules/orbital-set",
@@ -2811,7 +2910,7 @@
     },
     {
       "source_relative": "PCGExElementsValency/Public/Core/PCGExValencyProcessor.h",
-      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Core\\PCGExValencyProcessor.h",
+      "source_disk": "PCGExElementsValency/Public/Core/PCGExValencyProcessor.h",
       "staging": "_staging/PCGExElementsValency/Core/PCGExValencyProcessor.md",
       "node_library": null,
       "doc_path": null,
@@ -2820,7 +2919,7 @@
     },
     {
       "source_relative": "PCGExElementsValency/Public/Core/PCGExValencySocketRules.h",
-      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Core\\PCGExValencySocketRules.h",
+      "source_disk": "PCGExElementsValency/Public/Core/PCGExValencySocketRules.h",
       "staging": "_staging/PCGExElementsValency/Core/PCGExValencySocketRules.md",
       "node_library": "node-library/valency/rules/socket-rules.md",
       "doc_path": "valency/rules/socket-rules",
@@ -2829,7 +2928,7 @@
     },
     {
       "source_relative": "PCGExElementsValency/Public/Core/PCGExValencySolverOperation.h",
-      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Core\\PCGExValencySolverOperation.h",
+      "source_disk": "PCGExElementsValency/Public/Core/PCGExValencySolverOperation.h",
       "staging": "_staging/PCGExElementsValency/Core/PCGExValencySolverOperation.md",
       "node_library": "node-library/valency/valency-staging/solver.md",
       "doc_path": "valency/valency-staging/solver",
@@ -2838,84 +2937,93 @@
     },
     {
       "source_relative": "PCGExElementsValency/Public/Elements/PCGExValencyPatternReplacement.h",
-      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Elements\\PCGExValencyPatternReplacement.h",
+      "source_disk": "PCGExElementsValency/Public/Elements/PCGExValencyPatternReplacement.h",
       "staging": "_staging/PCGExElementsValency/Elements/PCGExValencyPatternReplacement.md",
       "node_library": "node-library/valency/valency-patterns/README.md",
       "doc_path": "valency/valency-patterns",
-      "current_doc_meta": "valency/valency-patterns",
-      "status": "ok"
+      "current_doc_meta": null,
+      "status": "meta_missing"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Elements/PCGExValencyStaging.h",
-      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Elements\\PCGExValencyStaging.h",
+      "source_disk": "PCGExElementsValency/Public/Elements/PCGExValencyStaging.h",
       "staging": "_staging/PCGExElementsValency/Elements/PCGExValencyStaging.md",
       "node_library": "node-library/valency/valency-staging/README.md",
       "doc_path": "valency/valency-staging",
-      "current_doc_meta": "valency/valency-staging",
-      "status": "ok"
+      "current_doc_meta": null,
+      "status": "meta_missing"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Elements/PCGExWriteModuleSockets.h",
-      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Elements\\PCGExWriteModuleSockets.h",
+      "source_disk": "PCGExElementsValency/Public/Elements/PCGExWriteModuleSockets.h",
       "staging": "_staging/PCGExElementsValency/Elements/PCGExWriteModuleSockets.md",
       "node_library": "node-library/valency/valency-write-module-sockets.md",
       "doc_path": "valency/valency-write-module-sockets",
-      "current_doc_meta": "valency/valency-write-module-sockets",
-      "status": "ok"
+      "current_doc_meta": null,
+      "status": "meta_missing"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Elements/PCGExWriteValencyOrbitals.h",
-      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Elements\\PCGExWriteValencyOrbitals.h",
+      "source_disk": "PCGExElementsValency/Public/Elements/PCGExWriteValencyOrbitals.h",
       "staging": "_staging/PCGExElementsValency/Elements/PCGExWriteValencyOrbitals.md",
       "node_library": "node-library/valency/valency-write-orbitals.md",
       "doc_path": "valency/valency-write-orbitals",
-      "current_doc_meta": "valency/valency-write-orbitals",
-      "status": "ok"
+      "current_doc_meta": null,
+      "status": "meta_missing"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Matchers/PCGExDefaultPatternMatcher.h",
-      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Matchers\\PCGExDefaultPatternMatcher.h",
+      "source_disk": "PCGExElementsValency/Public/Matchers/PCGExDefaultPatternMatcher.h",
       "staging": "_staging/PCGExElementsValency/Matchers/PCGExDefaultPatternMatcher.md",
       "node_library": "node-library/valency/valency-patterns/default-pattern-matcher.md",
       "doc_path": "valency/valency-patterns/default-pattern-matcher",
-      "current_doc_meta": "valency/valency-patterns/default-pattern-matcher",
-      "status": "ok"
+      "current_doc_meta": null,
+      "status": "meta_missing"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Probes/PCGExProbeValency.h",
-      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Probes\\PCGExProbeValency.h",
+      "source_disk": "PCGExElementsValency/Public/Probes/PCGExProbeValency.h",
       "staging": "_staging/PCGExElementsValency/Probes/PCGExProbeValency.md",
       "node_library": "node-library/clusters/generate/cluster-connect-points/probe-orbital-valency.md",
       "doc_path": "clusters/generate/cluster-connect-points/probe-orbital-valency",
-      "current_doc_meta": "clusters/generate/cluster-connect-points/probe-orbital-valency",
-      "status": "ok"
+      "current_doc_meta": null,
+      "status": "meta_missing"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Solvers/PCGExValencyConstraintSolver.h",
-      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Solvers\\PCGExValencyConstraintSolver.h",
+      "source_disk": "PCGExElementsValency/Public/Solvers/PCGExValencyConstraintSolver.h",
       "staging": "_staging/PCGExElementsValency/Solvers/PCGExValencyConstraintSolver.md",
       "node_library": "node-library/valency/valency-staging/constraint-solver.md",
       "doc_path": "valency/valency-staging/constraint-solver",
-      "current_doc_meta": "valency/valency-staging/constraint-solver",
-      "status": "ok"
+      "current_doc_meta": null,
+      "status": "meta_missing"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Solvers/PCGExValencyEntropySolver.h",
-      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Solvers\\PCGExValencyEntropySolver.h",
+      "source_disk": "PCGExElementsValency/Public/Solvers/PCGExValencyEntropySolver.h",
       "staging": "_staging/PCGExElementsValency/Solvers/PCGExValencyEntropySolver.md",
       "node_library": "node-library/valency/valency-staging/entropy-solver.md",
       "doc_path": "valency/valency-staging/entropy-solver",
-      "current_doc_meta": "valency/valency-staging/entropy-solver",
-      "status": "ok"
+      "current_doc_meta": null,
+      "status": "meta_missing"
     },
     {
       "source_relative": "PCGExElementsValency/Public/Solvers/PCGExValencyPrioritySolver.h",
-      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExElementsValency\\Public\\Solvers\\PCGExValencyPrioritySolver.h",
+      "source_disk": "PCGExElementsValency/Public/Solvers/PCGExValencyPrioritySolver.h",
       "staging": "_staging/PCGExElementsValency/Solvers/PCGExValencyPrioritySolver.md",
       "node_library": "node-library/valency/valency-staging/priority-solver.md",
       "doc_path": "valency/valency-staging/priority-solver",
-      "current_doc_meta": "valency/valency-staging/priority-solver",
-      "status": "ok"
+      "current_doc_meta": null,
+      "status": "meta_missing"
+    },
+    {
+      "source_relative": "PCGExElementsZoneGraph/Public/Graph/PCGExClusterToZoneGraph.h",
+      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExElementsZoneGraph\\Source\\PCGExElementsZoneGraph\\Public\\Graph\\PCGExClusterToZoneGraph.h",
+      "staging": "_staging/PCGExElementsZoneGraph/Graph/PCGExClusterToZoneGraph.md",
+      "node_library": null,
+      "doc_path": null,
+      "current_doc_meta": "cluster-to-zone-graph",
+      "status": "staging_only"
     },
     {
       "source_relative": "PCGExFilters/Public/Core/PCGExClusterFilter.h",
@@ -4014,25 +4122,16 @@
       "doc_path": "common-settings/plugin-settings",
       "current_doc_meta": null,
       "status": "library_only"
-    },
-    {
-      "source_relative": "PCGExtendedToolkitZoneGraph/Public/Graph/PCGExClusterToZoneGraph.h",
-      "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkitZoneGraph\\Source\\PCGExtendedToolkitZoneGraph\\Public\\Graph\\PCGExClusterToZoneGraph.h",
-      "staging": "_staging/PCGExtendedToolkitZoneGraph/Graph/PCGExClusterToZoneGraph.md",
-      "node_library": null,
-      "doc_path": null,
-      "current_doc_meta": "cluster-to-zone-graph",
-      "status": "staging_only"
     }
   ],
   "summary": {
-    "total_staging": 446,
-    "total_library": 416,
-    "matched": 415,
-    "staging_only": 31,
-    "library_only": 1,
-    "doc_meta_ok": 323,
-    "doc_meta_mismatch": 17,
-    "doc_meta_missing": 75
+    "total_staging": 456,
+    "total_library": 425,
+    "matched": 423,
+    "staging_only": 33,
+    "library_only": 2,
+    "doc_meta_ok": 330,
+    "doc_meta_mismatch": 1,
+    "doc_meta_missing": 92
   }
 }
