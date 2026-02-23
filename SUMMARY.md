@@ -457,6 +457,8 @@
   * [Staging : Load Properties](node-library/staging/staging-load-properties.md)
   * [Staging : Load Sockets](node-library/staging/staging-load-sockets.md)
   * [Staging : Load PCGData](node-library/staging/staging-load-pcgdata.md)
+  * [Staging : Spawn Level](node-library/staging/staging-spawn-level.md)
+  * [Staging : Spawn Actors](node-library/staging/staging-spawn-actors.md)
   * [Staging : Type Filter](node-library/staging/staging-type-filter.md)
   * [Utilities](node-library/staging/utilities/README.md)
     * [Staging Data Mesh Selector](node-library/staging/utilities/staging-data-mesh-selector.md)
