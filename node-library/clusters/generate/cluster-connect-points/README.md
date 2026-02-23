@@ -10,7 +10,7 @@ Connect points according to a set of probes.
 
 Connect Points creates cluster graphs by connecting input points based on configurable probe rules. Each point queries neighboring points using one or more probe operations to determine which connections to establish. The result is a cluster with vertices (the original points) and edges representing the connections.
 
-<figure><img src="../../../../.gitbook/assets/image (164).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (280).png" alt=""><figcaption></figcaption></figure>
 
 ### How It Works
 

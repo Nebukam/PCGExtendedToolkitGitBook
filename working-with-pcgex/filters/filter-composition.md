@@ -10,7 +10,7 @@ icon: layer-plus
 
 The simplest composition: connect multiple filter outputs to the same Filters input pin.
 
-<figure><img src="../../.gitbook/assets/image (182).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (298).png" alt=""><figcaption></figcaption></figure>
 
 When multiple filters connect to one pin:
 
@@ -37,7 +37,7 @@ Set a Filter Group to AND mode. Connect filter providers to its inputs. All conn
 
 Set a Filter Group to OR mode. Any connected filter passing means the group passes. Evaluation exits early on first success. Elements failing all filters fail the group.
 
-<figure><img src="../../.gitbook/assets/image (183).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (299).png" alt=""><figcaption></figcaption></figure>
 
 #### Setting Up a Filter Group
 
@@ -68,7 +68,7 @@ Filter Group (OR)
     └─ Filter D
 ```
 
-<figure><img src="../../.gitbook/assets/image (184).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (300).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="success" %}
 ## There's no depth limit
@@ -106,7 +106,7 @@ Most filters have an Invert option that flips their logic. This applies before t
 
 Use inversion sparingly; it makes filter logic harder to follow. Often a different comparison operator expresses the condition more clearly.
 
-<figure><img src="../../.gitbook/assets/image (190).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (306).png" alt=""><figcaption></figcaption></figure>
 
 ### Practical Patterns
 

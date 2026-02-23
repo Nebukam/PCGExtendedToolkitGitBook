@@ -10,7 +10,7 @@ Creates hierarchical hub-and-spoke network topology.
 
 This global probe creates a two-tier network structure where selected "hub" points serve as central connectors, and remaining "spoke" points connect to their nearest hub(s). Hubs can be selected using various criteria including local density, attribute values, geometric centrality, or K-means clustering. This creates efficient star-topology networks commonly used for distribution systems, transportation hubs, or hierarchical organization.
 
-<figure><img src="../../../../.gitbook/assets/image (174).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (290).png" alt=""><figcaption></figcaption></figure>
 
 ### How It Works
 

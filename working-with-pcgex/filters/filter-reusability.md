@@ -6,7 +6,7 @@ icon: rotate
 
 **One filter, many consumers.** Filters are designed so that a single filter instance can connect to multiple consumers. The logic stays in one place, behavior stays consistent, and updates apply everywhere at once.
 
-<figure><img src="../../.gitbook/assets/image (180).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (296).png" alt=""><figcaption></figcaption></figure>
 
 Connect the same filter output to as many Filters input pins as needed. The filter is evaluated independently for each consumer's context.
 
@@ -22,7 +22,7 @@ When filters reference unbounded input data (data spanning beyond the current ge
 
 For larger graphs, filters can be gathered like any other PCG data. Use **Named Redirectors** (reroute nodes with names) to maintain filters in one location and reference them throughout your graph. This avoids long wire runs across complex graphs and works within a single graph without subgraph overhead.
 
-<figure><img src="../../.gitbook/assets/image (185).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (301).png" alt=""><figcaption></figcaption></figure>
 
 ### Subgraph Patterns
 
@@ -38,7 +38,7 @@ Subgraphs add complexity but enable cross-graph reuse. Consider simpler approach
 
 A useful pattern: create internal "static" filters for core processing logic, then expose an "Additional Filters" pin that feeds into a Filter Group. Users can extend conditions without modifying the subgraph.
 
-<figure><img src="../../.gitbook/assets/image (189).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (305).png" alt=""><figcaption></figcaption></figure>
 
 ```
 Subgraph: Complex Operation

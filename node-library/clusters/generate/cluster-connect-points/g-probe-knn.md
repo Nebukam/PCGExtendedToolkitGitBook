@@ -10,7 +10,7 @@ K-Nearest Neighbors connectivity.
 
 This global probe connects each point to its K nearest neighbors based on Euclidean distance. KNN is one of the most fundamental connectivity algorithms, creating local neighborhood relationships without requiring a search radius. The "Mutual" mode adds an additional constraint requiring both points to consider each other as nearest neighbors for a connection to be created.
 
-<figure><img src="../../../../.gitbook/assets/image (170).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (286).png" alt=""><figcaption></figcaption></figure>
 
 ### How It Works
 

@@ -11,7 +11,7 @@ The easiest way to install PCGEx is to get it from FAB. (it's free!)
 
 <a href="https://www.fab.com/listings/3f0bea1c-7406-4441-951b-8b2ca155f624" class="button primary" data-icon="arrow-right-to-bracket">PCGEx on FAB</a>
 
-<figure><img src="../../.gitbook/assets/EpicMarketplace-Splash-1080 (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/EpicMarketplace-Splash-1080 (4).png" alt=""><figcaption></figcaption></figure>
 
 {% stepper %}
 {% step %}
@@ -23,14 +23,14 @@ Add PCGEx to your library — select whichever license matches your usecase.
 {% step %}
 #### Go to the Epic Games Launcher
 
-Navigate to the Library tab, and scroll all the way down. If PCGEx isn't showing there already, make sure to refresh using the <img src="../../.gitbook/assets/image (35).png" alt="" data-size="line"> refresh icon.
+Navigate to the Library tab, and scroll all the way down. If PCGEx isn't showing there already, make sure to refresh using the <img src="../../.gitbook/assets/image (117).png" alt="" data-size="line"> refresh icon.
 {% endstep %}
 
 {% step %}
 #### Install to your preferred engine version
 
 You should now see PCGEx and be able to install the plugin for the editor version of your choice!\
-![](<../../.gitbook/assets/image (36).png>)
+![](<../../.gitbook/assets/image (118).png>)
 {% endstep %}
 {% endstepper %}
 
@@ -151,4 +151,4 @@ Once the plugin is installed and compiled, nodes are available in any PCG Graph 
 All PCGEx nodes are prefixed with `PCGEx |` – which is a bit annoying at first, but quickly comes in handy to ensure nodes are clearly identifiable.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (119).png" alt=""><figcaption></figcaption></figure>

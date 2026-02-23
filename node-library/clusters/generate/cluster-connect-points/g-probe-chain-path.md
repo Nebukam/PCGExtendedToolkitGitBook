@@ -10,7 +10,7 @@ Creates sequential chain connections based on sorting criteria.
 
 This global probe creates a single continuous path by connecting points in a sorted sequence. Points are first sorted according to the chosen mode, then connected sequentially to form a chain. The resulting graph is a path (or loop) where each point connects to at most two neighbors - the previous and next point in the sequence.
 
-<figure><img src="../../../../.gitbook/assets/image (172).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (288).png" alt=""><figcaption></figcaption></figure>
 
 ### How It Works
 

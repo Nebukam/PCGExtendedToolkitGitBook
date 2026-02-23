@@ -6,7 +6,7 @@ icon: filters
 
 **Filters are the one system that touches everything else.** Almost every PCGEx operation asks "should I process this element?" and filters are how you answer that question. Configure a filter once, connect it to any node that accepts filters. The same filter works whether you're processing points, refining edges, controlling pathfinding, or deciding what to spawn.
 
-<figure><img src="../../.gitbook/assets/image (180).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (296).png" alt=""><figcaption></figcaption></figure>
 
 ### The Core Idea
 
@@ -52,7 +52,7 @@ Filters follow the provider/consumer pattern:
 3. **Connect its output** to any node with a Filters input pin
 4. **Multiple filters** can connect to the same pin
 
-<figure><img src="../../.gitbook/assets/image (181).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (297).png" alt=""><figcaption></figcaption></figure>
 
 At execution time:
 

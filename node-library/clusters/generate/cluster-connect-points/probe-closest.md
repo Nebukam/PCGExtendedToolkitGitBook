@@ -10,7 +10,7 @@ Connect to the N closest neighbors within search radius.
 
 This per-point probe finds and connects to the closest neighbors within the search radius. Unlike the global KNN probe, this operates on a per-point basis during candidate processing, making it suitable for combining with other probes. The maximum number of connections can be constant or driven by a per-point attribute.
 
-<figure><img src="../../../../.gitbook/assets/image (169).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (285).png" alt=""><figcaption></figcaption></figure>
 
 ### How It Works
 

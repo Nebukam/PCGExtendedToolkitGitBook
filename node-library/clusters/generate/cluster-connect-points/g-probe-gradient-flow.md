@@ -10,7 +10,7 @@ Connect points following attribute gradient direction.
 
 This global probe creates connections based on the gradient (rate of change) of an attribute value. Points connect to neighbors that represent "uphill" or "downhill" movement along the attribute's gradient. This creates flow-like connectivity patterns, similar to water flowing downhill or heat diffusing toward cooler areas.
 
-<figure><img src="../../../../.gitbook/assets/image (171).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (287).png" alt=""><figcaption></figcaption></figure>
 
 ### How It Works
 

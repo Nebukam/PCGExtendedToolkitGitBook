@@ -29,7 +29,7 @@ In order to make the codebase more maintainable, a couple of filters have been d
 Targets accepts any path-like data such as **Paths**, **Splines**, and soon **Polygon2D**.
 {% endhint %}
 
-<figure><img src="../../../.gitbook/assets/image (70).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (157).png" alt=""><figcaption></figcaption></figure>
 
 Replaces [Filter : Path Inclusion](/broken/pages/KQeSvDKWEgg2DCAvXtVq), [Filter : Spline Inclusion](/broken/pages/qpkKMINU1ZxA9ty6azhc) and [Filter : Polygon 2D Inclusion](/broken/pages/OvVXTVoE7kh5WHquOtPF). It's almost a drop-in replacement : you can copy-paste most settings from the old nodes to the new one by doing the `right-click/left-click trick` on the **Settings** subsection of the detail panels.
 
@@ -39,7 +39,7 @@ Replaces [Filter : Path Inclusion](/broken/pages/KQeSvDKWEgg2DCAvXtVq), [Filter 
 
 ### [Spatial Triage](/broken/pages/YBp8J5M6WZSz6362EmCt)
 
-<figure><img src="../../../.gitbook/assets/image (73).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (160).png" alt=""><figcaption></figcaption></figure>
 
 A small quality of life helper that sort spatial data in three main categories against a unique (partition) bound object.
 
@@ -65,10 +65,10 @@ A small quality of life helper that sort spatial data in three main categories a
 
 Showcases how to find & filter cells, and create a path from a point inside a cell to a random location on the cell path.
 
-<figure><img src="../../../.gitbook/assets/image (71).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (158).png" alt=""><figcaption></figcaption></figure>
 
 ### Runtime Partitoned Spline Meshes
 
 Showcases one way to deal with partitioned splines meshes : isolate the relevant section of a spline that's inside a partition and tighly cut it against partition bounds
 
-<figure><img src="../../../.gitbook/assets/image (72).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (159).png" alt=""><figcaption></figcaption></figure>

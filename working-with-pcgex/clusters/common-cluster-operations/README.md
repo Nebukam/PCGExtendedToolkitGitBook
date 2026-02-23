@@ -52,16 +52,16 @@ All relaxation runs through the **Relax Clusters** node with a relaxation method
 
 ### Topology & Structure
 
-| I want to...                         | Node                                                                                                 | Notes                                                                                     |
-| ------------------------------------ | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| Merge close vertices                 | [cluster-fuse.md](../../../node-library/clusters/refine/cluster-fuse.md "mention")                   | Distance threshold. Attributes blend or prioritize. The standard way to combine clusters. |
-| Simplify chain sequences             | [cluster-simplify.md](../../../node-library/clusters/refine/cluster-simplify.md "mention")           | Removes degree-2 Vtx that just sit between two neighbors.                                 |
-| Add points along edges               | [tbd-subdivide-edges.md](../../../node-library/clusters/refine/tbd-subdivide-edges.md "mention")     | By count or distance. Increases resolution without changing topology shape.               |
-| Split clusters along paths           | [cluster-cut.md](../../../node-library/clusters/interop/cluster-cut.md "mention")                    | Uses paths as cutting lines through cluster topology.                                     |
-| Connect separate clusters            | [cluster-connect.md](../../../node-library/clusters/refine/cluster-connect.md "mention")             | Bridges between disconnected cluster components.                                          |
-| Filter vertices by condition         | [cluster-filter-vtx.md](../../../node-library/clusters/refine/cluster-filter-vtx.md "mention")       | Removes Vtx and their edges. Cascading cleanup configurable.                              |
-| Fix connectivity after vanilla edits | [cluster-sanitize.md](../../../node-library/clusters/utilities/cluster-sanitize.md "mention")        | Rebuilds indices after non-PCGEx nodes modify point counts.                               |
-| Separate disconnected components     | [cluster-decomposition.md](../../../node-library/clusters/refine/cluster-decomposition.md "mention") | Each connected component becomes its own cluster.                                         |
+| I want to...                         | Node                                                                                             | Notes                                                                                     |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| Merge close vertices                 | [cluster-fuse.md](../../../node-library/clusters/refine/cluster-fuse.md "mention")               | Distance threshold. Attributes blend or prioritize. The standard way to combine clusters. |
+| Simplify chain sequences             | [cluster-simplify.md](../../../node-library/clusters/refine/cluster-simplify.md "mention")       | Removes degree-2 Vtx that just sit between two neighbors.                                 |
+| Add points along edges               | [tbd-subdivide-edges.md](../../../node-library/clusters/refine/tbd-subdivide-edges.md "mention") | By count or distance. Increases resolution without changing topology shape.               |
+| Split clusters along paths           | [cluster-cut.md](../../../node-library/clusters/interop/cluster-cut.md "mention")                | Uses paths as cutting lines through cluster topology.                                     |
+| Connect separate clusters            | [cluster-connect.md](../../../node-library/clusters/refine/cluster-connect.md "mention")         | Bridges between disconnected cluster components.                                          |
+| Filter vertices by condition         | [cluster-filter-vtx.md](../../../node-library/clusters/refine/cluster-filter-vtx.md "mention")   | Removes Vtx and their edges. Cascading cleanup configurable.                              |
+| Fix connectivity after vanilla edits | [cluster-sanitize.md](../../../node-library/clusters/utilities/cluster-sanitize.md "mention")    | Rebuilds indices after non-PCGEx nodes modify point counts.                               |
+| Separate disconnected components     | [Broken link](/broken/pages/AOTY2nXtIncmlNZiY71n "mention")                                      | Each connected component becomes its own cluster.                                         |
 
 ### Attributes & Analysis
 

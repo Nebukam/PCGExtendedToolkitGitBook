@@ -103,7 +103,7 @@ Think of cluster generation methods as ingredients, not solutions. The final clu
 
 #### Decomposition
 
-[cluster-decomposition.md](../../node-library/clusters/refine/cluster-decomposition.md "mention") does the opposite — it separates disconnected components. Each connected component becomes its own cluster.
+[Broken link](/broken/pages/AOTY2nXtIncmlNZiY71n "mention") does the opposite — it separates disconnected components. Each connected component becomes its own cluster.
 
 ### Quick Reference
 

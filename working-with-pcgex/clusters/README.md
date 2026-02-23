@@ -18,7 +18,7 @@ Like paths, clusters don't introduce new data types. They use regular PCG points
 * **Edge points** represent connections between Vtx
 * Connection data is stored as `int64` attributes
 
-<figure><img src="../../.gitbook/assets/image (191).png" alt=""><figcaption><p>Special debug subgraphs help with visualization</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (307).png" alt=""><figcaption><p>Special debug subgraphs help with visualization</p></figcaption></figure>
 
 Since it's all standard point data, vanilla PCG nodes work on cluster data. You can transform Vtx, filter Edges, and modify attributes with standard operations.
 
@@ -31,7 +31,7 @@ Clusters always involve two point collections traveling together:
 | **Vtx**    | Point positions and attributes    | The "nodes" of your network |
 | **Edges**  | Connection indices and attributes | The "links" between nodes   |
 
-<figure><img src="../../.gitbook/assets/image (192).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (308).png" alt=""><figcaption></figcaption></figure>
 
 Most cluster operations have both Vtx and Edges input pins. Operations read from both, may modify both, and output both.
 
@@ -43,7 +43,7 @@ Multiple clusters can reference the same Vtx collection with different Edge coll
 
 Each Vtx is assigned a unique ID, and each Edge point stores two of these IDs — a start and an end. Think of it like a database relationship:
 
-<figure><img src="../../.gitbook/assets/image (193).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (309).png" alt=""><figcaption></figcaption></figure>
 
 Edges reference Vtx by unique ID, not by point order. This means reordering, sorting, or shuffling your Vtx points won't break connectivity — the IDs travel with the points.
 
