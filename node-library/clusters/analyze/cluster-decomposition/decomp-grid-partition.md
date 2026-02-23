@@ -1,5 +1,5 @@
 ---
-icon: circle-dashed
+icon: function
 ---
 
 # Decomp : Grid Partition
