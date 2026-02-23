@@ -1,0 +1,124 @@
+{
+  "path": "PCGExElementsClustersDecomp/Public/Decompositions/PCGExDecompSpectral.h",
+  "module": "PCGExElementsClustersDecomp",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExDecompSpectral",
+      "display_name": "UPCGExDecompSpectral",
+      "description": "",
+      "base_class": "UPCGExDecompositionInstancedFactory",
+      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Decompose : Spectral\")",
+      "uproperties": [
+        {
+          "name": "NumPartitions",
+          "display_name": "NumPartitions",
+          "type": "int32",
+          "default": "2",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxIterations",
+          "display_name": "MaxIterations",
+          "type": "int32",
+          "default": "200",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ConvergenceTolerance",
+          "display_name": "ConvergenceTolerance",
+          "type": "double",
+          "default": "1e-6",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "instanced_factory",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": true,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "NumPartitions",
+          "display_name": "NumPartitions",
+          "type": "int32",
+          "default": "2",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxIterations",
+          "display_name": "MaxIterations",
+          "type": "int32",
+          "default": "200",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "ConvergenceTolerance",
+          "display_name": "ConvergenceTolerance",
+          "type": "double",
+          "default": "1e-6",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExDecompSpectral",
+      "base_class": "FPCGExDecompositionOperation"
+    }
+  ],
+  "namespaces": {}
+}

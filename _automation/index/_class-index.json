@@ -359,12 +359,6 @@
     "base_class": "UPCGExClipper2ProcessorSettings",
     "display_name": "Clipper2 : Rect Clip"
   },
-  "UPCGExClusterDecompositionSettings": {
-    "file": "PCGExElementsClusters/Public/Elements/Decomposition/PCGExClusterDecomposition.h",
-    "type": "node_settings",
-    "base_class": "UPCGExClustersProcessorSettings",
-    "display_name": "Cluster : Decomposition"
-  },
   "UPCGExNeighborSamplerFactoryAttribute": {
     "file": "PCGExElementsClusters/Public/Elements/Meta/NeighborSamplers/PCGExNeighborSampleAttribute.h",
     "type": "factory_data",
@@ -784,6 +778,60 @@
     "type": "provider",
     "base_class": "UPCGExVtxFilterProviderSettings",
     "display_name": "Vtx Filter : Num Edges"
+  },
+  "UPCGExDecompositionInstancedFactory": {
+    "file": "PCGExElementsClustersDecomp/Public/Core/PCGExDecompositionOperation.h",
+    "type": "instanced_factory",
+    "base_class": "UPCGExInstancedFactory",
+    "display_name": "UPCGExDecompositionInstancedFactory"
+  },
+  "UPCGExDecompBSPOccupancy": {
+    "file": "PCGExElementsClustersDecomp/Public/Decompositions/PCGExDecompBSPOccupancy.h",
+    "type": "instanced_factory",
+    "base_class": "UPCGExDecompositionInstancedFactory",
+    "display_name": "UPCGExDecompBSPOccupancy"
+  },
+  "UPCGExDecompConvexBSP": {
+    "file": "PCGExElementsClustersDecomp/Public/Decompositions/PCGExDecompConvexBSP.h",
+    "type": "instanced_factory",
+    "base_class": "UPCGExDecompositionInstancedFactory",
+    "display_name": "UPCGExDecompConvexBSP"
+  },
+  "UPCGExDecompGridPartition": {
+    "file": "PCGExElementsClustersDecomp/Public/Decompositions/PCGExDecompGridPartition.h",
+    "type": "instanced_factory",
+    "base_class": "UPCGExDecompositionInstancedFactory",
+    "display_name": "UPCGExDecompGridPartition"
+  },
+  "UPCGExDecompMaxBoxes": {
+    "file": "PCGExElementsClustersDecomp/Public/Decompositions/PCGExDecompMaxBoxes.h",
+    "type": "instanced_factory",
+    "base_class": "UPCGExDecompositionInstancedFactory",
+    "display_name": "UPCGExDecompMaxBoxes"
+  },
+  "UPCGExDecompMaxBoxesExt": {
+    "file": "PCGExElementsClustersDecomp/Public/Decompositions/PCGExDecompMaxBoxesExt.h",
+    "type": "instanced_factory",
+    "base_class": "UPCGExDecompositionInstancedFactory",
+    "display_name": "UPCGExDecompMaxBoxesExt"
+  },
+  "UPCGExDecompSpectral": {
+    "file": "PCGExElementsClustersDecomp/Public/Decompositions/PCGExDecompSpectral.h",
+    "type": "instanced_factory",
+    "base_class": "UPCGExDecompositionInstancedFactory",
+    "display_name": "UPCGExDecompSpectral"
+  },
+  "UPCGExDecompThreshold": {
+    "file": "PCGExElementsClustersDecomp/Public/Decompositions/PCGExDecompThreshold.h",
+    "type": "instanced_factory",
+    "base_class": "UPCGExDecompositionInstancedFactory",
+    "display_name": "UPCGExDecompThreshold"
+  },
+  "UPCGExClusterDecompositionSettings": {
+    "file": "PCGExElementsClustersDecomp/Public/Elements/PCGExClusterDecomposition.h",
+    "type": "node_settings",
+    "base_class": "UPCGExClustersProcessorSettings",
+    "display_name": "Cluster : Decomposition"
   },
   "UPCGExBuildCellDiagramSettings": {
     "file": "PCGExElementsClustersDiagrams/Public/Elements/PCGExBuildCellDiagram.h",

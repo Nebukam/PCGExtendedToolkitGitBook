@@ -23,6 +23,7 @@
     "FPCGExActionOperation",
     "FPCGExNeighborSampleOperation",
     "FPCGExVtxPropertyOperation",
+    "FPCGExDecompositionOperation",
     "FPCGExEdgeRefineOperation",
     "FPCGExFillControlOperation",
     "FPCGExSearchOperation",
@@ -79,6 +80,7 @@
     "FPCGExElementsActionsModule",
     "FPCGExElementsBridgesModule",
     "FPCGExElementsClustersModule",
+    "FPCGExElementsClustersDecompModule",
     "FPCGExElementsClustersDiagramsModule",
     "FPCGExElementsClustersRefineModule",
     "FPCGExElementsClustersRelaxModule",
@@ -122,6 +124,7 @@
   "UPCGExInstancedFactory": [
     "UPCGExSubPointsInstancedFactory",
     "UPCGExCustomGraphBuilder",
+    "UPCGExDecompositionInstancedFactory",
     "UPCGExEdgeRefineInstancedFactory",
     "UPCGExRelaxClusterOperation",
     "UPCGExCustomActorDataPacker",
@@ -653,8 +656,23 @@
     "FPCGExNoise3DModule",
     "FPCGExPropertiesModule"
   ],
+  "UPCGExNeighborSamplerFactoryData": [
+    "UPCGExNeighborSamplerFactoryAttribute",
+    "UPCGExNeighborSamplerFactoryBlend",
+    "UPCGExNeighborSamplerFactoryFilters",
+    "UPCGExNeighborSamplerFactoryProperties"
+  ],
+  "UPCGExNeighborSampleProviderSettings": [
+    "UPCGExNeighborSampleAttributeSettings",
+    "UPCGExNeighborSampleBlendSettings",
+    "UPCGExNeighborSampleFiltersSettings",
+    "UPCGExNeighborSamplePropertiesSettings"
+  ],
+  "FPCGExNeighborSampleOperation": [
+    "FPCGExNeighborSampleBlend",
+    "FPCGExNeighborSampleFilters"
+  ],
   "UPCGExClustersProcessorSettings": [
-    "UPCGExClusterDecompositionSettings",
     "UPCGExSampleNeighborsSettings",
     "UPCGExWriteEdgePropertiesSettings",
     "UPCGExWriteVtxPropertiesSettings",
@@ -675,6 +693,7 @@
     "UPCGExSanitizeClustersSettings",
     "UPCGExSimplifyClustersSettings",
     "UPCGExFlagNodesSettings",
+    "UPCGExClusterDecompositionSettings",
     "UPCGExBuildCellDiagramSettings",
     "UPCGExBuildDualGraphSettings",
     "UPCGExRefineEdgesSettings",
@@ -692,7 +711,6 @@
     "UPCGExClusterToZoneGraphSettings"
   ],
   "FPCGExClustersProcessorElement": [
-    "FPCGExClusterDecompositionElement",
     "FPCGExSampleNeighborsElement",
     "FPCGExWriteEdgePropertiesElement",
     "FPCGExWriteVtxPropertiesElement",
@@ -713,6 +731,7 @@
     "FPCGExSanitizeClustersElement",
     "FPCGExSimplifyClustersElement",
     "FPCGExFlagNodesElement",
+    "FPCGExClusterDecompositionElement",
     "FPCGExBuildCellDiagramElement",
     "FPCGExBuildDualGraphElement",
     "FPCGExRefineEdgesElement",
@@ -728,22 +747,6 @@
     "FPCGExPathfindingPlotEdgesElement",
     "FPCGExTopologyClustersProcessorElement",
     "FPCGExClusterToZoneGraphElement"
-  ],
-  "UPCGExNeighborSamplerFactoryData": [
-    "UPCGExNeighborSamplerFactoryAttribute",
-    "UPCGExNeighborSamplerFactoryBlend",
-    "UPCGExNeighborSamplerFactoryFilters",
-    "UPCGExNeighborSamplerFactoryProperties"
-  ],
-  "UPCGExNeighborSampleProviderSettings": [
-    "UPCGExNeighborSampleAttributeSettings",
-    "UPCGExNeighborSampleBlendSettings",
-    "UPCGExNeighborSampleFiltersSettings",
-    "UPCGExNeighborSamplePropertiesSettings"
-  ],
-  "FPCGExNeighborSampleOperation": [
-    "FPCGExNeighborSampleBlend",
-    "FPCGExNeighborSampleFilters"
   ],
   "UPCGExVtxPropertyFactoryData": [
     "UPCGExVtxPropertyAmplitudeFactory",
@@ -801,6 +804,24 @@
     "UPCGExNodeEdgeAngleFilterProviderSettings",
     "UPCGExNodeEdgeDirectionFilterProviderSettings",
     "UPCGExNodeNeighborsCountFilterProviderSettings"
+  ],
+  "UPCGExDecompositionInstancedFactory": [
+    "UPCGExDecompBSPOccupancy",
+    "UPCGExDecompConvexBSP",
+    "UPCGExDecompGridPartition",
+    "UPCGExDecompMaxBoxes",
+    "UPCGExDecompMaxBoxesExt",
+    "UPCGExDecompSpectral",
+    "UPCGExDecompThreshold"
+  ],
+  "FPCGExDecompositionOperation": [
+    "FPCGExDecompBSPOccupancy",
+    "FPCGExDecompConvexBSP",
+    "FPCGExDecompGridPartition",
+    "FPCGExDecompMaxBoxes",
+    "FPCGExDecompMaxBoxesExt",
+    "FPCGExDecompSpectral",
+    "FPCGExDecompThreshold"
   ],
   "UPCGExEdgeRefineInstancedFactory": [
     "UPCGExEdgeRefineByFilter",

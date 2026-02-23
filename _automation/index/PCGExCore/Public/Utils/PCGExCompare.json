@@ -360,7 +360,7 @@
           "name": "DotConstant",
           "display_name": "Scalar",
           "type": "double",
-          "default": "0.5",
+          "default": "0",
           "overridable": true,
           "instanced": false,
           "show_only_inner": false,

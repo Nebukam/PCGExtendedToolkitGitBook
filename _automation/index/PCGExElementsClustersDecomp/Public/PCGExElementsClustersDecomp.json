@@ -1,0 +1,15 @@
+{
+  "path": "PCGExElementsClustersDecomp/Public/PCGExElementsClustersDecomp.h",
+  "module": "PCGExElementsClustersDecomp",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [],
+  "operations": [
+    {
+      "name": "FPCGExElementsClustersDecompModule",
+      "base_class": "IPCGExLegacyModuleInterface"
+    }
+  ],
+  "namespaces": {}
+}

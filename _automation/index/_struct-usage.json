@@ -933,6 +933,7 @@
   "FPCGExInputShorthandSelectorDouble": {
     "used_by": [
       "UPCGExClipper2OffsetSettings",
+      "UPCGExDecompMaxBoxesExt",
       "UPCGExUberNoiseSettings",
       "UPCGExSampleInsidePathSettings",
       "UPCGExSampleNearestPathSettings",
@@ -940,16 +941,17 @@
       "UPCGExSampleNearestSplineSettings",
       "FPCGExRemapDetails"
     ],
-    "origin_count": 6,
+    "origin_count": 7,
     "origins": [
       "UPCGExClipper2OffsetSettings",
+      "UPCGExDecompMaxBoxesExt",
       "UPCGExUberNoiseSettings",
       "UPCGExSampleInsidePathSettings",
       "UPCGExSampleNearestPathSettings",
       "UPCGExSampleNearestPointSettings",
       "UPCGExSampleNearestSplineSettings"
     ],
-    "usage_count": 7,
+    "usage_count": 8,
     "user_facing_count": 2,
     "user_facing_origins": [
       "UPCGExClipper2OffsetSettings",
@@ -958,23 +960,6 @@
     "user_facing_origin_count": 2,
     "is_shared": false,
     "document_with": null
-  },
-  "FPCGExConvexDecompositionDetails": {
-    "used_by": [
-      "UPCGExClusterDecompositionSettings"
-    ],
-    "origin_count": 1,
-    "origins": [
-      "UPCGExClusterDecompositionSettings"
-    ],
-    "usage_count": 1,
-    "user_facing_count": 1,
-    "user_facing_origins": [
-      "UPCGExClusterDecompositionSettings"
-    ],
-    "user_facing_origin_count": 1,
-    "is_shared": false,
-    "document_with": "UPCGExClusterDecompositionSettings"
   },
   "FPCGExSamplingConfig": {
     "used_by": [
@@ -1569,6 +1554,32 @@
     "user_facing_origin_count": 1,
     "is_shared": false,
     "document_with": "UPCGExNodeNeighborsCountFilterProviderSettings"
+  },
+  "FPCGExInputShorthandSelectorVector": {
+    "used_by": [
+      "UPCGExDecompMaxBoxesExt",
+      "UPCGExBinPackingSettings",
+      "UPCGExBinPacking3DSettings",
+      "UPCGExTransformPointsSettings",
+      "FPCGExGeo2DProjectionDetails",
+      "FPCGExCollisionDetails",
+      "FPCGExRaycastFilterConfig"
+    ],
+    "origin_count": 4,
+    "origins": [
+      "UPCGExDecompMaxBoxesExt",
+      "UPCGExBinPackingSettings",
+      "UPCGExBinPacking3DSettings",
+      "UPCGExTransformPointsSettings"
+    ],
+    "usage_count": 7,
+    "user_facing_count": 1,
+    "user_facing_origins": [
+      "UPCGExBinPackingSettings"
+    ],
+    "user_facing_origin_count": 1,
+    "is_shared": false,
+    "document_with": null
   },
   "FPCGExCellConstraintsDetails": {
     "used_by": [
@@ -2246,14 +2257,16 @@
   "FPCGExInputShorthandNameDoubleAbs": {
     "used_by": [
       "UPCGExPathInsertSettings",
-      "UPCGExResamplePathSettings"
+      "UPCGExResamplePathSettings",
+      "UPCGExClusterToZoneGraphSettings"
     ],
-    "origin_count": 2,
+    "origin_count": 3,
     "origins": [
       "UPCGExPathInsertSettings",
-      "UPCGExResamplePathSettings"
+      "UPCGExResamplePathSettings",
+      "UPCGExClusterToZoneGraphSettings"
     ],
-    "usage_count": 2,
+    "usage_count": 3,
     "user_facing_count": 2,
     "user_facing_origins": [
       "UPCGExPathInsertSettings",
@@ -2895,30 +2908,6 @@
     ],
     "user_facing_origin_count": 2,
     "is_shared": true,
-    "document_with": null
-  },
-  "FPCGExInputShorthandSelectorVector": {
-    "used_by": [
-      "UPCGExBinPackingSettings",
-      "UPCGExBinPacking3DSettings",
-      "UPCGExTransformPointsSettings",
-      "FPCGExGeo2DProjectionDetails",
-      "FPCGExCollisionDetails",
-      "FPCGExRaycastFilterConfig"
-    ],
-    "origin_count": 3,
-    "origins": [
-      "UPCGExBinPackingSettings",
-      "UPCGExBinPacking3DSettings",
-      "UPCGExTransformPointsSettings"
-    ],
-    "usage_count": 6,
-    "user_facing_count": 1,
-    "user_facing_origins": [
-      "UPCGExBinPackingSettings"
-    ],
-    "user_facing_origin_count": 1,
-    "is_shared": false,
     "document_with": null
   },
   "FPCGExInputShorthandSelectorDouble01": {

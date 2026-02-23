@@ -46,6 +46,28 @@
         }
       ],
       "used_by": []
+    },
+    {
+      "name": "EPCGExZGTangentLengthMode",
+      "values": [
+        {
+          "name": "Default",
+          "display_name": "Default"
+        },
+        {
+          "name": "Manual",
+          "display_name": "Manual"
+        },
+        {
+          "name": "Auto",
+          "display_name": "Auto"
+        },
+        {
+          "name": "CatmullRom",
+          "display_name": "Catmull-Rom"
+        }
+      ],
+      "used_by": []
     }
   ],
   "structs": [],
@@ -249,6 +271,45 @@
           "show_only_inner": false,
           "edit_condition": null,
           "edit_condition_hides": false,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "RoadTangentLengthMode",
+          "display_name": " ├─ Tangent Length Mode",
+          "type": "EPCGExZGTangentLengthMode",
+          "default": "EPCGExZGTangentLengthMode::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsCustomLength",
+          "edit_condition_hides": true,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "TangentLength",
+          "display_name": " ├─ Length",
+          "type": "FPCGExInputShorthandNameDoubleAbs",
+          "default": "FPCGExInputShorthandNameDoubleAbs(FName(\"TangentLength\"), 100.0, false)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsCustomLength && RoadTangentLengthMode == EPCGExZGTangentLengthMode::Manual",
+          "edit_condition_hides": true,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "TangentLengthScale",
+          "display_name": " └─ Scale",
+          "type": "double",
+          "default": "1.0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsCustomLength && RoadTangentLengthMode != EPCGExZGTangentLengthMode::Default",
+          "edit_condition_hides": true,
           "category": "Settings|ZoneGraph",
           "advanced": false
         },
@@ -820,6 +881,45 @@
           "show_only_inner": false,
           "edit_condition": null,
           "edit_condition_hides": false,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "RoadTangentLengthMode",
+          "display_name": " ├─ Tangent Length Mode",
+          "type": "EPCGExZGTangentLengthMode",
+          "default": "EPCGExZGTangentLengthMode::Default",
+          "overridable": false,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsCustomLength",
+          "edit_condition_hides": true,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "TangentLength",
+          "display_name": " ├─ Length",
+          "type": "FPCGExInputShorthandNameDoubleAbs",
+          "default": "FPCGExInputShorthandNameDoubleAbs(FName(\"TangentLength\"), 100.0, false)",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsCustomLength && RoadTangentLengthMode == EPCGExZGTangentLengthMode::Manual",
+          "edit_condition_hides": true,
+          "category": "Settings|ZoneGraph",
+          "advanced": false
+        },
+        {
+          "name": "TangentLengthScale",
+          "display_name": " └─ Scale",
+          "type": "double",
+          "default": "1.0",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": "bCachedSupportsCustomLength && RoadTangentLengthMode != EPCGExZGTangentLengthMode::Default",
+          "edit_condition_hides": true,
           "category": "Settings|ZoneGraph",
           "advanced": false
         },

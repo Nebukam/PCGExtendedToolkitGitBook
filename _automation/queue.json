@@ -2,9 +2,15 @@
   "pending": [],
   "in_progress": null,
   "completed": [
-    "UPCGExClusterToZoneGraphSettings",
-    "UPCGExStagingLoadLevelSettings",
-    "UPCGExStagingSpawnActorsSettings"
+    "UPCGExDecompositionInstancedFactory",
+    "UPCGExDecompBSPOccupancy",
+    "UPCGExDecompConvexBSP",
+    "UPCGExDecompGridPartition",
+    "UPCGExDecompMaxBoxes",
+    "UPCGExDecompMaxBoxesExt",
+    "UPCGExDecompSpectral",
+    "UPCGExDecompThreshold",
+    "UPCGExClusterDecompositionSettings"
   ],
   "skipped": []
 }

@@ -591,7 +591,7 @@
     "base_class": "FPCGExInputShorthandNameBase",
     "is_config": false,
     "is_shared": false,
-    "usage_count": 2,
+    "usage_count": 3,
     "user_facing_count": 2,
     "document_with": null
   },
@@ -713,7 +713,7 @@
     "base_class": "FPCGExInputShorthandSelectorBase",
     "is_config": false,
     "is_shared": false,
-    "usage_count": 7,
+    "usage_count": 8,
     "user_facing_count": 2,
     "document_with": null
   },
@@ -772,7 +772,7 @@
     "base_class": "FPCGExInputShorthandSelectorBase",
     "is_config": false,
     "is_shared": false,
-    "usage_count": 6,
+    "usage_count": 7,
     "user_facing_count": 1,
     "document_with": null
   },
@@ -997,15 +997,6 @@
     "is_config": false,
     "is_shared": false,
     "usage_count": 0
-  },
-  "FPCGExConvexDecompositionDetails": {
-    "file": "PCGExElementsClusters/Public/Elements/Decomposition/PCGExSimpleConvexDecomposer.h",
-    "base_class": null,
-    "is_config": false,
-    "is_shared": false,
-    "usage_count": 1,
-    "user_facing_count": 1,
-    "document_with": "UPCGExClusterDecompositionSettings"
   },
   "FPCGExSamplingConfig": {
     "file": "PCGExElementsClusters/Public/Elements/Meta/NeighborSamplers/PCGExNeighborSampleFactoryProvider.h",

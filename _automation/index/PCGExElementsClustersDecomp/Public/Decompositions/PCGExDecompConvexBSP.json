@@ -1,0 +1,151 @@
+{
+  "path": "PCGExElementsClustersDecomp/Public/Decompositions/PCGExDecompConvexBSP.h",
+  "module": "PCGExElementsClustersDecomp",
+  "type": "header",
+  "enums": [],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExDecompConvexBSP",
+      "display_name": "UPCGExDecompConvexBSP",
+      "description": "",
+      "base_class": "UPCGExDecompositionInstancedFactory",
+      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Decompose : Convex BSP\")",
+      "uproperties": [
+        {
+          "name": "MaxConcavityRatio",
+          "display_name": "MaxConcavityRatio",
+          "type": "double",
+          "default": "0.01",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinNodesPerCell",
+          "display_name": "MinNodesPerCell",
+          "type": "int32",
+          "default": "4",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxCells",
+          "display_name": "MaxCells",
+          "type": "int32",
+          "default": "32",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxDepth",
+          "display_name": "MaxDepth",
+          "type": "int32",
+          "default": "100",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "instanced_factory",
+        "is_abstract": true,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": true,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "MaxConcavityRatio",
+          "display_name": "MaxConcavityRatio",
+          "type": "double",
+          "default": "0.01",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MinNodesPerCell",
+          "display_name": "MinNodesPerCell",
+          "type": "int32",
+          "default": "4",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxCells",
+          "display_name": "MaxCells",
+          "type": "int32",
+          "default": "32",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "MaxDepth",
+          "display_name": "MaxDepth",
+          "type": "int32",
+          "default": "100",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "implementations": []
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExDecompConvexBSP",
+      "base_class": "FPCGExDecompositionOperation"
+    }
+  ],
+  "namespaces": {}
+}

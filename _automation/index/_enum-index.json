@@ -539,6 +539,22 @@
     "file": "PCGExElementsClusters/Public/Filters/PCGExAdjacency.h",
     "value_count": 3
   },
+  "EPCGExDecompTransformSpace": {
+    "file": "PCGExElementsClustersDecomp/Public/Core/PCGExDecompOccupancyGrid.h",
+    "value_count": 3
+  },
+  "EPCGExDecompVoxelSizeMode": {
+    "file": "PCGExElementsClustersDecomp/Public/Core/PCGExDecompOccupancyGrid.h",
+    "value_count": 2
+  },
+  "EPCGExDecompWeightMode": {
+    "file": "PCGExElementsClustersDecomp/Public/Decompositions/PCGExDecompMaxBoxesExt.h",
+    "value_count": 2
+  },
+  "EPCGExDecompBinningMode": {
+    "file": "PCGExElementsClustersDecomp/Public/Decompositions/PCGExDecompThreshold.h",
+    "value_count": 2
+  },
   "EPCGExUrquhartSiteMergeMode": {
     "file": "PCGExElementsClustersDiagrams/Public/Elements/PCGExBuildDelaunayGraph2D.h",
     "value_count": 3
@@ -1326,6 +1342,10 @@
   "EPCGExZGAutoRadiusMode": {
     "file": "PCGExElementsZoneGraph/Public/Graph/PCGExClusterToZoneGraph.h",
     "value_count": 5
+  },
+  "EPCGExZGTangentLengthMode": {
+    "file": "PCGExElementsZoneGraph/Public/Graph/PCGExClusterToZoneGraph.h",
+    "value_count": 4
   },
   "EPCGExWatabouFeatureType": {
     "file": "PCGExElementsWatabou/Public/Data/PCGExWatabouFeature.h",

@@ -1,0 +1,139 @@
+{
+  "path": "PCGExElementsClustersDecomp/Public/Decompositions/PCGExDecompThreshold.h",
+  "module": "PCGExElementsClustersDecomp",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExDecompBinningMode",
+      "values": [
+        {
+          "name": "Uniform",
+          "display_name": "Uniform"
+        },
+        {
+          "name": "Quantile",
+          "display_name": "Quantile"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [
+    {
+      "name": "UPCGExDecompThreshold",
+      "display_name": "UPCGExDecompThreshold",
+      "description": "",
+      "base_class": "UPCGExDecompositionInstancedFactory",
+      "uclass_meta": "MinimalAPI, BlueprintType, meta=(DisplayName=\"Decompose : Threshold\")",
+      "uproperties": [
+        {
+          "name": "AttributeSelector",
+          "display_name": "AttributeSelector",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "NumBins",
+          "display_name": "NumBins",
+          "type": "int32",
+          "default": "4",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "BinningMode",
+          "display_name": "BinningMode",
+          "type": "EPCGExDecompBinningMode",
+          "default": "EPCGExDecompBinningMode::Uniform",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ],
+      "classification": {
+        "type": "instanced_factory",
+        "is_abstract": false,
+        "is_provider": false,
+        "is_consumer": false,
+        "is_instanced_factory": true,
+        "is_factory_data": false,
+        "is_config_struct": false,
+        "factory_type": null,
+        "consumed_factory_types": [],
+        "instanced_properties": []
+      },
+      "has_point_filter": false,
+      "point_filter_label": null,
+      "filter_inputs": [],
+      "inputs": [],
+      "outputs": [],
+      "consumed_factories": [],
+      "consumed_filters": [],
+      "all_properties": [
+        {
+          "name": "AttributeSelector",
+          "display_name": "AttributeSelector",
+          "type": "FPCGAttributePropertyInputSelector",
+          "default": null,
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "NumBins",
+          "display_name": "NumBins",
+          "type": "int32",
+          "default": "4",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        },
+        {
+          "name": "BinningMode",
+          "display_name": "BinningMode",
+          "type": "EPCGExDecompBinningMode",
+          "default": "EPCGExDecompBinningMode::Uniform",
+          "overridable": true,
+          "instanced": false,
+          "show_only_inner": false,
+          "edit_condition": null,
+          "edit_condition_hides": false,
+          "category": null,
+          "advanced": false
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "FPCGExDecompThreshold",
+      "base_class": "FPCGExDecompositionOperation"
+    }
+  ],
+  "namespaces": {}
+}

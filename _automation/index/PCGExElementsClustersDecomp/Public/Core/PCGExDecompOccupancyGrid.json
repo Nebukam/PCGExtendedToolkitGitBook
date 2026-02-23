@@ -1,0 +1,43 @@
+{
+  "path": "PCGExElementsClustersDecomp/Public/Core/PCGExDecompOccupancyGrid.h",
+  "module": "PCGExElementsClustersDecomp",
+  "type": "header",
+  "enums": [
+    {
+      "name": "EPCGExDecompTransformSpace",
+      "values": [
+        {
+          "name": "Raw",
+          "display_name": "World"
+        },
+        {
+          "name": "BestFit",
+          "display_name": "Best Fit"
+        },
+        {
+          "name": "Custom",
+          "display_name": "Custom"
+        }
+      ],
+      "used_by": []
+    },
+    {
+      "name": "EPCGExDecompVoxelSizeMode",
+      "values": [
+        {
+          "name": "EdgeInferred",
+          "display_name": "Edge Inferred"
+        },
+        {
+          "name": "Manual",
+          "display_name": "Manual"
+        }
+      ],
+      "used_by": []
+    }
+  ],
+  "structs": [],
+  "classes": [],
+  "operations": [],
+  "namespaces": {}
+}
