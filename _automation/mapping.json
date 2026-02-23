@@ -1,5 +1,5 @@
 {
-  "generated": "2026-02-23T03:56:03.021Z",
+  "generated": "2026-02-23T04:09:04.890Z",
   "entries": [
     {
       "source_relative": "PCGExBlending/Public/Core/PCGExBlendOpFactory.h",
@@ -194,10 +194,10 @@
       "source_relative": "PCGExCollections/Public/Elements/PCGExStagingLoadLevel.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExCollections\\Public\\Elements\\PCGExStagingLoadLevel.h",
       "staging": "_staging/PCGExCollections/Elements/PCGExStagingLoadLevel.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/staging/staging-spawn-level.md",
+      "doc_path": "staging/staging-spawn-level",
       "current_doc_meta": "staging/staging-load-level",
-      "status": "staging_only"
+      "status": "meta_mismatch"
     },
     {
       "source_relative": "PCGExCollections/Public/Elements/PCGExStagingLoadPCGData.h",
@@ -230,10 +230,10 @@
       "source_relative": "PCGExCollections/Public/Elements/PCGExStagingSpawnActors.h",
       "source_disk": "D:\\GIT\\PCGExWorkbench\\Plugins\\PCGExtendedToolkit\\Source\\PCGExCollections\\Public\\Elements\\PCGExStagingSpawnActors.h",
       "staging": "_staging/PCGExCollections/Elements/PCGExStagingSpawnActors.md",
-      "node_library": null,
-      "doc_path": null,
+      "node_library": "node-library/staging/staging-spawn-actors.md",
+      "doc_path": "staging/staging-spawn-actors",
       "current_doc_meta": "staging/staging-spawn-actors",
-      "status": "staging_only"
+      "status": "ok"
     },
     {
       "source_relative": "PCGExCollections/Public/Elements/PCGExStagingSplineMesh.h",
@@ -1150,8 +1150,8 @@
       "staging": "_staging/PCGExElementsClustersDecomp/Elements/PCGExClusterDecomposition.md",
       "node_library": "node-library/clusters/analyze/cluster-decomposition/README.md",
       "doc_path": "clusters/analyze/cluster-decomposition",
-      "current_doc_meta": "clusters/cluster-decomposition",
-      "status": "meta_mismatch"
+      "current_doc_meta": "clusters/analyze/cluster-decomposition",
+      "status": "ok"
     },
     {
       "source_relative": "PCGExElementsClustersDiagrams/Public/Elements/PCGExBuildCellDiagram.h",
@@ -4126,11 +4126,11 @@
   ],
   "summary": {
     "total_staging": 456,
-    "total_library": 425,
-    "matched": 423,
-    "staging_only": 33,
+    "total_library": 427,
+    "matched": 425,
+    "staging_only": 31,
     "library_only": 2,
-    "doc_meta_ok": 330,
+    "doc_meta_ok": 332,
     "doc_meta_mismatch": 1,
     "doc_meta_missing": 92
   }
