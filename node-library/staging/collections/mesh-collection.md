@@ -109,10 +109,8 @@ Default: Empty array
 
 This collection type inherits common asset collection functionality from its base class.
 
-→ See Asset Collection Base documentation for: Global variations, property schemas, grammar settings, and collection-level configuration
+→ See [asset-collection-base.md](asset-collection-base.md "mention") documentation for: Global variations, property schemas, grammar settings, and collection-level configuration
 
 ***
 
 [![Static Badge](https://img.shields.io/badge/Source-PCGExCollections-473F69)](https://github.com/Nebukam/PCGExtendedToolkit/blob/main/Source/PCGExCollections/Public/Collections/PCGExMeshCollection.h)
-
-
