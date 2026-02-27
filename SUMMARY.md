@@ -2,10 +2,10 @@
 
 * [PCG Extended Toolkit](README.md)
 * [Changelogs](changelogs/README.md)
-  * [v0.74.4](changelogs/v0.74.4.md)
-  * [Changelog](changelogs/changelog.md)
+  * [v0.75](changelogs/v0.75.md)
   * [Previous updates](changelogs/previous-updates/README.md)
-    * [v0.74](changelogs/previous-updates/v0.74.md)
+    * [v0.74](changelogs/previous-updates/v0.74/README.md)
+      * [v0.74.4](changelogs/previous-updates/v0.74/v0.74.4.md)
     * [v0.73](changelogs/previous-updates/v0.73/README.md)
       * [v0.73.1 Feature Patch](changelogs/previous-updates/v0.73/v0.73.1-feature-patch.md)
       * [v0.73.2 Patch](changelogs/previous-updates/v0.73/v0.73.2-patch.md)

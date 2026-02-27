@@ -47,29 +47,29 @@ Code has been optimized a lot as well and [Broken link](/broken/pages/bY1TJGYS5T
 Cells finder nodes now have an additional, optional output : **Cell Bounds**.\
 It outputs a single dataset per cluster (so, per connected edge group) that contains one point per cell.&#x20;
 
-<figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption><p>Cheap trick to find nicely spaced out cells</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (12).png" alt=""><figcaption><p>Cheap trick to find nicely spaced out cells</p></figcaption></figure>
 
 ### Find Cell / Find All Cells (Bounded) <sup><mark style="color:$success;">New Nodes<mark style="color:$success;"></sup>
 
 Cells finding nodes now have their partition friendly (Bounded) companion nodes that replicates the [Broken link](/broken/pages/YBp8J5M6WZSz6362EmCt "mention") behavior to only output relevant cells to different bins!
 
-<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 ### [Cell Diagram](/broken/pages/kZSzQGEqZPZltG3ww07l) <sup><mark style="color:$success;">New Node<mark style="color:$success;"></sup>
 
 A handy node that outputs a diagram based on cell adjacency.
 
-<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 ### Cell Picking Expansion <sup><mark style="color:$info;">New Feature<mark style="color:$info;"></sup>
 
 Cell nodes now expose growth parameters (_global or per seed_) to output neighboring cells up to a certain depth. _The same logic applies to holes and "grows" the holes._
 
-<figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 > Which seed gets ownership of the cells supports:
 >
@@ -81,7 +81,7 @@ Cell nodes now expose growth parameters (_global or per seed_) to output neighbo
 
 A simple diagram node that outputs clusters' dual graph (_edges become vtx and vtx are split into edges_) — fairly niche case but I've been wanting to add that for ages.
 
-<figure><img src="../../.gitbook/assets/image (259).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (259).png" alt=""><figcaption></figcaption></figure>
 
 ### Data Matching
 
@@ -94,11 +94,11 @@ There's new match nodes & tweaked ones:
 
 <mark style="color:$danger;">The</mark> [Broken link](/broken/pages/EFnX5Gwvg1fZdMy74Yxy "mention") <mark style="color:$danger;">has been</mark> <mark style="color:$danger;">deprecated</mark> and instead its functionality has been <mark style="color:$success;">migrated to</mark> [Broken link](/broken/pages/XulO46DjGnPZAzyA14mc "mention") by adding Data Matching support to it; with overall much greater flexibility.
 
-<figure><img src="../../.gitbook/assets/image (256).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (256).png" alt=""><figcaption></figcaption></figure>
 
 ### Heuristics&#x20;
 
-<figure><img src="../../.gitbook/assets/image (257).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (257).png" alt=""><figcaption></figcaption></figure>
 
 Slightly improved heuristics handling to squeeze some more speed (better caching and allocations etc.) with two new heuristics:
 
@@ -113,13 +113,13 @@ Slightly improved heuristics handling to squeeze some more speed (better caching
 
 The [Broken link](/broken/pages/vM7M7htQ8tftXkByoPgi "mention") node now supports Manhattan and Chebyshev mode!
 
-<div><figure><img src="../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure> <figure><img src="../../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure></div>
+<div><figure><img src="../../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure> <figure><img src="../../../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure></div>
 
 {% hint style="warning" %}
 Due to the very unique topology of these graph, if you want to find cells you have to use [Broken link](/broken/pages/KMGvuuSliOeNL6dYyGqH "mention") to find point/edge and edge/edge intersections; as some edge perfectly overlap and align, messing with my algorithms.
 {% endhint %}
 
-<div><figure><img src="../../.gitbook/assets/image (19).png" alt=""><figcaption><p>Hull without fuse</p></figcaption></figure> <figure><img src="../../.gitbook/assets/image (20).png" alt=""><figcaption><p>Hull after fuse</p></figcaption></figure></div>
+<div><figure><img src="../../../.gitbook/assets/image (19).png" alt=""><figcaption><p>Hull without fuse</p></figcaption></figure> <figure><img src="../../../.gitbook/assets/image (20).png" alt=""><figcaption><p>Hull after fuse</p></figcaption></figure></div>
 
 ### Tensors Extrude Refactoring
 
@@ -128,7 +128,7 @@ Long overdue, I've been doing a lot of cleanup on the tensor side. A few optimiz
 * Mutators now support a component-wise scale, so you can basically "flatten" effectors.
 * More robust extrusions intersection/stop/merge detection
 
-<figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -140,7 +140,7 @@ Long overdue, I've been doing a lot of cleanup on the tensor side. A few optimiz
 Flood fill heuristics have been moved to an optional Fill Control subnodes instead of being a pin on the Flood Fill node itself.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 Comes with some new fill controls:
 
@@ -154,7 +154,7 @@ Comes with some new fill controls:
 
 On the topic of heuristics; I also added alternative ways to process & weight heuristics. I was working with paths and was trying and failing to do some really subtle balancing so here goes:
 
-<div><figure><img src="../../.gitbook/assets/image (261).png" alt=""><figcaption><p>Weighted Average</p></figcaption></figure> <figure><img src="../../.gitbook/assets/image (264).png" alt=""><figcaption><p>Geometric Mean</p></figcaption></figure> <figure><img src="../../.gitbook/assets/image (263).png" alt=""><figcaption><p>Harmonic Mean</p></figcaption></figure></div>
+<div><figure><img src="../../../.gitbook/assets/image (261).png" alt=""><figcaption><p>Weighted Average</p></figcaption></figure> <figure><img src="../../../.gitbook/assets/image (264).png" alt=""><figcaption><p>Geometric Mean</p></figcaption></figure> <figure><img src="../../../.gitbook/assets/image (263).png" alt=""><figcaption><p>Harmonic Mean</p></figcaption></figure></div>
 
 * **Weighted Average** \
   <sup>_default, old mode. Balanced blending of all heuristics. Scores normalized to \[0,1] range._</sup>
@@ -200,7 +200,7 @@ The collection map workflow consist to serialize multiple indices (picks) on the
 
 This allows to do all kind of processing operation and data retrieval with minimal attribute overhead (a single `int64`)
 
-I've always wanted to be able to expand the collection system in new ways to make it less of a "narrow" tool; the recent addition of [Broken link](/broken/pages/kf8UVB0rsM4sZAMTZwQq "mention") and the experimental [valency](../../working-with-pcgex/valency/valency/ "mention") ecosystem, I started wanting more.
+I've always wanted to be able to expand the collection system in new ways to make it less of a "narrow" tool; the recent addition of [Broken link](/broken/pages/kf8UVB0rsM4sZAMTZwQq "mention") and the experimental [valency](../../../working-with-pcgex/valency/valency/ "mention") ecosystem, I started wanting more.
 
 </details>
 
@@ -212,29 +212,29 @@ Properties schema is declared at the collection level with default values, and e
 
 > It is **very easily extendable with C++** so you can add really custom stuff if that's your kink. It's relying on `FInstancedStruct` and each struct is responsible for writing data to points/attribute sets.&#x20;
 >
-> It's leveraging the new [#pcgexproperties-module](v0.74.md#pcgexproperties-module "mention") so you'll only need dependencies on that one and `PCGExCore`.
+> It's leveraging the new [#pcgexproperties-module](./#pcgexproperties-module "mention") so you'll only need dependencies on that one and `PCGExCore`.
 
-<div><figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption><p>Declare defaults in collection settings</p></figcaption></figure> <figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption><p>Override per-entry values</p></figcaption></figure></div>
+<div><figure><img src="../../../.gitbook/assets/image (13).png" alt=""><figcaption><p>Declare defaults in collection settings</p></figcaption></figure> <figure><img src="../../../.gitbook/assets/image (14).png" alt=""><figcaption><p>Override per-entry values</p></figcaption></figure></div>
 
 Segue into the new node used to read those properties back onto the points :
 
 ### [Staging  : Load Properties](/broken/pages/GBQh6HtAHpTrEC9gSZRO) <sup><mark style="color:$success;">New node<mark style="color:$success;"></sup>
 
-<figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
 Allows you to write picked entries custom properties their respective points.
 
 ***
 
-## [Valency](../../working-with-pcgex/valency/valency/) <sup><mark style="color:$warning;">Experimental<mark style="color:$warning;"></sup>
+## [Valency](../../../working-with-pcgex/valency/valency/) <sup><mark style="color:$warning;">Experimental<mark style="color:$warning;"></sup>
 
 A new experimental feature enabling **ultra-flexible WFC-like solving on clusters**. I won't elaborate too much just yet, but know it's there. _There's an ultra-basic barebone example in the example project for 5.7 but at this point I wouldn't expect anyone to do anything useful with it_
 
-> There's some [basic doc available](../../working-with-pcgex/valency/valency/) (Ai-generated from the codebase)
+> There's some [basic doc available](../../../working-with-pcgex/valency/valency/) (Ai-generated from the codebase)
 
-<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 Most editing and live edit/reload requires you to activate the new **Valency editor mode**.
@@ -248,7 +248,7 @@ Most editing and live edit/reload requires you to activate the new **Valency edi
 
 A couple of nodes now have the ability to steal data — this is disabled by default, but super handy : the stolen data cost is basically zero.
 
-<div><figure><img src="../../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure> <figure><img src="../../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure> <figure><img src="../../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure></div>
+<div><figure><img src="../../../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure> <figure><img src="../../../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure> <figure><img src="../../../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure></div>
 
 > This is especially useful for cluster nodes that support it, as duplicating cluster data can grow really expensive.
 
@@ -308,7 +308,7 @@ This isn't free because the cached data will stay longer in memory, but that's u
 There's a new module to consolidate how I manage custom simple properties exposure. I started having too many different systems doing the same thing but different _(Tuple, Custom collection data, Valency custom module data...)_ so I've **consolidated things into a single module** and refactored other places to use that one solidified approach.
 
 {% hint style="success" %}
-Any new custom property will be available to the systems that use them : [Broken link](/broken/pages/OnicCtPRQefLs8dD8MSq "mention"), [valency](../../working-with-pcgex/valency/valency/ "mention") and [Broken link](/broken/pages/UXgxnf7YZ8yt1AXw1heR "mention")will seamlessly benefit from any additions and improvements.&#x20;
+Any new custom property will be available to the systems that use them : [Broken link](/broken/pages/OnicCtPRQefLs8dD8MSq "mention"), [valency](../../../working-with-pcgex/valency/valency/ "mention") and [Broken link](/broken/pages/UXgxnf7YZ8yt1AXw1heR "mention")will seamlessly benefit from any additions and improvements.&#x20;
 {% endhint %}
 
 > UI Customization is a bit clunky for now; sorry about that. Unreal doesn't make it very friendly to integrate in existing system without extensive hacking; so I had to forfeit a few clicks on complex property types.
